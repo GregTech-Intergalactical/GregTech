@@ -1,0 +1,2 @@
+Contrast: 25
+Satuartion: 120

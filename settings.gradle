@@ -1,0 +1,5 @@
+include ":tesseractapi"
+project(":tesseractapi").projectDir = file("../tesseractapi")
+
+include ":antimatterapi"
+project(":antimatterapi").projectDir = file("../antimatterapi")

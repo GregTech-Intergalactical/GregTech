@@ -1,0 +1,6 @@
+{
+  "parent": "gtu:block/preset/simple",
+  "textures": {
+    "all": "gtu:block/casing/fire_brick"
+  }
+}

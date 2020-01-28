@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtu:item/tool/mortar",
+    "layer1": "gtu:item/tool/overlay/mortar"
+  }
+}

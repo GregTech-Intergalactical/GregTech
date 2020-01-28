@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtu:material/rough/screw",
+    "layer1": "gtu:material/rough/screw_overlay"
+  }
+}

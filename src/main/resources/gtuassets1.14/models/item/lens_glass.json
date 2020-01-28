@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtu:material/shiny/lens",
+    "layer1": "gtu:material/shiny/lens_overlay"
+  }
+}

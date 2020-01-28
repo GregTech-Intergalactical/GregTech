@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtu:material/flint/dust_impure",
+    "layer1": "gtu:material/flint/dust_impure_overlay"
+  }
+}
