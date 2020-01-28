@@ -1,0 +1,7 @@
+{
+  "parent": "gtu:block/preset/layered",
+  "textures": {
+    "base": "block/red_sand",
+    "overlay": "gtu:material/fine/ore"
+  }
+}

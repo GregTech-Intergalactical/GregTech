@@ -1,0 +1,10 @@
+{
+  "parent": "block/block",
+	"loader": "gtu:all",
+	"base": {
+		"parent": "cube_all",
+		"textures": {
+			"all": "gtu:block/coil/nichrome"
+		}
+	}
+}

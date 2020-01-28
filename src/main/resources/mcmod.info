@@ -1,0 +1,16 @@
+[
+{
+  "modid": "gtu",
+  "name": "GregTech",
+  "description": "A continuation of GregTech 5 Unofficial",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Muramasa"],
+  "credits": "Greg and his wonderful work on GregTech",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

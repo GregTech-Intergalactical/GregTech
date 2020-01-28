@@ -1,0 +1,195 @@
+buildscript {
+    repositories {
+        maven { url = 'https://files.minecraftforge.net/maven' }
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+    }
+}
+apply plugin: 'net.minecraftforge.gradle'
+// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+
+version = "${gregtech_version}"
+group = 'muramasa.gtu' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'gtu'
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            include '**/**'
+            srcDirs += 'src/generated/resources' //Add the generated main module resources
+            exclude '.cache' //But exclude the cache of the generated data from what gets built
+        }
+    }
+}
+
+minecraft {
+    // The mappings can be changed at any time, and must be in the following format.
+    // snapshot_YYYYMMDD   Snapshot are built nightly.
+    // stable_#            Stables are built at the discretion of the MCP team.
+    // Use non-default mappings at your own risk. they may not always work.
+    // Simply re-run your setup task after changing the mappings to update your workspace.
+    mappings channel: 'snapshot', version: "${mappings_version}"
+    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    
+    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    // Default run configurations.
+    // These can be tweaked, removed, or duplicated as needed.
+    runs {
+        client {
+            workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'SCAN,REGISTRIES'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                gtu {
+                    source sourceSets.main
+                }
+//                antimatter {
+//                    source project(':antimatterapi').sourceSets.main
+//                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                gtu {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+
+            args '--mod', 'gtu', '--all', '--output', '"' + rootProject.file('src/generated/resources/') + '"',
+                    '--existing', '"' + sourceSets.main.resources.srcDirs[0] + '"',
+                    '--existing', '"' + project(':antimatterapi').file("src/main/resources") + '"'
+
+            mods {
+                gtu {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        runIdeaClient {
+            parent runs.client
+            ideaModule "${project.name}.main"
+            //gtu%%C:\Users\MuraPC\Documents\GregTech\build\resources\main;gtu%%C:\Users\MuraPC\Documents\GregTech\build\classes\java\main
+            if (local_dev_dependancies.toBoolean()) {
+                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
+            } else {
+                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')}"
+            }
+        }
+
+        runIdeaData {
+            parent runs.data
+            ideaModule "${project.name}.main"
+            //gtu%%C:\Users\MuraPC\Documents\GregTech\build\resources\main;gtu%%C:\Users\MuraPC\Documents\GregTech\build\classes\java\main
+            if (local_dev_dependancies.toBoolean()) {
+                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
+            } else {
+                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')}"
+            }
+        }
+    }
+}
+
+//sourceSets.main.resources {
+//    srcDir "src/generated/resources"
+//}
+
+repositories {
+    maven { // JEI
+        url "http://dvs1.progwml6.com/files/maven"
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    if (local_dev_dependancies.toBoolean()) {
+        compile project(":antimatterapi")
+
+        //compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
+        //runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+    } else {
+        //compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
+        //runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+            "Specification-Title": "gtu",
+            "Specification-Vendor": "examplemodsareus",
+            "Specification-Version": "1", // We are version 1 of ourselves
+            "Implementation-Title": project.name,
+            "Implementation-Version": "${version}",
+            "Implementation-Vendor" :"examplemodsareus",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
+
+//processResources {
+//    outputs.upToDateWhen { false }
+//    filesMatching('META-INF/mods.toml') {
+//        //Replace some keys from the mods.toml with values from the gradle.properties file
+//        expand "version": gtu_version, "mc_version": minecraft_version, "forge_version": min_forge_version, "loader_version": loader_version
+//    }
+//}
+
+// Example configuration to allow publishing using the maven-publish task
+// we define a custom artifact that is sourced from the reobfJar output task
+// and then declare that to be published
+// Note you'll need to add a repository here
+def reobfFile = file("$buildDir/reobfJar/output.jar")
+def reobfArtifact = artifacts.add('default', reobfFile) {
+    type 'jar'
+    builtBy 'reobfJar'
+}
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact reobfArtifact
+        }
+    }
+    repositories {
+        maven {
+            url "file:///${project.projectDir}/mcmodsrepo"
+        }
+    }
+}

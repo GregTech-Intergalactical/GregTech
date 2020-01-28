@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtu:material/shiny/crushed_centrifuged",
+    "layer1": "gtu:material/shiny/crushed_centrifuged_overlay"
+  }
+}

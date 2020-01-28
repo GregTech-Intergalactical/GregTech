@@ -1,0 +1,17 @@
+{
+  "parent": "block/block",
+	"elements": [
+		{
+			"from": [6, 0, 2],
+			"to": [11, 3, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 5, 3], "texture": "#all"},
+				"east": {"uv": [0, 0, 7, 3], "texture": "#all"},
+				"south": {"uv": [0, 0, 5, 3], "texture": "#all"},
+				"west": {"uv": [0, 0, 7, 3], "texture": "#all"},
+				"up": {"uv": [0, 0, 5, 7], "texture": "#all"},
+				"down": {"uv": [0, 0, 5, 7], "texture": "#all"}
+			}
+		}
+	]
+}

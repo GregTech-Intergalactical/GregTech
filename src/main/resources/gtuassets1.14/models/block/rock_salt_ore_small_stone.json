@@ -1,0 +1,7 @@
+{
+  "parent": "gtu:block/preset/layered",
+  "textures": {
+    "base": "block/stone",
+    "overlay": "gtu:material/fine/ore_small"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtu:material/metallic/ingot",
+    "layer1": "gtu:material/metallic/ingot_overlay"
+  }
+}

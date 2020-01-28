@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtu:material/gem_h/crushed",
+    "layer1": "gtu:material/gem_h/crushed_overlay"
+  }
+}
