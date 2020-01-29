@@ -1,6 +1,7 @@
 package muramasa.gtu;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.datagen.ExistingFileHelperOverride;
 import muramasa.antimatter.machines.Tier;
 import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
@@ -76,8 +77,8 @@ public class GregTech implements IAntimatterRegistrar {
     public static void onDataGather(GatherDataEvent e) {
         DataGenerator gen = e.getGenerator();
         if (e.includeClient()) {
-            gen.addProvider(new GregTechBlockStateProvider(gen, e.getExistingFileHelper()));
-            gen.addProvider(new GregTechItemModelProvider(gen, e.getExistingFileHelper()));
+            gen.addProvider(new GregTechBlockStateProvider(gen, new ExistingFileHelperOverride(Ref.ID)));
+            gen.addProvider(new GregTechItemModelProvider(gen, new ExistingFileHelperOverride(Ref.ID)));
         }
         if (e.includeServer()) {
 
