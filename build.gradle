@@ -13,9 +13,9 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = "${gregtech_version}"
+version = "${mod_version}"
 group = 'muramasa.gtu' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'gtu'
+archivesBaseName = "${archive_name}"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -28,23 +28,16 @@ sourceSets {
             include '**/**'
             srcDirs += 'src/generated/resources' //Add the generated main module resources
             exclude '.cache' //But exclude the cache of the generated data from what gets built
+            exclude 'Thumbs.db'
         }
     }
 }
 
 minecraft {
-    // The mappings can be changed at any time, and must be in the following format.
-    // snapshot_YYYYMMDD   Snapshot are built nightly.
-    // stable_#            Stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not always work.
-    // Simply re-run your setup task after changing the mappings to update your workspace.
     mappings channel: 'snapshot', version: "${mappings_version}"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
-    
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
             workingDirectory project.file('run')
@@ -91,9 +84,9 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'gtu', '--all', '--output', '"' + rootProject.file('src/generated/resources/') + '"',
-                    '--existing', '"' + sourceSets.main.resources.srcDirs[0] + '"',
-                    '--existing', '"' + project(':antimatterapi').file("src/main/resources") + '"'
+            args '--mod', 'gtu', '--all', '--output', '"' + file('src/generated/resources/') + '"',
+                    '--existing', '"' + file('src/main/resources') + '"'//,
+                    //'--existing', '"' + project(':antimatterapi').file("src/main/resources") + '"'
 
             mods {
                 gtu {
@@ -105,7 +98,6 @@ minecraft {
         runIdeaClient {
             parent runs.client
             ideaModule "${project.name}.main"
-            //gtu%%C:\Users\MuraPC\Documents\GregTech\build\resources\main;gtu%%C:\Users\MuraPC\Documents\GregTech\build\classes\java\main
             if (local_dev_dependancies.toBoolean()) {
                 environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
             } else {
@@ -116,19 +108,15 @@ minecraft {
         runIdeaData {
             parent runs.data
             ideaModule "${project.name}.main"
-            //gtu%%C:\Users\MuraPC\Documents\GregTech\build\resources\main;gtu%%C:\Users\MuraPC\Documents\GregTech\build\classes\java\main
             if (local_dev_dependancies.toBoolean()) {
-                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
+                //environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
+                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')}"
             } else {
                 environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')}"
             }
         }
     }
 }
-
-//sourceSets.main.resources {
-//    srcDir "src/generated/resources"
-//}
 
 repositories {
     maven { // JEI
@@ -166,10 +154,7 @@ jar {
 
 //processResources {
 //    outputs.upToDateWhen { false }
-//    filesMatching('META-INF/mods.toml') {
-//        //Replace some keys from the mods.toml with values from the gradle.properties file
-//        expand "version": gtu_version, "mc_version": minecraft_version, "forge_version": min_forge_version, "loader_version": loader_version
-//    }
+//    filesMatching('META-INF/mods.toml') { expand "version": mod_version, "minecraft_version": minecraft_version, "forge_version": forge_version, "loader_version": loader_version }
 //}
 
 // Example configuration to allow publishing using the maven-publish task
