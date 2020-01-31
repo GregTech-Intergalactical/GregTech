@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtu:material/rough/nugget",
+    "layer1": "gtu:material/rough/nugget_overlay"
+  }
+}

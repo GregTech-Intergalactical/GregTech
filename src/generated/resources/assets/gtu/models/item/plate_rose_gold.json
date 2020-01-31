@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtu:material/shiny/plate",
+    "layer1": "gtu:material/shiny/plate_overlay"
+  }
+}

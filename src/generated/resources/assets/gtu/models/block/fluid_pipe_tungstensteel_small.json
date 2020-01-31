@@ -1,0 +1,7 @@
+{
+  "parent": "gtu:block/pipe/small/line_inv",
+  "textures": {
+    "0": "antimatter:block/pipe/pipe_side",
+    "1": "antimatter:block/pipe/pipe_small"
+  }
+}

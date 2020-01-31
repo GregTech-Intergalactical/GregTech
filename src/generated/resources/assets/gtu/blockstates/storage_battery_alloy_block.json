@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gtu:block/storage_battery_alloy_block"
+    }
+  }
+}
