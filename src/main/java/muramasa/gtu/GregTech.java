@@ -1,7 +1,8 @@
 package muramasa.gtu;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.datagen.ExistingFileHelperOverride;
+import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
+import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
 import muramasa.antimatter.machines.Tier;
 import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
@@ -14,10 +15,7 @@ import muramasa.gtu.data.Guis;
 import muramasa.gtu.data.Machines;
 import muramasa.gtu.data.Materials;
 import muramasa.gtu.data.Structures;
-import muramasa.gtu.datagen.GregTechBlockStateProvider;
-import muramasa.gtu.datagen.GregTechItemModelProvider;
 import muramasa.gtu.proxy.ClientHandler;
-import net.minecraft.data.DataGenerator;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -69,10 +67,9 @@ public class GregTech implements IAntimatterRegistrar {
 
     @SubscribeEvent
     public static void onDataGather(GatherDataEvent e) {
-        DataGenerator gen = e.getGenerator();
         if (e.includeClient()) {
-            gen.addProvider(new GregTechBlockStateProvider(gen, new ExistingFileHelperOverride(Ref.ID)));
-            gen.addProvider(new GregTechItemModelProvider(gen, new ExistingFileHelperOverride(Ref.ID)));
+            e.getGenerator().addProvider(new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", e.getGenerator()));
+            e.getGenerator().addProvider(new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", e.getGenerator()));
         }
         if (e.includeServer()) {
 
@@ -94,9 +91,7 @@ public class GregTech implements IAntimatterRegistrar {
                 Structures.init();
                 Guis.init();
             case DATA_BUILD:
-                RegistrationHelper.buildMaterialItems(Ref.ID, muramasa.antimatter.Ref.TAB_MATERIALS);
-                RegistrationHelper.buildOreBlocks(Ref.ID, muramasa.antimatter.Ref.TAB_BLOCKS);
-                RegistrationHelper.buildStorageBlocks(Ref.ID, muramasa.antimatter.Ref.TAB_BLOCKS);
+                RegistrationHelper.buildDefaultMaterialDerivedObjects(Ref.ID);
                 break;
             case DATA_READY:
                 //GregTechAPI.registerFluidCell(Data.CellTin.get(1));

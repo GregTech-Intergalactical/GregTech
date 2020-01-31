@@ -267,17 +267,6 @@ public class Data {
     public static StoneType MARBLE = new StoneType("marble", "marble", Materials.Marble, true, new Texture(Ref.ID, "block/stone/marble"), SoundType.STONE, 0);
     public static StoneType BASALT = new StoneType("basalt", "basalt", Materials.Basalt, true, new Texture(Ref.ID, "block/stone/basalt"), SoundType.STONE, 0);
 
-    public static BlockStone STONE_GRANITE = new BlockStone(Ref.ID, GRANITE);
-    public static BlockStone STONE_DIORITE = new BlockStone(Ref.ID, DIORITE);
-    public static BlockStone STONE_ANDESITE = new BlockStone(Ref.ID, ANDESITE);
-
-    public static BlockStone STONE_SAND = new BlockStone(Ref.ID, SAND);
-    public static BlockStone STONE_SAND_RED = new BlockStone(Ref.ID, SAND_RED);
-    public static BlockStone STONE_SANDSTONE = new BlockStone(Ref.ID, SANDSTONE);
-
-    public static BlockStone STONE_NETHERRACK = new BlockStone(Ref.ID, NETHERRACK);
-    public static BlockStone STONE_ENDSTONE = new BlockStone(Ref.ID, ENDSTONE);
-
     public static BlockStone STONE_GRANITE_RED = new BlockStone(Ref.ID, GRANITE_RED);
     public static BlockStone STONE_GRANITE_BLACK = new BlockStone(Ref.ID, GRANITE_BLACK);
     public static BlockStone STONE_MARBLE = new BlockStone(Ref.ID, MARBLE);

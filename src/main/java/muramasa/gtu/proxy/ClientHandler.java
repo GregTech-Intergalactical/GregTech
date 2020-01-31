@@ -6,6 +6,6 @@ import net.minecraftforge.fml.common.Mod;
 public class ClientHandler {
 
     public static void init() {
-        //Models.init();
+
     }
 }

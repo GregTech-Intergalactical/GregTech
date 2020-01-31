@@ -109,8 +109,7 @@ minecraft {
             parent runs.data
             ideaModule "${project.name}.main"
             if (local_dev_dependancies.toBoolean()) {
-                //environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
-                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')}"
+                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
             } else {
                 environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')}"
             }

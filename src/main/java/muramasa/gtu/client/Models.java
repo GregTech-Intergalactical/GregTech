@@ -1,23 +1,16 @@
 package muramasa.gtu.client;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.blocks.BlockMachine;
-import muramasa.antimatter.blocks.BlockStorage;
 import muramasa.antimatter.blocks.pipe.BlockPipe;
 import muramasa.antimatter.client.AntimatterModelLoader;
 import muramasa.antimatter.client.ModelBuilder;
 import muramasa.antimatter.client.baked.BakedDynamic;
 import muramasa.antimatter.client.model.AntimatterModel;
 import muramasa.antimatter.client.model.ModelDynamic;
-import muramasa.antimatter.materials.MaterialType;
-import muramasa.antimatter.ore.BlockOre;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.PipeType;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gtu.Ref;
-import muramasa.gtu.block.BlockTurbineCasing;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 
@@ -33,12 +26,6 @@ public class Models {
     public static void init() {
         ModelLoader.addSpecialModel(new ResourceLocation(Ref.ID, "block/preset/simple"));
         ModelLoader.addSpecialModel(new ResourceLocation(Ref.ID, "block/preset/layered"));
-
-        AntimatterAPI.all(BlockMachine.class).forEach(b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutoutMipped()));
-        AntimatterAPI.all(BlockOre.class).forEach(b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutoutMipped()));
-        AntimatterAPI.all(BlockStorage.class).stream().filter(b -> b.getType() == MaterialType.FRAME).forEach(b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutoutMipped()));
-
-        AntimatterAPI.all(BlockTurbineCasing.class).forEach(b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutoutMipped()));
 
         AntimatterModelLoader.put(COIL_NICHROME, b -> new AntimatterModel(b.tex("all", "mc:block/bedrock").tex("up", "mc:block/diamond_block")));
 

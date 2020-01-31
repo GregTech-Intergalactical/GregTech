@@ -1,15 +1,17 @@
 modLoader="javafml"
-loaderVersion="[${loader_version},)"
+#loaderVersion="[${loader_version},)"
+loaderVersion="[31,)"
 issueTrackerURL="http://my.issue.tracker/"
 
 [[mods]]
 modId="gtu"
-version="${version}"
+#version="${version}"
+version="0.0.1"
 displayName="GregTech Intergalactical"
 updateJSONURL="http://myurl.me/"
 displayURL="http://example.com/"
 logoFile="examplemod.png"
-credits="GregoriusTechneticies for his work on GregTech" #optional
+credits="GregoriusTechneticies for his work on GregTech"
 authors="Muramasa"
 description='''The approved continuation of GregTech 5 Unoficial'''
 [[dependencies.gtu]]
