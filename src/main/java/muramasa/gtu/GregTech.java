@@ -6,6 +6,7 @@ import muramasa.antimatter.machines.Tier;
 import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
+import muramasa.antimatter.registration.RegistrationHelper;
 import muramasa.gtu.common.Data;
 import muramasa.gtu.cover.CoverConveyor;
 import muramasa.gtu.cover.CoverPump;
@@ -47,8 +48,6 @@ public class GregTech implements IAntimatterRegistrar {
     }
 
     private void setup(final FMLCommonSetupEvent e) {
-        AntimatterAPI.onRegistration(RegistrationEvent.INIT);
-
         //AntimatterCapabilities.register(); //TODO broken
 
         //OreGenHandler.init();
@@ -56,11 +55,6 @@ public class GregTech implements IAntimatterRegistrar {
         //TODO Ref.CONFIG = new File(e.getModConfigurationDirectory(), "GregTech/");
 
         //new GregTechWorldGenerator();
-
-
-
-        AntimatterAPI.onRegistration(RegistrationEvent.MATERIAL);
-        AntimatterAPI.onRegistration(RegistrationEvent.DATA);
 
         AntimatterAPI.onRegistration(RegistrationEvent.DATA_READY);
 
@@ -93,20 +87,21 @@ public class GregTech implements IAntimatterRegistrar {
     @Override
     public void onRegistrationEvent(RegistrationEvent event) {
         switch (event) {
-            case DATA_BUILD:
+            case DATA_INIT:
                 Materials.init();
                 Data.init();
                 Machines.init();
                 Structures.init();
-                break;
-            case GUI:
                 Guis.init();
+            case DATA_BUILD:
+                RegistrationHelper.buildMaterialItems(Ref.ID, muramasa.antimatter.Ref.TAB_MATERIALS);
+                RegistrationHelper.buildOreBlocks(Ref.ID, muramasa.antimatter.Ref.TAB_BLOCKS);
+                RegistrationHelper.buildStorageBlocks(Ref.ID, muramasa.antimatter.Ref.TAB_BLOCKS);
                 break;
-            case ITEM:
+            case DATA_READY:
                 //GregTechAPI.registerFluidCell(Data.CellTin.get(1));
                 //GregTechAPI.registerFluidCell(Data.CellSteel.get(1));
                 //GregTechAPI.registerFluidCell(Data.CellTungstensteel.get(1));
-
 
                 AntimatterAPI.registerCover(Data.COVER_PLATE);
                 AntimatterAPI.registerCover(Data.COVER_CONVEYOR);
@@ -126,9 +121,6 @@ public class GregTech implements IAntimatterRegistrar {
                 break;
             case WORLDGEN:
                 //WorldGenLoader.init();
-                break;
-            case DATA_READY:
-
                 break;
             case RECIPE:
                 //OreDictLoader.init();
