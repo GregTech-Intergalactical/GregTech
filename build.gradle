@@ -95,7 +95,7 @@ minecraft {
             }
         }
 
-        runIdeaClient {
+        clientIdea {
             parent runs.client
             ideaModule "${project.name}.main"
             if (local_dev_dependancies.toBoolean()) {
@@ -105,7 +105,7 @@ minecraft {
             }
         }
 
-        runIdeaData {
+        dataIdea {
             parent runs.data
             ideaModule "${project.name}.main"
             if (local_dev_dependancies.toBoolean()) {
