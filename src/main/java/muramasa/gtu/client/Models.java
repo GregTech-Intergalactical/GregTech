@@ -1,124 +1,132 @@
 package muramasa.gtu.client;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.blocks.pipe.BlockPipe;
-import muramasa.antimatter.client.AntimatterModelLoader;
-import muramasa.antimatter.client.ModelBuilder;
-import muramasa.antimatter.client.baked.BakedDynamic;
-import muramasa.antimatter.client.model.AntimatterModel;
+import muramasa.antimatter.client.AntimatterModelManager;
 import muramasa.antimatter.client.model.ModelDynamic;
+import muramasa.antimatter.datagen.builder.AntimatterBlockModelBuilder;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.PipeType;
+import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.antimatter.texture.Texture;
-import muramasa.gtu.Ref;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.ModelLoader;
-
-import java.util.function.Function;
+import muramasa.gtu.data.Textures;
 
 import static muramasa.antimatter.blocks.pipe.BlockPipe.getPipeID;
-import static muramasa.gtu.common.Data.*;
-import static muramasa.gtu.data.Textures.*;
+import static muramasa.gtu.common.Data.CASING_FUSION_3;
+import static muramasa.gtu.common.Data.COIL_NICHROME;
 import static net.minecraft.util.Direction.*;
 
 public class Models {
 
     public static void init() {
-        ModelLoader.addSpecialModel(new ResourceLocation(Ref.ID, "block/preset/simple"));
-        ModelLoader.addSpecialModel(new ResourceLocation(Ref.ID, "block/preset/layered"));
+        //ModelLoader.addSpecialModel(new ResourceLocation(Ref.ID, "block/preset/simple"));
+        //ModelLoader.addSpecialModel(new ResourceLocation(Ref.ID, "block/preset/layered"));
 
-        AntimatterModelLoader.put(COIL_NICHROME, b -> new AntimatterModel(b.tex("all", "mc:block/bedrock").tex("up", "mc:block/diamond_block")));
 
-        AntimatterModelLoader.put(CASING_FUSION_1, $ -> new ModelDynamic(CASING_FUSION_1).config(m -> basic(m, FUSION_1_CT)));
-        AntimatterModelLoader.put(CASING_FUSION_2, $ -> new ModelDynamic(CASING_FUSION_2).config(m -> basic(m, FUSION_2_CT)));
-        AntimatterModelLoader.put(CASING_FUSION_3, $ -> new ModelDynamic(CASING_FUSION_3).config(m -> basic(m, FUSION_3_CT)));
+        AntimatterModelManager.addOverride(COIL_NICHROME, (b, p) -> {
+            p.simpleBlock(b, p.getBuilder(b).loader(AntimatterModelManager.DEFAULT_LOADER).model("minecraft:block/bedrock"));
+        });
 
-        Function<ModelBuilder, AntimatterModel> modelPipe = $ -> new ModelDynamic().config(Models::pipe).bake((l, d, p) -> new BakedDynamic(l, d, p).onlyNullSide());
-        AntimatterAPI.all(BlockPipe.class).forEach(p -> AntimatterModelLoader.put(p, modelPipe));
+        AntimatterModelManager.addOverride(CASING_FUSION_3, (b, p) -> {
+            p.simpleBlock(b, basic(p.getBuilder(b).loader(AntimatterModelManager.DYNAMIC_LOADER), CASING_FUSION_3, Textures.FUSION_3_CT));
+        });
+
+//        AntimatterModelLoader.put(COIL_NICHROME, b -> new AntimatterModel(b.tex("all", "mc:block/bedrock").tex("up", "mc:block/diamond_block")));
+//
+//        AntimatterModelLoader.put(CASING_FUSION_1, $ -> new ModelDynamic(CASING_FUSION_1).config(m -> basic(m, FUSION_1_CT)));
+//        AntimatterModelLoader.put(CASING_FUSION_2, $ -> new ModelDynamic(CASING_FUSION_2).config(m -> basic(m, FUSION_2_CT)));
+//        AntimatterModelLoader.put(CASING_FUSION_3, $ -> new ModelDynamic(CASING_FUSION_3).config(m -> basic(m, FUSION_3_CT)));
+//
+//        Function<ModelBuilder, AntimatterModel> modelPipe = $ -> new ModelDynamic().config(Models::pipe).bake((l, d, p) -> new BakedDynamic(l, d, p).onlyNullSide());
+//        AntimatterAPI.all(BlockPipe.class).forEach(p -> AntimatterModelLoader.put(p, modelPipe));
     }
 
-    public static void basic(ModelDynamic model, Texture[] tex) {
-        if (tex.length < 13) return;
+    public static AntimatterBlockModelBuilder basic(AntimatterBlockModelBuilder b, ITextureProvider textureProvider, Texture[] tex) {
+        if (tex.length < 13) return b;
+
+        b.model(textureProvider.getTextures());
+
         //Single (1)
-        model.add(1, tex[12], tex[12], tex[1], tex[1], tex[1], tex[1]);
-        model.add(2, tex[12], tex[12], tex[1], tex[1], tex[1], tex[1]);
-        model.add(4, tex[1], tex[1], tex[0], tex[12], tex[0], tex[0]);
-        model.add(8, tex[1], tex[1], tex[12], tex[0], tex[0], tex[0]);
-        model.add(16, tex[0], tex[0], tex[0], tex[0], tex[0], tex[12]);
-        model.add(32, tex[0], tex[0], tex[0], tex[0], tex[12], tex[0]);
+        b.config(1, tex[12], tex[12], tex[1], tex[1], tex[1], tex[1]);
+        b.config(2, tex[12], tex[12], tex[1], tex[1], tex[1], tex[1]);
+        b.config(4, tex[1], tex[1], tex[0], tex[12], tex[0], tex[0]);
+        b.config(8, tex[1], tex[1], tex[12], tex[0], tex[0], tex[0]);
+        b.config(16, tex[0], tex[0], tex[0], tex[0], tex[0], tex[12]);
+        b.config(32, tex[0], tex[0], tex[0], tex[0], tex[12], tex[0]);
 
         //Lines (2)
-        model.add(3, tex[12], tex[12], tex[1], tex[1], tex[1], tex[1]);
-        model.add(12, tex[1], tex[1], tex[12], tex[12], tex[0], tex[0]);
-        model.add(48, tex[0], tex[0], tex[0], tex[0], tex[12], tex[12]);
+        b.config(3, tex[12], tex[12], tex[1], tex[1], tex[1], tex[1]);
+        b.config(12, tex[1], tex[1], tex[12], tex[12], tex[0], tex[0]);
+        b.config(48, tex[0], tex[0], tex[0], tex[0], tex[12], tex[12]);
 
         //Elbows (2)
-        model.add(6, tex[1], tex[12], tex[0], tex[1], tex[10], tex[11]);
-        model.add(5, tex[12], tex[1], tex[12], tex[1], tex[9], tex[8]);
-        model.add(9, tex[12], tex[1], tex[1], tex[12], tex[8], tex[9]);
-        model.add(10, tex[1], tex[12], tex[1], tex[12], tex[11], tex[10]);
-        model.add(17, tex[12], tex[0], tex[8], tex[9], tex[12], tex[1]);
-        model.add(18, tex[0], tex[12], tex[11], tex[10], tex[12], tex[1]);
-        model.add(33, tex[12], tex[0], tex[9], tex[8], tex[1], tex[12]);
-        model.add(34, tex[0], tex[12], tex[10], tex[11], tex[1], tex[10]);
-        model.add(20, tex[10], tex[10], tex[0], tex[0], tex[0], tex[0]);
-        model.add(24, tex[9], tex[9], tex[0], tex[0], tex[0], tex[0]);
-        model.add(36, tex[11], tex[11], tex[0], tex[0], tex[0], tex[0]);
-        model.add(40, tex[8], tex[8], tex[0], tex[0], tex[0], tex[0]);
+        b.config(6, tex[1], tex[12], tex[0], tex[1], tex[10], tex[11]);
+        b.config(5, tex[12], tex[1], tex[12], tex[1], tex[9], tex[8]);
+        b.config(9, tex[12], tex[1], tex[1], tex[12], tex[8], tex[9]);
+        b.config(10, tex[1], tex[12], tex[1], tex[12], tex[11], tex[10]);
+        b.config(17, tex[12], tex[0], tex[8], tex[9], tex[12], tex[1]);
+        b.config(18, tex[0], tex[12], tex[11], tex[10], tex[12], tex[1]);
+        b.config(33, tex[12], tex[0], tex[9], tex[8], tex[1], tex[12]);
+        b.config(34, tex[0], tex[12], tex[10], tex[11], tex[1], tex[10]);
+        b.config(20, tex[10], tex[10], tex[0], tex[0], tex[0], tex[0]);
+        b.config(24, tex[9], tex[9], tex[0], tex[0], tex[0], tex[0]);
+        b.config(36, tex[11], tex[11], tex[0], tex[0], tex[0], tex[0]);
+        b.config(40, tex[8], tex[8], tex[0], tex[0], tex[0], tex[0]);
 
         //Side (3)
-        model.add(7, tex[12], tex[12], tex[12], tex[1], tex[4], tex[2]);
-        model.add(11, tex[12], tex[12], tex[1], tex[12], tex[2], tex[4]);
-        model.add(13, tex[12], tex[1], tex[12], tex[12], tex[3], tex[3]);
-        model.add(14, tex[1], tex[12], tex[12], tex[12], tex[5], tex[5]);
-        model.add(19, tex[12], tex[12], tex[2], tex[4], tex[12], tex[1]);
-        model.add(28, tex[4], tex[4], tex[12], tex[12], tex[12], tex[0]);
-        model.add(35, tex[12], tex[12], tex[4], tex[2], tex[1], tex[12]);
-        model.add(44, tex[2], tex[2], tex[12], tex[12], tex[0], tex[12]);
-        model.add(49, tex[12], tex[0], tex[3], tex[3], tex[12], tex[12]);
-        model.add(50, tex[0], tex[12], tex[5], tex[5], tex[12], tex[12]);
-        model.add(52, tex[3], tex[5], tex[12], tex[0], tex[12], tex[12]);
-        model.add(56, tex[5], tex[3], tex[0], tex[12], tex[12], tex[12]);
+        b.config(7, tex[12], tex[12], tex[12], tex[1], tex[4], tex[2]);
+        b.config(11, tex[12], tex[12], tex[1], tex[12], tex[2], tex[4]);
+        b.config(13, tex[12], tex[1], tex[12], tex[12], tex[3], tex[3]);
+        b.config(14, tex[1], tex[12], tex[12], tex[12], tex[5], tex[5]);
+        b.config(19, tex[12], tex[12], tex[2], tex[4], tex[12], tex[1]);
+        b.config(28, tex[4], tex[4], tex[12], tex[12], tex[12], tex[0]);
+        b.config(35, tex[12], tex[12], tex[4], tex[2], tex[1], tex[12]);
+        b.config(44, tex[2], tex[2], tex[12], tex[12], tex[0], tex[12]);
+        b.config(49, tex[12], tex[0], tex[3], tex[3], tex[12], tex[12]);
+        b.config(50, tex[0], tex[12], tex[5], tex[5], tex[12], tex[12]);
+        b.config(52, tex[3], tex[5], tex[12], tex[0], tex[12], tex[12]);
+        b.config(56, tex[5], tex[3], tex[0], tex[12], tex[12], tex[12]);
 
         //Corner (3)
-        model.add(21, tex[10], tex[10], tex[0], tex[9], tex[0], tex[8]);
-        model.add(22, tex[10], tex[10], tex[0], tex[10], tex[0], tex[11]);
-        model.add(25, tex[9], tex[9], tex[8], tex[0], tex[0], tex[9]);
-        model.add(26, tex[9], tex[9], tex[11], tex[0], tex[0], tex[10]);
-        model.add(37, tex[11], tex[11], tex[0], tex[8], tex[9], tex[0]);
-        model.add(38, tex[11], tex[11], tex[0], tex[11], tex[10], tex[0]);
-        model.add(41, tex[8], tex[8], tex[9], tex[0], tex[8], tex[0]);
-        model.add(42, tex[8], tex[8], tex[10], tex[0], tex[11], tex[0]);
+        b.config(21, tex[10], tex[10], tex[0], tex[9], tex[0], tex[8]);
+        b.config(22, tex[10], tex[10], tex[0], tex[10], tex[0], tex[11]);
+        b.config(25, tex[9], tex[9], tex[8], tex[0], tex[0], tex[9]);
+        b.config(26, tex[9], tex[9], tex[11], tex[0], tex[0], tex[10]);
+        b.config(37, tex[11], tex[11], tex[0], tex[8], tex[9], tex[0]);
+        b.config(38, tex[11], tex[11], tex[0], tex[11], tex[10], tex[0]);
+        b.config(41, tex[8], tex[8], tex[9], tex[0], tex[8], tex[0]);
+        b.config(42, tex[8], tex[8], tex[10], tex[0], tex[11], tex[0]);
 
         //Arrow (4)
-        model.add(23, tex[12], tex[12], tex[12], tex[4], tex[12], tex[2]);
-        model.add(27, tex[12], tex[12], tex[2], tex[12], tex[12], tex[4]);
-        model.add(29, tex[12], tex[4], tex[12], tex[12], tex[12], tex[3]);
-        model.add(30, tex[4], tex[12], tex[12], tex[12], tex[12], tex[5]);
-        model.add(39, tex[12], tex[12], tex[12], tex[2], tex[4], tex[12]);
-        model.add(43, tex[12], tex[12], tex[4], tex[12], tex[2], tex[12]);
-        model.add(45, tex[12], tex[2], tex[12], tex[12], tex[3], tex[12]);
-        model.add(46, tex[2], tex[12], tex[12], tex[12], tex[5], tex[12]);
-        model.add(53, tex[12], tex[5], tex[12], tex[3], tex[12], tex[12]);
-        model.add(54, tex[3], tex[12], tex[12], tex[5], tex[12], tex[12]);
-        model.add(57, tex[12], tex[3], tex[3], tex[12], tex[12], tex[12]);
-        model.add(58, tex[5], tex[12], tex[5], tex[12], tex[12], tex[12]);
+        b.config(23, tex[12], tex[12], tex[12], tex[4], tex[12], tex[2]);
+        b.config(27, tex[12], tex[12], tex[2], tex[12], tex[12], tex[4]);
+        b.config(29, tex[12], tex[4], tex[12], tex[12], tex[12], tex[3]);
+        b.config(30, tex[4], tex[12], tex[12], tex[12], tex[12], tex[5]);
+        b.config(39, tex[12], tex[12], tex[12], tex[2], tex[4], tex[12]);
+        b.config(43, tex[12], tex[12], tex[4], tex[12], tex[2], tex[12]);
+        b.config(45, tex[12], tex[2], tex[12], tex[12], tex[3], tex[12]);
+        b.config(46, tex[2], tex[12], tex[12], tex[12], tex[5], tex[12]);
+        b.config(53, tex[12], tex[5], tex[12], tex[3], tex[12], tex[12]);
+        b.config(54, tex[3], tex[12], tex[12], tex[5], tex[12], tex[12]);
+        b.config(57, tex[12], tex[3], tex[3], tex[12], tex[12], tex[12]);
+        b.config(58, tex[5], tex[12], tex[5], tex[12], tex[12], tex[12]);
 
         //Cross (4)
-        model.add(15, tex[12], tex[12], tex[12], tex[12], tex[6], tex[6]);
-        model.add(51, tex[12], tex[12], tex[6], tex[6], tex[12], tex[12]);
-        model.add(60, tex[6], tex[6], tex[12], tex[12], tex[12], tex[12]);
+        b.config(15, tex[12], tex[12], tex[12], tex[12], tex[6], tex[6]);
+        b.config(51, tex[12], tex[12], tex[6], tex[6], tex[12], tex[12]);
+        b.config(60, tex[6], tex[6], tex[12], tex[12], tex[12], tex[12]);
 
         //Five (5)
-        model.add(31, tex[12], tex[12], tex[12], tex[12], tex[12], tex[6]);
-        model.add(47, tex[12], tex[12], tex[12], tex[12], tex[6], tex[12]);
-        model.add(55, tex[12], tex[12], tex[12], tex[6], tex[12], tex[12]);
-        model.add(59, tex[12], tex[12], tex[6], tex[12], tex[12], tex[12]);
-        model.add(61, tex[12], tex[6], tex[12], tex[12], tex[12], tex[12]);
-        model.add(62, tex[6], tex[12], tex[12], tex[12], tex[12], tex[12]);
+        b.config(31, tex[12], tex[12], tex[12], tex[12], tex[12], tex[6]);
+        b.config(47, tex[12], tex[12], tex[12], tex[12], tex[6], tex[12]);
+        b.config(55, tex[12], tex[12], tex[12], tex[6], tex[12], tex[12]);
+        b.config(59, tex[12], tex[12], tex[6], tex[12], tex[12], tex[12]);
+        b.config(61, tex[12], tex[6], tex[12], tex[12], tex[12], tex[12]);
+        b.config(62, tex[6], tex[12], tex[12], tex[12], tex[12], tex[12]);
 
         //All (6)
-        model.add(63, tex[12], tex[12], tex[12], tex[12], tex[12], tex[12]);
+        b.config(63, tex[12], tex[12], tex[12], tex[12], tex[12], tex[12]);
+
+        return b;
     }
 
     public static void pipe(ModelDynamic model) {

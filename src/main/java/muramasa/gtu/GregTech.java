@@ -8,6 +8,7 @@ import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.RegistrationHelper;
+import muramasa.gtu.client.Models;
 import muramasa.gtu.common.Data;
 import muramasa.gtu.cover.CoverConveyor;
 import muramasa.gtu.cover.CoverPump;
@@ -90,6 +91,7 @@ public class GregTech implements IAntimatterRegistrar {
                 Machines.init();
                 Structures.init();
                 Guis.init();
+                Models.init();
             case DATA_BUILD:
                 RegistrationHelper.buildDefaultMaterialDerivedObjects(Ref.ID);
                 break;
