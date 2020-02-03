@@ -15,6 +15,7 @@ import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gtu.Configs;
 import muramasa.gtu.Ref;
+import muramasa.gtu.block.BlockFusionCasing;
 import muramasa.gtu.block.BlockTurbineCasing;
 import muramasa.gtu.cover.CoverConveyor;
 import muramasa.gtu.cover.CoverPlate;
@@ -309,9 +310,10 @@ public class Data {
     public static BlockCasing CASING_PIPE_TITANIUM = new BlockCasing(Ref.ID, "pipe_titanium");
     public static BlockCasing CASING_PIPE_TUNGSTENSTEEL = new BlockCasing(Ref.ID, "pipe_tungstensteel");
     public static BlockCasing CASING_ENGINE_INTAKE = new BlockCasing(Ref.ID, "engine_intake");
-    public static BlockCasing CASING_FUSION_1 = new BlockCasing(Ref.ID, "fusion_1");
-    public static BlockCasing CASING_FUSION_2 = new BlockCasing(Ref.ID, "fusion_2");
-    public static BlockCasing CASING_FUSION_3 = new BlockCasing(Ref.ID, "fusion_3");
+
+    public static BlockCasing CASING_FUSION_1 = new BlockFusionCasing(Ref.ID, "fusion_1");
+    public static BlockCasing CASING_FUSION_2 = new BlockFusionCasing(Ref.ID, "fusion_2");
+    public static BlockCasing CASING_FUSION_3 = new BlockFusionCasing(Ref.ID, "fusion_3");
 
     public static BlockCasing CASING_TURBINE_1 = new BlockTurbineCasing(Ref.ID, "turbine_1");
     public static BlockCasing CASING_TURBINE_2 = new BlockTurbineCasing(Ref.ID, "turbine_2");
