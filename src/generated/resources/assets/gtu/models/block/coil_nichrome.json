@@ -1,9 +1,6 @@
 {
-  "loader": "antimatter:default",
+  "loader": "antimatter:main",
   "model": {
-    "parent": "antimatter:block/preset/simple",
-		"textures": {
-			"all": "minecraft:block/bedrock"
-		}
+    "parent": "minecraft:block/bedrock"
   }
 }

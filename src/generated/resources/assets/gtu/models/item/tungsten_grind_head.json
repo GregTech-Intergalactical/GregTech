@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gtu:item/standard/tungsten_grind_head"
+    "layer0": "gtu:item/basic/tungsten_grind_head"
   }
 }

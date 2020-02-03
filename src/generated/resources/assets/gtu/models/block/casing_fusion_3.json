@@ -1,5 +1,5 @@
 {
-  "loader": "antimatter:dynamic",
+  "loader": "antimatter:main",
   "model": {
     "parent": "antimatter:block/preset/simple",
     "textures": {

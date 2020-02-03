@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gtu:item/standard/mold_bottle"
+    "layer0": "gtu:item/basic/mold_bottle"
   }
 }

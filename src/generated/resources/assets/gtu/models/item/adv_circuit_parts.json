@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gtu:item/standard/adv_circuit_parts"
+    "layer0": "gtu:item/basic/adv_circuit_parts"
   }
 }

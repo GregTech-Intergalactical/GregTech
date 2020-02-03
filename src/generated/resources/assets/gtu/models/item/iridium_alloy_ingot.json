@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gtu:item/standard/iridium_alloy_ingot"
+    "layer0": "gtu:item/basic/iridium_alloy_ingot"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gtu:item/standard/piston_lv"
+    "layer0": "gtu:item/basic/piston_lv"
   }
 }
