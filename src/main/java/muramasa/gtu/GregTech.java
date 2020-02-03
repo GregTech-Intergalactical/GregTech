@@ -16,6 +16,7 @@ import muramasa.gtu.data.Guis;
 import muramasa.gtu.data.Machines;
 import muramasa.gtu.data.Materials;
 import muramasa.gtu.data.Structures;
+import muramasa.gtu.loaders.WorldGenLoader;
 import muramasa.gtu.proxy.ClientHandler;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -59,6 +60,8 @@ public class GregTech implements IAntimatterRegistrar {
 
         //GregTechWorldGenerator.init();
         //if (!Configs.WORLD.ORE_JSON_RELOADING) GregTechWorldGenerator.reload();
+        WorldGenLoader.init();
+
 
     }
 
