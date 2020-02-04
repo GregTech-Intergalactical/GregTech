@@ -55,14 +55,10 @@ public class GregTech implements IAntimatterRegistrar {
 
         //new GregTechWorldGenerator();
 
-        AntimatterAPI.onRegistration(RegistrationEvent.DATA_READY);
-
         //if (ModList.get().isLoaded(Ref.MOD_TOP)) TheOneProbePlugin.init();
 
-        AntimatterAPI.onRegistration(RegistrationEvent.WORLDGEN);
         //GregTechWorldGenerator.init();
         //if (!Configs.WORLD.ORE_JSON_RELOADING) GregTechWorldGenerator.reload();
-        //AntimatterAPI.onRegistration(RegistrationEvent.RECIPE);
 
     }
 
