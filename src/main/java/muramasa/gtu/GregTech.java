@@ -60,7 +60,7 @@ public class GregTech implements IAntimatterRegistrar {
 
         //GregTechWorldGenerator.init();
         //if (!Configs.WORLD.ORE_JSON_RELOADING) GregTechWorldGenerator.reload();
-        WorldGenLoader.init();
+        //WorldGenLoader.init();
 
 
     }
@@ -117,7 +117,7 @@ public class GregTech implements IAntimatterRegistrar {
                 MaterialType.PLATE.all().forEach(m -> AntimatterAPI.registerCoverStack(m.getPlate(1), Data.COVER_PLATE));
                 break;
             case WORLDGEN:
-                //WorldGenLoader.init();
+                WorldGenLoader.init(); // Move to DATA_READY?
                 break;
             case RECIPE:
                 //OreDictLoader.init();
