@@ -92,6 +92,7 @@ public class GregTech implements IAntimatterRegistrar {
                 Structures.init();
                 Guis.init();
                 Models.init();
+                break;
             case DATA_BUILD:
                 RegistrationHelper.buildDefaultMaterialDerivedObjects(Ref.ID);
                 break;
