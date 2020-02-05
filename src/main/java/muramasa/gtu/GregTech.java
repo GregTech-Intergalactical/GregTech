@@ -40,28 +40,13 @@ public class GregTech implements IAntimatterRegistrar {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientHandler::init);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
-        AntimatterAPI.registerInternalRegistrar(INSTANCE);
+        AntimatterAPI.addRegistrar(INSTANCE);
         //GregTechAPI.addRegistrar(new ForestryRegistrar());
         //GregTechAPI.addRegistrar(new GalacticraftRegistrar());
         //if (ModList.get().isLoaded(Ref.MOD_UB)) GregTechAPI.addRegistrar(new UndergroundBiomesRegistrar());
-        //if (ModList.get().isLoaded(Ref.MOD_CT)) GregTechAPI.addRegistrar(new GregTechTweaker());
     }
 
     private void setup(final FMLCommonSetupEvent e) {
-        //AntimatterCapabilities.register(); //TODO broken
-
-        //OreGenHandler.init();
-
-        //TODO Ref.CONFIG = new File(e.getModConfigurationDirectory(), "GregTech/");
-
-        //new GregTechWorldGenerator();
-
-        //if (ModList.get().isLoaded(Ref.MOD_TOP)) TheOneProbePlugin.init();
-
-        //GregTechWorldGenerator.init();
-        //if (!Configs.WORLD.ORE_JSON_RELOADING) GregTechWorldGenerator.reload();
-        //WorldGenLoader.init();
-
 
     }
 
@@ -115,9 +100,8 @@ public class GregTech implements IAntimatterRegistrar {
                 AntimatterAPI.registerCoverStack(Data.PumpEV.get(1), new CoverPump(Tier.EV));
                 AntimatterAPI.registerCoverStack(Data.PumpIV.get(1), new CoverPump(Tier.IV));
                 MaterialType.PLATE.all().forEach(m -> AntimatterAPI.registerCoverStack(m.getPlate(1), Data.COVER_PLATE));
-                break;
-            case WORLDGEN:
-                WorldGenLoader.init(); // Move to DATA_READY?
+
+                WorldGenLoader.init();
                 break;
             case RECIPE:
                 //OreDictLoader.init();
