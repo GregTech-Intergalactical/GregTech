@@ -275,11 +275,8 @@ public class Materials {
     //public static Material WoodSealed = new Material(Ref.ID, "sealed_wood", 0x502800, NONE).asDust().addTools(3.0F, 24, 0).add(Wood, 1); TODO: Perhaps with IE integration or when we have some utility stuff
     public static Material Blaze = new Material(Ref.ID, "blaze", 0xffc800, NONE).asDust().addTools(3.0F, 64, 1, of(Enchantments.FIRE_ASPECT, 3)).add(Sulfur, 1, DarkAsh, 1/*, Magic, 1*/);
     public static Material Flint = new Material(Ref.ID, "flint", 0x002040, FLINT).asDust(ROCK).addTools(2.0F, 48, 1, of(Enchantments.FIRE_ASPECT, 1)).add(SiliconDioxide, 1);
-    public static Material Marble = new Material(Ref.ID, "marble", 0xc8c8c8, NONE).asDust().add(Magnesium, 1, Calcite, 7);
     public static Material PotassiumFeldspar = new Material(Ref.ID, "potassium_feldspar", 0x782828, FINE).asDust().add(Potassium, 1, Aluminium, 1, Silicon, 3, Oxygen, 8);
     public static Material Biotite = new Material(Ref.ID, "biotite", 0x141e14, METALLIC).asDust().add(Potassium, 1, Magnesium, 3, Aluminium, 3, Fluorine, 2, Silicon, 3, Oxygen, 10);
-    public static Material GraniteBlack = new Material(Ref.ID, "black_granite", 0x0a0a0a, ROUGH).asDust().addTools(4.0F, 64, 3).add(SiliconDioxide, 4, Biotite, 1);
-    public static Material GraniteRed = new Material(Ref.ID, "red_granite", 0xff0080, ROUGH).asDust().addTools(4.0F, 64, 3).add(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3);
     public static Material VanadiumMagnetite = new Material(Ref.ID, "vanadium_magnetite", 0x23233c, METALLIC).asDust(ORE).add(Magnetite, 1, Vanadium, 1);
     public static Material Bastnasite = new Material(Ref.ID, "bastnasite", 0xc86e2d, FINE).asDust(ORE).add(Cerium, 1, Carbon, 1, Fluorine, 1, Oxygen, 3);
     public static Material Pentlandite = new Material(Ref.ID, "pentlandite", 0xa59605, DULL).asDust(ORE, ORE_SMALL).add(Nickel, 9, Sulfur, 8);
@@ -303,7 +300,6 @@ public class Materials {
     public static Material Dilithium = new Material(Ref.ID, "dilithium", 0xfffafa, DIAMOND).asGemBasic(true);
     public static Material NetherQuartz = new Material(Ref.ID, "nether_quartz", 0xe6d2d2, QUARTZ).asGemBasic(false, ORE, ORE_SMALL);
     public static Material NetherStar = new Material(Ref.ID, "nether_star", 0xffffff, NONE).asGemBasic(false).addTools(6.0F, 3620, 4, of(Enchantments.SILK_TOUCH, 1)); //Made Nether Stars usable
-    public static Material Quartzite = new Material(Ref.ID, "quartzite", 0xd2e6d2, QUARTZ).asGemBasic(false, ORE).add(Silicon, 1, Oxygen, 2);
 
     //Brittle Gems
     public static Material BlueTopaz = new Material(Ref.ID, "blue_topaz", 0x0000ff, GEM_H).asGem(true, ORE, ORE_SMALL).addTools(7.0F, 256, 3).add(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6);
@@ -337,7 +333,6 @@ public class Materials {
     /** **/
     public static Material Redstone = new Material(Ref.ID, "redstone", 0xc80000, ROUGH).asDust(ORE, ORE_SMALL, LIQUID).add(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3);
     public static Material Cinnabar = new Material(Ref.ID, "cinnabar", 0x960000, ROUGH).asDust(ORE).add(Mercury, 1, Sulfur, 1);
-    public static Material Basalt = new Material(Ref.ID, "basalt", 0x1e1414, ROUGH).asDust().add(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4);
 
     /** Metals **/
     public static Material AnnealedCopper = new Material(Ref.ID, "annealed_copper", 0xff7814, SHINY).asMetal(1357, 0, PLATE, FOIL, ROD, WIRE_FINE).add(Copper, 1);
@@ -400,6 +395,19 @@ public class Materials {
     public static Material PolyvinylChloride = new Material(Ref.ID, "polyvinyl_chloride", 0xd7e6e6, NONE).asSolid(295, 0, PLATE, FOIL).addTools(3.0F, 32, 1).add(Carbon, 2, Hydrogen, 3, Chlorine, 1);
     public static Material GalliumArsenide = new Material(Ref.ID, "gallium_arsenide", 0xa0a0a0, DULL).asSolid(295, 1200).add(Arsenic, 1, Gallium, 1);
     public static Material EpoxidFiberReinforced = new Material(Ref.ID, "fiber_reinforced_epoxy_resin", 0xa07010, DULL).asSolid(400, 0).addTools(3.0F, 64, 1).add(Epoxid, 1);
+
+    /** Stones **/
+    public static Material GraniteRed = new Material(Ref.ID, "red_granite", 0xff0080, ROUGH).asDust().addTools(4.0F, 64, 3).add(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3);
+    public static Material GraniteBlack = new Material(Ref.ID, "black_granite", 0x0a0a0a, ROUGH).asDust().addTools(4.0F, 64, 3).add(SiliconDioxide, 4, Biotite, 1);
+    public static Material Marble = new Material(Ref.ID, "marble", 0xc8c8c8, NONE).asDust().add(Magnesium, 1, Calcite, 7);
+    public static Material Basalt = new Material(Ref.ID, "basalt", 0x1e1414, ROUGH).asDust().add(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4);
+    public static Material Komatiite = new Material(Ref.ID, "komatiite", 0xbebe69, NONE).asDust().add(Olivine, 1, /*MgCO3, 2, */Flint, 6, DarkAsh, 3);
+    public static Material Limestone = new Material(Ref.ID, "limestone", 0xe6c882, NONE).asDust().add(Calcite, 1);
+    public static Material GreenSchist = new Material(Ref.ID, "green_schist", 0x69be69, NONE).asDust();
+    public static Material BlueSchist = new Material(Ref.ID, "blue_schist", 0x0569be, NONE).asDust();
+    public static Material Kimberlite = new Material(Ref.ID, "kimberlite", 0x64460a, NONE).asDust();
+    public static Material Quartzite = new Material(Ref.ID, "quartzite", 0xe6cdcd, QUARTZ).asGemBasic(false, ORE).add(Silicon, 1, Oxygen, 2);
+
 
     /** Reference Materials **/
     public static Material Superconductor = new Material(Ref.ID, "superconductor", 0xffffff, NONE);
