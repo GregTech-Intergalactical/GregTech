@@ -1,0 +1,6 @@
+{
+  "parent": "antimatter:block/preset/simple",
+  "textures": {
+    "all": "block/diorite"
+  }
+}

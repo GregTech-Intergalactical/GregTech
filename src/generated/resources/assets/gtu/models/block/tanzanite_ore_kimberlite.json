@@ -1,0 +1,7 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gtu:block/stone/kimberlite",
+    "overlay": "gtu:material/gem_v/ore"
+  }
+}
