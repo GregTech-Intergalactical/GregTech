@@ -1,9 +1,10 @@
 package muramasa.gtu.loaders;
 
 import muramasa.antimatter.worldgen.*;
+import muramasa.gtu.common.Data;
+import net.minecraft.block.Blocks;
 
 import static muramasa.antimatter.Ref.*;
-import static muramasa.gtu.common.Data.*;
 import static muramasa.gtu.data.Materials.*;
 
 public class WorldGenLoader {
@@ -12,68 +13,163 @@ public class WorldGenLoader {
         //TODO probably increase max generation heights for most things
         //TODO add GC dims to all objects
 
+        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.COAL_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
+        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.IRON_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
+        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.GOLD_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
+        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.DIAMOND_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
+        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.EMERALD_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
+        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.LAPIS_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
+        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.REDSTONE_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
+
         new WorldGenRock("surface_rock", 1, OVERWORLD);
 
         //new WorldGenTree("rubber_tree", 5, 5, Data.RUBBER_SAPLING, OVERWORLD);
 
         new WorldGenAsteroid("asteroids", END, ASTEROIDS);
 
-        new WorldGenStone("granite_black_tiny", GRANITE_BLACK, 1, 75, 5, 0, 180, OVERWORLD);
-        new WorldGenStone("granite_black_small", GRANITE_BLACK, 1, 100, 10, 0, 180, OVERWORLD);
-        new WorldGenStone("granite_black_medium", GRANITE_BLACK, 1, 200, 10, 0, 120, OVERWORLD);
-        new WorldGenStone("granite_black_large", GRANITE_BLACK, 1, 300, 70, 0, 120, OVERWORLD);
-        new WorldGenStone("granite_black_huge", GRANITE_BLACK, 1, 400, 150, 0, 120, OVERWORLD);
+//        new WorldGenStone("granite_black_tiny", GRANITE_BLACK, 1, 75, 5, 0, 180, OVERWORLD);
+//        new WorldGenStone("granite_black_small", GRANITE_BLACK, 1, 100, 10, 0, 180, OVERWORLD);
+//        new WorldGenStone("granite_black_medium", GRANITE_BLACK, 1, 200, 10, 0, 120, OVERWORLD);
+//        new WorldGenStone("granite_black_large", GRANITE_BLACK, 1, 300, 70, 0, 120, OVERWORLD);
+//        new WorldGenStone("granite_black_huge", GRANITE_BLACK, 1, 400, 150, 0, 120, OVERWORLD);
+//
+//        new WorldGenStone("granite_red_tiny", GRANITE_RED, 1, 75, 5, 0, 180, OVERWORLD);
+//        new WorldGenStone("granite_red_small", GRANITE_RED, 1, 100, 10, 0, 180, OVERWORLD);
+//        new WorldGenStone("granite_red_medium", GRANITE_RED, 1, 200, 10, 0, 120, OVERWORLD);
+//        new WorldGenStone("granite_red_large", GRANITE_RED, 1, 300, 70, 0, 120, OVERWORLD);
+//        new WorldGenStone("granite_red_huge", GRANITE_RED, 1, 400, 150, 0, 120, OVERWORLD);
+//
+//        new WorldGenStone("marble_tiny", MARBLE, 1, 75, 5, 0, 180, OVERWORLD);
+//        new WorldGenStone("marble_small", MARBLE, 1, 100, 10, 0, 180, OVERWORLD);
+//        new WorldGenStone("marble_medium", MARBLE, 1, 200, 10, 0, 120, OVERWORLD);
+//        new WorldGenStone("marble_large", MARBLE, 1, 300, 70, 0, 120, OVERWORLD);
+//        new WorldGenStone("marble_huge", MARBLE, 1, 400, 150, 0, 120, OVERWORLD);
+//
+//        new WorldGenStone("basalt_tiny", BASALT, 1, 75, 5, 0, 180, OVERWORLD);
+//        new WorldGenStone("basalt_small", BASALT, 1, 100, 10, 0, 180, OVERWORLD);
+//        new WorldGenStone("basalt_medium", BASALT, 1, 200, 10, 0, 120, OVERWORLD);
+//        new WorldGenStone("basalt_large", BASALT, 1, 300, 70, 0, 120, OVERWORLD);
+//        new WorldGenStone("basalt_huge", BASALT, 1, 400, 150, 0, 120, OVERWORLD);
 
-        new WorldGenStone("granite_red_tiny", GRANITE_RED, 1, 75, 5, 0, 180, OVERWORLD);
-        new WorldGenStone("granite_red_small", GRANITE_RED, 1, 100, 10, 0, 180, OVERWORLD);
-        new WorldGenStone("granite_red_medium", GRANITE_RED, 1, 200, 10, 0, 120, OVERWORLD);
-        new WorldGenStone("granite_red_large", GRANITE_RED, 1, 300, 70, 0, 120, OVERWORLD);
-        new WorldGenStone("granite_red_huge", GRANITE_RED, 1, 400, 150, 0, 120, OVERWORLD);
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE)); //Ores
 
-        new WorldGenStone("marble_tiny", MARBLE, 1, 75, 5, 0, 180, OVERWORLD);
-        new WorldGenStone("marble_small", MARBLE, 1, 100, 10, 0, 180, OVERWORLD);
-        new WorldGenStone("marble_medium", MARBLE, 1, 200, 10, 0, 120, OVERWORLD);
-        new WorldGenStone("marble_large", MARBLE, 1, 300, 70, 0, 120, OVERWORLD);
-        new WorldGenStone("marble_huge", MARBLE, 1, 400, 150, 0, 120, OVERWORLD);
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK)); //Ores
 
-        new WorldGenStone("basalt_tiny", BASALT, 1, 75, 5, 0, 180, OVERWORLD);
-        new WorldGenStone("basalt_small", BASALT, 1, 100, 10, 0, 180, OVERWORLD);
-        new WorldGenStone("basalt_medium", BASALT, 1, 200, 10, 0, 120, OVERWORLD);
-        new WorldGenStone("basalt_large", BASALT, 1, 300, 70, 0, 120, OVERWORLD);
-        new WorldGenStone("basalt_huge", BASALT, 1, 400, 150, 0, 120, OVERWORLD);
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_RED));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_RED));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_RED)); //Ores
 
-        new WorldGenOreVein("naquadah", 10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, NaquadahEnriched, END);
-        new WorldGenOreVein("lignite", 50, 130, 160, 8, 32, Lignite, Lignite, Lignite, Coal, OVERWORLD);
-        new WorldGenOreVein("coal", 50, 80, 80, 6, 32, Coal, Coal, Coal, Lignite, OVERWORLD);
-        new WorldGenOreVein("magnetite", 50, 120, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite, OVERWORLD, NETHER);
-        new WorldGenOreVein("gold", 60, 80, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold, OVERWORLD);
-        new WorldGenOreVein("iron", 10, 40, 120, 4, 24, BrownLimonite, YellowLimonite, BandedIron, Malachite, OVERWORLD, NETHER);
-        new WorldGenOreVein("cassiterite", 40, 120, 50, 5, 24, Tin, Tin, Cassiterite, Tin, OVERWORLD, END);
-        new WorldGenOreVein("tetrahedrite", 80, 120, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite, OVERWORLD, NETHER);
-        new WorldGenOreVein("nether_quartz", 40, 80, 80, 5, 24, NetherQuartz, NetherQuartz, NetherQuartz, NetherQuartz, NETHER);
-        new WorldGenOreVein("sulfur", 5, 20, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite, NETHER);
-        new WorldGenOreVein("copper", 10, 30, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, OVERWORLD, NETHER);
-        new WorldGenOreVein("bauxite", 50, 90, 80, 4, 24, Bauxite, Bauxite, Aluminium, Ilmenite, OVERWORLD);
-        new WorldGenOreVein("salts", 50, 60, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene, OVERWORLD);
-        new WorldGenOreVein("redstone", 10, 40, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar, OVERWORLD, NETHER);
-        new WorldGenOreVein("soapstone", 10, 40, 40, 3, 16, Soapstone, Talc, Glauconite, Pentlandite, OVERWORLD);
-        new WorldGenOreVein("nickel", 10, 40, 40, 3, 16, Garnierite, Nickel, Cobaltite, Pentlandite, OVERWORLD, NETHER, END);
-        new WorldGenOreVein("platinum", 40, 50, 5, 3, 16, Cooperite, Palladium, Platinum, Iridium, OVERWORLD, END);
-        new WorldGenOreVein("pitchblende", 10, 40, 40, 3, 16, Pitchblende, Pitchblende, Uraninite, Uraninite, OVERWORLD);
-        new WorldGenOreVein("uranium", 20, 30, 20, 3, 16, Uraninite, Uraninite, Uranium, Uranium, OVERWORLD);
-        new WorldGenOreVein("monazite", 20, 40, 30, 3, 16, Bastnasite, Bastnasite, Bastnasite/*Monazite*/, Neodymium, OVERWORLD);
-        new WorldGenOreVein("molybdenum", 20, 50, 5, 3, 16, Wulfenite, Molybdenite, Molybdenum, Molybdenum/*Powellite*/, OVERWORLD, END);
-        new WorldGenOreVein("tungstate", 20, 50, 10, 3, 16, Scheelite, Scheelite, Tungstate, Lithium, OVERWORLD, END);
-        new WorldGenOreVein("sapphire", 10, 40, 60, 3, 16, Almandine, Pyrope, BlueSapphire, GreenSapphire, OVERWORLD);
-        new WorldGenOreVein("manganese", 20, 30, 20, 3, 16, Grossular, Spessartine, Pyrolusite, Tantalite, OVERWORLD, END);
-        new WorldGenOreVein("quartz", 40, 80, 60, 3, 16, Quartzite, Barite, Barite/*CertusQuartz*/, Barite/*CertusQuartz*/, OVERWORLD);
-        new WorldGenOreVein("diamond", 5, 20, 40, 2, 16, Graphite, Graphite, Diamond, Coal, OVERWORLD);
-        new WorldGenOreVein("olivine", 10, 40, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite, OVERWORLD, END);
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KOMATIITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KOMATIITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KOMATIITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KOMATIITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KOMATIITE)); //Ores
+
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT)); //Ores
+
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE)); //Ores
+
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE)); //Ores
+
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GREEN_SCHIST));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GREEN_SCHIST)); //Ores
+
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BLUE_SCHIST));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BLUE_SCHIST)); //Ores
+
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KIMBERLITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KIMBERLITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KIMBERLITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KIMBERLITE)); //Ores
+
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.QUARTZITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.QUARTZITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.QUARTZITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.QUARTZITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.QUARTZITE)); //Ores
+
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE)); //Ores
+
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE)); //Ores
+
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE));
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE)); //Ores
+        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE)); //Ores
+
+        new WorldGenVeinLayer("naquadah", 10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, NaquadahEnriched, END);
+        new WorldGenVeinLayer("lignite", 50, 130, 160, 8, 32, Lignite, Lignite, Lignite, Coal, OVERWORLD);
+        new WorldGenVeinLayer("coal", 50, 80, 80, 6, 32, Coal, Coal, Coal, Lignite, OVERWORLD);
+        new WorldGenVeinLayer("magnetite", 50, 120, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite, OVERWORLD, NETHER);
+        new WorldGenVeinLayer("gold", 60, 80, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold, OVERWORLD);
+        new WorldGenVeinLayer("iron", 10, 40, 120, 4, 24, BrownLimonite, YellowLimonite, BandedIron, Malachite, OVERWORLD, NETHER);
+        new WorldGenVeinLayer("cassiterite", 40, 120, 50, 5, 24, Tin, Tin, Cassiterite, Tin, OVERWORLD, END);
+        new WorldGenVeinLayer("tetrahedrite", 80, 120, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite, OVERWORLD, NETHER);
+        new WorldGenVeinLayer("nether_quartz", 40, 80, 80, 5, 24, NetherQuartz, NetherQuartz, NetherQuartz, NetherQuartz, NETHER);
+        new WorldGenVeinLayer("sulfur", 5, 20, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite, NETHER);
+        new WorldGenVeinLayer("copper", 10, 30, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, OVERWORLD, NETHER);
+        new WorldGenVeinLayer("bauxite", 50, 90, 80, 4, 24, Bauxite, Bauxite, Aluminium, Ilmenite, OVERWORLD);
+        new WorldGenVeinLayer("salts", 50, 60, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene, OVERWORLD);
+        new WorldGenVeinLayer("redstone", 10, 40, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar, OVERWORLD, NETHER);
+        new WorldGenVeinLayer("soapstone", 10, 40, 40, 3, 16, Soapstone, Talc, Glauconite, Pentlandite, OVERWORLD);
+        new WorldGenVeinLayer("nickel", 10, 40, 40, 3, 16, Garnierite, Nickel, Cobaltite, Pentlandite, OVERWORLD, NETHER, END);
+        new WorldGenVeinLayer("platinum", 40, 50, 5, 3, 16, Cooperite, Palladium, Platinum, Iridium, OVERWORLD, END);
+        new WorldGenVeinLayer("pitchblende", 10, 40, 40, 3, 16, Pitchblende, Pitchblende, Uraninite, Uraninite, OVERWORLD);
+        new WorldGenVeinLayer("uranium", 20, 30, 20, 3, 16, Uraninite, Uraninite, Uranium, Uranium, OVERWORLD);
+        new WorldGenVeinLayer("monazite", 20, 40, 30, 3, 16, Bastnasite, Bastnasite, Bastnasite/*Monazite*/, Neodymium, OVERWORLD);
+        new WorldGenVeinLayer("molybdenum", 20, 50, 5, 3, 16, Wulfenite, Molybdenite, Molybdenum, Molybdenum/*Powellite*/, OVERWORLD, END);
+        new WorldGenVeinLayer("tungstate", 20, 50, 10, 3, 16, Scheelite, Scheelite, Tungstate, Lithium, OVERWORLD, END);
+        new WorldGenVeinLayer("sapphire", 10, 40, 60, 3, 16, Almandine, Pyrope, BlueSapphire, GreenSapphire, OVERWORLD);
+        new WorldGenVeinLayer("manganese", 20, 30, 20, 3, 16, Grossular, Spessartine, Pyrolusite, Tantalite, OVERWORLD, END);
+        new WorldGenVeinLayer("quartz", 40, 80, 60, 3, 16, Quartzite, Barite, Barite/*CertusQuartz*/, Barite/*CertusQuartz*/, OVERWORLD);
+        new WorldGenVeinLayer("diamond", 5, 20, 40, 2, 16, Graphite, Graphite, Diamond, Coal, OVERWORLD);
+        new WorldGenVeinLayer("olivine", 10, 40, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite, OVERWORLD, END);
         //new WorldGenLayer("apatite", 40, 60, 60, 3, 16, Apatite, Apatite, TricalciumPhosphate, Pyrochlore);
-        new WorldGenOreVein("gelena", 30, 60, 40, 5, 16, Galena, Galena, Silver, Lead, OVERWORLD);
-        new WorldGenOreVein("lapis", 20, 50, 40, 5, 16, Lapis/*Lazurite*/, Lapis/*Sodalite*/, Lapis, Calcite, OVERWORLD, END);
-        new WorldGenOreVein("beryllium", 5, 30, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium, OVERWORLD, END);
-        new WorldGenOreVein("oilsands", 50, 80, 80, 6, 32, Oilsands, Oilsands, Oilsands, Oilsands, OVERWORLD);
+        new WorldGenVeinLayer("gelena", 30, 60, 40, 5, 16, Galena, Galena, Silver, Lead, OVERWORLD);
+        new WorldGenVeinLayer("lapis", 20, 50, 40, 5, 16, Lapis/*Lazurite*/, Lapis/*Sodalite*/, Lapis, Calcite, OVERWORLD, END);
+        new WorldGenVeinLayer("beryllium", 5, 30, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium, OVERWORLD, END);
+        new WorldGenVeinLayer("oilsands", 50, 80, 80, 6, 32, Oilsands, Oilsands, Oilsands, Oilsands, OVERWORLD);
 
         new WorldGenOreSmall("chalcopyrite", 60, 120, 16, Chalcopyrite, OVERWORLD, NETHER, END, MARS);
         new WorldGenOreSmall("cassiterite", 60, 120, 16, Cassiterite, OVERWORLD, NETHER, END, MARS);
