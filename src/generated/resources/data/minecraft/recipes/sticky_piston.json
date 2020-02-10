@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "item": "gtu:sticky_resin"
+    }
+  ],
+  "result": {
+    "item": "minecraft:sticky_piston"
+  }
+}
