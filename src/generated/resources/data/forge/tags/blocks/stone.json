@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "gtu:granite_red",
+    "gtu:granite_black",
+    "gtu:marble",
+    "gtu:basalt",
+    "gtu:komatiite",
+    "gtu:limestone",
+    "gtu:green_schist",
+    "gtu:blue_schist",
+    "gtu:kimberlite",
+    "gtu:quartzite"
+  ]
+}

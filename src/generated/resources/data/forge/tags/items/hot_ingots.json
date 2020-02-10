@@ -1,0 +1,32 @@
+{
+  "replace": false,
+  "values": [
+    "gtu:ingot_hot_naquadah",
+    "gtu:ingot_hot_naquadah_alloy",
+    "gtu:ingot_hot_palladium",
+    "gtu:ingot_hot_yttrium_barium_cuprate",
+    "gtu:ingot_hot_neutronium",
+    "gtu:ingot_hot_kanthal",
+    "gtu:ingot_hot_tungsten",
+    "gtu:ingot_hot_tungsten_carbide",
+    "gtu:ingot_hot_titanium",
+    "gtu:ingot_hot_hsse",
+    "gtu:ingot_hot_vanadium",
+    "gtu:ingot_hot_niobium_titanium",
+    "gtu:ingot_hot_ultimet",
+    "gtu:ingot_hot_hssg",
+    "gtu:ingot_hot_naquadria",
+    "gtu:ingot_hot_tungstensteel",
+    "gtu:ingot_hot_vanadium_gallium",
+    "gtu:ingot_hot_hsss",
+    "gtu:ingot_hot_osmiridium",
+    "gtu:ingot_hot_niobium",
+    "gtu:ingot_hot_iridium",
+    "gtu:ingot_hot_lutetium",
+    "gtu:ingot_hot_yttrium",
+    "gtu:ingot_hot_black_bronze",
+    "gtu:ingot_hot_naquadah_enriched",
+    "gtu:ingot_hot_nichrome",
+    "gtu:ingot_hot_osmium"
+  ]
+}

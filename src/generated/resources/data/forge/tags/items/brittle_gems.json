@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "gtu:gem_brittle_emerald",
+    "gtu:gem_brittle_topaz",
+    "gtu:gem_brittle_blue_topaz",
+    "gtu:gem_brittle_ruby",
+    "gtu:gem_brittle_tanzanite",
+    "gtu:gem_brittle_amethyst",
+    "gtu:gem_brittle_opal",
+    "gtu:gem_brittle_green_sapphire",
+    "gtu:gem_brittle_yellow_garnet",
+    "gtu:gem_brittle_red_garnet",
+    "gtu:gem_brittle_endereye",
+    "gtu:gem_brittle_blue_sapphire",
+    "gtu:gem_brittle_olivine",
+    "gtu:gem_brittle_dilithium",
+    "gtu:gem_brittle_diamond"
+  ]
+}
