@@ -14,10 +14,7 @@ import muramasa.gtu.client.Models;
 import muramasa.gtu.common.Data;
 import muramasa.gtu.cover.CoverConveyor;
 import muramasa.gtu.cover.CoverPump;
-import muramasa.gtu.data.Guis;
-import muramasa.gtu.data.Machines;
-import muramasa.gtu.data.Materials;
-import muramasa.gtu.data.Structures;
+import muramasa.gtu.data.*;
 import muramasa.gtu.loaders.WorldGenLoader;
 import muramasa.gtu.proxy.ClientHandler;
 import net.minecraft.data.DataGenerator;
@@ -105,7 +102,7 @@ public class GregTech implements IAntimatterRegistrar {
                 AntimatterAPI.registerCoverStack(Data.PumpHV.get(1), new CoverPump(Tier.HV));
                 AntimatterAPI.registerCoverStack(Data.PumpEV.get(1), new CoverPump(Tier.EV));
                 AntimatterAPI.registerCoverStack(Data.PumpIV.get(1), new CoverPump(Tier.IV));
-                MaterialType.PLATE.all().forEach(m -> AntimatterAPI.registerCoverStack(m.getPlate(1), Data.COVER_PLATE));
+                MaterialType.PLATE.all().forEach(m -> AntimatterAPI.registerCoverStack(MaterialType.PLATE.get(m, 1), Data.COVER_PLATE));
 
                 WorldGenLoader.init();
                 break;

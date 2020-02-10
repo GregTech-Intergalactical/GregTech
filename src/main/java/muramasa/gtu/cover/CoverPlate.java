@@ -43,7 +43,7 @@ public class CoverPlate extends CoverMaterial {
 
     @Override
     public ItemStack getDroppedStack() {
-        return material.getPlate(1);
+        return MaterialType.PLATE.get(material, 1);
     }
 
     @Override
