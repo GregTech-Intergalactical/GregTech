@@ -2,6 +2,7 @@ package muramasa.gtu.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machines.Tier;
+import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.antimatter.recipe.RecipeMap;
@@ -72,12 +73,12 @@ public class RecipeBuilders {
 
         static {
             AntimatterAPI.onEvent(RegistrationEvent.DATA_READY, () -> FUELS = new ItemStack[] {
-                Materials.Coal.getGem(1),
-                Materials.Coal.getDust(1),
-                Materials.Charcoal.getGem(1),
-                Materials.Charcoal.getDust(1),
-                Materials.CoalCoke.getGem(1),
-                Materials.LigniteCoke.getGem(1)
+                MaterialType.GEM.get(Materials.Coal, 1),
+                MaterialType.DUST.get(Materials.Coal, 1),
+                MaterialType.GEM.get(Materials.Charcoal, 1),
+                MaterialType.DUST.get(Materials.Charcoal, 1),
+                MaterialType.GEM.get(Materials.CoalCoke, 1),
+                MaterialType.GEM.get(Materials.LigniteCoke, 1),
             });
         }
 
