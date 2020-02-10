@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gtu:item/standard/conveyor_mv"
+    "layer0": "gtu:item/basic/conveyor_mv"
   }
 }

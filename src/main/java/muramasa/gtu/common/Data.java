@@ -3,18 +3,19 @@ package muramasa.gtu.common;
 import muramasa.antimatter.blocks.BlockCasing;
 import muramasa.antimatter.blocks.BlockCasingMachine;
 import muramasa.antimatter.blocks.BlockCoil;
-import muramasa.antimatter.blocks.BlockStone;
 import muramasa.antimatter.blocks.pipe.BlockCable.BlockCableBuilder;
 import muramasa.antimatter.blocks.pipe.BlockFluidPipe.BlockFluidPipeBuilder;
 import muramasa.antimatter.blocks.pipe.BlockItemPipe.BlockItemPipeBuilder;
 import muramasa.antimatter.cover.Cover;
 import muramasa.antimatter.items.ItemBasic;
 import muramasa.antimatter.machines.Tier;
+import muramasa.antimatter.ore.BlockRockOre;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gtu.Configs;
 import muramasa.gtu.Ref;
+import muramasa.gtu.block.BlockFusionCasing;
 import muramasa.gtu.block.BlockTurbineCasing;
 import muramasa.gtu.cover.CoverConveyor;
 import muramasa.gtu.cover.CoverPlate;
@@ -247,30 +248,51 @@ public class Data {
     //public static BlockLeavesBase RUBBER_LEAVES = new BlockLeavesBase("rubber_leaves", RUBBER_SAPLING);
 
     //STONE should be the only non-removable StoneType. It serves as the foundation. It is also used natively by BlockRock
-    public static final StoneType STONE = new StoneType("stone", Materials.Stone, Blocks.STONE.getDefaultState(), true, new Texture("minecraft", "block/stone"));
+    public static StoneType STONE = new StoneType(Ref.ID, "stone", Materials.Stone, new Texture("minecraft", "block/stone"), SoundType.STONE, false).setState(Blocks.STONE);
 
-    //TODO evaluate if needed. These are considered "stone" and are replace by ores anyway.
-    //TODO Might need Red Sandstone in here to stay in-line with red sand/sandstone
-    public static StoneType GRANITE = new StoneType("granite", Materials.Stone, Blocks.GRANITE.getDefaultState(), !Configs.WORLD.DISABLE_VANILLA_STONE_GEN || muramasa.antimatter.Ref.debugStones, new Texture("minecraft", "block/granite"));
-    public static StoneType DIORITE = new StoneType("diorite", Materials.Stone, Blocks.DIORITE.getDefaultState(), !Configs.WORLD.DISABLE_VANILLA_STONE_GEN || muramasa.antimatter.Ref.debugStones, new Texture("minecraft", "block/diorite"));
-    public static StoneType ANDESITE = new StoneType("andesite", Materials.Stone, Blocks.ANDESITE.getDefaultState(), !Configs.WORLD.DISABLE_VANILLA_STONE_GEN || muramasa.antimatter.Ref.debugStones, new Texture("minecraft", "block/andesite"));
+    public static StoneType GRANITE = new StoneType(Ref.ID, "granite", Materials.Stone, new Texture("minecraft", "block/granite"), SoundType.STONE, !Configs.WORLD.DISABLE_VANILLA_STONE_GEN || muramasa.antimatter.Ref.debugStones).setState(Blocks.GRANITE);
+    public static StoneType DIORITE = new StoneType(Ref.ID, "diorite", Materials.Stone, new Texture("minecraft", "block/diorite"), SoundType.STONE, !Configs.WORLD.DISABLE_VANILLA_STONE_GEN || muramasa.antimatter.Ref.debugStones).setState(Blocks.DIORITE);
+    public static StoneType ANDESITE = new StoneType(Ref.ID, "andesite", Materials.Stone,new Texture("minecraft", "block/andesite"),  SoundType.STONE, !Configs.WORLD.DISABLE_VANILLA_STONE_GEN || muramasa.antimatter.Ref.debugStones).setState(Blocks.ANDESITE);
 
-    public static StoneType SAND = new StoneType("sand", "sand", Materials.SiliconDioxide, Blocks.SAND.getDefaultState(), new Texture("minecraft", "block/sand"), SoundType.SAND, true);
-    public static StoneType SAND_RED = new StoneType("sand_red", "sand", Materials.SiliconDioxide, Blocks.RED_SAND.getDefaultState(), new Texture("minecraft", "block/red_sand"), SoundType.SAND, true);
-    public static StoneType SANDSTONE = new StoneType("sandstone", "sandstone", Materials.SiliconDioxide, Blocks.SANDSTONE.getDefaultState(), new Texture("minecraft", "block/sandstone"), SoundType.STONE, false);
+    public static StoneType SAND = new StoneType(Ref.ID, "sand", Materials.SiliconDioxide, new Texture("minecraft", "block/sand"), SoundType.SAND, false).setState(Blocks.SAND);
+    public static StoneType SAND_RED = new StoneType(Ref.ID, "sand_red", Materials.SiliconDioxide, new Texture("minecraft", "block/red_sand"), SoundType.SAND, false).setState(Blocks.RED_SAND);
+    public static StoneType SANDSTONE = new StoneType(Ref.ID, "sandstone", Materials.SiliconDioxide, new Texture("minecraft", "block/sandstone"), SoundType.STONE, false).setState(Blocks.SANDSTONE);
 
-    public static StoneType NETHERRACK = new StoneType("netherrack", "nether", Materials.Netherrack, Blocks.NETHERRACK.getDefaultState(), new Texture("minecraft", "block/netherrack"));
-    public static StoneType ENDSTONE = new StoneType("endstone", "end", Materials.Endstone, Blocks.END_STONE.getDefaultState(), new Texture("minecraft", "block/end_stone"));
+    public static StoneType NETHERRACK = new StoneType(Ref.ID, "netherrack", Materials.Netherrack, new Texture("minecraft", "block/netherrack"), SoundType.STONE, false).setState(Blocks.NETHERRACK);
+    public static StoneType ENDSTONE = new StoneType(Ref.ID, "endstone", Materials.Endstone, new Texture("minecraft", "block/end_stone"), SoundType.STONE, false).setState(Blocks.END_STONE);
 
-    public static StoneType GRANITE_RED = new StoneType("granite_red", "granite_red", Materials.GraniteRed, true, new Texture(Ref.ID, "block/stone/granite_red"), SoundType.STONE, 2);
-    public static StoneType GRANITE_BLACK = new StoneType("granite_black", "granite_black", Materials.GraniteBlack, true, new Texture(Ref.ID, "block/stone/granite_black"), SoundType.STONE, 2);
-    public static StoneType MARBLE = new StoneType("marble", "marble", Materials.Marble, true, new Texture(Ref.ID, "block/stone/marble"), SoundType.STONE, 0);
-    public static StoneType BASALT = new StoneType("basalt", "basalt", Materials.Basalt, true, new Texture(Ref.ID, "block/stone/basalt"), SoundType.STONE, 0);
+    public static StoneType GRANITE_RED = new StoneType(Ref.ID, "granite_red", Materials.GraniteRed, new Texture(Ref.ID, "block/stone/granite_red"), SoundType.STONE, true);
+    public static StoneType GRANITE_BLACK = new StoneType(Ref.ID, "granite_black", Materials.GraniteBlack, new Texture(Ref.ID, "block/stone/granite_black"), SoundType.STONE, true);
+    public static StoneType MARBLE = new StoneType(Ref.ID, "marble", Materials.Marble, new Texture(Ref.ID, "block/stone/marble"), SoundType.STONE, true);
+    public static StoneType BASALT = new StoneType(Ref.ID, "basalt", Materials.Basalt, new Texture(Ref.ID, "block/stone/basalt"), SoundType.STONE, true);
 
-    public static BlockStone STONE_GRANITE_RED = new BlockStone(Ref.ID, GRANITE_RED);
-    public static BlockStone STONE_GRANITE_BLACK = new BlockStone(Ref.ID, GRANITE_BLACK);
-    public static BlockStone STONE_MARBLE = new BlockStone(Ref.ID, MARBLE);
-    public static BlockStone STONE_BASALT = new BlockStone(Ref.ID, BASALT);
+    public static StoneType KOMATIITE = new StoneType(Ref.ID, "komatiite", Materials.Komatiite, new Texture(Ref.ID, "block/stone/komatiite"), SoundType.STONE, true);
+    public static StoneType LIMESTONE = new StoneType(Ref.ID, "limestone", Limestone, new Texture(Ref.ID, "block/stone/limestone"), SoundType.STONE, true);
+    public static StoneType GREEN_SCHIST = new StoneType(Ref.ID, "green_schist", GreenSchist, new Texture(Ref.ID, "block/stone/green_schist"), SoundType.STONE, true);
+    public static StoneType BLUE_SCHIST = new StoneType(Ref.ID, "blue_schist", BlueSchist, new Texture(Ref.ID, "block/stone/blue_schist"), SoundType.STONE, true);
+    public static StoneType KIMBERLITE = new StoneType(Ref.ID, "kimberlite", Kimberlite, new Texture(Ref.ID, "block/stone/kimberlite"), SoundType.STONE, true);
+    public static StoneType QUARTZITE = new StoneType(Ref.ID, "quartzite", Quartzite, new Texture(Ref.ID, "block/stone/quartzite"), SoundType.STONE, true);
+
+    public static BlockRockOre ANTHRACITE_COAL = new BlockRockOre(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal"));
+    public static BlockRockOre LIGNITE_COAL = new BlockRockOre(Ref.ID, "lignite_coal", new Texture(Ref.ID, "block/basic/lignite_coal"));
+    public static BlockRockOre SALT = new BlockRockOre(Ref.ID, "salt", new Texture(Ref.ID, "block/basic/salt"));
+    public static BlockRockOre ROCK_SALT = new BlockRockOre(Ref.ID, "rock_salt", new Texture(Ref.ID, "block/basic/rock_salt"));
+    public static BlockRockOre BAUXITE = new BlockRockOre(Ref.ID, "bauxite", new Texture(Ref.ID, "block/basic/bauxite"));
+    public static BlockRockOre OIL_SHALE = new BlockRockOre(Ref.ID, "oil_shale", new Texture(Ref.ID, "block/basic/oil_shale"));
+    //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal"));
+    //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal"));
+
+//    public static BlockStone STONE_GRANITE_RED = new BlockStone(Ref.ID, GRANITE_RED);
+//    public static BlockStone STONE_GRANITE_BLACK = new BlockStone(Ref.ID, GRANITE_BLACK);
+//    public static BlockStone STONE_MARBLE = new BlockStone(Ref.ID, MARBLE);
+//    public static BlockStone STONE_BASALT = new BlockStone(Ref.ID, BASALT);
+//
+//    public static BlockStone STONE_KOMATIITE = new BlockStone(Ref.ID, KOMATIITE);
+//    public static BlockStone STONE_LIMESTONE = new BlockStone(Ref.ID, LIMESTONE);
+//    public static BlockStone STONE_GREEN_SCHIST = new BlockStone(Ref.ID, GREEN_SCHIST);
+//    public static BlockStone STONE_BLUE_SCHIST = new BlockStone(Ref.ID, BLUE_SCHIST);
+//    public static BlockStone STONE_KIMBERLITE = new BlockStone(Ref.ID, KIMBERLITE);
+//    public static BlockStone STONE_QUARTZITE = new BlockStone(Ref.ID, QUARTZITE);
 
     public static BlockCasingMachine CASING_ULV = new BlockCasingMachine(Ref.ID, "ulv");
     public static BlockCasingMachine CASING_LV = new BlockCasingMachine(Ref.ID, "lv");
@@ -309,9 +331,10 @@ public class Data {
     public static BlockCasing CASING_PIPE_TITANIUM = new BlockCasing(Ref.ID, "pipe_titanium");
     public static BlockCasing CASING_PIPE_TUNGSTENSTEEL = new BlockCasing(Ref.ID, "pipe_tungstensteel");
     public static BlockCasing CASING_ENGINE_INTAKE = new BlockCasing(Ref.ID, "engine_intake");
-    public static BlockCasing CASING_FUSION_1 = new BlockCasing(Ref.ID, "fusion_1");
-    public static BlockCasing CASING_FUSION_2 = new BlockCasing(Ref.ID, "fusion_2");
-    public static BlockCasing CASING_FUSION_3 = new BlockCasing(Ref.ID, "fusion_3");
+
+    public static BlockCasing CASING_FUSION_1 = new BlockFusionCasing(Ref.ID, "fusion_1");
+    public static BlockCasing CASING_FUSION_2 = new BlockFusionCasing(Ref.ID, "fusion_2");
+    public static BlockCasing CASING_FUSION_3 = new BlockFusionCasing(Ref.ID, "fusion_3");
 
     public static BlockCasing CASING_TURBINE_1 = new BlockTurbineCasing(Ref.ID, "turbine_1");
     public static BlockCasing CASING_TURBINE_2 = new BlockTurbineCasing(Ref.ID, "turbine_2");

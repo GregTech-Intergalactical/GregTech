@@ -1,0 +1,7 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gtu:block/stone/komatiite",
+    "overlay": "gtu:material/diamond/ore_small"
+  }
+}

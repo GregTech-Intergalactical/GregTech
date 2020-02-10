@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gtu:item/standard/circuit_data_orb"
+    "layer0": "gtu:item/basic/circuit_data_orb"
   }
 }

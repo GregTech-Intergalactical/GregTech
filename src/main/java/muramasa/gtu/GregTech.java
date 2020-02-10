@@ -2,12 +2,15 @@ package muramasa.gtu;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
+import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
+import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.machines.Tier;
 import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.RegistrationHelper;
+import muramasa.gtu.client.Models;
 import muramasa.gtu.common.Data;
 import muramasa.gtu.cover.CoverConveyor;
 import muramasa.gtu.cover.CoverPump;
@@ -15,7 +18,9 @@ import muramasa.gtu.data.Guis;
 import muramasa.gtu.data.Machines;
 import muramasa.gtu.data.Materials;
 import muramasa.gtu.data.Structures;
+import muramasa.gtu.loaders.WorldGenLoader;
 import muramasa.gtu.proxy.ClientHandler;
+import net.minecraft.data.DataGenerator;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -38,30 +43,13 @@ public class GregTech implements IAntimatterRegistrar {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientHandler::init);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
-        AntimatterAPI.registerInternalRegistrar(INSTANCE);
+        AntimatterAPI.addRegistrar(INSTANCE);
         //GregTechAPI.addRegistrar(new ForestryRegistrar());
         //GregTechAPI.addRegistrar(new GalacticraftRegistrar());
         //if (ModList.get().isLoaded(Ref.MOD_UB)) GregTechAPI.addRegistrar(new UndergroundBiomesRegistrar());
-        //if (ModList.get().isLoaded(Ref.MOD_CT)) GregTechAPI.addRegistrar(new GregTechTweaker());
     }
 
     private void setup(final FMLCommonSetupEvent e) {
-        //AntimatterCapabilities.register(); //TODO broken
-
-        //OreGenHandler.init();
-
-        //TODO Ref.CONFIG = new File(e.getModConfigurationDirectory(), "GregTech/");
-
-        //new GregTechWorldGenerator();
-
-        AntimatterAPI.onRegistration(RegistrationEvent.DATA_READY);
-
-        //if (ModList.get().isLoaded(Ref.MOD_TOP)) TheOneProbePlugin.init();
-
-        AntimatterAPI.onRegistration(RegistrationEvent.WORLDGEN);
-        //GregTechWorldGenerator.init();
-        //if (!Configs.WORLD.ORE_JSON_RELOADING) GregTechWorldGenerator.reload();
-        //AntimatterAPI.onRegistration(RegistrationEvent.RECIPE);
 
     }
 
@@ -93,6 +81,8 @@ public class GregTech implements IAntimatterRegistrar {
                 Machines.init();
                 Structures.init();
                 Guis.init();
+                Models.init();
+                break;
             case DATA_BUILD:
                 RegistrationHelper.buildDefaultMaterialDerivedObjects(Ref.ID);
                 break;
@@ -116,9 +106,8 @@ public class GregTech implements IAntimatterRegistrar {
                 AntimatterAPI.registerCoverStack(Data.PumpEV.get(1), new CoverPump(Tier.EV));
                 AntimatterAPI.registerCoverStack(Data.PumpIV.get(1), new CoverPump(Tier.IV));
                 MaterialType.PLATE.all().forEach(m -> AntimatterAPI.registerCoverStack(m.getPlate(1), Data.COVER_PLATE));
-                break;
-            case WORLDGEN:
-                //WorldGenLoader.init();
+
+                WorldGenLoader.init();
                 break;
             case RECIPE:
                 //OreDictLoader.init();
