@@ -63,6 +63,7 @@ public class GregTech implements IAntimatterRegistrar {
         if (e.includeServer()) {
             gen.addProvider(new AntimatterBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
             gen.addProvider(new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, gen));
+            gen.addProvider(new Recipes(gen));
         }
     }
 
