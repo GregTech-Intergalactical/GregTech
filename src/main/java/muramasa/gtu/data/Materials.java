@@ -177,7 +177,7 @@ public class Materials {
     public static Material IndiumConcentrate = new Material(Ref.ID, "indium_concentrate", 0xffffff, NONE).asFluid();
     public static Material NickelSulfate = new Material(Ref.ID, "nickel_sulfate", 0xffffff, NONE).asFluid();
     public static Material RocketFuel = new Material(Ref.ID, "rocket_fuel", 0xffffff, NONE).asFluid();
-    public static Material LeadZincSolution = new Material(Ref.ID, "lead_Zinc_solution", 0xffffff, NONE).asFluid();
+    public static Material LeadZincSolution = new Material(Ref.ID, "lead_zinc_solution", 0xffffff, NONE).asFluid();
 
     /** Fuels **/
     public static Material Diesel = new Material(Ref.ID, "diesel", 0xffff00, NONE).asFluid(128);
