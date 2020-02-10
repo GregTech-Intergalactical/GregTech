@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "gtu:block/granite"
+      "model": "gtu:block/basic_salt"
     }
   }
 }
