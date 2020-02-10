@@ -2,7 +2,9 @@ package muramasa.gtu;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
+import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
+import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.machines.Tier;
 import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
@@ -18,6 +20,7 @@ import muramasa.gtu.data.Materials;
 import muramasa.gtu.data.Structures;
 import muramasa.gtu.loaders.WorldGenLoader;
 import muramasa.gtu.proxy.ClientHandler;
+import net.minecraft.data.DataGenerator;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -52,12 +55,14 @@ public class GregTech implements IAntimatterRegistrar {
 
     @SubscribeEvent
     public static void onDataGather(GatherDataEvent e) {
+        DataGenerator gen = e.getGenerator();
         if (e.includeClient()) {
-            e.getGenerator().addProvider(new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", e.getGenerator()));
-            e.getGenerator().addProvider(new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", e.getGenerator()));
+            gen.addProvider(new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", gen));
+            gen.addProvider(new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", gen));
         }
         if (e.includeServer()) {
-
+            gen.addProvider(new AntimatterBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
+            gen.addProvider(new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, gen));
         }
     }
 
