@@ -1,7 +1,13 @@
 package muramasa.gtu.loaders;
 
 import muramasa.antimatter.Configs;
-import muramasa.antimatter.worldgen.*;
+import muramasa.antimatter.worldgen.AntimatterWorldGenerator;
+import muramasa.antimatter.worldgen.StoneLayerOre;
+import muramasa.antimatter.worldgen.old.WorldGenAsteroid;
+import muramasa.antimatter.worldgen.old.WorldGenRock;
+import muramasa.antimatter.worldgen.object.WorldGenOreSmall;
+import muramasa.antimatter.worldgen.object.WorldGenStoneLayer;
+import muramasa.antimatter.worldgen.object.WorldGenVeinLayer;
 import muramasa.gtu.common.Data;
 import net.minecraft.block.Blocks;
 
@@ -52,103 +58,101 @@ public class WorldGenLoader {
 //        new WorldGenStone("basalt_large", BASALT, 1, 300, 70, 0, 120, OVERWORLD);
 //        new WorldGenStone("basalt_huge", BASALT, 1, 400, 150, 0, 120, OVERWORLD);
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.STONE)); //Ores
+        new WorldGenStoneLayer(Data.STONE, OVERWORLD);
+        new WorldGenStoneLayer(Data.STONE, OVERWORLD);
+        new WorldGenStoneLayer(Data.STONE, OVERWORLD);
+        new WorldGenStoneLayer(Data.STONE, OVERWORLD);
+        new WorldGenStoneLayer(Data.STONE, OVERWORLD); //Ores
+        new WorldGenStoneLayer(Data.STONE, OVERWORLD); //Ores
+        new WorldGenStoneLayer(Data.STONE, OVERWORLD); //Ores
+        new WorldGenStoneLayer(Data.STONE, OVERWORLD); //Ores
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_BLACK)); //Ores
+        new WorldGenStoneLayer(Data.GRANITE_BLACK, OVERWORLD);
+        new WorldGenStoneLayer(Data.GRANITE_BLACK, OVERWORLD);
+        new WorldGenStoneLayer(Data.GRANITE_BLACK, OVERWORLD).addOres(
+            new StoneLayerOre(Cooperite, U32, 0, 16),
+            new StoneLayerOre(Iridium, U64, 0, 8)
+        );
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_RED));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_RED));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE_RED,
+        new WorldGenStoneLayer(Data.GRANITE_RED, OVERWORLD);
+        new WorldGenStoneLayer(Data.GRANITE_RED, OVERWORLD);
+        new WorldGenStoneLayer(Data.GRANITE_RED, OVERWORLD).addOres(
             new StoneLayerOre(Pitchblende, U32, 0, 18),
             new StoneLayerOre(Uraninite, U32, 0, 16),
             new StoneLayerOre(Tantalite, U16, 20, 50)
-        )); //Ores
+        );
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KOMATIITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KOMATIITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KOMATIITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KOMATIITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KOMATIITE)); //Ores
+        new WorldGenStoneLayer(Data.KOMATIITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.KOMATIITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.KOMATIITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.KOMATIITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.KOMATIITE, OVERWORLD).addOres(
+            new StoneLayerOre(Magnesite, U16, 20, 50),
+            new StoneLayerOre(Cinnabar, U12, 0, 32),
+            new StoneLayerOre(Redstone, U8, 0, 30),
+            new StoneLayerOre(Pyrite, U12, 0, 30)
+        );
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BASALT)); //Ores
+        new WorldGenStoneLayer(Data.BASALT, OVERWORLD);
+        new WorldGenStoneLayer(Data.BASALT, OVERWORLD);
+        new WorldGenStoneLayer(Data.BASALT, OVERWORLD);
+        new WorldGenStoneLayer(Data.BASALT, OVERWORLD); //Ores
+        new WorldGenStoneLayer(Data.BASALT, OVERWORLD); //Ores
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.MARBLE)); //Ores
+        new WorldGenStoneLayer(Data.MARBLE, OVERWORLD);
+        new WorldGenStoneLayer(Data.MARBLE, OVERWORLD);
+        new WorldGenStoneLayer(Data.MARBLE, OVERWORLD);
+        new WorldGenStoneLayer(Data.MARBLE, OVERWORLD);
+        new WorldGenStoneLayer(Data.MARBLE, OVERWORLD); //Ores
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIMESTONE)); //Ores
+        new WorldGenStoneLayer(Data.LIMESTONE, OVERWORLD);
+        new WorldGenStoneLayer(Data.LIMESTONE, OVERWORLD);
+        new WorldGenStoneLayer(Data.LIMESTONE, OVERWORLD);
+        new WorldGenStoneLayer(Data.LIMESTONE, OVERWORLD); //Ores
+        new WorldGenStoneLayer(Data.LIMESTONE, OVERWORLD); //Ores
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GREEN_SCHIST));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GREEN_SCHIST)); //Ores
+        new WorldGenStoneLayer(Data.GREEN_SCHIST, OVERWORLD);
+        new WorldGenStoneLayer(Data.GREEN_SCHIST, OVERWORLD); //Ores
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BLUE_SCHIST));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BLUE_SCHIST)); //Ores
+        new WorldGenStoneLayer(Data.BLUE_SCHIST, OVERWORLD);
+        new WorldGenStoneLayer(Data.BLUE_SCHIST, OVERWORLD); //Ores
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KIMBERLITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KIMBERLITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KIMBERLITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.KIMBERLITE)); //Ores
+        new WorldGenStoneLayer(Data.KIMBERLITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.KIMBERLITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.KIMBERLITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.KIMBERLITE, OVERWORLD); //Ores
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.QUARTZITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.QUARTZITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.QUARTZITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.QUARTZITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.QUARTZITE)); //Ores
+        new WorldGenStoneLayer(Data.QUARTZITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.QUARTZITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.QUARTZITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.QUARTZITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.QUARTZITE, OVERWORLD); //Ores
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.GRANITE)); //Ores
+        new WorldGenStoneLayer(Data.GRANITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.GRANITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.GRANITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.GRANITE, OVERWORLD); //Ores
+        new WorldGenStoneLayer(Data.GRANITE, OVERWORLD); //Ores
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.DIORITE)); //Ores
+        new WorldGenStoneLayer(Data.DIORITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.DIORITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.DIORITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.DIORITE, OVERWORLD); //Ores
+        new WorldGenStoneLayer(Data.DIORITE, OVERWORLD); //Ores
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE)); //Ores
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANDESITE)); //Ores
+        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD); //Ores
+        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD); //Ores
 
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ANTHRACITE_COAL));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.LIGNITE_COAL));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.SALT));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.ROCK_SALT));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.BAUXITE));
-        AntimatterWorldGenerator.STONE_LAYERS.add(new StoneLayer(Data.OIL_SHALE));
+        new WorldGenStoneLayer(Data.ANTHRACITE_COAL, OVERWORLD);
+        new WorldGenStoneLayer(Data.LIGNITE_COAL, OVERWORLD);
+        new WorldGenStoneLayer(Data.SALT, OVERWORLD);
+        new WorldGenStoneLayer(Data.ROCK_SALT, OVERWORLD);
+        new WorldGenStoneLayer(Data.BAUXITE, OVERWORLD);
+        new WorldGenStoneLayer(Data.OIL_SHALE, OVERWORLD);
 
         if (Configs.WORLD.ENABLE_ORE_VEINS) {
             new WorldGenVeinLayer("naquadah", 10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, NaquadahEnriched, END);

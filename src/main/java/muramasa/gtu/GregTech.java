@@ -103,14 +103,15 @@ public class GregTech implements IAntimatterRegistrar {
                 AntimatterAPI.registerCoverStack(Data.PumpEV.get(1), new CoverPump(Tier.EV));
                 AntimatterAPI.registerCoverStack(Data.PumpIV.get(1), new CoverPump(Tier.IV));
                 MaterialType.PLATE.all().forEach(m -> AntimatterAPI.registerCoverStack(MaterialType.PLATE.get(m, 1), Data.COVER_PLATE));
-
-                WorldGenLoader.init();
                 break;
             case RECIPE:
                 //OreDictLoader.init();
                 //CraftingRecipeLoader.init();
                 //MaterialRecipeLoader.init();
                 //MachineRecipeLoader.init();
+                break;
+            case WORLDGEN_INIT:
+                WorldGenLoader.init();
                 break;
         }
     }
