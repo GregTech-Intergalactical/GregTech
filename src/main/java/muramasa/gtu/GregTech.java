@@ -68,15 +68,14 @@ public class GregTech implements IAntimatterRegistrar {
     @SubscribeEvent
     public static void onDataGather(GatherDataEvent e) {
         DataGenerator gen = e.getGenerator();
-        gen.addProvider(new AntimatterBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
-        gen.addProvider(new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, gen));
-        gen.addProvider(new Recipes(gen));
         if (e.includeClient()) {
             gen.addProvider(new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", gen));
             gen.addProvider(new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", gen));
         }
         if (e.includeServer()) {
-
+            gen.addProvider(new AntimatterBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
+            gen.addProvider(new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, gen));
+            gen.addProvider(new Recipes(gen));
         }
     }
 
