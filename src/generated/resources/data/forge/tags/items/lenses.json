@@ -1,21 +1,21 @@
 {
   "replace": false,
   "values": [
-    "gtu:lens_emerald",
-    "gtu:lens_topaz",
-    "gtu:lens_blue_topaz",
     "gtu:lens_ruby",
-    "gtu:lens_tanzanite",
-    "gtu:lens_amethyst",
-    "gtu:lens_opal",
-    "gtu:lens_green_sapphire",
-    "gtu:lens_yellow_garnet",
-    "gtu:lens_red_garnet",
-    "gtu:lens_endereye",
-    "gtu:lens_blue_sapphire",
-    "gtu:lens_olivine",
-    "gtu:lens_glass",
+    "gtu:lens_blue_topaz",
     "gtu:lens_dilithium",
-    "gtu:lens_diamond"
+    "gtu:lens_diamond",
+    "gtu:lens_green_sapphire",
+    "gtu:lens_glass",
+    "gtu:lens_topaz",
+    "gtu:lens_endereye",
+    "gtu:lens_red_garnet",
+    "gtu:lens_yellow_garnet",
+    "gtu:lens_amethyst",
+    "gtu:lens_olivine",
+    "gtu:lens_emerald",
+    "gtu:lens_tanzanite",
+    "gtu:lens_blue_sapphire",
+    "gtu:lens_opal"
   ]
 }

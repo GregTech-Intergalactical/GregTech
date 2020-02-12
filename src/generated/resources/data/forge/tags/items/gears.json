@@ -1,20 +1,20 @@
 {
   "replace": false,
   "values": [
-    "gtu:gear_bronze",
-    "gtu:gear_copper",
-    "gtu:gear_gold",
+    "gtu:gear_steel",
     "gtu:gear_neutronium",
     "gtu:gear_aluminium",
+    "gtu:gear_copper",
     "gtu:gear_hsse",
-    "gtu:gear_stainless_steel",
-    "gtu:gear_hssg",
-    "gtu:gear_tungstensteel",
-    "gtu:gear_tin",
-    "gtu:gear_iron",
+    "gtu:gear_gold",
     "gtu:gear_stone",
-    "gtu:gear_steel",
+    "gtu:gear_stainless_steel",
+    "gtu:gear_tungstensteel",
+    "gtu:gear_hssg",
+    "gtu:gear_cobalt_brass",
+    "gtu:gear_tin",
     "gtu:gear_wood",
-    "gtu:gear_cobalt_brass"
+    "gtu:gear_bronze",
+    "gtu:gear_iron"
   ]
 }
