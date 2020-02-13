@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "gtu:rock_flint"
+    },
+    "title": {
+      "translate": "gtu.advancements.greg"
+    },
+    "description": {
+      "translate": "gtu.advancements.greg.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "has_rocks": {
+      "trigger": "antimatter:pick_up",
+      "conditions": {
+        "tag": "forge:rocks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rocks"
+    ]
+  ]
+}
