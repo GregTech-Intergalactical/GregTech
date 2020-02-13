@@ -60,7 +60,7 @@ public class GregTech implements IAntimatterRegistrar {
             gen.addProvider(new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, gen));
             gen.addProvider(new Recipes(gen));
             gen.addProvider(new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), gen, new ProgressionAdvancements()));
-            gen.addProvider(new AntimatterLanguageProvider(Ref.ID, Ref.NAME.concat( " en_us Localization"), "en_us", gen, new GregTechLocalizations()));
+            gen.addProvider(new Localizations.en_US(gen));
         }
     }
 
