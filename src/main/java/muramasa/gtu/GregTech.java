@@ -1,10 +1,7 @@
 package muramasa.gtu;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
+import muramasa.antimatter.datagen.providers.*;
 import muramasa.antimatter.machines.Tier;
 import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
@@ -15,6 +12,7 @@ import muramasa.gtu.common.Data;
 import muramasa.gtu.cover.CoverConveyor;
 import muramasa.gtu.cover.CoverPump;
 import muramasa.gtu.data.*;
+import muramasa.gtu.data.advancement.ProgressionAdvancements;
 import muramasa.gtu.loaders.WorldGenLoader;
 import muramasa.gtu.proxy.ClientHandler;
 import net.minecraft.data.DataGenerator;
@@ -61,6 +59,8 @@ public class GregTech implements IAntimatterRegistrar {
             gen.addProvider(new AntimatterBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
             gen.addProvider(new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, gen));
             gen.addProvider(new Recipes(gen));
+            gen.addProvider(new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), gen, new ProgressionAdvancements()));
+            gen.addProvider(new Localizations.en_US(gen));
         }
     }
 
