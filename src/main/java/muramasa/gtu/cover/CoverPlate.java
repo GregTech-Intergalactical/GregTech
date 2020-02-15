@@ -16,14 +16,14 @@ import java.util.Arrays;
 
 public class CoverPlate extends CoverMaterial {
 
-    private MaterialType type;
+    private MaterialType<?> type;
     private Material material;
 
     public CoverPlate() {
         //NOOP
     }
 
-    public CoverPlate(MaterialType type, Material material) {
+    public CoverPlate(MaterialType<?> type, Material material) {
         this.type = type;
         this.material = material;
     }
@@ -33,7 +33,7 @@ public class CoverPlate extends CoverMaterial {
         return "plate";
     }
 
-    public MaterialType getType() {
+    public MaterialType<?> getType() {
         return type;
     }
 
