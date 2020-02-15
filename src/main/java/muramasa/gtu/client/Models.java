@@ -8,7 +8,7 @@ import static muramasa.gtu.common.Data.*;
 public class Models {
 
     public static void init() {
-        AntimatterModelManager.put(COIL_NICHROME, (b, p, x) -> p.state(b, x.model("mc:block/bedrock")));
+        AntimatterModelManager.put(COIL_NICHROME, (b, p, x) -> p.state(b, x.model("simple", "mc:block/bedrock")));
 
         AntimatterModelManager.put(CASING_FUSION_1, (b, p, x) -> p.state(b, x.basicConfig(CASING_FUSION_1, Textures.FUSION_1_CT)));
         AntimatterModelManager.put(CASING_FUSION_2, (b, p, x) -> p.state(b, x.basicConfig(CASING_FUSION_2, Textures.FUSION_2_CT)));

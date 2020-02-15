@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:tin_ore_endstone"
+    "minecraft:air"
   ]
 }

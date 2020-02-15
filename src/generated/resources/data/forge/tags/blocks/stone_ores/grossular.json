@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:grossular_ore_stone"
+    "minecraft:air"
   ]
 }

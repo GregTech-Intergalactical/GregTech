@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:amethyst_ore_netherrack"
+    "minecraft:air"
   ]
 }

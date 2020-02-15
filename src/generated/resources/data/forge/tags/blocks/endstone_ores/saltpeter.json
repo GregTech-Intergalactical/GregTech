@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:saltpeter_ore_endstone"
+    "minecraft:air"
   ]
 }

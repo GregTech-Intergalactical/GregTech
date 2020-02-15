@@ -1,13 +1,14 @@
 package muramasa.gtu.loaders;
 
 import muramasa.antimatter.Configs;
+import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.worldgen.AntimatterWorldGenerator;
 import muramasa.antimatter.worldgen.StoneLayerOre;
-import muramasa.antimatter.worldgen.old.WorldGenAsteroid;
-import muramasa.antimatter.worldgen.old.WorldGenRock;
 import muramasa.antimatter.worldgen.object.WorldGenOreSmall;
 import muramasa.antimatter.worldgen.object.WorldGenStoneLayer;
 import muramasa.antimatter.worldgen.object.WorldGenVeinLayer;
+import muramasa.antimatter.worldgen.old.WorldGenAsteroid;
+import muramasa.antimatter.worldgen.old.WorldGenRock;
 import muramasa.gtu.common.Data;
 import net.minecraft.block.Blocks;
 
@@ -147,17 +148,17 @@ public class WorldGenLoader {
         new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD); //Ores
         new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD); //Ores
 
-        new WorldGenStoneLayer(Data.ANTHRACITE_COAL, OVERWORLD);
-        new WorldGenStoneLayer(Data.LIGNITE_COAL, OVERWORLD);
-        new WorldGenStoneLayer(Data.SALT, OVERWORLD);
-        new WorldGenStoneLayer(Data.ROCK_SALT, OVERWORLD);
-        new WorldGenStoneLayer(Data.BAUXITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.OIL_SHALE, OVERWORLD);
+        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(Coal).asState(), OVERWORLD);
+        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(Lignite).asState(), OVERWORLD);
+        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(Salt).asState(), OVERWORLD);
+        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(RockSalt).asState(), OVERWORLD);
+        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(Bauxite).asState(), OVERWORLD);
+        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(OilShale).asState(), OVERWORLD);
 
         if (Configs.WORLD.ENABLE_ORE_VEINS) {
             new WorldGenVeinLayer("naquadah", 10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, NaquadahEnriched, END);
-            new WorldGenVeinLayer("lignite", 50, 130, 160, 8, 32, Lignite, Lignite, Lignite, Coal, OVERWORLD);
-            new WorldGenVeinLayer("coal", 50, 80, 80, 6, 32, Coal, Coal, Coal, Lignite, OVERWORLD);
+            //new WorldGenVeinLayer("lignite", 50, 130, 160, 8, 32, Lignite, Lignite, Lignite, Coal, OVERWORLD);
+            //new WorldGenVeinLayer("coal", 50, 80, 80, 6, 32, Coal, Coal, Coal, Lignite, OVERWORLD);
             new WorldGenVeinLayer("magnetite", 50, 120, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite, OVERWORLD, NETHER);
             new WorldGenVeinLayer("gold", 60, 80, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold, OVERWORLD);
             new WorldGenVeinLayer("iron", 10, 40, 120, 4, 24, BrownLimonite, YellowLimonite, BandedIron, Malachite, OVERWORLD, NETHER);
@@ -166,8 +167,8 @@ public class WorldGenLoader {
             new WorldGenVeinLayer("nether_quartz", 40, 80, 80, 5, 24, NetherQuartz, NetherQuartz, NetherQuartz, NetherQuartz, NETHER);
             new WorldGenVeinLayer("sulfur", 5, 20, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite, NETHER);
             new WorldGenVeinLayer("copper", 10, 30, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, OVERWORLD, NETHER);
-            new WorldGenVeinLayer("bauxite", 50, 90, 80, 4, 24, Bauxite, Bauxite, Aluminium, Ilmenite, OVERWORLD);
-            new WorldGenVeinLayer("salts", 50, 60, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene, OVERWORLD);
+            //new WorldGenVeinLayer("bauxite", 50, 90, 80, 4, 24, Bauxite, Bauxite, Aluminium, Ilmenite, OVERWORLD);
+            //new WorldGenVeinLayer("salts", 50, 60, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene, OVERWORLD);
             new WorldGenVeinLayer("redstone", 10, 40, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar, OVERWORLD, NETHER);
             new WorldGenVeinLayer("soapstone", 10, 40, 40, 3, 16, Soapstone, Talc, Glauconite, Pentlandite, OVERWORLD);
             new WorldGenVeinLayer("nickel", 10, 40, 40, 3, 16, Garnierite, Nickel, Cobaltite, Pentlandite, OVERWORLD, NETHER, END);

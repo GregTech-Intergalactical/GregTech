@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:topaz_ore_endstone"
+    "minecraft:air"
   ]
 }

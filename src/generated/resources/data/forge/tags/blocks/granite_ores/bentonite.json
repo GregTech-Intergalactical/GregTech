@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:bentonite_ore_granite"
+    "minecraft:air"
   ]
 }

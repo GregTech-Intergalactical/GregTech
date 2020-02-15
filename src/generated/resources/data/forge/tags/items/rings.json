@@ -1,16 +1,16 @@
 {
   "replace": false,
   "values": [
-    "gtu:ring_steel",
-    "gtu:ring_styrene_butadiene_rubber",
+    "gtu:ring_aluminium",
     "gtu:ring_neutronium",
     "gtu:ring_rubber",
-    "gtu:ring_aluminium",
-    "gtu:ring_tungstensteel",
-    "gtu:ring_osmium",
     "gtu:ring_wrought_iron",
-    "gtu:ring_chrome",
     "gtu:ring_tin",
-    "gtu:ring_iron"
+    "gtu:ring_tungstensteel",
+    "gtu:ring_iron",
+    "gtu:ring_osmium",
+    "gtu:ring_chrome",
+    "gtu:ring_steel",
+    "gtu:ring_styrene_butadiene_rubber"
   ]
 }

@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:bastnasite_ore_endstone"
+    "minecraft:air"
   ]
 }

@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:redstone_ore_sand"
+    "minecraft:air"
   ]
 }

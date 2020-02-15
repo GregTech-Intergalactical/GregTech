@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:soapstone_ore_diorite"
+    "minecraft:air"
   ]
 }

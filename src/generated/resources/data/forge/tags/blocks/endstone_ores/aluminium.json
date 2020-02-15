@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:aluminium_ore_endstone"
+    "minecraft:air"
   ]
 }

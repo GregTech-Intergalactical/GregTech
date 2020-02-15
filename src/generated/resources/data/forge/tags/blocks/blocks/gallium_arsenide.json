@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:storage_gallium_arsenide_block"
+    "gtu:block_gallium_arsenide"
   ]
 }

@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:garnierite_ore_sand"
+    "minecraft:air"
   ]
 }

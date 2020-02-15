@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:storage_steel_frame"
+    "gtu:frame_steel"
   ]
 }

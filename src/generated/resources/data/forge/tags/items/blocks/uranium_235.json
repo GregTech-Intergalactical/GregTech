@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:storage_uranium_235_block"
+    "gtu:block_uranium_235"
   ]
 }

@@ -9,7 +9,6 @@ import muramasa.antimatter.blocks.pipe.BlockItemPipe.BlockItemPipeBuilder;
 import muramasa.antimatter.cover.Cover;
 import muramasa.antimatter.items.ItemBasic;
 import muramasa.antimatter.machines.Tier;
-import muramasa.antimatter.ore.BlockRockOre;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.texture.Texture;
@@ -273,12 +272,6 @@ public class Data {
     public static StoneType KIMBERLITE = new StoneType(Ref.ID, "kimberlite", Kimberlite, new Texture(Ref.ID, "block/stone/kimberlite"), SoundType.STONE, true);
     public static StoneType QUARTZITE = new StoneType(Ref.ID, "quartzite", Quartzite, new Texture(Ref.ID, "block/stone/quartzite"), SoundType.STONE, true);
 
-    public static BlockRockOre ANTHRACITE_COAL = new BlockRockOre(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal"));
-    public static BlockRockOre LIGNITE_COAL = new BlockRockOre(Ref.ID, "lignite_coal", new Texture(Ref.ID, "block/basic/lignite_coal"));
-    public static BlockRockOre SALT = new BlockRockOre(Ref.ID, "salt", new Texture(Ref.ID, "block/basic/salt"));
-    public static BlockRockOre ROCK_SALT = new BlockRockOre(Ref.ID, "rock_salt", new Texture(Ref.ID, "block/basic/rock_salt"));
-    public static BlockRockOre BAUXITE = new BlockRockOre(Ref.ID, "bauxite", new Texture(Ref.ID, "block/basic/bauxite"));
-    public static BlockRockOre OIL_SHALE = new BlockRockOre(Ref.ID, "oil_shale", new Texture(Ref.ID, "block/basic/oil_shale"));
     //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal"));
     //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal"));
 

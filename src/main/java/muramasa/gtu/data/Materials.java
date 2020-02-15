@@ -228,7 +228,6 @@ public class Materials {
     public static Material Grossular = new Material(Ref.ID, "grossular", 0xc86400, ROUGH).asDust(ORE, ORE_SMALL).add(Calcium, 3, Aluminium, 2, Silicon, 3, Oxygen, 12);
     public static Material Ilmenite = new Material(Ref.ID, "ilmenite", 0x463732, METALLIC).asDust(ORE).add(Iron, 1, Titanium, 1, Oxygen, 3);
     public static Material Rutile = new Material(Ref.ID, "rutile", 0xd40d5c, GEM_H).asDust().add(Titanium, 1, Oxygen, 2);
-    public static Material Bauxite = new Material(Ref.ID, "bauxite", 0xc86400, DULL).asDust(ORE).add(Rutile, 2, Aluminium, 16, Hydrogen, 10, Oxygen, 11);
     public static Material MagnesiumChloride = new Material(Ref.ID, "magnesiumchloride", 0xd40d5c, DULL).asDust().add(Magnesium, 1, Chlorine, 2);
     public static Material Magnesite = new Material(Ref.ID, "magnesite", 0xfafab4, METALLIC).asDust(ORE).add(Magnesium, 1, Carbon, 1, Oxygen, 3);
     public static Material Magnetite = new Material(Ref.ID, "magnetite", 0x1e1e1e, METALLIC).asDust(ORE).add(Iron, 3, Oxygen, 4);
@@ -240,9 +239,7 @@ public class Materials {
     public static Material Pyrite = new Material(Ref.ID, "pyrite", 0x967828, ROUGH).asDust(ORE, ORE_SMALL).add(Iron, 1, Sulfur, 2);
     public static Material Pyrolusite = new Material(Ref.ID, "pyrolusite", 0x9696aa, DULL).asDust(ORE, ORE_SMALL).add(Manganese, 1, Oxygen, 2);
     public static Material Pyrope = new Material(Ref.ID, "pyrope", 0x783264, METALLIC).asDust(ORE, ORE_SMALL).add(Aluminium, 2, Magnesium, 3, Silicon, 3, Oxygen, 12);
-    public static Material RockSalt = new Material(Ref.ID, "rock_salt", 0xf0c8c8, FINE).asDust(ORE, ORE_SMALL).add(Potassium, 1, Chlorine, 1);
     public static Material RawRubber = new Material(Ref.ID, "raw_rubber", 0xccc789, DULL).asDust().add(Carbon, 5, Hydrogen, 8);
-    public static Material Salt = new Material(Ref.ID, "salt", 0xfafafa, FINE).asDust(ORE, ORE_SMALL).add(Sodium, 1, Chlorine, 1);
     public static Material Saltpeter = new Material(Ref.ID, "saltpeter", 0xe6e6e6, FINE).asDust(ORE, ORE_SMALL).add(Potassium, 1, Nitrogen, 1, Oxygen, 3);
     public static Material Scheelite = new Material(Ref.ID, "scheelite", 0xc88c14, DULL).asDust(2500, ORE).add(Tungsten, 1, Calcium, 2, Oxygen, 4);
     public static Material SiliconDioxide = new Material(Ref.ID, "silicon_dioxide", 0xc8c8c8, QUARTZ).asDust().add(Silicon, 1, Oxygen, 2);
@@ -302,10 +299,8 @@ public class Materials {
     public static Material NetherStar = new Material(Ref.ID, "nether_star", 0xffffff, NONE).asGemBasic(false).addTools(6.0F, 3620, 4, of(Enchantments.SILK_TOUCH, 1)); //Made Nether Stars usable
 
     //Brittle Gems
-    public static Material BlueTopaz = new Material(Ref.ID, "blue_topaz", 0x0000ff, GEM_H).asGem(true, ORE, ORE_SMALL).addTools(7.0F, 256, 3).add(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6);
+    public static Material BlueTopaz = new Material(Ref.ID, "blue_topaz", 0x0000ff, GEM_H).asGem(true, ORE_SMALL).addTools(7.0F, 256, 3).add(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6);
     public static Material Charcoal = new Material(Ref.ID, "charcoal", 0x644646, LIGNITE).asGemBasic(false).add(Carbon, 1);
-    public static Material Coal = new Material(Ref.ID, "coal", 0x464646, LIGNITE).asGemBasic(false, ORE, ORE_SMALL).add(Carbon, 1);
-    public static Material Lignite = new Material(Ref.ID, "lignite_coal", 0x644646, LIGNITE).asGemBasic(false, ORE).add(Carbon, 3, Water, 1);
     public static Material CoalCoke = new Material(Ref.ID, "coal_coke", 0x8c8caa, LIGNITE).asGemBasic(false);
     public static Material LigniteCoke = new Material(Ref.ID, "lignite_coke", 0x8c6464, LIGNITE).asGemBasic(false);
 
@@ -407,6 +402,14 @@ public class Materials {
     public static Material BlueSchist = new Material(Ref.ID, "blue_schist", 0x0569be, NONE).asDust();
     public static Material Kimberlite = new Material(Ref.ID, "kimberlite", 0x64460a, NONE).asDust();
     public static Material Quartzite = new Material(Ref.ID, "quartzite", 0xe6cdcd, QUARTZ).asGemBasic(false, ORE).add(Silicon, 1, Oxygen, 2);
+
+    /** Ore Stones **/
+    public static Material Coal = new Material(Ref.ID, "coal", 0x464646, LIGNITE).asGemBasic(false, ORE_STONE, ORE_SMALL).add(Carbon, 1);
+    public static Material Lignite = new Material(Ref.ID, "lignite_coal", 0x644646, LIGNITE).asGemBasic(false, ORE_STONE).add(Carbon, 3, Water, 1);
+    public static Material Salt = new Material(Ref.ID, "salt", 0xfafafa, FINE).asDust(ORE_STONE, ORE_SMALL).add(Sodium, 1, Chlorine, 1);
+    public static Material RockSalt = new Material(Ref.ID, "rock_salt", 0xf0c8c8, FINE).asDust(ORE_STONE, ORE_SMALL).add(Potassium, 1, Chlorine, 1);
+    public static Material Bauxite = new Material(Ref.ID, "bauxite", 0xc86400, DULL).asDust(ORE_STONE).add(Rutile, 2, Aluminium, 16, Hydrogen, 10, Oxygen, 11);
+    public static Material OilShale = new Material(Ref.ID, "oil_shale", 0x32323c, NONE).asDust(ORE_STONE);
 
 
     /** Reference Materials **/

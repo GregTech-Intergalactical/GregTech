@@ -170,7 +170,7 @@ public class MaterialRecipeLoader {
         });
 
         BLOCK.all().forEach(m -> {
-            ItemStack block = m.getBlock(1), ingotOrGem = m.has(GEM) ? GEM.get(m, 1) : INGOT.get(m, 1);
+            ItemStack block = BLOCK.get().get(m).asStack(), ingotOrGem = m.has(GEM) ? GEM.get(m, 1) : INGOT.get(m, 1);
             //TODO: Leave in compressor? Hardcore mode?
             RecipeHelper.addShapeless("block_compress_" + m.getId(), block, ingotOrGem, ingotOrGem, ingotOrGem, ingotOrGem, ingotOrGem, ingotOrGem, ingotOrGem, ingotOrGem, ingotOrGem);
             ingotOrGem = Utils.ca(9, ingotOrGem);
@@ -204,7 +204,7 @@ public class MaterialRecipeLoader {
                 COMPRESSING.RB().ii(dust).io(plate).add(300, 2); 
             }
             if (!m.has(INGOT)) return;
-            ItemStack ingot = INGOT.get(m, 1), block = m.getBlock(1);
+            ItemStack ingot = INGOT.get(m, 1), block = BLOCK.get().get(m).asStack();
             if (m.has(LIQUID)) FLUID_SOLIDIFYING.RB().ii(MoldPlate.get(0)).fi(m.getLiquid(144)).io(plate).add(32, 8);
             long mass = m.getMass();
             if (!m.has(NOSMASH)) {
@@ -438,7 +438,7 @@ public class MaterialRecipeLoader {
            if (m.has(GEM_BRITTLE)) return;
            dust = Utils.ca(1, dust);
            gem = Utils.ca(1, gem);
-           ItemStack block = m.getBlock(1);
+           ItemStack block = BLOCK.get().get(m).asStack();
            long mass = m.getMass();
            if (m.has(BLOCK)) {
                gem = Utils.ca(9, gem);
@@ -455,7 +455,7 @@ public class MaterialRecipeLoader {
         });
 
         GEM_BRITTLE.all().forEach(m -> {
-            ItemStack gem = GEM.get(m, 1), gemBrittle = GEM_BRITTLE.get(m, 1), gemPolished = GEM_POLISHED.get(m, 1), block = m.getBlock(1), dust = DUST.get(m, 1);  
+            ItemStack gem = GEM.get(m, 1), gemBrittle = GEM_BRITTLE.get(m, 1), gemPolished = GEM_POLISHED.get(m, 1), block = BLOCK.get().get(m).asStack(), dust = DUST.get(m, 1);
             ItemStack doubleBrittle = Utils.ca(2, gemBrittle);
             long mass = m.getMass();
             HAMMERING.RB().ii(gemPolished).io(gemBrittle).add(Math.min(mass, 40), 2);
@@ -493,7 +493,7 @@ public class MaterialRecipeLoader {
         });
 
         CRUSHED.all().forEach(m -> {
-            ItemStack ore = m.getOre(1, STONE), crushed = CRUSHED.get(m, 1), dust = DUST.get(m, 1), stoneDust = DUST.get(Stone, 1);
+            ItemStack ore = ORE.get().get(m, STONE).asStack(), crushed = CRUSHED.get(m, 1), dust = DUST.get(m, 1), stoneDust = DUST.get(Stone, 1);
             if (m.hasByProducts()) {
                 ArrayList<Material> byProducts = m.getByProducts();
                 int byProductsCount = byProducts.size();

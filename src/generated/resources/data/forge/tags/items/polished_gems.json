@@ -2,19 +2,19 @@
   "replace": false,
   "values": [
     "gtu:gem_polished_ruby",
-    "gtu:gem_polished_blue_topaz",
-    "gtu:gem_polished_dilithium",
-    "gtu:gem_polished_diamond",
-    "gtu:gem_polished_green_sapphire",
-    "gtu:gem_polished_topaz",
     "gtu:gem_polished_endereye",
-    "gtu:gem_polished_red_garnet",
+    "gtu:gem_polished_green_sapphire",
+    "gtu:gem_polished_diamond",
     "gtu:gem_polished_yellow_garnet",
-    "gtu:gem_polished_amethyst",
-    "gtu:gem_polished_olivine",
-    "gtu:gem_polished_emerald",
-    "gtu:gem_polished_tanzanite",
+    "gtu:gem_polished_red_garnet",
     "gtu:gem_polished_blue_sapphire",
-    "gtu:gem_polished_opal"
+    "gtu:gem_polished_topaz",
+    "gtu:gem_polished_tanzanite",
+    "gtu:gem_polished_dilithium",
+    "gtu:gem_polished_emerald",
+    "gtu:gem_polished_olivine",
+    "gtu:gem_polished_amethyst",
+    "gtu:gem_polished_opal",
+    "gtu:gem_polished_blue_topaz"
   ]
 }

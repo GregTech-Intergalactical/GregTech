@@ -1,6 +1,0 @@
-{
-  "parent": "antimatter:block/preset/simple",
-  "textures": {
-    "all": "gtu:block/basic/oil_shale"
-  }
-}

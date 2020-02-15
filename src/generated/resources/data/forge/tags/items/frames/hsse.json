@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:storage_hsse_frame"
+    "gtu:frame_hsse"
   ]
 }

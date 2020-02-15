@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:nether_quartz_ore_blue_schist"
+    "minecraft:air"
   ]
 }

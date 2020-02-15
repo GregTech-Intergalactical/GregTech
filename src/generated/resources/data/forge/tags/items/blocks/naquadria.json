@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:storage_naquadria_block"
+    "gtu:block_naquadria"
   ]
 }

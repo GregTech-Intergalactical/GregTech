@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:galena_ore_sandstone"
+    "minecraft:air"
   ]
 }

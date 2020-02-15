@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:iridium_ore_endstone"
+    "minecraft:air"
   ]
 }

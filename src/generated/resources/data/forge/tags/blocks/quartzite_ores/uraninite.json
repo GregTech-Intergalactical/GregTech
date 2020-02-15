@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:uraninite_ore_quartzite"
+    "minecraft:air"
   ]
 }

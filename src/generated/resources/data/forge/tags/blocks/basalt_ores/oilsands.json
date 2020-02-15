@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:oilsands_ore_basalt"
+    "minecraft:air"
   ]
 }
