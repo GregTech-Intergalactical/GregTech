@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:block_magnetic_steel"
+    "gti:block_magnetic_steel"
   ]
 }

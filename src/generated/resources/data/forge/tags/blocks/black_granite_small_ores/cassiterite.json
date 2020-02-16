@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:air"
+    "gti:ore_small_cassiterite_granite_black"
   ]
 }

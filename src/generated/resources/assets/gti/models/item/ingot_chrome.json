@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gti:material/shiny/ingot",
+    "layer1": "gti:material/shiny/ingot_overlay"
+  }
+}

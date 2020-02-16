@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:block_annealed_copper"
+    "gti:block_annealed_copper"
   ]
 }

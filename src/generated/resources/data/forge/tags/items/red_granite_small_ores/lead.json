@@ -1,4 +1,6 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "gti:ore_small_lead_granite_red"
+  ]
 }

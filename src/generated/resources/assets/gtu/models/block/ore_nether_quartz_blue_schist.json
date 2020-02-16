@@ -1,7 +1,0 @@
-{
-  "parent": "antimatter:block/preset/layered",
-  "textures": {
-    "base": "gtu:block/stone/blue_schist",
-    "overlay": "gtu:material/quartz/ore"
-  }
-}

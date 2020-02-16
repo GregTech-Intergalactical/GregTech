@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:item_filter"
+    ]
+  },
+  "criteria": {
+    "has_iron_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:plates/iron"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:item_filter"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_iron_plate",
+      "has_the_recipe"
+    ]
+  ]
+}

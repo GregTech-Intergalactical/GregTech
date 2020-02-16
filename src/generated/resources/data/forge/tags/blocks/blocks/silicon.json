@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gtu:block_silicon"
+    "gti:block_silicon"
   ]
 }

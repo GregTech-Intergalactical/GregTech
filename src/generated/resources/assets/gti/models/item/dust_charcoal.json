@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gti:material/lignite/dust",
+    "layer1": "gti:material/lignite/dust_overlay"
+  }
+}

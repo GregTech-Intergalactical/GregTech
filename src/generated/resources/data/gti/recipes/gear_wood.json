@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SPS",
+    "P P",
+    "SPS"
+  ],
+  "key": {
+    "S": {
+      "tag": "minecraft:planks"
+    },
+    "P": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "gti:gear_wood"
+  }
+}

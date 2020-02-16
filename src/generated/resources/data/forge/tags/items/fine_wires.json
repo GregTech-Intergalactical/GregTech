@@ -1,16 +1,16 @@
 {
   "replace": false,
   "values": [
-    "gtu:wire_fine_copper",
-    "gtu:wire_fine_niobium_titanium",
-    "gtu:wire_fine_yttrium_barium_cuprate",
-    "gtu:wire_fine_electrum",
-    "gtu:wire_fine_red_alloy",
-    "gtu:wire_fine_tin",
-    "gtu:wire_fine_annealed_copper",
-    "gtu:wire_fine_osmium",
-    "gtu:wire_fine_platinum",
-    "gtu:wire_fine_soldering_alloy",
-    "gtu:wire_fine_gold"
+    "gti:wire_fine_osmium",
+    "gti:wire_fine_yttrium_barium_cuprate",
+    "gti:wire_fine_gold",
+    "gti:wire_fine_tin",
+    "gti:wire_fine_annealed_copper",
+    "gti:wire_fine_red_alloy",
+    "gti:wire_fine_niobium_titanium",
+    "gti:wire_fine_soldering_alloy",
+    "gti:wire_fine_copper",
+    "gti:wire_fine_electrum",
+    "gti:wire_fine_platinum"
   ]
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gti:material/dull/foil",
+    "layer1": "gti:material/dull/foil_overlay"
+  }
+}

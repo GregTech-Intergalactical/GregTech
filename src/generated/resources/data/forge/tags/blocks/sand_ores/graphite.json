@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:air"
+    "gti:ore_graphite_sand"
   ]
 }

@@ -1,7 +1,0 @@
-{
-  "parent": "antimatter:block/preset/layered",
-  "textures": {
-    "base": "gtu:block/stone/kimberlite",
-    "overlay": "gtu:material/quartz/ore_small"
-  }
-}

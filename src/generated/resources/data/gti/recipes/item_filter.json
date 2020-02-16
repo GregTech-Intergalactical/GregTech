@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ZZZ",
+    "ZIZ",
+    "ZZZ"
+  ],
+  "key": {
+    "Z": {
+      "tag": "forge:foils/zinc"
+    },
+    "I": {
+      "tag": "forge:plates/iron"
+    }
+  },
+  "result": {
+    "item": "gti:item_filter"
+  }
+}

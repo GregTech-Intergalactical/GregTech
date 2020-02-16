@@ -1,4 +1,6 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "gti:ore_graphite_granite_black"
+  ]
 }

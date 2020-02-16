@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SPS",
+    "P P",
+    "SPS"
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:stone"
+    },
+    "P": {
+      "tag": "forge:cobblestone"
+    }
+  },
+  "result": {
+    "item": "gti:gear_stone"
+  }
+}

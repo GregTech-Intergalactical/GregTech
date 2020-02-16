@@ -1,15 +1,15 @@
 {
   "replace": false,
   "values": [
-    "gtu:granite_red",
-    "gtu:granite_black",
-    "gtu:marble",
-    "gtu:basalt",
-    "gtu:komatiite",
-    "gtu:limestone",
-    "gtu:green_schist",
-    "gtu:blue_schist",
-    "gtu:kimberlite",
-    "gtu:quartzite"
+    "gti:granite_red",
+    "gti:granite_black",
+    "gti:marble",
+    "gti:basalt",
+    "gti:komatiite",
+    "gti:limestone",
+    "gti:green_schist",
+    "gti:blue_schist",
+    "gti:kimberlite",
+    "gti:quartzite"
   ]
 }

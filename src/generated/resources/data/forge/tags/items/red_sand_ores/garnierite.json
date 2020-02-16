@@ -1,4 +1,6 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "gti:ore_garnierite_sand_red"
+  ]
 }

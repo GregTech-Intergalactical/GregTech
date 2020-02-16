@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtu:material/quartz/crushed",
-    "layer1": "gtu:material/quartz/crushed_overlay"
-  }
-}

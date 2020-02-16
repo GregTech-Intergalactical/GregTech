@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtu:material/lignite/gem",
-    "layer1": "gtu:material/lignite/gem_overlay"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtu:material/magnetic/nugget",
-    "layer1": "gtu:material/magnetic/nugget_overlay"
-  }
-}

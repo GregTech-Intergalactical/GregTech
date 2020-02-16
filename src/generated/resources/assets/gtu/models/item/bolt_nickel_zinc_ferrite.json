@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtu:material/rough/bolt",
-    "layer1": "gtu:material/rough/bolt_overlay"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtu:material/none/plate",
-    "layer1": "gtu:material/none/plate_overlay"
-  }
-}

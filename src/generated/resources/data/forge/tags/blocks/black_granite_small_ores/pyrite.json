@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:air"
+    "gti:ore_small_pyrite_granite_black"
   ]
 }

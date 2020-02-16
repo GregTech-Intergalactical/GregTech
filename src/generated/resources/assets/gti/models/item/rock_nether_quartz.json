@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gti:material/quartz/rock",
+    "layer1": "gti:material/quartz/rock_overlay"
+  }
+}

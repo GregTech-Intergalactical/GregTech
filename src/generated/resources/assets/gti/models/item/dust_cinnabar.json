@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gti:material/rough/dust",
+    "layer1": "gti:material/rough/dust_overlay"
+  }
+}

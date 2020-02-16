@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gti:material/rough/gear",
+    "layer1": "gti:material/rough/gear_overlay"
+  }
+}

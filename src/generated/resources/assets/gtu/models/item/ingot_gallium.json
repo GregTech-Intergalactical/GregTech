@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtu:material/shiny/ingot",
-    "layer1": "gtu:material/shiny/ingot_overlay"
-  }
-}

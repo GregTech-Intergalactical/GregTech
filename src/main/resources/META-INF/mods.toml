@@ -4,7 +4,7 @@ loaderVersion="[31,)"
 issueTrackerURL="http://my.issue.tracker/"
 
 [[mods]]
-modId="gtu"
+modId="gti"
 #version="${version}"
 version="0.0.1"
 displayName="GregTech Intergalactical"
@@ -14,21 +14,21 @@ logoFile="examplemod.png"
 credits="GregoriusTechneticies for his work on GregTech"
 authors="Muramasa"
 description='''The approved continuation of GregTech 5 Unoficial'''
-[[dependencies.gtu]]
+[[dependencies.gti]]
     modId="antimatter"
     mandatory=true
     #versionRange="[${antimatter_version},)"
     versionRange="0.0.1"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.gtu]]
+[[dependencies.gti]]
     modId="forge"
     mandatory=true
     #versionRange="[${forge_version},)"
     versionRange="31.0.1"
     ordering="NONE"
     side="BOTH"
-[[dependencies.gtu]]
+[[dependencies.gti]]
     modId="minecraft"
     mandatory=true
     #versionRange="[${minecraft_version}]"

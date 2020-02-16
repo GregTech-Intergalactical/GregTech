@@ -1,20 +1,20 @@
 {
   "replace": false,
   "values": [
-    "gtu:gear_copper",
-    "gtu:gear_cobalt_brass",
-    "gtu:gear_bronze",
-    "gtu:gear_aluminium",
-    "gtu:gear_neutronium",
-    "gtu:gear_tin",
-    "gtu:gear_tungstensteel",
-    "gtu:gear_iron",
-    "gtu:gear_stone",
-    "gtu:gear_hssg",
-    "gtu:gear_stainless_steel",
-    "gtu:gear_steel",
-    "gtu:gear_hsse",
-    "gtu:gear_wood",
-    "gtu:gear_gold"
+    "gti:gear_gold",
+    "gti:gear_cobalt_brass",
+    "gti:gear_hsse",
+    "gti:gear_aluminium",
+    "gti:gear_iron",
+    "gti:gear_hssg",
+    "gti:gear_tin",
+    "gti:gear_bronze",
+    "gti:gear_stone",
+    "gti:gear_steel",
+    "gti:gear_wood",
+    "gti:gear_tungstensteel",
+    "gti:gear_copper",
+    "gti:gear_stainless_steel",
+    "gti:gear_neutronium"
   ]
 }
