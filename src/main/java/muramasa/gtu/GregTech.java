@@ -13,6 +13,8 @@ import muramasa.gtu.cover.CoverConveyor;
 import muramasa.gtu.cover.CoverPump;
 import muramasa.gtu.data.*;
 import muramasa.gtu.data.advancement.ProgressionAdvancements;
+import muramasa.gtu.loaders.MachineRecipeLoader;
+import muramasa.gtu.loaders.MaterialRecipeLoader;
 import muramasa.gtu.loaders.WorldGenLoader;
 import muramasa.gtu.proxy.ClientHandler;
 import net.minecraft.data.DataGenerator;
@@ -105,10 +107,10 @@ public class GregTech implements IAntimatterRegistrar {
                 MaterialType.PLATE.all().forEach(m -> AntimatterAPI.registerCoverStack(MaterialType.PLATE.get(m, 1), Data.COVER_PLATE));
                 break;
             case RECIPE:
-                //OreDictLoader.init();
+                // OreDictLoader.init();
                 //CraftingRecipeLoader.init();
-                //MaterialRecipeLoader.init();
-                //MachineRecipeLoader.init();
+                MaterialRecipeLoader.init();
+                MachineRecipeLoader.init();
                 break;
             case WORLDGEN_INIT:
                 WorldGenLoader.init();
