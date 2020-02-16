@@ -14,7 +14,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = "${mod_version}"
-group = 'muramasa.gtu' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'muramasa.gti' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${archive_name}"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
@@ -50,7 +50,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                gtu {
+                gti {
                     source sourceSets.main
                 }
 //                antimatter {
@@ -69,7 +69,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                gtu {
+                gti {
                     source sourceSets.main
                 }
             }
@@ -84,12 +84,12 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'gtu', '--all', '--output', '"' + file('src/generated/resources/') + '"',
+            args '--mod', 'gti', '--all', '--output', '"' + file('src/generated/resources/') + '"',
                     '--existing', '"' + file('src/main/resources') + '"'//,
                     //'--existing', '"' + project(':antimatterapi').file("src/main/resources") + '"'
 
             mods {
-                gtu {
+                gti {
                     source sourceSets.main
                 }
             }
@@ -99,9 +99,9 @@ minecraft {
             parent runs.client
             ideaModule "${project.name}.main"
             if (local_dev_dependancies.toBoolean()) {
-                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
+                environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')};gti%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
             } else {
-                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')}"
+                environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')};gti%%${project.file('build/classes/java/main')}"
             }
         }
 
@@ -109,9 +109,9 @@ minecraft {
             parent runs.data
             ideaModule "${project.name}.main"
             if (local_dev_dependancies.toBoolean()) {
-                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
+                environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')};gti%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
             } else {
-                environment 'MOD_CLASSES', "gtu%%${project.file('build/resources/main')};gtu%%${project.file('build/classes/java/main')}"
+                environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')};gti%%${project.file('build/classes/java/main')}"
             }
         }
     }
@@ -144,7 +144,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "gtu",
+            "Specification-Title": "gti",
             "Specification-Vendor": "examplemodsareus",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
