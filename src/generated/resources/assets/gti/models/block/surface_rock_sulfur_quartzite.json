@@ -1,0 +1,74 @@
+{
+  "loader": "antimatter:main",
+  "model": {
+    "parent": "antimatter:block/rock/surface_rock_0",
+    "textures": {
+      "all": "gti:block/stone/quartzite"
+    }
+  },
+  "config": [
+    {
+      "id": 0,
+      "model": {
+        "parent": "antimatter:block/rock/surface_rock_0",
+        "textures": {
+          "all": "gti:block/stone/quartzite"
+        }
+      }
+    },
+    {
+      "id": 1,
+      "model": {
+        "parent": "antimatter:block/rock/surface_rock_1",
+        "textures": {
+          "all": "gti:block/stone/quartzite"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "model": {
+        "parent": "antimatter:block/rock/surface_rock_2",
+        "textures": {
+          "all": "gti:block/stone/quartzite"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "model": {
+        "parent": "antimatter:block/rock/surface_rock_3",
+        "textures": {
+          "all": "gti:block/stone/quartzite"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "model": {
+        "parent": "antimatter:block/rock/surface_rock_4",
+        "textures": {
+          "all": "gti:block/stone/quartzite"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "model": {
+        "parent": "antimatter:block/rock/surface_rock_5",
+        "textures": {
+          "all": "gti:block/stone/quartzite"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "model": {
+        "parent": "antimatter:block/rock/surface_rock_6",
+        "textures": {
+          "all": "gti:block/stone/quartzite"
+        }
+      }
+    }
+  ]
+}

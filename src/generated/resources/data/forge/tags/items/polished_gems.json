@@ -1,20 +1,20 @@
 {
   "replace": false,
   "values": [
-    "gti:gem_polished_topaz",
-    "gti:gem_polished_dilithium",
+    "gti:gem_polished_blue_sapphire",
+    "gti:gem_polished_amethyst",
     "gti:gem_polished_endereye",
+    "gti:gem_polished_green_sapphire",
+    "gti:gem_polished_ruby",
+    "gti:gem_polished_blue_topaz",
+    "gti:gem_polished_topaz",
+    "gti:gem_polished_yellow_garnet",
+    "gti:gem_polished_diamond",
+    "gti:gem_polished_opal",
+    "gti:gem_polished_olivine",
+    "gti:gem_polished_tanzanite",
     "gti:gem_polished_red_garnet",
     "gti:gem_polished_emerald",
-    "gti:gem_polished_blue_sapphire",
-    "gti:gem_polished_tanzanite",
-    "gti:gem_polished_blue_topaz",
-    "gti:gem_polished_olivine",
-    "gti:gem_polished_opal",
-    "gti:gem_polished_green_sapphire",
-    "gti:gem_polished_yellow_garnet",
-    "gti:gem_polished_amethyst",
-    "gti:gem_polished_ruby",
-    "gti:gem_polished_diamond"
+    "gti:gem_polished_dilithium"
   ]
 }
