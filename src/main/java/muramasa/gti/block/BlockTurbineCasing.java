@@ -3,6 +3,7 @@ package muramasa.gti.block;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blocks.BlockCasing;
+import muramasa.antimatter.client.ModelConfig;
 import muramasa.antimatter.tileentities.TileEntityMachine;
 import muramasa.gti.common.tileentities.multi.TileEntityLargeTurbine;
 import net.minecraft.block.BlockState;
@@ -20,7 +21,7 @@ public class BlockTurbineCasing extends BlockCasing {
     }
 
     @Override
-    public int[] getConfig(BlockState state, IBlockReader world, BlockPos.Mutable mut, BlockPos pos) {
+    public ModelConfig getConfig(BlockState state, IBlockReader world, BlockPos.Mutable mut, BlockPos pos) {
         int[] ct = new int[6];
         TileEntity tile;
         for (int s = 0; s < 6; s++) {
@@ -32,7 +33,7 @@ public class BlockTurbineCasing extends BlockCasing {
                 ct[s] = (1 << s) + (1 << Direction.UP.getIndex()) + (((TileEntityLargeTurbine) tile).getFacing().getIndex() * 100) /*+ ((TileEntityLargeTurbine) tile).getClientProgress() > 0 ? 1000 : 0*/;
             }
         }
-        return ct;
+        return config.set(ct);
     }
 
 //    @Override
