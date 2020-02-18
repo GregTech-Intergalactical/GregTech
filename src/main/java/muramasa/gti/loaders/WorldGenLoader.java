@@ -8,7 +8,6 @@ import muramasa.antimatter.worldgen.object.WorldGenOreSmall;
 import muramasa.antimatter.worldgen.object.WorldGenStoneLayer;
 import muramasa.antimatter.worldgen.object.WorldGenVeinLayer;
 import muramasa.antimatter.worldgen.old.WorldGenAsteroid;
-import muramasa.antimatter.worldgen.old.WorldGenRock;
 import muramasa.gti.common.Data;
 import net.minecraft.block.Blocks;
 
@@ -28,8 +27,6 @@ public class WorldGenLoader {
         AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.EMERALD_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
         AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.LAPIS_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
         AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.REDSTONE_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
-
-        new WorldGenRock("surface_rock", 1, OVERWORLD);
 
         //new WorldGenTree("rubber_tree", 5, 5, Data.RUBBER_SAPLING, OVERWORLD);
 
