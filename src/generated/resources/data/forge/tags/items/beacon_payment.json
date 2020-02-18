@@ -104,7 +104,6 @@
     "gti:ingot_bismuth_bronze",
     "gti:ingot_iridium",
     "gti:ingot_bismuth",
-    "gti:gem_quartzite",
     "gti:gem_blue_sapphire",
     "gti:gem_nether_star",
     "gti:gem_amethyst",
@@ -117,13 +116,14 @@
     "gti:gem_topaz",
     "gti:gem_yellow_garnet",
     "gti:gem_opal",
+    "gti:gem_quartzite",
     "gti:gem_phosphorus",
-    "gti:gem_lignite_coal",
     "gti:gem_enderpearl",
     "gti:gem_olivine",
     "gti:gem_tanzanite",
     "gti:gem_red_garnet",
     "gti:gem_coal_coke",
+    "gti:gem_lignite_coal",
     "gti:gem_dilithium"
   ]
 }
