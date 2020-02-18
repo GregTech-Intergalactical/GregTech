@@ -16,9 +16,9 @@ public class Localizations {
         @Override
         protected void addTranslations() {
             processTranslations(Ref.ID, "en_us");
-            add("gtu.advancements.greg", "GregTech Intergalactical");
-            add("gtu.advancements.greg.desc", "Getting familiar with your surroundings");
-            add("gtu.tooltip.occurrence", "Indicates occurrence of: ");
+            add(Ref.ID + ".advancements.greg", "GregTech Intergalactical");
+            add(Ref.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
+            add(Ref.ID + ".tooltip.occurrence", "Indicates occurrence of ");
         }
 
     }
