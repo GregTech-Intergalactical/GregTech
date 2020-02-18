@@ -266,7 +266,7 @@ public class Materials {
     public static Material Uraninite = new Material(Ref.ID, "uraninite", 0x232323, METALLIC).asDust(ORE).add(Uranium, 1, Oxygen, 2);
     public static Material Uvarovite = new Material(Ref.ID, "uvarovite", 0xb4ffb4, DIAMOND).asDust(ORE, ORE_SMALL).add(Calcium, 3, Chrome, 2, Silicon, 3, Oxygen, 12);
     public static Material Wood = new Material(Ref.ID, "wood", 0x643200, NONE).asDust(GEAR).add(Carbon, 1, Oxygen, 1, Hydrogen, 1);
-    public static Material Stone = new Material(Ref.ID, "stone", 0xcdcdcd, ROUGH).asDust(DUST_IMPURE, GEAR);
+    public static Material Stone = new Material(Ref.ID, "stone", 0xcdcdcd, ROUGH).asDust(DUST_IMPURE, GEAR, ROCK);
     public static Material Wulfenite = new Material(Ref.ID, "wulfenite", 0xff8000, DULL).asDust(ORE).add(Lead, 1, Molybdenum, 1, Oxygen, 4);
     public static Material YellowLimonite = new Material(Ref.ID, "yellow_limonite", 0xc8c800, METALLIC).asDust(ORE).add(Iron, 1, Hydrogen, 1, Oxygen, 2);
     //public static Material WoodSealed = new Material(Ref.ID, "sealed_wood", 0x502800, NONE).asDust().addTools(3.0F, 24, 0).add(Wood, 1); TODO: Perhaps with IE integration or when we have some utility stuff
@@ -392,19 +392,27 @@ public class Materials {
     public static Material EpoxidFiberReinforced = new Material(Ref.ID, "fiber_reinforced_epoxy_resin", 0xa07010, DULL).asSolid(400, 0).addTools(3.0F, 64, 1).add(Epoxid, 1);
 
     /** Stones **/
-    public static Material GraniteRed = new Material(Ref.ID, "red_granite", 0xff0080, ROUGH).asDust().addTools(4.0F, 64, 3).add(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3);
-    public static Material GraniteBlack = new Material(Ref.ID, "black_granite", 0x0a0a0a, ROUGH).asDust().addTools(4.0F, 64, 3).add(SiliconDioxide, 4, Biotite, 1);
-    public static Material Marble = new Material(Ref.ID, "marble", 0xc8c8c8, NONE).asDust().add(Magnesium, 1, Calcite, 7);
-    public static Material Basalt = new Material(Ref.ID, "basalt", 0x1e1414, ROUGH).asDust().add(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4);
-    public static Material Komatiite = new Material(Ref.ID, "komatiite", 0xbebe69, NONE).asDust().add(Olivine, 1, /*MgCO3, 2, */Flint, 6, DarkAsh, 3);
-    public static Material Limestone = new Material(Ref.ID, "limestone", 0xe6c882, NONE).asDust().add(Calcite, 1);
-    public static Material GreenSchist = new Material(Ref.ID, "green_schist", 0x69be69, NONE).asDust();
-    public static Material BlueSchist = new Material(Ref.ID, "blue_schist", 0x0569be, NONE).asDust();
-    public static Material Kimberlite = new Material(Ref.ID, "kimberlite", 0x64460a, NONE).asDust();
-    public static Material Quartzite = new Material(Ref.ID, "quartzite", 0xe6cdcd, QUARTZ).asGemBasic(false, ORE).add(Silicon, 1, Oxygen, 2);
+    public static Material Granite = new Material(Ref.ID, "granite", 0xa07882, ROUGH).asDust(ROCK);
+    public static Material Diorite = new Material(Ref.ID, "diorite", 0xf0f0f0, ROUGH).asDust(ROCK);
+    public static Material Andesite = new Material(Ref.ID, "andesite", 0xbfbfbf, ROUGH).asDust(ROCK);
+
+    public static Material Sand = new Material(Ref.ID, "sand", 0xfafac8, ROUGH).asDust(ROCK);
+    public static Material SandRed = new Material(Ref.ID, "red_sand", 0xff8438, ROUGH).asDust(ROCK);
+    public static Material Sandstone = new Material(Ref.ID, "sandstone", 0xfafac8, ROUGH).asDust(ROCK);
+
+    public static Material GraniteRed = new Material(Ref.ID, "red_granite", 0xff0080, ROUGH).asDust(ROCK).addTools(4.0F, 64, 3).add(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3);
+    public static Material GraniteBlack = new Material(Ref.ID, "black_granite", 0x0a0a0a, ROUGH).asDust(ROCK).addTools(4.0F, 64, 3).add(SiliconDioxide, 4, Biotite, 1);
+    public static Material Marble = new Material(Ref.ID, "marble", 0xc8c8c8, NONE).asDust(ROCK).add(Magnesium, 1, Calcite, 7);
+    public static Material Basalt = new Material(Ref.ID, "basalt", 0x1e1414, ROUGH).asDust(ROCK).add(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4);
+    public static Material Komatiite = new Material(Ref.ID, "komatiite", 0xbebe69, NONE).asDust(ROCK).add(Olivine, 1, /*MgCO3, 2, */Flint, 6, DarkAsh, 3);
+    public static Material Limestone = new Material(Ref.ID, "limestone", 0xe6c882, NONE).asDust(ROCK).add(Calcite, 1);
+    public static Material GreenSchist = new Material(Ref.ID, "green_schist", 0x69be69, NONE).asDust(ROCK);
+    public static Material BlueSchist = new Material(Ref.ID, "blue_schist", 0x0569be, NONE).asDust(ROCK);
+    public static Material Kimberlite = new Material(Ref.ID, "kimberlite", 0x64460a, NONE).asDust(ROCK);
+    public static Material Quartzite = new Material(Ref.ID, "quartzite", 0xe6cdcd, QUARTZ).asGemBasic(false, ORE, ROCK).add(Silicon, 1, Oxygen, 2);
 
     /** Ore Stones **/
-    public static Material Coal = new Material(Ref.ID, "coal", 0x464646, LIGNITE).asGemBasic(false, ORE_STONE, ORE_SMALL).add(Carbon, 1);
+    public static Material Coal = new Material(Ref.ID, "coal", 0x464646, LIGNITE).asGemBasic(false, ORE, ORE_STONE, ORE_SMALL).add(Carbon, 1);
     public static Material Lignite = new Material(Ref.ID, "lignite_coal", 0x644646, LIGNITE).asGemBasic(false, ORE_STONE).add(Carbon, 3, Water, 1);
     public static Material Salt = new Material(Ref.ID, "salt", 0xfafafa, FINE).asDust(ORE_STONE, ORE_SMALL).add(Sodium, 1, Chlorine, 1);
     public static Material RockSalt = new Material(Ref.ID, "rock_salt", 0xf0c8c8, FINE).asDust(ORE_STONE, ORE_SMALL).add(Potassium, 1, Chlorine, 1);
