@@ -58,14 +58,6 @@ public class Configs {
 
 	public static class World {
 		//@RequiresWorldRestart
-		//@Comment("Disable Vanilla ore generation (Iron Ore, Diamond Ore etc) - Default: true")
-		public boolean DISABLE_VANILLA_ORE_GEN = true;
-
-		//@RequiresWorldRestart
-		//@Comment("Disable vanilla stone generation (Granite, Diorite etc) - Default: false")
-		public boolean DISABLE_VANILLA_STONE_GEN = true;
-
-		//@RequiresWorldRestart
 		public int ORE_VEIN_MAX_SIZE = 32;
 
 		//@RequiresWorldRestart
