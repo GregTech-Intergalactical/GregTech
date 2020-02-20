@@ -4,10 +4,10 @@
       "item": "gti:rock_flint"
     },
     "title": {
-      "translate": "gtu.advancements.greg"
+      "translate": "gti.advancements.greg"
     },
     "description": {
-      "translate": "gtu.advancements.greg.desc"
+      "translate": "gti.advancements.greg.desc"
     },
     "frame": "task",
     "show_toast": true,
