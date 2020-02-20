@@ -1,5 +1,6 @@
 package muramasa.gti.loaders;
 
+import com.google.common.collect.ImmutableList;
 import muramasa.antimatter.Configs;
 import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.worldgen.AntimatterWorldGenerator;
@@ -9,12 +10,29 @@ import muramasa.antimatter.worldgen.object.WorldGenStoneLayer;
 import muramasa.antimatter.worldgen.object.WorldGenVeinLayer;
 import muramasa.antimatter.worldgen.old.WorldGenAsteroid;
 import muramasa.gti.common.Data;
+import muramasa.gti.tree.RubberTree;
 import net.minecraft.block.Blocks;
+import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
+import net.minecraft.world.gen.foliageplacer.SpruceFoliagePlacer;
+import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 
 import static muramasa.antimatter.Ref.*;
+import static muramasa.gti.common.Data.*;
 import static muramasa.gti.data.Materials.*;
 
 public class WorldGenLoader {
+
+    //Rubber Tree Configs
+    public static TreeFeatureConfig RUBBER_TREE_CONFIG_BLOB = (new TreeFeatureConfig.Builder(RubberTree.trunkBlocks, new SimpleBlockStateProvider(RUBBER_LEAVES.getDefaultState()),
+        new BlobFoliagePlacer(2, 0))).baseHeight(6).heightRandA(1) // total height
+        .trunkHeight(2).trunkHeightRandom(1) // bare trunk height
+        .trunkTopOffset(2) // depresses trunk top within leaves
+        .ignoreVines().decorators(ImmutableList.of(new BeehiveTreeDecorator(0.02F))).setSapling(RUBBER_SAPLING).build();
+    public static TreeFeatureConfig RUBBER_TREE_CONFIG_SPRUCE = (new TreeFeatureConfig.Builder(RubberTree.trunkBlocks, new SimpleBlockStateProvider(RUBBER_LEAVES.getDefaultState()),
+        new SpruceFoliagePlacer(2, 0))).baseHeight(7).heightRandA(1).trunkHeight(2).trunkHeightRandom(1).trunkTopOffset(1)
+        .ignoreVines().setSapling(RUBBER_SAPLING).build();
 
     public static void init() {
         //TODO probably increase max generation heights for most things

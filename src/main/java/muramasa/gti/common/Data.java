@@ -20,6 +20,9 @@ import muramasa.gti.cover.CoverConveyor;
 import muramasa.gti.cover.CoverPlate;
 import muramasa.gti.cover.CoverPump;
 import muramasa.gti.data.Materials;
+import muramasa.gti.tree.BlockRubberLeaves;
+import muramasa.gti.tree.BlockRubberLog;
+import muramasa.gti.tree.BlockRubberSapling;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 
@@ -36,7 +39,7 @@ public class Data {
     public static final Cover COVER_PLATE = new CoverPlate();
     public static final Cover COVER_CONVEYOR = new CoverConveyor(Tier.LV);
     public static final Cover COVER_PUMP = new CoverPump(Tier.LV);
-    
+
     public static ItemBasic StickyResin = new ItemBasic(Ref.ID, "sticky_resin");
     public static ItemBasic ComputerMonitor = new ItemBasic(Ref.ID, "computer_monitor", "Can be placed on machines as a cover");
 
@@ -378,7 +381,7 @@ public class Data {
         new BlockCableBuilder(Ref.ID, NaquadahAlloy, HC ? 4 : 64, HC ? 8 : 128, Tier.ZPM).amps(2).build();
         new BlockCableBuilder(Ref.ID, Duranium, HC ? 8 : 64, HC ? 16 : 128, Tier.ZPM).amps(1).build();
         new BlockCableBuilder(Ref.ID, Superconductor, 1, 1, Tier.MAX).amps(4).build(); //MAX
-        
+
         new BlockFluidPipeBuilder(Ref.ID, Wood, 30, false, PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(10, 10, 30, 60, 60, 60).build();
         new BlockFluidPipeBuilder(Ref.ID, Copper, 1000, true).caps(10).build();
         new BlockFluidPipeBuilder(Ref.ID, Bronze, 2000, true).caps(20).build();
@@ -402,4 +405,9 @@ public class Data {
         new BlockItemPipeBuilder(Ref.ID, PolyvinylChloride).slots(4).steps(4).build();
         new BlockItemPipeBuilder(Ref.ID, Osmium).slots(8).steps(8).build();
     }
+
+    // Rubber Tree
+    public static BlockRubberLeaves RUBBER_LEAVES = new BlockRubberLeaves(Ref.ID);
+    public static BlockRubberLog RUBBER_LOG = new BlockRubberLog(Ref.ID);
+    public static BlockRubberSapling RUBBER_SAPLING = new BlockRubberSapling(Ref.ID);
 }
