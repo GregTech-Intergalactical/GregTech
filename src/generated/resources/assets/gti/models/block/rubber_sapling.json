@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "gti:block/tree/rubber_sapling"
+  }
+}
