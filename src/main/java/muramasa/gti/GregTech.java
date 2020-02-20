@@ -1,7 +1,10 @@
 package muramasa.gti;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.datagen.providers.*;
+import muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider;
+import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
+import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
+import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.machines.Tier;
 import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
@@ -13,6 +16,7 @@ import muramasa.gti.cover.CoverConveyor;
 import muramasa.gti.cover.CoverPump;
 import muramasa.gti.data.*;
 import muramasa.gti.data.advancement.ProgressionAdvancements;
+import muramasa.gti.datagen.GregTechBlockTagProvider;
 import muramasa.gti.loaders.MachineRecipeLoader;
 import muramasa.gti.loaders.MaterialRecipeLoader;
 import muramasa.gti.loaders.WorldGenLoader;
@@ -58,7 +62,7 @@ public class GregTech implements IAntimatterRegistrar {
             gen.addProvider(new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", gen));
         }
         if (e.includeServer()) {
-            gen.addProvider(new AntimatterBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
+            gen.addProvider(new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
             gen.addProvider(new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, gen));
             gen.addProvider(new Recipes(gen));
             gen.addProvider(new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), gen, new ProgressionAdvancements()));
