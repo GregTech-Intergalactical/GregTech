@@ -55,102 +55,80 @@ public class WorldGenLoader {
 //        new WorldGenStone("basalt_medium", BASALT, 1, 200, 10, 0, 120, OVERWORLD);
 //        new WorldGenStone("basalt_large", BASALT, 1, 300, 70, 0, 120, OVERWORLD);
 //        new WorldGenStone("basalt_huge", BASALT, 1, 400, 150, 0, 120, OVERWORLD);
-
-        new WorldGenStoneLayer(Data.STONE, OVERWORLD);
-        new WorldGenStoneLayer(Data.STONE, OVERWORLD);
-        new WorldGenStoneLayer(Data.STONE, OVERWORLD);
-        new WorldGenStoneLayer(Data.STONE, OVERWORLD);
-        new WorldGenStoneLayer(Data.STONE, OVERWORLD); //Ores
-        new WorldGenStoneLayer(Data.STONE, OVERWORLD); //Ores
-        new WorldGenStoneLayer(Data.STONE, OVERWORLD); //Ores
-        new WorldGenStoneLayer(Data.STONE, OVERWORLD); //Ores
-
-        new WorldGenStoneLayer(Data.GRANITE_BLACK, OVERWORLD);
-        new WorldGenStoneLayer(Data.GRANITE_BLACK, OVERWORLD);
-        new WorldGenStoneLayer(Data.GRANITE_BLACK, OVERWORLD).addOres(
+        
+        WorldGenStoneLayer.add(Data.STONE, 4, OVERWORLD);
+        WorldGenStoneLayer.add(Data.STONE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.STONE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.STONE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.STONE, 1, OVERWORLD); //Ores
+        
+        WorldGenStoneLayer.add(Data.GRANITE_BLACK, 2, OVERWORLD);
+        WorldGenStoneLayer.add(Data.GRANITE_BLACK, 1, OVERWORLD).forEach(w -> w.addOres(
             new StoneLayerOre(Cooperite, U32, 0, 16),
             new StoneLayerOre(Iridium, U64, 0, 8)
-        );
+        ));
 
-        new WorldGenStoneLayer(Data.GRANITE_RED, OVERWORLD);
-        new WorldGenStoneLayer(Data.GRANITE_RED, OVERWORLD);
-        new WorldGenStoneLayer(Data.GRANITE_RED, OVERWORLD).addOres(
+        WorldGenStoneLayer.add(Data.GRANITE_RED, 2, OVERWORLD);
+        WorldGenStoneLayer.add(Data.GRANITE_RED, 1, OVERWORLD).forEach(w -> w.addOres(
             new StoneLayerOre(Pitchblende, U32, 0, 18),
             new StoneLayerOre(Uraninite, U32, 0, 16),
             new StoneLayerOre(Tantalite, U16, 20, 50)
-        );
+        ));
 
-        new WorldGenStoneLayer(Data.KOMATIITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.KOMATIITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.KOMATIITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.KOMATIITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.KOMATIITE, OVERWORLD).addOres(
+        WorldGenStoneLayer.add(Data.KOMATIITE, 4, OVERWORLD);
+        WorldGenStoneLayer.add(Data.KOMATIITE, 1, OVERWORLD).forEach(w -> w.addOres(
             new StoneLayerOre(Magnesite, U16, 20, 50),
             new StoneLayerOre(Cinnabar, U12, 0, 32),
             new StoneLayerOre(Redstone, U8, 0, 30),
             new StoneLayerOre(Pyrite, U12, 0, 30)
+        ));
+
+        WorldGenStoneLayer.add(Data.BASALT, 3, OVERWORLD);
+        WorldGenStoneLayer.add(Data.BASALT, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.BASALT, 1, OVERWORLD); //Ores
+
+        WorldGenStoneLayer.add(Data.MARBLE, 4, OVERWORLD);
+        WorldGenStoneLayer.add(Data.MARBLE, 1, OVERWORLD); //Ores
+
+        WorldGenStoneLayer.add(Data.LIMESTONE, 3, OVERWORLD);
+        WorldGenStoneLayer.add(Data.LIMESTONE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.LIMESTONE, 1, OVERWORLD); //Ores
+
+        WorldGenStoneLayer.add(Data.GREEN_SCHIST, 1, OVERWORLD);
+        WorldGenStoneLayer.add(Data.GREEN_SCHIST, 1, OVERWORLD); //Ores
+
+        WorldGenStoneLayer.add(Data.BLUE_SCHIST, 1, OVERWORLD);
+        WorldGenStoneLayer.add(Data.BLUE_SCHIST, 1, OVERWORLD); //Ores
+
+        WorldGenStoneLayer.add(Data.KIMBERLITE, 3, OVERWORLD);
+        WorldGenStoneLayer.add(Data.KIMBERLITE, 1, OVERWORLD); //Ores
+
+        WorldGenStoneLayer.add(Data.QUARTZITE, 4, OVERWORLD);
+        WorldGenStoneLayer.add(Data.QUARTZITE, 1, OVERWORLD); //Ores
+
+        WorldGenStoneLayer.add(Data.GRANITE, 3, OVERWORLD);
+        WorldGenStoneLayer.add(Data.GRANITE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.GRANITE, 1, OVERWORLD); //Ores
+
+        WorldGenStoneLayer.add(Data.DIORITE, 3, OVERWORLD);
+        WorldGenStoneLayer.add(Data.DIORITE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.DIORITE, 1, OVERWORLD); //Ores
+
+        WorldGenStoneLayer.add(Data.ANDESITE, 4, OVERWORLD);
+        WorldGenStoneLayer.add(Data.ANDESITE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.ANDESITE, 1, OVERWORLD); //Ores
+
+        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(Coal).asState(), 1, OVERWORLD);
+        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(Lignite).asState(), 1, OVERWORLD);
+        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(Salt).asState(), 1, OVERWORLD);
+        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(RockSalt).asState(), 1, OVERWORLD);
+        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(Bauxite).asState(), 1, OVERWORLD);
+        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(OilShale).asState(), 1, OVERWORLD);
+
+        WorldGenStoneLayer.addCollision(Data.BASALT.getState(), Data.LIMESTONE.getState(),
+            new StoneLayerOre(Ilmenite, U8, 0, 32),
+            new StoneLayerOre(Rutile, U12, 0, 32)
         );
-
-        new WorldGenStoneLayer(Data.BASALT, OVERWORLD);
-        new WorldGenStoneLayer(Data.BASALT, OVERWORLD);
-        new WorldGenStoneLayer(Data.BASALT, OVERWORLD);
-        new WorldGenStoneLayer(Data.BASALT, OVERWORLD); //Ores
-        new WorldGenStoneLayer(Data.BASALT, OVERWORLD); //Ores
-
-        new WorldGenStoneLayer(Data.MARBLE, OVERWORLD);
-        new WorldGenStoneLayer(Data.MARBLE, OVERWORLD);
-        new WorldGenStoneLayer(Data.MARBLE, OVERWORLD);
-        new WorldGenStoneLayer(Data.MARBLE, OVERWORLD);
-        new WorldGenStoneLayer(Data.MARBLE, OVERWORLD); //Ores
-
-        new WorldGenStoneLayer(Data.LIMESTONE, OVERWORLD);
-        new WorldGenStoneLayer(Data.LIMESTONE, OVERWORLD);
-        new WorldGenStoneLayer(Data.LIMESTONE, OVERWORLD);
-        new WorldGenStoneLayer(Data.LIMESTONE, OVERWORLD); //Ores
-        new WorldGenStoneLayer(Data.LIMESTONE, OVERWORLD); //Ores
-
-        new WorldGenStoneLayer(Data.GREEN_SCHIST, OVERWORLD);
-        new WorldGenStoneLayer(Data.GREEN_SCHIST, OVERWORLD); //Ores
-
-        new WorldGenStoneLayer(Data.BLUE_SCHIST, OVERWORLD);
-        new WorldGenStoneLayer(Data.BLUE_SCHIST, OVERWORLD); //Ores
-
-        new WorldGenStoneLayer(Data.KIMBERLITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.KIMBERLITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.KIMBERLITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.KIMBERLITE, OVERWORLD); //Ores
-
-        new WorldGenStoneLayer(Data.QUARTZITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.QUARTZITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.QUARTZITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.QUARTZITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.QUARTZITE, OVERWORLD); //Ores
-
-        new WorldGenStoneLayer(Data.GRANITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.GRANITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.GRANITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.GRANITE, OVERWORLD); //Ores
-        new WorldGenStoneLayer(Data.GRANITE, OVERWORLD); //Ores
-
-        new WorldGenStoneLayer(Data.DIORITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.DIORITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.DIORITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.DIORITE, OVERWORLD); //Ores
-        new WorldGenStoneLayer(Data.DIORITE, OVERWORLD); //Ores
-
-        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD);
-        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD); //Ores
-        new WorldGenStoneLayer(Data.ANDESITE, OVERWORLD); //Ores
-
-        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(Coal).asState(), OVERWORLD);
-        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(Lignite).asState(), OVERWORLD);
-        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(Salt).asState(), OVERWORLD);
-        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(RockSalt).asState(), OVERWORLD);
-        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(Bauxite).asState(), OVERWORLD);
-        new WorldGenStoneLayer(MaterialType.ORE_STONE.get().get(OilShale).asState(), OVERWORLD);
 
         if (Configs.WORLD.ENABLE_ORE_VEINS) {
             new WorldGenVeinLayer("naquadah", 10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, NaquadahEnriched, END);
