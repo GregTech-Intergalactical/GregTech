@@ -1,6 +1,7 @@
 package muramasa.gti.data.advancement;
 
 import muramasa.antimatter.advancement.trigger.TagSensitiveInventoryChangedTrigger;
+import muramasa.gti.Ref;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.util.ResourceLocation;
@@ -17,7 +18,7 @@ public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> 
     public void accept(Consumer<Advancement> consumer) {
         Advancement greg = buildRootAdvancement(/*Data.DEBUG_SCANNER*/ROCK.get(Flint),
                 new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"),
-                "gtu.advancements.greg", "gtu.advancements.greg.desc", FrameType.TASK, true, true, false)
+            Ref.ID + ".advancements.greg", Ref.ID + ".advancements.greg.desc", FrameType.TASK, true, true, false)
                 .withCriterion("has_rocks", new TagSensitiveInventoryChangedTrigger.Instance(getForgeItemTag("rocks")))
                 .register(consumer, "progression/root");
     }
