@@ -1,5 +1,6 @@
 package muramasa.gti.common;
 
+import muramasa.antimatter.Configs;
 import muramasa.antimatter.blocks.BlockCasing;
 import muramasa.antimatter.blocks.BlockCasingMachine;
 import muramasa.antimatter.blocks.BlockCoil;
@@ -12,7 +13,6 @@ import muramasa.antimatter.machines.Tier;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.texture.Texture;
-import muramasa.gti.Configs;
 import muramasa.gti.Ref;
 import muramasa.gti.block.BlockFusionCasing;
 import muramasa.gti.block.BlockTurbineCasing;

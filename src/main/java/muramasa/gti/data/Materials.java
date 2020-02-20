@@ -1,9 +1,9 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Configs;
 import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.materials.Material;
-import muramasa.gti.Configs;
 import muramasa.gti.Ref;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantments;
