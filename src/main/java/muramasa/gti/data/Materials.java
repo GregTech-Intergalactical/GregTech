@@ -396,6 +396,7 @@ public class Materials {
     public static Material Diorite = new Material(Ref.ID, "diorite", 0xf0f0f0, ROUGH).asDust(ROCK);
     public static Material Andesite = new Material(Ref.ID, "andesite", 0xbfbfbf, ROUGH).asDust(ROCK);
 
+    public static Material Gravel = new Material(Ref.ID, "gravel", 0xcdcdcd, ROUGH).asDust(ROCK);
     public static Material Sand = new Material(Ref.ID, "sand", 0xfafac8, ROUGH).asDust(ROCK);
     public static Material SandRed = new Material(Ref.ID, "red_sand", 0xff8438, ROUGH).asDust(ROCK);
     public static Material Sandstone = new Material(Ref.ID, "sandstone", 0xfafac8, ROUGH).asDust(ROCK);
