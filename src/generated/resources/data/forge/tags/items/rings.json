@@ -1,16 +1,16 @@
 {
   "replace": false,
   "values": [
-    "gti:ring_neutronium",
-    "gti:ring_chrome",
-    "gti:ring_tungstensteel",
-    "gti:ring_iron",
-    "gti:ring_wrought_iron",
-    "gti:ring_aluminium",
-    "gti:ring_tin",
     "gti:ring_steel",
-    "gti:ring_osmium",
+    "gti:ring_aluminium",
+    "gti:ring_chrome",
     "gti:ring_rubber",
-    "gti:ring_styrene_butadiene_rubber"
+    "gti:ring_osmium",
+    "gti:ring_styrene_butadiene_rubber",
+    "gti:ring_wrought_iron",
+    "gti:ring_iron",
+    "gti:ring_tungstensteel",
+    "gti:ring_neutronium",
+    "gti:ring_tin"
   ]
 }

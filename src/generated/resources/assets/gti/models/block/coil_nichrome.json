@@ -3,7 +3,7 @@
   "model": {
     "parent": "antimatter:block/preset/simple",
     "textures": {
-      "all": "mc:block/bedrock"
+      "all": "minecraft:block/bedrock"
     }
   }
 }
