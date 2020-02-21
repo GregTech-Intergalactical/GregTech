@@ -1,20 +1,20 @@
 {
   "replace": false,
   "values": [
-    "gti:gem_brittle_blue_topaz",
-    "gti:gem_brittle_ruby",
-    "gti:gem_brittle_opal",
-    "gti:gem_brittle_amethyst",
-    "gti:gem_brittle_emerald",
-    "gti:gem_brittle_green_sapphire",
-    "gti:gem_brittle_yellow_garnet",
-    "gti:gem_brittle_dilithium",
-    "gti:gem_brittle_tanzanite",
-    "gti:gem_brittle_topaz",
-    "gti:gem_brittle_red_garnet",
-    "gti:gem_brittle_olivine",
-    "gti:gem_brittle_endereye",
     "gti:gem_brittle_blue_sapphire",
-    "gti:gem_brittle_diamond"
+    "gti:gem_brittle_amethyst",
+    "gti:gem_brittle_endereye",
+    "gti:gem_brittle_green_sapphire",
+    "gti:gem_brittle_ruby",
+    "gti:gem_brittle_blue_topaz",
+    "gti:gem_brittle_topaz",
+    "gti:gem_brittle_yellow_garnet",
+    "gti:gem_brittle_diamond",
+    "gti:gem_brittle_opal",
+    "gti:gem_brittle_olivine",
+    "gti:gem_brittle_tanzanite",
+    "gti:gem_brittle_red_garnet",
+    "gti:gem_brittle_emerald",
+    "gti:gem_brittle_dilithium"
   ]
 }

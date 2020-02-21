@@ -2,7 +2,9 @@ package muramasa.gti.tree;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.blocks.BlockBasic;
+import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.texture.Texture;
+import muramasa.gti.Ref;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -13,6 +15,8 @@ import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 
 public class BlockRubberLog extends BlockBasic {
 
@@ -33,8 +37,18 @@ public class BlockRubberLog extends BlockBasic {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        //return this.getDefaultState().with(AXIS, context.getFace().getAxis());
-        // place filled block for debugging
-        return this.getDefaultState().with(AXIS, context.getFace().getAxis()).with(RESIN_FACING, context.getPlacementHorizontalFacing().getOpposite()).with(RESIN_STATE, ResinState.FILLED);
+        return this.getDefaultState().with(AXIS, context.getFace().getAxis()).with(RESIN_FACING, context.getPlacementHorizontalFacing().getOpposite()).with(RESIN_STATE, ResinState.NONE);
+    }
+
+    @Override
+    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
+        ModelFile rubberLog = prov.existing(Ref.ID, "block/rubber_log");
+        ModelFile rubberLogEmpty = prov.existing(Ref.ID, "block/rubber_log_empty");
+        ModelFile rubberLogFilled = prov.existing(Ref.ID, "block/rubber_log_filled");
+        prov.getVariantBuilder(block).forAllStates(s ->
+            ConfiguredModel.builder().modelFile(s.get(RESIN_STATE) == ResinState.NONE ? rubberLog : s.get(RESIN_STATE) == ResinState.EMPTY ? rubberLogEmpty : rubberLogFilled)
+                .rotationY((int) s.get(RESIN_FACING).getOpposite().getHorizontalAngle())
+                .rotationX(s.get(AXIS) == Direction.Axis.Y ? 0 : 90).build()
+        );
     }
 }

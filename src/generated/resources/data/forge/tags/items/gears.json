@@ -1,20 +1,20 @@
 {
   "replace": false,
   "values": [
-    "gti:gear_copper",
-    "gti:gear_stone",
-    "gti:gear_iron",
-    "gti:gear_steel",
-    "gti:gear_wood",
-    "gti:gear_hssg",
-    "gti:gear_stainless_steel",
-    "gti:gear_hsse",
-    "gti:gear_aluminium",
-    "gti:gear_cobalt_brass",
-    "gti:gear_tin",
     "gti:gear_neutronium",
     "gti:gear_tungstensteel",
+    "gti:gear_iron",
+    "gti:gear_stainless_steel",
+    "gti:gear_gold",
+    "gti:gear_hssg",
+    "gti:gear_aluminium",
+    "gti:gear_stone",
+    "gti:gear_hsse",
+    "gti:gear_tin",
+    "gti:gear_steel",
+    "gti:gear_wood",
     "gti:gear_bronze",
-    "gti:gear_gold"
+    "gti:gear_copper",
+    "gti:gear_cobalt_brass"
   ]
 }
