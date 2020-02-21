@@ -3,7 +3,6 @@ package muramasa.gti.loaders;
 import com.google.common.collect.ImmutableList;
 import muramasa.antimatter.Configs;
 import muramasa.antimatter.materials.MaterialType;
-import muramasa.antimatter.worldgen.AntimatterWorldGenerator;
 import muramasa.antimatter.worldgen.StoneLayerOre;
 import muramasa.antimatter.worldgen.object.WorldGenOreSmall;
 import muramasa.antimatter.worldgen.object.WorldGenStoneLayer;
@@ -11,7 +10,6 @@ import muramasa.antimatter.worldgen.object.WorldGenVeinLayer;
 import muramasa.antimatter.worldgen.old.WorldGenAsteroid;
 import muramasa.gti.common.Data;
 import muramasa.gti.tree.RubberTree;
-import net.minecraft.block.Blocks;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
@@ -19,7 +17,8 @@ import net.minecraft.world.gen.foliageplacer.SpruceFoliagePlacer;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 
 import static muramasa.antimatter.Ref.*;
-import static muramasa.gti.common.Data.*;
+import static muramasa.gti.common.Data.RUBBER_LEAVES;
+import static muramasa.gti.common.Data.RUBBER_SAPLING;
 import static muramasa.gti.data.Materials.*;
 
 public class WorldGenLoader {
@@ -37,14 +36,6 @@ public class WorldGenLoader {
     public static void init() {
         //TODO probably increase max generation heights for most things
         //TODO add GC dims to all objects
-
-        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.COAL_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
-        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.IRON_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
-        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.GOLD_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
-        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.DIAMOND_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
-        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.EMERALD_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
-        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.LAPIS_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
-        AntimatterWorldGenerator.STATES_TO_PURGE.put(Blocks.REDSTONE_ORE.getDefaultState(), Blocks.STONE.getDefaultState());
 
         //new WorldGenTree("rubber_tree", 5, 5, Data.RUBBER_SAPLING, OVERWORLD);
 
