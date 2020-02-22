@@ -35,7 +35,7 @@ public class RubberTree extends Tree {
 
     @Nullable
     @Override
-    protected ConfiguredFeature<TreeFeatureConfig, ?> func_225546_b_(Random rand, boolean flowers) {
+    protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random rand, boolean flowers) {
         return Feature.NORMAL_TREE.withConfiguration(WorldGenLoader.RUBBER_TREE_CONFIG_BLOB);
     }
 
