@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rocks_grind_to_small_dust",
+  "ingredients": [
+    {
+      "tag": "forge:rocks/diamond"
+    },
+    {
+      "tag": "forge:rocks/diamond"
+    },
+    {
+      "tag": "forge:rocks/diamond"
+    },
+    {
+      "tag": "forge:rocks/diamond"
+    },
+    {
+      "tag": "antimatter:mortar"
+    }
+  ],
+  "result": {
+    "item": "gti:dust_small_diamond"
+  }
+}

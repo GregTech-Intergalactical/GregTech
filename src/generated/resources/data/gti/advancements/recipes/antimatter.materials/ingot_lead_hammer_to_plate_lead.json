@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_lead_hammer_to_plate_lead"
+    ]
+  },
+  "criteria": {
+    "has_ingot_lead": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/lead"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_lead_hammer_to_plate_lead"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_lead",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ingot_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:ingots/uranium_235"
+    },
+    "H": {
+      "tag": "forge:rods/naquadah"
+    }
+  },
+  "result": {
+    "item": "gti:uranium_235_naquadah_sword"
+  }
+}

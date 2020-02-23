@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:green_sapphire_epoxid_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_green_sapphire": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:gems/green_sapphire"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:green_sapphire_epoxid_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_green_sapphire",
+      "has_the_recipe"
+    ]
+  ]
+}

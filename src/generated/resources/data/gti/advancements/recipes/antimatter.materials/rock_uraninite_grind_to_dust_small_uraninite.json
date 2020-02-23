@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_uraninite_grind_to_dust_small_uraninite"
+    ]
+  },
+  "criteria": {
+    "has_rock_uraninite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/uraninite"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_uraninite_grind_to_dust_small_uraninite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_uraninite",
+      "has_the_recipe"
+    ]
+  ]
+}

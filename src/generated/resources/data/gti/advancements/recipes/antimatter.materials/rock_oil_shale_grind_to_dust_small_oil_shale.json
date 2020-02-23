@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_oil_shale_grind_to_dust_small_oil_shale"
+    ]
+  },
+  "criteria": {
+    "has_rock_oil_shale": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/oil_shale"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_oil_shale_grind_to_dust_small_oil_shale"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_oil_shale",
+      "has_the_recipe"
+    ]
+  ]
+}

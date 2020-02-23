@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "gem_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:gems/blue_topaz"
+    },
+    "H": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "gti:blue_topaz_wood_sword"
+  }
+}

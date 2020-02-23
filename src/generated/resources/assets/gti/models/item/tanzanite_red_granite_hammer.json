@@ -1,0 +1,7 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "gti:item/tool/hammer",
+    "layer1": "gti:item/tool/overlay/hammer"
+  }
+}

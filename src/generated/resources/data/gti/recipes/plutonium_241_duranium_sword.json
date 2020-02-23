@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ingot_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:ingots/plutonium_241"
+    },
+    "H": {
+      "tag": "forge:rods/duranium"
+    }
+  },
+  "result": {
+    "item": "gti:plutonium_241_duranium_sword"
+  }
+}

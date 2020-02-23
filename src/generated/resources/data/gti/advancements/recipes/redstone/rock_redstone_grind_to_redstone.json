@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_redstone_grind_to_redstone"
+    ]
+  },
+  "criteria": {
+    "has_rock_redstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/redstone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_redstone_grind_to_redstone"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_redstone",
+      "has_the_recipe"
+    ]
+  ]
+}

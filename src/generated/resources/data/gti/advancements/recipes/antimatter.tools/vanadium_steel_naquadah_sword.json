@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:vanadium_steel_naquadah_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_vanadium_steel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/vanadium_steel"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:vanadium_steel_naquadah_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_vanadium_steel",
+      "has_the_recipe"
+    ]
+  ]
+}

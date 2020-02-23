@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_neutronium_hammer_to_plate_neutronium"
+    ]
+  },
+  "criteria": {
+    "has_ingot_neutronium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/neutronium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_neutronium_hammer_to_plate_neutronium"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_neutronium",
+      "has_the_recipe"
+    ]
+  ]
+}

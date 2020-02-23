@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:wrought_iron_polyvinyl_chloride_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_wrought_iron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/wrought_iron"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:wrought_iron_polyvinyl_chloride_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_wrought_iron",
+      "has_the_recipe"
+    ]
+  ]
+}

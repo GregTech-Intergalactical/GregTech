@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_tungstensteel_hammer_to_plate_tungstensteel"
+    ]
+  },
+  "criteria": {
+    "has_ingot_tungstensteel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/tungstensteel"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_tungstensteel_hammer_to_plate_tungstensteel"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_tungstensteel",
+      "has_the_recipe"
+    ]
+  ]
+}

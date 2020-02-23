@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_barite_grind_to_dust_barite"
+    ]
+  },
+  "criteria": {
+    "has_rock_barite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/barite"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_barite_grind_to_dust_barite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_barite",
+      "has_the_recipe"
+    ]
+  ]
+}

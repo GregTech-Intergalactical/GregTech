@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_cooperite_grind_to_dust_small_cooperite"
+    ]
+  },
+  "criteria": {
+    "has_rock_cooperite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/cooperite"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_cooperite_grind_to_dust_small_cooperite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_cooperite",
+      "has_the_recipe"
+    ]
+  ]
+}

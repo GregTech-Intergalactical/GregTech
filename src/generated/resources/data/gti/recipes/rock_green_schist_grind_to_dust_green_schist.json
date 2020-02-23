@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rocks_grind_to_dust",
+  "ingredients": [
+    {
+      "tag": "forge:rocks/green_schist"
+    },
+    {
+      "tag": "forge:rocks/green_schist"
+    },
+    {
+      "tag": "forge:rocks/green_schist"
+    },
+    {
+      "tag": "forge:rocks/green_schist"
+    },
+    {
+      "tag": "forge:rocks/green_schist"
+    },
+    {
+      "tag": "forge:rocks/green_schist"
+    },
+    {
+      "tag": "forge:rocks/green_schist"
+    },
+    {
+      "tag": "forge:rocks/green_schist"
+    },
+    {
+      "tag": "antimatter:mortar"
+    }
+  ],
+  "result": {
+    "item": "gti:dust_green_schist"
+  }
+}

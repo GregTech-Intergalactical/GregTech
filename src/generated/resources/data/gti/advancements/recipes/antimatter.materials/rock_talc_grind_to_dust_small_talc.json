@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_talc_grind_to_dust_small_talc"
+    ]
+  },
+  "criteria": {
+    "has_rock_talc": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/talc"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_talc_grind_to_dust_small_talc"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_talc",
+      "has_the_recipe"
+    ]
+  ]
+}

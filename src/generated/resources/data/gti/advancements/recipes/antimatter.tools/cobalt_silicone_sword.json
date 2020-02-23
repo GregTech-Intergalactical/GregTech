@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:cobalt_silicone_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_cobalt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/cobalt"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:cobalt_silicone_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_cobalt",
+      "has_the_recipe"
+    ]
+  ]
+}

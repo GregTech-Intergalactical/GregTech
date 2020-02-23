@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_tanzanite_grind_to_dust_tanzanite"
+    ]
+  },
+  "criteria": {
+    "has_rock_tanzanite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/tanzanite"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_tanzanite_grind_to_dust_tanzanite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_tanzanite",
+      "has_the_recipe"
+    ]
+  ]
+}

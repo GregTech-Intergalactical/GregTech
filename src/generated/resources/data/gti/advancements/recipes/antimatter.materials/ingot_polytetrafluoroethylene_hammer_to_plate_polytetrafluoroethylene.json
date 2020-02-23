@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_polytetrafluoroethylene_hammer_to_plate_polytetrafluoroethylene"
+    ]
+  },
+  "criteria": {
+    "has_ingot_polytetrafluoroethylene": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/polytetrafluoroethylene"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_polytetrafluoroethylene_hammer_to_plate_polytetrafluoroethylene"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_polytetrafluoroethylene",
+      "has_the_recipe"
+    ]
+  ]
+}

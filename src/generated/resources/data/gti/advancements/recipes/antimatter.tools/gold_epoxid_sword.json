@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:gold_epoxid_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_gold": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/gold"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:gold_epoxid_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_gold",
+      "has_the_recipe"
+    ]
+  ]
+}

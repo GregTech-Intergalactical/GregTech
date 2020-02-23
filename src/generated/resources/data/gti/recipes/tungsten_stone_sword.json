@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ingot_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:ingots/tungsten"
+    },
+    "H": {
+      "tag": "forge:rods/stone"
+    }
+  },
+  "result": {
+    "item": "gti:tungsten_stone_sword"
+  }
+}

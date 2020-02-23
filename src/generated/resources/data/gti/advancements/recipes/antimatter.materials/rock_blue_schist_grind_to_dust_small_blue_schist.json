@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_blue_schist_grind_to_dust_small_blue_schist"
+    ]
+  },
+  "criteria": {
+    "has_rock_blue_schist": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/blue_schist"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_blue_schist_grind_to_dust_small_blue_schist"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_blue_schist",
+      "has_the_recipe"
+    ]
+  ]
+}

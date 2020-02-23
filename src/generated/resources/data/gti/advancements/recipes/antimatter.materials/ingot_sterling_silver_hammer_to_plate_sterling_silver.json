@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_sterling_silver_hammer_to_plate_sterling_silver"
+    ]
+  },
+  "criteria": {
+    "has_ingot_sterling_silver": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/sterling_silver"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_sterling_silver_hammer_to_plate_sterling_silver"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_sterling_silver",
+      "has_the_recipe"
+    ]
+  ]
+}

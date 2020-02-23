@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_rubber_hammer_to_plate_rubber"
+    ]
+  },
+  "criteria": {
+    "has_ingot_rubber": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/rubber"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_rubber_hammer_to_plate_rubber"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_rubber",
+      "has_the_recipe"
+    ]
+  ]
+}
