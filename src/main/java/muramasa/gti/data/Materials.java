@@ -230,7 +230,7 @@ public class Materials {
     public static Material Garnierite = new Material(Ref.ID, "garnierite", 0x32c846, METALLIC).asDust(ORE, ORE_SMALL).add(Nickel, 1, Oxygen, 1);
     public static Material Grossular = new Material(Ref.ID, "grossular", 0xc86400, ROUGH).asDust(ORE, ORE_SMALL).add(Calcium, 3, Aluminium, 2, Silicon, 3, Oxygen, 12);
     public static Material Ilmenite = new Material(Ref.ID, "ilmenite", 0x463732, METALLIC).asDust(ORE).add(Iron, 1, Titanium, 1, Oxygen, 3);
-    public static Material Rutile = new Material(Ref.ID, "rutile", 0xd40d5c, GEM_H).asDust().add(Titanium, 1, Oxygen, 2);
+    public static Material Rutile = new Material(Ref.ID, "rutile", 0xd40d5c, GEM_H).asDust(ORE, ORE_SMALL).add(Titanium, 1, Oxygen, 2);
     public static Material MagnesiumChloride = new Material(Ref.ID, "magnesiumchloride", 0xd40d5c, DULL).asDust().add(Magnesium, 1, Chlorine, 2);
     public static Material Magnesite = new Material(Ref.ID, "magnesite", 0xfafab4, METALLIC).asDust(ORE).add(Magnesium, 1, Carbon, 1, Oxygen, 3);
     public static Material Magnetite = new Material(Ref.ID, "magnetite", 0x1e1e1e, METALLIC).asDust(ORE).add(Iron, 3, Oxygen, 4);
