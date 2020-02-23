@@ -1,12 +1,12 @@
 package muramasa.gti.loaders;
 
-import muramasa.antimatter.Data;
 import muramasa.gti.Ref;
 import muramasa.gti.data.Materials;
 import muramasa.antimatter.materials.IMaterialTag;
 import muramasa.antimatter.materials.Material;
 import muramasa.antimatter.materials.MaterialStack;
 import muramasa.antimatter.recipe.RecipeHelper;
+import muramasa.antimatter.tools.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
@@ -482,7 +482,7 @@ public class MaterialRecipeLoader {
             if (m.has(DUST)) {
                 ItemStack dustTiny = DUST_TINY.get(m, 1);
                 //RecipeHelper.addShapeless(m.getId() + "_rock_to_dust", dust, rock, rock, rock, rock, rock, rock, rock, rock, ToolType.MORTAR.getOreDict());
-                RecipeHelper.addShapeless(m.getId() + "_rock_to_tiny_dust", dustTiny, rock, Data.MORTAR.getTag());
+                RecipeHelper.addShapeless(m.getId() + "_rock_to_tiny_dust", dustTiny, rock/*, TODO? AntimatterToolType.MORTAR.getOreDict()*/);
                 PULVERIZING.RB().ii(rock).io(dustTiny).add(80, 2);
                 HAMMERING.RB().ii(rock).io(dustTiny).add(20, 4);
             }
@@ -624,49 +624,49 @@ public class MaterialRecipeLoader {
 //            RecipeHelper.addBasicShapelessRecipe(INSTANCE.getToolWithStats(SOFTHAMMER, 1, m, Materials.Wood), m.getHeadHammer(1), Materials.Wood.getRod(1));
         }
 
-        /*
         TOOLS.all().forEach(m -> {
             //TODO: Scoop done in the Forestry Registrar
             if (m.has(ROD)) {
                 ItemStack rod = ROD.get(m, 1);
-                RecipeHelper.addShaped("crowbar_" + m.getId(), AntimatterToolType.CROWBAR.get(m), "hDR", "DRD", "RDf", 'D', "dyeBlue", 'R', rod);
-                RecipeHelper.addShaped("screwdriver_" + m.getId(), AntimatterToolType.SCREWDRIVER.get(m), " fR", " Rh", "S  ", 'R', rod, 'S', "stickWood");
+                RecipeHelper.addShaped("crowbar_" + m.getId(), AntimatterToolType.CROWBAR.get(m, null, 1), "hDR", "DRD", "RDf", 'D', "dyeBlue", 'R', rod);
+                RecipeHelper.addShaped("screwdriver_" + m.getId(), AntimatterToolType.SCREWDRIVER.get(m, null, 1), " fR", " Rh", "S  ", 'R', rod, 'S', "stickWood");
                 if (m.has(SCREW)) {
-                    RecipeHelper.addShaped("wire_cutter_" + m.getId(), AntimatterToolType.WIRE_CUTTER.get(m), "PfP", "hPd", "RSR", 'P', PLATE.get(m, 1), 'R', rod, 'S', SCREW.get(m, 1));
+                    RecipeHelper.addShaped("wire_cutter_" + m.getId(), AntimatterToolType.WIRE_CUTTER.get(m, null, 1), "PfP", "hPd", "RSR", 'P', PLATE.get(m, 1), 'R', rod, 'S', SCREW.get(m, 1));
                 }
             }
             if (m.has(INGOT)) {
                 ItemStack main = INGOT.get(m, 1), plate = PLATE.get(m, 1);
-                RecipeHelper.addShaped("sword_" + m.getId(), AntimatterToolType.SWORD.get(m), " M ", "fPh", " S ", 'M', main, 'P', plate, 'S', "stickWood");
-                RecipeHelper.addShaped("pickaxe_" + m.getId(), AntimatterToolType.PICKAXE.get(m), "MPM", "fSh", " S ", 'P', plate, 'M', main, 'S', "stickWood");
-                RecipeHelper.addShaped("shovel_" + m.getId(), AntimatterToolType.SHOVEL.get(m), "fM ", " S ", " S ", 'M', main, 'S', "stickWood");
-                RecipeHelper.addShaped("axe_" + m.getId(), AntimatterToolType.AXE.get(m), "PMh", "PS ", "fS ", 'M', main, 'P', plate, 'S', "stickWood");
-                RecipeHelper.addShaped("hoe_" + m.getId(), AntimatterToolType.HOE.get(m), "MMf", " S ", " S ", 'M', main, 'S', "stickWood");
-                RecipeHelper.addShaped("wrench_" + m.getId(), AntimatterToolType.WRENCH.get(m), "IhI", "III", " I ", 'I', main);
-                RecipeHelper.addShaped("hammer_" + m.getId(), AntimatterToolType.HAMMER.get(m), "II ", "IIS", "II ", 'I', main, 'S', "stickWood");
-                RecipeHelper.addShaped("file_" + m.getId(), AntimatterToolType.FILE.get(m), "P", "P", "S", 'P', plate, 'S', "stickWood");
-                RecipeHelper.addShaped("saw_" + m.getId(), AntimatterToolType.SAW.get(m), "PPP", "fSS", "   ", 'P', plate, 'S', "stickWood");
-                RecipeHelper.addShaped("knife_" + m.getId(), AntimatterToolType.KNIFE.get(m), "fPh", " S ", "   ", 'P', plate, 'S', "stickWood");
+                RecipeHelper.addShaped("sword_" + m.getId(), AntimatterToolType.SWORD.get(m, null, 1), " M ", "fPh", " S ", 'M', main, 'P', plate, 'S', "stickWood");
+                RecipeHelper.addShaped("pickaxe_" + m.getId(), AntimatterToolType.PICKAXE.get(m, null, 1), "MPM", "fSh", " S ", 'P', plate, 'M', main, 'S', "stickWood");
+                RecipeHelper.addShaped("shovel_" + m.getId(), AntimatterToolType.SHOVEL.get(m, null, 1), "fM ", " S ", " S ", 'M', main, 'S', "stickWood");
+                RecipeHelper.addShaped("axe_" + m.getId(), AntimatterToolType.AXE.get(m, null, 1), "PMh", "PS ", "fS ", 'M', main, 'P', plate, 'S', "stickWood");
+                RecipeHelper.addShaped("hoe_" + m.getId(), AntimatterToolType.HOE.get(m, null, 1), "MMf", " S ", " S ", 'M', main, 'S', "stickWood");
+                RecipeHelper.addShaped("wrench_" + m.getId(), AntimatterToolType.WRENCH.get(m, null, 1), "IhI", "III", " I ", 'I', main);
+                RecipeHelper.addShaped("hammer_" + m.getId(), AntimatterToolType.HAMMER.get(m, null, 1), "II ", "IIS", "II ", 'I', main, 'S', "stickWood");
+                RecipeHelper.addShaped("file_" + m.getId(), AntimatterToolType.FILE.get(m, null, 1), "P", "P", "S", 'P', plate, 'S', "stickWood");
+                RecipeHelper.addShaped("saw_" + m.getId(), AntimatterToolType.SAW.get(m, null, 1), "PPP", "fSS", "   ", 'P', plate, 'S', "stickWood");
+                RecipeHelper.addShaped("knife_" + m.getId(), AntimatterToolType.KNIFE.get(m, null, 1), "fPh", " S ", "   ", 'P', plate, 'S', "stickWood");
                 if (!m.has(NOSMASH)) {
-                    RecipeHelper.addShaped("mortar_" + m.getId(), AntimatterToolType.MORTAR.get(m), " M ", "SMS", "SSS", 'M', main, 'S', "stone");
+                    RecipeHelper.addShaped("mortar_" + m.getId(), AntimatterToolType.MORTAR.get(m, null, 1), " M ", "SMS", "SSS", 'M', main, 'S', "stone");
                 }
             }
             else if (m.has(GEM)) {
                 ItemStack main = GEM.get(m, 1);
-                RecipeHelper.addShaped("sword_" + m.getId(), AntimatterToolType.SWORD.get(m), " M ", "fMh", " S ", 'M', main, 'S', "stickWood");
-                RecipeHelper.addShaped("pickaxe_" + m.getId(), AntimatterToolType.PICKAXE.get(m), "MMM", "fSh", " S ", 'M', main, 'S', "stickWood");
-                RecipeHelper.addShaped("shovel_" + m.getId(), AntimatterToolType.SHOVEL.get(m), "fM ", " S ", " S ", 'M', main, 'S', "stickWood");
-                RecipeHelper.addShaped("axe_" + m.getId(), AntimatterToolType.AXE.get(m), "MMh", "MS ", "fS ", 'M', main, 'S', "stickWood");
-                RecipeHelper.addShaped("hoe_" + m.getId(), AntimatterToolType.HOE.get(m), "MMf", " S ", " S ", 'M', main, 'S', "stickWood");
-                RecipeHelper.addShaped("wrench_" + m.getId(), AntimatterToolType.WRENCH.get(m), "IhI", "III", " I ", 'I', main);
-                RecipeHelper.addShaped("hammer_" + m.getId(), AntimatterToolType.HAMMER.get(m), "II ", "IIS", "II ", 'I', main, 'S', "stickWood");
-                RecipeHelper.addShaped("file_" + m.getId(), AntimatterToolType.FILE.get(m), "M", "M", "S", 'M', main, 'S', "stickWood");
-                RecipeHelper.addShaped("saw_" + m.getId(), AntimatterToolType.SAW.get(m), "MMM", "fSS", "   ", 'M', main, 'S', "stickWood");
-                RecipeHelper.addShaped("knife_" + m.getId(), AntimatterToolType.KNIFE.get(m), "fPh", " S ", "   ", 'P', main, 'S', "stickWood");
+                RecipeHelper.addShaped("sword_" + m.getId(), AntimatterToolType.SWORD.get(m, null, 1), " M ", "fMh", " S ", 'M', main, 'S', "stickWood");
+                RecipeHelper.addShaped("pickaxe_" + m.getId(), AntimatterToolType.PICKAXE.get(m, null, 1), "MMM", "fSh", " S ", 'M', main, 'S', "stickWood");
+                RecipeHelper.addShaped("shovel_" + m.getId(), AntimatterToolType.SHOVEL.get(m, null, 1), "fM ", " S ", " S ", 'M', main, 'S', "stickWood");
+                RecipeHelper.addShaped("axe_" + m.getId(), AntimatterToolType.AXE.get(m, null, 1), "MMh", "MS ", "fS ", 'M', main, 'S', "stickWood");
+                RecipeHelper.addShaped("hoe_" + m.getId(), AntimatterToolType.HOE.get(m, null, 1), "MMf", " S ", " S ", 'M', main, 'S', "stickWood");
+                RecipeHelper.addShaped("wrench_" + m.getId(), AntimatterToolType.WRENCH.get(m, null, 1), "IhI", "III", " I ", 'I', main);
+                RecipeHelper.addShaped("hammer_" + m.getId(), AntimatterToolType.HAMMER.get(m, null, 1), "II ", "IIS", "II ", 'I', main, 'S', "stickWood");
+                RecipeHelper.addShaped("file_" + m.getId(), AntimatterToolType.FILE.get(m, null, 1), "M", "M", "S", 'M', main, 'S', "stickWood");
+                RecipeHelper.addShaped("saw_" + m.getId(), AntimatterToolType.SAW.get(m, null, 1), "MMM", "fSS", "   ", 'M', main, 'S', "stickWood");
+                RecipeHelper.addShaped("knife_" + m.getId(), AntimatterToolType.KNIFE.get(m, null, 1), "fPh", " S ", "   ", 'P', main, 'S', "stickWood");
                 if (!m.has(NOSMASH)) {
-                    RecipeHelper.addShaped("mortar_" + m.getId(), AntimatterToolType.MORTAR.get(m), " M ", "SMS", "SSS", 'M', main, 'S', "stone");
+                    RecipeHelper.addShaped("mortar_" + m.getId(), AntimatterToolType.MORTAR.get(m, null, 1), " M ", "SMS", "SSS", 'M', main, 'S', "stone");
                 }
             }
+            /*
             if (m.has(INGOT) && m.has(Plate) && !m.has(RUBBERTOOLS) && m == m.mMacerateInto) {
                 ItemStack aStainlessScrew = Materials.StainlessSteel.getScrew(1), aTitaniumScrew = Materials.TitaniuSCREW.get(m, 1), aTungstensteelScrew = Materials.TungstenSteel.getScrew(1), aStainlessPlate = Materials.StainlessSteel.getPlate(1), aTitaniumPlate = Materials.TitaniuPLATE.get(m, 1), aTungstensteelPlate = Materials.TungstenSteel.getPlate(1), aStainlessSmallGear = Materials.StainlessSteel.getGearS(1), aTitaniumSmallGear = Materials.Titanium.getGearS(1), aTungstensteelSmallGear = Materials.TungstenSteel.getGearS(1), aTitaniumSpring = Materials.TitaniuSPRING.get(m, 1);
                 ItemStack aTempStack, aSteelPlate = Materials.Steel.getPlate(1), aSteelRing = Materials.Steel.getRing(1);
@@ -811,8 +811,7 @@ public class MaterialRecipeLoader {
                 GT_ModHandler.addShapedToolRecipe(m.getHeadScythe(1), "GGG", " f ", "   ", 'G', aGem);
                 GT_ModHandler.addShapedToolRecipe(m.getHeadShovel(1), "fG", 'G', aGem);
                 GT_ModHandler.addShapedToolRecipe(m.getHeadSword(1), " G", "fG", 'G', aGem);
-            }
+            }*/
         });
-         */
     }
 }
