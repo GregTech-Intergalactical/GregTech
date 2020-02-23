@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_coal_grind_to_dust_coal"
+    ]
+  },
+  "criteria": {
+    "has_rock_coal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/coal"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_coal_grind_to_dust_coal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_coal",
+      "has_the_recipe"
+    ]
+  ]
+}

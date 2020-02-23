@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_magnesite_grind_to_dust_small_magnesite"
+    ]
+  },
+  "criteria": {
+    "has_rock_magnesite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/magnesite"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_magnesite_grind_to_dust_small_magnesite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_magnesite",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_gold_grind_to_dust_small_gold"
+    ]
+  },
+  "criteria": {
+    "has_rock_gold": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/gold"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_gold_grind_to_dust_small_gold"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_gold",
+      "has_the_recipe"
+    ]
+  ]
+}

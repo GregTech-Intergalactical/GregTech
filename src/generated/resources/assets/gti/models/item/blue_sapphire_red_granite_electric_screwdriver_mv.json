@@ -1,0 +1,8 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "gti:item/tool/electric_screwdriver",
+    "layer1": "gti:item/tool/overlay/electric_screwdriver_1",
+    "layer2": "gti:item/tool/overlay/electric_screwdriver_2"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_cobalt_brass_hammer_to_plate_cobalt_brass"
+    ]
+  },
+  "criteria": {
+    "has_ingot_cobalt_brass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/cobalt_brass"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_cobalt_brass_hammer_to_plate_cobalt_brass"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_cobalt_brass",
+      "has_the_recipe"
+    ]
+  ]
+}

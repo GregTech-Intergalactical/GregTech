@@ -1,0 +1,8 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "gti:item/tool/buzzsaw",
+    "layer1": "gti:item/tool/overlay/buzzsaw_1",
+    "layer2": "gti:item/tool/overlay/buzzsaw_2"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_palladium_hammer_to_plate_palladium"
+    ]
+  },
+  "criteria": {
+    "has_ingot_palladium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/palladium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_palladium_hammer_to_plate_palladium"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_palladium",
+      "has_the_recipe"
+    ]
+  ]
+}

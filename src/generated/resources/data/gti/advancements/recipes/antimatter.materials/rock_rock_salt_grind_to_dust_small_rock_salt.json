@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_rock_salt_grind_to_dust_small_rock_salt"
+    ]
+  },
+  "criteria": {
+    "has_rock_rock_salt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/rock_salt"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_rock_salt_grind_to_dust_small_rock_salt"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_rock_salt",
+      "has_the_recipe"
+    ]
+  ]
+}

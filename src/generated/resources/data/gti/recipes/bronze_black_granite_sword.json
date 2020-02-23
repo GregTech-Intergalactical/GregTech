@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ingot_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:ingots/bronze"
+    },
+    "H": {
+      "tag": "forge:rods/black_granite"
+    }
+  },
+  "result": {
+    "item": "gti:bronze_black_granite_sword"
+  }
+}

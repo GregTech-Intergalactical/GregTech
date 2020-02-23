@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:bismuth_bronze_polyphenylene_sulfide_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_bismuth_bronze": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/bismuth_bronze"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:bismuth_bronze_polyphenylene_sulfide_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_bismuth_bronze",
+      "has_the_recipe"
+    ]
+  ]
+}

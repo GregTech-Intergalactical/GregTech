@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_osmium_hammer_to_plate_osmium"
+    ]
+  },
+  "criteria": {
+    "has_ingot_osmium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/osmium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_osmium_hammer_to_plate_osmium"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_osmium",
+      "has_the_recipe"
+    ]
+  ]
+}

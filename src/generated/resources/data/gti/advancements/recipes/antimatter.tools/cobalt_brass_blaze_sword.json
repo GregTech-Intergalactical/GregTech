@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:cobalt_brass_blaze_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_cobalt_brass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/cobalt_brass"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:cobalt_brass_blaze_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_cobalt_brass",
+      "has_the_recipe"
+    ]
+  ]
+}

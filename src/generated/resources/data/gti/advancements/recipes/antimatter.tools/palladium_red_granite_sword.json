@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:palladium_red_granite_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_palladium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/palladium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:palladium_red_granite_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_palladium",
+      "has_the_recipe"
+    ]
+  ]
+}

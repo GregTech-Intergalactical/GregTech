@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ingots_hammer_to_plates",
+  "pattern": [
+    "H",
+    "I",
+    "I"
+  ],
+  "key": {
+    "H": {
+      "tag": "antimatter:hammer"
+    },
+    "I": {
+      "tag": "forge:ingots/uranium_235"
+    }
+  },
+  "result": {
+    "item": "gti:plate_uranium_235"
+  }
+}

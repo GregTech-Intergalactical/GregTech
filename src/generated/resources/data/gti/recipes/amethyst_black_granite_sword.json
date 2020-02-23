@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "gem_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:gems/amethyst"
+    },
+    "H": {
+      "tag": "forge:rods/black_granite"
+    }
+  },
+  "result": {
+    "item": "gti:amethyst_black_granite_sword"
+  }
+}

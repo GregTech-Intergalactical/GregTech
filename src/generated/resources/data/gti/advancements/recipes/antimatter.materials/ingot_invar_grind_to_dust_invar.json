@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_invar_grind_to_dust_invar"
+    ]
+  },
+  "criteria": {
+    "has_ingot_invar": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/invar"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_invar_grind_to_dust_invar"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_invar",
+      "has_the_recipe"
+    ]
+  ]
+}

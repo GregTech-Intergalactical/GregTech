@@ -1,0 +1,7 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "gti:item/tool/chainsaw",
+    "layer1": "gti:item/tool/overlay/chainsaw"
+  }
+}

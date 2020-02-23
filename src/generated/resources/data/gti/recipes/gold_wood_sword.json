@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ingot_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:ingots/gold"
+    },
+    "H": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "gti:gold_wood_sword"
+  }
+}

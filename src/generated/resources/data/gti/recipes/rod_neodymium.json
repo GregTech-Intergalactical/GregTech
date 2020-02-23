@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "magnetic_rods",
+  "ingredients": [
+    {
+      "tag": "forge:rods/neodymium"
+    },
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "minecraft:redstone"
+    }
+  ],
+  "result": {
+    "item": "gti:rod_neodymium"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "gem_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:gems/blue_sapphire"
+    },
+    "H": {
+      "tag": "forge:rods/stone"
+    }
+  },
+  "result": {
+    "item": "gti:blue_sapphire_stone_sword"
+  }
+}

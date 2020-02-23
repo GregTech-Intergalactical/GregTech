@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:tritanium_silicone_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_tritanium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/tritanium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:tritanium_silicone_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_tritanium",
+      "has_the_recipe"
+    ]
+  ]
+}

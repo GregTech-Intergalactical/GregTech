@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:molybdenum_plastic_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_molybdenum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/molybdenum"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:molybdenum_plastic_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_molybdenum",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rocks_grind_to_dust",
+  "ingredients": [
+    {
+      "tag": "forge:rocks/molybdenum"
+    },
+    {
+      "tag": "forge:rocks/molybdenum"
+    },
+    {
+      "tag": "forge:rocks/molybdenum"
+    },
+    {
+      "tag": "forge:rocks/molybdenum"
+    },
+    {
+      "tag": "forge:rocks/molybdenum"
+    },
+    {
+      "tag": "forge:rocks/molybdenum"
+    },
+    {
+      "tag": "forge:rocks/molybdenum"
+    },
+    {
+      "tag": "forge:rocks/molybdenum"
+    },
+    {
+      "tag": "antimatter:mortar"
+    }
+  ],
+  "result": {
+    "item": "gti:dust_molybdenum"
+  }
+}

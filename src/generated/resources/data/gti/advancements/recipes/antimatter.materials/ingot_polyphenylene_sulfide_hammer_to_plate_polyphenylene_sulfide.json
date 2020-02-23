@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_polyphenylene_sulfide_hammer_to_plate_polyphenylene_sulfide"
+    ]
+  },
+  "criteria": {
+    "has_ingot_polyphenylene_sulfide": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/polyphenylene_sulfide"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_polyphenylene_sulfide_hammer_to_plate_polyphenylene_sulfide"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_polyphenylene_sulfide",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ingot_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:ingots/cobalt_brass"
+    },
+    "H": {
+      "tag": "forge:rods/rubber"
+    }
+  },
+  "result": {
+    "item": "gti:cobalt_brass_rubber_sword"
+  }
+}

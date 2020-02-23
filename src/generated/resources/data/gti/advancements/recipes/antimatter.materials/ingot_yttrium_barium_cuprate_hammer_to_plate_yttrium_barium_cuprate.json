@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_yttrium_barium_cuprate_hammer_to_plate_yttrium_barium_cuprate"
+    ]
+  },
+  "criteria": {
+    "has_ingot_yttrium_barium_cuprate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/yttrium_barium_cuprate"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_yttrium_barium_cuprate_hammer_to_plate_yttrium_barium_cuprate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_yttrium_barium_cuprate",
+      "has_the_recipe"
+    ]
+  ]
+}

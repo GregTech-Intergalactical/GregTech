@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_uranium_238_grind_to_dust_small_uranium_238"
+    ]
+  },
+  "criteria": {
+    "has_rock_uranium_238": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/uranium_238"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_uranium_238_grind_to_dust_small_uranium_238"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_uranium_238",
+      "has_the_recipe"
+    ]
+  ]
+}

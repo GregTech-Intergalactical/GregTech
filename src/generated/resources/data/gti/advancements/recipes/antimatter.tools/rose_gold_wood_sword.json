@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rose_gold_wood_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_rose_gold": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/rose_gold"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rose_gold_wood_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_rose_gold",
+      "has_the_recipe"
+    ]
+  ]
+}

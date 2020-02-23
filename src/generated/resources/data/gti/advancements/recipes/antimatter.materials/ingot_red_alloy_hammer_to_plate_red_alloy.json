@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_red_alloy_hammer_to_plate_red_alloy"
+    ]
+  },
+  "criteria": {
+    "has_ingot_red_alloy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/red_alloy"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_red_alloy_hammer_to_plate_red_alloy"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_red_alloy",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_hsse_hammer_to_plate_hsse"
+    ]
+  },
+  "criteria": {
+    "has_ingot_hsse": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/hsse"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_hsse_hammer_to_plate_hsse"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_hsse",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_tin_grind_to_dust_small_tin"
+    ]
+  },
+  "criteria": {
+    "has_rock_tin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/tin"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_tin_grind_to_dust_small_tin"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_tin",
+      "has_the_recipe"
+    ]
+  ]
+}

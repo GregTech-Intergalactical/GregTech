@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_bismuth_grind_to_dust_small_bismuth"
+    ]
+  },
+  "criteria": {
+    "has_rock_bismuth": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/bismuth"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_bismuth_grind_to_dust_small_bismuth"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_bismuth",
+      "has_the_recipe"
+    ]
+  ]
+}

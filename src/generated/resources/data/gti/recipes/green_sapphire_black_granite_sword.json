@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "gem_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:gems/green_sapphire"
+    },
+    "H": {
+      "tag": "forge:rods/black_granite"
+    }
+  },
+  "result": {
+    "item": "gti:green_sapphire_black_granite_sword"
+  }
+}

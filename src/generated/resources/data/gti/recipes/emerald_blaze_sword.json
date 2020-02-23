@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "gem_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:gems/emerald"
+    },
+    "H": {
+      "tag": "forge:rods/blaze"
+    }
+  },
+  "result": {
+    "item": "gti:emerald_blaze_sword"
+  }
+}

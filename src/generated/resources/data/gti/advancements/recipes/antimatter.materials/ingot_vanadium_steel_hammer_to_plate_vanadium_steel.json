@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_vanadium_steel_hammer_to_plate_vanadium_steel"
+    ]
+  },
+  "criteria": {
+    "has_ingot_vanadium_steel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/vanadium_steel"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_vanadium_steel_hammer_to_plate_vanadium_steel"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_vanadium_steel",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:naquadah_wood_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_naquadah": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/naquadah"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:naquadah_wood_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_naquadah",
+      "has_the_recipe"
+    ]
+  ]
+}

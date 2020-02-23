@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ingot_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:ingots/aluminium"
+    },
+    "H": {
+      "tag": "forge:rods/blaze"
+    }
+  },
+  "result": {
+    "item": "gti:aluminium_blaze_sword"
+  }
+}

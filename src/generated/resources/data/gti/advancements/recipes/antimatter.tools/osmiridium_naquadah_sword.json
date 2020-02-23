@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:osmiridium_naquadah_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_osmiridium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/osmiridium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:osmiridium_naquadah_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_osmiridium",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "ingots_grind_to_dust",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/antimony"
+    },
+    {
+      "tag": "antimatter:mortar"
+    }
+  ],
+  "result": {
+    "item": "gti:dust_antimony"
+  }
+}

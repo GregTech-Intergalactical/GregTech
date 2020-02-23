@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_beryllium_hammer_to_plate_beryllium"
+    ]
+  },
+  "criteria": {
+    "has_ingot_beryllium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/beryllium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_beryllium_hammer_to_plate_beryllium"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_beryllium",
+      "has_the_recipe"
+    ]
+  ]
+}

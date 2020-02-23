@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_andradite_grind_to_dust_andradite"
+    ]
+  },
+  "criteria": {
+    "has_rock_andradite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/andradite"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_andradite_grind_to_dust_andradite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_andradite",
+      "has_the_recipe"
+    ]
+  ]
+}
