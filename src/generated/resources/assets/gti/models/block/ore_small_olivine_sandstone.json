@@ -1,7 +1,0 @@
-{
-  "parent": "antimatter:block/preset/layered",
-  "textures": {
-    "base": "block/sandstone",
-    "overlay": "gti:material/ruby/ore_small"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gti:material/lapis/dust",
-    "layer1": "gti:material/lapis/dust_overlay"
-  }
-}

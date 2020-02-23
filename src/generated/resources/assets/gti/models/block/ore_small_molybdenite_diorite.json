@@ -1,7 +1,0 @@
-{
-  "parent": "antimatter:block/preset/layered",
-  "textures": {
-    "base": "block/diorite",
-    "overlay": "gti:material/metallic/ore_small"
-  }
-}

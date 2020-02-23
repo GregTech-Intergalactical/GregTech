@@ -1,6 +1,0 @@
-{
-  "parent": "antimatter:block/preset/simple",
-  "textures": {
-    "all": "gti:block/casing/pipe_titanium"
-  }
-}

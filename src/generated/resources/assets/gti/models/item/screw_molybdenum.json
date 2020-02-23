@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gti:material/shiny/screw",
-    "layer1": "gti:material/shiny/screw_overlay"
-  }
-}

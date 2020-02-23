@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gti:material/flint/dust",
-    "layer1": "gti:material/flint/dust_overlay"
-  }
-}

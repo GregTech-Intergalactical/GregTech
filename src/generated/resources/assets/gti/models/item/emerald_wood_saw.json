@@ -1,7 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "gti:item/tool/saw",
-    "layer1": "gti:item/tool/overlay/saw"
-  }
-}

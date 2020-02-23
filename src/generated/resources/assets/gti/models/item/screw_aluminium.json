@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gti:material/dull/screw",
-    "layer1": "gti:material/dull/screw_overlay"
-  }
-}

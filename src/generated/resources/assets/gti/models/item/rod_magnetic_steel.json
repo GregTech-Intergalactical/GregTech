@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gti:material/magnetic/rod",
-    "layer1": "gti:material/magnetic/rod_overlay"
-  }
-}

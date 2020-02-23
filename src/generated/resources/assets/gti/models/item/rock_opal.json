@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gti:material/ruby/rock",
-    "layer1": "gti:material/ruby/rock_overlay"
-  }
-}

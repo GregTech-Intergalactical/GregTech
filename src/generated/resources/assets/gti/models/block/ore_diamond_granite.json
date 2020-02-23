@@ -1,7 +1,0 @@
-{
-  "parent": "antimatter:block/preset/layered",
-  "textures": {
-    "base": "block/granite",
-    "overlay": "gti:material/diamond/ore"
-  }
-}
