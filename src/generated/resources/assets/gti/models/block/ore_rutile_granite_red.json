@@ -1,0 +1,7 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/stone/granite_red",
+    "overlay": "gti:material/gem_h/ore"
+  }
+}
