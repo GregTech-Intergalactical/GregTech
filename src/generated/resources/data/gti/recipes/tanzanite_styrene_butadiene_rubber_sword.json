@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "gem_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:gems/tanzanite"
+    },
+    "H": {
+      "tag": "forge:rods/styrene_butadiene_rubber"
+    }
+  },
+  "result": {
+    "item": "gti:tanzanite_styrene_butadiene_rubber_sword"
+  }
+}

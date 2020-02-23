@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_nickel_grind_to_dust_small_nickel"
+    ]
+  },
+  "criteria": {
+    "has_rock_nickel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/nickel"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_nickel_grind_to_dust_small_nickel"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_nickel",
+      "has_the_recipe"
+    ]
+  ]
+}

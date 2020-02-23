@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "gem_swords",
+  "pattern": [
+    "P",
+    "P",
+    "H"
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:gems/topaz"
+    },
+    "H": {
+      "tag": "forge:rods/polyvinyl_chloride"
+    }
+  },
+  "result": {
+    "item": "gti:topaz_polyvinyl_chloride_sword"
+  }
+}

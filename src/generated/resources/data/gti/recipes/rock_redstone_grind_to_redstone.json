@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rocks_grind_to_dust",
+  "ingredients": [
+    {
+      "tag": "forge:rocks/redstone"
+    },
+    {
+      "tag": "forge:rocks/redstone"
+    },
+    {
+      "tag": "forge:rocks/redstone"
+    },
+    {
+      "tag": "forge:rocks/redstone"
+    },
+    {
+      "tag": "forge:rocks/redstone"
+    },
+    {
+      "tag": "forge:rocks/redstone"
+    },
+    {
+      "tag": "forge:rocks/redstone"
+    },
+    {
+      "tag": "forge:rocks/redstone"
+    },
+    {
+      "tag": "antimatter:mortar"
+    }
+  ],
+  "result": {
+    "item": "minecraft:redstone"
+  }
+}

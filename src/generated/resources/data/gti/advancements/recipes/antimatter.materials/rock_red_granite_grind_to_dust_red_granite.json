@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_red_granite_grind_to_dust_red_granite"
+    ]
+  },
+  "criteria": {
+    "has_rock_red_granite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/red_granite"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_red_granite_grind_to_dust_red_granite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_red_granite",
+      "has_the_recipe"
+    ]
+  ]
+}

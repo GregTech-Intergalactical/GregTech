@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_wulfenite_grind_to_dust_wulfenite"
+    ]
+  },
+  "criteria": {
+    "has_rock_wulfenite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/wulfenite"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_wulfenite_grind_to_dust_wulfenite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_wulfenite",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_bauxite_grind_to_dust_bauxite"
+    ]
+  },
+  "criteria": {
+    "has_rock_bauxite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/bauxite"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_bauxite_grind_to_dust_bauxite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_bauxite",
+      "has_the_recipe"
+    ]
+  ]
+}

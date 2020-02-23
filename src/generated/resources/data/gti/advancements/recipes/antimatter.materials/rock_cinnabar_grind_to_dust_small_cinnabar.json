@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_cinnabar_grind_to_dust_small_cinnabar"
+    ]
+  },
+  "criteria": {
+    "has_rock_cinnabar": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/cinnabar"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_cinnabar_grind_to_dust_small_cinnabar"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_cinnabar",
+      "has_the_recipe"
+    ]
+  ]
+}

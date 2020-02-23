@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_phosphate_grind_to_dust_small_phosphate"
+    ]
+  },
+  "criteria": {
+    "has_rock_phosphate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/phosphate"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_phosphate_grind_to_dust_small_phosphate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_phosphate",
+      "has_the_recipe"
+    ]
+  ]
+}

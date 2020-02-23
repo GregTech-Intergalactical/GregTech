@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "group": "magnetic_rods",
   "ingredients": [
     {
       "tag": "forge:rods/iron"

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:duranium_naquadah_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_duranium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/duranium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:duranium_naquadah_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_duranium",
+      "has_the_recipe"
+    ]
+  ]
+}

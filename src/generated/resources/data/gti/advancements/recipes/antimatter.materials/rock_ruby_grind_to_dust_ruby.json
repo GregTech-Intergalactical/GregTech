@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_ruby_grind_to_dust_ruby"
+    ]
+  },
+  "criteria": {
+    "has_rock_ruby": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/ruby"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_ruby_grind_to_dust_ruby"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_ruby",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:platinum_obsidian_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_platinum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/platinum"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:platinum_obsidian_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_platinum",
+      "has_the_recipe"
+    ]
+  ]
+}

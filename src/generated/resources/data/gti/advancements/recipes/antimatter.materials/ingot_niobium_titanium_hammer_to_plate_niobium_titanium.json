@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:ingot_niobium_titanium_hammer_to_plate_niobium_titanium"
+    ]
+  },
+  "criteria": {
+    "has_ingot_niobium_titanium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/niobium_titanium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:ingot_niobium_titanium_hammer_to_plate_niobium_titanium"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_niobium_titanium",
+      "has_the_recipe"
+    ]
+  ]
+}

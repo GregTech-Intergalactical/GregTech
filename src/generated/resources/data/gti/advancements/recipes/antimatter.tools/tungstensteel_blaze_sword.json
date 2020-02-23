@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:tungstensteel_blaze_sword"
+    ]
+  },
+  "criteria": {
+    "has_ingot_tungstensteel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/tungstensteel"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:tungstensteel_blaze_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot_tungstensteel",
+      "has_the_recipe"
+    ]
+  ]
+}

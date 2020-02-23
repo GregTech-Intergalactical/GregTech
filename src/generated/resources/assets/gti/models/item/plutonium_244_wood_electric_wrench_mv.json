@@ -1,0 +1,7 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "gti:item/tool/electric_wrench",
+    "layer1": "gti:item/tool/overlay/electric_wrench"
+  }
+}

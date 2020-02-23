@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gti:rock_marble_grind_to_dust_marble"
+    ]
+  },
+  "criteria": {
+    "has_rock_marble": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rocks/marble"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gti:rock_marble_grind_to_dust_marble"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rock_marble",
+      "has_the_recipe"
+    ]
+  ]
+}
