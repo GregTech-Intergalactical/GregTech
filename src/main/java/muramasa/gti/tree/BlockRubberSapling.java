@@ -12,6 +12,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 
 public class BlockRubberSapling extends SaplingBlock implements IGrowable, IAntimatterObject, IModelProvider, ITextureProvider {
 
@@ -47,7 +48,7 @@ public class BlockRubberSapling extends SaplingBlock implements IGrowable, IAnti
     }
 
     @Override
-    public void onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
-        prov.getBuilder(item).parent(prov.getExistingFile(new ResourceLocation("item/generated"))).texture("layer0", getTextures()[0]);
+    public ItemModelBuilder onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
+        return prov.getBuilder(item).parent(prov.getExistingFile(new ResourceLocation("item/generated"))).texture("layer0", getTextures()[0]);
     }
 }
