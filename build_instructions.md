@@ -12,7 +12,7 @@
 
 - Import `build.gradle` in the GregTech folder with IntelliJ (or File -> New -> Project from Existing Sources), then run the `genIntellijRuns` gradle task to generate run configurations.
 
-- Run `build.antimatterapi runDataIdea` in IntelliJ, setting `Use classpath of module` to `Gregtecch.antimatterapi.main`
+- Run `build.antimatterapi runDataIdea` in IntelliJ, setting `Use classpath of module` to `gregtech.antimatterapi.main`
 
 - Run `runDataIdea` to generate GregTech item/block .json files
 
