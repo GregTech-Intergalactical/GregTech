@@ -124,7 +124,7 @@ public class GregTech implements IAntimatterRegistrar {
                 AntimatterAPI.registerCoverStack(Data.PumpUHV.get(1), new CoverPump(Tier.UHV));
                 AntimatterAPI.registerCoverStack(Data.PumpUEU.get(1), new CoverPump(Tier.UEU));
 
-                AntimatterAPI.registerCoverStack(Data.Solar.get(1), new CoverPump(Tier.ULV));
+                AntimatterAPI.registerCoverStack(Data.Solar.get(1), new CoverSolar(Tier.ULV));
                 AntimatterAPI.registerCoverStack(Data.SolarULV.get(1), new CoverSolar(Tier.ULV));
                 AntimatterAPI.registerCoverStack(Data.SolarLV.get(1), new CoverSolar(Tier.LV));
                 AntimatterAPI.registerCoverStack(Data.SolarMV.get(1), new CoverSolar(Tier.MV));
