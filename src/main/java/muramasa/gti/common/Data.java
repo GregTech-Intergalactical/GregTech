@@ -19,6 +19,7 @@ import muramasa.gti.block.BlockTurbineCasing;
 import muramasa.gti.cover.CoverConveyor;
 import muramasa.gti.cover.CoverPlate;
 import muramasa.gti.cover.CoverPump;
+import muramasa.gti.cover.CoverSolar;
 import muramasa.gti.data.Materials;
 import muramasa.gti.tree.BlockRubberLeaves;
 import muramasa.gti.tree.BlockRubberLog;
@@ -37,8 +38,9 @@ public class Data {
     }
 
     public static final Cover COVER_PLATE = new CoverPlate();
-    public static final Cover COVER_CONVEYOR = new CoverConveyor(Tier.LV);
-    public static final Cover COVER_PUMP = new CoverPump(Tier.LV);
+    public static final Cover COVER_CONVEYOR = new CoverConveyor(Tier.ULV);
+    public static final Cover COVER_PUMP = new CoverPump(Tier.ULV);
+    public static final Cover COVER_SOLAR = new CoverSolar(Tier.ULV);
 
     public static ItemBasic StickyResin = new ItemBasic(Ref.ID, "sticky_resin");
     public static ItemBasic ComputerMonitor = new ItemBasic(Ref.ID, "computer_monitor", "Can be placed on machines as a cover");
@@ -58,51 +60,123 @@ public class Data {
     public static ItemBasic QuantumStat = new ItemBasic(Ref.ID, "quantum_star", "Improved Nether Star");
     public static ItemBasic GraviStar = new ItemBasic(Ref.ID, "gravi_star", "Ultimate Nether Star");
 
+    public static ItemBasic MotorULV = new ItemBasic(Ref.ID, "motor_ulv");
     public static ItemBasic MotorLV = new ItemBasic(Ref.ID, "motor_lv");
     public static ItemBasic MotorMV = new ItemBasic(Ref.ID, "motor_mv");
     public static ItemBasic MotorHV = new ItemBasic(Ref.ID, "motor_hv");
     public static ItemBasic MotorEV = new ItemBasic(Ref.ID, "motor_ev");
     public static ItemBasic MotorIV = new ItemBasic(Ref.ID, "motor_iv");
+    public static ItemBasic MotorLUV = new ItemBasic(Ref.ID, "motor_luv");
+    public static ItemBasic MotorZPM = new ItemBasic(Ref.ID, "motor_zpm");
+    public static ItemBasic MotorUV = new ItemBasic(Ref.ID, "motor_uv");
+    public static ItemBasic MotorUHV = new ItemBasic(Ref.ID, "motor_uhv");
+    public static ItemBasic MotorUEU = new ItemBasic(Ref.ID, "motor_ueu");
+
+    public static ItemBasic PumpULV = new ItemBasic(Ref.ID, "pump_ulv", "160 L/s (as Cover)");
     public static ItemBasic PumpLV = new ItemBasic(Ref.ID, "pump_lv", "640 L/s (as Cover)");
     public static ItemBasic PumpMV = new ItemBasic(Ref.ID, "pump_mv", "2,560 L/s (as Cover)");
     public static ItemBasic PumpHV = new ItemBasic(Ref.ID, "pump_hv", "10,240 L/s (as Cover)");
     public static ItemBasic PumpEV = new ItemBasic(Ref.ID, "pump_ev", "40,960 L/s (as Cover)");
     public static ItemBasic PumpIV = new ItemBasic(Ref.ID, "pump_iv", "163,840 L/s (as Cover)");
+    public static ItemBasic PumpLUV = new ItemBasic(Ref.ID, "pump_luv", "655,360 L/s (as Cover)");
+    public static ItemBasic PumpZPM = new ItemBasic(Ref.ID, "pump_zpm", "2,621,440 L/s (as Cover)");
+    public static ItemBasic PumpUV = new ItemBasic(Ref.ID, "pump_uv", "10,485,760 L/s (as Cover)");
+    public static ItemBasic PumpUHV = new ItemBasic(Ref.ID, "pump_uhv", "41,943,040 L/s (as Cover)");
+    public static ItemBasic PumpUEU = new ItemBasic(Ref.ID, "pump_ueu", "167,772,160 L/s (as Cover)");
+
+    public static ItemBasic Solar = new ItemBasic(Ref.ID, "solar", "1 EU/t (as Cover)");
+    public static ItemBasic SolarULV = new ItemBasic(Ref.ID, "solar_ulv", "8 EU/t (as Cover)");
+    public static ItemBasic SolarLV = new ItemBasic(Ref.ID, "solar_lv", "32 EU/t (as Cover)");
+    public static ItemBasic SolarMV = new ItemBasic(Ref.ID, "solar_mv", "128 EU/t (as Cover)");
+    public static ItemBasic SolarHV = new ItemBasic(Ref.ID, "solar_hv", "512 EU/t (as Cover)");
+    public static ItemBasic SolarEV = new ItemBasic(Ref.ID, "solar_ev", "2048 EU/t (as Cover)");
+    public static ItemBasic SolarIV = new ItemBasic(Ref.ID, "solar_iv", "8192 EU/t (as Cover)");
+    public static ItemBasic SolarLUV = new ItemBasic(Ref.ID, "solar_luv", "32,768 EU/t (as Cover)");
+    public static ItemBasic SolarZPM = new ItemBasic(Ref.ID, "solar_zpm", "131,072 EU/t (as Cover)");
+    public static ItemBasic SolarUV = new ItemBasic(Ref.ID, "solar_uv", "524,288 EU/t (as Cover)");
+    public static ItemBasic SolarUHV = new ItemBasic(Ref.ID, "solar_uhv", "2,097,152 EU/t (as Cover)");
+    public static ItemBasic SolarUEU = new ItemBasic(Ref.ID, "solar_ueu", "8,388,608 EU/t (as Cover)");
+
+    public static ItemBasic FluidRegulatorULV = new ItemBasic(Ref.ID, "fluid_regulator_ulv", "Configurable up to 160 L/s (as Cover)");
     public static ItemBasic FluidRegulatorLV = new ItemBasic(Ref.ID, "fluid_regulator_lv", "Configurable up to 640 L/s (as Cover)");
     public static ItemBasic FluidRegulatorMV = new ItemBasic(Ref.ID, "fluid_regulator_mv", "Configurable up to 2,560 L/s (as Cover)");
     public static ItemBasic FluidRegulatorHV = new ItemBasic(Ref.ID, "fluid_regulator_hv", "Configurable up to 10,240 L/s (as Cover)");
     public static ItemBasic FluidRegulatorEV = new ItemBasic(Ref.ID, "fluid_regulator_ev", "Configurable up to 40,960 L/s (as Cover)");
     public static ItemBasic FluidRegulatorIV = new ItemBasic(Ref.ID, "fluid_regulator_iv", "Configurable up to 163,840 L/s (as Cover)");
+    public static ItemBasic FluidRegulatorLUV = new ItemBasic(Ref.ID, "fluid_regulator_luv", "Configurable up to 655,360 L/s (as Cover)");
+    public static ItemBasic FluidRegulatorZPM = new ItemBasic(Ref.ID, "fluid_regulator_zpm", "Configurable up to 2,621,440 L/s (as Cover)");
+    public static ItemBasic FluidRegulatorUV = new ItemBasic(Ref.ID, "fluid_regulator_uv", "Configurable up to 10,485,760 L/s (as Cover)");
+    public static ItemBasic FluidRegulatorUHV = new ItemBasic(Ref.ID, "fluid_regulator_uhv", "Configurable up to 41,943,040 L/s (as Cover)");
+    public static ItemBasic FluidRegulatorUEU = new ItemBasic(Ref.ID, "fluid_regulator_ueu", "Configurable up to 167,772,160 L/s (as Cover)");
+
+    public static ItemBasic ConveyorULV = new ItemBasic(Ref.ID, "conveyor_ulv", "1 Stack every 80s (as Cover)");
     public static ItemBasic ConveyorLV = new ItemBasic(Ref.ID, "conveyor_lv", "1 Stack every 20s (as Cover)");
     public static ItemBasic ConveyorMV = new ItemBasic(Ref.ID, "conveyor_mv", "1 Stack every 5s (as Cover)");
     public static ItemBasic ConveyorHV = new ItemBasic(Ref.ID, "conveyor_hv", "1 Stack every 1s (as Cover)");
     public static ItemBasic ConveyorEV = new ItemBasic(Ref.ID, "conveyor_ev", "1 Stack every 0.5s (as Cover)");
     public static ItemBasic ConveyorIV = new ItemBasic(Ref.ID, "conveyor_iv", "1 Stack every 0.05s (as Cover)");
+    public static ItemBasic ConveyorLUV = new ItemBasic(Ref.ID, "conveyor_luv", "1 Stack every 0.05s (as Cover)");
+    public static ItemBasic ConveyorZPM = new ItemBasic(Ref.ID, "conveyor_zpm", "4 Stack every 0.05s (as Cover)");
+    public static ItemBasic ConveyorUV = new ItemBasic(Ref.ID, "conveyor_uv", "8 Stack every 0.05s (as Cover)");
+    public static ItemBasic ConveyorUHV = new ItemBasic(Ref.ID, "conveyor_uhv", "16 Stack every 0.05s (as Cover)");
+    public static ItemBasic ConveyorUEU = new ItemBasic(Ref.ID, "conveyor_ueu", "32 Stack every 0.05s (as Cover)");
+
+    public static ItemBasic PistonULV = new ItemBasic(Ref.ID, "piston_ulv");
     public static ItemBasic PistonLV = new ItemBasic(Ref.ID, "piston_lv");
     public static ItemBasic PistonMV = new ItemBasic(Ref.ID, "piston_mv");
     public static ItemBasic PistonHV = new ItemBasic(Ref.ID, "piston_hv");
     public static ItemBasic PistonEV = new ItemBasic(Ref.ID, "piston_ev");
     public static ItemBasic PistonIV = new ItemBasic(Ref.ID, "piston_iv");
+    public static ItemBasic PistonLUV = new ItemBasic(Ref.ID, "piston_luv");
+    public static ItemBasic PistonZPM = new ItemBasic(Ref.ID, "piston_zpm");
+    public static ItemBasic PistonUV = new ItemBasic(Ref.ID, "piston_uv");
+    public static ItemBasic PistonUHV = new ItemBasic(Ref.ID, "piston_uhv");
+    public static ItemBasic PistonUEU = new ItemBasic(Ref.ID, "piston_ueu");
+
+    public static ItemBasic RobotArmULV = new ItemBasic(Ref.ID, "robot_arm_ulv", "Insets into specific Slots (as Cover)");
     public static ItemBasic RobotArmLV = new ItemBasic(Ref.ID, "robot_arm_lv", "Insets into specific Slots (as Cover)");
     public static ItemBasic RobotArmMV = new ItemBasic(Ref.ID, "robot_arm_mv", "Insets into specific Slots (as Cover)");
     public static ItemBasic RobotArmHV = new ItemBasic(Ref.ID, "robot_arm_hv", "Insets into specific Slots (as Cover)");
     public static ItemBasic RobotArmEV = new ItemBasic(Ref.ID, "robot_arm_ev", "Insets into specific Slots (as Cover)");
     public static ItemBasic RobotArmIV = new ItemBasic(Ref.ID, "robot_arm_iv", "Insets into specific Slots (as Cover)");
+    public static ItemBasic RobotArmLUV = new ItemBasic(Ref.ID, "robot_arm_luv", "Insets into specific Slots (as Cover)");
+    public static ItemBasic RobotArmZPM = new ItemBasic(Ref.ID, "robot_arm_zpm", "Insets into specific Slots (as Cover)");
+    public static ItemBasic RobotArmUV = new ItemBasic(Ref.ID, "robot_arm_uv", "Insets into specific Slots (as Cover)");
+    public static ItemBasic RobotArmUHV = new ItemBasic(Ref.ID, "robot_arm_uhv", "Insets into specific Slots (as Cover)");
+    public static ItemBasic RobotArmUEU = new ItemBasic(Ref.ID, "robot_arm_ueu", "Insets into specific Slots (as Cover)");
+
     public static ItemBasic FieldGenLV = new ItemBasic(Ref.ID, "field_gen_lv");
     public static ItemBasic FieldGenMV = new ItemBasic(Ref.ID, "field_gen_mv");
     public static ItemBasic FieldGenHV = new ItemBasic(Ref.ID, "field_gen_hv");
     public static ItemBasic FieldGenEV = new ItemBasic(Ref.ID, "field_gen_ev");
     public static ItemBasic FieldGenIV = new ItemBasic(Ref.ID, "field_gen_iv");
+    public static ItemBasic FieldGenLUV = new ItemBasic(Ref.ID, "field_gen_luv");
+    public static ItemBasic FieldGenZPM = new ItemBasic(Ref.ID, "field_gen_zpm");
+    public static ItemBasic FieldGenUV = new ItemBasic(Ref.ID, "field_gen_uv");
+    public static ItemBasic FieldGenUHV = new ItemBasic(Ref.ID, "field_gen_uhv");
+    public static ItemBasic FieldGenUEU = new ItemBasic(Ref.ID, "field_gen_iv");
+
     public static ItemBasic EmitterLV = new ItemBasic(Ref.ID, "emitter_lv");
     public static ItemBasic EmitterMV = new ItemBasic(Ref.ID, "emitter_mv");
     public static ItemBasic EmitterHV = new ItemBasic(Ref.ID, "emitter_hv");
     public static ItemBasic EmitterEV = new ItemBasic(Ref.ID, "emitter_ev");
     public static ItemBasic EmitterIV = new ItemBasic(Ref.ID, "emitter_iv");
+    public static ItemBasic EmitterLUV = new ItemBasic(Ref.ID, "emitter_luv");
+    public static ItemBasic EmitterZPM = new ItemBasic(Ref.ID, "emitter_zpm");
+    public static ItemBasic EmitterUV = new ItemBasic(Ref.ID, "emitter_uv");
+    public static ItemBasic EmitterUHV = new ItemBasic(Ref.ID, "emitter_uhv");
+    public static ItemBasic EmitterUEU = new ItemBasic(Ref.ID, "emitter_ueu");
+
     public static ItemBasic SensorLV = new ItemBasic(Ref.ID, "sensor_lv");
     public static ItemBasic SensorMV = new ItemBasic(Ref.ID, "sensor_mv");
     public static ItemBasic SensorHV = new ItemBasic(Ref.ID, "sensor_hv");
     public static ItemBasic SensorEV = new ItemBasic(Ref.ID, "sensor_ev");
     public static ItemBasic SensorIV = new ItemBasic(Ref.ID, "sensor_iv");
+    public static ItemBasic SensorLUV = new ItemBasic(Ref.ID, "sensor_luv");
+    public static ItemBasic SensorZPM = new ItemBasic(Ref.ID, "sensor_zpm");
+    public static ItemBasic SensorUV = new ItemBasic(Ref.ID, "sensor_uv");
+    public static ItemBasic SensorUHV = new ItemBasic(Ref.ID, "sensor_uhv");
+    public static ItemBasic SensorUEU = new ItemBasic(Ref.ID, "sensor_ueu");
 
     public static ItemBasic NandChip = new ItemBasic(Ref.ID, "nand_chip", "A very simple circuit");
     public static ItemBasic AdvCircuitParts = new ItemBasic(Ref.ID, "adv_circuit_parts", "Used for making Advanced Circuits");
@@ -111,6 +185,7 @@ public class Data {
     public static ItemBasic EtchedWiringEV = new ItemBasic(Ref.ID, "etched_wiring_ev", "Circuit board parts");
     public static ItemBasic EngravedCrystalChip = new ItemBasic(Ref.ID, "engraved_crystal_chip", "Needed for Circuits");
     public static ItemBasic EngravedLapotronChip = new ItemBasic(Ref.ID, "engraved_lapotron_chip", "Needed for Circuits");
+    public static ItemBasic CurcuitVacuumTube = new ItemBasic(Ref.ID, "circuit_vacuum_tube", "A very simple vacuum tube");
     public static ItemBasic CircuitBoardEmpty = new ItemBasic(Ref.ID, "circuit_board_empty", "A board Part");
     public static ItemBasic CircuitBoardBasic = new ItemBasic(Ref.ID, "circuit_board_basic", "A basic Board");
     public static ItemBasic CircuitBoardAdv = new ItemBasic(Ref.ID, "circuit_board_adv", "An advanced Board");

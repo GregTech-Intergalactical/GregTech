@@ -14,6 +14,7 @@ import muramasa.gti.client.Models;
 import muramasa.gti.common.Data;
 import muramasa.gti.cover.CoverConveyor;
 import muramasa.gti.cover.CoverPump;
+import muramasa.gti.cover.CoverSolar;
 import muramasa.gti.data.*;
 import muramasa.gti.data.advancement.ProgressionAdvancements;
 import muramasa.gti.datagen.GregTechBlockTagProvider;
@@ -97,17 +98,45 @@ public class GregTech implements IAntimatterRegistrar {
                 AntimatterAPI.registerCover(Data.COVER_PLATE);
                 AntimatterAPI.registerCover(Data.COVER_CONVEYOR);
                 AntimatterAPI.registerCover(Data.COVER_PUMP);
+                AntimatterAPI.registerCover(Data.COVER_SOLAR);
 
+                AntimatterAPI.registerCoverStack(Data.ConveyorULV.get(1), new CoverConveyor(Tier.ULV));
                 AntimatterAPI.registerCoverStack(Data.ConveyorLV.get(1), new CoverConveyor(Tier.LV));
                 AntimatterAPI.registerCoverStack(Data.ConveyorMV.get(1), new CoverConveyor(Tier.MV));
                 AntimatterAPI.registerCoverStack(Data.ConveyorHV.get(1), new CoverConveyor(Tier.HV));
                 AntimatterAPI.registerCoverStack(Data.ConveyorEV.get(1), new CoverConveyor(Tier.EV));
                 AntimatterAPI.registerCoverStack(Data.ConveyorIV.get(1), new CoverConveyor(Tier.IV));
+                AntimatterAPI.registerCoverStack(Data.ConveyorLUV.get(1), new CoverConveyor(Tier.LUV));
+                AntimatterAPI.registerCoverStack(Data.ConveyorZPM.get(1), new CoverConveyor(Tier.ZPM));
+                AntimatterAPI.registerCoverStack(Data.ConveyorUV.get(1), new CoverConveyor(Tier.UV));
+                AntimatterAPI.registerCoverStack(Data.ConveyorUHV.get(1), new CoverConveyor(Tier.UHV));
+                AntimatterAPI.registerCoverStack(Data.ConveyorUEU.get(1), new CoverConveyor(Tier.UEU));
+
+                AntimatterAPI.registerCoverStack(Data.PumpULV.get(1), new CoverPump(Tier.ULV));
                 AntimatterAPI.registerCoverStack(Data.PumpLV.get(1), new CoverPump(Tier.LV));
                 AntimatterAPI.registerCoverStack(Data.PumpMV.get(1), new CoverPump(Tier.MV));
                 AntimatterAPI.registerCoverStack(Data.PumpHV.get(1), new CoverPump(Tier.HV));
                 AntimatterAPI.registerCoverStack(Data.PumpEV.get(1), new CoverPump(Tier.EV));
                 AntimatterAPI.registerCoverStack(Data.PumpIV.get(1), new CoverPump(Tier.IV));
+                AntimatterAPI.registerCoverStack(Data.PumpLUV.get(1), new CoverPump(Tier.LUV));
+                AntimatterAPI.registerCoverStack(Data.PumpZPM.get(1), new CoverPump(Tier.ZPM));
+                AntimatterAPI.registerCoverStack(Data.PumpUV.get(1), new CoverPump(Tier.UV));
+                AntimatterAPI.registerCoverStack(Data.PumpUHV.get(1), new CoverPump(Tier.UHV));
+                AntimatterAPI.registerCoverStack(Data.PumpUEU.get(1), new CoverPump(Tier.UEU));
+
+                AntimatterAPI.registerCoverStack(Data.Solar.get(1), new CoverPump(Tier.ULV));
+                AntimatterAPI.registerCoverStack(Data.SolarULV.get(1), new CoverSolar(Tier.ULV));
+                AntimatterAPI.registerCoverStack(Data.SolarLV.get(1), new CoverSolar(Tier.LV));
+                AntimatterAPI.registerCoverStack(Data.SolarMV.get(1), new CoverSolar(Tier.MV));
+                AntimatterAPI.registerCoverStack(Data.SolarHV.get(1), new CoverSolar(Tier.HV));
+                AntimatterAPI.registerCoverStack(Data.SolarEV.get(1), new CoverSolar(Tier.EV));
+                AntimatterAPI.registerCoverStack(Data.SolarIV.get(1), new CoverSolar(Tier.IV));
+                AntimatterAPI.registerCoverStack(Data.SolarLUV.get(1), new CoverSolar(Tier.LUV));
+                AntimatterAPI.registerCoverStack(Data.SolarZPM.get(1), new CoverSolar(Tier.ZPM));
+                AntimatterAPI.registerCoverStack(Data.SolarUV.get(1), new CoverSolar(Tier.UV));
+                AntimatterAPI.registerCoverStack(Data.SolarUHV.get(1), new CoverSolar(Tier.UHV));
+                AntimatterAPI.registerCoverStack(Data.SolarUEU.get(1), new CoverSolar(Tier.UEU));
+
                 MaterialType.PLATE.all().forEach(m -> AntimatterAPI.registerCoverStack(MaterialType.PLATE.get(m, 1), Data.COVER_PLATE));
                 break;
             case RECIPE:
