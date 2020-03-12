@@ -133,15 +133,16 @@ dependencies {
     if (local_dev_dependancies.toBoolean()) {
         compile project(":antimatterapi")
 
-        compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
-        runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+        //compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
+        //runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
     } else {
-        compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
-        runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+        //compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
+        //runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
     }
 }
 
 jar {
+    zip64 true
     manifest {
         attributes([
             "Specification-Title": "gti",
