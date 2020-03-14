@@ -1,10 +1,26 @@
 package muramasa.gti.data;
 
+import muramasa.antimatter.materials.TextureSet;
 import muramasa.antimatter.texture.ITextureHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gti.Ref;
 
 public class Textures {
+
+    public static TextureSet DULL = new TextureSet(Ref.ID, "dull");
+    public static TextureSet METALLIC = new TextureSet(Ref.ID, "metallic");
+    public static TextureSet SHINY = new TextureSet(Ref.ID, "shiny");
+    public static TextureSet ROUGH = new TextureSet(Ref.ID, "rough");
+    public static TextureSet MAGNETIC = new TextureSet(Ref.ID, "magnetic");
+    public static TextureSet DIAMOND = new TextureSet(Ref.ID, "diamond");
+    public static TextureSet RUBY = new TextureSet(Ref.ID, "ruby");
+    public static TextureSet LAPIS = new TextureSet(Ref.ID, "lapis");
+    public static TextureSet GEM_H = new TextureSet(Ref.ID, "gem_h");
+    public static TextureSet GEM_V = new TextureSet(Ref.ID, "gem_v");
+    public static TextureSet QUARTZ = new TextureSet(Ref.ID, "quartz");
+    public static TextureSet FINE = new TextureSet(Ref.ID, "fine");
+    public static TextureSet FLINT = new TextureSet(Ref.ID, "flint");
+    public static TextureSet LIGNITE = new TextureSet(Ref.ID, "lignite");
 
     public static final ITextureHandler BOILER_HANDLER = (m, t) -> new Texture[] {
         new Texture(Ref.ID, "block/machine/base/" + t.getId()),
