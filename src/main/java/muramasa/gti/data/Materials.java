@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTier;
 import net.minecraft.item.Items;
 
-import static com.google.common.collect.ImmutableMap.builder;
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.materials.Element.*;
 import static muramasa.antimatter.materials.MaterialTag.*;
