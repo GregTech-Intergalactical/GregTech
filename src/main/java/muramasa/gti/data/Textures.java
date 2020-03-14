@@ -7,7 +7,6 @@ import muramasa.gti.Ref;
 
 public class Textures {
 
-    public static TextureSet NONE = new TextureSet(Ref.ID, "none");
     public static TextureSet DULL = new TextureSet(Ref.ID, "dull");
     public static TextureSet METALLIC = new TextureSet(Ref.ID, "metallic");
     public static TextureSet SHINY = new TextureSet(Ref.ID, "shiny");
