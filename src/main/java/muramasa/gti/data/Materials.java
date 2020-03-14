@@ -1,6 +1,5 @@
 package muramasa.gti.data;
 
-import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Configs;
 import muramasa.antimatter.fluid.AntimatterFluid;
@@ -17,7 +16,7 @@ import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.materials.Element.*;
 import static muramasa.antimatter.materials.MaterialTag.*;
 import static muramasa.antimatter.materials.MaterialType.*;
-import static muramasa.antimatter.materials.TextureSet.*;
+import static muramasa.antimatter.materials.TextureSet.NONE;
 import static muramasa.gti.data.Textures.*;
 import static net.minecraft.item.ItemTier.GOLD;
 import static net.minecraft.item.ItemTier.IRON;
@@ -278,7 +277,7 @@ public class Materials {
     public static Material Blaze = new Material(Ref.ID, "blaze", 0xffc800, NONE).asDust().addHandleStat(-10, -0.5F, of(Enchantments.FIRE_ASPECT, 1)).mats(of(Sulfur, 1, DarkAsh, 1/*, Magic, 1*/));
     public static Material Flint = new Material(Ref.ID, "flint", 0x002040, FLINT).asDust(ROCK).addTools(0.0F, 2.0F, 48, 1, of(Enchantments.FIRE_ASPECT, 1)).mats(of(SiliconDioxide, 1));
     public static Material PotassiumFeldspar = new Material(Ref.ID, "potassium_feldspar", 0x782828, FINE).asDust().mats(of(Potassium, 1, Aluminium, 1, Silicon, 3, Oxygen, 8));
-    public static Material Biotite = new Material(Ref.ID, "biotite", 0x141e14, METALLIC).asDust().mats(new ImmutableMap.Builder<Material, Integer>().put(Potassium, 1).put(Magnesium, 3).put(Aluminium, 3).put(Fluorine, 2).put(Silicon, 3).put(Oxygen, 10).build());
+    public static Material Biotite = new Material(Ref.ID, "biotite", 0x141e14, METALLIC).asDust().mats(b -> b.put(Potassium, 1).put(Magnesium, 3).put(Aluminium, 3).put(Fluorine, 2).put(Silicon, 3).put(Oxygen, 10));
     public static Material VanadiumMagnetite = new Material(Ref.ID, "vanadium_magnetite", 0x23233c, METALLIC).asDust(ORE).mats(of(Magnetite, 1, Vanadium, 1));
     public static Material Bastnasite = new Material(Ref.ID, "bastnasite", 0xc86e2d, FINE).asDust(ORE).mats(of(Cerium, 1, Carbon, 1, Fluorine, 1, Oxygen, 3));
     public static Material Pentlandite = new Material(Ref.ID, "pentlandite", 0xa59605, DULL).asDust(ORE, ORE_SMALL).mats(of(Nickel, 9, Sulfur, 8));
@@ -286,7 +285,7 @@ public class Materials {
     public static Material Tantalite = new Material(Ref.ID, "tantalite", 0x915028, METALLIC).asDust(ORE).mats(of(Manganese, 1, Tantalum, 2, Oxygen, 6));
     public static Material Lepidolite = new Material(Ref.ID, "lepidolite", 0xf0328c, FINE).asDust(ORE).mats(of(Potassium, 1, Lithium, 3, Aluminium, 4, Fluorine, 2, Oxygen, 10)); //TODO: Ore Gen
     public static Material Glauconite = new Material(Ref.ID, "glauconite", 0x82b43c, DULL).asDust(ORE).mats(of(Potassium, 1, Magnesium, 2, Aluminium, 4, Hydrogen, 2, Oxygen, 12)); //TODO: Ore Gen
-    public static Material Bentonite = new Material(Ref.ID, "bentonite", 0xf5d7d2, ROUGH).asDust(ORE).mats(new ImmutableMap.Builder<Material, Integer>().put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36).build()); //TODO: Ore Gen
+    public static Material Bentonite = new Material(Ref.ID, "bentonite", 0xf5d7d2, ROUGH).asDust(ORE).mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)); //TODO: Ore Gen
     public static Material Pitchblende = new Material(Ref.ID, "pitchblende", 0xc8d200, DULL).asDust(ORE).mats(of(Uraninite, 3, Thorium, 1, Lead, 1));
     public static Material Malachite = new Material(Ref.ID, "malachite", 0x055f05, DULL).asDust(ORE).mats(of(Copper, 2, Carbon, 1, Hydrogen, 2, Oxygen, 5));
     public static Material Barite = new Material(Ref.ID, "barite", 0xe6ebff, DULL).asDust(ORE).mats(of(Barium, 1, Sulfur, 1, Oxygen, 4));
