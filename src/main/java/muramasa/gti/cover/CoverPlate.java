@@ -8,7 +8,6 @@ import muramasa.antimatter.materials.Material;
 import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.materials.TextureSet;
 import muramasa.antimatter.texture.Texture;
-import muramasa.gti.Ref;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
@@ -58,7 +57,7 @@ public class CoverPlate extends CoverMaterial {
         ArrayList<Texture> textures = new ArrayList<>();
         for (TextureSet set : AntimatterAPI.all(TextureSet.class)) {
             //TODO fix domain
-            textures.addAll(Arrays.asList(set.getTextures(Ref.ID, MaterialType.BLOCK)));
+            textures.addAll(Arrays.asList(set.getTextures(MaterialType.BLOCK)));
         }
         return textures.toArray(new Texture[0]);
     }
