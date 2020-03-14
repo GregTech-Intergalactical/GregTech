@@ -4,4 +4,5 @@
 </div>
 <h1 align="center">GregTech Intergalactical</h1>
 <h3 align="center">The <i>Approved</i> Continuation, Rewrite and Re-envisioning of GregTech 5</h3>
-<a href="./build_instructions.md">Building Instructions</a>
+<br></br>
+<h4 align="center"><a href="./build_instructions.md">Building Instructions</a></h4>
