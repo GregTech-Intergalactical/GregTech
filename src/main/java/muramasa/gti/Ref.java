@@ -9,4 +9,5 @@ public class Ref {
 
     /** Config Values **/
     public static boolean mixedOreYieldsTwoThirdsPureOre = false; //TODO 5U remnant, determine if needed
+    public static boolean sulfurTorch = true;  //TODO: move to config, this is a placeholder testing thingy atm
 }

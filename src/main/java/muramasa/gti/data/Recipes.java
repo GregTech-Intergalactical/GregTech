@@ -1,5 +1,6 @@
 package muramasa.gti.data;
 
+import muramasa.antimatter.recipe.condition.ConfigCondition;
 import muramasa.antimatter.registration.RegistrationHelper;
 import muramasa.gti.Ref;
 import muramasa.gti.common.Data;
@@ -10,6 +11,8 @@ import net.minecraft.item.Items;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
+
 import java.util.function.Consumer;
 
 import static muramasa.antimatter.materials.MaterialTag.GRINDABLE;
@@ -27,6 +30,12 @@ public class Recipes extends RecipeProvider {
 
     @Override
     public void registerRecipes(Consumer<IFinishedRecipe> consumer) {
+
+        ConditionalRecipe.builder().addCondition(new ConfigCondition(Ref.class, "sulfurTorch")).addRecipe(ShapedRecipeBuilder.shapedRecipe(Blocks.TORCH, 6)
+                .key('D', getForgeItemTag("dusts/sulfur")).key('S', Tags.Items.RODS_WOODEN)
+                .patternLine("D")
+                .patternLine("S").addCriterion("has_sulfur_dust", this.hasItem(getForgeItemTag("dusts/sulfur")))::build).build(consumer, Ref.ID, "sulfur_torch");  // Wow thanks Forge
+
         ShapedRecipeBuilder.shapedRecipe(Blocks.HOPPER).key('C', Blocks.CHEST).key('I', getForgeItemTag("plates/iron")).key('W', WRENCH.getTag())
                 .patternLine("IWI")
                 .patternLine("ICI")
@@ -37,9 +46,9 @@ public class Recipes extends RecipeProvider {
                 .patternLine("ZIZ")
                 .patternLine("ZZZ").addCriterion("has_iron_plate", this.hasItem(getForgeItemTag("plates/iron"))).build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(Blocks.TORCH, 6).key('D', getForgeItemTag("dusts/sulfur")).key('S', Tags.Items.RODS_WOODEN)
-                .patternLine("D")
-                .patternLine("S").addCriterion("has_sulfur_dust", this.hasItem(getForgeItemTag("dusts/sulfur"))).build(consumer, Ref.ID + ":sulfur_torch");
+        // ShapedRecipeBuilder.shapedRecipe(Blocks.TORCH, 6).key('D', getForgeItemTag("dusts/sulfur")).key('S', Tags.Items.RODS_WOODEN)
+                // .patternLine("D")
+                // .patternLine("S").addCriterion("has_sulfur_dust", this.hasItem(getForgeItemTag("dusts/sulfur"))).build(consumer, Ref.ID + ":sulfur_torch");
 
         ShapedRecipeBuilder.shapedRecipe(GEAR.get(Wood)).key('S', ItemTags.PLANKS).key('P', Tags.Items.RODS_WOODEN)
                 .patternLine("SPS")
