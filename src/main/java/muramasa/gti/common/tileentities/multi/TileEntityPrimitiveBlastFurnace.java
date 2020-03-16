@@ -10,9 +10,9 @@ public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine
     public boolean onStructureFormed() {
         int3 controller = new int3(getPos(), getFacing());
         controller.back(1);
-        getWorld().setBlockState(controller.asBP(), Blocks.LAVA.getDefaultState(), 3);
+        getWorld().setBlockState(controller, Blocks.LAVA.getDefaultState(), 3);
         controller.up(1);
-        getWorld().setBlockState(controller.asBP(), Blocks.LAVA.getDefaultState(), 3);
+        getWorld().setBlockState(controller, Blocks.LAVA.getDefaultState(), 3);
         return true;
     }
 }
