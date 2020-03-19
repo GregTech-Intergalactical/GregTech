@@ -1,9 +1,8 @@
 package muramasa.gti;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.client.AntimatterModelManager;
 import muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider;
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.machines.Tier;
 import muramasa.antimatter.materials.MaterialType;
@@ -58,8 +57,7 @@ public class GregTech implements IAntimatterRegistrar {
     public static void onDataGather(GatherDataEvent e) {
         DataGenerator gen = e.getGenerator();
         if (e.includeClient()) {
-            gen.addProvider(new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", gen));
-            gen.addProvider(new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", gen));
+            AntimatterModelManager.onProviderInit(Ref.ID, e.getGenerator());
         }
         if (e.includeServer()) {
             gen.addProvider(new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));

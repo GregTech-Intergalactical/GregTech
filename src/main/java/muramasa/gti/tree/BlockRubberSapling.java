@@ -12,7 +12,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
 
@@ -52,13 +51,12 @@ public class BlockRubberSapling extends SaplingBlock implements IGrowable, IAnti
     }
 
     @Override
-    public ItemModelBuilder onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
-        return prov.getBuilder(item).parent(prov.getExistingFile(new ResourceLocation("item/generated"))).texture("layer0", getTextures()[0]);
+    public void onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
+        prov.getBuilder(item).parent(prov.getExistingFile(new ResourceLocation("item/generated"))).texture("layer0", getTextures()[0]);
     }
 
     @Override
     public void func_226942_a_(ServerWorld world, BlockPos pos, BlockState state, Random random) {
-        if (RubberTreeWorldGen.getValidBiomes().test(world.getBiome(pos)))
-            super.func_226942_a_(world, pos, state, random);
+        if (RubberTreeWorldGen.getValidBiomes().test(world.getBiome(pos))) super.func_226942_a_(world, pos, state, random);
     }
 }

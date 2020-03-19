@@ -1,5 +1,9 @@
 package muramasa.gti.proxy;
 
+import muramasa.antimatter.client.AntimatterModelManager;
+import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
+import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
+import muramasa.gti.Ref;
 import muramasa.gti.common.Data;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -11,7 +15,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class ClientHandler {
 
     public static void init() {
-
+        AntimatterModelManager.addProvider(Ref.ID, g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
+        AntimatterModelManager.addProvider(Ref.ID, g -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", g));
     }
 
     @SubscribeEvent
