@@ -4,7 +4,7 @@ import muramasa.antimatter.client.AntimatterModelManager;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
 import muramasa.gti.Ref;
-import muramasa.gti.common.Data;
+import muramasa.gti.data.Data;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

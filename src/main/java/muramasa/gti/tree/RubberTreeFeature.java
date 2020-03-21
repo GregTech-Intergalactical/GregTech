@@ -10,8 +10,8 @@ import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import java.util.Random;
 import java.util.Set;
 
-import static muramasa.gti.common.Data.RUBBER_LEAVES;
-import static muramasa.gti.common.Data.RUBBER_LOG;
+import static muramasa.gti.data.Data.RUBBER_LEAVES;
+import static muramasa.gti.data.Data.RUBBER_LOG;
 
 public class RubberTreeFeature extends AbstractTreeFeature<TreeFeatureConfig> {
     public RubberTreeFeature() {

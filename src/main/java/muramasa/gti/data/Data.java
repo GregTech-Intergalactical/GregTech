@@ -1,4 +1,4 @@
-package muramasa.gti.common;
+package muramasa.gti.data;
 
 import muramasa.antimatter.Configs;
 import muramasa.antimatter.blocks.BlockCasing;
@@ -19,7 +19,6 @@ import muramasa.gti.block.BlockTurbineCasing;
 import muramasa.gti.cover.CoverConveyor;
 import muramasa.gti.cover.CoverPlate;
 import muramasa.gti.cover.CoverPump;
-import muramasa.gti.data.Materials;
 import muramasa.gti.tree.BlockRubberLeaves;
 import muramasa.gti.tree.BlockRubberLog;
 import muramasa.gti.tree.BlockRubberSapling;

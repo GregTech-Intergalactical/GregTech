@@ -7,7 +7,7 @@ import muramasa.antimatter.structure.BlockStateElement;
 import muramasa.antimatter.structure.StructureBuilder;
 import net.minecraft.block.Blocks;
 
-import static muramasa.gti.common.Data.*;
+import static muramasa.gti.data.Data.*;
 import static muramasa.gti.data.Machines.*;
 
 public class Structures {

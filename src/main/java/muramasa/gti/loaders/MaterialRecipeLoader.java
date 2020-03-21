@@ -17,7 +17,7 @@ import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.materials.MaterialTag.*;
 import static muramasa.antimatter.materials.MaterialType.*;
 import static muramasa.antimatter.recipe.RecipeTag.IGNORE_NBT;
-import static muramasa.gti.common.Data.*;
+import static muramasa.gti.data.Data.*;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.*;
 

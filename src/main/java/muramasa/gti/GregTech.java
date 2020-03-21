@@ -10,7 +10,7 @@ import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.RegistrationHelper;
 import muramasa.gti.data.Models;
-import muramasa.gti.common.Data;
+import muramasa.gti.data.Data;
 import muramasa.gti.cover.CoverConveyor;
 import muramasa.gti.cover.CoverPump;
 import muramasa.gti.data.*;
