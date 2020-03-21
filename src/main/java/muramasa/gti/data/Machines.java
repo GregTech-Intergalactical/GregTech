@@ -6,7 +6,7 @@ import muramasa.antimatter.machines.types.MultiMachine;
 import muramasa.antimatter.machines.types.TankMachine;
 import muramasa.antimatter.tileentities.TileEntitySteamMachine;
 import muramasa.gti.Ref;
-import muramasa.gti.common.tileentities.multi.*;
+import muramasa.gti.tile.multi.*;
 
 import static muramasa.antimatter.machines.MachineFlag.*;
 import static muramasa.antimatter.machines.Tier.*;

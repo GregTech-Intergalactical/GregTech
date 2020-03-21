@@ -5,7 +5,7 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.blocks.BlockCasing;
 import muramasa.antimatter.client.ModelConfig;
 import muramasa.antimatter.tileentities.TileEntityMachine;
-import muramasa.gti.common.tileentities.multi.TileEntityLargeTurbine;
+import muramasa.gti.tile.multi.TileEntityLargeTurbine;
 import net.minecraft.block.BlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;

@@ -1,6 +1,6 @@
 package muramasa.gti.tree;
 
-import muramasa.gti.common.Data;
+import muramasa.gti.data.Data;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.trees.Tree;
@@ -10,7 +10,6 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 
 import java.util.Random;

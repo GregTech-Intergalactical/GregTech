@@ -2,7 +2,7 @@ package muramasa.gti.datagen;
 
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.util.Utils;
-import muramasa.gti.common.Data;
+import muramasa.gti.data.Data;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
 

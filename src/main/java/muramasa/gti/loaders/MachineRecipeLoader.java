@@ -2,7 +2,7 @@ package muramasa.gti.loaders;
 
 import muramasa.antimatter.materials.MaterialType;
 import muramasa.antimatter.recipe.RecipeBuilder;
-import muramasa.gti.common.Data;
+import muramasa.gti.data.Data;
 import net.minecraft.item.ItemStack;
 
 import static muramasa.antimatter.materials.MaterialType.*;

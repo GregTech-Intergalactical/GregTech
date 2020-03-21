@@ -2,7 +2,7 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.client.AntimatterModelManager;
 
-import static muramasa.gti.common.Data.*;
+import static muramasa.gti.data.Data.*;
 
 public class Models {
 
