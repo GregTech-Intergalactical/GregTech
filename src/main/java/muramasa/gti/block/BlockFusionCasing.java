@@ -1,6 +1,6 @@
 package muramasa.gti.block;
 
-import muramasa.antimatter.blocks.BlockCasing;
+import muramasa.antimatter.block.BlockCasing;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;

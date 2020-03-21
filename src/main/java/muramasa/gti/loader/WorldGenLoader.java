@@ -1,7 +1,7 @@
-package muramasa.gti.loaders;
+package muramasa.gti.loader;
 
 import muramasa.antimatter.Configs;
-import muramasa.antimatter.materials.MaterialType;
+import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.worldgen.StoneLayerOre;
 import muramasa.antimatter.worldgen.object.WorldGenOreSmall;
 import muramasa.antimatter.worldgen.object.WorldGenStoneLayer;

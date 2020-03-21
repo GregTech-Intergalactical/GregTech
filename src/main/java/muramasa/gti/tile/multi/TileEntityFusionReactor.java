@@ -1,6 +1,6 @@
 package muramasa.gti.tile.multi;
 
-import muramasa.antimatter.tileentities.multi.TileEntityMultiMachine;
+import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 
 public class TileEntityFusionReactor extends TileEntityMultiMachine {
 

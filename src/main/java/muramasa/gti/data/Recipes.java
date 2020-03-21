@@ -14,8 +14,8 @@ import net.minecraftforge.common.crafting.ConditionalRecipe;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.materials.MaterialTag.GRINDABLE;
-import static muramasa.antimatter.materials.MaterialType.*;
+import static muramasa.antimatter.material.MaterialTag.GRINDABLE;
+import static muramasa.antimatter.material.MaterialType.*;
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.util.Utils.getForgeItemTag;
 import static muramasa.gti.data.Data.*;

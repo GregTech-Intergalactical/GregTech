@@ -1,15 +1,15 @@
-package muramasa.gti.loaders;
+package muramasa.gti.loader;
 
-import muramasa.antimatter.materials.MaterialType;
+import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.gti.data.Data;
 import net.minecraft.item.ItemStack;
 
-import static muramasa.antimatter.materials.MaterialType.*;
+import static muramasa.antimatter.material.MaterialType.*;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.*;
-import static muramasa.antimatter.materials.MaterialTag.NOBBF;
-import static muramasa.antimatter.materials.MaterialTag.NOSMELT;
+import static muramasa.antimatter.material.MaterialTag.NOBBF;
+import static muramasa.antimatter.material.MaterialTag.NOSMELT;
 
 public class MachineRecipeLoader {
 

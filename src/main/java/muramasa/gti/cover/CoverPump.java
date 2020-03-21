@@ -1,7 +1,7 @@
 package muramasa.gti.cover;
 
 import muramasa.antimatter.cover.Cover;
-import muramasa.antimatter.machines.Tier;
+import muramasa.antimatter.machine.Tier;
 import muramasa.gti.data.Data;
 import net.minecraft.item.ItemStack;
 

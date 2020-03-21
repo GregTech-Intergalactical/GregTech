@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import java.util.function.Consumer;
 
 import static muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider.*;
-import static muramasa.antimatter.materials.MaterialType.*;
+import static muramasa.antimatter.material.MaterialType.*;
 import static muramasa.antimatter.util.Utils.getForgeItemTag;
 import static muramasa.gti.data.Materials.*;
 

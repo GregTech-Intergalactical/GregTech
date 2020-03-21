@@ -1,15 +1,15 @@
 package muramasa.gti.data;
 
-import muramasa.antimatter.machines.types.BasicMachine;
-import muramasa.antimatter.machines.types.HatchMachine;
-import muramasa.antimatter.machines.types.MultiMachine;
-import muramasa.antimatter.machines.types.TankMachine;
-import muramasa.antimatter.tileentities.TileEntitySteamMachine;
+import muramasa.antimatter.machine.types.BasicMachine;
+import muramasa.antimatter.machine.types.HatchMachine;
+import muramasa.antimatter.machine.types.MultiMachine;
+import muramasa.antimatter.machine.types.TankMachine;
+import muramasa.antimatter.tile.TileEntitySteamMachine;
 import muramasa.gti.Ref;
 import muramasa.gti.tile.multi.*;
 
-import static muramasa.antimatter.machines.MachineFlag.*;
-import static muramasa.antimatter.machines.Tier.*;
+import static muramasa.antimatter.machine.MachineFlag.*;
+import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gti.data.RecipeMaps.*;
 
 public class Machines {

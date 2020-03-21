@@ -1,8 +1,8 @@
-package muramasa.gti.loaders;
+package muramasa.gti.loader;
 
-import muramasa.antimatter.materials.IMaterialTag;
-import muramasa.antimatter.materials.Material;
-import muramasa.antimatter.materials.MaterialStack;
+import muramasa.antimatter.material.IMaterialTag;
+import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.RecipeHelper;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
@@ -14,8 +14,8 @@ import net.minecraftforge.fluids.FluidStack;
 import java.util.ArrayList;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.materials.MaterialTag.*;
-import static muramasa.antimatter.materials.MaterialType.*;
+import static muramasa.antimatter.material.MaterialTag.*;
+import static muramasa.antimatter.material.MaterialType.*;
 import static muramasa.antimatter.recipe.RecipeTag.IGNORE_NBT;
 import static muramasa.gti.data.Data.*;
 import static muramasa.gti.data.Materials.*;

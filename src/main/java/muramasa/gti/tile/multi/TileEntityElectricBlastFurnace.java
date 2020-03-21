@@ -1,8 +1,8 @@
 package muramasa.gti.tile.multi;
 
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.blocks.BlockCoil;
-import muramasa.antimatter.tileentities.multi.TileEntityMultiMachine;
+import muramasa.antimatter.block.BlockCoil;
+import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
 
 public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine {
