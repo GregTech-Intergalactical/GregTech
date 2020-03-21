@@ -1,4 +1,4 @@
-package muramasa.gti.data.advancement;
+package muramasa.gti.datagen;
 
 import muramasa.antimatter.advancement.trigger.TagSensitiveInventoryChangedTrigger;
 import muramasa.gti.Ref;
