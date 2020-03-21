@@ -1,7 +1,7 @@
 package muramasa.gti.tile.multi;
 
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.tileentities.multi.TileEntityMultiMachine;
+import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
 
 public class TileEntityVacuumFreezer extends TileEntityMultiMachine {

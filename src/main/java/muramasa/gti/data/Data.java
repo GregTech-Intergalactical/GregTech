@@ -1,15 +1,15 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.Configs;
-import muramasa.antimatter.blocks.BlockCasing;
-import muramasa.antimatter.blocks.BlockCasingMachine;
-import muramasa.antimatter.blocks.BlockCoil;
-import muramasa.antimatter.blocks.pipe.BlockCable.BlockCableBuilder;
-import muramasa.antimatter.blocks.pipe.BlockFluidPipe.BlockFluidPipeBuilder;
-import muramasa.antimatter.blocks.pipe.BlockItemPipe.BlockItemPipeBuilder;
+import muramasa.antimatter.block.BlockCasing;
+import muramasa.antimatter.block.BlockCasingMachine;
+import muramasa.antimatter.block.BlockCoil;
+import muramasa.antimatter.pipe.BlockCable.BlockCableBuilder;
+import muramasa.antimatter.pipe.BlockFluidPipe.BlockFluidPipeBuilder;
+import muramasa.antimatter.pipe.BlockItemPipe.BlockItemPipeBuilder;
 import muramasa.antimatter.cover.Cover;
-import muramasa.antimatter.items.ItemBasic;
-import muramasa.antimatter.machines.Tier;
+import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.texture.Texture;

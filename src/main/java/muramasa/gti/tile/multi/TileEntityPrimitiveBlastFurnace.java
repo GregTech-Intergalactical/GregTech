@@ -1,6 +1,6 @@
 package muramasa.gti.tile.multi;
 
-import muramasa.antimatter.tileentities.multi.TileEntityBasicMultiMachine;
+import muramasa.antimatter.tile.multi.TileEntityBasicMultiMachine;
 import muramasa.antimatter.util.int3;
 import net.minecraft.block.Blocks;
 
