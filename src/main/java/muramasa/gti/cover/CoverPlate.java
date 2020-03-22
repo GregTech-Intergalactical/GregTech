@@ -3,10 +3,10 @@ package muramasa.gti.cover;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.cover.Cover;
 import muramasa.antimatter.cover.CoverMaterial;
-import muramasa.antimatter.items.MaterialItem;
-import muramasa.antimatter.materials.Material;
-import muramasa.antimatter.materials.MaterialType;
-import muramasa.antimatter.materials.TextureSet;
+import muramasa.antimatter.material.MaterialItem;
+import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialType;
+import muramasa.antimatter.material.TextureSet;
 import muramasa.antimatter.texture.Texture;
 import net.minecraft.item.ItemStack;
 

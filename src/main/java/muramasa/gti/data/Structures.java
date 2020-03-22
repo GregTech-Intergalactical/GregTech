@@ -1,13 +1,13 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.blocks.BlockCoil;
-import muramasa.antimatter.machines.Tier;
+import muramasa.antimatter.block.BlockCoil;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.BlockStateElement;
 import muramasa.antimatter.structure.StructureBuilder;
 import net.minecraft.block.Blocks;
 
-import static muramasa.gti.common.Data.*;
+import static muramasa.gti.data.Data.*;
 import static muramasa.gti.data.Machines.*;
 
 public class Structures {
