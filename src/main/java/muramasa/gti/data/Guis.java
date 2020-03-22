@@ -3,12 +3,12 @@ package muramasa.gti.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.integration.jei.renderer.IInfoRenderer;
-import muramasa.antimatter.machines.Tier;
+import muramasa.antimatter.machine.Tier;
 import muramasa.gti.Ref;
 import net.minecraft.util.ResourceLocation;
 
 import static muramasa.antimatter.gui.SlotType.*;
-import static muramasa.antimatter.machines.Tier.*;
+import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gti.data.Machines.*;
 
 public class Guis {

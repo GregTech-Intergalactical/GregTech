@@ -9,7 +9,6 @@ import net.minecraft.world.gen.GenerationSettings;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
@@ -24,8 +23,8 @@ import java.util.function.Predicate;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static muramasa.gti.common.Data.RUBBER_LEAVES;
-import static muramasa.gti.common.Data.RUBBER_SAPLING;
+import static muramasa.gti.data.Data.RUBBER_LEAVES;
+import static muramasa.gti.data.Data.RUBBER_SAPLING;
 
 public class RubberTreeWorldGen { //  extends WorldGenBase<RubberTreeWorldGen> {
     final static TreeFeatureConfig RUBBER_TREE_CONFIG_SWAMP =

@@ -1,25 +1,24 @@
 package muramasa.gti;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.client.AntimatterModelManager;
 import muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider;
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
-import muramasa.antimatter.machines.Tier;
-import muramasa.antimatter.materials.MaterialType;
+import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.RegistrationHelper;
-import muramasa.gti.client.Models;
-import muramasa.gti.common.Data;
+import muramasa.gti.data.Models;
+import muramasa.gti.data.Data;
 import muramasa.gti.cover.CoverConveyor;
 import muramasa.gti.cover.CoverPump;
 import muramasa.gti.data.*;
-import muramasa.gti.data.advancement.ProgressionAdvancements;
+import muramasa.gti.datagen.ProgressionAdvancements;
 import muramasa.gti.datagen.GregTechBlockTagProvider;
-import muramasa.gti.loaders.MachineRecipeLoader;
-import muramasa.gti.loaders.MaterialRecipeLoader;
-import muramasa.gti.loaders.WorldGenLoader;
+import muramasa.gti.loader.MachineRecipeLoader;
+import muramasa.gti.loader.MaterialRecipeLoader;
+import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.proxy.ClientHandler;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.api.distmarker.Dist;
@@ -58,8 +57,7 @@ public class GregTech implements IAntimatterRegistrar {
     public static void onDataGather(GatherDataEvent e) {
         DataGenerator gen = e.getGenerator();
         if (e.includeClient()) {
-            gen.addProvider(new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", gen));
-            gen.addProvider(new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", gen));
+            AntimatterModelManager.onProviderInit(Ref.ID, e.getGenerator());
         }
         if (e.includeServer()) {
             gen.addProvider(new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
