@@ -1,6 +1,6 @@
 package muramasa.gti.data;
 
-import muramasa.antimatter.materials.TextureSet;
+import muramasa.antimatter.material.TextureSet;
 import muramasa.antimatter.texture.ITextureHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gti.Ref;

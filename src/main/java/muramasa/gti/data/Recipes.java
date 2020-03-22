@@ -3,7 +3,6 @@ package muramasa.gti.data;
 import muramasa.antimatter.recipe.condition.ConfigCondition;
 import muramasa.antimatter.registration.RegistrationHelper;
 import muramasa.gti.Ref;
-import muramasa.gti.common.Data;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
@@ -15,11 +14,11 @@ import net.minecraftforge.common.crafting.ConditionalRecipe;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.materials.MaterialTag.GRINDABLE;
-import static muramasa.antimatter.materials.MaterialType.*;
+import static muramasa.antimatter.material.MaterialTag.GRINDABLE;
+import static muramasa.antimatter.material.MaterialType.*;
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.util.Utils.getForgeItemTag;
-import static muramasa.gti.common.Data.*;
+import static muramasa.gti.data.Data.*;
 import static muramasa.gti.data.Materials.*;
 
 public class Recipes extends RecipeProvider {
