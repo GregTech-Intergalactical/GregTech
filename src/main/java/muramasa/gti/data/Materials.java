@@ -325,8 +325,8 @@ public class Materials {
     public static Material EnderPearl = new Material(Ref.ID, "enderpearl", 0x6cdcc8, SHINY).asGemBasic(false).mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5/*, Magic, 6*/));
     public static Material EnderEye = new Material(Ref.ID, "endereye", 0xa0fae6, SHINY).asGemBasic(true, ROD, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
     public static Material Phosphorus = new Material(Ref.ID, "phosphorus", 0xffff00, FLINT).asGemBasic(false, ORE).mats(of(Calcium, 3, Phosphate, 2));
-    public static Material GarnetRed = new Material(Ref.ID, "red_garnet", 0xc85050, RUBY).asGemBasic(true, ORE, ORE_SMALL).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
-    public static Material GarnetYellow = new Material(Ref.ID, "yellow_garnet", 0xc8c850, RUBY).asGemBasic(true, ORE, ORE_SMALL).mats(of(Andradite, 5, Grossular, 8, Uvarovite, 3));
+    public static Material RedGarnet = new Material(Ref.ID, "red_garnet", 0xc85050, RUBY).asGemBasic(true, ORE, ORE_SMALL).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
+    public static Material YellowGarnet = new Material(Ref.ID, "yellow_garnet", 0xc8c850, RUBY).asGemBasic(true, ORE, ORE_SMALL).mats(of(Andradite, 5, Grossular, 8, Uvarovite, 3));
     //public static Material Monazite = new Material(Ref.ID, "monazite", 0x324632, DIAMOND).asGemBasic(false, ORE).addComposition(of(RareEarth, 1, Phosphate, 1));
 
     /** **/
@@ -550,7 +550,7 @@ public class Materials {
 //        HSSS.setEnchantmentForTools(Enchantment.sharpness, 5);
 //        Lava.setTemperatureDamage(3.0F);
         Chalcopyrite.addByProduct(Pyrite, Cobalt, Cadmium, Gold);
-        Sphalerite.addByProduct(GarnetYellow, Cadmium, Gallium, Zinc);
+        Sphalerite.addByProduct(YellowGarnet, Cadmium, Gallium, Zinc);
         Glauconite.addByProduct(Sodium, Aluminium, Iron);
         Bentonite.addByProduct(Aluminium, Calcium, Magnesium);
         Uraninite.addByProduct(Uranium, Thorium, Uranium235);
@@ -560,8 +560,8 @@ public class Materials {
         Pyrite.addByProduct(Sulfur, Phosphorus, Iron);
         Copper.addByProduct(Cobalt, Gold, Nickel);
         Nickel.addByProduct(Cobalt, Platinum, Iron);
-        GarnetRed.addByProduct(Spessartine, Pyrope, Almandine);
-        GarnetYellow.addByProduct(Andradite, Grossular, Uvarovite);
+        RedGarnet.addByProduct(Spessartine, Pyrope, Almandine);
+        YellowGarnet.addByProduct(Andradite, Grossular, Uvarovite);
         Cooperite.addByProduct(Palladium, Nickel, Iridium);
         Cinnabar.addByProduct(Redstone, Sulfur, Glowstone);
         Tantalite.addByProduct(Manganese, Niobium, Tantalum);
@@ -573,7 +573,7 @@ public class Materials {
         Redstone.addByProduct(Cinnabar, RareEarth, Glowstone);
         Malachite.addByProduct(Copper, BrownLimonite, Calcite);
         YellowLimonite.addByProduct(Nickel, BrownLimonite, Cobalt);
-        Andradite.addByProduct(GarnetYellow, Iron, Boron);
+        Andradite.addByProduct(YellowGarnet, Iron, Boron);
         Quartzite.addByProduct(Barite);
         BrownLimonite.addByProduct(Malachite, YellowLimonite);
         Neodymium.addByProduct(RareEarth);
@@ -605,14 +605,14 @@ public class Materials {
         Basalt.addByProduct(Olivine, DarkAsh);
         VanadiumMagnetite.addByProduct(Magnetite, Vanadium);
         Spodumene.addByProduct(Aluminium, Lithium);
-        Ruby.addByProduct(Chrome, GarnetRed);
+        Ruby.addByProduct(Chrome, RedGarnet);
         Phosphorus.addByProduct(Phosphate);
         Iridium.addByProduct(Platinum, Osmium);
-        Pyrope.addByProduct(GarnetRed, Magnesium);
-        Almandine.addByProduct(GarnetRed, Aluminium);
-        Spessartine.addByProduct(GarnetRed, Manganese);
-        Grossular.addByProduct(GarnetYellow, Calcium);
-        Uvarovite.addByProduct(GarnetYellow, Chrome);
+        Pyrope.addByProduct(RedGarnet, Magnesium);
+        Almandine.addByProduct(RedGarnet, Aluminium);
+        Spessartine.addByProduct(RedGarnet, Manganese);
+        Grossular.addByProduct(YellowGarnet, Calcium);
+        Uvarovite.addByProduct(YellowGarnet, Chrome);
         Calcite.addByProduct(Andradite, Malachite);
         NaquadahEnriched.addByProduct(Naquadah, Naquadria);
         Naquadah.addByProduct(NaquadahEnriched);
