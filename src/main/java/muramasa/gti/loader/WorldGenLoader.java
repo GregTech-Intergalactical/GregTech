@@ -205,8 +205,8 @@ public class WorldGenLoader {
         new WorldGenOreSmall("sulfur_overworld", 5, 15, 8, Sulfur, OVERWORLD, MARS);
 
         //TODO replace with GarnetSand?
-        new WorldGenOreSmall(5, 250, 1, GarnetRed, OVERWORLD, NETHER, MARS, ASTEROIDS);
-        new WorldGenOreSmall(5, 250, 1, GarnetYellow, OVERWORLD, NETHER, MARS, ASTEROIDS);
+        new WorldGenOreSmall(5, 250, 1, RedGarnet, OVERWORLD, NETHER, MARS, ASTEROIDS);
+        new WorldGenOreSmall(5, 250, 1, YellowGarnet, OVERWORLD, NETHER, MARS, ASTEROIDS);
 
         new WorldGenOreSmall(5, 10, 2, Diamond, OVERWORLD, NETHER, MOON, MARS, ASTEROIDS);
         new WorldGenOreSmall(5, 250, 1, Emerald, OVERWORLD, MARS);
