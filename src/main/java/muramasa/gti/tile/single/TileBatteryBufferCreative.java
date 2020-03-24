@@ -13,6 +13,7 @@ import java.util.Optional;
 
 public class TileBatteryBufferCreative extends TileEntityMachine {
     private int amperage = 1;
+
     @Override
     public void onLoad() {
         super.onLoad();
