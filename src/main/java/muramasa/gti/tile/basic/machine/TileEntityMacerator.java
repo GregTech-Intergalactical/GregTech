@@ -6,5 +6,5 @@ import muramasa.antimatter.tile.TileEntityRecipeMachine;
  * TODO: implement machine tile
  * @author koiNoCirculation
  */
-public class TileEntityMecurator extends TileEntityRecipeMachine {
+public class TileEntityMacerator extends TileEntityRecipeMachine {
 }
