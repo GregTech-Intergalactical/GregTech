@@ -123,7 +123,7 @@ public class WorldGenLoader {
         );
 
         if (Configs.WORLD.ENABLE_ORE_VEINS) {
-            new WorldGenVeinLayer("naquadah", 10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, NaquadahEnriched, END);
+            new WorldGenVeinLayer("naquadah", 10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, EnrichedNaquadah, END);
             //new WorldGenVeinLayer("lignite", 50, 130, 160, 8, 32, Lignite, Lignite, Lignite, Coal, OVERWORLD);
             //new WorldGenVeinLayer("coal", 50, 80, 80, 6, 32, Coal, Coal, Coal, Lignite, OVERWORLD);
             new WorldGenVeinLayer("magnetite", 50, 120, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite, OVERWORLD, NETHER);
@@ -205,8 +205,8 @@ public class WorldGenLoader {
         new WorldGenOreSmall("sulfur_overworld", 5, 15, 8, Sulfur, OVERWORLD, MARS);
 
         //TODO replace with GarnetSand?
-        new WorldGenOreSmall(5, 250, 1, GarnetRed, OVERWORLD, NETHER, MARS, ASTEROIDS);
-        new WorldGenOreSmall(5, 250, 1, GarnetYellow, OVERWORLD, NETHER, MARS, ASTEROIDS);
+        new WorldGenOreSmall(5, 250, 1, RedGarnet, OVERWORLD, NETHER, MARS, ASTEROIDS);
+        new WorldGenOreSmall(5, 250, 1, YellowGarnet, OVERWORLD, NETHER, MARS, ASTEROIDS);
 
         new WorldGenOreSmall(5, 10, 2, Diamond, OVERWORLD, NETHER, MOON, MARS, ASTEROIDS);
         new WorldGenOreSmall(5, 250, 1, Emerald, OVERWORLD, MARS);
