@@ -99,6 +99,6 @@ public class MachineRecipeLoader {
         FUSION.RB().fi(Gallium.getLiquid(16), Radon.getGas(125)).fo(Duranium.getLiquid(16)).add(64, 16384, 140000000);
         FUSION.RB().fi(Titanium.getLiquid(16), Duranium.getLiquid(125)).fo(Tritanium.getLiquid(16)).add(64, 32768, 200000000);
         FUSION.RB().fi(Gold.getLiquid(16), Mercury.getLiquid(16)).fo(Radon.getGas(125)).add(64, 32768, 200000000);
-        FUSION.RB().fi(NaquadahEnriched.getLiquid(15), Radon.getGas(125)).fo(Naquadria.getLiquid(3)).add(64, 49152, 400000000);
+        FUSION.RB().fi(EnrichedNaquadah.getLiquid(15), Radon.getGas(125)).fo(Naquadria.getLiquid(3)).add(64, 49152, 400000000);
     }
 }
