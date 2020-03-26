@@ -1,12 +1,9 @@
 package muramasa.gti.data;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.antimatter.recipe.RecipeMap;
-import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.item.ItemStack;
 
@@ -69,17 +66,17 @@ public class RecipeBuilders {
 
     public static class BasicBlastingBuilder extends RecipeBuilder {
 
-        public static ItemStack[] FUELS;
+        public static ItemStack[] FUELS = new ItemStack[0];
 
         static {
-            AntimatterAPI.onEvent(RegistrationEvent.DATA_READY, () -> FUELS = new ItemStack[] {
-                MaterialType.GEM.get(Materials.Coal, 1),
-                MaterialType.DUST.get(Materials.Coal, 1),
-                MaterialType.GEM.get(Materials.Charcoal, 1),
-                MaterialType.DUST.get(Materials.Charcoal, 1),
-                MaterialType.GEM.get(Materials.CoalCoke, 1),
-                MaterialType.GEM.get(Materials.LigniteCoke, 1),
-            });
+//            AntimatterAPI.onEvent(RegistrationEvent.DATA_READY, () -> FUELS = new ItemStack[] {
+//                MaterialType.GEM.get(Materials.Coal, 1),
+//                MaterialType.DUST.get(Materials.Coal, 1),
+//                MaterialType.GEM.get(Materials.Charcoal, 1),
+//                MaterialType.DUST.get(Materials.Charcoal, 1),
+//                MaterialType.GEM.get(Materials.CoalCoke, 1),
+//                MaterialType.GEM.get(Materials.LigniteCoke, 1),
+//            });
         }
 
         public void add(ItemStack[] inputs, ItemStack[] outputs, int coal, int duration) {

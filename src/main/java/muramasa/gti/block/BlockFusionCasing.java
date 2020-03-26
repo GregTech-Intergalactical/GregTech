@@ -8,12 +8,12 @@ import net.minecraft.world.IBlockReader;
 
 public class BlockFusionCasing extends BlockCasing {
 
-    public BlockFusionCasing(String domain, String id, Block.Properties properties) {
-        super(domain, id, properties);
+    public BlockFusionCasing(Block.Properties properties) {
+        super(properties);
     }
 
-    public BlockFusionCasing(String domain, String id) {
-        super(domain, id);
+    public BlockFusionCasing() {
+        super();
     }
 
     @Override

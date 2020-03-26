@@ -26,12 +26,12 @@ public class CoverConveyor extends Cover {
         //TODO coverStacks should probably be tier sensitive? this would mean
         //TODO all covers would need a tier member
         switch (tier.getId()) {
-            case "lv": return Data.ConveyorLV.get(1);
-            case "mv": return Data.ConveyorMV.get(1);
-            case "hv": return Data.ConveyorHV.get(1);
-            case "ev": return Data.ConveyorEV.get(1);
-            case "iv": return Data.ConveyorIV.get(1);
-            default: return Data.ConveyorLV.get(1);
+            case "lv": return new ItemStack(Data.ConveyorLV.get());
+            case "mv": return new ItemStack(Data.ConveyorMV.get());
+            case "hv": return new ItemStack(Data.ConveyorHV.get());
+            case "ev": return new ItemStack(Data.ConveyorEV.get());
+            case "iv": return new ItemStack(Data.ConveyorIV.get());
+            default: return new ItemStack(Data.ConveyorLV.get());
         }
     }
 
