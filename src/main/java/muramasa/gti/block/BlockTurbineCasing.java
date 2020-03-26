@@ -1,6 +1,5 @@
 package muramasa.gti.block;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.block.BlockCasing;
 import muramasa.antimatter.client.ModelConfig;
@@ -14,9 +13,8 @@ import net.minecraft.world.IBlockReader;
 
 public class BlockTurbineCasing extends BlockCasing {
 
-    public BlockTurbineCasing(String namespace, String id) {
-        super(namespace, id);
-        AntimatterAPI.register(BlockTurbineCasing.class, this);
+    public BlockTurbineCasing() {
+        super();
         //setDefaultModel(true);
     }
 

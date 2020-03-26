@@ -20,14 +20,14 @@ public class RubberTree extends Tree {
 
     public RubberTree() {
         BlockStateProperties.HORIZONTAL_FACING.getAllowedValues().forEach(d -> {
-            TRUNK_BLOCKS.func_227407_a_(Data.RUBBER_LOG.getDefaultState()
+            TRUNK_BLOCKS.func_227407_a_(Data.RUBBER_LOG.get().getDefaultState()
                     .with(BlockRubberLog.RESIN_STATE, ResinState.FILLED)
                     .with(BlockRubberLog.RESIN_FACING, d), 1);
-            TRUNK_BLOCKS.func_227407_a_(Data.RUBBER_LOG.getDefaultState()
+            TRUNK_BLOCKS.func_227407_a_(Data.RUBBER_LOG.get().getDefaultState()
                     .with(BlockRubberLog.RESIN_STATE, ResinState.EMPTY)
                     .with(BlockRubberLog.RESIN_FACING, d), 1);
         });
-        TRUNK_BLOCKS.func_227407_a_(Data.RUBBER_LOG.getDefaultState()
+        TRUNK_BLOCKS.func_227407_a_(Data.RUBBER_LOG.get().getDefaultState()
                 .with(BlockRubberLog.RESIN_STATE, ResinState.NONE), 16);
     }
 
