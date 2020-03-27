@@ -1,11 +1,9 @@
 package muramasa.gti.data;
 
-import muramasa.antimatter.machine.types.BasicMachine;
-import muramasa.antimatter.machine.types.HatchMachine;
-import muramasa.antimatter.machine.types.MultiMachine;
-import muramasa.antimatter.machine.types.TankMachine;
+import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.tile.TileEntitySteamMachine;
 import muramasa.gti.Ref;
+import muramasa.gti.block.BlockBatteryBufferCreative;
 import muramasa.gti.tile.multi.*;
 
 import static muramasa.antimatter.machine.MachineFlag.*;
@@ -95,6 +93,8 @@ public class Machines {
     public static BasicMachine COMBUSTION_GENERATOR = new BasicMachine(Ref.ID, "combustion_generator", COMBUSTION_FUELS, LV, MV, HV, ITEM, FLUID);
     public static BasicMachine NAQUADAH_GENERATOR = new BasicMachine(Ref.ID, "naquadah_generator", NAQUADAH_FUELS, EV, IV, LUV, ITEM, FLUID);
     public static BasicMachine PLASMA_GENERATOR = new BasicMachine(Ref.ID, "plasma_generator", PLASMA_FUELS, IV, LUV, ZPM, ITEM, FLUID);
+
+    public static Machine CREATIVE_ENERGY_BUFFER = new BlockBatteryBufferCreative(Ref.ID, "creative_energy_buffer", ENERGY);
 
     public static void init() {
 
