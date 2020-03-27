@@ -1,6 +1,5 @@
 package muramasa.gti.tree;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.texture.Texture;
@@ -24,10 +23,9 @@ public class BlockRubberLog extends BlockBasic {
     final static DirectionProperty RESIN_FACING = BlockStateProperties.HORIZONTAL_FACING;
     final static EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 
-    public BlockRubberLog(String domain) {
-        super(domain, "rubber_log", Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD), new Texture(domain, "block/tree/rubber_log"));
+    public BlockRubberLog() {
+        super(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD));
         setDefaultState(getDefaultState().with(RESIN_STATE, ResinState.NONE).with(RESIN_FACING, Direction.NORTH).with(AXIS, Direction.Axis.Y));
-        AntimatterAPI.register(BlockRubberLog.class, this);
     }
 
     @Override
@@ -38,6 +36,11 @@ public class BlockRubberLog extends BlockBasic {
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         return this.getDefaultState().with(AXIS, context.getFace().getAxis()).with(RESIN_FACING, context.getPlacementHorizontalFacing().getOpposite()).with(RESIN_STATE, ResinState.NONE);
+    }
+
+    @Override
+    public Texture[] getTextures() {
+        return new Texture[]{new Texture(getRegistryName().getNamespace(), "block/tree/rubber_log")};
     }
 
     @Override

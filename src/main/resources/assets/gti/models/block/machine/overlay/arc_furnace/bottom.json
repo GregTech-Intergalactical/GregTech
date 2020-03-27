@@ -1,0 +1,15 @@
+{
+	"textures": {
+		"1": "gtu:blocks/machine/overlay/arc_furnace/bottom"
+	},
+	"elements": [
+		{
+			"name": "inner",
+			"from": [0, 0, 0],
+			"to": [16, 16, 0],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		}
+	]
+}
