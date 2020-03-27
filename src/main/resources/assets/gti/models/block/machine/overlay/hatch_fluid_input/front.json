@@ -1,0 +1,82 @@
+{
+	"textures": {
+		"1": "gtu:blocks/machine/hatch_fluid_input/front"
+	},
+	"elements": [
+		{
+			"from": [5, 5, 0.5],
+			"to": [11, 11, 0.51],
+			"faces": {
+				"north": {"uv": [5, 5, 11, 11], "texture": "#1", "tintindex": 1}
+			}
+		},
+		{
+			"from": [4, 12, 0],
+			"to": [12, 16, 0.01],
+			"faces": {
+				"north": {"uv": [4, 0, 12, 4], "texture": "#0", "tintindex": 0}
+			}
+		},
+		{
+			"from": [4, 0, 0],
+			"to": [12, 4, 0.01],
+			"faces": {
+				"north": {"uv": [4, 12, 12, 16], "texture": "#0", "tintindex": 0},
+				"south": {"uv": [0, 0, 0, 0], "texture": "#0", "tintindex": 0},
+				"down": {"uv": [0, 0, 14, 1], "rotation": 180, "texture": "#0", "tintindex": 0}
+			}
+		},
+		{
+			"from": [12, 0, 0],
+			"to": [16, 16, 0.01],
+			"faces": {
+				"north": {"uv": [0, 0, 4, 16], "texture": "#0", "tintindex": 0},
+				"south": {"uv": [0, 0, 0, 0], "texture": "#0", "tintindex": 0},
+				"up": {"uv": [0, 0, 0, 0], "rotation": 180, "texture": "#0", "tintindex": 0},
+				"down": {"uv": [0, 0, 14, 1], "rotation": 180, "texture": "#0", "tintindex": 0}
+			}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [4, 16, 0.01],
+			"faces": {
+				"north": {"uv": [12, 0, 16, 16], "texture": "#0", "tintindex": 0},
+				"south": {"uv": [0, 0, 0, 0], "texture": "#0", "tintindex": 0},
+				"up": {"uv": [0, 0, 0, 0], "rotation": 180, "texture": "#0", "tintindex": 0},
+				"down": {"uv": [0, 0, 14, 1], "rotation": 180, "texture": "#0", "tintindex": 0}
+			}
+		},
+		{
+			"from": [11, 4, 0],
+			"to": [12, 12, 0.5],
+			"faces": {
+				"north": {"uv": [4, 4, 5, 12], "texture": "#1", "tintindex": 1},
+				"west": {"uv": [4, 4, 4.5, 12], "texture": "#1", "tintindex": 1}
+			}
+		},
+		{
+			"from": [4, 4, 0],
+			"to": [5, 12, 0.5],
+			"faces": {
+				"north": {"uv": [11, 4, 12, 12], "texture": "#1", "tintindex": 1},
+				"east": {"uv": [11, 4, 11.5, 12], "texture": "#1", "tintindex": 1}
+			}
+		},
+		{
+			"from": [5, 11, 0],
+			"to": [11, 12, 0.5],
+			"faces": {
+				"north": {"uv": [5, 4, 11, 5], "texture": "#1", "tintindex": 1},
+				"down": {"uv": [5, 4, 11, 4.5], "rotation": 180, "texture": "#1", "tintindex": 1}
+			}
+		},
+		{
+			"from": [5, 4, 0],
+			"to": [11, 5, 0.5],
+			"faces": {
+				"north": {"uv": [5, 11, 11, 12], "texture": "#1", "tintindex": 1},
+				"up": {"uv": [5, 11, 11, 11.5], "rotation": 180, "texture": "#1", "tintindex": 1}
+			}
+		}
+	]
+}

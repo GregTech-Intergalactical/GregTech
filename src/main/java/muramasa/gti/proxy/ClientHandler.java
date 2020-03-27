@@ -21,7 +21,7 @@ public class ClientHandler {
 
     @SubscribeEvent
     public static void setup(FMLClientSetupEvent e) {
-        RenderTypeLookup.setRenderLayer(Data.RUBBER_SAPLING, RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(Data.RUBBER_LEAVES, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(Data.RUBBER_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(Data.RUBBER_LEAVES.get(), RenderType.getCutout());
     }
 }
