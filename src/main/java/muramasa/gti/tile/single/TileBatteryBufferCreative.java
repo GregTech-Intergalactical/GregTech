@@ -17,10 +17,11 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
 
     @Override
     public void onLoad() {
-        super.onLoad();
+        if (!isServerSide()) return;
         full = new Random().nextInt(2) == 0;
         configHandler = Optional.of(new BufferConfigHandler(this));
         energyHandler = Optional.of(new BufferEnergyHandler(this));
+        super.onLoad();
     }
 
     static class BufferConfigHandler extends MachineConfigHandler {
@@ -43,7 +44,7 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
 
     @Override
     public void onServerUpdate() {
-        energyHandler.ifPresent(h -> h.update());
+        energyHandler.ifPresent(MachineEnergyHandler::update);
     }
 
     static class BufferEnergyHandler extends MachineEnergyHandler {
@@ -52,11 +53,13 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
             super(tile);
             this.tile = tile;
             if (tile.full) {
-                this.energy = this.capacity;
+                this.energy = Integer.MAX_VALUE;
+                this.capacity = Integer.MAX_VALUE;
                 this.input = 0;
                 this.output = 32;
             } else {
                 this.energy = 0;
+                this.capacity = Integer.MAX_VALUE;
                 this.input = 32;
                 this.output = 0;
             }
