@@ -2,7 +2,7 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Configs;
-import muramasa.antimatter.fluid.AntimatterFluid;
+import muramasa.antimatter.fluid.AntimatterMaterialFluid;
 import muramasa.antimatter.material.Material;
 import muramasa.gti.Ref;
 import net.minecraft.block.Blocks;
@@ -701,9 +701,9 @@ public class Materials {
 //            }
 //        }
 
-        LIQUID.all().forEach(m -> m.setLiquid(new AntimatterFluid(m, LIQUID)));
-        GAS.all().forEach(m -> m.setGas(new AntimatterFluid(m, GAS)));
-        PLASMA.all().forEach(m -> m.setPlasma(new AntimatterFluid(m, PLASMA)));
+        LIQUID.all().forEach(m -> m.setLiquid(new AntimatterMaterialFluid(Ref.ID, m, LIQUID).getFluid()));
+        GAS.all().forEach(m -> m.setGas(new AntimatterMaterialFluid(Ref.ID, m, GAS).getFluid()));
+        PLASMA.all().forEach(m -> m.setPlasma(new AntimatterMaterialFluid(Ref.ID, m, PLASMA).getFluid()));
         
         AntimatterAPI.all(Material.class, Material::setChemicalFormula);
 
