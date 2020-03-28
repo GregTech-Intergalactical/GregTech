@@ -1,7 +1,6 @@
 package muramasa.gti;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.client.AntimatterModelManager;
 import muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
@@ -13,6 +12,7 @@ import muramasa.gti.datagen.ProgressionAdvancements;
 import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.proxy.ClientHandler;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -25,7 +25,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(Ref.ID)
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-public class GregTech extends AntimatterMod implements IAntimatterRegistrar {
+public class GregTech implements IAntimatterRegistrar {
 
     public static GregTech INSTANCE;
     public static Logger LOGGER = LogManager.getLogger(Ref.ID);
@@ -39,8 +39,6 @@ public class GregTech extends AntimatterMod implements IAntimatterRegistrar {
         //GregTechAPI.addRegistrar(new ForestryRegistrar());
         //GregTechAPI.addRegistrar(new GalacticraftRegistrar());
         //if (ModList.get().isLoaded(Ref.MOD_UB)) GregTechAPI.addRegistrar(new UndergroundBiomesRegistrar());
-
-        Data.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent e) {

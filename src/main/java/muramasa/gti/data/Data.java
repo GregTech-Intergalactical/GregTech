@@ -2,7 +2,6 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.Configs;
 import muramasa.antimatter.block.BlockCasing;
-import muramasa.antimatter.block.BlockCasingMachine;
 import muramasa.antimatter.block.BlockCoil;
 import muramasa.antimatter.cover.Cover;
 import muramasa.antimatter.item.ItemBasic;
@@ -22,28 +21,14 @@ import muramasa.gti.cover.CoverPump;
 import muramasa.gti.tree.BlockRubberLeaves;
 import muramasa.gti.tree.BlockRubberLog;
 import muramasa.gti.tree.BlockRubberSapling;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
-import net.minecraft.item.Item;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import static muramasa.gti.data.Materials.*;
 
 public class Data {
 
     private static boolean HC = Configs.GAMEPLAY.HARDCORE_CABLES;
-    
-    static DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, Ref.ID);
-    static DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, Ref.ID);
-
-    public static void register(IEventBus bus) {
-        ITEMS.register(bus);
-        BLOCKS.register(bus);
-    }
     
     public static void init() {
 
@@ -53,209 +38,209 @@ public class Data {
     public static final Cover COVER_CONVEYOR = new CoverConveyor(Tier.LV);
     public static final Cover COVER_PUMP = new CoverPump(Tier.LV);
 
-    public static final RegistryObject<Item> StickyResin = ITEMS.register("sticky_resin", ItemBasic::new);
-    public static final RegistryObject<Item> ComputerMonitor = ITEMS.register("computer_monitor", () -> new ItemBasic("Can be placed on machines as a cover"));
+    public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
+    public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 
-    //public static ItemFluidCell CellTin = new ItemFluidCell(Tin, 1000));
-    //public static ItemFluidCell CellSteel = new ItemFluidCell(Steel, 16000));
-    //public static ItemFluidCell CellTungstensteel = new ItemFluidCell(TungstenSteel, 64000));
+    //public static ItemFluidCell CellTin = new ItemFluidCell(Tin, 1000);
+    //public static ItemFluidCell CellSteel = new ItemFluidCell(Steel, 16000);
+    //public static ItemFluidCell CellTungstensteel = new ItemFluidCell(TungstenSteel, 64000);
 
-    public static final RegistryObject<Item> ItemFilter = ITEMS.register("item_filter", ItemBasic::new);
-    public static final RegistryObject<Item> DiamondSawBlade = ITEMS.register("diamond_saw_blade", ItemBasic::new);
-    public static final RegistryObject<Item> DiamondGrindHead = ITEMS.register("diamond_grind_head", ItemBasic::new);
-    public static final RegistryObject<Item> TungstenGrindHead = ITEMS.register("tungsten_grind_head", ItemBasic::new);
-    public static final RegistryObject<Item> IridiumAlloyIngot = ITEMS.register("iridium_alloy_ingot", () -> new ItemBasic("Used to make Iridium Plates"));
-    public static final RegistryObject<Item> IridiumReinforcedPlate = ITEMS.register("iridium_reinforced_plate", () -> new ItemBasic("GT2s Most Expensive Component"));
-    public static final RegistryObject<Item> IridiumNeutronReflector = ITEMS.register("iridium_neutron_reflector", () -> new ItemBasic("Indestructible"));
-    public static final RegistryObject<Item> QuantumEye = ITEMS.register("quantum_eye", () -> new ItemBasic("Improved Ender Eye"));
-    public static final RegistryObject<Item> QuantumStat = ITEMS.register("quantum_star", () -> new ItemBasic("Improved Nether Star"));
-    public static final RegistryObject<Item> GraviStar = ITEMS.register("gravi_star", () -> new ItemBasic("Ultimate Nether Star"));
+    public static ItemBasic<?> ItemFilter = new ItemBasic<>(Ref.ID, "item_filter");
+    public static ItemBasic<?> DiamondSawBlade = new ItemBasic<>(Ref.ID, "diamond_saw_blade");
+    public static ItemBasic<?> DiamondGrindHead = new ItemBasic<>(Ref.ID, "diamond_grind_head");
+    public static ItemBasic<?> TungstenGrindHead = new ItemBasic<>(Ref.ID, "tungsten_grind_head");
+    public static ItemBasic<?> IridiumAlloyIngot = new ItemBasic<>(Ref.ID, "iridium_alloy_ingot").tip("Used to make Iridium Plates");
+    public static ItemBasic<?> IridiumReinforcedPlate = new ItemBasic<>(Ref.ID, "iridium_reinforced_plate").tip("GT2s Most Expensive Component");
+    public static ItemBasic<?> IridiumNeutronReflector = new ItemBasic<>(Ref.ID, "iridium_neutron_reflector").tip("Indestructible");
+    public static ItemBasic<?> QuantumEye = new ItemBasic<>(Ref.ID, "quantum_eye").tip("Improved Ender Eye");
+    public static ItemBasic<?> QuantumStat = new ItemBasic<>(Ref.ID, "quantum_star").tip("Improved Nether Star");
+    public static ItemBasic<?> GraviStar = new ItemBasic<>(Ref.ID, "gravi_star").tip("Ultimate Nether Star");
 
-    public static final RegistryObject<Item> MotorLV = ITEMS.register("motor_lv", ItemBasic::new);
-    public static final RegistryObject<Item> MotorMV = ITEMS.register("motor_mv", ItemBasic::new);
-    public static final RegistryObject<Item> MotorHV = ITEMS.register("motor_hv", ItemBasic::new);
-    public static final RegistryObject<Item> MotorEV = ITEMS.register("motor_ev", ItemBasic::new);
-    public static final RegistryObject<Item> MotorIV = ITEMS.register("motor_iv", ItemBasic::new);
-    public static final RegistryObject<Item> PumpLV = ITEMS.register("pump_lv", () -> new ItemBasic("640 L/s (as Cover)"));
-    public static final RegistryObject<Item> PumpMV = ITEMS.register("pump_mv", () -> new ItemBasic("2,560 L/s (as Cover)"));
-    public static final RegistryObject<Item> PumpHV = ITEMS.register("pump_hv", () -> new ItemBasic("10,240 L/s (as Cover)"));
-    public static final RegistryObject<Item> PumpEV = ITEMS.register("pump_ev", () -> new ItemBasic("40,960 L/s (as Cover)"));
-    public static final RegistryObject<Item> PumpIV = ITEMS.register("pump_iv", () -> new ItemBasic("163,840 L/s (as Cover)"));
-    public static final RegistryObject<Item> FluidRegulatorLV = ITEMS.register("fluid_regulator_lv", () -> new ItemBasic("Configurable up to 640 L/s (as Cover)"));
-    public static final RegistryObject<Item> FluidRegulatorMV = ITEMS.register("fluid_regulator_mv", () -> new ItemBasic("Configurable up to 2,560 L/s (as Cover)"));
-    public static final RegistryObject<Item> FluidRegulatorHV = ITEMS.register("fluid_regulator_hv", () -> new ItemBasic("Configurable up to 10,240 L/s (as Cover)"));
-    public static final RegistryObject<Item> FluidRegulatorEV = ITEMS.register("fluid_regulator_ev", () -> new ItemBasic("Configurable up to 40,960 L/s (as Cover)"));
-    public static final RegistryObject<Item> FluidRegulatorIV = ITEMS.register("fluid_regulator_iv", () -> new ItemBasic("Configurable up to 163,840 L/s (as Cover)"));
-    public static final RegistryObject<Item> ConveyorLV = ITEMS.register("conveyor_lv", () -> new ItemBasic("1 Stack every 20s (as Cover)"));
-    public static final RegistryObject<Item> ConveyorMV = ITEMS.register("conveyor_mv", () -> new ItemBasic("1 Stack every 5s (as Cover)"));
-    public static final RegistryObject<Item> ConveyorHV = ITEMS.register("conveyor_hv", () -> new ItemBasic("1 Stack every 1s (as Cover)"));
-    public static final RegistryObject<Item> ConveyorEV = ITEMS.register("conveyor_ev", () -> new ItemBasic("1 Stack every 0.5s (as Cover)"));
-    public static final RegistryObject<Item> ConveyorIV = ITEMS.register("conveyor_iv", () -> new ItemBasic("1 Stack every 0.05s (as Cover)"));
-    public static final RegistryObject<Item> PistonLV = ITEMS.register("piston_lv", ItemBasic::new);
-    public static final RegistryObject<Item> PistonMV = ITEMS.register("piston_mv", ItemBasic::new);
-    public static final RegistryObject<Item> PistonHV = ITEMS.register("piston_hv", ItemBasic::new);
-    public static final RegistryObject<Item> PistonEV = ITEMS.register("piston_ev", ItemBasic::new);
-    public static final RegistryObject<Item> PistonIV = ITEMS.register("piston_iv", ItemBasic::new);
-    public static final RegistryObject<Item> RobotArmLV = ITEMS.register("robot_arm_lv", () -> new ItemBasic("Insets into specific Slots (as Cover)"));
-    public static final RegistryObject<Item> RobotArmMV = ITEMS.register("robot_arm_mv", () -> new ItemBasic("Insets into specific Slots (as Cover)"));
-    public static final RegistryObject<Item> RobotArmHV = ITEMS.register("robot_arm_hv", () -> new ItemBasic("Insets into specific Slots (as Cover)"));
-    public static final RegistryObject<Item> RobotArmEV = ITEMS.register("robot_arm_ev", () -> new ItemBasic("Insets into specific Slots (as Cover)"));
-    public static final RegistryObject<Item> RobotArmIV = ITEMS.register("robot_arm_iv", () -> new ItemBasic("Insets into specific Slots (as Cover)"));
-    public static final RegistryObject<Item> FieldGenLV = ITEMS.register("field_gen_lv", ItemBasic::new);
-    public static final RegistryObject<Item> FieldGenMV = ITEMS.register("field_gen_mv", ItemBasic::new);
-    public static final RegistryObject<Item> FieldGenHV = ITEMS.register("field_gen_hv", ItemBasic::new);
-    public static final RegistryObject<Item> FieldGenEV = ITEMS.register("field_gen_ev", ItemBasic::new);
-    public static final RegistryObject<Item> FieldGenIV = ITEMS.register("field_gen_iv", ItemBasic::new);
-    public static final RegistryObject<Item> EmitterLV = ITEMS.register("emitter_lv", ItemBasic::new);
-    public static final RegistryObject<Item> EmitterMV = ITEMS.register("emitter_mv", ItemBasic::new);
-    public static final RegistryObject<Item> EmitterHV = ITEMS.register("emitter_hv", ItemBasic::new);
-    public static final RegistryObject<Item> EmitterEV = ITEMS.register("emitter_ev", ItemBasic::new);
-    public static final RegistryObject<Item> EmitterIV = ITEMS.register("emitter_iv", ItemBasic::new);
-    public static final RegistryObject<Item> SensorLV = ITEMS.register("sensor_lv", ItemBasic::new);
-    public static final RegistryObject<Item> SensorMV = ITEMS.register("sensor_mv", ItemBasic::new);
-    public static final RegistryObject<Item> SensorHV = ITEMS.register("sensor_hv", ItemBasic::new);
-    public static final RegistryObject<Item> SensorEV = ITEMS.register("sensor_ev", ItemBasic::new);
-    public static final RegistryObject<Item> SensorIV = ITEMS.register("sensor_iv", ItemBasic::new);
+    public static ItemBasic<?> MotorLV = new ItemBasic<>(Ref.ID, "motor_lv");
+    public static ItemBasic<?> MotorMV = new ItemBasic<>(Ref.ID, "motor_mv");
+    public static ItemBasic<?> MotorHV = new ItemBasic<>(Ref.ID, "motor_hv");
+    public static ItemBasic<?> MotorEV = new ItemBasic<>(Ref.ID, "motor_ev");
+    public static ItemBasic<?> MotorIV = new ItemBasic<>(Ref.ID, "motor_iv");
+    public static ItemBasic<?> PumpLV = new ItemBasic<>(Ref.ID, "pump_lv").tip("640 L/s (as Cover)");
+    public static ItemBasic<?> PumpMV = new ItemBasic<>(Ref.ID, "pump_mv").tip("2,560 L/s (as Cover)");
+    public static ItemBasic<?> PumpHV = new ItemBasic<>(Ref.ID, "pump_hv").tip("10,240 L/s (as Cover)");
+    public static ItemBasic<?> PumpEV = new ItemBasic<>(Ref.ID, "pump_ev").tip("40,960 L/s (as Cover)");
+    public static ItemBasic<?> PumpIV = new ItemBasic<>(Ref.ID, "pump_iv").tip("163,840 L/s (as Cover)");
+    public static ItemBasic<?> FluidRegulatorLV = new ItemBasic<>(Ref.ID, "fluid_regulator_lv").tip("Configurable up to 640 L/s (as Cover)");
+    public static ItemBasic<?> FluidRegulatorMV = new ItemBasic<>(Ref.ID, "fluid_regulator_mv").tip("Configurable up to 2,560 L/s (as Cover)");
+    public static ItemBasic<?> FluidRegulatorHV = new ItemBasic<>(Ref.ID, "fluid_regulator_hv").tip("Configurable up to 10,240 L/s (as Cover)");
+    public static ItemBasic<?> FluidRegulatorEV = new ItemBasic<>(Ref.ID, "fluid_regulator_ev").tip("Configurable up to 40,960 L/s (as Cover)");
+    public static ItemBasic<?> FluidRegulatorIV = new ItemBasic<>(Ref.ID, "fluid_regulator_iv").tip("Configurable up to 163,840 L/s (as Cover)");
+    public static ItemBasic<?> ConveyorLV = new ItemBasic<>(Ref.ID, "conveyor_lv").tip("1 Stack every 20s (as Cover)");
+    public static ItemBasic<?> ConveyorMV = new ItemBasic<>(Ref.ID, "conveyor_mv").tip("1 Stack every 5s (as Cover)");
+    public static ItemBasic<?> ConveyorHV = new ItemBasic<>(Ref.ID, "conveyor_hv").tip("1 Stack every 1s (as Cover)");
+    public static ItemBasic<?> ConveyorEV = new ItemBasic<>(Ref.ID, "conveyor_ev").tip("1 Stack every 0.5s (as Cover)");
+    public static ItemBasic<?> ConveyorIV = new ItemBasic<>(Ref.ID, "conveyor_iv").tip("1 Stack every 0.05s (as Cover)");
+    public static ItemBasic<?> PistonLV = new ItemBasic<>(Ref.ID, "piston_lv");
+    public static ItemBasic<?> PistonMV = new ItemBasic<>(Ref.ID, "piston_mv");
+    public static ItemBasic<?> PistonHV = new ItemBasic<>(Ref.ID, "piston_hv");
+    public static ItemBasic<?> PistonEV = new ItemBasic<>(Ref.ID, "piston_ev");
+    public static ItemBasic<?> PistonIV = new ItemBasic<>(Ref.ID, "piston_iv");
+    public static ItemBasic<?> RobotArmLV = new ItemBasic<>(Ref.ID, "robot_arm_lv").tip("Insets into specific Slots (as Cover)");
+    public static ItemBasic<?> RobotArmMV = new ItemBasic<>(Ref.ID, "robot_arm_mv").tip("Insets into specific Slots (as Cover)");
+    public static ItemBasic<?> RobotArmHV = new ItemBasic<>(Ref.ID, "robot_arm_hv").tip("Insets into specific Slots (as Cover)");
+    public static ItemBasic<?> RobotArmEV = new ItemBasic<>(Ref.ID, "robot_arm_ev").tip("Insets into specific Slots (as Cover)");
+    public static ItemBasic<?> RobotArmIV = new ItemBasic<>(Ref.ID, "robot_arm_iv").tip("Insets into specific Slots (as Cover)");
+    public static ItemBasic<?> FieldGenLV = new ItemBasic<>(Ref.ID, "field_gen_lv");
+    public static ItemBasic<?> FieldGenMV = new ItemBasic<>(Ref.ID, "field_gen_mv");
+    public static ItemBasic<?> FieldGenHV = new ItemBasic<>(Ref.ID, "field_gen_hv");
+    public static ItemBasic<?> FieldGenEV = new ItemBasic<>(Ref.ID, "field_gen_ev");
+    public static ItemBasic<?> FieldGenIV = new ItemBasic<>(Ref.ID, "field_gen_iv");
+    public static ItemBasic<?> EmitterLV = new ItemBasic<>(Ref.ID, "emitter_lv");
+    public static ItemBasic<?> EmitterMV = new ItemBasic<>(Ref.ID, "emitter_mv");
+    public static ItemBasic<?> EmitterHV = new ItemBasic<>(Ref.ID, "emitter_hv");
+    public static ItemBasic<?> EmitterEV = new ItemBasic<>(Ref.ID, "emitter_ev");
+    public static ItemBasic<?> EmitterIV = new ItemBasic<>(Ref.ID, "emitter_iv");
+    public static ItemBasic<?> SensorLV = new ItemBasic<>(Ref.ID, "sensor_lv");
+    public static ItemBasic<?> SensorMV = new ItemBasic<>(Ref.ID, "sensor_mv");
+    public static ItemBasic<?> SensorHV = new ItemBasic<>(Ref.ID, "sensor_hv");
+    public static ItemBasic<?> SensorEV = new ItemBasic<>(Ref.ID, "sensor_ev");
+    public static ItemBasic<?> SensorIV = new ItemBasic<>(Ref.ID, "sensor_iv");
 
-    public static final RegistryObject<Item> NandChip = ITEMS.register("nand_chip", () -> new ItemBasic("A very simple circuit"));
-    public static final RegistryObject<Item> AdvCircuitParts = ITEMS.register("adv_circuit_parts", () -> new ItemBasic("Used for making Advanced Circuits"));
-    public static final RegistryObject<Item> EtchedWiringMV = ITEMS.register("etched_wiring_mv", () -> new ItemBasic("Circuit board parts"));
-    public static final RegistryObject<Item> EtchedWiringHV = ITEMS.register("etched_wiring_hv", () -> new ItemBasic("Circuit board parts"));
-    public static final RegistryObject<Item> EtchedWiringEV = ITEMS.register("etched_wiring_ev", () -> new ItemBasic("Circuit board parts"));
-    public static final RegistryObject<Item> EngravedCrystalChip = ITEMS.register("engraved_crystal_chip", () -> new ItemBasic("Needed for Circuits"));
-    public static final RegistryObject<Item> EngravedLapotronChip = ITEMS.register("engraved_lapotron_chip", () -> new ItemBasic("Needed for Circuits"));
-    public static final RegistryObject<Item> CircuitBoardEmpty = ITEMS.register("circuit_board_empty", () -> new ItemBasic("A board Part"));
-    public static final RegistryObject<Item> CircuitBoardBasic = ITEMS.register("circuit_board_basic", () -> new ItemBasic("A basic Board"));
-    public static final RegistryObject<Item> CircuitBoardAdv = ITEMS.register("circuit_board_adv", () -> new ItemBasic("An advanced Board"));
-    public static final RegistryObject<Item> CircuitBoardProcessorEmpty = ITEMS.register("circuit_board_processor_empty", () -> new ItemBasic("A Processor Board Part"));
-    public static final RegistryObject<Item> CircuitBoardProcessor = ITEMS.register("circuit_board_processor", () -> new ItemBasic("A Processor Board"));
-    public static final RegistryObject<Item> CircuitBasic = ITEMS.register("circuit_basic", () -> new ItemBasic("A basic Circuit"));
-    public static final RegistryObject<Item> CircuitGood = ITEMS.register("circuit_good", () -> new ItemBasic("A good Circuit"));
-    public static final RegistryObject<Item> CircuitAdv = ITEMS.register("circuit_adv", () -> new ItemBasic("An advanced Circuit"));
-    public static final RegistryObject<Item> CircuitDataStorage = ITEMS.register("circuit_data_storage", () -> new ItemBasic("A Data Storage Chip"));
-    public static final RegistryObject<Item> CircuitDataControl = ITEMS.register("circuit_data_control", () -> new ItemBasic("A Data Control Processor"));
-    public static final RegistryObject<Item> CircuitEnergyFlow = ITEMS.register("circuit_energy_flow", () -> new ItemBasic("A High Voltage Processor"));
-    public static final RegistryObject<Item> CircuitDataOrb = ITEMS.register("circuit_data_orb", () -> new ItemBasic("A High Capacity Data Storage"));
-    public static final RegistryObject<Item> DataStick = ITEMS.register("data_stick", () -> new ItemBasic("A Low Capacity Data Storage"));
+    public static ItemBasic<?> NandChip = new ItemBasic<>(Ref.ID, "nand_chip").tip("A very simple circuit");
+    public static ItemBasic<?> AdvCircuitParts = new ItemBasic<>(Ref.ID, "adv_circuit_parts").tip("Used for making Advanced Circuits");
+    public static ItemBasic<?> EtchedWiringMV = new ItemBasic<>(Ref.ID, "etched_wiring_mv").tip("Circuit board parts");
+    public static ItemBasic<?> EtchedWiringHV = new ItemBasic<>(Ref.ID, "etched_wiring_hv").tip("Circuit board parts");
+    public static ItemBasic<?> EtchedWiringEV = new ItemBasic<>(Ref.ID, "etched_wiring_ev").tip("Circuit board parts");
+    public static ItemBasic<?> EngravedCrystalChip = new ItemBasic<>(Ref.ID, "engraved_crystal_chip").tip("Needed for Circuits");
+    public static ItemBasic<?> EngravedLapotronChip = new ItemBasic<>(Ref.ID, "engraved_lapotron_chip").tip("Needed for Circuits");
+    public static ItemBasic<?> CircuitBoardEmpty = new ItemBasic<>(Ref.ID, "circuit_board_empty").tip("A board Part");
+    public static ItemBasic<?> CircuitBoardBasic = new ItemBasic<>(Ref.ID, "circuit_board_basic").tip("A basic Board");
+    public static ItemBasic<?> CircuitBoardAdv = new ItemBasic<>(Ref.ID, "circuit_board_adv").tip("An advanced Board");
+    public static ItemBasic<?> CircuitBoardProcessorEmpty = new ItemBasic<>(Ref.ID, "circuit_board_processor_empty").tip("A Processor Board Part");
+    public static ItemBasic<?> CircuitBoardProcessor = new ItemBasic<>(Ref.ID, "circuit_board_processor").tip("A Processor Board");
+    public static ItemBasic<?> CircuitBasic = new ItemBasic<>(Ref.ID, "circuit_basic").tip("A basic Circuit");
+    public static ItemBasic<?> CircuitGood = new ItemBasic<>(Ref.ID, "circuit_good").tip("A good Circuit");
+    public static ItemBasic<?> CircuitAdv = new ItemBasic<>(Ref.ID, "circuit_adv").tip("An advanced Circuit");
+    public static ItemBasic<?> CircuitDataStorage = new ItemBasic<>(Ref.ID, "circuit_data_storage").tip("A Data Storage Chip");
+    public static ItemBasic<?> CircuitDataControl = new ItemBasic<>(Ref.ID, "circuit_data_control").tip("A Data Control Processor");
+    public static ItemBasic<?> CircuitEnergyFlow = new ItemBasic<>(Ref.ID, "circuit_energy_flow").tip("A High Voltage Processor");
+    public static ItemBasic<?> CircuitDataOrb = new ItemBasic<>(Ref.ID, "circuit_data_orb").tip("A High Capacity Data Storage");
+    public static ItemBasic<?> DataStick = new ItemBasic<>(Ref.ID, "data_stick").tip("A Low Capacity Data Storage");
 
-    public static final RegistryObject<Item> BatteryTantalum = ITEMS.register("battery_tantalum", () -> new ItemBasic("Reusable"));
-    public static final RegistryObject<Item> BatteryHullSmall = ITEMS.register("battery_hull_small", () -> new ItemBasic("An empty LV Battery Hull"));
-    public static final RegistryObject<Item> BatteryHullMedium = ITEMS.register("battery_hull_medium", () -> new ItemBasic("An empty MV Battery Hull"));
-    public static final RegistryObject<Item> BatteryHullLarge = ITEMS.register("battery_hull_large", () -> new ItemBasic("An empty HV Battery Hull"));
-    public static final RegistryObject<Item> BatterySmallAcid = ITEMS.register("battery_small_acid", () -> new ItemBasic("Single Use"));
-    public static final RegistryObject<Item> BatterySmallMercury = ITEMS.register("battery_small_mercury", () -> new ItemBasic("Single Use"));
-    public static final RegistryObject<Item> BatterySmallCadmium = ITEMS.register("battery_small_cadmium", () -> new ItemBasic("Reusable"));
-    public static final RegistryObject<Item> BatterySmallLithium = ITEMS.register("battery_small_lithium", () -> new ItemBasic("Reusable"));
-    public static final RegistryObject<Item> BatterySmallSodium = ITEMS.register("battery_small_sodium", () -> new ItemBasic("Reusable"));
-    public static final RegistryObject<Item> BatteryMediumAcid = ITEMS.register("battery_medium_acid", () -> new ItemBasic("Single Use"));
-    public static final RegistryObject<Item> BatteryMediumMercury = ITEMS.register("battery_medium_mercury", () -> new ItemBasic("Single Use"));
-    public static final RegistryObject<Item> BatteryMediumCadmium = ITEMS.register("battery_medium_cadmium", () -> new ItemBasic("Reusable"));
-    public static final RegistryObject<Item> BatteryMediumLithium = ITEMS.register("battery_medium_lithium", () -> new ItemBasic("Reusable"));
-    public static final RegistryObject<Item> BatteryMediumSodium = ITEMS.register("battery_medium_sodium", () -> new ItemBasic("Reusable"));
-    public static final RegistryObject<Item> BatteryLargeAcid = ITEMS.register("battery_large_acid", () -> new ItemBasic("Single Use"));
-    public static final RegistryObject<Item> BatteryLargeMercury = ITEMS.register("battery_large_mercury", () -> new ItemBasic("Single Use"));
-    public static final RegistryObject<Item> BatteryLargeCadmium = ITEMS.register("battery_large_cadmium", () -> new ItemBasic("Reusable"));
-    public static final RegistryObject<Item> BatteryLargeLithium = ITEMS.register("battery_large_lithium", () -> new ItemBasic("Reusable"));
-    public static final RegistryObject<Item> BatteryLargeSodium = ITEMS.register("battery_large_sodium", () -> new ItemBasic("Reusable"));
-    public static final RegistryObject<Item> BatteryEnergyOrb = ITEMS.register("battery_energy_orb", ItemBasic::new);
-    public static final RegistryObject<Item> BatteryEnergyOrbCluster = ITEMS.register("battery_energy_orb_cluster", ItemBasic::new);
+    public static ItemBasic<?> BatteryTantalum = new ItemBasic<>(Ref.ID, "battery_tantalum").tip("Reusable");
+    public static ItemBasic<?> BatteryHullSmall = new ItemBasic<>(Ref.ID, "battery_hull_small").tip("An empty LV Battery Hull");
+    public static ItemBasic<?> BatteryHullMedium = new ItemBasic<>(Ref.ID, "battery_hull_medium").tip("An empty MV Battery Hull");
+    public static ItemBasic<?> BatteryHullLarge = new ItemBasic<>(Ref.ID, "battery_hull_large").tip("An empty HV Battery Hull");
+    public static ItemBasic<?> BatterySmallAcid = new ItemBasic<>(Ref.ID, "battery_small_acid").tip("Single Use");
+    public static ItemBasic<?> BatterySmallMercury = new ItemBasic<>(Ref.ID, "battery_small_mercury").tip("Single Use");
+    public static ItemBasic<?> BatterySmallCadmium = new ItemBasic<>(Ref.ID, "battery_small_cadmium").tip("Reusable");
+    public static ItemBasic<?> BatterySmallLithium = new ItemBasic<>(Ref.ID, "battery_small_lithium").tip("Reusable");
+    public static ItemBasic<?> BatterySmallSodium = new ItemBasic<>(Ref.ID, "battery_small_sodium").tip("Reusable");
+    public static ItemBasic<?> BatteryMediumAcid = new ItemBasic<>(Ref.ID, "battery_medium_acid").tip("Single Use");
+    public static ItemBasic<?> BatteryMediumMercury = new ItemBasic<>(Ref.ID, "battery_medium_mercury").tip("Single Use");
+    public static ItemBasic<?> BatteryMediumCadmium = new ItemBasic<>(Ref.ID, "battery_medium_cadmium").tip("Reusable");
+    public static ItemBasic<?> BatteryMediumLithium = new ItemBasic<>(Ref.ID, "battery_medium_lithium").tip("Reusable");
+    public static ItemBasic<?> BatteryMediumSodium = new ItemBasic<>(Ref.ID, "battery_medium_sodium").tip("Reusable");
+    public static ItemBasic<?> BatteryLargeAcid = new ItemBasic<>(Ref.ID, "battery_large_acid").tip("Single Use");
+    public static ItemBasic<?> BatteryLargeMercury = new ItemBasic<>(Ref.ID, "battery_large_mercury").tip("Single Use");
+    public static ItemBasic<?> BatteryLargeCadmium = new ItemBasic<>(Ref.ID, "battery_large_cadmium").tip("Reusable");
+    public static ItemBasic<?> BatteryLargeLithium = new ItemBasic<>(Ref.ID, "battery_large_lithium").tip("Reusable");
+    public static ItemBasic<?> BatteryLargeSodium = new ItemBasic<>(Ref.ID, "battery_large_sodium").tip("Reusable");
+    public static ItemBasic<?> BatteryEnergyOrb = new ItemBasic<>(Ref.ID, "battery_energy_orb");
+    public static ItemBasic<?> BatteryEnergyOrbCluster = new ItemBasic<>(Ref.ID, "battery_energy_orb_cluster");
 
-    public static final RegistryObject<Item> EmptyShape = ITEMS.register("empty_shape_plate", () -> new ItemBasic("Raw plate to make Molds and Extruder Shapes"));
-    public static final RegistryObject<Item> MoldPlate = ITEMS.register("mold_plate", () -> new ItemBasic("Mold for making Plates"));
-    public static final RegistryObject<Item> MoldGear = ITEMS.register("mold_gear", () -> new ItemBasic("Mold for making Gears"));
-    public static final RegistryObject<Item> MoldGearSmall = ITEMS.register("mold_small_gear", () -> new ItemBasic("Mold for making Small Gears"));
-    public static final RegistryObject<Item> MoldCoinage = ITEMS.register("mold_coinage", () -> new ItemBasic("Secure Mold for making Coins (Don't lose it!)"));
-    public static final RegistryObject<Item> MoldBottle = ITEMS.register("mold_bottle", () -> new ItemBasic("Mold for making Bottles"));
-    public static final RegistryObject<Item> MoldIngot = ITEMS.register("mold_ingot", () -> new ItemBasic("Mold for making Ingots"));
-    public static final RegistryObject<Item> MoldBall = ITEMS.register("mold_ball", () -> new ItemBasic("Mold for making Balls"));
-    public static final RegistryObject<Item> MoldBlock = ITEMS.register("mold_block", () -> new ItemBasic("Mold for making Blocks"));
-    public static final RegistryObject<Item> MoldNugget = ITEMS.register("mold_nugget", () -> new ItemBasic("Mold for making Nuggets"));
-    public static final RegistryObject<Item> MoldAnvil = ITEMS.register("mold_anvil", () -> new ItemBasic("Mold for making Anvils"));
-    public static final RegistryObject<Item> ShapePlate = ITEMS.register("shape_plate", () -> new ItemBasic("Shape for making Plates"));
-    public static final RegistryObject<Item> ShapeRod = ITEMS.register("shape_rod", () -> new ItemBasic("Shape for making Rods"));
-    public static final RegistryObject<Item> ShapeBolt = ITEMS.register("shape_bolt", () -> new ItemBasic("Shape for making Bolts"));
-    public static final RegistryObject<Item> ShapeRing = ITEMS.register("shape_ring", () -> new ItemBasic("Shape for making Rings"));
-    public static final RegistryObject<Item> ShapeCell = ITEMS.register("shape_cell", () -> new ItemBasic("Shape for making Cells"));
-    public static final RegistryObject<Item> ShapeIngot = ITEMS.register("shape_ingot", () -> new ItemBasic("Shape for making Ingots"));
-    public static final RegistryObject<Item> ShapeWire = ITEMS.register("shape_wire", () -> new ItemBasic("Shape for making Wires"));
-    public static final RegistryObject<Item> ShapePipeTiny = ITEMS.register("shape_pipe_tiny", () -> new ItemBasic("Shape for making Tiny Pipes"));
-    public static final RegistryObject<Item> ShapePipeSmall = ITEMS.register("shape_pipe_small", () -> new ItemBasic("Shape for making Small Pipes"));
-    public static final RegistryObject<Item> ShapePipeNormal = ITEMS.register("shape_pipe_normal", () -> new ItemBasic("Shape for making Normal Pipes"));
-    public static final RegistryObject<Item> ShapePipeLarge = ITEMS.register("shape_pipe_large", () -> new ItemBasic("Shape for making Large Pipes"));
-    public static final RegistryObject<Item> ShapePipeHuge = ITEMS.register("shape_pipe_huge", () -> new ItemBasic("Shape for making Huge Pipes"));
-    public static final RegistryObject<Item> ShapeBlock = ITEMS.register("shape_block", () -> new ItemBasic("Shape for making Blocks"));
-    public static final RegistryObject<Item> ShapeHeadSword = ITEMS.register("shape_head_sword", () -> new ItemBasic("Shape for making Sword Blades"));
-    public static final RegistryObject<Item> ShapeHeadPickaxe = ITEMS.register("shape_head_pickaxe", () -> new ItemBasic("Shape for making Pickaxe Heads"));
-    public static final RegistryObject<Item> ShapeHeadShovel = ITEMS.register("shape_head_shovel", () -> new ItemBasic("Shape for making Shovel Heads"));
-    public static final RegistryObject<Item> ShapeHeadAxe = ITEMS.register("shape_head_axe", () -> new ItemBasic("Shape for making Axe Heads"));
-    public static final RegistryObject<Item> ShapeHeadHoe = ITEMS.register("shape_head_hoe", () -> new ItemBasic("Shape for making Hoe Heads"));
-    public static final RegistryObject<Item> ShapeHeadHammer = ITEMS.register("shape_head_hammer", () -> new ItemBasic("Shape for making Hammer Heads"));
-    public static final RegistryObject<Item> ShapeHeadFile = ITEMS.register("shape_head_file", () -> new ItemBasic("Shape for making File Heads"));
-    public static final RegistryObject<Item> ShapeHeadSaw = ITEMS.register("shape_head_saw", () -> new ItemBasic("Shape for making Saw Heads"));
-    public static final RegistryObject<Item> ShapeGear = ITEMS.register("shape_gear", () -> new ItemBasic("Shape for making Gears"));
-    public static final RegistryObject<Item> ShapeGearSmall = ITEMS.register("shape_gear_small", () -> new ItemBasic("Shape for making Small Gears"));
-    public static final RegistryObject<Item> ShapeBottle = ITEMS.register("shape_bottle", () -> new ItemBasic("Shape for making Bottles")); //TODO needed?
+    public static ItemBasic<?> EmptyShape = new ItemBasic<>(Ref.ID, "empty_shape_plate").tip("Raw plate to make Molds and Extruder Shapes");
+    public static ItemBasic<?> MoldPlate = new ItemBasic<>(Ref.ID, "mold_plate").tip("Mold for making Plates");
+    public static ItemBasic<?> MoldGear = new ItemBasic<>(Ref.ID, "mold_gear").tip("Mold for making Gears");
+    public static ItemBasic<?> MoldGearSmall = new ItemBasic<>(Ref.ID, "mold_small_gear").tip("Mold for making Small Gears");
+    public static ItemBasic<?> MoldCoinage = new ItemBasic<>(Ref.ID, "mold_coinage").tip("Secure Mold for making Coins (Don't lose it!)");
+    public static ItemBasic<?> MoldBottle = new ItemBasic<>(Ref.ID, "mold_bottle").tip("Mold for making Bottles");
+    public static ItemBasic<?> MoldIngot = new ItemBasic<>(Ref.ID, "mold_ingot").tip("Mold for making Ingots");
+    public static ItemBasic<?> MoldBall = new ItemBasic<>(Ref.ID, "mold_ball").tip("Mold for making Balls");
+    public static ItemBasic<?> MoldBlock = new ItemBasic<>(Ref.ID, "mold_block").tip("Mold for making Blocks");
+    public static ItemBasic<?> MoldNugget = new ItemBasic<>(Ref.ID, "mold_nugget").tip("Mold for making Nuggets");
+    public static ItemBasic<?> MoldAnvil = new ItemBasic<>(Ref.ID, "mold_anvil").tip("Mold for making Anvils");
+    public static ItemBasic<?> ShapePlate = new ItemBasic<>(Ref.ID, "shape_plate").tip("Shape for making Plates");
+    public static ItemBasic<?> ShapeRod = new ItemBasic<>(Ref.ID, "shape_rod").tip("Shape for making Rods");
+    public static ItemBasic<?> ShapeBolt = new ItemBasic<>(Ref.ID, "shape_bolt").tip("Shape for making Bolts");
+    public static ItemBasic<?> ShapeRing = new ItemBasic<>(Ref.ID, "shape_ring").tip("Shape for making Rings");
+    public static ItemBasic<?> ShapeCell = new ItemBasic<>(Ref.ID, "shape_cell").tip("Shape for making Cells");
+    public static ItemBasic<?> ShapeIngot = new ItemBasic<>(Ref.ID, "shape_ingot").tip("Shape for making Ingots");
+    public static ItemBasic<?> ShapeWire = new ItemBasic<>(Ref.ID, "shape_wire").tip("Shape for making Wires");
+    public static ItemBasic<?> ShapePipeTiny = new ItemBasic<>(Ref.ID, "shape_pipe_tiny").tip("Shape for making Tiny Pipes");
+    public static ItemBasic<?> ShapePipeSmall = new ItemBasic<>(Ref.ID, "shape_pipe_small").tip("Shape for making Small Pipes");
+    public static ItemBasic<?> ShapePipeNormal = new ItemBasic<>(Ref.ID, "shape_pipe_normal").tip("Shape for making Normal Pipes");
+    public static ItemBasic<?> ShapePipeLarge = new ItemBasic<>(Ref.ID, "shape_pipe_large").tip("Shape for making Large Pipes");
+    public static ItemBasic<?> ShapePipeHuge = new ItemBasic<>(Ref.ID, "shape_pipe_huge").tip("Shape for making Huge Pipes");
+    public static ItemBasic<?> ShapeBlock = new ItemBasic<>(Ref.ID, "shape_block").tip("Shape for making Blocks");
+    public static ItemBasic<?> ShapeHeadSword = new ItemBasic<>(Ref.ID, "shape_head_sword").tip("Shape for making Sword Blades");
+    public static ItemBasic<?> ShapeHeadPickaxe = new ItemBasic<>(Ref.ID, "shape_head_pickaxe").tip("Shape for making Pickaxe Heads");
+    public static ItemBasic<?> ShapeHeadShovel = new ItemBasic<>(Ref.ID, "shape_head_shovel").tip("Shape for making Shovel Heads");
+    public static ItemBasic<?> ShapeHeadAxe = new ItemBasic<>(Ref.ID, "shape_head_axe").tip("Shape for making Axe Heads");
+    public static ItemBasic<?> ShapeHeadHoe = new ItemBasic<>(Ref.ID, "shape_head_hoe").tip("Shape for making Hoe Heads");
+    public static ItemBasic<?> ShapeHeadHammer = new ItemBasic<>(Ref.ID, "shape_head_hammer").tip("Shape for making Hammer Heads");
+    public static ItemBasic<?> ShapeHeadFile = new ItemBasic<>(Ref.ID, "shape_head_file").tip("Shape for making File Heads");
+    public static ItemBasic<?> ShapeHeadSaw = new ItemBasic<>(Ref.ID, "shape_head_saw").tip("Shape for making Saw Heads");
+    public static ItemBasic<?> ShapeGear = new ItemBasic<>(Ref.ID, "shape_gear").tip("Shape for making Gears");
+    public static ItemBasic<?> ShapeGearSmall = new ItemBasic<>(Ref.ID, "shape_gear_small").tip("Shape for making Small Gears");
+    public static ItemBasic<?> ShapeBottle = new ItemBasic<>(Ref.ID, "shape_bottle").tip("Shape for making Bottles"); //TODO needed?
 //
 //    //TODO optional items (register anyway, but don't show in JEI?)
 //    //TODO move to IC2+IC2C Registrar
-//    public static final RegistryObject<Item> DropTin = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_tin", "Source of Tin")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropLead = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_lead", "Source of Lead")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropSilver = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_silver", "Source of Silver")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropIron = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_iron", "Source of Iron")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropGold = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_gold", "Source of Gold")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropAluminium = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_aluminium", "Source of Aluminium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropTitanium = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_titanium", "Source of Titanium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropUranium = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_uranium", "Source of Uranium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropUranite = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_uranite", "Source of Uranite")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropThorium = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_thorium", "Source of Thorium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropNickel = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_nickel", "Source of Nickel")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropZinc = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_zinc", "Source of Zinc")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropManganese = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_manganese", "Source of Manganese")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropCopper = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_copper", "Source of Copper")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropTungsten = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_tungsten", "Source of Tungsten")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropPlatinum = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_platinum", "Source of Platinum")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropIridium = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_iridium", "Source of Iridium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropOsmium = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_osmium", "Source of Osmium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropNaquadah = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_naquadah", "Source of Naquadah")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropEmerald = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_emerald", "Source of Emeralds")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropOil = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_oil", "Source of Oil")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropUUM = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_uum", "Source of UU Matter")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropUUA = ITEMS.register("", () -> new ItemBasic(Ref.ID, "drop_uua", "Source of UU Amplifier")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropTin = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_tin", "Source of Tin")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropLead = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_lead", "Source of Lead")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropSilver = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_silver", "Source of Silver")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropIron = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_iron", "Source of Iron")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropGold = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_gold", "Source of Gold")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropAluminium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_aluminium", "Source of Aluminium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropTitanium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_titanium", "Source of Titanium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropUranium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uranium", "Source of Uranium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropUranite = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uranite", "Source of Uranite")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropThorium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_thorium", "Source of Thorium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropNickel = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_nickel", "Source of Nickel")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropZinc = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_zinc", "Source of Zinc")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropManganese = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_manganese", "Source of Manganese")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropCopper = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_copper", "Source of Copper")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropTungsten = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_tungsten", "Source of Tungsten")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropPlatinum = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_platinum", "Source of Platinum")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropIridium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_iridium", "Source of Iridium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropOsmium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_osmium", "Source of Osmium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropNaquadah = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_naquadah", "Source of Naquadah")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropEmerald = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_emerald", "Source of Emeralds")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropOil = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_oil", "Source of Oil")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropUUM = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uum", "Source of UU Matter")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+//    public static final RegistryObject<Item> DropUUA = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uua", "Source of UU Amplifier")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
 //
 //    //TODO move to Forestry Registrar
-//    public static final RegistryObject<Item> CombLignite = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_lignite", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombCoal = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_coal", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombResin = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_resin", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombOil = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_oil", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombStone = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_stone", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombCertus = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_certus", "")/*.required(Ref.MOD_FR, Ref.MOD_AE)*/;
-//    public static final RegistryObject<Item> CombRedstone = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_redstone", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombLapis = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_lapis", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombRuby = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_ruby", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombSapphire = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_sapphire", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombDiamond = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_diamond", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombOlivine = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_olivine", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombEmerald = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_emerald", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombSlag = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_slag", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombCopper = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_copper", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombTin = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_tin", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombLead = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_lead", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombIron = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_iron", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombSteel = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_steel", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombNickel = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_nickel", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombZinc = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_zinc", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombSilver = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_silver", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombGold = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_gold", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombAluminium = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_aluminium", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombManganese = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_manganese", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombTitanium = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_titanium", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombChrome = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_chrome", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombTungsten = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_tungsten", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombPlatinum = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_platinum", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombIridium = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_iridium", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombUranium = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_uranium", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombPlutonium = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_plutonium", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombNaquadah = ITEMS.register("", () -> new ItemBasic(Ref.ID, "comb_naquadah", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombLignite = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_lignite", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombCoal = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_coal", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombResin = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_resin", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombOil = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_oil", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombStone = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_stone", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombCertus = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_certus", "")/*.required(Ref.MOD_FR, Ref.MOD_AE)*/;
+//    public static final RegistryObject<Item> CombRedstone = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_redstone", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombLapis = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_lapis", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombRuby = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_ruby", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombSapphire = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_sapphire", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombDiamond = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_diamond", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombOlivine = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_olivine", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombEmerald = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_emerald", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombSlag = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_slag", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombCopper = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_copper", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombTin = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_tin", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombLead = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_lead", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombIron = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_iron", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombSteel = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_steel", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombNickel = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_nickel", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombZinc = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_zinc", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombSilver = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_silver", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombGold = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_gold", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombAluminium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_aluminium", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombManganese = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_manganese", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombTitanium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_titanium", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombChrome = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_chrome", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombTungsten = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_tungsten", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombPlatinum = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_platinum", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombIridium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_iridium", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombUranium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_uranium", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombPlutonium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_plutonium", "")/*.optional(Ref.MOD_FR)*/;
+//    public static final RegistryObject<Item> CombNaquadah = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_naquadah", "")/*.optional(Ref.MOD_FR)*/;
 
     //TODO
     //public static BlockRubberSapling RUBBER_SAPLING = new BlockRubberSapling();
@@ -290,8 +275,8 @@ public class Data {
     public static StoneType KIMBERLITE = new StoneType(Ref.ID, "kimberlite", Kimberlite, new Texture(Ref.ID, "block/stone/kimberlite"), SoundType.STONE, true);
     public static StoneType QUARTZITE = new StoneType(Ref.ID, "quartzite", Quartzite, new Texture(Ref.ID, "block/stone/quartzite"), SoundType.STONE, true);
 
-    //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal"));
-    //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal"));
+    //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal");
+    //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal");
 
 //    public static BlockStone STONE_GRANITE_RED = new BlockStone(Ref.ID, GRANITE_RED);
 //    public static BlockStone STONE_GRANITE_BLACK = new BlockStone(Ref.ID, GRANITE_BLACK);
@@ -305,123 +290,123 @@ public class Data {
 //    public static BlockStone STONE_KIMBERLITE = new BlockStone(Ref.ID, KIMBERLITE);
 //    public static BlockStone STONE_QUARTZITE = new BlockStone(Ref.ID, QUARTZITE);
 
-    public static final RegistryObject<Block> CASING_ULV = BLOCKS.register("casing_ulv", BlockCasingMachine::new);
-    public static final RegistryObject<Block> CASING_LV = BLOCKS.register("casing_lv", BlockCasingMachine::new);
-    public static final RegistryObject<Block> CASING_MV = BLOCKS.register("casing_mv", BlockCasingMachine::new);
-    public static final RegistryObject<Block> CASING_HV = BLOCKS.register("casing_hv", BlockCasingMachine::new);
-    public static final RegistryObject<Block> CASING_EV = BLOCKS.register("casing_ev", BlockCasingMachine::new);
-    public static final RegistryObject<Block> CASING_IV = BLOCKS.register("casing_iv", BlockCasingMachine::new);
-    public static final RegistryObject<Block> CASING_LUV = BLOCKS.register("casing_luv", BlockCasingMachine::new);
-    public static final RegistryObject<Block> CASING_ZPM = BLOCKS.register("casing_zpm", BlockCasingMachine::new);
-    public static final RegistryObject<Block> CASING_UV = BLOCKS.register("casing_uv", BlockCasingMachine::new);
-    public static final RegistryObject<Block> CASING_MAX = BLOCKS.register("casing_max", BlockCasingMachine::new);
+    public static final BlockCasing CASING_ULV = new BlockCasing(Ref.ID, "casing_ulv");
+    public static final BlockCasing CASING_LV = new BlockCasing(Ref.ID, "casing_lv");
+    public static final BlockCasing CASING_MV = new BlockCasing(Ref.ID, "casing_mv");
+    public static final BlockCasing CASING_HV = new BlockCasing(Ref.ID, "casing_hv");
+    public static final BlockCasing CASING_EV = new BlockCasing(Ref.ID, "casing_ev");
+    public static final BlockCasing CASING_IV = new BlockCasing(Ref.ID, "casing_iv");
+    public static final BlockCasing CASING_LUV = new BlockCasing(Ref.ID, "casing_luv");
+    public static final BlockCasing CASING_ZPM = new BlockCasing(Ref.ID, "casing_zpm");
+    public static final BlockCasing CASING_UV = new BlockCasing(Ref.ID, "casing_uv");
+    public static final BlockCasing CASING_MAX = new BlockCasing(Ref.ID, "casing_max");
 
-    public static final RegistryObject<Block> CASING_FIRE_BRICK = BLOCKS.register("casing_fire_brick", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_BRONZE = BLOCKS.register("casing_bronze", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_BRICKED_BRONZE = BLOCKS.register("casing_bricked_bronze", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_BRONZE_PLATED_BRICK = BLOCKS.register("casing_bronze_plated_brick", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_STEEL = BLOCKS.register("casing_steel", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_BRICKED_STEEL = BLOCKS.register("casing_bricked_steel", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_SOLID_STEEL = BLOCKS.register("casing_solid_steel", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_STAINLESS_STEEL = BLOCKS.register("casing_stainless_steel", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_TITANIUM = BLOCKS.register("casing_titanium", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_TUNGSTENSTEEL = BLOCKS.register("casing_tungstensteel", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_HEAT_PROOF = BLOCKS.register("casing_heat_proof", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_FROST_PROOF = BLOCKS.register("casing_frost_proof", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_RADIATION_PROOF = BLOCKS.register("casing_radiation_proof", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_FIREBOX_BRONZE = BLOCKS.register("casing_firebox_bronze", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_FIREBOX_STEEL = BLOCKS.register("casing_firebox_steel", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_FIREBOX_TITANIUM = BLOCKS.register("casing_firebox_titanium", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_FIREBOX_TUNGSTENSTEEL = BLOCKS.register("casing_firebox_tungstensteel", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_GEARBOX_BRONZE = BLOCKS.register("casing_gearbox_bronze", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_GEARBOX_STEEL = BLOCKS.register("casing_gearbox_steel", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_GEARBOX_TITANIUM = BLOCKS.register("casing_gearbox_titanium", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_GEARBOX_TUNGSTENSTEEL = BLOCKS.register("casing_gearbox_tungstensteel", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_PIPE_BRONZE = BLOCKS.register("casing_pipe_bronze", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_PIPE_STEEL = BLOCKS.register("casing_pipe_steel", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_PIPE_TITANIUM = BLOCKS.register("casing_pipe_titanium", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_PIPE_TUNGSTENSTEEL = BLOCKS.register("casing_pipe_tungstensteel", BlockCasing::new);
-    public static final RegistryObject<Block> CASING_ENGINE_INTAKE = BLOCKS.register("casing_engine_intake", BlockCasing::new);
+    public static final BlockCasing CASING_FIRE_BRICK = new BlockCasing(Ref.ID, "casing_fire_brick");
+    public static final BlockCasing CASING_BRONZE = new BlockCasing(Ref.ID, "casing_bronze");
+    public static final BlockCasing CASING_BRICKED_BRONZE = new BlockCasing(Ref.ID, "casing_bricked_bronze");
+    public static final BlockCasing CASING_BRONZE_PLATED_BRICK = new BlockCasing(Ref.ID, "casing_bronze_plated_brick");
+    public static final BlockCasing CASING_STEEL = new BlockCasing(Ref.ID, "casing_steel");
+    public static final BlockCasing CASING_BRICKED_STEEL = new BlockCasing(Ref.ID, "casing_bricked_steel");
+    public static final BlockCasing CASING_SOLID_STEEL = new BlockCasing(Ref.ID, "casing_solid_steel");
+    public static final BlockCasing CASING_STAINLESS_STEEL = new BlockCasing(Ref.ID, "casing_stainless_steel");
+    public static final BlockCasing CASING_TITANIUM = new BlockCasing(Ref.ID, "casing_titanium");
+    public static final BlockCasing CASING_TUNGSTENSTEEL = new BlockCasing(Ref.ID, "casing_tungstensteel");
+    public static final BlockCasing CASING_HEAT_PROOF = new BlockCasing(Ref.ID, "casing_heat_proof");
+    public static final BlockCasing CASING_FROST_PROOF = new BlockCasing(Ref.ID, "casing_frost_proof");
+    public static final BlockCasing CASING_RADIATION_PROOF = new BlockCasing(Ref.ID, "casing_radiation_proof");
+    public static final BlockCasing CASING_FIREBOX_BRONZE = new BlockCasing(Ref.ID, "casing_firebox_bronze");
+    public static final BlockCasing CASING_FIREBOX_STEEL = new BlockCasing(Ref.ID, "casing_firebox_steel");
+    public static final BlockCasing CASING_FIREBOX_TITANIUM = new BlockCasing(Ref.ID, "casing_firebox_titanium");
+    public static final BlockCasing CASING_FIREBOX_TUNGSTENSTEEL = new BlockCasing(Ref.ID, "casing_firebox_tungstensteel");
+    public static final BlockCasing CASING_GEARBOX_BRONZE = new BlockCasing(Ref.ID, "casing_gearbox_bronze");
+    public static final BlockCasing CASING_GEARBOX_STEEL = new BlockCasing(Ref.ID, "casing_gearbox_steel");
+    public static final BlockCasing CASING_GEARBOX_TITANIUM = new BlockCasing(Ref.ID, "casing_gearbox_titanium");
+    public static final BlockCasing CASING_GEARBOX_TUNGSTENSTEEL = new BlockCasing(Ref.ID, "casing_gearbox_tungstensteel");
+    public static final BlockCasing CASING_PIPE_BRONZE = new BlockCasing(Ref.ID, "casing_pipe_bronze");
+    public static final BlockCasing CASING_PIPE_STEEL = new BlockCasing(Ref.ID, "casing_pipe_steel");
+    public static final BlockCasing CASING_PIPE_TITANIUM = new BlockCasing(Ref.ID, "casing_pipe_titanium");
+    public static final BlockCasing CASING_PIPE_TUNGSTENSTEEL = new BlockCasing(Ref.ID, "casing_pipe_tungstensteel");
+    public static final BlockCasing CASING_ENGINE_INTAKE = new BlockCasing(Ref.ID, "casing_engine_intake");
 
-    public static final RegistryObject<Block> CASING_FUSION_1 = BLOCKS.register("casing_fusion_1", BlockFusionCasing::new);
-    public static final RegistryObject<Block> CASING_FUSION_2 = BLOCKS.register("casing_fusion_2", BlockFusionCasing::new);
-    public static final RegistryObject<Block> CASING_FUSION_3 = BLOCKS.register("casing_fusion_3", BlockFusionCasing::new);
+    public static final BlockFusionCasing CASING_FUSION_1 = new BlockFusionCasing(Ref.ID, "casing_fusion_1");
+    public static final BlockFusionCasing CASING_FUSION_2 = new BlockFusionCasing(Ref.ID, "casing_fusion_2");
+    public static final BlockFusionCasing CASING_FUSION_3 = new BlockFusionCasing(Ref.ID, "casing_fusion_3");
 
-    public static final RegistryObject<Block> CASING_TURBINE_1 = BLOCKS.register("casing_turbine_1", BlockTurbineCasing::new);
-    public static final RegistryObject<Block> CASING_TURBINE_2 = BLOCKS.register("casing_turbine_2", BlockTurbineCasing::new);
-    public static final RegistryObject<Block> CASING_TURBINE_3 = BLOCKS.register("casing_turbine_3", BlockTurbineCasing::new);
-    public static final RegistryObject<Block> CASING_TURBINE_4 = BLOCKS.register("casing_turbine_4", BlockTurbineCasing::new);
+    public static final BlockTurbineCasing CASING_TURBINE_1 = new BlockTurbineCasing(Ref.ID, "casing_turbine_1");
+    public static final BlockTurbineCasing CASING_TURBINE_2 = new BlockTurbineCasing(Ref.ID, "casing_turbine_2");
+    public static final BlockTurbineCasing CASING_TURBINE_3 = new BlockTurbineCasing(Ref.ID, "casing_turbine_3");
+    public static final BlockTurbineCasing CASING_TURBINE_4 = new BlockTurbineCasing(Ref.ID, "casing_turbine_4");
 
-   public static final RegistryObject<Block> COIL_CUPRONICKEL = BLOCKS.register("coil_cupronickel", () -> new BlockCoil(113)); //1808
-   public static final RegistryObject<Block> COIL_KANTHAL = BLOCKS.register("coil_kanthal", () -> new BlockCoil(169)); //2704
-   public static final RegistryObject<Block> COIL_NICHROME = BLOCKS.register("coil_nichrome", () -> new BlockCoil(225)); //3600
-   public static final RegistryObject<Block> COIL_TUNGSTENSTEEL = BLOCKS.register("coil_tungstensteel", () -> new BlockCoil(282)); //4512
-   public static final RegistryObject<Block> COIL_HSSG = BLOCKS.register("coil_hssg", () -> new BlockCoil(338)); //5408
-   public static final RegistryObject<Block> COIL_NAQUADAH = BLOCKS.register("coil_naquadah", () -> new BlockCoil(450)); //7200
-   public static final RegistryObject<Block> COIL_NAQUADAH_ALLOY = BLOCKS.register("coil_naquadah_alloy", () -> new BlockCoil(563)); //9008
-   public static final RegistryObject<Block> COIL_FUSION = BLOCKS.register("coil_fusion", () -> new BlockCoil(563)); //9008
-   public static final RegistryObject<Block> COIL_SUPERCONDUCTOR = BLOCKS.register("coil_superconductor", () -> new BlockCoil(563)); //9008
+   public static final BlockCoil COIL_CUPRONICKEL = new BlockCoil(Ref.ID, "coil_cupronickel", 113); //1808
+   public static final BlockCoil COIL_KANTHAL = new BlockCoil(Ref.ID, "coil_kanthal", 169); //2704
+   public static final BlockCoil COIL_NICHROME = new BlockCoil(Ref.ID, "coil_nichrome", 225); //3600
+   public static final BlockCoil COIL_TUNGSTENSTEEL = new BlockCoil(Ref.ID, "coil_tungstensteel", 282); //4512
+   public static final BlockCoil COIL_HSSG = new BlockCoil(Ref.ID, "coil_hssg", 338); //5408
+   public static final BlockCoil COIL_NAQUADAH = new BlockCoil(Ref.ID, "coil_naquadah", 450); //7200
+   public static final BlockCoil COIL_NAQUADAH_ALLOY = new BlockCoil(Ref.ID, "coil_naquadah_alloy", 563); //9008
+   public static final BlockCoil COIL_FUSION = new BlockCoil(Ref.ID, "coil_fusion", 563); //9008
+   public static final BlockCoil COIL_SUPERCONDUCTOR = new BlockCoil(Ref.ID, "coil_superconductor", 563); //9008
 
     static {
-        new BlockCableBuilder(RedAlloy, 0, 1, Tier.ULV).amps(1).build(BLOCKS); //ULV
-        new BlockCableBuilder(Cobalt, 2, 4, Tier.LV).amps(2).build(BLOCKS); //LV
-        new BlockCableBuilder(Lead, 2, 4, Tier.LV).amps(2).build(BLOCKS);
-        new BlockCableBuilder(Tin, 1, 2, Tier.LV).amps(1).build(BLOCKS);
-        new BlockCableBuilder(Zinc, 1, 2, Tier.LV).amps(1).build(BLOCKS);
-        new BlockCableBuilder(SolderingAlloy, 1, 2, Tier.LV).amps(1).build(BLOCKS);
-        new BlockCableBuilder(Iron, HC ? 3 : 4, HC ? 6 : 8, Tier.MV).amps(2).build(BLOCKS); //MV
-        new BlockCableBuilder(Nickel, HC ? 3 : 5, HC ? 6 : 10, Tier.MV).amps(3).build(BLOCKS);
-        new BlockCableBuilder(Cupronickel, HC ? 3 : 4, HC ? 6 : 8, Tier.MV).amps(2).build(BLOCKS);
-        new BlockCableBuilder(Copper, HC ? 2 : 3, HC ? 4 : 6, Tier.MV).amps(1).build(BLOCKS);
-        new BlockCableBuilder(AnnealedCopper, HC ? 1 : 2, HC ? 2 : 4, Tier.MV).amps(1).build(BLOCKS);
-        new BlockCableBuilder(Kanthal, HC ? 3 : 8, HC ? 6 : 16, Tier.HV).amps(4).build(BLOCKS); //HV
-        new BlockCableBuilder(Gold, HC ? 2 : 6, HC ? 4 : 12, Tier.HV).amps(3).build(BLOCKS);
-        new BlockCableBuilder(Electrum, HC ? 2 : 5, HC ? 4 : 10, Tier.HV).amps(2).build(BLOCKS);
-        new BlockCableBuilder(Silver, HC ? 1 : 4, HC ? 2 : 8, Tier.HV).amps(1).build(BLOCKS);
-        new BlockCableBuilder(Nichrome, HC ? 4 : 32, HC ? 8 : 64, Tier.EV).amps(3).build(BLOCKS); //EV
-        new BlockCableBuilder(Steel, HC ? 2 : 16, HC ? 4 : 32, Tier.EV).amps(2).build(BLOCKS);
-        new BlockCableBuilder(Titanium, HC ? 2 : 12, HC ? 4 : 24, Tier.EV).amps(4).build(BLOCKS);
-        new BlockCableBuilder(Aluminium, HC ? 1 : 8, HC ? 2 : 16, Tier.EV).amps(1).build(BLOCKS);
-        new BlockCableBuilder(Graphene, HC ? 1 : 16, HC ? 2 : 32, Tier.IV).amps(1).build(BLOCKS); //IV
-        new BlockCableBuilder(Osmium, HC ? 2 : 32, HC ? 4 : 64, Tier.IV).amps(4).build(BLOCKS);
-        new BlockCableBuilder(Platinum, HC ? 1 : 16, HC ? 2 : 32, Tier.IV).amps(2).build(BLOCKS);
-        new BlockCableBuilder(TungstenSteel, HC ? 1 : 14, HC ? 4 : 28, Tier.IV).amps(3).build(BLOCKS);
-        new BlockCableBuilder(Tungsten, HC ? 2 : 12, HC ? 4 : 24, Tier.IV).amps(1).build(BLOCKS);
-        new BlockCableBuilder(HSSG, HC ? 2 : 128, HC ? 4 : 256, Tier.LUV).amps(4).build(BLOCKS); //LUV
-        new BlockCableBuilder(NiobiumTitanium, HC ? 2 : 128, HC ? 4 : 256, Tier.LUV).amps(4).build(BLOCKS);
-        new BlockCableBuilder(VanadiumGallium, HC ? 2 : 128, HC ? 4 : 256, Tier.LUV).amps(4).build(BLOCKS);
-        new BlockCableBuilder(YttriumBariumCuprate, HC ? 4 : 256, HC ? 8 : 512, Tier.LUV).amps(4).build(BLOCKS);
-        new BlockCableBuilder(Naquadah, HC ? 2 : 64, HC ? 4 : 128, Tier.ZPM).amps(2).build(BLOCKS); //ZPM
-        new BlockCableBuilder(NaquadahAlloy, HC ? 4 : 64, HC ? 8 : 128, Tier.ZPM).amps(2).build(BLOCKS);
-        new BlockCableBuilder(Duranium, HC ? 8 : 64, HC ? 16 : 128, Tier.ZPM).amps(1).build(BLOCKS);
-        new BlockCableBuilder(Superconductor, 1, 1, Tier.MAX).amps(4).build(BLOCKS); //MAX
+        new BlockCableBuilder(Ref.ID, RedAlloy, 0, 1, Tier.ULV).amps(1).build(); //ULV
+        new BlockCableBuilder(Ref.ID, Cobalt, 2, 4, Tier.LV).amps(2).build(); //LV
+        new BlockCableBuilder(Ref.ID, Lead, 2, 4, Tier.LV).amps(2).build();
+        new BlockCableBuilder(Ref.ID, Tin, 1, 2, Tier.LV).amps(1).build();
+        new BlockCableBuilder(Ref.ID, Zinc, 1, 2, Tier.LV).amps(1).build();
+        new BlockCableBuilder(Ref.ID, SolderingAlloy, 1, 2, Tier.LV).amps(1).build();
+        new BlockCableBuilder(Ref.ID, Iron, HC ? 3 : 4, HC ? 6 : 8, Tier.MV).amps(2).build(); //MV
+        new BlockCableBuilder(Ref.ID, Nickel, HC ? 3 : 5, HC ? 6 : 10, Tier.MV).amps(3).build();
+        new BlockCableBuilder(Ref.ID, Cupronickel, HC ? 3 : 4, HC ? 6 : 8, Tier.MV).amps(2).build();
+        new BlockCableBuilder(Ref.ID, Copper, HC ? 2 : 3, HC ? 4 : 6, Tier.MV).amps(1).build();
+        new BlockCableBuilder(Ref.ID, AnnealedCopper, HC ? 1 : 2, HC ? 2 : 4, Tier.MV).amps(1).build();
+        new BlockCableBuilder(Ref.ID, Kanthal, HC ? 3 : 8, HC ? 6 : 16, Tier.HV).amps(4).build(); //HV
+        new BlockCableBuilder(Ref.ID, Gold, HC ? 2 : 6, HC ? 4 : 12, Tier.HV).amps(3).build();
+        new BlockCableBuilder(Ref.ID, Electrum, HC ? 2 : 5, HC ? 4 : 10, Tier.HV).amps(2).build();
+        new BlockCableBuilder(Ref.ID, Silver, HC ? 1 : 4, HC ? 2 : 8, Tier.HV).amps(1).build();
+        new BlockCableBuilder(Ref.ID, Nichrome, HC ? 4 : 32, HC ? 8 : 64, Tier.EV).amps(3).build(); //EV
+        new BlockCableBuilder(Ref.ID, Steel, HC ? 2 : 16, HC ? 4 : 32, Tier.EV).amps(2).build();
+        new BlockCableBuilder(Ref.ID, Titanium, HC ? 2 : 12, HC ? 4 : 24, Tier.EV).amps(4).build();
+        new BlockCableBuilder(Ref.ID, Aluminium, HC ? 1 : 8, HC ? 2 : 16, Tier.EV).amps(1).build();
+        new BlockCableBuilder(Ref.ID, Graphene, HC ? 1 : 16, HC ? 2 : 32, Tier.IV).amps(1).build(); //IV
+        new BlockCableBuilder(Ref.ID, Osmium, HC ? 2 : 32, HC ? 4 : 64, Tier.IV).amps(4).build();
+        new BlockCableBuilder(Ref.ID, Platinum, HC ? 1 : 16, HC ? 2 : 32, Tier.IV).amps(2).build();
+        new BlockCableBuilder(Ref.ID, TungstenSteel, HC ? 1 : 14, HC ? 4 : 28, Tier.IV).amps(3).build();
+        new BlockCableBuilder(Ref.ID, Tungsten, HC ? 2 : 12, HC ? 4 : 24, Tier.IV).amps(1).build();
+        new BlockCableBuilder(Ref.ID, HSSG, HC ? 2 : 128, HC ? 4 : 256, Tier.LUV).amps(4).build(); //LUV
+        new BlockCableBuilder(Ref.ID, NiobiumTitanium, HC ? 2 : 128, HC ? 4 : 256, Tier.LUV).amps(4).build();
+        new BlockCableBuilder(Ref.ID, VanadiumGallium, HC ? 2 : 128, HC ? 4 : 256, Tier.LUV).amps(4).build();
+        new BlockCableBuilder(Ref.ID, YttriumBariumCuprate, HC ? 4 : 256, HC ? 8 : 512, Tier.LUV).amps(4).build();
+        new BlockCableBuilder(Ref.ID, Naquadah, HC ? 2 : 64, HC ? 4 : 128, Tier.ZPM).amps(2).build(); //ZPM
+        new BlockCableBuilder(Ref.ID, NaquadahAlloy, HC ? 4 : 64, HC ? 8 : 128, Tier.ZPM).amps(2).build();
+        new BlockCableBuilder(Ref.ID, Duranium, HC ? 8 : 64, HC ? 16 : 128, Tier.ZPM).amps(1).build();
+        new BlockCableBuilder(Ref.ID, Superconductor, 1, 1, Tier.MAX).amps(4).build(); //MAX
 
-        new BlockFluidPipeBuilder(Wood, 30, false, PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(10, 10, 30, 60, 60, 60).build(BLOCKS);
-        new BlockFluidPipeBuilder(Copper, 1000, true).caps(10).build(BLOCKS);
-        new BlockFluidPipeBuilder(Bronze, 2000, true).caps(20).build(BLOCKS);
-        new BlockFluidPipeBuilder(Steel, 2500, true).caps(40).build(BLOCKS);
-        new BlockFluidPipeBuilder(StainlessSteel, 3000, true).caps(60).build(BLOCKS);
-        new BlockFluidPipeBuilder(Titanium, 5000, true).caps(80).build(BLOCKS);
-        new BlockFluidPipeBuilder(TungstenSteel, 7500, true).caps(100).build(BLOCKS);
-        new BlockFluidPipeBuilder(Plastic, 250, true).caps(60).build(BLOCKS);
-        new BlockFluidPipeBuilder(Polytetrafluoroethylene, 600, true).caps(480).build(BLOCKS);
-        new BlockFluidPipeBuilder(HighPressure, 1500, true, PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(4800, 4800, 4800, 7200, 9600, 9600).build(BLOCKS);
-        new BlockFluidPipeBuilder(PlasmaContainment, 100000, true, PipeSize.NORMAL).caps(240, 240, 240, 240, 240, 240).build(BLOCKS);
+        new BlockFluidPipeBuilder(Ref.ID, Wood, 30, false, PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(10, 10, 30, 60, 60, 60).build();
+        new BlockFluidPipeBuilder(Ref.ID, Copper, 1000, true).caps(10).build();
+        new BlockFluidPipeBuilder(Ref.ID, Bronze, 2000, true).caps(20).build();
+        new BlockFluidPipeBuilder(Ref.ID, Steel, 2500, true).caps(40).build();
+        new BlockFluidPipeBuilder(Ref.ID, StainlessSteel, 3000, true).caps(60).build();
+        new BlockFluidPipeBuilder(Ref.ID, Titanium, 5000, true).caps(80).build();
+        new BlockFluidPipeBuilder(Ref.ID, TungstenSteel, 7500, true).caps(100).build();
+        new BlockFluidPipeBuilder(Ref.ID, Plastic, 250, true).caps(60).build();
+        new BlockFluidPipeBuilder(Ref.ID, Polytetrafluoroethylene, 600, true).caps(480).build();
+        new BlockFluidPipeBuilder(Ref.ID, HighPressure, 1500, true, PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(4800, 4800, 4800, 7200, 9600, 9600).build();
+        new BlockFluidPipeBuilder(Ref.ID, PlasmaContainment, 100000, true, PipeSize.NORMAL).caps(240, 240, 240, 240, 240, 240).build();
 
-        new BlockItemPipeBuilder(Cupronickel).slots(1).steps(1).build(BLOCKS);
-        new BlockItemPipeBuilder(CobaltBrass).slots(1).steps(1).build(BLOCKS);
-        new BlockItemPipeBuilder(Brass).slots(1).steps(1).build(BLOCKS);
-        new BlockItemPipeBuilder(Electrum).slots(2).steps(2).build(BLOCKS);
-        new BlockItemPipeBuilder(RoseGold).slots(2).steps(2).build(BLOCKS);
-        new BlockItemPipeBuilder(SterlingSilver).slots(2).steps(2).build(BLOCKS);
-        new BlockItemPipeBuilder(Platinum).slots(4).steps(4).build(BLOCKS);
-        new BlockItemPipeBuilder(Ultimet).slots(4).steps(4).build(BLOCKS);
-        new BlockItemPipeBuilder(PolyvinylChloride).slots(4).steps(4).build(BLOCKS);
-        new BlockItemPipeBuilder(Osmium).slots(8).steps(8).build(BLOCKS);
+        new BlockItemPipeBuilder(Ref.ID, Cupronickel).slots(1).steps(1).build();
+        new BlockItemPipeBuilder(Ref.ID, CobaltBrass).slots(1).steps(1).build();
+        new BlockItemPipeBuilder(Ref.ID, Brass).slots(1).steps(1).build();
+        new BlockItemPipeBuilder(Ref.ID, Electrum).slots(2).steps(2).build();
+        new BlockItemPipeBuilder(Ref.ID, RoseGold).slots(2).steps(2).build();
+        new BlockItemPipeBuilder(Ref.ID, SterlingSilver).slots(2).steps(2).build();
+        new BlockItemPipeBuilder(Ref.ID, Platinum).slots(4).steps(4).build();
+        new BlockItemPipeBuilder(Ref.ID, Ultimet).slots(4).steps(4).build();
+        new BlockItemPipeBuilder(Ref.ID, PolyvinylChloride).slots(4).steps(4).build();
+        new BlockItemPipeBuilder(Ref.ID, Osmium).slots(8).steps(8).build();
     }
 
     // Rubber Tree
-    public static final RegistryObject<Block> RUBBER_LEAVES = BLOCKS.register("rubber_leaves", BlockRubberLeaves::new);
-    public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", BlockRubberLog::new);
-    public static final RegistryObject<Block> RUBBER_SAPLING = BLOCKS.register("rubber_sapling", BlockRubberSapling::new);
+    public static final BlockRubberLeaves RUBBER_LEAVES = new BlockRubberLeaves(Ref.ID, "rubber_leaves");
+    public static final BlockRubberLog RUBBER_LOG = new BlockRubberLog(Ref.ID, "rubber_log");
+    public static final BlockRubberSapling RUBBER_SAPLING = new BlockRubberSapling(Ref.ID, "rubber_sapling");
 }

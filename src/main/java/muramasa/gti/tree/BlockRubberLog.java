@@ -23,8 +23,8 @@ public class BlockRubberLog extends BlockBasic {
     final static DirectionProperty RESIN_FACING = BlockStateProperties.HORIZONTAL_FACING;
     final static EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 
-    public BlockRubberLog() {
-        super(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD));
+    public BlockRubberLog(String domain, String id) {
+        super(domain, id, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD));
         setDefaultState(getDefaultState().with(RESIN_STATE, ResinState.NONE).with(RESIN_FACING, Direction.NORTH).with(AXIS, Direction.Axis.Y));
     }
 
