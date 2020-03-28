@@ -54,7 +54,7 @@ public class RubberTreeFeature extends AbstractTreeFeature<TreeFeatureConfig> {
 
         // set crown logs to default
         for (BlockPos bp : set) {
-            setBlockState(world, bp, RUBBER_LOG.get().getDefaultState());
+            setBlockState(world, bp, RUBBER_LOG.getDefaultState());
         }
         // place leaves
         for (BlockPos bp : set) {
@@ -62,7 +62,7 @@ public class RubberTreeFeature extends AbstractTreeFeature<TreeFeatureConfig> {
                 Direction dir = Direction.byIndex(d);
                 BlockPos p = bp.offset(dir,1);
                 if (!set.contains(p) && isAirOrLeaves(world, p) && !set1.contains(p)) {
-                    setBlockState(world, p, RUBBER_LEAVES.get().getDefaultState());
+                    setBlockState(world, p, RUBBER_LEAVES.getDefaultState());
                     set1.add(p);
                 }
             }

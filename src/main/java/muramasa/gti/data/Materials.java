@@ -705,7 +705,7 @@ public class Materials {
         GAS.all().forEach(m -> m.setGas(new AntimatterFluid(m, GAS)));
         PLASMA.all().forEach(m -> m.setPlasma(new AntimatterFluid(m, PLASMA)));
         
-        AntimatterAPI.all(Material.class).forEach(Material::setChemicalFormula);
+        AntimatterAPI.all(Material.class, Material::setChemicalFormula);
 
         //If using small ore markers, every normal ore needs a small version. This greatly increases block usage
         if (Configs.WORLD.ORE_VEIN_SMALL_ORE_MARKERS) ORE.all().forEach(m -> m.flags(ORE_SMALL));

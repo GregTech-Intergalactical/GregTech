@@ -1,6 +1,5 @@
 package muramasa.gti.loader;
 
-import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.IMaterialTag;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialStack;
@@ -9,10 +8,8 @@ import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
 import muramasa.gti.data.Materials;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.RegistryObject;
 
 import java.util.ArrayList;
 
@@ -26,15 +23,15 @@ import static muramasa.gti.data.RecipeMaps.*;
 
 //TODO EXCLUDED FROM COMPILE
 
-public class MaterialRecipeLoader { 
+public class MaterialRecipeLoader {
 
     //TODO register purified dust processing to centrifuged processing to regain lost benefits
 
     public static int mixedOreYield = Ref.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
 
     //TODO: When we do have MaterialInfo or a MaterialType 'amount' system, some of this would need to adapt to it!
-    //TODO: Plasma Arc/Normal Arc smelting will be handled differently, when we have said amount system.    
-    
+    //TODO: Plasma Arc/Normal Arc smelting will be handled differently, when we have said amount system.
+
     public static void init() {
         //ELEMENTAL.all().forEach();
 //            ItemStack aDataOrb = ItemType.Tool_DataO.RB(1);
@@ -55,7 +52,7 @@ public class MaterialRecipeLoader {
             VACUUM_FREEZING.RB().ii(m.getCellPlasma(1)).io(cell).add(Math.max(m.getMass() * 2, 1), 120);
             PLASMA_FUELS.RB().fi(m.getPlasma(1296)).add(0, 0, Math.max(1024, 1024 * m.getMass()) * 1000); //TODO: 1296 or 1000? To per cell amount or to '9' units?
         });
-        
+
         INGOT_HOT.all().forEach(m -> VACUUM_FREEZING.RB().ii(INGOT_HOT.get(m, 1)).io(INGOT.get(m, 1)).add(Math.max(m.getMass() * 3, 1), 120)); //TODO: Coolant idea?
 
         SPRING.all().forEach(m -> BENDING.RB().ii(ROD.get(m, 1)).io(SPRING.get(m, 1)).add(200, 16));
@@ -63,11 +60,11 @@ public class MaterialRecipeLoader {
         PLATE_DENSE.all().forEach(m -> {
             ItemStack plateDense = PLATE_DENSE.get(m, 1);
             long mass = Math.max(m.getMass() * 9, 1);
-            BENDING.RB().ii(PLATE.get(m, 9)).io(plateDense).add(mass, 96);  
+            BENDING.RB().ii(PLATE.get(m, 9)).io(plateDense).add(mass, 96);
             BENDING.RB().ii(INGOT.get(m, 9)).io(plateDense).add(mass + 44, 96);
             //GregTech_API.registerCover(aDenseStack, new GT_RenderedTexture(merial.mIconSet.mTextures[76], merial.mRGBa, false), null);
         });
-   
+
         ROTOR.all().forEach(m -> {
             ItemStack plate = PLATE.get(m, 1), ring = RING.get(m, 1), rotor = ROTOR.get(m, 1);
             RecipeHelper.addShaped("rotor_" + m.getId(), rotor, "PhP", "SRf", "PdP", 'P', plate, 'R', ring, 'S', SCREW.get(m, 1));
@@ -75,9 +72,9 @@ public class MaterialRecipeLoader {
             plate = Utils.ca(4, plate);
             ASSEMBLING.RB().ii(plate, ring).fi(Materials.Lead.getLiquid(48)).io(rotor).add(240, 24);
             ASSEMBLING.RB().ii(plate, ring).fi(Materials.Tin.getLiquid(32)).io(rotor).add(240, 24);
-            ASSEMBLING.RB().ii(plate, ring).fi(Materials.SolderingAlloy.getLiquid(16)).io(rotor).add(240, 24);          
+            ASSEMBLING.RB().ii(plate, ring).fi(Materials.SolderingAlloy.getLiquid(16)).io(rotor).add(240, 24);
         });
-        
+
         /*WIRE_FINE.all().forEach(m -> {
             if (!m.has(NOSMASH)) {
                 //RecipeAdder.addWiremillRecipe(INGOT.get(m, 1), Utils.copy(m.getWire01(2), aWireF), 100, 4);
@@ -91,14 +88,14 @@ public class MaterialRecipeLoader {
         GEAR_SMALL.all().stream().filter(m -> m != Materials.Wood).forEach(m -> {
             ItemStack gearSmall = GEAR_SMALL.get(m, 1);
             RecipeHelper.addShapeless("plate_to_small_gear_", gearSmall, "h", PLATE.get(m, 1));
-            FLUID_SOLIDIFYING.RB().ii(mold(MoldGearSmall, 0)).fi(m.getLiquid(144)).io(gearSmall).add(16, 8);
+            FLUID_SOLIDIFYING.RB().ii(MoldGearSmall.get(0)).fi(m.getLiquid(144)).io(gearSmall).add(16, 8);
         });
-        
+
         GEAR.all().forEach(m -> {
             ItemStack gear = GEAR.get(m, 1);
             if (m.has(PLATE)) RecipeHelper.addShaped("gear_" + m.getId(), gear, "SPS", "PwP", "SPS", 'P', PLATE.get(m, 1), 'S', ROD.get(m, 1));
             if (m.has(GEM) && m.has(ROD)) RecipeHelper.addShaped("gear_" + m.getId(), gear, "SPS", "PwP", "SPS", 'P', GEM_BRITTLE.get(m, 1), 'S', ROD.get(m, 1));
-            if (m.has(LIQUID)) FLUID_SOLIDIFYING.RB().ii(mold(MoldGear, 0)).fi(m.getLiquid(576)).io(gear).add(128, 8);
+            if (m.has(LIQUID)) FLUID_SOLIDIFYING.RB().ii(MoldGear.get(0)).fi(m.getLiquid(576)).io(gear).add(128, 8);
             if (m.has(INGOT) && !m.has(NOSMELT)) {
                 int voltage = m.getBlastTemp() >= 2800 ? 64 : 16;
                 if (m.has(NOSMASH)) {
@@ -107,25 +104,25 @@ public class MaterialRecipeLoader {
                 long mass = m.getMass();
                 //int aVoltageMulti = m.has(NOSMASH) ? m.getBlastTemp() >= 2800 ? 16 : 4 : m.getBlastTemp() >= 2800 ? 64 : 16;
                 ItemStack gearSmeltInto = GEAR.get(m.getSmeltInto(), 1);
-                EXTRUDING.RB().ii(INGOT.get(m, 4), mold(ShapeGear, 0)).io(gearSmeltInto).add(Math.max(mass * 5, 1), 8 * voltage);
-                ALLOY_SMELTING.RB().ii(INGOT.get(m, 8), mold(MoldGear, 0)).io(gearSmeltInto).add(mass * 10, 2 * voltage);
+                EXTRUDING.RB().ii(INGOT.get(m, 4), ShapeGear.get(0)).io(gearSmeltInto).add(Math.max(mass * 5, 1), 8 * voltage);
+                ALLOY_SMELTING.RB().ii(INGOT.get(m, 8), MoldGear.get(0)).io(gearSmeltInto).add(mass * 10, 2 * voltage);
             }
         });
-        
+
         FOIL.all().forEach(m -> {
             ItemStack plate = PLATE.get(m, 1), foil = FOIL.get(m, 2);
             RecipeHelper.addShapeless("plate_to_foil_" + m.getId(), foil, "h", plate);
             BENDING.RB().ii(plate).io(Utils.ca(4, foil)).add(Math.max(m.getMass(), 1), 24);
             //GregTech_API.registerCover(aFoilStack, new GT_RenderedTexture(merial.mIconSet.mTextures[70], merial.mRGBa, false), null);
         });
-        
+
         SCREW.all().forEach(m -> {
             if (!m.has(ROD)) return;
             ItemStack screw = SCREW.get(m, 1), rod = ROD.get(m, 1);
             RecipeHelper.addShaped("rod_to_screw_" + m.getId(), screw, "sRf", "   ", "   ", 'R', rod);
             LATHING.RB().ii(rod).io(screw).add(Math.max(m.getMass(), 1), 4);
         });
-        
+
         RING.all().forEach(m -> {
             ItemStack ring = RING.get(m, 1);
             Material smeltInto = m.getSmeltInto();
@@ -134,14 +131,14 @@ public class MaterialRecipeLoader {
             int voltage = m.getBlastTemp() >= 2800 ? 384 : 96;
             if (m.has(RUBBERTOOLS)) {
                 if (m == Materials.Rubber) RecipeHelper.addShapeless(m.getId() + "_ring_with_knife", ring, "k", ROD.get(m, 1));
-                else EXTRUDING.RB().ii(DUST.get(m, 1), mold(ShapeRing, 0)).io(ringQuadruple).add(mass, voltage);
+                else EXTRUDING.RB().ii(DUST.get(m, 1), ShapeRing.get(0)).io(ringQuadruple).add(mass, voltage);
             }
             if (!m.has(NOSMASH)) {
                 RecipeHelper.addShapeless("rod_to_ring_" + m.getId(), ring, "h", ROD.get(m, 1));
             }
             if (!m.has(NOSMELT)) {
                 ring = Utils.ca(4, ring);
-                EXTRUDING.RB().ii(INGOT.get(m, 1), mold(ShapeRing, 0)).io(ringQuadruple).add(mass, voltage);
+                EXTRUDING.RB().ii(INGOT.get(m, 1), ShapeRing.get(0)).io(ringQuadruple).add(mass, voltage);
             }
         });
 
@@ -153,7 +150,7 @@ public class MaterialRecipeLoader {
                 RecipeHelper.addShapeless("ingot_to_rod_" + m.getId(), rod, "f", ingotOrGem);
                 if (!m.has(NOSMELT)) {
                     int aEU = m.getBlastTemp() >= 2800 ? 384 : 96;
-                    EXTRUDING.RB().ii(ingotOrGem, mold(ShapeRod, 0)).io(ROD.get(m.getSmeltInto(), 2)).add(mass * 2, aEU);
+                    EXTRUDING.RB().ii(ingotOrGem, ShapeRod.get(0)).io(ROD.get(m.getSmeltInto(), 2)).add(mass * 2, aEU);
                     //TODO .RB(EXTRUDER).ii(INGOT.get(m, 1), ShapeWire.get(0)).io(m.getSmeltInto().getWire01(2)).add(m.getMass() * 2, aEU);
                 }
             }
@@ -192,39 +189,39 @@ public class MaterialRecipeLoader {
                 CUTTING.RB().ii(block).fi(Materials.Water.getLiquid(10 * liquidAmount)).io(plate).add(duration, voltage);
             }
             if (m.has(LIQUID)) {
-                FLUID_SOLIDIFYING.RB().ii(mold(MoldBlock, 0)).fi(m.getLiquid(1296)).io(block).add(288, 8);
+                FLUID_SOLIDIFYING.RB().ii(MoldBlock.get(0)).fi(m.getLiquid(1296)).io(block).add(288, 8);
             }
             if (m.has(INGOT) && !m.has(NOSMELT)) {
                 int voltage = m.has(NOSMASH) ? m.getBlastTemp() >= 2800 ? 16 : 4 : m.getBlastTemp() >= 2800 ? 64 : 16;
-                EXTRUDING.RB().ii(ingotOrGem, mold(ShapeBlock, 0)).io(block).add(10, 8 * voltage);
-                ALLOY_SMELTING.RB().ii(ingotOrGem, mold(MoldBlock, 0)).io(block).add(5, 4 * voltage);
+                EXTRUDING.RB().ii(ingotOrGem, ShapeBlock.get(0)).io(block).add(10, 8 * voltage);
+                ALLOY_SMELTING.RB().ii(ingotOrGem, MoldBlock.get(0)).io(block).add(5, 4 * voltage);
             }
         });
-        
+
         PLATE.all().forEach(m -> {
             ItemStack plate = PLATE.get(m, 1), dust = DUST.get(m, 1);
             if (m.has(CRYSTALLIZE)) {
-                COMPRESSING.RB().ii(dust).io(plate).add(300, 2); 
+                COMPRESSING.RB().ii(dust).io(plate).add(300, 2);
             }
             if (!m.has(INGOT)) return;
             ItemStack ingot = INGOT.get(m, 1), block = BLOCK.get().get(m).asStack();
-            if (m.has(LIQUID)) FLUID_SOLIDIFYING.RB().ii(mold(MoldPlate, 0)).fi(m.getLiquid(144)).io(plate).add(32, 8);
+            if (m.has(LIQUID)) FLUID_SOLIDIFYING.RB().ii(MoldPlate.get(0)).fi(m.getLiquid(144)).io(plate).add(32, 8);
             long mass = m.getMass();
             if (!m.has(NOSMASH)) {
                 //RecipeHelper.addShaped("plate_" + m.getId(), plate, "h", "X", "X", 'X', ingot);
                 RecipeHelper.addShapeless("plate_" + m.getId(), plate, "h", ingot, ingot);
                 if (m.has(GRINDABLE)) RecipeHelper.addShapeless("plate_grind_to_dust_" + m.getId(), dust, "m", plate);
                 long duration = Math.max(mass, 1);
-                BENDING.RB().ii(ingot).io(plate).add(duration, 24);     
-                HAMMERING.RB().ii(Utils.ca(3, ingot)).io(Utils.ca(2, plate)).add(duration, 16);  
+                BENDING.RB().ii(ingot).io(plate).add(duration, 24);
+                HAMMERING.RB().ii(Utils.ca(3, ingot)).io(Utils.ca(2, plate)).add(duration, 16);
             }
             //TODO: Needs reworking
             if (!m.has(NOSMELT)) {
                 ingot = ingot.getCount() != 1 ? Utils.ca(1, ingot) : ingot;
                 int eu = m.getBlastTemp() >= 2800 ? 64 : 16;
                 ItemStack smeltIntoPlate = PLATE.get(m.getSmeltInto(), 1);
-                EXTRUDING.RB().ii(ingot, mold(ShapePlate, 0)).io(smeltIntoPlate).add(mass, 8 * eu);
-                ALLOY_SMELTING.RB().ii(Utils.ca(2, ingot), mold(MoldPlate, 0)).io(smeltIntoPlate).tags(IGNORE_NBT).add(mass * 2, 2 * eu);
+                EXTRUDING.RB().ii(ingot, ShapePlate.get(0)).io(smeltIntoPlate).add(mass, 8 * eu);
+                ALLOY_SMELTING.RB().ii(Utils.ca(2, ingot), MoldPlate.get(0)).io(smeltIntoPlate).tags(IGNORE_NBT).add(mass * 2, 2 * eu);
                 //TODO WUT?
 //              if (Prefix.block.isIgnored(m) && m != Materials.GraniteRed && m != Materials.GraniteBlack && m != Materials.Glass && m != Materials.Obsidian && m != Materials.Glowstone && m != Materials.Paper) {
 //              GT_ModHandler.addCompressorRecipe(aDustStack, aPlateStack);
@@ -235,7 +232,7 @@ public class MaterialRecipeLoader {
 
         //Handle tiny, small, normal variants of dusts here! NOT IMPURE/PURE!
         DUST.all().forEach(m -> {
-            ItemStack dust = DUST.get(m, 1), dustSmall = DUST_SMALL.get(m, 1), dustTiny = DUST_TINY.get(m, 1); //The Big Three          
+            ItemStack dust = DUST.get(m, 1), dustSmall = DUST_SMALL.get(m, 1), dustTiny = DUST_TINY.get(m, 1); //The Big Three
             RecipeHelper.addShapeless("dust_tiny_to_dust_" + m.getId(), dust, dustTiny, dustTiny, dustTiny, dustTiny, dustTiny, dustTiny, dustTiny, dustTiny, dustTiny);
             RecipeHelper.addShapeless("dust_small_to_dust_" + m.getId(), dust, dustSmall, dustSmall, dustSmall, dustSmall);
             //RecipeHelper.addShaped("dust_small_to_dust_" + m.getId(), dust, "XX ", "XX ", "   ", 'X', dustSmall);
@@ -247,15 +244,15 @@ public class MaterialRecipeLoader {
             Material smeltInto = m.getSmeltInto();
             if (!m.getSmeltInto().has(INGOT)) return;
             ItemStack ingotSmeltInto = INGOT.get(smeltInto, 1);
-            if (!m.has(NOSMELT)) {               
-                ALLOY_SMELTING.RB().ii(dustTiny, mold(MoldIngot, 0)).io(ingotSmeltInto).add(130, 3);
+            if (!m.has(NOSMELT)) {
+                ALLOY_SMELTING.RB().ii(dustTiny, MoldIngot.get(0)).io(ingotSmeltInto).add(130, 3);
                 dustTiny = Utils.ca(1, dustTiny);
                 RecipeHelper.addSmelting(dustTiny, NUGGET.get(smeltInto, 1));
                 RecipeHelper.addSmelting(dust, DUST.get(smeltInto, 1));
                 int voltage = m.has(NOSMASH) ? m.getBlastTemp() >= 2800 ? 16 : 4 : m.getBlastTemp() >= 2800 ? 64 : 16;
-                EXTRUDING.RB().ii(dust, mold(ShapeIngot, 0)).io(ingotSmeltInto).add(10, 4 * voltage);
+                EXTRUDING.RB().ii(dust, ShapeIngot.get(0)).io(ingotSmeltInto).add(10, 4 * voltage);
             }
-            ALLOY_SMELTING.RB().ii(dust, mold(MoldIngot, 0)).io(ingotSmeltInto).add(130, 3);
+            ALLOY_SMELTING.RB().ii(dust, MoldIngot.get(0)).io(ingotSmeltInto).add(130, 3);
             //TODO GT_RecipeRegistrator.registerUsagesForMaterials(aIngotStack, Prefix.plate.get(m).toString(), !aNoSmashing);
             if (m.needsBlastFurnace()) {
                 long duration = Math.max(m.getMass() / 40, 1) * m.getBlastTemp();
@@ -267,7 +264,7 @@ public class MaterialRecipeLoader {
                 if (!m.has(NOSMELT)) {
                     RecipeHelper.removeSmelting(dustTiny);
                     dustTiny.setCount(9);
-                    BLASTING.RB().ii(dustTiny).io(blastStack).add(duration, 120, temp);              
+                    BLASTING.RB().ii(dustTiny).io(blastStack).add(duration, 120, temp);
                 }
 //              (int) Math.max(aMaterial.getMass() / 40L, 1L) * aMaterial.mBlastFurnaceTemp, 120, aMaterial.mBlastFurnaceTemp
             }
@@ -341,8 +338,8 @@ public class MaterialRecipeLoader {
             }
             if (inputCount > 64 || (m.has(GEM_BRITTLE) && (inputCount * 2) > 64)) return;
             ItemStack inputStack = ItemStack.EMPTY;
-            long duration = m.has(ELEC) ? Math.max(1, Math.abs(m.getProtons() * 2 * inputCount)) : Math.max(1, Math.abs(m.getProtons() * 4 * inputCount)); 
-            long voltage = m.has(ELEC) ? Math.min(4, outputs.size()) * 30 : Math.min(4, outputs.size()) * 5;   
+            long duration = m.has(ELEC) ? Math.max(1, Math.abs(m.getProtons() * 2 * inputCount)) : Math.max(1, Math.abs(m.getProtons() * 4 * inputCount));
+            long voltage = m.has(ELEC) ? Math.min(4, outputs.size()) * 30 : Math.min(4, outputs.size()) * 5;
             if (m.has(DUST)) inputStack = m.has(GEM_BRITTLE) ? GEM_BRITTLE.get(m, inputCount * 2) : DUST.get(m, inputCount);
             if (inputStack.isEmpty()) return;
             if (!outputs.isEmpty()) outputsArray = outputs.toArray(new ItemStack[outputs.size()]);
@@ -356,7 +353,7 @@ public class MaterialRecipeLoader {
                         if (outputs.isEmpty()) ELECTROLYZING.RB().ii(inputStack).fo(fluidOutputsArray).add(duration, voltage);
                         else ELECTROLYZING.RB().ii(inputStack).io(outputsArray).fo(fluidOutputsArray).add(duration, voltage);
                     }
-                } 
+                }
                 else {
                     FluidStack inputFluid = m.has(LIQUID) ? m.getLiquid(inputCount * 1000) : m.getGas(inputCount * 1000);
                     if (fluidOutputs.isEmpty()) {
@@ -377,8 +374,8 @@ public class MaterialRecipeLoader {
                         if (outputs.isEmpty()) CENTRIFUGING.RB().ii(inputStack).fo(fluidOutputsArray).add(duration, voltage);
                         else CENTRIFUGING.RB().ii(inputStack).io(outputsArray).fo(fluidOutputsArray).add(duration, voltage);
                     }
-                } 
-                else { 
+                }
+                else {
                     FluidStack inputFluid = m.has(LIQUID) ? m.getLiquid(inputCount * 1000) : m.getGas(inputCount * 1000);
                     if (fluidOutputs.isEmpty()) {
                         if (!outputs.isEmpty()) CENTRIFUGING.RB().fi(inputFluid).io(outputsArray).add(duration, voltage);
@@ -387,16 +384,16 @@ public class MaterialRecipeLoader {
                         if (outputs.isEmpty()) CENTRIFUGING.RB().fi(inputFluid).fo(fluidOutputsArray).add(duration, voltage);
                         else CENTRIFUGING.RB().fi(inputFluid).io(outputsArray).fo(fluidOutputsArray).add(duration, voltage);
                     }
-                } 
+                }
             }
         });
 
         NUGGET.all().forEach(m -> {
             ItemStack nugget = NUGGET.get(m, 1);
-            if (m.has(LIQUID)) FLUID_SOLIDIFYING.RB().ii(mold(MoldNugget, 0)).fi(m.getLiquid(16)).io(nugget).add(16, 4);
+            if (m.has(LIQUID)) FLUID_SOLIDIFYING.RB().ii(MoldNugget.get(0)).fi(m.getLiquid(16)).io(nugget).add(16, 4);
             nugget = Utils.ca(9, nugget);
-            ALLOY_SMELTING.RB().ii(nugget, mold(MoldIngot, 0)).io(INGOT.get(m.getSmeltInto(), 1)).add(200, 2);
-            if (!m.has(NOSMELT)) ALLOY_SMELTING.RB().ii(INGOT.get(m, 1), mold(MoldNugget, 0)).io(nugget).add(100, 1);
+            ALLOY_SMELTING.RB().ii(nugget, MoldIngot.get(0)).io(INGOT.get(m.getSmeltInto(), 1)).add(200, 2);
+            if (!m.has(NOSMELT)) ALLOY_SMELTING.RB().ii(INGOT.get(m, 1), MoldNugget.get(0)).io(nugget).add(100, 1);
         });
 
         INGOT.all().forEach(m -> {
@@ -409,7 +406,7 @@ public class MaterialRecipeLoader {
                 //RecipeAdder.addFuel(aIngot, null, m.getFuelPower(), m.mFuelType);
             }
             if (m.has(LIQUID)) {
-                FLUID_SOLIDIFYING.RB().ii(mold(MoldIngot, 0)).fi(m.getLiquid(144)).io(ingot).add(32, 8);
+                FLUID_SOLIDIFYING.RB().ii(MoldIngot.get(0)).fi(m.getLiquid(144)).io(ingot).add(32, 8);
             }
             //GT_RecipeRegistrator.registerReverseFluidSmelting(aIngot, m, Prefix.INGOT.mMaterialAmount, null);
             //GT_RecipeRegistrator.registerReverseMacerating(aIngot, m, Prefix.INGOT.mMaterialAmount, null, null, null, false);
@@ -423,7 +420,7 @@ public class MaterialRecipeLoader {
                 RecipeHelper.removeSmelting(macerateInto);
             }
         });
-        
+
         GEM.all().forEach(m -> {
             ItemStack gem = GEM.get(m, 1), dust = DUST.get(m, 1);
             if (m.has(CRYSTALLIZE)) {
@@ -438,23 +435,23 @@ public class MaterialRecipeLoader {
                 }
                 else BLASTING.RB().ii(dust, new ItemStack(Blocks.TNT, 4)).io(gem, DUST_SMALL.get(DarkAsh, 3)).add(40, 30, 1000); //TODO: special?
             }
-           if (m.has(GEM_BRITTLE)) return;
-           dust = Utils.ca(1, dust);
-           gem = Utils.ca(1, gem);
-           ItemStack block = BLOCK.get().get(m).asStack();
-           long mass = m.getMass();
-           if (m.has(BLOCK)) {
-               gem = Utils.ca(9, gem);
-               COMPRESSING.RB().ii(gem).io(block).add(300, 2);
-               HAMMERING.RB().ii(block).io(gem).add(100, 24);
-           }
-           if (m.has(NOSMASH)) {
-               long minDuration = Math.min(mass * 3, 300);
-               PULVERIZING.RB().ii(gem).io(dust).add(minDuration, 24);
-               dust = Utils.ca(9, dust);
-               PULVERIZING.RB().ii(block).io(dust).add(minDuration * 9, 24);
-           }
-           if (m.has(ROD_LONG)) LATHING.RB().ii(gem).io(ROD_LONG.get(m, 1)).add(Math.max(mass, 1) / 3, 8);
+            if (m.has(GEM_BRITTLE)) return;
+            dust = Utils.ca(1, dust);
+            gem = Utils.ca(1, gem);
+            ItemStack block = BLOCK.get().get(m).asStack();
+            long mass = m.getMass();
+            if (m.has(BLOCK)) {
+                gem = Utils.ca(9, gem);
+                COMPRESSING.RB().ii(gem).io(block).add(300, 2);
+                HAMMERING.RB().ii(block).io(gem).add(100, 24);
+            }
+            if (m.has(NOSMASH)) {
+                long minDuration = Math.min(mass * 3, 300);
+                PULVERIZING.RB().ii(gem).io(dust).add(minDuration, 24);
+                dust = Utils.ca(9, dust);
+                PULVERIZING.RB().ii(block).io(dust).add(minDuration * 9, 24);
+            }
+            if (m.has(ROD_LONG)) LATHING.RB().ii(gem).io(ROD_LONG.get(m, 1)).add(Math.max(mass, 1) / 3, 8);
         });
 
         GEM_BRITTLE.all().forEach(m -> {
@@ -478,7 +475,7 @@ public class MaterialRecipeLoader {
                 HAMMERING.RB().ii(block).io(dust).add(minDuration * 9, 24);
             }
         });
-        
+
         ROCK.all().forEach(m -> {
             if (m == Materials.Flint) return;
             ItemStack rock = ROCK.get(m, 1);
@@ -816,12 +813,5 @@ public class MaterialRecipeLoader {
                 GT_ModHandler.addShapedToolRecipe(m.getHeadSword(1), " G", "fG", 'G', aGem);
             }*/
         });
-    }
-
-    public static ItemStack mold(RegistryObject<Item> object, int count) {
-        if (object.get() instanceof ItemBasic) {
-            return ((ItemBasic) object.get()).get(count);
-        }
-        return ItemStack.EMPTY;
     }
 }

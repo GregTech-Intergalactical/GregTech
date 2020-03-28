@@ -1,5 +1,6 @@
 package muramasa.gti.tree;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.registration.IAntimatterObject;
 import muramasa.antimatter.registration.IModelProvider;
 import muramasa.antimatter.registration.ITextureProvider;
@@ -11,8 +12,23 @@ import net.minecraft.block.material.Material;
 
 public class BlockRubberLeaves extends LeavesBlock implements IAntimatterObject, IModelProvider, ITextureProvider {
 
-    public BlockRubberLeaves() {
+    protected String domain, id;
+
+    public BlockRubberLeaves(String domain, String id) {
         super(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid());
+        this.domain = domain;
+        this.id = id;
+        AntimatterAPI.register(BlockRubberLeaves.class, id, this);
+    }
+
+    @Override
+    public String getDomain() {
+        return domain;
+    }
+
+    @Override
+    public String getId() {
+        return id;
     }
 
     @Override

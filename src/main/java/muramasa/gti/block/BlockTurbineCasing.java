@@ -13,8 +13,8 @@ import net.minecraft.world.IBlockReader;
 
 public class BlockTurbineCasing extends BlockCasing {
 
-    public BlockTurbineCasing() {
-        super();
+    public BlockTurbineCasing(String domain, String id) {
+        super(domain, id);
         //setDefaultModel(true);
     }
 
