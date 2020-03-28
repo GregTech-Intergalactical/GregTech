@@ -13,30 +13,37 @@ import java.util.Optional;
 import java.util.Random;
 
 public class TileBatteryBufferCreative extends TileEntityMachine {
-    private boolean storage;
+    private boolean full;
 
     @Override
     public void onLoad() {
         super.onLoad();
-        storage = new Random().nextInt(1) == 0;
+        full = new Random().nextInt(2) == 0;
         configHandler = Optional.of(new BufferConfigHandler(this));
         energyHandler = Optional.of(new BufferEnergyHandler(this));
     }
 
     static class BufferConfigHandler extends MachineConfigHandler {
-        public BufferConfigHandler(TileEntityMachine tile) {
+        TileBatteryBufferCreative tile;
+        public BufferConfigHandler(TileBatteryBufferCreative tile) {
             super(tile);
+            this.tile = tile;
         }
+
         @Override
         public boolean onInteract(PlayerEntity player, Hand hand, Direction side, AntimatterToolType type) {
-            if (!getTile().getWorld().isRemote && hand == Hand.MAIN_HAND) {
-                ((TileBatteryBufferCreative) getTile()).energyHandler.ifPresent(x -> {
-                    player.sendMessage(new StringTextComponent("Energy: " + x.getPower()));
+            if (!tile.getWorld().isRemote && hand == Hand.MAIN_HAND) {
+                tile.energyHandler.ifPresent(h -> {
+                    tile.getInfo().forEach(string -> player.sendMessage(new StringTextComponent(string)));
                 });
             }
-
             return false;
         }
+    }
+
+    @Override
+    public void onServerUpdate() {
+        energyHandler.ifPresent(h -> h.update());
     }
 
     static class BufferEnergyHandler extends MachineEnergyHandler {
@@ -44,7 +51,15 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
         public BufferEnergyHandler(TileBatteryBufferCreative tile) {
             super(tile);
             this.tile = tile;
-            this.energy = tile.storage ? Long.MAX_VALUE : 0L;
+            if (tile.full) {
+                this.energy = this.capacity;
+                this.input = 0;
+                this.output = 32;
+            } else {
+                this.energy = 0;
+                this.input = 32;
+                this.output = 0;
+            }
         }
     }
 }
