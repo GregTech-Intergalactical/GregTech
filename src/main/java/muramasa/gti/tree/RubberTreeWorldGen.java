@@ -28,27 +28,27 @@ import static muramasa.gti.data.Data.RUBBER_SAPLING;
 
 public class RubberTreeWorldGen { //  extends WorldGenBase<RubberTreeWorldGen> {
     final static TreeFeatureConfig RUBBER_TREE_CONFIG_SWAMP =
-            (new TreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(RUBBER_LEAVES.get().getDefaultState()),
+            (new TreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(RUBBER_LEAVES.getDefaultState()),
                     new BlobFoliagePlacer(2, 0))).baseHeight(11).heightRandA(2) // total height
                     .trunkHeight(4).trunkHeightRandom(1) // bare trunk height
                     .trunkTopOffset(2) // depresses trunk top within leaves
-                    .setSapling((BlockRubberSapling) RUBBER_SAPLING.get())
+                    .setSapling((BlockRubberSapling) RUBBER_SAPLING)
                     .maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).build();
 
     final static TreeFeatureConfig RUBBER_TREE_CONFIG_JUNGLE =
-            (new TreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(RUBBER_LEAVES.get().getDefaultState()),
+            (new TreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(RUBBER_LEAVES.getDefaultState()),
                     new BlobFoliagePlacer(2, 0))).baseHeight(13).heightRandA(2) // total height
                     .trunkHeight(4).trunkHeightRandom(1) // bare trunk height
                     .trunkTopOffset(2) // depresses trunk top within leaves
-                    .setSapling((BlockRubberSapling) RUBBER_SAPLING.get())
+                    .setSapling((BlockRubberSapling) RUBBER_SAPLING)
                     .decorators(ImmutableList.of(new LeaveVineTreeDecorator())).build();
 
     final static TreeFeatureConfig RUBBER_TREE_CONFIG_NORMAL =
-            (new TreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(RUBBER_LEAVES.get().getDefaultState()),
+            (new TreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(RUBBER_LEAVES.getDefaultState()),
                     new BlobFoliagePlacer(2, 0))).baseHeight(12).heightRandA(2) // total height
                     .trunkHeight(4).trunkHeightRandom(1) // bare trunk height
                     .trunkTopOffset(2) // depresses trunk top within leaves
-                    .setSapling((BlockRubberSapling) RUBBER_SAPLING.get()).build();
+                    .setSapling((BlockRubberSapling) RUBBER_SAPLING).build();
 
 //    public RubberTreeWorldGen(){
 //        super("rubber_tree", RubberTreeWorldGen.class, OVERWORLD);

@@ -16,8 +16,8 @@ public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
     protected void registerTags() {
         super.registerTags();
 
-        this.getBuilder(Utils.getBlockTag(new ResourceLocation("logs"))).add(Data.RUBBER_LOG.get());
-        this.getBuilder(Utils.getBlockTag(new ResourceLocation("leaves"))).add(Data.RUBBER_LEAVES.get());
-        this.getBuilder(Utils.getBlockTag(new ResourceLocation("saplings"))).add(Data.RUBBER_SAPLING.get());
+        this.getBuilder(Utils.getBlockTag(new ResourceLocation("logs"))).add(Data.RUBBER_LOG);
+        this.getBuilder(Utils.getBlockTag(new ResourceLocation("leaves"))).add(Data.RUBBER_LEAVES);
+        this.getBuilder(Utils.getBlockTag(new ResourceLocation("saplings"))).add(Data.RUBBER_SAPLING);
     }
 }
