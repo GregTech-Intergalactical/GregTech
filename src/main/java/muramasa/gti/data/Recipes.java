@@ -37,7 +37,7 @@ public class Recipes extends RecipeProvider {
                 .patternLine("ICI")
                 .patternLine(" I ").addCriterion("has_wrench", this.hasItem(WRENCH.getTag())).build(consumer, Ref.ID + ":hopper");
 
-        ShapedRecipeBuilder.shapedRecipe(ItemFilter.get()).key('Z', getForgeItemTag("foils/zinc")).key('I', getForgeItemTag("plates/iron"))
+        ShapedRecipeBuilder.shapedRecipe(ItemFilter).key('Z', getForgeItemTag("foils/zinc")).key('I', getForgeItemTag("plates/iron"))
                 .patternLine("ZZZ")
                 .patternLine("ZIZ")
                 .patternLine("ZZZ").addCriterion("has_iron_plate", this.hasItem(getForgeItemTag("plates/iron"))).build(consumer);
@@ -69,7 +69,7 @@ public class Recipes extends RecipeProvider {
                 .setGroup("gears").build(consumer, GEAR.get(Stone).getRegistryName().toString() + "_alt");
 
         ShapelessRecipeBuilder.shapelessRecipe(Blocks.STICKY_PISTON)
-                .addIngredient(Blocks.PISTON).addIngredient(Data.StickyResin.get())
+                .addIngredient(Blocks.PISTON).addIngredient(Data.StickyResin)
                 .addCriterion("has_piston", this.hasItem(Blocks.PISTON)).build(consumer);
 
         ShapelessRecipeBuilder.shapelessRecipe(ROD.get(IronMagnetic))

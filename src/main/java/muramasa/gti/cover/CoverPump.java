@@ -21,12 +21,12 @@ public class CoverPump extends Cover {
     @Override
     public ItemStack getDroppedStack() {
         switch (tier.getId()) {
-            case "lv": return new ItemStack(Data.PumpLV.get());
-            case "mv": return new ItemStack(Data.PumpMV.get());
-            case "hv": return new ItemStack(Data.PumpHV.get());
-            case "ev": return new ItemStack(Data.PumpEV.get());
-            case "iv": return new ItemStack(Data.PumpIV.get());
-            default: return new ItemStack(Data.PumpLV.get());
+            case "lv": return Data.PumpLV.get(1);
+            case "mv": return Data.PumpMV.get(1);
+            case "hv": return Data.PumpHV.get(1);
+            case "ev": return Data.PumpEV.get(1);
+            case "iv": return Data.PumpIV.get(1);
+            default: return Data.PumpLV.get(1);
         }
     }
 }

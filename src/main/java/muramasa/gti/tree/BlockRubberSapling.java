@@ -1,5 +1,6 @@
 package muramasa.gti.tree;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
 import muramasa.antimatter.registration.IAntimatterObject;
@@ -18,10 +19,24 @@ import java.util.Random;
 
 public class BlockRubberSapling extends SaplingBlock implements IGrowable, IAntimatterObject, IModelProvider, ITextureProvider {
 
+    protected String domain, id;
     final static RubberTree TREE = new RubberTree();
 
-    public BlockRubberSapling() {
+    public BlockRubberSapling(String domain, String id) {
         super(TREE, Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT));
+        this.domain = domain;
+        this.id = id;
+        AntimatterAPI.register(BlockRubberSapling.class, id, this);
+    }
+
+    @Override
+    public String getDomain() {
+        return domain;
+    }
+
+    @Override
+    public String getId() {
+        return id;
     }
 
     @Override
