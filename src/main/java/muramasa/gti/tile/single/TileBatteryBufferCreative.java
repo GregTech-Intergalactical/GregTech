@@ -7,7 +7,10 @@ import muramasa.antimatter.tool.AntimatterToolType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.world.Explosion;
+import tesseract.electric.api.IElectricNode;
 
 import java.util.Optional;
 import java.util.Random;
@@ -56,11 +59,11 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
                 this.energy = Integer.MAX_VALUE;
                 this.capacity = Integer.MAX_VALUE;
                 this.input = 0;
-                this.output = 32;
+                this.output = tile.getTier().getVoltage();
             } else {
                 this.energy = 0;
                 this.capacity = Integer.MAX_VALUE;
-                this.input = 32;
+                this.input = tile.getTier().getVoltage();
                 this.output = 0;
             }
         }
