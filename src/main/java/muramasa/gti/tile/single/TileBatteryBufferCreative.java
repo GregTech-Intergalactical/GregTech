@@ -7,10 +7,7 @@ import muramasa.antimatter.tool.AntimatterToolType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.world.Explosion;
-import tesseract.electric.api.IElectricNode;
 
 import java.util.Optional;
 import java.util.Random;
