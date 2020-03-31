@@ -56,11 +56,11 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
                 this.energy = Integer.MAX_VALUE;
                 this.capacity = Integer.MAX_VALUE;
                 this.input = 0;
-                this.output = tile.getTier().getVoltage();
+                this.output = tile.getMachineTier().getVoltage();
             } else {
                 this.energy = 0;
                 this.capacity = Integer.MAX_VALUE;
-                this.input = tile.getTier().getVoltage();
+                this.input = tile.getMachineTier().getVoltage();
                 this.output = 0;
             }
         }
