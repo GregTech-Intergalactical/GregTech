@@ -2,7 +2,6 @@ package muramasa.gti.tile.multi;
 
 import muramasa.antimatter.block.BlockCoil;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
-import muramasa.antimatter.util.Utils;
 import net.minecraft.block.BlockState;
 
 import java.util.List;
@@ -11,15 +10,15 @@ public class TileEntityMultiSmelter extends TileEntityMultiMachine {
 
     private int level = 1, discount = 1;
 
-    @Override
-    public void onRecipeFound() {
-//        this.mEfficiency = (10000 - (getIdealStatus() - getRepairStatus()) * 1000);
-//        this.mEfficiencyIncrease = 10000;
-
-        int tier = Utils.getVoltageTier(getMaxInputVoltage());
-        EUt = (-4 * (1 << tier - 1) * (1 << tier - 1) * level / discount);
-        maxProgress = Math.max(1, 512 / (1 << tier - 1));
-    }
+//    @Override
+//    public void onRecipeFound() {
+////        this.mEfficiency = (10000 - (getIdealStatus() - getRepairStatus()) * 1000);
+////        this.mEfficiencyIncrease = 10000;
+//
+//        int tier = Utils.getVoltageTier(getMaxInputVoltage());
+//        EUt = (-4 * (1 << tier - 1) * (1 << tier - 1) * level / discount);
+//        maxProgress = Math.max(1, 512 / (1 << tier - 1));
+//    }
 
     @Override
     public boolean onStructureFormed() {
