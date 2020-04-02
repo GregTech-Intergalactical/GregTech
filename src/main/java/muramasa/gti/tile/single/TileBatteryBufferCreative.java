@@ -2,6 +2,7 @@ package muramasa.gti.tile.single;
 
 import muramasa.antimatter.capability.impl.MachineConfigHandler;
 import muramasa.antimatter.capability.impl.MachineEnergyHandler;
+import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.tool.AntimatterToolType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,7 +14,12 @@ import java.util.Optional;
 import java.util.Random;
 
 public class TileBatteryBufferCreative extends TileEntityMachine {
+
     private boolean full;
+
+    public TileBatteryBufferCreative(Machine type) {
+        super(type);
+    }
 
     @Override
     public void onLoad() {

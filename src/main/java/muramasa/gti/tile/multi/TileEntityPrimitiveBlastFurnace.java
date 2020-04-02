@@ -1,10 +1,15 @@
 package muramasa.gti.tile.multi;
 
+import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.multi.TileEntityBasicMultiMachine;
 import muramasa.antimatter.util.int3;
 import net.minecraft.block.Blocks;
 
 public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine {
+
+    public TileEntityPrimitiveBlastFurnace(Machine type) {
+        super(type);
+    }
 
     @Override
     public boolean onStructureFormed() {

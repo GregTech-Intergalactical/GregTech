@@ -1,11 +1,16 @@
 package muramasa.gti.tile.multi;
 
 import muramasa.antimatter.block.BlockCoil;
+import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 
 public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine {
 
     private int heatingCapacity;
+
+    public TileEntityElectricBlastFurnace(Machine type) {
+        super(type);
+    }
 
 //    @Override
 //    public void onRecipeFound() {
