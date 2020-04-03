@@ -7,10 +7,8 @@ import muramasa.antimatter.cover.Cover;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.ore.StoneType;
-import muramasa.antimatter.pipe.BlockCable.BlockCableBuilder;
-import muramasa.antimatter.pipe.BlockFluidPipe.BlockFluidPipeBuilder;
-import muramasa.antimatter.pipe.BlockItemPipe.BlockItemPipeBuilder;
 import muramasa.antimatter.pipe.PipeSize;
+import muramasa.antimatter.pipe.types.*;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gti.Ref;
 import muramasa.gti.block.BlockFusionCasing;
@@ -29,7 +27,7 @@ import static muramasa.gti.data.Materials.*;
 public class Data {
 
     private static boolean HC = Configs.GAMEPLAY.HARDCORE_CABLES;
-    
+
     public static void init() {
 
     }
@@ -180,67 +178,67 @@ public class Data {
     public static ItemBasic<?> ShapeGear = new ItemBasic<>(Ref.ID, "shape_gear").tip("Shape for making Gears");
     public static ItemBasic<?> ShapeGearSmall = new ItemBasic<>(Ref.ID, "shape_gear_small").tip("Shape for making Small Gears");
     public static ItemBasic<?> ShapeBottle = new ItemBasic<>(Ref.ID, "shape_bottle").tip("Shape for making Bottles"); //TODO needed?
-//
-//    //TODO optional items (register anyway, but don't show in JEI?)
-//    //TODO move to IC2+IC2C Registrar
-//    public static final RegistryObject<Item> DropTin = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_tin", "Source of Tin")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropLead = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_lead", "Source of Lead")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropSilver = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_silver", "Source of Silver")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropIron = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_iron", "Source of Iron")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropGold = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_gold", "Source of Gold")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropAluminium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_aluminium", "Source of Aluminium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropTitanium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_titanium", "Source of Titanium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropUranium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uranium", "Source of Uranium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropUranite = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uranite", "Source of Uranite")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropThorium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_thorium", "Source of Thorium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropNickel = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_nickel", "Source of Nickel")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropZinc = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_zinc", "Source of Zinc")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropManganese = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_manganese", "Source of Manganese")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropCopper = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_copper", "Source of Copper")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropTungsten = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_tungsten", "Source of Tungsten")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropPlatinum = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_platinum", "Source of Platinum")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropIridium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_iridium", "Source of Iridium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropOsmium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_osmium", "Source of Osmium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropNaquadah = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_naquadah", "Source of Naquadah")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropEmerald = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_emerald", "Source of Emeralds")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropOil = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_oil", "Source of Oil")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropUUM = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uum", "Source of UU Matter")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//    public static final RegistryObject<Item> DropUUA = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uua", "Source of UU Amplifier")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
-//
-//    //TODO move to Forestry Registrar
-//    public static final RegistryObject<Item> CombLignite = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_lignite", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombCoal = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_coal", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombResin = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_resin", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombOil = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_oil", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombStone = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_stone", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombCertus = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_certus", "")/*.required(Ref.MOD_FR, Ref.MOD_AE)*/;
-//    public static final RegistryObject<Item> CombRedstone = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_redstone", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombLapis = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_lapis", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombRuby = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_ruby", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombSapphire = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_sapphire", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombDiamond = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_diamond", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombOlivine = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_olivine", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombEmerald = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_emerald", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombSlag = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_slag", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombCopper = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_copper", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombTin = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_tin", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombLead = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_lead", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombIron = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_iron", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombSteel = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_steel", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombNickel = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_nickel", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombZinc = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_zinc", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombSilver = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_silver", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombGold = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_gold", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombAluminium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_aluminium", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombManganese = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_manganese", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombTitanium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_titanium", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombChrome = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_chrome", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombTungsten = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_tungsten", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombPlatinum = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_platinum", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombIridium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_iridium", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombUranium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_uranium", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombPlutonium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_plutonium", "")/*.optional(Ref.MOD_FR)*/;
-//    public static final RegistryObject<Item> CombNaquadah = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_naquadah", "")/*.optional(Ref.MOD_FR)*/;
+    //
+    //    //TODO optional items (register anyway, but don't show in JEI?)
+    //    //TODO move to IC2+IC2C Registrar
+    //    public static final RegistryObject<Item> DropTin = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_tin", "Source of Tin")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropLead = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_lead", "Source of Lead")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropSilver = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_silver", "Source of Silver")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropIron = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_iron", "Source of Iron")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropGold = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_gold", "Source of Gold")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropAluminium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_aluminium", "Source of Aluminium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropTitanium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_titanium", "Source of Titanium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropUranium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uranium", "Source of Uranium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropUranite = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uranite", "Source of Uranite")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropThorium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_thorium", "Source of Thorium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropNickel = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_nickel", "Source of Nickel")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropZinc = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_zinc", "Source of Zinc")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropManganese = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_manganese", "Source of Manganese")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropCopper = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_copper", "Source of Copper")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropTungsten = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_tungsten", "Source of Tungsten")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropPlatinum = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_platinum", "Source of Platinum")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropIridium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_iridium", "Source of Iridium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropOsmium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_osmium", "Source of Osmium")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropNaquadah = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_naquadah", "Source of Naquadah")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropEmerald = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_emerald", "Source of Emeralds")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropOil = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_oil", "Source of Oil")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropUUM = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uum", "Source of UU Matter")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //    public static final RegistryObject<Item> DropUUA = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "drop_uua", "Source of UU Amplifier")/*.optional(Ref.MOD_IC2, Ref.MOD_IC2C)*/;
+    //
+    //    //TODO move to Forestry Registrar
+    //    public static final RegistryObject<Item> CombLignite = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_lignite", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombCoal = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_coal", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombResin = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_resin", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombOil = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_oil", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombStone = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_stone", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombCertus = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_certus", "")/*.required(Ref.MOD_FR, Ref.MOD_AE)*/;
+    //    public static final RegistryObject<Item> CombRedstone = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_redstone", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombLapis = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_lapis", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombRuby = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_ruby", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombSapphire = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_sapphire", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombDiamond = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_diamond", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombOlivine = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_olivine", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombEmerald = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_emerald", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombSlag = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_slag", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombCopper = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_copper", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombTin = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_tin", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombLead = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_lead", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombIron = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_iron", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombSteel = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_steel", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombNickel = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_nickel", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombZinc = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_zinc", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombSilver = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_silver", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombGold = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_gold", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombAluminium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_aluminium", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombManganese = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_manganese", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombTitanium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_titanium", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombChrome = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_chrome", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombTungsten = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_tungsten", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombPlatinum = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_platinum", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombIridium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_iridium", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombUranium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_uranium", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombPlutonium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_plutonium", "")/*.optional(Ref.MOD_FR)*/;
+    //    public static final RegistryObject<Item> CombNaquadah = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_naquadah", "")/*.optional(Ref.MOD_FR)*/;
 
     //TODO
     //public static BlockRubberSapling RUBBER_SAPLING = new BlockRubberSapling();
@@ -278,17 +276,17 @@ public class Data {
     //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal");
     //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(Ref.ID, "anthracite_coal", new Texture(Ref.ID, "block/basic/anthracite_coal");
 
-//    public static BlockStone STONE_GRANITE_RED = new BlockStone(Ref.ID, GRANITE_RED);
-//    public static BlockStone STONE_GRANITE_BLACK = new BlockStone(Ref.ID, GRANITE_BLACK);
-//    public static BlockStone STONE_MARBLE = new BlockStone(Ref.ID, MARBLE);
-//    public static BlockStone STONE_BASALT = new BlockStone(Ref.ID, BASALT);
-//
-//    public static BlockStone STONE_KOMATIITE = new BlockStone(Ref.ID, KOMATIITE);
-//    public static BlockStone STONE_LIMESTONE = new BlockStone(Ref.ID, LIMESTONE);
-//    public static BlockStone STONE_GREEN_SCHIST = new BlockStone(Ref.ID, GREEN_SCHIST);
-//    public static BlockStone STONE_BLUE_SCHIST = new BlockStone(Ref.ID, BLUE_SCHIST);
-//    public static BlockStone STONE_KIMBERLITE = new BlockStone(Ref.ID, KIMBERLITE);
-//    public static BlockStone STONE_QUARTZITE = new BlockStone(Ref.ID, QUARTZITE);
+    //    public static BlockStone STONE_GRANITE_RED = new BlockStone(Ref.ID, GRANITE_RED);
+    //    public static BlockStone STONE_GRANITE_BLACK = new BlockStone(Ref.ID, GRANITE_BLACK);
+    //    public static BlockStone STONE_MARBLE = new BlockStone(Ref.ID, MARBLE);
+    //    public static BlockStone STONE_BASALT = new BlockStone(Ref.ID, BASALT);
+    //
+    //    public static BlockStone STONE_KOMATIITE = new BlockStone(Ref.ID, KOMATIITE);
+    //    public static BlockStone STONE_LIMESTONE = new BlockStone(Ref.ID, LIMESTONE);
+    //    public static BlockStone STONE_GREEN_SCHIST = new BlockStone(Ref.ID, GREEN_SCHIST);
+    //    public static BlockStone STONE_BLUE_SCHIST = new BlockStone(Ref.ID, BLUE_SCHIST);
+    //    public static BlockStone STONE_KIMBERLITE = new BlockStone(Ref.ID, KIMBERLITE);
+    //    public static BlockStone STONE_QUARTZITE = new BlockStone(Ref.ID, QUARTZITE);
 
     public static final BlockCasing CASING_ULV = new BlockCasing(Ref.ID, "casing_ulv");
     public static final BlockCasing CASING_LV = new BlockCasing(Ref.ID, "casing_lv");
@@ -337,73 +335,115 @@ public class Data {
     public static final BlockTurbineCasing CASING_TURBINE_3 = new BlockTurbineCasing(Ref.ID, "casing_turbine_3");
     public static final BlockTurbineCasing CASING_TURBINE_4 = new BlockTurbineCasing(Ref.ID, "casing_turbine_4");
 
-   public static final BlockCoil COIL_CUPRONICKEL = new BlockCoil(Ref.ID, "coil_cupronickel", 113); //1808
-   public static final BlockCoil COIL_KANTHAL = new BlockCoil(Ref.ID, "coil_kanthal", 169); //2704
-   public static final BlockCoil COIL_NICHROME = new BlockCoil(Ref.ID, "coil_nichrome", 225); //3600
-   public static final BlockCoil COIL_TUNGSTENSTEEL = new BlockCoil(Ref.ID, "coil_tungstensteel", 282); //4512
-   public static final BlockCoil COIL_HSSG = new BlockCoil(Ref.ID, "coil_hssg", 338); //5408
-   public static final BlockCoil COIL_NAQUADAH = new BlockCoil(Ref.ID, "coil_naquadah", 450); //7200
-   public static final BlockCoil COIL_NAQUADAH_ALLOY = new BlockCoil(Ref.ID, "coil_naquadah_alloy", 563); //9008
-   public static final BlockCoil COIL_FUSION = new BlockCoil(Ref.ID, "coil_fusion", 563); //9008
-   public static final BlockCoil COIL_SUPERCONDUCTOR = new BlockCoil(Ref.ID, "coil_superconductor", 563); //9008
+    public static final BlockCoil COIL_CUPRONICKEL = new BlockCoil(Ref.ID, "coil_cupronickel", 113); //1808
+    public static final BlockCoil COIL_KANTHAL = new BlockCoil(Ref.ID, "coil_kanthal", 169); //2704
+    public static final BlockCoil COIL_NICHROME = new BlockCoil(Ref.ID, "coil_nichrome", 225); //3600
+    public static final BlockCoil COIL_TUNGSTENSTEEL = new BlockCoil(Ref.ID, "coil_tungstensteel", 282); //4512
+    public static final BlockCoil COIL_HSSG = new BlockCoil(Ref.ID, "coil_hssg", 338); //5408
+    public static final BlockCoil COIL_NAQUADAH = new BlockCoil(Ref.ID, "coil_naquadah", 450); //7200
+    public static final BlockCoil COIL_NAQUADAH_ALLOY = new BlockCoil(Ref.ID, "coil_naquadah_alloy", 563); //9008
+    public static final BlockCoil COIL_FUSION = new BlockCoil(Ref.ID, "coil_fusion", 563); //9008
+    public static final BlockCoil COIL_SUPERCONDUCTOR = new BlockCoil(Ref.ID, "coil_superconductor", 563); //9008
 
-    static {
-        new BlockCableBuilder(Ref.ID, RedAlloy, 0, 1, Tier.ULV).amps(1).build(); //ULV
-        new BlockCableBuilder(Ref.ID, Cobalt, 2, 4, Tier.LV).amps(2).build(); //LV
-        new BlockCableBuilder(Ref.ID, Lead, 2, 4, Tier.LV).amps(2).build();
-        new BlockCableBuilder(Ref.ID, Tin, 1, 2, Tier.LV).amps(1).build();
-        new BlockCableBuilder(Ref.ID, Zinc, 1, 2, Tier.LV).amps(1).build();
-        new BlockCableBuilder(Ref.ID, SolderingAlloy, 1, 2, Tier.LV).amps(1).build();
-        new BlockCableBuilder(Ref.ID, Iron, HC ? 3 : 4, HC ? 6 : 8, Tier.MV).amps(2).build(); //MV
-        new BlockCableBuilder(Ref.ID, Nickel, HC ? 3 : 5, HC ? 6 : 10, Tier.MV).amps(3).build();
-        new BlockCableBuilder(Ref.ID, Cupronickel, HC ? 3 : 4, HC ? 6 : 8, Tier.MV).amps(2).build();
-        new BlockCableBuilder(Ref.ID, Copper, HC ? 2 : 3, HC ? 4 : 6, Tier.MV).amps(1).build();
-        new BlockCableBuilder(Ref.ID, AnnealedCopper, HC ? 1 : 2, HC ? 2 : 4, Tier.MV).amps(1).build();
-        new BlockCableBuilder(Ref.ID, Kanthal, HC ? 3 : 8, HC ? 6 : 16, Tier.HV).amps(4).build(); //HV
-        new BlockCableBuilder(Ref.ID, Gold, HC ? 2 : 6, HC ? 4 : 12, Tier.HV).amps(3).build();
-        new BlockCableBuilder(Ref.ID, Electrum, HC ? 2 : 5, HC ? 4 : 10, Tier.HV).amps(2).build();
-        new BlockCableBuilder(Ref.ID, Silver, HC ? 1 : 4, HC ? 2 : 8, Tier.HV).amps(1).build();
-        new BlockCableBuilder(Ref.ID, Nichrome, HC ? 4 : 32, HC ? 8 : 64, Tier.EV).amps(3).build(); //EV
-        new BlockCableBuilder(Ref.ID, Steel, HC ? 2 : 16, HC ? 4 : 32, Tier.EV).amps(2).build();
-        new BlockCableBuilder(Ref.ID, Titanium, HC ? 2 : 12, HC ? 4 : 24, Tier.EV).amps(4).build();
-        new BlockCableBuilder(Ref.ID, Aluminium, HC ? 1 : 8, HC ? 2 : 16, Tier.EV).amps(1).build();
-        new BlockCableBuilder(Ref.ID, Graphene, HC ? 1 : 16, HC ? 2 : 32, Tier.IV).amps(1).build(); //IV
-        new BlockCableBuilder(Ref.ID, Osmium, HC ? 2 : 32, HC ? 4 : 64, Tier.IV).amps(4).build();
-        new BlockCableBuilder(Ref.ID, Platinum, HC ? 1 : 16, HC ? 2 : 32, Tier.IV).amps(2).build();
-        new BlockCableBuilder(Ref.ID, TungstenSteel, HC ? 1 : 14, HC ? 4 : 28, Tier.IV).amps(3).build();
-        new BlockCableBuilder(Ref.ID, Tungsten, HC ? 2 : 12, HC ? 4 : 24, Tier.IV).amps(1).build();
-        new BlockCableBuilder(Ref.ID, HSSG, HC ? 2 : 128, HC ? 4 : 256, Tier.LUV).amps(4).build(); //LUV
-        new BlockCableBuilder(Ref.ID, NiobiumTitanium, HC ? 2 : 128, HC ? 4 : 256, Tier.LUV).amps(4).build();
-        new BlockCableBuilder(Ref.ID, VanadiumGallium, HC ? 2 : 128, HC ? 4 : 256, Tier.LUV).amps(4).build();
-        new BlockCableBuilder(Ref.ID, YttriumBariumCuprate, HC ? 4 : 256, HC ? 8 : 512, Tier.LUV).amps(4).build();
-        new BlockCableBuilder(Ref.ID, Naquadah, HC ? 2 : 64, HC ? 4 : 128, Tier.ZPM).amps(2).build(); //ZPM
-        new BlockCableBuilder(Ref.ID, NaquadahAlloy, HC ? 4 : 64, HC ? 8 : 128, Tier.ZPM).amps(2).build();
-        new BlockCableBuilder(Ref.ID, Duranium, HC ? 8 : 64, HC ? 16 : 128, Tier.ZPM).amps(1).build();
-        new BlockCableBuilder(Ref.ID, Superconductor, 1, 1, Tier.MAX).amps(4).build(); //MAX
+    public static final Cable<?> CABLE_RED_ALLOY = new Cable<>(Ref.ID, RedAlloy, 0, Tier.ULV).amps(1);
+    public static final Cable<?> CABLE_COBALT = new Cable<>(Ref.ID, Cobalt, 2, Tier.LV).amps(2); //LV
+    public static final Cable<?> CABLE_LEAD = new Cable<>(Ref.ID, Lead, 2, Tier.LV).amps(2);
+    public static final Cable<?> CABLE_TIN = new Cable<>(Ref.ID, Tin, 1, Tier.LV).amps(1);
+    public static final Cable<?> CABLE_ZINC = new Cable<>(Ref.ID, Zinc, 1, Tier.LV).amps(1);
+    public static final Cable<?> CABLE_SOLDERING_ALLOY = new Cable<>(Ref.ID, SolderingAlloy, 1, Tier.LV).amps(1);
+    public static final Cable<?> CABLE_IRON = new Cable<>(Ref.ID, Iron, HC ? 3 : 4, Tier.MV).amps(2); //MV
+    public static final Cable<?> CABLE_NICKEL = new Cable<>(Ref.ID, Nickel, HC ? 3 : 5, Tier.MV).amps(3);
+    public static final Cable<?> CABLE_CUPRONICKEL = new Cable<>(Ref.ID, Cupronickel, HC ? 3 : 4, Tier.MV).amps(2);
+    public static final Cable<?> CABLE_COPPER = new Cable<>(Ref.ID, Copper, HC ? 2 : 3, Tier.MV).amps(1);
+    public static final Cable<?> CABLE_ANNEALED_COPPER = new Cable<>(Ref.ID, AnnealedCopper, HC ? 1 : 2, Tier.MV).amps(1);
+    public static final Cable<?> CABLE_KANTHAL = new Cable<>(Ref.ID, Kanthal, HC ? 3 : 8, Tier.HV).amps(4); //HV
+    public static final Cable<?> CABLE_GOLD = new Cable<>(Ref.ID, Gold, HC ? 2 : 6, Tier.HV).amps(3);
+    public static final Cable<?> CABLE_ELECTRUM = new Cable<>(Ref.ID, Electrum, HC ? 2 : 5, Tier.HV).amps(2);
+    public static final Cable<?> CABLE_SILVER = new Cable<>(Ref.ID, Silver, HC ? 1 : 4, Tier.HV).amps(1);
+    public static final Cable<?> CABLE_NICHROME = new Cable<>(Ref.ID, Nichrome, HC ? 4 : 32, Tier.EV).amps(3); //EV
+    public static final Cable<?> CABLE_STEEL = new Cable<>(Ref.ID, Steel, HC ? 2 : 16, Tier.EV).amps(2);
+    public static final Cable<?> CABLE_TITANIUM = new Cable<>(Ref.ID, Titanium, HC ? 2 : 12, Tier.EV).amps(4);
+    public static final Cable<?> CABLE_ALUMINIUM = new Cable<>(Ref.ID, Aluminium, HC ? 1 : 8, Tier.EV).amps(1);
+    public static final Cable<?> CABLE_GRAPHENE = new Cable<>(Ref.ID, Graphene, HC ? 1 : 16, Tier.IV).amps(1); //IV
+    public static final Cable<?> CABLE_OSMIUM = new Cable<>(Ref.ID, Osmium, HC ? 2 : 32, Tier.IV).amps(4);
+    public static final Cable<?> CABLE_PLATINUM = new Cable<>(Ref.ID, Platinum, HC ? 1 : 16, Tier.IV).amps(2);
+    public static final Cable<?> CABLE_TUNGSTEN_STEEL = new Cable<>(Ref.ID, TungstenSteel, HC ? 1 : 14, Tier.IV).amps(3);
+    public static final Cable<?> CABLE_TUNGSTEN = new Cable<>(Ref.ID, Tungsten, HC ? 2 : 12, Tier.IV).amps(1);
+    public static final Cable<?> CABLE_HSSG = new Cable<>(Ref.ID, HSSG, HC ? 2 : 128, Tier.LUV).amps(4); //LUV
+    public static final Cable<?> CABLE_NIOBIUM_TITANIUM = new Cable<>(Ref.ID, NiobiumTitanium, HC ? 2 : 128, Tier.LUV).amps(4);
+    public static final Cable<?> CABLE_VANADIUM_GALLIUM = new Cable<>(Ref.ID, VanadiumGallium, HC ? 2 : 128, Tier.LUV).amps(4);
+    public static final Cable<?> CABLE_YTTRIUM_BARIUM_CUPRATE = new Cable<>(Ref.ID, YttriumBariumCuprate, HC ? 4 : 256, Tier.LUV).amps(4);
+    public static final Cable<?> CABLE_NAQUADAH = new Cable<>(Ref.ID, Naquadah, HC ? 2 : 64, Tier.ZPM).amps(2); //ZPM
+    public static final Cable<?> CABLE_NAQUADAH_ALLOY = new Cable<>(Ref.ID, NaquadahAlloy, HC ? 4 : 64, Tier.ZPM).amps(2);
+    public static final Cable<?> CABLE_DURANIUM = new Cable<>(Ref.ID, Duranium, HC ? 8 : 64, Tier.ZPM).amps(1);
+    public static final Cable<?> CABLE_SUPERCONDUCTOR = new Cable<>(Ref.ID, Superconductor, 1, Tier.MAX).amps(4); //MAX
 
-        new BlockFluidPipeBuilder(Ref.ID, Wood, 30, false, PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(10, 10, 30, 60, 60, 60).build();
-        new BlockFluidPipeBuilder(Ref.ID, Copper, 1000, true).caps(10).build();
-        new BlockFluidPipeBuilder(Ref.ID, Bronze, 2000, true).caps(20).build();
-        new BlockFluidPipeBuilder(Ref.ID, Steel, 2500, true).caps(40).build();
-        new BlockFluidPipeBuilder(Ref.ID, StainlessSteel, 3000, true).caps(60).build();
-        new BlockFluidPipeBuilder(Ref.ID, Titanium, 5000, true).caps(80).build();
-        new BlockFluidPipeBuilder(Ref.ID, TungstenSteel, 7500, true).caps(100).build();
-        new BlockFluidPipeBuilder(Ref.ID, Plastic, 250, true).caps(60).build();
-        new BlockFluidPipeBuilder(Ref.ID, Polytetrafluoroethylene, 600, true).caps(480).build();
-        new BlockFluidPipeBuilder(Ref.ID, HighPressure, 1500, true, PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(4800, 4800, 4800, 7200, 9600, 9600).build();
-        new BlockFluidPipeBuilder(Ref.ID, PlasmaContainment, 100000, true, PipeSize.NORMAL).caps(240, 240, 240, 240, 240, 240).build();
+    public static final Wire<?> WIRE_RED_ALLOY = new Wire<>(Ref.ID, RedAlloy, 1, Tier.ULV).amps(1);
+    public static final Wire<?> WIRE_COBALT = new Wire<>(Ref.ID, Cobalt, 4, Tier.LV).amps(2); //LV
+    public static final Wire<?> WIRE_LEAD = new Wire<>(Ref.ID, Lead, 4, Tier.LV).amps(2);
+    public static final Wire<?> WIRE_TIN = new Wire<>(Ref.ID, Tin, 2, Tier.LV).amps(1);
+    public static final Wire<?> WIRE_ZINC = new Wire<>(Ref.ID, Zinc, 2, Tier.LV).amps(1);
+    public static final Wire<?> WIRE_SOLDERING_ALLOY = new Wire<>(Ref.ID, SolderingAlloy, 2, Tier.LV).amps(1);
+    public static final Wire<?> WIRE_IRON = new Wire<>(Ref.ID, Iron, HC ? 6 : 8, Tier.MV).amps(2); //MV
+    public static final Wire<?> WIRE_NICKEL = new Wire<>(Ref.ID, Nickel, HC ? 6 : 10, Tier.MV).amps(3);
+    public static final Wire<?> WIRE_CUPRONICKEL = new Wire<>(Ref.ID, Cupronickel, HC ? 6 : 8, Tier.MV).amps(2);
+    public static final Wire<?> WIRE_COPPER = new Wire<>(Ref.ID, Copper, HC ? 4 : 6, Tier.MV).amps(1);
+    public static final Wire<?> WIRE_ANNEALED_COPPER = new Wire<>(Ref.ID, AnnealedCopper, HC ? 2 : 4, Tier.MV).amps(1);
+    public static final Wire<?> WIRE_KANTHAL = new Wire<>(Ref.ID, Kanthal, HC ? 6 : 16, Tier.HV).amps(4); //HV
+    public static final Wire<?> WIRE_GOLD = new Wire<>(Ref.ID, Gold, HC ? 4 : 12, Tier.HV).amps(3);
+    public static final Wire<?> WIRE_ELECTRUM = new Wire<>(Ref.ID, Electrum, HC ? 4 : 10, Tier.HV).amps(2);
+    public static final Wire<?> WIRE_SILVER = new Wire<>(Ref.ID, Silver, HC ? 2 : 8, Tier.HV).amps(1);
+    public static final Wire<?> WIRE_NICHROME = new Wire<>(Ref.ID, Nichrome, HC ? 8 : 64, Tier.EV).amps(3); //EV
+    public static final Wire<?> WIRE_STEEL = new Wire<>(Ref.ID, Steel, HC ? 4 : 32, Tier.EV).amps(2);
+    public static final Wire<?> WIRE_TITANIUM = new Wire<>(Ref.ID, Titanium, HC ? 4 : 24, Tier.EV).amps(4);
+    public static final Wire<?> WIRE_ALUMINIUM = new Wire<>(Ref.ID, Aluminium, HC ? 2 : 16, Tier.EV).amps(1);
+    public static final Wire<?> WIRE_GRAPHENE = new Wire<>(Ref.ID, Graphene, HC ? 2 : 32, Tier.IV).amps(1); //IV
+    public static final Wire<?> WIRE_OSMIUM = new Wire<>(Ref.ID, Osmium, HC ? 4 : 64, Tier.IV).amps(4);
+    public static final Wire<?> WIRE_PLATINUM = new Wire<>(Ref.ID, Platinum, HC ? 2 : 32, Tier.IV).amps(2);
+    public static final Wire<?> WIRE_TUNGSTEN_STEEL = new Wire<>(Ref.ID, TungstenSteel, HC ? 2 : 28, Tier.IV).amps(3);
+    public static final Wire<?> WIRE_TUNGSTEN = new Wire<>(Ref.ID, Tungsten, HC ? 2 : 12, Tier.IV).amps(1);
+    public static final Wire<?> WIRE_HSSG = new Wire<>(Ref.ID, HSSG, HC ? 4 : 256, Tier.LUV).amps(4); //LUV
+    public static final Wire<?> WIRE_NIOBIUM_TITANIUM = new Wire<>(Ref.ID, NiobiumTitanium, HC ? 4 : 256, Tier.LUV).amps(4);
+    public static final Wire<?> WIRE_VANADIUM_GALLIUM = new Wire<>(Ref.ID, VanadiumGallium, HC ? 4 : 256, Tier.LUV).amps(4);
+    public static final Wire<?> WIRE_YTTRIUM_BARIUM_CUPRATE = new Wire<>(Ref.ID, YttriumBariumCuprate, HC ? 8 : 512, Tier.LUV).amps(4);
+    public static final Wire<?> WIRE_NAQUADAH = new Wire<>(Ref.ID, Naquadah, HC ? 4 : 128, Tier.ZPM).amps(2); //ZPM
+    public static final Wire<?> WIRE_NAQUADAH_ALLOY = new Wire<>(Ref.ID, NaquadahAlloy, HC ? 8 : 128, Tier.ZPM).amps(2);
+    public static final Wire<?> WIRE_DURANIUM = new Wire<>(Ref.ID, Duranium, HC ? 16 : 128, Tier.ZPM).amps(1);
+    public static final Wire<?> WIRE_SUPERCONDUCTOR = new Wire<>(Ref.ID, Superconductor, 1, Tier.MAX).amps(4); //MAX
 
-        new BlockItemPipeBuilder(Ref.ID, Cupronickel).slots(1).steps(1).build();
-        new BlockItemPipeBuilder(Ref.ID, CobaltBrass).slots(1).steps(1).build();
-        new BlockItemPipeBuilder(Ref.ID, Brass).slots(1).steps(1).build();
-        new BlockItemPipeBuilder(Ref.ID, Electrum).slots(2).steps(2).build();
-        new BlockItemPipeBuilder(Ref.ID, RoseGold).slots(2).steps(2).build();
-        new BlockItemPipeBuilder(Ref.ID, SterlingSilver).slots(2).steps(2).build();
-        new BlockItemPipeBuilder(Ref.ID, Platinum).slots(4).steps(4).build();
-        new BlockItemPipeBuilder(Ref.ID, Ultimet).slots(4).steps(4).build();
-        new BlockItemPipeBuilder(Ref.ID, PolyvinylChloride).slots(4).steps(4).build();
-        new BlockItemPipeBuilder(Ref.ID, Osmium).slots(8).steps(8).build();
-    }
+    public static final FluidPipe<?> FLUID_PIPE_WOOD = new FluidPipe<>(Ref.ID, Wood, 30, false).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(10, 10, 30, 60, 60, 60);
+    public static final FluidPipe<?> FLUID_PIPE_COPPER = new FluidPipe<>(Ref.ID, Copper, 1000, true).caps(10);
+    public static final FluidPipe<?> FLUID_PIPE_BRONZE = new FluidPipe<>(Ref.ID, Bronze, 2000, true).caps(20);
+    public static final FluidPipe<?> FLUID_PIPE_STEEL = new FluidPipe<>(Ref.ID, Steel, 2500, true).caps(40);
+    public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = new FluidPipe<>(Ref.ID, StainlessSteel, 3000, true).caps(60);
+    public static final FluidPipe<?> FLUID_PIPE_TITANIUM = new FluidPipe<>(Ref.ID, Titanium, 5000, true).caps(80);
+    public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = new FluidPipe<>(Ref.ID, TungstenSteel, 7500, true).caps(100);
+    public static final FluidPipe<?> FLUID_PIPE_PLASTIC = new FluidPipe<>(Ref.ID, Plastic, 250, true).caps(60);
+    public static final FluidPipe<?> FLUID_PIPE_POLY = new FluidPipe<>(Ref.ID, Polytetrafluoroethylene, 600, true).caps(480);
+    public static final FluidPipe<?> FLUID_PIPE_HP = new FluidPipe<>(Ref.ID, HighPressure, 1500, true).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(4800, 4800, 4800, 7200, 9600, 9600);
+    public static final FluidPipe<?> FLUID_PIPE_PLASMA = new FluidPipe<>(Ref.ID, PlasmaContainment, 100000, true).sizes(PipeSize.NORMAL).caps(240, 240, 240, 240, 240, 240);
+
+    public static final ItemPipe<?> ITEM_PIPE_CUPRONICKEL = new ItemPipe<>(Ref.ID, Cupronickel).slots(1).steps(1);
+    public static final ItemPipe<?> ITEM_PIPE_COBALT_BRASS = new ItemPipe<>(Ref.ID, CobaltBrass).slots(1).steps(1);
+    public static final ItemPipe<?> ITEM_PIPE_BRASS = new ItemPipe<>(Ref.ID, Brass).slots(1).steps(1);
+    public static final ItemPipe<?> ITEM_PIPE_ELECTRUM = new ItemPipe<>(Ref.ID, Electrum).slots(2).steps(2);
+    public static final ItemPipe<?> ITEM_PIPE_ROSE_GOLD = new ItemPipe<>(Ref.ID, RoseGold).slots(2).steps(2);
+    public static final ItemPipe<?> ITEM_PIPE_STERLING_SILVER = new ItemPipe<>(Ref.ID, SterlingSilver).slots(2).steps(2);
+    public static final ItemPipe<?> ITEM_PIPE_PLATINUM = new ItemPipe<>(Ref.ID, Platinum).slots(4).steps(4);
+    public static final ItemPipe<?> ITEM_PIPE_ULTIMET = new ItemPipe<>(Ref.ID, Ultimet).slots(4).steps(4);
+    public static final ItemPipe<?> ITEM_PIPE_POLY = new ItemPipe<>(Ref.ID, PolyvinylChloride).slots(4).steps(4);
+    public static final ItemPipe<?> ITEM_PIPE_OSMIUM = new ItemPipe<>(Ref.ID, Osmium).slots(8).steps(8);
+
+    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_CUPRONICKEL = new ItemPipeRestrictive<>(Ref.ID, Cupronickel).slots(1).steps(1);
+    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_COBALT_BRASS = new ItemPipeRestrictive<>(Ref.ID, CobaltBrass).slots(1).steps(1);
+    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_BRASS = new ItemPipeRestrictive<>(Ref.ID, Brass).slots(1).steps(1);
+    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_ELECTRUM = new ItemPipeRestrictive<>(Ref.ID, Electrum).slots(2).steps(2);
+    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_ROSE_GOLD = new ItemPipeRestrictive<>(Ref.ID, RoseGold).slots(2).steps(2);
+    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_STERLING_SILVER = new ItemPipeRestrictive<>(Ref.ID, SterlingSilver).slots(2).steps(2);
+    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_PLATINUM = new ItemPipeRestrictive<>(Ref.ID, Platinum).slots(4).steps(4);
+    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_ULTIMET = new ItemPipeRestrictive<>(Ref.ID, Ultimet).slots(4).steps(4);
+    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_POLY = new ItemPipeRestrictive<>(Ref.ID, PolyvinylChloride).slots(4).steps(4);
+    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_OSMIUM = new ItemPipeRestrictive<>(Ref.ID, Osmium).slots(8).steps(8);
 
     // Rubber Tree
     public static final BlockRubberLeaves RUBBER_LEAVES = new BlockRubberLeaves(Ref.ID, "rubber_leaves");
