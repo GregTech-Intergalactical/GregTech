@@ -14,6 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import tesseract.util.Dir;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -59,7 +60,7 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
         TileBatteryBufferCreative tile;
 
         public BufferEnergyHandler(TileBatteryBufferCreative tile) {
-            super(tile, true);
+            super(tile);
             this.tile = tile;
             boolean storage = new Random().nextInt(2) == 1;
             this.energy = storage ? Integer.MAX_VALUE : 0;
@@ -107,6 +108,11 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
         @Override
         public long extract(long toInsert, boolean simulate) {
             return 0L;
+        }
+
+        @Override
+        public boolean canOutput(Dir direction) {
+            return tile.getOutputFacing().getIndex() == direction.getIndex();
         }
     }
 }
