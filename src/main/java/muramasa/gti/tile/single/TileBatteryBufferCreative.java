@@ -16,6 +16,7 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import tesseract.util.Dir;
 
+import javax.annotation.Nonnull;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
@@ -34,18 +35,20 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
     }
 
     static class BufferConfigHandler extends MachineConfigHandler {
-        TileBatteryBufferCreative tile;
+
         public BufferConfigHandler(TileBatteryBufferCreative tile) {
             super(tile);
-            this.tile = tile;
         }
 
         @Override
         public boolean onInteract(PlayerEntity player, Hand hand, Direction side, AntimatterToolType type) {
-            if (!Objects.requireNonNull(tile.getWorld()).isRemote && hand == Hand.MAIN_HAND) {
-                tile.energyHandler.ifPresent(h -> {
-                    tile.getInfo().forEach(string -> player.sendMessage(new StringTextComponent(string)));
-                });
+            World world = tile.getWorld();
+            if (world != null) {
+                if (!world.isRemote && hand == Hand.MAIN_HAND) {
+                    tile.energyHandler.ifPresent(h -> {
+                        tile.getInfo().forEach(string -> player.sendMessage(new StringTextComponent(string)));
+                    });
+                }
             }
             return false;
         }
@@ -57,18 +60,16 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
     }
 
     static class BufferEnergyHandler extends MachineEnergyHandler {
-        TileBatteryBufferCreative tile;
 
         public BufferEnergyHandler(TileBatteryBufferCreative tile) {
             super(tile);
-            this.tile = tile;
             boolean storage = new Random().nextInt(2) == 1;
             this.energy = storage ? Integer.MAX_VALUE : 0;
             this.capacity = Integer.MAX_VALUE;
             this.voltage_in = tile.getMachineTier().getVoltage();
             this.voltage_out = tile.getMachineTier().getVoltage();
             this.amperage_in = storage ? 0 : 4;
-            this.amperage_out = storage ? 4 : 0;
+            this.amperage_out = storage ? 16 : 0;
         }
 
         @Override
@@ -111,7 +112,7 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
         }
 
         @Override
-        public boolean canOutput(Dir direction) {
+        public boolean canOutput(@Nonnull Dir direction) {
             return tile.getOutputFacing().getIndex() == direction.getIndex();
         }
     }
