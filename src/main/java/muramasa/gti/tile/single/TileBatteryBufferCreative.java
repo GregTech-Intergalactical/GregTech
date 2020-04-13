@@ -17,7 +17,6 @@ import net.minecraft.world.World;
 import tesseract.util.Dir;
 
 import javax.annotation.Nonnull;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
 
@@ -71,40 +70,6 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
             this.amperage_in = storage ? 0 : 4;
             this.amperage_out = storage ? 16 : 0;
         }
-
-        @Override
-        public void onOverVoltage(long node) {
-            World world = tile.getWorld();
-            if (world != null) {
-                BlockPos pos = BlockPos.fromLong(node);
-                if (!world.isRemote)
-                    world.createExplosion(null, pos.getX(), pos.getY() + 0.0625D, pos.getZ(), 4.0F, Explosion.Mode.BREAK);
-                else
-                    world.addParticle(ParticleTypes.SMOKE, pos.getX(), pos.getY() + 0.5D, pos.getZ(), 0.0D, 0.0D, 0.0D);
-                world.setBlockState(pos, Blocks.AIR.getDefaultState());
-            }
-        }
-
-        @Override
-        public void onOverAmperage(long cable) {
-            World world = tile.getWorld();
-            if (world != null) {
-                BlockPos pos = BlockPos.fromLong(cable); boolean fired = false;
-                for (Direction direction : Direction.values()) {
-                    BlockPos offset = pos.offset(direction);
-                    if (world.getBlockState(offset) == Blocks.AIR.getDefaultState()) {
-                        world.setBlockState(offset, Blocks.FIRE.getDefaultState());
-                        fired = true;
-                    }
-                }
-                if (!fired) world.setBlockState(pos, Blocks.AIR.getDefaultState());
-            }
-        }
-
-        /*@Override
-        public long insert(long toInsert, boolean simulate) {
-            return 0L;
-        }*/
 
         @Override
         public long extract(long toInsert, boolean simulate) {
