@@ -27,7 +27,6 @@ import static muramasa.gti.data.Materials.*;
 public class Data {
 
     private static boolean HC = Configs.GAMEPLAY.HARDCORE_CABLES;
-    private static boolean HP = Configs.GAMEPLAY.HARDCORE_PIPES;
 
     public static void init() {
 
@@ -412,17 +411,17 @@ public class Data {
     public static final Wire<?> WIRE_DURANIUM = new Wire<>(Ref.ID, Duranium, HC ? 16 : 128, Tier.ZPM).amps(1);
     public static final Wire<?> WIRE_SUPERCONDUCTOR = new Wire<>(Ref.ID, Superconductor, 1, Tier.MAX).amps(4); //MAX
 
-    public static final FluidPipe<?> FLUID_PIPE_WOOD = new FluidPipe<>(Ref.ID, Wood, HP ? 10 : 0, 5000,30, false).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(10, 10, 30, 60, 60, 60);
-    public static final FluidPipe<?> FLUID_PIPE_COPPER = new FluidPipe<>(Ref.ID, Copper, HP ? 1 : 0, 30000, 1000, true).caps(10);
-    public static final FluidPipe<?> FLUID_PIPE_BRONZE = new FluidPipe<>(Ref.ID, Bronze, HP ? 1 : 0, 40000, 2000, true).caps(20);
-    public static final FluidPipe<?> FLUID_PIPE_STEEL = new FluidPipe<>(Ref.ID, Steel, HP ? 1 : 0, 50000, 2500, true).caps(40);
-    public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = new FluidPipe<>(Ref.ID, StainlessSteel, HP ? 1 : 0, 60000, 3000, true).caps(60);
-    public static final FluidPipe<?> FLUID_PIPE_TITANIUM = new FluidPipe<>(Ref.ID, Titanium, HP ? 1 : 0,  80000,5000, true).caps(80);
-    public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = new FluidPipe<>(Ref.ID, TungstenSteel, HP ? 1 : 0, 100000, 7500, true).caps(100);
-    public static final FluidPipe<?> FLUID_PIPE_PLASTIC = new FluidPipe<>(Ref.ID, Plastic, HP ? 5 : 0, 5000, 250, true).caps(60);
-    public static final FluidPipe<?> FLUID_PIPE_POLY = new FluidPipe<>(Ref.ID, Polytetrafluoroethylene, HP ? 3 : 0, 5000, 600, true).caps(480);
-    public static final FluidPipe<?> FLUID_PIPE_HP = new FluidPipe<>(Ref.ID, HighPressure, HP ? 1 : 0, 500000, 1500, true).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(4800, 4800, 4800, 7200, 9600, 9600);
-    public static final FluidPipe<?> FLUID_PIPE_PLASMA = new FluidPipe<>(Ref.ID, PlasmaContainment, HP ? 1 : 0, 10000000, 100000, true).sizes(PipeSize.NORMAL).caps(240, 240, 240, 240, 240, 240);
+    public static final FluidPipe<?> FLUID_PIPE_WOOD = new FluidPipe<>(Ref.ID, Wood, 5000,30, false).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(10, 10, 30, 60, 60, 60);
+    public static final FluidPipe<?> FLUID_PIPE_COPPER = new FluidPipe<>(Ref.ID, Copper, 30000, 1000, true).caps(10);
+    public static final FluidPipe<?> FLUID_PIPE_BRONZE = new FluidPipe<>(Ref.ID, Bronze, 40000, 2000, true).caps(20);
+    public static final FluidPipe<?> FLUID_PIPE_STEEL = new FluidPipe<>(Ref.ID, Steel, 50000, 2500, true).caps(40);
+    public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = new FluidPipe<>(Ref.ID, StainlessSteel, 60000, 3000, true).caps(60);
+    public static final FluidPipe<?> FLUID_PIPE_TITANIUM = new FluidPipe<>(Ref.ID, Titanium, 80000,5000, true).caps(80);
+    public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = new FluidPipe<>(Ref.ID, TungstenSteel, 100000, 7500, true).caps(100);
+    public static final FluidPipe<?> FLUID_PIPE_PLASTIC = new FluidPipe<>(Ref.ID, Plastic, 5000, 250, true).caps(60);
+    public static final FluidPipe<?> FLUID_PIPE_POLY = new FluidPipe<>(Ref.ID, Polytetrafluoroethylene, 5000, 600, true).caps(480);
+    public static final FluidPipe<?> FLUID_PIPE_HP = new FluidPipe<>(Ref.ID, HighPressure, 500000, 1500, true).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(4800, 4800, 4800, 7200, 9600, 9600);
+    public static final FluidPipe<?> FLUID_PIPE_PLASMA = new FluidPipe<>(Ref.ID, PlasmaContainment, 10000000, 100000, true).sizes(PipeSize.NORMAL).caps(240, 240, 240, 240, 240, 240);
 
     public static final ItemPipe<?> ITEM_PIPE_CUPRONICKEL = new ItemPipe<>(Ref.ID, Cupronickel).slots(1).steps(1);
     public static final ItemPipe<?> ITEM_PIPE_COBALT_BRASS = new ItemPipe<>(Ref.ID, CobaltBrass).slots(1).steps(1);

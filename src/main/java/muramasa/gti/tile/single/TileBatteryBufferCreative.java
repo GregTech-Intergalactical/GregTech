@@ -5,14 +5,10 @@ import muramasa.antimatter.capability.impl.MachineEnergyHandler;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.tool.AntimatterToolType;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import tesseract.util.Dir;
 
@@ -55,7 +51,7 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
 
     @Override
     public void onServerUpdate() {
-        energyHandler.ifPresent(MachineEnergyHandler::update);
+        energyHandler.ifPresent(MachineEnergyHandler::onUpdate);
     }
 
     static class BufferEnergyHandler extends MachineEnergyHandler {
