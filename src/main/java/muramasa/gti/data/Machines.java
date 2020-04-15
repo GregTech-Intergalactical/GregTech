@@ -94,7 +94,7 @@ public class Machines {
     public static BasicMachine NAQUADAH_GENERATOR = new BasicMachine(Ref.ID, "naquadah_generator", NAQUADAH_FUELS, EV, IV, LUV, ITEM, FLUID);
     public static BasicMachine PLASMA_GENERATOR = new BasicMachine(Ref.ID, "plasma_generator", PLASMA_FUELS, IV, LUV, ZPM, ITEM, FLUID);
 
-    public static Machine CREATIVE_ENERGY_BUFFER = new BlockBatteryBufferCreative(Ref.ID, "creative_energy_buffer", ENERGY);
+    public static BlockBatteryBufferCreative CREATIVE_ENERGY_BUFFER = new BlockBatteryBufferCreative(Ref.ID, "creative_energy_buffer", ENERGY);
 
     public static void init() {
 

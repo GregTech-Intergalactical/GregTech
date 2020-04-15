@@ -9,40 +9,41 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.world.World;
+import tesseract.util.Dir;
 
+import javax.annotation.Nonnull;
 import java.util.Optional;
 import java.util.Random;
 
 public class TileBatteryBufferCreative extends TileEntityMachine {
 
-    private boolean full;
-
-    public TileBatteryBufferCreative(Machine type) {
+    public TileBatteryBufferCreative(Machine<?> type) {
         super(type);
     }
 
     @Override
-    public void onLoad() {
-        if (!isServerSide()) return;
-        full = new Random().nextInt(2) == 0;
+    public void initCaps() {
         configHandler = Optional.of(new BufferConfigHandler(this));
         energyHandler = Optional.of(new BufferEnergyHandler(this));
-        super.onLoad();
+        super.initCaps();
     }
 
     static class BufferConfigHandler extends MachineConfigHandler {
-        TileBatteryBufferCreative tile;
+
         public BufferConfigHandler(TileBatteryBufferCreative tile) {
             super(tile);
-            this.tile = tile;
         }
 
         @Override
         public boolean onInteract(PlayerEntity player, Hand hand, Direction side, AntimatterToolType type) {
-            if (!tile.getWorld().isRemote && hand == Hand.MAIN_HAND) {
-                tile.energyHandler.ifPresent(h -> {
-                    tile.getInfo().forEach(string -> player.sendMessage(new StringTextComponent(string)));
-                });
+            World world = tile.getWorld();
+            if (world != null) {
+                if (!world.isRemote && hand == Hand.MAIN_HAND) {
+                    tile.energyHandler.ifPresent(h -> {
+                        tile.getInfo().forEach(string -> player.sendMessage(new StringTextComponent(string)));
+                    });
+                }
             }
             return false;
         }
@@ -50,25 +51,30 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
 
     @Override
     public void onServerUpdate() {
-        energyHandler.ifPresent(MachineEnergyHandler::update);
+        energyHandler.ifPresent(MachineEnergyHandler::onUpdate);
     }
 
     static class BufferEnergyHandler extends MachineEnergyHandler {
-        TileBatteryBufferCreative tile;
+
         public BufferEnergyHandler(TileBatteryBufferCreative tile) {
             super(tile);
-            this.tile = tile;
-            if (tile.full) {
-                this.energy = Integer.MAX_VALUE;
-                this.capacity = Integer.MAX_VALUE;
-                this.input = 0;
-                this.output = tile.getMachineTier().getVoltage();
-            } else {
-                this.energy = 0;
-                this.capacity = Integer.MAX_VALUE;
-                this.input = tile.getMachineTier().getVoltage();
-                this.output = 0;
-            }
+            boolean storage = new Random().nextInt(2) == 1;
+            this.energy = storage ? Integer.MAX_VALUE : 0;
+            this.capacity = Integer.MAX_VALUE;
+            this.voltage_in = tile.getMachineTier().getVoltage();
+            this.voltage_out = tile.getMachineTier().getVoltage();
+            this.amperage_in = storage ? 0 : 4;
+            this.amperage_out = storage ? 16 : 0;
+        }
+
+        @Override
+        public long extract(long toInsert, boolean simulate) {
+            return 0L;
+        }
+
+        @Override
+        public boolean canOutput(@Nonnull Dir direction) {
+            return tile.getOutputFacing().getIndex() == direction.getIndex();
         }
     }
 }
