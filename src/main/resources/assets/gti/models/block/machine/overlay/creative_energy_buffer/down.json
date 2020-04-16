@@ -1,0 +1,11 @@
+{
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 0, 16],
+			"faces": {
+				"down": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#overlay", "tintindex": 0}
+			}
+		}
+	]
+}

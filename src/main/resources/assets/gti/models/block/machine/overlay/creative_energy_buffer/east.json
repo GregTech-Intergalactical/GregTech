@@ -1,0 +1,11 @@
+{
+	"elements": [
+		{
+			"from": [16, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#overlay", "tintindex": 0}
+			}
+		}
+	]
+}
