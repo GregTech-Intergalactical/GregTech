@@ -428,6 +428,7 @@ public class Materials {
     /** Reference Materials **/
     public static Material Superconductor = new Material(Ref.ID, "superconductor", 0xffffff, NONE);
     public static Material HighPressure = new Material(Ref.ID, "high_pressure", 0xc80000, NONE);
+    public static Material HighCapacity = new Material(Ref.ID, "high_capacity", 0xb00b69, NONE);
     public static Material PlasmaContainment = new Material(Ref.ID, "plasma_containment", 0xffff00, NONE);
 
     static {
