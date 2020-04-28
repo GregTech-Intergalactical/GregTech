@@ -1,5 +1,6 @@
 package muramasa.gti.loader;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.material.IMaterialTag;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialStack;
@@ -11,7 +12,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.*;
@@ -302,8 +303,8 @@ public class MaterialRecipeLoader {
         //I removed checks for stack count, if it does happen, I'll write a catch for it
         IMaterialTag.all(ELEC, CENT).forEach(m -> {
             int inputCount = 0, inputCellCount = 0;
-            ArrayList<ItemStack> outputs = new ArrayList<>();
-            ArrayList<FluidStack> fluidOutputs = new ArrayList<>();
+            List<ItemStack> outputs = new ObjectArrayList<>();
+            List<FluidStack> fluidOutputs = new ObjectArrayList<>();
             FluidStack[] fluidOutputsArray = new FluidStack[0];
             ItemStack[] outputsArray = new ItemStack[0];
             Material process;
@@ -495,17 +496,17 @@ public class MaterialRecipeLoader {
         CRUSHED.all().forEach(m -> {
             ItemStack ore = ORE.get().get(m, STONE).asStack(), crushed = CRUSHED.get(m, 1), dust = DUST.get(m, 1), stoneDust = DUST.get(Stone, 1);
             if (m.hasByProducts()) {
-                ArrayList<Material> byProducts = m.getByProducts();
+                List<Material> byProducts = m.getByProducts();
                 int byProductsCount = byProducts.size();
 
-                ArrayList<ItemStack> ores = new ArrayList<>();
+                List<ItemStack> ores = new ObjectArrayList<>();
                 if (m.has(ORE)) ores.add(ore);
                 if (m.has(ROCK)) ores.add(ROCK.get(m, 1));
                 if (m.has(CRUSHED)) ores.add(crushed);
                 if (m.has(CRUSHED_PURIFIED)) ores.add(CRUSHED_PURIFIED.get(m, 1));
                 if (m.has(CRUSHED_CENTRIFUGED)) ores.add(CRUSHED_CENTRIFUGED.get(m, 1));
 
-                ArrayList<ItemStack> dusts = new ArrayList<>(byProductsCount);
+                List<ItemStack> dusts = new ObjectArrayList<>(byProductsCount);
                 byProducts.forEach(p -> dusts.add(DUST.get(p, 1)));
                 ORE_BYPRODUCTS.RB().ii(ores.toArray(new ItemStack[0])).io(dusts.toArray(new ItemStack[byProductsCount])).add();
             }

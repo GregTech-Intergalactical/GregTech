@@ -15,7 +15,7 @@
 //import net.minecraft.util.ResourceLocation;
 //import net.minecraftforge.oredict.OreDictionary;
 //
-//import java.util.ArrayList;
+//import java.util.List;
 //
 //import org.apache.commons.lang3.StringUtils;
 //
@@ -80,7 +80,7 @@
 //                MaterialType.ORE.all().forEach(m -> {
 //                    BlockOre ore = (BlockOre) BlockOre.get(OreType.NORMAL, m, StoneType.STONE).getBlock();
 //                    ResourceLocation loc = m.getSet().getTexture(MaterialType.ORE, 0);
-//                    ArrayList<String> oreNames = new ArrayList<>();
+//                    List<String> oreNames = new ObjectArrayList<>();
 //                    oreNames.add("ore".concat(StringUtils.capitalize(m.getId())));
 //                    API.ORES_REGISTRY.requestOreSetup(ore, new UBOreConfig(ore.getId(), 0, loc.toString(), oreNames, Integer.toString(m.getRGB())));
 //                    API.ORES_REGISTRY.registerOreOverlay(ore, 0, loc);
@@ -88,7 +88,7 @@
 //                MaterialType.ORE_SMALL.all().forEach(m -> {
 //                    BlockOre ore = (BlockOre) BlockOre.get(OreType.SMALL, m, StoneType.STONE).getBlock();
 //                    ResourceLocation loc = m.getSet().getTexture(MaterialType.ORE_SMALL, 0);
-//                    ArrayList<String> oreNames = new ArrayList<>();
+//                    List<String> oreNames = new ObjectArrayList<>();
 //                    oreNames.add("oreSmall".concat(StringUtils.capitalize(m.getId())));
 //                    API.ORES_REGISTRY.requestOreSetup(ore, new UBOreConfig(ore.getId(), 0, loc.toString(), oreNames, Integer.toString(m.getRGB())));
 //                    API.ORES_REGISTRY.registerOreOverlay(ore, 0, loc);

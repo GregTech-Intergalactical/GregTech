@@ -1,6 +1,7 @@
 package muramasa.gti.tree;
 
 import com.google.common.collect.ImmutableList;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
@@ -16,7 +17,6 @@ import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.treedecorator.LeaveVineTreeDecorator;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -56,7 +56,7 @@ public class RubberTreeWorldGen { //  extends WorldGenBase<RubberTreeWorldGen> {
 
     //@Override
     static Predicate<Biome> getValidBiomes() {
-        final Set<Biome.Category> blacklist = new HashSet<>();
+        final Set<Biome.Category> blacklist = new ObjectOpenHashSet<>();
         blacklist.add(Biome.Category.DESERT);
         blacklist.add(Biome.Category.TAIGA);
         blacklist.add(Biome.Category.EXTREME_HILLS);
