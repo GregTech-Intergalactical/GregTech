@@ -376,7 +376,7 @@ public class Data {
     public static final Cable<?> CABLE_NAQUADAH = new Cable<>(Ref.ID, Naquadah, HC ? 2 : 64, Tier.ZPM).amps(2); //ZPM
     public static final Cable<?> CABLE_NAQUADAH_ALLOY = new Cable<>(Ref.ID, NaquadahAlloy, HC ? 4 : 64, Tier.ZPM).amps(2);
     public static final Cable<?> CABLE_DURANIUM = new Cable<>(Ref.ID, Duranium, HC ? 8 : 64, Tier.ZPM).amps(1);
-    public static final Cable<?> CABLE_SUPERCONDUCTOR = new Cable<>(Ref.ID, Superconductor, 1, Tier.MAX).amps(4); //MAX
+    public static final Cable<?> CABLE_SUPERCONDUCTOR = new Cable<>(Ref.ID, Superconductor, 0, Tier.MAX).amps(4); //MAX
 
     public static final Wire<?> WIRE_RED_ALLOY = new Wire<>(Ref.ID, RedAlloy, 1, Tier.ULV).amps(1);
     public static final Wire<?> WIRE_COBALT = new Wire<>(Ref.ID, Cobalt, 4, Tier.LV).amps(2); //LV
@@ -411,39 +411,29 @@ public class Data {
     public static final Wire<?> WIRE_DURANIUM = new Wire<>(Ref.ID, Duranium, HC ? 16 : 128, Tier.ZPM).amps(1);
     public static final Wire<?> WIRE_SUPERCONDUCTOR = new Wire<>(Ref.ID, Superconductor, 1, Tier.MAX).amps(4); //MAX
 
-    public static final FluidPipe<?> FLUID_PIPE_WOOD = new FluidPipe<>(Ref.ID, Wood, 5000,30, false).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(10, 10, 30, 60, 60, 60);
-    public static final FluidPipe<?> FLUID_PIPE_COPPER = new FluidPipe<>(Ref.ID, Copper, 30000, 1000, true).caps(10);
-    public static final FluidPipe<?> FLUID_PIPE_BRONZE = new FluidPipe<>(Ref.ID, Bronze, 40000, 2000, true).caps(20);
-    public static final FluidPipe<?> FLUID_PIPE_STEEL = new FluidPipe<>(Ref.ID, Steel, 50000, 2500, true).caps(40);
-    public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = new FluidPipe<>(Ref.ID, StainlessSteel, 60000, 3000, true).caps(60);
-    public static final FluidPipe<?> FLUID_PIPE_TITANIUM = new FluidPipe<>(Ref.ID, Titanium, 80000,5000, true).caps(80);
-    public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = new FluidPipe<>(Ref.ID, TungstenSteel, 100000, 7500, true).caps(100);
-    public static final FluidPipe<?> FLUID_PIPE_PLASTIC = new FluidPipe<>(Ref.ID, Plastic, 5000, 250, true).caps(60);
-    public static final FluidPipe<?> FLUID_PIPE_POLY = new FluidPipe<>(Ref.ID, Polytetrafluoroethylene, 5000, 600, true).caps(480);
-    public static final FluidPipe<?> FLUID_PIPE_HP = new FluidPipe<>(Ref.ID, HighPressure, 500000, 1500, true).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(4800, 4800, 4800, 7200, 9600, 9600);
-    public static final FluidPipe<?> FLUID_PIPE_PLASMA = new FluidPipe<>(Ref.ID, PlasmaContainment, 10000000, 100000, true).sizes(PipeSize.NORMAL).caps(240, 240, 240, 240, 240, 240);
+    public static final FluidPipe<?> FLUID_PIPE_BRICK = new FluidPipe<>(Ref.ID, Brick, 1000, false).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(10, 10, 30, 60, 60, 60).pressures(400, 400, 400, 400, 400, 400);
+    public static final FluidPipe<?> FLUID_PIPE_COPPER = new FluidPipe<>(Ref.ID, Copper, 700, true).caps(10).pressures(600);
+    public static final FluidPipe<?> FLUID_PIPE_BISMUTH_BRONZE = new FluidPipe<>(Ref.ID, BismuthBronze, 950, true).caps(20).pressures(800);
+    public static final FluidPipe<?> FLUID_PIPE_BLACK_STEEL = new FluidPipe<>(Ref.ID, BlackSteel, 1200, true).caps(10).pressures(900);
+    public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = new FluidPipe<>(Ref.ID, StainlessSteel, 1300, true).caps(60).pressures(1000);
+    public static final FluidPipe<?> FLUID_PIPE_TITANIUM = new FluidPipe<>(Ref.ID, Titanium, 1668, true).caps(80).pressures(2500);
+    public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = new FluidPipe<>(Ref.ID, TungstenSteel, 3422, true).caps(100).pressures(5000);
+    public static final FluidPipe<?> FLUID_PIPE_PLASTIC = new FluidPipe<>(Ref.ID, Plastic, 160, true).caps(60).pressures(2000);
+    public static final FluidPipe<?> FLUID_PIPE_POLY = new FluidPipe<>(Ref.ID, Polytetrafluoroethylene, 327, true).caps(480).pressures(1000);
+    public static final FluidPipe<?> FLUID_PIPE_HP = new FluidPipe<>(Ref.ID, HighPressure, 3422, true).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(4800, 4800, 4800, 7200, 9600, 9600).pressures(10000);
+    public static final FluidPipe<?> FLUID_PIPE_PLASMA = new FluidPipe<>(Ref.ID, PlasmaContainment, 100000, true).sizes(PipeSize.NORMAL).caps(240, 240, 240, 240, 240, 240).pressures(100000);
 
-    public static final ItemPipe<?> ITEM_PIPE_CUPRONICKEL = new ItemPipe<>(Ref.ID, Cupronickel).slots(1).steps(1);
-    public static final ItemPipe<?> ITEM_PIPE_COBALT_BRASS = new ItemPipe<>(Ref.ID, CobaltBrass).slots(1).steps(1);
-    public static final ItemPipe<?> ITEM_PIPE_BRASS = new ItemPipe<>(Ref.ID, Brass).slots(1).steps(1);
-    public static final ItemPipe<?> ITEM_PIPE_ELECTRUM = new ItemPipe<>(Ref.ID, Electrum).slots(2).steps(2);
-    public static final ItemPipe<?> ITEM_PIPE_ROSE_GOLD = new ItemPipe<>(Ref.ID, RoseGold).slots(2).steps(2);
-    public static final ItemPipe<?> ITEM_PIPE_STERLING_SILVER = new ItemPipe<>(Ref.ID, SterlingSilver).slots(2).steps(2);
-    public static final ItemPipe<?> ITEM_PIPE_PLATINUM = new ItemPipe<>(Ref.ID, Platinum).slots(4).steps(4);
-    public static final ItemPipe<?> ITEM_PIPE_ULTIMET = new ItemPipe<>(Ref.ID, Ultimet).slots(4).steps(4);
-    public static final ItemPipe<?> ITEM_PIPE_POLY = new ItemPipe<>(Ref.ID, PolyvinylChloride).slots(4).steps(4);
-    public static final ItemPipe<?> ITEM_PIPE_OSMIUM = new ItemPipe<>(Ref.ID, Osmium).slots(8).steps(8);
-
-    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_CUPRONICKEL = new ItemPipeRestrictive<>(Ref.ID, Cupronickel).slots(1).steps(1);
-    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_COBALT_BRASS = new ItemPipeRestrictive<>(Ref.ID, CobaltBrass).slots(1).steps(1);
-    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_BRASS = new ItemPipeRestrictive<>(Ref.ID, Brass).slots(1).steps(1);
-    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_ELECTRUM = new ItemPipeRestrictive<>(Ref.ID, Electrum).slots(2).steps(2);
-    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_ROSE_GOLD = new ItemPipeRestrictive<>(Ref.ID, RoseGold).slots(2).steps(2);
-    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_STERLING_SILVER = new ItemPipeRestrictive<>(Ref.ID, SterlingSilver).slots(2).steps(2);
-    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_PLATINUM = new ItemPipeRestrictive<>(Ref.ID, Platinum).slots(4).steps(4);
-    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_ULTIMET = new ItemPipeRestrictive<>(Ref.ID, Ultimet).slots(4).steps(4);
-    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_POLY = new ItemPipeRestrictive<>(Ref.ID, PolyvinylChloride).slots(4).steps(4);
-    public static final ItemPipeRestrictive<?> ITEM_RES_PIPE_OSMIUM = new ItemPipeRestrictive<>(Ref.ID, Osmium).slots(8).steps(8);
+    public static final ItemPipe<?> ITEM_PIPE_WOOD = new ItemPipe<>(Ref.ID, Wood).sizes(PipeSize.SMALL).caps(0, 0, 1, 0, 0, 0);
+    public static final ItemPipe<?> ITEM_PIPE_WROUGHT_IRON = new ItemPipe<>(Ref.ID, WroughtIron).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(0, 0, 2, 3, 4, 0);
+    public static final ItemPipe<?> ITEM_PIPE_COBALT_BRASS = new ItemPipe<>(Ref.ID, CobaltBrass).caps(2).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE);
+    public static final ItemPipe<?> ITEM_PIPE_BLACK_BRONZE = new ItemPipe<>(Ref.ID, BlackBronze).caps(3).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE);
+    public static final ItemPipe<?> ITEM_PIPE_STERLING_SILVER = new ItemPipe<>(Ref.ID, SterlingSilver).caps(4).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE);
+    public static final ItemPipe<?> ITEM_PIPE_ROSE_GOLD = new ItemPipe<>(Ref.ID, RoseGold).caps(4).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE);
+    public static final ItemPipe<?> ITEM_PIPE_PLATINUM = new ItemPipe<>(Ref.ID, Platinum).caps(5).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE);
+    public static final ItemPipe<?> ITEM_PIPE_TUNGSTEN_CARBIDE = new ItemPipe<>(Ref.ID, TungstenCarbide).caps(6);
+    public static final ItemPipe<?> ITEM_PIPE_ULTIMET = new ItemPipe<>(Ref.ID, Ultimet).caps(8);
+    public static final ItemPipe<?> ITEM_PIPE_HC = new ItemPipe<>(Ref.ID, HighCapacity).caps(10);
+    public static final ItemPipe<?> ITEM_PIPE_OSMIRIDIUM = new ItemPipe<>(Ref.ID, Osmiridium).caps(20);
 
     // Rubber Tree
     public static final BlockRubberLeaves RUBBER_LEAVES = new BlockRubberLeaves(Ref.ID, "rubber_leaves");
