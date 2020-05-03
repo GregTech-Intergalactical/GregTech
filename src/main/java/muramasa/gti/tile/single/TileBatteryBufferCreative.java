@@ -23,10 +23,10 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
     }
 
     @Override
-    public void initCaps() {
+    public void onInit() {
         configHandler = Optional.of(new BufferConfigHandler(this));
         energyHandler = Optional.of(new BufferEnergyHandler(this));
-        super.initCaps();
+        super.onInit();
     }
 
     static class BufferConfigHandler extends MachineConfigHandler {
