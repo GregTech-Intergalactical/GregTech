@@ -39,7 +39,7 @@ public class Recipes extends RecipeProvider {
                 .key('D', getForgeItemTag("dusts/sulfur")).key('R', Tags.Items.RODS_WOODEN)
                 .patternLine("D")
                 .patternLine("R").addCriterion("has_sulfur_dust", this.hasItem(getForgeItemTag("dusts/sulfur")))::build)
-                .build(consumer, Ref.ID, "sulfur_torch");  // Wow thanks Forge
+                .build(consumer, Ref.ID, "sulfur_torch");
 
         ShapedRecipeBuilder.shapedRecipe(Blocks.HOPPER).key('C', Blocks.CHEST).key('I', getForgeItemTag("plates/iron")).key('W', WRENCH.getTag())
                 .patternLine("IWI")
@@ -197,6 +197,14 @@ public class Recipes extends RecipeProvider {
 //                        .build(consumer, sigh(ingot.getRegistryName().getPath() + "_grind_to_" + dust.getRegistryName().getPath()));
 //            }
 //        });
+    }
+
+    private static void hardRecipes() {
+
+    }
+
+    private static void normalRecipes() {
+
     }
 
     @Override
