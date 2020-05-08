@@ -14,7 +14,6 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
-import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.*;
 import static muramasa.antimatter.material.MaterialType.*;
 import static muramasa.antimatter.recipe.RecipeTag.IGNORE_NBT;
@@ -625,6 +624,7 @@ public class MaterialRecipeLoader {
 //            RecipeHelper.addBasicShapelessRecipe(INSTANCE.getToolWithStats(SOFTHAMMER, 1, m, Materials.Wood), m.getHeadHammer(1), Materials.Wood.getRod(1));
         }
 
+        /*
         TOOLS.all().forEach(m -> {
             //TODO: Scoop done in the Forestry Registrar
             if (m.has(ROD)) {
@@ -667,6 +667,7 @@ public class MaterialRecipeLoader {
                     RecipeHelper.addShaped("mortar_" + m.getId(), MORTAR.get(m, NULL, 1), " M ", "SMS", "SSS", 'M', main, 'S', "stone");
                 }
             }
+         */
             /*
             if (m.has(INGOT) && m.has(Plate) && !m.has(RUBBERTOOLS) && m == m.mMacerateInto) {
                 ItemStack aStainlessScrew = Materials.StainlessSteel.getScrew(1), aTitaniumScrew = Materials.TitaniuSCREW.get(m, 1), aTungstensteelScrew = Materials.TungstenSteel.getScrew(1), aStainlessPlate = Materials.StainlessSteel.getPlate(1), aTitaniumPlate = Materials.TitaniuPLATE.get(m, 1), aTungstensteelPlate = Materials.TungstenSteel.getPlate(1), aStainlessSmallGear = Materials.StainlessSteel.getGearS(1), aTitaniumSmallGear = Materials.Titanium.getGearS(1), aTungstensteelSmallGear = Materials.TungstenSteel.getGearS(1), aTitaniumSpring = Materials.TitaniuSPRING.get(m, 1);
@@ -813,6 +814,5 @@ public class MaterialRecipeLoader {
                 GT_ModHandler.addShapedToolRecipe(m.getHeadShovel(1), "fG", 'G', aGem);
                 GT_ModHandler.addShapedToolRecipe(m.getHeadSword(1), " G", "fG", 'G', aGem);
             }*/
-        });
     }
 }

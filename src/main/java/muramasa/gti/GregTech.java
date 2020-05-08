@@ -48,7 +48,7 @@ public class GregTech implements IAntimatterRegistrar {
     public static void onDataGather(GatherDataEvent e) {
         DataGenerator gen = e.getGenerator();
         if (e.includeClient()) {
-            AntimatterModelManager.onProviderInit(Ref.ID, e.getGenerator());
+            AntimatterModelManager.onProviderInit(Ref.ID, gen);
         }
         if (e.includeServer()) {
             gen.addProvider(new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
@@ -74,7 +74,6 @@ public class GregTech implements IAntimatterRegistrar {
                 Guis.init();
                 Models.init();
                 break;
-
             case READY:
                 Structures.init();
                 break;
@@ -103,10 +102,6 @@ public class GregTech implements IAntimatterRegistrar {
 //                MaterialType.PLATE.all().forEach(m -> AntimatterAPI.registerCoverStack(MaterialType.PLATE.get(m, 1), Data.COVER_PLATE));
 //                break;
             case RECIPE:
-                // OreDictLoader.init();
-                //CraftingRecipeLoader.init();
-                //MaterialRecipeLoader.init();
-                //MachineRecipeLoader.init();
                 break;
             case WORLDGEN_INIT:
                 WorldGenLoader.init();
