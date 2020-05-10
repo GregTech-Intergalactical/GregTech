@@ -34,33 +34,28 @@ public class GregTechRecipes extends AntimatterRecipeProvider {
         addItemRecipe(consumer, Ref.ID, "hopper", "", "has_wrench", this.hasItem(WRENCH.getTag()),
                 Blocks.HOPPER, of('C', Blocks.CHEST, 'I', getForgeItemTag("plates/iron"), 'W', WRENCH.getTag()), "IWI", "ICI", " I ");
 
-        addItemRecipe(consumer, "", "", "", "has_iron_plate", this.hasItem(WRENCH.getTag()),
+        addItemRecipe(consumer, "", "has_iron_plate", this.hasItem(WRENCH.getTag()),
                 ItemFilter, of('Z', getForgeItemTag("foils/zinc"), 'I', getForgeItemTag("plates/iron")), "ZZZ", "ZIZ", "ZZZ");
 
-        addItemRecipe(consumer, "", "", "gears", "has_wooden_rod", this.hasItem(Tags.Items.RODS_WOODEN),
+        addItemRecipe(consumer, "gears", "has_wooden_rod", this.hasItem(Tags.Items.RODS_WOODEN),
                 GEAR.get(Wood), of('P', ItemTags.PLANKS, 'W', WRENCH.getTag(), 'R', Tags.Items.RODS_WOODEN), "RPR", "PWP", "RPR");
 
         addItemRecipe(consumer, Ref.ID, GEAR.get(Wood).getRegistryName().getPath() + "_alt", "gears", "has_wooden_rod", this.hasItem(Tags.Items.RODS_WOODEN),
                 GEAR.get(Wood), of('P', ItemTags.PLANKS, 'W', WRENCH.getTag(), 'R', Tags.Items.RODS_WOODEN), "RPR", "PWP", "RPR");
 
-        addItemRecipe(consumer, "", "", "gears", "has_stone", this.hasItem(Tags.Items.STONE),
+        addItemRecipe(consumer, "gears", "has_stone", this.hasItem(Tags.Items.STONE),
                 GEAR.get(Stone), of('S', Tags.Items.STONE, 'W', WRENCH.getTag(), 'C', Tags.Items.COBBLESTONE), "SCS", "CWC", "SCS");
 
         addItemRecipe(consumer, Ref.ID, GEAR.get(Stone).getRegistryName().getPath() + "_alt", "gears", "has_stone", this.hasItem(Tags.Items.STONE),
                 GEAR.get(Stone), of('S', Tags.Items.STONE, 'W', WRENCH.getTag(), 'C', Tags.Items.COBBLESTONE), "CSC", "SWS", "CSC");
 
+        addItemRecipe(consumer, "gears", "has_stone", this.hasItem(Blocks.PISTON), Blocks.STICKY_PISTON, of('S', Data.StickyResin, 'P', Blocks.PISTON), "S", "P");
 
-        ShapelessRecipeBuilder.shapelessRecipe(Blocks.STICKY_PISTON)
-                .addIngredient(Blocks.PISTON).addIngredient(Data.StickyResin)
-                .addCriterion("has_piston", this.hasItem(Blocks.PISTON)).build(consumer);
+        addItemRecipe(consumer, "magnetic_rods", "has_redstone", this.hasItem(Tags.Items.DUSTS_REDSTONE), ROD.get(IronMagnetic),
+                of('R', Tags.Items.DUSTS_REDSTONE, 'S', getForgeItemTag("rods/iron")), " R ", "RSR", " R ");
 
-        ShapelessRecipeBuilder.shapelessRecipe(ROD.get(IronMagnetic))
-                .addIngredient(getForgeItemTag("rods/iron")).addIngredient(Items.REDSTONE).addIngredient(Items.REDSTONE).addIngredient(Items.REDSTONE).addIngredient(Items.REDSTONE)
-                .addCriterion("has_iron_rod", this.hasItem(getForgeItemTag("rods/iron"))).setGroup("magnetic_rods").build(consumer);
-
-        ShapelessRecipeBuilder.shapelessRecipe(ROD.get(Neodymium))
-                .addIngredient(getForgeItemTag("rods/neodymium")).addIngredient(Items.REDSTONE).addIngredient(Items.REDSTONE).addIngredient(Items.REDSTONE).addIngredient(Items.REDSTONE)
-                .addCriterion("has_neodymium_rod", this.hasItem(getForgeItemTag("rods/neodymium"))).setGroup("magnetic_rods").build(consumer);
+        addItemRecipe(consumer, "magnetic_rods", "has_redstone", this.hasItem(Tags.Items.DUSTS_REDSTONE), ROD.get(Neodymium),
+                of('R', Tags.Items.DUSTS_REDSTONE, 'S', getForgeItemTag("rods/neodymium")), " R ", "RSR", " R ");
 
 //        RegistrationHelper.getMaterialsForDomain(Ref.ID).stream().filter(m -> m.has(PLATE, INGOT)).forEach(mat -> {
 //            Item plate = PLATE.get(mat);
