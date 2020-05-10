@@ -624,6 +624,7 @@ public class MaterialRecipeLoader {
 //            RecipeHelper.addBasicShapelessRecipe(INSTANCE.getToolWithStats(SOFTHAMMER, 1, m, Materials.Wood), m.getHeadHammer(1), Materials.Wood.getRod(1));
         }
 
+        /*
         TOOLS.all().forEach(m -> {
             //TODO: Scoop done in the Forestry Registrar
             /*if (m.has(ROD)) {
@@ -815,6 +816,5 @@ public class MaterialRecipeLoader {
                 GT_ModHandler.addShapedToolRecipe(m.getHeadShovel(1), "fG", 'G', aGem);
                 GT_ModHandler.addShapedToolRecipe(m.getHeadSword(1), " G", "fG", 'G', aGem);
             }*/
-        });
     }
 }
