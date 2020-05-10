@@ -3,6 +3,7 @@ package muramasa.gti;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.client.AntimatterModelManager;
 import muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider;
+import muramasa.antimatter.datagen.providers.AntimatterFluidTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
@@ -54,6 +55,7 @@ public class GregTech implements IAntimatterRegistrar {
         if (e.includeServer()) {
             gen.addProvider(new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
             gen.addProvider(new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, gen));
+            gen.addProvider(new AntimatterFluidTagProvider(Ref.ID, Ref.NAME.concat(" Fluid Tags"), false, gen));
             gen.addProvider(new GregTechRecipes(Ref.ID, Ref.NAME.concat(" Recipes"), gen));
             gen.addProvider(new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), gen, new ProgressionAdvancements()));
             gen.addProvider(new Localizations.en_US(gen));
