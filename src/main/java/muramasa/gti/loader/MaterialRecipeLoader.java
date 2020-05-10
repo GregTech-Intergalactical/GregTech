@@ -627,7 +627,7 @@ public class MaterialRecipeLoader {
         /*
         TOOLS.all().forEach(m -> {
             //TODO: Scoop done in the Forestry Registrar
-            if (m.has(ROD)) {
+            /*if (m.has(ROD)) {
                 ItemStack rod = ROD.get(m, 1);
                 RecipeHelper.addShaped("crowbar_" + m.getId(), CROWBAR.get(m, NULL, 1), "hDR", "DRD", "RDf", 'D', "dyeBlue", 'R', rod);
                 RecipeHelper.addShaped("screwdriver_" + m.getId(), SCREWDRIVER.get(m, NULL, 1), " fR", " Rh", "S  ", 'R', rod, 'S', "stickWood");
@@ -667,7 +667,9 @@ public class MaterialRecipeLoader {
                     RecipeHelper.addShaped("mortar_" + m.getId(), MORTAR.get(m, NULL, 1), " M ", "SMS", "SSS", 'M', main, 'S', "stone");
                 }
             }
-         */
+            */
+
+
             /*
             if (m.has(INGOT) && m.has(Plate) && !m.has(RUBBERTOOLS) && m == m.mMacerateInto) {
                 ItemStack aStainlessScrew = Materials.StainlessSteel.getScrew(1), aTitaniumScrew = Materials.TitaniuSCREW.get(m, 1), aTungstensteelScrew = Materials.TungstenSteel.getScrew(1), aStainlessPlate = Materials.StainlessSteel.getPlate(1), aTitaniumPlate = Materials.TitaniuPLATE.get(m, 1), aTungstensteelPlate = Materials.TungstenSteel.getPlate(1), aStainlessSmallGear = Materials.StainlessSteel.getGearS(1), aTitaniumSmallGear = Materials.Titanium.getGearS(1), aTungstensteelSmallGear = Materials.TungstenSteel.getGearS(1), aTitaniumSpring = Materials.TitaniuSPRING.get(m, 1);

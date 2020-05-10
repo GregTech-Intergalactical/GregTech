@@ -18,6 +18,8 @@ import java.util.Random;
 
 public class TileBatteryBufferCreative extends TileEntityMachine {
 
+    public boolean storage = new Random().nextBoolean();
+
     public TileBatteryBufferCreative(Machine<?> type) {
         super(type);
     }
@@ -57,14 +59,7 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
     static class BufferEnergyHandler extends MachineEnergyHandler {
 
         public BufferEnergyHandler(TileBatteryBufferCreative tile) {
-            super(tile);
-            boolean storage = new Random().nextInt(2) == 1;
-            this.energy = storage ? Integer.MAX_VALUE : 0;
-            this.capacity = Integer.MAX_VALUE;
-            this.voltage_in = tile.getMachineTier().getVoltage();
-            this.voltage_out = tile.getMachineTier().getVoltage();
-            this.amperage_in = storage ? 0 : 4;
-            this.amperage_out = storage ? 16 : 0;
+            super(tile, tile.storage ? Integer.MAX_VALUE : 0, Integer.MAX_VALUE, tile.getMachineTier().getVoltage(), tile.getMachineTier().getVoltage(), tile.storage ? 0 : 4, tile.storage ? 16 : 0);
         }
 
         @Override
@@ -74,7 +69,7 @@ public class TileBatteryBufferCreative extends TileEntityMachine {
 
         @Override
         public boolean canOutput(@Nonnull Dir direction) {
-            return tile.getOutputFacing().getIndex() == direction.getIndex();
+            return direction == Dir.UP;//tile.getOutputFacing().getIndex() == direction.getIndex();
         }
     }
 }
