@@ -84,9 +84,9 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'gti', '--all', '--output', '"' + file('src/generated/resources/') + '"',
-                    '--existing', '"' + file('src/main/resources') + '"'//,
-                    //'--existing', '"' + project(':antimatterapi').file("src/main/resources") + '"'
+            args '--mod', 'gti', '--all', '--output', file('src/generated/resources/'),
+                    '--existing', file('src/main/resources') //,
+                    //'--existing', '"' + project   (':antimatterapi').file("src/main/resources") + '"'
 
             mods {
                 gti {
@@ -94,26 +94,13 @@ minecraft {
                 }
             }
         }
+    }
+}
 
-        clientIdea {
-            parent runs.client
-            ideaModule "${project.name}.main"
-            if (local_dev_dependancies.toBoolean()) {
-                environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')};gti%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
-            } else {
-                environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')};gti%%${project.file('build/classes/java/main')}"
-            }
-        }
-
-        dataIdea {
-            parent runs.data
-            ideaModule "${project.name}.main"
-            if (local_dev_dependancies.toBoolean()) {
-                environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')};gti%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatterapi').file('build/resources/main')};antimatter%%${project(':antimatterapi').file('build/classes/java/main')}"
-            } else {
-                environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')};gti%%${project.file('build/classes/java/main')}"
-            }
-        }
+//Force a dependency on a local version of antimatterAPI.
+repositories {
+    maven {
+        url '../AntimatterAPI/build/libs'
     }
 }
 
@@ -130,6 +117,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
+    compile "muramasa.antimatter:antimatter:${antimatter_version}"
     if (local_dev_dependancies.toBoolean()) {
         compile project(":antimatterapi")
 
