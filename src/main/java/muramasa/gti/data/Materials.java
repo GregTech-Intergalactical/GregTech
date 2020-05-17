@@ -1,9 +1,10 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Configs;
+import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.fluid.AntimatterMaterialFluid;
 import muramasa.antimatter.material.Material;
+import muramasa.gti.GregTechConfig;
 import muramasa.gti.Ref;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantments;
@@ -388,8 +389,8 @@ public class Materials {
     public static Material Polycaprolactam = new Material(Ref.ID, "polycaprolactam", 0x323232, DULL).asSolid(500, 0).mats(of(Carbon, 6, Hydrogen, 11, Nitrogen, 1, Oxygen, 1));
     public static Material Polytetrafluoroethylene = new Material(Ref.ID, "polytetrafluoroethylene", 0x646464, DULL).asSolid(1400, 0, PLATE, FRAME).mats(of(Carbon, 2, Fluorine, 4));
     public static Material Rubber = new Material(Ref.ID, "rubber", 0x000000, SHINY).asSolid(295, 0, PLATE, RING).addHandleStat(11, 0.4F).mats(of(Carbon, 5, Hydrogen, 8));
-    public static Material PolyphenyleneSulfide = new Material(Ref.ID, "polyphenylene_sulfide", 0xaa8800, DULL).asSolid(295, 0, PLATE, FOIL).addHandleStat(100, 0.0F).mats(of(Carbon, 6, Hydrogen, 4, Sulfur, 1));
-    public static Material Polystyrene = new Material(Ref.ID, "polystyrene", 0xbeb4aa, DULL).asSolid(295, 0).mats(of(Carbon, 8, Hydrogen, 8));
+    public static Material PolyphenyleneSulfide = new Material(Ref.ID, "polyphenylene_sulfide", 0xaa8800, DULL).asSolid(295, 0, PLATE, FOIL).mats(of(Carbon, 6, Hydrogen, 4, Sulfur, 1));
+    public static Material Polystyrene = new Material(Ref.ID, "polystyrene", 0xbeb4aa, DULL).asSolid(295, 0).addHandleStat(3, 1.0F).mats(of(Carbon, 8, Hydrogen, 8));
     public static Material StyreneButadieneRubber = new Material(Ref.ID, "styrene_butadiene_rubber", 0x211a18, SHINY).asSolid(295, 0, PLATE, RING).addHandleStat(66, 1.2F).mats(of(Styrene, 1, Butadiene, 3));
     public static Material PolyvinylChloride = new Material(Ref.ID, "polyvinyl_chloride", 0xd7e6e6, NONE).asSolid(295, 0, PLATE, FOIL).addHandleStat(210, 0.5F).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
     public static Material GalliumArsenide = new Material(Ref.ID, "gallium_arsenide", 0xa0a0a0, DULL).asSolid(295, 1200).mats(of(Arsenic, 1, Gallium, 1));
@@ -432,7 +433,7 @@ public class Materials {
     public static Material PlasmaContainment = new Material(Ref.ID, "plasma_containment", 0xffff00, NONE);
 
     static {
-        if (Configs.DATA.ENABLE_ITEM_REPLACEMENTS) {
+        if (GregTechConfig.DATA.ITEM_REPLACEMENTS) {
             AntimatterAPI.addReplacement(INGOT, Iron, new ItemStack(Items.IRON_INGOT));
             AntimatterAPI.addReplacement(INGOT, Gold, new ItemStack(Items.GOLD_INGOT));
             AntimatterAPI.addReplacement(NUGGET, Iron, new ItemStack(Items.IRON_NUGGET));
@@ -709,6 +710,6 @@ public class Materials {
         AntimatterAPI.all(Material.class, Material::setChemicalFormula);
 
         //If using small ore markers, every normal ore needs a small version. This greatly increases block usage
-        if (Configs.WORLD.ORE_VEIN_SMALL_ORE_MARKERS) ORE.all().forEach(m -> m.flags(ORE_SMALL));
+        if (AntimatterConfig.WORLD.ORE_VEIN_SMALL_ORE_MARKERS) ORE.all().forEach(m -> m.flags(ORE_SMALL));
     }
 }

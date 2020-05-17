@@ -1,12 +1,13 @@
 package muramasa.gti.block;
 
-import jdk.internal.jline.internal.Nullable;
 import muramasa.antimatter.block.BlockCasing;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
+
+import javax.annotation.Nullable;
 
 public class BlockFusionCasing extends BlockCasing {
 
