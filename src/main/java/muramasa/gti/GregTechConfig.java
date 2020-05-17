@@ -52,7 +52,7 @@ public class GregTechConfig {
 
     }
 
-    public static void bakeCommonConfig() {
+    private static void bakeCommonConfig() {
 
         DATA.ITEM_REPLACEMENTS = COMMON_CONFIG.ITEM_REPLACEMENTS.get();
 
