@@ -1,9 +1,10 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Configs;
+import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.fluid.AntimatterMaterialFluid;
 import muramasa.antimatter.material.Material;
+import muramasa.gti.GregTechConfig;
 import muramasa.gti.Ref;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantments;
@@ -432,7 +433,7 @@ public class Materials {
     public static Material PlasmaContainment = new Material(Ref.ID, "plasma_containment", 0xffff00, NONE);
 
     static {
-        if (Configs.DATA.ENABLE_ITEM_REPLACEMENTS) {
+        if (GregTechConfig.DATA.ITEM_REPLACEMENTS) {
             AntimatterAPI.addReplacement(INGOT, Iron, new ItemStack(Items.IRON_INGOT));
             AntimatterAPI.addReplacement(INGOT, Gold, new ItemStack(Items.GOLD_INGOT));
             AntimatterAPI.addReplacement(NUGGET, Iron, new ItemStack(Items.IRON_NUGGET));
@@ -709,6 +710,6 @@ public class Materials {
         AntimatterAPI.all(Material.class, Material::setChemicalFormula);
 
         //If using small ore markers, every normal ore needs a small version. This greatly increases block usage
-        if (Configs.WORLD.ORE_VEIN_SMALL_ORE_MARKERS) ORE.all().forEach(m -> m.flags(ORE_SMALL));
+        if (AntimatterConfig.WORLD.ORE_VEIN_SMALL_ORE_MARKERS) ORE.all().forEach(m -> m.flags(ORE_SMALL));
     }
 }

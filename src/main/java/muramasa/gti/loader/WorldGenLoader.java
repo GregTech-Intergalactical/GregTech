@@ -1,6 +1,7 @@
 package muramasa.gti.loader;
 
-import muramasa.antimatter.Configs;
+import muramasa.antimatter.AntimatterConfig;
+import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.worldgen.StoneLayerOre;
 import muramasa.antimatter.worldgen.object.WorldGenOreSmall;
@@ -122,7 +123,7 @@ public class WorldGenLoader {
             new StoneLayerOre(Rutile, U12, 0, 32)
         );
 
-        if (Configs.WORLD.ENABLE_ORE_VEINS) {
+        if (AntimatterConfig.WORLD.ORE_VEINS) {
             new WorldGenVeinLayer("naquadah", 10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, EnrichedNaquadah, END);
             //new WorldGenVeinLayer("lignite", 50, 130, 160, 8, 32, Lignite, Lignite, Lignite, Coal, OVERWORLD);
             //new WorldGenVeinLayer("coal", 50, 80, 80, 6, 32, Coal, Coal, Coal, Lignite, OVERWORLD);
