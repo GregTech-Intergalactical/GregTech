@@ -9,8 +9,13 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.material.TextureSet;
 import muramasa.antimatter.texture.Texture;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Arrays;
 
@@ -61,5 +66,16 @@ public class CoverPlate extends CoverMaterial {
             textures.addAll(Arrays.asList(set.getTextures(MaterialType.BLOCK)));
         }
         return textures.toArray(new Texture[0]);
+    }
+
+    @Override
+    public ITextComponent getDisplayName() {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public Container createMenu(int p_createMenu_1_, PlayerInventory p_createMenu_2_, PlayerEntity p_createMenu_3_) {
+        return null;
     }
 }
