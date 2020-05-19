@@ -19,7 +19,7 @@ public class Guis {
 
     public static GuiData ORE_BYPRODUCTS = new GuiData("antimatter", "ore_byproducts") {
         @Override
-        public ResourceLocation getTexture(Tier tier) {
+        public ResourceLocation getTexture(Tier tier,String type) {
             return new ResourceLocation(loc.getNamespace(), "textures/gui/" + loc.getPath() + ".png");
         }
     }.setPadding(0, 0, 0, 0).add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34);
