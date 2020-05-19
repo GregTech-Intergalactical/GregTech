@@ -8,6 +8,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
+import muramasa.gti.Ref;
 import muramasa.gti.data.Data;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -22,6 +23,7 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -32,13 +34,9 @@ import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class CoverConveyor extends Cover{
+public class CoverConveyor extends Cover {
 
-    protected Tier tier;
-
-    private TileEntity tile;
-
-    //private GuiDataCover gui;
+    private static String ID = "conveyor";
 
     static int[] speeds = {200,150,100,50,25,10,5,1};
 
@@ -48,7 +46,12 @@ public class CoverConveyor extends Cover{
 
     @Override
     public String getId() {
-        return "conveyor";
+        return ID;
+    }
+
+    @Override
+    public String getDomain() {
+        return Ref.ID;
     }
 
     @Override
@@ -87,7 +90,7 @@ public class CoverConveyor extends Cover{
     @Nullable
     @Override
     public Container createMenu(int windowId, @Nonnull PlayerInventory inv, @Nonnull PlayerEntity player) {
-        this.gui = new GuiData<Cover>("gti","conveyor", muramasa.antimatter.Data.COVER_MENU_HANDLER);
+        this.gui = new GuiData<Cover>(this.getDomain(),ID, muramasa.antimatter.Data.COVER_MENU_HANDLER);
         return gui.getMenuHandler().getMenu(this, inv, windowId);
     }
 
@@ -110,7 +113,11 @@ public class CoverConveyor extends Cover{
 
     @Override
     public ITextComponent getDisplayName() {
-        return null;
+        return new StringTextComponent("Conveyor");
     }
 
+    @Override
+    public boolean hasGui() {
+        return true;
+    }
 }

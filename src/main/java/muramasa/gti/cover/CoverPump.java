@@ -2,6 +2,7 @@ package muramasa.gti.cover;
 
 import muramasa.antimatter.cover.Cover;
 import muramasa.antimatter.machine.Tier;
+import muramasa.gti.Ref;
 import muramasa.gti.data.Data;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -47,5 +48,11 @@ public class CoverPump extends Cover {
     public Container createMenu(int p_createMenu_1_, PlayerInventory p_createMenu_2_, PlayerEntity p_createMenu_3_) {
         return null;
     }
+
+    @Override
+    public String getDomain() {
+        return Ref.ID;
+    }
+
 
 }
