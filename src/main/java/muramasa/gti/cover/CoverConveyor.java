@@ -46,7 +46,7 @@ public class CoverConveyor extends Cover {
 
     @Override
     public String getId() {
-        return ID;
+        return tier == null ? ID : ID + "_" + tier.getId();
     }
 
     @Override
