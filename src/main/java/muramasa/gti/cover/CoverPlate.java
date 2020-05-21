@@ -59,12 +59,12 @@ public class CoverPlate extends CoverMaterial {
         return MaterialType.PLATE.get(material, 1);
     }
 
-    @Override
+    /*@Override
     public Cover onPlace(ItemStack stack) {
         Material material = MaterialItem.getMaterial(stack);
         if (material != null) return new CoverPlate(MaterialType.BLOCK, material);
         return super.onPlace(stack);
-    }
+    }*/
 
     @Override
     public Texture[] getTextures() {

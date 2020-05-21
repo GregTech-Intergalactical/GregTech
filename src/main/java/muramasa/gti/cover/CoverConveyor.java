@@ -2,6 +2,7 @@ package muramasa.gti.cover;
 
 import muramasa.antimatter.capability.impl.MachineCoverHandler;
 import muramasa.antimatter.cover.Cover;
+import muramasa.antimatter.cover.CoverInstance;
 import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.Tier;
@@ -55,15 +56,13 @@ public class CoverConveyor extends Cover {
     }
 
     @Override
-    public boolean onInteract(TileEntity tile, PlayerEntity player, Hand hand, Direction side, @Nullable AntimatterToolType type) {
-        if (tile == null) {
-            this.tile = tile;
-        }
+    public boolean onInteract(CoverInstance instance,TileEntity tile, PlayerEntity player, Hand hand, Direction side, @Nullable AntimatterToolType type) {
+
         NetworkHooks.openGui((ServerPlayerEntity) player, this, packetBuffer -> {
             packetBuffer.writeBlockPos(tile.getPos());
             packetBuffer.writeInt(side.getIndex());
         });
-        return super.onInteract(tile, player, hand, side, type);
+        return super.onInteract(instance, tile, player, hand, side, type);
     }
 
     @Override
@@ -82,9 +81,8 @@ public class CoverConveyor extends Cover {
     }
 
     @Override
-    public void onPlace(TileEntity tile, Direction side) {
-        this.tile = tile;
-        super.onPlace(tile, side);
+    public void onPlace(CoverInstance instance, TileEntity tile, Direction side) {
+        super.onPlace(instance, tile, side);
     }
 
     @Nullable
@@ -94,13 +92,13 @@ public class CoverConveyor extends Cover {
         return gui.getMenuHandler().getMenu(this, inv, windowId);
     }
 
-    @Override
-    public Cover onPlace(ItemStack stack) {
-        return new CoverConveyor(this.tier);
-    }
+    //@Override
+    //public Cover onPlace(ItemStack stack) {
+    //    return new CoverConveyor(this.tier);
+    //}
 
     @Override
-    public void onUpdate(TileEntity tile, Direction side) {
+    public void onUpdate(CoverInstance instance, TileEntity tile, Direction side) {
         if (tile.getWorld() == null || tile.getWorld().getGameTime() % (speeds[tier.getIntegerId()]) != 0) return;
         TileEntity adjTile = tile.getWorld().getTileEntity(tile.getPos().offset(side));
         if (adjTile == null) return;
