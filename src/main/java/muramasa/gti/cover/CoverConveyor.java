@@ -41,12 +41,12 @@ public class CoverConveyor extends Cover {
     static int[] speeds = {200,150,100,50,25,10,5,1};
 
     public CoverConveyor(Tier tier) {
-        this.tier = tier;
+        super(tier);
     }
 
     @Override
     public String getId() {
-        return ID;
+        return tier == null ? ID : ID + "_" + tier.getId();
     }
 
     @Override
@@ -67,21 +67,6 @@ public class CoverConveyor extends Cover {
     }
 
     @Override
-    public ItemStack getDroppedStack() {
-        //TODO maybe a better way to do this? but for now, it works.
-        //TODO coverStacks should probably be tier sensitive? this would mean
-        //TODO all covers would need a tier member
-        switch (tier.getId()) {
-            case "lv": return Data.ConveyorLV.get(1);
-            case "mv": return Data.ConveyorMV.get(1);
-            case "hv": return Data.ConveyorHV.get(1);
-            case "ev": return Data.ConveyorEV.get(1);
-            case "iv": return Data.ConveyorIV.get(1);
-            default: return Data.ConveyorLV.get(1);
-        }
-    }
-
-    @Override
     public void onPlace(TileEntity tile, Direction side) {
         this.tile = tile;
         super.onPlace(tile, side);
@@ -96,7 +81,9 @@ public class CoverConveyor extends Cover {
 
     @Override
     public Cover onPlace(ItemStack stack) {
-        return new CoverConveyor(this.tier);
+        Cover result = new CoverConveyor(this.tier);
+        result.setItem(getItem());
+        return result;
     }
 
     @Override

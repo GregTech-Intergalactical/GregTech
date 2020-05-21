@@ -34,7 +34,6 @@ public class Data {
     }
 
     public static final Cover COVER_PLATE = new CoverPlate();
-    public static final Cover COVER_CONVEYOR = new CoverConveyor(Tier.LV);
     public static final Cover COVER_PUMP = new CoverPump(Tier.LV);
 
     public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
