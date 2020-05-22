@@ -34,7 +34,7 @@ public class Data {
     }
 
     public static final Cover COVER_PLATE = new CoverPlate();
-    public static final Cover COVER_CONVEYOR = new CoverConveyor(Tier.LV);
+    public static final Cover COVER_CONVEYOR = new CoverConveyor();
     public static final Cover COVER_PUMP = new CoverPump(Tier.LV);
 
     public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
@@ -60,21 +60,21 @@ public class Data {
     public static ItemBasic<?> MotorHV = new ItemBasic<>(Ref.ID, "motor_hv");
     public static ItemBasic<?> MotorEV = new ItemBasic<>(Ref.ID, "motor_ev");
     public static ItemBasic<?> MotorIV = new ItemBasic<>(Ref.ID, "motor_iv");
-    public static ItemBasic<?> PumpLV = new ItemBasic<>(Ref.ID, "pump_lv").tip("640 L/s (as Cover)");
-    public static ItemBasic<?> PumpMV = new ItemBasic<>(Ref.ID, "pump_mv").tip("2,560 L/s (as Cover)");
-    public static ItemBasic<?> PumpHV = new ItemBasic<>(Ref.ID, "pump_hv").tip("10,240 L/s (as Cover)");
-    public static ItemBasic<?> PumpEV = new ItemBasic<>(Ref.ID, "pump_ev").tip("40,960 L/s (as Cover)");
-    public static ItemBasic<?> PumpIV = new ItemBasic<>(Ref.ID, "pump_iv").tip("163,840 L/s (as Cover)");
+    public static ItemCover PumpLV = new ItemCover(Ref.ID, CoverPump.ID, Tier.LV).tip("640 L/s (as Cover)");
+    public static ItemCover PumpMV = new ItemCover(Ref.ID, CoverPump.ID, Tier.MV).tip("2,560 L/s (as Cover)");
+    public static ItemCover PumpHV = new ItemCover(Ref.ID, CoverPump.ID, Tier.HV).tip("10,240 L/s (as Cover)");
+    public static ItemCover PumpEV = new ItemCover(Ref.ID, CoverPump.ID, Tier.EV).tip("40,960 L/s (as Cover)");
+    public static ItemCover PumpIV = new ItemCover(Ref.ID, CoverPump.ID, Tier.IV).tip("163,840 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorLV = new ItemBasic<>(Ref.ID, "fluid_regulator_lv").tip("Configurable up to 640 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorMV = new ItemBasic<>(Ref.ID, "fluid_regulator_mv").tip("Configurable up to 2,560 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorHV = new ItemBasic<>(Ref.ID, "fluid_regulator_hv").tip("Configurable up to 10,240 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorEV = new ItemBasic<>(Ref.ID, "fluid_regulator_ev").tip("Configurable up to 40,960 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorIV = new ItemBasic<>(Ref.ID, "fluid_regulator_iv").tip("Configurable up to 163,840 L/s (as Cover)");
-    public static  ItemCover  ConveyorLV = new  ItemCover(Ref.ID, "conveyor_lv",new CoverConveyor(Tier.LV)).tip("1 Stack every 20s (as Cover)");
-    public static  ItemCover  ConveyorMV = new  ItemCover(Ref.ID, "conveyor_mv",new CoverConveyor(Tier.MV)).tip("1 Stack every 5s (as Cover)");
-    public static  ItemCover  ConveyorHV = new ItemCover(Ref.ID, "conveyor_hv",new CoverConveyor(Tier.HV)).tip("1 Stack every 1s (as Cover)");
-    public static  ItemCover  ConveyorEV = new  ItemCover(Ref.ID, "conveyor_ev",new CoverConveyor(Tier.EV)).tip("1 Stack every 0.5s (as Cover)");
-    public static  ItemCover  ConveyorIV = new  ItemCover(Ref.ID, "conveyor_iv",new CoverConveyor(Tier.IV)).tip("1 Stack every 0.05s (as Cover)");
+    public static ItemCover ConveyorLV = new ItemCover(Ref.ID, "conveyor", Tier.LV).tip("1 Stack every 20s (as Cover)");
+    public static ItemCover ConveyorMV = new ItemCover(Ref.ID, "conveyor", Tier.MV).tip("1 Stack every 5s (as Cover)");
+    public static ItemCover ConveyorHV = new ItemCover(Ref.ID, "conveyor", Tier.HV).tip("1 Stack every 1s (as Cover)");
+    public static ItemCover ConveyorEV = new ItemCover(Ref.ID, "conveyor", Tier.EV).tip("1 Stack every 0.5s (as Cover)");
+    public static ItemCover ConveyorIV = new ItemCover(Ref.ID, "conveyor", Tier.IV).tip("1 Stack every 0.05s (as Cover)");
     public static ItemBasic<?> PistonLV = new ItemBasic<>(Ref.ID, "piston_lv");
     public static ItemBasic<?> PistonMV = new ItemBasic<>(Ref.ID, "piston_mv");
     public static ItemBasic<?> PistonHV = new ItemBasic<>(Ref.ID, "piston_hv");
@@ -252,7 +252,7 @@ public class Data {
 
     public static StoneType GRANITE = new StoneType(Ref.ID, "granite", Granite, new Texture("minecraft", "block/granite"), SoundType.STONE, AntimatterConfig.WORLD.VANILLA_STONE_GEN || muramasa.antimatter.Ref.debugStones).setState(Blocks.GRANITE);
     public static StoneType DIORITE = new StoneType(Ref.ID, "diorite", Diorite, new Texture("minecraft", "block/diorite"), SoundType.STONE, AntimatterConfig.WORLD.VANILLA_STONE_GEN || muramasa.antimatter.Ref.debugStones).setState(Blocks.DIORITE);
-    public static StoneType ANDESITE = new StoneType(Ref.ID, "andesite", Andesite, new Texture("minecraft", "block/andesite"),  SoundType.STONE, AntimatterConfig.WORLD.VANILLA_STONE_GEN || muramasa.antimatter.Ref.debugStones).setState(Blocks.ANDESITE);
+    public static StoneType ANDESITE = new StoneType(Ref.ID, "andesite", Andesite, new Texture("minecraft", "block/andesite"), SoundType.STONE, AntimatterConfig.WORLD.VANILLA_STONE_GEN || muramasa.antimatter.Ref.debugStones).setState(Blocks.ANDESITE);
 
     public static StoneType GRAVEL = new StoneType(Ref.ID, "gravel", Gravel, new Texture("minecraft", "block/gravel"), SoundType.GROUND, false).setState(Blocks.GRAVEL);
     public static StoneType SAND = new StoneType(Ref.ID, "sand", Sand, new Texture("minecraft", "block/sand"), SoundType.SAND, false).setState(Blocks.SAND);

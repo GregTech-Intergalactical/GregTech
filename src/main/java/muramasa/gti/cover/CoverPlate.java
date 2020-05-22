@@ -76,9 +76,4 @@ public class CoverPlate extends CoverMaterial {
         return textures.toArray(new Texture[0]);
     }
 
-    @Override
-    public ITextComponent getDisplayName() {
-        return null;
-    }
-
 }

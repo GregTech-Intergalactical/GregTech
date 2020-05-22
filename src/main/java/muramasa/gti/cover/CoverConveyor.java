@@ -3,6 +3,7 @@ package muramasa.gti.cover;
 import muramasa.antimatter.capability.impl.MachineCoverHandler;
 import muramasa.antimatter.cover.Cover;
 import muramasa.antimatter.cover.CoverInstance;
+import muramasa.antimatter.cover.CoverTiered;
 import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.Tier;
@@ -35,18 +36,22 @@ import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class CoverConveyor extends Cover {
+public class CoverConveyor extends CoverTiered {
 
     private static String ID = "conveyor";
 
     static int[] speeds = {200,150,100,50,25,10,5,1};
 
     public CoverConveyor(Tier tier) {
-        this.tier = tier;
+        super(tier);
+    }
+
+    public CoverConveyor() {
+        super();
     }
 
     @Override
-    public String getId() {
+    protected String ID() {
         return ID;
     }
 
@@ -56,13 +61,13 @@ public class CoverConveyor extends Cover {
     }
 
     @Override
-    public boolean onInteract(CoverInstance instance,TileEntity tile, PlayerEntity player, Hand hand, Direction side, @Nullable AntimatterToolType type) {
+    public boolean onInteract(CoverInstance instance, PlayerEntity player, Hand hand, Direction side, @Nullable AntimatterToolType type) {
 
-        NetworkHooks.openGui((ServerPlayerEntity) player, this, packetBuffer -> {
-            packetBuffer.writeBlockPos(tile.getPos());
+        NetworkHooks.openGui((ServerPlayerEntity) player, instance, packetBuffer -> {
+            packetBuffer.writeBlockPos(instance.getTile().getPos());
             packetBuffer.writeInt(side.getIndex());
         });
-        return super.onInteract(instance, tile, player, hand, side, type);
+        return true;//super.onInteract(instance, player, hand, side, type);
     }
 
     @Override
@@ -81,15 +86,8 @@ public class CoverConveyor extends Cover {
     }
 
     @Override
-    public void onPlace(CoverInstance instance, TileEntity tile, Direction side) {
-        super.onPlace(instance, tile, side);
-    }
-
-    @Nullable
-    @Override
-    public Container createMenu(int windowId, @Nonnull PlayerInventory inv, @Nonnull PlayerEntity player) {
-        this.gui = new GuiData<Cover>(this.getDomain(),ID, muramasa.antimatter.Data.COVER_MENU_HANDLER);
-        return gui.getMenuHandler().getMenu(this, inv, windowId);
+    public void onPlace(CoverInstance instance, Direction side) {
+        super.onPlace(instance, side);
     }
 
     //@Override
@@ -98,9 +96,9 @@ public class CoverConveyor extends Cover {
     //}
 
     @Override
-    public void onUpdate(CoverInstance instance, TileEntity tile, Direction side) {
-        if (tile.getWorld() == null || tile.getWorld().getGameTime() % (speeds[tier.getIntegerId()]) != 0) return;
-        TileEntity adjTile = tile.getWorld().getTileEntity(tile.getPos().offset(side));
+    public void onUpdate(CoverInstance instance, Direction side) {
+        if (instance.getTile() == null || instance.getTile().getWorld().getGameTime() % (speeds[tier.getIntegerId()]) != 0) return;
+        TileEntity adjTile = instance.getTile().getWorld().getTileEntity(instance.getTile().getPos().offset(side));
         if (adjTile == null) return;
         //if (!tile.has(MachineFlag.ITEM))  return;
         adjTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite()).ifPresent(x -> {
@@ -110,12 +108,12 @@ public class CoverConveyor extends Cover {
     }
 
     @Override
-    public ITextComponent getDisplayName() {
-        return new StringTextComponent("Conveyor");
+    public boolean hasGui() {
+        return true;
     }
 
     @Override
-    public boolean hasGui() {
-        return true;
+    protected CoverTiered getTiered(Tier tier) {
+        return new CoverConveyor(tier);
     }
 }
