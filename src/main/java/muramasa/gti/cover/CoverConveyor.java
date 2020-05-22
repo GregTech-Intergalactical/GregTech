@@ -39,7 +39,7 @@ import java.util.function.Consumer;
 
 public class CoverConveyor extends CoverTiered {
 
-    private static String ID = "conveyor";
+    public static String ID = "conveyor";
 
     static int[] speeds = {400,100,20,10,1};
 
@@ -63,11 +63,12 @@ public class CoverConveyor extends CoverTiered {
 
     @Override
     public boolean onInteract(CoverInstance instance, PlayerEntity player, Hand hand, Direction side, @Nullable AntimatterToolType type) {
-
-        NetworkHooks.openGui((ServerPlayerEntity) player, instance, packetBuffer -> {
-            packetBuffer.writeBlockPos(instance.getTile().getPos());
-            packetBuffer.writeInt(side.getIndex());
-        });
+        if (!player.getEntityWorld().isRemote()) {
+            NetworkHooks.openGui((ServerPlayerEntity) player, instance, packetBuffer -> {
+                packetBuffer.writeBlockPos(instance.getTile().getPos());
+                packetBuffer.writeInt(side.getIndex());
+            });
+        }
         return true;//super.onInteract(instance, player, hand, side, type);
     }
 

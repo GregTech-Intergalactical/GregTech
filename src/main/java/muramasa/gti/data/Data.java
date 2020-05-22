@@ -71,11 +71,11 @@ public class Data {
     public static ItemBasic<?> FluidRegulatorHV = new ItemBasic<>(Ref.ID, "fluid_regulator_hv").tip("Configurable up to 10,240 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorEV = new ItemBasic<>(Ref.ID, "fluid_regulator_ev").tip("Configurable up to 40,960 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorIV = new ItemBasic<>(Ref.ID, "fluid_regulator_iv").tip("Configurable up to 163,840 L/s (as Cover)");
-    public static ItemCover ConveyorLV = new ItemCover(Ref.ID, "conveyor", Tier.LV).tip("1 Stack every 20s (as Cover)");
-    public static ItemCover ConveyorMV = new ItemCover(Ref.ID, "conveyor", Tier.MV).tip("1 Stack every 5s (as Cover)");
-    public static ItemCover ConveyorHV = new ItemCover(Ref.ID, "conveyor", Tier.HV).tip("1 Stack every 1s (as Cover)");
-    public static ItemCover ConveyorEV = new ItemCover(Ref.ID, "conveyor", Tier.EV).tip("1 Stack every 0.5s (as Cover)");
-    public static ItemCover ConveyorIV = new ItemCover(Ref.ID, "conveyor", Tier.IV).tip("1 Stack every 0.05s (as Cover)");
+    public static ItemCover ConveyorLV = new ItemCover(Ref.ID, CoverConveyor.ID, Tier.LV).tip("1 Stack every 20s (as Cover)");
+    public static ItemCover ConveyorMV = new ItemCover(Ref.ID, CoverConveyor.ID, Tier.MV).tip("1 Stack every 5s (as Cover)");
+    public static ItemCover ConveyorHV = new ItemCover(Ref.ID, CoverConveyor.ID, Tier.HV).tip("1 Stack every 1s (as Cover)");
+    public static ItemCover ConveyorEV = new ItemCover(Ref.ID, CoverConveyor.ID, Tier.EV).tip("1 Stack every 0.5s (as Cover)");
+    public static ItemCover ConveyorIV = new ItemCover(Ref.ID, CoverConveyor.ID, Tier.IV).tip("1 Stack every 0.05s (as Cover)");
     public static ItemBasic<?> PistonLV = new ItemBasic<>(Ref.ID, "piston_lv");
     public static ItemBasic<?> PistonMV = new ItemBasic<>(Ref.ID, "piston_mv");
     public static ItemBasic<?> PistonHV = new ItemBasic<>(Ref.ID, "piston_hv");
