@@ -51,9 +51,14 @@ public class CoverConveyor extends CoverTiered {
         super();
     }
 
-    @Override
+  /*  @Override
     public String getId() {
         return tier == null ? ID : ID + "_" + tier.getId();
+    }*/
+
+    @Override
+    protected String ID() {
+        return ID;
     }
 
     @Override
