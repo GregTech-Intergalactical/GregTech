@@ -66,12 +66,10 @@ public class Data {
     public static ItemType<?> FIELDGEN = new ItemType<>(Ref.ID, "field_gen").tiers(LV, MV, HV, EV, IV, UV, ZPM, LUV, MAX).setItem(ItemComponent::new);
     public static ItemType<?> EMITTER = new ItemType<>(Ref.ID, "emitter").tiers(ULV, LV, MV, HV, EV, IV).layers(HV, EV, IV).setItem(ItemComponent::new);
     public static ItemType<?> SENSOR = new ItemType<>(Ref.ID, "sensor").tiers(ULV, LV, MV, HV, EV, IV).layers(HV, EV, IV).setItem(ItemComponent::new);
+    public static ItemType<?> ETCHEDWIRING = new ItemType<>(Ref.ID, "etched_wiring").tiers(MV, HV, EV).tipAll("Circuit board parts").setItem(ItemComponent::new);
 
     public static ItemBasic<?> NandChip = new ItemBasic<>(Ref.ID, "nand_chip").tip("A very simple circuit");
     public static ItemBasic<?> AdvCircuitParts = new ItemBasic<>(Ref.ID, "adv_circuit_parts").tip("Used for making Advanced Circuits");
-    public static ItemBasic<?> EtchedWiringMV = new ItemBasic<>(Ref.ID, "etched_wiring_mv").tip("Circuit board parts");
-    public static ItemBasic<?> EtchedWiringHV = new ItemBasic<>(Ref.ID, "etched_wiring_hv").tip("Circuit board parts");
-    public static ItemBasic<?> EtchedWiringEV = new ItemBasic<>(Ref.ID, "etched_wiring_ev").tip("Circuit board parts");
     public static ItemBasic<?> EngravedCrystalChip = new ItemBasic<>(Ref.ID, "engraved_crystal_chip").tip("Needed for Circuits");
     public static ItemBasic<?> EngravedLapotronChip = new ItemBasic<>(Ref.ID, "engraved_lapotron_chip").tip("Needed for Circuits");
     public static ItemBasic<?> CircuitBoardEmpty = new ItemBasic<>(Ref.ID, "circuit_board_empty").tip("A board Part");
