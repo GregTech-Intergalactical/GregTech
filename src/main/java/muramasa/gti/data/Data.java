@@ -5,8 +5,10 @@ import muramasa.antimatter.block.BlockCasing;
 import muramasa.antimatter.block.BlockCoil;
 import muramasa.antimatter.cover.Cover;
 import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.item.ItemComponent;
 import muramasa.antimatter.item.ItemCover;
-import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.item.types.CoverType;
+import muramasa.antimatter.item.types.ItemType;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.*;
@@ -23,6 +25,7 @@ import muramasa.gti.tree.BlockRubberSapling;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 
+import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gti.data.Materials.*;
 
 public class Data {
@@ -34,7 +37,7 @@ public class Data {
     }
 
     public static final Cover COVER_PLATE = new CoverPlate();
-    public static final Cover COVER_PUMP = new CoverPump(Tier.LV);
+    public static final Cover COVER_PUMP = new CoverPump(LV);
 
     public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");
@@ -54,51 +57,15 @@ public class Data {
     public static ItemBasic<?> QuantumStat = new ItemBasic<>(Ref.ID, "quantum_star").tip("Improved Nether Star");
     public static ItemBasic<?> GraviStar = new ItemBasic<>(Ref.ID, "gravi_star").tip("Ultimate Nether Star");
 
-    public static ItemBasic<?> MotorLV = new ItemBasic<>(Ref.ID, "motor_lv");
-    public static ItemBasic<?> MotorMV = new ItemBasic<>(Ref.ID, "motor_mv");
-    public static ItemBasic<?> MotorHV = new ItemBasic<>(Ref.ID, "motor_hv");
-    public static ItemBasic<?> MotorEV = new ItemBasic<>(Ref.ID, "motor_ev");
-    public static ItemBasic<?> MotorIV = new ItemBasic<>(Ref.ID, "motor_iv");
-    public static ItemBasic<?> PumpLV = new ItemBasic<>(Ref.ID, "pump_lv").tip("640 L/s (as Cover)");
-    public static ItemBasic<?> PumpMV = new ItemBasic<>(Ref.ID, "pump_mv").tip("2,560 L/s (as Cover)");
-    public static ItemBasic<?> PumpHV = new ItemBasic<>(Ref.ID, "pump_hv").tip("10,240 L/s (as Cover)");
-    public static ItemBasic<?> PumpEV = new ItemBasic<>(Ref.ID, "pump_ev").tip("40,960 L/s (as Cover)");
-    public static ItemBasic<?> PumpIV = new ItemBasic<>(Ref.ID, "pump_iv").tip("163,840 L/s (as Cover)");
-    public static ItemBasic<?> FluidRegulatorLV = new ItemBasic<>(Ref.ID, "fluid_regulator_lv").tip("Configurable up to 640 L/s (as Cover)");
-    public static ItemBasic<?> FluidRegulatorMV = new ItemBasic<>(Ref.ID, "fluid_regulator_mv").tip("Configurable up to 2,560 L/s (as Cover)");
-    public static ItemBasic<?> FluidRegulatorHV = new ItemBasic<>(Ref.ID, "fluid_regulator_hv").tip("Configurable up to 10,240 L/s (as Cover)");
-    public static ItemBasic<?> FluidRegulatorEV = new ItemBasic<>(Ref.ID, "fluid_regulator_ev").tip("Configurable up to 40,960 L/s (as Cover)");
-    public static ItemBasic<?> FluidRegulatorIV = new ItemBasic<>(Ref.ID, "fluid_regulator_iv").tip("Configurable up to 163,840 L/s (as Cover)");
-    public static  ItemCover  ConveyorLV = new  ItemCover(Ref.ID, "conveyor_lv",new CoverConveyor(Tier.LV)).tip("1 Stack every 20s (as Cover)");
-    public static  ItemCover  ConveyorMV = new  ItemCover(Ref.ID, "conveyor_mv",new CoverConveyor(Tier.MV)).tip("1 Stack every 5s (as Cover)");
-    public static  ItemCover  ConveyorHV = new ItemCover(Ref.ID, "conveyor_hv",new CoverConveyor(Tier.HV)).tip("1 Stack every 1s (as Cover)");
-    public static  ItemCover  ConveyorEV = new  ItemCover(Ref.ID, "conveyor_ev",new CoverConveyor(Tier.EV)).tip("1 Stack every 0.5s (as Cover)");
-    public static  ItemCover  ConveyorIV = new  ItemCover(Ref.ID, "conveyor_iv",new CoverConveyor(Tier.IV)).tip("1 Stack every 0.05s (as Cover)");
-    public static ItemBasic<?> PistonLV = new ItemBasic<>(Ref.ID, "piston_lv");
-    public static ItemBasic<?> PistonMV = new ItemBasic<>(Ref.ID, "piston_mv");
-    public static ItemBasic<?> PistonHV = new ItemBasic<>(Ref.ID, "piston_hv");
-    public static ItemBasic<?> PistonEV = new ItemBasic<>(Ref.ID, "piston_ev");
-    public static ItemBasic<?> PistonIV = new ItemBasic<>(Ref.ID, "piston_iv");
-    public static ItemBasic<?> RobotArmLV = new ItemBasic<>(Ref.ID, "robot_arm_lv").tip("Insets into specific Slots (as Cover)");
-    public static ItemBasic<?> RobotArmMV = new ItemBasic<>(Ref.ID, "robot_arm_mv").tip("Insets into specific Slots (as Cover)");
-    public static ItemBasic<?> RobotArmHV = new ItemBasic<>(Ref.ID, "robot_arm_hv").tip("Insets into specific Slots (as Cover)");
-    public static ItemBasic<?> RobotArmEV = new ItemBasic<>(Ref.ID, "robot_arm_ev").tip("Insets into specific Slots (as Cover)");
-    public static ItemBasic<?> RobotArmIV = new ItemBasic<>(Ref.ID, "robot_arm_iv").tip("Insets into specific Slots (as Cover)");
-    public static ItemBasic<?> FieldGenLV = new ItemBasic<>(Ref.ID, "field_gen_lv");
-    public static ItemBasic<?> FieldGenMV = new ItemBasic<>(Ref.ID, "field_gen_mv");
-    public static ItemBasic<?> FieldGenHV = new ItemBasic<>(Ref.ID, "field_gen_hv");
-    public static ItemBasic<?> FieldGenEV = new ItemBasic<>(Ref.ID, "field_gen_ev");
-    public static ItemBasic<?> FieldGenIV = new ItemBasic<>(Ref.ID, "field_gen_iv");
-    public static ItemBasic<?> EmitterLV = new ItemBasic<>(Ref.ID, "emitter_lv");
-    public static ItemBasic<?> EmitterMV = new ItemBasic<>(Ref.ID, "emitter_mv");
-    public static ItemBasic<?> EmitterHV = new ItemBasic<>(Ref.ID, "emitter_hv");
-    public static ItemBasic<?> EmitterEV = new ItemBasic<>(Ref.ID, "emitter_ev");
-    public static ItemBasic<?> EmitterIV = new ItemBasic<>(Ref.ID, "emitter_iv");
-    public static ItemBasic<?> SensorLV = new ItemBasic<>(Ref.ID, "sensor_lv");
-    public static ItemBasic<?> SensorMV = new ItemBasic<>(Ref.ID, "sensor_mv");
-    public static ItemBasic<?> SensorHV = new ItemBasic<>(Ref.ID, "sensor_hv");
-    public static ItemBasic<?> SensorEV = new ItemBasic<>(Ref.ID, "sensor_ev");
-    public static ItemBasic<?> SensorIV = new ItemBasic<>(Ref.ID, "sensor_iv");
+    public static ItemType<?> CONVEYOR = new CoverType<>(Ref.ID, "conveyor").tiers(LV, MV, HV, EV, IV).setItem(ItemCover::new, CoverConveyor::new);
+    public static ItemType<?> PUMP = new ItemType<>(Ref.ID, "pump").tiers(LV, MV, HV, EV, IV).tips("640 L/s (as Cover)", "2,560 L/s (as Cover)", "10,240 L/s (as Cover)", "40,960 L/s (as Cover)", "163,840 L/s (as Cover)").setItem(ItemComponent::new);
+    public static ItemType<?> FLUIDREGULATOR = new ItemType<>(Ref.ID, "fluid_regulator").tiers(LV, MV, HV, EV, IV).tips("Configurable up to 640 L/s (as Cover)", "Configurable up to 2,560 L/s (as Cover)", "Configurable up to 10,240 L/s (as Cover)", "Configurable up to 40,960 L/s (as Cover)", "Configurable up to 163,840 L/s (as Cover)").setItem(ItemComponent::new);
+    public static ItemType<?> MOTOR = new ItemType<>(Ref.ID, "motor").tiers(LV, MV, HV, EV, IV).setItem(ItemComponent::new);
+    public static ItemType<?> PISTON = new ItemType<>(Ref.ID, "piston").tiers(LV, MV, HV, EV, IV).setItem(ItemComponent::new);
+    public static ItemType<?> ROBOTARM = new ItemType<>(Ref.ID, "robot_arm").tiers(LV, MV, HV, EV, IV).tipAll("Insets into specific Slots (as Cover)").setItem(ItemComponent::new);
+    public static ItemType<?> FIELDGEN = new ItemType<>(Ref.ID, "field_gen").tiers(LV, MV, HV, EV, IV, UV, ZPM, LUV, MAX).setItem(ItemComponent::new);
+    public static ItemType<?> EMITTER = new ItemType<>(Ref.ID, "emitter").tiers(ULV, LV, MV, HV, EV, IV).layers(HV, EV, IV).setItem(ItemComponent::new);
+    public static ItemType<?> SENSOR = new ItemType<>(Ref.ID, "sensor").tiers(ULV, LV, MV, HV, EV, IV).layers(HV, EV, IV).setItem(ItemComponent::new);
 
     public static ItemBasic<?> NandChip = new ItemBasic<>(Ref.ID, "nand_chip").tip("A very simple circuit");
     public static ItemBasic<?> AdvCircuitParts = new ItemBasic<>(Ref.ID, "adv_circuit_parts").tip("Used for making Advanced Circuits");
@@ -345,71 +312,71 @@ public class Data {
     public static final BlockCoil COIL_FUSION = new BlockCoil(Ref.ID, "coil_fusion", 563); //9008
     public static final BlockCoil COIL_SUPERCONDUCTOR = new BlockCoil(Ref.ID, "coil_superconductor", 563); //9008
 
-    public static final Cable<?> CABLE_RED_ALLOY = new Cable<>(Ref.ID, RedAlloy, 0, Tier.ULV).amps(1);
-    public static final Cable<?> CABLE_COBALT = new Cable<>(Ref.ID, Cobalt, 2, Tier.LV).amps(2); //LV
-    public static final Cable<?> CABLE_LEAD = new Cable<>(Ref.ID, Lead, 2, Tier.LV).amps(2);
-    public static final Cable<?> CABLE_TIN = new Cable<>(Ref.ID, Tin, 1, Tier.LV).amps(1);
-    public static final Cable<?> CABLE_ZINC = new Cable<>(Ref.ID, Zinc, 1, Tier.LV).amps(1);
-    public static final Cable<?> CABLE_SOLDERING_ALLOY = new Cable<>(Ref.ID, SolderingAlloy, 1, Tier.LV).amps(1);
-    public static final Cable<?> CABLE_IRON = new Cable<>(Ref.ID, Iron, HC ? 3 : 4, Tier.MV).amps(2); //MV
-    public static final Cable<?> CABLE_NICKEL = new Cable<>(Ref.ID, Nickel, HC ? 3 : 5, Tier.MV).amps(3);
-    public static final Cable<?> CABLE_CUPRONICKEL = new Cable<>(Ref.ID, Cupronickel, HC ? 3 : 4, Tier.MV).amps(2);
-    public static final Cable<?> CABLE_COPPER = new Cable<>(Ref.ID, Copper, HC ? 2 : 3, Tier.MV).amps(1);
-    public static final Cable<?> CABLE_ANNEALED_COPPER = new Cable<>(Ref.ID, AnnealedCopper, HC ? 1 : 2, Tier.MV).amps(1);
-    public static final Cable<?> CABLE_KANTHAL = new Cable<>(Ref.ID, Kanthal, HC ? 3 : 8, Tier.HV).amps(4); //HV
-    public static final Cable<?> CABLE_GOLD = new Cable<>(Ref.ID, Gold, HC ? 2 : 6, Tier.HV).amps(3);
-    public static final Cable<?> CABLE_ELECTRUM = new Cable<>(Ref.ID, Electrum, HC ? 2 : 5, Tier.HV).amps(2);
-    public static final Cable<?> CABLE_SILVER = new Cable<>(Ref.ID, Silver, HC ? 1 : 4, Tier.HV).amps(1);
-    public static final Cable<?> CABLE_NICHROME = new Cable<>(Ref.ID, Nichrome, HC ? 4 : 32, Tier.EV).amps(3); //EV
-    public static final Cable<?> CABLE_STEEL = new Cable<>(Ref.ID, Steel, HC ? 2 : 16, Tier.EV).amps(2);
-    public static final Cable<?> CABLE_TITANIUM = new Cable<>(Ref.ID, Titanium, HC ? 2 : 12, Tier.EV).amps(4);
-    public static final Cable<?> CABLE_ALUMINIUM = new Cable<>(Ref.ID, Aluminium, HC ? 1 : 8, Tier.EV).amps(1);
-    public static final Cable<?> CABLE_GRAPHENE = new Cable<>(Ref.ID, Graphene, HC ? 1 : 16, Tier.IV).amps(1); //IV
-    public static final Cable<?> CABLE_OSMIUM = new Cable<>(Ref.ID, Osmium, HC ? 2 : 32, Tier.IV).amps(4);
-    public static final Cable<?> CABLE_PLATINUM = new Cable<>(Ref.ID, Platinum, HC ? 1 : 16, Tier.IV).amps(2);
-    public static final Cable<?> CABLE_TUNGSTEN_STEEL = new Cable<>(Ref.ID, TungstenSteel, HC ? 1 : 14, Tier.IV).amps(3);
-    public static final Cable<?> CABLE_TUNGSTEN = new Cable<>(Ref.ID, Tungsten, HC ? 2 : 12, Tier.IV).amps(1);
-    public static final Cable<?> CABLE_HSSG = new Cable<>(Ref.ID, HSSG, HC ? 2 : 128, Tier.LUV).amps(4); //LUV
-    public static final Cable<?> CABLE_NIOBIUM_TITANIUM = new Cable<>(Ref.ID, NiobiumTitanium, HC ? 2 : 128, Tier.LUV).amps(4);
-    public static final Cable<?> CABLE_VANADIUM_GALLIUM = new Cable<>(Ref.ID, VanadiumGallium, HC ? 2 : 128, Tier.LUV).amps(4);
-    public static final Cable<?> CABLE_YTTRIUM_BARIUM_CUPRATE = new Cable<>(Ref.ID, YttriumBariumCuprate, HC ? 4 : 256, Tier.LUV).amps(4);
-    public static final Cable<?> CABLE_NAQUADAH = new Cable<>(Ref.ID, Naquadah, HC ? 2 : 64, Tier.ZPM).amps(2); //ZPM
-    public static final Cable<?> CABLE_NAQUADAH_ALLOY = new Cable<>(Ref.ID, NaquadahAlloy, HC ? 4 : 64, Tier.ZPM).amps(2);
-    public static final Cable<?> CABLE_DURANIUM = new Cable<>(Ref.ID, Duranium, HC ? 8 : 64, Tier.ZPM).amps(1);
-    public static final Cable<?> CABLE_SUPERCONDUCTOR = new Cable<>(Ref.ID, Superconductor, 0, Tier.MAX).amps(4); //MAX
+    public static final Cable<?> CABLE_RED_ALLOY = new Cable<>(Ref.ID, RedAlloy, 0, ULV).amps(1);
+    public static final Cable<?> CABLE_COBALT = new Cable<>(Ref.ID, Cobalt, 2, LV).amps(2); //LV
+    public static final Cable<?> CABLE_LEAD = new Cable<>(Ref.ID, Lead, 2, LV).amps(2);
+    public static final Cable<?> CABLE_TIN = new Cable<>(Ref.ID, Tin, 1, LV).amps(1);
+    public static final Cable<?> CABLE_ZINC = new Cable<>(Ref.ID, Zinc, 1, LV).amps(1);
+    public static final Cable<?> CABLE_SOLDERING_ALLOY = new Cable<>(Ref.ID, SolderingAlloy, 1, LV).amps(1);
+    public static final Cable<?> CABLE_IRON = new Cable<>(Ref.ID, Iron, HC ? 3 : 4, MV).amps(2); //MV
+    public static final Cable<?> CABLE_NICKEL = new Cable<>(Ref.ID, Nickel, HC ? 3 : 5, MV).amps(3);
+    public static final Cable<?> CABLE_CUPRONICKEL = new Cable<>(Ref.ID, Cupronickel, HC ? 3 : 4, MV).amps(2);
+    public static final Cable<?> CABLE_COPPER = new Cable<>(Ref.ID, Copper, HC ? 2 : 3, MV).amps(1);
+    public static final Cable<?> CABLE_ANNEALED_COPPER = new Cable<>(Ref.ID, AnnealedCopper, HC ? 1 : 2, MV).amps(1);
+    public static final Cable<?> CABLE_KANTHAL = new Cable<>(Ref.ID, Kanthal, HC ? 3 : 8, HV).amps(4); //HV
+    public static final Cable<?> CABLE_GOLD = new Cable<>(Ref.ID, Gold, HC ? 2 : 6, HV).amps(3);
+    public static final Cable<?> CABLE_ELECTRUM = new Cable<>(Ref.ID, Electrum, HC ? 2 : 5, HV).amps(2);
+    public static final Cable<?> CABLE_SILVER = new Cable<>(Ref.ID, Silver, HC ? 1 : 4, HV).amps(1);
+    public static final Cable<?> CABLE_NICHROME = new Cable<>(Ref.ID, Nichrome, HC ? 4 : 32, EV).amps(3); //EV
+    public static final Cable<?> CABLE_STEEL = new Cable<>(Ref.ID, Steel, HC ? 2 : 16, EV).amps(2);
+    public static final Cable<?> CABLE_TITANIUM = new Cable<>(Ref.ID, Titanium, HC ? 2 : 12, EV).amps(4);
+    public static final Cable<?> CABLE_ALUMINIUM = new Cable<>(Ref.ID, Aluminium, HC ? 1 : 8, EV).amps(1);
+    public static final Cable<?> CABLE_GRAPHENE = new Cable<>(Ref.ID, Graphene, HC ? 1 : 16, IV).amps(1); //IV
+    public static final Cable<?> CABLE_OSMIUM = new Cable<>(Ref.ID, Osmium, HC ? 2 : 32, IV).amps(4);
+    public static final Cable<?> CABLE_PLATINUM = new Cable<>(Ref.ID, Platinum, HC ? 1 : 16, IV).amps(2);
+    public static final Cable<?> CABLE_TUNGSTEN_STEEL = new Cable<>(Ref.ID, TungstenSteel, HC ? 1 : 14, IV).amps(3);
+    public static final Cable<?> CABLE_TUNGSTEN = new Cable<>(Ref.ID, Tungsten, HC ? 2 : 12, IV).amps(1);
+    public static final Cable<?> CABLE_HSSG = new Cable<>(Ref.ID, HSSG, HC ? 2 : 128, LUV).amps(4); //LUV
+    public static final Cable<?> CABLE_NIOBIUM_TITANIUM = new Cable<>(Ref.ID, NiobiumTitanium, HC ? 2 : 128, LUV).amps(4);
+    public static final Cable<?> CABLE_VANADIUM_GALLIUM = new Cable<>(Ref.ID, VanadiumGallium, HC ? 2 : 128, LUV).amps(4);
+    public static final Cable<?> CABLE_YTTRIUM_BARIUM_CUPRATE = new Cable<>(Ref.ID, YttriumBariumCuprate, HC ? 4 : 256, LUV).amps(4);
+    public static final Cable<?> CABLE_NAQUADAH = new Cable<>(Ref.ID, Naquadah, HC ? 2 : 64, ZPM).amps(2); //ZPM
+    public static final Cable<?> CABLE_NAQUADAH_ALLOY = new Cable<>(Ref.ID, NaquadahAlloy, HC ? 4 : 64, ZPM).amps(2);
+    public static final Cable<?> CABLE_DURANIUM = new Cable<>(Ref.ID, Duranium, HC ? 8 : 64, ZPM).amps(1);
+    public static final Cable<?> CABLE_SUPERCONDUCTOR = new Cable<>(Ref.ID, Superconductor, 0, MAX).amps(4); //MAX
 
-    public static final Wire<?> WIRE_RED_ALLOY = new Wire<>(Ref.ID, RedAlloy, 1, Tier.ULV).amps(1);
-    public static final Wire<?> WIRE_COBALT = new Wire<>(Ref.ID, Cobalt, 4, Tier.LV).amps(2); //LV
-    public static final Wire<?> WIRE_LEAD = new Wire<>(Ref.ID, Lead, 4, Tier.LV).amps(2);
-    public static final Wire<?> WIRE_TIN = new Wire<>(Ref.ID, Tin, 2, Tier.LV).amps(1);
-    public static final Wire<?> WIRE_ZINC = new Wire<>(Ref.ID, Zinc, 2, Tier.LV).amps(1);
-    public static final Wire<?> WIRE_SOLDERING_ALLOY = new Wire<>(Ref.ID, SolderingAlloy, 2, Tier.LV).amps(1);
-    public static final Wire<?> WIRE_IRON = new Wire<>(Ref.ID, Iron, HC ? 6 : 8, Tier.MV).amps(2); //MV
-    public static final Wire<?> WIRE_NICKEL = new Wire<>(Ref.ID, Nickel, HC ? 6 : 10, Tier.MV).amps(3);
-    public static final Wire<?> WIRE_CUPRONICKEL = new Wire<>(Ref.ID, Cupronickel, HC ? 6 : 8, Tier.MV).amps(2);
-    public static final Wire<?> WIRE_COPPER = new Wire<>(Ref.ID, Copper, HC ? 4 : 6, Tier.MV).amps(1);
-    public static final Wire<?> WIRE_ANNEALED_COPPER = new Wire<>(Ref.ID, AnnealedCopper, HC ? 2 : 4, Tier.MV).amps(1);
-    public static final Wire<?> WIRE_KANTHAL = new Wire<>(Ref.ID, Kanthal, HC ? 6 : 16, Tier.HV).amps(4); //HV
-    public static final Wire<?> WIRE_GOLD = new Wire<>(Ref.ID, Gold, HC ? 4 : 12, Tier.HV).amps(3);
-    public static final Wire<?> WIRE_ELECTRUM = new Wire<>(Ref.ID, Electrum, HC ? 4 : 10, Tier.HV).amps(2);
-    public static final Wire<?> WIRE_SILVER = new Wire<>(Ref.ID, Silver, HC ? 2 : 8, Tier.HV).amps(1);
-    public static final Wire<?> WIRE_NICHROME = new Wire<>(Ref.ID, Nichrome, HC ? 8 : 64, Tier.EV).amps(3); //EV
-    public static final Wire<?> WIRE_STEEL = new Wire<>(Ref.ID, Steel, HC ? 4 : 32, Tier.EV).amps(2);
-    public static final Wire<?> WIRE_TITANIUM = new Wire<>(Ref.ID, Titanium, HC ? 4 : 24, Tier.EV).amps(4);
-    public static final Wire<?> WIRE_ALUMINIUM = new Wire<>(Ref.ID, Aluminium, HC ? 2 : 16, Tier.EV).amps(1);
-    public static final Wire<?> WIRE_GRAPHENE = new Wire<>(Ref.ID, Graphene, HC ? 2 : 32, Tier.IV).amps(1); //IV
-    public static final Wire<?> WIRE_OSMIUM = new Wire<>(Ref.ID, Osmium, HC ? 4 : 64, Tier.IV).amps(4);
-    public static final Wire<?> WIRE_PLATINUM = new Wire<>(Ref.ID, Platinum, HC ? 2 : 32, Tier.IV).amps(2);
-    public static final Wire<?> WIRE_TUNGSTEN_STEEL = new Wire<>(Ref.ID, TungstenSteel, HC ? 2 : 28, Tier.IV).amps(3);
-    public static final Wire<?> WIRE_TUNGSTEN = new Wire<>(Ref.ID, Tungsten, HC ? 2 : 12, Tier.IV).amps(1);
-    public static final Wire<?> WIRE_HSSG = new Wire<>(Ref.ID, HSSG, HC ? 4 : 256, Tier.LUV).amps(4); //LUV
-    public static final Wire<?> WIRE_NIOBIUM_TITANIUM = new Wire<>(Ref.ID, NiobiumTitanium, HC ? 4 : 256, Tier.LUV).amps(4);
-    public static final Wire<?> WIRE_VANADIUM_GALLIUM = new Wire<>(Ref.ID, VanadiumGallium, HC ? 4 : 256, Tier.LUV).amps(4);
-    public static final Wire<?> WIRE_YTTRIUM_BARIUM_CUPRATE = new Wire<>(Ref.ID, YttriumBariumCuprate, HC ? 8 : 512, Tier.LUV).amps(4);
-    public static final Wire<?> WIRE_NAQUADAH = new Wire<>(Ref.ID, Naquadah, HC ? 4 : 128, Tier.ZPM).amps(2); //ZPM
-    public static final Wire<?> WIRE_NAQUADAH_ALLOY = new Wire<>(Ref.ID, NaquadahAlloy, HC ? 8 : 128, Tier.ZPM).amps(2);
-    public static final Wire<?> WIRE_DURANIUM = new Wire<>(Ref.ID, Duranium, HC ? 16 : 128, Tier.ZPM).amps(1);
-    public static final Wire<?> WIRE_SUPERCONDUCTOR = new Wire<>(Ref.ID, Superconductor, 1, Tier.MAX).amps(4); //MAX
+    public static final Wire<?> WIRE_RED_ALLOY = new Wire<>(Ref.ID, RedAlloy, 1, ULV).amps(1);
+    public static final Wire<?> WIRE_COBALT = new Wire<>(Ref.ID, Cobalt, 4, LV).amps(2); //LV
+    public static final Wire<?> WIRE_LEAD = new Wire<>(Ref.ID, Lead, 4, LV).amps(2);
+    public static final Wire<?> WIRE_TIN = new Wire<>(Ref.ID, Tin, 2, LV).amps(1);
+    public static final Wire<?> WIRE_ZINC = new Wire<>(Ref.ID, Zinc, 2, LV).amps(1);
+    public static final Wire<?> WIRE_SOLDERING_ALLOY = new Wire<>(Ref.ID, SolderingAlloy, 2, LV).amps(1);
+    public static final Wire<?> WIRE_IRON = new Wire<>(Ref.ID, Iron, HC ? 6 : 8, MV).amps(2); //MV
+    public static final Wire<?> WIRE_NICKEL = new Wire<>(Ref.ID, Nickel, HC ? 6 : 10, MV).amps(3);
+    public static final Wire<?> WIRE_CUPRONICKEL = new Wire<>(Ref.ID, Cupronickel, HC ? 6 : 8, MV).amps(2);
+    public static final Wire<?> WIRE_COPPER = new Wire<>(Ref.ID, Copper, HC ? 4 : 6, MV).amps(1);
+    public static final Wire<?> WIRE_ANNEALED_COPPER = new Wire<>(Ref.ID, AnnealedCopper, HC ? 2 : 4, MV).amps(1);
+    public static final Wire<?> WIRE_KANTHAL = new Wire<>(Ref.ID, Kanthal, HC ? 6 : 16, HV).amps(4); //HV
+    public static final Wire<?> WIRE_GOLD = new Wire<>(Ref.ID, Gold, HC ? 4 : 12, HV).amps(3);
+    public static final Wire<?> WIRE_ELECTRUM = new Wire<>(Ref.ID, Electrum, HC ? 4 : 10, HV).amps(2);
+    public static final Wire<?> WIRE_SILVER = new Wire<>(Ref.ID, Silver, HC ? 2 : 8, HV).amps(1);
+    public static final Wire<?> WIRE_NICHROME = new Wire<>(Ref.ID, Nichrome, HC ? 8 : 64, EV).amps(3); //EV
+    public static final Wire<?> WIRE_STEEL = new Wire<>(Ref.ID, Steel, HC ? 4 : 32, EV).amps(2);
+    public static final Wire<?> WIRE_TITANIUM = new Wire<>(Ref.ID, Titanium, HC ? 4 : 24, EV).amps(4);
+    public static final Wire<?> WIRE_ALUMINIUM = new Wire<>(Ref.ID, Aluminium, HC ? 2 : 16, EV).amps(1);
+    public static final Wire<?> WIRE_GRAPHENE = new Wire<>(Ref.ID, Graphene, HC ? 2 : 32, IV).amps(1); //IV
+    public static final Wire<?> WIRE_OSMIUM = new Wire<>(Ref.ID, Osmium, HC ? 4 : 64, IV).amps(4);
+    public static final Wire<?> WIRE_PLATINUM = new Wire<>(Ref.ID, Platinum, HC ? 2 : 32, IV).amps(2);
+    public static final Wire<?> WIRE_TUNGSTEN_STEEL = new Wire<>(Ref.ID, TungstenSteel, HC ? 2 : 28, IV).amps(3);
+    public static final Wire<?> WIRE_TUNGSTEN = new Wire<>(Ref.ID, Tungsten, HC ? 2 : 12, IV).amps(1);
+    public static final Wire<?> WIRE_HSSG = new Wire<>(Ref.ID, HSSG, HC ? 4 : 256, LUV).amps(4); //LUV
+    public static final Wire<?> WIRE_NIOBIUM_TITANIUM = new Wire<>(Ref.ID, NiobiumTitanium, HC ? 4 : 256, LUV).amps(4);
+    public static final Wire<?> WIRE_VANADIUM_GALLIUM = new Wire<>(Ref.ID, VanadiumGallium, HC ? 4 : 256, LUV).amps(4);
+    public static final Wire<?> WIRE_YTTRIUM_BARIUM_CUPRATE = new Wire<>(Ref.ID, YttriumBariumCuprate, HC ? 8 : 512, LUV).amps(4);
+    public static final Wire<?> WIRE_NAQUADAH = new Wire<>(Ref.ID, Naquadah, HC ? 4 : 128, ZPM).amps(2); //ZPM
+    public static final Wire<?> WIRE_NAQUADAH_ALLOY = new Wire<>(Ref.ID, NaquadahAlloy, HC ? 8 : 128, ZPM).amps(2);
+    public static final Wire<?> WIRE_DURANIUM = new Wire<>(Ref.ID, Duranium, HC ? 16 : 128, ZPM).amps(1);
+    public static final Wire<?> WIRE_SUPERCONDUCTOR = new Wire<>(Ref.ID, Superconductor, 1, MAX).amps(4); //MAX
 
     public static final FluidPipe<?> FLUID_PIPE_BRICK = new FluidPipe<>(Ref.ID, Brick, 1000, false).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(10, 10, 30, 60, 60, 60).pressures(400, 400, 400, 400, 400, 400);
     public static final FluidPipe<?> FLUID_PIPE_COPPER = new FluidPipe<>(Ref.ID, Copper, 700, true).caps(10).pressures(600);
