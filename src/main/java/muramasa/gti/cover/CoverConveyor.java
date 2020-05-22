@@ -5,6 +5,7 @@ import muramasa.antimatter.cover.Cover;
 import muramasa.antimatter.cover.CoverInstance;
 import muramasa.antimatter.cover.CoverTiered;
 import muramasa.antimatter.gui.GuiData;
+import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tile.TileEntityMachine;
@@ -40,7 +41,7 @@ public class CoverConveyor extends CoverTiered {
 
     private static String ID = "conveyor";
 
-    static int[] speeds = {200,150,100,50,25,10,5,1};
+    static int[] speeds = {400,100,20,10,1};
 
     public CoverConveyor(Tier tier) {
         super(tier);
@@ -70,20 +71,6 @@ public class CoverConveyor extends CoverTiered {
         return true;//super.onInteract(instance, player, hand, side, type);
     }
 
-    @Override
-    public ItemStack getDroppedStack() {
-        //TODO maybe a better way to do this? but for now, it works.
-        //TODO coverStacks should probably be tier sensitive? this would mean
-        //TODO all covers would need a tier member
-        switch (tier.getId()) {
-            case "lv": return Data.ConveyorLV.get(1);
-            case "mv": return Data.ConveyorMV.get(1);
-            case "hv": return Data.ConveyorHV.get(1);
-            case "ev": return Data.ConveyorEV.get(1);
-            case "iv": return Data.ConveyorIV.get(1);
-            default: return Data.ConveyorLV.get(1);
-        }
-    }
 
     @Override
     public void onPlace(CoverInstance instance, Direction side) {
@@ -100,11 +87,9 @@ public class CoverConveyor extends CoverTiered {
         if (instance.getTile() == null || instance.getTile().getWorld().getGameTime() % (speeds[tier.getIntegerId()]) != 0) return;
         TileEntity adjTile = instance.getTile().getWorld().getTileEntity(instance.getTile().getPos().offset(side));
         if (adjTile == null) return;
-        //if (!tile.has(MachineFlag.ITEM))  return;
-        adjTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite()).ifPresent(x -> {
-         //   Utils.transferItemsIfExists(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).););
-        });
-       // Utils.transferItems(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite()), adjTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite()));
+        //DEBUG, just puts this item
+        //((TileEntityMachine)instance.getTile()).itemHandler.get().addOutputs(new ItemStack(this.getItem(),1));
+        Utils.transferItemsOnCap(instance.getTile(), adjTile);
     }
 
     @Override

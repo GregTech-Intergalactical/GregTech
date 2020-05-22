@@ -4,6 +4,7 @@ import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.block.BlockCasing;
 import muramasa.antimatter.block.BlockCoil;
 import muramasa.antimatter.cover.Cover;
+import muramasa.antimatter.cover.CoverTiered;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
@@ -35,7 +36,7 @@ public class Data {
 
     public static final Cover COVER_PLATE = new CoverPlate();
     public static final Cover COVER_CONVEYOR = new CoverConveyor();
-    public static final Cover COVER_PUMP = new CoverPump(Tier.LV);
+    public static final Cover COVER_PUMP = new CoverPump();
 
     public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");
