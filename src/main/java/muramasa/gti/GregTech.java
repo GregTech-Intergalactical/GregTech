@@ -2,9 +2,7 @@ package muramasa.gti;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.client.AntimatterModelManager;
-import muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider;
-import muramasa.antimatter.datagen.providers.AntimatterFluidTagProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
+import muramasa.antimatter.datagen.providers.*;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.gti.data.*;
@@ -15,11 +13,14 @@ import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.proxy.ClientHandler;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -27,7 +28,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod(Ref.ID)
-@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class GregTech implements IAntimatterRegistrar {
 
     public static GregTech INSTANCE;
@@ -35,21 +35,26 @@ public class GregTech implements IAntimatterRegistrar {
 
     public GregTech() {
         INSTANCE = this;
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientHandler::init);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GregTechConfig.COMMON_SPEC);
         AntimatterAPI.addRegistrar(INSTANCE);
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        eventBus.addListener(this::setup);
+        eventBus.addListener(EventPriority.LOWEST, this::dataSetup);
+        AntimatterModelManager.addProvider(Ref.ID, g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
+        AntimatterModelManager.addProvider(Ref.ID, g -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", g));
         //GregTechAPI.addRegistrar(new ForestryRegistrar());
         //GregTechAPI.addRegistrar(new GalacticraftRegistrar());
         //if (ModList.get().isLoaded(Ref.MOD_UB)) GregTechAPI.addRegistrar(new UndergroundBiomesRegistrar());
+    }
+
+    private void clientSetup(final FMLClientSetupEvent e) {
+        ClientHandler.setup(e);
     }
 
     private void setup(final FMLCommonSetupEvent e) {
 
     }
 
-    @SubscribeEvent
-    public static void onDataGather(GatherDataEvent e) {
+    public void dataSetup(GatherDataEvent e) {
         DataGenerator gen = e.getGenerator();
         if (e.includeClient()) {
             AntimatterModelManager.onProviderInit(Ref.ID, gen);

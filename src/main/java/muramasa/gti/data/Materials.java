@@ -4,7 +4,6 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.fluid.AntimatterMaterialFluid;
 import muramasa.antimatter.material.Material;
-import muramasa.gti.GregTechConfig;
 import muramasa.gti.Ref;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantments;
@@ -433,28 +432,6 @@ public class Materials {
     public static Material PlasmaContainment = new Material(Ref.ID, "plasma_containment", 0xffff00, NONE);
 
     static {
-        if (GregTechConfig.DATA.ITEM_REPLACEMENTS) {
-            AntimatterAPI.addReplacement(INGOT, Iron, new ItemStack(Items.IRON_INGOT));
-            AntimatterAPI.addReplacement(INGOT, Gold, new ItemStack(Items.GOLD_INGOT));
-            AntimatterAPI.addReplacement(NUGGET, Iron, new ItemStack(Items.IRON_NUGGET));
-            AntimatterAPI.addReplacement(NUGGET, Gold, new ItemStack(Items.GOLD_NUGGET));
-            AntimatterAPI.addReplacement(GEM, Coal, new ItemStack(Items.COAL));
-            AntimatterAPI.addReplacement(GEM, Charcoal, new ItemStack(Items.CHARCOAL));
-            AntimatterAPI.addReplacement(GEM, Emerald, new ItemStack(Items.EMERALD));
-            AntimatterAPI.addReplacement(GEM, Diamond, new ItemStack(Items.DIAMOND));
-            AntimatterAPI.addReplacement(GEM, Lapis, new ItemStack(Items.LAPIS_LAZULI));
-            AntimatterAPI.addReplacement(DUST, Redstone, new ItemStack(Items.REDSTONE));
-            AntimatterAPI.addReplacement(DUST, Glowstone, new ItemStack(Items.GLOWSTONE_DUST));
-            AntimatterAPI.addReplacement(BLOCK, Coal, new ItemStack(Blocks.COAL_BLOCK));
-            AntimatterAPI.addReplacement(BLOCK, Iron, new ItemStack(Blocks.IRON_BLOCK));
-            AntimatterAPI.addReplacement(BLOCK, Gold, new ItemStack(Blocks.GOLD_BLOCK));
-            AntimatterAPI.addReplacement(BLOCK, Lapis, new ItemStack(Blocks.LAPIS_BLOCK));
-            AntimatterAPI.addReplacement(BLOCK, Emerald, new ItemStack(Blocks.EMERALD_BLOCK));
-            AntimatterAPI.addReplacement(BLOCK, Diamond, new ItemStack(Blocks.DIAMOND_BLOCK));
-            AntimatterAPI.addReplacement(BLOCK, Redstone, new ItemStack(Blocks.REDSTONE_BLOCK));
-            AntimatterAPI.addReplacement(BLOCK, Glowstone, new ItemStack(Blocks.GLOWSTONE));
-            AntimatterAPI.addReplacement(ROD, Wood, new ItemStack(Items.STICK));
-        }
         ELECSEPI.add(Bastnasite/*, Monazite*/);
         ELECSEPG.add(Magnetite, VanadiumMagnetite);
         ELECSEPN.add(YellowLimonite, BrownLimonite, Pyrite, BandedIron, Nickel, Glauconite, Pentlandite, Tin, Antimony, Ilmenite, Manganese, Chrome, Andradite);
