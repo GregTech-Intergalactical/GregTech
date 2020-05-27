@@ -1,6 +1,7 @@
 package muramasa.gti.tile.single;
 
 import muramasa.antimatter.capability.impl.MachineEnergyHandler;
+import muramasa.antimatter.capability.impl.MachineItemHandler;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityStorage;
 import tesseract.util.Dir;
@@ -9,6 +10,7 @@ import javax.annotation.Nonnull;
 import java.util.Optional;
 
 import static muramasa.antimatter.machine.MachineFlag.ENERGY;
+import static muramasa.antimatter.machine.MachineFlag.ITEM;
 
 public class TileBatteryBufferCreative extends TileEntityStorage {
 
@@ -29,6 +31,8 @@ public class TileBatteryBufferCreative extends TileEntityStorage {
                 return tile.getOutputFacing().getIndex() == direction.getIndex();
             }
         });
+
+        if (has(ITEM)) itemHandler = Optional.of(new MachineItemHandler(this));
         super.onLoad();
     }
 }

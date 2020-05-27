@@ -1,5 +1,6 @@
 package muramasa.gti.block;
 
+import muramasa.antimatter.Data;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.gti.tile.single.TileBatteryBufferCreative;
@@ -12,6 +13,12 @@ public class BlockBatteryBufferCreative extends Machine<BlockBatteryBufferCreati
         super(domain, id, data);
         setTile(() -> new TileBatteryBufferCreative(this));
         setTiers(Tier.getAllElectric());
-        addFlags(BASIC, ENERGY, COVERABLE, CONFIGURABLE);
+        setGUI(Data.BASIC_MENU_HANDLER);
+        addFlags(BASIC, ENERGY, COVERABLE, CONFIGURABLE, ITEM);
+    }
+
+    @Override
+    public String getId() {
+        return "buffercreative";
     }
 }
