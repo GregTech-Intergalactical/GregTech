@@ -680,7 +680,7 @@ public class Materials {
 //            }
 //        }
 
-        LIQUID.all().forEach(m -> m.setLiquid(new AntimatterMaterialFluid(Ref.ID, m, LIQUID).getFluid()));
+        LIQUID.all().stream().filter(l -> !l.equals(Water) || !l.equals(Lava)).forEach(m -> m.setLiquid(new AntimatterMaterialFluid(Ref.ID, m, LIQUID).getFluid()));
         GAS.all().forEach(m -> m.setGas(new AntimatterMaterialFluid(Ref.ID, m, GAS).getFluid()));
         PLASMA.all().forEach(m -> m.setPlasma(new AntimatterMaterialFluid(Ref.ID, m, PLASMA).getFluid()));
         

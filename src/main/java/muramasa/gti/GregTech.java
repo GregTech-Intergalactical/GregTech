@@ -75,11 +75,12 @@ public class GregTech implements IAntimatterRegistrar {
                 AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
                 AntimatterAPI.addProvider(Ref.ID, GregTechLocalizations.en_US::new);
                 Materials.init();
+                break;
+            case REGISTRY_BUILD:
                 Data.init();
                 Machines.init();
                 Guis.init();
                 Models.init();
-                break;
             case READY:
                 Structures.init();
                 break;

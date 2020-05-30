@@ -32,7 +32,7 @@ public class RubberTreeWorldGen { //  extends WorldGenBase<RubberTreeWorldGen> {
                     new BlobFoliagePlacer(2, 0))).baseHeight(11).heightRandA(2) // total height
                     .trunkHeight(4).trunkHeightRandom(1) // bare trunk height
                     .trunkTopOffset(2) // depresses trunk top within leaves
-                    .setSapling((BlockRubberSapling) RUBBER_SAPLING)
+                    .setSapling(RUBBER_SAPLING)
                     .maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).build();
 
     final static TreeFeatureConfig RUBBER_TREE_CONFIG_JUNGLE =
@@ -40,7 +40,7 @@ public class RubberTreeWorldGen { //  extends WorldGenBase<RubberTreeWorldGen> {
                     new BlobFoliagePlacer(2, 0))).baseHeight(13).heightRandA(2) // total height
                     .trunkHeight(4).trunkHeightRandom(1) // bare trunk height
                     .trunkTopOffset(2) // depresses trunk top within leaves
-                    .setSapling((BlockRubberSapling) RUBBER_SAPLING)
+                    .setSapling(RUBBER_SAPLING)
                     .decorators(ImmutableList.of(new LeaveVineTreeDecorator())).build();
 
     final static TreeFeatureConfig RUBBER_TREE_CONFIG_NORMAL =
@@ -48,7 +48,7 @@ public class RubberTreeWorldGen { //  extends WorldGenBase<RubberTreeWorldGen> {
                     new BlobFoliagePlacer(2, 0))).baseHeight(12).heightRandA(2) // total height
                     .trunkHeight(4).trunkHeightRandom(1) // bare trunk height
                     .trunkTopOffset(2) // depresses trunk top within leaves
-                    .setSapling((BlockRubberSapling) RUBBER_SAPLING).build();
+                    .setSapling(RUBBER_SAPLING).build();
 
 //    public RubberTreeWorldGen(){
 //        super("rubber_tree", RubberTreeWorldGen.class, OVERWORLD);

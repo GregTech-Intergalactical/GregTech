@@ -20,7 +20,7 @@ public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> 
     public void accept(Consumer<Advancement> consumer) {
         progressionRoot = buildRootAdvancement(ROCK.get(Flint), new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"),
                         Ref.ID + ".advancements.greg", Ref.ID + ".advancements.greg.desc", FrameType.TASK, true, true, false)
-                        .withCriterion("has_rocks", hasItem(getForgeItemTag("rocks"))).register(consumer, "progression/root");
+                        .withCriterion("has_rocks", hasItem(getForgeItemTag("rocks"))).register(consumer, getLoc(Ref.ID, "progression/root"));
     }
 
 }
