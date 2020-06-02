@@ -2,6 +2,7 @@ package muramasa.gti.tile.single;
 
 import muramasa.antimatter.capability.impl.MachineEnergyHandler;
 import muramasa.antimatter.capability.impl.MachineItemHandler;
+import muramasa.antimatter.item.IChargeable;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityStorage;
 import tesseract.util.Dir;
@@ -32,7 +33,17 @@ public class TileBatteryBufferCreative extends TileEntityStorage {
             }
         });
 
-        if (has(ITEM)) itemHandler = Optional.of(new MachineItemHandler(this));
+        if (has(ITEM)) itemHandler = Optional.of(new MachineItemHandler(this) {
+            @Override
+            public void onUpdate() {
+                this.getInputList().forEach(item -> {
+                    if (item.getItem() instanceof IChargeable) {
+
+                    }
+                });
+                super.onUpdate();
+            }
+        });
         super.onLoad();
     }
 }
