@@ -6,6 +6,7 @@ import muramasa.antimatter.block.BlockCoil;
 import muramasa.antimatter.cover.Cover;
 import muramasa.antimatter.cover.CoverTiered;
 import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.ore.StoneType;
@@ -130,7 +131,7 @@ public class Data {
     public static ItemBasic<?> BatterySmallAcid = new ItemBasic<>(Ref.ID, "battery_small_acid").tip("Single Use");
     public static ItemBasic<?> BatterySmallMercury = new ItemBasic<>(Ref.ID, "battery_small_mercury").tip("Single Use");
     public static ItemBasic<?> BatterySmallCadmium = new ItemBasic<>(Ref.ID, "battery_small_cadmium").tip("Reusable");
-    public static ItemBasic<?> BatterySmallLithium = new ItemBasic<>(Ref.ID, "battery_small_lithium").tip("Reusable");
+    public static ItemBasic<?> BatterySmallLithium = new ItemBattery(Ref.ID, "battery_small_lithium", Tier.LV, 100000).tip("Reusable");
     public static ItemBasic<?> BatterySmallSodium = new ItemBasic<>(Ref.ID, "battery_small_sodium").tip("Reusable");
     public static ItemBasic<?> BatteryMediumAcid = new ItemBasic<>(Ref.ID, "battery_medium_acid").tip("Single Use");
     public static ItemBasic<?> BatteryMediumMercury = new ItemBasic<>(Ref.ID, "battery_medium_mercury").tip("Single Use");

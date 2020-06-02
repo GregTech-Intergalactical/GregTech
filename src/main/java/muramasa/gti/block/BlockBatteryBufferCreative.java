@@ -17,8 +17,4 @@ public class BlockBatteryBufferCreative extends Machine<BlockBatteryBufferCreati
         addFlags(BASIC, ENERGY, COVERABLE, CONFIGURABLE, ITEM);
     }
 
-    @Override
-    public String getId() {
-        return "buffercreative";
-    }
 }
