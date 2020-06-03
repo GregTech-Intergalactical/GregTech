@@ -8,16 +8,16 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
     }
 }
+
+apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
 
 version = "${mod_version}"
-group = 'muramasa.gti' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'muramasa.gti'
 archivesBaseName = "${archive_name}"
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 sourceSets {
     main {
@@ -26,8 +26,8 @@ sourceSets {
         }
         resources {
             include '**/**'
-            srcDirs += 'src/generated/resources' //Add the generated main module resources
-            exclude '.cache' //But exclude the cache of the generated data from what gets built
+            srcDirs += 'src/generated/resources'
+            exclude '.cache'
             exclude 'Thumbs.db'
         }
     }
@@ -37,57 +37,39 @@ minecraft {
     mappings channel: 'snapshot', version: "${mappings_version}"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
     runs {
         client {
             workingDirectory project.file('run')
-
             // Recommended logging data for a userdev environment
-            //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            // property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.markers', 'SCAN,REGISTRIES'
-
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-
             mods {
                 gti {
                     source sourceSets.main
                 }
-//                antimatter {
-//                    source project(':antimatterapi').sourceSets.main
-//                }
             }
         }
-
         server {
             workingDirectory project.file('run')
-
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-
             mods {
                 gti {
                     source sourceSets.main
                 }
             }
         }
-
         data {
             workingDirectory project.file('run')
-
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-
-            args '--mod', 'gti', '--all', '--output', file('src/generated/resources/'),
-                    '--existing', file('src/main/resources') //,
-                    //'--existing', '"' + project   (':antimatterapi').file("src/main/resources") + '"'
-
+            args '--mod', 'gti', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
             mods {
                 gti {
                     source sourceSets.main
@@ -105,25 +87,25 @@ repositories {
 }
 
 repositories {
-    maven { // JEI
+    maven {
+        name "JEI"
         url "http://dvs1.progwml6.com/files/maven"
     }
-    maven { // JEI fallback
-        name = "ModMaven"
-        url = "https://modmaven.k-4u.nl"
+    maven {
+        name "JEI Fallback"
+        url "https://modmaven.k-4u.nl"
     }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-
     compile "muramasa.antimatter:antimatter:${antimatter_version}"
     if (local_dev_dependancies.toBoolean()) {
         compile project(":antimatterapi")
-
         compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
         runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
-    } else {
+    }
+    else {
         compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
         runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
     }
@@ -131,42 +113,4 @@ dependencies {
 
 jar {
     zip64 true
-    manifest {
-        attributes([
-            "Specification-Title": "gti",
-            "Specification-Vendor": "examplemodsareus",
-            "Specification-Version": "1", // We are version 1 of ourselves
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"examplemodsareus",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
-}
-
-//processResources {
-//    outputs.upToDateWhen { false }
-//    filesMatching('META-INF/mods.toml') { expand "version": mod_version, "minecraft_version": minecraft_version, "forge_version": forge_version, "loader_version": loader_version }
-//}
-
-// Example configuration to allow publishing using the maven-publish task
-// we define a custom artifact that is sourced from the reobfJar output task
-// and then declare that to be published
-// Note you'll need to add a repository here
-def reobfFile = file("$buildDir/reobfJar/output.jar")
-def reobfArtifact = artifacts.add('default', reobfFile) {
-    type 'jar'
-    builtBy 'reobfJar'
-}
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact reobfArtifact
-        }
-    }
-    repositories {
-        maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
-        }
-    }
 }
