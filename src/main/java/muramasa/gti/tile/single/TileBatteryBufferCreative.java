@@ -21,28 +21,17 @@ public class TileBatteryBufferCreative extends TileEntityStorage {
 
     @Override
     public void onLoad() {
-        if (isServerSide() && has(ENERGY)) energyHandler = Optional.of(new MachineEnergyHandler(this) {
+        if (isServerSide() && has(ENERGY)) energyHandler = Optional.of(new MachineEnergyHandler(this, getMachineTier().getVoltage() * 64L, getMachineTier().getVoltage() * 64L, getMachineTier().getVoltage(), getMachineTier().getVoltage(), 1, 1) {
             @Override
-            public long extract(long toInsert, boolean simulate) {
-                return 0L;
+            public long extract(long maxExtract, boolean simulate) {
+                return maxExtract;
             }
 
             @Override
             public boolean canOutput(@Nonnull Dir direction) {
                 return tile.getOutputFacing().getIndex() == direction.getIndex();
             }
-        });
 
-        if (has(ITEM)) itemHandler = Optional.of(new MachineItemHandler(this) {
-            @Override
-            public void onUpdate() {
-                this.getInputList().forEach(item -> {
-                    if (item.getItem() instanceof IChargeable) {
-
-                    }
-                });
-                super.onUpdate();
-            }
         });
         super.onLoad();
     }
