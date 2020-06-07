@@ -42,13 +42,13 @@ public class Guis {
 
         //TODO changing slots of a machine in world, will crash from GTItemHandler.validateSlot()
 
-        ALLOY_SMELTER.getGui().add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25);
-        ASSEMBLER.getGui().add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 25);
+        ALLOY_SMELTER.getGui().add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
+        ASSEMBLER.getGui().add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
         BENDER.getGui().add(ALLOY_SMELTER);
-        CANNER.getGui().add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25);
-        COMPRESSOR.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25);
-        CUTTER.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25);
-        FURNACE.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25);
+        CANNER.getGui().add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
+        COMPRESSOR.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
+        CUTTER.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY,80, 63);
+        FURNACE.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
         EXTRACTOR.getGui().add(COMPRESSOR);
         EXTRUDER.getGui().add(ALLOY_SMELTER);
         LATHE.getGui().add(CUTTER);
@@ -59,9 +59,9 @@ public class Guis {
         RECYCLER.getGui().add(COMPRESSOR);
         SCANNER.getGui().add(COMPRESSOR);
         WIRE_MILL.getGui().add(COMPRESSOR);
-        CENTRIFUGE.getGui().add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34);
+        CENTRIFUGE.getGui().add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(ENERGY,80, 63);
         ELECTROLYZER.getGui().add(CENTRIFUGE);
-        THERMAL_CENTRIFUGE.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25);
+        THERMAL_CENTRIFUGE.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(ENERGY,80, 63);
         ORE_WASHER.getGui().add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         CHEMICAL_REACTOR.getGui().add(CANNER);
         FLUID_CANNER.getGui().add(COMPRESSOR);
@@ -75,14 +75,14 @@ public class Guis {
         DISTILLERY.getGui().add(COMPRESSOR);
         CHEMICAL_BATH.getGui().add(THERMAL_CENTRIFUGE);
         AUTOCLAVE.getGui().add(COMPRESSOR);
-        MIXER.getGui().add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 25);
+        MIXER.getGui().add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
         LASER_ENGRAVER.getGui().add(ALLOY_SMELTER);
         FORMING_PRESS.getGui().add(ALLOY_SMELTER);
         FORGE_HAMMER.getGui().add(FURNACE);
         SIFTER.getGui().add(DISASSEMBLER);
         ARC_FURNACE.getGui().add(ALLOY_SMELTER); //TODO
         PLASMA_ARC_FURNACE.getGui().add(ARC_FURNACE);
-        CREATIVE_ENERGY_BUFFER.getGui().add(ALLOY_SMELTER).add(ENERGY,80, 63);
+        CREATIVE_ENERGY_BUFFER.getGui().add(ALLOY_SMELTER);
 
         COAL_BOILER.getGui().add(ALLOY_SMELTER); //TODO
         LAVA_BOILER.getGui().add(ALLOY_SMELTER);
