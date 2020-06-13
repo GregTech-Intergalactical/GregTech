@@ -6,6 +6,7 @@ import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.gen.IWorldGenerationReader;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import org.apache.commons.collections4.SetUtils;
 
 import java.util.Random;
 import java.util.Set;
@@ -27,7 +28,7 @@ public class RubberTreeFeature extends AbstractTreeFeature<TreeFeatureConfig> {
 
         // check if at least bare trunk may be placed
         for (int i = 1; i < trunkHeight; ++i)
-            if (!super.func_214587_a(world, pos.add(0, i, 0)))
+            if (!func_214587_a(world, pos.add(0, i, 0)))
                 return false;
 
          // fill upper trunk
@@ -47,7 +48,7 @@ public class RubberTreeFeature extends AbstractTreeFeature<TreeFeatureConfig> {
         }
         // check if the branches may be placed
         for (BlockPos bp : set)
-            if (!super.func_214587_a(world, bp))
+            if (!func_214587_a(world, bp))
                 return false;
 
         setDirtAt(world, pos.down(), pos);
@@ -68,21 +69,13 @@ public class RubberTreeFeature extends AbstractTreeFeature<TreeFeatureConfig> {
             }
         }
         makeBareTrunk(world, random, pos, set, config, trunkHeight);
-        updateBoundingBox(pos, set, set1, boundingBox);
+        updateBoundingBox(pos, SetUtils.union(set, set1), boundingBox);
         return true;
     }
 
-    private void updateBoundingBox(BlockPos pos, Set<BlockPos> set, Set<BlockPos> set1, MutableBoundingBox boundingBox) {
+    private void updateBoundingBox(BlockPos pos, Set<BlockPos> set, MutableBoundingBox boundingBox) {
         int[] coords = {pos.getX(), pos.getY(), pos.getZ(), pos.getX(), pos.getY(), pos.getZ()};
         for (BlockPos bp : set) {
-            coords[0] = Math.min(coords[0], bp.getX());
-            coords[1] = Math.min(coords[1], bp.getY());
-            coords[2] = Math.min(coords[2], bp.getZ());
-            coords[3] = Math.max(coords[3], bp.getX());
-            coords[4] = Math.max(coords[4], bp.getY());
-            coords[5] = Math.max(coords[5], bp.getZ());
-        }
-        for (BlockPos bp : set1) {
             coords[0] = Math.min(coords[0], bp.getX());
             coords[1] = Math.min(coords[1], bp.getY());
             coords[2] = Math.min(coords[2], bp.getZ());

@@ -248,7 +248,7 @@ public class Data {
     //public static BlockLeavesBase RUBBER_LEAVES = new BlockLeavesBase("rubber_leaves", RUBBER_SAPLING);
 
     //STONE should be the only non-removable StoneType. It serves as the foundation. It is also used natively by BlockRock
-    //TODO move vanilla stone types to Antimatter
+    //TODO move vanilla stone types (and (vanilla) materials) to Antimatter
     public static StoneType STONE = new StoneType(Ref.ID, "stone", Materials.Stone, new Texture("minecraft", "block/stone"), SoundType.STONE, false).setState(Blocks.STONE);
 
     public static StoneType GRANITE = new StoneType(Ref.ID, "granite", Granite, new Texture("minecraft", "block/granite"), SoundType.STONE, AntimatterConfig.WORLD.VANILLA_STONE_GEN || muramasa.antimatter.Ref.debugStones).setState(Blocks.GRANITE);

@@ -5,9 +5,9 @@ import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
 import muramasa.gti.Ref;
 import net.minecraft.data.DataGenerator;
 
-public class Localizations {
+public class GregTechLocalizations {
 
-    public static final class en_US extends AntimatterLanguageProvider {
+    public static class en_US extends AntimatterLanguageProvider {
 
         public en_US(DataGenerator gen) {
             super(Ref.ID, Ref.NAME + " en_us Localization", "en_us", gen);
@@ -15,7 +15,7 @@ public class Localizations {
 
         @Override
         protected void addTranslations() {
-            processTranslations(Ref.ID, "en_us");
+            super.processTranslations(Ref.ID, "en_us");
             add(Ref.ID + ".advancements.greg", "GregTech Intergalactical");
             add(Ref.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
             add(Ref.ID + ".tooltip.occurrence", "Indicates occurrence of ");
