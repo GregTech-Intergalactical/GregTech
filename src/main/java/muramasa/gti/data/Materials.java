@@ -5,12 +5,8 @@ import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.fluid.AntimatterMaterialFluid;
 import muramasa.antimatter.material.Material;
 import muramasa.gti.Ref;
-import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTier;
-import net.minecraft.item.Items;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.material.Element.*;
@@ -658,9 +654,6 @@ public class Materials {
 //        NaquadahEnriched.mChemicalFormula = "Nq+";
 //        Naquadah.mChemicalFormula = "Nq";
 //        Naquadria.mChemicalFormula = "NqX";
-
-        Materials.Water.setLiquid(Fluids.WATER);
-        Materials.Lava.setLiquid(Fluids.LAVA);
     }
 
     //TODO go through the GT_Loader_Item_Block_And_Fluid and make sure all explicitly added fluids have the LIQUID tag
@@ -680,10 +673,11 @@ public class Materials {
 //            }
 //        }
 
-        LIQUID.all().stream().filter(l -> !l.equals(Water) || !l.equals(Lava)).forEach(m -> m.setLiquid(new AntimatterMaterialFluid(Ref.ID, m, LIQUID).getFluid()));
-        GAS.all().forEach(m -> m.setGas(new AntimatterMaterialFluid(Ref.ID, m, GAS).getFluid()));
-        PLASMA.all().forEach(m -> m.setPlasma(new AntimatterMaterialFluid(Ref.ID, m, PLASMA).getFluid()));
-        
+        //TODO move to antimatter
+        LIQUID.all().stream().filter(l -> !l.equals(Water) || !l.equals(Lava)).forEach(m -> new AntimatterMaterialFluid(Ref.ID, m, LIQUID));
+        GAS.all().forEach(m -> new AntimatterMaterialFluid(Ref.ID, m, GAS));
+        PLASMA.all().forEach(m -> new AntimatterMaterialFluid(Ref.ID, m, PLASMA));
+
         AntimatterAPI.all(Material.class, Material::setChemicalFormula);
 
         //If using small ore markers, every normal ore needs a small version. This greatly increases block usage

@@ -74,20 +74,15 @@ public class GregTech implements IAntimatterRegistrar {
                 AntimatterAPI.addProvider(Ref.ID, g -> new GregTechRecipes(Ref.ID, Ref.NAME.concat(" Recipes"), g));
                 AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
                 AntimatterAPI.addProvider(Ref.ID, GregTechLocalizations.en_US::new);
+
                 Materials.init();
-                break;
-            case REGISTRY_BUILD:
                 Data.init();
                 Machines.init();
                 Guis.init();
                 Models.init();
-            case READY:
-                Structures.init();
                 break;
-//            case DATA_BUILD:
-
-//                break;
-//            case DATA_READY:
+            case DATA_READY:
+                Structures.init();
                 //GregTechAPI.registerFluidCell(Data.CellTin.get(1));
                 //GregTechAPI.registerFluidCell(Data.CellSteel.get(1));
                 //GregTechAPI.registerFluidCell(Data.CellTungstensteel.get(1));
@@ -107,8 +102,6 @@ public class GregTech implements IAntimatterRegistrar {
 //                AntimatterAPI.registerCoverStack(Data.PumpEV.get(1), new CoverPump(Tier.EV));
 //                AntimatterAPI.registerCoverStack(Data.PumpIV.get(1), new CoverPump(Tier.IV));
 //                MaterialType.PLATE.all().forEach(m -> AntimatterAPI.registerCoverStack(MaterialType.PLATE.get(m, 1), Data.COVER_PLATE));
-//                break;
-            case RECIPE:
                 break;
             case WORLDGEN_INIT:
                 WorldGenLoader.init();
