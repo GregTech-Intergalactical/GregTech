@@ -16,6 +16,7 @@ apply plugin: 'eclipse'
 version = "${mod_version}"
 group = 'muramasa.gti'
 archivesBaseName = "${archive_name}"
+antimatter_version="0.0.1"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
