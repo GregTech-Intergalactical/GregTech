@@ -8,6 +8,8 @@ import muramasa.gti.data.*;
 import muramasa.gti.datagen.GregTechBlockTagProvider;
 import muramasa.gti.datagen.GregTechRecipes;
 import muramasa.gti.datagen.ProgressionAdvancements;
+import muramasa.gti.loader.MachineRecipeLoader;
+import muramasa.gti.loader.MaterialRecipeLoader;
 import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.proxy.ClientHandler;
 import net.minecraft.data.DataGenerator;
@@ -83,6 +85,8 @@ public class GregTech implements IAntimatterRegistrar {
                 break;
             case DATA_READY:
                 Structures.init();
+                MaterialRecipeLoader.init();
+                MachineRecipeLoader.init();
                 //GregTechAPI.registerFluidCell(Data.CellTin.get(1));
                 //GregTechAPI.registerFluidCell(Data.CellSteel.get(1));
                 //GregTechAPI.registerFluidCell(Data.CellTungstensteel.get(1));

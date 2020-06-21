@@ -7,6 +7,7 @@ import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.RecipeHelper;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
+import muramasa.gti.data.Data;
 import muramasa.gti.data.Materials;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
@@ -48,8 +49,8 @@ public class MaterialRecipeLoader {
         //GAS.all().forEach();
 
         PLASMA.all().forEach(m -> {
-            ItemStack cell = m.has(LIQUID) ? m.getCell(1) : m.getCellGas(1);
-            VACUUM_FREEZING.RB().ii(m.getCellPlasma(1)).io(cell).add(Math.max(m.getMass() * 2, 1), 120);
+            ItemStack cell = m.has(LIQUID) ? m.getCell(1, CellTin) : m.getCellGas(1, CellTin);
+            VACUUM_FREEZING.RB().ii(m.getCellPlasma(1, CellTin)).io(cell).add(Math.max(m.getMass() * 2, 1), 120);
             PLASMA_FUELS.RB().fi(m.getPlasma(1296)).add(0, 0, Math.max(1024, 1024 * m.getMass()) * 1000); //TODO: 1296 or 1000? To per cell amount or to '9' units?
         });
 
@@ -489,6 +490,14 @@ public class MaterialRecipeLoader {
             if (m.has(NUGGET)) {
                 ItemStack nugget = NUGGET.get(m, 1);
                 RecipeHelper.addSmelting(rock, nugget, 1.0F);
+            }
+        });
+
+        DUST_IMPURE.all().forEach(m -> {
+            if (m.hasByProducts()) {
+                CENTRIFUGING.RB().ii(DUST_IMPURE.get(m,1)).io(DUST.get(m,1), DUST_TINY.get(m.getByProducts().get(0), 1)).add(160    ,8);
+            } else {
+                CENTRIFUGING.RB().ii(DUST_IMPURE.get(m,1)).io(DUST.get(m,1), DUST_TINY.get(m, 1)).add(160,8);
             }
         });
 

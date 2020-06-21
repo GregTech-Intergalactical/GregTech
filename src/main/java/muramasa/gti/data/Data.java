@@ -4,7 +4,7 @@ import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.block.BlockCasing;
 import muramasa.antimatter.block.BlockCoil;
 import muramasa.antimatter.cover.Cover;
-import muramasa.antimatter.cover.CoverTiered;
+import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemCover;
@@ -42,9 +42,9 @@ public class Data {
     public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 
-    //public static ItemFluidCell CellTin = new ItemFluidCell(Tin, 1000);
-    //public static ItemFluidCell CellSteel = new ItemFluidCell(Steel, 16000);
-    //public static ItemFluidCell CellTungstensteel = new ItemFluidCell(TungstenSteel, 64000);
+    public static ItemFluidCell CellTin = new ItemFluidCell(Tin, 1000);
+    public static ItemFluidCell CellSteel = new ItemFluidCell(Steel, 16000);
+    public static ItemFluidCell CellTungstensteel = new ItemFluidCell(TungstenSteel, 64000);
 
     public static ItemBasic<?> ItemFilter = new ItemBasic<>(Ref.ID, "item_filter");
     public static ItemBasic<?> DiamondSawBlade = new ItemBasic<>(Ref.ID, "diamond_saw_blade");
