@@ -48,8 +48,8 @@ public class MaterialRecipeLoader {
         //GAS.all().forEach();
 
         PLASMA.all().forEach(m -> {
-            ItemStack cell = m.has(LIQUID) ? m.getCell(1) : m.getCellGas(1);
-            VACUUM_FREEZING.RB().ii(m.getCellPlasma(1)).io(cell).add(Math.max(m.getMass() * 2, 1), 120);
+            ItemStack cell = m.has(LIQUID) ? m.getCell(1, CellTin) : m.getCellGas(1, CellTin);
+            VACUUM_FREEZING.RB().ii(m.getCellPlasma(1, CellTin)).io(cell).add(Math.max(m.getMass() * 2, 1), 120);
             PLASMA_FUELS.RB().fi(m.getPlasma(1296)).add(0, 0, Math.max(1024, 1024 * m.getMass()) * 1000); //TODO: 1296 or 1000? To per cell amount or to '9' units?
         });
 
