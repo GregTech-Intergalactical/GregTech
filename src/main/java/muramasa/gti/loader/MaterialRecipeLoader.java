@@ -7,6 +7,7 @@ import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.RecipeHelper;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
+import muramasa.gti.data.Data;
 import muramasa.gti.data.Materials;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
@@ -143,15 +144,17 @@ public class MaterialRecipeLoader {
         });
 
         ROD.all().forEach(m -> {
-            ItemStack ingotOrGem = m.has(GEM) ? GEM.get(m, 1) : INGOT.get(m, 1), rod = ROD.get(m, 1);
-            long mass = m.getMass();
-            LATHING.RB().ii(ingotOrGem).io(rod, DUST_SMALL.get(m.getMacerateInto(), 2)).add(Math.max(mass * 5, 1), 16);
-            if (m.has(INGOT)) {
-                RecipeHelper.addShapeless("ingot_to_rod_" + m.getId(), rod, "f", ingotOrGem);
-                if (!m.has(NOSMELT)) {
-                    int aEU = m.getBlastTemp() >= 2800 ? 384 : 96;
-                    EXTRUDING.RB().ii(ingotOrGem, ShapeRod.get(0)).io(ROD.get(m.getSmeltInto(), 2)).add(mass * 2, aEU);
-                    //TODO .RB(EXTRUDER).ii(INGOT.get(m, 1), ShapeWire.get(0)).io(m.getSmeltInto().getWire01(2)).add(m.getMass() * 2, aEU);
+            if ((m.has(GEM) || m.has(INGOT))) {
+                ItemStack ingotOrGem = m.has(GEM) ? GEM.get(m, 1) : INGOT.get(m, 1), rod = ROD.get(m, 1);
+                long mass = m.getMass();
+                LATHING.RB().ii(ingotOrGem).io(rod, DUST_SMALL.get(m.getMacerateInto(), 2)).add(Math.max(mass * 5, 1), 16);
+                if (m.has(INGOT)) {
+                    RecipeHelper.addShapeless("ingot_to_rod_" + m.getId(), rod, "f", ingotOrGem);
+                    if (!m.has(NOSMELT)) {
+                        int aEU = m.getBlastTemp() >= 2800 ? 384 : 96;
+                        EXTRUDING.RB().ii(ingotOrGem, ShapeRod.get(0)).io(ROD.get(m.getSmeltInto(), 2)).add(mass * 2, aEU);
+                        //TODO .RB(EXTRUDER).ii(INGOT.get(m, 1), ShapeWire.get(0)).io(m.getSmeltInto().getWire01(2)).add(m.getMass() * 2, aEU);
+                    }
                 }
             }
         });
@@ -492,7 +495,16 @@ public class MaterialRecipeLoader {
             }
         });
 
+        DUST_IMPURE.all().forEach(m -> {
+            if (m.hasByProducts()) {
+                CENTRIFUGING.RB().ii(DUST_IMPURE.get(m,1)).io(DUST.get(m,1), DUST_TINY.get(m.getByProducts().get(0), 1)).add(160    ,8);
+            } else {
+                CENTRIFUGING.RB().ii(DUST_IMPURE.get(m,1)).io(DUST.get(m,1), DUST_TINY.get(m, 1)).add(160,8);
+            }
+        });
+
         CRUSHED.all().forEach(m -> {
+            if (!m.has(ORE)) return;
             ItemStack ore = ORE.get().get(m, STONE).asStack(), crushed = CRUSHED.get(m, 1), dust = DUST.get(m, 1), stoneDust = DUST.get(Stone, 1);
             if (m.hasByProducts()) {
                 List<Material> byProducts = m.getByProducts();
