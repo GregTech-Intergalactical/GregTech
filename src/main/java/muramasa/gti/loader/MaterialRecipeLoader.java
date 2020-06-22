@@ -7,7 +7,6 @@ import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.RecipeHelper;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
-import muramasa.gti.data.Data;
 import muramasa.gti.data.Materials;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
@@ -15,10 +14,10 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
+import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.*;
-import static muramasa.antimatter.material.MaterialType.*;
 import static muramasa.antimatter.recipe.RecipeTag.IGNORE_NBT;
-import static muramasa.gti.data.Data.*;
+import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.*;
 

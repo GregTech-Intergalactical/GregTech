@@ -78,7 +78,7 @@ public class GregTech implements IAntimatterRegistrar {
                 AntimatterAPI.addProvider(Ref.ID, GregTechLocalizations.en_US::new);
 
                 Materials.init();
-                Data.init();
+                GregTechData.init();
                 Machines.init();
                 Guis.init();
                 Models.init();

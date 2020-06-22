@@ -30,7 +30,7 @@ import net.minecraft.block.SoundType;
 
 import static muramasa.gti.data.Materials.*;
 
-public class Data {
+public class GregTechData {
 
     private static final boolean HC = AntimatterConfig.GAMEPLAY.HARDCORE_CABLES;
 

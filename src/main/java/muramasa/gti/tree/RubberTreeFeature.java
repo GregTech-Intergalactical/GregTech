@@ -11,8 +11,8 @@ import org.apache.commons.collections4.SetUtils;
 import java.util.Random;
 import java.util.Set;
 
-import static muramasa.gti.data.Data.RUBBER_LEAVES;
-import static muramasa.gti.data.Data.RUBBER_LOG;
+import static muramasa.gti.data.GregTechData.RUBBER_LEAVES;
+import static muramasa.gti.data.GregTechData.RUBBER_LOG;
 
 public class RubberTreeFeature extends AbstractTreeFeature<TreeFeatureConfig> {
     public RubberTreeFeature() {

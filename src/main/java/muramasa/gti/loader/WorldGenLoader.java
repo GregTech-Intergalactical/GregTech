@@ -1,14 +1,13 @@
 package muramasa.gti.loader;
 
 import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.material.MaterialType;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.worldgen.StoneLayerOre;
 import muramasa.antimatter.worldgen.object.WorldGenOreSmall;
 import muramasa.antimatter.worldgen.object.WorldGenStoneLayer;
 import muramasa.antimatter.worldgen.object.WorldGenVeinLayer;
 import muramasa.antimatter.worldgen.old.WorldGenAsteroid;
-import muramasa.gti.data.Data;
+import muramasa.gti.data.GregTechData;
 import muramasa.gti.tree.RubberTreeWorldGen;
 
 import static muramasa.antimatter.Ref.*;
@@ -49,76 +48,76 @@ public class WorldGenLoader {
 //        new WorldGenStone("basalt_large", BASALT, 1, 300, 70, 0, 120, OVERWORLD);
 //        new WorldGenStone("basalt_huge", BASALT, 1, 400, 150, 0, 120, OVERWORLD);
         
-        WorldGenStoneLayer.add(Data.STONE, 4, OVERWORLD);
-        WorldGenStoneLayer.add(Data.STONE, 1, OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.STONE, 1, OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.STONE, 1, OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.STONE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.STONE, 4, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.STONE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.STONE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.STONE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.STONE, 1, OVERWORLD); //Ores
         
-        WorldGenStoneLayer.add(Data.GRANITE_BLACK, 2, OVERWORLD);
-        WorldGenStoneLayer.add(Data.GRANITE_BLACK, 1, OVERWORLD).forEach(w -> w.addOres(
+        WorldGenStoneLayer.add(GregTechData.GRANITE_BLACK, 2, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.GRANITE_BLACK, 1, OVERWORLD).forEach(w -> w.addOres(
             new StoneLayerOre(Cooperite, U32, 0, 16),
             new StoneLayerOre(Iridium, U64, 0, 8)
         ));
 
-        WorldGenStoneLayer.add(Data.GRANITE_RED, 2, OVERWORLD);
-        WorldGenStoneLayer.add(Data.GRANITE_RED, 1, OVERWORLD).forEach(w -> w.addOres(
+        WorldGenStoneLayer.add(GregTechData.GRANITE_RED, 2, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.GRANITE_RED, 1, OVERWORLD).forEach(w -> w.addOres(
             new StoneLayerOre(Pitchblende, U32, 0, 18),
             new StoneLayerOre(Uraninite, U32, 0, 16),
             new StoneLayerOre(Tantalite, U16, 20, 50)
         ));
 
-        WorldGenStoneLayer.add(Data.KOMATIITE, 4, OVERWORLD);
-        WorldGenStoneLayer.add(Data.KOMATIITE, 1, OVERWORLD).forEach(w -> w.addOres(
+        WorldGenStoneLayer.add(GregTechData.KOMATIITE, 4, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.KOMATIITE, 1, OVERWORLD).forEach(w -> w.addOres(
             new StoneLayerOre(Magnesite, U16, 20, 50),
             new StoneLayerOre(Cinnabar, U12, 0, 32),
             new StoneLayerOre(Redstone, U8, 0, 30),
             new StoneLayerOre(Pyrite, U12, 0, 30)
         ));
 
-        WorldGenStoneLayer.add(Data.BASALT, 3, OVERWORLD);
-        WorldGenStoneLayer.add(Data.BASALT, 1, OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.BASALT, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.BASALT, 3, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.BASALT, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.BASALT, 1, OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(Data.MARBLE, 4, OVERWORLD);
-        WorldGenStoneLayer.add(Data.MARBLE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.MARBLE, 4, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.MARBLE, 1, OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(Data.LIMESTONE, 3, OVERWORLD);
-        WorldGenStoneLayer.add(Data.LIMESTONE, 1, OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.LIMESTONE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.LIMESTONE, 3, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.LIMESTONE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.LIMESTONE, 1, OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(Data.GREEN_SCHIST, 1, OVERWORLD);
-        WorldGenStoneLayer.add(Data.GREEN_SCHIST, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.GREEN_SCHIST, 1, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.GREEN_SCHIST, 1, OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(Data.BLUE_SCHIST, 1, OVERWORLD);
-        WorldGenStoneLayer.add(Data.BLUE_SCHIST, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.BLUE_SCHIST, 1, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.BLUE_SCHIST, 1, OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(Data.KIMBERLITE, 3, OVERWORLD);
-        WorldGenStoneLayer.add(Data.KIMBERLITE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.KIMBERLITE, 3, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.KIMBERLITE, 1, OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(Data.QUARTZITE, 4, OVERWORLD);
-        WorldGenStoneLayer.add(Data.QUARTZITE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.QUARTZITE, 4, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.QUARTZITE, 1, OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(Data.GRANITE, 3, OVERWORLD);
-        WorldGenStoneLayer.add(Data.GRANITE, 1, OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.GRANITE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.GRANITE, 3, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.GRANITE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.GRANITE, 1, OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(Data.DIORITE, 3, OVERWORLD);
-        WorldGenStoneLayer.add(Data.DIORITE, 1, OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.DIORITE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.DIORITE, 3, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.DIORITE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.DIORITE, 1, OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(Data.ANDESITE, 4, OVERWORLD);
-        WorldGenStoneLayer.add(Data.ANDESITE, 1, OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.ANDESITE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.ANDESITE, 4, OVERWORLD);
+        WorldGenStoneLayer.add(GregTechData.ANDESITE, 1, OVERWORLD); //Ores
+        WorldGenStoneLayer.add(GregTechData.ANDESITE, 1, OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(Coal).asState(), 1, OVERWORLD);
-        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(Lignite).asState(), 1, OVERWORLD);
-        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(Salt).asState(), 1, OVERWORLD);
-        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(RockSalt).asState(), 1, OVERWORLD);
-        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(Bauxite).asState(), 1, OVERWORLD);
-        WorldGenStoneLayer.add(MaterialType.ORE_STONE.get().get(OilShale).asState(), 1, OVERWORLD);
+        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(Coal).asState(), 1, OVERWORLD);
+        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(Lignite).asState(), 1, OVERWORLD);
+        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(Salt).asState(), 1, OVERWORLD);
+        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(RockSalt).asState(), 1, OVERWORLD);
+        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(Bauxite).asState(), 1, OVERWORLD);
+        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(OilShale).asState(), 1, OVERWORLD);
 
-        WorldGenStoneLayer.addCollision(Data.BASALT.getState(), Data.LIMESTONE.getState(),
+        WorldGenStoneLayer.addCollision(GregTechData.BASALT.getState(), GregTechData.LIMESTONE.getState(),
             new StoneLayerOre(Ilmenite, U8, 0, 32),
             new StoneLayerOre(Rutile, U12, 0, 32)
         );

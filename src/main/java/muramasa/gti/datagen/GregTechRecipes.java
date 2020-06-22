@@ -2,11 +2,10 @@ package muramasa.gti.datagen;
 
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.gti.Ref;
-import muramasa.gti.data.Data;
+import muramasa.gti.data.GregTechData;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.Tags;
 
@@ -14,9 +13,8 @@ import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.material.MaterialType.*;
 import static muramasa.antimatter.util.Utils.getForgeItemTag;
-import static muramasa.gti.data.Data.ItemFilter;
+import static muramasa.gti.data.GregTechData.ItemFilter;
 import static muramasa.gti.data.Materials.*;
 
 public class GregTechRecipes extends AntimatterRecipeProvider {
@@ -49,7 +47,7 @@ public class GregTechRecipes extends AntimatterRecipeProvider {
         addItemRecipe(consumer, Ref.ID, GEAR.get(Stone).getRegistryName().getPath() + "_alt", "gears", "has_stone", this.hasItem(Tags.Items.STONE),
                 GEAR.get(Stone), of('S', Tags.Items.STONE, 'W', WRENCH.getTag(), 'C', Tags.Items.COBBLESTONE), "CSC", "SWS", "CSC");
 
-        addItemRecipe(consumer, "gears", "has_stone", this.hasItem(Blocks.PISTON), Blocks.STICKY_PISTON, of('S', Data.StickyResin, 'P', Blocks.PISTON), "S", "P");
+        addItemRecipe(consumer, "gears", "has_stone", this.hasItem(Blocks.PISTON), Blocks.STICKY_PISTON, of('S', GregTechData.StickyResin, 'P', Blocks.PISTON), "S", "P");
 
         addItemRecipe(consumer, "magnetic_rods", "has_redstone", this.hasItem(Tags.Items.DUSTS_REDSTONE), ROD.get(IronMagnetic),
                 of('R', Tags.Items.DUSTS_REDSTONE, 'S', getForgeItemTag("rods/iron")), " R ", "RSR", " R ");

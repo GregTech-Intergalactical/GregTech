@@ -11,7 +11,7 @@ import net.minecraft.item.ItemTier;
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.material.Element.*;
 import static muramasa.antimatter.material.MaterialTag.*;
-import static muramasa.antimatter.material.MaterialType.*;
+import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.TextureSet.NONE;
 import static muramasa.gti.data.Textures.*;
 import static net.minecraft.item.ItemTier.GOLD;

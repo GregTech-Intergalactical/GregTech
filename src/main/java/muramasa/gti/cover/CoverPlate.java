@@ -2,24 +2,17 @@ package muramasa.gti.cover;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.cover.Cover;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.cover.CoverMaterial;
-import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.material.TextureSet;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gti.Ref;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 
-import javax.annotation.Nullable;
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
 public class CoverPlate extends CoverMaterial {
 
@@ -56,7 +49,7 @@ public class CoverPlate extends CoverMaterial {
 
     @Override
     public ItemStack getDroppedStack() {
-        return MaterialType.PLATE.get(material, 1);
+        return Data.PLATE.get(material, 1);
     }
 
     /*@Override
@@ -71,7 +64,7 @@ public class CoverPlate extends CoverMaterial {
         List<Texture> textures = new ObjectArrayList<>();
         for (TextureSet set : AntimatterAPI.all(TextureSet.class)) {
             //TODO fix domain
-            textures.addAll(Arrays.asList(set.getTextures(MaterialType.BLOCK)));
+            textures.addAll(Arrays.asList(set.getTextures(Data.BLOCK)));
         }
         return textures.toArray(new Texture[0]);
     }

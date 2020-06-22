@@ -23,8 +23,8 @@ import java.util.function.Predicate;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static muramasa.gti.data.Data.RUBBER_LEAVES;
-import static muramasa.gti.data.Data.RUBBER_SAPLING;
+import static muramasa.gti.data.GregTechData.RUBBER_LEAVES;
+import static muramasa.gti.data.GregTechData.RUBBER_SAPLING;
 
 public class RubberTreeWorldGen { //  extends WorldGenBase<RubberTreeWorldGen> {
     final static TreeFeatureConfig RUBBER_TREE_CONFIG_SWAMP =

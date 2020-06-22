@@ -1,15 +1,15 @@
 package muramasa.gti.loader;
 
-import muramasa.antimatter.material.MaterialType;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.recipe.RecipeBuilder;
-import muramasa.gti.data.Data;
+import muramasa.gti.data.GregTechData;
 import net.minecraft.item.ItemStack;
 
-import static muramasa.antimatter.material.MaterialType.*;
-import static muramasa.gti.data.Materials.*;
-import static muramasa.gti.data.RecipeMaps.*;
+import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.NOBBF;
 import static muramasa.antimatter.material.MaterialTag.NOSMELT;
+import static muramasa.gti.data.Materials.*;
+import static muramasa.gti.data.RecipeMaps.*;
 
 public class MachineRecipeLoader {
 
@@ -25,7 +25,7 @@ public class MachineRecipeLoader {
         COKING.RB().ii(GEM.get(Lignite, 1)).io(GEM.get(LigniteCoke, 1)).fo(Creosote.getLiquid(750)).add(3600);
 
         //Add Basic blasting for mixed metals
-        MaterialType.DUST.all().forEach(m -> {
+        Data.DUST.all().forEach(m -> {
             if (m.getDirectSmeltInto() != m && !m.has(NOSMELT) && !(m.needsBlastFurnace() || m.getDirectSmeltInto().needsBlastFurnace()) && !m.has(NOBBF)) {
                 if (m.getDirectSmeltInto().has(INGOT)) { //TODO INGOT check was added to avoid DOES NOT GENERATE: P(INGOT) M(mercury)
                     BASIC_BLASTING.RB().add(new ItemStack[]{DUST.get(m, 2)}, new ItemStack[]{INGOT.get(m.getDirectSmeltInto(), MaterialRecipeLoader.mixedOreYield)}, 2, 2400);
@@ -47,7 +47,7 @@ public class MachineRecipeLoader {
         //How the hell does empty stacks even get into smeltingList?!
         //FurnaceRecipes.instance().getSmeltingList().entrySet().stream().filter((set) -> !set.getKey().isEmpty()).forEach((set) -> SMELTING.RB().ii(set.getKey()).io(set.getValue()).add(140, 2));
 
-        IMPLOSION_COMPRESSING.RB().ii(Data.IridiumAlloyIngot.get(1)).io(Data.IridiumReinforcedPlate.get(1), DUST_TINY.get(DarkAsh, 4)).add(20, 30);
+        IMPLOSION_COMPRESSING.RB().ii(GregTechData.IridiumAlloyIngot.get(1)).io(GregTechData.IridiumReinforcedPlate.get(1), DUST_TINY.get(DarkAsh, 4)).add(20, 30);
 
         BLASTING.RB().ii(INGOT.get(Tungsten, 1), INGOT.get(Steel, 1)).io(INGOT_HOT.get(TungstenSteel, 2), DUST_SMALL.get(DarkAsh, 1)).add(Math.max(TungstenSteel.getMass() / 80L, 1L) * TungstenSteel.getBlastTemp(), 480, TungstenSteel.getBlastTemp());
         BLASTING.RB().ii(INGOT.get(Tungsten, 1), DUST.get(Carbon, 1)).io(INGOT_HOT.get(TungstenCarbide, 1), DUST_SMALL.get(Ash, 2)).add(Math.max(TungstenCarbide.getMass() / 40L, 1L) * TungstenCarbide.getBlastTemp(), 480, TungstenCarbide.getBlastTemp());
