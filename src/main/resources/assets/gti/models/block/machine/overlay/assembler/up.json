@@ -124,12 +124,7 @@
 			"from": [0, 15, 0],
 			"to": [16, 16, 16],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 1], "texture": "#base"},
-				"east": {"uv": [0, 0, 16, 1], "texture": "#base"},
-				"south": {"uv": [0, 0, 16, 1], "texture": "#base"},
-				"west": {"uv": [0, 0, 16, 1], "texture": "#base"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#base"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#base"}
+				"up": {"uv": [0, 0, 16, 16], "texture": "#base"}
 			}
 		}
 	]
