@@ -1,7 +1,7 @@
 package muramasa.gti.block;
 
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.client.ModelConfig;
+import muramasa.antimatter.dynamic.ModelConfig;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gti.tile.multi.TileEntityLargeTurbine;
 import net.minecraft.block.BlockState;

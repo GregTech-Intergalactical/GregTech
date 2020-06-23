@@ -1,7 +1,7 @@
 package muramasa.gti.block;
 
 import muramasa.antimatter.Data;
-import muramasa.antimatter.block.BlockDynamic;
+import muramasa.antimatter.dynamic.BlockDynamic;
 import muramasa.antimatter.texture.Texture;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
