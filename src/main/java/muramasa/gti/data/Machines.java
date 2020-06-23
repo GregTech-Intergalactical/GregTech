@@ -1,7 +1,7 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.machine.types.*;
-import muramasa.antimatter.tile.TileEntitySteamMachine;
+import muramasa.gti.tile.TileEntitySteamMachine;
 import muramasa.gti.Ref;
 import muramasa.gti.block.BlockBatteryBufferCreative;
 import muramasa.gti.tile.multi.*;

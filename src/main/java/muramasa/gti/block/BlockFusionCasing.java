@@ -1,6 +1,5 @@
 package muramasa.gti.block;
 
-import muramasa.antimatter.block.BlockCasing;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.tileentity.TileEntity;

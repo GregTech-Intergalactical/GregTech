@@ -1,7 +1,6 @@
 package muramasa.gti.block;
 
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.block.BlockCasing;
 import muramasa.antimatter.client.ModelConfig;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gti.tile.multi.TileEntityLargeTurbine;

@@ -1,7 +1,7 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.block.BlockCoil;
+import muramasa.gti.block.BlockCoil;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.BlockStateElement;
 import muramasa.antimatter.structure.StructureBuilder;

@@ -1,8 +1,8 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.block.BlockCasing;
-import muramasa.antimatter.block.BlockCoil;
+import muramasa.gti.block.BlockCasing;
+import muramasa.gti.block.BlockCoil;
 import muramasa.antimatter.cover.Cover;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
