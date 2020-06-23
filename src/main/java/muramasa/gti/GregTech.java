@@ -2,8 +2,8 @@ package muramasa.gti;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.*;
-import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
+import muramasa.antimatter.AntimatterMod;
 import muramasa.gti.data.*;
 import muramasa.gti.datagen.GregTechBlockTagProvider;
 import muramasa.gti.datagen.GregTechRecipes;
@@ -12,33 +12,36 @@ import muramasa.gti.loader.MachineRecipeLoader;
 import muramasa.gti.loader.MaterialRecipeLoader;
 import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.proxy.ClientHandler;
-import net.minecraft.data.DataGenerator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod(Ref.ID)
-public class GregTech implements IAntimatterRegistrar {
+public class GregTech extends AntimatterMod {
 
     public static GregTech INSTANCE;
     public static Logger LOGGER = LogManager.getLogger(Ref.ID);
 
     public GregTech() {
+        super();
         INSTANCE = this;
-        AntimatterAPI.addRegistrar(INSTANCE);
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        eventBus.addListener(this::setup);
-        eventBus.addListener(EventPriority.LOWEST, this::dataSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+
         //GregTechAPI.addRegistrar(new ForestryRegistrar());
         //GregTechAPI.addRegistrar(new GalacticraftRegistrar());
         //if (ModList.get().isLoaded(Ref.MOD_UB)) GregTechAPI.addRegistrar(new UndergroundBiomesRegistrar());
+
+        AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
+        AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", g));
+        AntimatterAPI.addProvider(Ref.ID, g -> new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, g));
+        AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, g));
+        AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterFluidTagProvider(Ref.ID, Ref.NAME.concat(" Fluid Tags"), false, g));
+        AntimatterAPI.addProvider(Ref.ID, g -> new GregTechRecipes(Ref.ID, Ref.NAME.concat(" Recipes"), g));
+        AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
+        AntimatterAPI.addProvider(Ref.ID, GregTechLocalizations.en_US::new);
     }
 
     private void clientSetup(final FMLClientSetupEvent e) {
@@ -49,34 +52,10 @@ public class GregTech implements IAntimatterRegistrar {
 
     }
 
-    public void dataSetup(GatherDataEvent e) {
-        DataGenerator gen = e.getGenerator();
-        if (e.includeClient()) {
-            AntimatterAPI.onProviderInit(Ref.ID, gen, Dist.CLIENT);
-        }
-        if (e.includeServer()) {
-            AntimatterAPI.onProviderInit(Ref.ID, gen, Dist.DEDICATED_SERVER);
-        }
-    }
-
-    @Override
-    public String getId() {
-        return Ref.ID;
-    }
-
     @Override
     public void onRegistrationEvent(RegistrationEvent event) {
         switch (event) {
             case DATA_INIT:
-                AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
-                AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", g));
-                AntimatterAPI.addProvider(Ref.ID, g -> new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, g));
-                AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, g));
-                AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterFluidTagProvider(Ref.ID, Ref.NAME.concat(" Fluid Tags"), false, g));
-                AntimatterAPI.addProvider(Ref.ID, g -> new GregTechRecipes(Ref.ID, Ref.NAME.concat(" Recipes"), g));
-                AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
-                AntimatterAPI.addProvider(Ref.ID, GregTechLocalizations.en_US::new);
-
                 Materials.init();
                 GregTechData.init();
                 Machines.init();
