@@ -3,17 +3,10 @@ package muramasa.gti.cover;
 import muramasa.antimatter.cover.CoverInstance;
 import muramasa.antimatter.cover.CoverTiered;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraftforge.fml.network.NetworkHooks;
-
-import javax.annotation.Nullable;
 
 public class CoverPump extends CoverTiered {
 
@@ -48,20 +41,7 @@ public class CoverPump extends CoverTiered {
     }
 
     @Override
-    public boolean onInteract(CoverInstance instance, PlayerEntity player, Hand hand, Direction side, @Nullable AntimatterToolType type) {
-        if (!player.getEntityWorld().isRemote()) {
-            NetworkHooks.openGui((ServerPlayerEntity) player, instance, packetBuffer -> {
-                packetBuffer.writeBlockPos(instance.getTile().getPos());
-                packetBuffer.writeInt(side.getIndex());
-            });
-        }
-        return true;
-    }
-
-    @Override
     public String getDomain() {
         return Ref.ID;
     }
-
-
 }

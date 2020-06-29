@@ -20,14 +20,13 @@ public class CoverPlate extends CoverMaterial {
     private Material material;
 
     public CoverPlate() {
-    }
 
+    }
 
     @Override
     public String getDomain() {
         return Ref.ID;
     }
-
 
     public CoverPlate(MaterialType<?> type, Material material) {
         this.type = type;
@@ -68,5 +67,4 @@ public class CoverPlate extends CoverMaterial {
         }
         return textures.toArray(new Texture[0]);
     }
-
 }
