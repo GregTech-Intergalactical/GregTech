@@ -2,7 +2,6 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.gui.GuiData;
-import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.integration.jei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.Tier;
 import net.minecraft.util.ResourceLocation;

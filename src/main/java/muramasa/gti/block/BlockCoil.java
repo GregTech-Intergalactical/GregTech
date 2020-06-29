@@ -2,14 +2,11 @@ package muramasa.gti.block;
 
 import muramasa.antimatter.Data;
 import muramasa.antimatter.block.BlockBasic;
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.texture.Texture;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nullable;
@@ -40,11 +37,5 @@ public class BlockCoil extends BlockBasic {
     @Override
     public Texture[] getTextures() {
         return new Texture[]{new Texture(getRegistryName().getNamespace(), "block/coil/" + getRegistryName().getPath().replaceAll("coil_", ""))};
-    }
-
-    @Override
-    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
-        prov.getVariantBuilder(block).forAllStates(s -> ConfiguredModel.builder()
-            .modelFile(s.has(BlockStateProperties.HORIZONTAL_FACING) ? prov.existing(domain, "test") : prov.existing(domain, "test")).build());
     }
 }

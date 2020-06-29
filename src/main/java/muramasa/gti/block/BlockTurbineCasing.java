@@ -22,11 +22,11 @@ public class BlockTurbineCasing extends BlockCasing {
         int[] ct = new int[6];
         TileEntity tile;
         for (int s = 0; s < 6; s++) {
-            if ((tile = world.getTileEntity(pos.offset(Ref.DIRECTIONS[s]))) instanceof TileEntityLargeTurbine) {
+            if ((tile = world.getTileEntity(pos.offset(Ref.DIRS[s]))) instanceof TileEntityLargeTurbine) {
                 ct[s] = (1 << s) + (((TileEntityMachine) tile).getFacing().getIndex() * 100) /*+ ((TileEntityLargeTurbine) tile).getClientProgress() > 0 ? 1000 : 0*/;
-            } else if ((tile = world.getTileEntity(pos.offset(Ref.DIRECTIONS[s]).down())) instanceof TileEntityLargeTurbine) {
+            } else if ((tile = world.getTileEntity(pos.offset(Ref.DIRS[s]).down())) instanceof TileEntityLargeTurbine) {
                 ct[s] = (1 << s) + (1 << Direction.DOWN.getIndex()) + (((TileEntityLargeTurbine) tile).getFacing().getIndex() * 100) /*+ ((TileEntityLargeTurbine) tile).getClientProgress() > 0 ? 1000 : 0*/;
-            } else if ((tile = world.getTileEntity(pos.offset(Ref.DIRECTIONS[s]).up())) instanceof TileEntityLargeTurbine) {
+            } else if ((tile = world.getTileEntity(pos.offset(Ref.DIRS[s]).up())) instanceof TileEntityLargeTurbine) {
                 ct[s] = (1 << s) + (1 << Direction.UP.getIndex()) + (((TileEntityLargeTurbine) tile).getFacing().getIndex() * 100) /*+ ((TileEntityLargeTurbine) tile).getClientProgress() > 0 ? 1000 : 0*/;
             }
         }
