@@ -1,8 +1,7 @@
 package muramasa.gti.tile.single;
 
-import muramasa.antimatter.capability.impl.MachineEnergyHandler;
+import muramasa.antimatter.capability.machine.MachineEnergyHandler;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.tile.TileEntityStorage;
 import tesseract.util.Dir;
 

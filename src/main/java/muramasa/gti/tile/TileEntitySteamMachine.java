@@ -1,7 +1,7 @@
 package muramasa.gti.tile;
 
 import muramasa.antimatter.Data;
-import muramasa.antimatter.capability.impl.FluidResourceMachineRecipeHandler;
+import muramasa.antimatter.capability.fluid.FluidResourceMachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.tile.TileEntityMachine;
