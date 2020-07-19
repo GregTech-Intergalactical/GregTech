@@ -103,6 +103,7 @@ dependencies {
     compile "muramasa.antimatter:antimatter:${antimatter_version}"
     if (local_dev_dependancies.toBoolean()) {
         compile project(":antimatterapi")
+        runtime project(":antimatterapi")
         compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
         runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
     }
