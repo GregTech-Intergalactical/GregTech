@@ -12,8 +12,8 @@
 
 - Import `build.gradle` in the GregTech folder with IntelliJ (or File -> New -> Project from Existing Sources), then run the `genIntellijRuns` gradle task to generate run configurations.
 
-- Run `build.antimatterapi runDataIdea` in IntelliJ, setting `Use classpath of module` to `gregtech.antimatterapi.main`
+- Run `antimatterapi:runData` in IntelliJ, setting `Use classpath of module` to `gregtech.antimatterapi.main`
 
-- Run `runDataIdea` to generate GregTech item/block .json files
+- Run `runData` to generate GregTech item/block .json files
 
-- Run `runClientIdea` to start game in IntelliJ
+- Run `runClient` to start game in IntelliJ
