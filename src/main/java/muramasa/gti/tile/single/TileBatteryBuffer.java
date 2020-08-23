@@ -1,5 +1,6 @@
 package muramasa.gti.tile.single;
 
+import muramasa.antimatter.capability.EnergyHandler;
 import muramasa.antimatter.capability.IEnergyHandler;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
 import muramasa.antimatter.machine.types.Machine;
@@ -28,8 +29,13 @@ public class TileBatteryBuffer extends TileEntityStorage {
             }
 
             @Override
-            public boolean canChargeItem() {
-                return true;
+            public long getCapacity() {
+                return super.getCapacity() + (cachedItems != null ? cachedItems.stream().mapToLong(IEnergyHandler::getCapacity).sum() : 0);
+            }
+
+            @Override
+            public long getEnergy() {
+                return super.getEnergy() + (cachedItems != null ? cachedItems.stream().mapToLong(IEnergyHandler::getEnergy).sum() : 0);
             }
         });
         super.onLoad();
@@ -39,8 +45,8 @@ public class TileBatteryBuffer extends TileEntityStorage {
     public List<String> getInfo() {
         List<String> info = super.getInfo();
 
-        info.add("Amperage in: " + energyHandler.map(handler -> handler.getInputAmperage()).orElse(0));
-        info.add("Amperage out: " + energyHandler.map(handler -> handler.getOutputAmperage()).orElse(0));
+        info.add("Amperage in: " + energyHandler.map(EnergyHandler::getInputAmperage).orElse(0));
+        info.add("Amperage out: " + energyHandler.map(EnergyHandler::getOutputAmperage).orElse(0));
         return info;
     }
 }
