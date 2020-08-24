@@ -83,6 +83,8 @@ public class Guis {
         PLASMA_ARC_FURNACE.getGui().add(ARC_FURNACE);
         CREATIVE_ENERGY_BUFFER.getGui().add(ALLOY_SMELTER);
 
+        BATTERY_BUFFER_FOUR.getGui().add(ENERGY,71,27).add(ENERGY,89,27).add(ENERGY,71,45).add(ENERGY,89,45);
+
         COAL_BOILER.getGui().add(ALLOY_SMELTER); //TODO
         LAVA_BOILER.getGui().add(ALLOY_SMELTER);
         SOLAR_BOILER.getGui().add(ALLOY_SMELTER);
