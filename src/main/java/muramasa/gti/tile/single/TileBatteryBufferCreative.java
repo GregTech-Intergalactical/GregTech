@@ -27,8 +27,7 @@ public class TileBatteryBufferCreative extends TileEntityStorage {
 
             public boolean canOutput(@Nonnull Dir direction) {
                 //TODO: For debugging, set to always true for simplicity.
-                return true;
-               // return tile.getOutputFacing().getIndex() == direction.getIndex();
+                return tile.getFacing().getIndex() == direction.getIndex();
             }
         });
         super.onLoad();

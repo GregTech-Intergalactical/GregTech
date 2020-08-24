@@ -22,10 +22,15 @@ public class TileBatteryBuffer extends TileEntityStorage {
     @Override
     public void onLoad() {
         //Anonymous inherited classes are annoying since you have to rewrite code. probably move the energy handlers to an actual class.
-        if (has(ENERGY)) energyHandler = Optional.of(new MachineEnergyHandler(this, 0, getMachineTier().getVoltage() * 64L, getMachineTier().getVoltage(), getMachineTier().getVoltage(), 0,0) {
+        if (has(ENERGY)) energyHandler = Optional.of(new MachineEnergyHandler(this, 0, 0, getMachineTier().getVoltage(), getMachineTier().getVoltage(), 0,0) {
             public boolean canOutput(@Nonnull Dir direction) {
                 //TODO: For debugging, set to always true for simplicity.
                return tile.getFacing().getIndex() == direction.getIndex();
+            }
+
+            @Override
+            public boolean canChargeFromItem() {
+                return true;
             }
 
             @Override
