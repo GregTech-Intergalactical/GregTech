@@ -84,6 +84,10 @@ public class Guis {
         CREATIVE_ENERGY_BUFFER.getGui().add(ALLOY_SMELTER);
 
         BATTERY_BUFFER_FOUR.getGui().add(ENERGY,71,27).add(ENERGY,89,27).add(ENERGY,71,45).add(ENERGY,89,45);
+        BATTERY_BUFFER_ONE.getGui().add(ENERGY,80,40);
+        BATTERY_BUFFER_NINE.getGui().add(ENERGY,62,21).add(ENERGY,80,21).add(ENERGY,98,21)
+                .add(ENERGY,62,39).add(ENERGY,80,39).add(ENERGY,98,39)
+                .add(ENERGY,62,57).add(ENERGY,80,57).add(ENERGY,98,57);
 
         COAL_BOILER.getGui().add(ALLOY_SMELTER); //TODO
         LAVA_BOILER.getGui().add(ALLOY_SMELTER);
