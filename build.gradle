@@ -9,14 +9,21 @@ buildscript {
     }
 }
 
+
+plugins {
+    id 'maven-publish'
+}
+
+evaluationDependsOn(':version')
+
+group = 'com.github.gregtech-intergalactical'
+
 apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
 version = "${mod_version}"
-group = 'muramasa.gti'
-archivesBaseName = "${archive_name}"
-antimatter_version="0.0.1"
+group = 'com.github.gregtech-intergalactical'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
@@ -80,29 +87,23 @@ minecraft {
     }
 }
 
-//Force a dependency on a local version of antimatterAPI.
 repositories {
-    maven {
-        url '../AntimatterAPI/build/libs'
+    if (!System.env.RELEASE) {
+        mavenLocal()
+    } else {
+        maven { url 'https://files.axelandre42.ovh/maven' }
     }
-}
 
-repositories {
-    maven {
-        name "JEI"
-        url "http://dvs1.progwml6.com/files/maven"
-    }
-    maven {
-        name "JEI Fallback"
-        url "https://modmaven.k-4u.nl"
-    }
+    maven { url 'http://dvs1.progwml6.com/files/maven' }
+    maven { url 'https://modmaven.k-4u.nl' }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    compile "muramasa.antimatter:antimatter:${antimatter_version}"
+    implementation 'com.github.gregtech-intergalactical:antimatter:0.0.+'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+
     if (local_dev_dependancies.toBoolean()) {
-        compile project(":antimatterapi")
         compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
         runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
     }
@@ -115,3 +116,36 @@ dependencies {
 jar {
     zip64 true
 }
+
+task sourcesJar(type: Jar) {
+    classifier 'sources'
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        gti(MavenPublication) {
+            artifact jar
+        }
+    }
+
+    repositories {
+        if (System.env.MAVEN_URL) {
+            maven {
+                url = System.env.MAVEN_URL
+
+                if (System.env.MAVEN_USERNAME && System.env.MAVEN_PASSWORD) {
+                    authentication {
+                        basic(BasicAuthentication)
+                    }
+
+                    credentials {
+                        username = System.env.USERNAME
+                        password = System.env.PASSWORD
+                    }
+                }
+            }
+        }
+    }
+}
+
