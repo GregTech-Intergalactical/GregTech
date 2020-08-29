@@ -96,7 +96,9 @@ public class Machines {
     public static BasicMachine PLASMA_GENERATOR = new BasicMachine(Ref.ID, "plasma_generator", PLASMA_FUELS, IV, LUV, ZPM, ITEM, FLUID);
 
     public static BlockBatteryBufferCreative CREATIVE_ENERGY_BUFFER = new BlockBatteryBufferCreative(Ref.ID, "creative_energy_buffer", ENERGY);
-    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer", ENERGY,ITEM,GUI).setTile(m -> () -> new TileBatteryBuffer(m));
+    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four", ENERGY,ITEM,GUI).setTile(m -> () -> new TileBatteryBuffer(m));
+    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one", ENERGY,ITEM,GUI).setTile(m -> () -> new TileBatteryBuffer(m));
+    public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine", ENERGY,ITEM,GUI).setTile(m -> () -> new TileBatteryBuffer(m));
 
 
     public static void init() {
