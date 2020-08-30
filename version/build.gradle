@@ -1,0 +1,86 @@
+plugins {
+    id 'org.ajoberstar.grgit' version '3.0.0'
+}
+
+def loadProperties(String filename) {
+    def properties = new Properties()
+    def file = new File(project.projectDir, filename);
+    if (file.exists()) {
+        properties.load(new FileReader(file))
+    }
+    return properties
+}
+
+def storeProperties(Properties properties, String filename, String comment) {
+    def file = new File(project.projectDir, filename);
+    if (!file.exists()) {
+        file.createNewFile()
+    }
+    properties.store(new FileWriter(file), comment)
+}
+
+def getVersionAppendage() {
+    if (System.env.VERSION_APPENDICE) {
+        return System.env.VERSION_APPENDICE
+    }
+
+    if (System.env.TRAVIS) {
+        return "." + System.env.TRAVIS_BUILD_NUMBER
+    }
+
+    if (useGitRef && grgit) {
+        return "-" + grgit.head().abbreviatedId
+    }
+
+    return '-unknown'
+}
+
+def getVersion() {
+    def versionProperties = loadProperties(versionFile)
+    def major = versionProperties.getProperty('version.major', '0')
+    def minor = versionProperties.getProperty('version.minor', '0')
+    def revision = versionProperties.getProperty('version.revision', '0')
+
+    return major + '.' + minor + '.' + revision + getVersionAppendage()
+}
+
+def printVersion() {
+    println("****************************************")
+    printf("* Current version: %-19s *%n", rootProject.version)
+    println("****************************************")
+}
+
+task bumpMajor {
+    doLast {
+        def versionProperties = loadProperties(versionFile)
+        def major = Integer.parseInt(versionProperties.getProperty('version.major', '0'))
+        versionProperties.setProperty('version.major', Integer.toString(major + 1))
+        versionProperties.setProperty('version.minor', '0')
+        versionProperties.setProperty('version.revision', '0')
+        storeProperties(versionProperties, versionFile, 'Version file')
+    }
+}
+
+task bumpMinor {
+    doLast {
+        def versionProperties = loadProperties(versionFile)
+        def major = Integer.parseInt(versionProperties.getProperty('version.minor', '0'))
+        versionProperties.setProperty('version.minor', Integer.toString(major + 1))
+        versionProperties.setProperty('version.revision', '0')
+        storeProperties(versionProperties, versionFile, 'Version file')
+    }
+}
+
+task bumpRevision {
+    doLast {
+        def versionProperties = loadProperties(versionFile)
+        def major = Integer.parseInt(versionProperties.getProperty('version.revision', '0'))
+        versionProperties.setProperty('version.revision', Integer.toString(major + 1))
+        storeProperties(versionProperties, versionFile, 'Version file')
+    }
+}
+
+version = getVersion()
+rootProject.version = version
+
+printVersion()

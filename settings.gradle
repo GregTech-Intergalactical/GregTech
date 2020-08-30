@@ -1,6 +1,22 @@
-//include "tesseractapi"
-//project(":tesseractapi").projectDir = file("../TesseractAPI")
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
 
-include ":antimatterapi"
-project(":antimatterapi").projectDir = file("../AntimatterAPI")
-include ':antimatterapi:tesseract'
+        maven { url = 'https://files.axelandre42.ovh/maven/' }
+        maven { url = 'https://files.minecraftforge.net/maven/' }
+        jcenter()
+        mavenCentral()
+        maven { url 'http://dvs1.progwml6.com/files/maven' }
+
+    }
+}
+//include 'version'
+
+include ":antimatter"
+project(":antimatter").projectDir = file("antimatter")
+
+include ":tesseract"
+project(":tesseract").projectDir = file("antimatter/tesseract")
+
+include ":forge"
+project(":forge").projectDir = file("antimatter/tesseract/forge")
