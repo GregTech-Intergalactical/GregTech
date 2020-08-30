@@ -1,0 +1,3 @@
+[submodule "AntimatterAPI"]
+	path = AntimatterAPI
+	url = https://github.com/GregTech-Intergalactical/AntimatterAPI
