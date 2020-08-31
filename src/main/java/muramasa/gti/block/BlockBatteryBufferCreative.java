@@ -3,7 +3,7 @@ package muramasa.gti.block;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.gti.tile.single.TileBatteryBufferCreative;
+import muramasa.antimatter.tile.single.TileBatteryBufferCreative;
 
 import static muramasa.antimatter.machine.MachineFlag.*;
 
