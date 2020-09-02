@@ -10,7 +10,7 @@ public class BlockBatteryBufferCreative extends Machine<BlockBatteryBufferCreati
 
     public BlockBatteryBufferCreative(String domain, String id, Object... data) {
         super(domain, id, data);
-        setTile(() -> new TileBatteryBufferCreative(this));
+        setTile(() -> new TileBatteryBufferCreative(this, 16));
         setTiers(Tier.getAllElectric());
         addFlags(BASIC, ENERGY, COVERABLE, CONFIGURABLE);
     }

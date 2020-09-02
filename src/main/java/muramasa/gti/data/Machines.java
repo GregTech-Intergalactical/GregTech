@@ -100,7 +100,7 @@ public class Machines {
     public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four", ENERGY, CONFIGURABLE, ITEM, GUI).setTile(m -> () -> new TileBatteryBuffer(m));
     public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one", ENERGY, CONFIGURABLE, ITEM, GUI).setTile(m -> () -> new TileBatteryBuffer(m));
     public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine", ENERGY, CONFIGURABLE, ITEM, GUI).setTile(m -> () -> new TileBatteryBuffer(m));
-    public static BasicMachine TRANSFORMER = new BasicMachine(Ref.ID, "transformer", ENERGY, CONFIGURABLE, ITEM, GUI).setTile(m -> () -> new TileTransformer(m, 1));
+    public static BasicMachine TRANSFORMER = new BasicMachine(Ref.ID, "transformer", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileTransformer(m, 1));
     public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(Ref.ID, "transformer_hiamp", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileTransformer(m, 4));
     public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(Ref.ID, "transformer_ultra", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileTransformer(m, 16));
 
