@@ -16,7 +16,10 @@ public class MachineRecipeLoader {
     public static RecipeBuilder RB = new RecipeBuilder();
 
     public static void init() {
-        
+
+        //TEMP
+        STEAM_FUELS.RB().fi(Steam.getGas(2)).add(1,1);
+
         //TODO: Glass processing recipes here
         LATHING.RB().ii(PLATE.get(Glass, 1)).io(LENS.get(Glass, 1), DUST_SMALL.get(Glass, 1)).add(20, 12);
 
