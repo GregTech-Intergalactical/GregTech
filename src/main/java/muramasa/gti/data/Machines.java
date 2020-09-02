@@ -90,11 +90,11 @@ public class Machines {
 
     public static TankMachine QUANTUM_TANK = new TankMachine(Ref.ID, "quantum_tank");
 
-    public static BasicMachine STEAM_GENERATOR = new BasicMachine(Ref.ID, "steam_generator", STEAM_FUELS, LV, MV, HV, ITEM, FLUID);
+    public static BasicMachine STEAM_GENERATOR = new BasicMachine(Ref.ID, "steam_generator", STEAM_FUELS, LV, MV, HV, ITEM, FLUID, GENERATOR);
     public static BasicMachine GAS_GENERATOR = new BasicMachine(Ref.ID, "gas_generator", GAS_FUELS, LV, MV, HV, ITEM, FLUID);
     public static BasicMachine COMBUSTION_GENERATOR = new BasicMachine(Ref.ID, "combustion_generator", COMBUSTION_FUELS, LV, MV, HV, ITEM, FLUID);
     public static BasicMachine NAQUADAH_GENERATOR = new BasicMachine(Ref.ID, "naquadah_generator", NAQUADAH_FUELS, EV, IV, LUV, ITEM, FLUID);
-    public static BasicMachine PLASMA_GENERATOR = new BasicMachine(Ref.ID, "plasma_generator", PLASMA_FUELS, IV, LUV, ZPM, ITEM, FLUID);
+    public static BasicMachine PLASMA_GENERATOR = new BasicMachine(Ref.ID, "plasma_generator", PLASMA_FUELS, IV, LUV, ZPM, ITEM, FLUID, GENERATOR);
 
     public static BlockBatteryBufferCreative CREATIVE_ENERGY_BUFFER = new BlockBatteryBufferCreative(Ref.ID, "creative_energy_buffer", ENERGY, CONFIGURABLE);
     public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four", ENERGY, CONFIGURABLE, ITEM, GUI).setTile(m -> () -> new TileBatteryBuffer(m));

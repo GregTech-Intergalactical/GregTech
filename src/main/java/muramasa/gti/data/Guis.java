@@ -15,7 +15,7 @@ public class Guis {
     //TODO move these to the API somehow
     public static GuiData MULTI_DISPLAY = new GuiData("antimatter", "multi_display").add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63);
     public static GuiData MULTI_DISPLAY_COMPACT = new GuiData("antimatter", "multi_display").add(MULTI_DISPLAY).setPadding(0, 0, 0, 0);
-    public static GuiData BASIC_TANK = new GuiData("antimatter", "basic_tank").add(IT_IN, 8, 17).add(IT_OUT, 8, 53).add(FL_IN, 106, 43);
+    public static GuiData BASIC_TANK = new GuiData("antimatter", "basic_tank").add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58).add(FL_IN, 106, 43);
 
     public static GuiData ORE_BYPRODUCTS = new GuiData("antimatter", "ore_byproducts") {
         @Override

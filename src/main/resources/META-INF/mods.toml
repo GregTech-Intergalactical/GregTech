@@ -1,19 +1,19 @@
 modLoader="javafml"
 #loaderVersion="[${loader_version},)"
 loaderVersion="[31,)"
-issueTrackerURL="http://my.issue.tracker/"
+issueTrackerURL="https://github.com/GregTech-Intergalactical/GregTech/issues"
 
 [[mods]]
 modId="gti"
 #version="${version}"
 version="0.0.1"
-displayName="GregTech Intergalactical"
-updateJSONURL="http://myurl.me/"
-displayURL="http://example.com/"
-logoFile="examplemod.png"
-credits="GregoriusTechneticies for his work on GregTech"
-authors="Muramasa"
-description='''The approved continuation of GregTech 5 Unoficial'''
+displayName="GregTech"
+#updateJSONURL="http://myurl.me/"
+displayURL="https://github.com/GregTech-Intergalactical/GregTech"
+#logoFile="gregtech.png"
+credits="GregoriusTechneticies for his previous versions of GregTech. And the current GregTech community for suggestions and ideas."
+authors="Muramasa, Rongmario"
+description='''The Approved Continuation. Rewrite. And Re-envisioning of GregTech 5'''
 [[dependencies.gti]]
     modId="antimatter"
     mandatory=true
