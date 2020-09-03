@@ -20,9 +20,9 @@ public class TileEntitySteamMachine extends TileEntityMachine {
     }
 
     @Override
-    public void onInit() {
+    public void onFirstTick() {
         if (isServerSide() && has(RECIPE)) recipeHandler = Optional.of(new FluidResourceMachineRecipeHandler<>(this, STEAM));
-        super.onInit();
+        super.onFirstTick();
     }
 
     public FluidStack getSteam() {
