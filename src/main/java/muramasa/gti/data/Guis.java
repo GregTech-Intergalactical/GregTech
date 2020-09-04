@@ -2,7 +2,6 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.gui.GuiData;
-import muramasa.antimatter.integration.jei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.Tier;
 import net.minecraft.util.ResourceLocation;
 
@@ -23,11 +22,6 @@ public class Guis {
             return new ResourceLocation(loc.getNamespace(), "textures/gui/" + loc.getPath() + ".png");
         }
     }.setPadding(0, 0, 0, 0).add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34);
-
-    public static IInfoRenderer STEAM_INFO_RENDERER = (r, m, startY, width, height, mouseX, mouseY) -> {
-        if (r.hasInputFluids()) m.fontRenderer.drawString("Steam: " + r.getPower() + "L/t (" + r.getSpecialValue() + " total)", 10, startY, 0x000000);
-        if (r.getDuration() > 0) m.fontRenderer.drawString("Time: " + (r.getDuration() / (float)20) + "s (" + r.getDuration() + " ticks)", 10, startY + 10, 0x000000);
-    };
 
     public static void init() {
 
@@ -88,28 +82,28 @@ public class Guis {
                 .add(ENERGY,62,39).add(ENERGY,80,39).add(ENERGY,98,39)
                 .add(ENERGY,62,57).add(ENERGY,80,57).add(ENERGY,98,57);
 
-        COAL_BOILER.getGui().add(ALLOY_SMELTER); //TODO
+        COAL_BOILER.getGui().add(ALLOY_SMELTER);
         LAVA_BOILER.getGui().add(ALLOY_SMELTER);
         SOLAR_BOILER.getGui().add(ALLOY_SMELTER);
 
-        STEAM_ALLOY_SMELTER.getGui().add(BRONZE, ALLOY_SMELTER).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_ALLOY_SMELTER.getGui().add(STEEL, ALLOY_SMELTER).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_COMPRESSOR.getGui().add(BRONZE, COMPRESSOR).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_COMPRESSOR.getGui().add(STEEL, COMPRESSOR).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_FURNACE.getGui().add(BRONZE, FURNACE).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_FURNACE.getGui().add(STEEL, FURNACE).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_EXTRACTOR.getGui().add(BRONZE, EXTRACTOR).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_EXTRACTOR.getGui().add(STEEL, EXTRACTOR).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_PULVERIZER.getGui().add(BRONZE, PULVERIZER).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_PULVERIZER.getGui().add(STEEL, PULVERIZER).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_FORGE_HAMMER.getGui().add(BRONZE, FORGE_HAMMER).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_FORGE_HAMMER.getGui().add(STEEL, FORGE_HAMMER).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
+        STEAM_ALLOY_SMELTER.getGui().add(BRONZE, ALLOY_SMELTER).add(BRONZE, FL_IN, 53, 63);
+        STEAM_ALLOY_SMELTER.getGui().add(STEEL, ALLOY_SMELTER).add(STEEL, FL_IN, 53, 63);
+        STEAM_COMPRESSOR.getGui().add(BRONZE, COMPRESSOR).add(BRONZE, FL_IN, 53, 63);
+        STEAM_COMPRESSOR.getGui().add(STEEL, COMPRESSOR).add(STEEL, FL_IN, 53, 63);
+        STEAM_FURNACE.getGui().add(BRONZE, FURNACE).add(BRONZE, FL_IN, 53, 63);
+        STEAM_FURNACE.getGui().add(STEEL, FURNACE).add(STEEL, FL_IN, 53, 63);
+        STEAM_EXTRACTOR.getGui().add(BRONZE, EXTRACTOR).add(BRONZE, FL_IN, 53, 63);
+        STEAM_EXTRACTOR.getGui().add(STEEL, EXTRACTOR).add(STEEL, FL_IN, 53, 63);
+        STEAM_PULVERIZER.getGui().add(BRONZE, PULVERIZER).add(BRONZE, FL_IN, 53, 63);
+        STEAM_PULVERIZER.getGui().add(STEEL, PULVERIZER).add(STEEL, FL_IN, 53, 63);
+        STEAM_FORGE_HAMMER.getGui().add(BRONZE, FORGE_HAMMER).add(BRONZE, FL_IN, 53, 63);
+        STEAM_FORGE_HAMMER.getGui().add(STEEL, FORGE_HAMMER).add(STEEL, FL_IN, 53, 63);
 
-        STEAM_GENERATOR.getGui().add(BASIC_TANK);
+        //STEAM_GENERATOR.getGui().add(BASIC_TANK);
         GAS_GENERATOR.getGui().add(BASIC_TANK);
         COMBUSTION_ENGINE.getGui().add(BASIC_TANK);
         NAQUADAH_GENERATOR.getGui().add(BASIC_TANK);
-        PLASMA_GENERATOR.getGui().add(BASIC_TANK);
+        //PLASMA_GENERATOR.getGui().add(BASIC_TANK);
 
         QUANTUM_TANK.getGui().add(BASIC_TANK);
 
@@ -162,5 +156,7 @@ public class Guis {
         HATCH_FLUID_O.getGui().add(ZPM, HATCH_FLUID_O, ULV);
         HATCH_FLUID_O.getGui().add(UV, FL_OUT, 61, 16).add(UV, FL_OUT, 79, 16).add(UV, FL_OUT, 97, 16).add(UV, FL_OUT, 61, 34).add(UV, FL_OUT, 79, 34).add(UV, FL_OUT, 97, 34).add(UV, FL_OUT, 61, 52).add(UV, FL_OUT, 79, 52).add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.getGui().add(MAX, HATCH_FLUID_O, ULV);
+
+        TRANSFORMER_DIGITAL.getGui().addButton(14, 19, 12, 12, "/").addButton(32, 19, 12, 12, "-").addButton(14, 34, 12, 12, "/").addButton(32, 34, 12, 12, "-").addButton(14, 49, 12, 12, "/").addButton(32, 49, 12, 12, "-").addButton(14, 64, 12, 12, "/").addButton(32, 64, 12, 12, "-").addButton(132, 19, 12, 12, "+").addButton(150, 19, 12, 12, "*").addButton(132, 34, 12, 12, "+").addButton(150, 34, 12, 12, "*").addButton(132, 49, 12, 12, "+").addButton(150, 49, 12, 12, "*").addButton(132, 64, 12, 12, "+").addButton(150, 64, 12, 12, "*");
     }
 }

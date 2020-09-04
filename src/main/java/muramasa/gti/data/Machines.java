@@ -1,11 +1,12 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.machine.types.*;
-import muramasa.antimatter.tile.single.TileBatteryBuffer;
-import muramasa.antimatter.tile.single.TileTransformer;
-import muramasa.gti.tile.TileEntitySteamMachine;
+import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
+import muramasa.antimatter.tile.single.TileEntityDigitalTransformer;
+import muramasa.antimatter.tile.single.TileEntityTransformer;
+import muramasa.gti.tile.single.TileEntitySteamMachine;
 import muramasa.gti.Ref;
-import muramasa.gti.block.BlockBatteryBufferCreative;
+import muramasa.gti.block.BlockInfiniteStorage;
 import muramasa.gti.tile.multi.*;
 
 import static muramasa.antimatter.machine.MachineFlag.*;
@@ -55,12 +56,12 @@ public class Machines {
     public static BasicMachine COAL_BOILER = new BasicMachine(Ref.ID, "coal_boiler", SMALL_BOILERS, BRONZE, STEEL, STEAM, ITEM, FLUID, Textures.BOILER_HANDLER);
     public static BasicMachine LAVA_BOILER = new BasicMachine(Ref.ID, "lava_boiler", SMALL_BOILERS, STEEL, STEAM, ITEM, FLUID); //TODO
     public static BasicMachine SOLAR_BOILER = new BasicMachine(Ref.ID, "solar_boiler", SMALL_BOILERS, BRONZE, STEAM, ITEM, FLUID); //TODO
-    public static BasicMachine STEAM_FURNACE = new BasicMachine(Ref.ID, "steam_furnace", TileEntitySteamMachine.class, BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_SMELTING);
-    public static BasicMachine STEAM_PULVERIZER = new BasicMachine(Ref.ID, "steam_pulverizer", TileEntitySteamMachine.class, BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_PULVERIZING);
-    public static BasicMachine STEAM_EXTRACTOR = new BasicMachine(Ref.ID, "steam_extractor", TileEntitySteamMachine.class, BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_EXTRACTING);
-    public static BasicMachine STEAM_FORGE_HAMMER = new BasicMachine(Ref.ID, "steam_forge_hammer", TileEntitySteamMachine.class, BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_HAMMERING);
-    public static BasicMachine STEAM_COMPRESSOR = new BasicMachine(Ref.ID, "steam_compressor", TileEntitySteamMachine.class, BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_COMPRESSING);
-    public static BasicMachine STEAM_ALLOY_SMELTER = new BasicMachine(Ref.ID, "steam_alloy_smelter", TileEntitySteamMachine.class, BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_ALLOY_SMELTING);
+    public static BasicMachine STEAM_FURNACE = new BasicMachine(Ref.ID, "steam_furnace", BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_SMELTING).setTile(m -> () -> new TileEntitySteamMachine(m));
+    public static BasicMachine STEAM_PULVERIZER = new BasicMachine(Ref.ID, "steam_pulverizer", BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_PULVERIZING).setTile(m -> () -> new TileEntitySteamMachine(m));
+    public static BasicMachine STEAM_EXTRACTOR = new BasicMachine(Ref.ID, "steam_extractor", BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_EXTRACTING).setTile(m -> () -> new TileEntitySteamMachine(m));
+    public static BasicMachine STEAM_FORGE_HAMMER = new BasicMachine(Ref.ID, "steam_forge_hammer", BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_HAMMERING).setTile(m -> () -> new TileEntitySteamMachine(m));
+    public static BasicMachine STEAM_COMPRESSOR = new BasicMachine(Ref.ID, "steam_compressor", BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_COMPRESSING).setTile(m -> () -> new TileEntitySteamMachine(m));
+    public static BasicMachine STEAM_ALLOY_SMELTER = new BasicMachine(Ref.ID, "steam_alloy_smelter",BRONZE, STEEL, STEAM, ITEM, FLUID, STEAM_ALLOY_SMELTING).setTile(m -> () -> new TileEntitySteamMachine(m));
 
     public static MultiMachine COKE_OVEN = new MultiMachine(Ref.ID, "coke_oven", COKING, LV, ITEM).setTile(m -> () -> new TileEntityCokeOven(m));
     public static MultiMachine PRIMITIVE_BLAST_FURNACE = new MultiMachine(Ref.ID, "primitive_blast_furnace", BASIC_BLASTING, LV, ITEM).setTile(m -> () -> new TileEntityPrimitiveBlastFurnace(m));
@@ -96,13 +97,14 @@ public class Machines {
     public static BasicMachine NAQUADAH_GENERATOR = new BasicMachine(Ref.ID, "naquadah_generator", NAQUADAH_FUELS, EV, IV, LUV, ITEM, FLUID);
     public static BasicMachine PLASMA_GENERATOR = new BasicMachine(Ref.ID, "plasma_generator", PLASMA_FUELS, IV, LUV, ZPM, ITEM, FLUID, GENERATOR);
 
-    public static BlockBatteryBufferCreative CREATIVE_ENERGY_BUFFER = new BlockBatteryBufferCreative(Ref.ID, "creative_energy_buffer", ENERGY, CONFIGURABLE);
-    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four", ENERGY, CONFIGURABLE, ITEM, GUI).setTile(m -> () -> new TileBatteryBuffer(m));
-    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one", ENERGY, CONFIGURABLE, ITEM, GUI).setTile(m -> () -> new TileBatteryBuffer(m));
-    public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine", ENERGY, CONFIGURABLE, ITEM, GUI).setTile(m -> () -> new TileBatteryBuffer(m));
-    public static BasicMachine TRANSFORMER = new BasicMachine(Ref.ID, "transformer", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileTransformer(m, 1));
-    public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(Ref.ID, "transformer_hiamp", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileTransformer(m, 4));
-    public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(Ref.ID, "transformer_ultra", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileTransformer(m, 16));
+    public static BlockInfiniteStorage INFINITE_STORAGE = new BlockInfiniteStorage(Ref.ID, "infinite_storage", ENERGY, CONFIGURABLE);
+    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four", ENERGY, CONFIGURABLE, ITEM, GUI).setTile(m -> () -> new TileEntityBatteryBuffer(m));
+    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one", ENERGY, CONFIGURABLE, ITEM, GUI).setTile(m -> () -> new TileEntityBatteryBuffer(m));
+    public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine", ENERGY, CONFIGURABLE, ITEM, GUI).setTile(m -> () -> new TileEntityBatteryBuffer(m));
+    public static BasicMachine TRANSFORMER = new BasicMachine(Ref.ID, "transformer", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityTransformer(m, 1));
+    public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(Ref.ID, "transformer_hiamp", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityTransformer(m, 4));
+    public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(Ref.ID, "transformer_ultra", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityTransformer(m, 16));
+    public static BasicMachine TRANSFORMER_DIGITAL = new BasicMachine(Ref.ID, "transformer_digital", ENERGY, CONFIGURABLE, GUI).setTile(m -> () -> new TileEntityDigitalTransformer(m));//.setTiers();
 
     public static void init() {
 
