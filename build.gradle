@@ -117,8 +117,10 @@ dependencies {
    // implementation "muramasa.antimatter:antimatter:0.0.1"
     implementation 'org.apache.commons:commons-collections4:4.4'
 
-    compile project(':antimatter')
-
+    implementation project(path: ':antimatter', configuration: 'deobf')
+    if (local_dev_dependancies.toBoolean()) {
+        implementation project(path: ':forge', configuration: 'deobf')
+    }
     if (local_dev_dependancies.toBoolean()) {
         compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
         runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")

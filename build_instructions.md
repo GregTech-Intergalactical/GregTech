@@ -8,13 +8,11 @@
 
 - Run ./gradlew genIntellijRuns in GregTech root.
 
-- Run ./gradlew :antimatter:runData in GregTech root.
-
-- Run ./gradlew runData in GregTech root.
-
 - Import build into i.e. Idea.
 
-- In Edit configurations, press (+) and select Gradle. For project, select GregTech and for task, select runClient.
+- Run antimatter:runData run configuration(you might have to select antimatter.main as module)
 
-- Run the given task configuration.
+- Run runData.
+
+- Run runClient to run GregTech.
 
