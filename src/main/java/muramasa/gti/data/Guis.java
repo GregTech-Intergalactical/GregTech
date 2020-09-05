@@ -81,7 +81,7 @@ public class Guis {
         SIFTER.getGui().add(DISASSEMBLER);
         ARC_FURNACE.getGui().add(ALLOY_SMELTER); //TODO
         PLASMA_ARC_FURNACE.getGui().add(ARC_FURNACE);
-        CREATIVE_ENERGY_BUFFER.getGui().add(ALLOY_SMELTER);
+//        CREATIVE_ENERGY_BUFFER.getGui().add(ALLOY_SMELTER);
 
         BATTERY_BUFFER_FOUR.getGui().add(ENERGY,71,27).add(ENERGY,89,27).add(ENERGY,71,45).add(ENERGY,89,45);
         BATTERY_BUFFER_ONE.getGui().add(ENERGY,80,40);

@@ -4,7 +4,7 @@ import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.tile.single.TileBatteryBuffer;
 import muramasa.gti.tile.TileEntitySteamMachine;
 import muramasa.gti.Ref;
-import muramasa.gti.block.BlockBatteryBufferCreative;
+//import muramasa.gti.block.BlockBatteryBufferCreative;
 import muramasa.gti.tile.multi.*;
 
 import static muramasa.antimatter.machine.MachineFlag.*;
@@ -95,7 +95,7 @@ public class Machines {
     public static BasicMachine NAQUADAH_GENERATOR = new BasicMachine(Ref.ID, "naquadah_generator", NAQUADAH_FUELS, EV, IV, LUV, ITEM, FLUID);
     public static BasicMachine PLASMA_GENERATOR = new BasicMachine(Ref.ID, "plasma_generator", PLASMA_FUELS, IV, LUV, ZPM, ITEM, FLUID, GENERATOR);
 
-    public static BlockBatteryBufferCreative CREATIVE_ENERGY_BUFFER = new BlockBatteryBufferCreative(Ref.ID, "creative_energy_buffer", ENERGY);
+//    public static BlockBatteryBufferCreative CREATIVE_ENERGY_BUFFER = new BlockBatteryBufferCreative(Ref.ID, "creative_energy_buffer", ENERGY);
     public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four", ENERGY,ITEM,GUI).setTile(m -> () -> new TileBatteryBuffer(m));
     public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one", ENERGY,ITEM,GUI).setTile(m -> () -> new TileBatteryBuffer(m));
     public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine", ENERGY,ITEM,GUI).setTile(m -> () -> new TileBatteryBuffer(m));
