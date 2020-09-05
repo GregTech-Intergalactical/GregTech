@@ -99,11 +99,11 @@ public class Guis {
         STEAM_FORGE_HAMMER.getGui().add(BRONZE, FORGE_HAMMER).add(BRONZE, FL_IN, 53, 63);
         STEAM_FORGE_HAMMER.getGui().add(STEEL, FORGE_HAMMER).add(STEEL, FL_IN, 53, 63);
 
-        //STEAM_GENERATOR.getGui().add(BASIC_TANK);
+        STEAM_GENERATOR.getGui().add(BASIC_TANK);
         GAS_GENERATOR.getGui().add(BASIC_TANK);
         COMBUSTION_ENGINE.getGui().add(BASIC_TANK);
         NAQUADAH_GENERATOR.getGui().add(BASIC_TANK);
-        //PLASMA_GENERATOR.getGui().add(BASIC_TANK);
+        PLASMA_GENERATOR.getGui().add(BASIC_TANK);
 
         QUANTUM_TANK.getGui().add(BASIC_TANK);
 
