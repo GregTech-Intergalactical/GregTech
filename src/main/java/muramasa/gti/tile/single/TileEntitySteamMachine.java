@@ -32,12 +32,12 @@ public class TileEntitySteamMachine extends TileEntityMachine {
     }
 
     @Override
-    public void drawInfo(FontRenderer renderer) {
+    public void drawInfo(FontRenderer renderer, int left, int top) {
         recipeHandler.ifPresent(h -> {
             Recipe r = h.getActiveRecipe();
             if (r != null) {
-                if (r.hasInputFluids()) renderer.drawString("Steam: " + r.getPower() + "L/t (" + r.getSpecialValue() + " total)", 10, 0, 16448255);
-                if (r.getDuration() > 0) renderer.drawString("Time: " + (r.getDuration() / (float) 20) + "s (" + r.getDuration() + " ticks)", 10, 10, 16448255);
+                if (r.hasInputFluids()) renderer.drawString("Steam: " + r.getPower() + "L/t (" + r.getSpecialValue() + " total)", left + 10, top, 16448255);
+                if (r.getDuration() > 0) renderer.drawString("Time: " + (r.getDuration() / (float) 20) + "s (" + r.getDuration() + " ticks)", left + 10, top + 10, 16448255);
             }
         });
     }

@@ -6,6 +6,8 @@ import muramasa.antimatter.machine.Tier;
 import net.minecraft.util.ResourceLocation;
 
 import static muramasa.antimatter.gui.SlotType.*;
+import static muramasa.antimatter.gui.ButtonBody.*;
+import static muramasa.antimatter.gui.ButtonOverlay.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gti.data.Machines.*;
 
@@ -157,6 +159,6 @@ public class Guis {
         HATCH_FLUID_O.getGui().add(UV, FL_OUT, 61, 16).add(UV, FL_OUT, 79, 16).add(UV, FL_OUT, 97, 16).add(UV, FL_OUT, 61, 34).add(UV, FL_OUT, 79, 34).add(UV, FL_OUT, 97, 34).add(UV, FL_OUT, 61, 52).add(UV, FL_OUT, 79, 52).add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.getGui().add(MAX, HATCH_FLUID_O, ULV);
 
-        TRANSFORMER_DIGITAL.getGui().addButton(14, 19, 12, 12, "/").addButton(32, 19, 12, 12, "-").addButton(14, 34, 12, 12, "/").addButton(32, 34, 12, 12, "-").addButton(14, 49, 12, 12, "/").addButton(32, 49, 12, 12, "-").addButton(14, 64, 12, 12, "/").addButton(32, 64, 12, 12, "-").addButton(132, 19, 12, 12, "+").addButton(150, 19, 12, 12, "*").addButton(132, 34, 12, 12, "+").addButton(150, 34, 12, 12, "*").addButton(132, 49, 12, 12, "+").addButton(150, 49, 12, 12, "*").addButton(132, 64, 12, 12, "+").addButton(150, 64, 12, 12, "*");
+        TRANSFORMER_DIGITAL.getGui().addButton(13, 15, 16, 16, GREY, DIV).addButton(29, 15, 16, 16, GREY, MINUS).addButton(13, 31, 16, 16, GREY, DIV).addButton(29, 31, 16, 16, GREY, MINUS).addButton(13, 47, 16, 16, GREY, DIV).addButton(29, 47, 16, 16, GREY, MINUS).addButton(13, 63, 16, 16, GREY, DIV).addButton(29, 63, 16, 16, GREY, MINUS).addButton(131, 15, 16, 16, GREY, PLUS).addButton(147, 15, 16, 16, GREY, MULT).addButton(131, 31, 16, 16, GREY, PLUS).addButton(147, 31, 16, 16, GREY, MULT).addButton(131, 47, 16, 16, GREY, PLUS).addButton(147, 47, 16, 16, GREY, MULT).addButton(131, 63, 16, 16, GREY, PLUS).addButton(147, 63, 16, 16, GREY, MULT);
     }
 }
