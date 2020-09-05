@@ -18,5 +18,5 @@ project(":antimatter").projectDir = file("antimatter")
 include ":tesseract"
 project(":tesseract").projectDir = file("antimatter/tesseract")
 
-include ":forge"
-project(":forge").projectDir = file("antimatter/tesseract/forge")
+include ":tesseract:forge"
+project(":tesseract:forge").projectDir = file("antimatter/tesseract/forge")
