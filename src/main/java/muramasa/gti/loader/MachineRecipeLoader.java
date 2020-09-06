@@ -1,9 +1,18 @@
 package muramasa.gti.loader;
 
 import muramasa.antimatter.Data;
+import muramasa.antimatter.recipe.Recipe;
+import muramasa.antimatter.recipe.RecipeInput;
+import muramasa.antimatter.recipe.TagInput;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.gti.data.GregTechData;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagCollection;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.NOBBF;
@@ -20,6 +29,13 @@ public class MachineRecipeLoader {
         //TEMP
         STEAM_FUELS.RB().fi(Steam.getGas(2)).add(1,1);
 
+        //DEBUG AREA!
+        LASER_ENGRAVING.RB().it(new TagInput(ItemTags.LOGS, 1)).ii(new ItemStack(Items.APPLE,1)).io(new ItemStack(GEM.get(Coal),1)).add(10, 16);
+
+        Recipe r = LASER_ENGRAVING.find(new ItemStack[]{new ItemStack(Items.ACACIA_LOG,1)},null);
+        assert(r == null);
+        r = LASER_ENGRAVING.find(new ItemStack[]{new ItemStack(Items.ACACIA_LOG,1),new ItemStack(Items.APPLE,1)},null);
+        assert(r != null);
         //TODO: Glass processing recipes here
         LATHING.RB().ii(PLATE.get(Glass, 1)).io(LENS.get(Glass, 1), DUST_SMALL.get(Glass, 1)).add(20, 12);
 

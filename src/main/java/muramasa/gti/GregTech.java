@@ -12,6 +12,9 @@ import muramasa.gti.loader.MachineRecipeLoader;
 import muramasa.gti.loader.MaterialRecipeLoader;
 import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.proxy.ClientHandler;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TagsUpdatedEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -19,9 +22,22 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
 @Mod(Ref.ID)
 public class GregTech extends AntimatterMod {
 
+    public static class WorldLoadListener {
+        public static boolean loaded = false;
+        @SubscribeEvent
+        public static void TagsUpdatedEvent(TagsUpdatedEvent event)
+        {
+            if (!loaded) {
+                MaterialRecipeLoader.init();
+                MachineRecipeLoader.init();
+                loaded = true;
+            }
+        }
+    }
     public static GregTech INSTANCE;
     public static Logger LOGGER = LogManager.getLogger(Ref.ID);
 
@@ -29,7 +45,7 @@ public class GregTech extends AntimatterMod {
         super();
         INSTANCE = this;
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-
+        MinecraftForge.EVENT_BUS.register(WorldLoadListener.class);
         //GregTechAPI.addRegistrar(new ForestryRegistrar());
         //GregTechAPI.addRegistrar(new GalacticraftRegistrar());
         //if (ModList.get().isLoaded(Ref.MOD_UB)) GregTechAPI.addRegistrar(new UndergroundBiomesRegistrar());
@@ -64,8 +80,6 @@ public class GregTech extends AntimatterMod {
                 break;
             case DATA_READY:
                 Structures.init();
-                MaterialRecipeLoader.init();
-                MachineRecipeLoader.init();
                 //GregTechAPI.registerFluidCell(Data.CellTin.get(1));
                 //GregTechAPI.registerFluidCell(Data.CellSteel.get(1));
                 //GregTechAPI.registerFluidCell(Data.CellTungstensteel.get(1));
