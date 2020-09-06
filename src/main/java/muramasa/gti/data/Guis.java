@@ -160,21 +160,21 @@ public class Guis {
         HATCH_FLUID_O.getGui().add(MAX, HATCH_FLUID_O, ULV);
 
         TRANSFORMER_DIGITAL.getGui()
-                .addButton(9, 17, 16, 16, APAD_LEFT)
-                .addButton(24, 17, 16, 16, PAD_LEFT)
-                .addButton(9, 32, 16, 16, APAD_LEFT)
-                .addButton(24, 32, 16, 16, PAD_LEFT)
-                .addButton(9, 47, 16, 16, APAD_LEFT)
-                .addButton(24, 47, 16, 16, PAD_LEFT)
-                .addButton(9, 62, 16, 16, APAD_LEFT)
-                .addButton(24, 62, 16, 16, PAD_LEFT)
-                .addButton(136, 17, 16, 16, PAD_RIGHT)
-                .addButton(151, 17, 16, 16, APAD_RIGHT)
-                .addButton(136, 32, 16, 16, PAD_RIGHT)
-                .addButton(151, 32, 16, 16, APAD_RIGHT)
-                .addButton(136, 47, 16, 16, PAD_RIGHT)
-                .addButton(151, 47, 16, 16, APAD_RIGHT)
-                .addButton(136, 62, 16, 16, PAD_RIGHT)
-                .addButton(151, 62, 16, 16, APAD_RIGHT);
+                .addButton(10, 18, 14, 14, APAD_LEFT)
+                .addButton(25, 18, 14, 14, PAD_LEFT)
+                .addButton(10, 33, 14, 14, APAD_LEFT)
+                .addButton(25, 33, 14, 14, PAD_LEFT)
+                .addButton(10, 48, 14, 14, APAD_LEFT)
+                .addButton(25, 48, 14, 14, PAD_LEFT)
+                .addButton(10, 63, 14, 14, APAD_LEFT)
+                .addButton(25, 63, 14, 14, PAD_LEFT)
+                .addButton(137, 18, 14, 14, PAD_RIGHT)
+                .addButton(152, 18, 14, 14, APAD_RIGHT)
+                .addButton(137, 33, 14, 14, PAD_RIGHT)
+                .addButton(152, 33, 14, 14, APAD_RIGHT)
+                .addButton(137, 48, 14, 14, PAD_RIGHT)
+                .addButton(152, 48, 14, 14, APAD_RIGHT)
+                .addButton(137, 63, 14, 14, PAD_RIGHT)
+                .addButton(152, 63, 14, 14, APAD_RIGHT);
     }
 }
