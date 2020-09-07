@@ -27,15 +27,11 @@ import org.apache.logging.log4j.Logger;
 public class GregTech extends AntimatterMod {
 
     public static class WorldLoadListener {
-        public static boolean loaded = false;
         @SubscribeEvent
         public static void TagsUpdatedEvent(TagsUpdatedEvent event)
         {
-            if (!loaded) {
-                MaterialRecipeLoader.init();
-                MachineRecipeLoader.init();
-                loaded = true;
-            }
+            MaterialRecipeLoader.init();
+            MachineRecipeLoader.init();
         }
     }
     public static GregTech INSTANCE;
