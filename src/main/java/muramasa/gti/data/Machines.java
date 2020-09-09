@@ -1,6 +1,5 @@
 package muramasa.gti.data;
 
-import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
 import muramasa.antimatter.tile.single.TileEntityDigitalTransformer;
