@@ -9,21 +9,11 @@ import muramasa.antimatter.tile.TileEntityMachine;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraftforge.fluids.FluidStack;
 
-import java.util.Optional;
-
-import static muramasa.antimatter.machine.MachineFlag.RECIPE;
-
 public class TileEntitySteamMachine extends TileEntityMachine {
-
-    private static FluidStack STEAM;
 
     public TileEntitySteamMachine(Machine<?> type) {
         super(type);
-        recipeHandler.init((tile) -> new FluidResourceMachineRecipeHandler<>(tile, STEAM));
-    }
-
-    public FluidStack getSteam() {
-        return STEAM != null ? STEAM : (STEAM = Data.GAS.get().get(Material.get("steam"), 1));
+        recipeHandler.setup((tile, tag) -> new FluidResourceMachineRecipeHandler<>(tile, tag, Data.GAS.get().get(Material.get("steam"), 1)));
     }
 
     @Override
