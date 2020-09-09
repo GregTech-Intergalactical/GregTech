@@ -2,11 +2,12 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.gui.GuiData;
-import muramasa.antimatter.integration.jei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.Tier;
 import net.minecraft.util.ResourceLocation;
 
 import static muramasa.antimatter.gui.SlotType.*;
+import static muramasa.antimatter.gui.ButtonBody.*;
+import static muramasa.antimatter.gui.ButtonOverlay.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gti.data.Machines.*;
 
@@ -23,11 +24,6 @@ public class Guis {
             return new ResourceLocation(loc.getNamespace(), "textures/gui/" + loc.getPath() + ".png");
         }
     }.setPadding(0, 0, 0, 0).add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34);
-
-    public static IInfoRenderer STEAM_INFO_RENDERER = (r, m, startY, width, height, mouseX, mouseY) -> {
-        if (r.hasInputFluids()) m.fontRenderer.drawString("Steam: " + r.getPower() + "L/t (" + r.getSpecialValue() + " total)", 10, startY, 0x000000);
-        if (r.getDuration() > 0) m.fontRenderer.drawString("Time: " + (r.getDuration() / (float)20) + "s (" + r.getDuration() + " ticks)", 10, startY + 10, 0x000000);
-    };
 
     public static void init() {
 
@@ -81,7 +77,6 @@ public class Guis {
         SIFTER.getGui().add(DISASSEMBLER);
         ARC_FURNACE.getGui().add(ALLOY_SMELTER); //TODO
         PLASMA_ARC_FURNACE.getGui().add(ARC_FURNACE);
-//        CREATIVE_ENERGY_BUFFER.getGui().add(ALLOY_SMELTER);
 
         BATTERY_BUFFER_FOUR.getGui().add(ENERGY,71,27).add(ENERGY,89,27).add(ENERGY,71,45).add(ENERGY,89,45);
         BATTERY_BUFFER_ONE.getGui().add(ENERGY,80,40);
@@ -89,22 +84,22 @@ public class Guis {
                 .add(ENERGY,62,39).add(ENERGY,80,39).add(ENERGY,98,39)
                 .add(ENERGY,62,57).add(ENERGY,80,57).add(ENERGY,98,57);
 
-        COAL_BOILER.getGui().add(ALLOY_SMELTER); //TODO
+        COAL_BOILER.getGui().add(ALLOY_SMELTER);
         LAVA_BOILER.getGui().add(ALLOY_SMELTER);
         SOLAR_BOILER.getGui().add(ALLOY_SMELTER);
 
-        STEAM_ALLOY_SMELTER.getGui().add(BRONZE, ALLOY_SMELTER).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_ALLOY_SMELTER.getGui().add(STEEL, ALLOY_SMELTER).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_COMPRESSOR.getGui().add(BRONZE, COMPRESSOR).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_COMPRESSOR.getGui().add(STEEL, COMPRESSOR).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_FURNACE.getGui().add(BRONZE, FURNACE).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_FURNACE.getGui().add(STEEL, FURNACE).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_EXTRACTOR.getGui().add(BRONZE, EXTRACTOR).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_EXTRACTOR.getGui().add(STEEL, EXTRACTOR).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_PULVERIZER.getGui().add(BRONZE, PULVERIZER).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_PULVERIZER.getGui().add(STEEL, PULVERIZER).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_FORGE_HAMMER.getGui().add(BRONZE, FORGE_HAMMER).add(BRONZE, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
-        STEAM_FORGE_HAMMER.getGui().add(STEEL, FORGE_HAMMER).add(STEEL, FL_IN, 53, 63).setInfoRenderer(STEAM_INFO_RENDERER);
+        STEAM_ALLOY_SMELTER.getGui().add(BRONZE, ALLOY_SMELTER).add(BRONZE, FL_IN, 53, 63);
+        STEAM_ALLOY_SMELTER.getGui().add(STEEL, ALLOY_SMELTER).add(STEEL, FL_IN, 53, 63);
+        STEAM_COMPRESSOR.getGui().add(BRONZE, COMPRESSOR).add(BRONZE, FL_IN, 53, 63);
+        STEAM_COMPRESSOR.getGui().add(STEEL, COMPRESSOR).add(STEEL, FL_IN, 53, 63);
+        STEAM_FURNACE.getGui().add(BRONZE, FURNACE).add(BRONZE, FL_IN, 53, 63);
+        STEAM_FURNACE.getGui().add(STEEL, FURNACE).add(STEEL, FL_IN, 53, 63);
+        STEAM_EXTRACTOR.getGui().add(BRONZE, EXTRACTOR).add(BRONZE, FL_IN, 53, 63);
+        STEAM_EXTRACTOR.getGui().add(STEEL, EXTRACTOR).add(STEEL, FL_IN, 53, 63);
+        STEAM_PULVERIZER.getGui().add(BRONZE, PULVERIZER).add(BRONZE, FL_IN, 53, 63);
+        STEAM_PULVERIZER.getGui().add(STEEL, PULVERIZER).add(STEEL, FL_IN, 53, 63);
+        STEAM_FORGE_HAMMER.getGui().add(BRONZE, FORGE_HAMMER).add(BRONZE, FL_IN, 53, 63);
+        STEAM_FORGE_HAMMER.getGui().add(STEEL, FORGE_HAMMER).add(STEEL, FL_IN, 53, 63);
 
         STEAM_GENERATOR.getGui().add(BASIC_TANK);
         GAS_GENERATOR.getGui().add(BASIC_TANK);
@@ -163,5 +158,23 @@ public class Guis {
         HATCH_FLUID_O.getGui().add(ZPM, HATCH_FLUID_O, ULV);
         HATCH_FLUID_O.getGui().add(UV, FL_OUT, 61, 16).add(UV, FL_OUT, 79, 16).add(UV, FL_OUT, 97, 16).add(UV, FL_OUT, 61, 34).add(UV, FL_OUT, 79, 34).add(UV, FL_OUT, 97, 34).add(UV, FL_OUT, 61, 52).add(UV, FL_OUT, 79, 52).add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.getGui().add(MAX, HATCH_FLUID_O, ULV);
+
+        TRANSFORMER_DIGITAL.getGui()
+                .addButton(10, 18, 14, 14, APAD_LEFT)
+                .addButton(25, 18, 14, 14, PAD_LEFT)
+                .addButton(10, 33, 14, 14, APAD_LEFT)
+                .addButton(25, 33, 14, 14, PAD_LEFT)
+                .addButton(10, 48, 14, 14, APAD_LEFT)
+                .addButton(25, 48, 14, 14, PAD_LEFT)
+                .addButton(10, 63, 14, 14, APAD_LEFT)
+                .addButton(25, 63, 14, 14, PAD_LEFT)
+                .addButton(137, 18, 14, 14, PAD_RIGHT)
+                .addButton(152, 18, 14, 14, APAD_RIGHT)
+                .addButton(137, 33, 14, 14, PAD_RIGHT)
+                .addButton(152, 33, 14, 14, APAD_RIGHT)
+                .addButton(137, 48, 14, 14, PAD_RIGHT)
+                .addButton(152, 48, 14, 14, APAD_RIGHT)
+                .addButton(137, 63, 14, 14, PAD_RIGHT)
+                .addButton(152, 63, 14, 14, APAD_RIGHT);
     }
 }
