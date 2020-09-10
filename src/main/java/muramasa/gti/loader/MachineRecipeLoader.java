@@ -1,9 +1,18 @@
 package muramasa.gti.loader;
 
 import muramasa.antimatter.Data;
+import muramasa.antimatter.recipe.Recipe;
+import muramasa.antimatter.recipe.RecipeInput;
+import muramasa.antimatter.recipe.TagInput;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.gti.data.GregTechData;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagCollection;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.NOBBF;
@@ -19,8 +28,7 @@ public class MachineRecipeLoader {
 
         //TEMP
         STEAM_FUELS.RB().fi(Steam.getGas(2)).add(1,1);
-
-        //TODO: Glass processing recipes here
+        
         LATHING.RB().ii(PLATE.get(Glass, 1)).io(LENS.get(Glass, 1), DUST_SMALL.get(Glass, 1)).add(20, 12);
 
         //OreDictionary.getOres("logWood").forEach(i -> COKING.RB().ii(Utils.ca(2, i)).io(Charcoal.getGem(1)).fo(Creosote.getLiquid(250)).add(3600)); //Coal?
