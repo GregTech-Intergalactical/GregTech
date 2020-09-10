@@ -28,15 +28,7 @@ public class MachineRecipeLoader {
 
         //TEMP
         STEAM_FUELS.RB().fi(Steam.getGas(2)).add(1,1);
-
-        //DEBUG AREA!
-        LASER_ENGRAVING.RB().it(new TagInput(ItemTags.LOGS, 1)).ii(new ItemStack(Items.APPLE,1)).io(new ItemStack(GEM.get(Coal),1)).add(10, 16);
-
-        Recipe r = LASER_ENGRAVING.find(new ItemStack[]{new ItemStack(Items.ACACIA_LOG,1)},null);
-        assert(r == null);
-        r = LASER_ENGRAVING.find(new ItemStack[]{new ItemStack(Items.ACACIA_LOG,1),new ItemStack(Items.APPLE,1)},null);
-        assert(r != null);
-        //TODO: Glass processing recipes here
+        
         LATHING.RB().ii(PLATE.get(Glass, 1)).io(LENS.get(Glass, 1), DUST_SMALL.get(Glass, 1)).add(20, 12);
 
         //OreDictionary.getOres("logWood").forEach(i -> COKING.RB().ii(Utils.ca(2, i)).io(Charcoal.getGem(1)).fo(Creosote.getLiquid(250)).add(3600)); //Coal?
