@@ -1,5 +1,6 @@
 modLoader="javafml"
 #loaderVersion="[${loader_version},)"
+license="LGPLv3"
 loaderVersion="[31,)"
 issueTrackerURL="https://github.com/GregTech-Intergalactical/GregTech/issues"
 

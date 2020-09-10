@@ -5,9 +5,8 @@ import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.machine.Tier;
 import net.minecraft.util.ResourceLocation;
 
-import static muramasa.antimatter.gui.SlotType.*;
 import static muramasa.antimatter.gui.ButtonBody.*;
-import static muramasa.antimatter.gui.ButtonOverlay.*;
+import static muramasa.antimatter.gui.SlotType.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gti.data.Machines.*;
 
