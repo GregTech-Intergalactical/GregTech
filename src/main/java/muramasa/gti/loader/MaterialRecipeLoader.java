@@ -5,6 +5,7 @@ import muramasa.antimatter.material.IMaterialTag;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.RecipeHelper;
+import muramasa.antimatter.recipe.TagInput;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
 import muramasa.gti.data.Materials;
@@ -451,7 +452,7 @@ public class MaterialRecipeLoader {
                 long minDuration = Math.min(mass * 3, 300);
                 PULVERIZING.RB().ii(gem).io(dust).add(minDuration, 24);
                 dust = Utils.ca(9, dust);
-                PULVERIZING.RB().ii(block).io(dust).add(minDuration * 9, 24);
+                PULVERIZING.RB().it(new TagInput(BLOCK.getMaterialTag(m),1)).io(dust).add(minDuration * 9, 24);
             }
             if (m.has(ROD_LONG)) LATHING.RB().ii(gem).io(ROD_LONG.get(m, 1)).add(Math.max(mass, 1) / 3, 8);
         });
@@ -485,8 +486,8 @@ public class MaterialRecipeLoader {
                 ItemStack dustTiny = DUST_TINY.get(m, 1);
                 //RecipeHelper.addShapeless(m.getId() + "_rock_to_dust", dust, rock, rock, rock, rock, rock, rock, rock, rock, ToolType.MORTAR.getOreDict());
                 RecipeHelper.addShapeless(m.getId() + "_rock_to_tiny_dust", dustTiny, rock/*, TODO? AntimatterToolType.MORTAR.getOreDict()*/);
-                PULVERIZING.RB().ii(rock).io(dustTiny).add(80, 2);
-                HAMMERING.RB().ii(rock).io(dustTiny).add(20, 4);
+                PULVERIZING.RB().it(new TagInput(ROCK.getMaterialTag(m),1)).io(dustTiny).add(80, 2);
+                HAMMERING.RB().it(new TagInput(ROCK.getMaterialTag(m),1)).io(dustTiny).add(20, 4);
             }
             if (m.has(NUGGET)) {
                 ItemStack nugget = NUGGET.get(m, 1);
@@ -528,10 +529,11 @@ public class MaterialRecipeLoader {
             Material aOreByProduct1 = m.getByProducts().size() >= 1 ? m.getByProducts().get(0) : m.getMacerateInto();
             Material aOreByProduct2 = m.getByProducts().size() >= 2 ? m.getByProducts().get(1) : aOreByProduct1;
 
-            PULVERIZING.RB().ii(ore).io(Utils.ca((m.getOreMulti() * multiplier) * 2, crushed), m.getByProducts().size() > 0 ? DUST.get(m.getByProducts().get(0), 1) : dust, stoneDust).chances(100, 10 * multiplier * m.getByProductMulti(), 50).add(400, 2);
-            PULVERIZING.RB().ii(crushed).io(DUST_IMPURE.get(m.getMacerateInto(), 1), DUST.get(aOreByProduct1, 1)).chances(100, 10).add(400, 2);
+            PULVERIZING.RB().it(new TagInput(ORE.getMaterialTag(m),1)).io(Utils.ca((m.getOreMulti() * multiplier) * 2, crushed), m.getByProducts().size() > 0 ? DUST.get(m.getByProducts().get(0), 1) : dust, stoneDust).chances(100, 10 * multiplier * m.getByProductMulti(), 50).add(400, 2);
+            PULVERIZING.RB().it(new TagInput(CRUSHED.getMaterialTag(m),1)).io(DUST_IMPURE.get(m.getMacerateInto(), 1), DUST.get(aOreByProduct1, 1)).chances(100, 10).add(400, 2);
             HAMMERING.RB().ii(ore).io(m.has(BRITTLEG) ? GEM.get(m, 1) : crushed).add(16, 10);
-            HAMMERING.RB().ii(crushed).io(DUST_IMPURE.get(m, 1)).add(10, 16);
+
+            HAMMERING.RB().it(new TagInput(CRUSHED.getMaterialTag(m),1)).io(DUST_IMPURE.get(m, 1)).add(10, 16);
             if (m.has(GEM)) { //Gem Specific Recipes
                 ItemStack gem = m.hasDirectSmeltInto() ? GEM.get(m.getDirectSmeltInto(), 1) : GEM.get(m, 1);
                 RecipeHelper.addSmelting(ore, Utils.ca(multiplier * m.getSmeltingMulti(), gem));
