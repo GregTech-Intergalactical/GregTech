@@ -77,6 +77,8 @@ public class Guis {
         ARC_FURNACE.getGui().add(ALLOY_SMELTER); //TODO
         PLASMA_ARC_FURNACE.getGui().add(ARC_FURNACE);
 
+        COKE_OVEN.getGui().add(IT_IN, 53,16).add(IT_OUT,107,25);
+
         BATTERY_BUFFER_FOUR.getGui().add(ENERGY,71,27).add(ENERGY,89,27).add(ENERGY,71,45).add(ENERGY,89,45);
         BATTERY_BUFFER_ONE.getGui().add(ENERGY,80,40);
         BATTERY_BUFFER_NINE.getGui().add(ENERGY,62,21).add(ENERGY,80,21).add(ENERGY,98,21)
