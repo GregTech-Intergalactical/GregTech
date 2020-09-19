@@ -14,18 +14,13 @@ public class CoverConveyor extends CoverTiered {
 
     static int[] speeds = {400, 100, 20, 10, 1};
 
-    public CoverConveyor(Tier tier) {
+    private CoverConveyor(Tier tier) {
         super(tier);
     }
 
     public CoverConveyor() {
         super();
     }
-
-  /*  @Override
-    public String getId() {
-        return tier == null ? ID : ID + "_" + tier.getId();
-    }*/
 
     @Override
     protected String ID() {
@@ -38,7 +33,7 @@ public class CoverConveyor extends CoverTiered {
     }
 
     @Override
-    public void onUpdate(CoverInstance instance, Direction side) {
+    public void onUpdate(CoverInstance<?> instance, Direction side) {
         if (instance.getTile() == null || instance.getTile().getWorld().getGameTime() % (speeds[tier.getIntegerId()]) != 0)
             return;
         TileEntity adjTile = instance.getTile().getWorld().getTileEntity(instance.getTile().getPos().offset(side));

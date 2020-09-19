@@ -7,6 +7,7 @@ import net.minecraft.util.ResourceLocation;
 
 import static muramasa.antimatter.gui.ButtonBody.*;
 import static muramasa.antimatter.gui.SlotType.*;
+import static muramasa.antimatter.gui.event.GuiMachineEvent.EXTRA_BUTTON;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gti.data.Machines.*;
 
@@ -158,21 +159,24 @@ public class Guis {
         HATCH_FLUID_O.getGui().add(MAX, HATCH_FLUID_O, ULV);
 
         TRANSFORMER_DIGITAL.getGui()
-                .addButton(10, 18, 14, 14, APAD_LEFT)
-                .addButton(25, 18, 14, 14, PAD_LEFT)
-                .addButton(10, 33, 14, 14, APAD_LEFT)
-                .addButton(25, 33, 14, 14, PAD_LEFT)
-                .addButton(10, 48, 14, 14, APAD_LEFT)
-                .addButton(25, 48, 14, 14, PAD_LEFT)
-                .addButton(10, 63, 14, 14, APAD_LEFT)
-                .addButton(25, 63, 14, 14, PAD_LEFT)
-                .addButton(137, 18, 14, 14, PAD_RIGHT)
-                .addButton(152, 18, 14, 14, APAD_RIGHT)
-                .addButton(137, 33, 14, 14, PAD_RIGHT)
-                .addButton(152, 33, 14, 14, APAD_RIGHT)
-                .addButton(137, 48, 14, 14, PAD_RIGHT)
-                .addButton(152, 48, 14, 14, APAD_RIGHT)
-                .addButton(137, 63, 14, 14, PAD_RIGHT)
-                .addButton(152, 63, 14, 14, APAD_RIGHT);
+                .addButton(EXTRA_BUTTON, 10, 18, 14, 14, APAD_LEFT)
+                .addButton(EXTRA_BUTTON, 25, 18, 14, 14, PAD_LEFT)
+                .addButton(EXTRA_BUTTON, 10, 33, 14, 14, APAD_LEFT)
+                .addButton(EXTRA_BUTTON, 25, 33, 14, 14, PAD_LEFT)
+                .addButton(EXTRA_BUTTON, 10, 48, 14, 14, APAD_LEFT)
+                .addButton(EXTRA_BUTTON, 25, 48, 14, 14, PAD_LEFT)
+                .addButton(EXTRA_BUTTON, 10, 63, 14, 14, APAD_LEFT)
+                .addButton(EXTRA_BUTTON, 25, 63, 14, 14, PAD_LEFT)
+                .addButton(EXTRA_BUTTON, 137, 18, 14, 14, PAD_RIGHT)
+                .addButton(EXTRA_BUTTON, 152, 18, 14, 14, APAD_RIGHT)
+                .addButton(EXTRA_BUTTON, 137, 33, 14, 14, PAD_RIGHT)
+                .addButton(EXTRA_BUTTON, 152, 33, 14, 14, APAD_RIGHT)
+                .addButton(EXTRA_BUTTON, 137, 48, 14, 14, PAD_RIGHT)
+                .addButton(EXTRA_BUTTON, 152, 48, 14, 14, APAD_RIGHT)
+                .addButton(EXTRA_BUTTON, 137, 63, 14, 14, PAD_RIGHT)
+                .addButton(EXTRA_BUTTON, 152, 63, 14, 14, APAD_RIGHT);
+
+
+        //COVER_PUMP
     }
 }

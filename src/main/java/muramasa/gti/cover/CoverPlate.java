@@ -23,14 +23,14 @@ public class CoverPlate extends CoverMaterial {
 
     }
 
-    @Override
-    public String getDomain() {
-        return Ref.ID;
-    }
-
     public CoverPlate(MaterialType<?> type, Material material) {
         this.type = type;
         this.material = material;
+    }
+
+    @Override
+    public String getDomain() {
+        return Ref.ID;
     }
 
     @Override

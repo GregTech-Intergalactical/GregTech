@@ -12,9 +12,9 @@ public class CoverPump extends CoverTiered {
 
     public static String ID = "pump";
 
-    static int[] speeds = new int[]{640,2560,10240,40960,163840};
+    static int[] speeds = new int[]{640, 2560, 10240, 40960, 163840};
 
-    public CoverPump(Tier tier) {
+    private CoverPump(Tier tier) {
         super(tier);
     }
 
@@ -33,7 +33,7 @@ public class CoverPump extends CoverTiered {
     }
 
     @Override
-    public void onUpdate(CoverInstance instance, Direction side) {
+    public void onUpdate(CoverInstance<?> instance, Direction side) {
         if (instance.getTile() == null || instance.getTile().getWorld().getGameTime() % (20) != 0) return;
         TileEntity adjTile = instance.getTile().getWorld().getTileEntity(instance.getTile().getPos().offset(side));
         if (adjTile == null) return;
