@@ -67,7 +67,7 @@ public class Machines {
     public static MultiMachine PRIMITIVE_BLAST_FURNACE = new MultiMachine(Ref.ID, "primitive_blast_furnace", BASIC_BLASTING, LV, GUI, ITEM).setTile(m -> () -> new TileEntityPrimitiveBlastFurnace(m));
     public static MultiMachine BRONZE_BLAST_FURNACE = new MultiMachine(Ref.ID, "bronze_blast_furnace", BASIC_BLASTING, LV, GUI, ITEM).setTile(m -> () -> new TileEntityBronzeBlastFurnace(m));
     public static MultiMachine CHARCOAL_PIT = new MultiMachine(Ref.ID, "charcoal_pit", LV).setTile(m -> () -> new TileEntityCharcoalPit(m));
-    public static MultiMachine BLAST_FURNACE = new MultiMachine(Ref.ID, "electric_blast_furnace", BLASTING, LV, GUI, ITEM, FLUID).setTile(m -> () -> new TileEntityElectricBlastFurnace(m));
+    public static MultiMachine BLAST_FURNACE = new MultiMachine(Ref.ID, "electric_blast_furnace", BLASTING, LV, GUI, ITEM, FLUID, ENERGY).setTile(m -> () -> new TileEntityElectricBlastFurnace(m));
     public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(Ref.ID, "implosion_compressor", IMPLOSION_COMPRESSING, HV, GUI, ITEM).setTile(m -> () -> new TileEntityImplosionCompressor(m));
     public static MultiMachine VACUUM_FREEZER = new MultiMachine(Ref.ID, "vacuum_freezer", VACUUM_FREEZING, HV, GUI, ITEM, FLUID).setTile(m -> () -> new TileEntityVacuumFreezer(m));
     public static MultiMachine MULTI_SMELTER = new MultiMachine(Ref.ID, "multi_smelter", HV, GUI, ITEM).setTile(m -> () -> new TileEntityMultiSmelter(m));

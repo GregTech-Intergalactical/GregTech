@@ -22,10 +22,11 @@ public class CoverConveyor extends CoverTiered {
         super();
     }
 
-  /*  @Override
-    public String getId() {
-        return tier == null ? ID : ID + "_" + tier.getId();
-    }*/
+    //Useful for using the same model for multiple tiers where id is dependent on tier.
+    @Override
+    protected String getRenderId() {
+        return ID();
+    }
 
     @Override
     protected String ID() {
