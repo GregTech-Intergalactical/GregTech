@@ -2,6 +2,8 @@ package muramasa.gti;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.*;
+import muramasa.antimatter.recipe.RecipeMap;
+import muramasa.antimatter.recipe.loader.AntimatterRecipeLoader;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.AntimatterMod;
 import muramasa.gti.data.*;
@@ -26,14 +28,6 @@ import org.apache.logging.log4j.Logger;
 @Mod(Ref.ID)
 public class GregTech extends AntimatterMod {
 
-    public static class WorldLoadListener {
-        @SubscribeEvent
-        public static void TagsUpdatedEvent(TagsUpdatedEvent event)
-        {
-            MaterialRecipeLoader.init();
-            MachineRecipeLoader.init();
-        }
-    }
     public static GregTech INSTANCE;
     public static Logger LOGGER = LogManager.getLogger(Ref.ID);
 
@@ -41,7 +35,6 @@ public class GregTech extends AntimatterMod {
         super();
         INSTANCE = this;
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        MinecraftForge.EVENT_BUS.register(WorldLoadListener.class);
         //GregTechAPI.addRegistrar(new ForestryRegistrar());
         //GregTechAPI.addRegistrar(new GalacticraftRegistrar());
         //if (ModList.get().isLoaded(Ref.MOD_UB)) GregTechAPI.addRegistrar(new UndergroundBiomesRegistrar());
@@ -54,6 +47,9 @@ public class GregTech extends AntimatterMod {
         AntimatterAPI.addProvider(Ref.ID, g -> new GregTechRecipes(Ref.ID, Ref.NAME.concat(" Recipes"), g));
         AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
         AntimatterAPI.addProvider(Ref.ID, GregTechLocalizations.en_US::new);
+
+        AntimatterAPI.getRecipeRegistrate().registerRecipeLoader(MaterialRecipeLoader::init);
+        AntimatterAPI.getRecipeRegistrate().registerRecipeLoader(MachineRecipeLoader::init);
     }
 
     private void clientSetup(final FMLClientSetupEvent e) {
