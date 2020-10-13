@@ -1,6 +1,7 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.recipe.AntimatterIngredient;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.antimatter.recipe.RecipeMap;
@@ -84,7 +85,7 @@ public class RecipeBuilders {
             ItemStack[] inputsCpy = Arrays.copyOf(inputs, inputs.length + 1);
             for (int i = 0; i < FUELS.length; i++) {
                 inputsCpy[inputsCpy.length - 1] = Utils.ca(coal, FUELS[i]);
-                ii(inputsCpy).io(outputs).add(duration);
+                ii(AntimatterIngredient.fromStacksList(inputsCpy)).io(outputs).add(duration);
             }
         }
     }
