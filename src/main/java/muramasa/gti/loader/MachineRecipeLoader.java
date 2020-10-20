@@ -1,6 +1,7 @@
 package muramasa.gti.loader;
 
 import muramasa.antimatter.Data;
+import muramasa.antimatter.recipe.AntimatterIngredient;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.TagInput;
 import muramasa.antimatter.recipe.RecipeBuilder;
@@ -25,6 +26,7 @@ public class MachineRecipeLoader {
 
     public static void init() {
 
+       // ASSEMBLING.RB().ii(AntimatterIngredient.fromTag(ItemTags.LOGS,2), AntimatterIngredient.fromTag(ItemTags.ANVIL,1), AntimatterIngredient.of(Items.ACACIA_DOOR,2)).io(new ItemStack(Items.DIAMOND,1)).add(60,16);
         //TEMP
 //        STEAM_FUELS.RB().fi(Steam.getGas(2)).add(1,1);
 //

@@ -1,19 +1,15 @@
 package muramasa.gti.tile.single;
 
-import muramasa.antimatter.Data;
-import muramasa.antimatter.capability.fluid.FluidResourceMachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.TileEntityMachine;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraftforge.fluids.FluidStack;
 
 public class TileEntitySteamMachine extends TileEntityMachine {
 
     public TileEntitySteamMachine(Machine<?> type) {
         super(type);
-        recipeHandler.setup((tile, tag) -> new FluidResourceMachineRecipeHandler<>(tile, tag, Data.GAS.get().get(Material.get("steam"), 1)));
+        //recipeHandler.setup((tile, tag) -> new FluidResourceMachineRecipeHandler<>(tile, tag, Data.GAS.get().get(Material.get("steam"), 1)));
     }
 
     @Override
