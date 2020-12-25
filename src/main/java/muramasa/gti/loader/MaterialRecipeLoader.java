@@ -504,92 +504,96 @@ public class MaterialRecipeLoader {
 //            }
 //        });
 //
-//        CRUSHED.all().forEach(m -> {
-//            if (!m.has(ORE)) return;
-//            ItemStack ore = ORE.get().get(m, STONE).asStack(), crushed = CRUSHED.get(m, 1), dust = DUST.get(m, 1), stoneDust = DUST.get(Stone, 1);
-//            if (m.hasByProducts()) {
-//                List<Material> byProducts = m.getByProducts();
-//                int byProductsCount = byProducts.size();
-//
-//                List<ItemStack> ores = new ObjectArrayList<>();
-//                if (m.has(ORE)) ores.add(ore);
-//                if (m.has(ROCK)) ores.add(ROCK.get(m, 1));
-//                if (m.has(CRUSHED)) ores.add(crushed);
-//                if (m.has(CRUSHED_PURIFIED)) ores.add(CRUSHED_PURIFIED.get(m, 1));
-//                if (m.has(CRUSHED_CENTRIFUGED)) ores.add(CRUSHED_CENTRIFUGED.get(m, 1));
-//
-//                List<ItemStack> dusts = new ObjectArrayList<>(byProductsCount);
-//                byProducts.forEach(p -> dusts.add(DUST.get(p, 1)));
-//                ORE_BYPRODUCTS.RB().ii(ores.toArray(new ItemStack[0])).io(dusts.toArray(new ItemStack[byProductsCount])).add();
-//            }
-//            boolean needsBF = m.needsBlastFurnace() || m.getDirectSmeltInto().needsBlastFurnace();
-//            int multiplier = /*aIsRich ? 2 : */1; //TODO implement in some way, but for now support is coded in
-//            //RecipeHelper.addShapedToolRecipe(m.getDustIP(1), "h  ", "X  ", "   ", 'X', crushed);
-//
-//            //TODO better way to do this
-//            Material aOreByProduct1 = m.getByProducts().size() >= 1 ? m.getByProducts().get(0) : m.getMacerateInto();
-//            Material aOreByProduct2 = m.getByProducts().size() >= 2 ? m.getByProducts().get(1) : aOreByProduct1;
-//
-//            PULVERIZING.RB().ii(ore).io(Utils.ca((m.getOreMulti() * multiplier) * 2, crushed), m.getByProducts().size() > 0 ? DUST.get(m.getByProducts().get(0), 1) : dust, stoneDust).chances(100, 10 * multiplier * m.getByProductMulti(), 50).add(400, 2);
-//            PULVERIZING.RB().ii(crushed).io(DUST_IMPURE.get(m.getMacerateInto(), 1), DUST.get(aOreByProduct1, 1)).chances(100, 10).add(400, 2);
-//            HAMMERING.RB().ii(ore).io(m.has(BRITTLEG) ? GEM.get(m, 1) : crushed).add(16, 10);
-//            HAMMERING.RB().ii(crushed).io(DUST_IMPURE.get(m, 1)).add(10, 16);
-//            if (m.has(GEM)) { //Gem Specific Recipes
-//                ItemStack gem = m.hasDirectSmeltInto() ? GEM.get(m.getDirectSmeltInto(), 1) : GEM.get(m, 1);
-//                RecipeHelper.addSmelting(ore, Utils.ca(multiplier * m.getSmeltingMulti(), gem));
-//                if (m.has(GEM_BRITTLE)) {
-//                    ItemStack gemBrittle = GEM_BRITTLE.get(m, 1);
-//                    SIFTING.RB().ii(crushed).io(GEM_POLISHED.get(m, 1), gem, gem, dust, gemBrittle, gemBrittle).chances(5, 15, 32, 44, 78, 100).add(800, 16);
-//                } else {
-//                    SIFTING.RB().ii(crushed).io(gem, gem, gem, gem, dust, dust).chances(1, 4, 15, 20, 40, 50).add(800, 16);
-//                }
-//            } else if (m.has(INGOT)) { //Solid Specific Recipes
-//                ItemStack ingot = m.hasDirectSmeltInto() ? INGOT.get(m.getDirectSmeltInto(), 1) : INGOT.get(m, 1);
-//                ItemStack aNonDirectSmeltingOutput = Ref.mixedOreYieldsTwoThirdsPureOre ? NUGGET.get(m, 6) : INGOT.get(m.getDirectSmeltInto(), 1);
-//                if (m == m.getDirectSmeltInto()) {
-//                    ItemStack aCrushedSmeltingOutput = NUGGET.get(m, 10);
-//                    RecipeHelper.addSmelting(crushed, aCrushedSmeltingOutput);
-//                    RecipeHelper.addSmelting(crushed, aCrushedSmeltingOutput);
-//                } else if (aNonDirectSmeltingOutput != null) {
-//                    RecipeHelper.addSmelting(crushed, aNonDirectSmeltingOutput);
-//                    RecipeHelper.addSmelting(crushed, aNonDirectSmeltingOutput);
-//                }
-//                if (needsBF) {
-//                    ItemStack aIngotSmeltInto = m == m.getSmeltInto() ? ingot : INGOT.get(m.getSmeltInto(), 1);
-//                    ItemStack blastOut = m.getBlastTemp() > 1750 && m.getSmeltInto().has(INGOT_HOT) ? INGOT_HOT.get(m.getSmeltInto(), 1) : aIngotSmeltInto;
-//                    long aBlastDuration = Math.max(m.getMass() / 4, 1) * m.getBlastTemp();
-//                    BLASTING.RB().ii(crushed).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
-//                    BLASTING.RB().ii(CRUSHED_PURIFIED.get(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
-//                    BLASTING.RB().ii(CRUSHED_CENTRIFUGED.get(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
-//                    BLASTING.RB().ii(DUST_PURE.get(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
-//                    BLASTING.RB().ii(DUST_IMPURE.get(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
-//                }
-//                if (m.has(CALCITE3X)) {
-//                    ItemStack ingotMulti = Utils.mul(multiplier * 3 * m.getSmeltingMulti(), ingot);
-//                    ItemStack darkAsh = DUST_SMALL.get(DarkAsh, 1);
-//                    BLASTING.RB().ii(ore, DUST.get(Calcite, multiplier)).io(ingotMulti, darkAsh).add(ingot.getCount() * 500, 120, 1500);
-//                    BLASTING.RB().ii(ore, DUST.get(Quicklime, multiplier)).io(ingotMulti, darkAsh).add(ingot.getCount() * 500, 120, 1500);
-//                } else if (m.has(CALCITE2X)) {
-//                    ItemStack darkAsh = DUST_SMALL.get(DarkAsh, 1);
-//                    BLASTING.RB().ii(ore, DUST.get(Calcite, multiplier)).io(Utils.mul(multiplier * mixedOreYield * m.getSmeltingMulti(), ingot), darkAsh).add(ingot.getCount() * 500, 120, 1500);
-//                    BLASTING.RB().ii(ore, DUST_TINY.get(Quicklime, multiplier * 3)).io(Utils.mul(multiplier * 3 * m.getSmeltingMulti(), ingot), darkAsh).add(ingot.getCount() * 500, 120, 1500);
-//                }
-//                RecipeHelper.addSmelting(dust, ingot);
-//                RecipeHelper.addSmelting(ore, Utils.ca(multiplier * m.getSmeltingMulti(), ingot));
-//            }
-//            if (m.has(CRUSHED_CENTRIFUGED)) {
-//                THERMAL_CENTRIFUGING.RB().ii(crushed).io(CRUSHED_CENTRIFUGED.get(m, 1), DUST_TINY.get(aOreByProduct2, 1), stoneDust).add(500, 48);
-//            }
-//            if (m.has(CRUSHED_PURIFIED)) {
-//                ORE_WASHING.RB().ii(crushed).fi(Materials.Water.getLiquid(1000)).io(CRUSHED_PURIFIED.get(m, 1), DUST_TINY.get(aOreByProduct1, 1), stoneDust).add(500, 16);
-//            }
-//            if (m.has(WASHM)) {
-//                CHEMICAL_BATHING.RB().ii(crushed).fi(Materials.Mercury.getLiquid(1000)).io(CRUSHED_PURIFIED.get(m, 1), DUST.get(m.getMacerateInto(), 1), stoneDust).chances(100, 70, 40).add(800, 8);
-//            }
-//            if (m.has(WASHS)) {
-//                CHEMICAL_BATHING.RB().ii(crushed).fi(Materials.SodiumPersulfate.getLiquid(1000)).io(CRUSHED_PURIFIED.get(m, 1), DUST.get(m.getMacerateInto(), 1), stoneDust).chances(100, 70, 40).add(800, 8);
-//            }
-//        });
+        CRUSHED.all().forEach(m -> {
+            if (!m.has(ORE)) return;
+            AntimatterIngredient ore = ORE.get().get(m, STONE).asIngredient(), crushed = CRUSHED.getIngredient(m, 1), dust = DUST.getIngredient(m, 1);
+            ItemStack crushedStack = CRUSHED.get(m,1);
+            ItemStack stoneDust = DUST.get(Stone, 1);
+            ItemStack dustStack = DUST.get(Stone, 1);
+            if (m.hasByProducts()) {
+                List<Material> byProducts = m.getByProducts();
+                int byProductsCount = byProducts.size();
+
+                List<AntimatterIngredient> ores = new ObjectArrayList<>();
+                if (m.has(ORE)) ores.add(ore);
+                if (m.has(ROCK)) ores.add(ROCK.getIngredient(m, 1));
+                if (m.has(CRUSHED)) ores.add(crushed);
+                if (m.has(CRUSHED_PURIFIED)) ores.add(CRUSHED_PURIFIED.getIngredient(m, 1));
+                if (m.has(CRUSHED_CENTRIFUGED)) ores.add(CRUSHED_CENTRIFUGED.getIngredient(m, 1));
+
+
+                List<ItemStack> dusts = new ObjectArrayList<>(byProductsCount);
+                byProducts.forEach(p -> dusts.add(DUST.get(p, 1)));
+                ORE_BYPRODUCTS.RB().ii(ores).io(dusts.toArray(new ItemStack[byProductsCount])).add();
+            }
+            boolean needsBF = m.needsBlastFurnace() || m.getDirectSmeltInto().needsBlastFurnace();
+            int multiplier = /*aIsRich ? 2 : */1; //TODO implement in some way, but for now support is coded in
+            //RecipeHelper.addShapedToolRecipe(m.getDustIP(1), "h  ", "X  ", "   ", 'X', crushed);
+
+            //TODO better way to do this
+            Material aOreByProduct1 = m.getByProducts().size() >= 1 ? m.getByProducts().get(0) : m.getMacerateInto();
+            Material aOreByProduct2 = m.getByProducts().size() >= 2 ? m.getByProducts().get(1) : aOreByProduct1;
+
+            PULVERIZING.RB().ii(ore).io(Utils.ca((m.getOreMulti() * multiplier) * 2, crushedStack), m.getByProducts().size() > 0 ? DUST.get(m.getByProducts().get(0), 1) : dustStack, stoneDust).chances(100, 10 * multiplier * m.getByProductMulti(), 50).add(400, 2);
+            PULVERIZING.RB().ii(crushed).io(DUST_IMPURE.get(m.getMacerateInto(), 1), DUST.get(aOreByProduct1, 1)).chances(100, 10).add(400, 2);
+            HAMMERING.RB().ii(ore).io(m.has(BRITTLEG) ? GEM.get(m, 1) : crushedStack).add(16, 10);
+            HAMMERING.RB().ii(crushed).io(DUST_IMPURE.get(m, 1)).add(10, 16);
+            if (m.has(GEM)) { //Gem Specific Recipes
+                ItemStack gem = m.hasDirectSmeltInto() ? GEM.get(m.getDirectSmeltInto(), 1) : GEM.get(m, 1);
+                RecipeHelper.addSmelting(ore, Utils.ca(multiplier * m.getSmeltingMulti(), gem));
+                if (m.has(GEM_BRITTLE)) {
+                    ItemStack gemBrittle = GEM_BRITTLE.get(m, 1);
+                    SIFTING.RB().ii(crushed).io(GEM_POLISHED.get(m, 1), gem, gem, dustStack, gemBrittle, gemBrittle).chances(5, 15, 32, 44, 78, 100).add(800, 16);
+                } else {
+                    SIFTING.RB().ii(crushed).io(gem, gem, gem, gem, dustStack, dustStack).chances(1, 4, 15, 20, 40, 50).add(800, 16);
+                }
+            } else if (m.has(INGOT)) { //Solid Specific Recipes
+                ItemStack ingot = m.hasDirectSmeltInto() ? INGOT.get(m.getDirectSmeltInto(), 1) : INGOT.get(m, 1);
+                ItemStack aNonDirectSmeltingOutput = Ref.mixedOreYieldsTwoThirdsPureOre ? NUGGET.get(m, 6) : INGOT.get(m.getDirectSmeltInto(), 1);
+                if (m == m.getDirectSmeltInto()) {
+                    ItemStack aCrushedSmeltingOutput = NUGGET.get(m, 10);
+                    RecipeHelper.addSmelting(crushed, aCrushedSmeltingOutput);
+                    RecipeHelper.addSmelting(crushed, aCrushedSmeltingOutput);
+                } else if (aNonDirectSmeltingOutput != null) {
+                    RecipeHelper.addSmelting(crushed, aNonDirectSmeltingOutput);
+                    RecipeHelper.addSmelting(crushed, aNonDirectSmeltingOutput);
+                }
+                if (needsBF) {
+                    ItemStack aIngotSmeltInto = m == m.getSmeltInto() ? ingot : INGOT.get(m.getSmeltInto(), 1);
+                    ItemStack blastOut = m.getBlastTemp() > 1750 && m.getSmeltInto().has(INGOT_HOT) ? INGOT_HOT.get(m.getSmeltInto(), 1) : aIngotSmeltInto;
+                    long aBlastDuration = Math.max(m.getMass() / 4, 1) * m.getBlastTemp();
+                    BLASTING.RB().ii(crushed).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
+                    BLASTING.RB().ii(CRUSHED_PURIFIED.getIngredient(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
+                    BLASTING.RB().ii(CRUSHED_CENTRIFUGED.getIngredient(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
+                    BLASTING.RB().ii(DUST_PURE.getIngredient(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
+                    BLASTING.RB().ii(DUST_IMPURE.getIngredient(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
+                }
+                if (m.has(CALCITE3X)) {
+                    ItemStack ingotMulti = Utils.mul(multiplier * 3 * m.getSmeltingMulti(), ingot);
+                    ItemStack darkAsh = DUST_SMALL.get(DarkAsh, 1);
+                    BLASTING.RB().ii(ore, DUST.getIngredient(Calcite, multiplier)).io(ingotMulti, darkAsh).add(ingot.getCount() * 500, 120, 1500);
+                    BLASTING.RB().ii(ore, DUST.getIngredient(Quicklime, multiplier)).io(ingotMulti, darkAsh).add(ingot.getCount() * 500, 120, 1500);
+                } else if (m.has(CALCITE2X)) {
+                    ItemStack darkAsh = DUST_SMALL.get(DarkAsh, 1);
+                    BLASTING.RB().ii(ore, DUST.getIngredient(Calcite, multiplier)).io(Utils.mul(multiplier * mixedOreYield * m.getSmeltingMulti(), ingot), darkAsh).add(ingot.getCount() * 500, 120, 1500);
+                    BLASTING.RB().ii(ore, DUST_TINY.getIngredient(Quicklime, multiplier * 3)).io(Utils.mul(multiplier * 3 * m.getSmeltingMulti(), ingot), darkAsh).add(ingot.getCount() * 500, 120, 1500);
+                }
+                RecipeHelper.addSmelting(dust, ingot);
+                RecipeHelper.addSmelting(ore, Utils.ca(multiplier * m.getSmeltingMulti(), ingot));
+            }
+            if (m.has(CRUSHED_CENTRIFUGED)) {
+                THERMAL_CENTRIFUGING.RB().ii(crushed).io(CRUSHED_CENTRIFUGED.get(m, 1), DUST_TINY.get(aOreByProduct2, 1), stoneDust).add(500, 48);
+            }
+            if (m.has(CRUSHED_PURIFIED)) {
+                ORE_WASHING.RB().ii(crushed).fi(Materials.Water.getLiquid(1000)).io(CRUSHED_PURIFIED.get(m, 1), DUST_TINY.get(aOreByProduct1, 1), stoneDust).add(500, 16);
+            }
+            if (m.has(WASHM)) {
+                CHEMICAL_BATHING.RB().ii(crushed).fi(Materials.Mercury.getLiquid(1000)).io(CRUSHED_PURIFIED.get(m, 1), DUST.get(m.getMacerateInto(), 1), stoneDust).chances(100, 70, 40).add(800, 8);
+            }
+            if (m.has(WASHS)) {
+                CHEMICAL_BATHING.RB().ii(crushed).fi(Materials.SodiumPersulfate.getLiquid(1000)).io(CRUSHED_PURIFIED.get(m, 1), DUST.get(m.getMacerateInto(), 1), stoneDust).chances(100, 70, 40).add(800, 8);
+            }
+        });
 //
 //        for (Material m : CRUSHED_CENTRIFUGED.all()) {
 //            ItemStack aCrushedC = CRUSHED_CENTRIFUGED.get(m, 1);
