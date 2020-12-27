@@ -13,6 +13,10 @@ import muramasa.gti.datagen.ProgressionAdvancements;
 import muramasa.gti.loader.MachineRecipeLoader;
 import muramasa.gti.loader.MaterialRecipeLoader;
 import muramasa.gti.loader.WorldGenLoader;
+import muramasa.gti.loader.machines.AssemblyLoader;
+import muramasa.gti.loader.machines.BendingLoader;
+import muramasa.gti.loader.machines.ChemicalReactorLoader;
+import muramasa.gti.loader.machines.WiremillLoader;
 import muramasa.gti.proxy.ClientHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TagsUpdatedEvent;
@@ -38,7 +42,7 @@ public class GregTech extends AntimatterMod {
         //GregTechAPI.addRegistrar(new ForestryRegistrar());
         //GregTechAPI.addRegistrar(new GalacticraftRegistrar());
         //if (ModList.get().isLoaded(Ref.MOD_UB)) GregTechAPI.addRegistrar(new UndergroundBiomesRegistrar());
-
+        
         AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
         AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", g));
         AntimatterAPI.addProvider(Ref.ID, g -> new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, g));
@@ -48,8 +52,17 @@ public class GregTech extends AntimatterMod {
         AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
         AntimatterAPI.addProvider(Ref.ID, GregTechLocalizations.en_US::new);
 
-        AntimatterAPI.getRecipeRegistrate().registerRecipeLoader(MaterialRecipeLoader::init);
-        AntimatterAPI.getRecipeRegistrate().registerRecipeLoader(MachineRecipeLoader::init);
+        registerRecipeLoaders();
+    }
+
+    private void registerRecipeLoaders() {
+        AntimatterRecipeLoader loader = AntimatterAPI.getRecipeRegistrate();
+        loader.registerRecipeLoader(MaterialRecipeLoader::init);
+        loader.registerRecipeLoader(MachineRecipeLoader::init);
+        loader.registerRecipeLoader(WiremillLoader::init);
+        loader.registerRecipeLoader(BendingLoader::init);
+        loader.registerRecipeLoader(AssemblyLoader::init);
+        loader.registerRecipeLoader(ChemicalReactorLoader::init);
     }
 
     private void clientSetup(final FMLClientSetupEvent e) {

@@ -1,21 +1,8 @@
 package muramasa.gti.loader;
 
-import muramasa.antimatter.Data;
-import muramasa.antimatter.recipe.AntimatterIngredient;
-import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.RecipeBuilder;
-import muramasa.gti.data.GregTechData;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
-import net.minecraft.tags.TagCollection;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.material.MaterialTag.NOBBF;
-import static muramasa.antimatter.material.MaterialTag.NOSMELT;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.*;
 
@@ -28,10 +15,6 @@ public class MachineRecipeLoader {
        // ASSEMBLING.RB().ii(AntimatterIngredient.fromTag(ItemTags.LOGS,2), AntimatterIngredient.fromTag(ItemTags.ANVIL,1), AntimatterIngredient.of(Items.ACACIA_DOOR,2)).io(new ItemStack(Items.DIAMOND,1)).add(60,16);
      //   BLASTING.RB().ii(AntimatterIngredient.fromTag(ItemTags.LOGS,2), AntimatterIngredient.of(Items.ACACIA_DOOR,2)).io(new ItemStack(Items.DIAMOND,1)).add(60,16);
     //    ASSEMBLING.RB().ii(AntimatterIngredient.fromTag(ItemTags.LOGS,2), AntimatterIngredient.of(Items.ACACIA_DOOR,2)).io(new ItemStack(Items.DIAMOND,1)).add(60,16);
-        PLATE.all().forEach(t -> {
-                long duration = Math.max(t.getMass(), 1);
-                BENDING.RB().ii(INGOT.getMaterialIngredient(t,1)).io(PLATE.get(t,1)).add(duration, 24);
-        });
 
         //TEMP
 //        STEAM_FUELS.RB().fi(Steam.getGas(2)).add(1,1);

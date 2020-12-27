@@ -1,7 +1,7 @@
 package muramasa.gti.cover;
 
 import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.cover.CoverInstance;
+import muramasa.antimatter.cover.CoverStack;
 import muramasa.antimatter.cover.CoverTiered;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tile.TileEntityMachine;
@@ -15,9 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.items.ItemHandlerHelper;
 
-import java.util.EnumMap;
 import java.util.Map;
 
 import static net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
@@ -58,12 +56,11 @@ public class CoverConveyor extends CoverTiered {
     }
 
     @Override
-    public void onUpdate(CoverInstance instance, Direction side) {
+    public void onUpdate(CoverStack<?> instance, Direction side) {
         if (instance.getTile() == null || instance.getTile().getWorld().getGameTime() % (speeds.get(tier)) != 0)
             return;
         boolean isMachine = instance.getTile() instanceof TileEntityMachine;
         BlockState state = instance.getTile().getWorld().getBlockState(instance.getTile().getPos().offset(side));
-
         //Drop into world.
         if (state == Blocks.AIR.getDefaultState() && isMachine) {
             World world = instance.getTile().getWorld();

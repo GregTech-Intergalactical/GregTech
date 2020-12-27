@@ -1,6 +1,6 @@
 package muramasa.gti.cover;
 
-import muramasa.antimatter.cover.CoverInstance;
+import muramasa.antimatter.cover.CoverStack;
 import muramasa.antimatter.cover.CoverTiered;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
@@ -33,7 +33,7 @@ public class CoverPump extends CoverTiered {
     }
 
     @Override
-    public void onUpdate(CoverInstance instance, Direction side) {
+    public void onUpdate(CoverStack<?> instance, Direction side) {
         if (instance.getTile() == null || instance.getTile().getWorld().getGameTime() % (20) != 0) return;
         TileEntity adjTile = instance.getTile().getWorld().getTileEntity(instance.getTile().getPos().offset(side));
         if (adjTile == null) return;

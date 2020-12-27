@@ -1,25 +1,18 @@
 package muramasa.gti.loader;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import muramasa.antimatter.material.IMaterialTag;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialStack;
-import muramasa.antimatter.recipe.AntimatterIngredient;
+import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.recipe.RecipeHelper;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
 import muramasa.gti.data.Materials;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.tags.ItemTags;
-import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.*;
-import static muramasa.antimatter.recipe.RecipeTag.IGNORE_NBT;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.*;
