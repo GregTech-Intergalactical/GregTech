@@ -575,7 +575,7 @@ public class MaterialRecipeLoader {
                 RecipeHelper.addSmelting(ore, Utils.ca(multiplier * m.getSmeltingMulti(), ingot));
             }
             if (m.has(CRUSHED_CENTRIFUGED)) {
-                THERMAL_CENTRIFUGING.RB().ii(crushed).io(CRUSHED_CENTRIFUGED.get(m, 1), DUST_TINY.get(aOreByProduct2, 1), stoneDust).add(500, 48);
+                THERMAL_CENTRIFUGING.RB().ii(crushed).io(CRUSHED_CENTRIFUGED.get(m, 1), DUST_TINY.get(aOreByProduct2, 1), stoneDust).add(500, 48,0,2);
             }
             if (m.has(CRUSHED_PURIFIED)) {
                 ORE_WASHING.RB().ii(crushed).fi(Materials.Water.getLiquid(1000)).io(CRUSHED_PURIFIED.get(m, 1), DUST_TINY.get(aOreByProduct1, 1), stoneDust).add(500, 16);

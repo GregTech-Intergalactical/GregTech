@@ -1,6 +1,8 @@
 package muramasa.gti.data;
 
+import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterConfig;
+import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.block.BlockCoil;
 import muramasa.antimatter.cover.Cover;
@@ -22,6 +24,7 @@ import muramasa.gti.block.BlockTurbineCasing;
 import muramasa.gti.cover.CoverConveyor;
 import muramasa.gti.cover.CoverPlate;
 import muramasa.gti.cover.CoverPump;
+import muramasa.gti.items.ItemIntCircuit;
 import muramasa.gti.tree.BlockRubberLeaves;
 import muramasa.gti.tree.BlockRubberLog;
 import muramasa.gti.tree.BlockRubberSapling;
@@ -33,6 +36,14 @@ import static muramasa.gti.data.Materials.*;
 public class GregTechData {
 
     private static final boolean HC = AntimatterConfig.GAMEPLAY.HARDCORE_CABLES;
+
+    static {
+        ImmutableMap.Builder<Integer, AntimatterIngredient> builder = ImmutableMap.builder();
+        for (int i = 0; i <= 24; i++) {
+            builder.put(i, AntimatterIngredient.of(new ItemIntCircuit(Ref.ID, "int_circuit_"+i,i).tip("ID: " + i),1).setNonConsume());
+        }
+        INT_CIRCUITS = builder.build();
+    }
 
     public static void init() {
 
@@ -48,6 +59,8 @@ public class GregTechData {
     public static ItemFluidCell CellTin = new ItemFluidCell(Tin, 1000);
     public static ItemFluidCell CellSteel = new ItemFluidCell(Steel, 16000);
     public static ItemFluidCell CellTungstensteel = new ItemFluidCell(TungstenSteel, 64000);
+
+    public static final ImmutableMap<Integer, AntimatterIngredient> INT_CIRCUITS;
 
     public static ItemBasic<?> ItemFilter = new ItemBasic<>(Ref.ID, "item_filter");
     public static ItemBasic<?> DiamondSawBlade = new ItemBasic<>(Ref.ID, "diamond_saw_blade");
