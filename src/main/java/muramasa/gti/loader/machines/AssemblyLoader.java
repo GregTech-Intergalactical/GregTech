@@ -2,22 +2,27 @@ package muramasa.gti.loader.machines;
 
 import com.google.common.collect.ImmutableSet;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
-import muramasa.gti.data.GregTechData;
-import muramasa.gti.data.Materials;
+import muramasa.gti.block.BlockCasing;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.tags.ItemTags;
 
+import java.util.Arrays;
 import java.util.Set;
 
-import static muramasa.antimatter.Data.ROD;
+import static com.google.common.collect.ImmutableMap.of;
+import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.Data.WRENCH;
 import static muramasa.gti.data.GregTechData.*;
-import static muramasa.gti.data.Materials.Rubber;
+import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.ASSEMBLING;
 
 public class AssemblyLoader {
@@ -34,7 +39,21 @@ public class AssemblyLoader {
         });
 
         ASSEMBLING.RB().ii(AntimatterIngredient.of(ItemTags.PLANKS,8), INT_CIRCUITS.get(8)).io(new ItemStack(Items.CHEST,1)).add(100,4);
-        ASSEMBLING.RB().ii(AntimatterIngredient.of(WIRE_COPPER.getBlockItem(PipeSize.TINY),4), AntimatterIngredient.of(ROD.get(Materials.Iron),2)
-        , AntimatterIngredient.of(CABLE_TIN.getBlockItem(PipeSize.TINY),2)).io(new ItemStack(MotorLV)).add(150,16);
+        Arrays.stream(Tier.getStandard()).forEach(t -> {
+            Material magnet = (t == Tier.ULV || t == Tier.LV) ? IronMagnetic : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
+            ASSEMBLING.RB().fi(Plastic.getLiquid(288)).ii(AntimatterIngredient.of(AntimatterAPI.get(BlockCasing.class, "casing_"+t.getId()).asItem(),1)
+                    , AntimatterIngredient.of(TIER_CABLES.get(t),2)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_"+t.getId()).asItem(),1)).add(40,8);
+            ASSEMBLING.RB().ii(AntimatterIngredient.of(TIER_WIRES.get(t),4), AntimatterIngredient.of(ROD.get(TIER_MATERIALS.get(t)),2),
+                    AntimatterIngredient.of(ROD.get(magnet),1)
+                    , AntimatterIngredient.of(TIER_CABLES.get(t),2)).io(new ItemStack(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId()))).add(150,16);
+
+            ASSEMBLING.RB().ii(AntimatterIngredient.of(TIER_CABLES.get(t),2),
+                    AntimatterIngredient.of(ROD.get(TIER_MATERIALS.get(t)),2),
+                    AntimatterIngredient.of(PLATE.get(TIER_MATERIALS.get(t)),3),
+                    AntimatterIngredient.of(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId()),1),
+                    AntimatterIngredient.of(GEAR.get(TIER_MATERIALS.get(t)),1))
+                    .io(new ItemStack(AntimatterAPI.get(ItemBasic.class,"piston_"+t.getId())))
+                    .add(150,16);
+        });
     }
 }

@@ -43,7 +43,7 @@ public class Guis {
         BENDER.getGui().add(ALLOY_SMELTER);
         CANNER.getGui().add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
         COMPRESSOR.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
-        CUTTER.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY,80, 63);
+        CUTTER.getGui().add(IT_IN, 53, 25).add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY,80, 63);
         FURNACE.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
         EXTRACTOR.getGui().add(COMPRESSOR);
         EXTRUDER.getGui().add(ALLOY_SMELTER);
@@ -55,7 +55,7 @@ public class Guis {
         RECYCLER.getGui().add(COMPRESSOR);
         SCANNER.getGui().add(COMPRESSOR);
         WIRE_MILL.getGui().add(COMPRESSOR);
-        CENTRIFUGE.getGui().add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(ENERGY,80, 63);
+        CENTRIFUGE.getGui().add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(ENERGY,80, 63).add(FL_OUT, 107, 63);
         ELECTROLYZER.getGui().add(CENTRIFUGE);
         THERMAL_CENTRIFUGE.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(ENERGY,80, 63);
         ORE_WASHER.getGui().add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
@@ -66,10 +66,10 @@ public class Guis {
         AMP_FABRICATOR.getGui().add(COMPRESSOR);
         REPLICATOR.getGui().add(COMPRESSOR);
         FERMENTER.getGui().add(COMPRESSOR);
-        FLUID_EXTRACTOR.getGui().add(COMPRESSOR);
+        FLUID_EXTRACTOR.getGui().add(COMPRESSOR).add(FL_OUT, 107, 63);
         FLUID_SOLIDIFIER.getGui().add(COMPRESSOR).add(FL_IN, 53, 63);
         DISTILLERY.getGui().add(COMPRESSOR);
-        CHEMICAL_BATH.getGui().add(THERMAL_CENTRIFUGE);
+        CHEMICAL_BATH.getGui().add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63);
         AUTOCLAVE.getGui().add(COMPRESSOR);
         MIXER.getGui().add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
         LASER_ENGRAVER.getGui().add(ALLOY_SMELTER);

@@ -2,6 +2,7 @@ package muramasa.gti.data;
 
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterConfig;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.block.BlockCoil;
@@ -30,6 +31,7 @@ import muramasa.gti.tree.BlockRubberLog;
 import muramasa.gti.tree.BlockRubberSapling;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
+import net.minecraft.item.Item;
 
 import static muramasa.gti.data.Materials.*;
 
@@ -38,11 +40,46 @@ public class GregTechData {
     private static final boolean HC = AntimatterConfig.GAMEPLAY.HARDCORE_CABLES;
 
     static {
-        ImmutableMap.Builder<Integer, AntimatterIngredient> builder = ImmutableMap.builder();
-        for (int i = 0; i <= 24; i++) {
-            builder.put(i, AntimatterIngredient.of(new ItemIntCircuit(Ref.ID, "int_circuit_"+i,i).tip("ID: " + i),1).setNonConsume());
+        {
+            ImmutableMap.Builder<Integer, AntimatterIngredient> builder = ImmutableMap.builder();
+            for (int i = 0; i <= 24; i++) {
+                builder.put(i, AntimatterIngredient.of(new ItemIntCircuit(Ref.ID, "int_circuit_"+i,i).tip("ID: " + i),1).setNonConsume());
+            }
+            INT_CIRCUITS = builder.build();
         }
-        INT_CIRCUITS = builder.build();
+        {
+            ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
+            builder.put(Tier.ULV, WroughtIron);
+            builder.put(Tier.LV, Steel);
+            builder.put(Tier.MV, Aluminium);
+            builder.put(Tier.HV, StainlessSteel);
+            builder.put(Tier.EV, Titanium);
+            builder.put(Tier.IV, TungstenSteel);
+            TIER_MATERIALS = builder.build();
+        }
+    }
+
+    public static void buildTierMaps() {
+        {
+            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
+            builder.put(Tier.ULV, WIRE_LEAD.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.LV, WIRE_COPPER.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.MV, WIRE_COPPER.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.HV, WIRE_GOLD.getBlockItem(PipeSize.TINY));
+            builder.put(Tier.EV, WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.SMALL));
+            builder.put(Tier.IV, WIRE_PLATINUM.getBlockItem(PipeSize.TINY));
+            TIER_WIRES = builder.build();
+        }
+        {
+            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
+            builder.put(Tier.ULV, CABLE_LEAD.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.LV, CABLE_TIN.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.MV, CABLE_COPPER.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.HV, CABLE_SILVER.getBlockItem(PipeSize.TINY));
+            builder.put(Tier.EV, CABLE_ALUMINIUM.getBlockItem(PipeSize.SMALL));
+            builder.put(Tier.IV, CABLE_PLATINUM.getBlockItem(PipeSize.TINY));
+            TIER_CABLES = builder.build();
+        }
     }
 
     public static void init() {
@@ -59,8 +96,6 @@ public class GregTechData {
     public static ItemFluidCell CellTin = new ItemFluidCell(Tin, 1000);
     public static ItemFluidCell CellSteel = new ItemFluidCell(Steel, 16000);
     public static ItemFluidCell CellTungstensteel = new ItemFluidCell(TungstenSteel, 64000);
-
-    public static final ImmutableMap<Integer, AntimatterIngredient> INT_CIRCUITS;
 
     public static ItemBasic<?> ItemFilter = new ItemBasic<>(Ref.ID, "item_filter");
     public static ItemBasic<?> DiamondSawBlade = new ItemBasic<>(Ref.ID, "diamond_saw_blade");
@@ -458,4 +493,10 @@ public class GregTechData {
     public static final BlockRubberLeaves RUBBER_LEAVES = new BlockRubberLeaves(Ref.ID, "rubber_leaves");
     public static final BlockRubberLog RUBBER_LOG = new BlockRubberLog(Ref.ID, "rubber_log");
     public static final BlockRubberSapling RUBBER_SAPLING = new BlockRubberSapling(Ref.ID, "rubber_sapling");
+
+    public static final ImmutableMap<Integer, AntimatterIngredient> INT_CIRCUITS;
+    public static final ImmutableMap<Tier, Material> TIER_MATERIALS;
+    public static ImmutableMap<Tier, Item> TIER_WIRES;
+    public static ImmutableMap<Tier, Item> TIER_CABLES;
+    public static ImmutableMap<Tier, ItemBasic<?>> TIER_CIRCUITS;
 }

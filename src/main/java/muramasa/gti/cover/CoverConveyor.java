@@ -75,9 +75,9 @@ public class CoverConveyor extends CoverTiered {
             return;
         }
         if (isMachine) {
-            ((TileEntityMachine)instance.getTile()).itemHandler.ifPresent(ih -> adjTile.getCapability(ITEM_HANDLER_CAPABILITY).ifPresent(other -> Utils.transferItems(ih.getOutputHandler(), other)));
+            ((TileEntityMachine)instance.getTile()).itemHandler.ifPresent(ih -> adjTile.getCapability(ITEM_HANDLER_CAPABILITY).ifPresent(other -> Utils.transferItems(ih.getOutputHandler(), other,true)));
         } else {
-            Utils.transferItemsOnCap(instance.getTile(), adjTile);
+            Utils.transferItemsOnCap(instance.getTile(), adjTile,true);
         }
     }
 
