@@ -2,6 +2,7 @@ package muramasa.gti.data;
 
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterConfig;
+import muramasa.antimatter.client.AntimatterTextureStitcher;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.gti.block.BlockCasing;
@@ -32,6 +33,7 @@ import muramasa.gti.tree.BlockRubberSapling;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 
 import static muramasa.gti.data.Materials.*;
 
@@ -93,9 +95,9 @@ public class GregTechData {
     public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 
-    public static ItemFluidCell CellTin = new ItemFluidCell(Tin, 1000);
-    public static ItemFluidCell CellSteel = new ItemFluidCell(Steel, 16000);
-    public static ItemFluidCell CellTungstensteel = new ItemFluidCell(TungstenSteel, 64000);
+    public static ItemFluidCell CellTin = new ItemFluidCell(Ref.ID,Tin, 1000);
+    public static ItemFluidCell CellSteel = new ItemFluidCell(Ref.ID,Steel, 16000);
+    public static ItemFluidCell CellTungstensteel = new ItemFluidCell(Ref.ID,TungstenSteel, 64000);
 
     public static ItemBasic<?> ItemFilter = new ItemBasic<>(Ref.ID, "item_filter");
     public static ItemBasic<?> DiamondSawBlade = new ItemBasic<>(Ref.ID, "diamond_saw_blade");
