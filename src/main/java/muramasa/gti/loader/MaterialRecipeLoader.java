@@ -555,11 +555,12 @@ public class MaterialRecipeLoader {
                     ItemStack aIngotSmeltInto = m == m.getSmeltInto() ? ingot : INGOT.get(m.getSmeltInto(), 1);
                     ItemStack blastOut = m.getBlastTemp() > 1750 && m.getSmeltInto().has(INGOT_HOT) ? INGOT_HOT.get(m.getSmeltInto(), 1) : aIngotSmeltInto;
                     long aBlastDuration = Math.max(m.getMass() / 4, 1) * m.getBlastTemp();
-                    BLASTING.RB().ii(crushed).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
-                    BLASTING.RB().ii(CRUSHED_PURIFIED.getIngredient(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
-                    BLASTING.RB().ii(CRUSHED_CENTRIFUGED.getIngredient(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
-                    BLASTING.RB().ii(DUST_PURE.getIngredient(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
-                    BLASTING.RB().ii(DUST_IMPURE.getIngredient(m, 1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
+                    BLASTING.RB().ii(crushed, INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
+                    BLASTING.RB().ii(dust, INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration/4, 120, m.getBlastTemp());
+                    BLASTING.RB().ii(CRUSHED_PURIFIED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
+                    BLASTING.RB().ii(CRUSHED_CENTRIFUGED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
+                    BLASTING.RB().ii(DUST_PURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
+                    BLASTING.RB().ii(DUST_IMPURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
                 }
                 if (m.has(CALCITE3X)) {
                     ItemStack ingotMulti = Utils.mul(multiplier * 3 * m.getSmeltingMulti(), ingot);

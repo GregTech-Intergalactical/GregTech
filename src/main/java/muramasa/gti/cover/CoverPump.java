@@ -44,4 +44,9 @@ public class CoverPump extends CoverTiered {
     public String getDomain() {
         return Ref.ID;
     }
+
+    @Override
+    protected String getRenderId() {
+        return ID();
+    }
 }

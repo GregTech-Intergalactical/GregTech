@@ -1,20 +1,23 @@
 package muramasa.gti.data;
 
+import muramasa.antimatter.integration.jei.renderer.FuelInfoRenderer;
+import muramasa.antimatter.integration.jei.renderer.IRecipeInfoRenderer;
 import muramasa.antimatter.integration.jei.renderer.SteamRecipeInfoRenderer;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.antimatter.recipe.RecipeMap;
 
+import static muramasa.gti.data.Guis.MULTI_DISPLAY;
 import static muramasa.gti.data.RecipeBuilders.*;
 
 public class RecipeMaps {
 
-    public static RecipeMap ORE_BYPRODUCTS = new RecipeMap<>("ore_byproducts", new RecipeBuilder());
-    public static RecipeMap STEAM_FUELS = new RecipeMap<>("steam_fuels", new RecipeBuilder());
-    public static RecipeMap GAS_FUELS = new RecipeMap<>("gas_fuels", new RecipeBuilder());
-    public static RecipeMap COMBUSTION_FUELS = new RecipeMap<>("combustion_fuels", new RecipeBuilder());
-    public static RecipeMap NAQUADAH_FUELS = new RecipeMap<>("naquadah_fuels", new RecipeBuilder());
-    public static RecipeMap PLASMA_FUELS = new RecipeMap<>("plasma_fuels", new RecipeBuilder());
+    public static RecipeMap ORE_BYPRODUCTS = new RecipeMap<>("ore_byproducts", new RecipeBuilder(), IRecipeInfoRenderer.EMPTY_RENDERER);
+    public static RecipeMap STEAM_FUELS = new RecipeMap<>("steam_fuels", new RecipeBuilder(), FuelInfoRenderer.INSTANCE);
+    public static RecipeMap GAS_FUELS = new RecipeMap<>("gas_fuels", new RecipeBuilder(), FuelInfoRenderer.INSTANCE);
+    public static RecipeMap COMBUSTION_FUELS = new RecipeMap<>("combustion_fuels", new RecipeBuilder(), FuelInfoRenderer.INSTANCE);
+    public static RecipeMap NAQUADAH_FUELS = new RecipeMap<>("naquadah_fuels", new RecipeBuilder(), FuelInfoRenderer.INSTANCE);
+    public static RecipeMap PLASMA_FUELS = new RecipeMap<>("plasma_fuels", new RecipeBuilder(), FuelInfoRenderer.INSTANCE);
 
     public static RecipeMap SMALL_BOILERS = new RecipeMap<>("small_boilers", new RecipeBuilder());
 
@@ -64,10 +67,10 @@ public class RecipeMaps {
     public static RecipeMap STEAM_COMPRESSING = new RecipeMap<>("steam_compressing", new RecipeBuilder(), SteamRecipeInfoRenderer.INSTANCE);
     public static RecipeMap STEAM_ALLOY_SMELTING = new RecipeMap<>("steam_alloy_smelting", new RecipeBuilder(), SteamRecipeInfoRenderer.INSTANCE);
 
-    public static RecipeMap COKING = new RecipeMap<>("coking", new RecipeBuilder());
-    public static RecipeMap<BasicBlastingBuilder> BASIC_BLASTING = new RecipeMap<>("basic_blasting", new BasicBlastingBuilder());
-    public static RecipeMap BLASTING = new RecipeMap<>("elec_blasting", new RecipeBuilder());
-    public static RecipeMap IMPLOSION_COMPRESSING = new RecipeMap<>("implosion_compressing", new RecipeBuilder());
-    public static RecipeMap VACUUM_FREEZING = new RecipeMap<>("vacuum_freezing", new RecipeBuilder());
-    public static RecipeMap FUSION = new RecipeMap<>("fusion", new RecipeBuilder());
+    public static RecipeMap COKING = new RecipeMap<>("coking", new RecipeBuilder(), MULTI_DISPLAY);
+    public static RecipeMap<BasicBlastingBuilder> BASIC_BLASTING = new RecipeMap<>("basic_blasting", new BasicBlastingBuilder(), MULTI_DISPLAY);
+    public static RecipeMap BLASTING = new RecipeMap<>("elec_blasting", new RecipeBuilder(), MULTI_DISPLAY);
+    public static RecipeMap IMPLOSION_COMPRESSING = new RecipeMap<>("implosion_compressing", new RecipeBuilder(), MULTI_DISPLAY);
+    public static RecipeMap VACUUM_FREEZING = new RecipeMap<>("vacuum_freezing", new RecipeBuilder(), MULTI_DISPLAY);
+    public static RecipeMap FUSION = new RecipeMap<>("fusion", new RecipeBuilder(), MULTI_DISPLAY);
 }

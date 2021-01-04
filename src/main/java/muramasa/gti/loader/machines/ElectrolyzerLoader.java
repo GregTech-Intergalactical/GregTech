@@ -3,7 +3,6 @@ package muramasa.gti.loader.machines;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialStack;
-import muramasa.antimatter.recipe.Callbacks;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import net.minecraft.fluid.Fluids;
@@ -11,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,11 +56,11 @@ public class ElectrolyzerLoader {
                     if (cellCount > 0) {
                         AntimatterIngredient celli = AntimatterIngredient.of(cell, cellCount);
                         rb.ii(AntimatterIngredient.of(DUST.get(dust), count), celli);
-                        cellStacks.stream().map(c -> new Callbacks.FillableItemCallback(new FluidStack(c.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY).map(t -> t.getFluidInTank(0).getFluid()).orElse(Fluids.EMPTY), c.getCount()*1000))).forEach(c -> rb.cb(celli, c));
                     } else {
                         rb.ii(AntimatterIngredient.of(DUST.get(dust), count));
                     }
-                    rb.io(dust.getProcessInto().stream().filter(t -> DUST.allowGen(t.m)).map(t -> new ItemStack(DUST.get(t.m), t.s)).toArray(ItemStack[]::new)).fo(liquid.getGas(fluidStack.s * 1000)).add(duration, euT);
+                    cellStacks.addAll(Arrays.asList(dust.getProcessInto().stream().filter(t -> DUST.allowGen(t.m)).map(t -> new ItemStack(DUST.get(t.m), t.s)).toArray(ItemStack[]::new)));
+                    rb.io(cellStacks.toArray(new ItemStack[0])).fo(liquid.getGas(fluidStack.s * 1000)).add(duration, euT);
                 }
             } else {
                 ELECTROLYZING.RB().ii(AntimatterIngredient.of(DUST.get(dust), count)).io(
