@@ -61,7 +61,11 @@ public class Guis {
         ORE_WASHER.getGui().add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         CHEMICAL_REACTOR.getGui().add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         FLUID_CANNER.getGui().add(COMPRESSOR);
-        DISASSEMBLER.getGui().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
+        DISASSEMBLER.getGui().add(IT_IN, 53, 25)
+                .add(IT_OUT, 107, 7).add(IT_OUT, 107+18, 7).add(IT_OUT, 107+18*2, 7)
+                .add(IT_OUT, 107, 25).add(IT_OUT, 107+18, 25).add(IT_OUT, 107+18*2, 25)
+                .add(IT_OUT, 107, 43).add(IT_OUT, 107+18, 43).add(IT_OUT, 107+18*2, 43)
+                .add(ENERGY,80, 63);
         MASS_FABRICATOR.getGui().add(COMPRESSOR);
         AMP_FABRICATOR.getGui().add(COMPRESSOR);
         REPLICATOR.getGui().add(COMPRESSOR);

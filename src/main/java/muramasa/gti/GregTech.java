@@ -15,6 +15,7 @@ import muramasa.gti.loader.MaterialRecipeLoader;
 import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.loader.machines.*;
 import muramasa.gti.loader.machines.generator.SteamFuels;
+import muramasa.gti.loader.multi.VacFreezer;
 import muramasa.gti.proxy.ClientHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TagsUpdatedEvent;
@@ -64,6 +65,7 @@ public class GregTech extends AntimatterMod {
         loader.registerRecipeLoader(SteamFuels::init);
         loader.registerRecipeLoader(FluidExtractor::init);
         loader.registerRecipeLoader(ElectrolyzerLoader::init);
+        loader.registerRecipeLoader(VacFreezer::init);
     }
 
     private void clientSetup(final FMLClientSetupEvent e) {
