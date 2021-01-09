@@ -382,9 +382,9 @@ public class GregTechData {
     public static final BlockCasing CASING_PIPE_TUNGSTENSTEEL = new BlockCasing(Ref.ID, "casing_pipe_tungstensteel");
     public static final BlockCasing CASING_ENGINE_INTAKE = new BlockCasing(Ref.ID, "casing_engine_intake");
 
-    public static final BlockFusionCasing CASING_FUSION_1 = new BlockFusionCasing(Ref.ID, "casing_fusion_1");
-    public static final BlockFusionCasing CASING_FUSION_2 = new BlockFusionCasing(Ref.ID, "casing_fusion_2");
-    public static final BlockFusionCasing CASING_FUSION_3 = new BlockFusionCasing(Ref.ID, "casing_fusion_3");
+    public static final BlockFusionCasing CASING_FUSION_1 = new BlockFusionCasing(Ref.ID, "fusion_1");
+    public static final BlockFusionCasing CASING_FUSION_2 = new BlockFusionCasing(Ref.ID, "fusion_2");
+    public static final BlockFusionCasing CASING_FUSION_3 = new BlockFusionCasing(Ref.ID, "fusion_3");
 
     public static final BlockTurbineCasing CASING_TURBINE_1 = new BlockTurbineCasing(Ref.ID, "casing_turbine_1");
     public static final BlockTurbineCasing CASING_TURBINE_2 = new BlockTurbineCasing(Ref.ID, "casing_turbine_2");

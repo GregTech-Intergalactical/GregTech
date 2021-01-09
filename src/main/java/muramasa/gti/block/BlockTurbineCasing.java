@@ -1,126 +1,197 @@
 package muramasa.gti.block;
 
-import muramasa.antimatter.Ref;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import muramasa.antimatter.datagen.builder.AntimatterBlockModelBuilder;
+import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.dynamic.ModelConfig;
-import muramasa.antimatter.tile.TileEntityMachine;
+import muramasa.antimatter.machine.MachineState;
+import muramasa.antimatter.registration.ITextureProvider;
+import muramasa.antimatter.texture.Texture;
+import muramasa.antimatter.util.int3;
 import muramasa.gti.tile.multi.TileEntityLargeTurbine;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IBlockReader;
 
-public class BlockTurbineCasing extends BlockCasing {
+import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.List;
+
+import static muramasa.antimatter.client.AntimatterModelManager.LOADER_DYNAMIC;
+
+public class BlockTurbineCasing extends BlockCasingMachine {
 
     public BlockTurbineCasing(String domain, String id) {
         super(domain, id);
-        //setDefaultModel(true);
+    }
+
+    @Override
+    protected String getTextureID() {
+        return "turbine";
+    }
+
+    @Override
+    public boolean canConnect(IBlockReader world, BlockState state, @Nullable TileEntity tile, BlockPos pos) {
+        return false;
     }
 
     @Override
     public ModelConfig getConfig(BlockState state, IBlockReader world, BlockPos.Mutable mut, BlockPos pos) {
-        int[] ct = new int[6];
-        TileEntity tile;
-        for (int s = 0; s < 6; s++) {
-            if ((tile = world.getTileEntity(pos.offset(Ref.DIRS[s]))) instanceof TileEntityLargeTurbine) {
-                ct[s] = (1 << s) + (((TileEntityMachine) tile).getFacing().getIndex() * 100) /*+ ((TileEntityLargeTurbine) tile).getClientProgress() > 0 ? 1000 : 0*/;
-            } else if ((tile = world.getTileEntity(pos.offset(Ref.DIRS[s]).down())) instanceof TileEntityLargeTurbine) {
-                ct[s] = (1 << s) + (1 << Direction.DOWN.getIndex()) + (((TileEntityLargeTurbine) tile).getFacing().getIndex() * 100) /*+ ((TileEntityLargeTurbine) tile).getClientProgress() > 0 ? 1000 : 0*/;
-            } else if ((tile = world.getTileEntity(pos.offset(Ref.DIRS[s]).up())) instanceof TileEntityLargeTurbine) {
-                ct[s] = (1 << s) + (1 << Direction.UP.getIndex()) + (((TileEntityLargeTurbine) tile).getFacing().getIndex() * 100) /*+ ((TileEntityLargeTurbine) tile).getClientProgress() > 0 ? 1000 : 0*/;
-            }
+        int[] conf = super.getConfig(state, world, mut, pos).getConfig();
+        int[] ct = new int[conf.length+1];
+        int3 mutable = new int3();
+        mutable.set(pos);
+        TileEntityLargeTurbine turbine = getTurbine(world, pos);
+        if (turbine != null) {
+            BlockPos controllerPos = turbine.getPos();
+            Vec3i vec = new Vec3i(-(pos.getX()-controllerPos.getX()), -(pos.getY()-controllerPos.getY()), -(pos.getZ()-controllerPos.getZ()));
+            int c = getOffset(vec);
+            c += turbine.getFacing().getIndex()*1000;
+            c += (turbine.getMachineState() == MachineState.ACTIVE ? 10000 : 0);
+            ct[1] = c;
         }
+        ct[0] = conf[0];
         return config.set(ct);
     }
 
-//    @Override
-//    public void onConfigBuild() {
-//        add(216, () -> ModelUtils.bakeQuad(LARGE_TURBINE[3], 2)); //North
-//        add(232, () -> ModelUtils.bakeQuad(LARGE_TURBINE[5], 2));
-//        add(201, () -> ModelUtils.bakeQuad(LARGE_TURBINE[1], 2));
-//        add(202, () -> ModelUtils.bakeQuad(LARGE_TURBINE[7], 2));
-//
-//        add(332, () -> ModelUtils.bakeQuad(LARGE_TURBINE[3], 3)); //South
-//        add(316, () -> ModelUtils.bakeQuad(LARGE_TURBINE[5], 3));
-//        add(301, () -> ModelUtils.bakeQuad(LARGE_TURBINE[1], 3));
-//        add(302, () -> ModelUtils.bakeQuad(LARGE_TURBINE[7], 3));
-//
-//        add(408, () -> ModelUtils.bakeQuad(LARGE_TURBINE[3], 4)); //West
-//        add(404, () -> ModelUtils.bakeQuad(LARGE_TURBINE[5], 4));
-//        add(401, () -> ModelUtils.bakeQuad(LARGE_TURBINE[1], 4));
-//        add(402, () -> ModelUtils.bakeQuad(LARGE_TURBINE[7], 4));
-//
-//        add(504, () -> ModelUtils.bakeQuad(LARGE_TURBINE[3], 5)); //East
-//        add(508, () -> ModelUtils.bakeQuad(LARGE_TURBINE[5], 5));
-//        add(501, () -> ModelUtils.bakeQuad(LARGE_TURBINE[1], 5));
-//        add(502, () -> ModelUtils.bakeQuad(LARGE_TURBINE[7], 5));
-//
-//        add(217, () -> ModelUtils.bakeQuad(LARGE_TURBINE[0], 2)); //North Corners
-//        add(233, () -> ModelUtils.bakeQuad(LARGE_TURBINE[2], 2));
-//        add(218, () -> ModelUtils.bakeQuad(LARGE_TURBINE[6], 2));
-//        add(234, () -> ModelUtils.bakeQuad(LARGE_TURBINE[8], 2));
-//
-//        add(333, () -> ModelUtils.bakeQuad(LARGE_TURBINE[0], 3)); //South Corners
-//        add(317, () -> ModelUtils.bakeQuad(LARGE_TURBINE[2], 3));
-//        add(334, () -> ModelUtils.bakeQuad(LARGE_TURBINE[6], 3));
-//        add(318, () -> ModelUtils.bakeQuad(LARGE_TURBINE[8], 3));
-//
-//        add(409, () -> ModelUtils.bakeQuad(LARGE_TURBINE[0], 4)); //West Corners
-//        add(405, () -> ModelUtils.bakeQuad(LARGE_TURBINE[2], 4));
-//        add(410, () -> ModelUtils.bakeQuad(LARGE_TURBINE[6], 4));
-//        add(406, () -> ModelUtils.bakeQuad(LARGE_TURBINE[8], 4));
-//
-//        add(505, () -> ModelUtils.bakeQuad(LARGE_TURBINE[0], 5)); //East Corners
-//        add(509, () -> ModelUtils.bakeQuad(LARGE_TURBINE[2], 5));
-//        add(506, () -> ModelUtils.bakeQuad(LARGE_TURBINE[6], 5));
-//        add(510, () -> ModelUtils.bakeQuad(LARGE_TURBINE[8], 5));
-//
-//        add(1216, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[3], 2)); //North
-//        add(1232, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[5], 2));
-//        add(1201, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[1], 2));
-//        add(1202, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[7], 2));
-//
-//        add(1332, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[3], 3)); //South
-//        add(1316, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[5], 3));
-//        add(1301, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[1], 3));
-//        add(1302, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[7], 3));
-//
-//        add(1408, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[3], 4)); //West
-//        add(1404, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[5], 4));
-//        add(1401, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[1], 4));
-//        add(1402, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[7], 4));
-//
-//        add(1504, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[3], 5)); //East
-//        add(1508, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[5], 5));
-//        add(1501, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[1], 5));
-//        add(1502, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[7], 5));
-//
-//        add(1217, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[0], 2)); //North Corners
-//        add(1233, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[2], 2));
-//        add(1218, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[6], 2));
-//        add(1234, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[8], 2));
-//
-//        add(1333, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[0], 3)); //South Corners
-//        add(1317, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[2], 3));
-//        add(1334, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[6], 3));
-//        add(1318, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[8], 3));
-//
-//        add(1409, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[0], 4)); //West Corners
-//        add(1405, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[2], 4));
-//        add(1410, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[6], 4));
-//        add(1406, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[8], 4));
-//
-//        add(1505, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[0], 5)); //East Corners
-//        add(1509, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[2], 5));
-//        add(1506, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[6], 5));
-//        add(1510, () -> ModelUtils.bakeQuad(LARGE_TURBINE_ACTIVE[8], 5));
-//    }
+    protected Texture[] turbineTextures() {
+        Texture[] tex = new Texture[9];
+        for (int i = 0; i <= 8; i++) {
+            tex[i] = new Texture(domain,"block/ct/turbine/large_turbine_active_"+i);
+        }
+        return tex;
+    }
 
-//    @Override
-//    @OnlyIn(Dist.CLIENT)
-//    public void getTextures(Set<ResourceLocation> textures) {
-//        super.getTextures(textures);
-//        textures.addAll(Arrays.asList(LARGE_TURBINE));
-//        textures.addAll(Arrays.asList(LARGE_TURBINE_ACTIVE));
-//    }
+    protected Texture[] turbineTexturesInactive() {
+        Texture[] tex = new Texture[9];
+        for (int i = 0; i <= 8; i++) {
+            tex[i] = new Texture(domain,"block/ct/turbine/large_turbine_"+i);
+        }
+        return tex;
+    }
+
+
+    protected int getOffset(Vec3i vec) {
+        return vec.getX() + vec.getY()*10 + vec.getZ()*100;
+    }
+
+    //essentially a facing transformation
+    protected int getOffset(Vec3i vec, Direction dir) {
+        switch (dir) {
+            case NORTH:
+                return vec.getY()*10 - vec.getX();
+            case SOUTH:
+                return vec.getY()*10 + vec.getX();
+            case WEST:
+                return vec.getY()*10 + vec.getX()*100;
+            case EAST:
+                return vec.getY()*10 - vec.getX()*100;
+        }
+        return 0;
+    }
+
+    private final static String SIDED = "antimatter:block/preset/simple_overlay";
+    private final static String SIMPLE = "antimatter:block/preset/simple";
+
+    private final Vec3i[] VECS = new Vec3i[]{
+            new Vec3i(1,-1,0),
+            new Vec3i(0,-1,0),
+            new Vec3i(-1,-1,0),
+            new Vec3i(1,0,0),
+            new Vec3i(0,0,0),
+            new Vec3i(-1,0,0),
+            new Vec3i(1,1,0),
+            new Vec3i(0,1,0),
+            new Vec3i(-1,1,0),
+    };
+
+    @Override
+    public AntimatterBlockModelBuilder buildBlock(Block block, AntimatterBlockStateProvider prov) {
+        Texture[] tex = turbineTextures();
+        Texture[] inactive = turbineTexturesInactive();
+        AntimatterBlockModelBuilder builder = prov.getBuilder(block);
+        for (Direction dir : dirs) {
+            for (int i = 0; i < VECS.length; i++) {
+                if (i == 4) continue;
+                final int ii = i;
+                builder.config(getOffset(VECS[i], dir)+dir.getIndex()*1000, SIDED, a ->
+                    a.tex(t -> t.put("base",inactive[ii])).rot(dir));
+                builder.config(getOffset(VECS[i], dir)+dir.getIndex()*1000+10000, SIDED, a ->
+                    a.tex(t -> t.put("base",tex[ii])).rot(dir));
+            }
+        }
+        builder.model(SIMPLE, ((ITextureProvider)block).getTextures());
+        builder.loader(LOADER_DYNAMIC);
+        return builder;
+    }
+    //just all horizontal dirs
+    private static final List<Direction> dirs = Arrays.asList(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
+    //cache.
+    private static final Long2ObjectMap<TileEntityLargeTurbine> MAP = new Long2ObjectOpenHashMap<>();
+
+    private TileEntityLargeTurbine checkTurbine(IBlockReader reader, BlockPos pos) {
+        TileEntity tile = reader.getTileEntity(pos);
+        return tile instanceof TileEntityLargeTurbine ? (TileEntityLargeTurbine) tile : null;
+    }
+
+    protected TileEntityLargeTurbine getTurbine(IBlockReader world, BlockPos pos) {
+        int3 mutable = new int3();
+        mutable.set(pos);
+        return MAP.compute(pos.toLong(), (a, b) -> {
+            if (b != null && !(b.isRemoved())) return b;
+            TileEntityLargeTurbine t;
+            for (Direction d : dirs) {
+                mutable.setPos(pos);
+                mutable.offset(d,1);
+                t = checkTurbine(world, mutable);
+                if (t != null) return t;
+
+                mutable.setPos(pos);
+                mutable.offset(d,-1);
+                t = checkTurbine(world, mutable);
+                if (t != null) return t;
+
+                mutable.setPos(pos);
+                mutable.offset(Direction.UP,1);
+                t = checkTurbine(world, mutable);
+                if (t != null) return t;
+
+                mutable.setPos(pos);
+                mutable.offset(Direction.UP,-1);
+                t = checkTurbine(world, mutable);
+                if (t != null) return t;
+
+                mutable.setPos(pos);
+                mutable.offset(d,1);
+                mutable.offset(Direction.UP,-1);
+                t = checkTurbine(world, mutable);
+                if (t != null) return t;
+
+                mutable.setPos(pos);
+                mutable.offset(d);
+                mutable.offset(Direction.UP,1);
+                t = checkTurbine(world, mutable);
+                if (t != null) return t;
+
+                mutable.setPos(pos);
+                mutable.offset(d,-1);
+                mutable.offset(Direction.UP,1);
+                t = checkTurbine(world, mutable);
+                if (t != null) return t;
+
+                mutable.setPos(pos);
+                mutable.offset(d,-1);
+                mutable.offset(Direction.UP,-1);
+                t = checkTurbine(world, mutable);
+                if (t != null) return t;
+
+            }
+            return null;
+        });
+    }
 }

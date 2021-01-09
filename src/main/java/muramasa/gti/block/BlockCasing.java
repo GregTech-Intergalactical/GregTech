@@ -1,7 +1,11 @@
 package muramasa.gti.block;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Data;
+import muramasa.antimatter.datagen.builder.AntimatterBlockModelBuilder;
+import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.dynamic.BlockDynamic;
+import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.antimatter.texture.Texture;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -30,5 +34,19 @@ public class BlockCasing extends BlockDynamic {
     @Override
     public Texture[] getTextures() {
         return new Texture[]{new Texture(getRegistryName().getNamespace(), "block/casing/" + getRegistryName().getPath().replaceAll("casing_", ""))};
+    }
+
+    @Override
+    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
+        AntimatterBlockModelBuilder builder = buildBlock(block,prov);
+        if (builder != null) {
+            prov.state(block, builder);
+        } else {
+            super.onBlockModelBuild(block, prov);
+        }
+    }
+    //Hierarchial block builder.
+    protected AntimatterBlockModelBuilder buildBlock(Block block, AntimatterBlockStateProvider prov) {
+        return null;
     }
 }
