@@ -2,7 +2,6 @@ package muramasa.gti;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.*;
-import muramasa.antimatter.recipe.RecipeMap;
 import muramasa.antimatter.recipe.loader.AntimatterRecipeLoader;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.AntimatterMod;
@@ -10,16 +9,12 @@ import muramasa.gti.data.*;
 import muramasa.gti.datagen.GregTechBlockTagProvider;
 import muramasa.gti.datagen.GregTechRecipes;
 import muramasa.gti.datagen.ProgressionAdvancements;
-import muramasa.gti.loader.MachineRecipeLoader;
-import muramasa.gti.loader.MaterialRecipeLoader;
 import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.loader.machines.*;
 import muramasa.gti.loader.machines.generator.SteamFuels;
+import muramasa.gti.loader.multi.ElectricBlasting;
 import muramasa.gti.loader.multi.VacFreezer;
 import muramasa.gti.proxy.ClientHandler;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.TagsUpdatedEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -57,16 +52,26 @@ public class GregTech extends AntimatterMod {
 
     private void registerRecipeLoaders() {
         AntimatterRecipeLoader loader = AntimatterAPI.getRecipeRegistrate();
-        loader.registerRecipeLoader(MaterialRecipeLoader::init);
-        loader.registerRecipeLoader(MachineRecipeLoader::init);
+      //  loader.registerRecipeLoader(MaterialRecipeLoader::init);
         loader.registerRecipeLoader(WiremillLoader::init);
+        loader.registerRecipeLoader(WasherLoader::init);
+        loader.registerRecipeLoader(ElectricBlasting::init);
         loader.registerRecipeLoader(BendingLoader::init);
         loader.registerRecipeLoader(AssemblyLoader::init);
         loader.registerRecipeLoader(ChemicalReactorLoader::init);
         loader.registerRecipeLoader(SteamFuels::init);
         loader.registerRecipeLoader(FluidExtractor::init);
+
         loader.registerRecipeLoader(ElectrolyzerLoader::init);
+        loader.registerRecipeLoader(FluidCanningLoader::init);
+        loader.registerRecipeLoader(CentrifugingLoader::init);
+        loader.registerRecipeLoader(ExtractorLoader::init);
+        loader.registerRecipeLoader(CompressorLoader::init);
         loader.registerRecipeLoader(VacFreezer::init);
+        loader.registerRecipeLoader(OreByproducts::init);
+        loader.registerRecipeLoader(PulverizerLoader::init);
+        loader.registerRecipeLoader(SiftingLoader::init);
+        loader.registerRecipeLoader(ThermalCentrifuge::init);
     }
 
     private void clientSetup(final FMLClientSetupEvent e) {

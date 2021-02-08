@@ -5,6 +5,7 @@ import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
 import muramasa.antimatter.tile.single.TileEntityDigitalTransformer;
 import muramasa.antimatter.tile.single.TileEntityInfiniteStorage;
 import muramasa.antimatter.tile.single.TileEntityTransformer;
+import muramasa.gti.tile.single.TileEntityInfiniteFluid;
 import muramasa.gti.tile.single.TileEntitySteamMachine;
 import muramasa.gti.Ref;
 import muramasa.gti.tile.multi.*;
@@ -74,7 +75,7 @@ public class Machines {
     public static MultiMachine VACUUM_FREEZER = new MultiMachine(Ref.ID, "vacuum_freezer", VACUUM_FREEZING, HV, GUI, ITEM, FLUID,ENERGY).setTile(m -> () -> new TileEntityVacuumFreezer(m));
     public static MultiMachine MULTI_SMELTER = new MultiMachine(Ref.ID, "multi_smelter", HV, GUI, ITEM,ENERGY).setTile(m -> () -> new TileEntityMultiSmelter(m));
     public static MultiMachine LARGE_BOILER = new MultiMachine(Ref.ID, "large_boiler", LV, MV, HV, EV, GUI, ITEM, FLUID).setTile(m -> () -> new TileEntityLargeBoiler(m));
-    public static MultiMachine LARGE_TURBINE = new MultiMachine(Ref.ID, "large_turbine", HV, EV, IV, UV, GUI, FLUID,ENERGY).setTile(m -> () -> new TileEntityLargeTurbine(m));
+    public static MultiMachine LARGE_TURBINE = new MultiMachine(Ref.ID, "large_turbine", HV, EV, IV, UV, GUI, FLUID,ENERGY, STEAM_FUELS, GENERATOR).setTile(m -> () -> new TileEntityLargeTurbine(m));
     public static MultiMachine HEAT_EXCHANGER = new MultiMachine(Ref.ID, "heat_exchanger", EV, GUI, FLUID,ENERGY).setTile(m -> () -> new TileEntityHeatExchanger(m));
     public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(Ref.ID, "oil_drilling_rig", EV, IV, LUV, ZPM, GUI, FLUID,ENERGY).setTile(m -> () -> new TileEntityOilDrillingRig(m));
     public static MultiMachine OIL_CRACKING_UNIT = new MultiMachine(Ref.ID, "oil_cracking_unit", HV, GUI, FLUID,ENERGY).setTile(m -> () -> new TileEntityOilCrackingUnit(m));
@@ -85,8 +86,8 @@ public class Machines {
 
     public static HatchMachine HATCH_ITEM_I = new HatchMachine(Ref.ID, "hatch_item_input", GUI, ITEM,COVERINPUT);
     public static HatchMachine HATCH_ITEM_O = new HatchMachine(Ref.ID, "hatch_item_output", GUI, ITEM, COVEROUTPUT);
-    public static HatchMachine HATCH_FLUID_I = new HatchMachine(Ref.ID, "hatch_fluid_input", GUI, FLUID, COVERINPUT);
-    public static HatchMachine HATCH_FLUID_O = new HatchMachine(Ref.ID, "hatch_fluid_output", GUI, FLUID, COVEROUTPUT);
+    public static HatchMachine HATCH_FLUID_I = new HatchMachine(Ref.ID, "hatch_fluid_input", GUI, FLUID, COVERINPUT, CELL);
+    public static HatchMachine HATCH_FLUID_O = new HatchMachine(Ref.ID, "hatch_fluid_output", GUI, FLUID, COVEROUTPUT, CELL);
     public static HatchMachine HATCH_MUFFLER = new HatchMachine(Ref.ID, "hatch_muffler", GUI, ITEM,COVERMUFFLER);
     public static HatchMachine HATCH_DYNAMO = new HatchMachine(Ref.ID, "hatch_dynamo", ENERGY,COVERDYNAMO);
     public static HatchMachine HATCH_ENERGY = new HatchMachine(Ref.ID, "hatch_energy", ENERGY,COVERENERGY);
@@ -101,6 +102,7 @@ public class Machines {
 
     public static BasicMachine INFINITE_STORAGE = new BasicMachine(Ref.ID, "infinite_storage", ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV, MAX, ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityInfiniteStorage(m, 16))
             .covers(COVERNONE);
+    public static BasicMachine INFINITE_STEAM = new BasicMachine(Ref.ID, "infinite_steam", FLUID, CELL, CONFIGURABLE, GUI).setTile(m -> () -> new TileEntityInfiniteFluid(m));
     public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four", GUI, ENERGY, CONFIGURABLE, ITEM,COVERBUFFERFOUR).setTile(m -> () -> new TileEntityBatteryBuffer(m)).frontCovers();
     public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one", GUI, ENERGY, CONFIGURABLE, ITEM,COVERBUFFERONE).setTile(m -> () -> new TileEntityBatteryBuffer(m)).frontCovers();
     public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine", GUI, ENERGY, CONFIGURABLE, ITEM,COVERBUFFERNINE).setTile(m -> () -> new TileEntityBatteryBuffer(m)).frontCovers();

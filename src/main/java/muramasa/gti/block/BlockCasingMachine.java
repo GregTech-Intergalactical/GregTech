@@ -8,9 +8,6 @@ public abstract class BlockCasingMachine extends BlockCasing {
     // TODO used for special features for machine casings
     public BlockCasingMachine(String domain, String id) {
         super(domain, id);
-        if (this.getClass() != BlockCasingMachine.class) {
-            AntimatterAPI.register(BlockCasingMachine.class, getId(), this);
-        }
     }
     // TODO used for special features for machine casings
     public BlockCasingMachine(String domain, String id,Block.Properties properties) {

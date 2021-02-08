@@ -35,6 +35,8 @@ public class RecipeMaps {
     public static RecipeMap EXTRUDING = new RecipeMap<>("extruding", new RecipeBuilder());
     public static RecipeMap LATHING = new RecipeMap<>("lathing", new RecipeBuilder());
     public static RecipeMap PULVERIZING = new RecipeMap<>("pulverizing", new PulverizingBuilder(), Tier.IV);
+    //For LV machine!
+    public static RecipeMap PULVERIZING_SINGLE = new RecipeMap<>("pulverizing_lv", new PulverizingBuilder());
     public static RecipeMap RECYCLING = new RecipeMap<>("recycling", new RecipeBuilder());
     public static RecipeMap SCANNING = new RecipeMap<>("scanning", new RecipeBuilder());
     public static RecipeMap WIRE_MILLING = new RecipeMap<>("wire_milling", new RecipeBuilder());

@@ -28,8 +28,8 @@ public class WireCablesPlates {
             Map<PipeSize, Item> wires = sizes.stream().map(s -> new Pair<>(s, wire.getBlockItem(s))).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
             PipeSize[] val = values();
             for (int i = 1; i < val.length; i += 2) {
-                twoToOne(wires, val[i], val[i-1], output,provider);
-                oneToTwo(wires, val[i-1], val[i], output, provider);
+                twoToOne(wires, val[i-1], val[i], output,provider);
+                oneToTwo(wires, val[i], val[i-1], output, provider);
                 if (i > 1) {
                     fourToOne(wires, val[i-2], val[i], output, provider);
                 }

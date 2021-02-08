@@ -14,7 +14,7 @@ import static muramasa.gti.data.RecipeMaps.WIRE_MILLING;
 public class WiremillLoader {
     public static void init() {
         AntimatterAPI.all(Wire.class).forEach(t -> {
-            Item wireItem = t.getBlockItem(PipeSize.TINY);
+            Item wireItem = t.getBlockItem(PipeSize.VTINY);
             ItemStack stack = new ItemStack(wireItem,2);
             AntimatterIngredient ing = INGOT.getMaterialIngredient(t.getMaterial(),1);
             if (ing.hasNoMatchingItems()) return;

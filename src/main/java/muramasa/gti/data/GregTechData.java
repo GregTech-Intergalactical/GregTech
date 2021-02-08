@@ -1,6 +1,7 @@
 package muramasa.gti.data;
 
 import com.google.common.collect.ImmutableMap;
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.client.AntimatterTextureStitcher;
 import muramasa.antimatter.material.Material;
@@ -35,6 +36,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 
+import static muramasa.antimatter.Data.ROTOR;
 import static muramasa.gti.data.Materials.*;
 
 public class GregTechData {
@@ -81,6 +83,26 @@ public class GregTechData {
             builder.put(Tier.EV, CABLE_ALUMINIUM.getBlockItem(PipeSize.SMALL));
             builder.put(Tier.IV, CABLE_PLATINUM.getBlockItem(PipeSize.TINY));
             TIER_CABLES = builder.build();
+        }
+        {
+            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
+            builder.put(Tier.ULV, ROTOR.get(Bronze));
+            builder.put(Tier.LV, ROTOR.get(Bronze));
+            builder.put(Tier.MV, ROTOR.get(Steel));
+            builder.put(Tier.HV, ROTOR.get(StainlessSteel));
+            builder.put(Tier.EV, ROTOR.get(Titanium));
+            builder.put(Tier.IV, ROTOR.get(TungstenSteel));
+            TIER_ROTORS = builder.build();
+        }
+        {
+            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
+            builder.put(Tier.ULV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Copper.getId()).getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.LV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Copper.getId()).getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.MV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Copper.getId()).getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.HV, AntimatterAPI.get(FluidPipe.class, "fluid_"+StainlessSteel.getId()).getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.EV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Titanium.getId()).getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.IV, AntimatterAPI.get(FluidPipe.class, "fluid_"+TungstenSteel.getId()).getBlockItem(PipeSize.NORMAL));
+            TIER_PIPES = builder.build();
         }
     }
 
@@ -501,4 +523,7 @@ public class GregTechData {
     public static ImmutableMap<Tier, Item> TIER_WIRES;
     public static ImmutableMap<Tier, Item> TIER_CABLES;
     public static ImmutableMap<Tier, ItemBasic<?>> TIER_CIRCUITS;
+
+    public static ImmutableMap<Tier, Item> TIER_ROTORS;
+    public static ImmutableMap<Tier, Item> TIER_PIPES;
 }

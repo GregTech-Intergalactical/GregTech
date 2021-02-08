@@ -38,7 +38,7 @@ public class Machines {
             Item cable = GregTechData.TIER_CABLES.get(tier);
             if (cable == null) return;
             Item glass = Items.GLASS;
-            Item rotor = ROTOR.get(Tin);//TODO: Better
+            Item rotor = GregTechData.TIER_ROTORS.get(tier);
             Item machine = BENDER.getItem(tier);
 
             if (machine != null) {

@@ -19,6 +19,7 @@ public class BlockCasing extends BlockDynamic {
 
     public BlockCasing(String domain, String id, Block.Properties properties) {
         super(domain, id, properties);
+        if (this.getClass() != BlockCasing.class) AntimatterAPI.register(BlockCasing.class, getId(), this);
     }
 
     public BlockCasing(String domain, String id) {

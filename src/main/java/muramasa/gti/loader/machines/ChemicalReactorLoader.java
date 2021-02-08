@@ -12,7 +12,6 @@ public class ChemicalReactorLoader {
                 DUST.get(Sulfur),1
         ),AntimatterIngredient.of(
                 DUST.get(RawRubber),9
-        )).fo(Rubber.getLiquid(144*9)).add(200,32);
-        DUST.get(Sulfur);
+        )).fo(Rubber.getLiquid(144*9)).add(200,24);
     }
 }

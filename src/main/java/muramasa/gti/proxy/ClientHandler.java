@@ -2,6 +2,7 @@ package muramasa.gti.proxy;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.BlockMachine;
+import muramasa.gti.block.BlockCasing;
 import muramasa.gti.block.BlockCasingMachine;
 import muramasa.gti.block.BlockFusionCasing;
 import muramasa.gti.block.BlockTurbineCasing;
@@ -16,7 +17,8 @@ public class ClientHandler {
         AntimatterAPI.runLaterClient(() -> {
             RenderTypeLookup.setRenderLayer(GregTechData.RUBBER_SAPLING, RenderType.getCutout());
             RenderTypeLookup.setRenderLayer(GregTechData.RUBBER_LEAVES, RenderType.getCutout());
-            AntimatterAPI.all(BlockCasingMachine.class, t -> RenderTypeLookup.setRenderLayer(t, RenderType.getCutout()));
+            //AntimatterAPI.all(BlockCasingMachine.class, t -> RenderTypeLookup.setRenderLayer(t, RenderType.getCutout()));
+            AntimatterAPI.all(BlockCasing.class, t -> RenderTypeLookup.setRenderLayer(t, RenderType.getCutout()));
         });
     }
 }

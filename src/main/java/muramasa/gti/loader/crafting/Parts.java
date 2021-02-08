@@ -7,6 +7,7 @@ import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.FluidPipe;
@@ -67,6 +68,7 @@ public class Parts {
                     robotArm,
                     of('M', motor, 'C', cable, 'P',piston, 'I', circuit, 'R',rod),
                     "CCC", "MRM", "PIR");
+            Material rotorMat = ((MaterialItem) TIER_ROTORS.get(t)).getMaterial();
             provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasItem(WRENCH.getTag()),
                     pump,
                     ImmutableMap.<Character, Object>builder()
@@ -74,10 +76,10 @@ public class Parts {
                     .put('C',cable)
                     .put('W', WRENCH.getTag())
                     .put('S', SCREWDRIVER.getTag())
-                    .put('R', SCREW.get(Tin))
-                    .put('T', ROTOR.get(Tin))
-                    .put('O', RING.get(Tin))
-                    .put('P', AntimatterAPI.get(FluidPipe.class, "fluid_"+"copper").getBlockItem(PipeSize.NORMAL))
+                    .put('R', SCREW.get(rotorMat))
+                    .put('T', TIER_ROTORS.get(t))
+                    .put('O', t == Tier.IV ? RING.get(StyreneButadieneRubber) : RING.get(Rubber))
+                    .put('P', TIER_PIPES.get(t))
                     .build()
                     ,"RTO","SPW","OMC");
         });

@@ -3,6 +3,7 @@ package muramasa.gti.datagen;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.gti.Ref;
 import muramasa.gti.data.GregTechData;
+import muramasa.gti.loader.crafting.BlockParts;
 import muramasa.gti.loader.crafting.Machines;
 import muramasa.gti.loader.crafting.Parts;
 import muramasa.gti.loader.crafting.WireCablesPlates;
@@ -26,6 +27,7 @@ public class GregTechRecipes extends AntimatterRecipeProvider {
     public GregTechRecipes(String providerDomain, String providerName, DataGenerator gen) {
         super(providerDomain, providerName, gen);
         registerCraftingLoaders();
+        //Depends on certain data so TIER MAPS cannot be static {} initialized.
         GregTechData.buildTierMaps();
     }
 
@@ -33,6 +35,7 @@ public class GregTechRecipes extends AntimatterRecipeProvider {
         this.craftingLoaders.add(Parts::loadRecipes);
         this.craftingLoaders.add(WireCablesPlates::loadRecipes);
         this.craftingLoaders.add(Machines::loadRecipes);
+        this.craftingLoaders.add(BlockParts::loadRecipes);
     }
 
     @Override
