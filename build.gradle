@@ -11,7 +11,6 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
-        classpath "com.github.jengelman.gradle.plugins:shadow:5.2.0"
     }
 }
 
@@ -19,13 +18,12 @@ repositories {
     maven { url 'http://dvs1.progwml6.com/files/maven' }
 }
 apply plugin: 'net.minecraftforge.gradle'
-apply plugin: "com.github.johnrengelman.shadow"
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '0.0.1'
-group = 'muramasa.gti' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'com.github.gregtech-intergalactical' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'gti'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
@@ -44,6 +42,7 @@ sourceSets {
         }
     }
 }
+
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   Snapshot are built nightly.
@@ -62,7 +61,7 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'SCAN'
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
@@ -78,7 +77,7 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'SCAN'
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
@@ -94,7 +93,7 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'SCAN'
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
@@ -111,43 +110,14 @@ minecraft {
 }
 
 dependencies {
-    // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
-    // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
-    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    // You may put jars on which you depend on in ./libs or you may define them like so..
-    // compile "some.group:artifact:version:classifier"
-    // compile "some.group:artifact:version"
-   // implementation "muramasa.antimatter:antimatter:0.0.1"
     implementation 'org.apache.commons:commons-collections4:4.4'
+    compile (group: 'com.github.gregtech-intergalactical', name: 'antimatter', configuration: 'deobf')
+    compile (group: 'com.github.gregtech-intergalactical', name: 'tesseractforge', configuration: 'deobf')
 
-    implementation project(path: ':antimatter', configuration: 'deobf')
-    if (local_dev_dependancies.toBoolean()) {
-        implementation project(path: ':tesseract:forge', configuration: 'deobf')
-    }
-    if (local_dev_dependancies.toBoolean()) {
-        compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
-        runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
-    }
-    else {
-        compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
-        runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
-    }
-    // Real examples
-    // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // The 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
-    // provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
-    // These dependencies get remapped to your current MCP mappings
-    // deobf 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
-    // For more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 }
 
 

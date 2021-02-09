@@ -10,6 +10,11 @@
 
 - Import build into i.e. Idea.
 
+- Ensure project target is Java 8.
+
+- In Build, Execution, Deployment (under Settings), set Build and run using: Intellij IDEA under Build Tools.
+    This step is crucial to allow hotswapping.
+
 - Run antimatter:runData run configuration(you might have to select antimatter.main as module)
 
 - Run runData.

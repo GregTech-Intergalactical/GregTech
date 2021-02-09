@@ -10,13 +10,18 @@ pluginManagement {
 
     }
 }
-//include 'version'
 
-include ":antimatter"
-project(":antimatter").projectDir = file("antimatter")
+includeBuild('antimatter') {
 
-include ":tesseract"
-project(":tesseract").projectDir = file("antimatter/tesseract")
+}
 
-include ":tesseract:forge"
-project(":tesseract:forge").projectDir = file("antimatter/tesseract/forge")
+//The following are to add these projects as IDEA modules.
+//They aren't actually necessary.
+
+includeBuild('antimatter/tesseract/forge') {
+
+}
+
+includeBuild('antimatter/tesseract') {
+
+}
