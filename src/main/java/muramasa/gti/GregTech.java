@@ -61,6 +61,7 @@ public class GregTech extends AntimatterMod {
         loader.registerRecipeLoader(ChemicalReactorLoader::init);
         loader.registerRecipeLoader(SteamFuels::init);
         loader.registerRecipeLoader(FluidExtractor::init);
+        loader.registerRecipeLoader(AlloyLoader::init);
 
         loader.registerRecipeLoader(ElectrolyzerLoader::init);
         loader.registerRecipeLoader(FluidCanningLoader::init);

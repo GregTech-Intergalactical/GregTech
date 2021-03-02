@@ -1,10 +1,11 @@
 package muramasa.gti.loader.machines;
 
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.util.Utils;
+
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 
 import static muramasa.antimatter.Data.*;
@@ -42,6 +43,15 @@ public class PulverizerLoader {
         GEM_POLISHED.all().forEach(m -> {
             if (!m.has(DUST)) return;
             PULVERIZING.RB().ii(AntimatterIngredient.of(GEM_BRITTLE.get(m),1)).io(DUST.get(m,2)).add(60,16);
+        });
+        PULVERIZING.RB().ii(AntimatterIngredient.of(Items.STONE,1)).io(new ItemStack(Items.COBBLESTONE,1)).add(100,2);
+        PULVERIZING.RB().ii(AntimatterIngredient.of(Items.COBBLESTONE,1)).io(new ItemStack(Items.GRAVEL,1)).add(100,2);
+        PULVERIZING.RB().ii(AntimatterIngredient.of(Items.GRAVEL,1)).io(new ItemStack(Items.SAND,1)).add(100,2);
+
+
+        //INGOT -> DUST
+        INGOT.all().forEach(t -> {
+            PULVERIZING.RB().ii(AntimatterIngredient.of(INGOT.getMaterialTag(t),1)).io(DUST.get(t,1)).add(40,2);
         });
     }
 }

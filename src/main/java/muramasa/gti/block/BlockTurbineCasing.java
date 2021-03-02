@@ -7,18 +7,23 @@ import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.dynamic.ModelConfig;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.registration.ITextureProvider;
+import muramasa.antimatter.structure.StructureCache;
 import muramasa.antimatter.texture.Texture;
+import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.int3;
 import muramasa.gti.tile.multi.TileEntityLargeTurbine;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.renderer.chunk.ChunkRenderCache;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -139,7 +144,32 @@ public class BlockTurbineCasing extends BlockCasingMachine {
         return tile instanceof TileEntityLargeTurbine ? (TileEntityLargeTurbine) tile : null;
     }
 
+    protected World getWorld(IBlockReader reader) {
+        if (!(reader instanceof ChunkRenderCache)) return null;
+        ChunkRenderCache cache = (ChunkRenderCache) reader;
+        try {
+            Field field = getField(ChunkRenderCache.class, "world");
+            field.setAccessible(true);
+            return (World) field.get(cache);
+        } catch (Exception ex) {
+
+        }
+        return null;
+    }
+
     protected TileEntityLargeTurbine getTurbine(IBlockReader world, BlockPos pos) {
+        World w = getWorld(world);
+        if (w != null) {
+            BlockPos cPos = StructureCache.get(w, pos);
+            if (cPos != null) {
+                TileEntity tile = world.getTileEntity(cPos);
+                if (tile instanceof TileEntityLargeTurbine) return (TileEntityLargeTurbine) tile;
+            }
+        }
+        return getTurbineSlow(world, pos);
+    }
+
+    protected TileEntityLargeTurbine getTurbineSlow(IBlockReader world, BlockPos pos) {
         int3 mutable = new int3();
         mutable.set(pos);
         return MAP.compute(pos.toLong(), (a, b) -> {
@@ -194,4 +224,19 @@ public class BlockTurbineCasing extends BlockCasingMachine {
             return null;
         });
     }
+    //TODO access transformers, i cannot get it to work
+    private static Field getField(Class clazz, String fieldName)
+            throws NoSuchFieldException {
+        try {
+            return clazz.getDeclaredField(fieldName);
+        } catch (NoSuchFieldException e) {
+            Class superClass = clazz.getSuperclass();
+            if (superClass == null) {
+                throw e;
+            } else {
+                return getField(superClass, fieldName);
+            }
+        }
+    }
+
 }
