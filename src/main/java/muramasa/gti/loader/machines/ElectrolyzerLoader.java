@@ -5,10 +5,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 import java.util.Arrays;
 import java.util.List;

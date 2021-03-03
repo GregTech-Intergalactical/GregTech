@@ -9,6 +9,8 @@ import muramasa.antimatter.util.Utils;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
+import static muramasa.gti.data.Materials.DistilledWater;
+
 
 public class TileEntityLargeTurbine extends TileEntityMultiMachine {
 
@@ -41,13 +43,8 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine {
                     long toConsume = calculateGeneratorConsumption(flow, sourceRecipe);
 
                     return Utils.getFluidPoweredRecipe(new FluidStack[]{new FluidStack(stacks[0].getFluid(),(int) toConsume)},
-                            new FluidStack[0],
-                           // new FluidStack[]{new FluidStack(DistilledWater.getLiquid(), stacks[0].getAmount())},// Arrays.stream(sourceRecipe.getOutputFluids()).map(tt -> new FluidStack(tt.getFluid(), (int) (tt.getAmount()*toConsume))).toArray(FluidStack[]::new),
+                           new FluidStack[]{new FluidStack(DistilledWater.getLiquid(), stacks[0].getAmount())},// Arrays.stream(sourceRecipe.getOutputFluids()).map(tt -> new FluidStack(tt.getFluid(), (int) (tt.getAmount()*toConsume))).toArray(FluidStack[]::new),
                             1, flow,1);
-                }
-                @Override
-                public void consumeInputs() {
-
                 }
 
                 @Override
@@ -77,6 +74,7 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine {
                         if (consumed > recipeAmount) consumed *= Math.pow(1d/(consumed-recipeAmount),0.04);
                         //Input energy
                         int finalConsumed = consumed;
+                        //Ignore the actual inserted amount a la multiblock.
                         tile.energyHandler.ifPresent(handler -> {
                             handler.insert((long) (efficiency*activeRecipe.getPower()*finalConsumed/ recipeAmount), false);
                         });
