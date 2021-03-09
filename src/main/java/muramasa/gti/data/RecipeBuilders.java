@@ -56,7 +56,7 @@ public class RecipeBuilders {
 
     public static Recipe addRecipeToSteamMap(RecipeMap map, Recipe recipe) {
         try {
-            if (recipe.getPower() <= Tier.LV.getVoltage()) {
+            if (recipe.getPower() <= Tier.LV.getVoltage()/2) {
                 map.RB().ii(recipe.getInputItems()).fi(Materials.Steam.getGas((int)(recipe.getPower() * 2))).io(recipe.getOutputItems()).add(recipe.getDuration(), recipe.getPower() * 2, recipe.getTotalPower() * 2);
             }
         } catch (Exception e) {

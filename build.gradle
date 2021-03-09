@@ -12,7 +12,6 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 
@@ -62,7 +61,6 @@ minecraft {
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN'
-            arg "-mixin.config=antimatter.mixins.json"
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
             //property 'mixin.env.disableRefMap', 'true'
@@ -79,10 +77,10 @@ minecraft {
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN'
-            arg "-mixin.config=antimatter.mixins.json"
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
             //property 'mixin.env.disableRefMap', 'true'
+            environment 'MOD_CLASSES', "gti%%${project.file('out/production/resources')}:gti%%${project.file('out/production/classes')}:antimatter%%${project(':antimatter').file('out/production/resources')}:antimatter%%${project(':antimatter').file('out/production/classes')}:tesseract%%${project(':tesseract').file('out/production/resources')}:tesseract%%${project(':tesseract').file('out/production/classes')}"
 
             mods {
                 gti {
@@ -93,13 +91,13 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
+            environment 'MOD_CLASSES', "gti%%${project.file('out/production/resources')}:gti%%${project.file('out/production/classes')}:antimatter%%${project(':antimatter').file('out/production/resources')}:antimatter%%${project(':antimatter').file('out/production/classes')}:tesseract%%${project(':tesseract').file('out/production/resources')}:tesseract%%${project(':tesseract').file('out/production/classes')}"
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN'
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-            arg "-mixin.config=antimatter.mixins.json"
             args '--mod', 'gti', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
             //property 'mixin.env.disableRefMap', 'true'
 
@@ -144,7 +142,7 @@ publishing {
         }
     }
 }
-apply plugin: 'org.spongepowered.mixin'
+//apply plugin: 'org.spongepowered.mixin'
 
 //mixin {
 //    add sourceSets.main, "antimatter.refmap.json"

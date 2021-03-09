@@ -13,7 +13,6 @@ import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.Data.ORE;
 import static muramasa.gti.data.Materials.Stone;
 import static muramasa.gti.data.RecipeMaps.PULVERIZING;
-import static muramasa.gti.data.RecipeMaps.PULVERIZING_SINGLE;
 
 public class PulverizerLoader {
     public static void init() {
@@ -30,7 +29,7 @@ public class PulverizerLoader {
             Material aOreByProduct2 = m.getByProducts().size() >= 2 ? m.getByProducts().get(1) : aOreByProduct1;
 
             PULVERIZING.RB().ii(ore).io(Utils.ca((m.getOreMulti() * multiplier) * 2, crushedStack), m.getByProducts().size() > 0 ? DUST.get(m.getByProducts().get(0), 1) : dustStack, stoneDust).chances(100, 10 * multiplier * m.getByProductMulti(), 50).add(400, 2);
-            PULVERIZING_SINGLE.RB().ii(ore).io(Utils.ca((m.getOreMulti() * multiplier) * 2, crushedStack)).add(400, 2);
+            //PULVERIZING_SINGLE.RB().ii(ore).io(Utils.ca((m.getOreMulti() * multiplier) * 2, crushedStack)).add(400, 2);
             PULVERIZING.RB().ii(crushed).io(DUST_IMPURE.get(m.getMacerateInto(), 1), DUST.get(aOreByProduct1, 1)).chances(100, 10).add(400, 2);
 
             if (m.has(CRUSHED_CENTRIFUGED)) {
