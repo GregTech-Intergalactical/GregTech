@@ -37,7 +37,7 @@ public class WireCablesPlates {
             if (wire.getMaterial().has(PLATE)) {
                 provider.shapeless(output, "platewire","wire","has_cutter", provider.hasItem(WIRE_CUTTER.getTag()),
                         new ItemStack(wires.get(VTINY)),
-                        WIRE_CUTTER.getTag(), PLATE.get(wire.getMaterial(),1));
+                        WIRE_CUTTER.getTag(), PLATE.get(wire.getMaterial()));
             }
         });
 

@@ -6,6 +6,7 @@ import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.LazyValue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -51,7 +52,7 @@ public class ElectrolyzerLoader {
                 } else {
                     RecipeBuilder rb = ELECTROLYZING.RB();
                     if (cellCount > 0) {
-                        AntimatterIngredient celli = AntimatterIngredient.of(cell, cellCount);
+                        LazyValue<AntimatterIngredient> celli = AntimatterIngredient.of(cell, cellCount);
                         rb.ii(AntimatterIngredient.of(DUST.get(dust), count), celli);
                     } else {
                         rb.ii(AntimatterIngredient.of(DUST.get(dust), count));

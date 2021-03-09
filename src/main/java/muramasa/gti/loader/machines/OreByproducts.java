@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.LazyValue;
 
 import java.util.List;
 
@@ -17,12 +18,12 @@ public class OreByproducts {
         CRUSHED.all().forEach(m -> {
             if (!m.has(ORE)) return;
             if (!m.has(INGOT)) return;
-            AntimatterIngredient ore = ORE.get().get(m, STONE).asIngredient(), crushed = CRUSHED.getIngredient(m, 1);
+            LazyValue<AntimatterIngredient> ore = ORE.get().get(m, STONE).asIngredient(), crushed = CRUSHED.getIngredient(m, 1);
             if (m.hasByProducts()) {
                 List<Material> byProducts = m.getByProducts();
                 int byProductsCount = byProducts.size();
 
-                List<AntimatterIngredient> ores = new ObjectArrayList<>();
+                List<LazyValue<AntimatterIngredient>> ores = new ObjectArrayList<>();
                 if (m.has(ORE)) ores.add(ore);
                 if (m.has(ROCK)) ores.add(ROCK.getIngredient(m, 1));
                 if (m.has(CRUSHED)) ores.add(crushed);

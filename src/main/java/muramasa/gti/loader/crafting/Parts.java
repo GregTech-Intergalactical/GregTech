@@ -16,6 +16,7 @@ import muramasa.gti.Ref;
 import muramasa.gti.block.BlockCasing;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.Tag;
 
 import java.util.Arrays;
@@ -43,8 +44,8 @@ public class Parts {
             Material mat = TIER_MATERIALS.get(t);
             //Item smallGear = GEAR_SMALL.get(mat);
             Item smallGear = GEAR.get(mat);
-            Tag<Item> plate = PLATE.getMaterialTag(mat);
-            Tag<Item> rod = ROD.getMaterialTag(mat);
+            ITag.INamedTag<Item> plate = PLATE.getMaterialTag(mat);
+            ITag.INamedTag<Item> rod = ROD.getMaterialTag(mat);
             //TODO: Circuits
             Item circuit = CircuitBoardBasic;
             Item motor = AntimatterAPI.get(ItemBasic.class, "motor_"+t.getId());

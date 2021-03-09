@@ -18,7 +18,7 @@ import net.minecraft.client.renderer.chunk.ChunkRenderCache;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3i;
+import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -54,7 +54,7 @@ public class BlockTurbineCasing extends BlockCasingMachine {
         TileEntityLargeTurbine turbine = getTurbine(world, pos);
         if (turbine != null) {
             BlockPos controllerPos = turbine.getPos();
-            Vec3i vec = new Vec3i(-(pos.getX()-controllerPos.getX()), -(pos.getY()-controllerPos.getY()), -(pos.getZ()-controllerPos.getZ()));
+            Vector3i vec = new Vector3i(-(pos.getX()-controllerPos.getX()), -(pos.getY()-controllerPos.getY()), -(pos.getZ()-controllerPos.getZ()));
             int c = getOffset(vec);
             c += turbine.getFacing().getIndex()*1000;
             c += (turbine.getMachineState() == MachineState.ACTIVE ? 10000 : 0);
@@ -81,12 +81,12 @@ public class BlockTurbineCasing extends BlockCasingMachine {
     }
 
 
-    protected int getOffset(Vec3i vec) {
+    protected int getOffset(Vector3i vec) {
         return vec.getX() + vec.getY()*10 + vec.getZ()*100;
     }
 
     //essentially a facing transformation
-    protected int getOffset(Vec3i vec, Direction dir) {
+    protected int getOffset(Vector3i vec, Direction dir) {
         switch (dir) {
             case NORTH:
                 return vec.getY()*10 - vec.getX();
@@ -103,16 +103,16 @@ public class BlockTurbineCasing extends BlockCasingMachine {
     private final static String SIDED = "antimatter:block/preset/simple_overlay";
     private final static String SIMPLE = "antimatter:block/preset/simple";
 
-    private final Vec3i[] VECS = new Vec3i[]{
-            new Vec3i(1,-1,0),
-            new Vec3i(0,-1,0),
-            new Vec3i(-1,-1,0),
-            new Vec3i(1,0,0),
-            new Vec3i(0,0,0),
-            new Vec3i(-1,0,0),
-            new Vec3i(1,1,0),
-            new Vec3i(0,1,0),
-            new Vec3i(-1,1,0),
+    private final Vector3i[] VECS = new Vector3i[]{
+            new Vector3i(1,-1,0),
+            new Vector3i(0,-1,0),
+            new Vector3i(-1,-1,0),
+            new Vector3i(1,0,0),
+            new Vector3i(0,0,0),
+            new Vector3i(-1,0,0),
+            new Vector3i(1,1,0),
+            new Vector3i(0,1,0),
+            new Vector3i(-1,1,0),
     };
 
     @Override

@@ -6,11 +6,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.GenerationSettings;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.Placement;
@@ -27,6 +25,20 @@ import static muramasa.gti.data.GregTechData.RUBBER_LEAVES;
 import static muramasa.gti.data.GregTechData.RUBBER_SAPLING;
 
 public class RubberTreeWorldGen { //  extends WorldGenBase<RubberTreeWorldGen> {
+
+    static Predicate<Biome> getValidBiomes() {
+        final Set<Biome.Category> blacklist = new ObjectOpenHashSet<>();
+        blacklist.add(Biome.Category.DESERT);
+        blacklist.add(Biome.Category.TAIGA);
+        blacklist.add(Biome.Category.EXTREME_HILLS);
+        blacklist.add(Biome.Category.ICY);
+        blacklist.add(Biome.Category.THEEND);
+        blacklist.add(Biome.Category.OCEAN);
+        blacklist.add(Biome.Category.NETHER);
+        return b -> !blacklist.contains(b.getCategory());
+    }
+
+    /*
     final static TreeFeatureConfig RUBBER_TREE_CONFIG_SWAMP =
             (new TreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(RUBBER_LEAVES.getDefaultState()),
                     new BlobFoliagePlacer(2, 0))).baseHeight(11).heightRandA(2) // total height
@@ -106,5 +118,5 @@ public class RubberTreeWorldGen { //  extends WorldGenBase<RubberTreeWorldGen> {
             biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, RubberTree.TREE_FEATURE.withConfiguration(getTreeConfig(biome))
                     .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, p, 3))));
         }
-    }
+    }*/
 }

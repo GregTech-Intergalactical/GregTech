@@ -27,7 +27,6 @@ public class GregTechRecipes extends AntimatterRecipeProvider {
     public GregTechRecipes(String providerDomain, String providerName, DataGenerator gen) {
         super(providerDomain, providerName, gen);
         registerCraftingLoaders();
-        //Depends on certain data so TIER MAPS cannot be static {} initialized.
         GregTechData.buildTierMaps();
     }
 

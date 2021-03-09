@@ -427,6 +427,9 @@ public class Materials {
     public static Material HighCapacity = new Material(Ref.ID, "high_capacity", 0xb00b69, NONE);
     public static Material PlasmaContainment = new Material(Ref.ID, "plasma_containment", 0xffff00, NONE);
 
+    /** VANILLA **/
+    public static Material Netherite = new Material(Ref.ID, "netherite", 0x2D2425, ROUGH).asSolid(PLATE);
+
     static {
         ELECSEPI.add(Bastnasite/*, Monazite*/);
         ELECSEPG.add(Magnetite, VanadiumMagnetite);

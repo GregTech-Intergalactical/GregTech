@@ -6,6 +6,7 @@ import muramasa.antimatter.util.Utils;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.util.LazyValue;
 
 
 import static muramasa.antimatter.Data.*;
@@ -19,7 +20,7 @@ public class PulverizerLoader {
         CRUSHED.all().forEach(m -> {
             if (!m.has(ORE)) return;
             int multiplier = 1;
-            AntimatterIngredient ore = AntimatterIngredient.of(ORE.getMaterialTag(m),1), crushed = CRUSHED.getIngredient(m, 1);
+            LazyValue<AntimatterIngredient> ore = AntimatterIngredient.of(ORE.getMaterialTag(m),1), crushed = CRUSHED.getIngredient(m, 1);
             ItemStack crushedStack = CRUSHED.get(m,1);
             ItemStack stoneDust = DUST.get(Stone, 1);
             ItemStack dustStack = DUST.get(Stone, 1);

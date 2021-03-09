@@ -60,7 +60,7 @@ public class BlockRubberSapling extends SaplingBlock implements IGrowable, IAnti
     }
 
     @Override
-    public void func_226942_a_(ServerWorld world, BlockPos pos, BlockState state, Random random) {
-        if (RubberTreeWorldGen.getValidBiomes().test(world.getBiome(pos))) super.func_226942_a_(world, pos, state, random);
+    public void placeTree(ServerWorld world, BlockPos pos, BlockState state, Random random) {
+        if (RubberTreeWorldGen.getValidBiomes().test(world.getBiome(pos))) super.placeTree(world, pos, state, random);
     }
 }

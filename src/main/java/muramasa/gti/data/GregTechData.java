@@ -34,7 +34,11 @@ import muramasa.gti.tree.BlockRubberSapling;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.LazyValue;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.function.Supplier;
 
 import static muramasa.antimatter.Data.ROTOR;
 import static muramasa.gti.data.Materials.*;
@@ -45,9 +49,9 @@ public class GregTechData {
 
     static {
         {
-            ImmutableMap.Builder<Integer, AntimatterIngredient> builder = ImmutableMap.builder();
+            ImmutableMap.Builder<Integer, LazyValue<AntimatterIngredient>> builder = ImmutableMap.builder();
             for (int i = 0; i <= 24; i++) {
-                builder.put(i, AntimatterIngredient.of(new ItemIntCircuit(Ref.ID, "int_circuit_"+i,i).tip("ID: " + i),1).setNonConsume());
+                builder.put(i, AntimatterIngredient.fromItem(1, new ItemIntCircuit(Ref.ID, "int_circuit_"+i,i).tip("ID: " + i), AntimatterIngredient::setNonConsume));
             }
             INT_CIRCUITS = builder.build();
         }
@@ -62,8 +66,11 @@ public class GregTechData {
             TIER_MATERIALS = builder.build();
         }
     }
-
+    //Not sure if needed.
+    private static boolean doneMaps = false;
     public static void buildTierMaps() {
+        if (doneMaps) return;
+        doneMaps = true;
         {
             ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, WIRE_LEAD.getBlockItem(PipeSize.VTINY));
@@ -518,7 +525,7 @@ public class GregTechData {
     public static final BlockRubberLog RUBBER_LOG = new BlockRubberLog(Ref.ID, "rubber_log");
     public static final BlockRubberSapling RUBBER_SAPLING = new BlockRubberSapling(Ref.ID, "rubber_sapling");
 
-    public static final ImmutableMap<Integer, AntimatterIngredient> INT_CIRCUITS;
+    public static final ImmutableMap<Integer, LazyValue<AntimatterIngredient>> INT_CIRCUITS;
     public static final ImmutableMap<Tier, Material> TIER_MATERIALS;
     public static ImmutableMap<Tier, Item> TIER_WIRES;
     public static ImmutableMap<Tier, Item> TIER_CABLES;

@@ -85,7 +85,7 @@ public class RecipeBuilders {
             ItemStack[] inputsCpy = Arrays.copyOf(inputs, inputs.length + 1);
             for (int i = 0; i < FUELS.length; i++) {
                 inputsCpy[inputsCpy.length - 1] = Utils.ca(coal, FUELS[i]);
-                ii(AntimatterIngredient.fromStacksList(inputsCpy)).io(outputs).add(duration);
+                //ii(AntimatterIngredient.fromStacksList(inputsCpy)).io(outputs).add(duration);
             }
         }
     }

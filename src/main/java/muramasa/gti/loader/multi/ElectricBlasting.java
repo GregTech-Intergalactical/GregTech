@@ -5,6 +5,7 @@ import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.LazyValue;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.Data.DUST_IMPURE;
@@ -27,7 +28,7 @@ public class ElectricBlasting {
             if (!m.has(ORE) || !m.has(INGOT)) return;
             Item crushed = CRUSHED.get(m);
             Item dust = DUST.get(m);
-            AntimatterIngredient ore = ORE.get().get(m, STONE).asIngredient();
+            LazyValue<AntimatterIngredient> ore = ORE.get().get(m, STONE).asIngredient();
             ItemStack ingot = m.hasDirectSmeltInto() ? INGOT.get(m.getDirectSmeltInto(), 1) : INGOT.get(m, 1);
             ItemStack aIngotSmeltInto = m == m.getSmeltInto() ? ingot : INGOT.get(m.getSmeltInto(), 1);
             if (needsBF) {
