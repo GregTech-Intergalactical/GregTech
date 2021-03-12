@@ -4,6 +4,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.machine.Tier;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
 
 import static muramasa.antimatter.gui.ButtonBody.*;
 import static muramasa.antimatter.gui.SlotType.*;
@@ -24,7 +25,7 @@ public class Guis {
         }
     }.setPadding(0, 0, 0, 0).add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34);
 
-    public static void init() {
+    public static void init(Dist side) {
 
         AntimatterAPI.registerJEICategory(RecipeMaps.ORE_BYPRODUCTS, Guis.ORE_BYPRODUCTS);
 //        GregTechAPI.registerJEICategory(RecipeMaps.SMELTING, Guis.MULTI_DISPLAY_COMPACT);
@@ -168,22 +169,24 @@ public class Guis {
         HATCH_FLUID_O.getGui().add(UV, FL_OUT, 61, 16).add(UV, FL_OUT, 79, 16).add(UV, FL_OUT, 97, 16).add(UV, FL_OUT, 61, 34).add(UV, FL_OUT, 79, 34).add(UV, FL_OUT, 97, 34).add(UV, FL_OUT, 61, 52).add(UV, FL_OUT, 79, 52).add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.getGui().add(MAX, HATCH_FLUID_O, ULV);
 
-        TRANSFORMER_DIGITAL.getGui()
-                .addButton(10, 18, 14, 14, APAD_LEFT)
-                .addButton(25, 18, 14, 14, PAD_LEFT)
-                .addButton(10, 33, 14, 14, APAD_LEFT)
-                .addButton(25, 33, 14, 14, PAD_LEFT)
-                .addButton(10, 48, 14, 14, APAD_LEFT)
-                .addButton(25, 48, 14, 14, PAD_LEFT)
-                .addButton(10, 63, 14, 14, APAD_LEFT)
-                .addButton(25, 63, 14, 14, PAD_LEFT)
-                .addButton(137, 18, 14, 14, PAD_RIGHT)
-                .addButton(152, 18, 14, 14, APAD_RIGHT)
-                .addButton(137, 33, 14, 14, PAD_RIGHT)
-                .addButton(152, 33, 14, 14, APAD_RIGHT)
-                .addButton(137, 48, 14, 14, PAD_RIGHT)
-                .addButton(152, 48, 14, 14, APAD_RIGHT)
-                .addButton(137, 63, 14, 14, PAD_RIGHT)
-                .addButton(152, 63, 14, 14, APAD_RIGHT);
-    }
+        if (side.isClient()) {
+            TRANSFORMER_DIGITAL.getGui()
+                    .addButton(10, 18, 14, 14, APAD_LEFT)
+                    .addButton(25, 18, 14, 14, PAD_LEFT)
+                    .addButton(10, 33, 14, 14, APAD_LEFT)
+                    .addButton(25, 33, 14, 14, PAD_LEFT)
+                    .addButton(10, 48, 14, 14, APAD_LEFT)
+                    .addButton(25, 48, 14, 14, PAD_LEFT)
+                    .addButton(10, 63, 14, 14, APAD_LEFT)
+                    .addButton(25, 63, 14, 14, PAD_LEFT)
+                    .addButton(137, 18, 14, 14, PAD_RIGHT)
+                    .addButton(152, 18, 14, 14, APAD_RIGHT)
+                    .addButton(137, 33, 14, 14, PAD_RIGHT)
+                    .addButton(152, 33, 14, 14, APAD_RIGHT)
+                    .addButton(137, 48, 14, 14, PAD_RIGHT)
+                    .addButton(152, 48, 14, 14, APAD_RIGHT)
+                    .addButton(137, 63, 14, 14, PAD_RIGHT)
+                    .addButton(152, 63, 14, 14, APAD_RIGHT);
+        }
+        }
 }

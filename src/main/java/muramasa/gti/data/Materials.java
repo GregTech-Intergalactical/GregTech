@@ -9,9 +9,9 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemTier;
 
 import static com.google.common.collect.ImmutableMap.of;
+import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.Element.*;
 import static muramasa.antimatter.material.MaterialTag.*;
-import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.TextureSet.NONE;
 import static muramasa.gti.data.Textures.*;
 import static net.minecraft.item.ItemTier.GOLD;
@@ -685,5 +685,10 @@ public class Materials {
 
         //If using small ore markers, every normal ore needs a small version. This greatly increases block usage
         if (AntimatterConfig.WORLD.ORE_VEIN_SMALL_ORE_MARKERS) ORE.all().forEach(m -> m.flags(ORE_SMALL));
+        overrides();
+    }
+
+    private static void overrides() {
+
     }
 }

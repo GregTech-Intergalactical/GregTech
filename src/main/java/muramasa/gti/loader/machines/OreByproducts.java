@@ -10,7 +10,6 @@ import java.util.List;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.GregTechData.STONE;
-import static muramasa.gti.data.Materials.Stone;
 import static muramasa.gti.data.RecipeMaps.ORE_BYPRODUCTS;
 
 public class OreByproducts {

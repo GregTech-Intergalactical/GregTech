@@ -3,11 +3,8 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
-import muramasa.antimatter.machine.BlockMachine;
 import muramasa.gti.Ref;
 import muramasa.gti.block.BlockCasing;
-import muramasa.gti.block.BlockCasingMachine;
-import muramasa.gti.block.BlockTurbineCasing;
 import muramasa.gti.items.ItemIntCircuit;
 import net.minecraft.data.DataGenerator;
 

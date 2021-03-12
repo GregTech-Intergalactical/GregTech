@@ -5,20 +5,18 @@ import com.mojang.datafixers.util.Pair;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.pipe.PipeSize.*;
-
 import muramasa.antimatter.pipe.types.Wire;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.pipe.PipeSize.*;
+import static muramasa.antimatter.pipe.PipeSize.VTINY;
+import static muramasa.antimatter.pipe.PipeSize.values;
 
 public class WireCablesPlates {
     @SuppressWarnings("unchecked")

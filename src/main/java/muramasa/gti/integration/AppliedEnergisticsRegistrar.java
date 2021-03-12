@@ -3,6 +3,7 @@ package muramasa.gti.integration;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
+import net.minecraftforge.api.distmarker.Dist;
 
 public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
 
@@ -12,7 +13,7 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
     }
 
     @Override
-    public void onRegistrationEvent(RegistrationEvent event) {
+    public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         //TODO
     }
 

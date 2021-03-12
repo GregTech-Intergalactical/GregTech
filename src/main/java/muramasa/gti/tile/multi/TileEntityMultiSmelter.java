@@ -1,8 +1,8 @@
 package muramasa.gti.tile.multi;
 
-import muramasa.gti.block.BlockCoil;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
+import muramasa.gti.block.BlockCoil;
 import net.minecraft.block.BlockState;
 
 import java.util.List;

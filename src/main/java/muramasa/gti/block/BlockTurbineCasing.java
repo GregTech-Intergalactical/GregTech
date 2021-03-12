@@ -9,7 +9,6 @@ import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.antimatter.structure.StructureCache;
 import muramasa.antimatter.texture.Texture;
-import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.int3;
 import muramasa.gti.tile.multi.TileEntityLargeTurbine;
 import net.minecraft.block.Block;

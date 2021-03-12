@@ -1,22 +1,12 @@
 package muramasa.gti.tree;
 
-import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.IWorldGenerationReader;
-
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
-import org.apache.commons.collections4.SetUtils;
 
 import java.util.Random;
-import java.util.Set;
-
-import static muramasa.gti.data.GregTechData.RUBBER_LEAVES;
-import static muramasa.gti.data.GregTechData.RUBBER_LOG;
 
 public class RubberTreeFeature extends Feature<BaseTreeFeatureConfig> {
 

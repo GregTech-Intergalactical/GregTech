@@ -1,8 +1,6 @@
 package muramasa.gti.loader.machines;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import net.minecraft.item.Item;
 

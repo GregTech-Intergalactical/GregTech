@@ -8,16 +8,10 @@ import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialItem;
-import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.pipe.types.Cable;
-import muramasa.antimatter.pipe.types.FluidPipe;
-import muramasa.antimatter.recipe.RecipeHelper;
-import muramasa.gti.Ref;
 import muramasa.gti.block.BlockCasing;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.tags.ITag;
-import net.minecraft.tags.Tag;
 
 import java.util.Arrays;
 import java.util.function.Consumer;

@@ -1,18 +1,20 @@
 package muramasa.gti.data;
 
-import muramasa.antimatter.machine.types.*;
+import muramasa.antimatter.machine.types.BasicMachine;
+import muramasa.antimatter.machine.types.HatchMachine;
+import muramasa.antimatter.machine.types.MultiMachine;
+import muramasa.antimatter.machine.types.TankMachine;
 import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
 import muramasa.antimatter.tile.single.TileEntityDigitalTransformer;
 import muramasa.antimatter.tile.single.TileEntityInfiniteStorage;
 import muramasa.antimatter.tile.single.TileEntityTransformer;
-import muramasa.gti.tile.single.TileEntityInfiniteFluid;
-import muramasa.gti.tile.single.TileEntitySteamMachine;
 import muramasa.gti.Ref;
 import muramasa.gti.tile.multi.*;
+import muramasa.gti.tile.single.TileEntityInfiniteFluid;
+import muramasa.gti.tile.single.TileEntitySteamMachine;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.machine.MachineFlag.*;
-import static muramasa.antimatter.machine.MachineFlag.CELL;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gti.data.RecipeMaps.*;
 

@@ -3,7 +3,7 @@ package muramasa.gti.loader;
 import muramasa.antimatter.recipe.RecipeBuilder;
 
 import static muramasa.gti.data.Materials.*;
-import static muramasa.gti.data.RecipeMaps.*;
+import static muramasa.gti.data.RecipeMaps.FUSION;
 
 public class MachineRecipeLoader {
 

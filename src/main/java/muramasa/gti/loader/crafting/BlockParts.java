@@ -3,7 +3,6 @@ package muramasa.gti.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.item.ItemStack;
 
 import java.util.function.Consumer;
 

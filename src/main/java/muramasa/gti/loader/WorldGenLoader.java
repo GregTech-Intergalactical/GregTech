@@ -6,9 +6,7 @@ import muramasa.antimatter.worldgen.StoneLayerOre;
 import muramasa.antimatter.worldgen.object.WorldGenOreSmall;
 import muramasa.antimatter.worldgen.object.WorldGenStoneLayer;
 import muramasa.antimatter.worldgen.object.WorldGenVeinLayer;
-import muramasa.antimatter.worldgen.old.WorldGenAsteroid;
 import muramasa.gti.data.GregTechData;
-import muramasa.gti.tree.RubberTreeWorldGen;
 import net.minecraft.world.World;
 
 import static muramasa.antimatter.Ref.*;

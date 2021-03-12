@@ -15,9 +15,7 @@ import net.minecraft.item.Items;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.Data.ROTOR;
 import static muramasa.gti.data.Machines.*;
-import static muramasa.gti.data.Materials.Tin;
 
 public class Machines {
     public static void loadRecipes(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {

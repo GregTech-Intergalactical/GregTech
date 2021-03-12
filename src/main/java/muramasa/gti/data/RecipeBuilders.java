@@ -1,7 +1,6 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.antimatter.recipe.RecipeMap;

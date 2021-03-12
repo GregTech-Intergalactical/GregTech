@@ -1,12 +1,11 @@
 package muramasa.gti;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.datagen.ExistingFileHelperOverride;
 import muramasa.antimatter.datagen.providers.*;
-import muramasa.antimatter.recipe.loader.AntimatterRecipeLoader;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.RegistrationEvent;
-import muramasa.antimatter.AntimatterMod;
 import muramasa.gti.data.*;
 import muramasa.gti.datagen.GregTechBlockTagProvider;
 import muramasa.gti.datagen.GregTechRecipes;
@@ -17,6 +16,7 @@ import muramasa.gti.loader.machines.generator.SteamFuels;
 import muramasa.gti.loader.multi.ElectricBlasting;
 import muramasa.gti.loader.multi.VacFreezer;
 import muramasa.gti.proxy.ClientHandler;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -49,12 +49,12 @@ public class GregTech extends AntimatterMod {
             return p[0];
         });
         AntimatterAPI.addProvider(Ref.ID, g ->
-                new AntimatterItemTagProvider(Ref.ID,Ref.NAME.concat(" Item Tags"), false, g, p[0], new ExistingFileHelperOverride()));
-       // AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterFluidTagProvider(Ref.ID, Ref.NAME.concat(" Fluid Tags"), false, g));
+                          new AntimatterItemTagProvider(Ref.ID,Ref.NAME.concat(" Item Tags"), false, g, p[0], new ExistingFileHelperOverride()));
         AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterFluidTagProvider(Ref.ID, Ref.NAME.concat(" Fluid Tags"), false, g, new ExistingFileHelperOverride()));
         AntimatterAPI.addProvider(Ref.ID, g -> new GregTechRecipes(Ref.ID, Ref.NAME.concat(" Recipes"), g));
         AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
         AntimatterAPI.addProvider(Ref.ID, GregTechLocalizations.en_US::new);
+        AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterBlockLootProvider(Ref.ID, Ref.NAME.concat( " Loot generator"),g));
         registerRecipeLoaders();
     }
 
@@ -91,13 +91,13 @@ public class GregTech extends AntimatterMod {
     }
 
     @Override
-    public void onRegistrationEvent(RegistrationEvent event) {
+    public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         switch (event) {
             case DATA_INIT:
                 Materials.init();
                 GregTechData.init();
                 Machines.init();
-                Guis.init();
+                Guis.init(side);
                 Models.init();
                 break;
                 //TODO: This runs before AM.DATA_READY.

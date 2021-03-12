@@ -60,7 +60,7 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN'
+            property 'forge.logging.markers', 'DEBUG'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
             //property 'mixin.env.disableRefMap', 'true'
@@ -76,7 +76,7 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN'
+            property 'forge.logging.markers', 'DEBUG'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
             //property 'mixin.env.disableRefMap', 'true'
@@ -94,7 +94,7 @@ minecraft {
             environment 'MOD_CLASSES', "gti%%${project.file('out/production/resources')}:gti%%${project.file('out/production/classes')}:antimatter%%${project(':antimatter').file('out/production/resources')}:antimatter%%${project(':antimatter').file('out/production/classes')}:tesseract%%${project(':tesseract').file('out/production/resources')}:tesseract%%${project(':tesseract').file('out/production/classes')}"
 
             // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN'
+            property 'forge.logging.markers', 'DEBUG'
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'

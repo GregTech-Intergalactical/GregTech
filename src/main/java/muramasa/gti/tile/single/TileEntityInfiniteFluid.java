@@ -2,7 +2,6 @@ package muramasa.gti.tile.single;
 
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
-import muramasa.antimatter.cover.CoverOutput;
 import muramasa.antimatter.cover.CoverStack;
 import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;

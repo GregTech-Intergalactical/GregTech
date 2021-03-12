@@ -4,12 +4,10 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import net.minecraft.item.ItemStack;
 
-import java.util.stream.Collectors;
-
 import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.recipe.ingredient.AntimatterIngredient.of;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.CENTRIFUGING;
-import static muramasa.antimatter.recipe.ingredient.AntimatterIngredient.*;
 
 public class CentrifugingLoader {
     public static void init() {

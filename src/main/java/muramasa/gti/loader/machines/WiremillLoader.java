@@ -8,8 +8,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.LazyValue;
 
-import java.util.function.Supplier;
-
 import static muramasa.antimatter.Data.INGOT;
 import static muramasa.antimatter.Data.WIRE_FINE;
 import static muramasa.gti.data.RecipeMaps.WIRE_MILLING;

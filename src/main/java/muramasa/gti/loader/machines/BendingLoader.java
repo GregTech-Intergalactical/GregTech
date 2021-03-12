@@ -1,7 +1,5 @@
 package muramasa.gti.loader.machines;
 
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
-
 import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.GregTechData.INT_CIRCUITS;
 import static muramasa.gti.data.RecipeMaps.BENDING;

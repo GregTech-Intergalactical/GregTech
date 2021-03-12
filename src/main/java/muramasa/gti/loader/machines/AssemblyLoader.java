@@ -16,11 +16,8 @@ import net.minecraft.item.Items;
 import net.minecraft.tags.ItemTags;
 
 import java.util.Arrays;
-import java.util.Set;
 
-import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.Data.WRENCH;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.ASSEMBLING;

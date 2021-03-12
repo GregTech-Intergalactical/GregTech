@@ -1,28 +1,10 @@
 package muramasa.gti.tree;
 
-import com.google.common.collect.ImmutableList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.Heightmap;
-import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
-import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
-import net.minecraft.world.gen.placement.Placement;
-import net.minecraft.world.gen.treedecorator.LeaveVineTreeDecorator;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import static muramasa.gti.data.GregTechData.RUBBER_LEAVES;
-import static muramasa.gti.data.GregTechData.RUBBER_SAPLING;
 
 public class RubberTreeWorldGen { //  extends WorldGenBase<RubberTreeWorldGen> {
 

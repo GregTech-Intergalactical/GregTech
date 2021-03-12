@@ -1,24 +1,5 @@
 package muramasa.gti.loader;
 
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
-import muramasa.antimatter.recipe.RecipeHelper;
-import muramasa.antimatter.util.Utils;
-import muramasa.gti.Ref;
-import muramasa.gti.data.Materials;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.LazyValue;
-
-import java.util.List;
-import java.util.function.Supplier;
-
-import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.material.MaterialTag.*;
-import static muramasa.gti.data.GregTechData.*;
-import static muramasa.gti.data.Materials.*;
-import static muramasa.gti.data.RecipeMaps.*;
-
 //TODO EXCLUDED FROM COMPILE
 
 public class MaterialRecipeLoader {

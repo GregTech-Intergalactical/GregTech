@@ -1,6 +1,5 @@
 package muramasa.gti.block;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.texture.Texture;
 import net.minecraft.block.Block;
 

@@ -3,14 +3,11 @@ package muramasa.gti.loader.machines;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.util.Utils;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.LazyValue;
 
-
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.Data.ORE;
 import static muramasa.gti.data.Materials.Stone;
 import static muramasa.gti.data.RecipeMaps.PULVERIZING;
 

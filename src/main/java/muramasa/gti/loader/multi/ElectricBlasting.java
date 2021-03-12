@@ -8,15 +8,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.LazyValue;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.Data.DUST_IMPURE;
 import static muramasa.antimatter.material.MaterialTag.CALCITE2X;
 import static muramasa.antimatter.material.MaterialTag.CALCITE3X;
+import static muramasa.antimatter.recipe.ingredient.AntimatterIngredient.of;
 import static muramasa.gti.data.GregTechData.INT_CIRCUITS;
 import static muramasa.gti.data.GregTechData.STONE;
 import static muramasa.gti.data.Materials.*;
-import static muramasa.gti.data.Materials.Quicklime;
 import static muramasa.gti.data.RecipeMaps.BLASTING;
-import static muramasa.antimatter.recipe.ingredient.AntimatterIngredient.*;
 
 public class ElectricBlasting {
     public static int mixedOreYield = Ref.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;

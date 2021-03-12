@@ -4,9 +4,9 @@ import muramasa.antimatter.material.Material;
 import net.minecraft.item.ItemStack;
 
 import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.recipe.ingredient.AntimatterIngredient.of;
 import static muramasa.gti.data.Materials.Stone;
 import static muramasa.gti.data.RecipeMaps.THERMAL_CENTRIFUGING;
-import static muramasa.antimatter.recipe.ingredient.AntimatterIngredient.*;
 
 public class ThermalCentrifuge {
     public static void init() {
