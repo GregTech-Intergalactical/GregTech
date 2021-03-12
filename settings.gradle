@@ -1,31 +1,3 @@
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-
-        maven { url = 'https://files.axelandre42.ovh/maven/' }
-        maven { url = 'https://files.minecraftforge.net/maven/' }
-        jcenter()
-        mavenCentral()
-        maven { url 'http://dvs1.progwml6.com/files/maven' }
-
-    }
-}
-/*
-includeBuild('antimatter') {
-
-}*/
-
-//The following are to add these projects as IDEA modules.
-//They aren't actually necessary.
-/*
-includeBuild('antimatter/tesseract/forge') {
-
-}
-
-includeBuild('antimatter/tesseract') {
-
-}*/
-
 include 'tesseract'
 include 'antimatter'
 

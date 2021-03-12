@@ -44,6 +44,7 @@ sourceSets {
     }
 }
 
+
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   Snapshot are built nightly.
@@ -63,8 +64,10 @@ minecraft {
             property 'forge.logging.markers', 'DEBUG'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-            //property 'mixin.env.disableRefMap', 'true'
-            environment 'MOD_CLASSES', "gti%%${project.file('out/production/resources')}:gti%%${project.file('out/production/classes')}:antimatter%%${project(':antimatter').file('out/production/resources')}:antimatter%%${project(':antimatter').file('out/production/classes')}:tesseract%%${project(':tesseract').file('out/production/resources')}:tesseract%%${project(':tesseract').file('out/production/classes')}"
+            //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
+            //Comment this if you aren't developing against antimatter locally.
+            arg "-mixin.config=antimatter.mixins.json"
+            environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
             mods {
                 gti {
                     source sourceSets.main
@@ -79,8 +82,10 @@ minecraft {
             property 'forge.logging.markers', 'DEBUG'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-            //property 'mixin.env.disableRefMap', 'true'
-            environment 'MOD_CLASSES', "gti%%${project.file('out/production/resources')}:gti%%${project.file('out/production/classes')}:antimatter%%${project(':antimatter').file('out/production/resources')}:antimatter%%${project(':antimatter').file('out/production/classes')}:tesseract%%${project(':tesseract').file('out/production/resources')}:tesseract%%${project(':tesseract').file('out/production/classes')}"
+            //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
+            //Comment this if you aren't developing against antimatter locally.
+            arg "-mixin.config=antimatter.mixins.json"
+            environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
 
             mods {
                 gti {
@@ -91,15 +96,16 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            environment 'MOD_CLASSES', "gti%%${project.file('out/production/resources')}:gti%%${project.file('out/production/classes')}:antimatter%%${project(':antimatter').file('out/production/resources')}:antimatter%%${project(':antimatter').file('out/production/classes')}:tesseract%%${project(':tesseract').file('out/production/resources')}:tesseract%%${project(':tesseract').file('out/production/classes')}"
+            environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'DEBUG'
-
+            //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
+            //Comment this if you aren't developing against antimatter locally.
+            arg "-mixin.config=antimatter.mixins.json"
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
             args '--mod', 'gti', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
-            //property 'mixin.env.disableRefMap', 'true'
 
             mods {
                 gti {

@@ -33,7 +33,6 @@ public class GregTech extends AntimatterMod {
 
     public GregTech() {
         super();
-        int x = 0;
         INSTANCE = this;
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
