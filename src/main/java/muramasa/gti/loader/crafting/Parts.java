@@ -25,7 +25,7 @@ public class Parts {
 
     public static void loadRecipes(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {
         TIER_MATERIALS.forEach((t,m) -> {
-            provider.addItemRecipe(output,"casings", "has_casing", provider.hasItem(WRENCH.getTag()),
+            provider.addItemRecipe(output,"casings", "has_casing", provider.hasSafeItem(WRENCH.getTag()),
                     AntimatterAPI.get(BlockCasing.class, "casing_"+t.getId()),
                     of('C', PLATE.getMaterialTag(m), 'W', WRENCH.getTag()), "CCC", "CWC", "CCC");
         });
@@ -47,24 +47,24 @@ public class Parts {
             Item robotArm = AntimatterAPI.get(ItemBasic.class, "robot_arm_"+t.getId());
             Item pump = AntimatterAPI.get(ItemCover.class, "pump_" + t.getId());
             Item conveyor = AntimatterAPI.get(ItemCover.class, "conveyor_" + t.getId());
-            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasItem(WRENCH.getTag()),
+            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
                    motor,
                    of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', rod),
                     "CWR", "WMW", "RWC");
-            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasItem(WRENCH.getTag()),
+            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
                     piston,
                     of('M', motor, 'C', cable, 'G', smallGear,'P', plate, 'R', rod),
                     "PPP", "CRR", "CMG");
-            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasItem(WRENCH.getTag()),
+            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
                     conveyor,
                     of('M', motor, 'C', cable, 'P',PLATE.get(Rubber)),
                     "PPP", "MCM", "PPP");
-            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasItem(WRENCH.getTag()),
+            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
                     robotArm,
                     of('M', motor, 'C', cable, 'P',piston, 'I', circuit, 'R',rod),
                     "CCC", "MRM", "PIR");
             Material rotorMat = ((MaterialItem) TIER_ROTORS.get(t)).getMaterial();
-            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasItem(WRENCH.getTag()),
+            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
                     pump,
                     ImmutableMap.<Character, Object>builder()
                     .put('M',motor)

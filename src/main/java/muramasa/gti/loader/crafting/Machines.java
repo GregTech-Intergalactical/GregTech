@@ -40,7 +40,7 @@ public class Machines {
             Item machine = BENDER.getItem(tier);
 
             if (machine != null) {
-                provider.addItemRecipe(output, "machines", "has_motor", provider.hasItem(GregTechData.MotorLV), machine,
+                provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), machine,
                         ImmutableMap.of(
                                 'P', piston,
                                 'M', motor,
@@ -51,7 +51,7 @@ public class Machines {
             }
             machine = WIRE_MILL.getItem(tier);
             if (machine != null) {
-                provider.addItemRecipe(output, "machines", "has_motor", provider.hasItem(GregTechData.MotorLV), machine,
+                provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), machine,
                         ImmutableMap.of(
                                 'M', motor,
                                 'C', circuit,
@@ -61,7 +61,7 @@ public class Machines {
             }
             machine = ASSEMBLER.getItem(tier);
             if (machine != null) {
-                provider.addItemRecipe(output, "machines", "has_motor", provider.hasItem(GregTechData.MotorLV), machine,
+                provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), machine,
                         ImmutableMap.of(
                                 'R', arm,
                                 'O', conveyor,
@@ -72,7 +72,7 @@ public class Machines {
             }
             machine = CENTRIFUGE.getItem(tier);
             if (machine != null) {
-                provider.addItemRecipe(output, "machines", "has_motor", provider.hasItem(GregTechData.MotorLV), machine,
+                provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), machine,
                         ImmutableMap.of(
                                 'M', motor,
                                 'C', circuit,
@@ -82,7 +82,7 @@ public class Machines {
             }
             machine = MIXER.getItem(tier);
             if (machine != null) {
-                provider.addItemRecipe(output, "machines", "has_motor", provider.hasItem(GregTechData.MotorLV), machine,
+                provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), machine,
                         ImmutableMap.of(
                                 'M', motor,
                                 'R',rotor,
