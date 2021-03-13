@@ -34,7 +34,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.item.Item;
 import net.minecraft.util.LazyValue;
-
 import static muramasa.antimatter.Data.ROTOR;
 import static muramasa.gti.data.Materials.*;
 
@@ -320,10 +319,6 @@ public class GregTechData {
     //    public static final RegistryObject<Item> CombPlutonium = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_plutonium", "")/*.optional(Ref.MOD_FR)*/;
     //    public static final RegistryObject<Item> CombNaquadah = new ItemBasic<>(Ref.ID, "").tip(Ref.ID, "comb_naquadah", "")/*.optional(Ref.MOD_FR)*/;
 
-    //TODO
-    //public static BlockRubberSapling RUBBER_SAPLING = new BlockRubberSapling();
-    //public static BlockRubberLog RUBBER_LOG = new BlockRubberLog();
-    //public static BlockLeavesBase RUBBER_LEAVES = new BlockLeavesBase("rubber_leaves", RUBBER_SAPLING);
 
     //STONE should be the only non-removable StoneType. It serves as the foundation. It is also used natively by BlockRock
     //TODO move vanilla stone types (and (vanilla) materials) to Antimatter

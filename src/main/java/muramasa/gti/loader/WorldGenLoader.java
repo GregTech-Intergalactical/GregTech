@@ -19,8 +19,6 @@ public class WorldGenLoader {
         //TODO probably increase max generation heights for most things
         //TODO add GC dims to all objects
 
-        //RubberTreeWorldGen.build();
-
      //   new WorldGenAsteroid("asteroids", World.THE_END/*, ASTEROIDS */);
 
 //        new WorldGenStone("granite_black_tiny", GRANITE_BLACK, 1, 75, 5, 0, 180, World.OVERWORLD);
