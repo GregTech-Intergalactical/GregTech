@@ -126,16 +126,16 @@ dependencies {
     if (findProject(':antimatter') != null) {
         implementation project(':antimatter')
     } else {
-        implementation fg.deobf(project.dependencies.create("com.github.GregTech-Intergalactical:AntimatterAPI::${antimatter_version}") {
+        implementation fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI::${antimatter_version}") {
             transitive = false
-        })
+        }
     }
     if (findProject(':tesseract') != null) {
         compileOnly project(':tesseract')
     } else {
-        compileOnly fg.deobf(project.dependencies.create("com.github.gregtech-intergalactical:TesseractAPI:${tesseract_version}") {
+        compileOnly fg.deobf("com.github.gregtech-intergalactical:TesseractAPI:${tesseract_version}") {
             transitive = false
-        })
+        }
     }
 
     //JEI
