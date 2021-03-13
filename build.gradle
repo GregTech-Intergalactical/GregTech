@@ -17,6 +17,8 @@ buildscript {
 
 repositories {
     maven { url 'http://dvs1.progwml6.com/files/maven' }
+    //GT.
+    maven { url 'https://jitpack.io' }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
@@ -67,7 +69,7 @@ minecraft {
             //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
             arg "-mixin.config=antimatter.mixins.json"
-            environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
+            if (findProject(':antimatter') != null) environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
             mods {
                 gti {
                     source sourceSets.main
@@ -85,7 +87,7 @@ minecraft {
             //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
             arg "-mixin.config=antimatter.mixins.json"
-            environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
+            if (findProject(':antimatter') != null) environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
 
             mods {
                 gti {
@@ -96,7 +98,7 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
+            if (findProject(':antimatter') != null) environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'DEBUG'
@@ -118,13 +120,25 @@ minecraft {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-
     implementation 'org.apache.commons:commons-collections4:4.4'
 
+    //GT related projects.
+    if (findProject(':antimatter') != null) {
+        implementation project(':antimatter')
+    } else {
+        implementation fg.deobf(project.dependencies.create("com.github.GregTech-Intergalactical:AntimatterAPI::${antimatter_version}") {
+            transitive = false
+        })
+    }
+    if (findProject(':tesseract') != null) {
+        compileOnly project(':tesseract')
+    } else {
+        compileOnly fg.deobf(project.dependencies.create("com.github.gregtech-intergalactical:TesseractAPI:${tesseract_version}") {
+            transitive = false
+        })
+    }
 
-    implementation project(':antimatter')
-    compileOnly project(path: ':tesseract')
-
+    //JEI
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 }
@@ -148,12 +162,6 @@ publishing {
         }
     }
 }
-//apply plugin: 'org.spongepowered.mixin'
-
-//mixin {
-//    add sourceSets.main, "antimatter.refmap.json"
-//}
-
 
 jar {
     zip64 true

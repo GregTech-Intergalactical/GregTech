@@ -1,5 +1,10 @@
-include 'tesseract'
-include 'antimatter'
-
-project(':tesseract').setProjectDir(new File("antimatter/tesseract"))
-project(':antimatter').setProjectDir(new File("antimatter"))
+def folder = new File( 'antimatter' )
+if(folder.exists() ) {
+    include 'antimatter'
+    project(':antimatter').setProjectDir(new File("antimatter"))
+    def tesseract = new File( 'antimatter/tesseract')
+    if (tesseract.exists()) {
+        include 'tesseract'
+        project(':tesseract').setProjectDir(new File("antimatter/tesseract"))
+    }
+}
