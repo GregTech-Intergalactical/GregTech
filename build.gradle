@@ -25,7 +25,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.0.1'
+version = '0.1'
 group = 'com.github.gregtech-intergalactical' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'gti'
 
@@ -123,17 +123,17 @@ dependencies {
     implementation 'org.apache.commons:commons-collections4:4.4'
 
     //GT related projects.
-    if (findProject(':antimatter') != null) {
-        implementation project(':antimatter')
+    if (findProject(':AntimatterAPI') != null) {
+        implementation project(':AntimatterAPI')
     } else {
-        implementation fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI::${antimatter_version}") {
+        implementation("com.github.GregTech-Intergalactical.AntimatterAPI:${antimatter_version}") {
             transitive = false
         }
     }
-    if (findProject(':tesseract') != null) {
-        compileOnly project(':tesseract')
+    if (findProject(':TesseractAPI') != null) {
+        compileOnly project(':TesseractAPI')
     } else {
-        compileOnly fg.deobf("com.github.gregtech-intergalactical:TesseractAPI:${tesseract_version}") {
+        compileOnly ("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}") {
             transitive = false
         }
     }
