@@ -68,8 +68,14 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
-            arg "-mixin.config=antimatter.mixins.json"
-            if (findProject(':antimatter') != null) environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
+            if (findProject(':AntimatterAPI') != null) arg "-mixin.config=antimatter.mixins.json"
+            if (findProject(':AntimatterAPI') != null) {
+                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                    environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')};gti%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatter').file('build/resources/main')};antimatter%%${project(':antimatter').file('build/classes/java/main')};tesseract%%${project(':tesseract').file('build/resources/main')};tesseract%%${project(':tesseract').file('build/classes/java/main')}"
+                } else {
+                    environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
+                }
+            }
             mods {
                 gti {
                     source sourceSets.main
@@ -86,8 +92,14 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
-            arg "-mixin.config=antimatter.mixins.json"
-            if (findProject(':antimatter') != null) environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
+            if (findProject(':AntimatterAPI') != null) arg "-mixin.config=antimatter.mixins.json"
+            if (findProject(':AntimatterAPI') != null) {
+                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                    environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')};gti%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatter').file('build/resources/main')};antimatter%%${project(':antimatter').file('build/classes/java/main')};tesseract%%${project(':tesseract').file('build/resources/main')};tesseract%%${project(':tesseract').file('build/classes/java/main')}"
+                } else {
+                    environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
+                }
+            }
 
             mods {
                 gti {
@@ -98,13 +110,19 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            if (findProject(':antimatter') != null) environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
-
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'DEBUG'
             //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
-            arg "-mixin.config=antimatter.mixins.json"
+            if (findProject(':AntimatterAPI') != null) arg "-mixin.config=antimatter.mixins.json"
+
+            if (findProject(':AntimatterAPI') != null) {
+                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                    environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')};gti%%${project.file('build/classes/java/main')};antimatter%%${project(':antimatter').file('build/resources/main')};antimatter%%${project(':antimatter').file('build/classes/java/main')};tesseract%%${project(':tesseract').file('build/resources/main')};tesseract%%${project(':tesseract').file('build/classes/java/main')}"
+                } else {
+                    environment 'MOD_CLASSES', "gti%%${project.file('build/resources/main')}:gti%%${project.file('build/classes/java/main')}:antimatter%%${project(':antimatter').file('build/resources/main')}:antimatter%%${project(':antimatter').file('build/classes/java/main')}:tesseract%%${project(':tesseract').file('build/resources/main')}:tesseract%%${project(':tesseract').file('build/classes/java/main')}"
+                }
+            }
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
             args '--mod', 'gti', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
@@ -126,16 +144,15 @@ dependencies {
     if (findProject(':AntimatterAPI') != null) {
         implementation project(':AntimatterAPI')
     } else {
-        implementation("com.github.GregTech-Intergalactical.AntimatterAPI:${antimatter_version}") {
-            transitive = false
-        }
+        runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
+        compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
     }
     if (findProject(':TesseractAPI') != null) {
         compileOnly project(':TesseractAPI')
     } else {
-        compileOnly ("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}") {
-            transitive = false
-        }
+        //Ensure there is a local mod version!
+        runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
+        compileOnly ("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
     }
 
     //JEI
