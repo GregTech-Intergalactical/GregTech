@@ -31,8 +31,6 @@ public class Textures {
         new Texture(Ref.ID, "block/machine/base/bricked_" + t.getId()),
     };
 
-    public static final ITextureHandler MULTI_HANDLER = (m, t) -> m.getTiers().size() > 1 ? new Texture[]{new Texture(Ref.ID, "block/machine/base/" + m.getId() + "_" + t.getId())} : new Texture[]{new Texture(Ref.ID, "block/machine/base/" + m.getId())};
-
     public static final Texture[] LARGE_TURBINE = new Texture[] {
         new Texture(Ref.ID, "block/ct/turbine/large_turbine_0"),
         new Texture(Ref.ID, "block/ct/turbine/large_turbine_1"),

@@ -7,7 +7,7 @@ issueTrackerURL="https://github.com/GregTech-Intergalactical/GregTech/issues"
 [[mods]]
 modId="gti"
 #version="${version}"
-version="0.0.1"
+version="0.1"
 displayName="GregTech"
 #updateJSONURL="http://myurl.me/"
 displayURL="https://github.com/GregTech-Intergalactical/GregTech"
@@ -27,12 +27,12 @@ description='''The Approved Continuation. Rewrite. And Re-envisioning of GregTec
     mandatory=true
     #versionRange="[${forge_version},)"
     versionRange="31.0.1"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"
 [[dependencies.gti]]
     modId="minecraft"
     mandatory=true
     #versionRange="[${minecraft_version}]"
-    versionRange="1.15.2"
+    versionRange="1.16.5"
     ordering="NONE"
     side="BOTH"
