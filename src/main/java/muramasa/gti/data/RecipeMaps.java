@@ -6,6 +6,7 @@ import muramasa.antimatter.integration.jei.renderer.SteamRecipeInfoRenderer;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.antimatter.recipe.RecipeMap;
+import muramasa.antimatter.recipe.RecipeProxies;
 
 import static muramasa.gti.data.Guis.MULTI_DISPLAY;
 import static muramasa.gti.data.RecipeBuilders.*;
@@ -30,7 +31,7 @@ public class RecipeMaps {
     public static RecipeMap COMPRESSING = new RecipeMap<>("compressing", new CompressingBuilder());
     public static RecipeMap CUTTING = new RecipeMap<>("cutting", new RecipeBuilder());
     public static RecipeMap DISTILLING = new RecipeMap<>("distilling", new RecipeBuilder());
-    public static RecipeMap SMELTING = new RecipeMap<>("smelting", new SmeltingBuilder());
+    public static RecipeMap SMELTING = new RecipeMap<>("smelting", new SmeltingBuilder(), RecipeProxies.FURNACE_PROXY);
     public static RecipeMap EXTRACTING = new RecipeMap<>("extracting", new ExtractingBuilder());
     public static RecipeMap EXTRUDING = new RecipeMap<>("extruding", new RecipeBuilder());
     public static RecipeMap LATHING = new RecipeMap<>("lathing", new RecipeBuilder());

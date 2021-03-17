@@ -43,25 +43,25 @@ public class GregTechRecipes extends AntimatterRecipeProvider {
         addConditionalRecipe(consumer, getStackRecipe("", "has_sulfur_dust", this.hasSafeItem(getForgeItemTag("dusts/sulfur")),
                 new ItemStack(Blocks.TORCH, 6), of('D', getForgeItemTag("dusts/sulfur"), 'R', Tags.Items.RODS_WOODEN), "D", "R"), Ref.class, "sulfurTorch", Ref.ID, "sulfur_torch");
 
-        addItemRecipe(consumer, Ref.ID, "hopper", "", "has_wrench", this.hasSafeItem(WRENCH.getTag()),
+        addItemRecipe(consumer, providerDomain, "hopper", "", "has_wrench", this.hasSafeItem(WRENCH.getTag()),
                 Blocks.HOPPER, of('C', Blocks.CHEST, 'I', getForgeItemTag("plates/iron"), 'W', WRENCH.getTag()), "IWI", "ICI", " I ");
 
-        addItemRecipe(consumer, "", "has_iron_plate", this.hasSafeItem(WRENCH.getTag()),
+        addItemRecipe(consumer,providerDomain,"filter", "", "has_iron_plate", this.hasSafeItem(WRENCH.getTag()),
                 ItemFilter, of('Z', getForgeItemTag("foils/zinc"), 'I', getForgeItemTag("plates/iron")), "ZZZ", "ZIZ", "ZZZ");
 
-        addItemRecipe(consumer, "gears", "has_wooden_rod", this.hasSafeItem(Tags.Items.RODS_WOODEN),
+        addItemRecipe(consumer,providerDomain,"gears", "gears", "has_wooden_rod", this.hasSafeItem(Tags.Items.RODS_WOODEN),
                 GEAR.get(Wood), of('P', ItemTags.PLANKS, 'W', WRENCH.getTag(), 'R', Tags.Items.RODS_WOODEN), "RPR", "PWP", "RPR");
 
-        addItemRecipe(consumer, Ref.ID, GEAR.get(Wood).getRegistryName().getPath() + "_alt", "gears", "has_wooden_rod", this.hasSafeItem(Tags.Items.RODS_WOODEN),
+        addItemRecipe(consumer, providerDomain, GEAR.get(Wood).getRegistryName().getPath() + "_alt", "gears", "has_wooden_rod", this.hasSafeItem(Tags.Items.RODS_WOODEN),
                 GEAR.get(Wood), of('P', ItemTags.PLANKS, 'W', WRENCH.getTag(), 'R', Tags.Items.RODS_WOODEN), "RPR", "PWP", "RPR");
 
-        addItemRecipe(consumer, "gears", "has_stone", this.hasSafeItem(Tags.Items.STONE),
+        addItemRecipe(consumer,providerDomain, "gears", "gears", "has_stone", this.hasSafeItem(Tags.Items.STONE),
                 GEAR.get(Stone), of('S', Tags.Items.STONE, 'W', WRENCH.getTag(), 'C', Tags.Items.COBBLESTONE), "SCS", "CWC", "SCS");
 
-        addItemRecipe(consumer, Ref.ID, GEAR.get(Stone).getRegistryName().getPath() + "_alt", "gears", "has_stone", this.hasSafeItem(Tags.Items.STONE),
+        addItemRecipe(consumer, providerDomain, GEAR.get(Stone).getRegistryName().getPath() + "_alt", "gears", "has_stone", this.hasSafeItem(Tags.Items.STONE),
                 GEAR.get(Stone), of('S', Tags.Items.STONE, 'W', WRENCH.getTag(), 'C', Tags.Items.COBBLESTONE), "CSC", "SWS", "CSC");
 
-        addItemRecipe(consumer, "gears", "has_stone", this.hasSafeItem(Blocks.PISTON), Blocks.STICKY_PISTON, of('S', GregTechData.StickyResin, 'P', Blocks.PISTON), "S", "P");
+        addItemRecipe(consumer, providerDomain, "piston_sticky","gears", "has_stone", this.hasSafeItem(Blocks.PISTON), Blocks.STICKY_PISTON, of('S', GregTechData.StickyResin, 'P', Blocks.PISTON), "S", "P");
 
         addItemRecipe(consumer, "magnetic_rods", "has_redstone", this.hasSafeItem(Tags.Items.DUSTS_REDSTONE), ROD.get(IronMagnetic),
                 of('R', Tags.Items.DUSTS_REDSTONE, 'S', getForgeItemTag("rods/iron")), " R ", "RSR", " R ");

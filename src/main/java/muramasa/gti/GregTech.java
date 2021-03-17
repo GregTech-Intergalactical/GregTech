@@ -12,7 +12,7 @@ import muramasa.gti.datagen.GregTechRecipes;
 import muramasa.gti.datagen.ProgressionAdvancements;
 import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.loader.machines.*;
-import muramasa.gti.loader.machines.generator.SteamFuels;
+import muramasa.gti.loader.machines.generator.Fuels;
 import muramasa.gti.loader.multi.ElectricBlasting;
 import muramasa.gti.loader.multi.VacFreezer;
 import muramasa.gti.proxy.ClientHandler;
@@ -66,7 +66,7 @@ public class GregTech extends AntimatterMod {
         loader.add(BendingLoader::init);
         loader.add(AssemblyLoader::init);
         loader.add(ChemicalReactorLoader::init);
-        loader.add(SteamFuels::init);
+        loader.add(Fuels::init);
         loader.add(FluidExtractor::init);
         loader.add(AlloyLoader::init);
 
