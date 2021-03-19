@@ -13,6 +13,7 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -39,10 +40,20 @@ public class CoverConveyor extends CoverTiered {
         super();
     }
 
+    @Override
+    public boolean hasGui() {
+        return true;
+    }
+
     //Useful for using the same model for multiple tiers where id is dependent on tier.
     @Override
     protected String getRenderId() {
         return ID();
+    }
+
+    @Override
+    public ResourceLocation getModel(Direction dir, Direction facing) {
+        return getBasicDepthModel();
     }
 
     @Override
@@ -85,4 +96,6 @@ public class CoverConveyor extends CoverTiered {
     protected CoverTiered getTiered(Tier tier) {
         return new CoverConveyor(tier);
     }
+
+
 }

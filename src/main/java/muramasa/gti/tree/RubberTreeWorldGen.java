@@ -1,29 +1,24 @@
 package muramasa.gti.tree;
 
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.worldgen.object.WorldGenBase;
+import muramasa.gti.data.GregTechData;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.RainType;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.FeatureSpread;
 import net.minecraft.world.gen.feature.TwoLayerFeature;
 import net.minecraft.world.gen.feature.WorldDecoratingHelper;
 import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
-import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
-import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.Heightmap;
-import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
-
-import muramasa.gti.data.GregTechData;
 
 import java.util.Random;
 import java.util.Set;

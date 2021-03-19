@@ -1,9 +1,6 @@
 package muramasa.gti.data;
 
-import muramasa.antimatter.machine.types.BasicMachine;
-import muramasa.antimatter.machine.types.HatchMachine;
-import muramasa.antimatter.machine.types.MultiMachine;
-import muramasa.antimatter.machine.types.TankMachine;
+import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
 import muramasa.antimatter.tile.single.TileEntityDigitalTransformer;
 import muramasa.antimatter.tile.single.TileEntityInfiniteStorage;
@@ -96,22 +93,22 @@ public class Machines {
 
     public static TankMachine QUANTUM_TANK = new TankMachine(Ref.ID, "quantum_tank", GUI, CELL);
 
-    public static BasicMachine STEAM_GENERATOR = new BasicMachine(Ref.ID, "steam_generator", STEAM_FUELS, LV, MV, HV, GUI, ITEM, FLUID, GENERATOR, CELL);
-    public static BasicMachine GAS_GENERATOR = new BasicMachine(Ref.ID, "gas_generator", GAS_FUELS, LV, MV, HV, GUI, ITEM, FLUID, CELL);
-    public static BasicMachine COMBUSTION_GENERATOR = new BasicMachine(Ref.ID, "combustion_generator", COMBUSTION_FUELS, LV, MV, HV, GUI, ITEM, FLUID, CELL);
-    public static BasicMachine NAQUADAH_GENERATOR = new BasicMachine(Ref.ID, "naquadah_generator", NAQUADAH_FUELS, EV, IV, LUV, GUI, ITEM, FLUID, CELL);
-    public static BasicMachine PLASMA_GENERATOR = new BasicMachine(Ref.ID, "plasma_generator", PLASMA_FUELS, IV, LUV, ZPM, GUI, ITEM, FLUID, GENERATOR, CELL);
+    public static GeneratorMachine STEAM_GENERATOR = new GeneratorMachine(Ref.ID, "steam_generator", STEAM_FUELS, LV, MV, HV, GUI, ITEM, FLUID, GENERATOR, CELL);
+    public static GeneratorMachine GAS_GENERATOR = new GeneratorMachine(Ref.ID, "gas_generator", GAS_FUELS, LV, MV, HV, GUI, ITEM, FLUID, CELL);
+    public static GeneratorMachine COMBUSTION_GENERATOR = new GeneratorMachine(Ref.ID, "combustion_generator", COMBUSTION_FUELS, LV, MV, HV, GUI, ITEM, FLUID, CELL);
+    public static GeneratorMachine NAQUADAH_GENERATOR = new GeneratorMachine(Ref.ID, "naquadah_generator", NAQUADAH_FUELS, EV, IV, LUV, GUI, ITEM, FLUID, CELL);
+    public static GeneratorMachine PLASMA_GENERATOR = new GeneratorMachine(Ref.ID, "plasma_generator", PLASMA_FUELS, IV, LUV, ZPM, GUI, ITEM, FLUID, GENERATOR, CELL);
 
     public static BasicMachine INFINITE_STORAGE = new BasicMachine(Ref.ID, "infinite_storage", ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV, MAX, ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityInfiniteStorage(m, 16))
-            .covers(COVERNONE);
-    public static BasicMachine INFINITE_STEAM = new BasicMachine(Ref.ID, "infinite_steam", FLUID, CELL, CONFIGURABLE, GUI).setTile(m -> () -> new TileEntityInfiniteFluid(m));
+            .covers(null);
+    public static TankMachine INFINITE_STEAM = new TankMachine(Ref.ID, "infinite_steam", FLUID, CELL, CONFIGURABLE, GUI).setTile(m -> () -> new TileEntityInfiniteFluid(m));
     public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four", GUI, ENERGY, CONFIGURABLE, ITEM,COVERBUFFERFOUR).setTile(m -> () -> new TileEntityBatteryBuffer(m)).frontCovers();
     public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one", GUI, ENERGY, CONFIGURABLE, ITEM,COVERBUFFERONE).setTile(m -> () -> new TileEntityBatteryBuffer(m)).frontCovers();
     public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine", GUI, ENERGY, CONFIGURABLE, ITEM,COVERBUFFERNINE).setTile(m -> () -> new TileEntityBatteryBuffer(m)).frontCovers();
-    public static BasicMachine TRANSFORMER = new BasicMachine(Ref.ID, "transformer", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityTransformer(m, 1)).covers(COVERNONE);
-    public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(Ref.ID, "transformer_hiamp", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityTransformer(m, 4)).covers(COVERNONE);
-    public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(Ref.ID, "transformer_ultra", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityTransformer(m, 16)).covers(COVERNONE);
-    public static BasicMachine TRANSFORMER_DIGITAL = new BasicMachine(Ref.ID, "transformer_digital", EV, IV, GUI, ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityDigitalTransformer(m)).covers(COVERNONE);
+    public static BasicMachine TRANSFORMER = new BasicMachine(Ref.ID, "transformer", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityTransformer(m, 1)).covers(null);
+    public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(Ref.ID, "transformer_hiamp", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityTransformer(m, 4)).covers(null);
+    public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(Ref.ID, "transformer_ultra", ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityTransformer(m, 16)).covers(null);
+    public static BasicMachine TRANSFORMER_DIGITAL = new BasicMachine(Ref.ID, "transformer_digital", EV, IV, GUI, ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityDigitalTransformer(m)).covers(null);
 
     public static void init() {
 

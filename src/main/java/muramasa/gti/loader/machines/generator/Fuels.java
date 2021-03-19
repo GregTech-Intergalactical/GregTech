@@ -3,7 +3,6 @@ package muramasa.gti.loader.machines.generator;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.material.Material;
 import muramasa.gti.data.Materials;
-import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.Data.GAS;
 import static muramasa.antimatter.Data.LIQUID;

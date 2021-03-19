@@ -3,7 +3,7 @@ package muramasa.gti.data;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.cover.Cover;
+import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemCover;
@@ -24,7 +24,6 @@ import muramasa.gti.block.BlockCoil;
 import muramasa.gti.block.BlockFusionCasing;
 import muramasa.gti.block.BlockTurbineCasing;
 import muramasa.gti.cover.CoverConveyor;
-import muramasa.gti.cover.CoverPlate;
 import muramasa.gti.cover.CoverPump;
 import muramasa.gti.items.ItemIntCircuit;
 import muramasa.gti.tree.BlockRubberLeaves;
@@ -34,6 +33,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.item.Item;
 import net.minecraft.util.LazyValue;
+
 import static muramasa.antimatter.Data.ROTOR;
 import static muramasa.gti.data.Materials.*;
 
@@ -111,9 +111,8 @@ public class GregTechData {
 
     }
 
-    public static final Cover COVER_PLATE = new CoverPlate();
-    public static final Cover COVER_CONVEYOR = new CoverConveyor();
-    public static final Cover COVER_PUMP = new CoverPump();
+    public static final BaseCover COVER_CONVEYOR = new CoverConveyor();
+    public static final BaseCover COVER_PUMP = new CoverPump();
 
     public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");

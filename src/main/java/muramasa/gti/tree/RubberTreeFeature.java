@@ -1,11 +1,8 @@
 package muramasa.gti.tree;
 
+import muramasa.antimatter.worldgen.AntimatterWorldGenerator;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.TreeFeature;
-
-
-
-import muramasa.antimatter.worldgen.AntimatterWorldGenerator;
 
 public class RubberTreeFeature extends TreeFeature {
 
