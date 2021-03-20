@@ -13,5 +13,19 @@ public class ChemicalReactorLoader {
         ),AntimatterIngredient.of(
                 DUST.get(RawRubber),9
         )).fo(Rubber.getLiquid(144*9)).add(200,24);
+
+        /* TITANIUM */
+        CHEMICAL_REACTING.RB().ii(
+                AntimatterIngredient.of(DUST.get(Rutile,1)),
+                AntimatterIngredient.of(DUST.get(Carbon,2))
+        ).fi(Chlorine.getGas(4000))
+            .fo(Titaniumtetrachloride.getLiquid(1000))
+                .add(25*20, 480);
+        CHEMICAL_REACTING.RB().ii(
+                AntimatterIngredient.of(DUST.get(MagnesiumChloride,1)),
+                AntimatterIngredient.of(DUST.get(Carbon,2))
+        ).io(DUST.get(Magnesium,1))
+                .fo(Chlorine.getGas(3000))
+                .add(20*15, 256);
     }
 }

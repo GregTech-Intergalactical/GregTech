@@ -6,6 +6,7 @@ import muramasa.gti.Ref;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.LazyValue;
+import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.CALCITE2X;
@@ -53,5 +54,11 @@ public class ElectricBlasting {
                 BLASTING.RB().ii(ore, DUST_TINY.getIngredient(Quicklime, multiplier * 3)).io(Utils.mul(multiplier * 3 * m.getSmeltingMulti(), ingot), darkAsh).add(ingot.getCount() * 500L, 120, 1500);
             }
         });
+
+        /* TITANIUM */
+        BLASTING.RB().ii(AntimatterIngredient.of(DUST.get(Magnesium,2)), INT_CIRCUITS.get(1))
+                .fi(Titaniumtetrachloride.getLiquid(1000))
+                .io(INGOT_HOT.get(Titanium,1), DUST.get(MagnesiumChloride,2))
+                .add(40*20, 480);
     }
 }

@@ -111,7 +111,7 @@ public class Guis {
 
         STEAM_GENERATOR.getGui().add(BASIC_TANK);
         GAS_GENERATOR.getGui().add(BASIC_TANK);
-        COMBUSTION_ENGINE.getGui().add(BASIC_TANK);
+        COMBUSTION_GENERATOR.getGui().add(BASIC_TANK);
         NAQUADAH_GENERATOR.getGui().add(BASIC_TANK);
         PLASMA_GENERATOR.getGui().add(BASIC_TANK);
 
