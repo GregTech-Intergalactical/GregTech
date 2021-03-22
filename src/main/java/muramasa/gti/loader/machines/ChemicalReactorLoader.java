@@ -22,8 +22,8 @@ public class ChemicalReactorLoader {
             .fo(Titaniumtetrachloride.getLiquid(1000))
                 .add(25*20, 480);
         CHEMICAL_REACTING.RB().ii(
-                AntimatterIngredient.of(DUST.get(MagnesiumChloride,1)),
-                AntimatterIngredient.of(DUST.get(Carbon,2))
+                AntimatterIngredient.of(DUST.get(MagnesiumChloride,2)),
+                AntimatterIngredient.of(DUST.get(Carbon,1))
         ).io(DUST.get(Magnesium,1))
                 .fo(Chlorine.getGas(3000))
                 .add(20*15, 256);

@@ -6,7 +6,6 @@ import muramasa.gti.Ref;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.LazyValue;
-import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.CALCITE2X;
@@ -31,7 +30,7 @@ public class ElectricBlasting {
             ItemStack ingot = m.hasDirectSmeltInto() ? INGOT.get(m.getDirectSmeltInto(), 1) : INGOT.get(m, 1);
             ItemStack aIngotSmeltInto = m == m.getSmeltInto() ? ingot : INGOT.get(m.getSmeltInto(), 1);
             if (needsBF) {
-                long aBlastDuration = Math.max(m.getMass() / 4, 1) * m.getBlastTemp();
+                long aBlastDuration = Math.max(m.getMass() / 6, 1) * m.getBlastTemp();
 
                 ItemStack blastOut = m.getBlastTemp() > 1750 && m.getSmeltInto().has(INGOT_HOT) ? INGOT_HOT.get(m.getSmeltInto(), 1) : aIngotSmeltInto;
 

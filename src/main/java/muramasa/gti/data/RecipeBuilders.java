@@ -46,6 +46,13 @@ public class RecipeBuilders {
         }
     }
 
+    public static class BlastingBuilder extends RecipeBuilder {
+        public BlastingBuilder temperature(int temperature) {
+            this.special = temperature;
+            return this;
+        }
+    }
+
     public static class AlloySmeltingBuilder extends RecipeBuilder {
         @Override
         public Recipe add() {
@@ -56,7 +63,7 @@ public class RecipeBuilders {
     public static Recipe addRecipeToSteamMap(RecipeMap map, Recipe recipe) {
         try {
             if (recipe.getPower() <= Tier.LV.getVoltage()/2) {
-                map.RB().ii(recipe.getInputItems()).fi(Materials.Steam.getGas((int)(recipe.getPower() * 2))).io(recipe.getFlatOutputItems()).add(recipe.getDuration(), recipe.getPower() * 2, recipe.getTotalPower() * 2);
+                map.RB().ii(recipe.getInputItems()).io(recipe.getFlatOutputItems()).add(recipe.getDuration()* 3L, recipe.getPower() * 2);
             }
         } catch (Exception e) {
             System.out.println("bleh");

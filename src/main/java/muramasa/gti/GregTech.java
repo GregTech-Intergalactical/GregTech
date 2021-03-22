@@ -36,9 +36,6 @@ public class GregTech extends AntimatterMod {
         INSTANCE = this;
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-        //GregTechAPI.addRegistrar(new ForestryRegistrar());
-        //GregTechAPI.addRegistrar(new GalacticraftRegistrar());
-        //if (ModList.get().isLoaded(Ref.MOD_UB)) GregTechAPI.addRegistrar(new UndergroundBiomesRegistrar());
         final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
 
         AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
@@ -59,7 +56,6 @@ public class GregTech extends AntimatterMod {
 
     private void registerRecipeLoaders() {
         IRecipeRegistrate loader = AntimatterAPI.getRecipeRegistrate();
-      //  loader.registerRecipeLoader(MaterialRecipeLoader::init);
         loader.add(WiremillLoader::init);
         loader.add(WasherLoader::init);
         loader.add(ElectricBlasting::init);

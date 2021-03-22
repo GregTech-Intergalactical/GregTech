@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 
 import static muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider.buildRootAdvancement;
 import static muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider.getLoc;
-import static muramasa.antimatter.util.Utils.getForgeItemTag;
+import static muramasa.antimatter.util.TagUtils.getForgeItemTag;
 import static muramasa.antimatter.util.Utils.hasItem;
 import static muramasa.gti.data.Materials.Flint;
 

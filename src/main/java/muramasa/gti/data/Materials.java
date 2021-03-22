@@ -57,7 +57,7 @@ public class Materials {
     public static Material Calcium = new Material(Ref.ID, "calcium", 0xfff5f5, METALLIC, Ca).asDust(1115);
     public static Material Cadmium = new Material(Ref.ID, "cadmium", 0x32323c, SHINY, Cd).asDust(594);
     public static Material Cerium = new Material(Ref.ID, "cerium", 0xffffff, METALLIC, Ce).asSolid(1068, 1068);
-    public static Material Chlorine = new Material(Ref.ID, "chlorine", 0xffffff, NONE, Cr).asGas();
+    public static Material Chlorine = new Material(Ref.ID, "chlorine", 0x00ffff, NONE, Cr).asGas();
     public static Material Copper = new Material(Ref.ID, "copper", 0xff6400, SHINY, Cu).asMetal(1357, 0, PLATE, ROD, FOIL, WIRE_FINE, GEAR, ORE, ORE_SMALL);
     public static Material Deuterium = new Material(Ref.ID, "deuterium", 0xffff00, NONE, D).asGas();
     public static Material Dysprosium = new Material(Ref.ID, "dysprosium", 0xffffff, METALLIC, D).asMetal(1680, 1680);
