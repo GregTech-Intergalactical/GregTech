@@ -2,6 +2,7 @@ package muramasa.gti.loader.machines;
 
 import muramasa.antimatter.recipe.RecipeHelper;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.LazyValue;
@@ -16,7 +17,7 @@ public class SiftingLoader {
         CRUSHED_PURIFIED.all().forEach(m -> {
             if (!m.has(GEM) || !m.has(ORE)) return;
             int multiplier = 1;
-            LazyValue<AntimatterIngredient> ore = ORE.get().get(m, STONE).asIngredient(), crushed = CRUSHED.getIngredient(m, 1), dust = DUST.getIngredient(m, 1);
+            RecipeIngredient ore = ORE.get().get(m, STONE).asIngredient(), crushed = CRUSHED.getIngredient(m, 1), dust = DUST.getIngredient(m, 1);
             ItemStack dustStack = DUST.get(Stone, 1);
             ItemStack gem = m.hasDirectSmeltInto() ? GEM.get(m.getDirectSmeltInto(), 1) : GEM.get(m, 1);
             RecipeHelper.addSmelting(ore, Utils.ca(multiplier * m.getSmeltingMulti(), gem));

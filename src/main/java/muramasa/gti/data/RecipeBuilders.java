@@ -9,6 +9,7 @@ import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.antimatter.recipe.RecipeMap;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.item.ItemStack;
@@ -102,11 +103,11 @@ public class RecipeBuilders {
         @Override
         public Recipe add() {
             Recipe r = null;
-            List<LazyValue<AntimatterIngredient>> ings = this.ingredientInput;
+            List<RecipeIngredient> ings = this.ingredientInput;
             for (ItemStack fuel : FUELS) {
                 int burn = 1000;//fuel.getBurnTime();
                 int amount = (int) (((double)duration / (double)burn) * 10);
-                List<LazyValue<AntimatterIngredient>> newList = new ObjectArrayList<>(ings);
+                List<RecipeIngredient> newList = new ObjectArrayList<>(ings);
                 newList.add(AntimatterIngredient.of(fuel.getItem(), amount));
                 this.ingredientInput = newList;
                 r = build(duration, power, special, amps);

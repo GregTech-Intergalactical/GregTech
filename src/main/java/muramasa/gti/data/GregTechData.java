@@ -17,6 +17,7 @@ import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gti.Ref;
 import muramasa.gti.block.BlockCasing;
@@ -43,7 +44,7 @@ public class GregTechData {
 
     static {
         {
-            ImmutableMap.Builder<Integer, LazyValue<AntimatterIngredient>> builder = ImmutableMap.builder();
+            ImmutableMap.Builder<Integer, RecipeIngredient> builder = ImmutableMap.builder();
             for (int i = 0; i <= 24; i++) {
                 builder.put(i, AntimatterIngredient.fromItem(1, new ItemIntCircuit(Ref.ID, "int_circuit_"+i,i).tip("ID: " + i), AntimatterIngredient::setNonConsume));
             }
@@ -514,7 +515,7 @@ public class GregTechData {
     public static final BlockRubberLog RUBBER_LOG = new BlockRubberLog(Ref.ID, "rubber_log");
     public static final BlockRubberSapling RUBBER_SAPLING = new BlockRubberSapling(Ref.ID, "rubber_sapling");
 
-    public static final ImmutableMap<Integer, LazyValue<AntimatterIngredient>> INT_CIRCUITS;
+    public static final ImmutableMap<Integer, RecipeIngredient> INT_CIRCUITS;
     public static final ImmutableMap<Tier, Material> TIER_MATERIALS;
     public static ImmutableMap<Tier, Item> TIER_WIRES;
     public static ImmutableMap<Tier, Item> TIER_CABLES;
