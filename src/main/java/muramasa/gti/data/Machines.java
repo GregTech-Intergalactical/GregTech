@@ -1,6 +1,7 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.cover.ICover;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
 import muramasa.antimatter.tile.single.TileEntityDigitalTransformer;
@@ -92,7 +93,7 @@ public class Machines {
     public static HatchMachine HATCH_DYNAMO = new HatchMachine(Ref.ID, "hatch_dynamo", ENERGY,COVERDYNAMO);
     public static HatchMachine HATCH_ENERGY = new HatchMachine(Ref.ID, "hatch_energy", ENERGY,COVERENERGY);
 
-    public static TankMachine QUANTUM_TANK = new TankMachine(Ref.ID, "quantum_tank", GUI, CELL);
+    public static TankMachine QUANTUM_TANK = new TankMachine(Ref.ID, "quantum_tank", BASIC, GUI, CELL);
 
     public static GeneratorMachine STEAM_GENERATOR = new GeneratorMachine(Ref.ID, "steam_generator", STEAM_FUELS, LV, MV, HV, GUI, ITEM, FLUID, CELL);
     public static GeneratorMachine GAS_GENERATOR = new GeneratorMachine(Ref.ID, "gas_generator", GAS_FUELS, LV, MV, HV, GUI, ITEM, FLUID, CELL);
@@ -102,7 +103,7 @@ public class Machines {
 
     public static BasicMachine INFINITE_STORAGE = new BasicMachine(Ref.ID, "infinite_storage", ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV, MAX, ENERGY, CONFIGURABLE).setTile(m -> () -> new TileEntityInfiniteStorage(m, 16))
             .covers((ICover[]) null);
-    public static TankMachine INFINITE_STEAM = new TankMachine(Ref.ID, "infinite_steam", FLUID, CELL, CONFIGURABLE, GUI).setTile(m -> () -> new TileEntityInfiniteFluid(m));
+    public static TankMachine INFINITE_STEAM = new TankMachine(Ref.ID, "infinite_steam", FLUID, CELL, CONFIGURABLE, GUI).setTile(m -> () -> new TileEntityInfiniteFluid(m)).setTiers(LV);
     public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four", GUI, ENERGY, CONFIGURABLE, ITEM,COVERBUFFERFOUR).setTile(m -> () -> new TileEntityBatteryBuffer(m)).frontCovers();
     public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one", GUI, ENERGY, CONFIGURABLE, ITEM,COVERBUFFERONE).setTile(m -> () -> new TileEntityBatteryBuffer(m)).frontCovers();
     public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine", GUI, ENERGY, CONFIGURABLE, ITEM,COVERBUFFERNINE).setTile(m -> () -> new TileEntityBatteryBuffer(m)).frontCovers();

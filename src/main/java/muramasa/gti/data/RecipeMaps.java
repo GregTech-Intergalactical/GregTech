@@ -29,7 +29,7 @@ public class RecipeMaps {
     public static RecipeMap COMPRESSING = new RecipeMap<>("compressing", new CompressingBuilder());
     public static RecipeMap CUTTING = new RecipeMap<>("cutting", new RecipeBuilder());
     public static RecipeMap DISTILLING = new RecipeMap<>("distilling", new RecipeBuilder());
-    public static RecipeMap SMELTING = new RecipeMap<>("smelting", new SmeltingBuilder(), RecipeProxies.FURNACE_PROXY);
+    public static RecipeMap SMELTING = new RecipeMap<>("smelting", new RecipeBuilder(), RecipeProxies.FURNACE_PROXY.apply(8, 60));
     public static RecipeMap EXTRACTING = new RecipeMap<>("extracting", new ExtractingBuilder());
     public static RecipeMap EXTRUDING = new RecipeMap<>("extruding", new RecipeBuilder());
     public static RecipeMap LATHING = new RecipeMap<>("lathing", new RecipeBuilder());
@@ -60,7 +60,7 @@ public class RecipeMaps {
     public static RecipeMap PLASMA_ARC_SMELTING = new RecipeMap<>("plasma_arc_smelting", new RecipeBuilder());
     public static RecipeMap TUMBLING = new RecipeMap<>("tumbling", new RecipeBuilder());
 
-    public static RecipeMap STEAM_SMELTING = new RecipeMap<>("steam_smelting", new RecipeBuilder(), InfoRenderers.STEAM_RENDERER);
+    public static RecipeMap STEAM_SMELTING = new RecipeMap<>("steam_smelting", new RecipeBuilder(), RecipeProxies.FURNACE_PROXY.apply(8, 160), InfoRenderers.STEAM_RENDERER);
     public static RecipeMap STEAM_PULVERIZING = new RecipeMap<>("steam_pulverizing", new RecipeBuilder(), InfoRenderers.STEAM_RENDERER);
     public static RecipeMap STEAM_EXTRACTING = new RecipeMap<>("steam_extracting", new RecipeBuilder(), InfoRenderers.STEAM_RENDERER);
     public static RecipeMap STEAM_HAMMERING = new RecipeMap<>("steam_hammering", new RecipeBuilder(), InfoRenderers.STEAM_RENDERER);

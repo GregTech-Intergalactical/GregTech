@@ -34,4 +34,9 @@ public class TileEntitySteamMachine extends TileEntityMachine {
             }
         });
     }
+
+    @Override
+    public Tier getPowerLevel() {
+        return Tier.LV;
+    }
 }
