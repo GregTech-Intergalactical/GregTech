@@ -13,7 +13,7 @@ import muramasa.gti.datagen.ProgressionAdvancements;
 import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.loader.machines.*;
 import muramasa.gti.loader.machines.generator.Fuels;
-import muramasa.gti.loader.multi.ElectricBlasting;
+import muramasa.gti.loader.multi.Blasting;
 import muramasa.gti.loader.multi.VacFreezer;
 import muramasa.gti.proxy.ClientHandler;
 import net.minecraftforge.api.distmarker.Dist;
@@ -58,7 +58,7 @@ public class GregTech extends AntimatterMod {
         IRecipeRegistrate loader = AntimatterAPI.getRecipeRegistrate();
         loader.add(WiremillLoader::init);
         loader.add(WasherLoader::init);
-        loader.add(ElectricBlasting::init);
+        loader.add(Blasting::init);
         loader.add(BendingLoader::init);
         loader.add(AssemblyLoader::init);
         loader.add(ChemicalReactorLoader::init);

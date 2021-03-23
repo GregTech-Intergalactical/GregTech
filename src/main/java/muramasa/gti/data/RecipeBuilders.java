@@ -1,20 +1,33 @@
 package muramasa.gti.data;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.RecipeBuilder;
 import muramasa.antimatter.recipe.RecipeMap;
+import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
+import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.LazyValue;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static muramasa.antimatter.Data.*;
 
 public class RecipeBuilders {
 
     public static class SmeltingBuilder extends RecipeBuilder {
         @Override
-        public Recipe add() {
-            return addRecipeToSteamMap(RecipeMaps.STEAM_SMELTING, super.add());
+        public Recipe build(int duration, long power, int special, int amps) {
+            Recipe r = super.build(duration, power, special, amps);
+            addRecipeToSteamMap(RecipeMaps.STEAM_SMELTING, r);
+            return r;
         }
     }
 
@@ -76,23 +89,30 @@ public class RecipeBuilders {
         public static ItemStack[] FUELS = new ItemStack[0];
 
         static {
-//            AntimatterAPI.onEvent(RegistrationEvent.DATA_READY, () -> FUELS = new ItemStack[] {
-//                MaterialType.GEM.get(Materials.Coal, 1),
-//                MaterialType.DUST.get(Materials.Coal, 1),
-//                MaterialType.GEM.get(Materials.Charcoal, 1),
-//                MaterialType.DUST.get(Materials.Charcoal, 1),
-//                MaterialType.GEM.get(Materials.CoalCoke, 1),
-//                MaterialType.GEM.get(Materials.LigniteCoke, 1),
-//            });
+            AntimatterAPI.runOnEvent(RegistrationEvent.DATA_READY, () -> FUELS = new ItemStack[]{
+                    GEM.get(Materials.Coal, 1),
+                    DUST.get(Materials.Coal, 1),
+                    GEM.get(Materials.Charcoal, 1),
+                    DUST.get(Materials.Charcoal, 1),
+                    GEM.get(Materials.CoalCoke, 1),
+                    GEM.get(Materials.LigniteCoke, 1),
+            });
         }
 
-        public void add(ItemStack[] inputs, ItemStack[] outputs, int coal, int duration) {
-            duration = 20;//TODO temp
-            ItemStack[] inputsCpy = Arrays.copyOf(inputs, inputs.length + 1);
-            for (int i = 0; i < FUELS.length; i++) {
-                inputsCpy[inputsCpy.length - 1] = Utils.ca(coal, FUELS[i]);
-                //ii(AntimatterIngredient.fromStacksList(inputsCpy)).io(outputs).add(duration);
+        @Override
+        public Recipe add() {
+            Recipe r = null;
+            List<LazyValue<AntimatterIngredient>> ings = this.ingredientInput;
+            for (ItemStack fuel : FUELS) {
+                int burn = 1000;//fuel.getBurnTime();
+                int amount = (int) (((double)duration / (double)burn) * 10);
+                List<LazyValue<AntimatterIngredient>> newList = new ObjectArrayList<>(ings);
+                newList.add(AntimatterIngredient.of(fuel.getItem(), amount));
+                this.ingredientInput = newList;
+                r = build(duration, power, special, amps);
+                addToMap(r);
             }
+            return r;
         }
     }
 }

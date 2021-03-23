@@ -14,9 +14,10 @@ import static muramasa.antimatter.recipe.ingredient.AntimatterIngredient.of;
 import static muramasa.gti.data.GregTechData.INT_CIRCUITS;
 import static muramasa.gti.data.GregTechData.STONE;
 import static muramasa.gti.data.Materials.*;
+import static muramasa.gti.data.RecipeMaps.BASIC_BLASTING;
 import static muramasa.gti.data.RecipeMaps.BLASTING;
 
-public class ElectricBlasting {
+public class Blasting {
     public static int mixedOreYield = Ref.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
 
     public static void init() {
@@ -53,6 +54,9 @@ public class ElectricBlasting {
                 BLASTING.RB().ii(ore, DUST_TINY.getIngredient(Quicklime, multiplier * 3)).io(Utils.mul(multiplier * 3 * m.getSmeltingMulti(), ingot), darkAsh).add(ingot.getCount() * 500L, 120, 1500);
             }
         });
+
+        /* PRIMITIVE */
+        BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(100,50).add(1200, 0);
 
         /* TITANIUM */
         BLASTING.RB().ii(AntimatterIngredient.of(DUST.get(Magnesium,2)), INT_CIRCUITS.get(1))
