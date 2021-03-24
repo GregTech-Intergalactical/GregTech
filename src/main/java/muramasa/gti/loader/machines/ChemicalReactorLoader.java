@@ -32,6 +32,6 @@ public class ChemicalReactorLoader {
         /* PLASTICS */
         EMPTY_CELLS.forEach(cell -> CHEMICAL_REACTING.RB().ii(
                 AntimatterIngredient.of(cell.fill(Oxygen.getGas()))
-        ).fi(Ethylene.getLiquid(144)).fo(Plastic.getLiquid(144)).add(8*20, 30));
+        ).fi(Ethylene.getGas(144)).fo(Plastic.getLiquid(144)).add(8*20, 30));
     }
 }

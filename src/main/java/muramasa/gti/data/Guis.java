@@ -92,7 +92,8 @@ public class Guis {
                 .add(ENERGY,62,39).add(ENERGY,80,39).add(ENERGY,98,39)
                 .add(ENERGY,62,57).add(ENERGY,80,57).add(ENERGY,98,57);
 
-        COAL_BOILER.getGui().add(ALLOY_SMELTER);
+        COAL_BOILER.getGui().add(BRONZE, ALLOY_SMELTER);
+        COAL_BOILER.getGui().add(STEEL, ALLOY_SMELTER);
         LAVA_BOILER.getGui().add(ALLOY_SMELTER);
         SOLAR_BOILER.getGui().add(ALLOY_SMELTER);
 
