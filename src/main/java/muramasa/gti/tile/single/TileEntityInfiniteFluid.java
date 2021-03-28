@@ -30,6 +30,15 @@ public class TileEntityInfiniteFluid extends TileEntityMachine {
     }
 
     @Override
+    public void onFirstTick() {
+        super.onFirstTick();
+        coverHandler.ifPresent(c -> {
+            CoverStack<?> stack = c.get(c.getOutputFacing());
+            COVEROUTPUT.setEjects(stack, true, false);
+        });
+    }
+
+    @Override
     public void onServerUpdate() {
         super.onServerUpdate();
         coverHandler.ifPresent(c -> {

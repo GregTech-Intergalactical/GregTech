@@ -37,7 +37,7 @@ public class CoverPump extends CoverTiered {
         if (instance.getTile() == null || instance.getTile().getWorld().getGameTime() % (20) != 0) return;
         TileEntity adjTile = instance.getTile().getWorld().getTileEntity(instance.getTile().getPos().offset(side));
         if (adjTile == null) return;
-        Utils.transferFluidsOnCap(instance.getTile(), adjTile, speeds[getTier().getIntegerId()]);
+        //Utils.transferFluidsOnCap(instance.getTile(), adjTile, speeds[getTier().getIntegerId()]);
     }
 
     @Override
