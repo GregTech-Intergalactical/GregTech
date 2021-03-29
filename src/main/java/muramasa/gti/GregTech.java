@@ -9,6 +9,7 @@ import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.gti.data.*;
 import muramasa.gti.datagen.GregTechBlockTagProvider;
 import muramasa.gti.datagen.GregTechRecipes;
+import muramasa.gti.datagen.GregtechBlockLootProvider;
 import muramasa.gti.datagen.ProgressionAdvancements;
 import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.loader.machines.*;
@@ -50,7 +51,7 @@ public class GregTech extends AntimatterMod {
         AntimatterAPI.addProvider(Ref.ID, g -> new GregTechRecipes(Ref.ID, Ref.NAME.concat(" Recipes"), g));
         AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
         AntimatterAPI.addProvider(Ref.ID, GregTechLocalizations.en_US::new);
-        AntimatterAPI.addProvider(Ref.ID, g -> new AntimatterBlockLootProvider(Ref.ID, Ref.NAME.concat( " Loot generator"),g));
+        AntimatterAPI.addProvider(Ref.ID, g -> new GregtechBlockLootProvider(Ref.ID, Ref.NAME.concat( " Loot generator"),g));
         registerRecipeLoaders();
     }
 
