@@ -17,6 +17,7 @@ import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
+import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -48,11 +49,11 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
     
     final static BaseTreeFeatureConfig RUBBER_TREE_CONFIG_SWAMP =
             (new BaseTreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(GregTechData.RUBBER_LEAVES.getDefaultState()),
-                    new AcaciaFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0)), new ForkyTrunkPlacer(5, 2, 2), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().setMaxWaterDepth(1).build();
+                    new AcaciaFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0)), new StraightTrunkPlacer(5, 2, 2), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().setMaxWaterDepth(1).build();
 
     final static BaseTreeFeatureConfig RUBBER_TREE_CONFIG_JUNGLE =
             (new BaseTreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(GregTechData.RUBBER_LEAVES.getDefaultState()),
-                     new AcaciaFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0)), new ForkyTrunkPlacer(7, 2, 2), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
+                     new AcaciaFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0)), new StraightTrunkPlacer(7, 2, 2), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
                  ///   .trunkHeight(4).trunkHeightRandom(1) // bare trunk height
                //     .trunkTopOffset(2) // depresses trunk top within leaves
                //     .setSapling(RUBBER_SAPLING)
@@ -60,7 +61,7 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
 
     final static BaseTreeFeatureConfig RUBBER_TREE_CONFIG_NORMAL =
             (new BaseTreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(GregTechData.RUBBER_LEAVES.getDefaultState()),
-                     new AcaciaFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0)), new ForkyTrunkPlacer(5, 2, 2), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
+                     new AcaciaFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0)), new StraightTrunkPlacer(5, 2, 2), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
 
     public RubberTreeWorldGen(){
         super("rubber_tree", RubberTreeWorldGen.class, World.OVERWORLD);
@@ -71,13 +72,13 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
                 continue;
             float p = 0.05F;
             if (builder.getClimate().temperature > 0.8f) {
-                p = 0.2F;
+                p = 0.04F;
                 if (builder.getClimate().precipitation == Biome.RainType.RAIN)
-                    p += 0.1F;
+                    p += 0.04F;
             }
             float finalp = p;
             builder.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> RubberTree.TREE_FEATURE.withConfiguration(getTreeConfig(biome))
-            .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, finalp, 3))));
+            .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, finalp, 2))));
         }
     }
 
@@ -96,7 +97,8 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
         @Override
         public Stream<BlockPos> getPositions(WorldDecoratingHelper helper, Random random, AtSurfaceWithExtraConfig config, BlockPos pos) {
             int i = config.count;
-            if (random.nextFloat() < config.extraChance) {
+            double next = random.nextDouble();
+            if (next < config.extraChance) {
                 i = random.nextInt(config.extraCount) + config.extraCount;
             }
             return IntStream.range(0, i).mapToObj((ix) -> {
