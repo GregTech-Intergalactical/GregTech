@@ -68,17 +68,16 @@ public class BlockRubberLog extends BlockBasic {
 
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        if (worldIn.isRemote) return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
-        if (state.get(RESIN_STATE) != ResinState.FILLED)
-            return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
-
-        if (Utils.getToolType(player) == HAMMER) {
+        if (worldIn.isRemote || state.get(RESIN_STATE) != ResinState.FILLED) {
+            return ActionResultType.PASS;
+        }
+        if (Utils.isPlayerHolding(player, handIn, HAMMER)) {
             worldIn.setBlockState(pos, state.with(RESIN_STATE, ResinState.EMPTY), 3);
             Direction dir = state.get(RESIN_FACING);
-            pos = pos.add(dir.getXOffset(), dir.getYOffset(), dir.getZOffset());
-            InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(DUST.get(RawRubber), 1));
+            BlockPos spawnPos = pos.add(dir.getXOffset(), dir.getYOffset(), dir.getZOffset());
+            InventoryHelper.spawnItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), DUST.get(RawRubber, 1));
             if (worldIn.rand.nextDouble() > 0.5) {
-                InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(DUST.get(RawRubber), 1));
+                InventoryHelper.spawnItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), DUST.get(RawRubber, 1));
             }
             return ActionResultType.SUCCESS;
         }
