@@ -25,9 +25,9 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.1'
+version = "${minecraft_version}-${mod_version}"
 group = 'com.github.gregtech-intergalactical' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'gti'
+archivesBaseName = 'GregTech-Intergalactical'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 //Print out JVM information so that we know what version is running. Extreamly useful for people to know when helping you.
@@ -194,4 +194,19 @@ publishing {
 
 jar {
     zip64 true
+    manifest {
+        attributes([
+                "Specification-Title": project.name,
+                "Specification-Vendor": "GregTech Intergalactical",
+                "Specification-Version": project.version,
+                "Implementation-Title": project.name,
+                "Implementation-Version": project.version,
+                "Implementation-Vendor": "GregTech Intergalactical",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
+
+processResources {
+    exclude('gtuassets1.14')
 }
