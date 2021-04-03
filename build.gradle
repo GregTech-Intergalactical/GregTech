@@ -50,13 +50,20 @@ def shouldCheckEnv() {
     return findProject(':AntimatterAPI') != null || findProject(':TesseractAPI') != null
 }
 
+def isVSTask() {
+    return gradle.startParameter.taskNames[0].equals("genVSCodeRuns")
+}
+
 def getEnv() {
-    String s = "gti%%${project.file('build/resources/main')}" + getPathSeparator() + "gti%%${project.file('build/classes/java/main')}"
+    boolean vscode = isVSTask()
+    String resourcePath = vscode ? 'bin/main' : 'build/resources/main'
+    String codePath = vscode ? 'bin/main' : 'build/classes/java/main'
+    String s = "gti%%${project.file(resourcePath)}" + getPathSeparator() + "gti%%${project.file(codePath)}"
     if (findProject(':AntimatterAPI') != null) {
-        s += getPathSeparator() + "antimatter%%${project(':AntimatterAPI').file('build/resources/main')}" + getPathSeparator() + "antimatter%%${project(':AntimatterAPI').file('build/classes/java/main')}"
+        s += getPathSeparator() + "antimatter%%${project(':AntimatterAPI').file(resourcePath)}" + getPathSeparator() + "antimatter%%${project(':AntimatterAPI').file(codePath)}"
     }
     if (findProject(':TesseractAPI') != null) {
-        s += getPathSeparator() + "tesseract%%${project(':TesseractAPI').file('build/resources/main')}" + getPathSeparator() + "tesseract%%${project(':TesseractAPI').file('build/classes/java/main')}"
+        s += getPathSeparator() + "tesseract%%${project(':TesseractAPI').file(resourcePath)}" + getPathSeparator() + "tesseract%%${project(':TesseractAPI').file(codePath)}"
     }
     return s
 }
@@ -88,7 +95,8 @@ minecraft {
             property 'forge.logging.markers', 'DEBUG'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-            //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
+            if (isVSTask())
+                jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
             if (findProject(':AntimatterAPI') != null) arg "-mixin.config=antimatter.mixins.json"
             if (shouldCheckEnv()) {
@@ -108,8 +116,9 @@ minecraft {
             property 'forge.logging.markers', 'DEBUG'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-            //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
-            //Comment this if you aren't developing against antimatter locally.
+            
+            if (isVSTask())
+                jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
             if (findProject(':AntimatterAPI') != null) arg "-mixin.config=antimatter.mixins.json"
             if (shouldCheckEnv()) {
                  environment 'MOD_CLASSES', getEnv()
@@ -134,6 +143,8 @@ minecraft {
             if (shouldCheckEnv()) {
                  environment 'MOD_CLASSES', getEnv()
             }
+            if (isVSTask())
+                jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
             args '--mod', 'gti', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
@@ -160,7 +171,7 @@ dependencies {
         compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
     }
     if (findProject(':TesseractAPI') != null) {
-        compileOnly project(':TesseractAPI')
+        implementation project(':TesseractAPI')
     } else {
         //compileOnly sources jar.
         runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
