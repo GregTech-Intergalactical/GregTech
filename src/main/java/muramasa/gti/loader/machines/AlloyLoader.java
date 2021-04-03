@@ -1,7 +1,7 @@
 package muramasa.gti.loader.machines;
 
 import muramasa.antimatter.material.MaterialStack;
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.item.ItemStack;
 
 import java.util.List;
@@ -24,10 +24,10 @@ public class AlloyLoader {
             int cumulative = stacks.get(0).s + stacks.get(1).s;
             MaterialStack first = stacks.get(0);
             MaterialStack second = stacks.get(1);
-            ALLOY_SMELTING.RB().ii(AntimatterIngredient.of(DUST.getMaterialTag(first.m),first.s),AntimatterIngredient.of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
-            ALLOY_SMELTING.RB().ii(AntimatterIngredient.of(INGOT.getMaterialTag(first.m),first.s),AntimatterIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
-            ALLOY_SMELTING.RB().ii(AntimatterIngredient.of(INGOT.getMaterialTag(first.m),first.s),AntimatterIngredient.of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
-            ALLOY_SMELTING.RB().ii(AntimatterIngredient.of(DUST.getMaterialTag(first.m),first.s),AntimatterIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
+            ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(first.m),first.s),RecipeIngredient.of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
+            ALLOY_SMELTING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(first.m),first.s),RecipeIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
+            ALLOY_SMELTING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(first.m),first.s),RecipeIngredient.of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
+            ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(first.m),first.s),RecipeIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
         });
     }
 }

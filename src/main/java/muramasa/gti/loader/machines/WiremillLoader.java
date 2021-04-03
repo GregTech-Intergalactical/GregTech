@@ -3,11 +3,9 @@ package muramasa.gti.loader.machines;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.LazyValue;
 
 import static muramasa.antimatter.Data.INGOT;
 import static muramasa.antimatter.Data.WIRE_FINE;
@@ -21,7 +19,7 @@ public class WiremillLoader {
             RecipeIngredient ing = INGOT.getMaterialIngredient(t.getMaterial(),1);
             WIRE_MILLING.RB().ii(INGOT.getMaterialIngredient(t.getMaterial(),1)).io(stack).add(t.getMaterial().getMass()*2,24);
             if (WIRE_FINE.allowItemGen(t.getMaterial())) {
-                WIRE_MILLING.RB().ii(AntimatterIngredient.of(wireItem,1)).io(WIRE_FINE.get(t.getMaterial(),4)).add((long)( t.getMaterial().getMass()*2.5),16);
+                WIRE_MILLING.RB().ii(RecipeIngredient.of(wireItem,1)).io(WIRE_FINE.get(t.getMaterial(),4)).add((long)( t.getMaterial().getMass()*2.5),16);
             }
         });
 

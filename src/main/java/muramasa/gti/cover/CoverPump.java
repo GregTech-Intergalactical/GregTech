@@ -3,7 +3,6 @@ package muramasa.gti.cover;
 import muramasa.antimatter.cover.CoverStack;
 import muramasa.antimatter.cover.CoverTiered;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;

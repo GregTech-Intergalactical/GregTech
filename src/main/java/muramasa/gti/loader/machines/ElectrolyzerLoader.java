@@ -3,9 +3,8 @@ package muramasa.gti.loader.machines;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialStack;
-import muramasa.antimatter.recipe.map.RecipeBuilder;
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.recipe.map.RecipeBuilder;
 import net.minecraft.item.ItemStack;
 
 import java.util.Arrays;
@@ -45,23 +44,23 @@ public class ElectrolyzerLoader {
                 int cellCount = cellStacks.stream().mapToInt(ItemStack::getCount).sum();
                 if (cellStacks.size() == 0) {
                     //1 fluid
-                    ELECTROLYZING.RB().ii(AntimatterIngredient.of(DUST.get(dust), count)).io(
+                    ELECTROLYZING.RB().ii(RecipeIngredient.of(DUST.get(dust), count)).io(
                             dust.getProcessInto().stream().filter(t -> DUST.allowGen(t.m)).map(t -> new ItemStack(DUST.get(t.m), t.s))
                                     .toArray(ItemStack[]::new)).fo(liquid.getGas(fluidStack.s * 1000)).add(duration, euT);
                     return;
                 } else {
                     RecipeBuilder rb = ELECTROLYZING.RB();
                     if (cellCount > 0) {
-                        RecipeIngredient celli = AntimatterIngredient.of(cell, cellCount);
-                        rb.ii(AntimatterIngredient.of(DUST.get(dust), count), celli);
+                        RecipeIngredient celli = RecipeIngredient.of(cell, cellCount);
+                        rb.ii(RecipeIngredient.of(DUST.get(dust), count), celli);
                     } else {
-                        rb.ii(AntimatterIngredient.of(DUST.get(dust), count));
+                        rb.ii(RecipeIngredient.of(DUST.get(dust), count));
                     }
                     cellStacks.addAll(Arrays.asList(dust.getProcessInto().stream().filter(t -> DUST.allowGen(t.m)).map(t -> new ItemStack(DUST.get(t.m), t.s)).toArray(ItemStack[]::new)));
                     rb.io(cellStacks.toArray(new ItemStack[0])).fo(liquid.getGas(fluidStack.s * 1000)).add(duration, euT);
                 }
             } else {
-                ELECTROLYZING.RB().ii(AntimatterIngredient.of(DUST.get(dust), count)).io(
+                ELECTROLYZING.RB().ii(RecipeIngredient.of(DUST.get(dust), count)).io(
                         dust.getProcessInto().stream().filter(t -> DUST.allowGen(t.m)).map(t -> new ItemStack(DUST.get(t.m), t.s))
                                 .toArray(ItemStack[]::new)).add(duration, euT);
                 return;

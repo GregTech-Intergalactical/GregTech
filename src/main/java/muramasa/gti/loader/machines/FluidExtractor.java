@@ -1,7 +1,7 @@
 package muramasa.gti.loader.machines;
 
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.item.Item;
 
 import static muramasa.antimatter.Data.*;
@@ -38,7 +38,7 @@ public class FluidExtractor {
     private static void add(Material m, Item i, int amount) {
         if (!m.has(LIQUID)) return;
         FLUID_EXTRACTING.RB()
-                .ii(AntimatterIngredient.of(i,1))
+                .ii(RecipeIngredient.of(i,1))
                 .fo(m.getLiquid(amount))
                 .add(m.getMass()*amount/144, 64);
     }

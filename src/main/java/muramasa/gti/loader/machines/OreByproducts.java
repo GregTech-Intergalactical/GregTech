@@ -2,15 +2,12 @@ package muramasa.gti.loader.machines;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.LazyValue;
 
 import java.util.List;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.gti.data.GregTechData.STONE;
 import static muramasa.gti.data.RecipeMaps.ORE_BYPRODUCTS;
 
 public class OreByproducts {

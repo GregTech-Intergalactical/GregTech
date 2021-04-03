@@ -1,11 +1,10 @@
 package muramasa.gti.loader.machines;
 
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import net.minecraft.item.ItemStack;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.recipe.ingredient.AntimatterIngredient.of;
+import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.CENTRIFUGING;
 
@@ -23,6 +22,6 @@ public class CentrifugingLoader {
 
     private static void add(Material mat, long power, long duration) {
         if (!mat.has(DUST)) return;
-        CENTRIFUGING.RB().ii(AntimatterIngredient.of(DUST.get(mat),1)).io(mat.getProcessInto().stream().map(t -> new ItemStack(DUST.get(t.m),t.s)).toArray(ItemStack[]::new)).add(duration,power);
+        CENTRIFUGING.RB().ii(of(DUST.get(mat),1)).io(mat.getProcessInto().stream().map(t -> new ItemStack(DUST.get(t.m),t.s)).toArray(ItemStack[]::new)).add(duration,power);
     }
 }

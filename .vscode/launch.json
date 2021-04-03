@@ -1,0 +1,65 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "runClient",
+      "request": "launch",
+      "mainClass": "net.minecraftforge.userdev.LaunchTesting",
+      "projectName": "GregTech",
+      "cwd": "${workspaceFolder}/run",
+      "vmArgs": "-Dforge.logging.console.level\u003ddebug -Dforge.logging.markers\u003dDEBUG",
+      "args": "-mixin.config\u003dantimatter.mixins.json",
+      "env": {
+        "MOD_CLASSES": "gti%%${workspaceFolder}/bin/main:gti%%${workspaceFolder}/bin/main",
+        "MCP_MAPPINGS": "snapshot_20201028-1.16.3",
+        "MCP_VERSION": "20210115.111550",
+        "FORGE_VERSION": "36.0.42",
+        "assetIndex": "1.16",
+        "assetDirectory": "/home/abbe/.gradle/caches/forge_gradle/assets",
+        "nativesDirectory": "${workspaceFolder}/build/natives",
+        "FORGE_GROUP": "net.minecraftforge",
+        "target": "fmluserdevclient",
+        "MC_VERSION": "1.16.5"
+      }
+    },
+    {
+      "type": "java",
+      "name": "runData",
+      "request": "launch",
+      "mainClass": "net.minecraftforge.userdev.LaunchTesting",
+      "projectName": "GregTech",
+      "cwd": "${workspaceFolder}/run",
+      "vmArgs": "-Dforge.logging.console.level\u003ddebug -Dforge.logging.markers\u003dDEBUG",
+      "args": "-mixin.config\u003dantimatter.mixins.json --mod gti --all --output /home/abbe/Dev/GregTech/src/generated/resources --existing /home/abbe/Dev/GregTech/src/main/resources",
+      "env": {
+        "MOD_CLASSES": "gti%%${workspaceFolder}/bin/main:gti%%${workspaceFolder}/bin/main",
+        "MCP_MAPPINGS": "snapshot_20201028-1.16.3",
+        "MCP_VERSION": "20210115.111550",
+        "FORGE_VERSION": "36.0.42",
+        "FORGE_GROUP": "net.minecraftforge",
+        "target": "fmluserdevdata",
+        "MC_VERSION": "1.16.5"
+      }
+    },
+    {
+      "type": "java",
+      "name": "runServer",
+      "request": "launch",
+      "mainClass": "net.minecraftforge.userdev.LaunchTesting",
+      "projectName": "GregTech",
+      "cwd": "${workspaceFolder}/run",
+      "vmArgs": "-Dforge.logging.console.level\u003ddebug -Dforge.logging.markers\u003dDEBUG",
+      "args": "-mixin.config\u003dantimatter.mixins.json",
+      "env": {
+        "MOD_CLASSES": "gti%%${workspaceFolder}/bin/main:gti%%${workspaceFolder}/bin/main",
+        "MCP_MAPPINGS": "snapshot_20201028-1.16.3",
+        "MCP_VERSION": "20210115.111550",
+        "FORGE_VERSION": "36.0.42",
+        "FORGE_GROUP": "net.minecraftforge",
+        "target": "fmluserdevserver",
+        "MC_VERSION": "1.16.5"
+      }
+    }
+  ]
+}

@@ -1,17 +1,14 @@
 package muramasa.gti.loader.multi;
 
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.LazyValue;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.CALCITE2X;
 import static muramasa.antimatter.material.MaterialTag.CALCITE3X;
-import static muramasa.antimatter.recipe.ingredient.AntimatterIngredient.of;
 import static muramasa.gti.data.GregTechData.INT_CIRCUITS;
 import static muramasa.gti.data.GregTechData.STONE;
 import static muramasa.gti.data.Materials.*;
@@ -36,8 +33,8 @@ public class Blasting {
 
                 ItemStack blastOut = m.getBlastTemp() > 1750 && m.getSmeltInto().has(INGOT_HOT) ? INGOT_HOT.get(m.getSmeltInto(), 1) : aIngotSmeltInto;
 
-                BLASTING.RB().ii(of(crushed,1), INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
-                BLASTING.RB().ii(of(dust,1), INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration/4, 120, m.getBlastTemp());
+                BLASTING.RB().ii(RecipeIngredient.of(crushed,1), INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
+                BLASTING.RB().ii(RecipeIngredient.of(dust,1), INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration/4, 120, m.getBlastTemp());
                 BLASTING.RB().ii(CRUSHED_PURIFIED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
                 BLASTING.RB().ii(CRUSHED_CENTRIFUGED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
                 BLASTING.RB().ii(DUST_PURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, m.getBlastTemp());
@@ -60,7 +57,7 @@ public class Blasting {
         BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(100,50).add(1200, 0);
 
         /* TITANIUM */
-        BLASTING.RB().ii(AntimatterIngredient.of(DUST.get(Magnesium,2)), INT_CIRCUITS.get(1))
+        BLASTING.RB().ii(RecipeIngredient.of(DUST.get(Magnesium,2)), INT_CIRCUITS.get(1))
                 .fi(Titaniumtetrachloride.getLiquid(1000))
                 .io(INGOT_HOT.get(Titanium,1), DUST.get(MagnesiumChloride,2))
                 .add(40*20, 480);

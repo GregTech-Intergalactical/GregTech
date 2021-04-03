@@ -17,7 +17,6 @@ import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.antimatter.pipe.types.Wire;
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gti.Ref;
@@ -34,7 +33,7 @@ import muramasa.gti.tree.BlockRubberSapling;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.item.Item;
-import net.minecraft.util.LazyValue;
+import net.minecraftforge.api.distmarker.Dist;
 
 import static muramasa.antimatter.Data.ROTOR;
 import static muramasa.gti.data.Materials.*;
@@ -47,7 +46,7 @@ public class GregTechData {
         {
             ImmutableMap.Builder<Integer, RecipeIngredient> builder = ImmutableMap.builder();
             for (int i = 0; i <= 24; i++) {
-                builder.put(i, AntimatterIngredient.fromItem(1, new ItemIntCircuit(Ref.ID, "int_circuit_"+i,i).tip("ID: " + i), AntimatterIngredient::setNonConsume));
+                builder.put(i, RecipeIngredient.of(new ItemIntCircuit(Ref.ID, "int_circuit_"+i,i).tip("ID: " + i),1).setNoConsume());
             }
             INT_CIRCUITS = builder.build();
         }
@@ -109,8 +108,9 @@ public class GregTechData {
         }
     }
 
-    public static void init() {
-
+    public static void init(Dist side) {
+        if (side == Dist.CLIENT)
+            RecipeMaps.clientMaps();
     }
 
     public static final CoverTiered COVER_CONVEYOR = new CoverConveyor();

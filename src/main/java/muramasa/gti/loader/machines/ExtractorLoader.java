@@ -4,7 +4,7 @@ import muramasa.gti.data.GregTechData;
 import net.minecraft.item.ItemStack;
 
 import static muramasa.antimatter.Data.DUST;
-import static muramasa.antimatter.recipe.ingredient.AntimatterIngredient.of;
+import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gti.data.Materials.RawRubber;
 import static muramasa.gti.data.RecipeMaps.EXTRACTING;
 

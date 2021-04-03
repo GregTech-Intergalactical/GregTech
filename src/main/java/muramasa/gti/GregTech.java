@@ -92,7 +92,7 @@ public class GregTech extends AntimatterMod {
         switch (event) {
             case DATA_INIT:
                 Materials.init();
-                GregTechData.init();
+                GregTechData.init(side);
                 Machines.init();
                 Guis.init(side);
                 Models.init();

@@ -1,6 +1,6 @@
 package muramasa.gti.loader.machines;
 
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -16,7 +16,7 @@ public class FluidCanningLoader {
             if (bucket == Items.AIR) return;
             //Only the source.
             if (fluid instanceof FlowingFluid) return;
-            FLUID_CANNING.RB().ii(AntimatterIngredient.of(bucket,1)).fo(new FluidStack(fluid,1000)).add(20, 8);
+            FLUID_CANNING.RB().ii(RecipeIngredient.of(bucket,1)).fo(new FluidStack(fluid,1000)).add(20, 8);
         });
     }
 }

@@ -1,12 +1,10 @@
 package muramasa.gti.loader.machines;
 
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.util.LazyValue;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.Materials.Stone;
@@ -17,7 +15,7 @@ public class PulverizerLoader {
         CRUSHED.all().forEach(m -> {
             if (!m.has(ORE)) return;
             int multiplier = 1;
-            RecipeIngredient ore = AntimatterIngredient.of(ORE.getMaterialTag(m),1), crushed = CRUSHED.getIngredient(m, 1);
+            RecipeIngredient ore = RecipeIngredient.of(ORE.getMaterialTag(m),1), crushed = CRUSHED.getIngredient(m, 1);
             ItemStack crushedStack = CRUSHED.get(m,1);
             ItemStack stoneDust = DUST.get(Stone, 1);
             ItemStack dustStack = DUST.get(Stone, 1);
@@ -30,25 +28,25 @@ public class PulverizerLoader {
             PULVERIZING.RB().ii(crushed).io(DUST_IMPURE.get(m.getMacerateInto(), 1), DUST.get(aOreByProduct1, 1)).chances(100, 10).add(400, 2);
 
             if (m.has(CRUSHED_CENTRIFUGED)) {
-                PULVERIZING.RB().ii(AntimatterIngredient.of(CRUSHED_CENTRIFUGED.get(m,1))).io(DUST.get(m.getMacerateInto(), 1), DUST.get(aOreByProduct2, 1)).chances(100, 10).add(400, 2);
+                PULVERIZING.RB().ii(RecipeIngredient.of(CRUSHED_CENTRIFUGED.get(m,1))).io(DUST.get(m.getMacerateInto(), 1), DUST.get(aOreByProduct2, 1)).chances(100, 10).add(400, 2);
             }
         });
         GEM_BRITTLE.all().forEach(m -> {
             if (!m.has(DUST)) return;
-            PULVERIZING.RB().ii(AntimatterIngredient.of(GEM_BRITTLE.get(m),1)).io(DUST_SMALL.get(m,2)).add(40,8);
+            PULVERIZING.RB().ii(RecipeIngredient.of(GEM_BRITTLE.get(m),1)).io(DUST_SMALL.get(m,2)).add(40,8);
         });
         GEM_POLISHED.all().forEach(m -> {
             if (!m.has(DUST)) return;
-            PULVERIZING.RB().ii(AntimatterIngredient.of(GEM_POLISHED.get(m),1)).io(DUST.get(m,2)).add(60,16);
+            PULVERIZING.RB().ii(RecipeIngredient.of(GEM_POLISHED.get(m),1)).io(DUST.get(m,2)).add(60,16);
         });
-        PULVERIZING.RB().ii(AntimatterIngredient.of(Items.STONE,1)).io(new ItemStack(Items.COBBLESTONE,1)).add(100,2);
-        PULVERIZING.RB().ii(AntimatterIngredient.of(Items.COBBLESTONE,1)).io(new ItemStack(Items.GRAVEL,1)).add(100,2);
-        PULVERIZING.RB().ii(AntimatterIngredient.of(Items.GRAVEL,1)).io(new ItemStack(Items.SAND,1)).add(100,2);
+        PULVERIZING.RB().ii(RecipeIngredient.of(Items.STONE,1)).io(new ItemStack(Items.COBBLESTONE,1)).add(100,2);
+        PULVERIZING.RB().ii(RecipeIngredient.of(Items.COBBLESTONE,1)).io(new ItemStack(Items.GRAVEL,1)).add(100,2);
+        PULVERIZING.RB().ii(RecipeIngredient.of(Items.GRAVEL,1)).io(new ItemStack(Items.SAND,1)).add(100,2);
 
 
         //INGOT -> DUST
         INGOT.all().forEach(t -> {
-            PULVERIZING.RB().ii(AntimatterIngredient.of(INGOT.getMaterialTag(t),1)).io(DUST.get(t,1)).add(40,2);
+            PULVERIZING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(t),1)).io(DUST.get(t,1)).add(40,2);
         });
     }
 }

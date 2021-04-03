@@ -2,21 +2,21 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.integration.jei.renderer.InfoRenderers;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.recipe.RecipeProxies;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.recipe.map.RecipeMap;
-import muramasa.antimatter.recipe.RecipeProxies;
 
 import static muramasa.gti.data.Guis.MULTI_DISPLAY;
 import static muramasa.gti.data.RecipeBuilders.*;
 
 public class RecipeMaps {
 
-    public static RecipeMap ORE_BYPRODUCTS = new RecipeMap<>("ore_byproducts", new RecipeBuilder(), InfoRenderers.EMPTY_RENDERER);
-    public static RecipeMap STEAM_FUELS = new RecipeMap<>("steam_fuels", new RecipeBuilder(), InfoRenderers.FUEL_RENDERER);
-    public static RecipeMap GAS_FUELS = new RecipeMap<>("gas_fuels", new RecipeBuilder(), InfoRenderers.FUEL_RENDERER);
-    public static RecipeMap COMBUSTION_FUELS = new RecipeMap<>("combustion_fuels", new RecipeBuilder(), InfoRenderers.FUEL_RENDERER);
-    public static RecipeMap NAQUADAH_FUELS = new RecipeMap<>("naquadah_fuels", new RecipeBuilder(), InfoRenderers.FUEL_RENDERER);
-    public static RecipeMap PLASMA_FUELS = new RecipeMap<>("plasma_fuels", new RecipeBuilder(), InfoRenderers.FUEL_RENDERER);
+    public static RecipeMap ORE_BYPRODUCTS = new RecipeMap<>("ore_byproducts", new RecipeBuilder());
+    public static RecipeMap STEAM_FUELS = new RecipeMap<>("steam_fuels", new RecipeBuilder());
+    public static RecipeMap GAS_FUELS = new RecipeMap<>("gas_fuels", new RecipeBuilder());
+    public static RecipeMap COMBUSTION_FUELS = new RecipeMap<>("combustion_fuels", new RecipeBuilder());
+    public static RecipeMap NAQUADAH_FUELS = new RecipeMap<>("naquadah_fuels", new RecipeBuilder());
+    public static RecipeMap PLASMA_FUELS = new RecipeMap<>("plasma_fuels", new RecipeBuilder());
 
     public static RecipeMap SMALL_BOILERS = new RecipeMap<>("small_boilers", new RecipeBuilder());
 
@@ -60,17 +60,34 @@ public class RecipeMaps {
     public static RecipeMap PLASMA_ARC_SMELTING = new RecipeMap<>("plasma_arc_smelting", new RecipeBuilder());
     public static RecipeMap TUMBLING = new RecipeMap<>("tumbling", new RecipeBuilder());
 
-    public static RecipeMap STEAM_SMELTING = new RecipeMap<>("steam_smelting", new RecipeBuilder(), RecipeProxies.FURNACE_PROXY.apply(8, 160), InfoRenderers.STEAM_RENDERER);
-    public static RecipeMap STEAM_PULVERIZING = new RecipeMap<>("steam_pulverizing", new RecipeBuilder(), InfoRenderers.STEAM_RENDERER);
-    public static RecipeMap STEAM_EXTRACTING = new RecipeMap<>("steam_extracting", new RecipeBuilder(), InfoRenderers.STEAM_RENDERER);
-    public static RecipeMap STEAM_HAMMERING = new RecipeMap<>("steam_hammering", new RecipeBuilder(), InfoRenderers.STEAM_RENDERER);
-    public static RecipeMap STEAM_COMPRESSING = new RecipeMap<>("steam_compressing", new RecipeBuilder(), InfoRenderers.STEAM_RENDERER);
-    public static RecipeMap STEAM_ALLOY_SMELTING = new RecipeMap<>("steam_alloy_smelting", new RecipeBuilder(), InfoRenderers.STEAM_RENDERER);
+    public static RecipeMap STEAM_SMELTING = new RecipeMap<>("steam_smelting", new RecipeBuilder(), RecipeProxies.FURNACE_PROXY.apply(8, 160));
+    public static RecipeMap STEAM_PULVERIZING = new RecipeMap<>("steam_pulverizing", new RecipeBuilder());
+    public static RecipeMap STEAM_EXTRACTING = new RecipeMap<>("steam_extracting", new RecipeBuilder());
+    public static RecipeMap STEAM_HAMMERING = new RecipeMap<>("steam_hammering", new RecipeBuilder());
+    public static RecipeMap STEAM_COMPRESSING = new RecipeMap<>("steam_compressing", new RecipeBuilder());
+    public static RecipeMap STEAM_ALLOY_SMELTING = new RecipeMap<>("steam_alloy_smelting", new RecipeBuilder());
 
     public static RecipeMap COKING = new RecipeMap<>("coking", new RecipeBuilder());
     public static RecipeMap<BasicBlastingBuilder> BASIC_BLASTING = new RecipeMap<>("basic_blasting", new BasicBlastingBuilder());
-    public static RecipeMap<BlastingBuilder> BLASTING = new RecipeMap<>("elec_blasting", new BlastingBuilder(), MULTI_DISPLAY, InfoRenderers.BLASTING_RENDERER);
+    public static RecipeMap<BlastingBuilder> BLASTING = new RecipeMap<>("elec_blasting", new BlastingBuilder(), MULTI_DISPLAY);
     public static RecipeMap IMPLOSION_COMPRESSING = new RecipeMap<>("implosion_compressing", new RecipeBuilder(), MULTI_DISPLAY);
     public static RecipeMap VACUUM_FREEZING = new RecipeMap<>("vacuum_freezing", new RecipeBuilder(), MULTI_DISPLAY);
     public static RecipeMap FUSION = new RecipeMap<>("fusion", new RecipeBuilder(), MULTI_DISPLAY);
+
+    public static void clientMaps() {
+        ORE_BYPRODUCTS.setInfoRenderer(InfoRenderers.EMPTY_RENDERER);
+        STEAM_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
+        GAS_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
+        COMBUSTION_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
+        NAQUADAH_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
+        PLASMA_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
+
+        BLASTING.setInfoRenderer(InfoRenderers.BLASTING_RENDERER);
+        STEAM_SMELTING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
+        STEAM_COMPRESSING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
+        STEAM_ALLOY_SMELTING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
+        STEAM_EXTRACTING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
+        STEAM_PULVERIZING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
+        STEAM_HAMMERING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
+    }
 }

@@ -4,13 +4,12 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 
-import static muramasa.antimatter.Data.*;
-import static muramasa.gti.data.GregTechData.INT_CIRCUITS;
-import static muramasa.gti.data.Materials.*;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static muramasa.antimatter.Data.*;
+import static muramasa.gti.data.GregTechData.INT_CIRCUITS;
+import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.MIXING;
 
 

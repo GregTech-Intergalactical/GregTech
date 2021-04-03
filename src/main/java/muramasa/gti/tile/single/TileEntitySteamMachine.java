@@ -5,7 +5,6 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.TileEntityMachine;
-import muramasa.antimatter.util.LazyHolder;
 import muramasa.gti.data.Materials;
 import net.minecraftforge.common.util.LazyOptional;
 
