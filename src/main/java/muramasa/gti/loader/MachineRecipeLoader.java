@@ -1,6 +1,6 @@
 package muramasa.gti.loader;
 
-import muramasa.antimatter.recipe.RecipeBuilder;
+import muramasa.antimatter.recipe.map.RecipeBuilder;
 
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.FUSION;

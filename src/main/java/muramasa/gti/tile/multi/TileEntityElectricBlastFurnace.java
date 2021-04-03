@@ -8,6 +8,7 @@ import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.LazyHolder;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.block.BlockCoil;
+import net.minecraftforge.common.util.LazyOptional;
 
 public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine {
 
@@ -15,7 +16,7 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine {
 
     public TileEntityElectricBlastFurnace(Machine type) {
         super(type);
-        this.recipeHandler = LazyHolder.of(() -> new MachineRecipeHandler<TileEntityElectricBlastFurnace>(this) {
+        this.recipeHandler = LazyOptional.of(() -> new MachineRecipeHandler<TileEntityElectricBlastFurnace>(this) {
             @Override
             protected void activateRecipe(boolean reset) {
                 if (reset) currentProgress = 0;

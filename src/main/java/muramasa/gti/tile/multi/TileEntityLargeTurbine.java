@@ -6,6 +6,7 @@ import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.LazyHolder;
 import muramasa.antimatter.util.Utils;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
@@ -16,7 +17,7 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine {
 
     public TileEntityLargeTurbine(Machine type) {
         super(type);
-        this.recipeHandler = LazyHolder.of(() ->
+        this.recipeHandler = LazyOptional.of(() ->
             new MachineRecipeHandler<TileEntityLargeTurbine>(this) {
 
                 private Recipe sourceRecipe;

@@ -4,7 +4,7 @@
 //import muramasa.antimatter.blocks.BlockStorage;
 //import muramasa.antimatter.materials.Material;
 //import muramasa.antimatter.materials.MaterialType;
-//import muramasa.antimatter.recipe.RecipeBuilder;
+//import muramasa.antimatter.recipe.map.RecipeBuilder;
 //import muramasa.antimatter.registration.IGregTechRegistrar;
 //import muramasa.antimatter.registration.RegistrationEvent;
 //import muramasa.antimatter.util.Utils;

@@ -3,21 +3,15 @@ package muramasa.gti.data;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.recipe.Recipe;
-import muramasa.antimatter.recipe.RecipeBuilder;
-import muramasa.antimatter.recipe.RecipeMap;
+import muramasa.antimatter.recipe.map.RecipeBuilder;
+import muramasa.antimatter.recipe.map.RecipeMap;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.registration.RegistrationEvent;
-import muramasa.antimatter.util.Utils;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.LazyValue;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static muramasa.antimatter.Data.*;
 

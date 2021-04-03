@@ -2,8 +2,8 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.integration.jei.renderer.InfoRenderers;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.recipe.RecipeBuilder;
-import muramasa.antimatter.recipe.RecipeMap;
+import muramasa.antimatter.recipe.map.RecipeBuilder;
+import muramasa.antimatter.recipe.map.RecipeMap;
 import muramasa.antimatter.recipe.RecipeProxies;
 
 import static muramasa.gti.data.Guis.MULTI_DISPLAY;

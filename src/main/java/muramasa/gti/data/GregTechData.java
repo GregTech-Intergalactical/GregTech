@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.cover.BaseCover;
+import muramasa.antimatter.cover.CoverTiered;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemCover;
@@ -112,7 +113,7 @@ public class GregTechData {
 
     }
 
-    public static final BaseCover COVER_CONVEYOR = new CoverConveyor();
+    public static final CoverTiered COVER_CONVEYOR = new CoverConveyor();
     public static final BaseCover COVER_PUMP = new CoverPump();
 
     public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");

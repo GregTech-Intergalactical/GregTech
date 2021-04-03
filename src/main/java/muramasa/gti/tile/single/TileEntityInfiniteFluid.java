@@ -8,6 +8,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.LazyHolder;
 import net.minecraft.util.Direction;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import tesseract.api.IRefreshable;
@@ -49,7 +50,7 @@ public class TileEntityInfiniteFluid extends TileEntityMachine {
 
     public TileEntityInfiniteFluid(Machine<?> type) {
         super(type);
-        this.fluidHandler = LazyHolder.of(() -> new InfiniteFluidHandler(this) {
+        this.fluidHandler = LazyOptional.of(() -> new InfiniteFluidHandler(this) {
 
         });
         // TODO

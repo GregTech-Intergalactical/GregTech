@@ -3,11 +3,10 @@ package muramasa.gti.loader.machines;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialStack;
-import muramasa.antimatter.recipe.RecipeBuilder;
+import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.recipe.ingredient.AntimatterIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.LazyValue;
 
 import java.util.Arrays;
 import java.util.List;
