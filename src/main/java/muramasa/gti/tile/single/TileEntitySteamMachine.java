@@ -18,8 +18,8 @@ public class TileEntitySteamMachine extends TileEntityMachine {
         super(type);
         recipeHandler = LazyOptional.of(() -> new MachineRecipeHandler<TileEntitySteamMachine>(this) {
             @Override
-            public boolean consumeResourceForRecipe() {
-                return tile.fluidHandler.map(t -> t.consumeAndReturnInputs(Arrays.asList(Materials.Steam.getGas((int)activeRecipe.getPower()))).size() == 0)
+            public boolean consumeResourceForRecipe(boolean simulate) {
+                return tile.fluidHandler.map(t -> t.consumeAndReturnInputs(Arrays.asList(Materials.Steam.getGas((int)activeRecipe.getPower())), simulate).size() == 0)
                         .orElse(false);
             }
             //Allow up to 16 .
