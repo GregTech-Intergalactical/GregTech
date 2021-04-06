@@ -19,6 +19,13 @@ repositories {
     maven { url 'http://dvs1.progwml6.com/files/maven' }
     //GT.
     maven { url 'https://jitpack.io' }
+
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
@@ -90,7 +97,8 @@ minecraft {
         client {
             workingDirectory project.file('run')
             //Needed to boot.
-            property 'mixin.env.disableRefMap', 'true'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'DEBUG'
             // Recommended logging level for the console
@@ -111,7 +119,8 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            property 'mixin.env.disableRefMap', 'true'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'DEBUG'
             // Recommended logging level for the console
@@ -133,7 +142,8 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            property 'mixin.env.disableRefMap', 'true'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'DEBUG'
             //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
@@ -164,7 +174,7 @@ dependencies {
 
     //GT related projects.
     if (findProject(':AntimatterAPI') != null) {
-        implementation project(':AntimatterAPI')
+        implementation project(path: ':AntimatterAPI', transitive: true)
     } else {
         //compileOnly sources jar.
         runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
@@ -181,6 +191,10 @@ dependencies {
     //JEI
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+
+    //runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
+    //runtimeOnly fg.deobf("curse.maven:architectury-forge-419699:${architectury_file}")
+    //runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
 }
 
 
