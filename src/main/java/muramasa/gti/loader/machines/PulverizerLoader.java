@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.gti.data.Materials.Stone;
 import static muramasa.gti.data.RecipeMaps.PULVERIZING;
 
 public class PulverizerLoader {

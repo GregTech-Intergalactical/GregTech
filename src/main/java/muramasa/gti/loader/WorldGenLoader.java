@@ -45,11 +45,11 @@ public class WorldGenLoader {
 //        new WorldGenStone("basalt_large", BASALT, 1, 300, 70, 0, 120, World.OVERWORLD);
 //        new WorldGenStone("basalt_huge", BASALT, 1, 400, 150, 0, 120, World.OVERWORLD);
         
-        WorldGenStoneLayer.add(GregTechData.STONE, 4, World.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.STONE, 1, World.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(GregTechData.STONE, 1, World.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(GregTechData.STONE, 1, World.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(GregTechData.STONE, 1, World.OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.STONE, 4, World.OVERWORLD);
+        WorldGenStoneLayer.add(Data.STONE, 1, World.OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.STONE, 1, World.OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.STONE, 1, World.OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.STONE, 1, World.OVERWORLD); //Ores
         
         WorldGenStoneLayer.add(GregTechData.GRANITE_BLACK, 2, World.OVERWORLD);
         WorldGenStoneLayer.add(GregTechData.GRANITE_BLACK, 1, World.OVERWORLD).forEach(w -> w.addOres(
@@ -95,17 +95,17 @@ public class WorldGenLoader {
         WorldGenStoneLayer.add(GregTechData.QUARTZITE, 4, World.OVERWORLD);
         WorldGenStoneLayer.add(GregTechData.QUARTZITE, 1, World.OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(GregTechData.GRANITE, 3, World.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.GRANITE, 1, World.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(GregTechData.GRANITE, 1, World.OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.GRANITE, 3, World.OVERWORLD);
+        WorldGenStoneLayer.add(Data.GRANITE, 1, World.OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.GRANITE, 1, World.OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(GregTechData.DIORITE, 3, World.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.DIORITE, 1, World.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(GregTechData.DIORITE, 1, World.OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.DIORITE, 3, World.OVERWORLD);
+        WorldGenStoneLayer.add(Data.DIORITE, 1, World.OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.DIORITE, 1, World.OVERWORLD); //Ores
 
-        WorldGenStoneLayer.add(GregTechData.ANDESITE, 4, World.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.ANDESITE, 1, World.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(GregTechData.ANDESITE, 1, World.OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.ANDESITE, 4, World.OVERWORLD);
+        WorldGenStoneLayer.add(Data.ANDESITE, 1, World.OVERWORLD); //Ores
+        WorldGenStoneLayer.add(Data.ANDESITE, 1, World.OVERWORLD); //Ores
 
         WorldGenStoneLayer.add(Data.ORE_STONE.get().get(Coal).asState(), 1, World.OVERWORLD);
         WorldGenStoneLayer.add(Data.ORE_STONE.get().get(Lignite).asState(), 1, World.OVERWORLD);

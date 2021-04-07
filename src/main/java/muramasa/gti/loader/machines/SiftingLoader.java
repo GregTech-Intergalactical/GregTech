@@ -6,8 +6,6 @@ import muramasa.antimatter.util.Utils;
 import net.minecraft.item.ItemStack;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.gti.data.GregTechData.STONE;
-import static muramasa.gti.data.Materials.Stone;
 import static muramasa.gti.data.RecipeMaps.SIFTING;
 
 public class SiftingLoader {

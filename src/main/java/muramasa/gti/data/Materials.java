@@ -209,8 +209,6 @@ public class Materials {
     public static Material Graphene = new Material(Ref.ID, "graphene", 0x808080, DULL).asDust(PLATE);
     public static Material Oilsands = new Material(Ref.ID, "oilsands", 0x0a0a0a, NONE).asDust(ORE);
     public static Material RareEarth = new Material(Ref.ID, "rare_earth", 0x808064, FINE).asDust();
-    public static Material Endstone = new Material(Ref.ID, "endstone", 0xffffff, DULL).asDust();
-    public static Material Netherrack = new Material(Ref.ID, "netherrack", 0xc80000, DULL).asDust();
     public static Material Almandine = new Material(Ref.ID, "almandine", 0xff0000, ROUGH).asDust(ORE, ORE_SMALL).mats(of(Aluminium, 2, Iron, 3, Silicon, 3, Oxygen, 12));
     public static Material Andradite = new Material(Ref.ID, "andradite", 0x967800, ROUGH).asDust(ORE, ORE_SMALL).mats(of(Calcium, 3, Iron, 2, Silicon, 3, Oxygen, 12));
     public static Material Ash = new Material(Ref.ID, "ash", 0x969696, DULL).asDust();
@@ -266,7 +264,6 @@ public class Materials {
     public static Material Uraninite = new Material(Ref.ID, "uraninite", 0x232323, METALLIC).asDust(ORE).mats(of(Uranium, 1, Oxygen, 2));
     public static Material Uvarovite = new Material(Ref.ID, "uvarovite", 0xb4ffb4, DIAMOND).asDust(ORE, ORE_SMALL).mats(of(Calcium, 3, Chrome, 2, Silicon, 3, Oxygen, 12));
     public static Material Wood = new Material(Ref.ID, "wood", 0x643200, NONE).asDust(GEAR).addHandleStat(12, 0.0F).mats(of(Carbon, 1, Oxygen, 1, Hydrogen, 1));
-    public static Material Stone = new Material(Ref.ID, "stone", 0xcdcdcd, ROUGH).asDust(DUST_IMPURE, GEAR).addHandleStat(-10, -0.5F);
     public static Material Wulfenite = new Material(Ref.ID, "wulfenite", 0xff8000, DULL).asDust(ORE).mats(of(Lead, 1, Molybdenum, 1, Oxygen, 4));
     public static Material YellowLimonite = new Material(Ref.ID, "yellow_limonite", 0xc8c800, METALLIC).asDust(ORE).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
     //public static Material SealedWood = new Material(Ref.ID, "sealed_wood", 0x502800, NONE).asDust().addTools(3.0F, 24, 0).addComposition(of(Wood, 1); TODO: Perhaps with IE integration or when we have some utility stuff
@@ -390,16 +387,6 @@ public class Materials {
     public static Material PolyvinylChloride = new Material(Ref.ID, "polyvinyl_chloride", 0xd7e6e6, NONE).asSolid(295, 0, PLATE, FOIL).addHandleStat(210, 0.5F).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
     public static Material GalliumArsenide = new Material(Ref.ID, "gallium_arsenide", 0xa0a0a0, DULL).asSolid(295, 1200).mats(of(Arsenic, 1, Gallium, 1));
     public static Material EpoxidFiberReinforced = new Material(Ref.ID, "fiber_reinforced_epoxy_resin", 0xa07010, DULL).asSolid(400, 0).mats(of(Epoxid, 1));
-
-    /** Stones **/
-    public static Material Granite = new Material(Ref.ID, "granite", 0xa07882, ROUGH).asDust(ROCK);
-    public static Material Diorite = new Material(Ref.ID, "diorite", 0xf0f0f0, ROUGH).asDust(ROCK);
-    public static Material Andesite = new Material(Ref.ID, "andesite", 0xbfbfbf, ROUGH).asDust(ROCK);
-
-    public static Material Gravel = new Material(Ref.ID, "gravel", 0xcdcdcd, ROUGH).asDust(ROCK);
-    public static Material Sand = new Material(Ref.ID, "sand", 0xfafac8, ROUGH).asDust(ROCK);
-    public static Material RedSand = new Material(Ref.ID, "red_sand", 0xff8438, ROUGH).asDust(ROCK);
-    public static Material Sandstone = new Material(Ref.ID, "sandstone", 0xfafac8, ROUGH).asDust(ROCK);
 
     public static Material RedGranite = new Material(Ref.ID, "red_granite", 0xff0080, ROUGH).asDust(ROCK).addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1)).mats(of(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3));
     public static Material BlackGranite = new Material(Ref.ID, "black_granite", 0x0a0a0a, ROUGH).asDust(ROCK).addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1)).mats(of(SiliconDioxide, 4, Biotite, 1));

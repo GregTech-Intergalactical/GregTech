@@ -5,7 +5,6 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.item.ItemStack;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.gti.data.Materials.Stone;
 import static muramasa.gti.data.RecipeMaps.THERMAL_CENTRIFUGING;
 
 public class ThermalCentrifuge {

@@ -10,7 +10,6 @@ import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.CALCITE2X;
 import static muramasa.antimatter.material.MaterialTag.CALCITE3X;
 import static muramasa.gti.data.GregTechData.INT_CIRCUITS;
-import static muramasa.gti.data.GregTechData.STONE;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.BASIC_BLASTING;
 import static muramasa.gti.data.RecipeMaps.BLASTING;
