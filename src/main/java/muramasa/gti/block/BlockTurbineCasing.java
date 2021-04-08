@@ -159,11 +159,8 @@ public class BlockTurbineCasing extends BlockCasingMachine {
     protected TileEntityLargeTurbine getTurbine(IBlockReader world, BlockPos pos) {
         World w = getWorld(world);
         if (w != null) {
-            BlockPos cPos = StructureCache.get(w, pos);
-            if (cPos != null) {
-                TileEntity tile = world.getTileEntity(cPos);
-                if (tile instanceof TileEntityLargeTurbine) return (TileEntityLargeTurbine) tile;
-            }
+            TileEntityLargeTurbine turbine = StructureCache.getAnyMulti(w, pos, TileEntityLargeTurbine.class);
+            if (turbine != null) return turbine;
         }
         return getTurbineSlow(world, pos);
     }

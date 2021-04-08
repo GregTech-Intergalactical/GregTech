@@ -34,7 +34,7 @@ public class TileEntityMultiSmelter extends TileEntityMultiMachine {
             setCoilValues(firstType);
             return true;
         } else {
-            result.ifPresent(r -> r.withError("all coils do not match"));
+            this.result.withError("all coils do not match");
             return false;
         }
     }
