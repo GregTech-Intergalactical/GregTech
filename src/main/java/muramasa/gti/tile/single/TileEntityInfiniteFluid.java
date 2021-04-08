@@ -21,15 +21,6 @@ import static muramasa.gti.data.Materials.Steam;
 public class TileEntityInfiniteFluid extends TileEntityMachine {
 
     @Override
-    public boolean setFacing(Direction side) {
-        boolean ok = super.setFacing(side);
-        if (ok) {
-            fluidHandler.ifPresent(IRefreshable::refreshNet);
-        }
-        return ok;
-    }
-
-    @Override
     public void onFirstTick() {
         super.onFirstTick();
         coverHandler.ifPresent(c -> {
