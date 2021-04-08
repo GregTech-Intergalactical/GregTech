@@ -132,7 +132,7 @@ minecraft {
             if (shouldCheckEnv()) {
                  environment 'MOD_CLASSES', getEnv()
             }
-
+            arg "-nogui"
             mods {
                 gti {
                     source sourceSets.main
