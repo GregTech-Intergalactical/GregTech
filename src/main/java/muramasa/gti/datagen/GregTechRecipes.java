@@ -4,6 +4,7 @@ import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gti.Ref;
 import muramasa.gti.data.GregTechData;
+import muramasa.gti.loader.crafting.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
@@ -27,10 +28,11 @@ public class GregTechRecipes extends AntimatterRecipeProvider {
     }
 
     protected void registerCraftingLoaders() {
-        //this.craftingLoaders.add(Parts::loadRecipes);
-        //this.craftingLoaders.add(WireCablesPlates::loadRecipes);
-        //this.craftingLoaders.add(Machines::loadRecipes);
-        //this.craftingLoaders.add(BlockParts::loadRecipes);
+        this.craftingLoaders.add(Parts::loadRecipes);
+        this.craftingLoaders.add(Smelting::loadRecipes);
+        this.craftingLoaders.add(WireCablesPlates::loadRecipes);
+        this.craftingLoaders.add(Machines::loadRecipes);
+        this.craftingLoaders.add(BlockParts::loadRecipes);
     }
 
     @Override

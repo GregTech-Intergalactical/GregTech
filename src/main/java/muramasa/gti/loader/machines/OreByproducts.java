@@ -15,7 +15,7 @@ public class OreByproducts {
         CRUSHED.all().forEach(m -> {
             if (!m.has(ORE)) return;
             if (!m.has(INGOT)) return;
-            RecipeIngredient ore = ORE.getMaterialIngredient(m), crushed = CRUSHED.getIngredient(m, 1);
+            RecipeIngredient ore = ORE.getMaterialIngredient(m, 1), crushed = CRUSHED.getIngredient(m, 1);
             if (m.hasByProducts()) {
                 List<Material> byProducts = m.getByProducts();
                 int byProductsCount = byProducts.size();

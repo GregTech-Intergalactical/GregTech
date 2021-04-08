@@ -7,6 +7,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.gti.Ref;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemTier;
+import net.minecraft.item.Items;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;
@@ -663,7 +664,6 @@ public class Materials {
 //            }
 //        }
 
-        //TODO move to antimatter
         LIQUID.all().stream().filter(l -> !l.equals(Water) || !l.equals(Lava)).forEach(m -> new AntimatterMaterialFluid(Ref.ID, m, LIQUID));
         GAS.all().forEach(m -> new AntimatterMaterialFluid(Ref.ID, m, GAS));
         PLASMA.all().forEach(m -> new AntimatterMaterialFluid(Ref.ID, m, PLASMA));
@@ -676,6 +676,23 @@ public class Materials {
     }
 
     private static void overrides() {
+        DUST.forceOverride(Redstone, Items.REDSTONE);
+        DUST.forceOverride(Glowstone, Items.GLOWSTONE);
 
+        INGOT.forceOverride(Iron, Items.IRON_INGOT);
+        INGOT.forceOverride(Gold, Items.GOLD_INGOT);
+        INGOT.forceOverride(Netherite, Items.NETHERITE_INGOT);
+
+        GEM.forceOverride(Charcoal, Items.CHARCOAL);
+        GEM.forceOverride(Coal, Items.COAL);
+        GEM.forceOverride(Diamond, Items.DIAMOND);
+
+        BLOCK.forceOverride(Iron, Items.IRON_BLOCK);
+        BLOCK.forceOverride(Gold, Items.GOLD_BLOCK);
+        BLOCK.forceOverride(Emerald, Items.EMERALD_BLOCK);
+        BLOCK.forceOverride(Diamond, Items.DIAMOND_BLOCK);
+
+        NUGGET.forceOverride(Iron, Items.IRON_NUGGET);
+        NUGGET.forceOverride(Gold, Items.GOLD_NUGGET);
     }
 }

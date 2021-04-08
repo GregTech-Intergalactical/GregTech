@@ -30,7 +30,6 @@ import muramasa.gti.items.ItemIntCircuit;
 import muramasa.gti.tree.BlockRubberLeaves;
 import muramasa.gti.tree.BlockRubberLog;
 import muramasa.gti.tree.BlockRubberSapling;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.item.Item;
 import net.minecraftforge.api.distmarker.Dist;

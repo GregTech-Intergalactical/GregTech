@@ -6,11 +6,9 @@ import muramasa.antimatter.cover.CoverStack;
 import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
-import net.minecraft.util.Direction;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
-import tesseract.api.IRefreshable;
 
 import javax.annotation.Nonnull;
 import java.util.List;
