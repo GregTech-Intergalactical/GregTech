@@ -1,6 +1,7 @@
 package muramasa.gti.tile.multi;
 
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityBasicMultiMachine;
 import muramasa.antimatter.util.int3;
 import net.minecraft.block.Blocks;
@@ -12,13 +13,22 @@ public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine
     }
 
     @Override
-    public boolean onStructureFormed() {
-        super.onStructureFormed();
+    public void onRecipeActivated(Recipe r) {
+        super.onRecipeActivated(r);
         int3 controller = new int3(getPos(), getFacing());
         controller.back(1);
-        getWorld().setBlockState(controller, Blocks.LAVA.getDefaultState(), 3);
+        getWorld().setBlockState(controller, Blocks.LAVA.getDefaultState(), 2);
         controller.up(1);
-        getWorld().setBlockState(controller, Blocks.LAVA.getDefaultState(), 3);
-        return true;
+        getWorld().setBlockState(controller, Blocks.LAVA.getDefaultState(), 2);
+    }
+
+    @Override
+    public void onRecipeStop() {
+        super.onRecipeStop();
+        int3 controller = new int3(getPos(), getFacing());
+        controller.back(1);
+        getWorld().setBlockState(controller, Blocks.AIR.getDefaultState(), 2);
+        controller.up(1);
+        getWorld().setBlockState(controller, Blocks.AIR.getDefaultState(), 2);
     }
 }
