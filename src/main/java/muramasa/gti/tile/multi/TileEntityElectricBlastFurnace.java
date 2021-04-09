@@ -50,14 +50,12 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine {
             protected long getPower() {
                 return EUt;
             }
+
+            @Override
+            protected boolean validateRecipe(Recipe r) {
+                return super.validateRecipe(r) && heatingCapacity > r.getSpecialValue();
+            }
         });
-    }
-
-
-
-    @Override
-    public boolean onRecipeFound(Recipe activeRecipe) {
-        return heatingCapacity > activeRecipe.getSpecialValue();
     }
 
     @Override
