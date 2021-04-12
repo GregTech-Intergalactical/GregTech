@@ -694,5 +694,8 @@ public class Materials {
 
         NUGGET.forceOverride(Iron, Items.IRON_NUGGET);
         NUGGET.forceOverride(Gold, Items.GOLD_NUGGET);
+
+        ROD.forceOverride(Blaze, Items.BLAZE_ROD);
+        ROD.forceOverride(Wood, Items.STICK);
     }
 }
