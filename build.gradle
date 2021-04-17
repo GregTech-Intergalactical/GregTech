@@ -103,8 +103,8 @@ minecraft {
             property 'forge.logging.markers', 'DEBUG'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-            if (isVSTask())
-                jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
+            //if (isVSTask())
+            //    jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
             if (findProject(':AntimatterAPI') != null) arg "-mixin.config=antimatter.mixins.json"
             if (shouldCheckEnv()) {
@@ -126,8 +126,8 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
             
-            if (isVSTask())
-                jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
+            //if (isVSTask())
+            //    jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
             if (findProject(':AntimatterAPI') != null) arg "-mixin.config=antimatter.mixins.json"
             if (shouldCheckEnv()) {
                  environment 'MOD_CLASSES', getEnv()
@@ -153,8 +153,8 @@ minecraft {
             if (shouldCheckEnv()) {
                  environment 'MOD_CLASSES', getEnv()
             }
-            if (isVSTask())
-                jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
+            //if (isVSTask())
+            //    jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
             args '--mod', 'gti', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
@@ -173,28 +173,28 @@ dependencies {
     implementation 'org.apache.commons:commons-collections4:4.4'
 
     //GT related projects.
-    if (findProject(':AntimatterAPI') != null) {
+//    if (findProject(':AntimatterAPI') != null) {
         implementation project(path: ':AntimatterAPI', transitive: true)
-    } else {
+ //   } else {
         //compileOnly sources jar.
-        runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
-        compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
-    }
-    if (findProject(':TesseractAPI') != null) {
+ //       runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
+ //       compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
+ //   }
+ //   if (findProject(':TesseractAPI') != null) {
         implementation project(':TesseractAPI')
-    } else {
+  //  } else {
         //compileOnly sources jar.
-        runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
-        compileOnly ("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
-    }
+ //       runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
+ //       compileOnly ("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
+ //   }
 
     //JEI
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
     //runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
-    //runtimeOnly fg.deobf("curse.maven:architectury-forge-419699:${architectury_file}")
-    //runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
+   // runtimeOnly fg.deobf("curse.maven:architectury-forge-419699:${architectury_file}")
+   // runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
 }
 
 
