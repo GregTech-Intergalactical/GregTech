@@ -129,4 +129,9 @@ public class GregTech extends AntimatterMod {
                 break;
         }
     }
+
+    @Override
+    public String getId() {
+        return Ref.ID;
+    }
 }
