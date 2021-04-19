@@ -174,7 +174,7 @@ dependencies {
 
     //GT related projects.
 //    if (findProject(':AntimatterAPI') != null) {
-        implementation project(path: ':AntimatterAPI', transitive: true)
+        implementation project(path: ':AntimatterAPI')
  //   } else {
         //compileOnly sources jar.
  //       runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
@@ -192,9 +192,9 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
-    //runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
-   // runtimeOnly fg.deobf("curse.maven:architectury-forge-419699:${architectury_file}")
-   // runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
+    runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
+    runtimeOnly fg.deobf("curse.maven:architectury-forge-419699:${architectury_file}")
+    runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
 }
 
 
