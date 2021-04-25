@@ -1,11 +1,12 @@
 package muramasa.gti.loader.machines;
 
-import muramasa.antimatter.material.Material;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.material.MaterialTag.CENT;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
-import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.CENTRIFUGING;
 
 public class CentrifugingLoader {
@@ -15,13 +16,16 @@ public class CentrifugingLoader {
             else CENTRIFUGING.RB().ii(of(DUST_IMPURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1)).chances(100, 10).add(400, 2);
         });
 
-        add(Pyrite,24,200);
-        add(Chalcopyrite,24,300);
-        add(SodiumSulfide,24,150);
-    }
-
-    private static void add(Material mat, long power, long duration) {
-        if (!mat.has(DUST)) return;
-        CENTRIFUGING.RB().ii(of(DUST.get(mat),1)).io(mat.getProcessInto().stream().map(t -> new ItemStack(DUST.get(t.m),t.s)).toArray(ItemStack[]::new)).add(duration,power);
+        DUST.all().stream().filter(t -> t.has(CENT)).forEach(t -> {
+            FluidStack[] fluids = t.getProcessInto().stream().filter(mat -> ((mat.m.has(GAS) || mat.m.has(LIQUID)) && !mat.m.has(DUST))).map(mat -> mat.m.has(GAS) ? mat.m.getGas(mat.s*1000) : mat.m.getLiquid(mat.s*1000)).toArray(FluidStack[]::new);
+            if (fluids.length > 2) return;
+            for (FluidStack fluid : fluids) {
+                if (fluid.isEmpty())
+                    return;
+            }
+            ItemStack[] items = t.getProcessInto().stream().filter(mat -> mat.m.has(DUST)).map(mat -> DUST.get(mat.m, mat.s)).toArray(ItemStack[]::new);
+            RecipeIngredient input = DUST.getMaterialIngredient(t, t.getProcessInto().stream().mapToInt(mat -> mat.s).sum());
+            CENTRIFUGING.RB().ii(input).io(items).fo(fluids).add(t.getMass()*10, t.getMass() < 10 ? 30 : 64);
+        });
     }
 }
