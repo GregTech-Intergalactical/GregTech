@@ -13,6 +13,7 @@ public class PulverizerLoader {
     public static void init() {
         CRUSHED.all().forEach(m -> {
             if (!m.has(ORE)) return;
+            if (!m.has(CRUSHED)) return;
             int multiplier = 1;
             RecipeIngredient ore = RecipeIngredient.of(ORE.getMaterialTag(m),1), crushed = CRUSHED.getIngredient(m, 1);
             ItemStack crushedStack = CRUSHED.get(m,1);
@@ -45,6 +46,7 @@ public class PulverizerLoader {
 
         //INGOT -> DUST
         INGOT.all().forEach(t -> {
+            if (!t.has(DUST)) return;
             PULVERIZING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(t),1)).io(DUST.get(t,1)).add(40,2);
         });
     }
