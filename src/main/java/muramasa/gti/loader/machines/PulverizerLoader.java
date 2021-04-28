@@ -30,6 +30,9 @@ public class PulverizerLoader {
             if (m.has(CRUSHED_CENTRIFUGED)) {
                 PULVERIZING.RB().ii(RecipeIngredient.of(CRUSHED_CENTRIFUGED.get(m,1))).io(DUST.get(m.getMacerateInto(), 1), DUST.get(aOreByProduct2, 1)).chances(100, 10).add(400, 2);
             }
+            if (m.has(CRUSHED_PURIFIED) && m.has(DUST_PURE)) {
+                PULVERIZING.RB().ii(CRUSHED_PURIFIED.getIngredient(m, 1)).io(DUST_PURE.get(m.getMacerateInto(), 1), DUST.get(aOreByProduct1, 1)).chances(100, 10).add(400, 2);
+            }
         });
         GEM_BRITTLE.all().forEach(m -> {
             if (!m.has(DUST)) return;
