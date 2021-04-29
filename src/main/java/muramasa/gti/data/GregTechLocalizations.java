@@ -5,6 +5,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
 import muramasa.gti.Ref;
 import muramasa.gti.block.BlockCasing;
+import muramasa.gti.block.BlockCoil;
 import muramasa.gti.items.ItemIntCircuit;
 import net.minecraft.data.DataGenerator;
 
@@ -30,6 +31,7 @@ public class GregTechLocalizations {
         protected void processTranslations(String domain, String locale) {
             super.processTranslations(domain, locale);
             AntimatterAPI.all(BlockCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+            AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Integrated Circuit (" + i.circuitId + ")"));
             add(GregTechData.RUBBER_LEAVES, "Rubber Leaves");
             add(GregTechData.RUBBER_LOG, "Rubber Log");
