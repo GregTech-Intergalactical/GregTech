@@ -70,13 +70,12 @@ public class CoverConveyor extends CoverTiered {
     public void onUpdate(CoverStack<?> instance, Direction side) {
         if (instance.getTile() == null || instance.getTile().getWorld().getGameTime() % (speeds.get(tier)) != 0)
             return;
-        boolean isMachine = instance.getTile() instanceof TileEntityMachine;
         BlockState state = instance.getTile().getWorld().getBlockState(instance.getTile().getPos().offset(side));
         //Drop into world.
-        if (state == Blocks.AIR.getDefaultState() && isMachine) {
+        if (state == Blocks.AIR.getDefaultState()) {
             World world = instance.getTile().getWorld();
             BlockPos pos = instance.getTile().getPos();
-            ItemStack stack = ((TileEntityMachine)instance.getTile()).itemHandler.map(ih -> Utils.extractAny(ih.getOutputHandler())).orElse(ItemStack.EMPTY);
+            ItemStack stack = instance.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).map(t -> Utils.extractAny(t)).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
             world.addEntity(new ItemEntity(world,pos.getX()+side.getXOffset(), pos.getY()+side.getYOffset(), pos.getZ()+side.getZOffset(),stack));
         }
@@ -85,9 +84,7 @@ public class CoverConveyor extends CoverTiered {
         if (adjTile == null) {
             return;
         }
-        if (isMachine) {
-            ((TileEntityMachine)instance.getTile()).itemHandler.ifPresent(ih -> adjTile.getCapability(ITEM_HANDLER_CAPABILITY, side.getOpposite()).ifPresent(other -> Utils.transferItems(ih.getOutputHandler(), other,true)));
-        }
+        instance.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).ifPresent(ih -> adjTile.getCapability(ITEM_HANDLER_CAPABILITY, side.getOpposite()).ifPresent(other -> Utils.transferItems(other, ih,true)));
     }
 
     @Override
