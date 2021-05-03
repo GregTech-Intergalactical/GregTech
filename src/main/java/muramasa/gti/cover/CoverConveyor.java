@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.cover.CoverStack;
 import muramasa.antimatter.cover.CoverTiered;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
 import net.minecraft.block.BlockState;
@@ -16,6 +15,10 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 import java.util.Map;
 
@@ -24,6 +27,7 @@ import static net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABI
 public class CoverConveyor extends CoverTiered {
 
     public static String ID = "conveyor";
+    private LazyOptional<IItemHandler> cachedHandler = LazyOptional.empty();
 
     static final Map<Tier, Integer> speeds = ImmutableMap.<Tier,Integer>builder().
             put(Tier.LV,400)
@@ -38,6 +42,13 @@ public class CoverConveyor extends CoverTiered {
 
     public CoverConveyor() {
         super();
+    }
+
+    
+
+    @Override
+    public <T> boolean blocksCapability(CoverStack<?> stack, Capability<T> cap, Direction side) {
+        return side == null && cap != CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
     }
 
     @Override
@@ -84,7 +95,11 @@ public class CoverConveyor extends CoverTiered {
         if (adjTile == null) {
             return;
         }
-        instance.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).ifPresent(ih -> adjTile.getCapability(ITEM_HANDLER_CAPABILITY, side.getOpposite()).ifPresent(other -> Utils.transferItems(other, ih,true)));
+        if (!cachedHandler.isPresent()) {
+            cachedHandler = adjTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite());
+            if (cachedHandler.isPresent()) cachedHandler.addListener(obj -> cachedHandler = LazyOptional.empty());
+        }
+        instance.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).ifPresent(ih -> cachedHandler.ifPresent(other -> Utils.transferItems(ih, other,true)));
     }
 
     @Override

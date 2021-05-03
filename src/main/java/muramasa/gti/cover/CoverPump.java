@@ -1,18 +1,35 @@
 package muramasa.gti.cover;
 
+import java.util.Map;
+
+import com.google.common.collect.ImmutableMap;
+
 import muramasa.antimatter.cover.CoverStack;
 import muramasa.antimatter.cover.CoverTiered;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.util.Utils;
 import muramasa.gti.Ref;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 public class CoverPump extends CoverTiered {
 
     public static String ID = "pump";
 
-    static int[] speeds = new int[]{640,2560,10240,40960,163840};
+    static final Map<Tier, Integer> speeds = ImmutableMap.<Tier,Integer>builder().
+    put(Tier.LV,640/20)
+    .put(Tier.MV, 2560/20)
+    .put(Tier.HV, 10240/20)
+    .put(Tier.EV, 4096010/20)
+    .put(Tier.IV, 163840/20).build();
 
+
+    private LazyOptional<IFluidHandler> cachedHandler = LazyOptional.empty();
     public CoverPump(Tier tier) {
         super(tier);
     }
@@ -32,11 +49,26 @@ public class CoverPump extends CoverTiered {
     }
 
     @Override
+    public ResourceLocation getModel(Direction dir, Direction facing) {
+        return getBasicDepthModel();
+    }
+
+    @Override
+    public <T> boolean blocksCapability(CoverStack<?> stack, Capability<T> cap, Direction side) {
+        return side == null && cap != CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
+    }
+
+    @Override
     public void onUpdate(CoverStack<?> instance, Direction side) {
-        if (instance.getTile() == null || instance.getTile().getWorld().getGameTime() % (20) != 0) return;
+        //Pump acts on each tick.
+        if (instance.getTile() == null) return;
         TileEntity adjTile = instance.getTile().getWorld().getTileEntity(instance.getTile().getPos().offset(side));
         if (adjTile == null) return;
-        //Utils.transferFluidsOnCap(instance.getTile(), adjTile, speeds[getTier().getIntegerId()]);
+        if (!cachedHandler.isPresent()) {
+            cachedHandler = adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
+            if (cachedHandler.isPresent()) cachedHandler.addListener(obj -> cachedHandler = LazyOptional.empty());
+        }
+        instance.getTile().getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side).ifPresent(ih -> cachedHandler.ifPresent(other -> Utils.transferFluids(ih, other,speeds.get(tier))));
     }
 
     @Override
