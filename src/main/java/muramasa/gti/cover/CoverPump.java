@@ -28,8 +28,6 @@ public class CoverPump extends CoverTiered {
     .put(Tier.EV, 4096010/20)
     .put(Tier.IV, 163840/20).build();
 
-
-    private LazyOptional<IFluidHandler> cachedHandler = LazyOptional.empty();
     public CoverPump(Tier tier) {
         super(tier);
     }
@@ -64,11 +62,9 @@ public class CoverPump extends CoverTiered {
         if (instance.getTile() == null) return;
         TileEntity adjTile = instance.getTile().getWorld().getTileEntity(instance.getTile().getPos().offset(side));
         if (adjTile == null) return;
-        if (!cachedHandler.isPresent()) {
-            cachedHandler = adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
-            if (cachedHandler.isPresent()) cachedHandler.addListener(obj -> cachedHandler = LazyOptional.empty());
-        }
-        instance.getTile().getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side).ifPresent(ih -> cachedHandler.ifPresent(other -> Utils.transferFluids(ih, other,speeds.get(tier))));
+        LazyOptional<IFluidHandler> handler = adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
+        if (!handler.isPresent()) return;
+        instance.getTile().getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side).ifPresent(ih -> handler.ifPresent(other -> Utils.transferFluids(ih, other,speeds.get(tier))));
     }
 
     @Override

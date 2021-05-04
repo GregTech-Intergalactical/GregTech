@@ -92,7 +92,7 @@ public class Machines {
     public static HatchMachine HATCH_DYNAMO = new HatchMachine(Ref.ID, "hatch_dynamo", ENERGY,COVERDYNAMO);
     public static HatchMachine HATCH_ENERGY = new HatchMachine(Ref.ID, "hatch_energy", ENERGY,COVERENERGY);
 
-    public static TankMachine QUANTUM_TANK = new TankMachine(Ref.ID, "quantum_tank", BASIC, GUI, CELL);
+    public static TankMachine QUANTUM_TANK = new TankMachine(Ref.ID, "quantum_tank", BASIC, GUI, CELL).frontCovers();
 
     public static GeneratorMachine STEAM_GENERATOR = new GeneratorMachine(Ref.ID, "steam_generator", STEAM_FUELS, LV, MV, HV, GUI, ITEM, FLUID, CELL);
     public static GeneratorMachine GAS_GENERATOR = new GeneratorMachine(Ref.ID, "gas_generator", GAS_FUELS, LV, MV, HV, GUI, ITEM, FLUID, CELL);

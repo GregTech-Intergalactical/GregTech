@@ -27,7 +27,6 @@ import static net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABI
 public class CoverConveyor extends CoverTiered {
 
     public static String ID = "conveyor";
-    private LazyOptional<IItemHandler> cachedHandler = LazyOptional.empty();
 
     static final Map<Tier, Integer> speeds = ImmutableMap.<Tier,Integer>builder().
             put(Tier.LV,400)
@@ -42,9 +41,7 @@ public class CoverConveyor extends CoverTiered {
 
     public CoverConveyor() {
         super();
-    }
-
-    
+    }    
 
     @Override
     public <T> boolean blocksCapability(CoverStack<?> stack, Capability<T> cap, Direction side) {
@@ -95,11 +92,9 @@ public class CoverConveyor extends CoverTiered {
         if (adjTile == null) {
             return;
         }
-        if (!cachedHandler.isPresent()) {
-            cachedHandler = adjTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite());
-            if (cachedHandler.isPresent()) cachedHandler.addListener(obj -> cachedHandler = LazyOptional.empty());
-        }
-        instance.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).ifPresent(ih -> cachedHandler.ifPresent(other -> Utils.transferItems(ih, other,true)));
+        LazyOptional<IItemHandler> handler = adjTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite());
+        if (!handler.isPresent()) return;
+        instance.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).ifPresent(ih -> handler.ifPresent(other -> Utils.transferItems(ih, other,true)));
     }
 
     @Override

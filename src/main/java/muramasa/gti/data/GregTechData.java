@@ -471,16 +471,16 @@ public class GregTechData {
     public static final Wire<?> WIRE_SUPERCONDUCTOR = new Wire<>(Ref.ID, Superconductor, 1, Tier.MAX).amps(4); //MAX
 
     public static final FluidPipe<?> FLUID_PIPE_BRICK = new FluidPipe<>(Ref.ID, Brick, 1000, false).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(10, 10, 30, 60, 60, 60).pressures(400, 400, 400, 400, 400, 400);
-    public static final FluidPipe<?> FLUID_PIPE_COPPER = new FluidPipe<>(Ref.ID, Copper, 700, true).caps(10).pressures(600);
-    public static final FluidPipe<?> FLUID_PIPE_BISMUTH_BRONZE = new FluidPipe<>(Ref.ID, BismuthBronze, 950, true).caps(20).pressures(800);
-    public static final FluidPipe<?> FLUID_PIPE_BLACK_STEEL = new FluidPipe<>(Ref.ID, BlackSteel, 1200, true).caps(10).pressures(900);
-    public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = new FluidPipe<>(Ref.ID, StainlessSteel, 1300, true).caps(60).pressures(1000);
-    public static final FluidPipe<?> FLUID_PIPE_TITANIUM = new FluidPipe<>(Ref.ID, Titanium, 1668, true).caps(80).pressures(2500);
-    public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = new FluidPipe<>(Ref.ID, TungstenSteel, 3422, true).caps(100).pressures(5000);
-    public static final FluidPipe<?> FLUID_PIPE_PLASTIC = new FluidPipe<>(Ref.ID, Plastic, 160, true).caps(60).pressures(2000);
-    public static final FluidPipe<?> FLUID_PIPE_POLY = new FluidPipe<>(Ref.ID, Polytetrafluoroethylene, 327, true).caps(480).pressures(1000);
+    public static final FluidPipe<?> FLUID_PIPE_COPPER = new FluidPipe<>(Ref.ID, Copper, 700, true).caps(1).pressures(600);
+    public static final FluidPipe<?> FLUID_PIPE_BISMUTH_BRONZE = new FluidPipe<>(Ref.ID, BismuthBronze, 950, true).caps(1).pressures(800);
+    public static final FluidPipe<?> FLUID_PIPE_BLACK_STEEL = new FluidPipe<>(Ref.ID, BlackSteel, 1200, true).caps(1).pressures(900);
+    public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = new FluidPipe<>(Ref.ID, StainlessSteel, 1300, true).caps(1).pressures(1000);
+    public static final FluidPipe<?> FLUID_PIPE_TITANIUM = new FluidPipe<>(Ref.ID, Titanium, 1668, true).caps(1).pressures(2500);
+    public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = new FluidPipe<>(Ref.ID, TungstenSteel, 3422, true).caps(1).pressures(5000);
+    public static final FluidPipe<?> FLUID_PIPE_PLASTIC = new FluidPipe<>(Ref.ID, Plastic, 160, true).caps(1).pressures(2000);
+    public static final FluidPipe<?> FLUID_PIPE_POLY = new FluidPipe<>(Ref.ID, Polytetrafluoroethylene, 327, true).caps(1).pressures(1000);
     public static final FluidPipe<?> FLUID_PIPE_HP = new FluidPipe<>(Ref.ID, HighPressure, 3422, true).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(4800, 4800, 4800, 7200, 9600, 9600).pressures(10000);
-    public static final FluidPipe<?> FLUID_PIPE_PLASMA = new FluidPipe<>(Ref.ID, PlasmaContainment, 100000, true).sizes(PipeSize.NORMAL).caps(240, 240, 240, 240, 240, 240).pressures(100000);
+    public static final FluidPipe<?> FLUID_PIPE_PLASMA = new FluidPipe<>(Ref.ID, PlasmaContainment, 100000, true).sizes(PipeSize.NORMAL).caps(1).pressures(100000);
 
     public static final ItemPipe<?> ITEM_PIPE_WOOD = new ItemPipe<>(Ref.ID, Wood).sizes(PipeSize.SMALL).caps(0, 0, 1, 0, 0, 0);
     public static final ItemPipe<?> ITEM_PIPE_WROUGHT_IRON = new ItemPipe<>(Ref.ID, WroughtIron).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(0, 0, 2, 3, 4, 0);
