@@ -6,6 +6,7 @@ import muramasa.antimatter.cover.CoverStack;
 import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
+import net.minecraft.util.Direction;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
@@ -82,6 +83,16 @@ public class TileEntityInfiniteFluid extends TileEntityMachine {
             }));
             FluidTank tank = tanks.get(FluidDirection.OUTPUT).getTank(0);
             tank.setFluid(Steam.getGas(Integer.MAX_VALUE-1));
+        }
+
+        @Override
+        public boolean canInput(FluidStack fluid, Direction direction) {
+            return false;
+        }
+
+        @Override
+        public boolean canInput(Direction direction) {
+            return false;
         }
 
         @Nonnull
