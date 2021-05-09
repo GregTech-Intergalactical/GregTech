@@ -23,7 +23,7 @@ public class Textures {
     public static TextureSet LIGNITE = new TextureSet(Ref.ID, "lignite");
 
     public static final ITextureHandler BOILER_HANDLER = (m, t) -> new Texture[] {
-        new Texture(Ref.ID, "block/machine/base/" + t.getId()),
+        new Texture(Ref.ID, "block/machine/base/brick"),
         new Texture(Ref.ID, "block/machine/base/" + t.getId()),
         new Texture(Ref.ID, "block/machine/base/bricked_" + t.getId()),
         new Texture(Ref.ID, "block/machine/base/bricked_" + t.getId()),

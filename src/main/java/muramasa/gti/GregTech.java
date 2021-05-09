@@ -14,6 +14,7 @@ import muramasa.gti.datagen.GregtechBlockLootProvider;
 import muramasa.gti.datagen.ProgressionAdvancements;
 import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.loader.machines.*;
+import muramasa.gti.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gti.loader.machines.generator.Fuels;
 import muramasa.gti.loader.multi.Blasting;
 import muramasa.gti.loader.multi.Coking;
@@ -68,6 +69,7 @@ public class GregTech extends AntimatterMod {
         loader.add(FluidSolidifier::init);
         loader.add(ChemicalReactorLoader::init);
         loader.add(Fuels::init);
+        loader.add(CoalBoilerHandler::init);
         loader.add(FluidExtractor::init);
         loader.add(AlloyLoader::init);
         loader.add(MixerLoader::init);

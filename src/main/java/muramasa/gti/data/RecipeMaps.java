@@ -18,6 +18,7 @@ public class RecipeMaps {
     public static RecipeMap NAQUADAH_FUELS = new RecipeMap<>("naquadah_fuels", new RecipeBuilder());
     public static RecipeMap PLASMA_FUELS = new RecipeMap<>("plasma_fuels", new RecipeBuilder());
 
+    public static RecipeMap COAL_BOILERS = new RecipeMap<>("coal_boilers", new RecipeBuilder());
     public static RecipeMap SMALL_BOILERS = new RecipeMap<>("small_boilers", new RecipeBuilder());
 
     public static RecipeMap ALLOY_SMELTING = new RecipeMap<>("alloy_smelting", new AlloySmeltingBuilder());

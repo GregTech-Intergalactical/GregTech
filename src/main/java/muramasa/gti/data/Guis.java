@@ -1,8 +1,13 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.gui.GuiData;
+import muramasa.antimatter.gui.MenuHandlerMachine;
+import muramasa.antimatter.gui.container.ContainerBasicMachine;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.tile.TileEntityMachine;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 
@@ -25,6 +30,13 @@ public class Guis {
         }
     }.setPadding(0, 0, 0, 0).add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34);
 
+    public static MenuHandlerMachine<ContainerBasicMachine> COAL_BOILER_MENU_HANDLER = new MenuHandlerMachine<ContainerBasicMachine>(Ref.ID, "container_coal_boiler") {
+        @Override
+        public ContainerBasicMachine getMenu(Object tile, PlayerInventory playerInv, int windowId) {
+            return tile instanceof TileEntityMachine ? new ContainerBasicMachine((TileEntityMachine) tile, playerInv, this, windowId) : null;
+        }
+    };
+
     public static void init(Dist side) {
 
         AntimatterAPI.registerJEICategory(RecipeMaps.ORE_BYPRODUCTS, Guis.ORE_BYPRODUCTS);
@@ -34,6 +46,8 @@ public class Guis {
         AntimatterAPI.registerJEICategory(RecipeMaps.COMBUSTION_FUELS, Guis.MULTI_DISPLAY);
         AntimatterAPI.registerJEICategory(RecipeMaps.NAQUADAH_FUELS, Guis.MULTI_DISPLAY);
         AntimatterAPI.registerJEICategory(RecipeMaps.PLASMA_FUELS, Guis.MULTI_DISPLAY);
+
+        COAL_BOILER.setGUI(COAL_BOILER_MENU_HANDLER);
 
         //TODO changing slots of a machine in world, will crash from GTItemHandler.validateSlot()
 
@@ -92,8 +106,8 @@ public class Guis {
                 .add(ENERGY,62,39).add(ENERGY,80,39).add(ENERGY,98,39)
                 .add(ENERGY,62,57).add(ENERGY,80,57).add(ENERGY,98,57);
 
-        COAL_BOILER.getGui().add(BRONZE, ALLOY_SMELTER);
-        COAL_BOILER.getGui().add(STEEL, ALLOY_SMELTER);
+        COAL_BOILER.getGui().add(BRONZE, CELL_IN, 44, 26).add(BRONZE, CELL_OUT, 44, 62).add(BRONZE, IT_OUT, 116, 26).add(BRONZE, IT_IN, 116, 62);
+        COAL_BOILER.getGui().add(STEEL, CELL_IN, 44, 26).add(STEEL, CELL_OUT, 44, 62).add(STEEL, IT_OUT, 116, 26).add(STEEL, IT_IN, 116, 62);
         LAVA_BOILER.getGui().add(ALLOY_SMELTER);
         SOLAR_BOILER.getGui().add(ALLOY_SMELTER);
 
