@@ -8,6 +8,7 @@ import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.Utils;
+import muramasa.gti.data.Materials;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
@@ -205,7 +206,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine {
             TileEntity adjTile = tile.getWorld().getTileEntity(tile.getPos().offset(side));
             if (adjTile == null) return;
             LazyOptional<IFluidHandler> cap = adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
-            tile.fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f, other, 1000)));
+            tile.fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
         }
 
         @Override
@@ -258,7 +259,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine {
 
         @Override
         public boolean accepts(FluidStack fluid) {
-            return fluid.isFluidEqual(new FluidStack(Fluids.WATER, 1)) || fluid.isFluidEqual(DistilledWater.getLiquid(1));
+            return fluid.getFluid() == Fluids.WATER || fluid.getFluid() == DistilledWater.getLiquid();
         }
 
         @Override

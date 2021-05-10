@@ -17,6 +17,8 @@ import static muramasa.antimatter.machine.Tier.BRONZE;
 
 public class TileEntitySteamMachine extends TileEntityMachine {
 
+    private static final ResourceLocation STEAM = new ResourceLocation("forge", "steam");
+
     public TileEntitySteamMachine(Machine<?> type) {
         super(type);
         recipeHandler = LazyOptional.of(() -> new MachineRecipeHandler<TileEntitySteamMachine>(this) {
@@ -38,7 +40,7 @@ public class TileEntitySteamMachine extends TileEntityMachine {
 
             @Override
             public boolean accepts(FluidStack stack) {
-                return stack.getFluid().getTags().contains(new ResourceLocation("forge", "steam"));
+                return stack.getFluid().getTags().contains(STEAM);
             }
         });
     }
