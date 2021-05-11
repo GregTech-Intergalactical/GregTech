@@ -40,7 +40,7 @@ public class RubberTree extends Tree {
     @Override
     public boolean attemptGrowTree(ServerWorld world, ChunkGenerator chunkGenerator, BlockPos pos, BlockState state, Random rand) {
         ConfiguredFeature<BaseTreeFeatureConfig, ?> configuredFeature = TREE_FEATURE
-                .withConfiguration(RubberTreeWorldGen.getTreeConfig(world.getBiome(pos)));
+                .withConfiguration(RubberTreeWorldGen.getTreeConfig(world.getBiome(pos).getCategory()));
         world.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);
         configuredFeature.config.forcePlacement();
         if (!configuredFeature.generate(world, chunkGenerator, rand, pos)) {
