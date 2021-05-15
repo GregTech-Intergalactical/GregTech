@@ -6,6 +6,7 @@ import muramasa.antimatter.datagen.builder.AntimatterBlockModelBuilder;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.dynamic.ModelConfig;
 import muramasa.antimatter.machine.MachineState;
+import muramasa.antimatter.mixin.ChunkReaderAccessor;
 import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.antimatter.structure.StructureCache;
 import muramasa.antimatter.texture.Texture;
@@ -145,15 +146,8 @@ public class BlockTurbineCasing extends BlockCasingMachine {
 
     protected World getWorld(IBlockReader reader) {
         if (!(reader instanceof ChunkRenderCache)) return null;
-        ChunkRenderCache cache = (ChunkRenderCache) reader;
-        try {
-            Field field = getField(ChunkRenderCache.class, "world");
-            field.setAccessible(true);
-            return (World) field.get(cache);
-        } catch (Exception ex) {
-
-        }
-        return null;
+        ChunkReaderAccessor cache = (ChunkReaderAccessor) reader;
+        return cache.getWorld();
     }
 
     protected TileEntityLargeTurbine getTurbine(IBlockReader world, BlockPos pos) {
