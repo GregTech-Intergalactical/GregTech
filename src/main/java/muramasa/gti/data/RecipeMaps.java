@@ -69,7 +69,7 @@ public class RecipeMaps {
     public static RecipeMap STEAM_ALLOY_SMELTING = new RecipeMap<>("steam_alloy_smelting", new RecipeBuilder());
 
     public static RecipeMap COKING = new RecipeMap<>("coking", new RecipeBuilder());
-    public static RecipeMap<BasicBlastingBuilder> BASIC_BLASTING = new RecipeMap<>("basic_blasting", new BasicBlastingBuilder());
+    public static RecipeMap BASIC_BLASTING = new RecipeMap<>("basic_blasting", new RecipeBuilder());
     public static RecipeMap<BlastingBuilder> BLASTING = new RecipeMap<>("elec_blasting", new BlastingBuilder(), MULTI_DISPLAY);
     public static RecipeMap IMPLOSION_COMPRESSING = new RecipeMap<>("implosion_compressing", new RecipeBuilder(), MULTI_DISPLAY);
     public static RecipeMap VACUUM_FREEZING = new RecipeMap<>("vacuum_freezing", new RecipeBuilder(), MULTI_DISPLAY);
