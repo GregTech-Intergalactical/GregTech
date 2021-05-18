@@ -70,7 +70,7 @@ public class RecipeBuilders {
 
     public static Recipe addRecipeToSteamMap(RecipeMap map, Recipe recipe) {
         try {
-            if (recipe.getPower() <= Tier.LV.getVoltage()/2) {
+            if (recipe.getPower() > 0 && (recipe.getPower()-1)*2 <= Tier.LV.getVoltage()) {
                 map.RB().ii(recipe.getInputItems()).io(recipe.getFlatOutputItems()).add(recipe.getDuration()* 3L, recipe.getPower() * 2);
             }
         } catch (Exception e) {
@@ -96,7 +96,7 @@ public class RecipeBuilders {
 
         @Override
         public Recipe add() {
-            Recipe r = null;
+          /*  Recipe r = null;
             List<RecipeIngredient> ings = this.ingredientInput;
             for (ItemStack fuel : FUELS) {
                 int burn = 1000;//fuel.getBurnTime();
@@ -107,7 +107,8 @@ public class RecipeBuilders {
                 r = build(duration, power, special, amps);
                 addToMap(r);
             }
-            return r;
+            return r;*/
+            return super.add();
         }
     }
 }

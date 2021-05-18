@@ -1,8 +1,12 @@
 package muramasa.gti.loader.machines;
 
+import muramasa.antimatter.Data;
 import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.gti.data.GregTechData;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 import java.util.List;
 
@@ -10,6 +14,7 @@ import static muramasa.antimatter.Data.DUST;
 import static muramasa.antimatter.Data.INGOT;
 import static muramasa.antimatter.material.MaterialTag.METAL;
 import static muramasa.gti.data.RecipeMaps.ALLOY_SMELTING;
+import static muramasa.gti.data.RecipeMaps.LASER_ENGRAVING;
 
 public class AlloyLoader {
 
@@ -27,9 +32,10 @@ public class AlloyLoader {
             ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(first.m),first.s),RecipeIngredient.of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
             boolean firstIngot = first.m.has(INGOT);
             boolean secondIngot = second.m.has(INGOT);
-            if (firstIngot && secondIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(first.m),first.s),RecipeIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
-            if (firstIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(first.m),first.s),RecipeIngredient.of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
-            if (secondIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(first.m),first.s),RecipeIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
+            if (firstIngot && secondIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(first.m),first.s),RecipeIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 12);
+            if (firstIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(first.m),first.s),RecipeIngredient.of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 12);
+            if (secondIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(first.m),first.s),RecipeIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 12);
         });
+
     }
 }
