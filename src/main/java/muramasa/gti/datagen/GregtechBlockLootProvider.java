@@ -1,7 +1,6 @@
 package muramasa.gti.datagen;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.block.BlockStorage;
 import muramasa.antimatter.datagen.providers.AntimatterBlockLootProvider;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;

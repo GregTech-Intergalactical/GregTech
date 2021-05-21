@@ -7,7 +7,6 @@ import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
 import net.minecraft.util.Direction;
-import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 
@@ -17,7 +16,7 @@ import java.util.List;
 import static muramasa.antimatter.Data.COVEROUTPUT;
 import static muramasa.gti.data.Materials.Steam;
 
-public class TileEntityInfiniteFluid extends TileEntityMachine {
+public class TileEntityInfiniteFluid extends TileEntityMachine<TileEntityInfiniteFluid> {
 
     @Override
     public void onFirstTick() {
@@ -39,9 +38,7 @@ public class TileEntityInfiniteFluid extends TileEntityMachine {
 
     public TileEntityInfiniteFluid(Machine<?> type) {
         super(type);
-        this.fluidHandler = LazyOptional.of(() -> new InfiniteFluidHandler(this) {
-
-        });
+        fluidHandler.set(() -> new InfiniteFluidHandler(this));
         // TODO
         /*
         interactHandler.setup((tile, tag) -> new MachineInteractHandler<TileEntityMachine>(tile, tag) {

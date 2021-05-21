@@ -6,13 +6,12 @@ import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityBasicMultiMachine;
 import muramasa.antimatter.util.int3;
 import net.minecraft.block.Blocks;
-import net.minecraftforge.common.util.LazyOptional;
 
-public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine {
+public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine<TileEntityPrimitiveBlastFurnace> {
 
     public TileEntityPrimitiveBlastFurnace(Machine type) {
         super(type);
-        this.recipeHandler = LazyOptional.of(() -> new CookingRecipeHandler<>(this));
+        recipeHandler.set(() -> new CookingRecipeHandler<>(this));
     }
 
     @Override

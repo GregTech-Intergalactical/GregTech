@@ -1,11 +1,12 @@
 package muramasa.gti.loader.machines;
-import static muramasa.gti.data.RecipeMaps.FLUID_SOLIDIFYING;
 
-import static muramasa.antimatter.Data.*;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gti.data.GregTechData;
+
+import static muramasa.antimatter.Data.*;
+import static muramasa.gti.data.RecipeMaps.FLUID_SOLIDIFYING;
 
 public class FluidSolidifier {
     public static void init() {

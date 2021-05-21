@@ -5,9 +5,7 @@ import net.minecraft.item.Items;
 
 import static muramasa.antimatter.Data.DUST;
 import static muramasa.antimatter.Data.GEM;
-import static muramasa.gti.data.Materials.Ash;
-import static muramasa.gti.data.Materials.CoalCoke;
-import static muramasa.gti.data.Materials.DarkAsh;
+import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.COAL_BOILERS;
 
 public class CoalBoilerHandler {

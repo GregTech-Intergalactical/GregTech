@@ -1,12 +1,8 @@
 package muramasa.gti.loader.machines;
 
-import muramasa.antimatter.Data;
 import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.gti.data.GregTechData;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 
 import java.util.List;
 
@@ -14,7 +10,6 @@ import static muramasa.antimatter.Data.DUST;
 import static muramasa.antimatter.Data.INGOT;
 import static muramasa.antimatter.material.MaterialTag.METAL;
 import static muramasa.gti.data.RecipeMaps.ALLOY_SMELTING;
-import static muramasa.gti.data.RecipeMaps.LASER_ENGRAVING;
 
 public class AlloyLoader {
 

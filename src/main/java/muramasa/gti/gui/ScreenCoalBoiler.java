@@ -11,7 +11,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.ModList;
 
-public class ScreenCoalBoiler<T extends ContainerMachine> extends ScreenMachine<T> {
+public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> extends ScreenMachine<TileEntityCoalBoiler, T> {
     public ScreenCoalBoiler(T container, PlayerInventory inv, ITextComponent name) {
         super(container, inv, name);
     }
@@ -41,8 +41,8 @@ public class ScreenCoalBoiler<T extends ContainerMachine> extends ScreenMachine<
                     drawTooltipInArea(stack,"Steam: " + steam + " MB", mouseX, mouseY, 70, 25, 10, 54);
                 }
             });
-            if (container.getTile() instanceof TileEntityCoalBoiler){
-                TileEntityCoalBoiler tile = (TileEntityCoalBoiler)container.getTile();
+            if (container.getTile() != null){
+                TileEntityCoalBoiler tile = container.getTile();
                 drawTooltipInArea(stack,"Heat: " + tile.getHeat() + "K out of " + tile.getMaxHeat(), mouseX, mouseY, 96, 25, 10, 54);
                 drawTooltipInArea(stack,"Fuel: " + tile.getFuel(), mouseX, mouseY + 10, 115, 53, 18, 18);
             }
