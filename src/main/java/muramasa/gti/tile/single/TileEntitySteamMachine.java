@@ -25,7 +25,7 @@ public class TileEntitySteamMachine<T extends TileEntitySteamMachine<T>> extends
         recipeHandler.set(() -> new MachineRecipeHandler<T>((T)this) {
             @Override
             public boolean consumeResourceForRecipe(boolean simulate) {
-                return tile.fluidHandler.map(t -> t.consumeAndReturnInputs(Arrays.asList(Materials.Steam.getGas((int)activeRecipe.getPower())), simulate).size() == 0)
+                return tile.fluidHandler.map(t -> t.consumeAndReturnInputs(Arrays.asList(Materials.Steam.getGas((int)getPower())), simulate).size() == 0)
                         .orElse(false);
             }
             //Allow up to 16 .
