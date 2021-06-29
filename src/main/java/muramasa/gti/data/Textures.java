@@ -1,5 +1,6 @@
 package muramasa.gti.data;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.material.TextureSet;
 import muramasa.antimatter.texture.ITextureHandler;
 import muramasa.antimatter.texture.Texture;
@@ -7,20 +8,20 @@ import muramasa.gti.Ref;
 
 public class Textures {
 
-    public static TextureSet DULL = new TextureSet(Ref.ID, "dull");
-    public static TextureSet METALLIC = new TextureSet(Ref.ID, "metallic");
-    public static TextureSet SHINY = new TextureSet(Ref.ID, "shiny");
-    public static TextureSet ROUGH = new TextureSet(Ref.ID, "rough");
-    public static TextureSet MAGNETIC = new TextureSet(Ref.ID, "magnetic");
-    public static TextureSet DIAMOND = new TextureSet(Ref.ID, "diamond");
-    public static TextureSet RUBY = new TextureSet(Ref.ID, "ruby");
-    public static TextureSet LAPIS = new TextureSet(Ref.ID, "lapis");
-    public static TextureSet GEM_H = new TextureSet(Ref.ID, "gem_h");
-    public static TextureSet GEM_V = new TextureSet(Ref.ID, "gem_v");
-    public static TextureSet QUARTZ = new TextureSet(Ref.ID, "quartz");
-    public static TextureSet FINE = new TextureSet(Ref.ID, "fine");
-    public static TextureSet FLINT = new TextureSet(Ref.ID, "flint");
-    public static TextureSet LIGNITE = new TextureSet(Ref.ID, "lignite");
+    public static TextureSet DULL = AntimatterAPI.registerIfAbsent(TextureSet.class, "dull", () -> new TextureSet(Ref.ID, "dull"));
+    public static TextureSet METALLIC = AntimatterAPI.registerIfAbsent(TextureSet.class, "metallic", () ->  new TextureSet(Ref.ID, "metallic"));
+    public static TextureSet SHINY = AntimatterAPI.registerIfAbsent(TextureSet.class, "shiny", () ->  new TextureSet(Ref.ID, "shiny"));
+    public static TextureSet ROUGH = AntimatterAPI.registerIfAbsent(TextureSet.class, "rough", () ->  new TextureSet(Ref.ID, "rough"));
+    public static TextureSet MAGNETIC = AntimatterAPI.registerIfAbsent(TextureSet.class, "magnetic", () ->  new TextureSet(Ref.ID, "magnetic"));
+    public static TextureSet DIAMOND = AntimatterAPI.registerIfAbsent(TextureSet.class, "diamond", () ->  new TextureSet(Ref.ID, "diamond"));
+    public static TextureSet RUBY = AntimatterAPI.registerIfAbsent(TextureSet.class, "ruby", () ->  new TextureSet(Ref.ID, "ruby"));
+    public static TextureSet LAPIS = AntimatterAPI.registerIfAbsent(TextureSet.class, "lapis", () ->  new TextureSet(Ref.ID, "lapis"));
+    public static TextureSet GEM_H = AntimatterAPI.registerIfAbsent(TextureSet.class, "gem_h", () ->  new TextureSet(Ref.ID, "gem_h"));
+    public static TextureSet GEM_V = AntimatterAPI.registerIfAbsent(TextureSet.class, "gem_v", () ->  new TextureSet(Ref.ID, "gem_v"));
+    public static TextureSet QUARTZ = AntimatterAPI.registerIfAbsent(TextureSet.class, "quartz", () ->  new TextureSet(Ref.ID, "quartz"));
+    public static TextureSet FINE = AntimatterAPI.registerIfAbsent(TextureSet.class, "fine", () ->  new TextureSet(Ref.ID, "fine"));
+    public static TextureSet FLINT = AntimatterAPI.registerIfAbsent(TextureSet.class, "flint", () ->  new TextureSet(Ref.ID, "flint"));
+    public static TextureSet LIGNITE = AntimatterAPI.registerIfAbsent(TextureSet.class, "lignite", () ->  new TextureSet(Ref.ID, "lignite"));
 
     public static final ITextureHandler BOILER_HANDLER = (m, t) -> new Texture[] {
         new Texture(Ref.ID, "block/machine/base/brick"),

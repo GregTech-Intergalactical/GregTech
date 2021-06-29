@@ -8,10 +8,10 @@ import static muramasa.antimatter.machine.MachineFlag.*;
 
 public class SteamMachine extends Machine<SteamMachine> {
 
-    public SteamMachine(String domain, String id, Object... data) {
-        super(domain, id, data);
+    public SteamMachine(String domain, String id) {
+        super(domain, id);
         setTile(() -> new TileEntityMachine<>(this));
-        addFlags(BASIC, STEAM, COVERABLE, CONFIGURABLE);
+        addFlags(BASIC, STEAM, COVERABLE);
         setGUI(Guis.STEAM_MENU_HANDLER);
     }
 }
