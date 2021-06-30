@@ -50,15 +50,6 @@ public class Guis {
     };
 
     public static void init(Dist side) {
-
-        AntimatterAPI.registerJEICategory(RecipeMaps.ORE_BYPRODUCTS, Guis.ORE_BYPRODUCTS);
-//        GregTechAPI.registerJEICategory(RecipeMaps.SMELTING, Guis.MULTI_DISPLAY_COMPACT);
-        AntimatterAPI.registerJEICategory(RecipeMaps.STEAM_FUELS, Guis.MULTI_DISPLAY);
-        AntimatterAPI.registerJEICategory(RecipeMaps.GAS_FUELS, Guis.MULTI_DISPLAY);
-        AntimatterAPI.registerJEICategory(RecipeMaps.COMBUSTION_FUELS, Guis.MULTI_DISPLAY);
-        AntimatterAPI.registerJEICategory(RecipeMaps.NAQUADAH_FUELS, Guis.MULTI_DISPLAY);
-        AntimatterAPI.registerJEICategory(RecipeMaps.PLASMA_FUELS, Guis.MULTI_DISPLAY);
-
         COAL_BOILER.setGUI(COAL_BOILER_MENU_HANDLER);
 
         //TODO changing slots of a machine in world, will crash from GTItemHandler.validateSlot()
