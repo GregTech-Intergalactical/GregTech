@@ -187,6 +187,10 @@ public class Guis {
         HATCH_FLUID_O.getGui().add(UV, FL_OUT, 61, 16).add(UV, FL_OUT, 79, 16).add(UV, FL_OUT, 97, 16).add(UV, FL_OUT, 61, 34).add(UV, FL_OUT, 79, 34).add(UV, FL_OUT, 97, 34).add(UV, FL_OUT, 61, 52).add(UV, FL_OUT, 79, 52).add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.getGui().add(MAX, HATCH_FLUID_O, ULV);
 
+        BATTERY_BUFFER_FOUR.getGui().setHasIOButton(false);
+        BATTERY_BUFFER_ONE.getGui().setHasIOButton(false);
+        BATTERY_BUFFER_NINE.getGui().setHasIOButton(false);
+
         if (side.isClient()) {
             TRANSFORMER_DIGITAL.getGui()
                     .addButton(10, 18, 14, 14, APAD_LEFT)

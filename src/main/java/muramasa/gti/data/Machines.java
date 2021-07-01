@@ -85,13 +85,13 @@ public class Machines {
     public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(Ref.ID, "combustion_engine").setMap(COMBUSTION_FUELS).setTiers(EV).addFlags(GUI, FLUID, ENERGY).setTile(m -> () -> new TileEntityCombustionEngine(m));
     public static MultiMachine FUSION_REACTOR = new MultiMachine(Ref.ID, "fusion_reactor").setMap(FUSION).setTiers(LUV, ZPM, UV).addFlags(GUI, FLUID,ENERGY).setTile(m -> () -> new TileEntityFusionReactor(m));
 
-    public static HatchMachine HATCH_ITEM_I = new HatchMachine(Ref.ID, "hatch_item_input").addFlags(GUI, ITEM).covers(COVERINPUT);
-    public static HatchMachine HATCH_ITEM_O = new HatchMachine(Ref.ID, "hatch_item_output").addFlags(GUI, ITEM).covers(COVEROUTPUT);
-    public static HatchMachine HATCH_FLUID_I = new HatchMachine(Ref.ID, "hatch_fluid_input").addFlags(GUI, FLUID, CELL).covers(COVERINPUT);
-    public static HatchMachine HATCH_FLUID_O = new HatchMachine(Ref.ID, "hatch_fluid_output").addFlags(GUI, FLUID, CELL).covers(COVEROUTPUT);
-    public static HatchMachine HATCH_MUFFLER = new HatchMachine(Ref.ID, "hatch_muffler").addFlags(GUI, ITEM).covers(COVERMUFFLER);
-    public static HatchMachine HATCH_DYNAMO = new HatchMachine(Ref.ID, "hatch_dynamo").addFlags(ENERGY).covers(COVERDYNAMO);
-    public static HatchMachine HATCH_ENERGY = new HatchMachine(Ref.ID, "hatch_energy").addFlags(ENERGY).covers(COVERENERGY);
+    public static HatchMachine HATCH_ITEM_I = new HatchMachine(Ref.ID, "hatch_item_input").addFlags(GUI, ITEM).covers(COVERNONE,COVERNONE,COVERINPUT,COVERNONE,COVERNONE,COVERNONE).setOutputCover(COVERINPUT).setAllowVerticalFacing(true);
+    public static HatchMachine HATCH_ITEM_O = new HatchMachine(Ref.ID, "hatch_item_output").addFlags(GUI, ITEM).covers(COVERNONE,COVERNONE,COVEROUTPUT,COVERNONE,COVERNONE,COVERNONE).setOutputCover(COVEROUTPUT).setAllowVerticalFacing(true);
+    public static HatchMachine HATCH_FLUID_I = new HatchMachine(Ref.ID, "hatch_fluid_input").addFlags(GUI, FLUID, CELL).covers(COVERNONE,COVERNONE,COVERINPUT,COVERNONE,COVERNONE,COVERNONE).setOutputCover(COVERINPUT).setAllowVerticalFacing(true);
+    public static HatchMachine HATCH_FLUID_O = new HatchMachine(Ref.ID, "hatch_fluid_output").addFlags(GUI, FLUID, CELL).covers(COVERNONE,COVERNONE,COVEROUTPUT,COVERNONE,COVERNONE,COVERNONE).setOutputCover(COVEROUTPUT).setAllowVerticalFacing(true);
+    public static HatchMachine HATCH_MUFFLER = new HatchMachine(Ref.ID, "hatch_muffler").addFlags(GUI, ITEM).covers(COVERNONE,COVERMUFFLER,COVERNONE,COVERNONE,COVERNONE,COVERNONE).setOutputCover(COVERMUFFLER).setAllowVerticalFacing(true);
+    public static HatchMachine HATCH_DYNAMO = new HatchMachine(Ref.ID, "hatch_dynamo").addFlags(ENERGY).covers(COVERNONE,COVERNONE,COVERDYNAMO,COVERNONE,COVERNONE,COVERNONE).setOutputCover(COVERDYNAMO).setAllowVerticalFacing(true);
+    public static HatchMachine HATCH_ENERGY = new HatchMachine(Ref.ID, "hatch_energy").addFlags(ENERGY).covers(COVERNONE,COVERNONE,COVERENERGY,COVERNONE,COVERNONE,COVERNONE).setOutputCover(COVERENERGY).setAllowVerticalFacing(true);
 
     public static TankMachine QUANTUM_TANK = new TankMachine(Ref.ID, "quantum_tank").addFlags(BASIC, GUI, CELL).frontCovers();
 
@@ -101,11 +101,11 @@ public class Machines {
     public static GeneratorMachine NAQUADAH_GENERATOR = new GeneratorMachine(Ref.ID, "naquadah_generator").setMap(NAQUADAH_FUELS).setTiers(EV, IV, LUV).addFlags(GUI, ITEM, FLUID, CELL);
     public static GeneratorMachine PLASMA_GENERATOR = new GeneratorMachine(Ref.ID, "plasma_generator").setMap(PLASMA_FUELS).setTiers(IV, LUV, ZPM).addFlags(GUI, ITEM, FLUID, CELL);
 
-    public static BasicMachine INFINITE_STORAGE = new BasicMachine(Ref.ID, "infinite_storage").setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV, MAX).addFlags(ENERGY).setTile(m -> () -> new TileEntityInfiniteStorage<>(m, 16)).covers((ICover[]) null);
+    public static BasicMachine INFINITE_STORAGE = new BasicMachine(Ref.ID, "infinite_storage").setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV, MAX).addFlags(ENERGY).setTile(m -> () -> new TileEntityInfiniteStorage<>(m, 16)).covers((ICover[]) null).setAllowVerticalFacing(true);
     public static TankMachine INFINITE_STEAM = new TankMachine(Ref.ID, "infinite_steam").addFlags(FLUID, CELL, GUI).setTile(m -> () -> new TileEntityInfiniteFluid(m)).setTiers(LV);
-    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four").addFlags(GUI, ENERGY, ITEM).covers(COVERBUFFERFOUR).setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).frontCovers();
-    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one").addFlags(GUI, ENERGY, ITEM).covers(COVERBUFFERONE).setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).frontCovers();
-    public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine").addFlags(GUI, ENERGY, ITEM).covers(COVERBUFFERNINE).setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).frontCovers();
+    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four").addFlags(GUI, ENERGY, ITEM).covers((ICover[]) null).setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).setAllowVerticalFacing(true);
+    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one").addFlags(GUI, ENERGY, ITEM).covers((ICover[]) null).setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).setAllowVerticalFacing(true);
+    public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine").addFlags(GUI, ENERGY, ITEM).covers((ICover[]) null).setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).setAllowVerticalFacing(true);
     public static BasicMachine TRANSFORMER = new BasicMachine(Ref.ID, "transformer").addFlags(ENERGY).setTile(m -> () -> new TileEntityTransformer<>(m, 1)).covers((ICover[]) null);
     public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(Ref.ID, "transformer_hiamp").addFlags(ENERGY).setTile(m -> () -> new TileEntityTransformer<>(m, 4)).covers((ICover[]) null);
     public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(Ref.ID, "transformer_ultra").addFlags(ENERGY).setTile(m -> () -> new TileEntityTransformer<>(m, 16)).covers((ICover[]) null);
