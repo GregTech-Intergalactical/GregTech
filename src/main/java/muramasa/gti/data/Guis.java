@@ -190,6 +190,7 @@ public class Guis {
         BATTERY_BUFFER_FOUR.getGui().setHasIOButton(false);
         BATTERY_BUFFER_ONE.getGui().setHasIOButton(false);
         BATTERY_BUFFER_NINE.getGui().setHasIOButton(false);
+        INFINITE_STEAM.getGui().setHasIOButton(false);
 
         if (side.isClient()) {
             TRANSFORMER_DIGITAL.getGui()
