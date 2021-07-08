@@ -86,13 +86,13 @@ public class Machines {
     public static MultiMachine FUSION_REACTOR = new MultiMachine(Ref.ID, "fusion_reactor").setMap(FUSION).setTiers(LUV, ZPM, UV).addFlags(GUI, FLUID,ENERGY).setTile(m -> () -> new TileEntityFusionReactor(m));
     public static MultiMachine DISTLLATION_TOWER = new MultiMachine(Ref.ID, "distillation_tower").setMap(DISTILLATION).setTiers(HV).addFlags(GUI, ITEM, FLUID,ENERGY).setTile(m -> () -> new TileEntityDistillationTower(m));
 
-    public static HatchMachine HATCH_ITEM_I = new HatchMachine(Ref.ID, "hatch_item_input").addFlags(GUI, ITEM).setInput().allowFrontIO();
-    public static HatchMachine HATCH_ITEM_O = new HatchMachine(Ref.ID, "hatch_item_output").addFlags(GUI, ITEM).setOutput().allowFrontIO();
-    public static HatchMachine HATCH_FLUID_I = new HatchMachine(Ref.ID, "hatch_fluid_input").addFlags(GUI, FLUID, CELL).setInput().allowFrontIO();
-    public static HatchMachine HATCH_FLUID_O = new HatchMachine(Ref.ID, "hatch_fluid_output").addFlags(GUI, FLUID, CELL).setOutput().allowFrontIO();
-    public static HatchMachine HATCH_MUFFLER = new HatchMachine(Ref.ID, "hatch_muffler").addFlags(GUI, ITEM).allowFrontIO();
-    public static HatchMachine HATCH_DYNAMO = new HatchMachine(Ref.ID, "hatch_dynamo").addFlags(ENERGY).allowFrontIO();
-    public static HatchMachine HATCH_ENERGY = new HatchMachine(Ref.ID, "hatch_energy").addFlags(ENERGY).allowFrontIO();
+    public static HatchMachine HATCH_ITEM_I = new HatchMachine(Ref.ID, "hatch_item_input", COVERINPUT).addFlags(GUI, ITEM);
+    public static HatchMachine HATCH_ITEM_O = new HatchMachine(Ref.ID, "hatch_item_output", COVEROUTPUT).addFlags(GUI, ITEM);
+    public static HatchMachine HATCH_FLUID_I = new HatchMachine(Ref.ID, "hatch_fluid_input", COVERINPUT).addFlags(GUI, FLUID, CELL);
+    public static HatchMachine HATCH_FLUID_O = new HatchMachine(Ref.ID, "hatch_fluid_output", COVEROUTPUT).addFlags(GUI, FLUID, CELL);
+    public static HatchMachine HATCH_MUFFLER = new HatchMachine(Ref.ID, "hatch_muffler", COVERMUFFLER).addFlags(GUI, ITEM);
+    public static HatchMachine HATCH_DYNAMO = new HatchMachine(Ref.ID, "hatch_dynamo", COVERDYNAMO).addFlags(ENERGY);
+    public static HatchMachine HATCH_ENERGY = new HatchMachine(Ref.ID, "hatch_energy", COVERENERGY).addFlags(ENERGY);
 
     public static TankMachine QUANTUM_TANK = new TankMachine(Ref.ID, "quantum_tank").addFlags(BASIC, GUI, CELL).frontCovers();
 
