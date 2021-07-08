@@ -65,6 +65,12 @@ public class Structures {
             .at("M", COMBUSTION_ENGINE).at("C", CASING_TITANIUM).at("V", CASING_ENGINE_INTAKE).at("H", CASING_TITANIUM, HATCH_FLUID_I, HATCH_FLUID_O).at("E", HATCH_DYNAMO)
             .build().offset(3, -1).min(19, CASING_TITANIUM).min(1, HATCH_FLUID_I, HATCH_FLUID_O)
         );
+        DISTLLATION_TOWER.setStructure(b -> b
+        .of("DDD", "DDM", "DDD").of("CCC","CAC", "CCC").of(1).of(1).of(1)
+        .at("M", DISTLLATION_TOWER).at("D", CASING_STAINLESS_STEEL,HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_ENERGY)
+                .at("C", CASING_STAINLESS_STEEL,HATCH_FLUID_O)
+                .build().offset(2,0).min(30, CASING_STAINLESS_STEEL).min(1, HATCH_ENERGY, HATCH_FLUID_I).min(4, HATCH_FLUID_O)
+        );
         //TODO Tier sensitive...
         FUSION_REACTOR.setStructure(Tier.LUV, b -> b
             .of(

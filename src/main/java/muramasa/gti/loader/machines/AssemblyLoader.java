@@ -21,6 +21,7 @@ import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.ASSEMBLING;
+import static muramasa.gti.data.TierMaps.*;
 
 public class AssemblyLoader {
     public static void init() {

@@ -4,6 +4,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.fluid.AntimatterMaterialFluid;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.SubTag;
 import muramasa.gti.Ref;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemTier;
@@ -438,8 +439,10 @@ public class Materials {
         CRYSTALLIZE.add(Lapis, Quartzite, NetherQuartz);
         BRITTLEG.add(Coal, Charcoal, Lignite);
         RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone);
+
+        SOLDER.subTag(SubTag.BAD_SOLDER, Lead, Tin);
+        SOLDER.subTag(SubTag.GOOD_SOLDER, SolderingAlloy, Tin);
         SOLDER.add(Lead, Tin, SolderingAlloy);
-        //TODO Mercury.add(METALL, SMELTG);
 
         NeodymiumMagnetic.setSmeltInto(Neodymium).setMacerateInto(Neodymium).setArcSmeltInto(Neodymium);
         SteelMagnetic.setSmeltInto(Steel).setMacerateInto(Steel).setArcSmeltInto(Steel);

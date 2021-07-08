@@ -4,6 +4,7 @@ import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gti.Ref;
 import muramasa.gti.data.GregTechData;
+import muramasa.gti.data.TierMaps;
 import muramasa.gti.loader.crafting.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
@@ -24,7 +25,7 @@ public class GregTechRecipes extends AntimatterRecipeProvider {
     public GregTechRecipes(String providerDomain, String providerName, DataGenerator gen) {
         super(providerDomain, providerName, gen);
         registerCraftingLoaders();
-        GregTechData.buildTierMaps();
+        TierMaps.providerInit();
     }
 
     protected void registerCraftingLoaders() {

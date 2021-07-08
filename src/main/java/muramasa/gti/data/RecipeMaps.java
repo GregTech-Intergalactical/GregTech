@@ -74,6 +74,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> IMPLOSION_COMPRESSING = new RecipeMap<>("implosion_compressing", new RecipeBuilder()).setGuiData(MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> VACUUM_FREEZING = new RecipeMap<>("vacuum_freezing", new RecipeBuilder()).setGuiData(MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> FUSION = new RecipeMap<>("fusion", new RecipeBuilder()).setGuiData(MULTI_DISPLAY);
+    public static RecipeMap<RecipeBuilder> DISTILLATION = new RecipeMap<>("distillation", new RecipeBuilder()).setGuiData(MULTI_DISPLAY);
 
     static {
         ORE_BYPRODUCTS.setGuiData(Guis.ORE_BYPRODUCTS);

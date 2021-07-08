@@ -8,6 +8,7 @@ import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;
+import muramasa.gti.data.TierMaps;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -15,7 +16,9 @@ import net.minecraft.item.Items;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
+import static muramasa.gti.data.GregTechData.CircuitBasic;
 import static muramasa.gti.data.Machines.*;
+import static muramasa.gti.data.TierMaps.TIER_CIRCUITS;
 
 public class Machines {
     public static void loadRecipes(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {
@@ -32,11 +35,11 @@ public class Machines {
             if (pump == null) return;
             Item casing = Item.BLOCK_TO_ITEM.get(AntimatterAPI.get(BlockCasing.class, "casing_"+tier.getId()));
             if (casing == null) return;
-            Item circuit = GregTechData.CircuitBasic;
-            Item cable = GregTechData.TIER_CABLES.get(tier);
+            Item circuit = TIER_CIRCUITS.getOrDefault(tier, CircuitBasic);
+            Item cable = TierMaps.TIER_CABLES.get(tier);
             if (cable == null) return;
             Item glass = Items.GLASS;
-            Item rotor = GregTechData.TIER_ROTORS.get(tier);
+            Item rotor = TierMaps.TIER_ROTORS.get(tier);
             Item machine = BENDER.getItem(tier);
 
             if (machine != null) {

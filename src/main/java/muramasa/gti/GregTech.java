@@ -13,11 +13,13 @@ import muramasa.gti.datagen.GregTechRecipes;
 import muramasa.gti.datagen.GregtechBlockLootProvider;
 import muramasa.gti.datagen.ProgressionAdvancements;
 import muramasa.gti.loader.WorldGenLoader;
+import muramasa.gti.loader.items.Circuitry;
 import muramasa.gti.loader.machines.*;
 import muramasa.gti.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gti.loader.machines.generator.Fuels;
 import muramasa.gti.loader.multi.Blasting;
 import muramasa.gti.loader.multi.Coking;
+import muramasa.gti.loader.multi.DistillationTower;
 import muramasa.gti.loader.multi.VacFreezer;
 import muramasa.gti.proxy.ClientHandler;
 import net.minecraftforge.api.distmarker.Dist;
@@ -67,11 +69,13 @@ public class GregTech extends AntimatterMod {
         loader.add(BendingLoader::init);
         loader.add(AssemblyLoader::init);
         loader.add(FluidSolidifier::init);
+        loader.add(Circuitry::init);
         loader.add(ChemicalReactorLoader::init);
         loader.add(Fuels::init);
         loader.add(CoalBoilerHandler::init);
         loader.add(FluidExtractor::init);
         loader.add(AlloyLoader::init);
+        loader.add(DistillationTower::init);
         loader.add(MixerLoader::init);
         loader.add(HammerLoader::init);
 
@@ -99,6 +103,8 @@ public class GregTech extends AntimatterMod {
         switch (event) {
             case DATA_INIT:
                 Materials.init();
+                TierMaps.init();
+
                 GregTechData.init(side);
                 Machines.init();
                 Guis.init(side);
@@ -106,7 +112,6 @@ public class GregTech extends AntimatterMod {
                 break;
                 //TODO: This runs before AM.DATA_READY.
             case DATA_READY:
-                GregTechData.buildTierMaps();
                 Structures.init();
                 //GregTechAPI.registerFluidCell(Data.CellTin.get(1));
                 //GregTechAPI.registerFluidCell(Data.CellSteel.get(1));

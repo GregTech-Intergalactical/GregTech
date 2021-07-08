@@ -41,72 +41,6 @@ public class GregTechData {
 
     private static final boolean HC = AntimatterConfig.GAMEPLAY.HARDCORE_CABLES;
 
-    static {
-        {
-            ImmutableMap.Builder<Integer, RecipeIngredient> builder = ImmutableMap.builder();
-            for (int i = 0; i <= 24; i++) {
-                builder.put(i, RecipeIngredient.of(new ItemIntCircuit(Ref.ID, "int_circuit_"+i,i).tip("ID: " + i),1).setNoConsume());
-            }
-            INT_CIRCUITS = builder.build();
-        }
-        {
-            ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, WroughtIron);
-            builder.put(Tier.LV, Steel);
-            builder.put(Tier.MV, Aluminium);
-            builder.put(Tier.HV, StainlessSteel);
-            builder.put(Tier.EV, Titanium);
-            builder.put(Tier.IV, TungstenSteel);
-            TIER_MATERIALS = builder.build();
-        }
-    }
-    //Not sure if needed.
-    private static boolean doneMaps = false;
-    public static void buildTierMaps() {
-        if (doneMaps) return;
-        doneMaps = true;
-        {
-            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, WIRE_LEAD.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.LV, WIRE_COPPER.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.MV, WIRE_COPPER.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.HV, WIRE_GOLD.getBlockItem(PipeSize.TINY));
-            builder.put(Tier.EV, WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.SMALL));
-            builder.put(Tier.IV, WIRE_PLATINUM.getBlockItem(PipeSize.TINY));
-            TIER_WIRES = builder.build();
-        }
-        {
-            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, CABLE_LEAD.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.LV, CABLE_TIN.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.MV, CABLE_COPPER.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.HV, CABLE_SILVER.getBlockItem(PipeSize.TINY));
-            builder.put(Tier.EV, CABLE_ALUMINIUM.getBlockItem(PipeSize.SMALL));
-            builder.put(Tier.IV, CABLE_PLATINUM.getBlockItem(PipeSize.TINY));
-            TIER_CABLES = builder.build();
-        }
-        {
-            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, ROTOR.get(Bronze));
-            builder.put(Tier.LV, ROTOR.get(Bronze));
-            builder.put(Tier.MV, ROTOR.get(Steel));
-            builder.put(Tier.HV, ROTOR.get(StainlessSteel));
-            builder.put(Tier.EV, ROTOR.get(Titanium));
-            builder.put(Tier.IV, ROTOR.get(TungstenSteel));
-            TIER_ROTORS = builder.build();
-        }
-        {
-            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Copper.getId()).getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.LV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Copper.getId()).getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.MV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Copper.getId()).getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.HV, AntimatterAPI.get(FluidPipe.class, "fluid_"+StainlessSteel.getId()).getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.EV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Titanium.getId()).getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.IV, AntimatterAPI.get(FluidPipe.class, "fluid_"+TungstenSteel.getId()).getBlockItem(PipeSize.NORMAL));
-            TIER_PIPES = builder.build();
-        }
-    }
-
     public static void init(Dist side) {
         if (side == Dist.CLIENT)
             RecipeMaps.clientMaps();
@@ -178,6 +112,8 @@ public class GregTechData {
     public static ItemBasic<?> SensorHV = new ItemBasic<>(Ref.ID, "sensor_hv");
     public static ItemBasic<?> SensorEV = new ItemBasic<>(Ref.ID, "sensor_ev");
     public static ItemBasic<?> SensorIV = new ItemBasic<>(Ref.ID, "sensor_iv");
+
+    /** CIRCUIT ITEMS **/
 
     public static ItemBasic<?> NandChip = new ItemBasic<>(Ref.ID, "nand_chip").tip("A very simple circuit");
     public static ItemBasic<?> AdvCircuitParts = new ItemBasic<>(Ref.ID, "adv_circuit_parts").tip("Used for making Advanced Circuits");
@@ -498,13 +434,4 @@ public class GregTechData {
     public static final BlockRubberLeaves RUBBER_LEAVES = new BlockRubberLeaves(Ref.ID, "rubber_leaves");
     public static final BlockRubberLog RUBBER_LOG = new BlockRubberLog(Ref.ID, "rubber_log");
     public static final BlockRubberSapling RUBBER_SAPLING = new BlockRubberSapling(Ref.ID, "rubber_sapling");
-
-    public static final ImmutableMap<Integer, RecipeIngredient> INT_CIRCUITS;
-    public static final ImmutableMap<Tier, Material> TIER_MATERIALS;
-    public static ImmutableMap<Tier, Item> TIER_WIRES;
-    public static ImmutableMap<Tier, Item> TIER_CABLES;
-    public static ImmutableMap<Tier, ItemBasic<?>> TIER_CIRCUITS;
-
-    public static ImmutableMap<Tier, Item> TIER_ROTORS;
-    public static ImmutableMap<Tier, Item> TIER_PIPES;
 }

@@ -84,6 +84,7 @@ public class Machines {
     public static MultiMachine PYROLYSIS_OVEN = new MultiMachine(Ref.ID, "pyrolysis_oven").setTiers(MV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(m -> () -> new TileEntityPyrolysisOven(m));
     public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(Ref.ID, "combustion_engine").setMap(COMBUSTION_FUELS).setTiers(EV).addFlags(GUI, FLUID, ENERGY).setTile(m -> () -> new TileEntityCombustionEngine(m));
     public static MultiMachine FUSION_REACTOR = new MultiMachine(Ref.ID, "fusion_reactor").setMap(FUSION).setTiers(LUV, ZPM, UV).addFlags(GUI, FLUID,ENERGY).setTile(m -> () -> new TileEntityFusionReactor(m));
+    public static MultiMachine DISTLLATION_TOWER = new MultiMachine(Ref.ID, "distillation_tower").setMap(DISTILLATION).setTiers(HV).addFlags(GUI, ITEM, FLUID,ENERGY).setTile(m -> () -> new TileEntityDistillationTower(m));
 
     public static HatchMachine HATCH_ITEM_I = new HatchMachine(Ref.ID, "hatch_item_input").addFlags(GUI, ITEM).setInput().allowFrontIO();
     public static HatchMachine HATCH_ITEM_O = new HatchMachine(Ref.ID, "hatch_item_output").addFlags(GUI, ITEM).setOutput().allowFrontIO();
