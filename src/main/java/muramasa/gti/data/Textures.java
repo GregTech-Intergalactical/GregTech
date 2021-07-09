@@ -1,7 +1,9 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.material.TextureSet;
+import muramasa.antimatter.texture.IOverlayTexturer;
 import muramasa.antimatter.texture.ITextureHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gti.Ref;
@@ -30,6 +32,20 @@ public class Textures {
         new Texture(Ref.ID, "block/machine/base/bricked_" + t.getId()),
         new Texture(Ref.ID, "block/machine/base/bricked_" + t.getId()),
         new Texture(Ref.ID, "block/machine/base/bricked_" + t.getId()),
+    };
+
+    public static final IOverlayTexturer TIER_SPECIFIC_OVERLAY_HANDLER = (type, state, tier) -> {
+        if (state != MachineState.ACTIVE && state != MachineState.INVALID_STRUCTURE) state = MachineState.IDLE;
+        String stateDir = state == MachineState.IDLE ? "" : state.getId() + "/";
+
+        return new Texture[] {
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "bottom"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "top"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "front"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "back"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "side"),
+        };
     };
 
     public static final Texture[] LARGE_TURBINE = new Texture[] {
