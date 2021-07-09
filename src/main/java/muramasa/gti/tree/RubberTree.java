@@ -29,7 +29,7 @@ public class RubberTree extends Tree {
                     .with(BlockRubberLog.RESIN_FACING, d), 1);
         });
         TRUNK_BLOCKS.addWeightedBlockstate(GregTechData.RUBBER_LOG.getDefaultState()
-                .with(BlockRubberLog.RESIN_STATE, ResinState.NONE), 16);
+                .with(BlockRubberLog.RESIN_STATE, ResinState.NONE), 20);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class RubberTree extends Tree {
     @Override
     public boolean attemptGrowTree(ServerWorld world, ChunkGenerator chunkGenerator, BlockPos pos, BlockState state, Random rand) {
         ConfiguredFeature<BaseTreeFeatureConfig, ?> configuredFeature = TREE_FEATURE
-                .withConfiguration(RubberTreeWorldGen.getTreeConfig(world.getBiome(pos)));
+                .withConfiguration(RubberTreeWorldGen.getTreeConfig(world.getBiome(pos).getCategory()));
         world.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);
         configuredFeature.config.forcePlacement();
         if (!configuredFeature.generate(world, chunkGenerator, rand, pos)) {
