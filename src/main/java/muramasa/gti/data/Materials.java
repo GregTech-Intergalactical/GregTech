@@ -18,6 +18,7 @@ import static muramasa.antimatter.material.TextureSet.NONE;
 import static muramasa.gti.data.Textures.*;
 import static net.minecraft.item.ItemTier.GOLD;
 import static net.minecraft.item.ItemTier.IRON;
+import static net.minecraft.item.ItemTier.NETHERITE;
 
 public class Materials {
 
@@ -298,35 +299,35 @@ public class Materials {
     public static Material NetherStar = AntimatterAPI.registerIfAbsent(Material.class,"nether_star",() -> new Material(Ref.ID, "nether_star", 0xffffff, NONE).asGemBasic(false).addTools(3.5F, 6.0F, 3620, 4, of(Enchantments.SILK_TOUCH, 1))); //Made Nether Stars usabl);
 
     //Brittle Gems
-    public static Material BlueTopaz = AntimatterAPI.registerIfAbsent(Material.class,"blue_topaz",() -> new Material(Ref.ID, "blue_topaz", 0x0000ff, GEM_H).asGem(true, ORE_SMALL).addTools(2.5F, 7.0F, 256, 3).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6)));
+    public static Material BlueTopaz = AntimatterAPI.registerIfAbsent(Material.class,"blue_topaz",() -> new Material(Ref.ID, "blue_topaz", 0x0000ff, GEM_H).asGem(true).asOre(3, 7,true).addTools(2.5F, 7.0F, 256, 3).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6)));
     public static Material Charcoal = AntimatterAPI.registerIfAbsent(Material.class,"charcoal",() -> new Material(Ref.ID, "charcoal", 0x644646, LIGNITE).asGemBasic(false).mats(of(Carbon, 1)));
     public static Material CoalCoke = AntimatterAPI.registerIfAbsent(Material.class,"coal_coke",() -> new Material(Ref.ID, "coal_coke", 0x8c8caa, LIGNITE).asGemBasic(false));
     public static Material LigniteCoke = AntimatterAPI.registerIfAbsent(Material.class,"lignite_coke",() -> new Material(Ref.ID, "lignite_coke", 0x8c6464, LIGNITE).asGemBasic(false));
 
-    public static Material Diamond = AntimatterAPI.registerIfAbsent(Material.class,"diamond",() -> new Material(Ref.ID, "diamond", 0xc8ffff, DIAMOND).asGem(true, ORE, ORE_SMALL).addTools(ItemTier.DIAMOND.getAttackDamage(), ItemTier.DIAMOND.getEfficiency(), ItemTier.DIAMOND.getMaxUses(), ItemTier.DIAMOND.getHarvestLevel()).mats(of(Carbon, 1)));
-    public static Material Emerald = AntimatterAPI.registerIfAbsent(Material.class,"emerald",() -> new Material(Ref.ID, "emerald", 0x50ff50, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(3.0F, 9.0F, 590, 3).mats(of(Silver, 1, Gold, 1))); //Made Emerald bette);
-    public static Material GreenSapphire = AntimatterAPI.registerIfAbsent(Material.class,"green_sapphire",() -> new Material(Ref.ID, "green_sapphire", 0x64c882, GEM_H).asGem(true, ORE, ORE_SMALL).addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3)));
+    public static Material Diamond = AntimatterAPI.registerIfAbsent(Material.class,"diamond",() -> new Material(Ref.ID, "diamond", 0xc8ffff, DIAMOND).asGem(true).asOre(3, 7,true).addTools(ItemTier.DIAMOND.getAttackDamage(), ItemTier.DIAMOND.getEfficiency(), ItemTier.DIAMOND.getMaxUses(), ItemTier.DIAMOND.getHarvestLevel()).mats(of(Carbon, 1)));
+    public static Material Emerald = AntimatterAPI.registerIfAbsent(Material.class,"emerald",() -> new Material(Ref.ID, "emerald", 0x50ff50, GEM_V).asGem(true).asOre(3, 7,true).addTools(3.0F, 9.0F, 590, 3).mats(of(Silver, 1, Gold, 1))); //Made Emerald bette);
+    public static Material GreenSapphire = AntimatterAPI.registerIfAbsent(Material.class,"green_sapphire",() -> new Material(Ref.ID, "green_sapphire", 0x64c882, GEM_H).asGem(true).asOre(3, 7,true).addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3)));
     //public static Material Lazurite = AntimatterAPI.registerIfAbsent(Material.class,"lazurite",() -> new Material(Ref.ID, "lazurite", 0x6478ff, LAPIS).asGemBasic(false, ORE).addComposition(of(Aluminium, 6, Silicon, 6, Calcium, 8, Sodium, 8)); //TODO I think this is needed);
-    public static Material Ruby = AntimatterAPI.registerIfAbsent(Material.class,"ruby",() -> new Material(Ref.ID, "ruby", 0xff6464, RUBY).asGem(true, ORE, ORE_SMALL).addTools(2.0F, 7.0F, 256, 2).mats(of(Chrome, 1, Aluminium, 2, Oxygen, 3)));
-    public static Material BlueSapphire = AntimatterAPI.registerIfAbsent(Material.class,"blue_sapphire",() -> new Material(Ref.ID, "blue_sapphire", 0x6464c8, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3)));
+    public static Material Ruby = AntimatterAPI.registerIfAbsent(Material.class,"ruby",() -> new Material(Ref.ID, "ruby", 0xff6464, RUBY).asGem(true).asOre(3, 7,true).addTools(2.0F, 7.0F, 256, 2).mats(of(Chrome, 1, Aluminium, 2, Oxygen, 3)));
+    public static Material BlueSapphire = AntimatterAPI.registerIfAbsent(Material.class,"blue_sapphire",() -> new Material(Ref.ID, "blue_sapphire", 0x6464c8, GEM_V).asGem(true).asOre(3, 7,true).addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3)));
     //public static Material Sodalite = AntimatterAPI.registerIfAbsent(Material.class,"sodalite",() -> new Material(Ref.ID, "sodalite", 0x1414ff, LAPIS).asGemBasic(false, ORE).addComposition(of(Aluminium, 3, Silicon, 3, Sodium, 4, Chlorine, 1)); //TODO I think this is needed);
-    public static Material Tanzanite = AntimatterAPI.registerIfAbsent(Material.class,"tanzanite",() -> new Material(Ref.ID, "tanzanite", 0x4000c8, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(2.0F, 7.0F, 256, 2).mats(of(Calcium, 2, Aluminium, 3, Silicon, 3, Hydrogen, 1, Oxygen, 13)));
-    public static Material Topaz = AntimatterAPI.registerIfAbsent(Material.class,"topaz",() -> new Material(Ref.ID, "topaz", 0xff8000, GEM_H).asGem(true, ORE, ORE_SMALL).addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6)));
+    public static Material Tanzanite = AntimatterAPI.registerIfAbsent(Material.class,"tanzanite",() -> new Material(Ref.ID, "tanzanite", 0x4000c8, GEM_V).asGem(true).asOre(3, 7,true).addTools(2.0F, 7.0F, 256, 2).mats(of(Calcium, 2, Aluminium, 3, Silicon, 3, Hydrogen, 1, Oxygen, 13)));
+    public static Material Topaz = AntimatterAPI.registerIfAbsent(Material.class,"topaz",() -> new Material(Ref.ID, "topaz", 0xff8000, GEM_H).asGem(true).asOre(3, 7,true).addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6)));
     public static Material Glass = AntimatterAPI.registerIfAbsent(Material.class,"glass",() -> new Material(Ref.ID, "glass", 0xfafafa, SHINY).asDust(PLATE, LENS).mats(of(SiliconDioxide, 1)));
-    public static Material Olivine = AntimatterAPI.registerIfAbsent(Material.class,"olivine",() -> new Material(Ref.ID, "olivine", 0x96ff96, RUBY).asGem(true, ORE, ORE_SMALL).addTools(2.0F, 7.0F, 256, 2, of(Enchantments.SILK_TOUCH, 1)).mats(of(Magnesium, 2, Iron, 1, SiliconDioxide, 2)));
-    public static Material Opal = AntimatterAPI.registerIfAbsent(Material.class,"opal",() -> new Material(Ref.ID, "opal", 0x0000ff, RUBY).asGem(true, ORE, ORE_SMALL).addTools(2.0F, 7.0F, 256, 2).mats(of(SiliconDioxide, 1)));
-    public static Material Amethyst = AntimatterAPI.registerIfAbsent(Material.class,"amethyst",() -> new Material(Ref.ID, "amethyst", 0xd232d2, RUBY).asGem(true, ORE, ORE_SMALL).addTools(2.0F, 7.0F, 256, 3).mats(of(SiliconDioxide, 4, Iron, 1)));
-    public static Material Lapis = AntimatterAPI.registerIfAbsent(Material.class,"lapis",() -> new Material(Ref.ID, "lapis", 0x4646dc, LAPIS).asGemBasic(false, ORE, ORE_SMALL).mats(of(/*Lazurite, 12, Sodalite, 2, */Pyrite, 1, Calcite, 1)));
+    public static Material Olivine = AntimatterAPI.registerIfAbsent(Material.class,"olivine",() -> new Material(Ref.ID, "olivine", 0x96ff96, RUBY).asGem(true).asOre(3, 7,true).addTools(2.0F, 7.0F, 256, 2, of(Enchantments.SILK_TOUCH, 1)).mats(of(Magnesium, 2, Iron, 1, SiliconDioxide, 2)));
+    public static Material Opal = AntimatterAPI.registerIfAbsent(Material.class,"opal",() -> new Material(Ref.ID, "opal", 0x0000ff, RUBY).asGem(true).asOre(3, 7,true).addTools(2.0F, 7.0F, 256, 2).mats(of(SiliconDioxide, 1)));
+    public static Material Amethyst = AntimatterAPI.registerIfAbsent(Material.class,"amethyst",() -> new Material(Ref.ID, "amethyst", 0xd232d2, RUBY).asGem(true).asOre(3, 7,true).addTools(2.0F, 7.0F, 256, 3).mats(of(SiliconDioxide, 4, Iron, 1)));
+    public static Material Lapis = AntimatterAPI.registerIfAbsent(Material.class,"lapis",() -> new Material(Ref.ID, "lapis", 0x4646dc, LAPIS).asGemBasic(false).asOre(2, 5,true).mats(of(/*Lazurite, 12, Sodalite, 2, */Pyrite, 1, Calcite, 1)));
     public static Material EnderPearl = AntimatterAPI.registerIfAbsent(Material.class,"enderpearl",() -> new Material(Ref.ID, "enderpearl", 0x6cdcc8, SHINY).asGemBasic(false).mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5/*, Magic, 6*/)));
     public static Material EnderEye = AntimatterAPI.registerIfAbsent(Material.class,"endereye",() -> new Material(Ref.ID, "endereye", 0xa0fae6, SHINY).asGemBasic(true, ROD, PLATE).mats(of(EnderPearl, 1, Blaze, 1)));
-    public static Material Phosphorus = AntimatterAPI.registerIfAbsent(Material.class,"phosphorus",() -> new Material(Ref.ID, "phosphorus", 0xffff00, FLINT).asGemBasic(false, ORE).mats(of(Calcium, 3, Phosphate, 2)));
-    public static Material RedGarnet = AntimatterAPI.registerIfAbsent(Material.class,"red_garnet",() -> new Material(Ref.ID, "red_garnet", 0xc85050, RUBY).asGemBasic(true, ORE, ORE_SMALL).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8)));
-    public static Material YellowGarnet = AntimatterAPI.registerIfAbsent(Material.class,"yellow_garnet",() -> new Material(Ref.ID, "yellow_garnet", 0xc8c850, RUBY).asGemBasic(true, ORE, ORE_SMALL).mats(of(Andradite, 5, Grossular, 8, Uvarovite, 3)));
+    public static Material Phosphorus = AntimatterAPI.registerIfAbsent(Material.class,"phosphorus",() -> new Material(Ref.ID, "phosphorus", 0xffff00, FLINT).asGemBasic(false).asOre(3, 7,true).mats(of(Calcium, 3, Phosphate, 2)));
+    public static Material RedGarnet = AntimatterAPI.registerIfAbsent(Material.class,"red_garnet",() -> new Material(Ref.ID, "red_garnet", 0xc85050, RUBY).asGemBasic(true).asOre(3, 7,true).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8)));
+    public static Material YellowGarnet = AntimatterAPI.registerIfAbsent(Material.class,"yellow_garnet",() -> new Material(Ref.ID, "yellow_garnet", 0xc8c850, RUBY).asGemBasic(true).asOre(3, 7,true).mats(of(Andradite, 5, Grossular, 8, Uvarovite, 3)));
     //public static Material Monazite = AntimatterAPI.registerIfAbsent(Material.class,"monazite",() -> new Material(Ref.ID, "monazite", 0x324632, DIAMOND).asGemBasic(false, ORE).addComposition(of(RareEarth, 1, Phosphate, 1)));
 
     /** **/
-    public static Material Redstone = AntimatterAPI.registerIfAbsent(Material.class,"redstone",() -> new Material(Ref.ID, "redstone", 0xc80000, ROUGH).asDust(ORE, ORE_SMALL, LIQUID).mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)));
-    public static Material Cinnabar = AntimatterAPI.registerIfAbsent(Material.class,"cinnabar",() -> new Material(Ref.ID, "cinnabar", 0x960000, ROUGH).asDust(ORE).mats(of(Mercury, 1, Sulfur, 1)));
+    public static Material Redstone = AntimatterAPI.registerIfAbsent(Material.class,"redstone",() -> new Material(Ref.ID, "redstone", 0xc80000, ROUGH).asOre(LIQUID).mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)));
+    public static Material Cinnabar = AntimatterAPI.registerIfAbsent(Material.class,"cinnabar",() -> new Material(Ref.ID, "cinnabar", 0x960000, ROUGH).asOre(false).mats(of(Mercury, 1, Sulfur, 1)));
 
     /** Metals **/
     public static Material AnnealedCopper = AntimatterAPI.registerIfAbsent(Material.class,"annealed_copper",() -> new Material(Ref.ID, "annealed_copper", 0xff7814, SHINY).asMetal(1357, 0, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Copper, 1)));
@@ -399,15 +400,15 @@ public class Materials {
     public static Material GreenSchist = AntimatterAPI.registerIfAbsent(Material.class,"green_schist",() -> new Material(Ref.ID, "green_schist", 0x69be69, NONE).asDust(ROCK));
     public static Material BlueSchist = AntimatterAPI.registerIfAbsent(Material.class,"blue_schist",() -> new Material(Ref.ID, "blue_schist", 0x0569be, NONE).asDust(ROCK));
     public static Material Kimberlite = AntimatterAPI.registerIfAbsent(Material.class,"kimberlite",() -> new Material(Ref.ID, "kimberlite", 0x64460a, NONE).asDust(ROCK));
-    public static Material Quartzite = AntimatterAPI.registerIfAbsent(Material.class,"quartzite",() -> new Material(Ref.ID, "quartzite", 0xe6cdcd, QUARTZ).asGemBasic(false, ORE, ROCK).mats(of(Silicon, 1, Oxygen, 2)));
+    public static Material Quartzite = AntimatterAPI.registerIfAbsent(Material.class,"quartzite",() -> new Material(Ref.ID, "quartzite", 0xe6cdcd, QUARTZ).asGemBasic(false, ORE, ROCK).asOre(2, 5, false).mats(of(Silicon, 1, Oxygen, 2)));
 
     /** Ore Stones **/
-    public static Material Coal = AntimatterAPI.registerIfAbsent(Material.class,"coal",() -> new Material(Ref.ID, "coal", 0x464646, LIGNITE).asGemBasic(false, ORE, ORE_STONE, ORE_SMALL).mats(of(Carbon, 1)));
-    public static Material Lignite = AntimatterAPI.registerIfAbsent(Material.class,"lignite_coal",() -> new Material(Ref.ID, "lignite_coal", 0x644646, LIGNITE).asGemBasic(false, ORE_STONE).mats(of(Carbon, 3, Water, 1)));
-    public static Material Salt = AntimatterAPI.registerIfAbsent(Material.class,"salt",() -> new Material(Ref.ID, "salt", 0xfafafa, FINE).asDust(ORE_STONE, ORE_SMALL).mats(of(Sodium, 1, Chlorine, 1)));
-    public static Material RockSalt = AntimatterAPI.registerIfAbsent(Material.class,"rock_salt",() -> new Material(Ref.ID, "rock_salt", 0xf0c8c8, FINE).asDust(ORE_STONE, ORE_SMALL).mats(of(Potassium, 1, Chlorine, 1)));
-    public static Material Bauxite = AntimatterAPI.registerIfAbsent(Material.class,"bauxite",() -> new Material(Ref.ID, "bauxite", 0xc86400, DULL).asDust(ORE_STONE).mats(of(Rutile, 2, Aluminium, 16, Hydrogen, 10, Oxygen, 11)));
-    public static Material OilShale = AntimatterAPI.registerIfAbsent(Material.class,"oil_shale",() -> new Material(Ref.ID, "oil_shale", 0x32323c, NONE).asDust(ORE_STONE));
+    public static Material Coal = AntimatterAPI.registerIfAbsent(Material.class,"coal",() -> new Material(Ref.ID, "coal", 0x464646, LIGNITE).asGemBasic(false).asOre(0, 2, true, ORE_STONE).mats(of(Carbon, 1)));
+    public static Material Lignite = AntimatterAPI.registerIfAbsent(Material.class,"lignite_coal",() -> new Material(Ref.ID, "lignite_coal", 0x644646, LIGNITE).asGemBasic(false).asOreStone(0, 2).mats(of(Carbon, 3, Water, 1)));
+    public static Material Salt = AntimatterAPI.registerIfAbsent(Material.class,"salt",() -> new Material(Ref.ID, "salt", 0xfafafa, FINE).asOreStone(ORE_SMALL).mats(of(Sodium, 1, Chlorine, 1)));
+    public static Material RockSalt = AntimatterAPI.registerIfAbsent(Material.class,"rock_salt",() -> new Material(Ref.ID, "rock_salt", 0xf0c8c8, FINE).asOreStone(ORE_SMALL).mats(of(Potassium, 1, Chlorine, 1)));
+    public static Material Bauxite = AntimatterAPI.registerIfAbsent(Material.class,"bauxite",() -> new Material(Ref.ID, "bauxite", 0xc86400, DULL).asOreStone().mats(of(Rutile, 2, Aluminium, 16, Hydrogen, 10, Oxygen, 11)));
+    public static Material OilShale = AntimatterAPI.registerIfAbsent(Material.class,"oil_shale",() -> new Material(Ref.ID, "oil_shale", 0x32323c, NONE).asOreStone());
 
 
     /** Reference Materials **/
@@ -417,7 +418,10 @@ public class Materials {
     public static Material PlasmaContainment = AntimatterAPI.registerIfAbsent(Material.class,"plasma_containment",() -> new Material(Ref.ID, "plasma_containment", 0xffff00, NONE));
 
     /** VANILLA **/
-    public static Material Netherite = AntimatterAPI.registerIfAbsent(Material.class,"netherite",() -> new Material(Ref.ID, "netherite", 0x2D2425, ROUGH).asSolid(PLATE));
+    //public static Material Netherite = AntimatterAPI.registerIfAbsent(Material.class,"netherite",() -> new Material(Ref.ID, "netherite", 0x2D2425, ROUGH).asSolid(PLATE));
+    public static Material Netherite = AntimatterAPI.registerIfAbsent(Material.class,"netherite",() -> new Material(Ref.ID, "netherite", 0x504650, ROUGH).asMetal(2246,1300, PLATE, ROD).addTools(3.0F, 10, 500, NETHERITE.getHarvestLevel(), of(Enchantments.FIRE_ASPECT, 3)).addArmor(new int[]{0, 1, 1, 0}, 0.5F, 0.1F, 20));
+    public static Material NetherizedDiamond = AntimatterAPI.registerIfAbsent(Material.class,"netherized_diamond",() -> new Material(Ref.ID, "netherized_diamond", 0x5a505a, DIAMOND).asGemBasic(false).addTools(4.0F, 12, NETHERITE.getMaxUses(), NETHERITE.getHarvestLevel(), of(Enchantments.FIRE_ASPECT, 3, Enchantments.SHARPNESS, 4)).addArmor(new int[]{1, 1, 2, 1}, 3.0F, 0.1F, 37, of(Enchantments.PROTECTION, 4)));
+    public static Material NetheriteScrap = AntimatterAPI.registerIfAbsent(Material.class,"netherite_scrap",() -> new Material(Ref.ID, "netherite_scrap", 0x6e505a, ROUGH).asDust(CRUSHED, CRUSHED_PURIFIED, CRUSHED_CENTRIFUGED, DUST_IMPURE, DUST_PURE));
 
     static {
         ELECSEPI.add(Bastnasite/*, Monazite*/);
@@ -443,6 +447,8 @@ public class Materials {
         SOLDER.subTag(SubTag.BAD_SOLDER, Lead, Tin);
         SOLDER.subTag(SubTag.GOOD_SOLDER, SolderingAlloy, Tin);
         SOLDER.add(Lead, Tin, SolderingAlloy);
+
+        BlueTopaz.remove(ORE);
 
         NeodymiumMagnetic.setSmeltInto(Neodymium).setMacerateInto(Neodymium).setArcSmeltInto(Neodymium);
         SteelMagnetic.setSmeltInto(Steel).setMacerateInto(Steel).setArcSmeltInto(Steel);
