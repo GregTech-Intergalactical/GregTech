@@ -20,6 +20,7 @@ import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -77,7 +78,8 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
             }
             float finalp = p;
             builder.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> RubberTree.TREE_FEATURE.withConfiguration(getTreeConfig(biome))
-            .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, finalp, 2))));
+            .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, finalp, 1
+            ))));
         }
     }
 
@@ -93,8 +95,9 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
         public RubberTreePlacement() {
             super(AtSurfaceWithExtraConfig.CODEC);
         }
+        @Nonnull
         @Override
-        public Stream<BlockPos> getPositions(WorldDecoratingHelper helper, Random random, AtSurfaceWithExtraConfig config, BlockPos pos) {
+        public Stream<BlockPos> getPositions(@Nonnull WorldDecoratingHelper helper, Random random, AtSurfaceWithExtraConfig config, @Nonnull BlockPos pos) {
             int i = config.count;
             double next = random.nextDouble();
             if (next < config.extraChance) {
