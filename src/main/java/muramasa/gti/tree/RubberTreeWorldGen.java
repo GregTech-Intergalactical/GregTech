@@ -20,13 +20,12 @@ import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
-import static muramasa.antimatter.Ref.RNG;
 
 public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
 
@@ -68,32 +67,27 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
         super("rubber_tree", RubberTreeWorldGen.class, World.OVERWORLD);
     }
     public static void onEvent(BiomeLoadingEvent builder){
-        Biome.Category biomeCategory = builder.getCategory();
-        if (!getValidBiomesStatic().test(biomeCategory) || biomeCategory == Biome.Category.PLAINS) return;
-        float p = 0.15F;
-        if (builder.getClimate().temperature > 0.8f) {
-            p = 0.04F;
-            if (builder.getClimate().precipitation == Biome.RainType.RAIN)
-                p += 0.04F;
-        }
-        float finalp = p;
-        builder.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> RubberTree.TREE_FEATURE.withConfiguration(getTreeConfig(biomeCategory))
-                .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, finalp, 1))));
-        if (RNG.nextInt(4) == 0){
-            builder.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> RubberTree.TREE_FEATURE.withConfiguration(getTreeConfig(biomeCategory))
-                    .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, finalp, 1))));
-            if (RNG.nextInt(6) == 0){
-                builder.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> RubberTree.TREE_FEATURE.withConfiguration(getTreeConfig(biomeCategory))
-                        .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, finalp, 1))));
+        for (Biome biome : ForgeRegistries.BIOMES) {
+            if (!getValidBiomesStatic().test(biome.getCategory()) || biome.getCategory() == Biome.Category.PLAINS)
+                continue;
+            float p = 0.05F;
+            if (builder.getClimate().temperature > 0.8f) {
+                p = 0.04F;
+                if (builder.getClimate().precipitation == Biome.RainType.RAIN)
+                    p += 0.04F;
             }
+            float finalp = p;
+            builder.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> RubberTree.TREE_FEATURE.withConfiguration(getTreeConfig(biome))
+            .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, finalp, 1
+            ))));
         }
     }
 
-    static BaseTreeFeatureConfig getTreeConfig(Biome.Category biome){
+    static BaseTreeFeatureConfig getTreeConfig(Biome biome){
         BaseTreeFeatureConfig config = RUBBER_TREE_CONFIG_NORMAL;
-        if (biome == Biome.Category.SWAMP)
+        if (biome.getCategory() == Biome.Category.SWAMP)
             config = RUBBER_TREE_CONFIG_SWAMP;
-        else if (biome == Biome.Category.JUNGLE)
+        else if (biome.getCategory() == Biome.Category.JUNGLE)
             config = RUBBER_TREE_CONFIG_JUNGLE;
         return config;
     }
@@ -101,8 +95,9 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
         public RubberTreePlacement() {
             super(AtSurfaceWithExtraConfig.CODEC);
         }
+        @Nonnull
         @Override
-        public Stream<BlockPos> getPositions(WorldDecoratingHelper helper, Random random, AtSurfaceWithExtraConfig config, BlockPos pos) {
+        public Stream<BlockPos> getPositions(@Nonnull WorldDecoratingHelper helper, Random random, AtSurfaceWithExtraConfig config, @Nonnull BlockPos pos) {
             int i = config.count;
             double next = random.nextDouble();
             if (next < config.extraChance) {

@@ -1,18 +1,12 @@
 package muramasa.gti.gui;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.gui.ButtonBody;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
-import muramasa.antimatter.gui.event.GuiEvent;
 import muramasa.antimatter.gui.screen.ScreenMachine;
-import muramasa.antimatter.gui.widget.SwitchWidget;
-import muramasa.antimatter.machine.MachineFlag;
 import muramasa.gti.tile.single.TileEntitySteamMachine;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.text.ITextComponent;
-
-import static muramasa.antimatter.Data.COVEROUTPUT;
 
 public class ScreenSteamMachine<T extends TileEntitySteamMachine<T>, U extends ContainerBasicMachine<T>> extends ScreenMachine<T, U> {
 
@@ -32,13 +26,12 @@ public class ScreenSteamMachine<T extends TileEntitySteamMachine<T>, U extends C
     @Override
     protected void drawGuiContainerBackgroundLayer(MatrixStack stack, float partialTicks, int mouseX, int mouseY) {
         super.drawGuiContainerBackgroundLayer(stack, partialTicks, mouseX, mouseY);
-        drawProgress(stack, partialTicks, mouseX, mouseY);
     }
 
     @Override
     protected void init() {
         super.init();
-        if (container.getTile().has(MachineFlag.ITEM)) {
+        /*if (container.getTile().has(MachineFlag.ITEM)) {
             addButton(new SwitchWidget(gui, guiLeft + 26, guiTop + 63, 16, 16, ITEM, (b, s) -> {
                 Antimatter.NETWORK.sendToServer(container.getTile().createGuiPacket(GuiEvent.ITEM_EJECT, s ? 1 : 0));
             },container.getTile().coverHandler.map(t -> COVEROUTPUT.shouldOutputItems(t.get(t.getOutputFacing()))).orElse(false)));
@@ -47,6 +40,6 @@ public class ScreenSteamMachine<T extends TileEntitySteamMachine<T>, U extends C
             addButton(new SwitchWidget(gui, guiLeft + 8, guiTop + 63, 16, 16, FLUID, (b, s) -> {
                 Antimatter.NETWORK.sendToServer(container.getTile().createGuiPacket(GuiEvent.FLUID_EJECT, s ? 1 : 0));
             },container.getTile().coverHandler.map(t -> COVEROUTPUT.shouldOutputFluids(t.get(t.getOutputFacing()))).orElse(false)));
-        }
+        }*/
     }
 }
