@@ -1,12 +1,15 @@
 package muramasa.gti.data;
 
+import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.cover.ICover;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
 import muramasa.antimatter.tile.single.TileEntityDigitalTransformer;
 import muramasa.antimatter.tile.single.TileEntityInfiniteStorage;
 import muramasa.antimatter.tile.single.TileEntityTransformer;
 import muramasa.gti.Ref;
+import muramasa.gti.machine.SteamMachine;
 import muramasa.gti.tile.multi.*;
 import muramasa.gti.tile.single.TileEntityCoalBoiler;
 import muramasa.gti.tile.single.TileEntityInfiniteFluid;
@@ -29,7 +32,7 @@ public class Machines {
     public static BasicMachine EXTRACTOR = new BasicMachine(Ref.ID, "extractor").setMap(EXTRACTING).addFlags(GUI, ITEM);
     public static BasicMachine EXTRUDER = new BasicMachine(Ref.ID, "extruder").setMap(EXTRUDING).addFlags(GUI, ITEM);
     public static BasicMachine LATHE = new BasicMachine(Ref.ID, "lathe").setMap(LATHING).addFlags(GUI, ITEM);
-    public static BasicMachine PULVERIZER = new BasicMachine(Ref.ID, "pulverizer").setMap(PULVERIZING).addFlags(GUI, ITEM);
+    public static BasicMachine PULVERIZER = new BasicMachine(Ref.ID, "pulverizer").setMap(PULVERIZING).addFlags(GUI, ITEM).setGuiTiers(ImmutableMap.<Tier, Tier>builder().put(HV, HV).put(EV, EV).put(IV, IV));
     public static BasicMachine RECYCLER = new BasicMachine(Ref.ID, "recycler").setMap(RECYCLING).addFlags(GUI, ITEM);
     public static BasicMachine SCANNER = new BasicMachine(Ref.ID, "scanner").setMap(SCANNING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine WIRE_MILL = new BasicMachine(Ref.ID, "wire_mill").setMap(WIRE_MILLING).addFlags(GUI, ITEM);
@@ -57,15 +60,15 @@ public class Machines {
     public static BasicMachine ARC_FURNACE = new BasicMachine(Ref.ID, "arc_furnace").setMap(ARC_SMELTING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine PLASMA_ARC_FURNACE = new BasicMachine(Ref.ID, "plasma_arc_furnace").setMap(PLASMA_ARC_SMELTING).addFlags(GUI, ITEM, FLUID);
 
-    public static BasicMachine COAL_BOILER = new BasicMachine(Ref.ID, "coal_boiler").setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(m -> () -> new TileEntityCoalBoiler(m));
-    public static BasicMachine LAVA_BOILER = new BasicMachine(Ref.ID, "lava_boiler").setMap(SMALL_BOILERS).setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID);
+    public static SteamMachine COAL_BOILER = new SteamMachine(Ref.ID, "coal_boiler").setMap(COAL_BOILERS).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(m -> () -> new TileEntityCoalBoiler(m));
+    public static SteamMachine LAVA_BOILER = new SteamMachine(Ref.ID, "lava_boiler").setMap(SMALL_BOILERS).setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID);
     public static BasicMachine SOLAR_BOILER = new BasicMachine(Ref.ID, "solar_boiler").setMap(SMALL_BOILERS).setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID);
-    public static BasicMachine STEAM_FURNACE = new BasicMachine(Ref.ID, "steam_furnace").setMap(STEAM_SMELTING).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(m -> () -> new TileEntitySteamMachine<>(m));
-    public static BasicMachine STEAM_PULVERIZER = new BasicMachine(Ref.ID, "steam_pulverizer").setMap(STEAM_PULVERIZING).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(m -> () -> new TileEntitySteamMachine<>(m));
-    public static BasicMachine STEAM_EXTRACTOR = new BasicMachine(Ref.ID, "steam_extractor").setMap(STEAM_EXTRACTING).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(m -> () -> new TileEntitySteamMachine<>(m));
-    public static BasicMachine STEAM_FORGE_HAMMER = new BasicMachine(Ref.ID, "steam_forge_hammer").setMap(STEAM_HAMMERING).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(m -> () -> new TileEntitySteamMachine<>(m));
-    public static BasicMachine STEAM_COMPRESSOR = new BasicMachine(Ref.ID, "steam_compressor").setMap(STEAM_COMPRESSING).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(m -> () -> new TileEntitySteamMachine<>(m));
-    public static BasicMachine STEAM_ALLOY_SMELTER = new BasicMachine(Ref.ID, "steam_alloy_smelter").setMap(STEAM_ALLOY_SMELTING).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(m -> () -> new TileEntitySteamMachine<>(m));
+    public static SteamMachine STEAM_FURNACE = new SteamMachine(Ref.ID, "steam_furnace").setMap(STEAM_SMELTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
+    public static SteamMachine STEAM_PULVERIZER = new SteamMachine(Ref.ID, "steam_pulverizer").setMap(STEAM_PULVERIZING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
+    public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(Ref.ID, "steam_extractor").setMap(STEAM_EXTRACTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
+    public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(Ref.ID, "steam_forge_hammer").setMap(STEAM_HAMMERING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
+    public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(Ref.ID, "steam_compressor").setMap(STEAM_COMPRESSING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
+    public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(Ref.ID, "steam_alloy_smelter").setMap(STEAM_ALLOY_SMELTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
 
     public static BasicMultiMachine<?> COKE_OVEN = new BasicMultiMachine<>(Ref.ID, "coke_oven").setMap(COKING).setTiers(BRONZE).addFlags(GUI, ITEM).setTile(m -> () -> new TileEntityCokeOven(m));
     public static BasicMultiMachine<?> PRIMITIVE_BLAST_FURNACE = new BasicMultiMachine<>(Ref.ID, "primitive_blast_furnace").setMap(BASIC_BLASTING).setTiers(BRONZE).addFlags(GUI, ITEM).setTile(m -> () -> new TileEntityPrimitiveBlastFurnace(m));

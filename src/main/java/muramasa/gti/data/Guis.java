@@ -40,6 +40,11 @@ public class Guis {
         public ContainerBasicMachine getMenu(Object tile, PlayerInventory playerInv, int windowId) {
             return tile instanceof TileEntityMachine ? new ContainerBasicMachine((TileEntityMachine<?>) tile, playerInv, this, windowId) : null;
         }
+
+        @Override
+        public Object screen() {
+            return ClientData.SCREEN_COAL;
+        }
     };
 
     public static MenuHandlerMachine<? extends TileEntityMachine, ? extends ContainerMachine> STEAM_MENU_HANDLER = new MenuHandlerMachine(Ref.ID, "container_steam") {
@@ -47,6 +52,11 @@ public class Guis {
         @Override
         public ContainerMachine getMenu(Object tile, PlayerInventory playerInv, int windowId) {
             return tile instanceof TileEntityMachine ? new ContainerBasicMachine((TileEntityMachine) tile, playerInv, this, windowId) : null;
+        }
+
+        @Override
+        public Object screen() {
+            return ClientData.SCREEN_STEAM;
         }
     };
 
