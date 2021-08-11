@@ -33,6 +33,7 @@ public class GregTechRecipes extends AntimatterRecipeProvider {
         this.craftingLoaders.add(Smelting::loadRecipes);
         this.craftingLoaders.add(WireCablesPlates::loadRecipes);
         this.craftingLoaders.add(Machines::loadRecipes);
+        this.craftingLoaders.add(SteamMachines::loadRecipes);
         this.craftingLoaders.add(BlockParts::loadRecipes);
     }
 

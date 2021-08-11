@@ -15,6 +15,7 @@ import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.Element.*;
 import static muramasa.antimatter.material.MaterialTag.*;
 import static muramasa.antimatter.material.TextureSet.NONE;
+import static muramasa.gti.data.GregTechData.WIRE_ANNEALED_COPPER;
 import static muramasa.gti.data.Textures.*;
 import static net.minecraft.item.ItemTier.GOLD;
 import static net.minecraft.item.ItemTier.IRON;
@@ -32,7 +33,7 @@ public class Materials {
     public static Material Iridium = AntimatterAPI.registerIfAbsent(Material.class,"iridium",() -> new Material(Ref.ID, "iridium", 0xf0f0f5, DULL, Ir).asMetal(2719, 2719, FRAME, ORE, ORE_SMALL).addTools(5.0F, 8.0F, 2560, 4));
     public static Material Iron = AntimatterAPI.registerIfAbsent(Material.class,"iron",() -> new Material(Ref.ID, "iron", 0xc8c8c8, METALLIC, Fe).asMetal(1811, 0, RING, GEAR, FRAME, ORE, ORE_SMALL).asPlasma().addTools(IRON.getAttackDamage(), IRON.getEfficiency(), IRON.getMaxUses(), IRON.getHarvestLevel()));
     public static Material Lanthanum = AntimatterAPI.registerIfAbsent(Material.class,"lanthanum",() -> new Material(Ref.ID, "lanthanum", 0xffffff, METALLIC, La).asSolid(1193, 1193));
-    public static Material Lead = AntimatterAPI.registerIfAbsent(Material.class,"lead",() -> new Material(Ref.ID, "lead", 0x8c648c, DULL, Pb).asMetal(600, 0, PLATE, PLATE_DENSE, FOIL, ROD, ORE, ORE_SMALL));
+    public static Material Lead = AntimatterAPI.registerIfAbsent(Material.class,"lead",() -> new Material(Ref.ID, "lead", 0x8c648c, DULL, Pb).asMetal(600, 0, PLATE, PLATE_DENSE, FOIL, ROD, ORE, ORE_SMALL, FRAME));
     public static Material Manganese = AntimatterAPI.registerIfAbsent(Material.class,"manganese",() -> new Material(Ref.ID, "manganese", 0xfafafa, DULL, Mn).asMetal(1519, 0, ORE));
     public static Material Molybdenum = AntimatterAPI.registerIfAbsent(Material.class,"molybdenum",() -> new Material(Ref.ID, "molybdenum", 0xb4b4dc, SHINY, Mo).asMetal(2896, 0, ORE).addTools(2.0F, 7.0F, 512, 2));
     public static Material Neodymium = AntimatterAPI.registerIfAbsent(Material.class,"neodymium",() -> new Material(Ref.ID, "neodymium", 0x646464, METALLIC, Nd).asMetal(1297, 1297, PLATE, ROD, ORE)); //TODO: Bastnasite or Monazite for Ore For);
@@ -342,7 +343,7 @@ public class Materials {
     public static Material Nichrome = AntimatterAPI.registerIfAbsent(Material.class,"nichrome",() -> new Material(Ref.ID, "nichrome", 0xcdcef6, METALLIC).asMetal(2700, 2700).addTools(2.0F, 6.0F, 81, 2, of(Enchantments.BANE_OF_ARTHROPODS, 3)).mats(of(Nickel, 4, Chrome, 1)));
     public static Material NiobiumTitanium = AntimatterAPI.registerIfAbsent(Material.class,"niobium_titanium",() -> new Material(Ref.ID, "niobium_titanium", 0x1d1d29, DULL).asMetal(4500, 4500, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Nickel, 4, Chrome, 1)));
     public static Material SolderingAlloy = AntimatterAPI.registerIfAbsent(Material.class,"soldering_alloy",() -> new Material(Ref.ID, "soldering_alloy", 0xdcdce6, DULL).asMetal(400, 400, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Tin, 9, Antimony, 1)));
-    public static Material Steel = AntimatterAPI.registerIfAbsent(Material.class,"steel",() -> new Material(Ref.ID, "steel", 0x808080, METALLIC).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ORE, ORE_SMALL, ROTOR, GEAR_SMALL).addTools(Iron).mats(of(Iron, 50, Carbon, 1)));
+    public static Material Steel = AntimatterAPI.registerIfAbsent(Material.class,"steel",() -> new Material(Ref.ID, "steel", 0x808080, METALLIC).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).addTools(Iron).mats(of(Iron, 50, Carbon, 1)));
     public static Material StainlessSteel = AntimatterAPI.registerIfAbsent(Material.class,"stainless_steel",() -> new Material(Ref.ID, "stainless_steel", 0xc8c8dc, SHINY).asMetal(1700, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ORE, ORE_SMALL, ROTOR, GEAR_SMALL).addTools(Steel).mats(of(Iron, 6, Chrome, 1, Manganese, 1, Nickel, 1)));
     public static Material Ultimet = AntimatterAPI.registerIfAbsent(Material.class,"ultimet",() -> new Material(Ref.ID, "ultimet", 0xb4b4e6, SHINY).asMetal(2700, 2700).mats(of(Cobalt, 5, Chrome, 2, Nickel, 1, Molybdenum, 1)));
     public static Material VanadiumGallium = AntimatterAPI.registerIfAbsent(Material.class,"vanadium_gallium",() -> new Material(Ref.ID, "vanadium_gallium", 0x80808c, SHINY).asMetal(4500, 4500, ROD, PLATE).mats(of(Vanadium, 3, Gallium, 1)));
@@ -447,6 +448,8 @@ public class Materials {
         SOLDER.subTag(SubTag.BAD_SOLDER, Lead, Tin);
         SOLDER.subTag(SubTag.GOOD_SOLDER, SolderingAlloy, Tin);
         SOLDER.add(Lead, Tin, SolderingAlloy);
+        WIRE.subTag(SubTag.COPPER_WIRE, AnnealedCopper);
+        WIRE.subTag(SubTag.COPPER_WIRE, Copper);
 
         BlueTopaz.remove(ORE);
 

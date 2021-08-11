@@ -5,14 +5,21 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.util.TagUtils;
 import muramasa.gti.Ref;
 import muramasa.gti.items.ItemIntCircuit;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
+
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 import static muramasa.antimatter.Data.ROTOR;
+import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.*;
 
@@ -20,6 +27,7 @@ public class TierMaps {
 
     public static final ImmutableMap<Integer, RecipeIngredient> INT_CIRCUITS;
     public static final ImmutableMap<Tier, Material> TIER_MATERIALS;
+    public static final ImmutableMap<Tier, Material> TIER_PIPE_MATERIAL;
     public static ImmutableMap<Tier, Item> TIER_WIRES;
     public static ImmutableMap<Tier, Item> TIER_CABLES;
     public static ImmutableMap<Tier, ItemBasic<?>> TIER_CIRCUITS;
@@ -27,6 +35,8 @@ public class TierMaps {
 
     public static ImmutableMap<Tier, Item> TIER_ROTORS;
     public static ImmutableMap<Tier, Item> TIER_PIPES;
+
+    public static final BiFunction<PipeSize, Tier, Object> WIRE_GETTER;
 
     static {
         {
@@ -46,6 +56,35 @@ public class TierMaps {
             builder.put(Tier.IV, TungstenSteel);
             TIER_MATERIALS = builder.build();
         }
+        {
+            ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
+            builder.put(Tier.ULV, WroughtIron);
+            builder.put(Tier.LV, Bronze);
+            builder.put(Tier.MV, Bronze);
+            builder.put(Tier.HV, StainlessSteel);
+            builder.put(Tier.EV, Titanium);
+            builder.put(Tier.IV, TungstenSteel);
+            TIER_PIPE_MATERIAL = builder.build();
+        }
+
+        WIRE_GETTER = (size, tier) -> {
+            if (tier == LV) {
+                return TagUtils.getItemTag(new ResourceLocation(muramasa.antimatter.Ref.ID, SubTag.COPPER_WIRE.getId()+"_"+ size.getId()));
+            }
+            if (tier == MV) {
+                return WIRE_CUPRONICKEL.getBlockItem(size);
+            }
+            if (tier == HV) {
+                return WIRE_KANTHAL.getBlockItem(size);
+            }
+            if (tier == EV) {
+                return WIRE_NICHROME.getBlockItem(size);
+            }
+            if (tier == IV) {
+                return WIRE_TUNGSTEN_STEEL.getBlockItem(size);
+            }
+            throw new IllegalArgumentException("Too high tier in WIRE_GETTER");
+        };
     }
     //Called to init the INT CIRCUITS and tier materials early on.
     public static void init() {
@@ -101,6 +140,8 @@ public class TierMaps {
             builder.put(Tier.LV, CircuitBasic);
             builder.put(Tier.MV, CircuitGood);
             builder.put(Tier.HV, CircuitAdv);
+            builder.put(Tier.EV, CircuitAdv);
+            builder.put(Tier.IV, CircuitAdv);
             TIER_CIRCUITS = builder.build();
         }
         {

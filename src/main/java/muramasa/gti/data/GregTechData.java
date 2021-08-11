@@ -408,6 +408,7 @@ public class GregTechData {
 
     public static final FluidPipe<?> FLUID_PIPE_BRICK = new FluidPipe<>(Ref.ID, Brick, 1000, false).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(1).pressures(400, 400, 400, 400, 400, 400);
     public static final FluidPipe<?> FLUID_PIPE_COPPER = new FluidPipe<>(Ref.ID, Copper, 700, true).caps(1).pressures(600);
+    public static final FluidPipe<?> FLUID_PIPE_BRONZE = new FluidPipe<>(Ref.ID, Bronze, 800, true).caps(1).pressures(800);
     public static final FluidPipe<?> FLUID_PIPE_BISMUTH_BRONZE = new FluidPipe<>(Ref.ID, BismuthBronze, 950, true).caps(1).pressures(800);
     public static final FluidPipe<?> FLUID_PIPE_BLACK_STEEL = new FluidPipe<>(Ref.ID, BlackSteel, 1200, true).caps(1).pressures(900);
     public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = new FluidPipe<>(Ref.ID, StainlessSteel, 1300, true).caps(1).pressures(1000);
