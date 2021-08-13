@@ -7,6 +7,7 @@ import muramasa.antimatter.integration.jei.AntimatterJEIPlugin;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.gti.tile.single.TileEntityCoalBoiler;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.ModList;
@@ -48,6 +49,7 @@ public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> 
     protected void drawGuiContainerBackgroundLayer(MatrixStack stack, float partialTicks, int mouseX, int mouseY) {
         super.drawGuiContainerBackgroundLayer(stack, partialTicks, mouseX, mouseY);
         drawTitle(stack, mouseX, mouseY);
+        ResourceLocation gui = container.source().handler.getGuiTexture();
         if (container.getTile().has(MachineFlag.FLUID)) {
             //TODO
             container.getTile().fluidHandler.ifPresent(t -> {

@@ -2,6 +2,7 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.gui.MenuHandlerMachine;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
@@ -24,9 +25,9 @@ import static muramasa.gti.data.Machines.*;
 public class Guis {
 
     //TODO move these to the API somehow
-    public static GuiData<?> MULTI_DISPLAY = new GuiData<>("antimatter", "multi_display").setSlots(ISlotProvider.DEFAULT().add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63));
-    public static GuiData<?> MULTI_DISPLAY_COMPACT = new GuiData<>("antimatter", "multi_display").setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots())).setPadding(0, 0, 0, 0);
-    public static GuiData<?> BASIC_TANK = new GuiData<>("antimatter", "basic_tank").setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58).add(FL_IN, 106, 43));
+    public static GuiData MULTI_DISPLAY = new GuiData("antimatter", "multi_display").setSlots(ISlotProvider.DEFAULT().add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63));
+    public static GuiData MULTI_DISPLAY_COMPACT = new GuiData("antimatter", "multi_display").setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots())).setPadding(0, 0, 0, 0);
+    public static GuiData BASIC_TANK = new GuiData("antimatter", "basic_tank").setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58).add(FL_IN, 106, 43));
 
     public static GuiData ORE_BYPRODUCTS = new GuiData("antimatter", "ore_byproducts") {
         @Override
@@ -37,7 +38,7 @@ public class Guis {
 
     public static MenuHandlerMachine<TileEntityCoalBoiler,? extends ContainerMachine> COAL_BOILER_MENU_HANDLER = new MenuHandlerMachine(Ref.ID, "container_coal_boiler") {
         @Override
-        public ContainerBasicMachine getMenu(Object tile, PlayerInventory playerInv, int windowId) {
+        public ContainerBasicMachine getMenu(IGuiHandler tile, PlayerInventory playerInv, int windowId) {
             return tile instanceof TileEntityMachine ? new ContainerBasicMachine((TileEntityMachine<?>) tile, playerInv, this, windowId) : null;
         }
 
@@ -50,7 +51,7 @@ public class Guis {
     public static MenuHandlerMachine<? extends TileEntityMachine, ? extends ContainerMachine> STEAM_MENU_HANDLER = new MenuHandlerMachine(Ref.ID, "container_steam") {
         @Nullable
         @Override
-        public ContainerMachine getMenu(Object tile, PlayerInventory playerInv, int windowId) {
+        public ContainerMachine getMenu(IGuiHandler tile, PlayerInventory playerInv, int windowId) {
             return tile instanceof TileEntityMachine ? new ContainerBasicMachine((TileEntityMachine) tile, playerInv, this, windowId) : null;
         }
 
@@ -195,7 +196,7 @@ public class Guis {
         HATCH_FLUID_O.add(UV, FL_OUT, 61, 16).add(UV, FL_OUT, 79, 16).add(UV, FL_OUT, 97, 16).add(UV, FL_OUT, 61, 34).add(UV, FL_OUT, 79, 34).add(UV, FL_OUT, 97, 34).add(UV, FL_OUT, 61, 52).add(UV, FL_OUT, 79, 52).add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.add(MAX, HATCH_FLUID_O, ULV);
 
-        /*if (side.isClient()) {
+        //if (side.isClient()) {
             TRANSFORMER_DIGITAL.getGui()
                     .addButton(10, 18, 14, 14, APAD_LEFT)
                     .addButton(25, 18, 14, 14, PAD_LEFT)
@@ -213,6 +214,6 @@ public class Guis {
                     .addButton(152, 48, 14, 14, APAD_RIGHT)
                     .addButton(137, 63, 14, 14, PAD_RIGHT)
                     .addButton(152, 63, 14, 14, APAD_RIGHT);
-        }*/
         }
+        //}
 }
