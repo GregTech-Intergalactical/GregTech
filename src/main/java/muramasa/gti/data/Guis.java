@@ -48,19 +48,6 @@ public class Guis {
         }
     };
 
-    public static MenuHandlerMachine<? extends TileEntityMachine, ? extends ContainerMachine> STEAM_MENU_HANDLER = new MenuHandlerMachine(Ref.ID, "container_steam") {
-        @Nullable
-        @Override
-        public ContainerMachine getMenu(IGuiHandler tile, PlayerInventory playerInv, int windowId) {
-            return tile instanceof TileEntityMachine ? new ContainerBasicMachine((TileEntityMachine) tile, playerInv, this, windowId) : null;
-        }
-
-        @Override
-        public Object screen() {
-            return ClientData.SCREEN_STEAM;
-        }
-    };
-
     public static void init(Dist side) {
         COAL_BOILER.setGUI(COAL_BOILER_MENU_HANDLER);
 
@@ -197,23 +184,24 @@ public class Guis {
         HATCH_FLUID_O.add(MAX, HATCH_FLUID_O, ULV);
 
         //if (side.isClient()) {
-            TRANSFORMER_DIGITAL.getGui()
-                    .addButton(10, 18, 14, 14, APAD_LEFT)
-                    .addButton(25, 18, 14, 14, PAD_LEFT)
-                    .addButton(10, 33, 14, 14, APAD_LEFT)
-                    .addButton(25, 33, 14, 14, PAD_LEFT)
-                    .addButton(10, 48, 14, 14, APAD_LEFT)
-                    .addButton(25, 48, 14, 14, PAD_LEFT)
-                    .addButton(10, 63, 14, 14, APAD_LEFT)
-                    .addButton(25, 63, 14, 14, PAD_LEFT)
-                    .addButton(137, 18, 14, 14, PAD_RIGHT)
-                    .addButton(152, 18, 14, 14, APAD_RIGHT)
-                    .addButton(137, 33, 14, 14, PAD_RIGHT)
-                    .addButton(152, 33, 14, 14, APAD_RIGHT)
-                    .addButton(137, 48, 14, 14, PAD_RIGHT)
-                    .addButton(152, 48, 14, 14, APAD_RIGHT)
-                    .addButton(137, 63, 14, 14, PAD_RIGHT)
-                    .addButton(152, 63, 14, 14, APAD_RIGHT);
+            TRANSFORMER_DIGITAL.addGuiCallback(t -> {
+                t.addButton(10, 18, 14, 14, APAD_LEFT)
+                        .addButton(25, 18, 14, 14, PAD_LEFT)
+                        .addButton(10, 33, 14, 14, APAD_LEFT)
+                        .addButton(25, 33, 14, 14, PAD_LEFT)
+                        .addButton(10, 48, 14, 14, APAD_LEFT)
+                        .addButton(25, 48, 14, 14, PAD_LEFT)
+                        .addButton(10, 63, 14, 14, APAD_LEFT)
+                        .addButton(25, 63, 14, 14, PAD_LEFT)
+                        .addButton(137, 18, 14, 14, PAD_RIGHT)
+                        .addButton(152, 18, 14, 14, APAD_RIGHT)
+                        .addButton(137, 33, 14, 14, PAD_RIGHT)
+                        .addButton(152, 33, 14, 14, APAD_RIGHT)
+                        .addButton(137, 48, 14, 14, PAD_RIGHT)
+                        .addButton(152, 48, 14, 14, APAD_RIGHT)
+                        .addButton(137, 63, 14, 14, PAD_RIGHT)
+                        .addButton(152, 63, 14, 14, APAD_RIGHT);
+            });
         }
         //}
 }

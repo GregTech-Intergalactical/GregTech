@@ -1,6 +1,7 @@
 package muramasa.gti.machine;
 
 import com.google.common.collect.ImmutableMap;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.gui.BarDir;
 import muramasa.antimatter.gui.widget.IOWidget;
 import muramasa.antimatter.gui.widget.MachineStateWidget;
@@ -21,7 +22,7 @@ public class SteamMachine extends Machine<SteamMachine> {
         super(domain, id);
         setTile(() -> new TileEntitySteamMachine<>(this));
         addFlags(BASIC, STEAM, COVERABLE);
-        setGUI(Guis.STEAM_MENU_HANDLER);
+        setGUI(Data.BASIC_MENU_HANDLER);
         setGuiTiers(ImmutableMap.<Tier, Tier>builder().put(BRONZE, BRONZE).put(STEEL, STEEL));
     }
 }

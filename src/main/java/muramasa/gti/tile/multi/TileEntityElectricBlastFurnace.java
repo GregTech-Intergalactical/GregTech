@@ -46,7 +46,7 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileE
             }
 
             @Override
-            protected long getPower() {
+            public long getPower() {
                 return EUt;
             }
 

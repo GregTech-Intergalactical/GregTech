@@ -4,6 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.gui.ButtonOverlay;
 import muramasa.antimatter.gui.GuiInstance;
+import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.Widget;
 import muramasa.antimatter.gui.container.AntimatterContainer;
 import muramasa.antimatter.gui.container.ContainerMachine;
@@ -29,15 +30,15 @@ public class IOWidget extends AbstractSwitchWidget {
     private boolean itemState = false;
     private boolean fluidState = false;
 
-    protected IOWidget(GuiInstance instance, int x, int y, int w, int h) {
+    protected IOWidget(GuiInstance instance, IGuiElement parent, int x, int y, int w, int h) {
         //TODO: Move textures around
-        super(instance, new ResourceLocation(instance.handler.getDomain(), "textures/gui/button/gui_buttons.png"), ButtonOverlay.INPUT_OUTPUT, IOWidget::handler, ((ContainerMachine<?>)instance.container).getTile().coverHandler.map(t -> COVEROUTPUT.shouldOutputFluids(t.get(t.getOutputFacing()))).orElse(false));
+        super(instance, parent, new ResourceLocation(instance.handler.getDomain(), "textures/gui/button/gui_buttons.png"), ButtonOverlay.INPUT_OUTPUT, IOWidget::handler, ((ContainerMachine<?>)instance.container).getTile().coverHandler.map(t -> COVEROUTPUT.shouldOutputFluids(t.get(t.getOutputFacing()))).orElse(false));
         this.setX(x);
         this.setY(y);
         this.setW(w);
         this.setH(h);
-        this.item = (ButtonWidget) ButtonWidget.build(new ResourceLocation(instance.handler.getDomain(), "textures/gui/button/gui_buttons.png"), instance.handler.getGuiTexture(), itemLoc, null, GuiEvent.ITEM_EJECT,0).setSize(x+26, y, w, h).get().get(instance);
-        this.fluid = (ButtonWidget) ButtonWidget.build(new ResourceLocation(instance.handler.getDomain(), "textures/gui/button/gui_buttons.png"), instance.handler.getGuiTexture(), fluidLoc, null, GuiEvent.FLUID_EJECT,0).setSize(x+44, y, w, h).get().get(instance);
+        this.item = (ButtonWidget) ButtonWidget.build(new ResourceLocation(instance.handler.getDomain(), "textures/gui/button/gui_buttons.png"), instance.handler.getGuiTexture(), itemLoc, null, GuiEvent.ITEM_EJECT,0).setSize(x+26, y, w, h).get(instance, this);
+        this.fluid = (ButtonWidget) ButtonWidget.build(new ResourceLocation(instance.handler.getDomain(), "textures/gui/button/gui_buttons.png"), instance.handler.getGuiTexture(), fluidLoc, null, GuiEvent.FLUID_EJECT,0).setSize(x+44, y, w, h).get(instance, this);
         item.setStateHandler(wid -> itemState);
         fluid.setStateHandler(wid -> fluidState);
         item.setEnabled(false);
@@ -69,7 +70,7 @@ public class IOWidget extends AbstractSwitchWidget {
     }
 
     public static WidgetSupplier build(int x, int y, int w, int h) {
-        return builder(i -> new IOWidget(i, x, y, w, h));
+        return builder((a,b) -> new IOWidget(a,b, x, y, w, h));
     }
 
     @Override
