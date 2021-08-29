@@ -131,11 +131,6 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
         }
 
         @Override
-        public IIntArray getProgressData() {
-            return GUI_SYNC_DATA2;
-        }
-
-        @Override
         public void setClientProgress(int progress) {
             fuel = progress;
         }
