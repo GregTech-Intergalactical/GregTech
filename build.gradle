@@ -217,6 +217,14 @@ publishing {
     }
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+    def targetVersion = 8
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.release = targetVersion
+    }
+}
+
 jar {
     zip64 true
     manifest {
