@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
+        maven { url = 'https://maven.minecraftforge.net' }
         jcenter()
         mavenCentral()
         gradlePluginPortal()
@@ -179,13 +179,8 @@ dependencies {
  //       runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
  //       compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
  //   }
- //   if (findProject(':TesseractAPI') != null) {
-        implementation project(':TesseractAPI')
-  //  } else {
-        //compileOnly sources jar.
- //       runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
- //       compileOnly ("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
- //   }
+
+    compile fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
 
     //JEI
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
@@ -194,6 +189,7 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
     runtimeOnly fg.deobf("curse.maven:architectury-forge-419699:${architectury_file}")
     runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
+    runtimeOnly fg.deobf("curse.maven:top-245211:${top_file}")
 }
 
 

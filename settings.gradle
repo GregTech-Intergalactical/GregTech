@@ -2,9 +2,4 @@
 //if(folder.exists() ) {
     include 'AntimatterAPI'
     project(':AntimatterAPI').setProjectDir(new File("AntimatterAPI"))
-//    def tesseract = new File( 'AntimatterAPI/TesseractAPI')
-//    if (tesseract.exists()) {
-        include 'TesseractAPI'
-        project(':TesseractAPI').setProjectDir(new File("AntimatterAPI/TesseractAPI"))
-//    }
 //}
