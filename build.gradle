@@ -17,15 +17,14 @@ buildscript {
 
 repositories {
     maven { url 'http://dvs1.progwml6.com/files/maven' }
-    //GT.
-    maven { url 'https://jitpack.io' }
-
     maven {
         url "https://www.cursemaven.com"
         content {
             includeGroup "curse.maven"
         }
     }
+    //GT.
+    maven { url 'https://jitpack.io' }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.

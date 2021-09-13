@@ -17,21 +17,18 @@ description='''The Approved Continuation. Rewrite. And Re-envisioning of GregTec
 [[dependencies.gti]]
     modId="antimatter"
     mandatory=true
-    #versionRange="[${antimatter_version},)"
-    versionRange="0.0.1"
+    versionRange="[0.0.4,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.gti]]
     modId="forge"
     mandatory=true
-    #versionRange="[${forge_version},)"
-    versionRange="31.0.1"
+    versionRange="[36.1.0,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.gti]]
     modId="minecraft"
     mandatory=true
-    #versionRange="[${minecraft_version}]"
-    versionRange="1.16.5"
+    versionRange="[1.16.5,)"
     ordering="NONE"
     side="BOTH"
