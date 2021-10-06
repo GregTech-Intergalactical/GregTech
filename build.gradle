@@ -23,6 +23,9 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    maven {
+        url = "https://maven.speiger.com/repository/main"
+    }
     //GT.
     maven { url 'https://jitpack.io' }
 }
@@ -181,6 +184,8 @@ dependencies {
  //   }
 
     compile fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
+
+    compile 'de.speiger:Primitive-Collections:0.4.0'
 
     //JEI
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")

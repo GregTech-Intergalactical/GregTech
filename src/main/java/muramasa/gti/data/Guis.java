@@ -7,9 +7,14 @@ import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.gui.MenuHandlerMachine;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
 import muramasa.antimatter.gui.container.ContainerMachine;
+import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
 import muramasa.antimatter.gui.slot.ISlotProvider;
+import muramasa.antimatter.gui.widget.TextWidget;
+import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tile.TileEntityMachine;
+import muramasa.gti.gui.widgets.CoalBoilerFuelWidget;
+import muramasa.gti.gui.widgets.CoalBoilerWidget;
 import muramasa.gti.tile.single.TileEntityCoalBoiler;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -49,8 +54,6 @@ public class Guis {
     };
 
     public static void init(Dist side) {
-        COAL_BOILER.setGUI(COAL_BOILER_MENU_HANDLER);
-
         ALLOY_SMELTER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY,80, 63);
         ASSEMBLER.add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 25)
                 .add(FL_IN,53, 63)
@@ -182,6 +185,11 @@ public class Guis {
         HATCH_FLUID_O.add(ZPM, HATCH_FLUID_O, ULV);
         HATCH_FLUID_O.add(UV, FL_OUT, 61, 16).add(UV, FL_OUT, 79, 16).add(UV, FL_OUT, 97, 16).add(UV, FL_OUT, 61, 34).add(UV, FL_OUT, 79, 34).add(UV, FL_OUT, 97, 34).add(UV, FL_OUT, 61, 52).add(UV, FL_OUT, 79, 52).add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.add(MAX, HATCH_FLUID_O, ULV);
+
+        COAL_BOILER.addGuiCallback(t -> {
+            t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a,b)).setPos(9, 5).clientSide());
+            t.addWidget(CoalBoilerWidget.build().setSize(70, 25, 36, 54)).addWidget(CoalBoilerFuelWidget.build().setSize(115, 43, 18, 18));
+        });
 
         //if (side.isClient()) {
             TRANSFORMER_DIGITAL.addGuiCallback(t -> {
