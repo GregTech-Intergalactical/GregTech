@@ -131,11 +131,6 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
         }
 
         @Override
-        public void setClientProgress(int progress) {
-            fuel = progress;
-        }
-
-        @Override
         public void onServerUpdate() {
             if (this.heat <= 20) {
                 this.heat = 20;

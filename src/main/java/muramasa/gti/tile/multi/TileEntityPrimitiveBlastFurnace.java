@@ -15,8 +15,8 @@ public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine
     }
 
     @Override
-    public void onRecipeActivated(Recipe r) {
-        super.onRecipeActivated(r);
+    public void onMachineStarted(Recipe r) {
+        super.onMachineStarted(r);
         int3 controller = new int3(getPos(), getFacing());
         controller.back(1);
         getWorld().setBlockState(controller, Blocks.LAVA.getDefaultState(), 2);
@@ -25,8 +25,8 @@ public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine
     }
 
     @Override
-    public void onRecipeStop() {
-        super.onRecipeStop();
+    public void onMachineStop() {
+        super.onMachineStop();
         int3 controller = new int3(getPos(), getFacing());
         controller.back(1);
         getWorld().setBlockState(controller, Blocks.AIR.getDefaultState(), 2);
