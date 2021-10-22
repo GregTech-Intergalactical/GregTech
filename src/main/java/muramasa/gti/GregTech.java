@@ -61,7 +61,7 @@ public class GregTech extends AntimatterMod {
     }
 
     private void registerRecipeLoaders() {
-        IRecipeRegistrate loader = AntimatterAPI.getRecipeRegistrate();
+        IRecipeRegistrate loader = AntimatterAPI.getRecipeRegistrate(Ref.ID);
         loader.add(WiremillLoader::init);
         loader.add(WasherLoader::init);
         loader.add(Blasting::init);
@@ -98,6 +98,10 @@ public class GregTech extends AntimatterMod {
     private void setup(final FMLCommonSetupEvent e) {
     }
 
+    public static <T> T get(Class<? extends T> clazz, String id) {
+        return AntimatterAPI.get(clazz, id, Ref.ID);
+    }
+
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         switch (event) {
@@ -113,6 +117,7 @@ public class GregTech extends AntimatterMod {
                 //TODO: This runs before AM.DATA_READY.
             case DATA_READY:
                 Structures.init();
+                TierMaps.providerInit();
                 //GregTechAPI.registerFluidCell(Data.CellTin.get(1));
                 //GregTechAPI.registerFluidCell(Data.CellSteel.get(1));
                 //GregTechAPI.registerFluidCell(Data.CellTungstensteel.get(1));

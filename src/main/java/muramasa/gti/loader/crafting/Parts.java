@@ -10,6 +10,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
+import muramasa.gti.GregTech;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;
 import net.minecraft.data.IFinishedRecipe;
@@ -30,7 +31,7 @@ public class Parts {
     public static void loadRecipes(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {
         TIER_MATERIALS.forEach((t,m) -> {
             provider.addItemRecipe(output,"casings", "has_casing", provider.hasSafeItem(WRENCH.getTag()),
-                    AntimatterAPI.get(BlockCasing.class, "casing_"+t.getId()),
+                    GregTech.get(BlockCasing.class, "casing_"+t.getId()),
                     of('C', PLATE.getMaterialTag(m), 'W', WRENCH.getTag()), "CCC", "CWC", "CCC");
         });
 
@@ -46,11 +47,11 @@ public class Parts {
             ITag.INamedTag<Item> rod = ROD.getMaterialTag(mat);
             Item circuit = TIER_CIRCUITS.getOrDefault(t, CircuitBasic);
 
-            Item motor = AntimatterAPI.get(ItemBasic.class, "motor_"+t.getId());
-            Item piston = AntimatterAPI.get(ItemBasic.class, "piston_"+t.getId());
-            Item robotArm = AntimatterAPI.get(ItemBasic.class, "robot_arm_"+t.getId());
-            Item pump = AntimatterAPI.get(ItemCover.class, "pump_" + t.getId());
-            Item conveyor = AntimatterAPI.get(ItemCover.class, "conveyor_" + t.getId());
+            Item motor = GregTech.get(ItemBasic.class, "motor_"+t.getId());
+            Item piston = GregTech.get(ItemBasic.class, "piston_"+t.getId());
+            Item robotArm = GregTech.get(ItemBasic.class, "robot_arm_"+t.getId());
+            Item pump = GregTech.get(ItemCover.class, "pump_" + t.getId());
+            Item conveyor = GregTech.get(ItemCover.class, "conveyor_" + t.getId());
             provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
                    motor,
                    of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', rod),

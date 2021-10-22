@@ -12,6 +12,7 @@ import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.util.TagUtils;
+import muramasa.gti.GregTech;
 import muramasa.gti.Ref;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;
@@ -34,17 +35,17 @@ import static muramasa.gti.data.TierMaps.WIRE_GETTER;
 public class Machines {
     public static void loadRecipes(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {
         Arrays.stream(Tier.getAllElectric()).forEach(tier -> {
-            Item motor = AntimatterAPI.get(ItemBasic.class, "motor_"+tier.getId());
+            Item motor = GregTech.get(ItemBasic.class, "motor_"+tier.getId());
             if (motor == null) return;
-            Item piston = AntimatterAPI.get(ItemBasic.class, "piston_"+tier.getId());
+            Item piston = GregTech.get(ItemBasic.class, "piston_"+tier.getId());
             if (piston == null) return;
-            Item arm = AntimatterAPI.get(ItemBasic.class, "robot_arm_"+tier.getId());
+            Item arm = GregTech.get(ItemBasic.class, "robot_arm_"+tier.getId());
             if (arm == null) return;
-            Item conveyor = AntimatterAPI.get(ItemCover.class, "conveyor_"+tier.getId());
+            Item conveyor = GregTech.get(ItemCover.class, "conveyor_"+tier.getId());
             if (conveyor == null) return;
-            Item pump = AntimatterAPI.get(ItemCover.class, "pump_"+tier.getId());
+            Item pump = GregTech.get(ItemCover.class, "pump_"+tier.getId());
             if (pump == null) return;
-            Item casing = Item.BLOCK_TO_ITEM.get(AntimatterAPI.get(BlockCasing.class, "casing_"+tier.getId()));
+            Item casing = Item.BLOCK_TO_ITEM.get(GregTech.get(BlockCasing.class, "casing_"+tier.getId()));
             if (casing == null) return;
             Item circuit = TIER_CIRCUITS.getOrDefault(tier, CircuitBasic);
             Item cable = TierMaps.TIER_CABLES.get(tier);
