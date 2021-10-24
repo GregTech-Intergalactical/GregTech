@@ -675,15 +675,7 @@ public class Materials {
 //                material.handleMaterial = Wood;
 //            }
 //        }
-
-        LIQUID.all().stream().filter(l -> !l.equals(Water) || !l.equals(Lava)).forEach(m -> new AntimatterMaterialFluid(Ref.ID, m, LIQUID));
-        GAS.all().forEach(m -> new AntimatterMaterialFluid(Ref.ID, m, GAS));
-        PLASMA.all().forEach(m -> new AntimatterMaterialFluid(Ref.ID, m, PLASMA));
-
-        AntimatterAPI.all(Material.class, Material::setChemicalFormula);
-
         //If using small ore markers, every normal ore needs a small version. This greatly increases block usage
-        if (AntimatterConfig.WORLD.ORE_VEIN_SMALL_ORE_MARKERS) ORE.all().forEach(m -> m.flags(ORE_SMALL));
         overrides();
     }
 
