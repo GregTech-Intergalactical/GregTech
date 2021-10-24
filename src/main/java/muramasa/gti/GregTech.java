@@ -12,6 +12,7 @@ import muramasa.gti.datagen.GregTechBlockTagProvider;
 import muramasa.gti.datagen.GregTechRecipes;
 import muramasa.gti.datagen.GregtechBlockLootProvider;
 import muramasa.gti.datagen.ProgressionAdvancements;
+import muramasa.gti.events.RemappingEvents;
 import muramasa.gti.loader.WorldGenLoader;
 import muramasa.gti.loader.items.Circuitry;
 import muramasa.gti.loader.machines.*;
@@ -23,6 +24,7 @@ import muramasa.gti.loader.multi.DistillationTower;
 import muramasa.gti.loader.multi.VacFreezer;
 import muramasa.gti.proxy.ClientHandler;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -44,6 +46,7 @@ public class GregTech extends AntimatterMod {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
         final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
 
+        MinecraftForge.EVENT_BUS.register(RemappingEvents.class);
         AntimatterDynamics.addProvider(Ref.ID, g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
         AntimatterDynamics.addProvider(Ref.ID, g -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", g));
         AntimatterDynamics.addProvider(Ref.ID, g -> {

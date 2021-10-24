@@ -69,7 +69,7 @@ public class TierMaps {
 
         WIRE_GETTER = (size, tier) -> {
             if (tier == LV) {
-                return TagUtils.getItemTag(new ResourceLocation(muramasa.antimatter.Ref.ID, SubTag.COPPER_WIRE.getId()+"_"+ size.getId()));
+                return TagUtils.getItemTag(new ResourceLocation(Ref.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ size.getId()));
             }
             if (tier == MV) {
                 return WIRE_CUPRONICKEL.getBlockItem(size);
