@@ -29,7 +29,7 @@ forge*changelog.txt
 *.db
 
 # local
-AntimatterAPI
-TesseractAPI
+#AntimatterAPI
+#TesseractAPI
 
 .vscode/

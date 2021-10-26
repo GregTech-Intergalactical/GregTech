@@ -175,13 +175,13 @@ dependencies {
     implementation 'org.apache.commons:commons-collections4:4.4'
 
     //GT related projects.
-//    if (findProject(':AntimatterAPI') != null) {
+    if (findProject(':AntimatterAPI') != null) {
         implementation project(path: ':AntimatterAPI')
- //   } else {
+    } else {
         //compileOnly sources jar.
- //       runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
- //       compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
- //   }
+        runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
+        compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
+    }
 
     compile fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
 
