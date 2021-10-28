@@ -44,7 +44,7 @@ public class RemappingEvents {
                     continue;
                 }
             }
-            Block replacement = AntimatterAPI.get(Block.class, id, Ref.ANTIMATTER);
+            Block replacement = AntimatterAPI.get(Block.class, id, Ref.ANTIMATTER_SHARED);
             if (replacement != null){
                 map.remap(replacement);
             }
@@ -54,7 +54,7 @@ public class RemappingEvents {
     @SubscribeEvent
     public static void remapMissingItems(final RegistryEvent.MissingMappings<Item> event){
         for (RegistryEvent.MissingMappings.Mapping<Item> map : event.getMappings(Ref.ID)) {
-            Item replacement = AntimatterAPI.get(Item.class, map.key.getPath(), Ref.ANTIMATTER);
+            Item replacement = AntimatterAPI.get(Item.class, map.key.getPath(), Ref.ANTIMATTER_SHARED);
             if (replacement != null){
                 map.remap(replacement);
             }
