@@ -1,23 +1,19 @@
 package muramasa.gti.data;
 
-import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.cover.BaseCover;
-import muramasa.antimatter.cover.CoverTiered;
+import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.material.Material;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.antimatter.pipe.types.Wire;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gti.Ref;
 import muramasa.gti.block.BlockCasing;
@@ -26,15 +22,12 @@ import muramasa.gti.block.BlockFusionCasing;
 import muramasa.gti.block.BlockTurbineCasing;
 import muramasa.gti.cover.CoverConveyor;
 import muramasa.gti.cover.CoverPump;
-import muramasa.gti.items.ItemIntCircuit;
 import muramasa.gti.tree.BlockRubberLeaves;
 import muramasa.gti.tree.BlockRubberLog;
 import muramasa.gti.tree.BlockRubberSapling;
 import net.minecraft.block.SoundType;
-import net.minecraft.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 
-import static muramasa.antimatter.Data.ROTOR;
 import static muramasa.gti.data.Materials.*;
 
 public class GregTechData {
@@ -46,15 +39,19 @@ public class GregTechData {
             RecipeMaps.clientMaps();
     }
 
-    public static final CoverTiered COVER_CONVEYOR = new CoverConveyor();
-    public static final BaseCover COVER_PUMP = new CoverPump();
+    public static final CoverFactory COVER_CONVEYOR = CoverFactory.builder(CoverConveyor::new).gui().item((a,b) ->
+            new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("1 Stack every %ds (as Cover)", CoverConveyor.speeds.get(b)))
+    ).addTextures(new Texture(Ref.ID, "block/cover/conveyor")).setTiers(Tier.getStandard()).build(Ref.ID, "conveyor");
+    public static final CoverFactory COVER_PUMP = CoverFactory.builder(CoverPump::new).gui().item((a,b) ->
+            new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/s (as Cover)", CoverPump.speeds.get(b))))
+            .addTextures(new Texture(Ref.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(Ref.ID, "pump");
 
     public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 
-    public static ItemFluidCell CellTin = new ItemFluidCell(Ref.ID,Tin, 1000);
-    public static ItemFluidCell CellSteel = new ItemFluidCell(Ref.ID,Steel, 16000);
-    public static ItemFluidCell CellTungstensteel = new ItemFluidCell(Ref.ID,TungstenSteel, 64000);
+    public static ItemFluidCell CellTin = new ItemFluidCell(Ref.ID, Tin, 1000);
+    public static ItemFluidCell CellSteel = new ItemFluidCell(Ref.ID, Steel, 16000);
+    public static ItemFluidCell CellTungstensteel = new ItemFluidCell(Ref.ID, TungstenSteel, 64000);
 
     public static ItemBasic<?> ItemFilter = new ItemBasic<>(Ref.ID, "item_filter");
     public static ItemBasic<?> DiamondSawBlade = new ItemBasic<>(Ref.ID, "diamond_saw_blade");
@@ -72,21 +69,11 @@ public class GregTechData {
     public static ItemBasic<?> MotorHV = new ItemBasic<>(Ref.ID, "motor_hv");
     public static ItemBasic<?> MotorEV = new ItemBasic<>(Ref.ID, "motor_ev");
     public static ItemBasic<?> MotorIV = new ItemBasic<>(Ref.ID, "motor_iv");
-    public static ItemCover PumpLV = new ItemCover(Ref.ID, CoverPump.ID, Tier.LV).tip("640 L/s (as Cover)");
-    public static ItemCover PumpMV = new ItemCover(Ref.ID, CoverPump.ID, Tier.MV).tip("2,560 L/s (as Cover)");
-    public static ItemCover PumpHV = new ItemCover(Ref.ID, CoverPump.ID, Tier.HV).tip("10,240 L/s (as Cover)");
-    public static ItemCover PumpEV = new ItemCover(Ref.ID, CoverPump.ID, Tier.EV).tip("40,960 L/s (as Cover)");
-    public static ItemCover PumpIV = new ItemCover(Ref.ID, CoverPump.ID, Tier.IV).tip("163,840 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorLV = new ItemBasic<>(Ref.ID, "fluid_regulator_lv").tip("Configurable up to 640 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorMV = new ItemBasic<>(Ref.ID, "fluid_regulator_mv").tip("Configurable up to 2,560 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorHV = new ItemBasic<>(Ref.ID, "fluid_regulator_hv").tip("Configurable up to 10,240 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorEV = new ItemBasic<>(Ref.ID, "fluid_regulator_ev").tip("Configurable up to 40,960 L/s (as Cover)");
     public static ItemBasic<?> FluidRegulatorIV = new ItemBasic<>(Ref.ID, "fluid_regulator_iv").tip("Configurable up to 163,840 L/s (as Cover)");
-    public static ItemCover ConveyorLV = new ItemCover(Ref.ID, CoverConveyor.ID, Tier.LV).tip("1 Stack every 20s (as Cover)");
-    public static ItemCover ConveyorMV = new ItemCover(Ref.ID, CoverConveyor.ID, Tier.MV).tip("1 Stack every 5s (as Cover)");
-    public static ItemCover ConveyorHV = new ItemCover(Ref.ID, CoverConveyor.ID, Tier.HV).tip("1 Stack every 1s (as Cover)");
-    public static ItemCover ConveyorEV = new ItemCover(Ref.ID, CoverConveyor.ID, Tier.EV).tip("1 Stack every 0.5s (as Cover)");
-    public static ItemCover ConveyorIV = new ItemCover(Ref.ID, CoverConveyor.ID, Tier.IV).tip("1 Stack every 0.05s (as Cover)");
     public static ItemBasic<?> PistonLV = new ItemBasic<>(Ref.ID, "piston_lv");
     public static ItemBasic<?> PistonMV = new ItemBasic<>(Ref.ID, "piston_mv");
     public static ItemBasic<?> PistonHV = new ItemBasic<>(Ref.ID, "piston_hv");

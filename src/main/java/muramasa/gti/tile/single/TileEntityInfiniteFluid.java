@@ -2,7 +2,8 @@ package muramasa.gti.tile.single;
 
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
-import muramasa.antimatter.cover.CoverStack;
+import muramasa.antimatter.cover.CoverOutput;
+import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
@@ -13,7 +14,6 @@ import net.minecraftforge.fluids.capability.templates.FluidTank;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-import static muramasa.antimatter.Data.COVEROUTPUT;
 import static muramasa.gti.data.Materials.Steam;
 
 public class TileEntityInfiniteFluid extends TileEntityMachine<TileEntityInfiniteFluid> {
@@ -22,8 +22,8 @@ public class TileEntityInfiniteFluid extends TileEntityMachine<TileEntityInfinit
     public void onFirstTick() {
         super.onFirstTick();
         coverHandler.ifPresent(c -> {
-            CoverStack<?> stack = c.get(c.getOutputFacing());
-            COVEROUTPUT.setEjects(stack, true, false);
+            ICover stack = c.getOutputCover();
+            ((CoverOutput) stack).setEjects(true, false);
         });
     }
 
@@ -31,8 +31,8 @@ public class TileEntityInfiniteFluid extends TileEntityMachine<TileEntityInfinit
     public void onServerUpdate() {
         super.onServerUpdate();
         coverHandler.ifPresent(c -> {
-            CoverStack<?> stack = c.get(c.getOutputFacing());
-            COVEROUTPUT.manualOutput(stack);
+            ICover stack = c.get(c.getOutputFacing());
+            ((CoverOutput) stack).manualOutput();
         });
     }
 

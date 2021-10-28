@@ -1,7 +1,6 @@
 package muramasa.gti.data;
 
 import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
@@ -13,7 +12,6 @@ import muramasa.gti.machine.SteamMachine;
 import muramasa.gti.tile.multi.*;
 import muramasa.gti.tile.single.TileEntityCoalBoiler;
 import muramasa.gti.tile.single.TileEntityInfiniteFluid;
-import muramasa.gti.tile.single.TileEntitySteamMachine;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.machine.MachineFlag.*;
@@ -105,15 +103,15 @@ public class Machines {
     public static GeneratorMachine NAQUADAH_GENERATOR = new GeneratorMachine(Ref.ID, "naquadah_generator").setMap(NAQUADAH_FUELS).setTiers(EV, IV, LUV).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
     public static GeneratorMachine PLASMA_GENERATOR = new GeneratorMachine(Ref.ID, "plasma_generator").setMap(PLASMA_FUELS).setTiers(IV, LUV, ZPM).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
 
-    public static BasicMachine INFINITE_STORAGE = new BasicMachine(Ref.ID, "infinite_storage").setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV, MAX).addFlags(ENERGY).setTile(m -> () -> new TileEntityInfiniteStorage<>(m, 16)).covers((ICover[]) null).setAllowVerticalFacing(true).allowFrontIO();
+    public static BasicMachine INFINITE_STORAGE = new BasicMachine(Ref.ID, "infinite_storage").setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV, MAX).addFlags(ENERGY).setTile(m -> () -> new TileEntityInfiniteStorage<>(m, 16)).noCovers().setAllowVerticalFacing(true).allowFrontIO();
     public static TankMachine INFINITE_STEAM = new TankMachine(Ref.ID, "infinite_steam").addFlags(FLUID, CELL, GUI).setTile(m -> () -> new TileEntityInfiniteFluid(m)).setTiers(LV);
-    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).covers((ICover[]) null).setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).setAllowVerticalFacing(true).allowFrontIO();
-    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).covers((ICover[]) null).setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).setAllowVerticalFacing(true).allowFrontIO();
-    public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).covers((ICover[]) null).setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).setAllowVerticalFacing(true).allowFrontIO();
-    public static BasicMachine TRANSFORMER = new BasicMachine(Ref.ID, "transformer").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile(m -> () -> new TileEntityTransformer<>(m, 1)).covers((ICover[]) null).allowFrontIO();
-    public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(Ref.ID, "transformer_hiamp").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile(m -> () -> new TileEntityTransformer<>(m, 4)).covers((ICover[]) null).allowFrontIO();
-    public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(Ref.ID, "transformer_ultra").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile(m -> () -> new TileEntityTransformer<>(m, 16)).covers((ICover[]) null).allowFrontIO();
-    public static BasicMachine TRANSFORMER_DIGITAL = new BasicMachine(Ref.ID, "transformer_digital").setTiers(EV, IV).addFlags(GUI, ENERGY).setTile(m -> () -> new TileEntityDigitalTransformer<>(m)).covers((ICover[]) null).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "battery_buffer_four").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).setAllowVerticalFacing(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "battery_buffer_one").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).setAllowVerticalFacing(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_NINE = new BasicMachine(Ref.ID, "battery_buffer_nine").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(m -> () -> new TileEntityBatteryBuffer<>(m)).setAllowVerticalFacing(true).allowFrontIO();
+    public static BasicMachine TRANSFORMER = new BasicMachine(Ref.ID, "transformer").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile(m -> () -> new TileEntityTransformer<>(m, 1)).noCovers().allowFrontIO();
+    public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(Ref.ID, "transformer_hiamp").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile(m -> () -> new TileEntityTransformer<>(m, 4)).noCovers().allowFrontIO();
+    public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(Ref.ID, "transformer_ultra").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile(m -> () -> new TileEntityTransformer<>(m, 16)).noCovers().allowFrontIO();
+    public static BasicMachine TRANSFORMER_DIGITAL = new BasicMachine(Ref.ID, "transformer_digital").setTiers(EV, IV).addFlags(GUI, ENERGY).setTile(m -> () -> new TileEntityDigitalTransformer<>(m)).noCovers().allowFrontIO();
 
     public static void init() {
 

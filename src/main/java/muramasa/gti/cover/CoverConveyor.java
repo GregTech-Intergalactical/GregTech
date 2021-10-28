@@ -1,11 +1,11 @@
 package muramasa.gti.cover;
 
 import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.cover.CoverStack;
-import muramasa.antimatter.cover.CoverTiered;
+import muramasa.antimatter.capability.ICoverHandler;
+import muramasa.antimatter.cover.BaseCover;
+import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
-import muramasa.gti.Ref;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
@@ -20,44 +20,35 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
+import javax.annotation.Nullable;
 import java.util.Map;
+import java.util.Objects;
 
 import static net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
 
-public class CoverConveyor extends CoverTiered {
+public class CoverConveyor extends BaseCover {
 
     public static String ID = "conveyor";
 
-    static final Map<Tier, Integer> speeds = ImmutableMap.<Tier,Integer>builder().
-            put(Tier.LV,400)
+    public static final Map<Tier, Integer> speeds = ImmutableMap.<Tier, Integer>builder().
+            put(Tier.LV, 400)
             .put(Tier.MV, 100)
             .put(Tier.HV, 20)
             .put(Tier.EV, 10)
             .put(Tier.IV, 1).build();
 
-    public CoverConveyor(Tier tier) {
-        super(tier);
+    public CoverConveyor(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
+        super(source, tier, side, factory);
+        Objects.requireNonNull(tier);
     }
 
-    public CoverConveyor() {
-        super();
-    }    
 
     @Override
-    public <T> boolean blocksCapability(CoverStack<?> stack, Capability<T> cap, Direction side) {
+    public <T> boolean blocksCapability(Capability<T> cap, Direction side) {
         return side == null && cap != CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
     }
 
-    @Override
-    public boolean hasGui() {
-        return true;
-    }
-
     //Useful for using the same model for multiple tiers where id is dependent on tier.
-    @Override
-    protected String getRenderId() {
-        return ID();
-    }
 
     @Override
     public ResourceLocation getModel(String type, Direction dir, Direction facing) {
@@ -66,42 +57,25 @@ public class CoverConveyor extends CoverTiered {
     }
 
     @Override
-    protected String ID() {
-        return ID;
-    }
-
-    @Override
-    public String getDomain() {
-        return Ref.ID;
-    }
-
-    @Override
-    public void onUpdate(CoverStack<?> instance, Direction side) {
-        if (instance.getTile() == null || instance.getTile().getWorld().getGameTime() % (speeds.get(tier)) != 0)
+    public void onUpdate() {
+        if (handler.getTile() == null || handler.getTile().getWorld().getGameTime() % (speeds.get(tier)) != 0)
             return;
-        BlockState state = instance.getTile().getWorld().getBlockState(instance.getTile().getPos().offset(side));
+        BlockState state = handler.getTile().getWorld().getBlockState(handler.getTile().getPos().offset(side));
         //Drop into world.
         if (state == Blocks.AIR.getDefaultState()) {
-            World world = instance.getTile().getWorld();
-            BlockPos pos = instance.getTile().getPos();
-            ItemStack stack = instance.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).map(t -> Utils.extractAny(t)).orElse(ItemStack.EMPTY);
+            World world = handler.getTile().getWorld();
+            BlockPos pos = handler.getTile().getPos();
+            ItemStack stack = handler.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).map(t -> Utils.extractAny(t)).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
-            world.addEntity(new ItemEntity(world,pos.getX()+side.getXOffset(), pos.getY()+side.getYOffset(), pos.getZ()+side.getZOffset(),stack));
+            world.addEntity(new ItemEntity(world, pos.getX() + side.getXOffset(), pos.getY() + side.getYOffset(), pos.getZ() + side.getZOffset(), stack));
         }
         if (!(state.hasTileEntity())) return;
-        TileEntity adjTile = instance.getTile().getWorld().getTileEntity(instance.getTile().getPos().offset(side));
+        TileEntity adjTile = handler.getTile().getWorld().getTileEntity(handler.getTile().getPos().offset(side));
         if (adjTile == null) {
             return;
         }
         LazyOptional<IItemHandler> handler = adjTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite());
         if (!handler.isPresent()) return;
-        instance.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).ifPresent(ih -> handler.ifPresent(other -> Utils.transferItems(ih, other,true)));
+        this.handler.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).ifPresent(ih -> handler.ifPresent(other -> Utils.transferItems(ih, other, true)));
     }
-
-    @Override
-    protected CoverTiered getTiered(Tier tier) {
-        return new CoverConveyor(tier);
-    }
-
-
 }
