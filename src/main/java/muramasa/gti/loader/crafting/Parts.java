@@ -13,11 +13,13 @@ import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gti.GregTech;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;
+import muramasa.gti.data.TierMaps;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.tags.ITag;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
@@ -27,7 +29,6 @@ import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.TierMaps.*;
 
 public class Parts {
-
     public static void loadRecipes(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {
         TIER_MATERIALS.forEach((t,m) -> {
             provider.addItemRecipe(output,"casings", "has_casing", provider.hasSafeItem(WRENCH.getTag()),
@@ -50,8 +51,12 @@ public class Parts {
             Item motor = GregTech.get(ItemBasic.class, "motor_"+t.getId());
             Item piston = GregTech.get(ItemBasic.class, "piston_"+t.getId());
             Item robotArm = GregTech.get(ItemBasic.class, "robot_arm_"+t.getId());
+            Item emitter = GregTech.get(ItemBasic.class, "emitter_"+t.getId());
+            Item sensor = GregTech.get(ItemBasic.class, "sensor_"+t.getId());
             Item pump = GregTech.get(ItemCover.class, "pump_" + t.getId());
             Item conveyor = GregTech.get(ItemCover.class, "conveyor_" + t.getId());
+            Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
+            Object emitterGem = EMITTER_GEMS.get(t);
             provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
                    motor,
                    of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', rod),
@@ -68,6 +73,14 @@ public class Parts {
                     robotArm,
                     of('M', motor, 'C', cable, 'P',piston, 'I', circuit, 'R',rod),
                     "CCC", "MRM", "PIR");
+            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(circuit),
+                    emitter,
+                    of('R', emitterRod, 'G', emitterGem, 'L', cable, 'C', circuit),
+                    "RRC", "LGR", "CLR");
+            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(circuit),
+                    sensor,
+                    of('R', emitterRod, 'G', emitterGem, 'C', circuit, 'P', plate),
+                    "P G", "PR ", "CPP");
             Material rotorMat = ((MaterialItem) TIER_ROTORS.get(t)).getMaterial();
             provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
                     pump,

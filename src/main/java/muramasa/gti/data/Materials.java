@@ -827,7 +827,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "battery_alloy", 0x9c7ca0, DULL)).asMetal(295, 0, PLATE)
             .mats(of(Lead, 4, Antimony, 1));
     public static Material Brass = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "brass", 0xffb400, METALLIC)).asMetal(1170, 0, FRAME)
+            .register(Material.class, new Material(Ref.ID, "brass", 0xffb400, METALLIC)).asMetal(1170, 0, FRAME, ROD)
             .mats(of(Zinc, 1, Copper, 3));
     public static Material Bronze = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "bronze", 0xff8000, METALLIC)).asMetal(1125, 0, GEAR, FRAME, ROTOR)
@@ -1026,7 +1026,7 @@ public class Materials {
     public static Material Kimberlite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "kimberlite", 0x64460a, NONE)).asDust(ROCK);
     public static Material Quartzite = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "quartzite", 0xe6cdcd, QUARTZ)).asGemBasic(false, ROCK)
+            .register(Material.class, new Material(Ref.ID, "quartzite", 0xe6cdcd, QUARTZ)).asGemBasic(false, ROCK, ROD)
             .asOre(2, 5, true).mats(of(Silicon, 1, Oxygen, 2));
 
     /**

@@ -6,6 +6,7 @@ import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.SubTag;
+import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
@@ -13,11 +14,13 @@ import muramasa.antimatter.util.TagUtils;
 import muramasa.gti.Ref;
 import muramasa.gti.items.ItemIntCircuit;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+import static muramasa.antimatter.Data.GEM;
 import static muramasa.antimatter.Data.ROTOR;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gti.data.GregTechData.*;
@@ -28,10 +31,15 @@ public class TierMaps {
     public static final ImmutableMap<Integer, RecipeIngredient> INT_CIRCUITS;
     public static final ImmutableMap<Tier, Material> TIER_MATERIALS;
     public static final ImmutableMap<Tier, Material> TIER_PIPE_MATERIAL;
-    public static ImmutableMap<Tier, Item> TIER_WIRES;
+    public static ImmutableMap<Tier, PipeItemBlock> TIER_WIRES;
     public static ImmutableMap<Tier, Item> TIER_CABLES;
     public static ImmutableMap<Tier, ItemBasic<?>> TIER_CIRCUITS;
     public static ImmutableMap<Tier, ItemBasic<?>> TIER_BOARDS;
+    //Used by special machines, 4x cables.
+    public static ImmutableMap<Tier, Item> EXTRA_4_CABLES_TIER;
+
+    public static ImmutableMap<Tier, Material> EMITTER_RODS;
+    public static ImmutableMap<Tier, Object> EMITTER_GEMS;
 
     public static ImmutableMap<Tier, Item> TIER_ROTORS;
     public static ImmutableMap<Tier, Item> TIER_PIPES;
@@ -56,6 +64,7 @@ public class TierMaps {
             builder.put(Tier.IV, TungstenSteel);
             TIER_MATERIALS = builder.build();
         }
+
         {
             ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, WroughtIron);
@@ -96,7 +105,7 @@ public class TierMaps {
         if (doneMaps) return;
         doneMaps = true;
         {
-            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
+            ImmutableMap.Builder<Tier, PipeItemBlock> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, WIRE_LEAD.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.LV, WIRE_COPPER.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.MV, WIRE_COPPER.getBlockItem(PipeSize.VTINY));
@@ -124,6 +133,33 @@ public class TierMaps {
             builder.put(Tier.EV, ROTOR.get(Titanium));
             builder.put(Tier.IV, ROTOR.get(TungstenSteel));
             TIER_ROTORS = builder.build();
+        }
+        {
+            ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
+            builder.put(Tier.LV, Brass);
+            builder.put(Tier.MV, Electrum);
+            builder.put(Tier.HV, Chrome);
+            builder.put(Tier.EV, Platinum);
+            builder.put(Tier.IV, Osmium);
+            EMITTER_RODS = builder.build();
+        }
+        {
+            ImmutableMap.Builder<Tier, Object> builder = ImmutableMap.builder();
+            builder.put(Tier.LV, GEM.getMaterialTag(Quartzite));
+            builder.put(Tier.MV, Items.QUARTZ);
+            builder.put(Tier.HV, Items.EMERALD);
+            builder.put(Tier.EV, Items.ENDER_PEARL);
+            builder.put(Tier.IV, Items.ENDER_EYE);
+            EMITTER_GEMS = builder.build();
+        }
+        {
+            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
+            builder.put(Tier.LV, CABLE_TIN.getBlockItem(PipeSize.SMALL));
+            builder.put(Tier.MV, CABLE_COPPER.getBlockItem(PipeSize.SMALL));
+            builder.put(Tier.HV, CABLE_GOLD.getBlockItem(PipeSize.SMALL));
+            builder.put(Tier.EV, CABLE_ALUMINIUM.getBlockItem(PipeSize.SMALL));
+            builder.put(Tier.IV, CABLE_TUNGSTEN.getBlockItem(PipeSize.SMALL));
+            EXTRA_4_CABLES_TIER = builder.build();
         }
         {
             ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
