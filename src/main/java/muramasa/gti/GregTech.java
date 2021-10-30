@@ -45,8 +45,10 @@ public class GregTech extends AntimatterMod {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
         final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
         MinecraftForge.EVENT_BUS.register(RemappingEvents.class);
-        AntimatterDynamics.addProvider(Ref.ID, g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
-        AntimatterDynamics.addProvider(Ref.ID, g -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", g));
+        AntimatterDynamics.addProvider(Ref.ID,
+                g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
+        AntimatterDynamics.addProvider(Ref.ID,
+                g -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", g));
         AntimatterDynamics.addProvider(Ref.ID, g -> {
             p[0] = new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, g,
                     new ExistingFileHelperOverride());
@@ -54,8 +56,8 @@ public class GregTech extends AntimatterMod {
         });
         AntimatterDynamics.addProvider(Ref.ID, g -> new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"),
                 false, g, p[0], new ExistingFileHelperOverride()));
-        AntimatterDynamics.addProvider(Ref.ID, g -> new AntimatterFluidTagProvider(Ref.ID, Ref.NAME.concat(" Fluid Tags"),
-                false, g, new ExistingFileHelperOverride()));
+        AntimatterDynamics.addProvider(Ref.ID, g -> new AntimatterFluidTagProvider(Ref.ID,
+                Ref.NAME.concat(" Fluid Tags"), false, g, new ExistingFileHelperOverride()));
         AntimatterDynamics.addProvider(Ref.ID, g -> new GregTechRecipes(Ref.ID, Ref.NAME.concat(" Recipes"), g));
         AntimatterDynamics.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID,
                 Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
@@ -83,7 +85,7 @@ public class GregTech extends AntimatterMod {
         loader.add(DistillationTower::init);
         loader.add(MixerLoader::init);
         loader.add(HammerLoader::init);
-
+        loader.add(LatheLoader::init);
         loader.add(ElectrolyzerLoader::init);
         loader.add(FluidCanningLoader::init);
         loader.add(CentrifugingLoader::init);

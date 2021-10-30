@@ -21,14 +21,17 @@ public class Materials {
 
     public static Material Aluminium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "aluminium", 0x80c8f0, DULL, Al))
-            .asMetal(933, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL).asOre().addTools(1.5F, 10.0F, 140, 2);
+            .asMetal(933, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL).asOre()
+            .addTools(1.5F, 10.0F, 140, 2);
     public static Material Beryllium = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "beryllium", 0x64b464, METALLIC, Be)).asMetal(1560, 0).asOre()
-            .addTools(2.0F, 14.0F, 64, 2);
+            .register(Material.class, new Material(Ref.ID, "beryllium", 0x64b464, METALLIC, Be)).asMetal(1560, 0)
+            .asOre().addTools(2.0F, 14.0F, 64, 2);
     public static Material Bismuth = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "bismuth", 0x64a0a0, METALLIC, Bi)).asMetal(544, 0, PLATE).asOre();
+            .register(Material.class, new Material(Ref.ID, "bismuth", 0x64a0a0, METALLIC, Bi)).asMetal(544, 0, PLATE)
+            .asOre();
     public static Material Carbon = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "carbon", 0x141414, DULL, C)).asSolid(); // TODO: Tools, Carbon
+            .register(Material.class, new Material(Ref.ID, "carbon", 0x141414, DULL, C)).asSolid(); // TODO: Tools,
+                                                                                                    // Carbon
     // Fluid? Removed Tool;
     public static Material Chrome = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "chrome", 0xffe6e6, SHINY, Cr))
@@ -41,15 +44,16 @@ public class Materials {
             .asMetal(1337, 0, FOIL, ROD, WIRE_FINE, GEAR).asOre()
             .addTools(GOLD.getAttackDamage(), GOLD.getEfficiency(), GOLD.getMaxUses(), GOLD.getHarvestLevel());
     public static Material Iridium = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "iridium", 0xf0f0f5, DULL, Ir)).asMetal(2719, 2719, FRAME).asOre()
-            .addTools(5.0F, 8.0F, 2560, 4);
+            .register(Material.class, new Material(Ref.ID, "iridium", 0xf0f0f5, DULL, Ir)).asMetal(2719, 2719, FRAME)
+            .asOre().addTools(5.0F, 8.0F, 2560, 4);
     public static Material Iron = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "iron", 0xc8c8c8, METALLIC, Fe))
             .asMetal(1811, 0, RING, GEAR, FRAME).asOre().asPlasma()
             .addTools(IRON.getAttackDamage(), IRON.getEfficiency(), IRON.getMaxUses(), IRON.getHarvestLevel());
     public static Material Lanthanum = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "lanthanum", 0xffffff, METALLIC, La)).asSolid(1193, 1193);
-    public static Material Lead = AntimatterAPI.register(Material.class, new Material(Ref.ID, "lead", 0x8c648c, DULL, Pb))
+    public static Material Lead = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "lead", 0x8c648c, DULL, Pb))
             .asMetal(600, 0, PLATE, PLATE_DENSE, FOIL, ROD, FRAME).asOre();
     public static Material Manganese = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "manganese", 0xfafafa, DULL, Mn)).asMetal(1519, 0).asOre();
@@ -63,14 +67,14 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "neutronium", 0xfafafa, DULL, Nt))
             .asMetal(10000, 10000, SCREW, BOLT, RING, GEAR, FRAME).addTools(9.0F, 24.0F, 655360, 6); // TODO Vibraniu;
     public static Material Nickel = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "nickel", 0xc8c8fa, METALLIC, Ni)).asMetal(1728, 0, PLATE).asOre()
-            .asPlasma();
+            .register(Material.class, new Material(Ref.ID, "nickel", 0xc8c8fa, METALLIC, Ni)).asMetal(1728, 0, PLATE)
+            .asOre().asPlasma();
     public static Material Osmium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "osmium", 0x3232ff, METALLIC, Os))
             .asMetal(3306, 3306, SCREW, BOLT, RING, PLATE, FOIL, ROD, WIRE_FINE).addTools(4.0F, 16.0F, 1080, 4);
     public static Material Palladium = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "palladium", 0x808080, SHINY, Pd)).asMetal(1828, 1828).asOre()
-            .addTools(3.0F, 10.0F, 420, 2);
+            .register(Material.class, new Material(Ref.ID, "palladium", 0x808080, SHINY, Pd)).asMetal(1828, 1828)
+            .asOre().addTools(3.0F, 10.0F, 420, 2);
     public static Material Platinum = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "platinum", 0xffffc8, SHINY, Pt))
             .asMetal(2041, 0, PLATE, FOIL, ROD, WIRE_FINE).asOre().addTools(4.5F, 18.0F, 48, 2);
@@ -81,7 +85,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "plutonium_241", 0xfa4646, SHINY, Pu241)).asMetal(912, 0)
             .addTools(2.5F, 6.0F, 280, 3);
     public static Material Silver = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "silver", 0xdcdcff, SHINY, Ag)).asMetal(1234, 0, PLATE).asOre();
+            .register(Material.class, new Material(Ref.ID, "silver", 0xdcdcff, SHINY, Ag)).asMetal(1234, 0, PLATE)
+            .asOre();
     public static Material Thorium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "thorium", 0x001e00, SHINY, Th)).asMetal(2115, 0).asOre()
             .addTools(1.5F, 6.0F, 512, 2);
@@ -93,7 +98,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "tungsten", 0x323232, METALLIC, W)).asMetal(3695, 3000, FOIL)
             .addTools(2.0F, 6.0F, 512, 3); // Tungstensteel would be the one with tool;
     public static Material Uranium = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "uranium_238", 0x32f032, METALLIC, U)).asMetal(1405, 0).asOre();
+            .register(Material.class, new Material(Ref.ID, "uranium_238", 0x32f032, METALLIC, U)).asMetal(1405, 0)
+            .asOre();
     public static Material Uranium235 = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "uranium_235", 0x46fa46, METALLIC, U235)).asMetal(1405, 0)
             .addTools(3.0F, 6.0F, 512, 3);
@@ -219,15 +225,18 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "refinery_gas", 0xffffff, NONE)).asGas(128);
     public static Material LPG = AntimatterAPI.register(Material.class, new Material(Ref.ID, "lpg", 0xffff00, NONE))
             .asGas(256);
-    public static Material Ethane = AntimatterAPI.register(Material.class, new Material(Ref.ID, "ethane", 0xc8c8ff, NONE))
-            .asGas(168).mats(of(Carbon, 2, Hydrogen, 6));
+    public static Material Ethane = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "ethane", 0xc8c8ff, NONE)).asGas(168)
+            .mats(of(Carbon, 2, Hydrogen, 6));
     public static Material Propane = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "propane", 0xfae250, NONE)).asGas(232)
             .mats(of(Carbon, 2, Hydrogen, 6));
-    public static Material Butane = AntimatterAPI.register(Material.class, new Material(Ref.ID, "butane", 0xb6371e, NONE))
-            .asGas(296).mats(of(Carbon, 4, Hydrogen, 10));
-    public static Material Butene = AntimatterAPI.register(Material.class, new Material(Ref.ID, "butene", 0xcf5005, NONE))
-            .asGas(256).mats(of(Carbon, 4, Hydrogen, 8));
+    public static Material Butane = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "butane", 0xb6371e, NONE)).asGas(296)
+            .mats(of(Carbon, 4, Hydrogen, 10));
+    public static Material Butene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "butene", 0xcf5005, NONE)).asGas(256)
+            .mats(of(Carbon, 4, Hydrogen, 8));
     public static Material Butadiene = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "butadiene", 0xe86900, NONE)).asGas(206)
             .mats(of(Carbon, 4, Hydrogen, 6));
@@ -306,7 +315,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "wood_vinegar", 0xd45500, NONE)).asFluid();
     public static Material LiquidAir = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "liquid_air", 0xa9d0f5, NONE)).asFluid()
-            /* .setTemp(79, 0) */.mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1/* , NobleGases, 1 */)); // TODO Rrename to liquid
+            /* .setTemp(79, 0) */.mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1/* , NobleGases, 1 */)); // TODO Rrename to
+                                                                                                     // liquid
     // oxygen <- Nope, add
     // fluid to Oxyge;
     public static Material DistilledWater = AntimatterAPI
@@ -394,8 +404,9 @@ public class Materials {
     public static Material HypochlorousAcid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "hypochlorous_acid", 0x6f8a91, NONE)).asFluid()
             .mats(of(Hydrogen, 1, Chlorine, 1, Oxygen, 1));
-    public static Material Cumene = AntimatterAPI.register(Material.class, new Material(Ref.ID, "cumene", 0x552200, NONE))
-            .asFluid().mats(of(Carbon, 9, Hydrogen, 12));
+    public static Material Cumene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "cumene", 0x552200, NONE)).asFluid()
+            .mats(of(Carbon, 9, Hydrogen, 12));
     public static Material PhosphoricAcid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "phosphoric_acid", 0xdcdc00, NONE)).asFluid()
             .mats(of(Hydrogen, 3, Phosphor, 1, Oxygen, 4));
@@ -408,8 +419,9 @@ public class Materials {
     public static Material Benzene = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "benzene", 0x1a1a1a, NONE)).asFluid(288)
             .mats(of(Carbon, 6, Hydrogen, 6));
-    public static Material Phenol = AntimatterAPI.register(Material.class, new Material(Ref.ID, "phenol", 0x784421, NONE))
-            .asFluid(288).mats(of(Carbon, 6, Hydrogen, 6, Oxygen, 1));
+    public static Material Phenol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "phenol", 0x784421, NONE)).asFluid(288)
+            .mats(of(Carbon, 6, Hydrogen, 6, Oxygen, 1));
     public static Material Toluene = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "toluene", 0x501d05, NONE)).asFluid(328)
             .mats(of(Carbon, 7, Hydrogen, 8));
@@ -418,7 +430,8 @@ public class Materials {
     public static Material Naphtha = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "naphtha", 0xffff00, NONE)).asFluid(256);
     public static Material DrillingFluid = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "drilling_fluid", 0xffffff, NONE)).asFluid(); // TODO: Perhaps for
+            .register(Material.class, new Material(Ref.ID, "drilling_fluid", 0xffffff, NONE)).asFluid(); // TODO:
+                                                                                                         // Perhaps for
     // a bedrock drill;
     public static Material BlueVitriol = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "blue_vitriol_water_solution", 0xffffff, NONE)).asFluid();
@@ -434,8 +447,8 @@ public class Materials {
     /**
      * Fuels
      **/
-    public static Material Diesel = AntimatterAPI.register(Material.class, new Material(Ref.ID, "diesel", 0xffff00, NONE))
-            .asFluid(128);
+    public static Material Diesel = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "diesel", 0xffff00, NONE)).asFluid(128);
     public static Material NitroFuel = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "cetane_boosted_diesel", 0xc8ff00, NONE)).asFluid(512);
     public static Material BioDiesel = AntimatterAPI
@@ -528,8 +541,9 @@ public class Materials {
             .mats(of(Platinum, 3, Nickel, 1, Sulfur, 1, Palladium, 1));
     public static Material DarkAsh = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "dark_ash", 0x323232, DULL)).asDust();
-    public static Material Galena = AntimatterAPI.register(Material.class, new Material(Ref.ID, "galena", 0x643c64, DULL))
-            .asOre().mats(of(Lead, 3, Silver, 3, Sulfur, 2));
+    public static Material Galena = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "galena", 0x643c64, DULL)).asOre()
+            .mats(of(Lead, 3, Silver, 3, Sulfur, 2));
     public static Material Garnierite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "garnierite", 0x32c846, METALLIC)).asOre()
             .mats(of(Nickel, 1, Oxygen, 1));
@@ -556,7 +570,8 @@ public class Materials {
             .mats(of(Molybdenum, 1, Sulfur, 2));
     public static Material Obsidian = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "obsidian", 0x503264, DULL)).asDust()
-            .addHandleStat(222, -0.5F, of(Enchantments.UNBREAKING, 2)).mats(of(Magnesium, 1, Iron, 1, Silicon, 2, Oxygen, 8));
+            .addHandleStat(222, -0.5F, of(Enchantments.UNBREAKING, 2))
+            .mats(of(Magnesium, 1, Iron, 1, Silicon, 2, Oxygen, 8));
     public static Material Phosphate = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "phosphate", 0xffff00, DULL)).asOre(true)
             .mats(of(Phosphor, 1, Oxygen, 4));
@@ -567,7 +582,8 @@ public class Materials {
     // Material(Ref.ID, "powellite", 0xffff00,
     // DULL)).asDust(ORE).addComposition(of(Calcium, 1, Molybdenum, 1, Oxygen, 4));
     public static Material Pyrite = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "pyrite", 0x967828, ROUGH)).asOre().mats(of(Iron, 1, Sulfur, 2));
+            .register(Material.class, new Material(Ref.ID, "pyrite", 0x967828, ROUGH)).asOre()
+            .mats(of(Iron, 1, Sulfur, 2));
     public static Material Pyrolusite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "pyrolusite", 0x9696aa, DULL)).asOre()
             .mats(of(Manganese, 1, Oxygen, 2));
@@ -593,7 +609,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "ferrite_mixture", 0xb4b4b4, METALLIC)).asDust()
             .mats(of(Nickel, 1, Zinc, 1, Iron, 4));
     public static Material Massicot = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "massicot", 0xffdd55, DULL)).asDust().mats(of(Lead, 1, Oxygen, 1));
+            .register(Material.class, new Material(Ref.ID, "massicot", 0xffdd55, DULL)).asDust()
+            .mats(of(Lead, 1, Oxygen, 1));
     public static Material ArsenicTrioxide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "arsenic_trioxide", 0xffffff, SHINY)).asDust()
             .mats(of(Arsenic, 2, Oxygen, 3));
@@ -606,13 +623,15 @@ public class Materials {
     public static Material Quicklime = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "quicklime", 0xf0f0f0, DULL)).asDust()
             .mats(of(Calcium, 1, Oxygen, 1));
-    public static Material Potash = AntimatterAPI.register(Material.class, new Material(Ref.ID, "potash", 0x784237, DULL))
-            .asDust().mats(of(Potassium, 2, Oxygen, 1));
+    public static Material Potash = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "potash", 0x784237, DULL)).asDust()
+            .mats(of(Potassium, 2, Oxygen, 1));
     public static Material SodaAsh = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "soda_ash", 0xdcdcff, DULL)).asDust()
             .mats(of(Sodium, 2, Carbon, 1, Oxygen, 3));
-    public static Material Brick = AntimatterAPI.register(Material.class, new Material(Ref.ID, "brick", 0x9b5643, ROUGH))
-            .asDust().mats(of(Aluminium, 4, Silicon, 3, Oxygen, 12));
+    public static Material Brick = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "brick", 0x9b5643, ROUGH)).asDust()
+            .mats(of(Aluminium, 4, Silicon, 3, Oxygen, 12));
     public static Material Fireclay = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "fireclay", 0xada09b, ROUGH)).asDust().mats(of(Brick, 1));
     public static Material SodiumBisulfate = AntimatterAPI
@@ -663,14 +682,16 @@ public class Materials {
     public static Material Blaze = AntimatterAPI.register(Material.class, new Material(Ref.ID, "blaze", 0xffc800, NONE))
             .asDust().addHandleStat(-10, -0.5F, of(Enchantments.FIRE_ASPECT, 1))
             .mats(of(Sulfur, 1, DarkAsh, 1/* , Magic, 1 */));
-    public static Material Flint = AntimatterAPI.register(Material.class, new Material(Ref.ID, "flint", 0x002040, FLINT))
-            .asDust(ROCK).addTools(0.0F, 2.0F, 48, 1, of(Enchantments.FIRE_ASPECT, 1)).mats(of(SiliconDioxide, 1));
+    public static Material Flint = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "flint", 0x002040, FLINT)).asDust(ROCK)
+            .addTools(0.0F, 2.0F, 48, 1, of(Enchantments.FIRE_ASPECT, 1)).mats(of(SiliconDioxide, 1));
     public static Material PotassiumFeldspar = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "potassium_feldspar", 0x782828, FINE)).asDust()
             .mats(of(Potassium, 1, Aluminium, 1, Silicon, 3, Oxygen, 8));
     public static Material Biotite = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "biotite", 0x141e14, METALLIC)).asDust().mats(b -> b
-                    .put(Potassium, 1).put(Magnesium, 3).put(Aluminium, 3).put(Fluorine, 2).put(Silicon, 3).put(Oxygen, 10));
+            .register(Material.class, new Material(Ref.ID, "biotite", 0x141e14, METALLIC)).asDust()
+            .mats(b -> b.put(Potassium, 1).put(Magnesium, 3).put(Aluminium, 3).put(Fluorine, 2).put(Silicon, 3)
+                    .put(Oxygen, 10));
     public static Material VanadiumMagnetite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "vanadium_magnetite", 0x23233c, METALLIC)).asOre(true)
             .mats(of(Magnetite, 1, Vanadium, 1));
@@ -693,8 +714,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "glauconite", 0x82b43c, DULL)).asOre(true)
             .mats(of(Potassium, 1, Magnesium, 2, Aluminium, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Ge;
     public static Material Bentonite = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "bentonite", 0xf5d7d2, ROUGH)).asOre(true)
-            .mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)); // TODO:
+            .register(Material.class, new Material(Ref.ID, "bentonite", 0xf5d7d2, ROUGH)).asOre(true).mats(b -> b
+                    .put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)); // TODO:
     // Ore
     // Ge;
     public static Material Pitchblende = AntimatterAPI
@@ -703,8 +724,9 @@ public class Materials {
     public static Material Malachite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "malachite", 0x055f05, DULL)).asOre(true)
             .mats(of(Copper, 2, Carbon, 1, Hydrogen, 2, Oxygen, 5));
-    public static Material Barite = AntimatterAPI.register(Material.class, new Material(Ref.ID, "barite", 0xe6ebff, DULL))
-            .asOre(true).mats(of(Barium, 1, Sulfur, 1, Oxygen, 4));
+    public static Material Barite = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "barite", 0xe6ebff, DULL)).asOre(true)
+            .mats(of(Barium, 1, Sulfur, 1, Oxygen, 4));
     public static Material Talc = AntimatterAPI.register(Material.class, new Material(Ref.ID, "talc", 0x5ab45a, DULL))
             .asOre(true).mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12));
     public static Material Soapstone = AntimatterAPI
@@ -731,7 +753,8 @@ public class Materials {
     public static Material Dilithium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "dilithium", 0xfffafa, DIAMOND)).asGemBasic(true);
     public static Material NetherQuartz = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "nether_quartz", 0xe6d2d2, QUARTZ)).asGemBasic(false).asOre();
+            .register(Material.class, new Material(Ref.ID, "nether_quartz", 0xe6d2d2, QUARTZ)).asGemBasic(false)
+            .asOre();
     public static Material NetherStar = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "nether_star", 0xffffff, NONE)).asGemBasic(false)
             .addTools(3.5F, 6.0F, 3620, 4, of(Enchantments.SILK_TOUCH, 1)); // Made Nether Stars usabl;
@@ -750,44 +773,49 @@ public class Materials {
 
     public static Material Diamond = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "diamond", 0xc8ffff, DIAMOND)).asGem(true).asOre(3, 7, true)
-            .addTools(ItemTier.DIAMOND.getAttackDamage(), ItemTier.DIAMOND.getEfficiency(), ItemTier.DIAMOND.getMaxUses(),
-                    ItemTier.DIAMOND.getHarvestLevel())
+            .addTools(ItemTier.DIAMOND.getAttackDamage(), ItemTier.DIAMOND.getEfficiency(),
+                    ItemTier.DIAMOND.getMaxUses(), ItemTier.DIAMOND.getHarvestLevel())
             .mats(of(Carbon, 1));
     public static Material Emerald = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "emerald", 0x50ff50, GEM_V)).asGem(true).asOre(3, 7, true)
             .addTools(3.0F, 9.0F, 590, 3).mats(of(Silver, 1, Gold, 1)); // Made Emerald bette;
     public static Material GreenSapphire = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "green_sapphire", 0x64c882, GEM_H)).asGem(true).asOre(3, 7, true)
-            .addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3));
+            .register(Material.class, new Material(Ref.ID, "green_sapphire", 0x64c882, GEM_H)).asGem(true)
+            .asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3));
     public static Material Lazurite = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "lazurite", 0x6478ff, LAPIS)).asGemBasic(false).asOre(2, 5, true)
-            .mats(of(Aluminium, 6, Silicon, 6, Calcium, 8, Sodium, 8)); // TODO I think this is needed;
+            .register(Material.class, new Material(Ref.ID, "lazurite", 0x6478ff, LAPIS)).asGemBasic(false)
+            .asOre(2, 5, true).mats(of(Aluminium, 6, Silicon, 6, Calcium, 8, Sodium, 8)); // TODO I think this is
+                                                                                          // needed;
     public static Material Ruby = AntimatterAPI.register(Material.class, new Material(Ref.ID, "ruby", 0xff6464, RUBY))
             .asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2).mats(of(Chrome, 1, Aluminium, 2, Oxygen, 3));
     public static Material BlueSapphire = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "blue_sapphire", 0x6464c8, GEM_V)).asGem(true).asOre(3, 7, true)
-            .addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3));
+            .register(Material.class, new Material(Ref.ID, "blue_sapphire", 0x6464c8, GEM_V)).asGem(true)
+            .asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3));
     public static Material Sodalite = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "sodalite", 0x1414ff, LAPIS)).asGemBasic(false).asOre(2, 5, true)
-            .mats(of(Aluminium, 3, Silicon, 3, Sodium, 4, Chlorine, 1)); // TODO I think this is needed;
+            .register(Material.class, new Material(Ref.ID, "sodalite", 0x1414ff, LAPIS)).asGemBasic(false)
+            .asOre(2, 5, true).mats(of(Aluminium, 3, Silicon, 3, Sodium, 4, Chlorine, 1)); // TODO I think this is
+                                                                                           // needed;
     public static Material Tanzanite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "tanzanite", 0x4000c8, GEM_V)).asGem(true).asOre(3, 7, true)
             .addTools(2.0F, 7.0F, 256, 2).mats(of(Calcium, 2, Aluminium, 3, Silicon, 3, Hydrogen, 1, Oxygen, 13));
-    public static Material Topaz = AntimatterAPI.register(Material.class, new Material(Ref.ID, "topaz", 0xff8000, GEM_H))
-            .asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2)
-            .mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
-    public static Material Glass = AntimatterAPI.register(Material.class, new Material(Ref.ID, "glass", 0xfafafa, SHINY))
-            .asDust(PLATE, LENS).mats(of(SiliconDioxide, 1));
+    public static Material Topaz = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "topaz", 0xff8000, GEM_H)).asGem(true).asOre(3, 7, true)
+            .addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
+    public static Material Glass = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "glass", 0xfafafa, SHINY)).asDust(PLATE, LENS)
+            .mats(of(SiliconDioxide, 1));
     public static Material Olivine = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "olivine", 0x96ff96, RUBY)).asGem(true).asOre(3, 7, true)
-            .addTools(2.0F, 7.0F, 256, 2, of(Enchantments.SILK_TOUCH, 1)).mats(of(Magnesium, 2, Iron, 1, SiliconDioxide, 2));
+            .addTools(2.0F, 7.0F, 256, 2, of(Enchantments.SILK_TOUCH, 1))
+            .mats(of(Magnesium, 2, Iron, 1, SiliconDioxide, 2));
     public static Material Opal = AntimatterAPI.register(Material.class, new Material(Ref.ID, "opal", 0x0000ff, RUBY))
             .asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2).mats(of(SiliconDioxide, 1));
     public static Material Amethyst = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "amethyst", 0xd232d2, RUBY)).asGem(true).asOre(3, 7, true)
             .addTools(2.0F, 7.0F, 256, 3).mats(of(SiliconDioxide, 4, Iron, 1));
-    public static Material Lapis = AntimatterAPI.register(Material.class, new Material(Ref.ID, "lapis", 0x4646dc, LAPIS))
-            .asGemBasic(false).asOre(2, 5, true).mats(of(/* Lazurite, 12, Sodalite, 2, */Pyrite, 1, Calcite, 1));
+    public static Material Lapis = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "lapis", 0x4646dc, LAPIS)).asGemBasic(false)
+            .asOre(2, 5, true).mats(of(/* Lazurite, 12, Sodalite, 2, */Pyrite, 1, Calcite, 1));
     public static Material EnderPearl = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "enderpearl", 0x6cdcc8, SHINY)).asGemBasic(false)
             .mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5/* , Magic, 6 */));
@@ -795,11 +823,11 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "endereye", 0xa0fae6, SHINY)).asGemBasic(true, ROD, PLATE)
             .mats(of(EnderPearl, 1, Blaze, 1));
     public static Material Phosphorus = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "phosphorus", 0xffff00, FLINT)).asGemBasic(false).asOre(3, 7, true)
-            .mats(of(Calcium, 3, Phosphate, 2));
+            .register(Material.class, new Material(Ref.ID, "phosphorus", 0xffff00, FLINT)).asGemBasic(false)
+            .asOre(3, 7, true).mats(of(Calcium, 3, Phosphate, 2));
     public static Material RedGarnet = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "red_garnet", 0xc85050, RUBY)).asGemBasic(true).asOre(3, 7, true)
-            .mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
+            .register(Material.class, new Material(Ref.ID, "red_garnet", 0xc85050, RUBY)).asGemBasic(true)
+            .asOre(3, 7, true).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
     public static Material YellowGarnet = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "yellow_garnet", 0xc8c850, RUBY)).asGemBasic(true)
             .asOre(3, 7, true).mats(of(Andradite, 5, Grossular, 8, Uvarovite, 3));
@@ -830,8 +858,9 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "brass", 0xffb400, METALLIC)).asMetal(1170, 0, FRAME, ROD)
             .mats(of(Zinc, 1, Copper, 3));
     public static Material Bronze = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "bronze", 0xff8000, METALLIC)).asMetal(1125, 0, GEAR, FRAME, ROTOR)
-            .addTools(1.5F, 6.5F, 182, 2, of(Enchantments.UNBREAKING, 1)).mats(of(Tin, 1, Copper, 3));
+            .register(Material.class, new Material(Ref.ID, "bronze", 0xff8000, METALLIC))
+            .asMetal(1125, 0, GEAR, FRAME, ROTOR).addTools(1.5F, 6.5F, 182, 2, of(Enchantments.UNBREAKING, 1))
+            .mats(of(Tin, 1, Copper, 3));
     public static Material Cupronickel = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "cupronickel", 0xe39680, METALLIC)).asMetal(1728, 0, PLATE)
             .mats(of(Copper, 1, Nickel, 1));
@@ -844,7 +873,8 @@ public class Materials {
             .addTools(2.5F, 7.0F, 320, 2, of(Enchantments.BANE_OF_ARTHROPODS, 2)).mats(of(Iron, 2, Nickel, 1));
     public static Material Kanthal = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "kanthal", 0xc2d2df, METALLIC)).asMetal(1800, 1800)
-            .addTools(2.5F, 6.0F, 64, 2, of(Enchantments.BANE_OF_ARTHROPODS, 1)).mats(of(Iron, 1, Aluminium, 1, Chrome, 1));
+            .addTools(2.5F, 6.0F, 64, 2, of(Enchantments.BANE_OF_ARTHROPODS, 1))
+            .mats(of(Iron, 1, Aluminium, 1, Chrome, 1));
     public static Material Magnalium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "magnalium", 0xc8beff, DULL)).asMetal(870, 0)
             .mats(of(Magnesium, 1, Aluminium, 2));
@@ -873,8 +903,8 @@ public class Materials {
             .asMetal(4500, 4500, ROD, PLATE).mats(of(Vanadium, 3, Gallium, 1));
     public static Material WroughtIron = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "wrought_iron", 0xc8b4b4, METALLIC))
-            .asMetal(1811, 0, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).addTools(Iron).mats(of(Iron, 1))
-            .asOre();
+            .asMetal(1811, 0, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).addTools(Iron)
+            .mats(of(Iron, 1)).asOre();
     public static Material YttriumBariumCuprate = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "yttrium_barium_cuprate", 0x504046, METALLIC))
             .asMetal(4500, 4500, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Yttrium, 1, Barium, 2, Copper, 3, Oxygen, 7));
@@ -893,7 +923,8 @@ public class Materials {
             .mats(of(Bismuth, 1, Zinc, 1, Copper, 3));
     public static Material BlackSteel = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "black_steel", 0x646464, METALLIC))
-            .asMetal(1200, 1200, FRAME, PLATE).addTools(3.5F, 6.5F, 768, 2).mats(of(Nickel, 1, BlackBronze, 1, Steel, 3));
+            .asMetal(1200, 1200, FRAME, PLATE).addTools(3.5F, 6.5F, 768, 2)
+            .mats(of(Nickel, 1, BlackBronze, 1, Steel, 3));
     public static Material RedSteel = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "red_steel", 0x8c6464, METALLIC)).asMetal(1300, 1300)
             .addTools(3.5F, 7.0F, 896, 2).mats(of(SterlingSilver, 1, BismuthBronze, 1, Steel, 2, BlackSteel, 4));
@@ -918,11 +949,11 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "magnetic_iron", 0xc8c8c8, MAGNETIC)).asMetal(1811, 0, ROD)
             .addTools(Iron).mats(of(Iron, 1));
     public static Material SteelMagnetic = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "magnetic_steel", 0x808080, MAGNETIC)).asMetal(1000, 1000, ROD)
-            .addTools(Steel).mats(of(Steel, 1));
+            .register(Material.class, new Material(Ref.ID, "magnetic_steel", 0x808080, MAGNETIC))
+            .asMetal(1000, 1000, ROD).addTools(Steel).mats(of(Steel, 1));
     public static Material NeodymiumMagnetic = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "magnetic_neodymium", 0x646464, MAGNETIC)).asMetal(1297, 1297, ROD)
-            .mats(of(Neodymium, 1));
+            .register(Material.class, new Material(Ref.ID, "magnetic_neodymium", 0x646464, MAGNETIC))
+            .asMetal(1297, 1297, ROD).mats(of(Neodymium, 1));
     public static Material NickelZincFerrite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "nickel_zinc_ferrite", 0x3c3c3c, ROUGH)).asMetal(1500, 1500)
             .addTools(0.0F, 3.0F, 32, 1).mats(of(Nickel, 1, Zinc, 1, Iron, 4, Oxygen, 8));
@@ -932,14 +963,15 @@ public class Materials {
     public static Material VanadiumSteel = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "vanadium_steel", 0xc0c0c0, METALLIC)).asMetal(1453, 1453)
             .addTools(3.0F, 5.0F, 1920, 3).mats(of(Vanadium, 1, Chrome, 1, Steel, 7));
-    public static Material HSSG = AntimatterAPI.register(Material.class, new Material(Ref.ID, "hssg", 0x999900, METALLIC))
-            .asMetal(4500, 4500, GEAR, FRAME).addTools(3.8F, 10.0F, 4000, 3)
-            .mats(of(TungstenSteel, 5, Chrome, 1, Molybdenum, 2, Vanadium, 1));
-    public static Material HSSE = AntimatterAPI.register(Material.class, new Material(Ref.ID, "hsse", 0x336600, METALLIC))
-            .asMetal(5400, 5400, GEAR, FRAME).addTools(4.2F, 10.0F, 5120, 4)
-            .mats(of(HSSG, 6, Cobalt, 1, Manganese, 1, Silicon, 1));
-    public static Material HSSS = AntimatterAPI.register(Material.class, new Material(Ref.ID, "hsss", 0x660033, METALLIC))
-            .asMetal(5400, 5400).addTools(5.0F, 14.0F, 3000, 4).mats(of(HSSG, 6, Iridium, 2, Osmium, 1));
+    public static Material HSSG = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hssg", 0x999900, METALLIC)).asMetal(4500, 4500, GEAR, FRAME)
+            .addTools(3.8F, 10.0F, 4000, 3).mats(of(TungstenSteel, 5, Chrome, 1, Molybdenum, 2, Vanadium, 1));
+    public static Material HSSE = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hsse", 0x336600, METALLIC)).asMetal(5400, 5400, GEAR, FRAME)
+            .addTools(4.2F, 10.0F, 5120, 4).mats(of(HSSG, 6, Cobalt, 1, Manganese, 1, Silicon, 1));
+    public static Material HSSS = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hsss", 0x660033, METALLIC)).asMetal(5400, 5400)
+            .addTools(5.0F, 14.0F, 3000, 4).mats(of(HSSG, 6, Iridium, 2, Osmium, 1));
     public static Material Osmiridium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "osmiridium", 0x6464ff, METALLIC)).asMetal(3333, 2500, FRAME)
             .addTools(6.0F, 15.0F, 1940, 5).mats(of(Iridium, 3, Osmium, 1));
@@ -953,8 +985,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "naquadah_alloy", 0x282828, METALLIC)).asMetal(7200, 7200)
             .addTools(4.5F, 8.0F, 5120, 5);
     public static Material EnrichedNaquadah = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "enriched_naquadah", 0x323232, SHINY)).asMetal(4500, 4500).asOre()
-            .addTools(5.0F, 6.0F, 1280, 4);
+            .register(Material.class, new Material(Ref.ID, "enriched_naquadah", 0x323232, SHINY)).asMetal(4500, 4500)
+            .asOre().addTools(5.0F, 6.0F, 1280, 4);
     public static Material Naquadria = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "naquadria", 0x1e1e1e, SHINY)).asMetal(9000, 9000);
     public static Material Tritanium = AntimatterAPI
@@ -970,8 +1002,9 @@ public class Materials {
     public static Material Plastic = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "plastic", 0xc8c8c8, DULL)).asSolid(295, 0, PLATE)
             .addHandleStat(66, 0.5F).mats(of(Carbon, 1, Hydrogen, 2));
-    public static Material Epoxid = AntimatterAPI.register(Material.class, new Material(Ref.ID, "epoxid", 0xc88c14, DULL))
-            .asSolid(400, 0, PLATE).addHandleStat(70, 1.5F).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
+    public static Material Epoxid = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "epoxid", 0xc88c14, DULL)).asSolid(400, 0, PLATE)
+            .addHandleStat(70, 1.5F).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
     public static Material Silicone = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "silicone", 0xdcdcdc, DULL)).asSolid(900, 0, PLATE, FOIL)
             .addHandleStat(-40, 2.0F).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
@@ -994,23 +1027,25 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "styrene_butadiene_rubber", 0x211a18, SHINY))
             .asSolid(295, 0, PLATE, RING).addHandleStat(66, 1.2F).mats(of(Styrene, 1, Butadiene, 3));
     public static Material PolyvinylChloride = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "polyvinyl_chloride", 0xd7e6e6, NONE)).asSolid(295, 0, PLATE, FOIL)
-            .addHandleStat(210, 0.5F).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
+            .register(Material.class, new Material(Ref.ID, "polyvinyl_chloride", 0xd7e6e6, NONE))
+            .asSolid(295, 0, PLATE, FOIL).addHandleStat(210, 0.5F).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
     public static Material GalliumArsenide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "gallium_arsenide", 0xa0a0a0, DULL)).asSolid(295, 1200)
             .mats(of(Arsenic, 1, Gallium, 1));
     public static Material EpoxidFiberReinforced = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "fiber_reinforced_epoxy_resin", 0xa07010, DULL)).asSolid(400, 0)
-            .mats(of(Epoxid, 1));
+            .register(Material.class, new Material(Ref.ID, "fiber_reinforced_epoxy_resin", 0xa07010, DULL))
+            .asSolid(400, 0).mats(of(Epoxid, 1));
 
     public static Material RedGranite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "red_granite", 0xff0080, ROUGH)).asDust(ROCK)
-            .addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1)).mats(of(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3));
+            .addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1))
+            .mats(of(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3));
     public static Material BlackGranite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "black_granite", 0x0a0a0a, ROUGH)).asDust(ROCK)
             .addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1)).mats(of(SiliconDioxide, 4, Biotite, 1));
-    public static Material Marble = AntimatterAPI.register(Material.class, new Material(Ref.ID, "marble", 0xc8c8c8, NONE))
-            .asDust(ROCK).mats(of(Magnesium, 1, Calcite, 7));
+    public static Material Marble = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "marble", 0xc8c8c8, NONE)).asDust(ROCK)
+            .mats(of(Magnesium, 1, Calcite, 7));
     public static Material Basalt = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "basalt", 0x1e1414, ROUGH)).asDust(ROCK)
             .mats(of(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4));
@@ -1018,7 +1053,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "komatiite", 0xbebe69, NONE)).asDust(ROCK)
             .mats(of(Olivine, 1, /* MgCO3, 2, */Flint, 6, DarkAsh, 3));
     public static Material Limestone = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "limestone", 0xe6c882, NONE)).asDust(ROCK).mats(of(Calcite, 1));
+            .register(Material.class, new Material(Ref.ID, "limestone", 0xe6c882, NONE)).asDust(ROCK)
+            .mats(of(Calcite, 1));
     public static Material GreenSchist = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "green_schist", 0x69be69, NONE)).asDust(ROCK);
     public static Material BlueSchist = AntimatterAPI
@@ -1032,8 +1068,9 @@ public class Materials {
     /**
      * Ore Stones
      **/
-    public static Material Coal = AntimatterAPI.register(Material.class, new Material(Ref.ID, "coal", 0x464646, LIGNITE))
-            .asGemBasic(false).asOre(0, 2, true, ORE_STONE).mats(of(Carbon, 1));
+    public static Material Coal = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "coal", 0x464646, LIGNITE)).asGemBasic(false)
+            .asOre(0, 2, true, ORE_STONE).mats(of(Carbon, 1));
     public static Material Lignite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "lignite_coal", 0x644646, LIGNITE)).asGemBasic(false)
             .asOreStone(0, 2, ORE_SMALL).mats(of(Carbon, 3, Water, 1));
@@ -1066,14 +1103,15 @@ public class Materials {
     // public static Material Netherite = AntimatterAPI.register(Material.class, new
     // Material(Ref.ID, "netherite", 0x2D2425, ROUGH).asSolid(PLATE);
     public static Material Netherite = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "netherite", 0x504650, ROUGH)).asMetal(2246, 1300, PLATE, ROD)
+            .register(Material.class, new Material(Ref.ID, "netherite", 0x504650, ROUGH))
+            .asMetal(2246, 1300, PLATE, ROD)
             .addTools(3.0F, 10, 500, NETHERITE.getHarvestLevel(), of(Enchantments.FIRE_ASPECT, 3))
-            .addArmor(new int[]{0, 1, 1, 0}, 0.5F, 0.1F, 20);
+            .addArmor(new int[] { 0, 1, 1, 0 }, 0.5F, 0.1F, 20);
     public static Material NetherizedDiamond = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "netherized_diamond", 0x5a505a, DIAMOND)).asGemBasic(false)
             .addTools(4.0F, 12, NETHERITE.getMaxUses(), NETHERITE.getHarvestLevel(),
                     of(Enchantments.FIRE_ASPECT, 3, Enchantments.SHARPNESS, 4))
-            .addArmor(new int[]{1, 1, 2, 1}, 3.0F, 0.1F, 37, of(Enchantments.PROTECTION, 4));
+            .addArmor(new int[] { 1, 1, 2, 1 }, 3.0F, 0.1F, 37, of(Enchantments.PROTECTION, 4));
     public static Material NetheriteScrap = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "netherite_scrap", 0x6e505a, ROUGH))
             .asDust(CRUSHED, CRUSHED_PURIFIED, CRUSHED_CENTRIFUGED, DUST_IMPURE, DUST_PURE);
@@ -1084,30 +1122,32 @@ public class Materials {
         ELECSEPN.add(YellowLimonite, BrownLimonite, Pyrite, BandedIron, Nickel, Glauconite, Pentlandite, Tin, Antimony,
                 Ilmenite, Manganese, Chrome, Andradite);
         ELEC.add(Methane, CarbonDioxide, NitrogenDioxide, Toluene, VinylChloride, SulfurDioxide, SulfurTrioxide,
-                Dimethylamine, DinitrogenTetroxide, NitricOxide, Ammonia, Chloromethane, Tetrafluoroethylene, CarbonMonoxide,
-                Ethylene, Propane, Ethenone, Ethanol, Glyceryl, SodiumPersulfate, Dichlorobenzene, Styrene, Isoprene,
-                Tetranitromethane, Epichlorohydrin, NitricAcid, Dimethylhydrazine, Chloramine, Dimethyldichlorosilane,
-                HydrofluoricAcid, Chloroform, BisphenolA, AceticAcid, Acetone, Methanol, VinylAcetate, MethylAcetate,
-                AllylChloride, HypochlorousAcid, Cumene, PhosphoricAcid, SulfuricAcid, Benzene, Phenol, Glycerol, SodiumSulfide,
-                Almandine, Andradite, BandedIron, Calcite, Cassiterite, Chalcopyrite, Cobaltite, Galena, Garnierite, Grossular,
-                Bauxite, Magnesite, Magnetite, Molybdenite, Obsidian, Phosphate, Polydimethylsiloxane, Pyrite, Pyrolusite,
-                Pyrope, RockSalt, Saltpeter, SiliconDioxide, Massicot, ArsenicTrioxide, CobaltOxide, Magnesia, Quicklime,
-                Potash, SodaAsh, PhosphorousPentoxide, SodiumHydroxide, Spessartine, Sphalerite, Uvarovite, PotassiumFeldspar,
-                Biotite, RedGranite, Bastnasite, Pentlandite, Spodumene, Glauconite, Bentonite, Malachite, Barite, Talc,
+                Dimethylamine, DinitrogenTetroxide, NitricOxide, Ammonia, Chloromethane, Tetrafluoroethylene,
+                CarbonMonoxide, Ethylene, Propane, Ethenone, Ethanol, Glyceryl, SodiumPersulfate, Dichlorobenzene,
+                Styrene, Isoprene, Tetranitromethane, Epichlorohydrin, NitricAcid, Dimethylhydrazine, Chloramine,
+                Dimethyldichlorosilane, HydrofluoricAcid, Chloroform, BisphenolA, AceticAcid, Acetone, Methanol,
+                VinylAcetate, MethylAcetate, AllylChloride, HypochlorousAcid, Cumene, PhosphoricAcid, SulfuricAcid,
+                Benzene, Phenol, Glycerol, SodiumSulfide, Almandine, Andradite, BandedIron, Calcite, Cassiterite,
+                Chalcopyrite, Cobaltite, Galena, Garnierite, Grossular, Bauxite, Magnesite, Magnetite, Molybdenite,
+                Obsidian, Phosphate, Polydimethylsiloxane, Pyrite, Pyrolusite, Pyrope, RockSalt, Saltpeter,
+                SiliconDioxide, Massicot, ArsenicTrioxide, CobaltOxide, Magnesia, Quicklime, Potash, SodaAsh,
+                PhosphorousPentoxide, SodiumHydroxide, Spessartine, Sphalerite, Uvarovite, PotassiumFeldspar, Biotite,
+                RedGranite, Bastnasite, Pentlandite, Spodumene, Glauconite, Bentonite, Malachite, Barite, Talc,
                 AntimonyTrioxide, CupricOxide, Ferrosilite, Quartzite, Charcoal, Coal, Lignite, Diamond, Emerald, Ruby,
                 BlueSapphire, Tanzanite, Topaz, Olivine, Opal, Amethyst, EnderPearl, StainlessSteel, Steel, Ultimet,
                 IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium);
-        CENT.add(/* NobleGases, */Air, BrownLimonite, Cinnabar, Clay, Cooperite/* , Powellite */, Stibnite, Tetrahedrite,
-                Uraninite, Wulfenite, YellowLimonite, Blaze, Flint, Marble, BlackGranite, VanadiumMagnetite, Pitchblende, Glass,
-                Lapis, EnderEye, Phosphorus, Redstone, Basalt, AnnealedCopper, BatteryAlloy, Brass, Bronze, Cupronickel,
-                Electrum, Invar, Kanthal, Magnalium, Nichrome, NiobiumTitanium, SolderingAlloy, VanadiumGallium, WroughtIron,
-                SterlingSilver, RoseGold, BismuthBronze, TungstenSteel, RedAlloy, CobaltBrass, TungstenCarbide, VanadiumSteel,
-                HSSG, HSSE, HSSS, GalliumArsenide/* , IndiumGalliumPhosphide, BorosilicateGlass */);
+        CENT.add(/* NobleGases, */Air, BrownLimonite, Cinnabar, Clay, Cooperite/* , Powellite */, Stibnite,
+                Tetrahedrite, Uraninite, Wulfenite, YellowLimonite, Blaze, Flint, Marble, BlackGranite,
+                VanadiumMagnetite, Pitchblende, Glass, Lapis, EnderEye, Phosphorus, Redstone, Basalt, AnnealedCopper,
+                BatteryAlloy, Brass, Bronze, Cupronickel, Electrum, Invar, Kanthal, Magnalium, Nichrome,
+                NiobiumTitanium, SolderingAlloy, VanadiumGallium, WroughtIron, SterlingSilver, RoseGold, BismuthBronze,
+                TungstenSteel, RedAlloy, CobaltBrass, TungstenCarbide, VanadiumSteel, HSSG, HSSE, HSSS,
+                GalliumArsenide/* , IndiumGalliumPhosphide, BorosilicateGlass */);
         CRACK.add(RefineryGas, Naphtha, Ethane, Propane, Butane, Butene, Ethylene, Propene, LightDiesel, HeavyDiesel);
         CALCITE2X.add(Pyrite, BrownLimonite, YellowLimonite, Magnetite);
         CALCITE3X.add(Iron, WroughtIron);
-        WASHM.add(Gold, Silver, Osmium, Platinum, Cooperite, Galena, Nickel, Tungstate, Lead, Magnetite, Iridium, Copper,
-                Chalcopyrite);
+        WASHM.add(Gold, Silver, Osmium, Platinum, Cooperite, Galena, Nickel, Tungstate, Lead, Magnetite, Iridium,
+                Copper, Chalcopyrite);
         WASHS.add(Zinc, Nickel, Copper, Cobaltite, Tetrahedrite, Gold, Sphalerite, Garnierite, Chalcopyrite, Cooperite,
                 Platinum, Pentlandite, Tin, Malachite, YellowLimonite);
         NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Glyceryl,
@@ -1115,13 +1155,14 @@ public class Materials {
                 Lapis/* , Sodalite, Lazurite, Monazite */, Quartzite, NetherQuartz, Phosphorus, Phosphate, NetherStar,
                 EnderPearl, EnderEye, Blaze);
         NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Rubber,
-                StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone, Glyceryl, NitroFuel, Concrete,
-                Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint, RedGranite,
-                BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ BlueSapphire,
-                Ruby, Opal, Olivine, Lapis, Quartzite, NetherQuartz, Phosphorus, Phosphate, NetherStar, EnderPearl, EnderEye);
+                StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone, Glyceryl, NitroFuel,
+                Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
+                RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
+                /* Amber, */ BlueSapphire, Ruby, Opal, Olivine, Lapis, Quartzite, NetherQuartz, Phosphorus, Phosphate,
+                NetherStar, EnderPearl, EnderEye);
         GRINDABLE.add(/* Paper, */Coal, Charcoal, Lignite, Lead, Tin, SolderingAlloy, Flint, Gold, Silver, Iron,
-                IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar, Brass,
-                WroughtIron, Electrum, Clay, Blaze);
+                IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar,
+                Brass, WroughtIron, Electrum, Clay, Blaze);
         SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);
         // TODO explicit recipe SMELTG.add(Mercury, CINNABAR); //TODO Remove
         NOBBF.add(Tetrahedrite, Chalcopyrite, Cooperite, Pyrolusite, Magnesite, Molybdenite, Galena);
