@@ -28,6 +28,7 @@ import muramasa.gti.tree.BlockRubberSapling;
 import net.minecraft.block.SoundType;
 import net.minecraftforge.api.distmarker.Dist;
 
+import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.Materials.*;
 
 public class GregTechData {
@@ -246,7 +247,7 @@ public class GregTechData {
     public static StoneType GRANITE_RED = AntimatterAPI.register(StoneType.class, new StoneType(Ref.ID, "granite_red", Materials.RedGranite, new Texture(Ref.ID, "block/stone/granite_red"), SoundType.STONE, true));
     public static StoneType GRANITE_BLACK = AntimatterAPI.register(StoneType.class, new StoneType(Ref.ID, "granite_black", Materials.BlackGranite, new Texture(Ref.ID, "block/stone/granite_black"), SoundType.STONE, true));
     public static StoneType MARBLE = AntimatterAPI.register(StoneType.class, new StoneType(Ref.ID, "marble", Materials.Marble, new Texture(Ref.ID, "block/stone/marble"), SoundType.STONE, true));
-    public static StoneType BASALT = AntimatterAPI.register(StoneType.class,new StoneType(Ref.ID, "basalt", Materials.Basalt, new Texture(Ref.ID, "block/stone/basalt"), SoundType.STONE, true));
+    public static StoneType BASALT = AntimatterAPI.register(StoneType.class,new StoneType(Ref.ID, "basalt", Basalt, new Texture(Ref.ID, "block/stone/basalt"), SoundType.STONE, true));
 
     public static StoneType KOMATIITE = AntimatterAPI.register(StoneType.class, new StoneType(Ref.ID, "komatiite", Materials.Komatiite, new Texture(Ref.ID, "block/stone/komatiite"), SoundType.STONE, true));
     public static StoneType LIMESTONE = AntimatterAPI.register(StoneType.class,  new StoneType(Ref.ID, "limestone", Limestone, new Texture(Ref.ID, "block/stone/limestone"), SoundType.STONE, true));

@@ -21,8 +21,8 @@ import net.minecraft.loot.functions.SetCount;
 
 import static muramasa.antimatter.Data.DUST;
 import static muramasa.antimatter.Data.GEM;
+import static muramasa.antimatter.Data.Lapis;
 import static muramasa.antimatter.Data.ORE;
-import static muramasa.gti.data.Materials.Lapis;
 
 public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
     public GregtechBlockLootProvider(String providerDomain, String providerName, DataGenerator gen) {

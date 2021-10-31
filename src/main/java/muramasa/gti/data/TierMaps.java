@@ -20,6 +20,7 @@ import net.minecraft.util.ResourceLocation;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+import static muramasa.antimatter.Data.Copper;
 import static muramasa.antimatter.Data.GEM;
 import static muramasa.antimatter.Data.ROTOR;
 import static muramasa.antimatter.machine.Tier.*;

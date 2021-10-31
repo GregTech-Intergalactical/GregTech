@@ -1,6 +1,7 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.SubTag;
 import muramasa.gti.Ref;
@@ -12,10 +13,8 @@ import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.Element.*;
 import static muramasa.antimatter.material.MaterialTag.*;
-import static muramasa.antimatter.material.TextureSet.NONE;
-import static muramasa.gti.data.Textures.DIAMOND;
-import static muramasa.gti.data.Textures.*;
-import static net.minecraft.item.ItemTier.*;
+import static muramasa.antimatter.material.TextureSet.*;
+import static net.minecraft.item.ItemTier.NETHERITE;
 
 public class Materials {
 
@@ -39,17 +38,9 @@ public class Materials {
     public static Material Cobalt = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "cobalt", 0x5050fa, METALLIC, Co)).asMetal(1768, 0)
             .addTools(3.0F, 8.0F, 512, 3);
-    public static Material Gold = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "gold", 0xffff1e, SHINY, Au))
-            .asMetal(1337, 0, FOIL, ROD, WIRE_FINE, GEAR).asOre()
-            .addTools(GOLD.getAttackDamage(), GOLD.getEfficiency(), GOLD.getMaxUses(), GOLD.getHarvestLevel());
     public static Material Iridium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "iridium", 0xf0f0f5, DULL, Ir)).asMetal(2719, 2719, FRAME)
             .asOre().addTools(5.0F, 8.0F, 2560, 4);
-    public static Material Iron = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "iron", 0xc8c8c8, METALLIC, Fe))
-            .asMetal(1811, 0, RING, GEAR, FRAME).asOre().asPlasma()
-            .addTools(IRON.getAttackDamage(), IRON.getEfficiency(), IRON.getMaxUses(), IRON.getHarvestLevel());
     public static Material Lanthanum = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "lanthanum", 0xffffff, METALLIC, La)).asSolid(1193, 1193);
     public static Material Lead = AntimatterAPI
@@ -132,9 +123,6 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "cerium", 0xffffff, METALLIC, Ce)).asSolid(1068, 1068);
     public static Material Chlorine = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "chlorine", 0x00ffff, NONE, Cr)).asGas();
-    public static Material Copper = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "copper", 0xff6400, SHINY, Cu))
-            .asMetal(1357, 0, PLATE, ROD, FOIL, WIRE_FINE, GEAR).asOre();
     public static Material Deuterium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "deuterium", 0xffff00, NONE, D)).asGas();
     public static Material Dysprosium = AntimatterAPI
@@ -286,10 +274,6 @@ public class Materials {
     /**
      * Fluids
      **/
-    public static Material Lava = AntimatterAPI.register(Material.class, new Material(Ref.ID, "lava", 0xff4000, NONE))
-            .asFluid();
-    public static Material Water = AntimatterAPI.register(Material.class, new Material(Ref.ID, "water", 0x0000ff, NONE))
-            .asFluid().mats(of(Hydrogen, 2, Oxygen, 1));
     public static Material Steam = AntimatterAPI.register(Material.class, new Material(Ref.ID, "steam", 0xa0a0a0, NONE))
             .asGas();
     public static Material UUAmplifier = AntimatterAPI
@@ -752,9 +736,6 @@ public class Materials {
     // PLATE, ORE).addTools(5.0F, 32, 1; TODO: Only when AE2 is loade;
     public static Material Dilithium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "dilithium", 0xfffafa, DIAMOND)).asGemBasic(true);
-    public static Material NetherQuartz = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "nether_quartz", 0xe6d2d2, QUARTZ)).asGemBasic(false)
-            .asOre();
     public static Material NetherStar = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "nether_star", 0xffffff, NONE)).asGemBasic(false)
             .addTools(3.5F, 6.0F, 3620, 4, of(Enchantments.SILK_TOUCH, 1)); // Made Nether Stars usabl;
@@ -771,14 +752,6 @@ public class Materials {
     public static Material LigniteCoke = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "lignite_coke", 0x8c6464, LIGNITE)).asGemBasic(false);
 
-    public static Material Diamond = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "diamond", 0xc8ffff, DIAMOND)).asGem(true).asOre(3, 7, true)
-            .addTools(ItemTier.DIAMOND.getAttackDamage(), ItemTier.DIAMOND.getEfficiency(),
-                    ItemTier.DIAMOND.getMaxUses(), ItemTier.DIAMOND.getHarvestLevel())
-            .mats(of(Carbon, 1));
-    public static Material Emerald = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "emerald", 0x50ff50, GEM_V)).asGem(true).asOre(3, 7, true)
-            .addTools(3.0F, 9.0F, 590, 3).mats(of(Silver, 1, Gold, 1)); // Made Emerald bette;
     public static Material GreenSapphire = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "green_sapphire", 0x64c882, GEM_H)).asGem(true)
             .asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3));
@@ -813,23 +786,14 @@ public class Materials {
     public static Material Amethyst = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "amethyst", 0xd232d2, RUBY)).asGem(true).asOre(3, 7, true)
             .addTools(2.0F, 7.0F, 256, 3).mats(of(SiliconDioxide, 4, Iron, 1));
-    public static Material Lapis = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "lapis", 0x4646dc, LAPIS)).asGemBasic(false)
-            .asOre(2, 5, true).mats(of(/* Lazurite, 12, Sodalite, 2, */Pyrite, 1, Calcite, 1));
-    public static Material EnderPearl = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "enderpearl", 0x6cdcc8, SHINY)).asGemBasic(false)
-            .mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5/* , Magic, 6 */));
-    public static Material EnderEye = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "endereye", 0xa0fae6, SHINY)).asGemBasic(true, ROD, PLATE)
-            .mats(of(EnderPearl, 1, Blaze, 1));
     public static Material Phosphorus = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "phosphorus", 0xffff00, FLINT)).asGemBasic(false)
             .asOre(3, 7, true).mats(of(Calcium, 3, Phosphate, 2));
     public static Material RedGarnet = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "red_garnet", 0xc85050, RUBY)).asGemBasic(true)
+            .register(Material.class, new Material(Ref.ID, "red_garnet", 0xc85050, GARNET)).asGemBasic(true)
             .asOre(3, 7, true).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
     public static Material YellowGarnet = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "yellow_garnet", 0xc8c850, RUBY)).asGemBasic(true)
+            .register(Material.class, new Material(Ref.ID, "yellow_garnet", 0xc8c850, GARNET)).asGemBasic(true)
             .asOre(3, 7, true).mats(of(Andradite, 5, Grossular, 8, Uvarovite, 3));
     // public static Material Monazite = AntimatterAPI.register(Material.class, new
     // Material(Ref.ID, "monazite", 0x324632, DIAMOND).asGemBasic(false,
@@ -838,9 +802,6 @@ public class Materials {
     /**
      *
      **/
-    public static Material Redstone = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "redstone", 0xc80000, ROUGH)).asOre(LIQUID)
-            .mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3));
     public static Material Cinnabar = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "cinnabar", 0x960000, ROUGH)).asOre(true)
             .mats(of(Mercury, 1, Sulfur, 1));
@@ -1046,9 +1007,6 @@ public class Materials {
     public static Material Marble = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "marble", 0xc8c8c8, NONE)).asDust(ROCK)
             .mats(of(Magnesium, 1, Calcite, 7));
-    public static Material Basalt = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "basalt", 0x1e1414, ROUGH)).asDust(ROCK)
-            .mats(of(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4));
     public static Material Komatiite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "komatiite", 0xbebe69, NONE)).asDust(ROCK)
             .mats(of(Olivine, 1, /* MgCO3, 2, */Flint, 6, DarkAsh, 3));
@@ -1068,9 +1026,6 @@ public class Materials {
     /**
      * Ore Stones
      **/
-    public static Material Coal = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "coal", 0x464646, LIGNITE)).asGemBasic(false)
-            .asOre(0, 2, true, ORE_STONE).mats(of(Carbon, 1));
     public static Material Lignite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "lignite_coal", 0x644646, LIGNITE)).asGemBasic(false)
             .asOreStone(0, 2, ORE_SMALL).mats(of(Carbon, 3, Water, 1));
@@ -1096,25 +1051,6 @@ public class Materials {
             new Material(Ref.ID, "high_capacity", 0xb00b69, NONE));
     public static Material PlasmaContainment = AntimatterAPI.register(Material.class,
             new Material(Ref.ID, "plasma_containment", 0xffff00, NONE));
-
-    /**
-     * VANILLA
-     **/
-    // public static Material Netherite = AntimatterAPI.register(Material.class, new
-    // Material(Ref.ID, "netherite", 0x2D2425, ROUGH).asSolid(PLATE);
-    public static Material Netherite = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "netherite", 0x504650, ROUGH))
-            .asMetal(2246, 1300, PLATE, ROD)
-            .addTools(3.0F, 10, 500, NETHERITE.getHarvestLevel(), of(Enchantments.FIRE_ASPECT, 3))
-            .addArmor(new int[] { 0, 1, 1, 0 }, 0.5F, 0.1F, 20);
-    public static Material NetherizedDiamond = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "netherized_diamond", 0x5a505a, DIAMOND)).asGemBasic(false)
-            .addTools(4.0F, 12, NETHERITE.getMaxUses(), NETHERITE.getHarvestLevel(),
-                    of(Enchantments.FIRE_ASPECT, 3, Enchantments.SHARPNESS, 4))
-            .addArmor(new int[] { 1, 1, 2, 1 }, 3.0F, 0.1F, 37, of(Enchantments.PROTECTION, 4));
-    public static Material NetheriteScrap = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "netherite_scrap", 0x6e505a, ROUGH))
-            .asDust(CRUSHED, CRUSHED_PURIFIED, CRUSHED_CENTRIFUGED, DUST_IMPURE, DUST_PURE);
 
     static {
         ELECSEPI.add(Bastnasite/* , Monazite */);
@@ -1152,13 +1088,13 @@ public class Materials {
                 Platinum, Pentlandite, Tin, Malachite, YellowLimonite);
         NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Glyceryl,
                 NitroFuel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ BlueSapphire, Ruby, Opal, Olivine,
-                Lapis/* , Sodalite, Lazurite, Monazite */, Quartzite, NetherQuartz, Phosphorus, Phosphate, NetherStar,
+                Lapis/* , Sodalite, Lazurite, Monazite */, Quartzite, Quartz, Phosphorus, Phosphate, NetherStar,
                 EnderPearl, EnderEye, Blaze);
         NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Rubber,
                 StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone, Glyceryl, NitroFuel,
                 Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
                 RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
-                /* Amber, */ BlueSapphire, Ruby, Opal, Olivine, Lapis, Quartzite, NetherQuartz, Phosphorus, Phosphate,
+                /* Amber, */ BlueSapphire, Ruby, Opal, Olivine, Lapis, Quartzite, Quartz, Phosphorus, Phosphate,
                 NetherStar, EnderPearl, EnderEye);
         GRINDABLE.add(/* Paper, */Coal, Charcoal, Lignite, Lead, Tin, SolderingAlloy, Flint, Gold, Silver, Iron,
                 IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar,
@@ -1166,7 +1102,7 @@ public class Materials {
         SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);
         // TODO explicit recipe SMELTG.add(Mercury, CINNABAR); //TODO Remove
         NOBBF.add(Tetrahedrite, Chalcopyrite, Cooperite, Pyrolusite, Magnesite, Molybdenite, Galena);
-        CRYSTALLIZE.add(Lapis, Quartzite, NetherQuartz);
+        CRYSTALLIZE.add(Lapis, Quartzite, Quartz);
         BRITTLEG.add(Coal, Charcoal, Lignite);
         RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone);
 
@@ -1175,6 +1111,21 @@ public class Materials {
         SOLDER.add(Lead, Tin, SolderingAlloy);
         WIRE.subTag(SubTag.COPPER_WIRE, AnnealedCopper);
         WIRE.subTag(SubTag.COPPER_WIRE, Copper);
+
+        Data.Redstone.mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).flags(LIQUID);//.setOreMulti(4);
+        Data.Prismarine.mats(of(Potassium, 2, Oxygen, 8, Manganese, 1, Silicon, 5));
+        Data.Basalt.mats(of(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4));
+        Data.Lapis.mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));//.setOreMulti(6);
+        Data.EnderEye.asGemBasic(true, ROD, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
+        Data.EnderPearl.mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5, Chlorine, 6));
+        Data.Diamond.asGem(true).mats(of(Carbon, 128));
+        Data.Emerald.asGem(true).mats(of(Beryllium, 3, Aluminium, 2, Silicon, 3, Oxygen, 18));//.addTools(3.0F, 9.0F, 590, 3);
+        Data.Coal.flags(ORE_STONE).mats(of(Carbon, 2));
+        Data.Iron.flags(RING, GEAR, FRAME);
+        Data.Gold.flags(FOIL, ROD, WIRE_FINE, GEAR);
+        Data.Copper.flags(PLATE, ROD, FOIL, WIRE_FINE, GEAR);
+        Quartz.asOre();
+        Data.Water.mats(of(Hydrogen, 2, Oxygen, 1));
 
         BlueTopaz.remove(ORE);
 
@@ -1211,7 +1162,7 @@ public class Materials {
         Scheelite.setOreMulti(2).setSmeltingMulti(2);
         Tungstate.setOreMulti(2).setSmeltingMulti(2);
         Cassiterite.setOreMulti(2).setSmeltingMulti(2);
-        NetherQuartz.setOreMulti(2).setSmeltingMulti(2);
+        Quartz.setOreMulti(2).setSmeltingMulti(2);
         Phosphorus.setOreMulti(3).setSmeltingMulti(3);
         Saltpeter.setOreMulti(4).setSmeltingMulti(4);
         Redstone.setOreMulti(5).setSmeltingMulti(5);
@@ -1327,7 +1278,7 @@ public class Materials {
         Diamond.addByProduct(Graphite);
         Beryllium.addByProduct(Emerald);
         Magnesite.addByProduct(Magnesium);
-        NetherQuartz.addByProduct(Netherrack);
+        Quartz.addByProduct(Netherrack);
         Steel.addByProduct(Iron);
         Graphite.addByProduct(Carbon);
         Netherrack.addByProduct(Sulfur);

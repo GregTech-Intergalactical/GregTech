@@ -8,6 +8,8 @@ import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gti.data.GregTechData;
 import net.minecraft.item.ItemStack;
 
+import static muramasa.antimatter.Data.Copper;
+import static muramasa.antimatter.Data.Gold;
 import static muramasa.antimatter.material.MaterialTag.SOLDER;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.ASSEMBLING;

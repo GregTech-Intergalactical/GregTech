@@ -15,7 +15,7 @@ public class CuttingLoader {
             if (!mat.has(Data.BLOCK))
                 return;
             int multiplier = mat.has(Data.GEM) ? 8 : 3;
-            if (mat == Materials.Diamond)
+            if (mat == Data.Diamond)
                 multiplier = 20;
             CUTTING.RB().ii(RecipeIngredient.of(Data.BLOCK.getMaterialTag(mat), 1)).io(Data.PLATE.get(mat, 9))
                     .fi(new FluidStack(Fluids.WATER, 1000)).add(mat.getMass() * 2 * multiplier, 24);
