@@ -14,10 +14,13 @@ public class CuttingLoader {
         for (Material mat : Data.PLATE.all()) {
             if (!mat.has(Data.BLOCK))
                 return;
+            int multiplier = mat.has(Data.GEM) ? 8 : 3;
+            if (mat == Materials.Diamond)
+                multiplier = 20;
             CUTTING.RB().ii(RecipeIngredient.of(Data.BLOCK.getMaterialTag(mat), 1)).io(Data.PLATE.get(mat, 9))
-                    .fi(new FluidStack(Fluids.WATER, 1000)).add(mat.getMass() * 2, 24);
+                    .fi(new FluidStack(Fluids.WATER, 1000)).add(mat.getMass() * 2 * multiplier, 24);
             CUTTING.RB().ii(RecipeIngredient.of(Data.BLOCK.getMaterialTag(mat), 1)).io(Data.PLATE.get(mat, 9))
-                    .fi(Materials.Lubricant.getLiquid(250)).add(mat.getMass(), 16);
+                    .fi(Materials.Lubricant.getLiquid(250)).add(mat.getMass() * multiplier, 16);
 
         }
     }
