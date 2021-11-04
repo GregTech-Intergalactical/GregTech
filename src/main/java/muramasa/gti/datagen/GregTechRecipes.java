@@ -4,6 +4,7 @@ import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gti.Ref;
 import muramasa.gti.data.GregTechData;
+import muramasa.gti.data.Materials;
 import muramasa.gti.data.TierMaps;
 import muramasa.gti.loader.crafting.*;
 import net.minecraft.block.Blocks;
@@ -49,10 +50,10 @@ public class GregTechRecipes extends AntimatterRecipeProvider {
                 ItemFilter, of('Z', TagUtils.getForgeItemTag("foils/zinc"), 'I', TagUtils.getForgeItemTag("plates/iron")), "ZZZ", "ZIZ", "ZZZ");
 
         addItemRecipe(consumer,providerDomain,"gears", "gears", "has_wooden_rod", this.hasSafeItem(Tags.Items.RODS_WOODEN),
-                GEAR.get(Wood), of('P', ItemTags.PLANKS, 'W', WRENCH.getTag(), 'R', Tags.Items.RODS_WOODEN), "RPR", "PWP", "RPR");
+                GEAR.get(Materials.Wood), of('P', ItemTags.PLANKS, 'W', WRENCH.getTag(), 'R', Tags.Items.RODS_WOODEN), "RPR", "PWP", "RPR");
 
-        addItemRecipe(consumer, providerDomain, GEAR.get(Wood).getRegistryName().getPath() + "_alt", "gears", "has_wooden_rod", this.hasSafeItem(Tags.Items.RODS_WOODEN),
-                GEAR.get(Wood), of('P', ItemTags.PLANKS, 'W', WRENCH.getTag(), 'R', Tags.Items.RODS_WOODEN), "RPR", "PWP", "RPR");
+        addItemRecipe(consumer, providerDomain, GEAR.get(Materials.Wood).getRegistryName().getPath() + "_alt", "gears", "has_wooden_rod", this.hasSafeItem(Tags.Items.RODS_WOODEN),
+                GEAR.get(Materials.Wood), of('P', ItemTags.PLANKS, 'W', WRENCH.getTag(), 'R', Tags.Items.RODS_WOODEN), "RPR", "PWP", "RPR");
 
         addItemRecipe(consumer,providerDomain, "gears", "gears", "has_stone", this.hasSafeItem(Tags.Items.STONE),
                 GEAR.get(Stone), of('S', Tags.Items.STONE, 'W', WRENCH.getTag(), 'C', Tags.Items.COBBLESTONE), "SCS", "CWC", "SCS");

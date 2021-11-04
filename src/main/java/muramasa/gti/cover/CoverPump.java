@@ -52,6 +52,6 @@ public class CoverPump extends BaseCover {
         if (adjTile == null) return;
         LazyOptional<IFluidHandler> handler = adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
         if (!handler.isPresent()) return;
-        this.handler.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side).ifPresent(ih -> handler.ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
+        this.handler.getTile().getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side).ifPresent(ih -> handler.ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
     }
 }

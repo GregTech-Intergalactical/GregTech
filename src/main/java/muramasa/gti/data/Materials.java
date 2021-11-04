@@ -4,6 +4,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.SubTag;
+import muramasa.antimatter.material.TextureSet;
 import muramasa.gti.Ref;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemTier;
@@ -667,7 +668,7 @@ public class Materials {
             .asDust().addHandleStat(-10, -0.5F, of(Enchantments.FIRE_ASPECT, 1))
             .mats(of(Sulfur, 1, DarkAsh, 1/* , Magic, 1 */));
     public static Material Flint = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "flint", 0x002040, FLINT)).asDust(ROCK)
+            .register(Material.class, new Material(Ref.ID, "flint", 0x002040, TextureSet.FLINT)).asDust(ROCK)
             .addTools(0.0F, 2.0F, 48, 1, of(Enchantments.FIRE_ASPECT, 1)).mats(of(SiliconDioxide, 1));
     public static Material PotassiumFeldspar = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "potassium_feldspar", 0x782828, FINE)).asDust()
@@ -787,7 +788,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "amethyst", 0xd232d2, RUBY)).asGem(true).asOre(3, 7, true)
             .addTools(2.0F, 7.0F, 256, 3).mats(of(SiliconDioxide, 4, Iron, 1));
     public static Material Phosphorus = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "phosphorus", 0xffff00, FLINT)).asGemBasic(false)
+            .register(Material.class, new Material(Ref.ID, "phosphorus", 0xffff00, TextureSet.FLINT)).asGemBasic(false)
             .asOre(3, 7, true).mats(of(Calcium, 3, Phosphate, 2));
     public static Material RedGarnet = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "red_garnet", 0xc85050, GARNET)).asGemBasic(true)
