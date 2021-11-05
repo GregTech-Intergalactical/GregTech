@@ -58,7 +58,7 @@ public class CoverConveyor extends BaseCover {
 
     @Override
     public void onUpdate() {
-        if (handler.getTile() == null || handler.getTile().getWorld().getGameTime() % (speeds.get(tier)) != 0)
+        if (handler.getTile().getWorld().isRemote || handler.getTile().getWorld().getGameTime() % (speeds.get(tier)) != 0)
             return;
         BlockState state = handler.getTile().getWorld().getBlockState(handler.getTile().getPos().offset(side));
         //Drop into world.
