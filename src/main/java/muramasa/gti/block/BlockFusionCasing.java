@@ -16,17 +16,6 @@ import static muramasa.antimatter.client.AntimatterModelManager.LOADER_DYNAMIC;
 public class BlockFusionCasing extends BlockTurbineCasing {
 
     @Override
-    public ModelConfig getConfig(BlockState state, IBlockReader world, BlockPos.Mutable mut, BlockPos pos) {
-        ModelConfig conf = super.getConfig(state, world, mut, pos);
-        //This is what you call a "hack". This ensures that if there is no turbine
-        //It returns a config of size 1 instead, otherwise it will incorrectly render the textures.
-        if (conf.getConfig()[0] == -1) {
-            conf.set(new int[]{conf.getConfig()[1]});
-        }
-        return conf;
-    }
-
-    @Override
     protected String getTextureID() {
         return "fusion";
     }

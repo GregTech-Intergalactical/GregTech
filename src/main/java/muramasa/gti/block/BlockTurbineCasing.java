@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import muramasa.antimatter.datagen.builder.AntimatterBlockModelBuilder;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
+import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
 import muramasa.antimatter.dynamic.ModelConfig;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.mixin.ChunkReaderAccessor;
@@ -17,13 +18,13 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.chunk.ChunkRenderCache;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,6 +44,11 @@ public class BlockTurbineCasing extends BlockCasingMachine {
     @Override
     public boolean canConnect(IBlockReader world, BlockState state, @Nullable TileEntity tile, BlockPos pos) {
         return false;
+    }
+
+    @Override
+    public void onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
+        prov.modelAndTexture(item, AntimatterBlockModelBuilder.getSimple()).tex(t -> t.putAll(AntimatterBlockModelBuilder.buildTextures(((ITextureProvider) item).getTextures())));
     }
 
     @Override
@@ -130,7 +136,9 @@ public class BlockTurbineCasing extends BlockCasingMachine {
                     a.tex(t -> t.put("base",tex[ii])).rot(dir));
             }
         }
-        builder.model(SIMPLE, ((ITextureProvider)block).getTextures());
+        Texture[] texes = ((ITextureProvider)block).getTextures();
+        builder.particle(texes[0]);
+        builder.config(0, (b, l) -> l.add(b.of(SIMPLE).tex(texes)));
         builder.loader(LOADER_DYNAMIC);
         return builder;
     }
@@ -214,19 +222,4 @@ public class BlockTurbineCasing extends BlockCasingMachine {
             return null;
         });
     }
-    //TODO access transformers, i cannot get it to work
-    private static Field getField(Class clazz, String fieldName)
-            throws NoSuchFieldException {
-        try {
-            return clazz.getDeclaredField(fieldName);
-        } catch (NoSuchFieldException e) {
-            Class superClass = clazz.getSuperclass();
-            if (superClass == null) {
-                throw e;
-            } else {
-                return getField(superClass, fieldName);
-            }
-        }
-    }
-
 }
