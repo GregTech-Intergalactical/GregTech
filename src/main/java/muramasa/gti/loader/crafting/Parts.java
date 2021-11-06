@@ -79,6 +79,20 @@ public class Parts {
           "RTO", "SPW", "OMC");
     });
 
+      for (Material material : ROTOR.all()) {
+          provider.addItemRecipe(output, "gtparts", "has_screwdriver", provider.hasSafeItem(SCREWDRIVER.getTag()), ROTOR.get(material),
+                  ImmutableMap.<Character, Object>builder()
+                  .put('P', PLATE.get(material))
+                  .put('S', SCREW.get(material))
+                  .put('R', RING.get(material))
+                  .put('F', FILE.getTag())
+                  .put('V', SCREWDRIVER.getTag())
+                  .put('H', HAMMER.getTag())
+                  .build(),
+                  "PHP", "SRF", "PVP"
+                  );
+      }
+
     // REGULAR CIRCUIT CRAFTING
     provider.addItemRecipe(output, "circuit_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBasic,
         ImmutableMap.<Character, Object>builder().put('N', NandChip).put('B', CircuitBoardBasic)
