@@ -5,16 +5,19 @@ import muramasa.antimatter.AntimatterDynamics;
 import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.datagen.ExistingFileHelperOverride;
 import muramasa.antimatter.datagen.providers.*;
+import muramasa.antimatter.event.AntimatterCraftingEvent;
 import muramasa.antimatter.event.AntimatterLoaderEvent;
+import muramasa.antimatter.event.AntimatterProvidersEvent;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.gti.data.*;
+import muramasa.gti.data.Machines;
 import muramasa.gti.datagen.GregTechBlockTagProvider;
-import muramasa.gti.datagen.GregTechRecipes;
 import muramasa.gti.datagen.GregtechBlockLootProvider;
 import muramasa.gti.datagen.ProgressionAdvancements;
 import muramasa.gti.events.RemappingEvents;
 import muramasa.gti.loader.WorldGenLoader;
+import muramasa.gti.loader.crafting.*;
 import muramasa.gti.loader.items.Circuitry;
 import muramasa.gti.loader.machines.*;
 import muramasa.gti.loader.machines.generator.CoalBoilerHandler;
@@ -47,29 +50,47 @@ public class GregTech extends AntimatterMod {
         INSTANCE = this;
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-        final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
         MinecraftForge.EVENT_BUS.register(RemappingEvents.class);
+        MinecraftForge.EVENT_BUS.addListener(GregTech::registerRecipeLoaders);
+        MinecraftForge.EVENT_BUS.addListener(GregTech::registerCraftingLoaders);
+        MinecraftForge.EVENT_BUS.addListener(GregTech::onProviders);
+
         AntimatterDynamics.addProvider(Ref.ID,
                 g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
         AntimatterDynamics.addProvider(Ref.ID,
                 g -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", g));
-        AntimatterDynamics.addProvider(Ref.ID, g -> {
-            p[0] = new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, g,
-                    new ExistingFileHelperOverride());
-            return p[0];
-        });
-        AntimatterDynamics.addProvider(Ref.ID, g -> new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"),
-                false, g, p[0], new ExistingFileHelperOverride()));
-        AntimatterDynamics.addProvider(Ref.ID, g -> new AntimatterFluidTagProvider(Ref.ID,
-                Ref.NAME.concat(" Fluid Tags"), false, g, new ExistingFileHelperOverride()));
-        AntimatterDynamics.addProvider(Ref.ID, g -> new GregTechRecipes(Ref.ID, Ref.NAME.concat(" Recipes"), g));
-        AntimatterDynamics.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID,
-                Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
         AntimatterDynamics.addProvider(Ref.ID, GregTechLocalizations.en_US::new);
-        AntimatterDynamics.addProvider(Ref.ID,
-                g -> new GregtechBlockLootProvider(Ref.ID, Ref.NAME.concat(" Loot generator"), g));
-        MinecraftForge.EVENT_BUS.addListener(GregTech::registerRecipeLoaders);
+    }
 
+    private static void onProviders(AntimatterProvidersEvent ev) {
+        if (ev.getSide() == Dist.CLIENT) {
+
+        } else {
+            final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
+            ev.addProvider(Ref.ID, g -> {
+                p[0] = new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, g,
+                        new ExistingFileHelperOverride());
+                return p[0];
+            });
+            ev.addProvider(Ref.ID, g -> new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"),
+                    false, g, p[0], new ExistingFileHelperOverride()));
+            ev.addProvider(Ref.ID, g -> new AntimatterFluidTagProvider(Ref.ID,
+                    Ref.NAME.concat(" Fluid Tags"), false, g, new ExistingFileHelperOverride()));
+            ev.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID,
+                    Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
+            ev.addProvider(Ref.ID,
+                    g -> new GregtechBlockLootProvider(Ref.ID, Ref.NAME.concat(" Loot generator"), g));
+        }
+    }
+    
+    private static void registerCraftingLoaders(AntimatterCraftingEvent event) {
+        event.addLoader(Parts::loadRecipes);
+        event.addLoader(Smelting::loadRecipes);
+        event.addLoader(WireCablesPlates::loadRecipes);
+        event.addLoader(VanillaExtensions::loadRecipes);
+        event.addLoader(muramasa.gti.loader.crafting.Machines::loadRecipes);
+        event.addLoader(SteamMachines::loadRecipes);
+        event.addLoader(BlockParts::loadRecipes);
     }
 
     private static void registerRecipeLoaders(AntimatterLoaderEvent event) {

@@ -10,7 +10,9 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
+import muramasa.antimatter.recipe.ingredient.PropertyIngredient;
 import muramasa.gti.GregTech;
+import muramasa.gti.Ref;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;
 import muramasa.gti.data.TierMaps;
@@ -22,9 +24,11 @@ import net.minecraft.tags.ITag;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.recipe.RecipeBuilders.DUST_BUILDER;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.TierMaps.*;
@@ -78,20 +82,16 @@ public class Parts {
               .build(),
           "RTO", "SPW", "OMC");
     });
-
-      for (Material material : ROTOR.all()) {
-          provider.addItemRecipe(output, "gtparts", "has_screwdriver", provider.hasSafeItem(SCREWDRIVER.getTag()), ROTOR.get(material),
-                  ImmutableMap.<Character, Object>builder()
-                  .put('P', PLATE.get(material))
-                  .put('S', SCREW.get(material))
-                  .put('R', RING.get(material))
-                  .put('F', FILE.getTag())
-                  .put('V', SCREWDRIVER.getTag())
-                  .put('H', HAMMER.getTag())
-                  .build(),
-                  "PHP", "SRF", "PVP"
-                  );
-      }
+    provider.addToolRecipe(DUST_BUILDER.get(ROTOR.getId()), output, Ref.ID,"rotors","gtparts", "has_screwdriver", provider.hasSafeItem(SCREWDRIVER.getTag()),
+            ROTOR.all().stream().map(t -> ROTOR.get(t, 1)).collect(Collectors.toList()), ImmutableMap.<Character, Object>builder()
+                    .put('S', SCREWDRIVER.getTag())
+                    .put('F', FILE.getTag())
+                    .put('H', HAMMER.getTag())
+                    .put('P', PropertyIngredient.builder("primary").types(PLATE).tags(ROTOR).build())
+                    .put('W', PropertyIngredient.builder("primary").types(SCREW).tags(ROTOR).build())
+                    .put('R', PropertyIngredient.builder("primary").types(RING).tags(ROTOR).build())
+                    .build(),
+            "PHP", "WRF", "PSP");
 
     // REGULAR CIRCUIT CRAFTING
     provider.addItemRecipe(output, "circuit_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBasic,
