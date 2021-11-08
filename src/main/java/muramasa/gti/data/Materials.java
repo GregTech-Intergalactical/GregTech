@@ -276,7 +276,7 @@ public class Materials {
      * Fluids
      **/
     public static Material Steam = AntimatterAPI.register(Material.class, new Material(Ref.ID, "steam", 0xa0a0a0, NONE))
-            .asGas();
+            .asGas(1, 395);
     public static Material UUAmplifier = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "uu_amplifier", 0x600080, NONE)).asFluid();
     public static Material UUMatter = AntimatterAPI
