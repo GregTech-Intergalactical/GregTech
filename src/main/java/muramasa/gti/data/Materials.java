@@ -1119,7 +1119,7 @@ public class Materials {
         Data.Lapis.mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));//.setOreMulti(6);
         Data.EnderEye.asGemBasic(true, ROD, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
         Data.EnderPearl.mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5, Chlorine, 6));
-        Data.Diamond.asGem(true).mats(of(Carbon, 128));
+        Data.Diamond.asGem(true).mats(of(Carbon, 64));
         Data.Emerald.asGem(true).mats(of(Beryllium, 3, Aluminium, 2, Silicon, 3, Oxygen, 18));//.addTools(3.0F, 9.0F, 590, 3);
         Data.Coal.flags(ORE_STONE).mats(of(Carbon, 2));
         Data.Iron.flags(RING, GEAR, FRAME);
