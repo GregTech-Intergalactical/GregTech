@@ -16,6 +16,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
+
 public class CoalBoilerFuelWidget extends Widget {
     private int fuel = 0, maxFuel = 0;
     protected CoalBoilerFuelWidget(@Nonnull GuiInstance gui, @Nullable IGuiElement parent) {
@@ -29,8 +31,8 @@ public class CoalBoilerFuelWidget extends Widget {
     @Override
     public void init() {
         super.init();
-        gui.syncInt(() -> ((TileEntityCoalBoiler)((ContainerMachine<?>)gui.container).getTile()).getFuel(), i -> fuel = i);
-        gui.syncInt(() -> ((TileEntityCoalBoiler)((ContainerMachine<?>)gui.container).getTile()).getMaxFuel(), i -> maxFuel = i);
+        gui.syncInt(() -> ((TileEntityCoalBoiler)((ContainerMachine<?>)gui.container).getTile()).getFuel(), i -> fuel = i, SERVER_TO_CLIENT);
+        gui.syncInt(() -> ((TileEntityCoalBoiler)((ContainerMachine<?>)gui.container).getTile()).getMaxFuel(), i -> maxFuel = i, SERVER_TO_CLIENT);
     }
 
     @Override
