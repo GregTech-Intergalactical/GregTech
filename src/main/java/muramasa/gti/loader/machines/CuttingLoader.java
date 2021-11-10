@@ -1,7 +1,5 @@
 package muramasa.gti.loader.machines;
 
-import static muramasa.gti.data.RecipeMaps.CUTTING;
-
 import muramasa.antimatter.Data;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
@@ -9,11 +7,13 @@ import muramasa.gti.data.Materials;
 import net.minecraft.fluid.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
+import static muramasa.gti.data.RecipeMaps.CUTTING;
+
 public class CuttingLoader {
     public static void init() {
         for (Material mat : Data.PLATE.all()) {
             if (!mat.has(Data.BLOCK))
-                return;
+                continue;
             int multiplier = mat.has(Data.GEM) ? 8 : 3;
             if (mat == Data.Diamond)
                 multiplier = 20;
