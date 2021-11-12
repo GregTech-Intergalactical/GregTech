@@ -5,6 +5,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.BlockStateElement;
 import muramasa.gti.block.BlockCoil;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.Direction;
 
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Machines.*;
@@ -35,6 +36,14 @@ public class Structures {
             .at("F",HATCH_MUFFLER)
             .at("M", BLAST_FURNACE).at("B", "coil", AntimatterAPI.all(BlockCoil.class)).at("C", CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
             .build().offset(2, 0).min(12, CASING_HEAT_PROOF).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
+        );
+        BLAST_FURNACE.setStructurePattern(b -> b
+                .of("CCC", "CCM", "CCC").of("BBB", "BAB", "BBB").of(1).of("CCC", "CFC", "CCC")
+                .at("F",HATCH_MUFFLER, HATCH_MUFFLER.getFirstTier(), Direction.UP)
+                .at("M", BLAST_FURNACE, BLAST_FURNACE.getFirstTier(), Direction.SOUTH)
+                .at("B", COIL_CUPRONICKEL.getDefaultState())
+                .at("C", HATCH_ITEM_I, HATCH_ITEM_I.getFirstTier(), Direction.WEST)
+                .build()
         );
         MULTI_SMELTER.setStructure(b -> b
             .of("CCC", "CCM", "CCC").of("BBB", "BAB", "BBB").of("CCC", "CCC", "CCC")
