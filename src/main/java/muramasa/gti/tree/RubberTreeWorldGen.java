@@ -20,6 +20,7 @@ import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -66,9 +67,10 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
     public RubberTreeWorldGen(){
         super("rubber_tree", RubberTreeWorldGen.class, World.OVERWORLD);
     }
+  
     public static void onEvent(BiomeLoadingEvent builder){
         Biome.Category biomeCategory = builder.getCategory();
-        if (!getValidBiomesStatic().test(biomeCategory)) return;
+        if (!getValidBiomesStatic().test(biomeCategory) || biomeCategory == Biome.Category.PLAINS) return;
         float p = 0.05F;
         if (builder.getClimate().temperature > 0.8f) {
             p = 0.04F;
@@ -88,12 +90,14 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
             config = RUBBER_TREE_CONFIG_JUNGLE;
         return config;
     }
+  
     public static class RubberTreePlacement extends Placement<AtSurfaceWithExtraConfig> {
         public RubberTreePlacement() {
             super(AtSurfaceWithExtraConfig.CODEC);
         }
+        @Nonnull
         @Override
-        public Stream<BlockPos> getPositions(WorldDecoratingHelper helper, Random random, AtSurfaceWithExtraConfig config, BlockPos pos) {
+        public Stream<BlockPos> getPositions(@Nonnull WorldDecoratingHelper helper, Random random, AtSurfaceWithExtraConfig config, @Nonnull BlockPos pos) {
             int i = config.count;
             double next = random.nextDouble();
             if (next < config.extraChance) {

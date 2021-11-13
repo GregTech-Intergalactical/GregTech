@@ -8,7 +8,6 @@ import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.Utils;
-import muramasa.gti.data.Materials;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
@@ -28,7 +27,6 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import static muramasa.antimatter.machine.MachineState.ACTIVE;
@@ -38,45 +36,31 @@ import static muramasa.gti.data.Materials.DistilledWater;
 import static muramasa.gti.data.Materials.Steam;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
-public class TileEntityCoalBoiler extends TileEntityMachine {
+public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler> {
     int maxHeat = 500, heat, fuel = 0, maxFuel, lossTimer = 0;
     boolean hadNoWater;
     public TileEntityCoalBoiler(Machine<?> type) {
         super(type);
-        this.fluidHandler = LazyOptional.of(() -> new CoalBoilerFluidHandler(this));
-        this.recipeHandler = LazyOptional.of(() -> new CoalBoilerRecipeHandler(this));
+        fluidHandler.set(() -> new CoalBoilerFluidHandler(this));
+        recipeHandler.set(() -> new CoalBoilerRecipeHandler(this));
     }
 
     public int getFuel() {
-        AtomicInteger v = new AtomicInteger();
-        recipeHandler.ifPresent(r -> {
-            v.set(((CoalBoilerRecipeHandler) r).getFuel());
-        });
-        return v.get();
+        return recipeHandler.map(r -> (((CoalBoilerRecipeHandler) r).getFuel())).orElse(0);
     }
 
     public int getHeat() {
-        AtomicInteger v = new AtomicInteger();
-        recipeHandler.ifPresent(r -> {
-            v.set(((CoalBoilerRecipeHandler) r).getHeat());
-        });
-        return v.get();
+        return recipeHandler.map(r -> (((CoalBoilerRecipeHandler) r).getHeat())).orElse(0);
     }
 
     public int getMaxFuel() {
-        AtomicInteger v = new AtomicInteger();
-        recipeHandler.ifPresent(r -> {
-            v.set(((CoalBoilerRecipeHandler) r).getMaxFuel());
-        });
-        return v.get();
+        return recipeHandler.map(r -> (((CoalBoilerRecipeHandler) r).getMaxFuel())).orElse(0);
+
     }
 
     public int getMaxHeat() {
-        AtomicInteger v = new AtomicInteger();
-        recipeHandler.ifPresent(r -> {
-            v.set(((CoalBoilerRecipeHandler) r).getMaxHeat());
-        });
-        return v.get();
+        return recipeHandler.map(r -> (((CoalBoilerRecipeHandler) r).getMaxHeat())).orElse(0);
+
     }
 
     public static class CoalBoilerRecipeHandler extends MachineRecipeHandler<TileEntityCoalBoiler> {
@@ -144,16 +128,6 @@ public class TileEntityCoalBoiler extends TileEntityMachine {
 
         public int getMaxHeat() {
             return maxHeat;
-        }
-
-        @Override
-        public IIntArray getProgressData() {
-            return GUI_SYNC_DATA2;
-        }
-
-        @Override
-        public void setClientProgress(int progress) {
-            fuel = progress;
         }
 
         @Override
@@ -308,8 +282,8 @@ public class TileEntityCoalBoiler extends TileEntityMachine {
         }
 
         @Override
-        public int fillCell(int cellSlot, int maxFill) {
-            if (fillingCell) return 0;
+        public void fillCell(int cellSlot, int maxFill) {
+            if (fillingCell) return;
             fillingCell = true;
             if (getInputTanks() != null) {
                 tile.itemHandler.ifPresent(ih -> {
@@ -345,7 +319,6 @@ public class TileEntityCoalBoiler extends TileEntityMachine {
                 });
             }
             fillingCell = false;
-            return 0;
         }
     }
 }

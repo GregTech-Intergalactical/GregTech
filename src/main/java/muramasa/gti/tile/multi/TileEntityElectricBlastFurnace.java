@@ -7,19 +7,18 @@ import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.block.BlockCoil;
-import net.minecraftforge.common.util.LazyOptional;
 
-public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine {
+public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileEntityElectricBlastFurnace> {
 
     private int heatingCapacity;
 
     public TileEntityElectricBlastFurnace(Machine type) {
         super(type);
-        this.recipeHandler = LazyOptional.of(() -> new MachineRecipeHandler<TileEntityElectricBlastFurnace>(this) {
+        recipeHandler.set(() -> new MachineRecipeHandler<TileEntityElectricBlastFurnace>(this) {
+
             @Override
-            protected void activateRecipe(boolean reset) {
-                if (reset) currentProgress = 0;
-                consumedResources = false;
+            protected void calculateDurations() {
+                super.calculateDurations();
                 maxProgress = activeRecipe.getDuration();
                 overclock = 0;
                 //Divide by 2, for amps.
@@ -32,7 +31,7 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine {
                 if (heatingCapacity >= activeRecipe.getSpecialValue()) {
                     int heatDiv = (heatingCapacity - activeRecipe.getSpecialValue()) / 900;
                     if (activeRecipe.getPower() <= 16) {
-                        EUt = (activeRecipe.getPower() * (1 << tier - 1) * (1 << tier - 1));
+                        EUt = (activeRecipe.getPower() * (1L << tier - 1) * (1L << tier - 1));
                         maxProgress = (activeRecipe.getDuration() / (1 << tier - 1));
                     } else {
                         EUt = activeRecipe.getPower();
@@ -47,7 +46,7 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine {
             }
 
             @Override
-            protected long getPower() {
+            public long getPower() {
                 return EUt;
             }
 

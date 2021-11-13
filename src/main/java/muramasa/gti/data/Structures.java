@@ -3,8 +3,10 @@ package muramasa.gti.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.BlockStateElement;
+import muramasa.antimatter.structure.PatternBuilder;
 import muramasa.gti.block.BlockCoil;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.Direction;
 
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Machines.*;
@@ -31,10 +33,35 @@ public class Structures {
             .build().offset(2, -1).min(32, CASING_BRONZE_PLATED_BRICK)
         );
         BLAST_FURNACE.setStructure(b -> b
-            .of("CCC", "CCM", "CCC").of("BBB", "BAB", "BBB").of(1).of("CCC", "CCC", "CCC")
+            .of("CCC", "CCM", "CCC").of("BBB", "BAB", "BBB").of(1).of("CCC", "CFC", "CCC")
+            .at("F",HATCH_MUFFLER)
             .at("M", BLAST_FURNACE).at("B", "coil", AntimatterAPI.all(BlockCoil.class)).at("C", CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
             .build().offset(2, 0).min(12, CASING_HEAT_PROOF).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
         );
+        // pattern demo
+        PatternBuilder builder = new PatternBuilder()
+                .of("CCO", "ECM", "CCI").of("BBB", "BAB", "BBB").of(1).of("CCC", "CFC", "CCC")
+                .at("F", HATCH_MUFFLER, HATCH_MUFFLER.getFirstTier(), Direction.UP)
+                .at("M", BLAST_FURNACE, BLAST_FURNACE.getFirstTier(), Direction.SOUTH)
+                .at("C", CASING_HEAT_PROOF.getDefaultState())
+                .at("I", HATCH_ITEM_I, HATCH_ITEM_I.getFirstTier(), Direction.SOUTH)
+                .at("O", HATCH_ITEM_O, HATCH_ITEM_O.getFirstTier(), Direction.SOUTH)
+                .at("E", HATCH_ENERGY, HATCH_ENERGY.getFirstTier(), Direction.NORTH);
+        BLAST_FURNACE.setStructurePattern(
+                // reuse the builder for page COIL_CUPRONICKEL
+                builder.at("B", COIL_CUPRONICKEL.getDefaultState()).description(COIL_CUPRONICKEL.getTranslationKey()).build(),
+                // reuse the builder for page COIL_HSSG
+                builder.at("B", COIL_HSSG.getDefaultState()).description(COIL_HSSG.getTranslationKey()).build(),
+                // reuse the builder for page COIL_KANTHAL
+                builder.at("B", COIL_KANTHAL.getDefaultState()).description(COIL_KANTHAL.getTranslationKey()).build(),
+                // reuse the builder for page COIL_NAQUADAH and replace one casing with(C) the fluid hatch (K).
+                builder.of(3, "CCC", "CFC", "CCK")
+                        .at("K", HATCH_FLUID_I, HATCH_FLUID_I.getFirstTier(), Direction.EAST)
+                        .at("B", COIL_NAQUADAH.getDefaultState())
+                        .description(COIL_NAQUADAH.getTranslationKey())
+                        .build()
+        );
+        
         MULTI_SMELTER.setStructure(b -> b
             .of("CCC", "CCM", "CCC").of("BBB", "BAB", "BBB").of("CCC", "CCC", "CCC")
             .at("M", MULTI_SMELTER).at("B", "coil", AntimatterAPI.all(BlockCoil.class)).at("C", CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
@@ -64,6 +91,12 @@ public class Structures {
             .of("CCCV", "CCCV", "CCCV").of("CHHV", "EAAM", "CHHV").of(0)
             .at("M", COMBUSTION_ENGINE).at("C", CASING_TITANIUM).at("V", CASING_ENGINE_INTAKE).at("H", CASING_TITANIUM, HATCH_FLUID_I, HATCH_FLUID_O).at("E", HATCH_DYNAMO)
             .build().offset(3, -1).min(19, CASING_TITANIUM).min(1, HATCH_FLUID_I, HATCH_FLUID_O)
+        );
+        DISTLLATION_TOWER.setStructure(b -> b
+        .of("DDD", "DDM", "DDD").of("CCC","CAC", "CCC").of(1).of(1).of(1)
+        .at("M", DISTLLATION_TOWER).at("D", CASING_STAINLESS_STEEL,HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_ENERGY)
+                .at("C", CASING_STAINLESS_STEEL,HATCH_FLUID_O)
+                .build().offset(2,0).min(30, CASING_STAINLESS_STEEL).min(1, HATCH_ENERGY, HATCH_FLUID_I).min(4, HATCH_FLUID_O)
         );
         //TODO Tier sensitive...
         FUSION_REACTOR.setStructure(Tier.LUV, b -> b

@@ -25,9 +25,9 @@ public class WireCablesPlates {
             ImmutableSet<PipeSize> sizes = wire.getSizes();
             Map<PipeSize, Item> wires = sizes.stream().map(s -> new Pair<>(s, wire.getBlockItem(s))).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
             PipeSize[] val = values();
-            for (int i = 1; i < val.length; i += 2) {
-                twoToOne(wires, val[i-1], val[i], output,provider);
+            for (int i = 1; i < val.length; i += 1) {
                 oneToTwo(wires, val[i], val[i-1], output, provider);
+                twoToOne(wires, val[i-1], val[i], output,provider);
                 if (i > 1) {
                     fourToOne(wires, val[i-2], val[i], output, provider);
                 }
@@ -39,8 +39,6 @@ public class WireCablesPlates {
             }
         });
 
-        INGOT.all().stream().filter(p -> p.has(PLATE)).forEach(p -> provider.shapeless(output, "ingothammer","plate", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), new ItemStack(PLATE.get(p),1),
-                HAMMER.getTag(), INGOT.get(p), INGOT.get(p)));
     }
 
     private static void twoToOne(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {

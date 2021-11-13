@@ -9,6 +9,7 @@ import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.gti.GregTech;
 import muramasa.gti.block.BlockCasing;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,6 +22,7 @@ import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.ASSEMBLING;
+import static muramasa.gti.data.TierMaps.*;
 
 public class AssemblyLoader {
     public static void init() {
@@ -38,18 +40,18 @@ public class AssemblyLoader {
         ASSEMBLING.RB().ii(RecipeIngredient.of(ItemTags.PLANKS,8), INT_CIRCUITS.get(8)).io(new ItemStack(Items.CHEST,1)).add(100,4);
         Arrays.stream(Tier.getStandard()).forEach(t -> {
             Material magnet = (t == Tier.ULV || t == Tier.LV) ? IronMagnetic : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
-            ASSEMBLING.RB().fi(Plastic.getLiquid(288)).ii(RecipeIngredient.of(AntimatterAPI.get(BlockCasing.class, "casing_"+t.getId()).asItem(),1)
-                    , RecipeIngredient.of(TIER_CABLES.get(t),2)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_"+t.getId()).asItem(),1)).add(40,8);
+            ASSEMBLING.RB().fi(Plastic.getLiquid(288)).ii(RecipeIngredient.of(GregTech.get(BlockCasing.class, "casing_"+t.getId()).asItem(),1)
+                    , RecipeIngredient.of(TIER_CABLES.get(t),2)).io(new ItemStack(GregTech.get(BlockCasing.class, "casing_"+t.getId()).asItem(),1)).add(40,8);
             ASSEMBLING.RB().ii(RecipeIngredient.of(TIER_WIRES.get(t),4), RecipeIngredient.of(ROD.get(TIER_MATERIALS.get(t)),2),
                     RecipeIngredient.of(ROD.get(magnet),1)
-                    , RecipeIngredient.of(TIER_CABLES.get(t),2)).io(new ItemStack(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId()))).add(150,16);
+                    , RecipeIngredient.of(TIER_CABLES.get(t),2)).io(new ItemStack(GregTech.get(ItemBasic.class,"motor_"+t.getId()))).add(150,16);
 
             ASSEMBLING.RB().ii(RecipeIngredient.of(TIER_CABLES.get(t),2),
                     RecipeIngredient.of(ROD.get(TIER_MATERIALS.get(t)),2),
                     RecipeIngredient.of(PLATE.get(TIER_MATERIALS.get(t)),3),
-                    RecipeIngredient.of(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId()),1),
+                    RecipeIngredient.of(GregTech.get(ItemBasic.class,"motor_"+t.getId()),1),
                     RecipeIngredient.of(GEAR.get(TIER_MATERIALS.get(t)),1))
-                    .io(new ItemStack(AntimatterAPI.get(ItemBasic.class,"piston_"+t.getId())))
+                    .io(new ItemStack(GregTech.get(ItemBasic.class,"piston_"+t.getId())))
                     .add(150,16);
         });
     }

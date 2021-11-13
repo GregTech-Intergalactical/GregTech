@@ -18,7 +18,7 @@ public class BlockRubberLeaves extends LeavesBlock implements IAntimatterObject,
         super(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid());
         this.domain = domain;
         this.id = id;
-        AntimatterAPI.register(BlockRubberLeaves.class, id, this);
+        AntimatterAPI.register(BlockRubberLeaves.class, this);
     }
 
     @Override

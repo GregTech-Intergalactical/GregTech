@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
+        maven { url = 'https://maven.minecraftforge.net' }
         jcenter()
         mavenCentral()
         gradlePluginPortal()
@@ -17,15 +17,17 @@ buildscript {
 
 repositories {
     maven { url 'http://dvs1.progwml6.com/files/maven' }
-    //GT.
-    maven { url 'https://jitpack.io' }
-
     maven {
         url "https://www.cursemaven.com"
         content {
             includeGroup "curse.maven"
         }
     }
+    maven {
+        url = "https://maven.speiger.com/repository/main"
+    }
+    //GT.
+    maven { url 'https://jitpack.io' }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
@@ -173,20 +175,17 @@ dependencies {
     implementation 'org.apache.commons:commons-collections4:4.4'
 
     //GT related projects.
-//    if (findProject(':AntimatterAPI') != null) {
+    if (findProject(':AntimatterAPI') != null) {
         implementation project(path: ':AntimatterAPI')
- //   } else {
+    } else {
         //compileOnly sources jar.
- //       runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
- //       compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
- //   }
- //   if (findProject(':TesseractAPI') != null) {
-        implementation project(':TesseractAPI')
-  //  } else {
-        //compileOnly sources jar.
- //       runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
- //       compileOnly ("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
- //   }
+        runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
+        compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
+    }
+
+    compile fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
+
+    //compile 'de.speiger:Primitive-Collections:0.4.0'
 
     //JEI
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
@@ -195,6 +194,7 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
     runtimeOnly fg.deobf("curse.maven:architectury-forge-419699:${architectury_file}")
     runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
+    runtimeOnly fg.deobf("curse.maven:top-245211:${top_file}")
 }
 
 
@@ -214,6 +214,14 @@ publishing {
         maven {
             url "file:///${project.projectDir}/mcmodsrepo"
         }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+    def targetVersion = 8
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.release = targetVersion
     }
 }
 

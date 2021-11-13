@@ -9,6 +9,8 @@ import muramasa.antimatter.worldgen.object.WorldGenVeinLayer;
 import muramasa.gti.data.GregTechData;
 import net.minecraft.world.World;
 
+import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.Data.Coal;
 import static muramasa.antimatter.Ref.*;
 import static muramasa.gti.data.Materials.*;
 
@@ -128,7 +130,7 @@ public class WorldGenLoader {
             new WorldGenVeinLayer("iron", 10, 40, 120, 4, 24, BrownLimonite, YellowLimonite, BandedIron, Malachite, World.OVERWORLD, World.THE_NETHER);
             new WorldGenVeinLayer("cassiterite", 40, 120, 50, 5, 24, Tin, Tin, Cassiterite, Tin, World.OVERWORLD, World.THE_END);
             new WorldGenVeinLayer("tetrahedrite", 80, 120, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite, World.OVERWORLD, World.THE_NETHER);
-            new WorldGenVeinLayer("neter_quartz", 40, 80, 80, 5, 24, NetherQuartz, NetherQuartz, NetherQuartz, NetherQuartz, World.THE_NETHER);
+            new WorldGenVeinLayer("neter_quartz", 40, 80, 80, 5, 24, Quartz, Quartz, Quartz, Quartz, World.THE_NETHER);
             new WorldGenVeinLayer("sulfur", 5, 20, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite, World.THE_NETHER);
             new WorldGenVeinLayer("copper", 10, 30, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, World.OVERWORLD, World.THE_NETHER);
             //new WorldGenVeinLayer("bauxite", 50, 90, 80, 4, 24, Bauxite, Bauxite, Aluminium, Ilmenite, World.OVERWORLD);
@@ -195,7 +197,7 @@ public class WorldGenLoader {
         //new WorldGenOreSmall(20, 40, 4, Sperrylite, World.THE_END/*, ASTEROIDS */);
         new WorldGenOreSmall(20, 40, 6, Platinum, World.THE_END/*, ASTEROIDS */);
         new WorldGenOreSmall(20, 40, 6, Iridium, World.THE_END/*, ASTEROIDS */);
-        new WorldGenOreSmall(30, 120, 64, NetherQuartz, World.THE_NETHER);
+        new WorldGenOreSmall(30, 120, 64, Quartz, World.THE_NETHER);
         new WorldGenOreSmall(10, 60, 8, Saltpeter, World.THE_NETHER);
         //new WorldGenOreSmall(10, 60, 8, SodiumNitrate, World.THE_NETHER);
         new WorldGenOreSmall("sulfur_World.THE_NETHER", 10, 60, 32, Sulfur, World.THE_NETHER);

@@ -7,9 +7,7 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import static muramasa.antimatter.Data.INGOT;
-import static muramasa.antimatter.Data.DUST;
-import static muramasa.antimatter.Data.WIRE_FINE;
+import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.RecipeMaps.WIRE_MILLING;
 
 public class WiremillLoader {

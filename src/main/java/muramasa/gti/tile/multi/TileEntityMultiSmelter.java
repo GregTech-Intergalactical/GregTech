@@ -7,7 +7,7 @@ import net.minecraft.block.BlockState;
 
 import java.util.List;
 
-public class TileEntityMultiSmelter extends TileEntityMultiMachine {
+public class TileEntityMultiSmelter extends TileEntityMultiMachine<TileEntityMultiSmelter> {
 
     private int level = 1, discount = 1;
 

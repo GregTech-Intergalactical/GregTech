@@ -1,26 +1,14 @@
 package muramasa.gti.data;
 
+import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.material.TextureSet;
+import muramasa.antimatter.texture.IOverlayTexturer;
 import muramasa.antimatter.texture.ITextureHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gti.Ref;
 
 public class Textures {
-
-    public static TextureSet DULL = new TextureSet(Ref.ID, "dull");
-    public static TextureSet METALLIC = new TextureSet(Ref.ID, "metallic");
-    public static TextureSet SHINY = new TextureSet(Ref.ID, "shiny");
-    public static TextureSet ROUGH = new TextureSet(Ref.ID, "rough");
-    public static TextureSet MAGNETIC = new TextureSet(Ref.ID, "magnetic");
-    public static TextureSet DIAMOND = new TextureSet(Ref.ID, "diamond");
-    public static TextureSet RUBY = new TextureSet(Ref.ID, "ruby");
-    public static TextureSet LAPIS = new TextureSet(Ref.ID, "lapis");
-    public static TextureSet GEM_H = new TextureSet(Ref.ID, "gem_h");
-    public static TextureSet GEM_V = new TextureSet(Ref.ID, "gem_v");
-    public static TextureSet QUARTZ = new TextureSet(Ref.ID, "quartz");
-    public static TextureSet FINE = new TextureSet(Ref.ID, "fine");
-    public static TextureSet FLINT = new TextureSet(Ref.ID, "flint");
-    public static TextureSet LIGNITE = new TextureSet(Ref.ID, "lignite");
 
     public static final ITextureHandler BOILER_HANDLER = (m, t) -> new Texture[] {
         new Texture(Ref.ID, "block/machine/base/brick"),
@@ -29,6 +17,20 @@ public class Textures {
         new Texture(Ref.ID, "block/machine/base/bricked_" + t.getId()),
         new Texture(Ref.ID, "block/machine/base/bricked_" + t.getId()),
         new Texture(Ref.ID, "block/machine/base/bricked_" + t.getId()),
+    };
+
+    public static final IOverlayTexturer TIER_SPECIFIC_OVERLAY_HANDLER = (type, state, tier) -> {
+        if (state != MachineState.ACTIVE && state != MachineState.INVALID_STRUCTURE) state = MachineState.IDLE;
+        String stateDir = state == MachineState.IDLE ? "" : state.getId() + "/";
+
+        return new Texture[] {
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "bottom"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "top"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "front"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "back"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "side"),
+        };
     };
 
     public static final Texture[] LARGE_TURBINE = new Texture[] {

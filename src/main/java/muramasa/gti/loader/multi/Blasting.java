@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTag.CALCITE2X;
 import static muramasa.antimatter.material.MaterialTag.CALCITE3X;
-import static muramasa.gti.data.GregTechData.INT_CIRCUITS;
+import static muramasa.gti.data.TierMaps.INT_CIRCUITS;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.BASIC_BLASTING;
 import static muramasa.gti.data.RecipeMaps.BLASTING;
@@ -56,7 +56,7 @@ public class Blasting {
         BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(100,50).add(1200, 0);
 
         /* TITANIUM */
-        BLASTING.RB().ii(RecipeIngredient.of(DUST.get(Magnesium,2)), INT_CIRCUITS.get(1))
+        BLASTING.RB().temperature(1700).ii(RecipeIngredient.of(DUST.get(Magnesium,2)), INT_CIRCUITS.get(1))
                 .fi(Titaniumtetrachloride.getLiquid(1000))
                 .io(INGOT_HOT.get(Titanium,1), DUST.get(MagnesiumChloride,2))
                 .add(40*20, 480);
