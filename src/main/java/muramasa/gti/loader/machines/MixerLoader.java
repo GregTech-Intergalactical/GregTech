@@ -33,7 +33,6 @@ public class MixerLoader {
         addDust(SterlingSilver, 7, 25*20);
         addDust(RoseGold, 7, 25*20);
         addDust(BismuthBronze, 7, 25*20);
-        addDust(BlackSteel, 7, 25*20);
         addDust(Osmiridium, 7, 50*20);
         addDust(YttriumBariumCuprate, 7, 40*20);
         addDust(VanadiumGallium, 7, 20*20);
