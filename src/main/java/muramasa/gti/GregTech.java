@@ -60,6 +60,7 @@ public class GregTech extends AntimatterMod {
         AntimatterDynamics.addProvider(Ref.ID,
                 g -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", g));
         AntimatterDynamics.addProvider(Ref.ID, GregTechLocalizations.en_US::new);
+        AntimatterDynamics.addProvider(Ref.ID, GregTechLocalizations.ru_RU::new);
     }
 
     private static void onProviders(AntimatterProvidersEvent ev) {
