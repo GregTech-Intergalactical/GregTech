@@ -13,6 +13,7 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
@@ -61,6 +62,6 @@ public class BlockRubberSapling extends SaplingBlock implements IGrowable, IAnti
 
     @Override
     public void placeTree(ServerWorld world, BlockPos pos, BlockState state, Random random) {
-        if (RubberTreeWorldGen.getValidBiomesStatic().test(world.getBiome(pos).getCategory())) super.placeTree(world, pos, state, random);
+        if (world.getBiome(pos).getCategory() != Biome.Category.NETHER && world.getBiome(pos).getCategory() != Biome.Category.THEEND) super.placeTree(world, pos, state, random);
     }
 }

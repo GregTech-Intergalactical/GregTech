@@ -481,8 +481,16 @@ public class Materials {
     public static Material SodiumSulfide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sodium_sulfide", 0xffe680, NONE)).asDust()
             .mats(of(Sodium, 2, Sulfur, 1));
+    public static Material TinAlloy = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "tin_alloy", 0x9fadbb, NONE)).asDust()
+            .mats(of(Tin, 1, Iron, 1));
+    public static Material Energium = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "energium", 0xe81e21, NONE)).asDust();
     public static Material IridiumSodiumOxide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "iridium_sodium_oxide", 0xffffff, NONE)).asDust();
+    public static Material IndiumGalliumPhosphide = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "indium_gallium_phosphide", 0x570b79, NONE)).asDust()
+            .mats(of(Indium, 1, Gallium, 1, Phosphor, 1));
     public static Material PlatinumGroupSludge = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "platinum_group_sludge", 0x001e00, NONE)).asDust();
     public static Material Glowstone = AntimatterAPI

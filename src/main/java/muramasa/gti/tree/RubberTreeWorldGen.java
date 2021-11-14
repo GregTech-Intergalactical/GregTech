@@ -43,6 +43,7 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
         blacklist.add(Biome.Category.THEEND);
         blacklist.add(Biome.Category.OCEAN);
         blacklist.add(Biome.Category.NETHER);
+        blacklist.add(Biome.Category.PLAINS);
         return b -> !blacklist.contains(b);
     }
 
@@ -66,31 +67,30 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
     public RubberTreeWorldGen(){
         super("rubber_tree", RubberTreeWorldGen.class, World.OVERWORLD);
     }
+  
     public static void onEvent(BiomeLoadingEvent builder){
-        for (Biome biome : ForgeRegistries.BIOMES) {
-            if (!getValidBiomesStatic().test(biome.getCategory()) || biome.getCategory() == Biome.Category.PLAINS)
-                continue;
-            float p = 0.05F;
-            if (builder.getClimate().temperature > 0.8f) {
-                p = 0.04F;
-                if (builder.getClimate().precipitation == Biome.RainType.RAIN)
-                    p += 0.04F;
-            }
-            float finalp = p;
-            builder.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> RubberTree.TREE_FEATURE.withConfiguration(getTreeConfig(biome))
-            .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, finalp, 1
-            ))));
+        Biome.Category biomeCategory = builder.getCategory();
+        if (!getValidBiomesStatic().test(biomeCategory) || biomeCategory == Biome.Category.PLAINS) return;
+        float p = 0.05F;
+        if (builder.getClimate().temperature > 0.8f) {
+            p = 0.04F;
+            if (builder.getClimate().precipitation == Biome.RainType.RAIN)
+                p += 0.04F;
         }
+        float finalp = p;
+        builder.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> RubberTree.TREE_FEATURE.withConfiguration(getTreeConfig(biomeCategory))
+                .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, finalp, 1))));
     }
 
-    static BaseTreeFeatureConfig getTreeConfig(Biome biome){
+    static BaseTreeFeatureConfig getTreeConfig(Biome.Category biome){
         BaseTreeFeatureConfig config = RUBBER_TREE_CONFIG_NORMAL;
-        if (biome.getCategory() == Biome.Category.SWAMP)
+        if (biome == Biome.Category.SWAMP)
             config = RUBBER_TREE_CONFIG_SWAMP;
-        else if (biome.getCategory() == Biome.Category.JUNGLE)
+        else if (biome == Biome.Category.JUNGLE)
             config = RUBBER_TREE_CONFIG_JUNGLE;
         return config;
     }
+  
     public static class RubberTreePlacement extends Placement<AtSurfaceWithExtraConfig> {
         public RubberTreePlacement() {
             super(AtSurfaceWithExtraConfig.CODEC);
