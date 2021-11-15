@@ -277,6 +277,8 @@ public class Materials {
      **/
     public static Material Steam = AntimatterAPI.register(Material.class, new Material(Ref.ID, "steam", 0xa0a0a0, NONE))
             .asGas(1, 395);
+    public static Material SaltWater = AntimatterAPI.register(Material.class, new Material(Ref.ID, "salt_water", 0x0760b9, NONE))
+            .asFluid();
     public static Material UUAmplifier = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "uu_amplifier", 0x600080, NONE)).asFluid();
     public static Material UUMatter = AntimatterAPI
@@ -478,6 +480,8 @@ public class Materials {
     /**
      * Dusts
      **/
+    public static Material WoodPulp = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "wood_pulp", 0x3f2620, NONE)).asDust();
     public static Material SodiumSulfide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sodium_sulfide", 0xffe680, NONE)).asDust()
             .mats(of(Sodium, 2, Sulfur, 1));
@@ -486,6 +490,9 @@ public class Materials {
             .mats(of(Tin, 1, Iron, 1));
     public static Material Energium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "energium", 0xe81e21, NONE)).asDust();
+    public static Material BorosilicateGlass = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "borosilicate_glass", 0xfafafa, NONE)).asDust()
+            .mats(of(Boron, 1, Silicon, 7, Oxygen,14));
     public static Material IridiumSodiumOxide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "iridium_sodium_oxide", 0xffffff, NONE)).asDust();
     public static Material IndiumGalliumPhosphide = AntimatterAPI
@@ -726,7 +733,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "soapstone", 0x5f915f, DULL)).asOre(true)
             .mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Ge;
     public static Material Concrete = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "concrete", 0x646464, ROUGH)).asDust(300).mats(of(Stone, 1));
+            .register(Material.class, new Material(Ref.ID, "concrete", 0x646464, ROUGH)).asDust(300).mats(of(Stone, 1)).asFluid();
     public static Material AntimonyTrioxide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "antimony_trioxide", 0xe6e6f0, DULL)).asDust()
             .mats(of(Antimony, 2, Oxygen, 3));
