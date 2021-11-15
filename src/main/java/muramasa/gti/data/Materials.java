@@ -733,7 +733,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "soapstone", 0x5f915f, DULL)).asOre(true)
             .mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Ge;
     public static Material Concrete = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "concrete", 0x646464, ROUGH)).asDust(300).mats(of(Stone, 1));
+            .register(Material.class, new Material(Ref.ID, "concrete", 0x646464, ROUGH)).asDust(300).mats(of(Stone, 1)).asFluid();
     public static Material AntimonyTrioxide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "antimony_trioxide", 0xe6e6f0, DULL)).asDust()
             .mats(of(Antimony, 2, Oxygen, 3));
