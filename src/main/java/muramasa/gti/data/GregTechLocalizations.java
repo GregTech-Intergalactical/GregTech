@@ -71,6 +71,7 @@ public class GregTechLocalizations {
         @Override
         protected void processTranslations(String domain, String locale) {
             super.processTranslations(domain, locale);
+            if (!locale.startsWith("ru")) return;
 
             InputStream stream = getClass().getClassLoader().getResourceAsStream("ru_ru.json");
 
@@ -121,13 +122,13 @@ public class GregTechLocalizations {
                 if (i.has(MachineFlag.BASIC)) {
                     tiers.forEach(t ->  {
                         if (translations.containsKey(i.getId())){
-                            add("machine." + i.getId() + "." + t.getId(), translations.get(i.getId()) + " " + t.getId());}
+                            add("machine." + i.getId() + "." + t.getId(), translations.get(i.getId()) + " " + t.getId().toUpperCase());}
                         else
                             add("machine." + i.getId() + "." + t.getId(), lowerUnderscoreToUpperSpacedRotated(i.getId() + "_" + t.getId()));
                     });
                 } else {
                     if (translations.containsKey(i.getId()))
-                        add("machine." + translations.get(i.getId()), translations.get(i.getId()));
+                        add("machine." + i.getId(), translations.get(i.getId()));
                     else
                         add("machine." + i.getId(), lowerUnderscoreToUpperSpacedRotated(i.getId()));
                 }
