@@ -3,7 +3,7 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
-import muramasa.antimatter.machine.BlockMachine;
+import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
@@ -12,7 +12,6 @@ import muramasa.gti.block.BlockCasing;
 import muramasa.gti.block.BlockCoil;
 import muramasa.gti.items.ItemIntCircuit;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.ItemGroup;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -57,6 +56,11 @@ public class GregTechLocalizations {
             super(Ref.ID, Ref.NAME + " ru_ru Localization", "ru_ru", gen);
         }
 
+        private String capitalize(String word)
+        {
+            return word.substring(0, 1).toUpperCase() + word.substring(1);
+        }
+
         @Override
         protected void addTranslations() {
             super.addTranslations();
@@ -73,7 +77,7 @@ public class GregTechLocalizations {
             super.processTranslations(domain, locale);
             if (!locale.startsWith("ru")) return;
 
-            InputStream stream = getClass().getClassLoader().getResourceAsStream("ru_ru.json");
+            InputStream stream = getClass().getClassLoader().getResourceAsStream("lang_generation/ru_ru.json");
 
             assert stream != null;
             String basicWords = new BufferedReader(
@@ -84,20 +88,11 @@ public class GregTechLocalizations {
 
             final Map<String, String> translations = gson.fromJson(basicWords, Map.class);
 
-            //translations.keySet().forEach(i-> System.out.println(i + ' ' + translations.get(i)));
-
-            
-//            AntimatterAPI.all(BlockCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
-//            AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Микросхема (" + i.circuitId + ")"));
 
             add(GregTechData.RUBBER_LEAVES, "Листья резинового дерева");
             add(GregTechData.RUBBER_LOG, "Древесина резинового дерева");
             add(GregTechData.RUBBER_SAPLING, "Саженец резинового дерева");
-            add(GregTechData.CASING_FUSION_1, "Корпус термоядерного реактора 1");
-            add(GregTechData.CASING_FUSION_2, "Корпус термоядерного реактора 2");
-            add(GregTechData.CASING_FUSION_3, "Корпус термоядерного реактора 3");
-            add(GregTechData.COIL_FUSION, "Катушка термоядерного реактора");
 
             add(muramasa.antimatter.Ref.TAB_BLOCKS, "GTI Блоки");
             add(muramasa.antimatter.Ref.TAB_ITEMS, "GTI Предметы");
@@ -110,7 +105,6 @@ public class GregTechLocalizations {
             add("generic.amp", "Сила тока");
             add("generic.tier", "Уровень");
             add("generic.voltage", "Напряжение");
-            //Is this loss?
             add("generic.loss", "Потери на блок");
             add("message.discharge.on", "Разрядка включена");
             add("message.discharge.off", "Разрядка отключена");
@@ -146,7 +140,49 @@ public class GregTechLocalizations {
                 }
             });
 
+            AntimatterAPI.all(BlockCasing.class, domain).forEach(i -> {
+                if (translations.containsKey(i.getId()))
+                    add(i, translations.get(i.getId()));
+            });
+
+            AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> {
+                if (translations.containsKey(i.getId()))
+                    add(i, translations.get(i.getId()));
+            });
+
+            AntimatterAPI.all(ItemBasic.class, domain).forEach(i -> {
+                String[] spl = i.getId().split("_");
+                String key = String.join("_", Arrays.copyOfRange(spl, 0, spl.length - 1));
+
+                if (translations.containsKey(i.getId())){
+                    add(i, translations.get(i.getId()));
+                }
+                else if (translations.containsKey(key)){
+                    add(i, translations.get(key) + " " + translations.get(spl[spl.length - 1]));
+                }
+                else {
+                    String translation = "";
+                    for (String word: spl) {
+                        translation += translations.getOrDefault(word, word) + ' ';
+                    }
+                    add(i, capitalize(translation));
+                }
+            });
+
+//            try{
+//                BufferedWriter writer = new BufferedWriter(new FileWriter("c:/users/mihag/desktop/GTI/aboba.txt"));
+//                AntimatterAPI.all(ItemBasic.class, domain).forEach(i -> {
+//                    try{
+//                    writer.write(i.getId() + '\n');}
+//                    catch (Exception e){
+//                        System.out.println(e.toString());
+//                    }
+//                    System.out.println(i.getId());});
+//                writer.close();
+//            }
+//            catch (Exception e){
+//                System.out.println(e.toString());
+//            }
         }
     }
-
 }
