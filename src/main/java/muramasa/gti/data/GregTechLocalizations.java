@@ -122,7 +122,19 @@ public class GregTechLocalizations {
                 if (i.has(MachineFlag.BASIC)) {
                     tiers.forEach(t ->  {
                         if (translations.containsKey(i.getId())){
-                            add("machine." + i.getId() + "." + t.getId(), translations.get(i.getId()) + " " + t.getId().toUpperCase());}
+                            if (!t.getId().equals("steel") && !t.getId().equals("bronze"))
+                                add("machine." + i.getId() + "." + t.getId(), translations.get(i.getId()) + " " + t.getId().toUpperCase());
+                            else
+                            {
+                                if (translations.get(i.getId()).contains("ой") && t.getId().contains("steel"))
+                                    add("machine." + i.getId() + "." + t.getId(), translations.get("steel_machine") + "ой " + translations.get(i.getId()));
+                                else if
+                                (translations.get(i.getId()).contains("ой") && t.getId().contains("bronze"))
+                                    add("machine." + i.getId() + "." + t.getId(), translations.get("bronze_machine") + "ый " + translations.get(i.getId()));
+                                else if (translations.get(i.getId()).contains("ая"))
+                                    add("machine." + i.getId() + "." + t.getId(), translations.get(t.getId() + "_machine") + "ая " + translations.get(i.getId()));
+                            }
+                        }
                         else
                             add("machine." + i.getId() + "." + t.getId(), lowerUnderscoreToUpperSpacedRotated(i.getId() + "_" + t.getId()));
                     });
