@@ -77,7 +77,7 @@ public class Guis {
         ELECTROLYZER.add(CENTRIFUGE);
         THERMAL_CENTRIFUGE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(ENERGY,80, 63);
         ORE_WASHER.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
-        CHEMICAL_REACTOR.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
+        CHEMICAL_REACTOR.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(FL_IN, 35, 63).add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63);
         FLUID_CANNER.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         DISASSEMBLER.add(IT_IN, 53, 25)
                 .add(IT_OUT, 107, 7).add(IT_OUT, 107+18, 7).add(IT_OUT, 107+18*2, 7)
