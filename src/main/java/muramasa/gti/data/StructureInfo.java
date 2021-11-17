@@ -36,11 +36,25 @@ public class StructureInfo {
                         .description(COIL_NAQUADAH.getTranslationKey())
                         .build());
         builder = new PatternBuilder()
-                .of("CCC", "CCC", "CCC").of("CCC, CAM", "CCC").of(0)
+                .of("CCC", "CCC", "CCC").of("CCC", "CAM", "CCC").of(0)
                 .at("M", COKE_OVEN, COKE_OVEN.getFirstTier(), Direction.SOUTH)
-                .at("C",CASING_FIRE_BRICK.getDefaultState(), Structures.FAKE_CASING)
-                .at("A", Blocks.AIR.getDefaultState())
+                .at("C", CASING_FIRE_BRICK.getDefaultState())
                 .description(COKE_OVEN.getDisplayName(COKE_OVEN.getFirstTier()));
         COKE_OVEN.setStructurePattern(builder.build());
+        builder = new PatternBuilder()
+                .of("CCC", "CCC", "CCC").of("CCC", "CAM", "CCC").of("CCC", "CAC", "CCC").of(2)
+                .at("M", PRIMITIVE_BLAST_FURNACE, PRIMITIVE_BLAST_FURNACE.getFirstTier(), Direction.SOUTH)
+                .at("C", CASING_FIRE_BRICK.getDefaultState());
+        PRIMITIVE_BLAST_FURNACE.setStructurePattern(builder
+        .at("A", Blocks.AIR.getDefaultState()).description("Inactive").build());
+
+        builder = new PatternBuilder()
+                .of("CCC", "CCC", "CCC").of("CCI", "EAM", "CCO").of("CCC", "CCC", "CCC")
+                .at("M", VACUUM_FREEZER, VACUUM_FREEZER.getFirstTier(), Direction.SOUTH)
+                .at("C", CASING_FROST_PROOF.getDefaultState())
+                .at("I", HATCH_ITEM_I, HATCH_ITEM_I.getFirstTier(), Direction.SOUTH)
+                .at("O", HATCH_ITEM_O, HATCH_ITEM_O.getFirstTier(), Direction.SOUTH)
+                .at("E", HATCH_ENERGY, HATCH_ENERGY.getFirstTier(), Direction.NORTH);
+        VACUUM_FREEZER.setStructurePattern(builder.build());
     }
 }
