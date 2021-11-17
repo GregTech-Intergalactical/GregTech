@@ -149,7 +149,7 @@ public class GregTech extends AntimatterMod {
             break;
         case DATA_READY:
             Structures.init();
-            StructureInfo.init();
+            if (side == Dist.CLIENT) StructureInfo.init();
             TierMaps.providerInit();
             break;
         case WORLDGEN_INIT:

@@ -46,7 +46,7 @@ public class StructureInfo {
                 .at("M", PRIMITIVE_BLAST_FURNACE, PRIMITIVE_BLAST_FURNACE.getFirstTier(), Direction.SOUTH)
                 .at("C", CASING_FIRE_BRICK.getDefaultState());
         PRIMITIVE_BLAST_FURNACE.setStructurePattern(builder
-        .at("A", Blocks.AIR.getDefaultState()).description("Inactive").build());
+        .at("A", Blocks.AIR.getDefaultState()).description(PRIMITIVE_BLAST_FURNACE.getDisplayName(PRIMITIVE_BLAST_FURNACE.getFirstTier())).build());
 
         builder = new PatternBuilder()
                 .of("CCC", "CCC", "CCC").of("CCI", "EAM", "CCO").of("CCC", "CCC", "CCC")
@@ -56,5 +56,14 @@ public class StructureInfo {
                 .at("O", HATCH_ITEM_O, HATCH_ITEM_O.getFirstTier(), Direction.SOUTH)
                 .at("E", HATCH_ENERGY, HATCH_ENERGY.getFirstTier(), Direction.NORTH);
         VACUUM_FREEZER.setStructurePattern(builder.build());
+        builder = new PatternBuilder()
+                .of("CCCC", "CCCC", "CCCC").of("CCCC", "EAAM", "CIOC").of(0)
+                .at("M", LARGE_TURBINE, LARGE_TURBINE.getFirstTier(), Direction.SOUTH)
+                .at("C", CASING_TURBINE_4.getDefaultState())
+                .at("E", HATCH_DYNAMO, HATCH_DYNAMO.getFirstTier(), Direction.NORTH)
+                .at("I", HATCH_FLUID_I, HATCH_FLUID_I.getFirstTier(), Direction.EAST)
+                .at("O", HATCH_FLUID_O, HATCH_FLUID_O.getFirstTier(), Direction.EAST)
+                .description(LARGE_TURBINE.getDisplayName(LARGE_TURBINE.getFirstTier()));
+        LARGE_TURBINE.setStructurePattern(builder.build());
     }
 }
