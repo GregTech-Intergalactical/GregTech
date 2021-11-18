@@ -97,13 +97,13 @@ public class Parts {
         "WWW", "WRW", "WWW");
 
     provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
-        INT_CIRCUITS.get(0).get().getMatchingStacks()[0], CircuitBasic);
+            INT_CIRCUITS.get(0).get().getItems()[0], CircuitBasic);
     // INT_CIRCUITS.forEach((k, v) -> {
     Ingredient ing = INT_CIRCUITS.get(0).get();
     provider.shapeless(output, "int_circuit_to_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
         CircuitBasic.getDefaultInstance(), ing);
     // });
-    provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
-        INT_CIRCUITS.get(0).get().getMatchingStacks()[0], CircuitBasic);
+      provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
+              INT_CIRCUITS.get(0).get().getItems()[0], CircuitBasic);
   }
 }

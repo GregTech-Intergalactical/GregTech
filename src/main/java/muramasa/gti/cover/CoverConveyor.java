@@ -58,19 +58,19 @@ public class CoverConveyor extends BaseCover {
 
     @Override
     public void onUpdate() {
-        if (handler.getTile().getWorld().isRemote || handler.getTile().getWorld().getGameTime() % (speeds.get(tier)) != 0)
+        if (handler.getTile().getLevel().isClientSide || handler.getTile().getLevel().getGameTime() % (speeds.get(tier)) != 0)
             return;
-        BlockState state = handler.getTile().getWorld().getBlockState(handler.getTile().getPos().offset(side));
+        BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
         //Drop into world.
-        if (state == Blocks.AIR.getDefaultState()) {
-            World world = handler.getTile().getWorld();
-            BlockPos pos = handler.getTile().getPos();
+        if (state == Blocks.AIR.defaultBlockState()) {
+            World world = handler.getTile().getLevel();
+            BlockPos pos = handler.getTile().getBlockPos();
             ItemStack stack = handler.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).map(t -> Utils.extractAny(t)).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
-            world.addEntity(new ItemEntity(world, pos.getX() + side.getXOffset(), pos.getY() + side.getYOffset(), pos.getZ() + side.getZOffset(), stack));
+            world.addFreshEntity(new ItemEntity(world, pos.getX() + side.getStepX(), pos.getY() + side.getStepY(), pos.getZ() + side.getStepZ(), stack));
         }
         if (!(state.hasTileEntity())) return;
-        TileEntity adjTile = handler.getTile().getWorld().getTileEntity(handler.getTile().getPos().offset(side));
+        TileEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
         if (adjTile == null) {
             return;
         }

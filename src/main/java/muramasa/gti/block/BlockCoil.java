@@ -21,7 +21,7 @@ public class BlockCoil extends BlockBasic {
     }
 
     public BlockCoil(String domain, String id, int heatCapacity) {
-        this(domain, id, heatCapacity, Block.Properties.create(Material.IRON).hardnessAndResistance(1.0f, 10.0f).sound(SoundType.METAL));
+        this(domain, id, heatCapacity, Block.Properties.of(Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL));
     }
 
     public int getHeatCapacity() {

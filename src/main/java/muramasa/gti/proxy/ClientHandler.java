@@ -11,9 +11,9 @@ public class ClientHandler {
 
     public static void setup(FMLClientSetupEvent e) {
         e.enqueueWork(() -> {
-            RenderTypeLookup.setRenderLayer(GregTechData.RUBBER_SAPLING, RenderType.getCutout());
-            RenderTypeLookup.setRenderLayer(GregTechData.RUBBER_LEAVES, RenderType.getCutout());
-            AntimatterAPI.all(BlockCasing.class, t -> RenderTypeLookup.setRenderLayer(t, RenderType.getCutout()));
+            RenderTypeLookup.setRenderLayer(GregTechData.RUBBER_SAPLING, RenderType.cutout());
+            RenderTypeLookup.setRenderLayer(GregTechData.RUBBER_LEAVES, RenderType.cutout());
+            AntimatterAPI.all(BlockCasing.class, t -> RenderTypeLookup.setRenderLayer(t, RenderType.cutout()));
         });
     }
 }
