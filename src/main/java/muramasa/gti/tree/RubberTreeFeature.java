@@ -16,7 +16,7 @@ public class RubberTreeFeature extends TreeFeature {
     }
 
     
-    /*public boolean func_225557_a_(ISeedReader reader, ChunkGenerator generator, Random random, BlockPos pos, BaseTreeFeatureConfig config) {
+    /*public boolean doPlace(ISeedReader reader, ChunkGenerator generator, Random random, BlockPos pos, BaseTreeFeatureConfig config) {
         int baseHeight = config.baseHeight + random.nextInt(config.heightRandA + 1) + random.nextInt(config.heightRandB + 1);
         int trunkHeight = config.trunkHeight >= 0 ? config.trunkHeight + random.nextInt(config.trunkHeightRandom + 1) : baseHeight - (config.foliageHeight + random.nextInt(config.foliageHeightRandom + 1));
 

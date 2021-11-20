@@ -18,7 +18,6 @@ import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -49,26 +48,26 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
 
     
     final static BaseTreeFeatureConfig RUBBER_TREE_CONFIG_SWAMP =
-            (new BaseTreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(GregTechData.RUBBER_LEAVES.getDefaultState()),
-                    new AcaciaFoliagePlacer(FeatureSpread.create(2), FeatureSpread.create(0)), new StraightTrunkPlacer(5, 2, 2), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().setMaxWaterDepth(1).build();
+            (new BaseTreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(GregTechData.RUBBER_LEAVES.defaultBlockState()),
+                    new AcaciaFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new StraightTrunkPlacer(5, 2, 2), new TwoLayerFeature(1, 0, 2))).ignoreVines().maxWaterDepth(1).build();
 
     final static BaseTreeFeatureConfig RUBBER_TREE_CONFIG_JUNGLE =
-            (new BaseTreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(GregTechData.RUBBER_LEAVES.getDefaultState()),
-                     new AcaciaFoliagePlacer(FeatureSpread.create(2), FeatureSpread.create(0)), new StraightTrunkPlacer(7, 2, 2), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
+            (new BaseTreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(GregTechData.RUBBER_LEAVES.defaultBlockState()),
+                    new AcaciaFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new StraightTrunkPlacer(7, 2, 2), new TwoLayerFeature(1, 0, 2))).ignoreVines().build();
                  ///   .trunkHeight(4).trunkHeightRandom(1) // bare trunk height
                //     .trunkTopOffset(2) // depresses trunk top within leaves
                //     .setSapling(RUBBER_SAPLING)
           //          .decorators(ImmutableList.of(new LeaveVineTreeDecorator())).build();
 
     final static BaseTreeFeatureConfig RUBBER_TREE_CONFIG_NORMAL =
-            (new BaseTreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(GregTechData.RUBBER_LEAVES.getDefaultState()),
-                     new AcaciaFoliagePlacer(FeatureSpread.create(2), FeatureSpread.create(0)), new StraightTrunkPlacer(5, 2, 2), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
+            (new BaseTreeFeatureConfig.Builder(RubberTree.TRUNK_BLOCKS, new SimpleBlockStateProvider(GregTechData.RUBBER_LEAVES.defaultBlockState()),
+                    new AcaciaFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new StraightTrunkPlacer(5, 2, 2), new TwoLayerFeature(1, 0, 2))).ignoreVines().build();
 
     public RubberTreeWorldGen(){
         super("rubber_tree", RubberTreeWorldGen.class, World.OVERWORLD);
     }
   
-    public static void onEvent(BiomeLoadingEvent builder){
+    public static void onEvent(BiomeLoadingEvent builder) {
         Biome.Category biomeCategory = builder.getCategory();
         if (!getValidBiomesStatic().test(biomeCategory) || biomeCategory == Biome.Category.PLAINS) return;
         float p = 0.05F;
@@ -78,8 +77,8 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
                 p += 0.04F;
         }
         float finalp = p;
-        builder.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> RubberTree.TREE_FEATURE.withConfiguration(getTreeConfig(biomeCategory))
-                .withPlacement(new RubberTreePlacement().configure(new AtSurfaceWithExtraConfig(0, finalp, 1))));
+        builder.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> RubberTree.TREE_FEATURE.configured(getTreeConfig(biomeCategory))
+                .decorated(new RubberTreePlacement().configured(new AtSurfaceWithExtraConfig(0, finalp, 1))));
     }
 
     static BaseTreeFeatureConfig getTreeConfig(Biome.Category biome){
@@ -106,7 +105,7 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
             return IntStream.range(0, i).mapToObj((ix) -> {
                 int j = random.nextInt(16) + pos.getX();
                 int k = random.nextInt(16) + pos.getZ();
-                return new BlockPos(j, helper.func_242893_a(Heightmap.Type.MOTION_BLOCKING, j, k), k);
+                return new BlockPos(j, helper.getHeight(Heightmap.Type.MOTION_BLOCKING, j, k), k);
             });
         }
 

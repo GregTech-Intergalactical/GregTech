@@ -48,8 +48,8 @@ public class CoverPump extends BaseCover {
     @Override
     public void onUpdate() {
         //Pump acts on each tick.
-        if (handler.getTile().getWorld().isRemote) return;
-        TileEntity adjTile = handler.getTile().getWorld().getTileEntity(handler.getTile().getPos().offset(side));
+        if (handler.getTile().getLevel().isClientSide) return;
+        TileEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
         if (adjTile == null) return;
         LazyOptional<IFluidHandler> handler = adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
         if (!handler.isPresent()) return;

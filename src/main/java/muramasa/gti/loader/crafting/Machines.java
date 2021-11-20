@@ -1,8 +1,6 @@
 package muramasa.gti.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
@@ -10,25 +8,21 @@ import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.FluidPipe;
-import muramasa.antimatter.util.TagUtils;
 import muramasa.gti.GregTech;
-import muramasa.gti.Ref;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;
 import muramasa.gti.data.TierMaps;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.util.ResourceLocation;
 
 import java.util.Arrays;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.machine.Tier.*;
+import static muramasa.antimatter.machine.Tier.IV;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Machines.*;
 import static muramasa.gti.data.TierMaps.TIER_CIRCUITS;
@@ -47,7 +41,7 @@ public class Machines {
             if (conveyor == null) return;
             Item pump = GregTech.get(ItemCover.class, "pump_"+tier.getId());
             if (pump == null) return;
-            Item casing = Item.BLOCK_TO_ITEM.get(GregTech.get(BlockCasing.class, "casing_"+tier.getId()));
+            Item casing = Item.BY_BLOCK.get(GregTech.get(BlockCasing.class, "casing_" + tier.getId()));
             if (casing == null) return;
             Item sensor = GregTech.get(ItemBasic.class, "sensor_"+tier.getId());
             if (sensor == null) return;

@@ -18,14 +18,14 @@ public class ScreenSteamMachine<T extends TileEntitySteamMachine<T>, U extends C
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(MatrixStack stack, int mouseX, int mouseY) {
-        super.drawGuiContainerForegroundLayer(stack,mouseX, mouseY);
-        drawTooltipInArea(stack, container.getTile().getMachineState().getDisplayName(), mouseX, mouseY, (xSize / 2) - 5, 45, 10, 8);
+    protected void renderLabels(MatrixStack stack, int mouseX, int mouseY) {
+        super.renderLabels(stack, mouseX, mouseY);
+        drawTooltipInArea(stack, container.getTile().getMachineState().getDisplayName(), mouseX, mouseY, (imageWidth / 2) - 5, 45, 10, 8);
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(MatrixStack stack, float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(stack, partialTicks, mouseX, mouseY);
+    protected void renderBg(MatrixStack stack, float partialTicks, int mouseX, int mouseY) {
+        super.renderBg(stack, partialTicks, mouseX, mouseY);
     }
 
     @Override

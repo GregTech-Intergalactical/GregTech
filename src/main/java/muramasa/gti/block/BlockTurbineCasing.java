@@ -59,10 +59,10 @@ public class BlockTurbineCasing extends BlockCasingMachine {
         mutable.set(pos);
         TileEntityLargeTurbine turbine = getTurbine(world, pos);
         if (turbine != null) {
-            BlockPos controllerPos = turbine.getPos();
-            Vector3i vec = new Vector3i(-(pos.getX()-controllerPos.getX()), -(pos.getY()-controllerPos.getY()), -(pos.getZ()-controllerPos.getZ()));
+            BlockPos controllerPos = turbine.getBlockPos();
+            Vector3i vec = new Vector3i(-(pos.getX() - controllerPos.getX()), -(pos.getY() - controllerPos.getY()), -(pos.getZ() - controllerPos.getZ()));
             int c = getOffset(vec);
-            c += turbine.getFacing().getIndex()*1000;
+            c += turbine.getFacing().get3DDataValue() * 1000;
             c += (turbine.getMachineState() == MachineState.ACTIVE ? 10000 : 0);
             ct[1] = c;
         }
@@ -130,10 +130,10 @@ public class BlockTurbineCasing extends BlockCasingMachine {
             for (int i = 0; i < VECS.length; i++) {
                 if (i == 4) continue;
                 final int ii = i;
-                builder.config(getOffset(VECS[i], dir)+dir.getIndex()*1000, SIDED, a ->
-                    a.tex(t -> t.put("base",inactive[ii])).rot(dir));
-                builder.config(getOffset(VECS[i], dir)+dir.getIndex()*1000+10000, SIDED, a ->
-                    a.tex(t -> t.put("base",tex[ii])).rot(dir));
+                builder.config(getOffset(VECS[i], dir) + dir.get3DDataValue() * 1000, SIDED, a ->
+                        a.tex(t -> t.put("base", inactive[ii])).rot(dir));
+                builder.config(getOffset(VECS[i], dir) + dir.get3DDataValue() * 1000 + 10000, SIDED, a ->
+                        a.tex(t -> t.put("base", tex[ii])).rot(dir));
             }
         }
         Texture[] texes = ((ITextureProvider)block).getTextures();
@@ -148,14 +148,14 @@ public class BlockTurbineCasing extends BlockCasingMachine {
     private static final Long2ObjectMap<TileEntityLargeTurbine> MAP = new Long2ObjectOpenHashMap<>();
 
     private TileEntityLargeTurbine checkTurbine(IBlockReader reader, BlockPos pos) {
-        TileEntity tile = reader.getTileEntity(pos);
+        TileEntity tile = reader.getBlockEntity(pos);
         return tile instanceof TileEntityLargeTurbine ? (TileEntityLargeTurbine) tile : null;
     }
 
     protected World getWorld(IBlockReader reader) {
         if (!(reader instanceof ChunkRenderCache)) return null;
         ChunkReaderAccessor cache = (ChunkReaderAccessor) reader;
-        return cache.getWorld();
+        return cache.getLevel();
     }
 
     protected TileEntityLargeTurbine getTurbine(IBlockReader world, BlockPos pos) {
@@ -170,51 +170,51 @@ public class BlockTurbineCasing extends BlockCasingMachine {
     protected TileEntityLargeTurbine getTurbineSlow(IBlockReader world, BlockPos pos) {
         int3 mutable = new int3();
         mutable.set(pos);
-        return MAP.compute(pos.toLong(), (a, b) -> {
+        return MAP.compute(pos.asLong(), (a, b) -> {
             if (b != null && !(b.isRemoved())) return b;
             TileEntityLargeTurbine t;
             for (Direction d : dirs) {
-                mutable.setPos(pos);
-                mutable.offset(d,1);
+                mutable.set(pos);
+                mutable.relative(d, 1);
                 t = checkTurbine(world, mutable);
                 if (t != null) return t;
 
-                mutable.setPos(pos);
-                mutable.offset(d,-1);
+                mutable.set(pos);
+                mutable.relative(d, -1);
                 t = checkTurbine(world, mutable);
                 if (t != null) return t;
 
-                mutable.setPos(pos);
-                mutable.offset(Direction.UP,1);
+                mutable.set(pos);
+                mutable.relative(Direction.UP, 1);
                 t = checkTurbine(world, mutable);
                 if (t != null) return t;
 
-                mutable.setPos(pos);
-                mutable.offset(Direction.UP,-1);
+                mutable.set(pos);
+                mutable.relative(Direction.UP, -1);
                 t = checkTurbine(world, mutable);
                 if (t != null) return t;
 
-                mutable.setPos(pos);
-                mutable.offset(d,1);
-                mutable.offset(Direction.UP,-1);
+                mutable.set(pos);
+                mutable.relative(d, 1);
+                mutable.relative(Direction.UP, -1);
                 t = checkTurbine(world, mutable);
                 if (t != null) return t;
 
-                mutable.setPos(pos);
-                mutable.offset(d);
-                mutable.offset(Direction.UP,1);
+                mutable.set(pos);
+                mutable.relative(d);
+                mutable.relative(Direction.UP, 1);
                 t = checkTurbine(world, mutable);
                 if (t != null) return t;
 
-                mutable.setPos(pos);
-                mutable.offset(d,-1);
-                mutable.offset(Direction.UP,1);
+                mutable.set(pos);
+                mutable.relative(d, -1);
+                mutable.relative(Direction.UP, 1);
                 t = checkTurbine(world, mutable);
                 if (t != null) return t;
 
-                mutable.setPos(pos);
-                mutable.offset(d,-1);
-                mutable.offset(Direction.UP,-1);
+                mutable.set(pos);
+                mutable.relative(d, -1);
+                mutable.relative(Direction.UP, -1);
                 t = checkTurbine(world, mutable);
                 if (t != null) return t;
 

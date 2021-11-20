@@ -4,19 +4,21 @@ buildscript {
         jcenter()
         mavenCentral()
         gradlePluginPortal()
-        maven { url 'http://dvs1.progwml6.com/files/maven' }
+        maven { url 'https://dvs1.progwml6.com/files/maven' }
         maven {
             name = 'sponge'
             url = 'https://repo.spongepowered.org/maven'
         }
+        maven { url = 'https://maven.parchmentmc.org' }
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1+', changing: true
+ //       classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 
 repositories {
-    maven { url 'http://dvs1.progwml6.com/files/maven' }
+    maven { url 'https://dvs1.progwml6.com/files/maven' }
     maven {
         url "https://www.cursemaven.com"
         content {
@@ -37,8 +39,9 @@ apply plugin: 'maven-publish'
 version = "${minecraft_version}-${mod_version}"
 group = 'com.github.gregtech-intergalactical' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'GregTech-Intergalactical'
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+
 //Print out JVM information so that we know what version is running. Extreamly useful for people to know when helping you.
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 sourceSets {
@@ -90,7 +93,7 @@ minecraft {
     // stable_#            Stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'snapshot', version: "${mappings_version}"
+    mappings channel: 'official', version: '1.16.5'
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -183,7 +186,7 @@ dependencies {
         compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
     }
 
-    compile fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
+    implementation fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
 
     //compile 'de.speiger:Primitive-Collections:0.4.0'
 
@@ -217,13 +220,6 @@ publishing {
     }
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-    def targetVersion = 8
-    if (JavaVersion.current().isJava9Compatible()) {
-        options.release.set(targetVersion)
-    }
-}
 
 jar {
     zip64 true

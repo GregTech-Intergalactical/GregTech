@@ -41,12 +41,12 @@ public class BlockRubberLog extends BlockBasic {
     final static double CHANCE_FILL = 0.3;
 
     public BlockRubberLog(String domain, String id) {
-        super(domain, id, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD).tickRandomly());
-        setDefaultState(getDefaultState().with(RESIN_STATE, ResinState.NONE).with(RESIN_FACING, Direction.NORTH).with(AXIS, Direction.Axis.Y));
+        super(domain, id, Block.Properties.of(Material.WOOD).strength(2.0F).sound(SoundType.WOOD).randomTicks());
+        registerDefaultState(defaultBlockState().setValue(RESIN_STATE, ResinState.NONE).setValue(RESIN_FACING, Direction.NORTH).setValue(AXIS, Direction.Axis.Y));
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(RESIN_STATE, RESIN_FACING, AXIS);
     }
 
@@ -54,26 +54,26 @@ public class BlockRubberLog extends BlockBasic {
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         super.randomTick(state, worldIn, pos, random);
 
-        if (state.get(RESIN_STATE) != ResinState.EMPTY) {
+        if (state.getValue(RESIN_STATE) != ResinState.EMPTY) {
             return;
         }
         if (random.nextDouble() < CHANCE_FILL) {
-            worldIn.setBlockState(pos, state.with(RESIN_STATE, ResinState.FILLED), 3);
+            worldIn.setBlock(pos, state.setValue(RESIN_STATE, ResinState.FILLED), 3);
         }
     }
 
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        if (worldIn.isRemote || state.get(RESIN_STATE) != ResinState.FILLED) {
+    public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        if (worldIn.isClientSide || state.getValue(RESIN_STATE) != ResinState.FILLED) {
             return ActionResultType.PASS;
         }
         if (Utils.isPlayerHolding(player, handIn, HAMMER)) {
-            worldIn.setBlockState(pos, state.with(RESIN_STATE, ResinState.EMPTY), 3);
-            Direction dir = state.get(RESIN_FACING);
-            BlockPos spawnPos = pos.add(dir.getXOffset(), dir.getYOffset(), dir.getZOffset());
-            InventoryHelper.spawnItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), DUST.get(RawRubber, 1));
-            if (worldIn.rand.nextDouble() > 0.5) {
-                InventoryHelper.spawnItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), DUST.get(RawRubber, 1));
+            worldIn.setBlock(pos, state.setValue(RESIN_STATE, ResinState.EMPTY), 3);
+            Direction dir = state.getValue(RESIN_FACING);
+            BlockPos spawnPos = pos.offset(dir.getStepX(), dir.getStepY(), dir.getStepZ());
+            InventoryHelper.dropItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), DUST.get(RawRubber, 1));
+            if (worldIn.random.nextDouble() > 0.5) {
+                InventoryHelper.dropItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), DUST.get(RawRubber, 1));
             }
             return ActionResultType.SUCCESS;
         }
@@ -82,7 +82,7 @@ public class BlockRubberLog extends BlockBasic {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.getDefaultState().with(AXIS, context.getFace().getAxis()).with(RESIN_FACING, context.getPlacementHorizontalFacing().getOpposite()).with(RESIN_STATE, ResinState.NONE);
+        return this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis()).setValue(RESIN_FACING, context.getHorizontalDirection().getOpposite()).setValue(RESIN_STATE, ResinState.NONE);
     }
 
     @Override
@@ -96,9 +96,9 @@ public class BlockRubberLog extends BlockBasic {
         ModelFile rubberLogEmpty = prov.existing(Ref.ID, "block/rubber_log_empty");
         ModelFile rubberLogFilled = prov.existing(Ref.ID, "block/rubber_log_filled");
         prov.getVariantBuilder(block).forAllStates(s ->
-            ConfiguredModel.builder().modelFile(s.get(RESIN_STATE) == ResinState.NONE ? rubberLog : s.get(RESIN_STATE) == ResinState.EMPTY ? rubberLogEmpty : rubberLogFilled)
-                .rotationY((int) s.get(RESIN_FACING).getOpposite().getHorizontalAngle())
-                .rotationX(s.get(AXIS) == Direction.Axis.Y ? 0 : 90).build()
+                ConfiguredModel.builder().modelFile(s.getValue(RESIN_STATE) == ResinState.NONE ? rubberLog : s.getValue(RESIN_STATE) == ResinState.EMPTY ? rubberLogEmpty : rubberLogFilled)
+                        .rotationY((int) s.getValue(RESIN_FACING).getOpposite().toYRot())
+                        .rotationX(s.getValue(AXIS) == Direction.Axis.Y ? 0 : 90).build()
         );
     }
 }

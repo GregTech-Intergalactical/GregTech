@@ -7,7 +7,6 @@ import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.material.TextureSet;
 import muramasa.gti.Ref;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.ItemTier;
 import net.minecraft.item.Items;
 
 import static com.google.common.collect.ImmutableMap.of;
@@ -15,7 +14,6 @@ import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.Element.*;
 import static muramasa.antimatter.material.MaterialTag.*;
 import static muramasa.antimatter.material.TextureSet.*;
-import static net.minecraft.item.ItemTier.NETHERITE;
 
 public class Materials {
 
@@ -887,13 +885,13 @@ public class Materials {
             .asMetal(4500, 4500, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Yttrium, 1, Barium, 2, Copper, 3, Oxygen, 7));
     public static Material SterlingSilver = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sterling_silver", 0xfadce1, SHINY)).asMetal(1700, 1700)
-            .addTools(3.0F, 10.5F, 96, 2, of(Enchantments.EFFICIENCY, 2)).mats(of(Copper, 1, Silver, 4));
+            .addTools(3.0F, 10.5F, 96, 2, of(Enchantments.BLOCK_EFFICIENCY, 2)).mats(of(Copper, 1, Silver, 4));
     public static Material RoseGold = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "rose_gold", 0xffe61e, SHINY)).asMetal(1600, 1600)
-            .addTools(Gold, of(Enchantments.FORTUNE, 3, Enchantments.SMITE, 3)).mats(of(Copper, 1, Gold, 4));
+            .addTools(Gold, of(Enchantments.BLOCK_FORTUNE, 3, Enchantments.SMITE, 3)).mats(of(Copper, 1, Gold, 4));
     public static Material BlackBronze = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "black_bronze", 0x64327d, DULL)).asMetal(2000, 2000)
-            .addTools(Bronze, of(Enchantments.SWEEPING, 1)).mats(of(Gold, 1, Silver, 1, Copper, 3));
+            .addTools(Bronze, of(Enchantments.SWEEPING_EDGE, 1)).mats(of(Gold, 1, Silver, 1, Copper, 3));
     public static Material BismuthBronze = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "bismuth_bronze", 0x647d7d, DULL)).asMetal(1100, 900, PLATE)
             .addTools(2.5F, Bronze.getToolSpeed() + 2.0F, 350, 2, of(Enchantments.BANE_OF_ARTHROPODS, 4))
@@ -957,7 +955,7 @@ public class Materials {
             .addHandleStat(620, -1.0F, of(Enchantments.SILK_TOUCH, 1)).addTools(6.5F, 16.0F, 5120, 5);
     public static Material Naquadah = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "naquadah", 0x323232, METALLIC)).asMetal(5400, 5400).asOre()
-            .addHandleStat(102, 0.5F, of(Enchantments.EFFICIENCY, 2)).addTools(4.0F, 6.0F, 890, 4);
+            .addHandleStat(102, 0.5F, of(Enchantments.BLOCK_EFFICIENCY, 2)).addTools(4.0F, 6.0F, 890, 4);
     public static Material NaquadahAlloy = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "naquadah_alloy", 0x282828, METALLIC)).asMetal(7200, 7200)
             .addTools(4.5F, 8.0F, 5120, 5);

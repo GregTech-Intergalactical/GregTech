@@ -20,7 +20,7 @@ public enum ResinState implements IStringSerializable {
     }
 
     @Override
-    public String getString() {
+    public String getSerializedName() {
         return getName();
     }
 }

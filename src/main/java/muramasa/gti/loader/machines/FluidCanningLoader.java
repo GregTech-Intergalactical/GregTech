@@ -14,10 +14,10 @@ import static muramasa.gti.data.RecipeMaps.FLUID_CANNING;
 public class FluidCanningLoader {
     public static void init() {
         ForgeRegistries.FLUIDS.forEach(fluid -> {
-            Item bucket = fluid.getFilledBucket();
+            Item bucket = fluid.getBucket();
             if (bucket == Items.AIR) return;
             //Only the source, so we don't get duplicates.
-            if (!fluid.isSource(fluid.getDefaultState())) return;
+            if (!fluid.isSource(fluid.defaultFluidState())) return;
             FLUID_CANNING.RB().ii(RecipeIngredient.of(bucket, 1)).fo(new FluidStack(fluid, 1000)).io(Items.BUCKET.getDefaultInstance()).add(20, 8);
             FLUID_CANNING.RB().ii(RecipeIngredient.of(Items.BUCKET, 1)).fi(new FluidStack(fluid, 1000)).io(new ItemStack(bucket, 1)).add(20, 8);
 
