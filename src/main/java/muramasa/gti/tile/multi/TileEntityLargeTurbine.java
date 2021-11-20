@@ -94,7 +94,7 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
                             //Ignore the actual inserted amount a la multiblock.
                             if (!simulate) tile.energyHandler.ifPresent(handler -> {
                                 long eu = (long) (efficiency*activeRecipe.getPower()*finalConsumed/ recipeAmount);
-                                handler.insertInternal(eu, false, true);
+                                Utils.addEnergy(handler, eu);
                                 TileEntityLargeTurbine.this.lastEU = eu;
                             });
                             return true;
