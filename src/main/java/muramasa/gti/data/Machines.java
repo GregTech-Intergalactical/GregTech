@@ -47,7 +47,7 @@ public class Machines {
     public static BasicMachine FERMENTER = new BasicMachine(Ref.ID, "fermenter").setMap(FERMENTING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine FLUID_EXTRACTOR = new BasicMachine(Ref.ID, "fluid_extractor").setMap(FLUID_EXTRACTING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine FLUID_SOLIDIFIER = new BasicMachine(Ref.ID, "fluid_solidifier").setMap(FLUID_SOLIDIFYING).addFlags(GUI, ITEM, FLUID);
-    public static BasicMachine DISTILLERY = new BasicMachine(Ref.ID, "distillery").setMap(DISTILLING).addFlags(GUI, ITEM, FLUID);
+    public static BasicMachine DISTILLERY = new BasicMachine(Ref.ID, "distillery").setMap(DISTILLING).addFlags(GUI, ITEM, FLUID).renderContainedLiquids();
     public static BasicMachine CHEMICAL_BATH = new BasicMachine(Ref.ID, "chemical_bath").setMap(CHEMICAL_BATHING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine AUTOCLAVE = new BasicMachine(Ref.ID, "autoclave").setMap(AUTOCLAVING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine MIXER = new BasicMachine(Ref.ID, "mixer").setMap(MIXING).addFlags(GUI, ITEM, FLUID);
