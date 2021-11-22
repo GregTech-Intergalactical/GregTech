@@ -90,7 +90,7 @@ public class Guis {
         FERMENTER.add(COMPRESSOR);
         FLUID_EXTRACTOR.add(COMPRESSOR).add(FL_OUT, 107, 63);
         FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
-        DISTILLERY.add(COMPRESSOR);
+        DISTILLERY.add(FLUID_CANNER);
         CHEMICAL_BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63);
         AUTOCLAVE.add(COMPRESSOR);
         MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(FL_IN, 35, 63).add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY,80, 63);
