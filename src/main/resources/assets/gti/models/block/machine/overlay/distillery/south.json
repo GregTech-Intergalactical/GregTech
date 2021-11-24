@@ -1,17 +1,143 @@
 {
+	"credit": "Made with Blockbench",
 	"elements": [
 		{
-			"from": [0, 0, 16],
+			"from": [14, 0, 16],
 			"to": [16, 16, 16],
 			"faces": {
-				"south": {"uv": [0, 0, 16, 16], "texture": "#base", "tintindex": 0}
+				"south": {"uv": [14, 0, 16, 16], "texture": "#base", "tintindex": 0}
+			}
+		},
+		{
+			"from": [2, 0, 16],
+			"to": [14, 2, 16],
+			"faces": {
+				"south": {"uv": [2, 14, 14, 16], "texture": "#base", "tintindex": 0}
+			}
+		},
+		{
+			"from": [2, 14, 16],
+			"to": [14, 16, 16],
+			"faces": {
+				"south": {"uv": [2, 0, 14, 2], "texture": "#base", "tintindex": 0}
+			}
+		},
+		{
+			"from": [11, 13, 15],
+			"to": [13, 14, 16],
+			"faces": {
+				"south": {"uv": [11, 2, 13, 3], "texture": "#overlay", "tintindex": 0},
+				"down": {"uv": [11, 2, 13, 3], "rotation": 180, "texture": "#overlay", "tintindex": 0}
+			}
+		},
+		{
+			"from": [11, 4, 15],
+			"to": [13, 5, 16],
+			"faces": {
+				"south": {"uv": [11, 11, 13, 12], "texture": "#overlay", "tintindex": 0},
+				"up": {"uv": [11, 11, 13, 12], "rotation": 180, "texture": "#overlay", "tintindex": 0},
+				"down": {"uv": [11, 11, 13, 12], "rotation": 180, "texture": "#overlay", "tintindex": 0}
+			}
+		},
+		{
+			"from": [11, 2, 15],
+			"to": [13, 3, 16],
+			"faces": {
+				"south": {"uv": [11, 13, 13, 14], "texture": "#overlay", "tintindex": 0},
+				"up": {"uv": [11, 13, 13, 14], "rotation": 180, "texture": "#overlay", "tintindex": 0}
+			}
+		},
+		{
+			"from": [4, 2, 15],
+			"to": [7, 4, 16],
+			"faces": {
+				"south": {"uv": [4, 12, 7, 14], "texture": "#overlay", "tintindex": 0},
+				"up": {"uv": [4, 12, 7, 13], "rotation": 180, "texture": "#overlay", "tintindex": 0}
+			}
+		},
+		{
+			"from": [4, 12, 15],
+			"to": [7, 14, 16],
+			"faces": {
+				"south": {"uv": [4, 2, 7, 4], "texture": "#overlay", "tintindex": 0},
+				"down": {"uv": [4, 3, 7, 4], "rotation": 180, "texture": "#overlay", "tintindex": 0}
+			}
+		},
+		{
+			"from": [4, 7, 15],
+			"to": [7, 10, 16],
+			"faces": {
+				"south": {"uv": [3, 6, 8, 9], "texture": "#overlay", "tintindex": 0},
+				"up": {"uv": [3, 8, 8, 9], "rotation": 180, "texture": "#overlay", "tintindex": 0},
+				"down": {"uv": [3, 8, 8, 9], "rotation": 180, "texture": "#overlay", "tintindex": 0}
+			}
+		},
+		{
+			"from": [9, 2, 16],
+			"to": [10, 14, 16],
+			"faces": {
+				"south": {"uv": [9, 2, 10, 14], "texture": "#base", "tintindex": 0}
+			}
+		},
+		{
+			"from": [2, 2, 15],
+			"to": [4, 14, 16],
+			"faces": {
+				"east": {"uv": [3, 2, 4, 14], "texture": "#overlay", "tintindex": 0},
+				"south": {"uv": [2, 2, 4, 14], "texture": "#overlay", "tintindex": 0}
+			}
+		},
+		{
+			"from": [7, 2, 15],
+			"to": [9, 14, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-6, 8, -8]},
+			"faces": {
+				"south": {"uv": [7, 2, 9, 14], "texture": "#overlay", "tintindex": 0},
+				"west": {"uv": [7, 2, 8, 14], "texture": "#overlay", "tintindex": 0}
+			}
+		},
+		{
+			"from": [10, 2, 15],
+			"to": [11, 14, 16],
+			"faces": {
+				"east": {"uv": [10, 2, 11, 14], "texture": "#overlay", "tintindex": 0},
+				"south": {"uv": [10, 2, 11, 14], "texture": "#overlay", "tintindex": 0}
+			}
+		},
+		{
+			"from": [13, 2, 15],
+			"to": [14, 14, 16],
+			"faces": {
+				"south": {"uv": [13, 2, 14, 14], "texture": "#overlay", "tintindex": 0},
+				"west": {"uv": [13, 2, 14, 14], "texture": "#overlay", "tintindex": 0}
 			}
 		},
 		{
 			"from": [0, 0, 16],
-			"to": [16, 16, 16],
+			"to": [2, 16, 16],
 			"faces": {
-				"south": {"uv": [0, 0, 16, 16], "texture": "#overlay", "tintindex": 1}
+				"south": {"uv": [0, 0, 2, 16], "texture": "#base", "tintindex": 0}
+			}
+		},
+		{
+			"from": [11, 3, 14.5],
+			"to": [13, 13, 15.5],
+			"faces": {
+				"south": {"uv": [11, 3, 13, 13], "texture": "#overlay", "tintindex": 1}
+			}
+		},
+		{
+			"from": [3, 4, 14.5],
+			"to": [7, 7, 15.5],
+			"faces": {
+				"south": {"uv": [4, 9, 7, 12], "texture": "#overlay", "tintindex": 1}
+			}
+		},
+		{
+			"from": [4, 10, 14.5],
+			"to": [7, 12, 15.5],
+			"faces": {
+				"south": {"uv": [4, 4, 7, 6], "texture": "#overlay", "tintindex": 1}
 			}
 		}
 	]
