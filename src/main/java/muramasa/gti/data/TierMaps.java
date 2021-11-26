@@ -177,15 +177,21 @@ public class TierMaps {
             builder.put(Tier.LV, CircuitBasic);
             builder.put(Tier.MV, CircuitGood);
             builder.put(Tier.HV, CircuitAdv);
-            builder.put(Tier.EV, CircuitAdv);
-            builder.put(Tier.IV, CircuitAdv);
+            builder.put(Tier.EV, CircuitNanoProcessor);
+            builder.put(Tier.IV, CircuitQuantumProcessor);
+            builder.put(Tier.LUV, CircuitEnergyFlow);
+            builder.put(Tier.ZPM, CircuitWetware);
             TIER_CIRCUITS = builder.build();
         }
         {
             ImmutableMap.Builder<Tier, ItemBasic<?>> builder = ImmutableMap.builder();
-            builder.put(Tier.LV, CircuitBoardBasic);
-            builder.put(Tier.MV, CircuitBoardBasic);
-            builder.put(Tier.HV, CircuitBoardAdv);
+            builder.put(Tier.LV, CircuitBoardCoated);
+            builder.put(Tier.MV, CircuitBoardPhenolic);
+            builder.put(Tier.HV, CircuitBoardPlastic);
+            builder.put(Tier.EV, CircuitBoardEpoxy);
+            builder.put(Tier.IV, CircuitBoardFiber);
+            builder.put(Tier.LUV, CircuitBoardMultiFiber);
+            builder.put(Tier.ZPM, CircuitBoardWetware);
             TIER_BOARDS = builder.build();
         }
     }
