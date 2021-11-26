@@ -1,10 +1,11 @@
 {
+	"credit": "Made with Blockbench",
 	"elements": [
 		{
-			"from": [0, 0, 15.99],
-			"to": [16, 16, 16],
+			"from": [0, 0, 0],
+			"to": [16, 16, 0.01],
 			"faces": {
-				"south": {"uv": [0, 0, 16, 16], "texture": "#base", "tintindex": 0}
+				"north": {"uv": [0, 0, 16, 16], "texture": "#base", "tintindex": 0}
 			}
 		}
 	]
