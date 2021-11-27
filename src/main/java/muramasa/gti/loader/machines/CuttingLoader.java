@@ -4,6 +4,7 @@ import muramasa.antimatter.Data;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gti.data.Materials;
+import muramasa.gti.data.RecipeMaps;
 import net.minecraft.fluid.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -23,5 +24,15 @@ public class CuttingLoader {
                     .fi(Materials.Lubricant.getLiquid(250)).add(mat.getMass() * multiplier, 16);
 
         }
+        Data.BOLT.all().forEach(t -> {
+            if (t.has(Data.ROD)) {
+                RecipeMaps.CUTTING.RB().ii(RecipeIngredient.of(Data.ROD.getMaterialTag(t), 1))
+                        .fi(new FluidStack(Fluids.WATER, 1000))
+                        .io(Data.BOLT.get(t, 2)).add(t.getMass()/4, 8);
+                RecipeMaps.CUTTING.RB().ii(RecipeIngredient.of(Data.ROD.getMaterialTag(t), 1))
+                        .fi(Materials.Lubricant.getLiquid(250))
+                        .io(Data.BOLT.get(t, 2)).add(t.getMass()/4, 8);
+            }
+        });
     }
 }
