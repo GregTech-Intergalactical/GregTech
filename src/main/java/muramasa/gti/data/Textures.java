@@ -26,8 +26,8 @@ public class Textures {
         return new Texture[] {
                 new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "bottom"),
                 new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "top"),
-                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "front"),
                 new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "back"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "front"),
                 new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "side"),
                 new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + stateDir + "side"),
         };
