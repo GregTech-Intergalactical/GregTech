@@ -1067,6 +1067,18 @@ public class Materials {
             new Material(Ref.ID, "plasma_containment", 0xffff00, NONE));
 
     static {
+        CHEMBATH_MERCURY.add(Chalcopyrite,Gold);
+        CHEMBATH_MERCURY.add(Gold,Nickel);
+        CHEMBATH_MERCURY.add(Silver,Sulfur);
+        CHEMBATH_MERCURY.add(Osmium,Iridium);
+        CHEMBATH_MERCURY.add(Platinum,Iridium);
+        CHEMBATH_PERSULFATE.add(Nickel,Iron);
+        CHEMBATH_PERSULFATE.add(Cobalt,Cobaltite);
+        CHEMBATH_PERSULFATE.add(Cobaltite,Cobalt);
+        CHEMBATH_PERSULFATE.add(Sphalerite,Zinc);
+        CHEMBATH_PERSULFATE.add(Tetrahedrite,Zinc);
+        CHEMBATH_PERSULFATE.add(Zinc,Gallium);
+        CHEMBATH_PERSULFATE.add(Copper,Nickel);
         ELECSEPI.add(Bastnasite/* , Monazite */);
         ELECSEPG.add(Magnetite, VanadiumMagnetite);
         ELECSEPN.add(YellowLimonite, BrownLimonite, Pyrite, BandedIron, Nickel, Glauconite, Pentlandite, Tin, Antimony,
