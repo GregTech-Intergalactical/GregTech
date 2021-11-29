@@ -440,6 +440,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "bio_diesel", 0xff8000, NONE)).asFluid(192);
     public static Material Biomass = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "biomass", 0x00ff00, NONE)).asFluid(8);
+    public static Material FermentedBiomass = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "fermented_biomass", 0x09964a, NONE)).asFluid(16);
     public static Material Ethanol = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "ethanol", 0xff8000, NONE)).asFluid(148)
             .mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1));
