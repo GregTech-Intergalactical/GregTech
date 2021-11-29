@@ -110,19 +110,28 @@ public class GregTechData {
     public static ItemBasic<?> EtchedWiringEV = new ItemBasic<>(Ref.ID, "etched_wiring_ev").tip("Circuit board parts");
     public static ItemBasic<?> EngravedCrystalChip = new ItemBasic<>(Ref.ID, "engraved_crystal_chip").tip("Needed for Circuits");
     public static ItemBasic<?> EngravedLapotronChip = new ItemBasic<>(Ref.ID, "engraved_lapotron_chip").tip("Needed for Circuits");
-    public static ItemBasic<?> CircuitBoardEmpty = new ItemBasic<>(Ref.ID, "circuit_board_empty").tip("A board Part");
-    public static ItemBasic<?> CircuitBoardBasic = new ItemBasic<>(Ref.ID, "circuit_board_basic").tip("A basic Board");
-    public static ItemBasic<?> CircuitBoardAdv = new ItemBasic<>(Ref.ID, "circuit_board_adv").tip("An advanced Board");
-    public static ItemBasic<?> CircuitBoardProcessorEmpty = new ItemBasic<>(Ref.ID, "circuit_board_processor_empty").tip("A Processor Board Part");
-    public static ItemBasic<?> CircuitBoardProcessor = new ItemBasic<>(Ref.ID, "circuit_board_processor").tip("A Processor Board");
-    public static ItemBasic<?> CircuitBasic = new ItemBasic<>(Ref.ID, "circuit_basic").tip("A basic Circuit");
+
+    public static ItemBasic<?> CircuitBoardCoated = new ItemBasic<>(Ref.ID, "board_coated").tip("The most basic Board");
+    public static ItemBasic<?> CircuitBoardPhenolic = new ItemBasic<>(Ref.ID, "board_phenolic").tip("A basic Board");
+    public static ItemBasic<?> CircuitBoardPlastic = new ItemBasic<>(Ref.ID, "board_plastic").tip("An advanced Board");
+    public static ItemBasic<?> CircuitBoardEpoxy = new ItemBasic<>(Ref.ID, "board_epoxy").tip("4th Tier Board");
+    public static ItemBasic<?> CircuitBoardFiber = new ItemBasic<>(Ref.ID, "board_fiber_reinforced").tip("5th Tier Board");
+    public static ItemBasic<?> CircuitBoardMultiFiber = new ItemBasic<>(Ref.ID, "board_multilayer_fiber_reinforced").tip("6th Tier Board");
+    public static ItemBasic<?> CircuitBoardWetware = new ItemBasic<>(Ref.ID, "board_wetware").tip("7th Tier Board");
+
+    public static ItemBasic<?> CircuitBasic = new ItemBasic<>(Ref.ID, "circuit_basic").tip("The breakthrough to the electrical age");
+    public static ItemBasic<?> CircuitBasicElectronic = new ItemBasic<>(Ref.ID, "circuit_basic_electronic").tip("A basic Circuit");
     public static ItemBasic<?> CircuitGood = new ItemBasic<>(Ref.ID, "circuit_good").tip("A good Circuit");
     public static ItemBasic<?> CircuitAdv = new ItemBasic<>(Ref.ID, "circuit_adv").tip("An advanced Circuit");
-    public static ItemBasic<?> CircuitDataStorage = new ItemBasic<>(Ref.ID, "circuit_data_storage").tip("A Data Storage Chip");
-    public static ItemBasic<?> CircuitDataControl = new ItemBasic<>(Ref.ID, "circuit_data_control").tip("A Data Control Processor");
+    public static ItemBasic<?> CircuitNanoProcessor = new ItemBasic<>(Ref.ID, "circuit_nanoprocessor").tip("A Nanoprocessor");
+    public static ItemBasic<?> CircuitQuantumProcessor = new ItemBasic<>(Ref.ID, "circuit_quantumprocessor").tip("A Quantumprocessor");
     public static ItemBasic<?> CircuitEnergyFlow = new ItemBasic<>(Ref.ID, "circuit_energy_flow").tip("A High Voltage Processor");
-    public static ItemBasic<?> CircuitDataOrb = new ItemBasic<>(Ref.ID, "circuit_data_orb").tip("A High Capacity Data Storage");
-    public static ItemBasic<?> DataStick = new ItemBasic<>(Ref.ID, "data_stick").tip("A Low Capacity Data Storage");
+    public static ItemBasic<?> CircuitWetware = new ItemBasic<>(Ref.ID, "circuit_wetware").tip("You feel like it's watching you");
+
+    public static ItemBasic<?> Transistor = new ItemBasic<>(Ref.ID, "transistor").tip("An integral part to Circuitry");
+    public static ItemBasic<?> Resistor = new ItemBasic<>(Ref.ID, "resistor").tip("An integral part to Circuitry");
+    public static ItemBasic<?> Capacitor = new ItemBasic<>(Ref.ID, "capacitor").tip("An integral part to Circuitry");
+    public static ItemBasic<?> VacuumTube = new ItemBasic<>(Ref.ID, "vacuumtube").tip("A part for the Basic Circuit");
 
     public static ItemBasic<?> BatteryTantalum = new ItemBattery(Ref.ID, "battery_tantalum", Tier.ULV, 10000, true).tip("Reusable");
     public static ItemBasic<?> BatteryHullSmall = new ItemBasic<>(Ref.ID, "battery_hull_small").tip("An empty LV Battery Hull");
@@ -282,6 +291,17 @@ public class GregTechData {
     public static final BlockCasing CASING_UV = new BlockCasing(Ref.ID, "casing_uv");
     public static final BlockCasing CASING_MAX = new BlockCasing(Ref.ID, "casing_max");
 
+    public static final BlockCasing HULL_ULV = new BlockCasing(Ref.ID, "hull_ulv");
+    public static final BlockCasing HULL_LV = new BlockCasing(Ref.ID, "hull_lv");
+    public static final BlockCasing HULL_MV = new BlockCasing(Ref.ID, "hull_mv");
+    public static final BlockCasing HULL_HV = new BlockCasing(Ref.ID, "hull_hv");
+    public static final BlockCasing HULL_EV = new BlockCasing(Ref.ID, "hull_ev");
+    public static final BlockCasing HULL_IV = new BlockCasing(Ref.ID, "hull_iv");
+    public static final BlockCasing HULL_LUV = new BlockCasing(Ref.ID, "hull_luv");
+    public static final BlockCasing HULL_ZPM = new BlockCasing(Ref.ID, "hull_zpm");
+    public static final BlockCasing HULL_UV = new BlockCasing(Ref.ID, "hull_uv");
+    public static final BlockCasing HULL_MAX = new BlockCasing(Ref.ID, "hull_max");
+
     public static final BlockCasing CASING_FIRE_BRICK = new BlockCasing(Ref.ID, "casing_fire_brick");
     public static final BlockCasing CASING_BRONZE = new BlockCasing(Ref.ID, "casing_bronze");
     public static final BlockCasing CASING_BRICKED_BRONZE = new BlockCasing(Ref.ID, "casing_bricked_bronze");
@@ -409,7 +429,7 @@ public class GregTechData {
     public static final FluidPipe<?> FLUID_PIPE_TITANIUM = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(Ref.ID, Titanium, 1668, true).caps(1).pressures(getPressures(900)));
     public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(Ref.ID, TungstenSteel, 3587, true).caps(1).pressures(getPressures(1200)));
     public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_CARBIDE = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(Ref.ID, TungstenCarbide, 3837, true).caps(1).pressures(getPressures(1350)));
-    public static final FluidPipe<?> FLUID_PIPE_PLASTIC = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(Ref.ID, Plastic, 370, true).caps(1).pressures(getPressures(300)));
+    public static final FluidPipe<?> FLUID_PIPE_PLASTIC = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(Ref.ID, Polyethylene, 370, true).caps(1).pressures(getPressures(300)));
     public static final FluidPipe<?> FLUID_PIPE_POLY = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(Ref.ID, Polytetrafluoroethylene, 327, true).caps(1).pressures(getPressures(150)));
     public static final FluidPipe<?> FLUID_PIPE_HP = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(Ref.ID, HighPressure, 3422, true).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(1).pressures(10000));
     public static final FluidPipe<?> FLUID_PIPE_PLASMA = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(Ref.ID, PlasmaContainment, 100000, true).sizes(PipeSize.NORMAL).caps(1).pressures(100000));

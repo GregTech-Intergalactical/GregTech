@@ -19,7 +19,7 @@ public class Materials {
 
     public static Material Aluminium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "aluminium", 0x80c8f0, DULL, Al))
-            .asMetal(933, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL).asOre()
+            .asMetal(933, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL).asOre()
             .addTools(1.5F, 10.0F, 140, 2);
     public static Material Beryllium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "beryllium", 0x64b464, METALLIC, Be)).asMetal(1560, 0)
@@ -44,7 +44,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "lanthanum", 0xffffff, METALLIC, La)).asSolid(1193, 1193);
     public static Material Lead = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "lead", 0x8c648c, DULL, Pb))
-            .asMetal(600, 0, PLATE, PLATE_DENSE, FOIL, ROD, FRAME).asOre();
+            .asMetal(600, 0, PLATE, PLATE_DENSE, FOIL, ROD, FRAME, BOLT).asOre();
     public static Material Manganese = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "manganese", 0xfafafa, DULL, Mn)).asMetal(1519, 0).asOre();
     public static Material Molybdenum = AntimatterAPI
@@ -75,7 +75,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "plutonium_241", 0xfa4646, SHINY, Pu241)).asMetal(912, 0)
             .addTools(2.5F, 6.0F, 280, 3);
     public static Material Silver = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "silver", 0xdcdcff, SHINY, Ag)).asMetal(1234, 0, PLATE)
+            .register(Material.class, new Material(Ref.ID, "silver", 0xdcdcff, SHINY, Ag)).asMetal(1234, 0, PLATE, SCREW)
             .asOre();
     public static Material Thorium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "thorium", 0x001e00, SHINY, Th)).asMetal(2115, 0).asOre()
@@ -827,7 +827,7 @@ public class Materials {
      **/
     public static Material AnnealedCopper = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "annealed_copper", 0xff7814, SHINY))
-            .asMetal(1357, 0, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Copper, 1));
+            .asMetal(1357, 0, PLATE, FOIL, ROD, WIRE_FINE, SCREW).mats(of(Copper, 1));
     public static Material BatteryAlloy = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "battery_alloy", 0x9c7ca0, DULL)).asMetal(295, 0, PLATE)
             .mats(of(Lead, 4, Antimony, 1));
@@ -873,7 +873,7 @@ public class Materials {
             .asMetal(1700, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).addTools(Steel)
             .mats(of(Iron, 6, Chrome, 1, Manganese, 1, Nickel, 1));
     public static Material Ultimet = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "ultimet", 0xb4b4e6, SHINY)).asMetal(2700, 2700)
+            .register(Material.class, new Material(Ref.ID, "ultimet", 0xb4b4e6, SHINY)).asMetal(2700, 2700, PLATE)
             .mats(of(Cobalt, 5, Chrome, 2, Nickel, 1, Molybdenum, 1));
     public static Material VanadiumGallium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "vanadium_gallium", 0x80808c, SHINY))
@@ -976,9 +976,13 @@ public class Materials {
     /**
      * Solids (Plastic Related Stuff)
      **/
-    public static Material Plastic = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "plastic", 0xc8c8c8, DULL)).asSolid(295, 0, PLATE)
+    public static Material Polyethylene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "polyethylene", 0xc8c8c8, DULL)).asSolid(295, 0, PLATE)
+            .asFluid()
             .addHandleStat(66, 0.5F).mats(of(Carbon, 1, Hydrogen, 2));
+    public static Material SiliconRubber = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "siliconrubber", 0x9fadbb, NONE)).asFluid()
+            .mats(of(Sulfur, 1, Polydimethylsiloxane, 9));
     public static Material Epoxid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "epoxid", 0xc88c14, DULL)).asSolid(400, 0, PLATE)
             .addHandleStat(70, 1.5F).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
@@ -1069,6 +1073,18 @@ public class Materials {
             new Material(Ref.ID, "plasma_containment", 0xffff00, NONE));
 
     static {
+        CHEMBATH_MERCURY.add(Chalcopyrite,Gold);
+        CHEMBATH_MERCURY.add(Gold,Nickel);
+        CHEMBATH_MERCURY.add(Silver,Sulfur);
+        CHEMBATH_MERCURY.add(Osmium,Iridium);
+        CHEMBATH_MERCURY.add(Platinum,Iridium);
+        CHEMBATH_PERSULFATE.add(Nickel,Iron);
+        CHEMBATH_PERSULFATE.add(Cobalt,Cobaltite);
+        CHEMBATH_PERSULFATE.add(Cobaltite,Cobalt);
+        CHEMBATH_PERSULFATE.add(Sphalerite,Zinc);
+        CHEMBATH_PERSULFATE.add(Tetrahedrite,Zinc);
+        CHEMBATH_PERSULFATE.add(Zinc,Gallium);
+        CHEMBATH_PERSULFATE.add(Copper,Nickel);
         ELECSEPI.add(Bastnasite/* , Monazite */);
         ELECSEPG.add(Magnetite, VanadiumMagnetite);
         ELECSEPN.add(YellowLimonite, BrownLimonite, Pyrite, BandedIron, Nickel, Glauconite, Pentlandite, Tin, Antimony,
@@ -1107,7 +1123,7 @@ public class Materials {
                 Lapis/* , Sodalite, Lazurite, Monazite */, Quartzite, Quartz, Phosphorus, Phosphate, NetherStar,
                 EnderPearl, EnderEye, Blaze);
         NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Rubber,
-                StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone, Glyceryl, NitroFuel,
+                StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone, Glyceryl, NitroFuel,
                 Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
                 RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
                 /* Amber, */ BlueSapphire, Ruby, Opal, Olivine, Lapis, Quartzite, Quartz, Phosphorus, Phosphate,
@@ -1120,7 +1136,7 @@ public class Materials {
         NOBBF.add(Tetrahedrite, Chalcopyrite, Cooperite, Pyrolusite, Magnesite, Molybdenite, Galena);
         CRYSTALLIZE.add(Lapis, Quartzite, Quartz);
         BRITTLEG.add(Coal, Charcoal, Lignite);
-        RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone);
+        RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone);
 
         SOLDER.subTag(SubTag.BAD_SOLDER, Lead, Tin);
         SOLDER.subTag(SubTag.GOOD_SOLDER, SolderingAlloy, Tin);

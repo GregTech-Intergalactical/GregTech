@@ -10,10 +10,15 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gti.GregTech;
 import muramasa.gti.block.BlockCasing;
+import muramasa.gti.data.Materials;
+import net.minecraft.block.Block;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ITag;
 
@@ -24,16 +29,11 @@ import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.*;
+import static muramasa.gti.data.RecipeMaps.ASSEMBLING;
 import static muramasa.gti.data.TierMaps.*;
 
 public class Parts {
   public static void loadRecipes(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {
-    TIER_MATERIALS.forEach((t, m) -> {
-      provider.addItemRecipe(output, "casings", "has_casing", provider.hasSafeItem(WRENCH.getTag()),
-          GregTech.get(BlockCasing.class, "casing_" + t.getId()),
-          of('C', PLATE.getMaterialTag(m), 'W', WRENCH.getTag()), "CCC", "CWC", "CCC");
-    });
-
     Arrays.stream(Tier.getStandard()).forEach(t -> {
       Material magnet = (t == Tier.ULV || t == Tier.LV) ? IronMagnetic
           : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
@@ -76,25 +76,48 @@ public class Parts {
           "RTO", "SPW", "OMC");
     });
 
-
-    // REGULAR CIRCUIT CRAFTING
+    // MANUAL TIER 0 CIRCUIT CRAFTING
     provider.addItemRecipe(output, "circuit_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBasic,
-        ImmutableMap.<Character, Object>builder().put('N', NandChip).put('B', CircuitBoardBasic)
+        ImmutableMap.<Character, Object>builder()
+                .put('V', VacuumTube).put('B', CircuitBoardCoated)
             .put('W',
                 AntimatterAPI.getOrThrow(Wire.class, "wire_" + RedAlloy.getId(),
                     () -> new RuntimeException("Missing red alloy wire")).getBlockItem(PipeSize.VTINY))
+                .put('R',Resistor).put('P',PLATE.get(Steel))
             .build(),
-        "WNW", "WBW", "WNW");
+        "RPR", "VBV", "WWW");
 
-    // REGULAR CIRCUIT CRAFTING
-    provider.addItemRecipe(output, "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
-        CircuitBoardBasic,
-        ImmutableMap.<Character, Object>builder().put('R', StickyResin)
-            .put('W',
-                AntimatterAPI.getOrThrow(Wire.class, "wire_" + Copper.getId(),
-                    () -> new RuntimeException("Missing red alloy wire")).getBlockItem(PipeSize.VTINY))
+    // MANUAL COATED BOARD CRAFTING
+    provider.addItemRecipe(output, "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBoardCoated,
+        ImmutableMap.<Character, Object>builder()
+                .put('R', StickyResin)
+                .put('P', PLATE.get(Materials.Wood))
             .build(),
-        "WWW", "WRW", "WWW");
+        " R ", "PPP", " R ");
+
+      // MANUAL VAC TUBE CRAFTING
+      provider.addItemRecipe(output, "vac_tube", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), VacuumTube,
+              ImmutableMap.<Character, Object>builder()
+                      .put('G', Items.GLASS)
+                      .put('P', Items.PAPER)
+                      .put('W',
+                              AntimatterAPI.getOrThrow(Wire.class, "wire_" + Copper.getId(),
+                                      () -> new RuntimeException("Missing copper wire")).getBlockItem(PipeSize.VTINY))
+                      .build(),
+              "   ", "PGP", "WWW");
+
+      // MANUAL RESISTOR CRAFTING
+      provider.addItemRecipe(output, "resistor", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Resistor,
+              ImmutableMap.<Character, Object>builder()
+                      .put('C', DUST.get(Coal))
+                      .put('P', Items.PAPER)
+                      .put('W',
+                              AntimatterAPI.getOrThrow(Wire.class, "wire_" + Copper.getId(),
+                                      () -> new RuntimeException("Missing copper wire")).getBlockItem(PipeSize.VTINY))
+                      .build(),
+              " P ", "WCW", " P ");
+
+
 
     provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
             INT_CIRCUITS.get(0).get().getItems()[0], CircuitBasic);
