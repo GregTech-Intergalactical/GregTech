@@ -27,6 +27,8 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 import static muramasa.antimatter.client.AntimatterModelManager.LOADER_DYNAMIC;
 
@@ -60,9 +62,8 @@ public class BlockTurbineCasing extends BlockCasingMachine {
         TileEntityLargeTurbine turbine = getTurbine(world, pos);
         if (turbine != null) {
             BlockPos controllerPos = turbine.getBlockPos();
-            Vector3i vec = new Vector3i(-(pos.getX() - controllerPos.getX()), -(pos.getY() - controllerPos.getY()), -(pos.getZ() - controllerPos.getZ()));
-            int c = getOffset(vec);
-            c += turbine.getFacing().get3DDataValue() * 1000;
+            Vector3i vec = new Vector3i((pos.getX() - controllerPos.getX()), (pos.getY() - controllerPos.getY()), (pos.getZ() - controllerPos.getZ()));
+            int c = getOffset(vec, turbine.getFacing());
             c += (turbine.getMachineState() == MachineState.ACTIVE ? 10000 : 0);
             ct[1] = c;
         }
@@ -93,17 +94,7 @@ public class BlockTurbineCasing extends BlockCasingMachine {
 
     //essentially a facing transformation
     protected int getOffset(Vector3i vec, Direction dir) {
-        switch (dir) {
-            case NORTH:
-                return vec.getY()*10 - vec.getX();
-            case SOUTH:
-                return vec.getY()*10 + vec.getX();
-            case WEST:
-                return vec.getY()*10 + vec.getX()*100;
-            case EAST:
-                return vec.getY()*10 - vec.getX()*100;
-        }
-        return 0;
+        return getOffset(vec) + dir.get2DDataValue()*1000;
     }
 
     private final static String SIDED = "antimatter:block/preset/simple_overlay";
@@ -121,20 +112,44 @@ public class BlockTurbineCasing extends BlockCasingMachine {
             new Vector3i(-1,1,0),
     };
 
+    private final void forSides(Direction dir, BiConsumer<int3, Integer> consumer) {
+        int3 pos = new int3(dir);
+        int i = 0;
+        pos.set(0, 0, 0);
+        pos = pos.above(1);
+        pos = pos.right(1);
+        consumer.accept(pos,i++);
+        pos = pos.left(1);
+        consumer.accept(pos,i++);
+        pos = pos.left(1);
+        consumer.accept(pos,i++);
+        pos = pos.right(2);
+        pos = pos.below(1);
+        consumer.accept(pos,i++);
+        i++;
+        pos = pos.left(2);
+        consumer.accept(pos,i++);
+        pos = pos.right(2);
+        pos = pos.below(1);
+        consumer.accept(pos,i++);
+        pos = pos.left(1);
+        consumer.accept(pos,i++);
+        pos = pos.left(1);
+        consumer.accept(pos,i++);
+    }
+
     @Override
     public AntimatterBlockModelBuilder buildBlock(Block block, AntimatterBlockStateProvider prov) {
         Texture[] tex = turbineTextures();
         Texture[] inactive = turbineTexturesInactive();
         AntimatterBlockModelBuilder builder = prov.getBuilder(block);
         for (Direction dir : dirs) {
-            for (int i = 0; i < VECS.length; i++) {
-                if (i == 4) continue;
-                final int ii = i;
-                builder.config(getOffset(VECS[i], dir) + dir.get3DDataValue() * 1000, SIDED, a ->
-                        a.tex(t -> t.put("base", inactive[ii])).rot(dir));
-                builder.config(getOffset(VECS[i], dir) + dir.get3DDataValue() * 1000 + 10000, SIDED, a ->
-                        a.tex(t -> t.put("base", tex[ii])).rot(dir));
-            }
+            forSides(dir, (b,c) -> {
+                builder.config(getOffset(b, dir), SIDED, a ->
+                a.tex(t -> t.put("base", inactive[c])).rot(dir));
+                builder.config(getOffset(b, dir) + 10000, SIDED, a ->
+                        a.tex(t -> t.put("base", tex[c])).rot(dir));
+            });
         }
         Texture[] texes = ((ITextureProvider)block).getTextures();
         builder.particle(texes[0]);
@@ -143,7 +158,7 @@ public class BlockTurbineCasing extends BlockCasingMachine {
         return builder;
     }
     //just all horizontal dirs
-    private static final List<Direction> dirs = Arrays.asList(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
+    private static final List<Direction> dirs = Arrays.asList(Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST);
     //cache.
     private static final Long2ObjectMap<TileEntityLargeTurbine> MAP = new Long2ObjectOpenHashMap<>();
 

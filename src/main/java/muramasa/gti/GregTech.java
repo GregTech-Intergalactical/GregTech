@@ -124,6 +124,9 @@ public class GregTech extends AntimatterMod {
         loader.accept("sifting", SiftingLoader::init);
         loader.accept("thermal_centrifuging", ThermalCentrifuge::init);
         loader.accept("cutting", CuttingLoader::init);
+        loader.accept("fermenting", Fermenter::init);
+        loader.accept("pressing", FormingPress::init);
+        loader.accept("chemical_bathing", ChemicalBath::init);
     }
 
     private void clientSetup(final FMLClientSetupEvent e) {
