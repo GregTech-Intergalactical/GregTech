@@ -86,8 +86,8 @@ public class Guis {
                 .add(ENERGY,80, 63);
         MASS_FABRICATOR.add(COMPRESSOR);
         AMP_FABRICATOR.add(COMPRESSOR);
-        REPLICATOR.add(COMPRESSOR);
-        FERMENTER.add(COMPRESSOR);
+        REPLICATOR.add(FLUID_CANNER);
+        FERMENTER.add(FLUID_CANNER);
         FLUID_EXTRACTOR.add(COMPRESSOR).add(FL_OUT, 107, 63);
         FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
         DISTILLERY.add(FLUID_CANNER);
@@ -98,7 +98,7 @@ public class Guis {
         FORMING_PRESS.add(ALLOY_SMELTER);
         FORGE_HAMMER.add(FURNACE);
         SIFTER.add(DISASSEMBLER);
-        ARC_FURNACE.add(ALLOY_SMELTER); //TODO
+        ARC_FURNACE.add(ALLOY_SMELTER);
         PLASMA_ARC_FURNACE.add(ARC_FURNACE);
 
         COKE_OVEN.add(IT_IN, 53,16).add(IT_IN, 53, 34).add(IT_IN, 53, 52).add(IT_OUT,107,25);

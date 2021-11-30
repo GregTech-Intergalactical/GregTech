@@ -35,7 +35,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "chrome", 0xffe6e6, SHINY, Cr))
             .asMetal(2180, 1700, SCREW, BOLT, RING, PLATE, ROTOR).addTools(2.5F, 11.0F, 256, 3);
     public static Material Cobalt = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "cobalt", 0x5050fa, METALLIC, Co)).asMetal(1768, 0)
+            .register(Material.class, new Material(Ref.ID, "cobalt", 0x5050fa, METALLIC, Co)).asMetal(1768, 0).asOre()
             .addTools(3.0F, 8.0F, 512, 3);
     public static Material Iridium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "iridium", 0xf0f0f5, DULL, Ir)).asMetal(2719, 2719, FRAME)
@@ -889,7 +889,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "sterling_silver", 0xfadce1, SHINY)).asMetal(1700, 1700)
             .addTools(3.0F, 10.5F, 96, 2, of(Enchantments.BLOCK_EFFICIENCY, 2)).mats(of(Copper, 1, Silver, 4));
     public static Material RoseGold = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "rose_gold", 0xffe61e, SHINY)).asMetal(1600, 1600)
+            .register(Material.class, new Material(Ref.ID, "rose_gold", 0xffe61e, SHINY)).asMetal(1600, 1600, WIRE_FINE)
             .addTools(Gold, of(Enchantments.BLOCK_FORTUNE, 3, Enchantments.SMITE, 3)).mats(of(Copper, 1, Gold, 4));
     public static Material BlackBronze = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "black_bronze", 0x64327d, DULL)).asMetal(2000, 2000)
@@ -1015,7 +1015,7 @@ public class Materials {
             .mats(of(Arsenic, 1, Gallium, 1));
     public static Material EpoxidFiberReinforced = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "fiber_reinforced_epoxy_resin", 0xa07010, DULL))
-            .asSolid(400, 0).mats(of(Epoxid, 1));
+            .asSolid(400, 0, PLATE).mats(of(Epoxid, 1));
 
     public static Material RedGranite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "red_granite", 0xff0080, ROUGH)).asDust(ROCK)
@@ -1076,7 +1076,7 @@ public class Materials {
         CHEMBATH_MERCURY.add(Chalcopyrite,Gold);
         CHEMBATH_MERCURY.add(Gold,Nickel);
         CHEMBATH_MERCURY.add(Silver,Sulfur);
-        CHEMBATH_MERCURY.add(Osmium,Iridium);
+        //CHEMBATH_MERCURY.add(Osmium,Iridium);
         CHEMBATH_MERCURY.add(Platinum,Iridium);
         CHEMBATH_PERSULFATE.add(Nickel,Iron);
         CHEMBATH_PERSULFATE.add(Cobalt,Cobaltite);
@@ -1155,7 +1155,7 @@ public class Materials {
         Data.Coal.flags(ORE_STONE).mats(of(Carbon, 2));
         Data.Iron.flags(RING, GEAR, FRAME);
         Data.Gold.flags(FOIL, ROD, WIRE_FINE, GEAR);
-        Data.Copper.flags(PLATE, ROD, FOIL, WIRE_FINE, GEAR);
+        Data.Copper.flags(PLATE, ROD, FOIL, WIRE_FINE, GEAR, BOLT);
         Quartz.asOre();
         Data.Water.mats(of(Hydrogen, 2, Oxygen, 1));
 
