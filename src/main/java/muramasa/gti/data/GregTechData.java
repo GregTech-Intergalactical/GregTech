@@ -2,12 +2,15 @@ package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.material.MaterialType;
+import muramasa.antimatter.material.MaterialTypeFluid;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
@@ -22,6 +25,7 @@ import muramasa.gti.block.BlockFusionCasing;
 import muramasa.gti.block.BlockTurbineCasing;
 import muramasa.gti.cover.CoverConveyor;
 import muramasa.gti.cover.CoverPump;
+import muramasa.gti.cover.CoverTypeFilter;
 import muramasa.gti.tree.BlockRubberLeaves;
 import muramasa.gti.tree.BlockRubberLog;
 import muramasa.gti.tree.BlockRubberSapling;
@@ -38,6 +42,14 @@ public class GregTechData {
     public static void init(Dist side) {
         if (side == Dist.CLIENT)
             RecipeMaps.clientMaps();
+        AntimatterAPI.all(MaterialType.class, t -> {
+            if (t instanceof MaterialTypeFluid) return;
+            if (t.getClass() == MaterialType.class) return;
+            //TODO: add better check
+            if (t == Data.ORE_STONE) return;
+            CoverFactory.builder((a,b,c,d) -> new CoverTypeFilter(a,b,c,d,t)).addTextures(Data.NULL.getSet().getTextures(t)).item((a,b) -> {
+            return new ItemCover(a.getDomain(), a.getId()).tip("Filters for " + t.getId()).texture(Data.NULL.getSet().getTextures(t));}).build(Ref.ID, "cover_type_" + t.getId());
+        });
     }
 
     public static final CoverFactory COVER_CONVEYOR = CoverFactory.builder(CoverConveyor::new).gui().item((a,b) ->
