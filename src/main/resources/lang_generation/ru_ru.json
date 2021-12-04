@@ -119,9 +119,9 @@
   "plate": "пластина",
   "small_gear": "маленькая шестерёнка",
   "cointage": "монетка",
-  "ingot": "",
-  "ball": "",
-  "block": "",
+  "ingot": "слиток",
+  "ball": "шар",
+  "block": "блок",
   "nugget": "кусочек",
   "anvil": "наковальня",
   "empty_shape_plate": "Пустая заготовка",
@@ -139,5 +139,13 @@
   "hull": "корпус",
   "blade": "лезвие",
   "circuit_board_empty": "Пустая плата микросхемы",
-  "circuit_board_basic": "Плата базовой микросхемы"
+  "circuit_board_basic": "Плата базовой микросхемы",
+  "battery_energy_orb": "Энергетическая сфера",
+  "circuit_board_processor": "Процессор",
+  "circuit_board_processor_empty": "Пустая плата процессора",
+  "battery_energy_orb_cluster": "Кластер энергетических сфер",
+  "adv_circuit_parts": "Детали улучшенной микросхемы",
+  "battery": "Батарея",
+  "computer_monitor": "Монитор",
+  "diamond_grind_head": "Алмазный диск пилы"
 }

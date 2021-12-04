@@ -94,7 +94,7 @@ public class GregTechLocalizations {
             add(GregTechData.RUBBER_LOG, "Древесина резинового дерева");
             add(GregTechData.RUBBER_SAPLING, "Саженец резинового дерева");
 
-            add(muramasa.antimatter.Ref.TAB_BLOCKS, "GTI Блоки");
+            add(muramasa.antimatter.Ref.TAB_BLOCKS, "GTI Блоки aaaaaa");
             add(muramasa.antimatter.Ref.TAB_ITEMS, "GTI Предметы");
             add(muramasa.antimatter.Ref.TAB_MACHINES, "GTI Машины");
             add(muramasa.antimatter.Ref.TAB_MATERIALS, "GTI Материалы");
