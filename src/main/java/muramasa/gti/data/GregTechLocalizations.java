@@ -64,12 +64,24 @@ public class GregTechLocalizations {
         @Override
         protected void addTranslations() {
             super.addTranslations();
+
+            InputStream stream = getClass().getClassLoader().getResourceAsStream("lang_generation/ru_ru.json");
+
+            assert stream != null;
+            String basicWords = new BufferedReader(
+                    new InputStreamReader(stream, StandardCharsets.UTF_8))
+                    .lines()
+                    .collect(Collectors.joining("\n"));
+            Gson gson = new Gson();
+
+            final Map<String, String> translations = gson.fromJson(basicWords, Map.class);
+
             add(Ref.ID + ".advancements.greg", "GregTech Intergalactical");
-            add(Ref.ID + ".advancements.greg.desc", "Познакомиться с окружением");
-            add(Ref.ID + ".tooltip.occurrence", "Заметить присутствие...");
-            add(Ref.ID + ".fusion_1", "Термоядерный реактор 1");
-            add(Ref.ID + ".fusion_2", "Термоядерный реактор 2");
-            add(Ref.ID + ".fusion_3", "Термоядерный реактор 3");
+            add(Ref.ID + ".advancements.greg.desc", translations.get(".advancements.greg.desc"));
+            add(Ref.ID + ".tooltip.occurrence", translations.get(".tooltip.occurrence"));
+            add(Ref.ID + ".fusion_1", translations.get("fusion_1"));
+            add(Ref.ID + ".fusion_2", translations.get("fusion_2"));
+            add(Ref.ID + ".fusion_3", translations.get("fusion_3"));
         }
 
         @Override
@@ -88,28 +100,28 @@ public class GregTechLocalizations {
 
             final Map<String, String> translations = gson.fromJson(basicWords, Map.class);
 
-            AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Микросхема (" + i.circuitId + ")"));
+            AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, translations.get("ccircuit") + "(" + i.circuitId + ")"));
 
-            add(GregTechData.RUBBER_LEAVES, "Листья резинового дерева");
-            add(GregTechData.RUBBER_LOG, "Древесина резинового дерева");
-            add(GregTechData.RUBBER_SAPLING, "Саженец резинового дерева");
+            add(GregTechData.RUBBER_LEAVES, translations.get("rubber_leaves"));
+            add(GregTechData.RUBBER_LOG, translations.get("rubber_log"));
+            add(GregTechData.RUBBER_SAPLING, translations.get("rubber_sapling"));
 
-            add(muramasa.antimatter.Ref.TAB_BLOCKS, "GTI Блоки aaaaaa");
-            add(muramasa.antimatter.Ref.TAB_ITEMS, "GTI Предметы");
-            add(muramasa.antimatter.Ref.TAB_MACHINES, "GTI Машины");
-            add(muramasa.antimatter.Ref.TAB_MATERIALS, "GTI Материалы");
-            add(muramasa.antimatter.Ref.TAB_TOOLS, "GTI Инструменты");
+            add(muramasa.antimatter.Ref.TAB_BLOCKS, translations.get("tab_blocks"));
+            add(muramasa.antimatter.Ref.TAB_ITEMS, translations.get("tab_items"));
+            add(muramasa.antimatter.Ref.TAB_MACHINES, translations.get("tab_machines"));
+            add(muramasa.antimatter.Ref.TAB_MATERIALS, translations.get("tab_materials"));
+            add(muramasa.antimatter.Ref.TAB_TOOLS, translations.get("tab_tools"));
 
-            add("machine.voltage.in", "Напряжение");
-            add("machine.power.capacity", "Ёмкость хранилища");
-            add("generic.amp", "Сила тока");
-            add("generic.tier", "Уровень");
-            add("generic.voltage", "Напряжение");
-            add("generic.loss", "Потери на блок");
-            add("message.discharge.on", "Разрядка включена");
-            add("message.discharge.off", "Разрядка отключена");
-            add("item.charge", "Энергия");
-            add("item.reusable", "Перезаряжаемый");
+            add("machine.voltage.in", translations.get("machine.voltage.in"));
+            add("machine.power.capacity", translations.get("machine.power.capacity"));
+            add("generic.amp", translations.get("generic.amp"));
+            add("generic.tier", translations.get("generic.tier"));
+            add("generic.voltage", translations.get("machine.voltage"));
+            add("generic.loss", translations.get("generic.loss"));
+            add("message.discharge.on", translations.get("message.discharge.on"));
+            add("message.discharge.off", translations.get("message.discharge.off"));
+            add("item.charge", translations.get("item.charge"));
+            add("item.reusable", translations.get("item.reusable"));
 
             AntimatterAPI.all(Machine.class, domain).forEach(i -> {
                 Collection<Tier> tiers = i.getTiers();
@@ -120,13 +132,13 @@ public class GregTechLocalizations {
                                 add("machine." + i.getId() + "." + t.getId(), translations.get(i.getId()) + " " + t.getId().toUpperCase());
                             else
                             {
-                                if (translations.get(i.getId()).contains("ой") && t.getId().contains("steel"))
-                                    add("machine." + i.getId() + "." + t.getId(), translations.get("steel_machine") + "ой " + translations.get(i.getId()));
+                                if (translations.get(i.getId()).contains(translations.get("oi")) && t.getId().contains("steel"))
+                                    add("machine." + i.getId() + "." + t.getId(), translations.get("steel_machine") + translations.get("oi") + " " + translations.get(i.getId()));
                                 else if
-                                (translations.get(i.getId()).contains("ой") && t.getId().contains("bronze"))
-                                    add("machine." + i.getId() + "." + t.getId(), translations.get("bronze_machine") + "ый " + translations.get(i.getId()));
-                                else if (translations.get(i.getId()).contains("ая"))
-                                    add("machine." + i.getId() + "." + t.getId(), translations.get(t.getId() + "_machine") + "ая " + translations.get(i.getId()));
+                                (translations.get(i.getId()).contains(translations.get("ii")) && t.getId().contains("bronze"))
+                                    add("machine." + i.getId() + "." + t.getId(), translations.get("bronze_machine") + translations.get("ii") + " " + translations.get(i.getId()));
+                                else if (translations.get(i.getId()).contains(translations.get("aya")))
+                                    add("machine." + i.getId() + "." + t.getId(), translations.get(t.getId() + "_machine") + translations.get("aya") + " " + translations.get(i.getId()));
                             }
                         }
                         else
