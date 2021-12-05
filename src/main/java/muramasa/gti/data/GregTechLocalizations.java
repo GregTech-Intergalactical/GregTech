@@ -2,14 +2,17 @@ package muramasa.gti.data;
 
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.block.BlockStone;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
-import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.item.ItemBattery;
-import muramasa.antimatter.item.ItemCover;
-import muramasa.antimatter.item.ItemFluidCell;
+import muramasa.antimatter.item.*;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
+import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialItem;
+import muramasa.antimatter.ore.BlockOreStone;
+import muramasa.antimatter.pipe.BlockPipe;
+import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.gti.Ref;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.block.BlockCoil;
@@ -18,12 +21,12 @@ import net.minecraft.data.DataGenerator;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpaced;
-import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpacedRotated;
 
 import java.io.*;
 import com.google.gson.*;
 import java.util.stream.Collectors;
+
+import static muramasa.antimatter.util.Utils.*;
 
 public class GregTechLocalizations {
 
@@ -229,21 +232,31 @@ public class GregTechLocalizations {
                 }
             });
 
+            AntimatterAPI.all(BlockStone.class).forEach(i -> {
+                if (translations.containsKey(i.getId()))
+                    add(i, translations.get(i.getId()));
+                else
+                    add(i, getLocalizedType(i).replaceAll("Stone ", ""));
+            });
 
-            try{
-                BufferedWriter writer = new BufferedWriter(new FileWriter("c:/users/mihag/desktop/GTI/aboba.txt"));
-                AntimatterAPI.all(ItemBattery.class, domain).forEach(i -> {
-                    try{
-                    writer.write(i.getId() + '\n');}
-                    catch (Exception e){
-                        System.out.println(e.toString());
-                    }
-                    System.out.println(i.getId());});
-                writer.close();
-            }
-            catch (Exception e){
-                System.out.println(e.toString());
-            }
+
+//            try{
+//                BufferedWriter writer = new BufferedWriter(new FileWriter("c:/users/mihag/desktop/GTI/aboba.txt"));
+//                AntimatterAPI.all(BlockStone.class).forEach(i -> {
+//                    try{
+//                    writer.write(i.getId() + " " + getLocalizedType(i) + '\n');
+//                    System.out.println(i.getId() + " " + getLocalizedType(i));
+//
+//                    }
+//                    catch (Exception e){
+//                        System.out.println(e.toString());
+//                    }
+//                });
+//                writer.close();
+//            }
+//            catch (Exception e){
+//                System.out.println(e.toString());
+//            }
         }
     }
 }

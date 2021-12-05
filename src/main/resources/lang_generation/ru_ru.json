@@ -291,5 +291,17 @@
   "mercury": "ртутн",
   "cadmium": "кадмиев",
   "lithium": "литиев",
-  "sodium": "натриев"
+  "sodium": "натриев",
+  "red": "красн",
+  "black": "черн",
+  "granite_red": "Красный гранит",
+  "granite_black": "Чёрный гранит",
+  "marble": "Мрамор",
+  "basalt": "Базальт",
+  "komatiite": "Коматиит",
+  "limestone": "Известняк",
+  "green_schist": "Зелёный сланец",
+  "blue_schist": "Синий сланец",
+  "kimberlite": "Кимберлит",
+  "quartzite": "Кварцит"
 }
