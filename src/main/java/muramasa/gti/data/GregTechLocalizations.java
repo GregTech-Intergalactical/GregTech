@@ -100,7 +100,7 @@ public class GregTechLocalizations {
 
             final Map<String, String> translations = gson.fromJson(basicWords, Map.class);
 
-            AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, translations.get("ccircuit") + "(" + i.circuitId + ")"));
+            AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, translations.get("ccircuit") + " (" + i.circuitId + ")"));
 
             add(GregTechData.RUBBER_LEAVES, translations.get("rubber_leaves"));
             add(GregTechData.RUBBER_LOG, translations.get("rubber_log"));
