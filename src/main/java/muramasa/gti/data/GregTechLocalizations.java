@@ -4,6 +4,8 @@ package muramasa.gti.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
 import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.item.ItemCover;
+import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
@@ -181,20 +183,49 @@ public class GregTechLocalizations {
                 }
             });
 
-//            try{
-//                BufferedWriter writer = new BufferedWriter(new FileWriter("c:/users/mihag/desktop/GTI/aboba.txt"));
-//                AntimatterAPI.all(ItemBasic.class, domain).forEach(i -> {
-//                    try{
-//                    writer.write(i.getId() + '\n');}
-//                    catch (Exception e){
-//                        System.out.println(e.toString());
-//                    }
-//                    System.out.println(i.getId());});
-//                writer.close();
-//            }
-//            catch (Exception e){
-//                System.out.println(e.toString());
-//            }
+
+            AntimatterAPI.all(ItemFluidCell.class, domain).forEach(i -> {
+                if (translations.containsKey(i.getId())){
+                    add(i, translations.get(i.getId()));
+                } else add(i, lowerUnderscoreToUpperSpacedRotated(i.getId()));
+            });
+
+            AntimatterAPI.all(ItemCover.class, domain).forEach(i -> {
+                String[] spl = i.getId().split("_");
+                if (translations.containsKey(i.getId())){
+                    add(i, translations.get(i.getId()));
+                }
+                else if (spl.length > 2 && (spl[0] + spl[1]).equals("covertype")){
+                    String key = String.join("_", Arrays.copyOfRange(spl, 2, spl.length));
+                    if (translations.containsKey(key))
+                        add(i, translations.get(key) + translations.get("covertype"));
+                    else
+                        add(i, lowerUnderscoreToUpperSpaced(i.getId()));
+                }
+                else {
+                    String translation = "";
+                    for (String word: spl) {
+                        translation += translations.getOrDefault(word, word) + ' ';
+                    }
+                    add(i, capitalize(translation));
+                }
+            });
+
+
+            try{
+                BufferedWriter writer = new BufferedWriter(new FileWriter("c:/users/mihag/desktop/GTI/aboba.txt"));
+                AntimatterAPI.all(ItemCover.class, domain).forEach(i -> {
+                    try{
+                    writer.write(i.getId() + '\n');}
+                    catch (Exception e){
+                        System.out.println(e.toString());
+                    }
+                    System.out.println(i.getId());});
+                writer.close();
+            }
+            catch (Exception e){
+                System.out.println(e.toString());
+            }
         }
     }
 }
