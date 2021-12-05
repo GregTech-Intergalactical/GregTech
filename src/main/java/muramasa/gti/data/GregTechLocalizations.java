@@ -4,6 +4,7 @@ package muramasa.gti.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
 import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.machine.MachineFlag;
@@ -211,10 +212,27 @@ public class GregTechLocalizations {
                 }
             });
 
+            AntimatterAPI.all(ItemBattery.class, domain).forEach(i -> {
+                String[] spl = i.getId().split("_");
+                List<String> bTiers = Arrays.asList("small", "medium", "large");
+
+                if (translations.containsKey(i.getId())) {
+                    add(i, translations.get(i.getId()));
+                }
+                else if (spl.length > 2 && spl[0].equals("battery") &&(bTiers.contains(spl[1]))){
+                    if (translations.containsKey(spl[2]))
+                        add(i, capitalize(translations.get(spl[0] + "_" + spl[1]).split(" ")[0] + " " +
+                                translations.get(spl[2]) + translations.get("aya") + " " +
+                                translations.get(spl[0] + "_" + spl[1]).split(" ")[1]));
+                    else
+                        add(i, lowerUnderscoreToUpperSpaced(i.getId()));
+                }
+            });
+
 
             try{
                 BufferedWriter writer = new BufferedWriter(new FileWriter("c:/users/mihag/desktop/GTI/aboba.txt"));
-                AntimatterAPI.all(ItemCover.class, domain).forEach(i -> {
+                AntimatterAPI.all(ItemBattery.class, domain).forEach(i -> {
                     try{
                     writer.write(i.getId() + '\n');}
                     catch (Exception e){

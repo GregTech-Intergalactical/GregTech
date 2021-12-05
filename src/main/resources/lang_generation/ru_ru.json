@@ -277,10 +277,19 @@
   "spring": "Пружина",
   "rotor": "Ротор",
   "drill_bit": "Наконечник бура",
-  "chainsaw_bit": "",
+  "chainsaw_bit": "Шина бензопилы",
   "wrench_bit": "Наконечник ключа",
   "buzzsaw_blade": "Циркулярная пила",
   "ore": "Руда",
   "ore_small": "Бедная руда",
-  "frame": "Каркас"
+  "frame": "Каркас",
+  "battery_tantalum": "Танталовый_конденсатор",
+  "battery_small": "маленькая батарея",
+  "battery_medium": "средняя батарея",
+  "battery_large": "большая батарея",
+  "acid": "кислотн",
+  "mercury": "ртутн",
+  "cadmium": "кадмиев",
+  "lithium": "литиев",
+  "sodium": "натриев"
 }
