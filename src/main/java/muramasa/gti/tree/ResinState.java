@@ -1,10 +1,10 @@
 package muramasa.gti.tree;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
 import java.util.Locale;
 
-public enum ResinState implements IStringSerializable {
+public enum ResinState implements StringRepresentable {
 
     NONE,
     EMPTY,

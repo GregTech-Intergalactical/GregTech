@@ -7,7 +7,7 @@ import muramasa.antimatter.structure.BlockStateElement;
 import muramasa.antimatter.structure.FakeTileElement;
 import muramasa.antimatter.structure.PatternBuilder;
 import muramasa.gti.block.BlockCoil;
-import net.minecraft.block.Blocks;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.util.Direction;
 
 import static muramasa.gti.data.GregTechData.*;

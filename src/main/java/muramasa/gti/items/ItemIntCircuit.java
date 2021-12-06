@@ -2,6 +2,8 @@ package muramasa.gti.items;
 
 import muramasa.antimatter.item.ItemBasic;
 
+import net.minecraft.world.item.Item.Properties;
+
 public class ItemIntCircuit extends ItemBasic<ItemIntCircuit> {
 
     public final int circuitId;

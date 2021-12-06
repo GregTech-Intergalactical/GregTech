@@ -5,7 +5,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gti.data.Materials;
 import muramasa.gti.data.RecipeMaps;
-import net.minecraft.fluid.Fluids;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.gti.data.RecipeMaps.CUTTING;

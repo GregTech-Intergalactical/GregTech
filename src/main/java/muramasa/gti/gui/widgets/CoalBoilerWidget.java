@@ -1,6 +1,6 @@
 package muramasa.gti.gui.widgets;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.ICanSyncData;
 import muramasa.antimatter.gui.IGuiElement;
@@ -8,7 +8,7 @@ import muramasa.antimatter.gui.Widget;
 import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.gti.tile.single.TileEntityCoalBoiler;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -38,7 +38,7 @@ public class CoalBoilerWidget extends Widget {
     }
 
     @Override
-    public void render(MatrixStack stack, double mouseX, double mouseY, float partialTicks) {
+    public void render(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
         if (water >= 1) {
             float per = (float) water / 16000;
             if (per > 1.0F) {
@@ -79,7 +79,7 @@ public class CoalBoilerWidget extends Widget {
     }
 
     @Override
-    public void mouseOver(MatrixStack stack, double mouseX, double mouseY, float partialTicks) {
+    public void mouseOver(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
         if (water >= 1) {
             renderTooltip(stack,"Water: " + water + " MB", mouseX, mouseY, 14, 0, 10, 54);
         }
@@ -90,9 +90,9 @@ public class CoalBoilerWidget extends Widget {
     }
 
     @OnlyIn(Dist.CLIENT)
-    protected void renderTooltip(MatrixStack matrixStack, String text, double mouseX, double mouseY, int x, int y, int w, int h) {
+    protected void renderTooltip(PoseStack matrixStack, String text, double mouseX, double mouseY, int x, int y, int w, int h) {
         if (isInside(x, y, w, h, mouseX, mouseY)){
-            renderTooltip(matrixStack, new StringTextComponent(text), mouseX, mouseY);
+            renderTooltip(matrixStack, new TextComponent(text), mouseX, mouseY);
         }
 
     }

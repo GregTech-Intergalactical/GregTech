@@ -1,8 +1,8 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.structure.PatternBuilder;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.Direction;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.core.Direction;
 
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Machines.*;

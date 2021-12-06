@@ -14,11 +14,11 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gti.GregTech;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.tags.ItemTags;
 
 import java.util.Arrays;

@@ -1,8 +1,8 @@
 package muramasa.gti.loader.multi;
 
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 import static muramasa.antimatter.Data.INGOT;
 import static muramasa.antimatter.Data.INGOT_HOT;

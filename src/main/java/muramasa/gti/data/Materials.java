@@ -6,8 +6,8 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.material.TextureSet;
 import muramasa.gti.Ref;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.Items;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;

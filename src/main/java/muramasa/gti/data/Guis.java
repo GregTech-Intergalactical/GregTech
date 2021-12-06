@@ -16,8 +16,8 @@ import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gti.gui.widgets.CoalBoilerFuelWidget;
 import muramasa.gti.gui.widgets.CoalBoilerWidget;
 import muramasa.gti.tile.single.TileEntityCoalBoiler;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 
 import javax.annotation.Nullable;
@@ -43,7 +43,7 @@ public class Guis {
 
     public static MenuHandlerMachine<TileEntityCoalBoiler,? extends ContainerMachine> COAL_BOILER_MENU_HANDLER = new MenuHandlerMachine(Ref.ID, "container_coal_boiler") {
         @Override
-        public ContainerBasicMachine getMenu(IGuiHandler tile, PlayerInventory playerInv, int windowId) {
+        public ContainerBasicMachine getMenu(IGuiHandler tile, Inventory playerInv, int windowId) {
             return tile instanceof TileEntityMachine ? new ContainerBasicMachine((TileEntityMachine<?>) tile, playerInv, this, windowId) : null;
         }
 

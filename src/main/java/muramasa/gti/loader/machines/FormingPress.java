@@ -2,7 +2,7 @@ package muramasa.gti.loader.machines;
 
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.gti.data.GregTechData;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gti.data.RecipeMaps.PRESSING;
 

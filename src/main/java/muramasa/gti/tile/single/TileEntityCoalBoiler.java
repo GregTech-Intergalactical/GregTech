@@ -8,18 +8,18 @@ import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.Utils;
-import net.minecraft.block.Blocks;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.IIntArray;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.Direction;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
@@ -35,6 +35,8 @@ import static muramasa.antimatter.machine.Tier.BRONZE;
 import static muramasa.gti.data.Materials.DistilledWater;
 import static muramasa.gti.data.Materials.Steam;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
+
+import muramasa.antimatter.capability.FluidHandler.FluidDirection;
 
 public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler> {
     int maxHeat = 500, heat, fuel = 0, maxFuel, lossTimer = 0;
@@ -68,7 +70,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
         int maxHeat = 500, heat, fuel = 0, maxFuel, lossTimer = 0;
         boolean hadNoWater;
 
-        protected final IIntArray GUI_SYNC_DATA2 = new IIntArray() {
+        protected final ContainerData GUI_SYNC_DATA2 = new ContainerData() {
 
             @Override
             public int get(int index) {
@@ -152,7 +154,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
                             hadNoWater = true;
                         } else {
                             if (hadNoWater) {
-                                tile.getLevel().explode(null, tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ(), 4.0F, Explosion.Mode.DESTROY);
+                                tile.getLevel().explode(null, tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ(), 4.0F, Explosion.BlockInteraction.DESTROY);
                                 tile.getLevel().setBlockAndUpdate(tile.getBlockPos(), Blocks.AIR.defaultBlockState());
                                 return;
                             }
@@ -164,9 +166,9 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
                             }
                             if (fill < 150) {
                                 //TODO:steam sounds
-                                tile.getLevel().playSound(null, tile.getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                                if (tile.getLevel() instanceof ServerWorld)
-                                    ((ServerWorld) tile.getLevel()).sendParticles(ParticleTypes.SMOKE, tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ(), tile.getLevel().getRandom().nextInt(8) + 1, 0.0D, 0.2D, 0.0D, 0.0D);
+                                tile.getLevel().playSound(null, tile.getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
+                                if (tile.getLevel() instanceof ServerLevel)
+                                    ((ServerLevel) tile.getLevel()).sendParticles(ParticleTypes.SMOKE, tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ(), tile.getLevel().getRandom().nextInt(8) + 1, 0.0D, 0.2D, 0.0D, 0.0D);
                                 f.drain(4000, IFluidHandler.FluidAction.EXECUTE);
                             }
                         }
@@ -179,7 +181,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
         }
 
         public void exportFluidFromMachineToSide(Direction side){
-            TileEntity adjTile = tile.getLevel().getBlockEntity(tile.getBlockPos().relative(side));
+            BlockEntity adjTile = tile.getLevel().getBlockEntity(tile.getBlockPos().relative(side));
             if (adjTile == null) return;
             LazyOptional<IFluidHandler> cap = adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
             tile.fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
@@ -244,8 +246,8 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
         }
 
         @Override
-        public CompoundNBT serializeNBT() {
-            CompoundNBT nbt = super.serializeNBT();
+        public CompoundTag serializeNBT() {
+            CompoundTag nbt = super.serializeNBT();
             nbt.putInt("heat", heat);
             nbt.putInt("maxHeat", maxHeat);
             nbt.putInt("fuel", fuel);
@@ -256,7 +258,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
         }
 
         @Override
-        public void deserializeNBT(CompoundNBT nbt) {
+        public void deserializeNBT(CompoundTag nbt) {
             super.deserializeNBT(nbt);
             this.heat = nbt.getInt("heat");
             this.maxHeat = nbt.getInt("maxHeat");

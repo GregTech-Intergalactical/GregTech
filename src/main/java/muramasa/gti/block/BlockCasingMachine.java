@@ -1,7 +1,7 @@
 package muramasa.gti.block;
 
 import muramasa.antimatter.texture.Texture;
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
 
 public abstract class BlockCasingMachine extends BlockCasing {
     // TODO used for special features for machine casings

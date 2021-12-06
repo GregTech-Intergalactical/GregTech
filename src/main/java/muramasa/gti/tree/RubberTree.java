@@ -1,23 +1,23 @@
 package muramasa.gti.tree;
 
 import muramasa.gti.data.GregTechData;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.trees.Tree;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
-import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.server.level.ServerLevel;
 
 import java.util.Random;
 
-public class RubberTree extends Tree {
+public class RubberTree extends AbstractTreeGrower {
 
     public static final RubberTreeFeature TREE_FEATURE = new RubberTreeFeature();
-    public static final WeightedBlockStateProvider TRUNK_BLOCKS = new WeightedBlockStateProvider();
+    public static final WeightedStateProvider TRUNK_BLOCKS = new WeightedStateProvider();
 
     public RubberTree() {
         BlockStateProperties.HORIZONTAL_FACING.getPossibleValues().forEach(d -> {
@@ -33,13 +33,13 @@ public class RubberTree extends Tree {
     }
 
     @Override
-    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean flowers) {
+    protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random rand, boolean flowers) {
         return TREE_FEATURE.configured(RubberTreeWorldGen.RUBBER_TREE_CONFIG_NORMAL);
     }
 
     @Override
-    public boolean growTree(ServerWorld world, ChunkGenerator chunkGenerator, BlockPos pos, BlockState state, Random rand) {
-        ConfiguredFeature<BaseTreeFeatureConfig, ?> configuredFeature = TREE_FEATURE
+    public boolean growTree(ServerLevel world, ChunkGenerator chunkGenerator, BlockPos pos, BlockState state, Random rand) {
+        ConfiguredFeature<TreeConfiguration, ?> configuredFeature = TREE_FEATURE
                 .configured(RubberTreeWorldGen.getTreeConfig(world.getBiome(pos).getBiomeCategory()));
         world.setBlock(pos, Blocks.AIR.defaultBlockState(), 4);
         configuredFeature.config.setFromSapling();

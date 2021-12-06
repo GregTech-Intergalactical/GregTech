@@ -7,7 +7,7 @@ import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
-import net.minecraft.util.Direction;
+import net.minecraft.core.Direction;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 
@@ -15,6 +15,9 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 import static muramasa.gti.data.Materials.Steam;
+
+import muramasa.antimatter.capability.FluidHandler.FluidDirection;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 
 public class TileEntityInfiniteFluid extends TileEntityMachine<TileEntityInfiniteFluid> {
 

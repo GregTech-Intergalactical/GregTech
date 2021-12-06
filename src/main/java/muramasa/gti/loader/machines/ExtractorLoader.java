@@ -1,7 +1,7 @@
 package muramasa.gti.loader.machines;
 
 import muramasa.gti.data.GregTechData;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 import static muramasa.antimatter.Data.DUST;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
