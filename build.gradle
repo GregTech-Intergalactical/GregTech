@@ -41,7 +41,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 version = "${minecraft_version}-${mod_version}"
 group = 'com.github.gregtech-intergalactical' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'GregTech-Intergalactical'
-java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 
 //Print out JVM information so that we know what version is running. Extreamly useful for people to know when helping you.
@@ -95,7 +95,7 @@ minecraft {
     // stable_#            Stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'parchment', version: '2021.10.17-1.16.5'    
+    mappings channel: "${mappings_version}", version: "${minecraft_version}"    
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -199,7 +199,7 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
     runtimeOnly fg.deobf("curse.maven:architectury-forge-419699:${architectury_file}")
     runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
-    runtimeOnly fg.deobf("curse.maven:top-245211:${top_file}")
+    //runtimeOnly fg.deobf("curse.maven:top-245211:${top_file}")
 }
 
 
