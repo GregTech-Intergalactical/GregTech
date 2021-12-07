@@ -68,14 +68,13 @@ public class GregTech extends AntimatterMod {
         } else {
             final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
             ev.addProvider(Ref.ID, g -> {
-                p[0] = new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, g,
-                      null);
+                p[0] = new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, g);
                 return p[0];
             });
             ev.addProvider(Ref.ID, g -> new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"),
-                    false, g, p[0], null));
+                    false, g, p[0]));
             ev.addProvider(Ref.ID, g -> new AntimatterFluidTagProvider(Ref.ID,
-                    Ref.NAME.concat(" Fluid Tags"), false, g,null));
+                    Ref.NAME.concat(" Fluid Tags"), false, g));
             ev.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID,
                     Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
             ev.addProvider(Ref.ID,
