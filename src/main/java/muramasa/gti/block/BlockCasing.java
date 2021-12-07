@@ -10,7 +10,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nullable;
 
@@ -23,12 +22,6 @@ public class BlockCasing extends BlockDynamic {
 
     public BlockCasing(String domain, String id) {
         this(domain, id, Block.Properties.of(Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL));
-    }
-
-    @Nullable
-    @Override
-    public ToolType getHarvestTool(BlockState state) {
-        return Data.WRENCH.getToolType();
     }
 
     @Override

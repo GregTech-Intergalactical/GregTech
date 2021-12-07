@@ -7,24 +7,16 @@ import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.item.Items;
-import org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter;
 
 import java.util.function.Consumer;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.material.MaterialTag.WIRE;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.*;
-import static muramasa.gti.data.RecipeMaps.ASSEMBLING;
-import static muramasa.gti.data.TierMaps.INT_CIRCUITS;
 import static muramasa.gti.data.TierMaps.TIER_CIRCUITS;
 
 public class BlockParts {

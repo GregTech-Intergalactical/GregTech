@@ -7,13 +7,15 @@ import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
 import muramasa.gti.block.BlockCoil;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileEntityElectricBlastFurnace> {
 
     private int heatingCapacity;
 
-    public TileEntityElectricBlastFurnace(Machine type) {
-        super(type);
+    public TileEntityElectricBlastFurnace(Machine type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
         recipeHandler.set(() -> new MachineRecipeHandler<TileEntityElectricBlastFurnace>(this) {
 
             @Override

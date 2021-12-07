@@ -1,14 +1,11 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Data;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.BlockStateElement;
 import muramasa.antimatter.structure.FakeTileElement;
-import muramasa.antimatter.structure.PatternBuilder;
 import muramasa.gti.block.BlockCoil;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.util.Direction;
 
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Machines.*;
@@ -16,7 +13,7 @@ import static muramasa.gti.data.Machines.*;
 public class Structures {
 
     /** Special Case Elements **/
-    public static BlockStateElement AIR_OR_LAVA = new BlockStateElement("air_or_lava", (w, p, s) -> s.getBlock().isAir(s, w, p) || s.getBlock() == Blocks.LAVA/* || s.getBlock() == Blocks.FLOWING_LAVA*/);
+    public static BlockStateElement AIR_OR_LAVA = new BlockStateElement("air_or_lava", (w, p, s) -> s.isAir() || s.getBlock() == Blocks.LAVA/* || s.getBlock() == Blocks.FLOWING_LAVA*/);
     public static final FakeTileElement FAKE_CASING = new FakeTileElement(CASING_FIRE_BRICK);
     public static void init() {
         COKE_OVEN.setStructure(b -> b

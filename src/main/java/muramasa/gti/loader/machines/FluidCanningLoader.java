@@ -1,5 +1,6 @@
 package muramasa.gti.loader.machines;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
@@ -21,12 +22,12 @@ public class FluidCanningLoader {
             FLUID_CANNING.RB().ii(RecipeIngredient.of(bucket, 1)).fo(new FluidStack(fluid, 1000)).io(Items.BUCKET.getDefaultInstance()).add(20, 8);
             FLUID_CANNING.RB().ii(RecipeIngredient.of(Items.BUCKET, 1)).fi(new FluidStack(fluid, 1000)).io(new ItemStack(bucket, 1)).add(20, 8);
 
-            for (ItemFluidCell emptyCell : Data.EMPTY_CELLS) {
+            AntimatterAPI.all(ItemFluidCell.class, emptyCell -> {
                 int size = emptyCell.getCapacity();
                 ItemStack filled = emptyCell.fill(fluid, size);
                 FLUID_CANNING.RB().ii(RecipeIngredient.of(filled)).fo(new FluidStack(fluid, size)).io(emptyCell.getDefaultInstance()).add(20, 8);
                 FLUID_CANNING.RB().ii(RecipeIngredient.of(emptyCell, 1)).fi(new FluidStack(fluid, size)).io(filled).add(20, 8);
-            }
+            });
         });
     }
 }

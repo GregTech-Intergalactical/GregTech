@@ -8,7 +8,9 @@ import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.Utils;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
@@ -42,8 +44,8 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
     int maxHeat = 500, heat, fuel = 0, maxFuel, lossTimer = 0;
     boolean hadNoWater;
 
-    public TileEntityCoalBoiler(Machine<?> type) {
-        super(type);
+    public TileEntityCoalBoiler(Machine<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
         fluidHandler.set(() -> new CoalBoilerFluidHandler(this));
         recipeHandler.set(() -> new CoalBoilerRecipeHandler(this));
     }

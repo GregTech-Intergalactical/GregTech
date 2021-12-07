@@ -69,13 +69,13 @@ public class GregTech extends AntimatterMod {
             final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
             ev.addProvider(Ref.ID, g -> {
                 p[0] = new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, g,
-                        new ExistingFileHelperOverride());
+                      null);
                 return p[0];
             });
             ev.addProvider(Ref.ID, g -> new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"),
-                    false, g, p[0], new ExistingFileHelperOverride()));
+                    false, g, p[0], null));
             ev.addProvider(Ref.ID, g -> new AntimatterFluidTagProvider(Ref.ID,
-                    Ref.NAME.concat(" Fluid Tags"), false, g, new ExistingFileHelperOverride()));
+                    Ref.NAME.concat(" Fluid Tags"), false, g,null));
             ev.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID,
                     Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
             ev.addProvider(Ref.ID,
@@ -142,24 +142,22 @@ public class GregTech extends AntimatterMod {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         switch (event) {
-        case DATA_INIT:
-            Materials.init();
-            TierMaps.init();
-            GregTechData.init(side);
-            Machines.init();
-            Guis.init(side);
-            Models.init();
-            break;
-        case DATA_READY:
-            Structures.init();
-            if (side == Dist.CLIENT) StructureInfo.init();
-            TierMaps.providerInit();
-            break;
-        case WORLDGEN_INIT:
-            WorldGenLoader.init();
-            break;
-        default:
-            break;
+            case DATA_INIT -> {
+                Materials.init();
+                TierMaps.init();
+                GregTechData.init(side);
+                Machines.init();
+                Guis.init(side);
+                Models.init();
+            }
+            case DATA_READY -> {
+                Structures.init();
+                //if (side == Dist.CLIENT) StructureInfo.init();
+                TierMaps.providerInit();
+            }
+            case WORLDGEN_INIT -> WorldGenLoader.init();
+            default -> {
+            }
         }
     }
 

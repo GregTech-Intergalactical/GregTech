@@ -5,12 +5,14 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityBasicMultiMachine;
 import muramasa.antimatter.util.int3;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine<TileEntityPrimitiveBlastFurnace> {
 
-    public TileEntityPrimitiveBlastFurnace(Machine type) {
-        super(type);
+    public TileEntityPrimitiveBlastFurnace(Machine type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
         recipeHandler.set(() -> new CookingRecipeHandler<>(this));
     }
 

@@ -6,12 +6,10 @@ import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.util.TagUtils;
-import muramasa.gti.data.GregTechData;
 import muramasa.gti.data.Machines;
 import muramasa.gti.data.Materials;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;
-import net.minecraft.util.ResourceLocation;
 
 import java.util.function.Consumer;
 

@@ -13,6 +13,8 @@ import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.client.gui.Font;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
@@ -30,8 +32,8 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
     protected int recipeConsumption = 0;
     protected long lastEU = 0;
 
-    public TileEntityLargeTurbine(Machine type) {
-        super(type);
+    public TileEntityLargeTurbine(Machine type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
         recipeHandler.set(() ->
                 new MachineRecipeHandler<TileEntityLargeTurbine>(this) {
 

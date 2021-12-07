@@ -12,7 +12,7 @@ public class RubberTreeFeature extends TreeFeature {
     }
     
     public void init() {
-        AntimatterWorldGenerator.register(RubberTreeWorldGen::onEvent, "rubber_tree", Ref.ID, RubberTreeWorldGen.getValidBiomesStatic());
+      //  AntimatterWorldGenerator.register(RubberTreeWorldGen::onEvent, "rubber_tree", Ref.ID, RubberTreeWorldGen.getValidBiomesStatic());
     }
 
     

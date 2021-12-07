@@ -15,7 +15,6 @@ import muramasa.gti.GregTech;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;

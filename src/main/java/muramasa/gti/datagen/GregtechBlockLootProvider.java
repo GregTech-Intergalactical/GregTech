@@ -10,9 +10,9 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.RandomValueBounds;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import static muramasa.antimatter.Data.*;
 
@@ -34,7 +34,7 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
             if (mat.has(GEM)){
                 Item item = GEM.get(mat);
                 if (mat == Lapis /*|| mat == Sodalite || mat == Lazurite */) {
-                    tables.put(o, b -> createSilkTouchDispatchTable(b, applyExplosionDecay(b, LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(RandomValueBounds.between(4.0F, 9.0F))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+                    tables.put(o, b -> createSilkTouchDispatchTable(b, applyExplosionDecay(b, LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 9.0F))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
                 } else {
                     tables.put(o, b -> createOreDrop(b, item));
                 }
