@@ -202,6 +202,7 @@ public class GregTechData {
     public static ItemBasic<?> ShapeGear = new ItemBasic<>(Ref.ID, "shape_gear").tip("Shape for making Gears");
     public static ItemBasic<?> ShapeGearSmall = new ItemBasic<>(Ref.ID, "shape_gear_small").tip("Shape for making Small Gears");
     public static ItemBasic<?> ShapeBottle = new ItemBasic<>(Ref.ID, "shape_bottle").tip("Shape for making Bottles"); //TODO needed?
+    public static ItemBasic<?> Scrap = new ItemBasic<>(Ref.ID, "scrap").tip("Recovered Material from Recycling");
     //
     //    //TODO optional items (register anyway, but don't show in JEI?)
     //    //TODO move to IC2+IC2C Registrar

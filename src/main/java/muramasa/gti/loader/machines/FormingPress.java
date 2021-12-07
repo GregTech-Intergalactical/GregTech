@@ -20,6 +20,6 @@ public class FormingPress {
         molds(GregTechData.MoldPlate);
     }
     private static void molds(ItemBasic mold){
-        PRESSING.RB().ii(of(GregTechData.EmptyShape,1),of(mold,1)).io(new ItemStack(mold,1)).add(120,20);
+        PRESSING.RB().ii(of(GregTechData.EmptyShape,1),of(mold,1).setNoConsume()).io(new ItemStack(mold,1)).add(120,20);
     }
 }
