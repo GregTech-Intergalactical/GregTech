@@ -188,8 +188,8 @@ dependencies {
         compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
     }
 
-    implementation fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
-
+    //implementation fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
+    implementation project(path: ':TesseractAPI')
     //compile 'de.speiger:Primitive-Collections:0.4.0'
 
     //JEI
