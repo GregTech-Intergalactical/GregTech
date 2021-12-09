@@ -16,7 +16,7 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileE
 
     public TileEntityElectricBlastFurnace(Machine type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        recipeHandler.set(() -> new MachineRecipeHandler<TileEntityElectricBlastFurnace>(this) {
+        recipeHandler.set(() -> new MachineRecipeHandler<>(this) {
 
             @Override
             protected void calculateDurations() {
@@ -24,7 +24,7 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileE
                 maxProgress = activeRecipe.getDuration();
                 overclock = 0;
                 //Divide by 2, for amps.
-                int tier = Utils.getVoltageTier(getMaxInputVoltage()/2);
+                int tier = Utils.getVoltageTier(getMaxInputVoltage() / 2);
                 int recipeTier = Utils.getVoltageTier(activeRecipe.getPower());
                 if (recipeTier == tier) {
                     EUt = activeRecipe.getPower();
@@ -39,7 +39,7 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileE
                         EUt = activeRecipe.getPower();
                         maxProgress = activeRecipe.getDuration();
                         for (int i = 2; i < Ref.V.length; i += 2) {
-                            if (EUt > Ref.V[tier-1]) break;
+                            if (EUt > Ref.V[tier - 1]) break;
                             EUt *= 4;
                             maxProgress /= (heatDiv >= i ? 4 : 2);
                         }

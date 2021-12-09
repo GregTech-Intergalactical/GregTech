@@ -168,7 +168,12 @@ public class BlockTurbineCasing extends BlockCasingMachine {
     }
 
     protected Level getWorld(BlockGetter reader) {
-        if (!(reader instanceof RenderChunkRegion)) return null;
+        if (!(reader instanceof RenderChunkRegion)) {
+            if (reader instanceof Level l) {
+                return l;
+            }
+            return null;
+        };
         ChunkReaderAccessor cache = (ChunkReaderAccessor) reader;
         return cache.getLevel();
     }
