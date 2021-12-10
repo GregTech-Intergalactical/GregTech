@@ -14,6 +14,7 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 
@@ -38,11 +39,28 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'java'
 version = "${minecraft_version}-${mod_version}"
 group = 'com.github.gregtech-intergalactical' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'GregTech-Intergalactical'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
+boolean hasTesseract = findProject(':TesseractAPI') != null
+
+if (hasTesseract) {
+    println('TesseractAPI in local workspace')
+}
+
+boolean hasAntimatter = findProject(':AntimatterAPI') != null
+
+if (hasTesseract) {
+    println('AntimatterAPI in local workspace')
+}
+
+boolean isWorkspace = hasTesseract || hasAntimatter
+
+//println(sourceSets.main.output.destinationDirectory)
 
 //Print out JVM information so that we know what version is running. Extreamly useful for people to know when helping you.
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
@@ -60,34 +78,31 @@ sourceSets {
     }
 }
 
-def shouldCheckEnv() {
-    return findProject(':AntimatterAPI') != null || findProject(':TesseractAPI') != null
-}
+String getenv() {
+    boolean vscode = gradle.startParameter.taskNames[0].equals("genVSCodeRuns")  || gradle.startParameter.taskNames[0].equals(":genVSCodeRuns")
+    boolean hasAntimatter = findProject(':AntimatterAPI') != null
+    boolean hasTesseract = findProject(':TesseractAPI') != null
 
-def isVSTask() {
-    return gradle.startParameter.taskNames[0].equals("genVSCodeRuns")
-}
-
-def getEnv() {
-    boolean vscode = isVSTask()
     String resourcePath = vscode ? 'bin/main' : 'build/resources/main'
     String codePath = vscode ? 'bin/main' : 'build/classes/java/main'
     String s = "gti%%${project.file(resourcePath)}" + getPathSeparator() + "gti%%${project.file(codePath)}"
-    if (findProject(':AntimatterAPI') != null) {
+    if (hasAntimatter) {
         s += getPathSeparator() + "antimatter%%${project(':AntimatterAPI').file(resourcePath)}" + getPathSeparator() + "antimatter%%${project(':AntimatterAPI').file(codePath)}"
     }
-    if (findProject(':TesseractAPI') != null) {
+    if (hasTesseract) {
         s += getPathSeparator() + "tesseract%%${project(':TesseractAPI').file(resourcePath)}" + getPathSeparator() + "tesseract%%${project(':TesseractAPI').file(codePath)}"
     }
     return s
 }
 import org.apache.tools.ant.taskdefs.condition.Os
+
 def getPathSeparator() {
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
         return ";"
     }
     return ":"
 }
+
 
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
@@ -113,13 +128,24 @@ minecraft {
             //if (isVSTask())
             //    jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
-            if (findProject(':AntimatterAPI') != null) arg "-mixin.config=antimatter.mixins.json"
-            if (shouldCheckEnv()) {
-                 environment 'MOD_CLASSES', getEnv()
+            if (isWorkspace) {
+                environment('MOD_CLASSES', this.getenv())
             }
+            arg "-mixin.config=antimatter.mixins.json"
             mods {
                 gti {
                     source sourceSets.main
+                }
+                if (hasTesseract) {
+                    tesseract {
+                        source project(':TesseractAPI').sourceSets.main
+
+                    }
+                }
+                if (hasAntimatter) {
+                    antimatter {
+                        source project(':AntimatterAPI').sourceSets.main
+                    }
                 }
             }
         }
@@ -132,17 +158,24 @@ minecraft {
             property 'forge.logging.markers', 'DEBUG'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-            
-            //if (isVSTask())
-            //    jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
-            if (findProject(':AntimatterAPI') != null) arg "-mixin.config=antimatter.mixins.json"
-            if (shouldCheckEnv()) {
-                 environment 'MOD_CLASSES', getEnv()
+            if (isWorkspace) {
+                environment('MOD_CLASSES', this.getenv())
             }
+            arg "-mixin.config=antimatter.mixins.json"
             arg "-nogui"
             mods {
                 gti {
                     source sourceSets.main
+                }
+                if (hasTesseract) {
+                    tesseract {
+                        source project(':TesseractAPI').sourceSets.main
+                    }
+                }
+                if (hasAntimatter) {
+                    antimatter {
+                        source project(':AntimatterAPI').sourceSets.main
+                    }
                 }
             }
         }
@@ -155,20 +188,28 @@ minecraft {
             property 'forge.logging.markers', 'DEBUG'
             //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
-            if (findProject(':AntimatterAPI') != null) arg "-mixin.config=antimatter.mixins.json"
-
-            if (shouldCheckEnv()) {
-                 environment 'MOD_CLASSES', getEnv()
-            }
+            arg "-mixin.config=antimatter.mixins.json"
             //if (isVSTask())
             //    jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
             args '--mod', 'gti', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
-
+            if (isWorkspace) {
+                environment('MOD_CLASSES', this.getenv())
+            }
             mods {
                 gti {
                     source sourceSets.main
+                }
+                if (hasTesseract) {
+                    tesseract {
+                        source project(':TesseractAPI').sourceSets.main
+                    }
+                }
+                if (hasAntimatter) {
+                    antimatter {
+                        source project(':AntimatterAPI').sourceSets.main
+                    }
                 }
             }
         }
@@ -177,19 +218,20 @@ minecraft {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation 'org.apache.commons:commons-collections4:4.4'
 
     //GT related projects.
-    if (findProject(':AntimatterAPI') != null) {
+    if (hasAntimatter) {
         implementation project(path: ':AntimatterAPI')
     } else {
         //compileOnly sources jar.
-        runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
-        compileOnly ("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
+        implementation fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
     }
-
-    //implementation fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
-    implementation project(path: ':TesseractAPI')
+    if (hasTesseract) {
+        implementation project(path: ':TesseractAPI')
+    } else {
+        implementation fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
+    }
+    //
     //compile 'de.speiger:Primitive-Collections:0.4.0'
 
     //JEI
@@ -221,13 +263,12 @@ jar {
 // This is the preferred method to reobfuscate your jar file
 //jar.finalizedBy('reobfJar')
 // However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-publish {
-    dependsOn 'reobfJar', 'build'
-}
 
 publishing {
+    tasks.publish.dependsOn 'build', 'reobfJar'
     publications {
         mavenJava(MavenPublication) {
+            //artifactId = archivesBaseName
             artifact jar
         }
     }
