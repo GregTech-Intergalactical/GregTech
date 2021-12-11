@@ -131,6 +131,17 @@ public class GregTechLocalizations {
             add("item.charge", translations.get("item.charge"));
             add("item.reusable", translations.get("item.reusable"));
 
+            add("antimatter.tooltip.formula", translations.get("antimatter.tooltip.formula"));
+
+            add("antimatter.tooltip.material_primary", translations.get("antimatter.tooltip.material_primary"));
+            add("antimatter.tooltip.material_secondary", translations.get("antimatter.tooltip.material_secondary"));
+            add("antimatter.gui.show_recipes", translations.get("antimatter.gui.show_recipes"));
+            add("antimatter.tooltip.pressure", translations.get("antimatter.tooltip.pressure"));
+            add("antimatter.tooltip.capacity", translations.get("antimatter.tooltip.capacity"));
+            add("antimatter.tooltip.max_temperature", translations.get("antimatter.tooltip.max_temperature"));
+            add("antimatter.tooltip.energy", translations.get("antimatter.tooltip.energy"));
+
+
             AntimatterAPI.all(Machine.class, domain).forEach(i -> {
                 Collection<Tier> tiers = i.getTiers();
                 if (i.has(MachineFlag.BASIC)) {
