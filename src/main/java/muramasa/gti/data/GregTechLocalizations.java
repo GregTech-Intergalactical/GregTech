@@ -10,6 +10,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialItem;
+import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.ore.BlockOreStone;
 import muramasa.antimatter.pipe.BlockPipe;
 import muramasa.antimatter.tool.IAntimatterTool;
@@ -26,6 +27,7 @@ import java.io.*;
 import com.google.gson.*;
 import java.util.stream.Collectors;
 
+import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.util.Utils.*;
 
 public class GregTechLocalizations {
@@ -237,6 +239,46 @@ public class GregTechLocalizations {
                     add(i, translations.get(i.getId()));
                 else
                     add(i, getLocalizedType(i).replaceAll("Stone ", ""));
+            });
+
+            AntimatterAPI.all(MaterialItem.class).forEach(item -> {
+                MaterialType<?> type = item.getType();
+                if (translations.containsKey(item.getId())) {
+                    add(item, translations.get(item.getId()));
+                }
+                else if (type == ROCK) {
+                    if (translations.containsKey(getLocalizedType(item.getMaterial())))
+                        add(item, String.join("", translations.get(getLocalizedType(item.getMaterial()) + "_1"), translations.get("bearing_rock")));
+                    else
+                        add(item, String.join("", getLocalizedType(item.getMaterial()), " Bearing Rock"));
+                }
+                else if (type == CRUSHED){
+                    if (translations.containsKey(getLocalizedType(item.getMaterial())))
+                        add(item, String.join("", translations.get("Crushed"), translations.get(getLocalizedType(item.getMaterial())), translations.get("aya"), translations.get("Ore")));
+                    else
+                        add(item, String.join("", "Crushed ", getLocalizedType(item.getMaterial()), " Ore"));
+                }
+                else if (type == CRUSHED_PURIFIED) {
+                    if (translations.containsKey(getLocalizedType(item.getMaterial())))
+                        add(item, String.join("", translations.get("Purified_Crushed"), translations.get(getLocalizedType(item.getMaterial())), translations.get("aya"), translations.get("Ore")));
+                    else
+                        add(item, String.join("", "Purified Crushed ", getLocalizedType(item.getMaterial()), " Ore"));
+                }
+                else if (type == CRUSHED_CENTRIFUGED) {
+                    if (translations.containsKey(getLocalizedType(item.getMaterial())))
+                        add(item, String.join("", translations.get("Centrifuged_Crushed"), translations.get(getLocalizedType(item.getMaterial())), translations.get("aya"), translations.get("Ore")));
+                    else
+                        add(item, String.join("", "Centrifuged Crushed ", getLocalizedType(item.getMaterial()), " Ore"));
+                }
+                else {
+                    String[] split = getLocalizedMaterialType(type);
+                    if (split.length > 1) {
+                        if (type.isSplitName())
+                            add(item, String.join("", split[0], " ", getLocalizedType(item.getMaterial()), " ", split[1]));
+                        else
+                            add(item, String.join("", getLocalizedType(item.getMaterial()), " ", split[1], " ", split[0]));
+                    } else add(item, String.join("", getLocalizedType(item.getMaterial()), " ", split[0]));
+                }
             });
 
 
