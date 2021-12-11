@@ -7,18 +7,23 @@ import muramasa.antimatter.registration.IAntimatterObject;
 import muramasa.antimatter.registration.IModelProvider;
 import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.antimatter.texture.Texture;
-import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
-import net.minecraft.state.StateContainer;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.server.level.ServerLevel;
 
 import java.util.Random;
 
-public class BlockRubberSapling extends SaplingBlock implements IGrowable, IAntimatterObject, IModelProvider, ITextureProvider {
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+
+public class BlockRubberSapling extends SaplingBlock implements BonemealableBlock, IAntimatterObject, IModelProvider, ITextureProvider {
 
     protected String domain, id;
 
@@ -41,7 +46,7 @@ public class BlockRubberSapling extends SaplingBlock implements IGrowable, IAnti
     }
 
     @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(STAGE);
     }
 
@@ -56,13 +61,13 @@ public class BlockRubberSapling extends SaplingBlock implements IGrowable, IAnti
     }
 
     @Override
-    public void onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
+    public void onItemModelBuild(ItemLike item, AntimatterItemModelProvider prov) {
         prov.getBuilder(item).parent(prov.getExistingFile(new ResourceLocation("item/generated"))).texture("layer0", getTextures()[0]);
     }
 
     @Override
-    public void advanceTree(ServerWorld world, BlockPos pos, BlockState state, Random random) {
-        if (world.getBiome(pos).getBiomeCategory() != Biome.Category.NETHER && world.getBiome(pos).getBiomeCategory() != Biome.Category.THEEND)
+    public void advanceTree(ServerLevel world, BlockPos pos, BlockState state, Random random) {
+        if (world.getBiome(pos).getBiomeCategory() != Biome.BiomeCategory.NETHER && world.getBiome(pos).getBiomeCategory() != Biome.BiomeCategory.THEEND)
             super.advanceTree(world, pos, state, random);
     }
 }

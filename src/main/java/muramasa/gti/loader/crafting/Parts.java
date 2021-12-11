@@ -10,17 +10,13 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gti.GregTech;
-import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.Materials;
-import net.minecraft.block.Block;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.tags.ITag;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.tags.Tag;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
@@ -33,7 +29,7 @@ import static muramasa.gti.data.RecipeMaps.ASSEMBLING;
 import static muramasa.gti.data.TierMaps.*;
 
 public class Parts {
-  public static void loadRecipes(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {
+  public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
     Arrays.stream(Tier.getStandard()).forEach(t -> {
       Material magnet = (t == Tier.ULV || t == Tier.LV) ? IronMagnetic
           : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
@@ -42,8 +38,8 @@ public class Parts {
       Material mat = TIER_MATERIALS.get(t);
       // Item smallGear = GEAR_SMALL.get(mat);
       Item smallGear = GEAR.get(mat);
-      ITag.INamedTag<Item> plate = PLATE.getMaterialTag(mat);
-      ITag.INamedTag<Item> rod = ROD.getMaterialTag(mat);
+      Tag.Named<Item> plate = PLATE.getMaterialTag(mat);
+      Tag.Named<Item> rod = ROD.getMaterialTag(mat);
       Item circuit = TIER_CIRCUITS.getOrDefault(t, CircuitBasic);
 
       Item motor = GregTech.get(ItemBasic.class, "motor_" + t.getId());

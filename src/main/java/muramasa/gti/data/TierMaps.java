@@ -13,9 +13,9 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gti.Ref;
 import muramasa.gti.items.ItemIntCircuit;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -108,7 +108,7 @@ public class TierMaps {
         {
             ImmutableMap.Builder<Tier, PipeItemBlock> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, WIRE_LEAD.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.LV, WIRE_COPPER.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.LV, WIRE_TIN.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.MV, WIRE_COPPER.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.HV, WIRE_GOLD.getBlockItem(PipeSize.TINY));
             builder.put(Tier.EV, WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.SMALL));

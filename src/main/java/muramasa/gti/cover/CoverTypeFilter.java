@@ -8,9 +8,9 @@ import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.texture.Texture;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 
 public class CoverTypeFilter extends BaseCover {
 

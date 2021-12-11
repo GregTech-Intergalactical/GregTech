@@ -7,9 +7,9 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.ore.BlockOre;
 import muramasa.gti.Ref;
 import muramasa.gti.data.Materials;
-import net.minecraft.block.Block;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 

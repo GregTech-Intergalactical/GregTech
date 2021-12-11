@@ -4,7 +4,7 @@ import muramasa.antimatter.Data;
 import muramasa.gti.Ref;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Consumer;
 

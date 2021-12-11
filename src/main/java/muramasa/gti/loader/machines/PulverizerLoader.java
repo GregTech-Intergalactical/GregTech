@@ -3,8 +3,8 @@ package muramasa.gti.loader.machines;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.RecipeMaps.PULVERIZING;

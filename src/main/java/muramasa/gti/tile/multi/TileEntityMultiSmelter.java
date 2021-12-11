@@ -3,7 +3,8 @@ package muramasa.gti.tile.multi;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.gti.block.BlockCoil;
-import net.minecraft.block.BlockState;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
@@ -11,8 +12,8 @@ public class TileEntityMultiSmelter extends TileEntityMultiMachine<TileEntityMul
 
     private int level = 1, discount = 1;
 
-    public TileEntityMultiSmelter(Machine type) {
-        super(type);
+    public TileEntityMultiSmelter(Machine type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
     }
 
 //    @Override

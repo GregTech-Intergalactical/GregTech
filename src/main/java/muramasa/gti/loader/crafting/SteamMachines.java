@@ -6,12 +6,10 @@ import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.util.TagUtils;
-import muramasa.gti.data.GregTechData;
 import muramasa.gti.data.Machines;
 import muramasa.gti.data.Materials;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.item.Items;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.world.item.Items;
 
 import java.util.function.Consumer;
 
@@ -20,7 +18,7 @@ import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.Bronze;
 
 public class SteamMachines {
-    public static void loadRecipes(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {
+    public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
         Object bronzePlate = PLATE.get(Bronze);
         Object steelPlate = PLATE.get(Materials.Steel);
         Object wrench = WRENCH.getTag();

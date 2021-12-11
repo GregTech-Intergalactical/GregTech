@@ -5,12 +5,8 @@ import muramasa.antimatter.material.MaterialTypeFluid;
 import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gti.data.Materials;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.tags.ITag;
-import net.minecraft.tags.ItemTags;
-import net.minecraftforge.fluids.FluidStack;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import java.util.List;
 import java.util.stream.Collectors;

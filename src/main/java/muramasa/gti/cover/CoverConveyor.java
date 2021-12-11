@@ -6,15 +6,15 @@ import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -63,14 +63,14 @@ public class CoverConveyor extends BaseCover {
         BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
         //Drop into world.
         if (state == Blocks.AIR.defaultBlockState()) {
-            World world = handler.getTile().getLevel();
+            Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
-            ItemStack stack = handler.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).map(t -> Utils.extractAny(t)).orElse(ItemStack.EMPTY);
+            ItemStack stack = handler.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
             world.addFreshEntity(new ItemEntity(world, pos.getX() + side.getStepX(), pos.getY() + side.getStepY(), pos.getZ() + side.getStepZ(), stack));
         }
-        if (!(state.hasTileEntity())) return;
-        TileEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
+        if (!(state.hasBlockEntity())) return;
+        BlockEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
         if (adjTile == null) {
             return;
         }

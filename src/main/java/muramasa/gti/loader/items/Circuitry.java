@@ -8,8 +8,7 @@ import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gti.data.GregTechData;
 import muramasa.gti.data.Materials;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.Data.BOLT;

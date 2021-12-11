@@ -14,9 +14,9 @@ import muramasa.gti.GregTech;
 import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;
 import muramasa.gti.data.TierMaps;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 import java.util.Arrays;
 import java.util.function.BiConsumer;
@@ -29,7 +29,7 @@ import static muramasa.gti.data.TierMaps.TIER_CIRCUITS;
 import static muramasa.gti.data.TierMaps.WIRE_GETTER;
 
 public class Machines {
-    public static void loadRecipes(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {
+    public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
         Arrays.stream(Tier.getAllElectric()).forEach(tier -> {
             Item motor = GregTech.get(ItemBasic.class, "motor_"+tier.getId());
             if (motor == null) return;

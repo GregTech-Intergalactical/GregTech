@@ -1,14 +1,11 @@
 package muramasa.gti.data;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Data;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.BlockStateElement;
 import muramasa.antimatter.structure.FakeTileElement;
-import muramasa.antimatter.structure.PatternBuilder;
 import muramasa.gti.block.BlockCoil;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.Direction;
+import net.minecraft.world.level.block.Blocks;
 
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Machines.*;
@@ -16,14 +13,20 @@ import static muramasa.gti.data.Machines.*;
 public class Structures {
 
     /** Special Case Elements **/
-    public static BlockStateElement AIR_OR_LAVA = new BlockStateElement("air_or_lava", (w, p, s) -> s.getBlock().isAir(s, w, p) || s.getBlock() == Blocks.LAVA/* || s.getBlock() == Blocks.FLOWING_LAVA*/);
+    public static BlockStateElement AIR_OR_LAVA = new BlockStateElement("air_or_lava", (w, p, s) -> s.isAir() || s.getBlock() == Blocks.LAVA/* || s.getBlock() == Blocks.FLOWING_LAVA*/);
     public static final FakeTileElement FAKE_CASING = new FakeTileElement(CASING_FIRE_BRICK);
     public static void init() {
         COKE_OVEN.setStructure(b -> b
             .of("CCC", "CCC", "CCC").of("CCC", "CAM", "CCC").of(0)
             .at("C", FAKE_CASING).at("M", COKE_OVEN)
             .build().offset(2, -1));//.min(25, FAKE_CASING)
-
+        CRACKING_UNIT.setStructure(b -> b
+                .of("CCC", "BBB", "CCC", "BBB", "CCC").of("HHH","BAB", "HAM","BAB", "HHH").of("CCC", "BBB", "CCC", "BBB", "CCC")
+                .at("C", CASING_STAINLESS_STEEL).at("M", CRACKING_UNIT)
+                .at("B", "coil", AntimatterAPI.all(BlockCoil.class))
+                .at("H", CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
+                .build().offset(2, -1)
+        );
         PRIMITIVE_BLAST_FURNACE.setStructure(b -> b
             .of("CCC", "CCC", "CCC").of("CCC", "CBM", "CCC").of("CCC", "CBC", "CCC").of("CCC", "CAC", "CCC")
             .at("C", CASING_FIRE_BRICK).at("B", AIR_OR_LAVA).at("M", PRIMITIVE_BLAST_FURNACE)

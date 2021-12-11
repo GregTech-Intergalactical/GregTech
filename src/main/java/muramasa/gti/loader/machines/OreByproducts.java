@@ -3,7 +3,7 @@ package muramasa.gti.loader.machines;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 

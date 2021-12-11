@@ -4,8 +4,8 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.RecipeMaps.WIRE_MILLING;

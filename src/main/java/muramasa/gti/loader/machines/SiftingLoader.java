@@ -3,7 +3,7 @@ package muramasa.gti.loader.machines;
 import muramasa.antimatter.recipe.RecipeHelper;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.RecipeMaps.SIFTING;

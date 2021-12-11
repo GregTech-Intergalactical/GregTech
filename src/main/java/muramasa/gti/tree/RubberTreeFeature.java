@@ -2,17 +2,17 @@ package muramasa.gti.tree;
 
 import muramasa.antimatter.worldgen.AntimatterWorldGenerator;
 import muramasa.gti.Ref;
-import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.TreeFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.TreeFeature;
 
 public class RubberTreeFeature extends TreeFeature {
 
     public RubberTreeFeature() {
-        super(BaseTreeFeatureConfig.CODEC);
+        super(TreeConfiguration.CODEC);
     }
     
     public void init() {
-        AntimatterWorldGenerator.register(RubberTreeWorldGen::onEvent, "rubber_tree", Ref.ID, RubberTreeWorldGen.getValidBiomesStatic());
+      //  AntimatterWorldGenerator.register(RubberTreeWorldGen::onEvent, "rubber_tree", Ref.ID, RubberTreeWorldGen.getValidBiomesStatic());
     }
 
     

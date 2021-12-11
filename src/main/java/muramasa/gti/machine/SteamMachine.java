@@ -19,7 +19,7 @@ public class SteamMachine extends Machine<SteamMachine> {
 
     public SteamMachine(String domain, String id) {
         super(domain, id);
-        setTile(() -> new TileEntitySteamMachine<>(this));
+        setTile(TileEntitySteamMachine::new);
         addFlags(BASIC, STEAM, COVERABLE);
         setGUI(Data.BASIC_MENU_HANDLER);
         setGuiTiers(ImmutableMap.<Tier, Tier>builder().put(BRONZE, BRONZE).put(STEEL, STEEL));

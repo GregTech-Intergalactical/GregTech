@@ -31,7 +31,8 @@ public class RecipeMaps {
             new RecipeMap<>(Ref.ID, "coal_boilers", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SMALL_BOILERS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "small_boilers", new RecipeBuilder()));
-
+    public static RecipeMap<RecipeBuilder> CRACKING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(Ref.ID, "cracking", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
     public static RecipeMap<RecipeBuilder> ALLOY_SMELTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "alloy_smelting", new AlloySmeltingBuilder()));
     public static RecipeMap<RecipeBuilder> ASSEMBLING = AntimatterAPI.register(RecipeMap.class,

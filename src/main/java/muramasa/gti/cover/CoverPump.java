@@ -6,9 +6,9 @@ import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -49,7 +49,7 @@ public class CoverPump extends BaseCover {
     public void onUpdate() {
         //Pump acts on each tick.
         if (handler.getTile().getLevel().isClientSide) return;
-        TileEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
+        BlockEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
         if (adjTile == null) return;
         LazyOptional<IFluidHandler> handler = adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
         if (!handler.isPresent()) return;

@@ -1,15 +1,10 @@
 package muramasa.gti.block;
 
-import muramasa.antimatter.Data;
 import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.texture.Texture;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraftforge.common.ToolType;
-
-import javax.annotation.Nullable;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
 
 public class BlockCoil extends BlockBasic {
 
@@ -26,12 +21,6 @@ public class BlockCoil extends BlockBasic {
 
     public int getHeatCapacity() {
         return heatCapacity;
-    }
-
-    @Nullable
-    @Override
-    public ToolType getHarvestTool(BlockState state) {
-        return Data.WRENCH.getToolType();
     }
 
     @Override

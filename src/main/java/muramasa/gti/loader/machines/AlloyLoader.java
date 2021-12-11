@@ -2,7 +2,7 @@ package muramasa.gti.loader.machines;
 
 import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 

@@ -6,11 +6,10 @@ import muramasa.antimatter.datagen.builder.AntimatterBlockModelBuilder;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.dynamic.BlockDynamic;
 import muramasa.antimatter.texture.Texture;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
 
 import javax.annotation.Nullable;
 
@@ -23,12 +22,6 @@ public class BlockCasing extends BlockDynamic {
 
     public BlockCasing(String domain, String id) {
         this(domain, id, Block.Properties.of(Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL));
-    }
-
-    @Nullable
-    @Override
-    public ToolType getHarvestTool(BlockState state) {
-        return Data.WRENCH.getToolType();
     }
 
     @Override

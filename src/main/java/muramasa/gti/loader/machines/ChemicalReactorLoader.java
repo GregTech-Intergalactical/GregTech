@@ -1,23 +1,13 @@
 package muramasa.gti.loader.machines;
 
-import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.pipe.types.Wire;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import net.minecraft.block.Block;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.item.Items;
 
-import java.util.function.Consumer;
+import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.item.ItemFluidCell;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.Data.SCREW;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.RecipeMaps.CHEMICAL_REACTING;
-import static muramasa.gti.data.TierMaps.TIER_CIRCUITS;
 
 public class ChemicalReactorLoader {
     public static void init() {
@@ -47,5 +37,5 @@ public class ChemicalReactorLoader {
     }
 
     private static void plastics() {
-        EMPTY_CELLS.forEach(cell -> CHEMICAL_REACTING.RB().ii(RecipeIngredient.of(cell.fill(Oxygen.getGas()))).fi(Ethylene.getGas(144)).fo(Polyethylene.getLiquid(144)).add(8*20, 30));}
+        AntimatterAPI.all(ItemFluidCell.class, cell -> CHEMICAL_REACTING.RB().ii(RecipeIngredient.of(cell.fill(Oxygen.getGas()))).fi(Ethylene.getGas(144)).fo(Polyethylene.getLiquid(144)).add(8*20, 30));}
 }

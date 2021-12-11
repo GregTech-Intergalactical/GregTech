@@ -1,24 +1,24 @@
 package muramasa.gti.gui;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.screen.ScreenMachine;
 import muramasa.antimatter.integration.jei.AntimatterJEIPlugin;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.gti.tile.single.TileEntityCoalBoiler;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.ModList;
 
 public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> extends ScreenMachine<TileEntityCoalBoiler, T> {
-    public ScreenCoalBoiler(T container, PlayerInventory inv, ITextComponent name) {
+    public ScreenCoalBoiler(T container, Inventory inv, Component name) {
         super(container, inv, name);
     }
 
     @Override
-    protected void renderLabels(MatrixStack stack, int mouseX, int mouseY) {
+    protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
         drawTitle(stack, mouseX, mouseY);
         if (container.getTile().has(MachineFlag.RECIPE)) {
             drawTooltipInArea(stack, "Show Recipes", mouseX, mouseY, 115, 43, 18, 18);
@@ -46,7 +46,7 @@ public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> 
     }
 
     @Override
-    protected void renderBg(MatrixStack stack, float partialTicks, int mouseX, int mouseY) {
+    protected void renderBg(PoseStack stack, float partialTicks, int mouseX, int mouseY) {
         super.renderBg(stack, partialTicks, mouseX, mouseY);
         drawTitle(stack, mouseX, mouseY);
         ResourceLocation gui = container.source().handler.getGuiTexture();
