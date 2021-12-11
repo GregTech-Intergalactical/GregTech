@@ -146,7 +146,7 @@ public class WorldGenLoader {
             new WorldGenVeinLayer("sapphire", 10, 40, 60, 3, 16, Almandine, Pyrope, BlueSapphire, GreenSapphire, Level.OVERWORLD);
             new WorldGenVeinLayer("manganese", 20, 30, 20, 3, 16, Grossular, Spessartine, Pyrolusite, Tantalite, Level.OVERWORLD, Level.END);
             new WorldGenVeinLayer("quartz", 40, 80, 60, 3, 16, Quartzite, Barite, Barite/*CertusQuartz*/, Barite/*CertusQuartz*/, Level.OVERWORLD);
-            new WorldGenVeinLayer("diamond", 5, 20, 40, 2, 16, Graphite, Graphite, Diamond, Coal, Level.OVERWORLD);
+            new WorldGenVeinLayer("diamond", -55, -30, 40, 2, 16, Graphite, Graphite, Diamond, Coal, Level.OVERWORLD);
             new WorldGenVeinLayer("olivine", 10, 40, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite, Level.OVERWORLD, Level.END);
             //new WorldGenLayer("apatite", 40, 60, 60, 3, 16, Apatite, Apatite, TricalciumPhosphate, Pyrochlore);
             new WorldGenVeinLayer("gelena", 30, 60, 40, 5, 16, Galena, Galena, Silver, Lead, Level.OVERWORLD);
