@@ -80,7 +80,7 @@ public class Machines {
     public static MultiMachine LARGE_TURBINE = new MultiMachine(Ref.ID, "large_turbine").setMap(STEAM_FUELS).setTiers(HV, EV, IV, UV).addFlags(GUI, FLUID, ENERGY, GENERATOR).setTile(m -> () -> new TileEntityLargeTurbine(m));
     public static MultiMachine HEAT_EXCHANGER = new MultiMachine(Ref.ID, "heat_exchanger").setTiers(EV).addFlags(GUI, FLUID, ENERGY).setTile(m -> () -> new TileEntityHeatExchanger(m));
     public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(Ref.ID, "oil_drilling_rig").setTiers(EV, IV, LUV, ZPM).addFlags(GUI, FLUID, ENERGY).setTile(m -> () -> new TileEntityOilDrillingRig(m));
-    public static MultiMachine OIL_CRACKING_UNIT = new MultiMachine(Ref.ID, "oil_cracking_unit").setTiers(HV).addFlags(GUI, FLUID, ENERGY).setTile(m -> () -> new TileEntityOilCrackingUnit(m));
+    public static MultiMachine CRACKING_UNIT = new MultiMachine(Ref.ID, "cracking_unit").setMap(CRACKING).setTiers(HV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(m -> () -> new TileEntityOilCrackingUnit(m));
     public static MultiMachine ADVANCED_MINER = new MultiMachine(Ref.ID, "advanced_miner").setTiers(LV).addFlags(GUI, ITEM, ENERGY).setTile(m -> () -> new TileEntityAdvancedMiner(m));
     public static MultiMachine PYROLYSIS_OVEN = new MultiMachine(Ref.ID, "pyrolysis_oven").setTiers(MV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(m -> () -> new TileEntityPyrolysisOven(m));
     public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(Ref.ID, "combustion_engine").setMap(COMBUSTION_FUELS).setTiers(EV).addFlags(GUI, FLUID, ENERGY).setTile(m -> () -> new TileEntityCombustionEngine(m)).custom();

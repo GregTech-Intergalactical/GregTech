@@ -410,6 +410,9 @@ public class Materials {
     public static Material Toluene = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "toluene", 0x501d05, NONE)).asFluid(328)
             .mats(of(Carbon, 7, Hydrogen, 8));
+    public static Material Hydrogenperoxide = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydrogenperoxide", 0x96c3f3, NONE)).asFluid()
+            .mats(of(Hydrogen,2, Oxygen, 2));
     public static Material SulfuricNaphtha = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sulfuric_naphtha", 0xffff00, NONE)).asFluid(32);
     public static Material Naphtha = AntimatterAPI
@@ -445,6 +448,30 @@ public class Materials {
     public static Material Ethanol = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "ethanol", 0xff8000, NONE)).asFluid(148)
             .mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1));
+    public static Material Ethenol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "ethenol", 0xff8000, NONE)).asFluid(120)
+            .mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
+    public static Material Ethanediol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "ethanediol", 0xff8000, NONE)).asFluid(216)
+            .mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 2));
+    public static Material Propanol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "propanol", 0xff8000, NONE)).asFluid(196)
+            .mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 1));
+    public static Material Propanediol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "propanediol", 0xff8000, NONE)).asFluid(256)
+            .mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 2));
+    public static Material Propenol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "propenol", 0xff8000, NONE)).asFluid(196)
+            .mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 1));
+    public static Material Butanol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "butanol", 0xff8000, NONE)).asFluid(166)
+            .mats(of(Carbon, 4, Hydrogen, 10, Oxygen, 1));
+    public static Material Butenol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "butenol", 0xff8000, NONE)).asFluid(186)
+            .mats(of(Carbon, 4, Hydrogen, 8, Oxygen, 1));
+    public static Material Butanediol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "butanediol", 0xff8000, NONE)).asFluid(286)
+            .mats(of(Carbon, 4, Hydrogen, 10, Oxygen, 2));
     public static Material Creosote = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "creosote", 0x804000, NONE)).asFluid(8);
     public static Material FishOil = AntimatterAPI
@@ -1073,6 +1100,7 @@ public class Materials {
             new Material(Ref.ID, "plasma_containment", 0xffff00, NONE));
 
     static {
+        CRACKABLE.add(Ethane,Ethylene,Propane,Propene,Butane,Butene,Butadiene);
         CHEMBATH_MERCURY.add(Chalcopyrite,Gold);
         CHEMBATH_MERCURY.add(Gold,Nickel);
         CHEMBATH_MERCURY.add(Silver,Sulfur);

@@ -139,6 +139,8 @@ public class RecipeMaps {
             new RecipeMap<>(Ref.ID, "fusion", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
     public static RecipeMap<RecipeBuilder> DISTILLATION = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "distillation", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
+    public static RecipeMap<RecipeBuilder> CRACKING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(Ref.ID, "cracking", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
 
     static {
         ORE_BYPRODUCTS.setGuiData(Guis.ORE_BYPRODUCTS);

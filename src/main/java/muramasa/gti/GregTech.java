@@ -22,10 +22,7 @@ import muramasa.gti.loader.items.Circuitry;
 import muramasa.gti.loader.machines.*;
 import muramasa.gti.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gti.loader.machines.generator.Fuels;
-import muramasa.gti.loader.multi.Blasting;
-import muramasa.gti.loader.multi.Coking;
-import muramasa.gti.loader.multi.DistillationTower;
-import muramasa.gti.loader.multi.VacFreezer;
+import muramasa.gti.loader.multi.*;
 import muramasa.gti.proxy.ClientHandler;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -126,6 +123,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("fermenting", Fermenter::init);
         loader.accept("pressing", FormingPress::init);
         loader.accept("chemical_bathing", ChemicalBath::init);
+        loader.accept("cracking", CrackingUnit::init);
     }
 
     private void clientSetup(final FMLClientSetupEvent e) {

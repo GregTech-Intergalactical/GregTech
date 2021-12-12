@@ -20,10 +20,10 @@ public class Structures {
     public static final FakeTileElement FAKE_CASING = new FakeTileElement(CASING_FIRE_BRICK);
     public static void init() {
         COKE_OVEN.setStructure(b -> b
-            .of("CCC", "CCC", "CCC").of("CCC", "CAM", "CCC").of(0)
+            .of("CCC", "CCC", "CCC").of("CCC", "CAM", "CCC").of("CCC", "CCC", "CCC")
             .at("C", FAKE_CASING).at("M", COKE_OVEN)
-            .build().offset(2, -1));//.min(25, FAKE_CASING)
-
+            .build().offset(2, -1)
+        );
         PRIMITIVE_BLAST_FURNACE.setStructure(b -> b
             .of("CCC", "CCC", "CCC").of("CCC", "CBM", "CCC").of("CCC", "CBC", "CCC").of("CCC", "CAC", "CCC")
             .at("C", CASING_FIRE_BRICK).at("B", AIR_OR_LAVA).at("M", PRIMITIVE_BLAST_FURNACE)
@@ -34,13 +34,19 @@ public class Structures {
             .at("C", CASING_BRONZE_PLATED_BRICK).at("B", AIR_OR_LAVA).at("M", BRONZE_BLAST_FURNACE)
             .build().offset(2, -1).min(32, CASING_BRONZE_PLATED_BRICK)
         );
-        BLAST_FURNACE.setStructure(b -> b
-            .of("CCC", "CCM", "CCC").of("BBB", "BAB", "BBB").of(1).of("CCC", "CFC", "CCC")
-            .at("F",HATCH_MUFFLER)
-            .at("M", BLAST_FURNACE).at("B", "coil", AntimatterAPI.all(BlockCoil.class)).at("C", CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
-            .build().offset(2, 0).min(12, CASING_HEAT_PROOF).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
+        CRACKING_UNIT.setStructure(b -> b
+                .of("CCC", "BBB", "CCC", "BBB", "CCC").of("HHH","BAB", "HAM","BAB", "HHH").of("CCC", "BBB", "CCC", "BBB", "CCC")
+                .at("C", CASING_STAINLESS_STEEL).at("M", CRACKING_UNIT)
+                .at("B", "coil", AntimatterAPI.all(BlockCoil.class))
+                .at("H", CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
+                .build().offset(2, -1)
         );
-        
+        BLAST_FURNACE.setStructure(b -> b
+                .of("CCC", "CCM", "CCC").of("BBB", "BAB", "BBB").of(1).of("CCC", "CFC", "CCC")
+                .at("F",HATCH_MUFFLER)
+                .at("M", BLAST_FURNACE).at("B", "coil", AntimatterAPI.all(BlockCoil.class)).at("C", CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
+                .build().offset(2, 0).min(12, CASING_HEAT_PROOF).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
+        );
         MULTI_SMELTER.setStructure(b -> b
             .of("CCC", "CCM", "CCC").of("BBB", "BAB", "BBB").of("CCC", "CCC", "CCC")
             .at("M", MULTI_SMELTER).at("B", "coil", AntimatterAPI.all(BlockCoil.class)).at("C", CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)

@@ -1,6 +1,8 @@
 package muramasa.gti.data;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.structure.PatternBuilder;
+import muramasa.gti.block.BlockCoil;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Direction;
 
@@ -39,12 +41,25 @@ public class StructureInfo {
                 .description(COKE_OVEN.getDisplayName(COKE_OVEN.getFirstTier()));
         COKE_OVEN.setStructurePattern(builder.build());
         builder = new PatternBuilder()
+                .of("CCC", "BBB", "CCC", "BBB", "CCC").of("FIF","BAB", "EAM","BAB", "OOO").of("CCC", "BBB", "CCC", "BBB", "CCC")
+                .at("M", CRACKING_UNIT, CRACKING_UNIT.getFirstTier(), Direction.SOUTH)
+                .at("C", CASING_STAINLESS_STEEL.defaultBlockState())
+                .at("I",HATCH_ITEM_I, HATCH_ITEM_I.getFirstTier(), Direction.EAST)
+                .at("F",HATCH_FLUID_I, HATCH_FLUID_I.getFirstTier(), Direction.EAST)
+                .at("O",HATCH_FLUID_O, HATCH_FLUID_O.getFirstTier(), Direction.WEST)
+                .at("E",HATCH_ENERGY, HATCH_ENERGY.getFirstTier(), Direction.NORTH)
+                .description(CRACKING_UNIT.getDisplayName(CRACKING_UNIT.getFirstTier()));
+        CRACKING_UNIT.setStructurePattern(
+                builder.at("B", COIL_CUPRONICKEL.defaultBlockState()).description(COIL_CUPRONICKEL.getDescriptionId()).build(),
+                builder.at("B", COIL_HSSG.defaultBlockState()).description(COIL_HSSG.getDescriptionId()).build(),
+                builder.at("B", COIL_KANTHAL.defaultBlockState()).description(COIL_KANTHAL.getDescriptionId()).build(),
+                builder.at("B", COIL_NAQUADAH.defaultBlockState()).description(COIL_NAQUADAH.getDescriptionId()).build());
+        builder = new PatternBuilder()
                 .of("CCC", "CCC", "CCC").of("CCC", "CAM", "CCC").of("CCC", "CAC", "CCC").of(2)
                 .at("M", PRIMITIVE_BLAST_FURNACE, PRIMITIVE_BLAST_FURNACE.getFirstTier(), Direction.SOUTH)
                 .at("C", CASING_FIRE_BRICK.defaultBlockState());
         PRIMITIVE_BLAST_FURNACE.setStructurePattern(builder
                 .at("A", Blocks.AIR.defaultBlockState()).description(PRIMITIVE_BLAST_FURNACE.getDisplayName(PRIMITIVE_BLAST_FURNACE.getFirstTier())).build());
-
         builder = new PatternBuilder()
                 .of("CCC", "CCC", "CCC").of("CCI", "EAM", "CCO").of("CCC", "CCC", "CCC")
                 .at("M", VACUUM_FREEZER, VACUUM_FREEZER.getFirstTier(), Direction.SOUTH)
