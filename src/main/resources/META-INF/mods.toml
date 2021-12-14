@@ -1,11 +1,10 @@
 modLoader="javafml"
-#loaderVersion="[${loader_version},)"
 license="LGPLv3"
 loaderVersion="[31,)"
 issueTrackerURL="https://github.com/GregTech-Intergalactical/GregTech/issues"
 
 [[mods]]
-modId="gti"
+modId="gregtech"
 version="${file.jarVersion}"
 displayName="GregTech Intergalactical"
 #updateJSONURL="http://myurl.me/"
@@ -14,21 +13,21 @@ displayURL="https://github.com/GregTech-Intergalactical/GregTech"
 credits="GregoriusTechneticies for his previous versions of GregTech. And the current GregTech community for suggestions and ideas."
 authors="Muramasa, Rongmario"
 description='''The Approved Continuation. Rewrite. And Re-envisioning of GregTech 5'''
-[[dependencies.gti]]
+[[dependencies.gregtech]]
     modId="antimatter"
     mandatory=true
     versionRange="[0.0.4,)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.gti]]
+[[dependencies.gregtech]]
     modId="forge"
     mandatory=true
     versionRange="[36.1.0,)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.gti]]
+[[dependencies.gregtech]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5,)"
+    versionRange="[1.18,)"
     ordering="NONE"
     side="BOTH"

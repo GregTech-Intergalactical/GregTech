@@ -85,7 +85,7 @@ String getenv() {
 
     String resourcePath = vscode ? 'bin/main' : 'build/resources/main'
     String codePath = vscode ? 'bin/main' : 'build/classes/java/main'
-    String s = "gti%%${project.file(resourcePath)}" + getPathSeparator() + "gti%%${project.file(codePath)}"
+    String s = "gregtech%%${project.file(resourcePath)}" + getPathSeparator() + "gregtech%%${project.file(codePath)}"
     if (hasAntimatter) {
         s += getPathSeparator() + "antimatter%%${project(':AntimatterAPI').file(resourcePath)}" + getPathSeparator() + "antimatter%%${project(':AntimatterAPI').file(codePath)}"
     }
@@ -133,7 +133,7 @@ minecraft {
             }
             arg "-mixin.config=antimatter.mixins.json"
             mods {
-                gti {
+                gregtech {
                     source sourceSets.main
                 }
                 if (hasTesseract) {
@@ -164,7 +164,7 @@ minecraft {
             arg "-mixin.config=antimatter.mixins.json"
             arg "-nogui"
             mods {
-                gti {
+                gregtech {
                     source sourceSets.main
                 }
                 if (hasTesseract) {
@@ -193,12 +193,12 @@ minecraft {
             //    jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-            args '--mod', 'gti', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
+            args '--mod', 'gregtech', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
             if (isWorkspace) {
                 environment('MOD_CLASSES', this.getenv())
             }
             mods {
-                gti {
+                gregtech {
                     source sourceSets.main
                 }
                 if (hasTesseract) {

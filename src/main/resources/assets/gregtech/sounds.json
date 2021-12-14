@@ -1,0 +1,8 @@
+{
+  "wrench": {
+    "sounds": [ "gregtech:wrench" ]
+  },
+  "drill": {
+    "sounds": [ "gregtech:drill" ]
+  }
+}
