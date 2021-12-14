@@ -68,7 +68,7 @@ public class BlockTurbineCasing extends BlockCasingMachine {
             ct[1] = c;
         }
         ct[0] = conf[0];
-        return config.set(ct);
+        return config.set(pos, ct);
     }
 
     protected Texture[] turbineTextures() {

@@ -42,14 +42,14 @@ public class GregTechData {
     public static void init(Dist side) {
         if (side == Dist.CLIENT)
             RecipeMaps.clientMaps();
-        AntimatterAPI.all(MaterialType.class, t -> {
+        /*AntimatterAPI.all(MaterialType.class, t -> {
             if (t instanceof MaterialTypeFluid) return;
             if (t.getClass() == MaterialType.class) return;
             //TODO: add better check
             if (t == Data.ORE_STONE) return;
             CoverFactory.builder((a,b,c,d) -> new CoverTypeFilter(a,b,c,d,t)).addTextures(Data.NULL.getSet().getTextures(t)).item((a,b) -> {
             return new ItemCover(a.getDomain(), a.getId()).tip("Filters for " + t.getId()).texture(Data.NULL.getSet().getTextures(t));}).build(Ref.ID, "cover_type_" + t.getId());
-        });
+        });*/
     }
 
     public static final CoverFactory COVER_CONVEYOR = CoverFactory.builder(CoverConveyor::new).gui().item((a,b) ->
