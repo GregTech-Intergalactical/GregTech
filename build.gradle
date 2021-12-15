@@ -46,6 +46,14 @@ group = 'com.github.gregtech-intergalactical' // http://maven.apache.org/guides/
 archivesBaseName = 'GregTech-Intergalactical'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
+def isCI = System.getenv("GITHUB_ACTION")
+def isRELEASE = System.getenv("GITHUB_RELEASE")
+def gitHash() {
+    String hash = System.getenv("GITHUB_SHA")
+    if (hash != null) return hash.substring(0,8)
+    return ""
+}
+
 boolean hasTesseract = findProject(':TesseractAPI') != null
 
 if (hasTesseract) {
@@ -59,8 +67,9 @@ if (hasTesseract) {
 }
 
 boolean isWorkspace = hasTesseract || hasAntimatter
-
-//println(sourceSets.main.output.destinationDirectory)
+if (isCI) {
+    version = version + "-" + gitHash()
+}
 
 //Print out JVM information so that we know what version is running. Extreamly useful for people to know when helping you.
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
@@ -244,6 +253,10 @@ dependencies {
     //runtimeOnly fg.deobf("curse.maven:top-245211:${top_file}")
 }
 
+if (isCI) {
+    jar.finalizedBy('reobfJar')
+    println("In CI mode")
+}
 
 jar {
     zip64 true
@@ -273,8 +286,17 @@ publishing {
         }
     }
     repositories {
-        maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
+        if (isCI && isRELEASE) {
+            maven {
+                name = "GitHubPackages"
+                url = "https://maven.pkg.github.com/GregTech-Intergalactical/GregTech"
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+            }
+        } else {
+            maven { url "file:///${project.projectDir}/mcmodsrepo"}
         }
     }
 }
