@@ -1,4 +1,4 @@
-package muramasa.gregtech.tree;
+package muramasa.gregtech.block.tree;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;

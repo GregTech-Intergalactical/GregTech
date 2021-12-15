@@ -1,4 +1,4 @@
-package muramasa.gregtech.tree;
+package muramasa.gregtech.block.tree;
 
 import muramasa.antimatter.worldgen.object.WorldGenBase;
 

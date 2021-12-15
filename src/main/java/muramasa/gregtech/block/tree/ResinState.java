@@ -1,6 +1,7 @@
-package muramasa.gregtech.tree;
+package muramasa.gregtech.block.tree;
 
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 
 import java.util.Locale;
 
@@ -9,6 +10,8 @@ public enum ResinState implements StringRepresentable {
     NONE,
     EMPTY,
     FILLED;
+
+    public static final EnumProperty<ResinState> INSTANCE = EnumProperty.create("resin_state", ResinState.class);
 
     public String getName() {
         return name().toLowerCase(Locale.ENGLISH);

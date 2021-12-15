@@ -22,9 +22,9 @@ import muramasa.gregtech.block.BlockFusionCasing;
 import muramasa.gregtech.block.BlockTurbineCasing;
 import muramasa.gregtech.cover.CoverConveyor;
 import muramasa.gregtech.cover.CoverPump;
-import muramasa.gregtech.tree.BlockRubberLeaves;
-import muramasa.gregtech.tree.BlockRubberLog;
-import muramasa.gregtech.tree.BlockRubberSapling;
+import muramasa.gregtech.block.tree.BlockRubberLeaves;
+import muramasa.gregtech.block.tree.BlockRubberLog;
+import muramasa.gregtech.block.tree.BlockRubberSapling;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraftforge.api.distmarker.Dist;
 

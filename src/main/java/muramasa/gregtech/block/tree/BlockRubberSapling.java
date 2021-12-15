@@ -1,4 +1,4 @@
-package muramasa.gregtech.tree;
+package muramasa.gregtech.block.tree;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
@@ -18,17 +18,16 @@ import net.minecraft.server.level.ServerLevel;
 import java.util.Random;
 
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BlockRubberSapling extends SaplingBlock implements BonemealableBlock, IAntimatterObject, IModelProvider, ITextureProvider {
+public class BlockRubberSapling extends SaplingBlock implements IAntimatterObject, IModelProvider, ITextureProvider {
 
-    protected String domain, id;
+    protected final String domain, id;
 
     public BlockRubberSapling(String domain, String id) {
-        super(new RubberTree(), Block.Properties.of(Material.PLANT).noCollission().randomTicks().strength(0.0F).sound(SoundType.GRASS));
+        super(new RubberTree(), Block.Properties.of(Material.PLANT).noCollission().randomTicks().strength(0.0F).sound(SoundType.GRASS).instabreak());
         this.domain = domain;
         this.id = id;
         AntimatterAPI.register(BlockRubberSapling.class, this);
@@ -52,7 +51,7 @@ public class BlockRubberSapling extends SaplingBlock implements BonemealableBloc
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture(getRegistryName().getNamespace(), "block/tree/" + getId())};
+        return new Texture[] { new Texture(domain, "block/tree/" + id) };
     }
 
     @Override

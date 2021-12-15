@@ -1,4 +1,4 @@
-package muramasa.gregtech.tree;
+package muramasa.gregtech.block.tree;
 
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;
