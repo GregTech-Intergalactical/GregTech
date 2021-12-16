@@ -22,6 +22,7 @@ import muramasa.gti.loader.items.Circuitry;
 import muramasa.gti.loader.machines.*;
 import muramasa.gti.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gti.loader.machines.generator.Fuels;
+import muramasa.gti.loader.machines.generator.LavaBoilerHandler;
 import muramasa.gti.loader.multi.*;
 import muramasa.gti.proxy.ClientHandler;
 import net.minecraftforge.api.distmarker.Dist;
@@ -103,6 +104,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("chem_reacting", ChemicalReactorLoader::init);
         loader.accept("fuels", Fuels::init);
         loader.accept("coal_boiler", CoalBoilerHandler::init);
+        loader.accept("lava_boiler", LavaBoilerHandler::init);
         loader.accept("fluid_extracting", FluidExtractor::init);
         loader.accept("alloy_loading", AlloyLoader::init);
         loader.accept("distillation_tower", DistillationTower::init);

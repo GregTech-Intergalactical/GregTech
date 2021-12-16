@@ -11,6 +11,7 @@ import muramasa.gti.Ref;
 import muramasa.gti.machine.SteamMachine;
 import muramasa.gti.tile.multi.*;
 import muramasa.gti.tile.single.TileEntityCoalBoiler;
+import muramasa.gti.tile.single.TileEntityLavaBoiler;
 import muramasa.gti.tile.single.TileEntityInfiniteFluid;
 
 import static muramasa.antimatter.Data.*;
@@ -59,7 +60,7 @@ public class Machines {
     public static BasicMachine PLASMA_ARC_FURNACE = new BasicMachine(Ref.ID, "plasma_arc_furnace").setMap(PLASMA_ARC_SMELTING).addFlags(GUI, ITEM, FLUID);
 
     public static SteamMachine COAL_BOILER = new SteamMachine(Ref.ID, "coal_boiler").setMap(COAL_BOILERS).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(m -> () -> new TileEntityCoalBoiler(m));
-    public static SteamMachine LAVA_BOILER = new SteamMachine(Ref.ID, "lava_boiler").setMap(SMALL_BOILERS).setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID);
+    public static SteamMachine LAVA_BOILER = new SteamMachine(Ref.ID, "lava_boiler").setMap(LAVA_BOILERS).setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(m -> () -> new TileEntityLavaBoiler(m));
     public static BasicMachine SOLAR_BOILER = new BasicMachine(Ref.ID, "solar_boiler").setMap(SMALL_BOILERS).setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID);
     public static SteamMachine STEAM_FURNACE = new SteamMachine(Ref.ID, "steam_furnace").setMap(STEAM_SMELTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
     public static SteamMachine STEAM_PULVERIZER = new SteamMachine(Ref.ID, "steam_pulverizer").setMap(STEAM_PULVERIZING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);

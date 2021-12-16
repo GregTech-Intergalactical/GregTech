@@ -15,7 +15,10 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gti.gui.widgets.CoalBoilerFuelWidget;
 import muramasa.gti.gui.widgets.CoalBoilerWidget;
+import muramasa.gti.gui.widgets.LavaBoilerFuelWidget;
+import muramasa.gti.gui.widgets.LavaBoilerWidget;
 import muramasa.gti.tile.single.TileEntityCoalBoiler;
+import muramasa.gti.tile.single.TileEntityLavaBoiler;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -50,6 +53,18 @@ public class Guis {
         @Override
         public Object screen() {
             return ClientData.SCREEN_COAL;
+        }
+    };
+
+    public static MenuHandlerMachine<TileEntityLavaBoiler,? extends ContainerMachine> LAVA_BOILER_MENU_HANDLER = new MenuHandlerMachine(Ref.ID, "container_lava_boiler") {
+        @Override
+        public ContainerBasicMachine getMenu(IGuiHandler tile, PlayerInventory playerInv, int windowId) {
+            return tile instanceof TileEntityMachine ? new ContainerBasicMachine((TileEntityMachine<?>) tile, playerInv, this, windowId) : null;
+        }
+
+        @Override
+        public Object screen() {
+            return ClientData.SCREEN_LAVA;
         }
     };
 
@@ -111,7 +126,7 @@ public class Guis {
 
         COAL_BOILER.add(BRONZE, CELL_IN, 44, 26).add(BRONZE, CELL_OUT, 44, 62).add(BRONZE, IT_OUT, 116, 26).add(BRONZE, IT_IN, 116, 62);
         COAL_BOILER.add(STEEL, CELL_IN, 44, 26).add(STEEL, CELL_OUT, 44, 62).add(STEEL, IT_OUT, 116, 26).add(STEEL, IT_IN, 116, 62);
-        LAVA_BOILER.add(ALLOY_SMELTER);
+        LAVA_BOILER.add(STEEL, CELL_IN, 44, 26).add(STEEL, CELL_OUT, 44, 62).add(STEEL, IT_OUT, 116, 26).add(STEEL, IT_IN, 116, 62);
         SOLAR_BOILER.add(ALLOY_SMELTER);
 
         STEAM_ALLOY_SMELTER.add(BRONZE, ALLOY_SMELTER).add(BRONZE, FL_IN, 53, 63);
@@ -189,6 +204,10 @@ public class Guis {
         COAL_BOILER.addGuiCallback(t -> {
             t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a,b)).setPos(9, 5).clientSide());
             t.addWidget(CoalBoilerWidget.build().setSize(70, 25, 36, 54)).addWidget(CoalBoilerFuelWidget.build().setSize(115, 43, 18, 18));
+        });
+        LAVA_BOILER.addGuiCallback(t -> {
+            t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a,b)).setPos(9, 5).clientSide());
+            t.addWidget(LavaBoilerWidget.build().setSize(70, 25, 36, 54)).addWidget(LavaBoilerFuelWidget.build().setSize(115, 43, 18, 18));
         });
 
         //if (side.isClient()) {

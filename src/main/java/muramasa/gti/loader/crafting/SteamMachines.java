@@ -58,6 +58,13 @@ public class SteamMachines {
                         'B', bricks,
                         'F', furnace
                 ), "PPP", "PWP", "BFB");
+        provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.LAVA_BOILER.getItem(Tier.STEEL),
+                ImmutableMap.of(
+                        'P', steelPlate,
+                        'W', wrench,
+                        'B', Items.LAVA_BUCKET,
+                        'F', furnace
+                ), "PPP", "PWP", "BFB");
         provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_PULVERIZER.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'B', bronzePipe,

@@ -36,34 +36,34 @@ import static muramasa.gti.data.Materials.DistilledWater;
 import static muramasa.gti.data.Materials.Steam;
 import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
-public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler> {
+public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler> {
     int maxHeat = 500, heat, fuel = 0, maxFuel, lossTimer = 0;
     boolean hadNoWater;
 
-    public TileEntityCoalBoiler(Machine<?> type) {
+    public TileEntityLavaBoiler(Machine<?> type) {
         super(type);
-        fluidHandler.set(() -> new CoalBoilerFluidHandler(this));
-        recipeHandler.set(() -> new CoalBoilerRecipeHandler(this));
+        fluidHandler.set(() -> new LavaBoilerFluidHandler(this));
+        recipeHandler.set(() -> new LavaBoilerRecipeHandler(this));
     }
 
     public int getFuel() {
-        return recipeHandler.map(r -> (((CoalBoilerRecipeHandler) r).getFuel())).orElse(0);
+        return recipeHandler.map(r -> (((LavaBoilerRecipeHandler) r).getFuel())).orElse(0);
     }
 
     public int getHeat() {
-        return recipeHandler.map(r -> (((CoalBoilerRecipeHandler) r).getHeat())).orElse(0);
+        return recipeHandler.map(r -> (((LavaBoilerRecipeHandler) r).getHeat())).orElse(0);
     }
 
     public int getMaxFuel() {
-        return recipeHandler.map(r -> (((CoalBoilerRecipeHandler) r).getMaxFuel())).orElse(0);
+        return recipeHandler.map(r -> (((LavaBoilerRecipeHandler) r).getMaxFuel())).orElse(0);
 
     }
 
     public int getMaxHeat() {
-        return recipeHandler.map(r -> (((CoalBoilerRecipeHandler) r).getMaxHeat())).orElse(0);
+        return recipeHandler.map(r -> (((LavaBoilerRecipeHandler) r).getMaxHeat())).orElse(0);
     }
 
-    public static class CoalBoilerRecipeHandler extends MachineRecipeHandler<TileEntityCoalBoiler> {
+    public static class LavaBoilerRecipeHandler extends MachineRecipeHandler<TileEntityLavaBoiler> {
         int maxHeat = 500, heat, fuel = 0, maxFuel, lossTimer = 0;
         boolean hadNoWater;
 
@@ -73,13 +73,13 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
             public int get(int index) {
                 switch (index) {
                     case 0:
-                        return CoalBoilerRecipeHandler.this.heat;
+                        return LavaBoilerRecipeHandler.this.heat;
                     case 1:
-                        return CoalBoilerRecipeHandler.this.maxHeat;
+                        return LavaBoilerRecipeHandler.this.maxHeat;
                     case 2:
-                        return CoalBoilerRecipeHandler.this.fuel;
+                        return LavaBoilerRecipeHandler.this.fuel;
                     case 3:
-                        return CoalBoilerRecipeHandler.this.maxFuel;
+                        return LavaBoilerRecipeHandler.this.maxFuel;
                 }
                 return 0;
             }
@@ -88,16 +88,16 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
             public void set(int index, int value) {
                 switch (index) {
                     case 0:
-                        CoalBoilerRecipeHandler.this.heat = value;
+                        LavaBoilerRecipeHandler.this.heat = value;
                         break;
                     case 1:
-                        CoalBoilerRecipeHandler.this.maxHeat = value;
+                        LavaBoilerRecipeHandler.this.maxHeat = value;
                         break;
                     case 2:
-                        CoalBoilerRecipeHandler.this.fuel = value;
+                        LavaBoilerRecipeHandler.this.fuel = value;
                         break;
                     case 3:
-                        CoalBoilerRecipeHandler.this.maxFuel = value;
+                        LavaBoilerRecipeHandler.this.maxFuel = value;
                         break;
                 }
             }
@@ -108,7 +108,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
             }
         };
 
-        public CoalBoilerRecipeHandler(TileEntityCoalBoiler tile) {
+        public LavaBoilerRecipeHandler(TileEntityLavaBoiler tile) {
             super(tile);
             GUI_SYNC_DATA2.set(0, 0);
             maxHeat = tile.getMachineTier() == BRONZE ? 500 : 1000;
@@ -266,11 +266,11 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
         }
     }
 
-    public static class CoalBoilerFluidHandler extends MachineFluidHandler<TileEntityCoalBoiler> {
+    public static class LavaBoilerFluidHandler extends MachineFluidHandler<TileEntityLavaBoiler> {
 
         private boolean fillingCell = false;
 
-        public CoalBoilerFluidHandler(TileEntityCoalBoiler tile) {
+        public LavaBoilerFluidHandler(TileEntityLavaBoiler tile) {
             super(tile, 16000, 1000 * (250 + tile.getMachineTier().getIntegerId()));
             tanks.put(FluidDirection.INPUT, FluidTanks.create(tile, ContentEvent.FLUID_INPUT_CHANGED, b -> {
                 b.tank(16000);

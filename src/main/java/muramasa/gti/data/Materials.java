@@ -1100,7 +1100,6 @@ public class Materials {
             new Material(Ref.ID, "plasma_containment", 0xffff00, NONE));
 
     static {
-        CRACKABLE.add(Ethane,Ethylene,Propane,Propene,Butane,Butene,Butadiene);
         CHEMBATH_MERCURY.add(Chalcopyrite,Gold);
         CHEMBATH_MERCURY.add(Gold,Nickel);
         CHEMBATH_MERCURY.add(Silver,Sulfur);

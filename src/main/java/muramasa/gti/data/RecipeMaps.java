@@ -29,6 +29,8 @@ public class RecipeMaps {
 
     public static RecipeMap<RecipeBuilder> COAL_BOILERS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "coal_boilers", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> LAVA_BOILERS = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(Ref.ID, "lava_boilers", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SMALL_BOILERS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "small_boilers", new RecipeBuilder()));
 
