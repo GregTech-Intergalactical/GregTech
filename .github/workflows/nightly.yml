@@ -37,6 +37,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.gradle/caches
+              ~/.gradle/wrapper
         key: ${{ runner.os }}-gradle-caches-${{ hashFiles('**/*.gradle','**/gradle/wrapper/gradle-wrapper.properties','**/*.properties') }}
     - name: Build with Gradle
       uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
@@ -52,3 +53,9 @@ jobs:
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Cleanup Gradle Cache
+      # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
+      # Restoring these files from a GitHub Actions cache might cause problems for future builds.
+      run: |
+        rm -f ~/.gradle/caches/modules-2/modules-2.lock
+        rm -f ~/.gradle/caches/modules-2/gc.properties
