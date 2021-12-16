@@ -15,6 +15,8 @@ import muramasa.antimatter.util.int3;
 import muramasa.gregtech.tile.multi.TileEntityLargeTurbine;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.client.renderer.chunk.RenderChunkRegion;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.core.Direction;
@@ -175,6 +177,11 @@ public class BlockTurbineCasing extends BlockCasingMachine {
         };
         ChunkReaderAccessor cache = (ChunkReaderAccessor) reader;
         return cache.getLevel();
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return getShapeByModelIndex(config);
     }
 
     protected TileEntityLargeTurbine getTurbine(BlockGetter world, BlockPos pos) {
