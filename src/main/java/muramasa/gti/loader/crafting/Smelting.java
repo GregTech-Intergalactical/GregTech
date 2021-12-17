@@ -2,14 +2,14 @@ package muramasa.gti.loader.crafting;
 
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.util.TagUtils;
+import muramasa.gti.data.GregTechData;
 import net.minecraft.data.CookingRecipeBuilder;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.crafting.Ingredient;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.Data.DUST;
-import static muramasa.antimatter.Data.INGOT;
+import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.util.TagUtils.nc;
 
 public class Smelting {
@@ -19,5 +19,6 @@ public class Smelting {
             if (!t.has(INGOT)) return;
             CookingRecipeBuilder.smelting(Ingredient.of(nc(TagUtils.getItemTag(DUST.getMaterialTag(t).getName()))), INGOT.get(t), 1, 200).unlockedBy("has_dust_" + t.getId(), provider.hasSafeItem(DUST.get(t))).save(output);
         });
+        CookingRecipeBuilder.smelting(Ingredient.of(GregTechData.Fireclay), GregTechData.Firebrick, 10, 100).unlockedBy("has_dust_" + GregTechData.Fireclay.getId(), provider.hasSafeItem(GregTechData.Fireclay)).save(output);
     }
 }

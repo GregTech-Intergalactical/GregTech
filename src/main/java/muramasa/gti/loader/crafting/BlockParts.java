@@ -1,30 +1,22 @@
 package muramasa.gti.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.GregTechData;
 import net.minecraft.block.Block;
 import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter;
 
 import java.util.function.Consumer;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.material.MaterialTag.WIRE;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.*;
-import static muramasa.gti.data.RecipeMaps.ASSEMBLING;
-import static muramasa.gti.data.TierMaps.INT_CIRCUITS;
 import static muramasa.gti.data.TierMaps.TIER_CIRCUITS;
 
 public class BlockParts {
@@ -57,12 +49,12 @@ public class BlockParts {
         addCasing(output, provider, Lead, GregTechData.CASING_RADIATION_PROOF);
         addCasing(output, provider, TungstenSteel, GregTechData.CASING_TUNGSTENSTEEL);
 
-        addTierCasing(output, provider, WroughtIron, Lead, GregTechData.CASING_ULV,1);
-        addTierCasing(output, provider, Steel, Copper, GregTechData.CASING_LV,2);
-        addTierCasing(output, provider, Aluminium, StainlessSteel, GregTechData.CASING_MV,3);
-        addTierCasing(output, provider, TungstenSteel, TungstenCarbide, GregTechData.CASING_HV,4);
-        addTierCasing(output, provider, Ultimet, HSSG, GregTechData.CASING_EV,5);
-        addTierCasing(output, provider, HSSE, HSSS, GregTechData.CASING_IV,6);
+        addTierCasing(output, provider, WroughtIron, Lead, GregTechData.CASING_ULV);
+        addTierCasing(output, provider, Steel, Copper, GregTechData.CASING_LV);
+        addTierCasing(output, provider, Aluminium, StainlessSteel, GregTechData.CASING_MV);
+        addTierCasing(output, provider, TungstenSteel, TungstenCarbide, GregTechData.CASING_HV);
+        addTierCasing(output, provider, Ultimet, HSSG, GregTechData.CASING_EV);
+        addTierCasing(output, provider, HSSE, HSSS, GregTechData.CASING_IV);
         //addTierCasing(output, provider, TungstenSteel, GregTechData.CASING_LUV);
         //addTierCasing(output, provider, Osmiridium, GregTechData.CASING_ZPM);
         //addTierCasing(output, provider, Ultimet, GregTechData.CASING_UV);
@@ -71,9 +63,9 @@ public class BlockParts {
         addTierHull(output, provider, Iron, WIRE_RED_ALLOY, CircuitBasic, GregTechData.CASING_ULV, GregTechData.HULL_ULV,1);
         addTierHull(output, provider, AnnealedCopper, WIRE_TIN, CircuitBasic, GregTechData.CASING_LV, GregTechData.HULL_LV,2);
         addTierHull(output, provider, Silver, WIRE_CUPRONICKEL, CircuitGood, GregTechData.CASING_MV,GregTechData.HULL_MV,3);
-        addTierHull(output, provider, SterlingSilver, WIRE_ELECTRUM, CircuitGood, GregTechData.CASING_HV, GregTechData.HULL_HV,4);
-        addTierHull(output, provider, RoseGold, WIRE_NICHROME, CircuitAdv, GregTechData.CASING_EV, GregTechData.HULL_EV,5);
-        addTierHull(output, provider, RedSteel, WIRE_NIOBIUM_TITANIUM, CircuitAdv, GregTechData.CASING_IV, GregTechData.HULL_IV,6);
+        addTierHull(output, provider, SterlingSilver, WIRE_ELECTRUM, CircuitAdv, GregTechData.CASING_HV, GregTechData.HULL_HV,4);
+        addTierHull(output, provider, RoseGold, WIRE_NICHROME, CircuitNanoProcessor, GregTechData.CASING_EV, GregTechData.HULL_EV,5);
+        addTierHull(output, provider, RedSteel, WIRE_NIOBIUM_TITANIUM, CircuitQuantumProcessor, GregTechData.CASING_IV, GregTechData.HULL_IV,6);
     }
 
     private static void addCasing(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
@@ -101,7 +93,7 @@ public class BlockParts {
                 , "PRP", "PFP", "PRP");
     }
 
-    private static void addTierCasing(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Material mat2, Block casing, int tier) {
+    private static void addTierCasing(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Material mat2, Block casing) {
         provider.addItemRecipe(output, "casings", "has_casing", provider.hasSafeItem(WRENCH.getTag()), casing,
                 ImmutableMap.of('P', PLATE.getMaterialTag(mat), 'W', WRENCH.getTag(), 'B', BOLT.getMaterialTag(mat2))
                 , "BPB", "PWP", "BPB");

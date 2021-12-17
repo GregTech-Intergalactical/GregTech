@@ -54,6 +54,7 @@ public class Blasting {
 
         /* PRIMITIVE */
         BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(100,50).add(1200, 0);
+        BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(Copper,2)).io(INGOT.get(AnnealedCopper, 1)).add(1000, 0);
 
         /* TITANIUM */
         BLASTING.RB().temperature(1700).ii(RecipeIngredient.of(DUST.get(Magnesium,2)), INT_CIRCUITS.get(1))

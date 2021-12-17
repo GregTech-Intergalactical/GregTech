@@ -10,14 +10,10 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gti.GregTech;
-import muramasa.gti.block.BlockCasing;
 import muramasa.gti.data.Materials;
-import net.minecraft.block.Block;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ITag;
@@ -29,7 +25,6 @@ import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.*;
-import static muramasa.gti.data.RecipeMaps.ASSEMBLING;
 import static muramasa.gti.data.TierMaps.*;
 
 public class Parts {
@@ -40,12 +35,10 @@ public class Parts {
       Item cable = TIER_CABLES.get(t);
       Item wire = TIER_WIRES.get(t);
       Material mat = TIER_MATERIALS.get(t);
-      // Item smallGear = GEAR_SMALL.get(mat);
-      Item smallGear = GEAR.get(mat);
+      Item Gear = GEAR.get(mat);
       ITag.INamedTag<Item> plate = PLATE.getMaterialTag(mat);
       ITag.INamedTag<Item> rod = ROD.getMaterialTag(mat);
       Item circuit = TIER_CIRCUITS.getOrDefault(t, CircuitBasic);
-
       Item motor = GregTech.get(ItemBasic.class, "motor_" + t.getId());
       Item piston = GregTech.get(ItemBasic.class, "piston_" + t.getId());
       Item robotArm = GregTech.get(ItemBasic.class, "robot_arm_" + t.getId());
@@ -55,12 +48,12 @@ public class Parts {
       Item conveyor = GregTech.get(ItemCover.class, "conveyor_" + t.getId());
       Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
       Object emitterGem = EMITTER_GEMS.get(t);
-      provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), motor,
-          of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', rod), "CWR", "WMW", "RWC");
-        provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), motor,
-                of('M', ROD.get(), 'C', cable, 'W', wire, 'R', rod), "CWR", "WMW", "RWC");
+      if (t!=Tier.LV){
+            provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), motor,
+                    of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', rod), "CWR", "WMW", "RWC");
+      }
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), piston,
-          of('M', motor, 'C', cable, 'G', smallGear, 'P', plate, 'R', rod), "PPP", "CRR", "CMG");
+          of('M', motor, 'C', cable, 'G', Gear, 'P', plate, 'R', rod), "PPP", "CRR", "CMG");
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), conveyor,
           of('M', motor, 'C', cable, 'P', PLATE.get(Rubber)), "PPP", "MCM", "PPP");
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), robotArm,
@@ -118,7 +111,10 @@ public class Parts {
                                       () -> new RuntimeException("Missing copper wire")).getBlockItem(PipeSize.VTINY))
                       .build(),
               " P ", "WCW", " P ");
-
+      // LV MOTOR
+      provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MotorLV,
+              of('M', ROD.get(Iron), 'C', TIER_CABLES.get(Tier.LV), 'W', TIER_WIRES.get(Tier.LV), 'R', ROD.get(Steel))
+              , "CWR", "WMW", "RWC");
 
 
     provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),

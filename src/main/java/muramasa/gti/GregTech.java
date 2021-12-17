@@ -82,6 +82,7 @@ public class GregTech extends AntimatterMod {
     }
     
     private static void registerCraftingLoaders(AntimatterCraftingEvent event) {
+        event.addLoader(Miscellaneous::loadRecipes);
         event.addLoader(Parts::loadRecipes);
         event.addLoader(Smelting::loadRecipes);
         event.addLoader(WireCablesPlates::loadRecipes);
