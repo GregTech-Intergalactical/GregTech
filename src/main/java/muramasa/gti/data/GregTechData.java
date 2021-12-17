@@ -66,7 +66,6 @@ public class GregTechData {
     public static ItemFluidCell CellSteel = new ItemFluidCell(Ref.ID, Steel, 16000);
     public static ItemFluidCell CellTungstensteel = new ItemFluidCell(Ref.ID, TungstenSteel, 64000);
 
-    public static ItemBasic<?> Fireclay = new ItemBasic<>(Ref.ID, "fireclay");
     public static ItemBasic<?> Firebrick = new ItemBasic<>(Ref.ID, "firebrick");
     public static ItemBasic<?> ItemFilter = new ItemBasic<>(Ref.ID, "item_filter");
     public static ItemBasic<?> DiamondSawBlade = new ItemBasic<>(Ref.ID, "diamond_saw_blade");
