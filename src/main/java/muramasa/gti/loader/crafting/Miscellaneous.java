@@ -2,14 +2,11 @@ package muramasa.gti.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.gti.data.GregTechData;
 import muramasa.gti.data.Materials;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-
 import java.util.function.Consumer;
-
 import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.GregTechData.*;
 import static muramasa.gti.data.Materials.Brick;

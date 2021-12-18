@@ -7,6 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
 import static muramasa.antimatter.Data.*;
+import static muramasa.gti.data.Materials.Brick;
+import static muramasa.gti.data.Materials.Clay;
 import static muramasa.gti.data.RecipeMaps.PULVERIZING;
 
 public class PulverizerLoader {
@@ -49,11 +51,14 @@ public class PulverizerLoader {
         PULVERIZING.RB().ii(RecipeIngredient.of(Items.COBBLESTONE,1)).io(new ItemStack(Items.GRAVEL,1)).add(100,2);
         PULVERIZING.RB().ii(RecipeIngredient.of(Items.GRAVEL,1)).io(new ItemStack(Items.SAND,1)).add(100,2);
 
-
         //INGOT -> DUST
         INGOT.all().forEach(t -> {
             if (!t.has(DUST)) return;
             PULVERIZING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(t),1)).io(DUST.get(t,1)).add(40,2);
         });
+
+        //MISC DUSTS
+        PULVERIZING.RB().ii(RecipeIngredient.of(Items.CLAY_BALL,1)).io(DUST.get(Clay,1)).add(40,2);
+        PULVERIZING.RB().ii(RecipeIngredient.of(Items.BRICK,1)).io(DUST.get(Brick,1)).add(40,2);
     }
 }
