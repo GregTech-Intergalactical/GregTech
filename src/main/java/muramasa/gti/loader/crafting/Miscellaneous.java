@@ -2,15 +2,19 @@ package muramasa.gti.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
+import muramasa.antimatter.pipe.PipeSize;
+import muramasa.gti.data.GregTechData;
 import muramasa.gti.data.Materials;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraftforge.common.Tags;
+
 import java.util.function.Consumer;
+import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;
 import static muramasa.gti.data.GregTechData.*;
-import static muramasa.gti.data.Materials.Brick;
-import static muramasa.gti.data.Materials.Clay;
+import static muramasa.gti.data.Materials.*;
 
 public class Miscellaneous {
     public static void loadRecipes(Consumer<IFinishedRecipe> output, AntimatterRecipeProvider provider) {
@@ -26,5 +30,18 @@ public class Miscellaneous {
 
         provider.shapeless(output, "brick_dust", "misc", "has_mortar", provider.hasSafeItem(MORTAR.getTag()),
                 new ItemStack(DUST.get(Brick)),MORTAR.getTag(),Items.BRICK);
+
+        provider.shapeless(output, "red_alloy_dust", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
+                new ItemStack(DUST.get(RedAlloy)),DUST.get(Redstone),DUST.get(Copper));
+
+        provider.addItemRecipe(output, "misc", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), PLATE.get(Materials.Wood),
+                of('S', Items.OAK_SLAB, 'H', HAMMER.getTag())
+                , " H ", " S ", " S ");
+
+        provider.shapeless(output, "coal_dust", "misc", "has_mortar", provider.hasSafeItem(MORTAR.getTag()),
+                new ItemStack(DUST.get(Coal)),MORTAR.getTag(),Items.COAL);
+
+        provider.shapeless(output, "tin_cable", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
+                new ItemStack(CABLE_TIN.getBlock(PipeSize.VTINY)),WIRE_TIN.getBlock(PipeSize.VTINY), Items.WHITE_CARPET);
     }
 }
