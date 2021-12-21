@@ -9,6 +9,6 @@ import static muramasa.gti.data.RecipeMaps.LAVA_BOILERS;
 
 public class LavaBoilerHandler {
     public static void init(){
-        LAVA_BOILERS.RB().ii(RecipeIngredient.of(Items.LAVA_BUCKET,1)).io(new ItemStack(Items.BUCKET,1)).add(1000);
+        LAVA_BOILERS.RB().ii(RecipeIngredient.of(Items.LAVA_BUCKET,1)).io(new ItemStack(Items.BUCKET)).add(1000);
     }
 }
