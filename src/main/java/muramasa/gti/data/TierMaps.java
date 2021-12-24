@@ -174,7 +174,8 @@ public class TierMaps {
         }
         {
             ImmutableMap.Builder<Tier, ItemBasic<?>> builder = ImmutableMap.builder();
-            builder.put(Tier.LV, CircuitBasic);
+            builder.put(Tier.ULV, CircuitBasic);
+            builder.put(Tier.LV, CircuitBasicElectronic);
             builder.put(Tier.MV, CircuitGood);
             builder.put(Tier.HV, CircuitAdv);
             builder.put(Tier.EV, CircuitNanoProcessor);
