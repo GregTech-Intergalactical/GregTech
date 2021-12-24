@@ -186,6 +186,7 @@ public class TierMaps {
         }
         {
             ImmutableMap.Builder<Tier, ItemBasic<?>> builder = ImmutableMap.builder();
+            builder.put(Tier.ULV, CircuitBoardCoated);
             builder.put(Tier.LV, CircuitBoardCoated);
             builder.put(Tier.MV, CircuitBoardPhenolic);
             builder.put(Tier.HV, CircuitBoardPlastic);
