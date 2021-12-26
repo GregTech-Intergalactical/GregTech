@@ -60,6 +60,7 @@ public class GregTechData {
             .addTextures(new Texture(Ref.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(Ref.ID, "pump");
 
     public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
+    public static ItemBasic<?> Plantball = new ItemBasic<>(Ref.ID, "plantball");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 
     public static ItemFluidCell CellTin = new ItemFluidCell(Ref.ID, Tin, 1000);

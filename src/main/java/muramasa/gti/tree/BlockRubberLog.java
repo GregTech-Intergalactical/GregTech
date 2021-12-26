@@ -73,7 +73,7 @@ public class BlockRubberLog extends BlockBasic {
             worldIn.setBlock(pos, state.setValue(RESIN_STATE, ResinState.EMPTY), 3);
             Direction dir = state.getValue(RESIN_FACING);
             BlockPos spawnPos = pos.offset(dir.getStepX(), dir.getStepY(), dir.getStepZ());
-            InventoryHelper.dropItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), new ItemStack(GregTechData.StickyResin,2));
+            InventoryHelper.dropItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), DUST.get(RawRubber, 1));
             if (worldIn.random.nextDouble() > 0.5) {
                 InventoryHelper.dropItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), DUST.get(RawRubber, 1));
             }

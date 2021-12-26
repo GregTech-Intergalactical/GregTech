@@ -79,6 +79,24 @@ public class Miscellaneous {
                         .put('H', HULL_LV)
                         .build(), "PLP", "CHC", "MLM");
 
+        provider.addStackRecipe(output, "gti", "sticky", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(StickyResin, 8),
+                ImmutableMap.of('R', DUST.get(RawRubber), 'P', Plantball)
+                , "PPP", "PRP", "PPP");
+
+        provider.addStackRecipe(output, "gti", "sticky_2", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(StickyResin, 12),
+                ImmutableMap.of('R', DUST.get(Rubber), 'P', Plantball)
+                , "PPP", "PRP", "PPP");
+
+        provider.addItemRecipe(output, "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Plantball,
+                ImmutableMap.<Character, Object>builder()
+                        .put('C', Tags.Items.CROPS)
+                        .build(), "CCC", "C C", "CCC");
+
+        provider.addItemRecipe(output, "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Plantball,
+                ImmutableMap.<Character, Object>builder()
+                        .put('S', Tags.Items.SEEDS)
+                        .build(), "SSS", "S S", "SSS");
+
         INGOT.all().forEach(t -> {
             if (!t.has(DUST)) return;
             provider.shapeless(output, "dusts", "dusts", "has_mortar", provider.hasSafeItem(MORTAR.getTag()),
