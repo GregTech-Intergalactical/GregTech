@@ -52,33 +52,6 @@ public class Miscellaneous {
         provider.shapeless(output, "tin_cable", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
                 new ItemStack(CABLE_TIN.getBlock(PipeSize.VTINY)),WIRE_TIN.getBlock(PipeSize.VTINY), Items.WHITE_CARPET);
 
-        //Alternative Assembler
-        provider.addStackRecipe(output, "gti", "ass_alt", "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(ASSEMBLER.getItem(Tier.LV), 1),
-                ImmutableMap.<Character, Object>builder()
-                        .put('R', RobotArmLV)
-                        .put('O', GregTech.get(ItemCover.class, "conveyor_"+Tier.LV.getId()))
-                        .put('C', CircuitBasic)
-                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
-                        .put('H', HULL_LV)
-                        .build(), "RCR", "OHO", "LCL");
-        //Alternative Centrifuge
-        provider.addStackRecipe(output, "gti", "cent_alt", "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CENTRIFUGE.getItem(Tier.LV), 1),
-                ImmutableMap.<Character, Object>builder()
-                        .put('M', MotorLV)
-                        .put('C', CircuitBasic)
-                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
-                        .put('H', HULL_LV)
-                        .build(), "CMC", "LHL", "CHC");
-        //Alternative Bender
-        provider.addStackRecipe(output, "gti", "bender_alt", "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(BENDER.getItem(Tier.LV), 1),
-                ImmutableMap.<Character, Object>builder()
-                        .put('P', PistonLV)
-                        .put('M', MotorLV)
-                        .put('C', CircuitBasic)
-                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
-                        .put('H', HULL_LV)
-                        .build(), "PLP", "CHC", "MLM");
-
         provider.addStackRecipe(output, "gti", "sticky", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(StickyResin, 8),
                 ImmutableMap.of('R', DUST.get(RawRubber), 'P', Plantball)
                 , "PPP", "PRP", "PPP");

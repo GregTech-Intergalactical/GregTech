@@ -18,6 +18,7 @@ import muramasa.gti.data.Materials;
 import muramasa.gti.data.TierMaps;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
 import java.util.Arrays;
@@ -145,7 +146,7 @@ public class Machines {
                             .put('C', circuit)
                             .put('L', cable)
                             .put('H', hull)
-                            .build(), "CMC", "LHL", "CHC"));
+                            .build(), "CMC", "LHL", "CMC"));
 
             add(MIXER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), item,
                     ImmutableMap.<Character, Object>builder()
@@ -321,6 +322,32 @@ public class Machines {
                         .put('P', PLATE.get(Steel))
                         .build(), "SPS", "HFH", "HCH");
 
+        //Alternative Assembler
+        provider.addStackRecipe(output, "gti", "ass_alt", "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(ASSEMBLER.getItem(Tier.LV), 1),
+                ImmutableMap.<Character, Object>builder()
+                        .put('R', RobotArmLV)
+                        .put('O', GregTech.get(ItemCover.class, "conveyor_"+Tier.LV.getId()))
+                        .put('C', CircuitBasic)
+                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
+                        .put('H', HULL_LV)
+                        .build(), "RCR", "OHO", "LCL");
+        //Alternative Centrifuge
+        provider.addStackRecipe(output, "gti", "cent_alt", "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CENTRIFUGE.getItem(Tier.LV), 1),
+                ImmutableMap.<Character, Object>builder()
+                        .put('M', MotorLV)
+                        .put('C', CircuitBasic)
+                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
+                        .put('H', HULL_LV)
+                        .build(), "CMC", "LHL", "CMC");
+        //Alternative Bender
+        provider.addStackRecipe(output, "gti", "bender_alt", "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(BENDER.getItem(Tier.LV), 1),
+                ImmutableMap.<Character, Object>builder()
+                        .put('P', PistonLV)
+                        .put('M', MotorLV)
+                        .put('C', CircuitBasic)
+                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
+                        .put('H', HULL_LV)
+                        .build(), "PLP", "CHC", "MLM");
     }
 
     private static <T extends Machine<T>> void add(T machine, Tier tier, BiConsumer<T, Item> callback) {
