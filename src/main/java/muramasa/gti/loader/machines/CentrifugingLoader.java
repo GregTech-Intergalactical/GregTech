@@ -31,7 +31,7 @@ public class CentrifugingLoader {
             }
             ItemStack[] items = t.getProcessInto().stream().filter(mat -> mat.m.has(DUST)).map(mat -> DUST.get(mat.m, mat.s)).toArray(ItemStack[]::new);
             RecipeIngredient input = DUST.getMaterialIngredient(t, t.getProcessInto().stream().mapToInt(mat -> mat.s).sum());
-            CENTRIFUGING.RB().ii(input).io(items).fo(fluids).add(t.getMass()*10, t.getMass() < 10 ? 30 : 64);
+            CENTRIFUGING.RB().ii(input).io(items).fo(fluids).add(t.getMass()*10, t.getMass() < 20 ? 30 : 64);
         });
     }
 }

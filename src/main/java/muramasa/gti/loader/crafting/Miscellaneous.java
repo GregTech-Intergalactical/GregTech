@@ -91,7 +91,7 @@ public class Miscellaneous {
                 ImmutableMap.of('S', Tags.Items.SEEDS)
                 , "SSS", "S S", "SSS");
 
-        provider.addStackRecipe(output, "gti", "plantballz_2", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(Plantball, 1),
+        provider.addStackRecipe(output, "gti", "plantballz_2", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(Plantball, 2),
                 ImmutableMap.of('C', Tags.Items.CROPS)
                 , "CCC", "C C", "CCC");
 
