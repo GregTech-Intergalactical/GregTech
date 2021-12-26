@@ -310,32 +310,7 @@ public class Machines {
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.LARGE)).build(), "LCL", "LHL", "   "));
         });
-        //Alternative Assembler
-        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), ASSEMBLER.getItem(Tier.LV),
-                ImmutableMap.<Character, Object>builder()
-                        .put('R', RobotArmLV)
-                        .put('O', GregTech.get(ItemCover.class, "conveyor_"+Tier.LV.getId()))
-                        .put('C', CircuitBasic)
-                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
-                        .put('H', HULL_LV)
-                .build(), "RCR", "OHO", "LCL");
-        //Alternative Centrifuge
-        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CENTRIFUGE.getItem(Tier.LV),
-                ImmutableMap.<Character, Object>builder()
-                        .put('M', MotorLV)
-                        .put('C', CircuitBasic)
-                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
-                        .put('H', HULL_LV)
-                        .build(), "CMC", "LHL", "CHC");
-        //Alternative Bender
-        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BENDER.getItem(Tier.LV),
-                ImmutableMap.<Character, Object>builder()
-                        .put('P', PistonLV)
-                        .put('M', MotorLV)
-                        .put('C', CircuitBasic)
-                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
-                        .put('H', HULL_LV)
-                        .build(), "PLP", "CHC", "MLM");
+
         //PBF
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), PRIMITIVE_BLAST_FURNACE.getItem(Tier.BRONZE),
                 ImmutableMap.<Character, Object>builder()

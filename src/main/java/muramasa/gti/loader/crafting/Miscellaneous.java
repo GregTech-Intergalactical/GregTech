@@ -2,8 +2,11 @@ package muramasa.gti.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
+import muramasa.antimatter.item.ItemCover;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.util.TagUtils;
+import muramasa.gti.GregTech;
 import muramasa.gti.data.GregTechData;
 import muramasa.gti.data.Materials;
 import net.minecraft.data.CookingRecipeBuilder;
@@ -18,6 +21,7 @@ import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.util.TagUtils.nc;
 import static muramasa.gti.data.GregTechData.*;
+import static muramasa.gti.data.Machines.*;
 import static muramasa.gti.data.Materials.*;
 
 public class Miscellaneous {
@@ -47,6 +51,33 @@ public class Miscellaneous {
 
         provider.shapeless(output, "tin_cable", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
                 new ItemStack(CABLE_TIN.getBlock(PipeSize.VTINY)),WIRE_TIN.getBlock(PipeSize.VTINY), Items.WHITE_CARPET);
+
+        //Alternative Assembler
+        provider.addItemRecipe(output, "machines_alt", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), ASSEMBLER.getItem(Tier.LV),
+                ImmutableMap.<Character, Object>builder()
+                        .put('R', RobotArmLV)
+                        .put('O', GregTech.get(ItemCover.class, "conveyor_"+Tier.LV.getId()))
+                        .put('C', CircuitBasic)
+                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
+                        .put('H', HULL_LV)
+                        .build(), "RCR", "OHO", "LCL");
+        //Alternative Centrifuge
+        provider.addItemRecipe(output, "machines_alt", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CENTRIFUGE.getItem(Tier.LV),
+                ImmutableMap.<Character, Object>builder()
+                        .put('M', MotorLV)
+                        .put('C', CircuitBasic)
+                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
+                        .put('H', HULL_LV)
+                        .build(), "CMC", "LHL", "CHC");
+        //Alternative Bender
+        provider.addItemRecipe(output, "machines_alt", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BENDER.getItem(Tier.LV),
+                ImmutableMap.<Character, Object>builder()
+                        .put('P', PistonLV)
+                        .put('M', MotorLV)
+                        .put('C', CircuitBasic)
+                        .put('L', CABLE_TIN.getBlock(PipeSize.VTINY))
+                        .put('H', HULL_LV)
+                        .build(), "PLP", "CHC", "MLM");
 
         INGOT.all().forEach(t -> {
             if (!t.has(DUST)) return;
