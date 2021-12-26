@@ -53,7 +53,7 @@ public class Miscellaneous {
                 new ItemStack(CABLE_TIN.getBlock(PipeSize.VTINY)),WIRE_TIN.getBlock(PipeSize.VTINY), Items.WHITE_CARPET);
 
         //Alternative Assembler
-        provider.addItemRecipe(output, "machines_alt", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), ASSEMBLER.getItem(Tier.LV),
+        provider.addStackRecipe(output, "gti", "ass_alt", "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(ASSEMBLER.getItem(Tier.LV), 1),
                 ImmutableMap.<Character, Object>builder()
                         .put('R', RobotArmLV)
                         .put('O', GregTech.get(ItemCover.class, "conveyor_"+Tier.LV.getId()))
@@ -62,7 +62,7 @@ public class Miscellaneous {
                         .put('H', HULL_LV)
                         .build(), "RCR", "OHO", "LCL");
         //Alternative Centrifuge
-        provider.addItemRecipe(output, "machines_alt", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CENTRIFUGE.getItem(Tier.LV),
+        provider.addStackRecipe(output, "gti", "cent_alt", "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CENTRIFUGE.getItem(Tier.LV), 1),
                 ImmutableMap.<Character, Object>builder()
                         .put('M', MotorLV)
                         .put('C', CircuitBasic)
@@ -70,7 +70,7 @@ public class Miscellaneous {
                         .put('H', HULL_LV)
                         .build(), "CMC", "LHL", "CHC");
         //Alternative Bender
-        provider.addItemRecipe(output, "machines_alt", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BENDER.getItem(Tier.LV),
+        provider.addStackRecipe(output, "gti", "bender_alt", "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(BENDER.getItem(Tier.LV), 1),
                 ImmutableMap.<Character, Object>builder()
                         .put('P', PistonLV)
                         .put('M', MotorLV)
@@ -87,15 +87,13 @@ public class Miscellaneous {
                 ImmutableMap.of('R', DUST.get(Rubber), 'P', Plantball)
                 , "PPP", "PRP", "PPP");
 
-        provider.addItemRecipe(output, "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Plantball,
-                ImmutableMap.<Character, Object>builder()
-                        .put('C', Tags.Items.CROPS)
-                        .build(), "CCC", "C C", "CCC");
+        provider.addStackRecipe(output, "gti", "plantballz", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(Plantball, 1),
+                ImmutableMap.of('S', Tags.Items.SEEDS)
+                , "SSS", "S S", "SSS");
 
-        provider.addItemRecipe(output, "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Plantball,
-                ImmutableMap.<Character, Object>builder()
-                        .put('S', Tags.Items.SEEDS)
-                        .build(), "SSS", "S S", "SSS");
+        provider.addStackRecipe(output, "gti", "plantballz_2", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(Plantball, 1),
+                ImmutableMap.of('C', Tags.Items.CROPS)
+                , "CCC", "C C", "CCC");
 
         INGOT.all().forEach(t -> {
             if (!t.has(DUST)) return;
