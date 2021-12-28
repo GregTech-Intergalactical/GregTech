@@ -39,9 +39,6 @@ public class Miscellaneous {
         provider.shapeless(output, "brick_dust", "misc", "has_mortar", provider.hasSafeItem(MORTAR.getTag()),
                 new ItemStack(DUST.get(Brick)),MORTAR.getTag(),Items.BRICK);
 
-        provider.shapeless(output, "red_alloy_dust", "misc", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
-                new ItemStack(DUST.get(RedAlloy)),DUST.get(Redstone),DUST.get(Copper));
-
         provider.addItemRecipe(output, "misc", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), PLATE.get(Materials.Wood),
                 of('S', Items.OAK_SLAB, 'H', HAMMER.getTag())
                 , " H ", " S ", " S ");

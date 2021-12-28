@@ -10,6 +10,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gti.data.Guis;
 import muramasa.gti.tile.single.TileEntitySteamMachine;
+import net.minecraftforge.common.Tags;
 
 import static muramasa.antimatter.machine.MachineFlag.*;
 import static muramasa.antimatter.machine.Tier.*;

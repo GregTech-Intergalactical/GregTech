@@ -10,6 +10,7 @@ import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gti.data.Materials;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Arrays;
@@ -27,7 +28,7 @@ public class TileEntitySteamMachine<T extends TileEntitySteamMachine<T>> extends
         recipeHandler.set(() -> new MachineRecipeHandler<T>((T)this) {
             @Override
             public boolean consumeResourceForRecipe(boolean simulate) {
-                return tile.fluidHandler.map(t -> t.consumeAndReturnInputs(Arrays.asList(Materials.Steam.getGas((int)getPower())), simulate).size() == 0)
+                return tile.fluidHandler.map(t -> t.consumeTaggedInput(STEAM, (int) getPower(), simulate).getAmount() > 0)
                         .orElse(false);
             }
             //Allow up to 16 .
