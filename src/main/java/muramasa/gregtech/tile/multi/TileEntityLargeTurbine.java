@@ -10,6 +10,7 @@ import muramasa.antimatter.integration.jei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.Recipe;
+import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.client.gui.Font;
@@ -17,6 +18,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+
+import java.util.Collections;
+import java.util.List;
 
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static muramasa.gregtech.data.Materials.DistilledWater;
@@ -49,8 +53,8 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
                         if (r == null) return null;
                         sourceRecipe = r;
                         //Source recipe contains fluid amounts, map to turbine
-                        FluidStack[] stacks = r.getInputFluids();
-                        if (stacks == null || stacks.length == 0) return null;
+                        List<FluidIngredient> stacks = r.getInputFluids();
+                        if (stacks.size() == 0) return null;
                         //ItemStack t = tile.itemHandler.map(tt -> tt.getSpecial()).orElse(ItemStack.EMPTY);
                         //if (!(t.getItem() instanceof ItemTurbine)) return null;
                         // ItemTurbine turbine = (ItemTurbine) t.getItem();
@@ -58,8 +62,8 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
                         efficiency = 1.15;//turbine.efficency;
                         long toConsume = calculateGeneratorConsumption(flow, sourceRecipe);
                         TileEntityLargeTurbine.this.recipeConsumption = (int) toConsume;
-                        return Utils.getFluidPoweredRecipe(new FluidStack[]{new FluidStack(stacks[0].getFluid(),(int) toConsume)},
-                                new FluidStack[]{new FluidStack(DistilledWater.getLiquid(), stacks[0].getAmount())},// Arrays.stream(sourceRecipe.getOutputFluids()).map(tt -> new FluidStack(tt.getFluid(), (int) (tt.getAmount()*toConsume))).toArray(FluidStack[]::new),
+                        return Utils.getFluidPoweredRecipe(Collections.singletonList(stacks.get(0).copy((int)toConsume)),
+                                new FluidStack[]{new FluidStack(DistilledWater.getLiquid(), stacks.get(0).getAmount())},// Arrays.stream(sourceRecipe.getOutputFluids()).map(tt -> new FluidStack(tt.getFluid(), (int) (tt.getAmount()*toConsume))).toArray(FluidStack[]::new),
                                 1, flow,1);
                     }
 
@@ -70,18 +74,19 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
                         }
                         //boolean shouldRun = tile.energyHandler.map(h -> h.insert((long)(tile.getMachineType().getMachineEfficiency()*(double)tile.getMachineTier().getVoltage()),true) > 0).orElse(false);
                         ///if (!shouldRun) return false;
-                        int recipeAmount = activeRecipe.getInputFluids()[0].getAmount();
+                        int recipeAmount = activeRecipe.getInputFluids().get(0).getAmount();
                         long toConsume = recipeAmount; // calculateGeneratorConsumption(tile.getMachineTier().getVoltage(), activeRecipe);// (long) ((double)tile.getMachineTier().getVoltage() / (activeRecipe.getPower() /(double) Objects.requireNonNull(activeRecipe.getInputFluids())[0].getAmount()));
                         int consumed = tile.fluidHandler.map(h -> {
                         /*
                             How much wiggle room? So, at optimal flow : generate regular. Otherwise, dampen by a factor of 1/(optimal-current) or 1/(current-optimal). Allow
                             consuming up to 1.5x optimal
                          */
-                            int amount = h.getInputTanks().drain(new FluidStack(activeRecipe.getInputFluids()[0],(int)(toConsume*1.5)), IFluidHandler.FluidAction.SIMULATE).getAmount();
+                            FluidIngredient input = activeRecipe.getInputFluids().get(0);
+                            int amount = input.drainedAmount((int) (toConsume*1.5), h, true, true);
 
                             if (amount > 0) {
                                 if (!simulate) {
-                                    h.getInputTanks().drain(new FluidStack(activeRecipe.getInputFluids()[0], amount), IFluidHandler.FluidAction.EXECUTE);
+                                    input.drain(amount, h, true, false);
                                     TileEntityLargeTurbine.this.lastConsume = amount;
                                 }
                                 return amount;

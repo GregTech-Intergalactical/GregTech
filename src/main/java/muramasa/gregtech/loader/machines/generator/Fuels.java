@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.machines.generator;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.gregtech.data.Materials;
 
 import static muramasa.antimatter.Data.GAS;
@@ -20,6 +21,6 @@ public class Fuels {
                 }
             }
         });
-        STEAM_FUELS.RB().fi(Steam.getGas(2)).add(1,1);
+        STEAM_FUELS.RB().fi(FluidIngredient.of(Steam, 2)).add(1,1);
     }
 }
