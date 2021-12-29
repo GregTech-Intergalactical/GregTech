@@ -67,9 +67,11 @@ public class BlockTurbineCasing extends BlockCasingMachine {
             int c = getOffset(vec, turbine.getFacing());
             c += (turbine.getMachineState() == MachineState.ACTIVE ? 10000 : 0);
             ct[1] = c;
+            ct[0] = conf[0];
+            return config.set(pos, ct);
+        } else {
+            return config.set(pos, conf);
         }
-        ct[0] = conf[0];
-        return config.set(pos, ct);
     }
 
     protected Texture[] turbineTextures() {
