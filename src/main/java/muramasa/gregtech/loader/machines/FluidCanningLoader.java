@@ -1,18 +1,24 @@
 package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import static muramasa.gregtech.data.Materials.Mercury;
 import static muramasa.gregtech.data.RecipeMaps.FLUID_CANNING;
 
 public class FluidCanningLoader {
     public static void init() {
+        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullSmall, 1)).fi(Mercury.getLiquid(500)).io(ItemBattery.getFilledBattery(GregTechData.BatterySmallMercury)).add(20, 2);
+        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullMedium, 1)).fi(Mercury.getLiquid(2000)).io(ItemBattery.getFilledBattery(GregTechData.BatteryMediumMercury)).add(20, 2);
+        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullLarge, 1)).fi(Mercury.getLiquid(8000)).io(ItemBattery.getFilledBattery(GregTechData.BatteryLargeMercury)).add(20, 2);
         ForgeRegistries.FLUIDS.forEach(fluid -> {
             Item bucket = fluid.getBucket();
             if (bucket == Items.AIR) return;

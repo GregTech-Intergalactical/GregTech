@@ -11,6 +11,7 @@ import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GregTech;
+import muramasa.gregtech.Ref;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
@@ -123,5 +124,20 @@ public class Parts {
     // });
       provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
               INT_CIRCUITS.get(0).get().getItems()[0], CircuitBasic);
+
+      provider.addItemRecipe(output, Ref.ID, "small_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullSmall, of(
+              'P', PLATE.get(BatteryAlloy),
+              'C', TIER_CABLES.get(Tier.LV)
+      ), "C", "P", "P");
+
+      provider.addItemRecipe(output,  Ref.ID, "medium_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullMedium, of(
+              'P', PLATE.get(BatteryAlloy),
+              'C', TIER_CABLES.get(Tier.MV)
+      ), "C C", "PPP", "PPP");
+
+      provider.addItemRecipe(output, Ref.ID, "empty_shape", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), EmptyShape, of(
+              'P', PLATE.get(Steel),
+              'H', HAMMER.getTag()
+      ), "PPH", "PP ");
   }
 }

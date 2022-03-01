@@ -55,8 +55,16 @@ public class AssemblyLoader {
                     .add(150,16);
         });
         casings();
+        batteries();
     }
-    public static void casings() {
+
+    private static void batteries() {
+        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,1), RecipeIngredient.of(TIER_CABLES.get(Tier.LV) ,1)).fi(Polyethylene.getLiquid(144)).io(BatteryHullSmall.getDefaultInstance()).add(80, 2);
+        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,3), RecipeIngredient.of(TIER_CABLES.get(Tier.MV) ,2)).fi(Polyethylene.getLiquid(432)).io(BatteryHullMedium.getDefaultInstance()).add(120, 4);
+        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,9), RecipeIngredient.of(TIER_CABLES.get(Tier.HV) ,3)).fi(Polyethylene.getLiquid(1296)).io(BatteryHullMedium.getDefaultInstance()).add(160, 8);
+    }
+
+    private static void casings() {
         addTierCasing(WroughtIron, Lead, GregTechData.CASING_ULV, 1);
         addTierCasing(Steel, Copper, GregTechData.CASING_LV, 2);
         addTierCasing(Aluminium, StainlessSteel, GregTechData.CASING_MV, 3);
