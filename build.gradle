@@ -248,7 +248,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
     runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
-    runtimeOnly fg.deobf("curse.maven:architectury-forge-419699:${architectury_file}")
+    runtimeOnly fg.deobf("curse.maven:architectury_forge-419699:${architectury_file}")
     runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
     //runtimeOnly fg.deobf("curse.maven:top-245211:${top_file}")
 }
