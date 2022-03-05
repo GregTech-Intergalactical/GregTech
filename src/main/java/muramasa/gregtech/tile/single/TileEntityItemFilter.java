@@ -70,10 +70,11 @@ public class TileEntityItemFilter extends TileEntityMachine<TileEntityItemFilter
     public void onGuiEvent(IGuiEvent event, Player playerEntity) {
         if (event.getFactory() == GuiEvents.EXTRA_BUTTON) {
             int[] data = ((GuiEvents.GuiEvent)event).data;
-            switch (data[1]) {
+            switch (data[0]) {
                 case 0:
                     emitEnergy = !emitEnergy;
                     playerEntity.sendMessage(new TextComponent( (emitEnergy ? "Emit energy to output side" : "Don't emit energy")), playerEntity.getUUID());
+                    level.markAndNotifyBlock(this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                     break;
                 case 1:
                     outputRedstone = !outputRedstone;
@@ -113,7 +114,8 @@ public class TileEntityItemFilter extends TileEntityMachine<TileEntityItemFilter
     @Override
     public void onMachineEvent(IMachineEvent event, Object... data) {
         super.onMachineEvent(event, data);
-        if (event == ContentEvent.ITEM_OUTPUT_CHANGED && outputRedstone){
+        if ((event == ContentEvent.ITEM_OUTPUT_CHANGED || event == ContentEvent.ITEM_INPUT_CHANGED) && outputRedstone && !this.getLevel().isClientSide()){
+         //   level.updateNeighborsAt(this.getBlockPos(), this.getBlockState().getBlock());
             level.markAndNotifyBlock(this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
         }
     }

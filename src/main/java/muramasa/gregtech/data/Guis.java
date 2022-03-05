@@ -15,6 +15,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gregtech.gui.widgets.CoalBoilerFuelWidget;
 import muramasa.gregtech.gui.widgets.CoalBoilerWidget;
+import muramasa.gregtech.gui.widgets.FilterButtonArrayWidget;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
@@ -269,6 +270,15 @@ public class Guis {
                     .addButton(152, 48, 14, 14, APAD_RIGHT)
                     .addButton(137, 63, 14, 14, PAD_RIGHT)
                     .addButton(152, 63, 14, 14, APAD_RIGHT);
+        });
+
+        ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
+        ELECTRIC_ITEM_FILTER.addGuiCallback(t -> {
+            t.addWidget(FilterButtonArrayWidget.build());
+        });
+        ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
+        ELECTRIC_TYPE_FILTER.addGuiCallback(t -> {
+            t.addWidget(FilterButtonArrayWidget.build());
         });
     }
     // }
