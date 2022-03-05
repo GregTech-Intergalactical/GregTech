@@ -1,6 +1,8 @@
 package muramasa.gregtech.data;
 
 import com.google.common.collect.ImmutableMap;
+
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
@@ -12,6 +14,8 @@ import muramasa.gregtech.machine.SteamMachine;
 import muramasa.gregtech.tile.multi.*;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import muramasa.gregtech.tile.single.TileEntityInfiniteFluid;
+import muramasa.gregtech.tile.single.TileEntityItemFilter;
+import muramasa.gregtech.tile.single.TileEntityTypeFilter;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.machine.MachineFlag.*;
@@ -113,7 +117,13 @@ public class Machines {
     public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(Ref.ID, "transformer_ultra").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v,pos,state) -> new TileEntityTransformer<>(v, pos, state, 16)).noCovers().allowFrontIO();
     public static BasicMachine TRANSFORMER_DIGITAL = new BasicMachine(Ref.ID, "transformer_digital").setTiers(EV, IV).addFlags(GUI, ENERGY).setTile(TileEntityDigitalTransformer::new).noCovers().allowFrontIO();
 
-    public static void init() {
+    public static BasicMachine ELECTRIC_ITEM_FILTER = null;
+    public static BasicMachine ELECTRIC_TYPE_FILTER = null; 
 
+    public static void init() {
+        if (!AntimatterAPI.isModLoaded("gt4r")) {
+            ELECTRIC_ITEM_FILTER = new BasicMachine(Ref.ID, "electric_item_filter").setTiers(LV).addFlags(GUI, ITEM).setTile(TileEntityItemFilter::new).noCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+            ELECTRIC_TYPE_FILTER = new BasicMachine(Ref.ID, "electric_type_filter").setTiers(LV).addFlags(GUI, ITEM).setTile(TileEntityTypeFilter::new).noCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+        }
     }
 }
