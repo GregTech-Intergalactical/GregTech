@@ -1,8 +1,13 @@
 package muramasa.gregtech.block.tree;
 
 import muramasa.antimatter.worldgen.object.WorldGenBase;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.Level;
 
 public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
+    public RubberTreeWorldGen(String id, Class<? extends WorldGenBase<?>> c, ResourceKey<Level>... dimensions) {
+        super(id, c, dimensions);
+    }
 
     /*@Override
     public Predicate<Biome> getValidBiomes() {
