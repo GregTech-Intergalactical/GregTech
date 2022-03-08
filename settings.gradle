@@ -6,6 +6,6 @@ if(folder.exists() ) {
 def tesseractFolder = new File('AntimatterAPI/TesseractAPI')
 if (tesseractFolder.exists()) {
     include 'TesseractAPI'
-    project(':TesseractAPI').setProjectDir(new File("AntimatterAPI/TesseractAPI"))
+    project(':TesseractAPI').setProjectDir(new File("AntimatterAPI/TesseractAPI/forge"))
 }
 

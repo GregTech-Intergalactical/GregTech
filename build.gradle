@@ -238,7 +238,7 @@ dependencies {
     if (hasTesseract) {
         implementation project(path: ':TesseractAPI')
     } else {
-        implementation fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
+        implementation fg.deobf("com.github.GregTech-Intergalactical.TesseractAPI:TesseractAPI-forge:${tesseract_version}")
     }
     //
     //compile 'de.speiger:Primitive-Collections:0.4.0'
