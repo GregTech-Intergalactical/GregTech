@@ -1,248 +1,365 @@
 package muramasa.gregtech.loader;
 
-import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.Data;
-import muramasa.antimatter.worldgen.StoneLayerOre;
-import muramasa.antimatter.worldgen.object.WorldGenOreSmall;
-import muramasa.antimatter.worldgen.object.WorldGenStoneLayer;
-import muramasa.antimatter.worldgen.object.WorldGenVeinLayer;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.antimatter.event.AntimatterWorldGenEvent;
+import muramasa.antimatter.worldgen.vein.WorldGenVein;
+import muramasa.antimatter.worldgen.vein.WorldGenVeinBuilder;
 import net.minecraft.world.level.Level;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.Ref.*;
+import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
+import static net.minecraft.world.level.Level.*;
 
 public class WorldGenLoader {
 
+  public static void init(AntimatterWorldGenEvent ev) {
+    initStoneVeins(ev);
+    initStoneOreVeins(ev);
+    initOreVeins(ev);
+  }
 
-    public static void init() {
-        //TODO probably increase max generation heights for most things
-        //TODO add GC dims to all objects
+  private static void initStoneVeins(AntimatterWorldGenEvent ev) {
+    WorldGenVein.setLayerChance(WorldGenVein.STONE_VEIN_LAYER, 0.25f);
 
-     //   new WorldGenAsteroid("asteroids", World.THE_END/*, ASTEROIDS */);
+    ev.vein(new WorldGenVeinBuilder("vein_gravel")
+        .asSmallStoneVein(10, -64, 320, GRAVEL, OVERWORLD)
+        .buildVein());
 
-//        new WorldGenStone("granite_black_tiny", GRANITE_BLACK, 1, 75, 5, 0, 180, World.OVERWORLD);
-//        new WorldGenStone("granite_black_small", GRANITE_BLACK, 1, 100, 10, 0, 180, World.OVERWORLD);
-//        new WorldGenStone("granite_black_medium", GRANITE_BLACK, 1, 200, 10, 0, 120, World.OVERWORLD);
-//        new WorldGenStone("granite_black_large", GRANITE_BLACK, 1, 300, 70, 0, 120, World.OVERWORLD);
-//        new WorldGenStone("granite_black_huge", GRANITE_BLACK, 1, 400, 150, 0, 120, World.OVERWORLD);
-//
-//        new WorldGenStone("granite_red_tiny", GRANITE_RED, 1, 75, 5, 0, 180, World.OVERWORLD);
-//        new WorldGenStone("granite_red_small", GRANITE_RED, 1, 100, 10, 0, 180, World.OVERWORLD);
-//        new WorldGenStone("granite_red_medium", GRANITE_RED, 1, 200, 10, 0, 120, World.OVERWORLD);
-//        new WorldGenStone("granite_red_large", GRANITE_RED, 1, 300, 70, 0, 120, World.OVERWORLD);
-//        new WorldGenStone("granite_red_huge", GRANITE_RED, 1, 400, 150, 0, 120, World.OVERWORLD);
-//
-//        new WorldGenStone("marble_tiny", MARBLE, 1, 75, 5, 0, 180, World.OVERWORLD);
-//        new WorldGenStone("marble_small", MARBLE, 1, 100, 10, 0, 180, World.OVERWORLD);
-//        new WorldGenStone("marble_medium", MARBLE, 1, 200, 10, 0, 120, World.OVERWORLD);
-//        new WorldGenStone("marble_large", MARBLE, 1, 300, 70, 0, 120, World.OVERWORLD);
-//        new WorldGenStone("marble_huge", MARBLE, 1, 400, 150, 0, 120, World.OVERWORLD);
-//
-//        new WorldGenStone("basalt_tiny", BASALT, 1, 75, 5, 0, 180, World.OVERWORLD);
-//        new WorldGenStone("basalt_small", BASALT, 1, 100, 10, 0, 180, World.OVERWORLD);
-//        new WorldGenStone("basalt_medium", BASALT, 1, 200, 10, 0, 120, World.OVERWORLD);
-//        new WorldGenStone("basalt_large", BASALT, 1, 300, 70, 0, 120, World.OVERWORLD);
-//        new WorldGenStone("basalt_huge", BASALT, 1, 400, 150, 0, 120, World.OVERWORLD);
-        
-        WorldGenStoneLayer.add(Data.STONE, 4, Level.OVERWORLD);
-        WorldGenStoneLayer.add(Data.STONE, 1, Level.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.STONE, 1, Level.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.STONE, 1, Level.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.STONE, 1, Level.OVERWORLD); //Ores
-        
-        WorldGenStoneLayer.add(GregTechData.GRANITE_BLACK, 2, Level.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.GRANITE_BLACK, 1, Level.OVERWORLD).forEach(w -> w.addOres(
-            new StoneLayerOre(Cooperite, U32, 0, 16),
-            new StoneLayerOre(Iridium, U64, 0, 8)
-        ));
+      //ev.vein(new WorldGenVeinBuilder("vein_dirt")
+      //  .asSmallStoneVein(10, 0, 320, DIRT, OVERWORLD)
+     //   .buildVein());
 
-        WorldGenStoneLayer.add(GregTechData.GRANITE_RED, 2, Level.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.GRANITE_RED, 1, Level.OVERWORLD).forEach(w -> w.addOres(
-            new StoneLayerOre(Pitchblende, U32, 0, 18),
-            new StoneLayerOre(Uraninite, U32, 0, 16),
-            new StoneLayerOre(Tantalite, U16, 20, 50)
-        ));
+      ev.vein(new WorldGenVeinBuilder("vein_tuff")
+        .asSmallStoneVein(5, -64, 16, TUFF, OVERWORLD)
+        .buildVein());
 
-        WorldGenStoneLayer.add(GregTechData.KOMATIITE, 4, Level.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.KOMATIITE, 1, Level.OVERWORLD).forEach(w -> w.addOres(
-            new StoneLayerOre(Magnesite, U16, 20, 50),
-            new StoneLayerOre(Cinnabar, U12, 0, 32),
-            new StoneLayerOre(Redstone, U8, 0, 30),
-            new StoneLayerOre(Pyrite, U12, 0, 30)
-        ));
+      ev.vein(new WorldGenVeinBuilder("vein_granite")
+        .asMediumStoneVein(5, 128, 32, GRANITE, OVERWORLD)
+        .buildVein());
 
-        WorldGenStoneLayer.add(GregTechData.BASALT, 3, Level.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.BASALT, 1, Level.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(GregTechData.BASALT, 1, Level.OVERWORLD); //Ores
+      ev.vein(new WorldGenVeinBuilder("vein_diorite")
+        .asMediumStoneVein(5, 128, 32, DIORITE, OVERWORLD)
+        .buildVein());
 
-        WorldGenStoneLayer.add(GregTechData.MARBLE, 4, Level.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.MARBLE, 1, Level.OVERWORLD); //Ores
+      ev.vein(new WorldGenVeinBuilder("vein_andesite")
+        .asMediumStoneVein(5, 128, 32, ANDESITE, OVERWORLD)
+        .buildVein());
 
-        WorldGenStoneLayer.add(GregTechData.LIMESTONE, 3, Level.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.LIMESTONE, 1, Level.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(GregTechData.LIMESTONE, 1, Level.OVERWORLD); //Ores
+      ev.vein(new WorldGenVeinBuilder("vein_granite_black")
+        .asLargeStoneVein(2, -64, 0, GRANITE_BLACK, OVERWORLD)
+        .withVariant(93)
+        .buildVariant()
+        .withVariant(5)
+        .withThinChance()
+        .withMaterial(Cooperite, 1, -64, -32)
+        .buildVariant()
+        .withVariant(2)
+        .withThinChance()
+        .withMaterial(Iridium, 1, -64, -46)
+        .buildVariant()
+        .buildVein());
 
-        WorldGenStoneLayer.add(GregTechData.GREEN_SCHIST, 1, Level.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.GREEN_SCHIST, 1, Level.OVERWORLD); //Ores
+      ev.vein(new WorldGenVeinBuilder("vein_granite_red")
+        .asLargeStoneVein(2, -32, 32, GRANITE_RED, OVERWORLD)
+        .withVariant(85)
+        .buildVariant()
+        .withVariant(10)
+        .withThinChance()
+        .withMaterial(Pitchblende, -64, -32)
+        .withMaterial(Uraninite, -64, -32)
+        .buildVariant()
+        .withVariant(5)
+        .withThinChance()
+        .withMaterial(Tantalite)
+        .buildVariant()
+        .buildVein());
 
-        WorldGenStoneLayer.add(GregTechData.BLUE_SCHIST, 1, Level.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.BLUE_SCHIST, 1, Level.OVERWORLD); //Ores
+      ev.vein(new WorldGenVeinBuilder("vein_basalt")
+        .asMediumStoneVein(5, -64, 0, BASALT, OVERWORLD)
+        .withVariant(90)
+        .buildVariant()
+        .withVariant(7)
+        .withThinChance()
+        .withMaterial(Ilmenite)
+        .buildVariant()
+        .withVariant(3)
+        .withThinChance()
+        .withMaterial(Rutile)
+        .buildVariant()
+        .buildVein());
 
-        WorldGenStoneLayer.add(GregTechData.KIMBERLITE, 3, Level.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.KIMBERLITE, 1, Level.OVERWORLD); //Ores
+      ev.vein(new WorldGenVeinBuilder("vein_komatiite")
+        .asMediumStoneVein(4, 0, 64, KOMATIITE, OVERWORLD)
+        .withVariant(86)
+        .buildVariant()
+        .withVariant(7)
+        .withThinChance()
+        .withMaterial(Cinnabar, 1)
+        .withMaterial(Redstone, 2)
+        .buildVariant()
+        .withVariant(4)
+        .withThinChance()
+        .withMaterial(Magnesite)
+        .buildVariant()
+        .withVariant(3)
+        .withThinChance()
+        .withMaterial(Pyrite)
+        .buildVariant()
+        .buildVein());
 
-        WorldGenStoneLayer.add(GregTechData.QUARTZITE, 4, Level.OVERWORLD);
-        WorldGenStoneLayer.add(GregTechData.QUARTZITE, 1, Level.OVERWORLD); //Ores
+      ev.vein(new WorldGenVeinBuilder("vein_marble")
+        .asLargeStoneVein(4, 32, 160, MARBLE, OVERWORLD)
+        .buildVein());
 
-        WorldGenStoneLayer.add(Data.GRANITE, 3, Level.OVERWORLD);
-        WorldGenStoneLayer.add(Data.GRANITE, 1, Level.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.GRANITE, 1, Level.OVERWORLD); //Ores
+      ev.vein(new WorldGenVeinBuilder("vein_limestone")
+        .asLargeStoneVein(4, 32, 160, LIMESTONE, OVERWORLD)
+        .buildVein());
 
-        WorldGenStoneLayer.add(Data.DIORITE, 3, Level.OVERWORLD);
-        WorldGenStoneLayer.add(Data.DIORITE, 1, Level.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.DIORITE, 1, Level.OVERWORLD); //Ores
+      ev.vein(new WorldGenVeinBuilder("vein_green_schist")
+        .asMediumStoneVein(2, 64, 320, GREEN_SCHIST, OVERWORLD)
+        .buildVein());
 
-        WorldGenStoneLayer.add(Data.ANDESITE, 4, Level.OVERWORLD);
-        WorldGenStoneLayer.add(Data.ANDESITE, 1, Level.OVERWORLD); //Ores
-        WorldGenStoneLayer.add(Data.ANDESITE, 1, Level.OVERWORLD); //Ores
+      ev.vein(new WorldGenVeinBuilder("vein_blue_schist")
+        .asMediumStoneVein(2, 64, 320, BLUE_SCHIST, OVERWORLD)
+        .buildVein());
 
-        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(Coal).asState(), 1, Level.OVERWORLD);
-        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(Lignite).asState(), 1, Level.OVERWORLD);
-        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(Salt).asState(), 1, Level.OVERWORLD);
-        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(RockSalt).asState(), 1, Level.OVERWORLD);
-        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(Bauxite).asState(), 1, Level.OVERWORLD);
-        WorldGenStoneLayer.add(Data.ORE_STONE.get().get(OilShale).asState(), 1, Level.OVERWORLD);
+      ev.vein(new WorldGenVeinBuilder("vein_kimberlite")
+        .asMediumStoneVein(3, 64, 320, KIMBERLITE, OVERWORLD)
+        .buildVein());
 
-        WorldGenStoneLayer.addCollision(GregTechData.BASALT.getState(), GregTechData.LIMESTONE.getState(),
-            new StoneLayerOre(Ilmenite, U8, 0, 32),
-            new StoneLayerOre(Rutile, U12, 0, 32)
-        );
+      ev.vein(new WorldGenVeinBuilder("vein_quartzite")
+        .asMediumStoneVein(3, 64, 320, QUARTZITE, OVERWORLD)
+        .buildVein());
 
-        if (AntimatterConfig.WORLD.ORE_VEINS) {
-            new WorldGenVeinLayer("naquadah", 10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, EnrichedNaquadah, Level.END);
-            //new WorldGenVeinLayer("lignite", 50, 130, 160, 8, 32, Lignite, Lignite, Lignite, Coal, World.OVERWORLD);
-            //new WorldGenVeinLayer("coal", 50, 80, 80, 6, 32, Coal, Coal, Coal, Lignite, World.OVERWORLD);
-            new WorldGenVeinLayer("magnetite", 50, 120, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite, Level.OVERWORLD, Level.NETHER);
-            new WorldGenVeinLayer("gold", 60, 80, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold, Level.OVERWORLD);
-            new WorldGenVeinLayer("iron", 10, 40, 120, 4, 24, BrownLimonite, YellowLimonite, BandedIron, Malachite, Level.OVERWORLD, Level.NETHER);
-            new WorldGenVeinLayer("cassiterite", 40, 120, 50, 5, 24, Tin, Tin, Cassiterite, Tin, Level.OVERWORLD, Level.END);
-            new WorldGenVeinLayer("tetrahedrite", 80, 120, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite, Level.OVERWORLD, Level.NETHER);
-            new WorldGenVeinLayer("neter_quartz", 40, 80, 80, 5, 24, Quartz, Quartz, Quartz, Quartz, Level.NETHER);
-            new WorldGenVeinLayer("sulfur", 5, 20, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite, Level.NETHER);
-            new WorldGenVeinLayer("copper", 10, 30, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, Level.OVERWORLD, Level.NETHER);
-            //new WorldGenVeinLayer("bauxite", 50, 90, 80, 4, 24, Bauxite, Bauxite, Aluminium, Ilmenite, World.OVERWORLD);
-            //new WorldGenVeinLayer("salts", 50, 60, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene, World.OVERWORLD);
-            new WorldGenVeinLayer("redstone", 10, 40, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar, Level.OVERWORLD, Level.NETHER);
-            new WorldGenVeinLayer("soapstone", 10, 40, 40, 3, 16, Soapstone, Talc, Glauconite, Pentlandite, Level.OVERWORLD);
-            new WorldGenVeinLayer("nickel", 10, 40, 40, 3, 16, Garnierite, Nickel, Cobaltite, Pentlandite, Level.OVERWORLD, Level.NETHER, Level.END);
-            new WorldGenVeinLayer("platinum", 40, 50, 5, 3, 16, Cooperite, Palladium, Platinum, Iridium, Level.OVERWORLD, Level.END);
-            new WorldGenVeinLayer("pitchblend", 10, 40, 40, 3, 16, Pitchblende, Pitchblende, Uraninite, Uraninite, Level.OVERWORLD);
-            new WorldGenVeinLayer("uranium", 20, 30, 20, 3, 16, Uraninite, Uraninite, Uranium, Uranium, Level.OVERWORLD);
-            new WorldGenVeinLayer("monazite", 20, 40, 30, 3, 16, Bastnasite, Bastnasite, Bastnasite/*Monazite*/, Neodymium, Level.OVERWORLD);
-            new WorldGenVeinLayer("molybdenum", 20, 50, 5, 3, 16, Wulfenite, Molybdenite, Molybdenum, Molybdenum/*Powellite*/, Level.OVERWORLD, Level.END);
-            new WorldGenVeinLayer("tungstate", 20, 50, 10, 3, 16, Scheelite, Scheelite, Tungstate, Lithium, Level.OVERWORLD, Level.END);
-            new WorldGenVeinLayer("sapphire", 10, 40, 60, 3, 16, Almandine, Pyrope, BlueSapphire, GreenSapphire, Level.OVERWORLD);
-            new WorldGenVeinLayer("manganese", 20, 30, 20, 3, 16, Grossular, Spessartine, Pyrolusite, Tantalite, Level.OVERWORLD, Level.END);
-            new WorldGenVeinLayer("quartz", 40, 80, 60, 3, 16, Quartzite, Barite, Barite/*CertusQuartz*/, Barite/*CertusQuartz*/, Level.OVERWORLD);
-            new WorldGenVeinLayer("diamond", -55, -30, 40, 2, 16, Graphite, Graphite, Diamond, Coal, Level.OVERWORLD);
-            new WorldGenVeinLayer("olivine", 10, 40, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite, Level.OVERWORLD, Level.END);
-            //new WorldGenLayer("apatite", 40, 60, 60, 3, 16, Apatite, Apatite, TricalciumPhosphate, Pyrochlore);
-            new WorldGenVeinLayer("gelena", 30, 60, 40, 5, 16, Galena, Galena, Silver, Lead, Level.OVERWORLD);
-            new WorldGenVeinLayer("lapis", 20, 50, 40, 5, 16, Lapis/*Lazurite*/, Lapis/*Sodalite*/, Lapis, Calcite, Level.OVERWORLD, Level.END);
-            new WorldGenVeinLayer("beryllium", 5, 30, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium, Level.OVERWORLD, Level.END);
-            new WorldGenVeinLayer("oilsands", 50, 80, 80, 6, 32, Oilsands, Oilsands, Oilsands, Oilsands, Level.OVERWORLD);
-        }
+  }
 
-        new WorldGenOreSmall(60, 120, 16, Chalcopyrite, Level.OVERWORLD, Level.NETHER, Level.END/*, MARS */);
-        new WorldGenOreSmall(60, 120, 16, Cassiterite, Level.OVERWORLD, Level.NETHER, Level.END/*, MARS */);
-        new WorldGenOreSmall(60, 120, 16, Copper, Level.OVERWORLD, Level.NETHER, Level.END/*, MOON *//*, MARS */);
-        new WorldGenOreSmall(60, 120, 16, Tin, Level.OVERWORLD, Level.NETHER, Level.END/*, MOON *//*, MARS *//*, ASTEROIDS */);
-        new WorldGenOreSmall(80, 120, 8, Bismuth, Level.OVERWORLD, Level.NETHER/*, MOON *//*, MARS */);
-        new WorldGenOreSmall(60, 100, 24, Coal, Level.OVERWORLD);
+  private static void initStoneOreVeins(AntimatterWorldGenEvent ev) {
+    WorldGenVein.setLayerChance(WorldGenVein.STONE_ORE_VEIN_LAYER, 0.05f);
 
-        //TODO replace and also swap ORE_SMALL tags in Materials
-        //new WorldGenOreSmall(40, 80, 24, Hematite, World.OVERWORLD, World.THE_NETHER, World.THE_END/*, MOON *//*, MARS */);
-        new WorldGenOreSmall(40, 80, 16, Iron, Level.OVERWORLD, Level.NETHER, Level.END/*, MOON *//*, MARS */);
+      ev.vein( new WorldGenVeinBuilder("vein_coal")
+        .asMediumStoneOreVein(1, 32, 320, Coal, OVERWORLD)
+        .buildVein());
 
-        new WorldGenOreSmall(40, 80, 6, Salt, Level.OVERWORLD, Level.NETHER, Level.END/*, MARS */);
-        new WorldGenOreSmall(40, 80, 6, RockSalt, Level.OVERWORLD, Level.NETHER, Level.END/*, MARS */);
-        new WorldGenOreSmall(30, 60, 12, Sphalerite, Level.OVERWORLD, Level.NETHER, Level.END/*, MARS */);
-        new WorldGenOreSmall(40, 70, 4, Zinc, Level.OVERWORLD, Level.NETHER, Level.END/*, MOON *//*, MARS *//*, ASTEROIDS */);
+      ev.vein(new WorldGenVeinBuilder("vein_lignite")
+        .asMediumStoneOreVein(1, 32, 320, Lignite, OVERWORLD)
+        .buildVein());
 
-        //TODO replace and also swap ORE_SMALL tags in Materials
-        //new WorldGenOreSmall(30, 60, 2, Smithsonite, World.OVERWORLD, World.THE_NETHER, World.THE_END/*, MARS */);
-        new WorldGenOreSmall(20, 40, 8, Nickel, Level.OVERWORLD, Level.NETHER, Level.END/*, MOON *//*, MARS *//*, ASTEROIDS */);
+      ev.vein(new WorldGenVeinBuilder("vein_salt")
+        .asMediumStoneOreVein(1, 32, 320, Salt, OVERWORLD)
+        .buildVein());
 
-        new WorldGenOreSmall(40, 80, 8, Galena, Level.OVERWORLD, Level.NETHER, Level.END/*, MARS */);
-        new WorldGenOreSmall(40, 80, 8, Lead, Level.OVERWORLD, Level.NETHER, Level.END/*, MOON *//*, MARS *//*, ASTEROIDS */);
-        new WorldGenOreSmall(20, 40, 4, Gold, Level.OVERWORLD, Level.NETHER, Level.END/*, MOON *//*, MARS *//*, ASTEROIDS */);
-        new WorldGenOreSmall(20, 40, 4, Pyrite, Level.OVERWORLD, Level.NETHER, Level.END/*, MOON *//*, MARS *//*, ASTEROIDS */);
-        new WorldGenOreSmall(20, 40, 4, Silver, Level.OVERWORLD, Level.NETHER, Level.END/*, MOON *//*, MARS *//*, ASTEROIDS */);
-        new WorldGenOreSmall(20, 40, 4, Pyrolusite, Level.OVERWORLD, Level.NETHER, Level.END/*, MOON *//*, MARS */);
-        new WorldGenOreSmall(20, 40, 4, Garnierite, Level.OVERWORLD, Level.NETHER, Level.END/*, MARS */);
-        new WorldGenOreSmall(20, 40, 4, Pentlandite, Level.OVERWORLD, Level.NETHER, Level.END/*, MARS */);
-        new WorldGenOreSmall(20, 40, 2, Stibnite, Level.OVERWORLD, Level.NETHER, Level.END/*, MARS */);
-        //new WorldGenOreSmall(20, 40, 8, Asbestos, World.OVERWORLD);
-        //new WorldGenOreSmall(20, 40, 4, Eudialyte, World.OVERWORLD);
-        //new WorldGenOreSmall(20, 40, 4, Azurite, World.OVERWORLD);
-        //new WorldGenOreSmall(1, 250, 1, Zeolite, World.OVERWORLD);
-        new WorldGenOreSmall(20, 40, 4, Lapis, Level.OVERWORLD);
-        new WorldGenOreSmall(5, 20, 8, Redstone, Level.OVERWORLD, Level.NETHER/*, MARS */);
-        new WorldGenOreSmall(5, 10, 2, Graphite, Level.OVERWORLD, Level.NETHER/*, MARS */);
-        //new WorldGenOreSmall(5, 50, 1, Sheelite, World.OVERWORLD, World.THE_END/*, MOON *//*, MARS *//*, ASTEROIDS */);
-        new WorldGenOreSmall(20, 40, 4, Cooperite, Level.END/*, ASTEROIDS */);
-        //new WorldGenOreSmall(20, 40, 4, Sperrylite, World.THE_END/*, ASTEROIDS */);
-        new WorldGenOreSmall(20, 40, 6, Platinum, Level.END/*, ASTEROIDS */);
-        new WorldGenOreSmall(20, 40, 6, Iridium, Level.END/*, ASTEROIDS */);
-        new WorldGenOreSmall(30, 120, 64, Quartz, Level.NETHER);
-        new WorldGenOreSmall(10, 60, 8, Saltpeter, Level.NETHER);
-        //new WorldGenOreSmall(10, 60, 8, SodiumNitrate, World.THE_NETHER);
-        new WorldGenOreSmall("sulfur_World.THE_NETHER", 10, 60, 32, Sulfur, Level.NETHER);
-        new WorldGenOreSmall("sulfur_World.OVERWORLD", 5, 15, 8, Sulfur, Level.OVERWORLD/*, MARS */);
+      ev.vein(new WorldGenVeinBuilder("vein_rock_salt")
+        .asMediumStoneOreVein(1, 32, 320, RockSalt, OVERWORLD)
+        .buildVein());
 
-        //TODO replace with GarnetSand?
-        new WorldGenOreSmall(5, 250, 1, RedGarnet, Level.OVERWORLD, Level.NETHER/*, MARS *//*, ASTEROIDS */);
-        new WorldGenOreSmall(5, 250, 1, YellowGarnet, Level.OVERWORLD, Level.NETHER/*, MARS *//*, ASTEROIDS */);
+      ev.vein(new WorldGenVeinBuilder("vein_bauxite")
+        .asMediumStoneOreVein(1, 32, 320, Bauxite, OVERWORLD)
+        .buildVein());
 
-        new WorldGenOreSmall(5, 10, 2, Diamond, Level.OVERWORLD, Level.NETHER/*, MOON *//*, MARS *//*, ASTEROIDS */);
-        new WorldGenOreSmall(5, 250, 1, Emerald, Level.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Aquamarine, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Morganite, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Heliodor, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Goshenite, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Bixbite, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Maxixe, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Dioptase, World.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, Ruby, Level.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, BlueSapphire, Level.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, GreenSapphire, Level.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, YellowSapphire, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, OrangeSapphire, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, PurpleSapphire, World.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, Olivine, Level.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Craponite, World.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, Topaz, Level.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, Tanzanite, Level.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, Amethyst, Level.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Alexandrite, World.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, Opal, Level.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Jasper, World.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, BlueTopaz, Level.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, BalasRuby, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Spinel, World.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, Pyrope, Level.OVERWORLD/*, MARS */);
+      ev.vein(new WorldGenVeinBuilder("vein_oil_shale")
+        .asMediumStoneOreVein(1, 32, 320, OilShale, OVERWORLD)
+        .buildVein());
+  }
 
-        new WorldGenOreSmall(5, 250, 1, Almandine, Level.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, Spessartine, Level.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, Andradite, Level.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, Grossular, Level.OVERWORLD/*, MARS */);
-        new WorldGenOreSmall(5, 250, 1, Uvarovite, Level.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Jade, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Amazonite, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, RedOnyx, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, BlackOnyx, World.OVERWORLD/*, MARS */);
-        //new WorldGenOreSmall(5, 250, 1, Amber, World.OVERWORLD/*, MARS */);
-    }
+  private static void initOreVeins(AntimatterWorldGenEvent ev) {
+    WorldGenVein.setLayerChance(WorldGenVein.ORE_VEIN_LAYER, 0.1f);
+    // TODO: move veins from initOld here
+      ev.vein(new WorldGenVeinBuilder("naquadah").asOreVein(-54, 21, 10, 5, 32, Naquadah, Naquadah, Naquadah, EnrichedNaquadah,
+        Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("lignite").asOreVein(-54, 21, 10, 5, 32, Naquadah, Naquadah, Naquadah, EnrichedNaquadah,
+        Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("coal").asOreVein(-14, 31, 80, 6, 32, Coal, Coal, Coal, Lignite, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("magnetite").asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite,
+        OVERWORLD, Level.NETHER).buildVein());
+      ev.vein(new WorldGenVeinBuilder("gold").asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold,
+        OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("iron").asOreVein(-54, -9, 120, 4, 24, BrownLimonite, YellowLimonite, BandedIron, Malachite,
+        OVERWORLD, Level.NETHER).buildVein());
+      ev.vein(new WorldGenVeinBuilder("cassiterite").asOreVein(-24, 96, 50, 5, 24, Tin, Tin, Cassiterite, Tin, OVERWORLD,
+        Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("tetrahedrite").asOreVein(16, 76, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite,
+        OVERWORLD, Level.NETHER).buildVein());
+      ev.vein(new WorldGenVeinBuilder("nether_quartz").asOreVein(-24, 36, 80, 5, 24, Quartz, Quartz, Quartz, Quartz,
+        Level.NETHER).buildVein());
+      ev.vein(new WorldGenVeinBuilder("sulfur").asOreVein(-59, -36, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite, Level.NETHER).buildVein());
+      ev.vein(new WorldGenVeinBuilder("copper").asOreVein(-54, -24, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, OVERWORLD,
+        Level.NETHER).buildVein());
+      ev.vein(new WorldGenVeinBuilder("redstone").asOreVein(-54, -9, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar, OVERWORLD,
+        Level.NETHER).buildVein());
+      ev.vein(new WorldGenVeinBuilder("soapstone").asOreVein(-54, -9, 40, 3, 16, Soapstone, Talc, Glauconite, Pentlandite,
+        OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("nickel").asOreVein(-54, -9, 40, 3, 16, Garnierite, Nickel, Cobaltite, Pentlandite,
+        OVERWORLD, Level.NETHER, Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("platinum").asOreVein(-24, -9, 5, 3, 16, Cooperite, Palladium, Platinum, Iridium, OVERWORLD,
+        Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("pitchblend").asOreVein(-54, -9, 40, 3, 16, Pitchblende, Pitchblende, Uraninite, Uraninite,
+        OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("uranium").asOreVein(-44, -29, 20, 3, 16, Uraninite, Uraninite, Uranium, Uranium,
+        OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("monazite").asOreVein(-44, -14, 30, 3, 16, Bastnasite, Bastnasite, Bastnasite/* Monazite */,
+        Neodymium, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("molybdenum").asOreVein(-44, 1, 5, 3, 16, Wulfenite, Molybdenite, Molybdenum,
+        Molybdenum/* Powellite */, OVERWORLD, Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("tungstate").asOreVein(-44, 1, 10, 3, 16, Scheelite, Scheelite, Tungstate, Lithium,
+        OVERWORLD, Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("sapphire").asOreVein(-54, -9, 60, 3, 16, Almandine, Pyrope, BlueSapphire, GreenSapphire,
+        OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("manganese").asOreVein(-44, -29, 20, 3, 16, Grossular, Spessartine, Pyrolusite, Tantalite,
+        OVERWORLD, Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("quartz").asOreVein(-24, 36, 60, 3, 16, Quartzite, Barite, Barite/* CertusQuartz */,
+        Barite/* CertusQuartz */, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("diamond").asOreVein(-119, -81, 40, 2, 16, Graphite, Graphite, Diamond, Coal, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("olivine").asOreVein(-54, -9, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite,
+        OVERWORLD, Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("galena").asOreVein(-34, 11, 40, 5, 16, Galena, Galena, Silver, Lead, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("lapis").asOreVein(-44, 1, 40, 5, 16, Lapis/* Lazurite */, Lapis/* Sodalite */, Lapis,
+        Calcite, OVERWORLD, Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("beryllium").asOreVein(-59, -21, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
+        OVERWORLD, Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("oilsands").asOreVein(-14, 31, 80, 6, 32, Oilsands, Oilsands, Oilsands, Oilsands,
+        OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("apatite").asOreVein(-14, 31, 80, 6, 32, Oilsands, Oilsands, Oilsands, Oilsands, OVERWORLD).buildVein());
+
+  }
+
+  // public static void initOld() {
+  //
+  // //TODO probably increase max generation heights for most things
+  // //TODO add GC dims to all objects
+  //
+  // if (AntimatterConfig.WORLD.ORE_VEINS) {
+  // //new WorldGenVeinLayer("naquadah", -54, 21, 10, 5, 32, Naquadah, Naquadah,
+  // Naquadah, EnrichedNaquadah, Level.END);
+  // //new WorldGenVeinLayer("lignite", -14, 106, 160, 8, 32, lignite, lignite,
+  // lignite, coal, world.overworld);
+  // //new WorldGenVeinLayer("coal", -14, 31, 80, 6, 32, Coal, Coal, Coal,
+  // Lignite, World.OVERWORLD);
+  // // //new WorldGenVeinLayer("bauxite", -14, 46, 80, 4, 24, Bauxite, Bauxite,
+  // Aluminium, Ilmenite, World.OVERWORLD);
+  // //new WorldGenVeinLayer("salts", -14, 1, 50, 3, 24, RockSalt, Salt,
+  // Lepidolite, Spodumene, World.OVERWORLD);
+
+  // }
+  //
+  // new WorldGenOreSmall(60, 120, 16, Chalcopyrite, OVERWORLD, Level.NETHER,
+  // Level.END/*, MARS */);
+  // new WorldGenOreSmall(60, 120, 16, Cassiterite, OVERWORLD, Level.NETHER,
+  // Level.END/*, MARS */);
+  // new WorldGenOreSmall(60, 120, 16, Copper, OVERWORLD, Level.NETHER,
+  // Level.END/*, MOON *//*, MARS */);
+  // new WorldGenOreSmall(60, 120, 16, Tin, OVERWORLD, Level.NETHER, Level.END/*,
+  // MOON *//*, MARS *//*, ASTEROIDS */);
+  // new WorldGenOreSmall(80, 120, 8, Bismuth, OVERWORLD, Level.NETHER/*, MOON
+  // *//*, MARS */);
+  // new WorldGenOreSmall(60, 100, 24, Coal, OVERWORLD);
+  //
+  // //TODO replace and also swap ORE_SMALL tags in Materials
+  // //new WorldGenOreSmall(40, 80, 24, Hematite, World.OVERWORLD,
+  // World.THE_NETHER, World.THE_END/*, MOON *//*, MARS */);
+  // new WorldGenOreSmall(40, 80, 16, Iron, OVERWORLD, Level.NETHER, Level.END/*,
+  // MOON *//*, MARS */);
+  //
+  // new WorldGenOreSmall(40, 80, 6, Salt, OVERWORLD, Level.NETHER, Level.END/*,
+  // MARS */);
+  // new WorldGenOreSmall(40, 80, 6, RockSalt, OVERWORLD, Level.NETHER,
+  // Level.END/*, MARS */);
+  // new WorldGenOreSmall(30, 60, 12, Sphalerite, OVERWORLD, Level.NETHER,
+  // Level.END/*, MARS */);
+  // new WorldGenOreSmall(40, 70, 4, Zinc, OVERWORLD, Level.NETHER, Level.END/*,
+  // MOON *//*, MARS *//*, ASTEROIDS */);
+  //
+  // //TODO replace and also swap ORE_SMALL tags in Materials
+  // //new WorldGenOreSmall(30, 60, 2, Smithsonite, World.OVERWORLD,
+  // World.THE_NETHER, World.THE_END/*, MARS */);
+  // new WorldGenOreSmall(20, 40, 8, Nickel, OVERWORLD, Level.NETHER, Level.END/*,
+  // MOON *//*, MARS *//*, ASTEROIDS */);
+  //
+  // new WorldGenOreSmall(40, 80, 8, Galena, OVERWORLD, Level.NETHER, Level.END/*,
+  // MARS */);
+  // new WorldGenOreSmall(40, 80, 8, Lead, OVERWORLD, Level.NETHER, Level.END/*,
+  // MOON *//*, MARS *//*, ASTEROIDS */);
+  // new WorldGenOreSmall(20, 40, 4, Gold, OVERWORLD, Level.NETHER, Level.END/*,
+  // MOON *//*, MARS *//*, ASTEROIDS */);
+  // new WorldGenOreSmall(20, 40, 4, Pyrite, OVERWORLD, Level.NETHER, Level.END/*,
+  // MOON *//*, MARS *//*, ASTEROIDS */);
+  // new WorldGenOreSmall(20, 40, 4, Silver, OVERWORLD, Level.NETHER, Level.END/*,
+  // MOON *//*, MARS *//*, ASTEROIDS */);
+  // new WorldGenOreSmall(20, 40, 4, Pyrolusite, OVERWORLD, Level.NETHER,
+  // Level.END/*, MOON *//*, MARS */);
+  // new WorldGenOreSmall(20, 40, 4, Garnierite, OVERWORLD, Level.NETHER,
+  // Level.END/*, MARS */);
+  // new WorldGenOreSmall(20, 40, 4, Pentlandite, OVERWORLD, Level.NETHER,
+  // Level.END/*, MARS */);
+  // new WorldGenOreSmall(20, 40, 2, Stibnite, OVERWORLD, Level.NETHER,
+  // Level.END/*, MARS */);
+  // //new WorldGenOreSmall(20, 40, 8, Asbestos, World.OVERWORLD);
+  // //new WorldGenOreSmall(20, 40, 4, Eudialyte, World.OVERWORLD);
+  // //new WorldGenOreSmall(20, 40, 4, Azurite, World.OVERWORLD);
+  // //new WorldGenOreSmall(1, 250, 1, Zeolite, World.OVERWORLD);
+  // new WorldGenOreSmall(20, 40, 4, Lapis, OVERWORLD);
+  // new WorldGenOreSmall(5, 20, 8, Redstone, OVERWORLD, Level.NETHER/*, MARS */);
+  // new WorldGenOreSmall(5, 10, 2, Graphite, OVERWORLD, Level.NETHER/*, MARS */);
+  // //new WorldGenOreSmall(5, 50, 1, Sheelite, World.OVERWORLD, World.THE_END/*,
+  // MOON *//*, MARS *//*, ASTEROIDS */);
+  // new WorldGenOreSmall(20, 40, 4, Cooperite, Level.END/*, ASTEROIDS */);
+  // //new WorldGenOreSmall(20, 40, 4, Sperrylite, World.THE_END/*, ASTEROIDS */);
+  // new WorldGenOreSmall(20, 40, 6, Platinum, Level.END/*, ASTEROIDS */);
+  // new WorldGenOreSmall(20, 40, 6, Iridium, Level.END/*, ASTEROIDS */);
+  // new WorldGenOreSmall(30, 120, 64, Quartz, Level.NETHER);
+  // new WorldGenOreSmall(10, 60, 8, Saltpeter, Level.NETHER);
+  // //new WorldGenOreSmall(10, 60, 8, SodiumNitrate, World.THE_NETHER);
+  // new WorldGenOreSmall("sulfur_World.THE_NETHER", 10, 60, 32, Sulfur,
+  // Level.NETHER);
+  // new WorldGenOreSmall("sulfur_World.OVERWORLD", 5, 15, 8, Sulfur, OVERWORLD/*,
+  // MARS */);
+  //
+  // //TODO replace with GarnetSand?
+  // new WorldGenOreSmall(5, 250, 1, RedGarnet, OVERWORLD, Level.NETHER/*, MARS
+  // *//*, ASTEROIDS */);
+  // new WorldGenOreSmall(5, 250, 1, YellowGarnet, OVERWORLD, Level.NETHER/*, MARS
+  // *//*, ASTEROIDS */);
+  //
+  // new WorldGenOreSmall(5, 10, 2, Diamond, OVERWORLD, Level.NETHER/*, MOON *//*,
+  // MARS *//*, ASTEROIDS */);
+  // new WorldGenOreSmall(5, 250, 1, Emerald, OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Aquamarine, World.OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Morganite, World.OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Heliodor, World.OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Goshenite, World.OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Bixbite, World.OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Maxixe, World.OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Dioptase, World.OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, Ruby, OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, BlueSapphire, OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, GreenSapphire, OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, YellowSapphire, World.OVERWORLD/*, MARS
+  // */);
+  // //new WorldGenOreSmall(5, 250, 1, OrangeSapphire, World.OVERWORLD/*, MARS
+  // */);
+  // //new WorldGenOreSmall(5, 250, 1, PurpleSapphire, World.OVERWORLD/*, MARS
+  // */);
+  // new WorldGenOreSmall(5, 250, 1, Olivine, OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Craponite, World.OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, Topaz, OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, Tanzanite, OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, Amethyst, OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Alexandrite, World.OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, Opal, OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Jasper, World.OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, BlueTopaz, OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, BalasRuby, World.OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Spinel, World.OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, Pyrope, OVERWORLD/*, MARS */);
+  //
+  // new WorldGenOreSmall(5, 250, 1, Almandine, OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, Spessartine, OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, Andradite, OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, Grossular, OVERWORLD/*, MARS */);
+  // new WorldGenOreSmall(5, 250, 1, Uvarovite, OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Jade, World.OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Amazonite, World.OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, RedOnyx, World.OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, BlackOnyx, World.OVERWORLD/*, MARS */);
+  // //new WorldGenOreSmall(5, 250, 1, Amber, World.OVERWORLD/*, MARS */);
+  // }
 }

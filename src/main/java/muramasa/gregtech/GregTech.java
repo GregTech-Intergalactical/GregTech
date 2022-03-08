@@ -54,6 +54,7 @@ public class GregTech extends AntimatterMod {
         MinecraftForge.EVENT_BUS.addListener(GregTech::registerRecipeLoaders);
         MinecraftForge.EVENT_BUS.addListener(GregTech::registerCraftingLoaders);
         MinecraftForge.EVENT_BUS.addListener(GregTech::onProviders);
+        MinecraftForge.EVENT_BUS.addListener(WorldGenLoader::init);
 
         AntimatterDynamics.addProvider(Ref.ID,
                 g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
@@ -156,7 +157,6 @@ public class GregTech extends AntimatterMod {
                 //if (side == Dist.CLIENT) StructureInfo.init();
                 TierMaps.providerInit();
             }
-            case WORLDGEN_INIT -> WorldGenLoader.init();
             default -> {
             }
         }

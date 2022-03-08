@@ -17,6 +17,20 @@ public class Textures {
         new Texture(Ref.ID, "block/machine/base/bricked_" + t.getId()),
     };
 
+    public static final IOverlayTexturer LEFT_RIGHT_HANDLER = (type, state, tier) -> {
+        if (state != MachineState.ACTIVE && state != MachineState.INVALID_STRUCTURE) state = MachineState.IDLE;
+        String stateDir = state == MachineState.IDLE ? "" : state.getId() + "/";
+
+        return new Texture[] {
+                new Texture(Ref.ID, "block/machine/overlay/" + type.getId() + "/" + stateDir + "bottom"),
+                new Texture(Ref.ID, "block/machine/overlay/" + type.getId() + "/" + stateDir + "top"),
+                new Texture(Ref.ID, "block/machine/overlay/" + type.getId() + "/" + stateDir + "back"),
+                new Texture(Ref.ID, "block/machine/overlay/" + type.getId() + "/" + stateDir + "front"),
+                new Texture(Ref.ID, "block/machine/overlay/" + type.getId() + "/" + stateDir + "right"),
+                new Texture(Ref.ID, "block/machine/overlay/" + type.getId() + "/" + stateDir + "left"),
+        };
+    };
+
     public static final IOverlayTexturer TIER_SPECIFIC_OVERLAY_HANDLER = (type, state, tier) -> {
         if (state != MachineState.ACTIVE && state != MachineState.INVALID_STRUCTURE) state = MachineState.IDLE;
         String stateDir = state == MachineState.IDLE ? "" : state.getId() + "/";
