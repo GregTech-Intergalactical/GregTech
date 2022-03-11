@@ -11,6 +11,7 @@ import muramasa.antimatter.tile.single.TileEntityInfiniteStorage;
 import muramasa.antimatter.tile.single.TileEntityTransformer;
 import muramasa.gregtech.Ref;
 import muramasa.gregtech.machine.SteamMachine;
+import muramasa.gregtech.machine.maps.DisassemblingMap;
 import muramasa.gregtech.tile.multi.*;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import muramasa.gregtech.tile.single.TileEntityInfiniteFluid;
@@ -44,7 +45,7 @@ public class Machines {
     public static BasicMachine ORE_WASHER = new BasicMachine(Ref.ID, "ore_washer").setMap(ORE_WASHING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine CHEMICAL_REACTOR = new BasicMachine(Ref.ID, "chemical_reactor").setMap(CHEMICAL_REACTING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine FLUID_CANNER = new BasicMachine(Ref.ID, "fluid_canner").setMap(FLUID_CANNING).addFlags(GUI, ITEM, FLUID);
-    public static BasicMachine DISASSEMBLER = new BasicMachine(Ref.ID, "disassembler").setMap(DISASSEMBLING).addFlags(GUI, ITEM).custom();
+    public static BasicMachine DISASSEMBLER = new BasicMachine(Ref.ID, "disassembler").setMap(new DisassemblingMap()).addFlags(GUI, ITEM).custom();
     public static BasicMachine MASS_FABRICATOR = new BasicMachine(Ref.ID, "mass_fabricator").setMap(MASS_FABRICATING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine AMP_FABRICATOR = new BasicMachine(Ref.ID, "amp_fabricator").setMap(AMP_FABRICATING).addFlags(GUI, ITEM);
     public static BasicMachine REPLICATOR = new BasicMachine(Ref.ID, "replicator").setMap(REPLICATING).addFlags(GUI, ITEM, FLUID);
