@@ -4,5 +4,20 @@
   },
   "drill": {
     "sounds": [ "gregtech:drill" ]
+  },
+  "extractor": {
+    "sounds": [ "gregtech:extractor" ]
+  },
+  "furnace": {
+    "sounds": [ "gregtech:furnace" ]
+  },
+  "pulverizer": {
+    "sounds": [ "gregtech:pulverizer" ]
+  },
+  "magnetizer": {
+    "sounds": [ "gregtech:magnetizer" ]
+  },
+  "treetap": {
+    "sounds": [ "gregtech:treetap" ]
   }
 }
