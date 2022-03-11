@@ -141,6 +141,7 @@ minecraft {
                 environment('MOD_CLASSES', this.getenv())
             }
             arg "-mixin.config=antimatter.mixins.json"
+            arg "-mixin.config=tesseract.mixins.json"
             mods {
                 gregtech {
                     source sourceSets.main
@@ -171,6 +172,7 @@ minecraft {
                 environment('MOD_CLASSES', this.getenv())
             }
             arg "-mixin.config=antimatter.mixins.json"
+            arg "-mixin.config=tesseract.mixins.json"
             arg "-nogui"
             mods {
                 gregtech {
@@ -198,6 +200,7 @@ minecraft {
             //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
             arg "-mixin.config=antimatter.mixins.json"
+            arg "-mixin.config=tesseract.mixins.json"
             //if (isVSTask())
             //    jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
             // Recommended logging level for the console
@@ -238,7 +241,7 @@ dependencies {
     if (hasTesseract) {
         implementation project(path: ':TesseractAPI')
     } else {
-        implementation fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
+        implementation fg.deobf("com.github.GregTech-Intergalactical.TesseractAPI:TesseractAPI-forge:${tesseract_version}")
     }
     //
     //compile 'de.speiger:Primitive-Collections:0.4.0'
@@ -247,9 +250,9 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
-    runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
-    runtimeOnly fg.deobf("curse.maven:architecturyforge-419699:${architectury_file}")
-    runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
+  //  runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
+ //   runtimeOnly fg.deobf("curse.maven:architecturyforge-419699:${architectury_file}")
+ //   runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
     //runtimeOnly fg.deobf("curse.maven:top-245211:${top_file}")
 }
 

@@ -18,7 +18,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.tags.Tag;
-
+import net.minecraft.tags.TagKey;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
@@ -38,8 +38,8 @@ public class Parts {
       Material mat = TIER_MATERIALS.get(t);
       // Item smallGear = GEAR_SMALL.get(mat);
       Item smallGear = GEAR.get(mat);
-      Tag.Named<Item> plate = PLATE.getMaterialTag(mat);
-      Tag.Named<Item> rod = ROD.getMaterialTag(mat);
+      TagKey<Item> plate = PLATE.getMaterialTag(mat);
+      TagKey<Item> rod = ROD.getMaterialTag(mat);
       Item circuit = TIER_CIRCUITS.getOrDefault(t, CircuitBasic);
 
       Item motor = GregTech.get(ItemBasic.class, "motor_" + t.getId());

@@ -17,7 +17,7 @@ public class Smelting {
         DUST.all().forEach(t -> {
             if (t.needsBlastFurnace()) return;
             if (!t.has(INGOT)) return;
-            SimpleCookingRecipeBuilder.smelting(Ingredient.of(nc(TagUtils.getItemTag(DUST.getMaterialTag(t).getName()))), INGOT.get(t), 1, 200).unlockedBy("has_dust_" + t.getId(), provider.hasSafeItem(DUST.get(t))).save(output);
+            SimpleCookingRecipeBuilder.smelting(Ingredient.of(TagUtils.getItemTag(DUST.getMaterialTag(t).location())), INGOT.get(t), 1, 200).unlockedBy("has_dust_" + t.getId(), provider.hasSafeItem(DUST.get(t))).save(output);
         });
     }
 }

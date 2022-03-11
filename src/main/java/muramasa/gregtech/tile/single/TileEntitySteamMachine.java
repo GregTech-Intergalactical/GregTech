@@ -43,7 +43,7 @@ public class TileEntitySteamMachine<T extends TileEntitySteamMachine<T>> extends
                 if (event instanceof ContentEvent) {
                     if (event == ContentEvent.FLUID_INPUT_CHANGED) {
                         if (data != null && data.length > 0) {
-                            if (data[0] instanceof FluidStack && ((FluidStack)data[0]).getFluid().getTags().contains(STEAM)) {
+                            if (data[0] instanceof FluidStack && ((FluidStack)data[0]).getFluid().builtInRegistryHolder().is(STEAM)) {
                                 checkRecipe();
                             }
                         }
@@ -58,7 +58,7 @@ public class TileEntitySteamMachine<T extends TileEntitySteamMachine<T>> extends
 
             @Override
             public boolean accepts(FluidStack stack) {
-                return stack.getFluid().getTags().contains(STEAM);
+                return stack.getFluid().builtInRegistryHolder().is(STEAM);
             }
         });
     }

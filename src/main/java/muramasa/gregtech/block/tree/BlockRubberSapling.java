@@ -66,7 +66,7 @@ public class BlockRubberSapling extends SaplingBlock implements IAntimatterObjec
 
     @Override
     public void advanceTree(ServerLevel world, BlockPos pos, BlockState state, Random random) {
-        if (world.getBiome(pos).getBiomeCategory() != Biome.BiomeCategory.NETHER && world.getBiome(pos).getBiomeCategory() != Biome.BiomeCategory.THEEND)
+        if (Biome.getBiomeCategory(world.getBiome(pos)) != Biome.BiomeCategory.NETHER && Biome.getBiomeCategory(world.getBiome(pos)) != Biome.BiomeCategory.THEEND)
             super.advanceTree(world, pos, state, random);
     }
 }
