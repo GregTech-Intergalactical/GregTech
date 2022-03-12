@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class OreByproducts {
                 List<Material> byProducts = m.getByProducts();
                 int byProductsCount = byProducts.size();
 
-                List<RecipeIngredient> ores = new ObjectArrayList<>();
+                List<Ingredient> ores = new ObjectArrayList<>();
                 if (m.has(ORE)) ores.add(ore);
                 if (m.has(ROCK)) ores.add(ROCK.getIngredient(m, 1));
                 if (m.has(CRUSHED)) ores.add(crushed);

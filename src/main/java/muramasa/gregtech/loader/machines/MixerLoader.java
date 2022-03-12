@@ -6,6 +6,7 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,7 +56,7 @@ public class MixerLoader {
 
     private static void addDust(Material mat, int eut, int duration) {
         for (MaterialTypeItem<?> type : new MaterialTypeItem[]{DUST, DUST_SMALL, DUST_TINY}) {
-            List<RecipeIngredient> ings = mat.getProcessInto().stream().map(t -> type.getMaterialIngredient(t.m, t.s)).collect(Collectors.toList());
+            List<Ingredient> ings = mat.getProcessInto().stream().map(t -> type.getMaterialIngredient(t.m, t.s)).collect(Collectors.toList());
             if (ings.size() == 0) return;
             int count = mat.getProcessInto().stream().mapToInt(t -> t.s).sum();
             ings.add(INT_CIRCUITS.get(4));
