@@ -1,4 +1,4 @@
-package muramasa.gti.data;
+package muramasa.gregtech.data;
 
 
 import muramasa.antimatter.AntimatterAPI;
@@ -14,10 +14,10 @@ import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.ore.BlockOreStone;
 import muramasa.antimatter.pipe.BlockPipe;
 import muramasa.antimatter.tool.IAntimatterTool;
-import muramasa.gti.Ref;
-import muramasa.gti.block.BlockCasing;
-import muramasa.gti.block.BlockCoil;
-import muramasa.gti.items.ItemIntCircuit;
+import muramasa.gregtech.Ref;
+import muramasa.gregtech.block.BlockCasing;
+import muramasa.gregtech.block.BlockCoil;
+import muramasa.gregtech.items.ItemIntCircuit;
 import net.minecraft.data.DataGenerator;
 
 import java.nio.charset.StandardCharsets;
@@ -206,6 +206,7 @@ public class GregTechLocalizations {
                     add(i, translations.get(i.getId()));
                 } else add(i, lowerUnderscoreToUpperSpacedRotated(i.getId()));
             });
+
 
             AntimatterAPI.all(ItemCover.class, domain).forEach(i -> {
                 String[] spl = i.getId().split("_");

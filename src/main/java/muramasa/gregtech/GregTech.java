@@ -83,7 +83,7 @@ public class GregTech extends AntimatterMod {
                     g -> new GregtechBlockLootProvider(Ref.ID, Ref.NAME.concat(" Loot generator"), g));
         }
     }
-    
+
     private static void registerCraftingLoaders(AntimatterCraftingEvent event) {
         event.addLoader(Parts::loadRecipes);
         event.addLoader(Smelting::loadRecipes);
