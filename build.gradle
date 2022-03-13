@@ -1,21 +1,6 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        jcenter()
-        mavenCentral()
-        gradlePluginPortal()
-        maven { url 'https://dvs1.progwml6.com/files/maven' }
-        maven {
-            name = 'sponge'
-            url = 'https://repo.spongepowered.org/repository/maven-public/'
-        }
-        maven { url = 'https://maven.parchmentmc.org' }
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1+', changing: true
-        classpath 'org.parchmentmc:librarian:1.+'
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
-    }
+plugins {
+    id 'dev.architectury.loom' version '0.11.0-SNAPSHOT'
+    id 'maven-publish'
 }
 
 repositories {
@@ -34,13 +19,6 @@ repositories {
     //GT.
     maven { url 'https://jitpack.io' }
 }
-apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
-apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'java'
 version = "${minecraft_version}-${mod_version}"
 group = 'com.github.gregtech-intergalactical' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'GregTech-Intergalactical'
@@ -73,6 +51,8 @@ if (isCI) {
 
 //Print out JVM information so that we know what version is running. Extreamly useful for people to know when helping you.
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+
+
 sourceSets {
     main {
         java {
@@ -113,7 +93,38 @@ def getPathSeparator() {
 }
 
 
-minecraft {
+loom{
+    silentMojangMappingsLicense()
+    forge {
+        // specify the mixin configs used in this mod
+        // this will be added to the jar manifest as well!
+
+        // missing access transformers?
+        // don't worry, you can still use them!
+        // note that your AT *MUST* be located at
+        // src/main/resources/META-INF/accesstransformer.cfg
+        // to work as there is currently no config option to change this.
+        // also, any names used in your access transformer will need to be
+        // in SRG mapped ("func_" / "field_" with MCP class names) to work!
+        // (both of these things may be subject to change in the future)
+
+        // this will create a data generator configuration
+        // that you can use to automatically generate assets and data
+        // using architectury loom. Note that this currently *only* works
+        // for forge projects made with architectury loom!
+        dataGen {
+            mod project.modid
+        }
+
+        launches {
+            data {
+                arg "--existing", file("src/main/resources").absolutePath
+            }
+        }
+    }
+}
+
+/*minecraft {
     // The mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   Snapshot are built nightly.
     // stable_#            Stables are built at the discretion of the MCP team.
@@ -226,29 +237,31 @@ minecraft {
             }
         }
     }
-}
+}*/
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
+    mappings loom.officialMojangMappings()
+
+    forge "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
 
     //GT related projects.
     if (hasAntimatter) {
         implementation project(path: ':AntimatterAPI')
     } else {
         //compileOnly sources jar.
-        implementation fg.deobf("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
+        modImplementation("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
     }
     if (hasTesseract) {
         implementation project(path: ':TesseractAPI')
     } else {
-        implementation fg.deobf("com.github.GregTech-Intergalactical.TesseractAPI:TesseractAPI-forge:${tesseract_version}")
+        modImplementation("com.github.GregTech-Intergalactical.TesseractAPI:TesseractAPI-forge:${tesseract_version}")
     }
-    //
-    //compile 'de.speiger:Primitive-Collections:0.4.0'
 
     //JEI
-    compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+    modCompileOnly("mezz.jei:jei-${jei_version}:api")
+    modRuntimeOnly("mezz.jei:jei-${jei_version}")
 
   //  runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
  //   runtimeOnly fg.deobf("curse.maven:architecturyforge-419699:${architectury_file}")
