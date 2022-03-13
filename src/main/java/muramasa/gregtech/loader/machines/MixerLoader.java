@@ -88,7 +88,7 @@ public class MixerLoader {
         MIXING.RB().ii(of(DUST.get(Redstone,1))).fi(SeedOil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add(64*2, 4);
         MIXING.RB().ii(of(DUST.get(Glass,7)),of(DUST.get(Boron,1))).io(DUST.get(BorosilicateGlass,8)).add(40*20, 8);
         MIXING.RB().ii(of(DUST.get(EnderPearl,1)),of(DUST.get(Materials.Blaze,1))).io(DUST.get(EnderEye,1)).add(5*20, 8);
-        MIXING.RB().ii(of(DUST.get(Saltpeter,2)),of(DUST.get(Sulfur,1)),of(DUST.get(Coal,1))).io().add(20*20, 8);
+        MIXING.RB().ii(of(DUST.get(Saltpeter,2)),of(DUST.get(Sulfur,1)),of(DUST.get(Coal,1))).io(Items.GUNPOWDER).add(20*20, 8);
         MIXING.RB().ii(of(DUST.get(Saltpeter,2)),of(DUST.get(Sulfur,1)),of(DUST.get(Materials.Charcoal,1))).io(new ItemStack(Items.GUNPOWDER,2)).add(15*20, 8);
         MIXING.RB().ii(of(DUST.get(Stone,1))).fi(Lubricant.getLiquid(20),Water.getLiquid(4980)).fo(DrillingFluid.getLiquid(5000)).add(32*2, 16);
         MIXING.RB().ii(of(DUST.get(Stone,3)),of(DUST.get(Clay,1))).fi(Water.getLiquid(500)).fo(Concrete.getLiquid(576)).add(1*20, 16);

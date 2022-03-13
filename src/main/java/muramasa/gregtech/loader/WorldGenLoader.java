@@ -25,9 +25,9 @@ public class WorldGenLoader {
         .asSmallStoneVein(10, -64, 320, GRAVEL, OVERWORLD)
         .buildVein());
 
-      //ev.vein(new WorldGenVeinBuilder("vein_dirt")
-      //  .asSmallStoneVein(10, 0, 320, DIRT, OVERWORLD)
-     //   .buildVein());
+      ev.vein(new WorldGenVeinBuilder("vein_dirt")
+        .asSmallStoneVein(10, 0, 320, DIRT, OVERWORLD)
+        .buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_tuff")
         .asSmallStoneVein(5, -64, 16, TUFF, OVERWORLD)

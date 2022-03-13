@@ -139,5 +139,10 @@ public class Parts {
               'P', PLATE.get(Steel),
               'H', HAMMER.getTag()
       ), "PPH", "PP ");
+
+      provider.addItemRecipe(output, Ref.ID, "diamondsaw_blade", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), DiamondSawBlade, of(
+              'G', GEAR.get(CobaltBrass),
+              'D', DUST_SMALL.get(Diamond)
+      ), " D ", "DGD", " D ");
   }
 }

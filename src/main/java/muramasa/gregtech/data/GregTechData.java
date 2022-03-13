@@ -20,6 +20,7 @@ import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockFusionCasing;
 import muramasa.gregtech.block.BlockTurbineCasing;
+import muramasa.gregtech.block.tree.RubberTree;
 import muramasa.gregtech.cover.CoverConveyor;
 import muramasa.gregtech.cover.CoverPump;
 import muramasa.gregtech.block.tree.BlockRubberLeaves;

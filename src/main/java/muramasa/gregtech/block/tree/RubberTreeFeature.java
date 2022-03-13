@@ -1,16 +1,43 @@
 package muramasa.gregtech.block.tree;
 
+import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.worldgen.feature.IAntimatterFeature;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;
+import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 
-public class RubberTreeFeature extends TreeFeature {
+public class RubberTreeFeature extends TreeFeature implements IAntimatterFeature {
 
     public RubberTreeFeature() {
         super(TreeConfiguration.CODEC);
+        AntimatterAPI.register(IAntimatterFeature.class, this);
+        this.setRegistryName(getLoc());
     }
-    
-    public void init() {
-      //  AntimatterWorldGenerator.register(RubberTreeWorldGen::onEvent, "rubber_tree", Ref.ID, RubberTreeWorldGen.getValidBiomesStatic());
+
+    @Override
+    public String getId() {
+        return "rubber_tree";
+    }
+
+    @Override
+    public Feature<?> asFeature() {
+        return this;
+    }
+
+    @Override
+    public void build(BiomeLoadingEvent event) {
+        BiomeGenerationSettingsBuilder builder = event.getGeneration();
+        if (event.getName().equals(Biomes.SWAMP.location())) {
+            builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE_SWAMP);
+        } else if (event.getName().equals(Biomes.JUNGLE.location())) {
+            builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE_JUNGLE);
+        } else {
+            builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE);
+        }
     }
 
     

@@ -9,6 +9,7 @@ import muramasa.antimatter.event.AntimatterLoaderEvent;
 import muramasa.antimatter.event.AntimatterProvidersEvent;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.RegistrationEvent;
+import muramasa.gregtech.block.tree.RubberTree;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.datagen.GregTechBlockTagProvider;
@@ -152,6 +153,7 @@ public class GregTech extends AntimatterMod {
                 Guis.init(side);
                 Models.init();
                 GregTechSounds.init();
+                RubberTree.init();
             }
             case DATA_READY -> {
                 Structures.init();

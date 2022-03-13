@@ -31,7 +31,6 @@ public class BlockRubberSapling extends SaplingBlock implements IAntimatterObjec
         this.domain = domain;
         this.id = id;
         AntimatterAPI.register(BlockRubberSapling.class, this);
-        RubberTree.TREE_FEATURE.init();
     }
 
     @Override

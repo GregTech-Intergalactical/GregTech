@@ -1425,11 +1425,18 @@ public class Materials {
         GEM.forceOverride(Charcoal, Items.CHARCOAL);
         GEM.forceOverride(Coal, Items.COAL);
         GEM.forceOverride(Diamond, Items.DIAMOND);
+        GEM.forceOverride(Emerald, Items.EMERALD);
+        GEM.forceOverride(Lapis, Items.LAPIS_LAZULI);
 
         BLOCK.forceOverride(Iron, Items.IRON_BLOCK);
         BLOCK.forceOverride(Gold, Items.GOLD_BLOCK);
         BLOCK.forceOverride(Emerald, Items.EMERALD_BLOCK);
         BLOCK.forceOverride(Diamond, Items.DIAMOND_BLOCK);
+        BLOCK.forceOverride(Lapis, Items.LAPIS_BLOCK);
+
+        //RAW_ORE.forceOverride(Iron, Items.RAW_IRON);
+        //RAW_ORE.forceOverride(Copper, Items.RAW_COPPER);
+        //RAW_ORE.forceOverride(Gold, Items.RAW_GOLD);
 
         NUGGET.forceOverride(Iron, Items.IRON_NUGGET);
         NUGGET.forceOverride(Gold, Items.GOLD_NUGGET);
