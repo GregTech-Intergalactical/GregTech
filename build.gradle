@@ -2,15 +2,8 @@ plugins {
     id 'dev.architectury.loom' version '0.11.0-SNAPSHOT'
     id 'maven-publish'
 }
-
 repositories {
     maven { url 'https://dvs1.progwml6.com/files/maven' }
-    maven {
-        url "https://www.cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
     //Needed for intellij
     maven {
         name = 'sponge'
@@ -19,26 +12,27 @@ repositories {
     //GT.
     maven { url 'https://jitpack.io' }
 }
-version = "${minecraft_version}-${mod_version}"
+version = "${minecraft_version}-${mod_version}" as Object
 group = 'com.github.gregtech-intergalactical' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'GregTech-Intergalactical'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 def isCI = System.getenv("GITHUB_ACTION")
 def isRELEASE = System.getenv("GITHUB_RELEASE")
-def gitHash() {
+
+static def gitHash() {
     String hash = System.getenv("GITHUB_SHA")
     if (hash != null) return hash.substring(0,8)
     return ""
 }
 
-boolean hasTesseract = findProject(':TesseractAPI') != null
+boolean hasTesseract = new File("AntimatterAPI/TesseractAPI").exists()
 
 if (hasTesseract) {
     println('TesseractAPI in local workspace')
 }
 
-boolean hasAntimatter = findProject(':AntimatterAPI') != null
+boolean hasAntimatter = new File("AntimatterAPI").exists()
 
 if (hasTesseract) {
     println('AntimatterAPI in local workspace')
@@ -65,6 +59,35 @@ sourceSets {
             exclude 'Thumbs.db'
         }
     }
+    if (hasAntimatter) {
+        antimatter {
+            java {
+                srcDir 'AntimatterAPI/src/main/java'
+            }
+            resources {
+                include '**/**'
+                srcDirs += 'AntimatterAPI/build/resources'
+                exclude '.cache'
+                exclude 'Thumbs.db'
+            }
+        }
+    }
+    if (hasTesseract) {
+        tesseractapi {
+            java {
+                srcDir 'AntimatterAPI/TesseractAPI/common/src/main/java'
+                srcDir 'AntimatterAPI/TesseractAPI/forge/src/main/java'
+            }
+            resources {
+                include '**/**'
+                srcDirs += 'AntimatterAPI/TesseractAPI/common/build/resources'
+                srcDirs += 'AntimatterAPI/TesseractAPI/forge/build/resources'
+                exclude '.cache'
+                exclude 'Thumbs.db'
+            }
+        }
+    }
+
 }
 
 String getenv() {
@@ -98,6 +121,11 @@ loom{
     forge {
         // specify the mixin configs used in this mod
         // this will be added to the jar manifest as well!
+        if (hasAntimatter) {
+            mixinConfigs = [
+                    "antimatter.mixins.json"
+            ]
+        }
 
         // missing access transformers?
         // don't worry, you can still use them!
@@ -115,7 +143,12 @@ loom{
         dataGen {
             mod project.modid
         }
-
+        localMods {
+            forge {
+                if (hasAntimatter) it.add(project(":").sourceSets.antimatter)
+                if (hasTesseract) it.add(project(":").sourceSets.tesseractapi)
+            }
+        }
         launches {
             data {
                 arg "--existing", file("src/main/resources").absolutePath
@@ -222,7 +255,7 @@ loom{
             }
             mods {
                 gregtech {
-                    source sourceSets.main
+                   f source sourceSets.main
                 }
                 if (hasTesseract) {
                     tesseract {
@@ -238,7 +271,6 @@ loom{
         }
     }
 }*/
-
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
 
@@ -246,23 +278,20 @@ dependencies {
 
     forge "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
 
-    //GT related projects.
-    if (hasAntimatter) {
-        implementation project(path: ':AntimatterAPI')
-    } else {
-        //compileOnly sources jar.
-        modImplementation("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
-    }
     if (hasTesseract) {
-        implementation project(path: ':TesseractAPI')
+        compileOnly "com.github.GregTech-Intergalactical:TesseractAPI"
+        compileOnly "com.github.GregTech-Intergalactical:TesseractAPIC"
     } else {
         modImplementation("com.github.GregTech-Intergalactical.TesseractAPI:TesseractAPI-forge:${tesseract_version}")
     }
-
+    if (hasAntimatter) {
+        compileOnly "com.github.GregTech-Intergalactical:AntimatterAPI"
+    } else {
+        modImplementation("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
+    }
     //JEI
     modCompileOnly("mezz.jei:jei-${jei_version}:api")
     modRuntimeOnly("mezz.jei:jei-${jei_version}")
-
   //  runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
  //   runtimeOnly fg.deobf("curse.maven:architecturyforge-419699:${architectury_file}")
  //   runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")

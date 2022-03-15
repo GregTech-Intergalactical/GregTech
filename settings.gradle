@@ -15,14 +15,20 @@ pluginManagement {
         mavenCentral()
     }
 }
-def folder = new File( 'AntimatterAPI' )
-if(folder.exists() ) {
-    include 'AntimatterAPI'
-    project(':AntimatterAPI').setProjectDir(new File("AntimatterAPI"))
+if (new File("AntimatterAPI").exists()) {
+    includeBuild("AntimatterAPI", {
+        dependencySubstitution {
+            substitute module('com.github.GregTech-Intergalactical:AntimatterAPI') using project(':')
+        }
+    })
 }
-def tesseractFolder = new File('AntimatterAPI/TesseractAPI')
-if (tesseractFolder.exists()) {
-    include 'TesseractAPI'
-    project(':TesseractAPI').setProjectDir(new File("AntimatterAPI/TesseractAPI"))
+
+if (new File('AntimatterAPI/TesseractAPI').exists()) {
+    includeBuild("AntimatterAPI/TesseractAPI", {
+        dependencySubstitution {
+            substitute module('com.github.GregTech-Intergalactical:TesseractAPI') using project(':forge')
+            substitute module('com.github.GregTech-Intergalactical:TesseractAPIC') using project(':common')
+        }
+    })
 }
 
