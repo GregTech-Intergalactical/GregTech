@@ -1,20 +1,3 @@
-pluginManagement {
-    repositories {
-
-        maven {
-            name = 'Fabric'
-            url = 'https://maven.fabricmc.net/'
-        }
-        maven { url "https://maven.architectury.dev/" }
-        maven { url "https://maven.minecraftforge.net/" }
-        maven {
-            name = 'parchment'
-            url = 'https://maven.parchmentmc.org'
-        }
-        gradlePluginPortal()
-        mavenCentral()
-    }
-}
 def folder = new File( 'AntimatterAPI' )
 if(folder.exists() ) {
     include 'AntimatterAPI'
