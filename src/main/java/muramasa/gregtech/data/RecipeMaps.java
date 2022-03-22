@@ -140,7 +140,10 @@ public class RecipeMaps {
             new RecipeMap<>(Ref.ID, "fusion", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
     public static RecipeMap<RecipeBuilder> DISTILLATION = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "distillation", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
-
+    public static RecipeMap<RecipeBuilder> NUCLEAR = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(Ref.ID, "nuclear", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
+    public static RecipeMap<RecipeBuilder> HEAT_EXCHANGING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(Ref.ID, "heat_exchanging", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
     static {
         ORE_BYPRODUCTS.setGuiData(Guis.ORE_BYPRODUCTS);
         // SMELTING.setGuiData(Guis.MULTI_DISPLAY_COMPACT);

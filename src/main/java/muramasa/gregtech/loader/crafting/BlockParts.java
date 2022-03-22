@@ -28,6 +28,7 @@ public class BlockParts {
         });
 
         addBrickedCasing(output, provider, Bronze, GregTechData.CASING_BRICKED_BRONZE);
+        addBrickedCasing(output, provider, Fireclay, CASING_FIRE_BRICK);
         addBrickedCasing(output, provider, Steel, GregTechData.CASING_BRICKED_STEEL);
 
         addFirebox(output, provider, Bronze, GregTechData.CASING_FIREBOX_BRONZE);

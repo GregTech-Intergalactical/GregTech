@@ -657,7 +657,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "brick", 0x9b5643, ROUGH)).asDust()
             .mats(of(Aluminium, 4, Silicon, 3, Oxygen, 12));
     public static Material Fireclay = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "fireclay", 0xada09b, ROUGH)).asDust().mats(of(Brick, 1));
+            .register(Material.class, new Material(Ref.ID, "fireclay", 0xada09b, ROUGH)).asDust(INGOT, PLATE).mats(of(Brick, 1));
     public static Material SodiumBisulfate = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sodium_bisulfate", 0x004455, NONE)).asDust()
             .mats(of(Sodium, 1, Hydrogen, 1, Sulfur, 1, Oxygen, 4));
