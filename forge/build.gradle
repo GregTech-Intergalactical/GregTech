@@ -26,17 +26,9 @@ version = "${rootProject.minecraft_version}-${rootProject.mod_version}"
 def isCI = System.getenv("GITHUB_ACTION")
 def isRELEASE = System.getenv("GITHUB_RELEASE")
 
-boolean hasTesseract = new File("AntimatterAPI/TesseractAPI").exists()
+boolean hasTesseract = findProject(':tesseract-forge') != null
 
-if (hasTesseract) {
-    println('TesseractAPI in local workspace')
-}
-
-boolean hasAntimatter = new File("AntimatterAPI").exists()
-
-if (hasTesseract) {
-    println('AntimatterAPI in local workspace')
-}
+boolean hasAntimatter = findProject(':antimatter-forge') != null
 boolean isWorkspace = hasTesseract
 String getenv() {
     boolean vscode = gradle.startParameter.taskNames[0].equals("genVSCodeRuns")  || gradle.startParameter.taskNames[0].equals(":genVSCodeRuns")
@@ -78,36 +70,6 @@ sourceSets {
             exclude 'Thumbs.db'
         }
     }
-    if (hasAntimatter) {
-        antimatter {
-            java {
-                srcDir 'AntimatterAPI/common/src/main/java'
-                srcDir 'AntimatterAPI/forge/src/main/java'
-            }
-            resources {
-                include '**/**'
-                srcDirs += 'AntimatterAPI/common/build/resources'
-                srcDirs += 'AntimatterAPI/forge/build/resources'
-                exclude '.cache'
-                exclude 'Thumbs.db'
-            }
-        }
-    }
-    if (hasTesseract) {
-        tesseractapi {
-            java {
-                srcDir 'AntimatterAPI/TesseractAPI/common/src/main/java'
-                srcDir 'AntimatterAPI/TesseractAPI/forge/src/main/java'
-            }
-            resources {
-                include '**/**'
-                srcDirs += 'AntimatterAPI/TesseractAPI/common/build/resources'
-                srcDirs += 'AntimatterAPI/TesseractAPI/forge/build/resources'
-                exclude '.cache'
-                exclude 'Thumbs.db'
-            }
-        }
-    }
 
 }
 
@@ -121,8 +83,8 @@ loom{
 
         localMods {
             forge {
-                if (hasAntimatter) it.add(project(":forge").sourceSets.antimatter)
-                if (hasTesseract) it.add(project(":forge").sourceSets.tesseractapi)
+                //if (hasAntimatter) it.add(project(":forge").sourceSets.antimatter)
+                //if (hasTesseract) it.add(project(":forge").sourceSets.tesseractapi)
             }
         }
         dataGen {
@@ -237,11 +199,11 @@ dependencies {
         annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
     }
 
-    if (hasAntimatter) {
-        implementation(project(path: ":antimatter-forge"))
-    } else {
-        modImplementation("com.github.GregTech-Intergalactical.AntimatterAPI:AntimatterAPI-forge:${antimatter_version}")
-    }
+    //if (hasAntimatter) {
+        implementation(project(":antimatter-forge"))
+    //} else {
+    //    modImplementation("com.github.GregTech-Intergalactical.AntimatterAPI:AntimatterAPI-forge:${antimatter_version}")
+    //}
     //JEI
     modCompileOnly("mezz.jei:jei-${jei_version}:api")
     modRuntimeOnly("mezz.jei:jei-${jei_version}")
