@@ -1,0 +1,38 @@
+archivesBaseName = rootProject.antimatter_archive_base_name
+version = "${rootProject.minecraft_version}-${rootProject.antimatter_mod_version}"
+
+dependencies{
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+}
+
+architectury {
+    common()
+}
+
+/*
+publishing {
+    tasks.publish.dependsOn "build", "reobfJar"
+    publications {
+        mavenJava(org.gradle.api.publish.maven.MavenPublication) {
+            //artifactId = archivesBaseName
+            artifact shadowJar
+        }
+    }
+    repositories {
+        if (rootProject.isCI && rootProject.isRELEASE) {
+            maven {
+                name = "GitHubPackages"
+                url = "https://maven.pkg.github.com/GregTech-Intergalactical/TesseractAPI"
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+            }
+        } else {
+            maven { url "file:///${project.projectDir}/mcmodsrepo"}
+        }
+    }
+    //repositories {
+    //    rootProject.configurePublishingRepositories(delegate)
+    //}
+}*/

@@ -1,21 +1,15 @@
 plugins {
-    id 'dev.architectury.loom' version '0.11.0-SNAPSHOT'
-    id 'maven-publish'
+    id "maven-publish"
+    id "architectury-plugin" version "3.4-SNAPSHOT"
+    id "dev.architectury.loom" version "0.11.0-SNAPSHOT" apply(false)
 }
-repositories {
-    maven { url 'https://dvs1.progwml6.com/files/maven' }
-    //Needed for intellij
-    maven {
-        name = 'sponge'
-        url = 'https://repo.spongepowered.org/repository/maven-public/'
-    }
-    //GT.
-    maven { url 'https://jitpack.io' }
+
+architectury {
+    minecraft = rootProject.minecraft_version
 }
-version = "${minecraft_version}-${mod_version}" as Object
-group = 'com.github.gregtech-intergalactical' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'GregTech-Intergalactical'
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+//Print out JVM information so that we know what version is running. Extreamly useful for people to know when helping you.
+println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 def isCI = System.getenv("GITHUB_ACTION")
 def isRELEASE = System.getenv("GITHUB_RELEASE")
@@ -26,326 +20,65 @@ static def gitHash() {
     return ""
 }
 
-boolean hasTesseract = new File("AntimatterAPI/TesseractAPI").exists()
+subprojects {
+    apply plugin: "dev.architectury.loom"
+    java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-if (hasTesseract) {
-    println('TesseractAPI in local workspace')
-}
-
-boolean hasAntimatter = new File("AntimatterAPI").exists()
-
-if (hasTesseract) {
-    println('AntimatterAPI in local workspace')
-}
-
-boolean isWorkspace = hasTesseract || hasAntimatter
-if (isCI) {
-    version = version + "-" + gitHash()
-}
-
-//Print out JVM information so that we know what version is running. Extreamly useful for people to know when helping you.
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-
-
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-        }
-        resources {
-            include '**/**'
-            srcDirs += 'src/generated/resources'
-            exclude '.cache'
-            exclude 'Thumbs.db'
-        }
+    loom {
+        silentMojangMappingsLicense()
     }
-    if (hasAntimatter) {
-        antimatter {
-            java {
-                srcDir 'AntimatterAPI/src/main/java'
-            }
-            resources {
-                include '**/**'
-                srcDirs += 'AntimatterAPI/build/resources'
-                exclude '.cache'
-                exclude 'Thumbs.db'
-            }
+
+    dependencies {
+        minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+        // The following line declares the mojmap mappings, you may use other mappings as well
+        mappings loom.layered() {
+            officialMojangMappings()
+            parchment("org.parchmentmc.data:parchment-${rootProject.minecraft_version}:${rootProject.mappings_version}@zip")
         }
+        // The following line declares the yarn mappings you may select this one as well.
+        // mappings "net.fabricmc:yarn:1.17.1+build.32:v2"
     }
-    if (hasTesseract) {
-        tesseractapi {
-            java {
-                srcDir 'AntimatterAPI/TesseractAPI/common/src/main/java'
-                srcDir 'AntimatterAPI/TesseractAPI/forge/src/main/java'
-            }
-            resources {
-                include '**/**'
-                srcDirs += 'AntimatterAPI/TesseractAPI/common/build/resources'
-                srcDirs += 'AntimatterAPI/TesseractAPI/forge/build/resources'
-                exclude '.cache'
-                exclude 'Thumbs.db'
-            }
-        }
+
+    processResources {
+        exclude('gtuassets1.14')
     }
 
 }
 
-String getenv() {
-    boolean vscode = gradle.startParameter.taskNames[0].equals("genVSCodeRuns")  || gradle.startParameter.taskNames[0].equals(":genVSCodeRuns")
-    boolean hasAntimatter = findProject(':AntimatterAPI') != null
-    boolean hasTesseract = findProject(':TesseractAPI') != null
-
-    String resourcePath = vscode ? 'bin/main' : 'build/resources/main'
-    String codePath = vscode ? 'bin/main' : 'build/classes/java/main'
-    String s = "gregtech%%${project.file(resourcePath)}" + getPathSeparator() + "gregtech%%${project.file(codePath)}"
-    if (hasAntimatter) {
-        s += getPathSeparator() + "antimatter%%${project(':AntimatterAPI').file(resourcePath)}" + getPathSeparator() + "antimatter%%${project(':AntimatterAPI').file(codePath)}"
-    }
-    if (hasTesseract) {
-        s += getPathSeparator() + "tesseract%%${project(':TesseractAPI').file(resourcePath)}" + getPathSeparator() + "tesseract%%${project(':TesseractAPI').file(codePath)}"
-    }
-    return s
-}
-import org.apache.tools.ant.taskdefs.condition.Os
-
-def getPathSeparator() {
-    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-        return ";"
-    }
-    return ":"
-}
+allprojects {
+    apply plugin: "maven-publish"
+    apply plugin: "java"
+    apply plugin: "architectury-plugin"
 
 
-loom{
-    silentMojangMappingsLicense()
-    forge {
-        // specify the mixin configs used in this mod
-        // this will be added to the jar manifest as well!
-        if (hasAntimatter) {
-            mixinConfigs = [
-                    "antimatter.mixins.json"
-            ]
-        }
+    group = rootProject.maven_group
 
-        // missing access transformers?
-        // don't worry, you can still use them!
-        // note that your AT *MUST* be located at
-        // src/main/resources/META-INF/accesstransformer.cfg
-        // to work as there is currently no config option to change this.
-        // also, any names used in your access transformer will need to be
-        // in SRG mapped ("func_" / "field_" with MCP class names) to work!
-        // (both of these things may be subject to change in the future)
-
-        // this will create a data generator configuration
-        // that you can use to automatically generate assets and data
-        // using architectury loom. Note that this currently *only* works
-        // for forge projects made with architectury loom!
-        dataGen {
-            mod project.modid
-        }
-        localMods {
-            forge {
-                if (hasAntimatter) it.add(project(":").sourceSets.antimatter)
-                if (hasTesseract) it.add(project(":").sourceSets.tesseractapi)
-            }
-        }
-        launches {
-            data {
-                arg "--existing", file("src/main/resources").absolutePath
-            }
-        }
-    }
-}
-
-/*minecraft {
-    // The mappings can be changed at any time, and must be in the following format.
-    // snapshot_YYYYMMDD   Snapshot are built nightly.
-    // stable_#            Stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not always work.
-    // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: "${mappings_version}", version: "${minecraft_version}"    
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
-
-    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
-    runs {
-        client {
-            workingDirectory project.file('run')
-            //Needed to boot.
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'DEBUG'
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-            //if (isVSTask())
-            //    jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
-            //Comment this if you aren't developing against antimatter locally.
-            if (isWorkspace) {
-                environment('MOD_CLASSES', this.getenv())
-            }
-            arg "-mixin.config=antimatter.mixins.json"
-            arg "-mixin.config=tesseract.mixins.json"
-            mods {
-                gregtech {
-                    source sourceSets.main
-                }
-                if (hasTesseract) {
-                    tesseract {
-                        source project(':TesseractAPI').sourceSets.main
-
-                    }
-                }
-                if (hasAntimatter) {
-                    antimatter {
-                        source project(':AntimatterAPI').sourceSets.main
-                    }
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run')
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'DEBUG'
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-            if (isWorkspace) {
-                environment('MOD_CLASSES', this.getenv())
-            }
-            arg "-mixin.config=antimatter.mixins.json"
-            arg "-mixin.config=tesseract.mixins.json"
-            arg "-nogui"
-            mods {
-                gregtech {
-                    source sourceSets.main
-                }
-                if (hasTesseract) {
-                    tesseract {
-                        source project(':TesseractAPI').sourceSets.main
-                    }
-                }
-                if (hasAntimatter) {
-                    antimatter {
-                        source project(':AntimatterAPI').sourceSets.main
-                    }
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'DEBUG'
-            //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
-            //Comment this if you aren't developing against antimatter locally.
-            arg "-mixin.config=antimatter.mixins.json"
-            arg "-mixin.config=tesseract.mixins.json"
-            //if (isVSTask())
-            //    jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-            args '--mod', 'gregtech', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
-            if (isWorkspace) {
-                environment('MOD_CLASSES', this.getenv())
-            }
-            mods {
-                gregtech {
-                   f source sourceSets.main
-                }
-                if (hasTesseract) {
-                    tesseract {
-                        source project(':TesseractAPI').sourceSets.main
-                    }
-                }
-                if (hasAntimatter) {
-                    antimatter {
-                        source project(':AntimatterAPI').sourceSets.main
-                    }
-                }
-            }
-        }
-    }
-}*/
-dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-
-    mappings loom.officialMojangMappings()
-
-    forge "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
-
-    if (hasTesseract) {
-        compileOnly "com.github.GregTech-Intergalactical:TesseractAPI"
-        compileOnly "com.github.GregTech-Intergalactical:TesseractAPIC"
-    } else {
-        modImplementation("com.github.GregTech-Intergalactical.TesseractAPI:TesseractAPI-forge:${tesseract_version}")
-    }
-    if (hasAntimatter) {
-        compileOnly "com.github.GregTech-Intergalactical:AntimatterAPI"
-    } else {
-        modImplementation("com.github.GregTech-Intergalactical:AntimatterAPI:${antimatter_version}")
-    }
-    //JEI
-    modCompileOnly("mezz.jei:jei-${jei_version}:api")
-    modRuntimeOnly("mezz.jei:jei-${jei_version}")
-  //  runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
- //   runtimeOnly fg.deobf("curse.maven:architecturyforge-419699:${architectury_file}")
- //   runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")
-    //runtimeOnly fg.deobf("curse.maven:top-245211:${top_file}")
-}
-
-if (isCI) {
-    jar.finalizedBy('reobfJar')
-    println("In CI mode")
-}
-
-jar {
-    zip64 true
-    manifest {
-        attributes([
-                "Specification-Title": project.name,
-                "Specification-Vendor": "GregTech Intergalactical",
-                "Specification-Version": project.version,
-                "Implementation-Title": project.name,
-                "Implementation-Version": project.version,
-                "Implementation-Vendor": "GregTech Intergalactical",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
-}
-// Example configuration to allow publishing using the maven-publish task
-// This is the preferred method to reobfuscate your jar file
-//jar.finalizedBy('reobfJar')
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-
-publishing {
-    tasks.publish.dependsOn 'build', 'reobfJar'
-    publications {
-        mavenJava(MavenPublication) {
-            //artifactId = archivesBaseName
-            artifact jar
-        }
-    }
     repositories {
-        if (isCI && isRELEASE) {
-            maven {
-                name = "GitHubPackages"
-                url = "https://maven.pkg.github.com/GregTech-Intergalactical/GregTech"
-                credentials {
-                    username = System.getenv("GITHUB_ACTOR")
-                    password = System.getenv("GITHUB_TOKEN")
-                }
-            }
-        } else {
-            maven { url "file:///${project.projectDir}/mcmodsrepo"}
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven {
+            name = 'parchment'
+            url = 'https://maven.parchmentmc.org'
         }
+        maven { url 'https://dvs1.progwml6.com/files/maven' }
+        //Needed for intellij
+        maven {
+            name = 'sponge'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
+        }
+        //GT.
+        maven { url 'https://jitpack.io' }
     }
-}
 
-processResources {
-    exclude('gtuassets1.14')
+    java {
+        withSourcesJar()
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        it.options.encoding = 'UTF-8'
+    }
+
+    if (isCI) {
+        version = version + "-" + gitHash()
+        println("In CI mode")
+    }
 }

@@ -1,0 +1,327 @@
+repositories {
+    //JEI
+    maven { url 'https://dvs1.progwml6.com/files/maven' }
+    /*maven {
+        url = "https://maven.speiger.com/repository/main"
+    }*/
+    //GT.
+    //maven { url 'https://jitpack.io' }
+
+    //Needed for intellij
+    maven {
+        name = 'sponge'
+        url = 'https://repo.spongepowered.org/repository/maven-public/'
+    }
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+}
+
+archivesBaseName = rootProject.archive_base_name
+version = "${rootProject.minecraft_version}-${rootProject.mod_version}"
+
+def isCI = System.getenv("GITHUB_ACTION")
+def isRELEASE = System.getenv("GITHUB_RELEASE")
+
+boolean hasTesseract = new File("AntimatterAPI/TesseractAPI").exists()
+
+if (hasTesseract) {
+    println('TesseractAPI in local workspace')
+}
+
+boolean hasAntimatter = new File("AntimatterAPI").exists()
+
+if (hasTesseract) {
+    println('AntimatterAPI in local workspace')
+}
+boolean isWorkspace = hasTesseract
+String getenv() {
+    boolean vscode = gradle.startParameter.taskNames[0].equals("genVSCodeRuns")  || gradle.startParameter.taskNames[0].equals(":genVSCodeRuns")
+    boolean hasTesseract = findProject(':tesseract-forge') != null
+
+    String resourcePath = vscode ? 'bin/main' : 'build/resources/main'
+    String codePath = vscode ? 'bin/main' : 'build/classes/java/main'
+    String s = "gregtech%%${project.file(resourcePath)}" + getPathSeparator() + "gregtech%%${project.file(codePath)}"
+    if (hasAntimatter) {
+        s += getPathSeparator() + "antimatter%%${project(':antimatter-forge').file(resourcePath)}" + getPathSeparator() + "antimatter%%${project(':antimatter-forge').file(codePath)}"
+    }
+    if (hasTesseract) {
+        s += getPathSeparator() + "tesseract%%${project(':tesseract-forge').file(resourcePath)}" + getPathSeparator() + "tesseract%%${project(':tesseract-forge').file(codePath)}"
+    }
+    return s
+}
+import org.apache.tools.ant.taskdefs.condition.Os
+//println(project(":TesseractAPI").sourceSets.main.output.getDirs().getAsPath())
+def getPathSeparator() {
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        return ";"
+    }
+    return ":"
+}
+
+architectury {
+    forge()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            include '**/**'
+            srcDirs += 'src/generated/resources'
+            exclude '.cache'
+            exclude 'Thumbs.db'
+        }
+    }
+    if (hasAntimatter) {
+        antimatter {
+            java {
+                srcDir 'AntimatterAPI/common/src/main/java'
+                srcDir 'AntimatterAPI/forge/src/main/java'
+            }
+            resources {
+                include '**/**'
+                srcDirs += 'AntimatterAPI/common/build/resources'
+                srcDirs += 'AntimatterAPI/forge/build/resources'
+                exclude '.cache'
+                exclude 'Thumbs.db'
+            }
+        }
+    }
+    if (hasTesseract) {
+        tesseractapi {
+            java {
+                srcDir 'AntimatterAPI/TesseractAPI/common/src/main/java'
+                srcDir 'AntimatterAPI/TesseractAPI/forge/src/main/java'
+            }
+            resources {
+                include '**/**'
+                srcDirs += 'AntimatterAPI/TesseractAPI/common/build/resources'
+                srcDirs += 'AntimatterAPI/TesseractAPI/forge/build/resources'
+                exclude '.cache'
+                exclude 'Thumbs.db'
+            }
+        }
+    }
+
+}
+
+loom{
+    forge {
+        if (hasAntimatter){
+            mixinConfigs = [
+                    "antimatter.mixins.json"
+            ]
+        }
+
+        localMods {
+            forge {
+                if (hasAntimatter) it.add(project(":forge").sourceSets.antimatter)
+                if (hasTesseract) it.add(project(":forge").sourceSets.tesseractapi)
+            }
+        }
+        dataGen {
+            mod project.modid
+        }
+
+        launches {
+            data {
+                arg "--existing", file("src/main/resources").absolutePath
+            }
+        }
+    }
+}
+//minecraft {
+    /*runs {
+        client {
+            workingDirectory project.file('run')
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'DEBUG'
+            property 'fml.earlyprogresswindow', 'false'
+
+            arg "-mixin.config=antimatter.mixins.json"
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            if (isWorkspace) {
+                environment('MOD_CLASSES', this.getenv())
+            }
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                antimatter {
+                    source sourceSets.main
+                }
+                if (hasTesseract) {
+                    tesseract {
+                        source project(':TesseractAPI').sourceSets.main
+                    }
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'DEBUG'
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+            property 'fml.earlyprogresswindow', 'false'
+
+            // Disable GUI by default, the IDE console can be used to enter commands
+            arg '-nogui'
+            if (isWorkspace) {
+                environment('MOD_CLASSES', this.getenv())
+            }
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            arg "-mixin.config=antimatter.mixins.json"
+            mods {
+                antimatter {
+                    source sourceSets.main
+                }
+                if (hasTesseract) {
+                    tesseract {
+                        source project(':TesseractAPI').sourceSets.main
+                    }
+                }
+            }
+        }
+*//*
+        data {
+            workingDirectory project.file('run')
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'DEBUG'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+            property 'fml.earlyprogresswindow', 'false'
+
+            arg "-mixin.config=antimatter.mixins.json"
+            args '--mod', 'antimatter', '--all', '--output', project.file('src/generated/resources/'), '--existing', sourceSets.main.resources.srcDirs[0]
+
+            mods {
+                antimatter {
+                    source sourceSets.main
+                }
+                if (hasTesseract) {
+                    tesseract {
+                        source project(':TesseractAPI').sourceSets.main
+                    }
+                }
+            }
+        }*//*
+    }*/
+//}
+
+
+dependencies {
+    forge "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+    //implementation project(path: ":TesseractAPI")
+    //GT
+    if (hasTesseract) {
+        implementation project(path: ':tesseract-forge')
+    } else {
+        modImplementation("com.github.GregTech-Intergalactical.TesseractAPI:TesseractAPI-forge:${tesseract_version}")
+    }
+
+    //MIXIN
+    if (System.getProperty('idea.sync.active') != 'true') {
+        annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
+    }
+
+    if (hasAntimatter) {
+        implementation(project(path: ":antimatter-forge"))
+    } else {
+        modImplementation("com.github.GregTech-Intergalactical.AntimatterAPI:AntimatterAPI-forge:${antimatter_version}")
+    }
+    //JEI
+    modCompileOnly("mezz.jei:jei-${jei_version}:api")
+    modRuntimeOnly("mezz.jei:jei-${jei_version}")
+
+
+    /** KUBEJS STUFF **/
+   // modImplementation("curse.maven:rhino-416294:${rhino_file}")
+   // modImplementation("curse.maven:architecturyforge-419699:${architectury_file}")
+  //  modImplementation("curse.maven:kubejs-238086:${kubejs_file}")
+//    modImplementation("curse.maven:top-245211:${top_file}")
+}
+
+// Example configuration to allow publishing using the maven-publish task
+// This is the preferred method to reobfuscate your jar file
+//jar.finalizedBy('reobfJar')
+// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
+
+/*mixin {
+    add sourceSets.main, 'antimatter.refmap.json'
+}*/
+/*
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    archiveBaseName.set(project.archivesBaseName)
+    archiveVersion.set("${project.version}")
+    archiveClassifier.set('sources')
+}*/
+jar {
+    zip64 true
+    manifest {
+        attributes([
+                "Specification-Title": project.name,
+                "Specification-Vendor": "GregTech Intergalactical",
+                "Specification-Version": project.version,
+                "Implementation-Title": project.name,
+                "Implementation-Version": project.version,
+                "Implementation-Vendor": "GregTech Intergalactical",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'MixinConfigs': 'antimatter.mixins.json'
+            ])
+    }
+}
+publishing {
+    tasks.publish.dependsOn 'build', 'reobfJar'
+    publications {
+        mavenJava(MavenPublication) {
+            artifact(remapJar) {
+                builtBy remapJar
+            }
+            artifact(sourcesJar) {
+                builtBy remapSourcesJar
+            }
+        }
+    }
+
+    repositories {
+        if (isCI && isRELEASE) {
+            maven {
+                name = "GitHubPackages"
+                url = "https://maven.pkg.github.com/GregTech-Intergalactical/GregTech"
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+            }
+        } else {
+            maven { url "file:///${project.projectDir}/mcmodsrepo"}
+        }
+    }
+}
+
+
+//jar.finalizedBy('reobfJar')
+/*configurations.compile {
+    exclude group: 'it.unimi.dsi', module: 'fastutil'
+}*/
+
+/*shadowJar {
+    configurations = [project.configurations.shadowCommon]
+    classifier ''
+}*/
+
+//jar.classifier = 'nodep'

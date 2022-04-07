@@ -15,20 +15,27 @@ pluginManagement {
         mavenCentral()
     }
 }
-if (new File("AntimatterAPI").exists()) {
-    includeBuild("AntimatterAPI", {
-        dependencySubstitution {
-            substitute module('com.github.GregTech-Intergalactical:AntimatterAPI') using project(':')
-        }
-    })
+if (new File('AntimatterAPI/TesseractAPI').exists()) {
+    include 'tesseract-forge'
+    project(':tesseract-forge').setProjectDir(new File("AntimatterAPI/TesseractAPI/forge"))
+    include 'tesseract-common'
+    project(':tesseract-common').setProjectDir(new File("AntimatterAPI/TesseractAPI/common"))
+    include 'tesseract-fabric'
+    project(':tesseract-fabric').setProjectDir(new File("AntimatterAPI/TesseractAPI/fabric"))
 }
 
-if (new File('AntimatterAPI/TesseractAPI').exists()) {
-    includeBuild("AntimatterAPI/TesseractAPI", {
-        dependencySubstitution {
-            substitute module('com.github.GregTech-Intergalactical:TesseractAPI') using project(':forge')
-            substitute module('com.github.GregTech-Intergalactical:TesseractAPIC') using project(':common')
-        }
-    })
+
+if (new File("AntimatterAPI").exists()) {
+    include("antimatter-common")
+    include("antimatter-fabric")
+    include("antimatter-forge")
+
+    project(':antimatter-common').setProjectDir(new File("AntimatterAPI/common"))
+    project(':antimatter-forge').setProjectDir(new File("AntimatterAPI/forge"))
+    project(':antimatter-fabric').setProjectDir(new File("AntimatterAPI/fabric"))
 }
+
+include("common")
+include("fabric")
+include("forge")
 
