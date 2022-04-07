@@ -3,6 +3,7 @@ package muramasa.gregtech.data;
 import com.google.common.collect.ImmutableMap;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
@@ -10,8 +11,10 @@ import muramasa.antimatter.tile.single.TileEntityDigitalTransformer;
 import muramasa.antimatter.tile.single.TileEntityInfiniteStorage;
 import muramasa.antimatter.tile.single.TileEntityTransformer;
 import muramasa.gregtech.Ref;
+import muramasa.gregtech.machine.HeatHatch;
 import muramasa.gregtech.machine.SteamMachine;
 import muramasa.gregtech.machine.maps.DisassemblingMap;
+import muramasa.gregtech.nuclear.TileEntityNuclearReactor;
 import muramasa.gregtech.tile.multi.*;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import muramasa.gregtech.tile.single.TileEntityInfiniteFluid;
@@ -78,8 +81,8 @@ public class Machines {
     public static BasicMultiMachine<?> PRIMITIVE_BLAST_FURNACE = new BasicMultiMachine<>(Ref.ID, "primitive_blast_furnace").setMap(BASIC_BLASTING).setTiers(BRONZE).addFlags(GUI, ITEM).setTile(TileEntityPrimitiveBlastFurnace::new);
     public static BasicMultiMachine<?> BRONZE_BLAST_FURNACE = new BasicMultiMachine<>(Ref.ID, "bronze_blast_furnace").setMap(BASIC_BLASTING).setTiers(BRONZE).addFlags(GUI, ITEM).setTile(TileEntityBronzeBlastFurnace::new);
     public static BasicMultiMachine<?> CHARCOAL_PIT = new BasicMultiMachine<>(Ref.ID, "charcoal_pit").setTiers(BRONZE).setTile(TileEntityCharcoalPit::new);
-    public static MultiMachine BLAST_FURNACE = new MultiMachine(Ref.ID, "electric_blast_furnace").setMap(BLASTING).setTiers(LV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityElectricBlastFurnace::new);
-    public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(Ref.ID, "implosion_compressor").setMap(IMPLOSION_COMPRESSING).setTiers(HV).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityImplosionCompressor::new);
+    public static MultiMachine BLAST_FURNACE = new MultiMachine(Ref.ID, "electric_blast_furnace").setMap(BLASTING).setTiers(LV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityElectricBlastFurnace::new).setAllowVerticalFacing(true);
+    public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(Ref.ID, "implosion_compressor").setMap(IMPLOSION_COMPRESSING).setTiers(HV).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityImplosionCompressor::new).setAllowVerticalFacing(true);
     public static MultiMachine VACUUM_FREEZER = new MultiMachine(Ref.ID, "vacuum_freezer").setMap(VACUUM_FREEZING).setTiers(HV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityVacuumFreezer::new);
     public static MultiMachine MULTI_SMELTER = new MultiMachine(Ref.ID, "multi_smelter").setMap(SMELTING).setTiers(HV).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityMultiSmelter::new);
     public static MultiMachine LARGE_BOILER = new MultiMachine(Ref.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setTile(TileEntityLargeBoiler::new);
@@ -92,6 +95,7 @@ public class Machines {
     public static MultiMachine FUSION_REACTOR = new MultiMachine(Ref.ID, "fusion_reactor").setMap(FUSION).setTiers(LUV, ZPM, UV).addFlags(GUI, FLUID,ENERGY).setTile(TileEntityFusionReactor::new);
     public static MultiMachine DISTLLATION_TOWER = new MultiMachine(Ref.ID, "distillation_tower").setMap(DISTILLATION).setTiers(HV).addFlags(GUI, ITEM, FLUID,ENERGY).setTile(TileEntityDistillationTower::new);
     public static MultiMachine CRACKING_UNIT = new MultiMachine(Ref.ID, "cracking_unit").setMap(CRACKING).setTiers(HV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityOilCrackingUnit::new);
+    public static MultiMachine NUCLEAR_REACTOR = new MultiMachine(Ref.ID, "nuclear_reactor").setMap(NUCLEAR).setTiers(EV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityNuclearReactor::new).setAllowVerticalFacing(true);
 
     public static HatchMachine HATCH_ITEM_I = new HatchMachine(Ref.ID, "hatch_item_input", COVERINPUT).addFlags(GUI, ITEM);
     public static HatchMachine HATCH_ITEM_O = new HatchMachine(Ref.ID, "hatch_item_output", COVEROUTPUT).addFlags(GUI, ITEM);
@@ -100,6 +104,7 @@ public class Machines {
     public static HatchMachine HATCH_MUFFLER = new HatchMachine(Ref.ID, "hatch_muffler", COVERMUFFLER).addFlags(GUI, ITEM).setClientTick();
     public static HatchMachine HATCH_DYNAMO = new HatchMachine(Ref.ID, "hatch_dynamo", COVERDYNAMO).addFlags(ENERGY);
     public static HatchMachine HATCH_ENERGY = new HatchMachine(Ref.ID, "hatch_energy", COVERENERGY).addFlags(ENERGY);
+    public static final HeatHatch HATCH_HEAT_COPPER = new HeatHatch(Ref.ID, "copper_heat", Copper, 386);
 
     public static TankMachine QUANTUM_TANK = new TankMachine(Ref.ID, "quantum_tank").addFlags(BASIC, GUI, CELL).frontCovers();
 

@@ -316,6 +316,12 @@ public class Machines {
                     .put('C', CircuitBasic)
                     .put('F', ItemFilter)
                     .put('E', Items.CHEST).build(), " H ", "ECE", " F "));
+
+            provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(CASING_FIRE_BRICK), PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', CASING_FIRE_BRICK)
+                            .put('F', Items.FURNACE)
+                            .put('C', HULL_ULV).build(), "HFH", "HCH", "HFH");
         });
     }
 

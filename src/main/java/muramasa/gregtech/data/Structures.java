@@ -5,6 +5,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.BlockStateElement;
 import muramasa.antimatter.structure.FakeTileElement;
 import muramasa.gregtech.block.BlockCoil;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Blocks;
 
 import static muramasa.gregtech.data.GregTechData.*;
@@ -80,7 +81,18 @@ public class Structures {
                 .at("C", CASING_STAINLESS_STEEL,HATCH_FLUID_O)
                 .build().offset(2,0).min(30, CASING_STAINLESS_STEEL).min(1, HATCH_ENERGY, HATCH_FLUID_I).min(4, HATCH_FLUID_O)
         );
-        //TODO Tier sensitive...
+        HEAT_EXCHANGER.setStructure(b -> b
+                .of("DDD", "DDM", "DDD").of("CCC","CAC", "CCC").of(1).of(1).of(1)
+                .at("M", HEAT_EXCHANGER).at("D", CASING_TITANIUM,HATCH_ITEM_I, HATCH_FLUID_I, HATCH_HEAT_COPPER)
+                .at("C", CASING_TITANIUM,HATCH_FLUID_O)
+                .build().offset(2,0).min(30, CASING_TITANIUM).min(1, HATCH_FLUID_I, HATCH_FLUID_O).min(1, HATCH_HEAT_COPPER)
+        );
+        NUCLEAR_REACTOR.setStructure(b -> b
+                .of("CCC", "CCC", "CCC").of("CCC", "CAM", "CCC").of(0)
+                .at("C", "components", CASING_RADIATION_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_HEAT_COPPER).at("M", NUCLEAR_REACTOR)
+                .facings(Direction.UP)
+                .build().offset(2,-1).exact(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_HEAT_COPPER));
+        //TODO Tier sensitive...144
         FUSION_REACTOR.setStructure(Tier.LUV, b -> b
             .of(
                 "               ",

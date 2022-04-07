@@ -2,6 +2,7 @@ package muramasa.gregtech.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
@@ -10,10 +11,7 @@ import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.pipe.types.Cable;
-import muramasa.antimatter.pipe.types.FluidPipe;
-import muramasa.antimatter.pipe.types.ItemPipe;
-import muramasa.antimatter.pipe.types.Wire;
+import muramasa.antimatter.pipe.types.*;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.Ref;
 import muramasa.gregtech.block.BlockCasing;
@@ -26,6 +24,7 @@ import muramasa.gregtech.cover.CoverPump;
 import muramasa.gregtech.block.tree.BlockRubberLeaves;
 import muramasa.gregtech.block.tree.BlockRubberLog;
 import muramasa.gregtech.block.tree.BlockRubberSapling;
+import muramasa.gregtech.machine.HeatHatch;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraftforge.api.distmarker.Dist;
 
@@ -199,6 +198,8 @@ public class GregTechData {
     public static ItemBasic<?> ShapeGear = new ItemBasic<>(Ref.ID, "shape_gear").tip("Shape for making Gears");
     public static ItemBasic<?> ShapeGearSmall = new ItemBasic<>(Ref.ID, "shape_gear_small").tip("Shape for making Small Gears");
     public static ItemBasic<?> ShapeBottle = new ItemBasic<>(Ref.ID, "shape_bottle").tip("Shape for making Bottles"); //TODO needed?
+    public static ItemBasic<?> UraniumFuelCell = new ItemBasic<>(Ref.ID, "uranium_fuel_cell").tip("Fuel cell");
+    public static ItemBasic<?> ThoriumFuelCell = new ItemBasic<>(Ref.ID, "thorium_fuel_cell").tip("Fuel cell");
     //
     //    //TODO optional items (register anyway, but don't show in JEI?)
     //    //TODO move to IC2+IC2C Registrar
@@ -457,7 +458,7 @@ public class GregTechData {
     public static final ItemPipe<?> ITEM_PIPE_HC = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(Ref.ID, HighCapacity).caps(64));
     public static final ItemPipe<?> ITEM_PIPE_OSMIRIDIUM = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(Ref.ID, Osmiridium).caps(0, 0, 0, 32, 64, 128));
 
-
+    public static final HeatPipe<?> HEAT_PIPE_COPPER = AntimatterAPI.register(HeatPipe.class, new HeatPipe<>(Ref.ID, Copper, 386).sizes(PipeSize.SMALL));
     private static int[] getPressures(int basePressure){
         basePressure *= 20;
         return new int[]{basePressure / 6, basePressure / 6, basePressure / 3, basePressure, basePressure * 2, basePressure * 4};
