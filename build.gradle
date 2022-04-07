@@ -13,6 +13,17 @@ println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getPro
 
 def isCI = System.getenv("GITHUB_ACTION")
 def isRELEASE = System.getenv("GITHUB_RELEASE")
+boolean hasTesseract = new File("AntimatterAPI/TesseractAPI").exists()
+
+if (hasTesseract) {
+    println('TesseractAPI in local workspace')
+}
+
+boolean hasAntimatter = new File("AntimatterAPI").exists()
+
+if (hasTesseract) {
+    println('AntimatterAPI in local workspace')
+}
 
 static def gitHash() {
     String hash = System.getenv("GITHUB_SHA")
