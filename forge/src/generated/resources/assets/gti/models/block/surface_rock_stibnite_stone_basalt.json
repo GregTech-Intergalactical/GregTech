@@ -1,0 +1,88 @@
+{
+  "loader": "antimatter:dynamic",
+  "model": {
+    "parent": "antimatter:block/rock/surface_rock_0",
+    "textures": {
+      "all": "gti:block/stone/basalt"
+    }
+  },
+  "config": [
+    {
+      "id": 0,
+      "models": [
+        {
+          "parent": "antimatter:block/rock/surface_rock_0",
+          "textures": {
+            "all": "gti:block/stone/basalt"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "models": [
+        {
+          "parent": "antimatter:block/rock/surface_rock_1",
+          "textures": {
+            "all": "gti:block/stone/basalt"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "models": [
+        {
+          "parent": "antimatter:block/rock/surface_rock_2",
+          "textures": {
+            "all": "gti:block/stone/basalt"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "models": [
+        {
+          "parent": "antimatter:block/rock/surface_rock_3",
+          "textures": {
+            "all": "gti:block/stone/basalt"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "models": [
+        {
+          "parent": "antimatter:block/rock/surface_rock_4",
+          "textures": {
+            "all": "gti:block/stone/basalt"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "models": [
+        {
+          "parent": "antimatter:block/rock/surface_rock_5",
+          "textures": {
+            "all": "gti:block/stone/basalt"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "models": [
+        {
+          "parent": "antimatter:block/rock/surface_rock_6",
+          "textures": {
+            "all": "gti:block/stone/basalt"
+          }
+        }
+      ]
+    }
+  ]
+}

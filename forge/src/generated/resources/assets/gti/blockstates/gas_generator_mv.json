@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gti:block/gas_generator_mv"
+    }
+  }
+}

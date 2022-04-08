@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/hv",
+    "overlaydown": "gti:block/machine/overlay/bender/active/bottom",
+    "overlayup": "gti:block/machine/overlay/bender/active/top",
+    "overlaynorth": "gti:block/machine/overlay/bender/active/front",
+    "overlaysouth": "gti:block/machine/overlay/bender/active/back",
+    "overlaywest": "gti:block/machine/overlay/bender/active/side",
+    "overlayeast": "gti:block/machine/overlay/bender/active/side"
+  }
+}

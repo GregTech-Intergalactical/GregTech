@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "antimatter:material/none/crushed_centrifuged",
+    "layer1": "antimatter:material/none/crushed_centrifuged_overlay"
+  }
+}

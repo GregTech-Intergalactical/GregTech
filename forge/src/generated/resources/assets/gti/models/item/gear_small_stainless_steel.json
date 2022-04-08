@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gti:material/shiny/gear_small",
+    "layer1": "gti:material/shiny/gear_small_overlay"
+  }
+}

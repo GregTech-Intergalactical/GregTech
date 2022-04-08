@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gti:block/laser_engraver_ev"
+    }
+  }
+}

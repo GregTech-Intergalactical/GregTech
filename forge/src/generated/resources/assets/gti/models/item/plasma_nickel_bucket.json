@@ -1,0 +1,7 @@
+{
+  "parent": "forge:item/bucket",
+  "loader": "forge:bucket",
+  "fluid": "gti:plasma_nickel",
+  "flipGas": true,
+  "applyTint": true
+}

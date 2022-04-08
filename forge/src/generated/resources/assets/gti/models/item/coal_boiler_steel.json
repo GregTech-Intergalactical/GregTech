@@ -1,0 +1,18 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/brick",
+    "basedown": "gti:block/machine/base/brick",
+    "baseup": "gti:block/machine/base/steel",
+    "basenorth": "gti:block/machine/base/bricked_steel",
+    "basesouth": "gti:block/machine/base/bricked_steel",
+    "basewest": "gti:block/machine/base/bricked_steel",
+    "baseeast": "gti:block/machine/base/bricked_steel",
+    "overlaydown": "gti:block/machine/overlay/coal_boiler/active/bottom",
+    "overlayup": "gti:block/machine/overlay/coal_boiler/active/top",
+    "overlaynorth": "gti:block/machine/overlay/coal_boiler/active/front",
+    "overlaysouth": "gti:block/machine/overlay/coal_boiler/active/back",
+    "overlaywest": "gti:block/machine/overlay/coal_boiler/active/side",
+    "overlayeast": "gti:block/machine/overlay/coal_boiler/active/side"
+  }
+}

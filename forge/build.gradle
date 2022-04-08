@@ -200,7 +200,7 @@ dependencies {
     }
 
     //if (hasAntimatter) {
-        implementation(project(":antimatter-forge"))
+        implementation(project(':antimatter-forge'))
     //} else {
     //    modImplementation("com.github.GregTech-Intergalactical.AntimatterAPI:AntimatterAPI-forge:${antimatter_version}")
     //}

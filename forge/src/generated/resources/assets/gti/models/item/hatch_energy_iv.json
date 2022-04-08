@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/iv",
+    "overlaydown": "gti:block/machine/overlay/hatch_energy/active/bottom",
+    "overlayup": "gti:block/machine/overlay/hatch_energy/active/top",
+    "overlaynorth": "gti:block/machine/overlay/hatch_energy/active/front",
+    "overlaysouth": "gti:block/machine/overlay/hatch_energy/active/back",
+    "overlaywest": "gti:block/machine/overlay/hatch_energy/active/side",
+    "overlayeast": "gti:block/machine/overlay/hatch_energy/active/side"
+  }
+}

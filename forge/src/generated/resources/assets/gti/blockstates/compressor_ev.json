@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gti:block/compressor_ev"
+    }
+  }
+}

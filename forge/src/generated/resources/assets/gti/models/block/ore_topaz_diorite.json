@@ -1,0 +1,7 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "minecraft:block/diorite",
+    "overlay": "gti:material/gem_h/ore"
+  }
+}

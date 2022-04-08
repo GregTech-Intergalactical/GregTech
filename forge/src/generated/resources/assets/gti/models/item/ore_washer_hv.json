@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/hv",
+    "overlaydown": "gti:block/machine/overlay/ore_washer/active/bottom",
+    "overlayup": "gti:block/machine/overlay/ore_washer/active/top",
+    "overlaynorth": "gti:block/machine/overlay/ore_washer/active/front",
+    "overlaysouth": "gti:block/machine/overlay/ore_washer/active/back",
+    "overlaywest": "gti:block/machine/overlay/ore_washer/active/side",
+    "overlayeast": "gti:block/machine/overlay/ore_washer/active/side"
+  }
+}

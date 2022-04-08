@@ -1,0 +1,163 @@
+{
+  "variants": {
+    "axis=x,facing=north,resin_state=none": {
+      "model": "gti:block/rubber_log",
+      "x": 90
+    },
+    "axis=y,facing=north,resin_state=none": {
+      "model": "gti:block/rubber_log"
+    },
+    "axis=z,facing=north,resin_state=none": {
+      "model": "gti:block/rubber_log",
+      "x": 90
+    },
+    "axis=x,facing=south,resin_state=none": {
+      "model": "gti:block/rubber_log",
+      "x": 90,
+      "y": 180
+    },
+    "axis=y,facing=south,resin_state=none": {
+      "model": "gti:block/rubber_log",
+      "y": 180
+    },
+    "axis=z,facing=south,resin_state=none": {
+      "model": "gti:block/rubber_log",
+      "x": 90,
+      "y": 180
+    },
+    "axis=x,facing=west,resin_state=none": {
+      "model": "gti:block/rubber_log",
+      "x": 90,
+      "y": 270
+    },
+    "axis=y,facing=west,resin_state=none": {
+      "model": "gti:block/rubber_log",
+      "y": 270
+    },
+    "axis=z,facing=west,resin_state=none": {
+      "model": "gti:block/rubber_log",
+      "x": 90,
+      "y": 270
+    },
+    "axis=x,facing=east,resin_state=none": {
+      "model": "gti:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,facing=east,resin_state=none": {
+      "model": "gti:block/rubber_log",
+      "y": 90
+    },
+    "axis=z,facing=east,resin_state=none": {
+      "model": "gti:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,facing=north,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty",
+      "x": 90
+    },
+    "axis=y,facing=north,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty"
+    },
+    "axis=z,facing=north,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty",
+      "x": 90
+    },
+    "axis=x,facing=south,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty",
+      "x": 90,
+      "y": 180
+    },
+    "axis=y,facing=south,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty",
+      "y": 180
+    },
+    "axis=z,facing=south,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty",
+      "x": 90,
+      "y": 180
+    },
+    "axis=x,facing=west,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty",
+      "x": 90,
+      "y": 270
+    },
+    "axis=y,facing=west,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty",
+      "y": 270
+    },
+    "axis=z,facing=west,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty",
+      "x": 90,
+      "y": 270
+    },
+    "axis=x,facing=east,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,facing=east,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty",
+      "y": 90
+    },
+    "axis=z,facing=east,resin_state=empty": {
+      "model": "gti:block/rubber_log_empty",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,facing=north,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled",
+      "x": 90
+    },
+    "axis=y,facing=north,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled"
+    },
+    "axis=z,facing=north,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled",
+      "x": 90
+    },
+    "axis=x,facing=south,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled",
+      "x": 90,
+      "y": 180
+    },
+    "axis=y,facing=south,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled",
+      "y": 180
+    },
+    "axis=z,facing=south,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled",
+      "x": 90,
+      "y": 180
+    },
+    "axis=x,facing=west,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled",
+      "x": 90,
+      "y": 270
+    },
+    "axis=y,facing=west,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled",
+      "y": 270
+    },
+    "axis=z,facing=west,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled",
+      "x": 90,
+      "y": 270
+    },
+    "axis=x,facing=east,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,facing=east,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled",
+      "y": 90
+    },
+    "axis=z,facing=east,resin_state=filled": {
+      "model": "gti:block/rubber_log_filled",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

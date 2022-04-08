@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gti:material/lignite/crushed_centrifuged",
+    "layer1": "gti:material/lignite/crushed_centrifuged_overlay"
+  }
+}

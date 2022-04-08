@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gti:material/diamond/dust_impure",
+    "layer1": "gti:material/diamond/dust_impure_overlay"
+  }
+}

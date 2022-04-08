@@ -1,0 +1,7 @@
+{
+  "parent": "antimatter:block/pipe/vtiny/line_inv",
+  "textures": {
+    "all": "antimatter:block/pipe/cable_side",
+    "overlay": "antimatter:block/pipe/cable_vtiny"
+  }
+}

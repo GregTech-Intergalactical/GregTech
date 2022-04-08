@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gti:block/combustion_engine_ev"
+    }
+  }
+}

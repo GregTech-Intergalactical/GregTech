@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/lv",
+    "overlaydown": "gti:block/machine/overlay/infinite_steam/active/bottom",
+    "overlayup": "gti:block/machine/overlay/infinite_steam/active/top",
+    "overlaynorth": "gti:block/machine/overlay/infinite_steam/active/front",
+    "overlaysouth": "gti:block/machine/overlay/infinite_steam/active/back",
+    "overlaywest": "gti:block/machine/overlay/infinite_steam/active/side",
+    "overlayeast": "gti:block/machine/overlay/infinite_steam/active/side"
+  }
+}

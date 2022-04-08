@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/mv",
+    "overlaydown": "gti:block/machine/overlay/fluid_canner/active/bottom",
+    "overlayup": "gti:block/machine/overlay/fluid_canner/active/top",
+    "overlaynorth": "gti:block/machine/overlay/fluid_canner/active/front",
+    "overlaysouth": "gti:block/machine/overlay/fluid_canner/active/back",
+    "overlaywest": "gti:block/machine/overlay/fluid_canner/active/side",
+    "overlayeast": "gti:block/machine/overlay/fluid_canner/active/side"
+  }
+}

@@ -1,0 +1,4165 @@
+{
+  "loader": "antimatter:pipe",
+  "model": {
+    "parent": "antimatter:block/pipe/huge/base",
+    "textures": {
+      "all": "antimatter:block/pipe/wire_side",
+      "overlay": "antimatter:block/pipe/wire_huge"
+    }
+  },
+  "staticConfigId": "pipe",
+  "config": [
+    {
+      "id": 3600,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/base",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3601,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3602,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3604,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3608,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3616,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3632,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3603,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3612,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3648,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3605,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3606,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3609,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3610,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3617,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3618,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3620,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3624,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3633,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3634,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3636,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3640,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3607,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3611,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3613,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3614,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3619,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3628,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3635,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3644,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3649,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3650,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3652,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3656,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3621,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3622,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3625,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -270,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3626,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3641,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3642,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3637,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3638,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3623,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3627,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -270,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3629,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3630,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3639,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3643,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3645,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3646,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3653,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3654,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3657,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3658,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3615,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3651,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3660,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3631,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3647,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3655,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3659,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3661,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3662,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3663,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/all",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3600,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/base",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3601,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3602,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3604,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3608,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3616,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3632,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3603,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3612,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3648,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3605,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3606,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3609,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3610,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3617,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3618,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3620,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3624,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3633,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3634,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3636,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3640,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3607,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3611,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3613,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3614,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3619,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3628,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3635,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3644,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3649,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3650,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3652,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3656,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3621,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3622,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3625,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -270,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3626,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3641,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3642,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3637,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3638,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3623,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3627,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -270,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3629,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3630,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3639,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3643,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3645,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3646,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3653,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3654,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3657,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3658,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3615,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3651,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3660,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3631,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3647,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3655,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3659,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3661,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3662,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3663,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/all",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3600,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/base",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3601,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3602,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3604,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3608,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3616,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3632,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3603,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3612,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3648,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3605,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3606,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3609,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3610,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3617,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3618,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3620,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3624,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3633,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3634,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3636,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3640,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3607,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3611,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3613,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3614,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3619,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3628,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3635,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3644,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3649,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3650,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3652,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3656,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3621,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3622,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3625,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -270,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3626,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3641,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3642,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3637,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3638,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3623,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3627,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -270,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3629,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3630,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3639,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3643,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3645,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3646,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3653,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3654,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3657,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3658,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3615,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3651,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3660,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3631,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3647,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3655,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3659,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3661,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3662,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3663,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/all",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3600,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/base",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3601,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3602,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3604,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3608,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3616,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3632,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3603,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3612,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3648,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3605,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3606,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3609,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3610,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3617,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3618,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3620,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3624,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3633,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3634,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3636,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3640,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3607,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3611,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3613,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3614,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3619,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3628,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3635,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3644,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3649,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3650,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3652,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3656,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3621,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3622,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3625,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -270,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3626,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3641,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3642,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3637,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3638,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3623,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3627,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -270,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3629,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3630,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3639,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3643,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3645,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3646,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3653,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3654,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3657,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3658,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3615,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3651,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3660,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3631,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3647,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3655,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3659,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3661,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3662,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3663,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/huge/all",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_huge"
+          }
+        }
+      ]
+    }
+  ]
+}

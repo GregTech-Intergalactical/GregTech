@@ -1,0 +1,7 @@
+{
+  "parent": "forge:item/bucket",
+  "loader": "forge:bucket",
+  "fluid": "gti:liquid_methyl_acetate",
+  "flipGas": false,
+  "applyTint": true
+}

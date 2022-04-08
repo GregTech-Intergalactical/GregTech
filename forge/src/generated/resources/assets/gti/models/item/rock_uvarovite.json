@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gti:material/diamond/rock",
+    "layer1": "gti:material/diamond/rock_overlay"
+  }
+}

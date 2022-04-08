@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gti:material/rough/chainsaw_bit",
+    "layer1": "gti:material/rough/chainsaw_bit_overlay"
+  }
+}

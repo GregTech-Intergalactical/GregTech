@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gti:block/hatch_fluid_input_ulv"
+    }
+  }
+}

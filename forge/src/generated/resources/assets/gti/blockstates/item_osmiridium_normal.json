@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "cover=false,waterlogged=false": {
+      "model": "gti:block/item_osmiridium_normal",
+      "uvlock": true
+    },
+    "cover=true,waterlogged=false": {
+      "model": "gti:block/item_osmiridium_normal",
+      "uvlock": true
+    },
+    "cover=false,waterlogged=true": {
+      "model": "gti:block/item_osmiridium_normal",
+      "uvlock": true
+    },
+    "cover=true,waterlogged=true": {
+      "model": "gti:block/item_osmiridium_normal",
+      "uvlock": true
+    }
+  }
+}

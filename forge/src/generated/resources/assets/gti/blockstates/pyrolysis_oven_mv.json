@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gti:block/pyrolysis_oven_mv"
+    }
+  }
+}

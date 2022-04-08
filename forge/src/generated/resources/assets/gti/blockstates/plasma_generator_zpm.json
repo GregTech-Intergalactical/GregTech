@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gti:block/plasma_generator_zpm"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "minecraft:block/soul_sand",
+    "overlay": "gti:material/quartz/ore_small"
+  }
+}

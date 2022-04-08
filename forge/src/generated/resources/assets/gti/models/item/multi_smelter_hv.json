@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/multi_smelter",
+    "overlaydown": "gti:block/machine/overlay/multi_smelter/active/bottom",
+    "overlayup": "gti:block/machine/overlay/multi_smelter/active/top",
+    "overlaynorth": "gti:block/machine/overlay/multi_smelter/active/front",
+    "overlaysouth": "gti:block/machine/overlay/multi_smelter/active/back",
+    "overlaywest": "gti:block/machine/overlay/multi_smelter/active/side",
+    "overlayeast": "gti:block/machine/overlay/multi_smelter/active/side"
+  }
+}

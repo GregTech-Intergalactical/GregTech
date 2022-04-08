@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gti:material/ruby/lens",
+    "layer1": "gti:material/ruby/lens_overlay"
+  }
+}

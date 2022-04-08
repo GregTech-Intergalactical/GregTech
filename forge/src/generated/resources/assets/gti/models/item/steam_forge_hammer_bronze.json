@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/bronze",
+    "overlaydown": "gti:block/machine/overlay/steam_forge_hammer/active/bottom",
+    "overlayup": "gti:block/machine/overlay/steam_forge_hammer/active/top",
+    "overlaynorth": "gti:block/machine/overlay/steam_forge_hammer/active/front",
+    "overlaysouth": "gti:block/machine/overlay/steam_forge_hammer/active/back",
+    "overlaywest": "gti:block/machine/overlay/steam_forge_hammer/active/side",
+    "overlayeast": "gti:block/machine/overlay/steam_forge_hammer/active/side"
+  }
+}

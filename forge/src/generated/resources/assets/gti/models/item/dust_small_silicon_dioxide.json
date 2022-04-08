@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gti:material/quartz/dust_small",
+    "layer1": "gti:material/quartz/dust_small_overlay"
+  }
+}

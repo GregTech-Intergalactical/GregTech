@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gti:block/fluid_canner_ev"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "antimatter:material/none/dust",
+    "layer1": "antimatter:material/none/dust_overlay"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gti:block/battery_buffer_nine_iv"
+    }
+  }
+}

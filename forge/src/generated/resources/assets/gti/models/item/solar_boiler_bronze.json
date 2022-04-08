@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/bronze",
+    "overlaydown": "gti:block/machine/overlay/solar_boiler/active/bottom",
+    "overlayup": "gti:block/machine/overlay/solar_boiler/active/top",
+    "overlaynorth": "gti:block/machine/overlay/solar_boiler/active/front",
+    "overlaysouth": "gti:block/machine/overlay/solar_boiler/active/back",
+    "overlaywest": "gti:block/machine/overlay/solar_boiler/active/side",
+    "overlayeast": "gti:block/machine/overlay/solar_boiler/active/side"
+  }
+}

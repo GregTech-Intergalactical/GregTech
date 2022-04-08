@@ -1,0 +1,7 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "minecraft:block/soul_soil",
+    "overlay": "gti:material/dull/ore"
+  }
+}

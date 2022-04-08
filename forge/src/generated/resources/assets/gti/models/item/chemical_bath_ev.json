@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/ev",
+    "overlaydown": "gti:block/machine/overlay/chemical_bath/active/bottom",
+    "overlayup": "gti:block/machine/overlay/chemical_bath/active/top",
+    "overlaynorth": "gti:block/machine/overlay/chemical_bath/active/front",
+    "overlaysouth": "gti:block/machine/overlay/chemical_bath/active/back",
+    "overlaywest": "gti:block/machine/overlay/chemical_bath/active/side",
+    "overlayeast": "gti:block/machine/overlay/chemical_bath/active/side"
+  }
+}

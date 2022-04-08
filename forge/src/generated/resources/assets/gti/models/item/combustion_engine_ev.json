@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/combustion_engine",
+    "overlaydown": "gti:block/machine/overlay/combustion_engine/active/bottom",
+    "overlayup": "gti:block/machine/overlay/combustion_engine/active/top",
+    "overlaynorth": "gti:block/machine/overlay/combustion_engine/active/front",
+    "overlaysouth": "gti:block/machine/overlay/combustion_engine/active/back",
+    "overlaywest": "gti:block/machine/overlay/combustion_engine/active/side",
+    "overlayeast": "gti:block/machine/overlay/combustion_engine/active/side"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "forge:item/bucket",
+  "loader": "forge:bucket",
+  "fluid": "gti:liquid_yttrium_barium_cuprate",
+  "flipGas": false,
+  "applyTint": true
+}

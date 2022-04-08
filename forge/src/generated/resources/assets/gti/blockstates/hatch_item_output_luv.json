@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gti:block/hatch_item_output_luv"
+    }
+  }
+}

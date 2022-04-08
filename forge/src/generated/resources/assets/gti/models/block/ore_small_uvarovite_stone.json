@@ -1,0 +1,7 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "minecraft:block/stone",
+    "overlay": "gti:material/diamond/ore_small"
+  }
+}

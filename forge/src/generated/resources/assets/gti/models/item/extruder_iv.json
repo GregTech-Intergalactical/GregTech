@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/iv",
+    "overlaydown": "gti:block/machine/overlay/extruder/active/bottom",
+    "overlayup": "gti:block/machine/overlay/extruder/active/top",
+    "overlaynorth": "gti:block/machine/overlay/extruder/active/front",
+    "overlaysouth": "gti:block/machine/overlay/extruder/active/back",
+    "overlaywest": "gti:block/machine/overlay/extruder/active/side",
+    "overlayeast": "gti:block/machine/overlay/extruder/active/side"
+  }
+}

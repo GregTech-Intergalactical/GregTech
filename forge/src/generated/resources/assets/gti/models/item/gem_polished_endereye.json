@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gti:material/shiny/gem_polished",
+    "layer1": "gti:material/shiny/gem_polished_overlay"
+  }
+}

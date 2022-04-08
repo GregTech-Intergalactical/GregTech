@@ -1,0 +1,4165 @@
+{
+  "loader": "antimatter:pipe",
+  "model": {
+    "parent": "antimatter:block/pipe/vtiny/base",
+    "textures": {
+      "all": "antimatter:block/pipe/wire_side",
+      "overlay": "antimatter:block/pipe/wire_vtiny"
+    }
+  },
+  "staticConfigId": "pipe",
+  "config": [
+    {
+      "id": 3100,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/base",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3101,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3102,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3104,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3108,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3116,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3132,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3103,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3112,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3148,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3105,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3106,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3109,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3110,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3117,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3118,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3120,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3124,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3133,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3134,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3136,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3140,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3107,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3111,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3113,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3114,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3119,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3128,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3135,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3144,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3149,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3150,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3152,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3156,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3121,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3122,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3125,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -270,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3126,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3141,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3142,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3137,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3138,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3123,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3127,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -270,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3129,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3130,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3139,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3143,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3145,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3146,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3153,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3154,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3157,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3158,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3115,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3151,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3160,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3131,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3147,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3155,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3159,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3161,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3162,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3163,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/all",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3100,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/base",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3101,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3102,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3104,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3108,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3116,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3132,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3103,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3112,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3148,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3105,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3106,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3109,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3110,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3117,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3118,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3120,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3124,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3133,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3134,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3136,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3140,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3107,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3111,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3113,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3114,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3119,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3128,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3135,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3144,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3149,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3150,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3152,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3156,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3121,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3122,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3125,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -270,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3126,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3141,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3142,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3137,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3138,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3123,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3127,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -270,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3129,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3130,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3139,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3143,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3145,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3146,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3153,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3154,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3157,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3158,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3115,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3151,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3160,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3131,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3147,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3155,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3159,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3161,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3162,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3163,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/all",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3100,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/base",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3101,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3102,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3104,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3108,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3116,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3132,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3103,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3112,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3148,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3105,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3106,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3109,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3110,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3117,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3118,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3120,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3124,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3133,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3134,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3136,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3140,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3107,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3111,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3113,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3114,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3119,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3128,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3135,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3144,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3149,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3150,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3152,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3156,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3121,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3122,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3125,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -270,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3126,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3141,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3142,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3137,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3138,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3123,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3127,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -270,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3129,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3130,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3139,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3143,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3145,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3146,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3153,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3154,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3157,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3158,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3115,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3151,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3160,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3131,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3147,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3155,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3159,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3161,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3162,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3163,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/all",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3100,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/base",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3101,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3102,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3104,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3108,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3116,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3132,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/single",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3103,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3112,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3148,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/line",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3105,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3106,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3109,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3110,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3117,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3118,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3120,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3124,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3133,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3134,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3136,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3140,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/elbow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3107,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3111,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3113,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3114,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3119,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3128,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3135,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3144,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3149,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3150,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3152,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3156,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/side",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3121,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3122,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3125,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -270,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3126,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3141,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3142,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3137,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3138,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/corner",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3123,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3127,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -270,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3129,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3130,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3139,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3143,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -180,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3145,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3146,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            -90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3153,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3154,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3157,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3158,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/arrow",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3115,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3151,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3160,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/cross",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3131,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3147,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            0,
+            0,
+            -90
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3155,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            -90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3159,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            90,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3161,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          },
+          "rotation": [
+            180,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3162,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/five",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3163,
+      "models": [
+        {
+          "parent": "antimatter:block/pipe/vtiny/all",
+          "textures": {
+            "all": "antimatter:block/pipe/wire_side",
+            "overlay": "antimatter:block/pipe/wire_vtiny"
+          }
+        }
+      ]
+    }
+  ]
+}

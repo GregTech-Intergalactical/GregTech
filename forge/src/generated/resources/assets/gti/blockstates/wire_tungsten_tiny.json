@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "cover=false,waterlogged=false": {
+      "model": "gti:block/wire_tungsten_tiny",
+      "uvlock": true
+    },
+    "cover=true,waterlogged=false": {
+      "model": "gti:block/wire_tungsten_tiny",
+      "uvlock": true
+    },
+    "cover=false,waterlogged=true": {
+      "model": "gti:block/wire_tungsten_tiny",
+      "uvlock": true
+    },
+    "cover=true,waterlogged=true": {
+      "model": "gti:block/wire_tungsten_tiny",
+      "uvlock": true
+    }
+  }
+}

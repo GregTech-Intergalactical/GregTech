@@ -1,0 +1,7 @@
+{
+  "parent": "forge:item/bucket",
+  "loader": "forge:bucket",
+  "fluid": "gti:liquid_sulfuric_light_diesel",
+  "flipGas": false,
+  "applyTint": true
+}

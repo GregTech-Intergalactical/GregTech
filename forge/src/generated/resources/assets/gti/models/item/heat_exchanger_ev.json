@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/heat_exchanger",
+    "overlaydown": "gti:block/machine/overlay/heat_exchanger/active/bottom",
+    "overlayup": "gti:block/machine/overlay/heat_exchanger/active/top",
+    "overlaynorth": "gti:block/machine/overlay/heat_exchanger/active/front",
+    "overlaysouth": "gti:block/machine/overlay/heat_exchanger/active/back",
+    "overlaywest": "gti:block/machine/overlay/heat_exchanger/active/side",
+    "overlayeast": "gti:block/machine/overlay/heat_exchanger/active/side"
+  }
+}

@@ -1,0 +1,822 @@
+{
+  "loader": "antimatter:machine",
+  "config": [
+    {
+      "id": 13001,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/down",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/bottom"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13002,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/up",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/top"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13003,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/north",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/front"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13004,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/south",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/back"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13005,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/west",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/side"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13006,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/east",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/side"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16001,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/down",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/bottom"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16002,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/up",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/top"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16003,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/north",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/front"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16004,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/south",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/back"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16005,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/west",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/side"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16006,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/east",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/side"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14001,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/down",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/bottom"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14002,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/up",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/top"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14003,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/north",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/front"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14004,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/south",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/back"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14005,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/west",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/side"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14006,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/east",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/side"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15001,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/down",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/bottom"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15002,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/up",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/top"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15003,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/north",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/front"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15004,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/south",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/back"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15005,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/west",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/side"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15006,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/east",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/side"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 33001,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/down",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/bottom"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 33002,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/up",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/top"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 33003,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/north",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/front"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 33004,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/south",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/back"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 33005,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/west",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/side"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 33006,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/east",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/side"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 36001,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/down",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/bottom"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 36002,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/up",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/top"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 36003,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/north",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/front"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 36004,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/south",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/back"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 36005,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/west",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/side"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 36006,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/east",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/side"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 34001,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/down",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/bottom"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 34002,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/up",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/top"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 34003,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/north",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/front"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 34004,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/south",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/back"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 34005,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/west",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/side"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 34006,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/east",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/side"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 35001,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/down",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/bottom"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 35002,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/up",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/top"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 35003,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/north",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/front"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 35004,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/south",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/back"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 35005,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/west",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/side"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 35006,
+      "models": [
+        {
+          "parent": "gti:block/machine/overlay/chemical_reactor/east",
+          "textures": {
+            "base": "gti:block/machine/base/ev",
+            "overlay": "gti:block/machine/overlay/chemical_reactor/active/side"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "particle": "gti:block/machine/base/ev"
+}

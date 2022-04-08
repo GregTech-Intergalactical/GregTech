@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "cover=false,waterlogged=false": {
+      "model": "gti:block/cable_kanthal_large",
+      "uvlock": true
+    },
+    "cover=true,waterlogged=false": {
+      "model": "gti:block/cable_kanthal_large",
+      "uvlock": true
+    },
+    "cover=false,waterlogged=true": {
+      "model": "gti:block/cable_kanthal_large",
+      "uvlock": true
+    },
+    "cover=true,waterlogged=true": {
+      "model": "gti:block/cable_kanthal_large",
+      "uvlock": true
+    }
+  }
+}

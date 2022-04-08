@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gti:item/basic/robot_arm_iv"
+  }
+}

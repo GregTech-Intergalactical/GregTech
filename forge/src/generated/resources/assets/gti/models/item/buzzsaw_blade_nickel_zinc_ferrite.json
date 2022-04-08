@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gti:material/rough/buzzsaw_blade",
+    "layer1": "gti:material/rough/buzzsaw_blade_overlay"
+  }
+}

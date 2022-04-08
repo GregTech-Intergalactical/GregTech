@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/zpm",
+    "overlaydown": "gti:block/machine/overlay/hatch_muffler/active/bottom",
+    "overlayup": "gti:block/machine/overlay/hatch_muffler/active/top",
+    "overlaynorth": "gti:block/machine/overlay/hatch_muffler/active/front",
+    "overlaysouth": "gti:block/machine/overlay/hatch_muffler/active/back",
+    "overlaywest": "gti:block/machine/overlay/hatch_muffler/active/side",
+    "overlayeast": "gti:block/machine/overlay/hatch_muffler/active/side"
+  }
+}

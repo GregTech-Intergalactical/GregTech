@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gti:block/implosion_compressor_hv"
+    }
+  }
+}

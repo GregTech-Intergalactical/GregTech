@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/coke_oven",
+    "overlaydown": "gti:block/machine/overlay/coke_oven/active/bottom",
+    "overlayup": "gti:block/machine/overlay/coke_oven/active/top",
+    "overlaynorth": "gti:block/machine/overlay/coke_oven/active/front",
+    "overlaysouth": "gti:block/machine/overlay/coke_oven/active/back",
+    "overlaywest": "gti:block/machine/overlay/coke_oven/active/side",
+    "overlayeast": "gti:block/machine/overlay/coke_oven/active/side"
+  }
+}

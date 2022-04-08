@@ -1,0 +1,2043 @@
+{
+  "loader": "antimatter:dynamic",
+  "config": [
+    {
+      "id": 1989,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_0"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11989,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_0"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1990,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_1"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11990,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_1"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1991,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_2"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11991,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_2"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1999,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_3"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11999,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_3"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2001,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_5"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12001,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_5"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2009,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_6"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12009,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_6"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2010,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_7"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12010,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_7"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2011,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_8"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12011,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_8"
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4890,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_0"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14890,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_0"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4990,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_1"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14990,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_1"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5090,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_2"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15090,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_2"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4900,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_3"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14900,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_3"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5100,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_5"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15100,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_5"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4910,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_6"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14910,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_6"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5010,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_7"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15010,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_7"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5110,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_8"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15110,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_8"
+          },
+          "rotation": [
+            0,
+            270,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2991,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_0"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12991,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_0"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2990,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_1"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12990,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_1"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2989,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_2"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12989,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_2"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3001,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_3"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13001,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_3"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2999,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_5"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12999,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_5"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3011,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_6"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13011,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_6"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3010,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_7"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13010,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_7"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3009,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_8"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13009,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_8"
+          },
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4090,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_0"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14090,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_0"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3990,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_1"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13990,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_1"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3890,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_2"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13890,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_2"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4100,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_3"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14100,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_3"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3900,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_5"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13900,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_5"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4110,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_6"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14110,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_6"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4010,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_7"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14010,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_7"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3910,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_8"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13910,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple_overlay",
+          "textures": {
+            "base": "gti:block/ct/turbine/large_turbine_active_8"
+          },
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_1",
+            "south": "gti:block/ct/fusion/fusion_3_1",
+            "west": "gti:block/ct/fusion/fusion_3_1",
+            "east": "gti:block/ct/fusion/fusion_3_1"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_1",
+            "south": "gti:block/ct/fusion/fusion_3_1",
+            "west": "gti:block/ct/fusion/fusion_3_1",
+            "east": "gti:block/ct/fusion/fusion_3_1"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_1",
+            "up": "gti:block/ct/fusion/fusion_3_1",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_1",
+            "up": "gti:block/ct/fusion/fusion_3_1",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_0",
+            "up": "gti:block/ct/fusion/fusion_3_0",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_0",
+            "up": "gti:block/ct/fusion/fusion_3_0",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_1",
+            "south": "gti:block/ct/fusion/fusion_3_1",
+            "west": "gti:block/ct/fusion/fusion_3_1",
+            "east": "gti:block/ct/fusion/fusion_3_1"
+          }
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_1",
+            "up": "gti:block/ct/fusion/fusion_3_1",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_0",
+            "up": "gti:block/ct/fusion/fusion_3_0",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_1",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_1",
+            "west": "gti:block/ct/fusion/fusion_3_11",
+            "east": "gti:block/ct/fusion/fusion_3_10"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_1",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_1",
+            "west": "gti:block/ct/fusion/fusion_3_9",
+            "east": "gti:block/ct/fusion/fusion_3_8"
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_1",
+            "north": "gti:block/ct/fusion/fusion_3_1",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_8",
+            "east": "gti:block/ct/fusion/fusion_3_9"
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_1",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_1",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_10",
+            "east": "gti:block/ct/fusion/fusion_3_11"
+          }
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_0",
+            "north": "gti:block/ct/fusion/fusion_3_8",
+            "south": "gti:block/ct/fusion/fusion_3_9",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_1"
+          }
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_0",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_10",
+            "south": "gti:block/ct/fusion/fusion_3_11",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_1"
+          }
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_0",
+            "north": "gti:block/ct/fusion/fusion_3_9",
+            "south": "gti:block/ct/fusion/fusion_3_8",
+            "west": "gti:block/ct/fusion/fusion_3_1",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_0",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_11",
+            "south": "gti:block/ct/fusion/fusion_3_10",
+            "west": "gti:block/ct/fusion/fusion_3_1",
+            "east": "gti:block/ct/fusion/fusion_3_10"
+          }
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_9",
+            "up": "gti:block/ct/fusion/fusion_3_11",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_11",
+            "up": "gti:block/ct/fusion/fusion_3_9",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_8",
+            "up": "gti:block/ct/fusion/fusion_3_10",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_10",
+            "up": "gti:block/ct/fusion/fusion_3_8",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_1",
+            "west": "gti:block/ct/fusion/fusion_3_4",
+            "east": "gti:block/ct/fusion/fusion_3_2"
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_1",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_2",
+            "east": "gti:block/ct/fusion/fusion_3_4"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_1",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_3",
+            "east": "gti:block/ct/fusion/fusion_3_3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_1",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_5",
+            "east": "gti:block/ct/fusion/fusion_3_5"
+          }
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_2",
+            "south": "gti:block/ct/fusion/fusion_3_4",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_1"
+          }
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_4",
+            "up": "gti:block/ct/fusion/fusion_3_4",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_4",
+            "south": "gti:block/ct/fusion/fusion_3_2",
+            "west": "gti:block/ct/fusion/fusion_3_1",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_2",
+            "up": "gti:block/ct/fusion/fusion_3_2",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_0",
+            "north": "gti:block/ct/fusion/fusion_3_3",
+            "south": "gti:block/ct/fusion/fusion_3_3",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_0",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_5",
+            "south": "gti:block/ct/fusion/fusion_3_5",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_3",
+            "up": "gti:block/ct/fusion/fusion_3_5",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_5",
+            "up": "gti:block/ct/fusion/fusion_3_3",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_11",
+            "up": "gti:block/ct/fusion/fusion_3_11",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_9",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_8"
+          }
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_9",
+            "up": "gti:block/ct/fusion/fusion_3_9",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_11",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_10"
+          }
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_9",
+            "up": "gti:block/ct/fusion/fusion_3_9",
+            "north": "gti:block/ct/fusion/fusion_3_8",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_9"
+          }
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_11",
+            "up": "gti:block/ct/fusion/fusion_3_11",
+            "north": "gti:block/ct/fusion/fusion_3_10",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_0",
+            "east": "gti:block/ct/fusion/fusion_3_11"
+          }
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_10",
+            "up": "gti:block/ct/fusion/fusion_3_10",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_8",
+            "west": "gti:block/ct/fusion/fusion_3_9",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_8",
+            "up": "gti:block/ct/fusion/fusion_3_8",
+            "north": "gti:block/ct/fusion/fusion_3_0",
+            "south": "gti:block/ct/fusion/fusion_3_10",
+            "west": "gti:block/ct/fusion/fusion_3_11",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_8",
+            "up": "gti:block/ct/fusion/fusion_3_8",
+            "north": "gti:block/ct/fusion/fusion_3_9",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_8",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_10",
+            "up": "gti:block/ct/fusion/fusion_3_10",
+            "north": "gti:block/ct/fusion/fusion_3_11",
+            "south": "gti:block/ct/fusion/fusion_3_0",
+            "west": "gti:block/ct/fusion/fusion_3_10",
+            "east": "gti:block/ct/fusion/fusion_3_0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_4",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_2"
+          }
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_2",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_4"
+          }
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_4",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_4",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_5"
+          }
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_2",
+            "west": "gti:block/ct/fusion/fusion_3_4",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_4",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_2",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_2",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_3",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_2",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_5",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_5",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_3",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_3",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_5",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_3",
+            "north": "gti:block/ct/fusion/fusion_3_3",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_5",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_5",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_6",
+            "east": "gti:block/ct/fusion/fusion_3_6"
+          }
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_6",
+            "south": "gti:block/ct/fusion/fusion_3_6",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_6",
+            "up": "gti:block/ct/fusion/fusion_3_6",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_6"
+          }
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_6",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_6",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_6",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_6",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_6",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "models": [
+        {
+          "parent": "antimatter:block/preset/simple",
+          "textures": {
+            "down": "gti:block/ct/fusion/fusion_3_12",
+            "up": "gti:block/ct/fusion/fusion_3_12",
+            "north": "gti:block/ct/fusion/fusion_3_12",
+            "south": "gti:block/ct/fusion/fusion_3_12",
+            "west": "gti:block/ct/fusion/fusion_3_12",
+            "east": "gti:block/ct/fusion/fusion_3_12"
+          }
+        }
+      ]
+    }
+  ],
+  "model": {
+    "parent": "antimatter:block/preset/simple",
+    "textures": {
+      "all": "gti:block/casing/fusion_3"
+    }
+  }
+}

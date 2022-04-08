@@ -1,0 +1,12 @@
+{
+  "parent": "antimatter:block/preset/layered",
+  "textures": {
+    "base": "gti:block/machine/base/lv",
+    "overlaydown": "gti:block/machine/overlay/disassembler/active/bottom",
+    "overlayup": "gti:block/machine/overlay/disassembler/active/top",
+    "overlaynorth": "gti:block/machine/overlay/disassembler/active/front",
+    "overlaysouth": "gti:block/machine/overlay/disassembler/active/back",
+    "overlaywest": "gti:block/machine/overlay/disassembler/active/side",
+    "overlayeast": "gti:block/machine/overlay/disassembler/active/side"
+  }
+}
