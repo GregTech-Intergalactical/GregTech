@@ -78,6 +78,24 @@ allprojects {
         }
         //GT.
         maven { url 'https://jitpack.io' }
+        maven {
+            // Shedaniel's maven (Architectury API)
+            url = "https://maven.architectury.dev"
+            content {
+                includeGroup "dev.architectury"
+            }
+        }
+        maven {
+            url = 'https://maven.blamejared.com'
+            name = 'BlameJared Maven'
+        }
+        maven {
+            // saps.dev Maven (KubeJS and Rhino)
+            url = "https://maven.saps.dev/minecraft"
+            content {
+                includeGroup "dev.latvian.mods"
+            }
+        }
     }
 
     java {
