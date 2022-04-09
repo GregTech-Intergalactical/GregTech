@@ -11,10 +11,10 @@ import static muramasa.gregtech.data.RecipeMaps.HEAT_EXCHANGING;
 public class HeatExchangerLoader {
     public static void init() {
         HEAT_EXCHANGING.RB().fi(FluidIngredient.of(new FluidStack(Fluids.WATER, 150)))
-                .fo(Materials.Steam.getLiquid(2000))
+                .fo(Materials.Steam.getGas(2000))
                 .add(60, 30);
         HEAT_EXCHANGING.RB().fi(FluidIngredient.of(Materials.DistilledWater.getLiquid(100)))
-                .fo(Materials.Steam.getLiquid(2000))
+                .fo(Materials.Steam.getGas(2000))
                 .add(60, 25);
     }
 }

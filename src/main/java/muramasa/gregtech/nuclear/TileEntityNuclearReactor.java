@@ -1,10 +1,7 @@
 package muramasa.gregtech.nuclear;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import muramasa.antimatter.capability.Holder;
-import muramasa.antimatter.capability.IComponentHandler;
 import muramasa.antimatter.capability.IHeatHandler;
-import muramasa.antimatter.capability.machine.DefaultHeatHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.ICanSyncData;
@@ -28,9 +25,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Collections;
-import java.util.List;
 
 public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityNuclearReactor> {
 
@@ -73,7 +67,7 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
         long power = r.getPower();
         int in = (int)((float)power*efficiencyBonus);
         IHeatHandler.HeatTransaction tx = new IHeatHandler.HeatTransaction(in, 0, Utils.sink()).ignoreTemperature();
-        for (IHeatHandler handler : HEAT_HANDLERS) {
+        for (IHeatHandler handler : heatHandlers) {
             handler.insert(tx);
         }
         tx.commit();
@@ -86,14 +80,14 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
     @Override
     public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
         int size = super.drawInfo(instance, stack, renderer, left, top);
-        renderer.draw(stack, "Heat: " + ((NuclearInfoWidget)instance).heat, left, size, 16448255);
+        renderer.draw(stack, "Heat: " + ((HeatInfoWidget)instance).heat, left, top + size, 16448255);
         return size + 8;
     }
 
     @Override
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
-        for (IHeatHandler handler : HEAT_HANDLERS) {
+        for (IHeatHandler handler : heatHandlers) {
             handler.update(getMachineState() == MachineState.ACTIVE);
         }
     }
@@ -112,26 +106,26 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
 
     @Override
     public WidgetSupplier getInfoWidget() {
-        return NuclearInfoWidget.build();
+        return HeatInfoWidget.build().setPos(10, 10);
     }
 
-    public static class NuclearInfoWidget extends InfoRenderWidget.MultiRenderWidget {
+    public static class HeatInfoWidget extends InfoRenderWidget.MultiRenderWidget {
 
         public int heat;
         public int neighbourBonus;
-        protected NuclearInfoWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
+        protected HeatInfoWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
             super(gui, parent, renderer);
         }
 
         public static WidgetSupplier build() {
-            return builder((a, b) -> new NuclearInfoWidget(a, b, (IInfoRenderer<MultiRenderWidget>) a.handler));
+            return builder((a, b) -> new HeatInfoWidget(a, b, (IInfoRenderer<MultiRenderWidget>) a.handler));
         }
         @Override
         public void init() {
             super.init();
-            TileEntityNuclearReactor m = (TileEntityNuclearReactor) gui.handler;
-            gui.syncInt(() -> m.HEAT_HANDLERS.stream().mapToInt(IHeatHandler::getTemperature).sum() / m.HEAT_HANDLERS.size(), a -> this.heat = a, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
-            gui.syncInt(() -> (int) (m.efficiencyBonus-1)*100, a -> this.neighbourBonus = a, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
+            TileEntityMultiMachine<?> m = (TileEntityMultiMachine) gui.handler;
+            gui.syncInt(() -> m.getHeatHandlers().size() == 0 ? 0 : m.getHeatHandlers().stream().mapToInt(IHeatHandler::getTemperature).sum() / m.getHeatHandlers().size(), a -> this.heat = a, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
+            gui.syncInt(() -> (m.getHeatHandlers().size()-1) *100, a -> this.neighbourBonus = a, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
         }
     }
 }
