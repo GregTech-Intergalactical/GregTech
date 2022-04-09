@@ -1,7 +1,0 @@
-{
-  "parent": "forge:item/bucket",
-  "loader": "forge:bucket",
-  "fluid": "gti:liquid_glue",
-  "flipGas": false,
-  "applyTint": true
-}

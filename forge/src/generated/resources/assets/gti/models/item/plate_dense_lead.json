@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/dull/plate_dense",
-    "layer1": "gti:material/dull/plate_dense_overlay"
-  }
-}

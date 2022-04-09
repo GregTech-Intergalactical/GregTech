@@ -1,7 +1,0 @@
-{
-  "parent": "forge:item/bucket",
-  "loader": "forge:bucket",
-  "fluid": "gti:gas_helium_3",
-  "flipGas": true,
-  "applyTint": true
-}

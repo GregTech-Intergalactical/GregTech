@@ -1,7 +1,0 @@
-{
-  "parent": "forge:item/bucket",
-  "loader": "forge:bucket",
-  "fluid": "gti:liquid_fiber_reinforced_epoxy_resin",
-  "flipGas": false,
-  "applyTint": true
-}

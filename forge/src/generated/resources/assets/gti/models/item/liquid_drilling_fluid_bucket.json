@@ -1,7 +1,0 @@
-{
-  "parent": "forge:item/bucket",
-  "loader": "forge:bucket",
-  "fluid": "gti:liquid_drilling_fluid",
-  "flipGas": false,
-  "applyTint": true
-}

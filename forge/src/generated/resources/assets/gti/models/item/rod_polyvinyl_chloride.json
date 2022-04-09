@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "antimatter:material/none/rod",
-    "layer1": "antimatter:material/none/rod_overlay"
-  }
-}

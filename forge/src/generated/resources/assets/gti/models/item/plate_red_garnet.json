@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/ruby/plate",
-    "layer1": "gti:material/ruby/plate_overlay"
-  }
-}

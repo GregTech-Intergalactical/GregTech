@@ -12,6 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 
 import javax.annotation.Nonnull;
@@ -98,13 +99,13 @@ public class TileEntityInfiniteFluid extends TileEntityMachine<TileEntityInfinit
 
         @Nonnull
         @Override
-        public FluidStack drain(FluidStack stack, FluidAction action) {
+        public FluidStack drain(FluidStack stack, IFluidHandler.FluidAction action) {
             return stack.copy();
         }
 
         @Nonnull
         @Override
-        public FluidStack drain(int maxDrain, FluidAction action) {
+        public FluidStack drain(int maxDrain, IFluidHandler.FluidAction action) {
             return Steam.getGas(maxDrain);
         }
     }

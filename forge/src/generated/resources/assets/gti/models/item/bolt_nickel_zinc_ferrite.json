@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/rough/bolt",
-    "layer1": "gti:material/rough/bolt_overlay"
-  }
-}

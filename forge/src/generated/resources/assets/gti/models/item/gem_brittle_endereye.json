@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/shiny/gem_brittle",
-    "layer1": "gti:material/shiny/gem_brittle_overlay"
-  }
-}

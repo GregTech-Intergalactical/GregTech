@@ -1,7 +1,0 @@
-{
-  "parent": "forge:item/bucket",
-  "loader": "forge:bucket",
-  "fluid": "gti:liquid_enriched_naquadah",
-  "flipGas": false,
-  "applyTint": true
-}

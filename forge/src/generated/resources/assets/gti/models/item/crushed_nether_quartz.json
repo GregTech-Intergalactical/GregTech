@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/quartz/crushed",
-    "layer1": "gti:material/quartz/crushed_overlay"
-  }
-}

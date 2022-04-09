@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/gem_v/dust",
-    "layer1": "gti:material/gem_v/dust_overlay"
-  }
-}

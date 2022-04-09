@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/magnetic/plate",
-    "layer1": "gti:material/magnetic/plate_overlay"
-  }
-}

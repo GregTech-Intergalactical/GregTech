@@ -1,7 +1,0 @@
-{
-  "parent": "antimatter:block/pipe/small/line_inv",
-  "textures": {
-    "all": "antimatter:block/pipe/pipe_side",
-    "overlay": "antimatter:block/pipe/pipe_small"
-  }
-}

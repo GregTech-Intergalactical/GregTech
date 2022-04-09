@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/gem_h/wrench_bit",
-    "layer1": "gti:material/gem_h/wrench_bit_overlay"
-  }
-}

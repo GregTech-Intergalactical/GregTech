@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/gem_v/buzzsaw_blade",
-    "layer1": "gti:material/gem_v/buzzsaw_blade_overlay"
-  }
-}

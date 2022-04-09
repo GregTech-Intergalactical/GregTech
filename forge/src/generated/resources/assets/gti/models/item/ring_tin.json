@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/dull/ring",
-    "layer1": "gti:material/dull/ring_overlay"
-  }
-}

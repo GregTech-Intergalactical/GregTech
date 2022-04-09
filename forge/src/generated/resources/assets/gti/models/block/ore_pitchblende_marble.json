@@ -1,7 +1,0 @@
-{
-  "parent": "antimatter:block/preset/layered",
-  "textures": {
-    "base": "gti:block/stone/marble",
-    "overlay": "gti:material/dull/ore"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "forge:item/bucket",
-  "loader": "forge:bucket",
-  "fluid": "gti:liquid_polyphenylene_sulfide",
-  "flipGas": false,
-  "applyTint": true
-}

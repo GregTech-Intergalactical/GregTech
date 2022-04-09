@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/diamond/drill_bit",
-    "layer1": "gti:material/diamond/drill_bit_overlay"
-  }
-}

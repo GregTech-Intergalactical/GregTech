@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gti:material/flint/dust_impure",
-    "layer1": "gti:material/flint/dust_impure_overlay"
-  }
-}

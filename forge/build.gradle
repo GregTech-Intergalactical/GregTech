@@ -189,7 +189,12 @@ dependencies {
     //implementation project(path: ":TesseractAPI")
     //GT
     if (hasTesseract) {
-        implementation project(path: ':tesseract-forge')
+        implementation(project(path: ':tesseract-forge')){
+            transitive = false
+        }
+        implementation(project(path: ":tesseract-common")){
+            transitive = false;
+        }
     } else {
         modImplementation("com.github.GregTech-Intergalactical.TesseractAPI:TesseractAPI-forge:${tesseract_version}")
     }
@@ -200,7 +205,9 @@ dependencies {
     }
 
     //if (hasAntimatter) {
-        implementation(project(':antimatter-forge'))
+        implementation(project(':antimatter-forge')){
+            transitive = false;
+        }
     //} else {
     //    modImplementation("com.github.GregTech-Intergalactical.AntimatterAPI:AntimatterAPI-forge:${antimatter_version}")
     //}

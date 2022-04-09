@@ -1,7 +1,0 @@
-{
-  "parent": "forge:item/bucket",
-  "loader": "forge:bucket",
-  "fluid": "gti:gas_carbon_dioxide",
-  "flipGas": true,
-  "applyTint": true
-}

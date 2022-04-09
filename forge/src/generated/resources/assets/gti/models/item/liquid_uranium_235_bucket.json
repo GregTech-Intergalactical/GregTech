@@ -1,7 +1,0 @@
-{
-  "parent": "forge:item/bucket",
-  "loader": "forge:bucket",
-  "fluid": "gti:liquid_uranium_235",
-  "flipGas": false,
-  "applyTint": true
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "antimatter:block/preset/layered",
-  "textures": {
-    "base": "minecraft:block/end_stone",
-    "overlay": "gti:material/flint/ore"
-  }
-}

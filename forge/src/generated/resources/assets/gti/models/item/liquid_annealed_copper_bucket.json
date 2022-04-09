@@ -1,7 +1,0 @@
-{
-  "parent": "forge:item/bucket",
-  "loader": "forge:bucket",
-  "fluid": "gti:liquid_annealed_copper",
-  "flipGas": false,
-  "applyTint": true
-}

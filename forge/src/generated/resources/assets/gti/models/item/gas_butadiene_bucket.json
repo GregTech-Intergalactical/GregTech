@@ -1,7 +1,0 @@
-{
-  "parent": "forge:item/bucket",
-  "loader": "forge:bucket",
-  "fluid": "gti:gas_butadiene",
-  "flipGas": true,
-  "applyTint": true
-}
