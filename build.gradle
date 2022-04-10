@@ -33,6 +33,25 @@ repositories {
     }
     //GT.
     maven { url 'https://jitpack.io' }
+    maven {
+        // Shedaniel's maven (Architectury API)
+        url = "https://maven.architectury.dev"
+        // content {
+        //     includeGroup "dev.architectury"
+        // }
+    }
+
+    maven {
+        // saps.dev Maven (KubeJS and Rhino)
+        url = "https://maven.saps.dev/minecraft"
+        // content {
+        //     includeGroup "dev.latvian.mods"
+        // }
+    }
+    maven {
+        url = 'https://maven.blamejared.com'
+        name = 'BlameJared Maven'
+    }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
@@ -141,12 +160,12 @@ minecraft {
                 environment('MOD_CLASSES', this.getenv())
             }
             arg "-mixin.config=antimatter.mixins.json"
-            arg "-mixin.config=tesseract.mixins.json"
+            //arg "-mixin.config=tesseract.mixins.json"
             mods {
                 gregtech {
                     source sourceSets.main
                 }
-                if (hasTesseract) {
+                /*if (hasTesseract) {
                     tesseract {
                         source project(':TesseractAPI').sourceSets.main
 
@@ -156,7 +175,7 @@ minecraft {
                     antimatter {
                         source project(':AntimatterAPI').sourceSets.main
                     }
-                }
+                }*/
             }
         }
 
@@ -172,13 +191,13 @@ minecraft {
                 environment('MOD_CLASSES', this.getenv())
             }
             arg "-mixin.config=antimatter.mixins.json"
-            arg "-mixin.config=tesseract.mixins.json"
+            //arg "-mixin.config=tesseract.mixins.json"
             arg "-nogui"
             mods {
                 gregtech {
                     source sourceSets.main
                 }
-                if (hasTesseract) {
+                /*if (hasTesseract) {
                     tesseract {
                         source project(':TesseractAPI').sourceSets.main
                     }
@@ -187,7 +206,7 @@ minecraft {
                     antimatter {
                         source project(':AntimatterAPI').sourceSets.main
                     }
-                }
+                }*/
             }
         }
 
@@ -200,7 +219,7 @@ minecraft {
             //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
             arg "-mixin.config=antimatter.mixins.json"
-            arg "-mixin.config=tesseract.mixins.json"
+            //arg "-mixin.config=tesseract.mixins.json"
             //if (isVSTask())
             //    jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar'
             // Recommended logging level for the console
@@ -213,7 +232,7 @@ minecraft {
                 gregtech {
                     source sourceSets.main
                 }
-                if (hasTesseract) {
+                /*if (hasTesseract) {
                     tesseract {
                         source project(':TesseractAPI').sourceSets.main
                     }
@@ -222,7 +241,7 @@ minecraft {
                     antimatter {
                         source project(':AntimatterAPI').sourceSets.main
                     }
-                }
+                }*/
             }
         }
     }
@@ -249,7 +268,10 @@ dependencies {
     //JEI
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
-
+    implementation fg.deobf("dev.latvian.mods:kubejs-forge:${kubejs_version}")
+    implementation fg.deobf("dev.latvian.mods:rhino-forge:${rhino_version}")
+    implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
+    compileOnly(fg.deobf("com.blamejared.crafttweaker:CraftTweaker-forge-1.18.2:${crafttweaker_version}"))
   //  runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
  //   runtimeOnly fg.deobf("curse.maven:architecturyforge-419699:${architectury_file}")
  //   runtimeOnly fg.deobf("curse.maven:kubejs-238086:${kubejs_file}")

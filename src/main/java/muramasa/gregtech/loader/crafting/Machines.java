@@ -270,36 +270,43 @@ public class Machines {
                             .put('G', glass)
                             .put('H', casing)
                             .put('L', cable).build(), "GZG", "CHC", "LPL"));
-            add(AUTOCLAVE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
+            add(AUTOCLAVE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('T', Data.PLATE.getMaterialTag(TierMaps.TIER_MATERIALS.get(tier)))
                             .put('C', circuit)
                             .put('G', glass)
                             .put('H', casing)
                             .put('P', pump).build(), "TGT", "THT", "CPC"));
-            add(LASER_ENGRAVER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
+            add(LASER_ENGRAVER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('P', piston)
                             .put('E', emitter)
                             .put('C', circuit)
                             .put('H', casing)
                             .put('L', cable).build(), "PEP", "CHC", "LCL"));
-            add(BATTERY_BUFFER_ONE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
+            add(PACKAGER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('P', piston)
+                            .put('E', emitter)
+                            .put('C', circuit)
+                            .put('H', casing)
+                            .put('L', cable).build(), "PEP", "CHC", "LCL"));
+            add(BATTERY_BUFFER_ONE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', Items.CHEST)
                             .put('H', casing)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.TINY)).build(), "LCL", "LHL", "   "));
-            add(BATTERY_BUFFER_FOUR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
+            add(BATTERY_BUFFER_FOUR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', Items.CHEST)
                             .put('H', casing)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.NORMAL)).build(), "LCL", "LHL", "   "));
-            add(BATTERY_BUFFER_ONE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
+            add(BATTERY_BUFFER_ONE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', Items.CHEST)
                             .put('H', casing)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.LARGE)).build(), "LCL", "LHL", "   "));
-            add(HATCH_ITEM_I, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
+            add(HATCH_ITEM_I, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', Items.CHEST)
                             .put('H', casing)
@@ -310,7 +317,7 @@ public class Machines {
                     .put('C', CircuitAdv)
                     .put('F', ItemFilter)
                     .put('E', Items.CHEST).build(), " H ", "ECE", " F "));
-             add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
+             add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                     .put('H', casing)
                     .put('C', CircuitBasic)
@@ -321,7 +328,9 @@ public class Machines {
                     ImmutableMap.<Character, Object>builder()
                             .put('H', CASING_FIRE_BRICK)
                             .put('F', Items.FURNACE)
-                            .put('C', HULL_ULV).build(), "HFH", "HCH", "HFH");
+                            .put('C', Items.IRON_BLOCK).build(), "HFH", "HCH", "HFH");
+
+
         });
     }
 

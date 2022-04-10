@@ -66,6 +66,7 @@ public class Machines {
     public static BasicMachine SIFTER = new BasicMachine(Ref.ID, "sifter").setMap(SIFTING).addFlags(GUI, ITEM);
     public static BasicMachine ARC_FURNACE = new BasicMachine(Ref.ID, "arc_furnace").setMap(ARC_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
     public static BasicMachine PLASMA_ARC_FURNACE = new BasicMachine(Ref.ID, "plasma_arc_furnace").setMap(PLASMA_ARC_SMELTING).addFlags(GUI, ITEM, FLUID);
+    public static BasicMachine PACKAGER = new BasicMachine(Ref.ID, "packager").setMap(PACKAGING).addFlags(GUI, ITEM);
 
     public static SteamMachine COAL_BOILER = new SteamMachine(Ref.ID, "coal_boiler").setMap(COAL_BOILERS).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(TileEntityCoalBoiler::new);
     public static SteamMachine LAVA_BOILER = new SteamMachine(Ref.ID, "lava_boiler").setMap(SMALL_BOILERS).setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID);

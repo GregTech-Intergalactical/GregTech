@@ -1415,33 +1415,33 @@ public class Materials {
     }
 
     private static void overrides() {
-        DUST.forceOverride(Redstone, Items.REDSTONE);
-        DUST.forceOverride(Glowstone, Items.GLOWSTONE);
+        DUST.replacement(Redstone, Items.REDSTONE);
+        DUST.replacement(Glowstone, Items.GLOWSTONE);
 
-        INGOT.forceOverride(Iron, Items.IRON_INGOT);
-        INGOT.forceOverride(Gold, Items.GOLD_INGOT);
-        INGOT.forceOverride(Netherite, Items.NETHERITE_INGOT);
+        INGOT.replacement(Iron, Items.IRON_INGOT);
+        INGOT.replacement(Gold, Items.GOLD_INGOT);
+        INGOT.replacement(Netherite, Items.NETHERITE_INGOT);
 
-        GEM.forceOverride(Charcoal, Items.CHARCOAL);
-        GEM.forceOverride(Coal, Items.COAL);
-        GEM.forceOverride(Diamond, Items.DIAMOND);
-        GEM.forceOverride(Emerald, Items.EMERALD);
-        GEM.forceOverride(Lapis, Items.LAPIS_LAZULI);
+        GEM.replacement(Charcoal, Items.CHARCOAL);
+        GEM.replacement(Coal, Items.COAL);
+        GEM.replacement(Diamond, Items.DIAMOND);
+        GEM.replacement(Emerald, Items.EMERALD);
+        GEM.replacement(Lapis, Items.LAPIS_LAZULI);
 
-        BLOCK.forceOverride(Iron, Items.IRON_BLOCK);
-        BLOCK.forceOverride(Gold, Items.GOLD_BLOCK);
-        BLOCK.forceOverride(Emerald, Items.EMERALD_BLOCK);
-        BLOCK.forceOverride(Diamond, Items.DIAMOND_BLOCK);
-        BLOCK.forceOverride(Lapis, Items.LAPIS_BLOCK);
+        BLOCK.replacement(Iron, Items.IRON_BLOCK);
+        BLOCK.replacement(Gold, Items.GOLD_BLOCK);
+        BLOCK.replacement(Emerald, Items.EMERALD_BLOCK);
+        BLOCK.replacement(Diamond, Items.DIAMOND_BLOCK);
+        BLOCK.replacement(Lapis, Items.LAPIS_BLOCK);
 
         //RAW_ORE.forceOverride(Iron, Items.RAW_IRON);
         //RAW_ORE.forceOverride(Copper, Items.RAW_COPPER);
         //RAW_ORE.forceOverride(Gold, Items.RAW_GOLD);
 
-        NUGGET.forceOverride(Iron, Items.IRON_NUGGET);
-        NUGGET.forceOverride(Gold, Items.GOLD_NUGGET);
+        NUGGET.replacement(Iron, Items.IRON_NUGGET);
+        NUGGET.replacement(Gold, Items.GOLD_NUGGET);
 
-        ROD.forceOverride(Blaze, Items.BLAZE_ROD);
-        ROD.forceOverride(Wood, Items.STICK);
+        ROD.replacement(Blaze, Items.BLAZE_ROD);
+        ROD.replacement(Wood, Items.STICK);
     }
 }

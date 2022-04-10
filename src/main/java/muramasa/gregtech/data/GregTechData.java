@@ -458,7 +458,7 @@ public class GregTechData {
     public static final ItemPipe<?> ITEM_PIPE_HC = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(Ref.ID, HighCapacity).caps(64));
     public static final ItemPipe<?> ITEM_PIPE_OSMIRIDIUM = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(Ref.ID, Osmiridium).caps(0, 0, 0, 32, 64, 128));
 
-    public static final HeatPipe<?> HEAT_PIPE_COPPER = AntimatterAPI.register(HeatPipe.class, new HeatPipe<>(Ref.ID, Copper, 386).sizes(PipeSize.SMALL));
+    //public static final HeatPipe<?> HEAT_PIPE_COPPER = AntimatterAPI.register(HeatPipe.class, new HeatPipe<>(Ref.ID, Copper, 386).sizes(PipeSize.SMALL));
     private static int[] getPressures(int basePressure){
         basePressure *= 20;
         return new int[]{basePressure / 6, basePressure / 6, basePressure / 3, basePressure, basePressure * 2, basePressure * 4};
