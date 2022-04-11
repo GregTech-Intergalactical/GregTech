@@ -26,6 +26,10 @@ version = "${rootProject.minecraft_version}-${rootProject.mod_version}"
 def isCI = System.getenv("GITHUB_ACTION")
 def isRELEASE = System.getenv("GITHUB_RELEASE")
 
+architectury {
+    forge()
+}
+
 configurations {
     common
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
@@ -60,11 +64,6 @@ def getPathSeparator() {
         return ";"
     }
     return ":"
-}
-
-architectury {
-    platformSetupLoomIde()
-    forge()
 }
 
 sourceSets {
