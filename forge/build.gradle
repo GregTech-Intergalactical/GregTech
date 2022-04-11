@@ -26,6 +26,14 @@ version = "${rootProject.minecraft_version}-${rootProject.mod_version}"
 def isCI = System.getenv("GITHUB_ACTION")
 def isRELEASE = System.getenv("GITHUB_RELEASE")
 
+configurations {
+    common
+    shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentForge.extendsFrom common
+}
+
 boolean hasTesseract = findProject(':tesseract-forge') != null
 
 boolean hasAntimatter = findProject(':antimatter-forge') != null
@@ -55,6 +63,7 @@ def getPathSeparator() {
 }
 
 architectury {
+    platformSetupLoomIde()
     forge()
 }
 
@@ -83,7 +92,7 @@ loom{
 
         localMods {
             forge {
-                //if (hasAntimatter) it.add(project(":forge").sourceSets.antimatter)
+                it.add(project(":antimatter-forge").sourceSets.main)
                 //if (hasTesseract) it.add(project(":forge").sourceSets.tesseractapi)
             }
         }
@@ -98,90 +107,6 @@ loom{
         }
     }
 }
-//minecraft {
-    /*runs {
-        client {
-            workingDirectory project.file('run')
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'DEBUG'
-            property 'fml.earlyprogresswindow', 'false'
-
-            arg "-mixin.config=antimatter.mixins.json"
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            if (isWorkspace) {
-                environment('MOD_CLASSES', this.getenv())
-            }
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-            mods {
-                antimatter {
-                    source sourceSets.main
-                }
-                if (hasTesseract) {
-                    tesseract {
-                        source project(':TesseractAPI').sourceSets.main
-                    }
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run')
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'DEBUG'
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-            property 'fml.earlyprogresswindow', 'false'
-
-            // Disable GUI by default, the IDE console can be used to enter commands
-            arg '-nogui'
-            if (isWorkspace) {
-                environment('MOD_CLASSES', this.getenv())
-            }
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            arg "-mixin.config=antimatter.mixins.json"
-            mods {
-                antimatter {
-                    source sourceSets.main
-                }
-                if (hasTesseract) {
-                    tesseract {
-                        source project(':TesseractAPI').sourceSets.main
-                    }
-                }
-            }
-        }
-*//*
-        data {
-            workingDirectory project.file('run')
-
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'DEBUG'
-
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-            property 'fml.earlyprogresswindow', 'false'
-
-            arg "-mixin.config=antimatter.mixins.json"
-            args '--mod', 'antimatter', '--all', '--output', project.file('src/generated/resources/'), '--existing', sourceSets.main.resources.srcDirs[0]
-
-            mods {
-                antimatter {
-                    source sourceSets.main
-                }
-                if (hasTesseract) {
-                    tesseract {
-                        source project(':TesseractAPI').sourceSets.main
-                    }
-                }
-            }
-        }*//*
-    }*/
-//}
 
 
 dependencies {
@@ -189,10 +114,10 @@ dependencies {
     //implementation project(path: ":TesseractAPI")
     //GT
     if (hasTesseract) {
-        implementation(project(path: ':tesseract-forge')){
+        implementation(project(path: ":tesseract-forge", configuration: "namedElements")){
             transitive = false
         }
-        implementation(project(path: ":tesseract-common")){
+        common(project(path: ":tesseract-common", configuration: "namedElements")){
             transitive = false;
         }
     } else {
@@ -205,7 +130,7 @@ dependencies {
     }
 
     //if (hasAntimatter) {
-        implementation(project(':antimatter-forge')){
+        implementation(project(path: ":antimatter-forge", configuration: "namedElements")){
             transitive = false;
         }
     //} else {
@@ -223,21 +148,6 @@ dependencies {
 //    modImplementation("curse.maven:top-245211:${top_file}")
 }
 
-// Example configuration to allow publishing using the maven-publish task
-// This is the preferred method to reobfuscate your jar file
-//jar.finalizedBy('reobfJar')
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-
-/*mixin {
-    add sourceSets.main, 'antimatter.refmap.json'
-}*/
-/*
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
-    archiveBaseName.set(project.archivesBaseName)
-    archiveVersion.set("${project.version}")
-    archiveClassifier.set('sources')
-}*/
 jar {
     zip64 true
     manifest {

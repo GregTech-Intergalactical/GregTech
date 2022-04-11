@@ -27,7 +27,7 @@ if (new File('AntimatterAPI/TesseractAPI').exists()) {
 }
 
 
-if (new File("AntimatterAPI").exists()) {
+//if (new File("AntimatterAPI").exists()) {
     include("antimatter-common")
     include("antimatter-fabric")
     include("antimatter-forge")
@@ -35,7 +35,7 @@ if (new File("AntimatterAPI").exists()) {
     project(':antimatter-common').setProjectDir(new File("AntimatterAPI/common"))
     project(':antimatter-forge').setProjectDir(new File("AntimatterAPI/forge"))
     project(':antimatter-fabric').setProjectDir(new File("AntimatterAPI/fabric"))
-}
+//}
 
 include("common")
 include("fabric")
