@@ -10,9 +10,11 @@ on:
   push:
     branches:
     - dev-1.18
+    - 1.18.2-port
   pull_request:
     branches:
     - dev-1.18
+    - 1.18.2-port
 jobs:
   build:
 
