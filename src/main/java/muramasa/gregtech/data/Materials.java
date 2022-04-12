@@ -1133,7 +1133,7 @@ public class Materials {
                 RedGranite, Bastnasite, Pentlandite, Spodumene, Glauconite, Bentonite, Malachite, Barite, Talc,
                 AntimonyTrioxide, CupricOxide, Ferrosilite, Quartzite, Charcoal, Coal, Lignite, Diamond, Emerald, Ruby,
                 BlueSapphire, Tanzanite, Topaz, Olivine, Opal, Amethyst, EnderPearl, StainlessSteel, Steel, Ultimet,
-                IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium);
+                IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium, Sodalite);
         CENT.add(/* NobleGases, */Air, BrownLimonite, Cinnabar, Clay, Cooperite/* , Powellite */, Stibnite,
                 Tetrahedrite, Uraninite, Wulfenite, YellowLimonite, Blaze, Flint, Marble, BlackGranite,
                 VanadiumMagnetite, Pitchblende, Glass, Lapis, EnderEye, Phosphorus, Redstone, Basalt, AnnealedCopper,
@@ -1162,7 +1162,7 @@ public class Materials {
                 IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar,
                 Brass, WroughtIron, Electrum, Clay, Blaze);
         SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);
-        // TODO explicit recipe SMELTG.add(Mercury, CINNABAR); //TODO Remove
+
         NOBBF.add(Tetrahedrite, Chalcopyrite, Cooperite, Pyrolusite, Magnesite, Molybdenite, Galena);
         CRYSTALLIZE.add(Lapis, Quartzite, Quartz);
         BRITTLEG.add(Coal, Charcoal, Lignite);
