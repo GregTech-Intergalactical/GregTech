@@ -120,7 +120,7 @@ dependencies {
             transitive = false;
         }
     } else {
-        modImplementation("com.github.GregTech-Intergalactical.TesseractAPI:TesseractAPI-forge:${tesseract_version}")
+        modImplementation("com.github.GregTech-Intergalactical.TesseractAPI:TesseractAPI-tesseract-forge:${tesseract_version}")
     }
 
     //MIXIN
