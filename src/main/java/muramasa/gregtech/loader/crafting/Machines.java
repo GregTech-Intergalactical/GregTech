@@ -6,6 +6,7 @@ import muramasa.antimatter.Data;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
+import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.pipe.PipeSize;
@@ -13,6 +14,7 @@ import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.TierMaps;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
@@ -22,6 +24,8 @@ import java.util.Arrays;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
+import static muramasa.antimatter.Data.DUST;
+import static muramasa.antimatter.Data.PLATE;
 import static muramasa.antimatter.machine.Tier.IV;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Machines.*;
@@ -80,7 +84,7 @@ public class Machines {
             add(LATHE, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder().put('P', piston).put('M', motor).put('C', circuit).put('L', cable).put('H', casing).put('D', diamond).build(), "LCL", "MHD", "CLP"));
 
-            add(ELECTROLYZER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), item,
+            add(ELECTROLYZER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.of(
                             'C', circuit,
                             'W', WIRE_SILVER.getBlockItem(PipeSize.VTINY),
@@ -89,7 +93,16 @@ public class Machines {
                             'G', glass
                     ), "WGW", "WHW", "CLC"));
 
-            add(CHEMICAL_BATH, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), item,
+            add(ARC_FURNACE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.of(
+                            'C', circuit,
+                            'W', DUST.get(Materials.Graphite),
+                            'L', TierMaps.EXTRA_4_CABLES_TIER.get(tier),
+                            'H', PLATE.get(TierMaps.TIER_MATERIALS.get(tier))
+                    ), "LWL", "CHC", "HHH"));
+
+
+            add(CHEMICAL_BATH, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', circuit)
                             .put('W', conveyor)
@@ -99,7 +112,7 @@ public class Machines {
                             .put('G', glass)
                     .build(), "WGL", "PGW", "CHC"));
 
-            add(SIFTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), item,
+            add(SIFTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', circuit)
                             .put('P', piston)
@@ -108,7 +121,7 @@ public class Machines {
                             .put('F', ItemFilter)
                             .build(), "LFL", "PHP", "CFC"));
 
-            add(BENDER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), item,
+            add(BENDER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.of(
                             'P', piston,
                             'M', motor,
@@ -117,7 +130,7 @@ public class Machines {
                             'H', casing
                     ), "PLP", "CHC", "MLM"));
 
-            add(WIRE_MILL, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), item,
+            add(WIRE_MILL, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.of(
                             'M', motor,
                             'C', circuit,
@@ -125,7 +138,7 @@ public class Machines {
                             'H', casing
                     ), "MLM", "CHC", "MLM"));
 
-            add(ASSEMBLER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), item,
+            add(ASSEMBLER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.of(
                             'R', arm,
                             'O', conveyor,
@@ -134,7 +147,7 @@ public class Machines {
                             'H', casing
                     ), "RCR", "OHO", "LCL"));
 
-            add(CENTRIFUGE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), item,
+            add(CENTRIFUGE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.of(
                             'M', motor,
                             'C', circuit,
@@ -142,7 +155,7 @@ public class Machines {
                             'H', casing
                     ), "CMC", "LHL", "CHC"));
 
-            add(MIXER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), item,
+            add(MIXER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.of(
                             'M', motor,
                             'R', rotor,
@@ -151,7 +164,7 @@ public class Machines {
                             'H', casing
                     ), "GRG", "GMG", "CHC"));
 
-            add(STEAM_GENERATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), item,
+            add(STEAM_GENERATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('M', motor)
                             .put('L', cable)
@@ -161,7 +174,7 @@ public class Machines {
                             .put('P',  AntimatterAPI.get(FluidPipe.class,"fluid_"+ TierMaps.TIER_PIPE_MATERIAL.get(tier).getId()).getBlockItem(PipeSize.NORMAL))
                             .build(), "PCP", "RHR", "MLM"));
 
-            add(BLAST_FURNACE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(GregTechData.MotorLV), item,
+            add(BLAST_FURNACE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('L', cable)
                             .put('H', CASING_HEAT_PROOF)

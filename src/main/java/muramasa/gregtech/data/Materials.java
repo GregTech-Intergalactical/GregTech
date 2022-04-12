@@ -398,6 +398,12 @@ public class Materials {
     public static Material SulfuricAcid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sulfuric_acid", 0xff8000, NONE)).asFluid()
             .mats(of(Hydrogen, 2, Sulfur, 1, Oxygen, 4));
+    public static Material SulfuricTrioxide = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "sulfuric_trioxide", 0x8d8d21, NONE)).asGas()
+            .mats(of(Sulfur, 1, Oxygen, 3));
+    public static Material SulfuricDioxide = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "sulfuric_dioxide", 0x8d8d27, NONE)).asGas()
+            .mats(of(Sulfur, 1, Oxygen, 2));
     public static Material DilutedSulfuricAcid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "diluted_sulfuric_acid", 0xc07820, NONE)).asFluid()
             .mats(of(SulfuricAcid, 1));
@@ -856,7 +862,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "battery_alloy", 0x9c7ca0, DULL)).asMetal(295, 0, PLATE)
             .mats(of(Lead, 4, Antimony, 1));
     public static Material Brass = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "brass", 0xffb400, METALLIC)).asMetal(1170, 0, FRAME, ROD)
+            .register(Material.class, new Material(Ref.ID, "brass", 0xffb400, METALLIC)).asMetal(1170, 0, FRAME, ROD, PLATE)
             .mats(of(Zinc, 1, Copper, 3));
     public static Material Bronze = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "bronze", 0xff8000, METALLIC))
@@ -877,7 +883,7 @@ public class Materials {
             .addTools(2.5F, 6.0F, 64, 2, of(Enchantments.BANE_OF_ARTHROPODS, 1))
             .mats(of(Iron, 1, Aluminium, 1, Chrome, 1));
     public static Material Magnalium = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "magnalium", 0xc8beff, DULL)).asMetal(870, 0)
+            .register(Material.class, new Material(Ref.ID, "magnalium", 0xc8beff, DULL)).asMetal(870, 0, PLATE)
             .mats(of(Magnesium, 1, Aluminium, 2));
     public static Material Nichrome = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "nichrome", 0xcdcef6, METALLIC)).asMetal(2700, 2700)

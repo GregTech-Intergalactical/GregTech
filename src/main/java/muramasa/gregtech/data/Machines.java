@@ -64,8 +64,8 @@ public class Machines {
     public static BasicMachine FORMING_PRESS = new BasicMachine(Ref.ID, "forming_press").setMap(PRESSING).addFlags(GUI, ITEM);
     public static BasicMachine FORGE_HAMMER = new BasicMachine(Ref.ID, "forge_hammer").setMap(HAMMERING).addFlags(GUI, ITEM);
     public static BasicMachine SIFTER = new BasicMachine(Ref.ID, "sifter").setMap(SIFTING).addFlags(GUI, ITEM);
-    public static BasicMachine ARC_FURNACE = new BasicMachine(Ref.ID, "arc_furnace").setMap(ARC_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
-    public static BasicMachine PLASMA_ARC_FURNACE = new BasicMachine(Ref.ID, "plasma_arc_furnace").setMap(PLASMA_ARC_SMELTING).addFlags(GUI, ITEM, FLUID);
+    public static BasicMachine ARC_FURNACE = new BasicMachine(Ref.ID, "arc_furnace").setMap(ARC_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f).amps(3);
+    public static BasicMachine PLASMA_ARC_FURNACE = new BasicMachine(Ref.ID, "plasma_arc_furnace").setMap(PLASMA_ARC_SMELTING).addFlags(GUI, ITEM, FLUID).amps(3);
     public static BasicMachine PACKAGER = new BasicMachine(Ref.ID, "packager").setMap(PACKAGING).addFlags(GUI, ITEM);
 
     public static SteamMachine COAL_BOILER = new SteamMachine(Ref.ID, "coal_boiler").setMap(COAL_BOILERS).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(TileEntityCoalBoiler::new);
@@ -105,7 +105,7 @@ public class Machines {
     public static HatchMachine HATCH_MUFFLER = new HatchMachine(Ref.ID, "hatch_muffler", COVERMUFFLER).addFlags(GUI, ITEM).setClientTick();
     public static HatchMachine HATCH_DYNAMO = new HatchMachine(Ref.ID, "hatch_dynamo", COVERDYNAMO).addFlags(ENERGY);
     public static HatchMachine HATCH_ENERGY = new HatchMachine(Ref.ID, "hatch_energy", COVERENERGY).addFlags(ENERGY);
-    public static final HeatHatch HATCH_HEAT_COPPER = new HeatHatch(Ref.ID, "copper_heat", Copper, 386);
+    //public static final HeatHatch HATCH_HEAT_COPPER = new HeatHatch(Ref.ID, "copper_heat", Copper, 386);
 
     public static TankMachine QUANTUM_TANK = new TankMachine(Ref.ID, "quantum_tank").addFlags(BASIC, GUI, CELL).frontCovers();
 

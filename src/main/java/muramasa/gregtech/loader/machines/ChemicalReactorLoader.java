@@ -2,12 +2,10 @@ package muramasa.gregtech.loader.machines;
 
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.capability.energy.ItemEnergyHandler;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.GregTechData;
-import tesseract.api.capability.TesseractGTCapability;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.gregtech.data.Materials.*;
@@ -32,10 +30,15 @@ public class ChemicalReactorLoader {
                 .fo(Chlorine.getGas(3000))
                 .add(20*15, 256);
 
-
+        sulfuric();
     }
 
-
+    private static void sulfuric() {
+        CHEMICAL_REACTING.RB().fi(SulfuricTrioxide.getGas(1000), Water.getLiquid(1000)).fo(SulfuricAcid.getGas(1000)).add(320, 7);
+        CHEMICAL_REACTING.RB().fi(SulfuricDioxide.getGas(1000), Oxygen.getGas(1000)).fo(SulfuricTrioxide.getGas(1000)).add(200, 30);
+        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Sulfur, 1)).fi(Oxygen.getGas(2000)).fo(SulfuricDioxide.getGas(1000)).add(60, 7);
+        CHEMICAL_REACTING.RB().fi(HydricSulfide.getGas(1000), Oxygen.getGas(3000)).fo(SulfuricDioxide.getGas(1000), Water.getLiquid(1000)).add(120, 30);
+    }
 
     private static void batteries() {
         CHEMICAL_REACTING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullSmall, 1)).fi(SulfuricAcid.getLiquid(1000)).io(ItemBattery.getFilledBattery(GregTechData.BatterySmallAcid)).add(40,2);

@@ -28,8 +28,8 @@ public class GregTechLocalizations {
         }
 
         @Override
-        protected void processTranslations(String domain, String locale) {
-            super.processTranslations(domain, locale);
+        protected void english(String domain, String locale) {
+            super.english(domain, locale);
             AntimatterAPI.all(BlockCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Integrated Circuit (" + i.circuitId + ")"));
