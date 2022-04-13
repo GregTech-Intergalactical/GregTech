@@ -109,8 +109,8 @@ public class RecipeMaps {
             new RecipeMap<>(Ref.ID, "arc_smelting", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PLASMA_ARC_SMELTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "plasma_arc_smelting", new RecipeBuilder()));
-    public static RecipeMap<RecipeBuilder> TUMBLING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(Ref.ID, "tumbling", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> PACKAGING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(Ref.ID, "packaging", new RecipeBuilder()));
 
     public static RecipeMap<RecipeBuilder> STEAM_SMELTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "steam_smelting", new RecipeBuilder())

@@ -1,7 +1,9 @@
 package muramasa.gregtech.loader.machines;
 
+import muramasa.antimatter.Data;
 import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -32,5 +34,9 @@ public class AlloyLoader {
             if (secondIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(first.m),first.s),RecipeIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 12);
         });
 
+        ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(Materials.Brick), 1),
+                RecipeIngredient.of(DUST.getMaterialTag(Data.Sand), 2))
+                .io(DUST.get(Materials.Fireclay, 1))
+                .add(20, 10);
     }
 }

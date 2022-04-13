@@ -1,5 +1,5 @@
 {
-  "loader": "antimatter:machine_side",
+    "loader": "antimatter:machine_side",
 	"elements": [
 		{
 			"from": [0, 0, 0],

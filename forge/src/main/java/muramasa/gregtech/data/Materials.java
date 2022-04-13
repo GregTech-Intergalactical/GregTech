@@ -398,6 +398,12 @@ public class Materials {
     public static Material SulfuricAcid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sulfuric_acid", 0xff8000, NONE)).asFluid()
             .mats(of(Hydrogen, 2, Sulfur, 1, Oxygen, 4));
+    public static Material SulfuricTrioxide = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "sulfuric_trioxide", 0x8d8d21, NONE)).asGas()
+            .mats(of(Sulfur, 1, Oxygen, 3));
+    public static Material SulfuricDioxide = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "sulfuric_dioxide", 0x8d8d27, NONE)).asGas()
+            .mats(of(Sulfur, 1, Oxygen, 2));
     public static Material DilutedSulfuricAcid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "diluted_sulfuric_acid", 0xc07820, NONE)).asFluid()
             .mats(of(SulfuricAcid, 1));
@@ -856,7 +862,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "battery_alloy", 0x9c7ca0, DULL)).asMetal(295, 0, PLATE)
             .mats(of(Lead, 4, Antimony, 1));
     public static Material Brass = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "brass", 0xffb400, METALLIC)).asMetal(1170, 0, FRAME, ROD)
+            .register(Material.class, new Material(Ref.ID, "brass", 0xffb400, METALLIC)).asMetal(1170, 0, FRAME, ROD, PLATE)
             .mats(of(Zinc, 1, Copper, 3));
     public static Material Bronze = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "bronze", 0xff8000, METALLIC))
@@ -877,7 +883,7 @@ public class Materials {
             .addTools(2.5F, 6.0F, 64, 2, of(Enchantments.BANE_OF_ARTHROPODS, 1))
             .mats(of(Iron, 1, Aluminium, 1, Chrome, 1));
     public static Material Magnalium = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "magnalium", 0xc8beff, DULL)).asMetal(870, 0)
+            .register(Material.class, new Material(Ref.ID, "magnalium", 0xc8beff, DULL)).asMetal(870, 0, PLATE)
             .mats(of(Magnesium, 1, Aluminium, 2));
     public static Material Nichrome = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "nichrome", 0xcdcef6, METALLIC)).asMetal(2700, 2700)
@@ -1127,7 +1133,7 @@ public class Materials {
                 RedGranite, Bastnasite, Pentlandite, Spodumene, Glauconite, Bentonite, Malachite, Barite, Talc,
                 AntimonyTrioxide, CupricOxide, Ferrosilite, Quartzite, Charcoal, Coal, Lignite, Diamond, Emerald, Ruby,
                 BlueSapphire, Tanzanite, Topaz, Olivine, Opal, Amethyst, EnderPearl, StainlessSteel, Steel, Ultimet,
-                IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium);
+                IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium, Sodalite);
         CENT.add(/* NobleGases, */Air, BrownLimonite, Cinnabar, Clay, Cooperite/* , Powellite */, Stibnite,
                 Tetrahedrite, Uraninite, Wulfenite, YellowLimonite, Blaze, Flint, Marble, BlackGranite,
                 VanadiumMagnetite, Pitchblende, Glass, Lapis, EnderEye, Phosphorus, Redstone, Basalt, AnnealedCopper,
@@ -1156,7 +1162,7 @@ public class Materials {
                 IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar,
                 Brass, WroughtIron, Electrum, Clay, Blaze);
         SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);
-        // TODO explicit recipe SMELTG.add(Mercury, CINNABAR); //TODO Remove
+
         NOBBF.add(Tetrahedrite, Chalcopyrite, Cooperite, Pyrolusite, Magnesite, Molybdenite, Galena);
         CRYSTALLIZE.add(Lapis, Quartzite, Quartz);
         BRITTLEG.add(Coal, Charcoal, Lignite);
@@ -1415,33 +1421,33 @@ public class Materials {
     }
 
     private static void overrides() {
-        DUST.forceOverride(Redstone, Items.REDSTONE);
-        DUST.forceOverride(Glowstone, Items.GLOWSTONE);
+        DUST.replacement(Redstone, Items.REDSTONE);
+        DUST.replacement(Glowstone, Items.GLOWSTONE);
 
-        INGOT.forceOverride(Iron, Items.IRON_INGOT);
-        INGOT.forceOverride(Gold, Items.GOLD_INGOT);
-        INGOT.forceOverride(Netherite, Items.NETHERITE_INGOT);
+        INGOT.replacement(Iron, Items.IRON_INGOT);
+        INGOT.replacement(Gold, Items.GOLD_INGOT);
+        INGOT.replacement(Netherite, Items.NETHERITE_INGOT);
 
-        GEM.forceOverride(Charcoal, Items.CHARCOAL);
-        GEM.forceOverride(Coal, Items.COAL);
-        GEM.forceOverride(Diamond, Items.DIAMOND);
-        GEM.forceOverride(Emerald, Items.EMERALD);
-        GEM.forceOverride(Lapis, Items.LAPIS_LAZULI);
+        GEM.replacement(Charcoal, Items.CHARCOAL);
+        GEM.replacement(Coal, Items.COAL);
+        GEM.replacement(Diamond, Items.DIAMOND);
+        GEM.replacement(Emerald, Items.EMERALD);
+        GEM.replacement(Lapis, Items.LAPIS_LAZULI);
 
-        BLOCK.forceOverride(Iron, Items.IRON_BLOCK);
-        BLOCK.forceOverride(Gold, Items.GOLD_BLOCK);
-        BLOCK.forceOverride(Emerald, Items.EMERALD_BLOCK);
-        BLOCK.forceOverride(Diamond, Items.DIAMOND_BLOCK);
-        BLOCK.forceOverride(Lapis, Items.LAPIS_BLOCK);
+        BLOCK.replacement(Iron, Items.IRON_BLOCK);
+        BLOCK.replacement(Gold, Items.GOLD_BLOCK);
+        BLOCK.replacement(Emerald, Items.EMERALD_BLOCK);
+        BLOCK.replacement(Diamond, Items.DIAMOND_BLOCK);
+        BLOCK.replacement(Lapis, Items.LAPIS_BLOCK);
 
         //RAW_ORE.forceOverride(Iron, Items.RAW_IRON);
         //RAW_ORE.forceOverride(Copper, Items.RAW_COPPER);
         //RAW_ORE.forceOverride(Gold, Items.RAW_GOLD);
 
-        NUGGET.forceOverride(Iron, Items.IRON_NUGGET);
-        NUGGET.forceOverride(Gold, Items.GOLD_NUGGET);
+        NUGGET.replacement(Iron, Items.IRON_NUGGET);
+        NUGGET.replacement(Gold, Items.GOLD_NUGGET);
 
-        ROD.forceOverride(Blaze, Items.BLAZE_ROD);
-        ROD.forceOverride(Wood, Items.STICK);
+        ROD.replacement(Blaze, Items.BLAZE_ROD);
+        ROD.replacement(Wood, Items.STICK);
     }
 }

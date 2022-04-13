@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader;
 
+import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.event.AntimatterWorldGenEvent;
 import muramasa.antimatter.worldgen.vein.WorldGenVein;
 import muramasa.antimatter.worldgen.vein.WorldGenVeinBuilder;
@@ -13,9 +14,15 @@ import static net.minecraft.world.level.Level.*;
 public class WorldGenLoader {
 
   public static void init(AntimatterWorldGenEvent ev) {
-    initStoneVeins(ev);
-    initStoneOreVeins(ev);
-    initOreVeins(ev);
+      if (AntimatterConfig.WORLD.STONE_LAYERS) {
+          initStoneVeins(ev);
+      }
+      if (AntimatterConfig.WORLD.STONE_LAYER_ORES) {
+          initStoneOreVeins(ev);
+      }
+      if (AntimatterConfig.WORLD.ORE_VEINS) {
+          initOreVeins(ev);
+      }
   }
 
   private static void initStoneVeins(AntimatterWorldGenEvent ev) {
