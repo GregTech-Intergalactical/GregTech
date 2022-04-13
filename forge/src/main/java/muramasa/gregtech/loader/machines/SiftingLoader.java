@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.machines;
 
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.RecipeHelper;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
@@ -15,8 +16,8 @@ public class SiftingLoader {
             int multiplier = 1;
             RecipeIngredient ore = ORE.get().get(m, STONE).asIngredient(), crushed = CRUSHED.getIngredient(m, 1), dust = DUST.getIngredient(m, 1);
             ItemStack dustStack = DUST.get(Stone, 1);
-            ItemStack gem = m.hasDirectSmeltInto() ? GEM.get(m.getDirectSmeltInto(), 1) : GEM.get(m, 1);
-            RecipeHelper.addSmelting(ore, Utils.ca(multiplier * m.getSmeltingMulti(), gem));
+            ItemStack gem = m != MaterialTags.DIRECT_SMELT_INTO.getMapping(m) ? GEM.get(MaterialTags.DIRECT_SMELT_INTO.getMapping(m), 1) : GEM.get(m, 1);
+            RecipeHelper.addSmelting(ore, Utils.ca(multiplier * MaterialTags.SMELTING_MULTI.getInt(m), gem));
             if (m.has(GEM_BRITTLE)) {
                 ItemStack gemBrittle = GEM_BRITTLE.get(m, 1);
                 SIFTING.RB().ii(crushed).io(GEM_POLISHED.get(m, 1), gem, gem, dustStack, gemBrittle, gemBrittle).chances(5, 15, 32, 44, 78, 100).add(800, 16);

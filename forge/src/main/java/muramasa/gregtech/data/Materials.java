@@ -3,6 +3,7 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.material.TextureSet;
 import muramasa.gregtech.Ref;
@@ -12,7 +13,6 @@ import net.minecraft.world.item.Items;
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.Element.*;
-import static muramasa.antimatter.material.MaterialTag.*;
 import static muramasa.antimatter.material.TextureSet.*;
 
 public class Materials {
@@ -1115,11 +1115,11 @@ public class Materials {
         CHEMBATH_PERSULFATE.add(Tetrahedrite,Zinc);
         CHEMBATH_PERSULFATE.add(Zinc,Gallium);
         CHEMBATH_PERSULFATE.add(Copper,Nickel);
-        ELECSEPI.add(Bastnasite/* , Monazite */);
-        ELECSEPG.add(Magnetite, VanadiumMagnetite);
-        ELECSEPN.add(YellowLimonite, BrownLimonite, Pyrite, BandedIron, Nickel, Glauconite, Pentlandite, Tin, Antimony,
+        MaterialTags.ELECSEPI.add(Bastnasite/* , Monazite */);
+        MaterialTags.ELECSEPG.add(Magnetite, VanadiumMagnetite);
+        MaterialTags.ELECSEPN.add(YellowLimonite, BrownLimonite, Pyrite, BandedIron, Nickel, Glauconite, Pentlandite, Tin, Antimony,
                 Ilmenite, Manganese, Chrome, Andradite);
-        ELEC.add(Methane, CarbonDioxide, NitrogenDioxide, Toluene, VinylChloride, SulfurDioxide, SulfurTrioxide,
+        MaterialTags.ELEC.add(Methane, CarbonDioxide, NitrogenDioxide, Toluene, VinylChloride, SulfurDioxide, SulfurTrioxide,
                 Dimethylamine, DinitrogenTetroxide, NitricOxide, Ammonia, Chloromethane, Tetrafluoroethylene,
                 CarbonMonoxide, Ethylene, Propane, Ethenone, Ethanol, Glyceryl, SodiumPersulfate, Dichlorobenzene,
                 Styrene, Isoprene, Tetranitromethane, Epichlorohydrin, NitricAcid, Dimethylhydrazine, Chloramine,
@@ -1134,45 +1134,45 @@ public class Materials {
                 AntimonyTrioxide, CupricOxide, Ferrosilite, Quartzite, Charcoal, Coal, Lignite, Diamond, Emerald, Ruby,
                 BlueSapphire, Tanzanite, Topaz, Olivine, Opal, Amethyst, EnderPearl, StainlessSteel, Steel, Ultimet,
                 IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium, Sodalite);
-        CENT.add(/* NobleGases, */Air, BrownLimonite, Cinnabar, Clay, Cooperite/* , Powellite */, Stibnite,
+        MaterialTags.CENT.add(/* NobleGases, */Air, BrownLimonite, Cinnabar, Clay, Cooperite/* , Powellite */, Stibnite,
                 Tetrahedrite, Uraninite, Wulfenite, YellowLimonite, Blaze, Flint, Marble, BlackGranite,
                 VanadiumMagnetite, Pitchblende, Glass, Lapis, EnderEye, Phosphorus, Redstone, Basalt, AnnealedCopper,
                 BatteryAlloy, Brass, Bronze, Cupronickel, Electrum, Invar, Kanthal, Magnalium, Nichrome,
                 NiobiumTitanium, SolderingAlloy, VanadiumGallium, WroughtIron, SterlingSilver, RoseGold, BismuthBronze,
                 TungstenSteel, RedAlloy, CobaltBrass, TungstenCarbide, VanadiumSteel, HSSG, HSSE, HSSS,
                 GalliumArsenide/* , IndiumGalliumPhosphide, BorosilicateGlass */);
-        CRACK.add(RefineryGas, Naphtha, Ethane, Propane, Butane, Butene, Ethylene, Propene, LightDiesel, HeavyDiesel);
-        CALCITE2X.add(Pyrite, BrownLimonite, YellowLimonite, Magnetite);
-        CALCITE3X.add(Iron, WroughtIron);
-        WASHM.add(Gold, Silver, Osmium, Platinum, Cooperite, Galena, Nickel, Tungstate, Lead, Magnetite, Iridium,
+        MaterialTags.CRACK.add(RefineryGas, Naphtha, Ethane, Propane, Butane, Butene, Ethylene, Propene, LightDiesel, HeavyDiesel);
+        MaterialTags.CALCITE2X.add(Pyrite, BrownLimonite, YellowLimonite, Magnetite);
+        MaterialTags.CALCITE3X.add(Iron, WroughtIron);
+        MaterialTags.WASHM.add(Gold, Silver, Osmium, Platinum, Cooperite, Galena, Nickel, Tungstate, Lead, Magnetite, Iridium,
                 Copper, Chalcopyrite);
-        WASHS.add(Zinc, Nickel, Copper, Cobaltite, Tetrahedrite, Gold, Sphalerite, Garnierite, Chalcopyrite, Cooperite,
+        MaterialTags.WASHS.add(Zinc, Nickel, Copper, Cobaltite, Tetrahedrite, Gold, Sphalerite, Garnierite, Chalcopyrite, Cooperite,
                 Platinum, Pentlandite, Tin, Malachite, YellowLimonite);
-        NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Glyceryl,
+        MaterialTags.NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Glyceryl,
                 NitroFuel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ BlueSapphire, Ruby, Opal, Olivine,
                 Lapis/* , Sodalite, Lazurite, Monazite */, Quartzite, Quartz, Phosphorus, Phosphate, NetherStar,
                 EnderPearl, EnderEye, Blaze);
-        NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Rubber,
+        MaterialTags.NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Rubber,
                 StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone, Glyceryl, NitroFuel,
                 Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
                 RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
                 /* Amber, */ BlueSapphire, Ruby, Opal, Olivine, Lapis, Quartzite, Quartz, Phosphorus, Phosphate,
                 NetherStar, EnderPearl, EnderEye);
-        GRINDABLE.add(/* Paper, */Coal, Charcoal, Lignite, Lead, Tin, SolderingAlloy, Flint, Gold, Silver, Iron,
+        MaterialTags.GRINDABLE.add(/* Paper, */Coal, Charcoal, Lignite, Lead, Tin, SolderingAlloy, Flint, Gold, Silver, Iron,
                 IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar,
                 Brass, WroughtIron, Electrum, Clay, Blaze);
-        SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);
+        MaterialTags.SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);
 
-        NOBBF.add(Tetrahedrite, Chalcopyrite, Cooperite, Pyrolusite, Magnesite, Molybdenite, Galena);
-        CRYSTALLIZE.add(Lapis, Quartzite, Quartz);
-        BRITTLEG.add(Coal, Charcoal, Lignite);
-        RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone);
+        MaterialTags.NOBBF.add(Tetrahedrite, Chalcopyrite, Cooperite, Pyrolusite, Magnesite, Molybdenite, Galena);
+        MaterialTags.CRYSTALLIZE.add(Lapis, Quartzite, Quartz);
+        MaterialTags.BRITTLEG.add(Coal, Charcoal, Lignite);
+        MaterialTags.RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone);
 
-        SOLDER.subTag(SubTag.BAD_SOLDER, Lead, Tin);
-        SOLDER.subTag(SubTag.GOOD_SOLDER, SolderingAlloy, Tin);
-        SOLDER.add(Lead, Tin, SolderingAlloy);
-        WIRE.subTag(SubTag.COPPER_WIRE, AnnealedCopper);
-        WIRE.subTag(SubTag.COPPER_WIRE, Copper);
+        MaterialTags.SOLDER.subTag(SubTag.BAD_SOLDER, Lead, Tin);
+        MaterialTags.SOLDER.subTag(SubTag.GOOD_SOLDER, SolderingAlloy, Tin);
+        MaterialTags.SOLDER.add(Lead, Tin, SolderingAlloy);
+        MaterialTags.WIRE.subTag(SubTag.COPPER_WIRE, AnnealedCopper);
+        MaterialTags.WIRE.subTag(SubTag.COPPER_WIRE, Copper);
 
         Data.Redstone.mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).flags(LIQUID);//.setOreMulti(4);
         Data.Prismarine.mats(of(Potassium, 2, Oxygen, 8, Manganese, 1, Silicon, 5));

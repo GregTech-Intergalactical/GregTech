@@ -5,7 +5,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.material.MaterialTag.ELEC;
+import static muramasa.antimatter.material.MaterialTags.ELEC;
 import static muramasa.gregtech.data.RecipeMaps.ELECTROLYZING;
 
 public class ElectrolyzerLoader {

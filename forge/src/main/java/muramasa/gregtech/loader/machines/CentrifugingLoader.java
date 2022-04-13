@@ -6,7 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.material.MaterialTag.CENT;
+import static muramasa.antimatter.material.MaterialTags.CENT;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.RecipeMaps.CENTRIFUGING;
 

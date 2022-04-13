@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.ItemStack;
 
@@ -10,7 +11,7 @@ import static muramasa.gregtech.data.RecipeMaps.THERMAL_CENTRIFUGING;
 public class ThermalCentrifuge {
     public static void init() {
         CRUSHED_PURIFIED.all().forEach(m -> {
-            Material aOreByProduct1 = m.getByProducts().size() >= 1 ? m.getByProducts().get(0) : m.getMacerateInto();
+            Material aOreByProduct1 = m.getByProducts().size() >= 1 ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
             Material aOreByProduct2 = m.getByProducts().size() >= 2 ? m.getByProducts().get(1) : aOreByProduct1;
             ItemStack stoneDust = DUST.get(Stone, 1);
 

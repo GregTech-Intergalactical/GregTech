@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.multi;
 
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -12,7 +13,7 @@ public class VacFreezer {
     public static void init() {
         INGOT_HOT.all().forEach(hi -> {
             Item ingot = INGOT.get(hi);
-            int temp = hi.getBlastTemp();
+            int temp = MaterialTags.BLAST_FURNACE_TEMP.getInt(hi);
             int voltage;
             if (temp < 1800) {
                 voltage = 120;

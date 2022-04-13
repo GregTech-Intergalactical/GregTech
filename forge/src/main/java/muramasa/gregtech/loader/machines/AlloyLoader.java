@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.Data;
 import muramasa.antimatter.material.MaterialStack;
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
@@ -10,7 +11,7 @@ import java.util.List;
 
 import static muramasa.antimatter.Data.DUST;
 import static muramasa.antimatter.Data.INGOT;
-import static muramasa.antimatter.material.MaterialTag.METAL;
+import static muramasa.antimatter.material.MaterialTags.METAL;
 import static muramasa.gregtech.data.RecipeMaps.ALLOY_SMELTING;
 
 public class AlloyLoader {
@@ -19,7 +20,7 @@ public class AlloyLoader {
 
     public static void init() {
         INGOT.all().forEach(t -> {
-            if (t.needsBlastFurnace()) return;
+            if (t.has(MaterialTags.NEEDS_BLAST_FURNACE)) return;
             if (!t.has(METAL)) return;
             List<MaterialStack> stacks = t.getProcessInto();
             if (stacks.size() != 2) return;

@@ -7,6 +7,7 @@ import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.structure.StructureCache;
 import muramasa.antimatter.tile.multi.TileEntityHatch;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
@@ -27,7 +28,7 @@ public class BlockEntityHatchHeat<T extends BlockEntityHatchHeat<T>> extends Til
         super(type, pos, state);
         HeatHatch hath = (HeatHatch)type;
         this.material = hath.mat;
-        this.heatHandler.set(() -> new DefaultHeatHandler(this, this.material.getMeltingPoint()*hath.heatCoefficient, hath.heatCoefficient) {
+        this.heatHandler.set(() -> new DefaultHeatHandler(this, MaterialTags.MELTING_POINT.getInt(this.material)*hath.heatCoefficient, hath.heatCoefficient) {
             @Override
             protected void add(Integer temp) {
                 super.add(temp);

@@ -9,7 +9,7 @@ import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.material.MaterialTag.SOLDER;
+import static muramasa.antimatter.material.MaterialTags.SOLDER;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ASSEMBLING;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
