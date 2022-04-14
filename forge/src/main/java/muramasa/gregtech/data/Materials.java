@@ -1176,7 +1176,7 @@ public class Materials {
         MaterialTags.WIRE.subTag(SubTag.COPPER_WIRE, AnnealedCopper);
         MaterialTags.WIRE.subTag(SubTag.COPPER_WIRE, Copper);
 
-        Data.Redstone.mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).flags(LIQUID);//.setOreMulti(4);
+        Data.Redstone.mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).asFluid(0, MaterialTags.MELTING_POINT.getInt(Redstone));//.setOreMulti(4);
         Data.Prismarine.mats(of(Potassium, 2, Oxygen, 8, Manganese, 1, Silicon, 5));
         Data.Basalt.mats(of(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4));
         Data.Lapis.mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));//.setOreMulti(6);
