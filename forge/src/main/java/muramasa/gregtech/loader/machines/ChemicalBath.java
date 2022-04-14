@@ -6,8 +6,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.material.MaterialTag.CHEMBATH_MERCURY;
-import static muramasa.antimatter.material.MaterialTag.CHEMBATH_PERSULFATE;
+import static muramasa.antimatter.material.MaterialTags.CHEMBATH_MERCURY;
+import static muramasa.antimatter.material.MaterialTags.CHEMBATH_PERSULFATE;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_BATHING;
 

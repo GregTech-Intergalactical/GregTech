@@ -12,6 +12,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.*;
+import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.Ref;
 import muramasa.gregtech.block.BlockCasing;
@@ -35,8 +36,8 @@ public class GregTechData {
 
     private static final boolean HC = AntimatterConfig.GAMEPLAY.HARDCORE_CABLES;
 
-    public static void init(Dist side) {
-        if (side == Dist.CLIENT)
+    public static void init(Side side) {
+        if (side == Side.CLIENT)
             RecipeMaps.clientMaps();
         /*AntimatterAPI.all(MaterialType.class, t -> {
             if (t instanceof MaterialTypeFluid) return;

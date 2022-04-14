@@ -13,6 +13,8 @@ import net.minecraft.world.item.Items;
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.Element.*;
+import static muramasa.antimatter.material.MaterialTags.CHEMBATH_MERCURY;
+import static muramasa.antimatter.material.MaterialTags.CHEMBATH_PERSULFATE;
 import static muramasa.antimatter.material.TextureSet.*;
 
 public class Materials {

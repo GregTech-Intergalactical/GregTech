@@ -12,6 +12,7 @@ import muramasa.antimatter.gui.slot.ISlotProvider;
 import muramasa.antimatter.gui.widget.TextWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gregtech.gui.widgets.CoalBoilerFuelWidget;
 import muramasa.gregtech.gui.widgets.CoalBoilerWidget;
@@ -64,7 +65,7 @@ public class Guis {
         }
     };
 
-    public static void init(Dist side) {
+    public static void init(Side side) {
         ALLOY_SMELTER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
         ASSEMBLER.add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34)
                 .add(IT_IN, 53, 34).add(IT_OUT, 107, 25)

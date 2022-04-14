@@ -3,6 +3,7 @@ package muramasa.gregtech.integration;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
+import muramasa.antimatter.registration.Side;
 import net.minecraftforge.api.distmarker.Dist;
 
 public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
@@ -13,7 +14,7 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
     }
 
     @Override
-    public void onRegistrationEvent(RegistrationEvent event, Dist side) {
+    public void onRegistrationEvent(RegistrationEvent event, Side side) {
         //TODO
     }
 

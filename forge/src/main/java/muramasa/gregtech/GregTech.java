@@ -9,6 +9,7 @@ import muramasa.antimatter.event.AntimatterLoaderEvent;
 import muramasa.antimatter.event.AntimatterProvidersEvent;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.RegistrationEvent;
+import muramasa.antimatter.registration.Side;
 import muramasa.gregtech.block.tree.RubberTree;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.data.Machines;
@@ -144,7 +145,7 @@ public class GregTech extends AntimatterMod {
     }
 
     @Override
-    public void onRegistrationEvent(RegistrationEvent event, Dist side) {
+    public void onRegistrationEvent(RegistrationEvent event, Side side) {
         switch (event) {
             case DATA_INIT -> {
                 Materials.init();
