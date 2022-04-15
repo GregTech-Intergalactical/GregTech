@@ -23,7 +23,7 @@ public class SteamMachines {
         Object wrench = WRENCH.getTag();
         Object bricks = Items.BRICKS;
         Object furnace = Items.FURNACE;
-        Object piston = TagUtils.getForgeItemTag("pistons");
+        Object piston = TagUtils.getForgelikeItemTag("pistons");
         Object diamond = Items.DIAMOND;
         Object glass = Items.GLASS;
 

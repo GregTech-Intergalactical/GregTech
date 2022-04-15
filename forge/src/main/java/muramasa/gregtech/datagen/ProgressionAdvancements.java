@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 
 import static muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider.buildRootAdvancement;
 import static muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider.getLoc;
-import static muramasa.antimatter.util.TagUtils.getForgeItemTag;
+import static muramasa.antimatter.util.TagUtils.getForgelikeItemTag;
 import static muramasa.antimatter.util.Utils.hasItem;
 import static muramasa.gregtech.data.Materials.Flint;
 
@@ -22,7 +22,7 @@ public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> 
     public void accept(Consumer<Advancement> consumer) {
         progressionRoot = buildRootAdvancement(Data.ROCK.get(Flint), new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"),
                 Ref.ID + ".advancements.greg", Ref.ID + ".advancements.greg.desc", FrameType.TASK, true, true, false)
-                .addCriterion("has_rocks", hasItem(getForgeItemTag("rocks"))).save(consumer, getLoc(Ref.ID, "progression/root"));
+                .addCriterion("has_rocks", hasItem(getForgelikeItemTag("rocks"))).save(consumer, getLoc(Ref.ID, "progression/root"));
     }
 
 }
