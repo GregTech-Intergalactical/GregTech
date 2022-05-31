@@ -24,6 +24,8 @@ if (new File('AntimatterAPI/TesseractAPI').exists()) {
     project(':fabricated-forge-caps').setProjectDir(new File("AntimatterAPI/TesseractAPI/fabricated-forge-caps"))
     include 'fabricated-forge-recipe-api'
     project(':fabricated-forge-recipe-api').setProjectDir(new File("AntimatterAPI/TesseractAPI/fabricated-forge-recipe-api"))
+    include 'fabricated-forge-datagen'
+    project(':fabricated-forge-datagen').setProjectDir(new File("AntimatterAPI/TesseractAPI/fabricated-forge-datagen"))
     include 'tesseract-fabric'
     project(':tesseract-fabric').setProjectDir(new File("AntimatterAPI/TesseractAPI/fabric"))
 }
