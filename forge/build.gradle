@@ -132,6 +132,9 @@ dependencies {
         implementation(project(path: ":antimatter-forge", configuration: "namedElements")){
             transitive = false;
         }
+    implementation(project(path: ":antimatter-common", configuration: "namedElements")){
+        transitive = false;
+    }
     //} else {
     //    modImplementation("com.github.GregTech-Intergalactical.AntimatterAPI:AntimatterAPI-forge:${antimatter_version}")
     //}

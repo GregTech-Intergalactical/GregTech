@@ -8,7 +8,7 @@ import muramasa.antimatter.gui.ICanSyncData;
 import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
-import muramasa.antimatter.integration.jei.renderer.IInfoRenderer;
+import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.Recipe;
