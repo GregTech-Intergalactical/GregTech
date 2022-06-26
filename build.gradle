@@ -2,6 +2,7 @@ plugins {
     id "maven-publish"
     id "architectury-plugin" version "3.4-SNAPSHOT"
     id "dev.architectury.loom" version "0.12.0-SNAPSHOT" apply(false)
+    id "com.github.johnrengelman.shadow" version "7.0.0" apply(false)
 }
 
 architectury {
@@ -76,8 +77,6 @@ allprojects {
             name = 'sponge'
             url = 'https://repo.spongepowered.org/repository/maven-public/'
         }
-        //GT.
-        maven { url 'https://jitpack.io' }
         maven {
             // Shedaniel's maven (Architectury API)
             url = "https://maven.architectury.dev"
@@ -96,6 +95,8 @@ allprojects {
                 includeGroup "dev.latvian.mods"
             }
         }
+        //GT and felt
+        maven { url 'https://jitpack.io' }
     }
 
     java {
@@ -109,5 +110,40 @@ allprojects {
     if (isCI) {
         version = version + "-" + gitHash()
         println("In CI mode")
+    }
+}
+
+subprojects{
+    if (!project.path.contains("common")){
+        apply plugin: "com.github.johnrengelman.shadow"
+
+        configurations {
+            common
+            shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+            compileClasspath.extendsFrom common
+            runtimeClasspath.extendsFrom common
+            developmentForge.extendsFrom common
+        }
+
+        shadowJar {
+            configurations = [project.configurations.shadowCommon]
+            classifier "dev-shadow"
+        }
+
+        remapJar {
+            input.set shadowJar.archiveFile
+            dependsOn shadowJar
+            classifier null
+        }
+
+        jar {
+            classifier "dev"
+        }
+
+        components.java {
+            withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+                skip()
+            }
+        }
     }
 }

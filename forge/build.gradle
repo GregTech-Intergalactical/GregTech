@@ -1,25 +1,3 @@
-repositories {
-    //JEI
-    maven { url 'https://dvs1.progwml6.com/files/maven' }
-    /*maven {
-        url = "https://maven.speiger.com/repository/main"
-    }*/
-    //GT.
-    //maven { url 'https://jitpack.io' }
-
-    //Needed for intellij
-    maven {
-        name = 'sponge'
-        url = 'https://repo.spongepowered.org/repository/maven-public/'
-    }
-    maven {
-        url "https://www.cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-}
-
 archivesBaseName = rootProject.archive_base_name
 version = "${rootProject.minecraft_version}-${rootProject.mod_version}"
 
@@ -28,42 +6,6 @@ def isRELEASE = System.getenv("GITHUB_RELEASE")
 
 architectury {
     forge()
-}
-
-configurations {
-    common
-    shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
-    compileClasspath.extendsFrom common
-    runtimeClasspath.extendsFrom common
-    developmentForge.extendsFrom common
-}
-
-boolean hasTesseract = findProject(':tesseract-forge') != null
-
-boolean hasAntimatter = findProject(':antimatter-forge') != null
-boolean isWorkspace = hasTesseract
-String getenv() {
-    boolean vscode = gradle.startParameter.taskNames[0].equals("genVSCodeRuns")  || gradle.startParameter.taskNames[0].equals(":genVSCodeRuns")
-    boolean hasTesseract = findProject(':tesseract-forge') != null
-
-    String resourcePath = vscode ? 'bin/main' : 'build/resources/main'
-    String codePath = vscode ? 'bin/main' : 'build/classes/java/main'
-    String s = "gregtech%%${project.file(resourcePath)}" + getPathSeparator() + "gregtech%%${project.file(codePath)}"
-    if (hasAntimatter) {
-        s += getPathSeparator() + "antimatter%%${project(':antimatter-forge').file(resourcePath)}" + getPathSeparator() + "antimatter%%${project(':antimatter-forge').file(codePath)}"
-    }
-    if (hasTesseract) {
-        s += getPathSeparator() + "tesseract%%${project(':tesseract-forge').file(resourcePath)}" + getPathSeparator() + "tesseract%%${project(':tesseract-forge').file(codePath)}"
-    }
-    return s
-}
-import org.apache.tools.ant.taskdefs.condition.Os
-//println(project(":TesseractAPI").sourceSets.main.output.getDirs().getAsPath())
-def getPathSeparator() {
-    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-        return ";"
-    }
-    return ":"
 }
 
 sourceSets {
@@ -83,18 +25,6 @@ sourceSets {
 
 loom{
     forge {
-        if (hasAntimatter){
-            mixinConfigs = [
-                    "antimatter.mixins.json"
-            ]
-        }
-
-        localMods {
-            forge {
-                it.add(project(":antimatter-forge").sourceSets.main)
-                //if (hasTesseract) it.add(project(":forge").sourceSets.tesseractapi)
-            }
-        }
         dataGen {
             mod project.modid
         }
@@ -112,32 +42,20 @@ dependencies {
     forge "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
     //implementation project(path: ":TesseractAPI")
     //GT
-    if (hasTesseract) {
-        implementation(project(path: ":tesseract-forge", configuration: "namedElements")){
-            transitive = false
-        }
-        common(project(path: ":tesseract-common", configuration: "namedElements")){
-            transitive = false;
-        }
-    } else {
-        modImplementation("com.github.GregTech-Intergalactical.TesseractAPI:TesseractAPI-tesseract-forge:${tesseract_version}")
-    }
+    implementation(project(path: ":tesseract-forge", configuration: "namedElements"))
+    implementation(project(path: ":tesseract-common", configuration: "namedElements"))
 
     //MIXIN
     if (System.getProperty('idea.sync.active') != 'true') {
         annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
     }
 
-    //if (hasAntimatter) {
-        implementation(project(path: ":antimatter-forge", configuration: "namedElements")){
-            transitive = false;
-        }
+    implementation(project(path: ":antimatter-forge", configuration: "namedElements")){
+        transitive = false;
+    }
     implementation(project(path: ":antimatter-common", configuration: "namedElements")){
         transitive = false;
     }
-    //} else {
-    //    modImplementation("com.github.GregTech-Intergalactical.AntimatterAPI:AntimatterAPI-forge:${antimatter_version}")
-    //}
     //JEI
     modCompileOnly("mezz.jei:jei-${jei_version}:api")
     modRuntimeOnly("mezz.jei:jei-${jei_version}")
