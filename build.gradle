@@ -71,7 +71,15 @@ allprojects {
             name = 'parchment'
             url = 'https://maven.parchmentmc.org'
         }
+        //JEI
         maven { url 'https://dvs1.progwml6.com/files/maven' }
+        maven {
+            url "https://www.cursemaven.com"
+            content {
+                includeGroup "curse.maven"
+            }
+        }
+        maven { url = "https://mvn.devos.one/snapshots/" }
         //Needed for intellij
         maven {
             name = 'sponge'
@@ -95,7 +103,7 @@ allprojects {
                 includeGroup "dev.latvian.mods"
             }
         }
-        //GT and felt
+        //GT.
         maven { url 'https://jitpack.io' }
     }
 
