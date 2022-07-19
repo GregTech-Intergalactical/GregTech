@@ -7,10 +7,11 @@ import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
 import muramasa.antimatter.dynamic.ModelConfig;
 import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.mixin.ChunkReaderAccessor;
+import muramasa.antimatter.mixin.client.ChunkReaderAccessor;
 import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.antimatter.structure.StructureCache;
 import muramasa.antimatter.texture.Texture;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.int3;
 import muramasa.gregtech.tile.multi.TileEntityLargeTurbine;
 import net.minecraft.world.level.block.Block;
@@ -171,10 +172,13 @@ public class BlockTurbineCasing extends BlockCasingMachine {
     }
 
     protected Level getWorld(BlockGetter reader) {
-        if (!(reader instanceof RenderChunkRegion)) {
+        if (AntimatterPlatformUtils.isServer()){
             if (reader instanceof Level l) {
                 return l;
             }
+            return null;
+        }
+        if (!(reader instanceof RenderChunkRegion)) {
             return null;
         };
         ChunkReaderAccessor cache = (ChunkReaderAccessor) reader;
