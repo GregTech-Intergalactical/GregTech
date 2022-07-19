@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gtu:block/cable_kanthal_large"
+    }
+  }
+}

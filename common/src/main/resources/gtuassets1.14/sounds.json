@@ -1,0 +1,8 @@
+{
+  "wrench": {
+    "sounds": [ "gtu:wrench" ]
+  },
+  "drill": {
+    "sounds": [ "gtu:drill" ]
+  }
+}

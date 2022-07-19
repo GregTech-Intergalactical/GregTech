@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtu:material/dull/dust_pure",
+    "layer1": "gtu:material/dull/dust_pure_overlay"
+  }
+}

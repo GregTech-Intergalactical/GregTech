@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gtu:material/dull/rock",
+    "layer1": "gtu:material/dull/rock_overlay"
+  }
+}
