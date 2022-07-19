@@ -2,20 +2,17 @@ package muramasa.gregtech.block.tree;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.worldgen.feature.IAntimatterFeature;
-import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
-import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class RubberTreeFeature extends TreeFeature implements IAntimatterFeature {
 
     public RubberTreeFeature() {
         super(TreeConfiguration.CODEC);
-        AntimatterAPI.register(IAntimatterFeature.class, this);
-        this.setRegistryName(getLoc());
     }
 
     @Override
@@ -29,14 +26,13 @@ public class RubberTreeFeature extends TreeFeature implements IAntimatterFeature
     }
 
     @Override
-    public void build(BiomeLoadingEvent event) {
-        BiomeGenerationSettingsBuilder builder = event.getGeneration();
-        if (event.getName().equals(Biomes.SWAMP.location())) {
-            builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE_SWAMP);
-        } else if (event.getName().equals(Biomes.JUNGLE.location())) {
-            builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE_JUNGLE);
+    public void build(ResourceLocation name, Biome.ClimateSettings climate, Biome.BiomeCategory category, BiomeSpecialEffects effects, BiomeGenerationSettings.Builder gen, MobSpawnSettings.Builder spawns) {
+        if (name.equals(Biomes.SWAMP.location())) {
+            gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE_SWAMP);
+        } else if (name.equals(Biomes.JUNGLE.location())) {
+            gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE_JUNGLE);
         } else {
-            builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE);
+            gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE);
         }
     }
 

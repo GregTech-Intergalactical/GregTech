@@ -4,30 +4,19 @@ import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import muramasa.antimatter.worldgen.AntimatterWorldGenerator;
 import muramasa.antimatter.worldgen.object.WorldGenBase;
 import muramasa.gregtech.data.GregTechData;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraft.world.level.levelgen.placement.PlacementContext;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
-import net.minecraftforge.event.world.BiomeLoadingEvent;
 
-import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
 
@@ -68,28 +57,28 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
         super("rubber_tree", RubberTreeWorldGen.class, Level.OVERWORLD);
         AntimatterWorldGenerator.register(this.toRegister, this);
     }
-  
-    public static void onEvent(BiomeLoadingEvent builder) {
-        Biome.BiomeCategory biomeCategory = builder.getCategory();
-        if (!getValidBiomesStatic().test(biomeCategory) || biomeCategory == Biome.BiomeCategory.PLAINS) return;
+
+
+    public static void onEvent(ResourceLocation name, Biome.ClimateSettings climate, Biome.BiomeCategory category, BiomeSpecialEffects effects, BiomeGenerationSettings.Builder gen, MobSpawnSettings.Builder spawns) {
+        if (!getValidBiomesStatic().test(category) || category == Biome.BiomeCategory.PLAINS) return;
         float p = 0.05F;
-        if (builder.getClimate().temperature > 0.8f) {
+        if (climate.temperature > 0.8f) {
             p = 0.04F;
-            if (builder.getClimate().precipitation == Biome.Precipitation.RAIN)
+            if (climate.precipitation == Biome.Precipitation.RAIN)
                 p += 0.04F;
         }
         float finalp = p;
-        if (builder.getName() != null) {
-            if (builder.getName().equals(Biomes.JUNGLE.getRegistryName())) {
-                builder.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(RubberTree.TREE_JUNGLE);
+        if (name != null) {
+            if (name.equals(Biomes.JUNGLE.location())) {
+                gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE_JUNGLE);
                 return;
             }
-            if (builder.getName().equals(Biomes.SWAMP.getRegistryName())) {
-                builder.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(RubberTree.TREE_SWAMP);
+            if (name.equals(Biomes.SWAMP.location())) {
+                gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE_SWAMP);
                 return;
             }
         }
-        builder.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(RubberTree.TREE);
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RubberTree.TREE);
     }
 
   /*

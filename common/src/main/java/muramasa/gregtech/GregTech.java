@@ -4,10 +4,10 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterDynamics;
 import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.datagen.providers.*;
-import muramasa.antimatter.event.forge.AntimatterCraftingEvent;
-import muramasa.antimatter.event.forge.AntimatterLoaderEvent;
-import muramasa.antimatter.event.forge.AntimatterProvidersEvent;
+import muramasa.antimatter.event.CraftingEvent;
+import muramasa.antimatter.event.ProvidersEvent;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
+import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.gregtech.block.tree.RubberTree;
@@ -16,28 +16,18 @@ import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.datagen.GregTechBlockTagProvider;
 import muramasa.gregtech.datagen.GregtechBlockLootProvider;
 import muramasa.gregtech.datagen.ProgressionAdvancements;
-import muramasa.gregtech.events.RemappingEvents;
-import muramasa.gregtech.loader.WorldGenLoader;
 import muramasa.gregtech.loader.crafting.*;
 import muramasa.gregtech.loader.items.Circuitry;
 import muramasa.gregtech.loader.machines.*;
 import muramasa.gregtech.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gregtech.loader.machines.generator.Fuels;
 import muramasa.gregtech.loader.multi.*;
-import muramasa.gregtech.proxy.ClientHandler;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.function.BiConsumer;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(Ref.ID)
 public class GregTech extends AntimatterMod {
 
     public static GregTech INSTANCE;
@@ -45,15 +35,14 @@ public class GregTech extends AntimatterMod {
 
     public GregTech() {
         super();
+    }
+
+    @Override
+    public void onRegistrarInit() {
+        super.onRegistrarInit();
         LOGGER.info("Loading GregTech");
         INSTANCE = this;
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-        MinecraftForge.EVENT_BUS.register(RemappingEvents.class);
-        MinecraftForge.EVENT_BUS.addListener(GregTech::registerRecipeLoaders);
-        MinecraftForge.EVENT_BUS.addListener(GregTech::registerCraftingLoaders);
-        MinecraftForge.EVENT_BUS.addListener(GregTech::onProviders);
-        MinecraftForge.EVENT_BUS.addListener(WorldGenLoader::init);
+
 
         AntimatterDynamics.clientProvider(Ref.ID,
                 g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
@@ -62,8 +51,8 @@ public class GregTech extends AntimatterMod {
         AntimatterDynamics.clientProvider(Ref.ID, GregTechLocalizations.en_US::new);
     }
 
-    private static void onProviders(AntimatterProvidersEvent ev) {
-        if (ev.getSide() == Dist.CLIENT) {
+    public static void onProviders(ProvidersEvent ev) {
+        if (ev.getSide() == Side.CLIENT) {
 
         } else {
             final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
@@ -82,7 +71,7 @@ public class GregTech extends AntimatterMod {
         }
     }
     
-    private static void registerCraftingLoaders(AntimatterCraftingEvent event) {
+    public static void registerCraftingLoaders(CraftingEvent event) {
         event.addLoader(Parts::loadRecipes);
         event.addLoader(Smelting::loadRecipes);
         event.addLoader(WireCablesPlates::loadRecipes);
@@ -92,8 +81,8 @@ public class GregTech extends AntimatterMod {
         event.addLoader(BlockParts::loadRecipes);
     }
 
-    private static void registerRecipeLoaders(AntimatterLoaderEvent event) {
-        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(Ref.ID, a, b);
+    public static void registerRecipeLoaders(IAntimatterRegistrar registrar, IRecipeRegistrate reg) {
+        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> reg.add(Ref.ID, a, b);
         loader.accept("wiremill", WiremillLoader::init);
         loader.accept("washer", WasherLoader::init);
         loader.accept("blasting", Blasting::init);
@@ -131,13 +120,6 @@ public class GregTech extends AntimatterMod {
         loader.accept("pressing", FormingPress::init);
         loader.accept("chemical_bathing", ChemicalBath::init);
         loader.accept("heat_exchanging", HeatExchangerLoader::init);
-    }
-
-    private void clientSetup(final FMLClientSetupEvent e) {
-        ClientHandler.setup(e);
-    }
-
-    private void setup(final FMLCommonSetupEvent e) {
     }
 
     public static <T> T get(Class<? extends T> clazz, String id) {

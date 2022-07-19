@@ -6,12 +6,13 @@ import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.Widget;
 import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
-import muramasa.antimatter.integration.jei.AntimatterJEIPlugin;
+import muramasa.antimatter.integration.jeirei.jei.AntimatterJEIPlugin;
+import muramasa.antimatter.mixin.client.AbstractContainerScreenAccessor;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -47,7 +48,7 @@ public class CoalBoilerFuelWidget extends Widget {
                 return;
             }
             int y = (realY() + 18) - lvl;
-            drawTexture(stack, gui.handler.getGuiTexture(), realX(), y, gui.screen.getXSize(), 18 - lvl, 18, lvl);
+            drawTexture(stack, gui.handler.getGuiTexture(), realX(), y, ((AbstractContainerScreenAccessor)gui.screen).getImageWidth(), 18 - lvl, 18, lvl);
         }
     }
 
@@ -58,7 +59,7 @@ public class CoalBoilerFuelWidget extends Widget {
         renderTooltip(stack,"Fuel: " + fuel, mouseX, mouseY + 10, 0, 10, 18, 18);
     }
 
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     protected void renderTooltip(PoseStack matrixStack, String text, double mouseX, double mouseY, int x, int y, int w, int h) {
         if (isInside(x, y, w, h, mouseX, mouseY)){
             renderTooltip(matrixStack, new TextComponent(text), mouseX, mouseY);

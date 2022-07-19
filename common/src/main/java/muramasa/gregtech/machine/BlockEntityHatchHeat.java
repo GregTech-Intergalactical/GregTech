@@ -1,7 +1,6 @@
 package muramasa.gregtech.machine;
 
 import muramasa.antimatter.capability.Holder;
-import muramasa.antimatter.capability.IHeatHandler;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.event.MachineEvent;
@@ -18,11 +17,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
+import tesseract.api.TesseractCaps;
+import tesseract.api.heat.IHeatHandler;
 
 public class BlockEntityHatchHeat<T extends BlockEntityHatchHeat<T>> extends TileEntityHatch<T> {
 
     public final Material material;
-    public Holder<IHeatHandler, DefaultHeatHandler> heatHandler = new Holder<>(IHeatHandler.HEAT_CAPABILITY, dispatch);
+    public Holder<IHeatHandler, DefaultHeatHandler> heatHandler = new Holder<>(TesseractCaps.getHEAT_CAPABILITY(), dispatch);
 
     public BlockEntityHatchHeat(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -46,7 +47,7 @@ public class BlockEntityHatchHeat<T extends BlockEntityHatchHeat<T>> extends Til
     @NotNull
     @Override
     public <T1> LazyOptional<T1> getCapability(@NotNull Capability<T1> cap, Direction side) {
-        if (cap == IHeatHandler.HEAT_CAPABILITY) {
+        if (cap == TesseractCaps.getHEAT_CAPABILITY()) {
             return heatHandler.side(side).cast();
         }
         return super.getCapability(cap, side);

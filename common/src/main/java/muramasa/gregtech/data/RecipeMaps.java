@@ -1,7 +1,7 @@
 package muramasa.gregtech.data;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.integration.jei.renderer.InfoRenderers;
+import muramasa.antimatter.integration.jeirei.renderer.InfoRenderers;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.recipe.RecipeProxies;
 import muramasa.antimatter.recipe.map.RecipeBuilder;

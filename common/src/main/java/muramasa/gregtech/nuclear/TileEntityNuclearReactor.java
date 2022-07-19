@@ -1,7 +1,6 @@
 package muramasa.gregtech.nuclear;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import muramasa.antimatter.capability.IHeatHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.ICanSyncData;
@@ -25,6 +24,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
+import tesseract.api.heat.HeatTransaction;
+import tesseract.api.heat.IHeatHandler;
 
 public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityNuclearReactor> {
 
@@ -66,7 +67,7 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
         Recipe r = this.recipeHandler.map(MachineRecipeHandler::getActiveRecipe).orElse(null);
         long power = r.getPower();
         int in = (int)((float)power*efficiencyBonus);
-        IHeatHandler.HeatTransaction tx = new IHeatHandler.HeatTransaction(in, 0, Utils.sink()).ignoreTemperature();
+        HeatTransaction tx = new HeatTransaction(in, 0, Utils.sink()).ignoreTemperature();
         for (IHeatHandler handler : heatHandlers) {
             handler.insert(tx);
         }

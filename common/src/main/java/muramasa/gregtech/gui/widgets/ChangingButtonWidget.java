@@ -25,7 +25,7 @@ public class ChangingButtonWidget extends ButtonWidget {
     }
 
     public static WidgetSupplier build(ResourceLocation res, ButtonBody body, ButtonOverlay overlay, IGuiEvent.IGuiEventFactory ev, int id) {
-        return builder(((a,b) -> new ChangingButtonWidget(a,b, res, body, overlay, but -> Antimatter.NETWORK.sendToServer(but.gui.handler.createGuiPacket(new GuiEvents.GuiEvent(ev, id, Screen.hasShiftDown() ? 1 : 0)))))).clientSide();
+        return builder(((a,b) -> new ChangingButtonWidget(a,b, res, body, overlay, but -> but.gui.sendPacket(but.gui.handler.createGuiPacket(new GuiEvents.GuiEvent(ev, id, Screen.hasShiftDown() ? 1 : 0)))))).clientSide();
     }
 
     @Override

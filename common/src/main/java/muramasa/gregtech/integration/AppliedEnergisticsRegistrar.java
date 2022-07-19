@@ -4,7 +4,6 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
-import net.minecraftforge.api.distmarker.Dist;
 
 public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
 
@@ -16,6 +15,11 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Side side) {
         //TODO
+    }
+
+    @Override
+    public void onRegistrarInit() {
+
     }
 
     //new WorldgenOresSmall("ore.small.certus"            , MD.AE     .mLoaded,  20,  40,   1, MT.CertusQuartz        , GEN_OVERWORLD, GEN_MARS, GEN_PLANETS, GEN_ASTEROIDS, GEN_MOON);

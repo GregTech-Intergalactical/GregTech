@@ -1,7 +1,9 @@
 package muramasa.gregtech.block.tree;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.worldgen.AntimatterWorldGenerator;
+import muramasa.antimatter.worldgen.feature.IAntimatterFeature;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
@@ -20,20 +22,20 @@ import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
+import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.placement.*;
-import org.antlr.runtime.tree.Tree;
 
 import java.util.Collections;
 import java.util.Random;
 
 public class RubberTree extends AbstractTreeGrower {
 
-    public static final RubberTreeFeature TREE_FEATURE = new RubberTreeFeature();
+    public static final TreeFeature TREE_FEATURE = (TreeFeature) AntimatterAPI.register(IAntimatterFeature.class, new RubberTreeFeature()).asFeature();
     public static final WeightedStateProvider TRUNK_BLOCKS;
     public static Holder<PlacedFeature> TREE;
     public static Holder<PlacedFeature> TREE_SWAMP;

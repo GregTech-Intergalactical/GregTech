@@ -1,16 +1,17 @@
 package muramasa.gregtech.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.screen.ScreenMachine;
-import muramasa.antimatter.integration.jei.AntimatterJEIPlugin;
+import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.ModList;
 
 public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> extends ScreenMachine<TileEntityCoalBoiler, T> {
     public ScreenCoalBoiler(T container, Inventory inv, Component name) {
@@ -117,13 +118,13 @@ public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> 
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
-        if (!ModList.get().isLoaded("jei") || !container.getTile().has(MachineFlag.RECIPE))
+        if ((!AntimatterAPI.isModLoaded(Ref.MOD_JEI) && !AntimatterAPI.isModLoaded(Ref.MOD_REI)) || !container.getTile().has(MachineFlag.RECIPE))
             return super.mouseClicked(mouseX, mouseY, mouseButton);
         if (isInGui((imageWidth / 2) - 10, 24, 20, 18, mouseX, mouseY)) {
             return false;
         }
         if (isInGui(115, 43, 18, 18, mouseX, mouseY)) {
-            AntimatterJEIPlugin.showCategory(container.getTile().getMachineType());
+            AntimatterJEIREIPlugin.showCategory(container.getTile().getMachineType());
             return true;
         }
         return super.mouseClicked(mouseX, mouseY, mouseButton);
