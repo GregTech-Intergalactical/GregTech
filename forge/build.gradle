@@ -1,27 +1,24 @@
 archivesBaseName = rootProject.archive_base_name
 version = "${rootProject.minecraft_version}-${rootProject.mod_version}"
 
-def isCI = System.getenv("GITHUB_ACTION")
-def isRELEASE = System.getenv("GITHUB_RELEASE")
-
 architectury {
     forge()
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-        }
-        resources {
-            include '**/**'
-            srcDirs += 'src/generated/resources'
-            exclude '.cache'
-            exclude 'Thumbs.db'
-        }
-    }
-
-}
+//sourceSets {
+//    main {
+//        java {
+//            srcDir 'src/main/java'
+//        }
+//        resources {
+//            include '**/**'
+//            srcDirs += 'src/generated/resources'
+//            exclude '.cache'
+//            exclude 'Thumbs.db'
+//        }
+//    }
+//
+//}
 
 loom{
     forge {
@@ -40,6 +37,7 @@ loom{
 
 dependencies {
     forge "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+    implementation 'org.apache.commons:commons-collections4:4.4'
     //implementation project(path: ":TesseractAPI")
     //GT
     implementation(project(path: ":tesseract-forge", configuration: "namedElements"))
@@ -49,6 +47,8 @@ dependencies {
     if (System.getProperty('idea.sync.active') != 'true') {
         annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
     }
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive false }
 
     implementation(project(path: ":antimatter-forge", configuration: "namedElements")){
         transitive = false;
@@ -57,15 +57,7 @@ dependencies {
         transitive = false;
     }
     //JEI
-    modCompileOnly("mezz.jei:jei-${jei_version}:api")
-    modRuntimeOnly("mezz.jei:jei-${jei_version}")
-
-
-    /** KUBEJS STUFF **/
-   // modImplementation("curse.maven:rhino-416294:${rhino_file}")
-   // modImplementation("curse.maven:architecturyforge-419699:${architectury_file}")
-  //  modImplementation("curse.maven:kubejs-238086:${kubejs_file}")
-//    modImplementation("curse.maven:top-245211:${top_file}")
+    modRuntimeOnly("mezz.jei:jei-${rootProject.minecraft_version}-forge:${rootProject.jei_version}")
 }
 
 jar {
@@ -78,49 +70,19 @@ jar {
                 "Implementation-Title": project.name,
                 "Implementation-Version": project.version,
                 "Implementation-Vendor": "GregTech Intergalactical",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                'MixinConfigs': 'antimatter.mixins.json'
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
             ])
     }
 }
-publishing {
-    tasks.publish.dependsOn 'build', 'reobfJar'
-    publications {
-        mavenJava(MavenPublication) {
-            artifact(remapJar) {
-                builtBy remapJar
-            }
-            artifact(sourcesJar) {
-                builtBy remapSourcesJar
-            }
-        }
-    }
 
-    repositories {
-        if (isCI && isRELEASE) {
-            maven {
-                name = "GitHubPackages"
-                url = "https://maven.pkg.github.com/GregTech-Intergalactical/GregTech"
-                credentials {
-                    username = System.getenv("GITHUB_ACTOR")
-                    password = System.getenv("GITHUB_TOKEN")
-                }
-            }
-        } else {
-            maven { url "file:///${project.projectDir}/mcmodsrepo"}
-        }
+
+processResources {
+    exclude('gtuassets1.14')
+    exclude('assets/gt4r/textures/old_textures')
+
+    inputs.property "version", project.version
+
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
     }
 }
-
-
-//jar.finalizedBy('reobfJar')
-/*configurations.compile {
-    exclude group: 'it.unimi.dsi', module: 'fastutil'
-}*/
-
-/*shadowJar {
-    configurations = [project.configurations.shadowCommon]
-    classifier ''
-}*/
-
-//jar.classifier = 'nodep'

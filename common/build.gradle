@@ -1,38 +1,30 @@
 archivesBaseName = rootProject.antimatter_archive_base_name
-version = "${rootProject.minecraft_version}-${rootProject.antimatter_mod_version}"
+version = "${rootProject.minecraft_version}-${project.mod_version}"
+
+loom {
+    accessWidenerPath = file("../AntimatterAPI/common/src/main/resources/antimatter.accesswidener")
+}
+
 
 dependencies{
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    compileOnly("com.blamejared.crafttweaker:CraftTweaker-common-1.18.2:${rootProject.crafttweaker_version}")
+    modCompileOnly("dev.latvian.mods:kubejs-fabric:${rootProject.kubejs_version}")
+    implementation(project(path: ":tesseract-common", configuration: "namedElements"))
+    implementation(project(path: ":antimatter-common", configuration: "namedElements"))
+    modImplementation("com.github.FeltMC.Fabricated-Forge-API:fabricated-forge-caps:${rootProject.fabricated_forge_hash}")
+    modImplementation("com.github.FeltMC.Fabricated-Forge-API:fabricated-forge-recipe-api:${rootProject.fabricated_forge_hash}")
+    modImplementation("com.github.FeltMC.Fabricated-Forge-API:fabricated-forge-modeldata:${rootProject.fabricated_forge_hash}")
+    modImplementation("com.github.FeltMC.Fabricated-Forge-API:fabricated-forge-datagen:${rootProject.fabricated_forge_hash}")
+    compileOnly("com.electronwill.night-config:toml:${rootProject.nightconfig_version}")
+    compileOnly("com.electronwill.night-config:core:${rootProject.nightconfig_version}")
+    modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:${rootProject.rei_version}"
+    modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}")
+    implementation("com.github.FeltMC:forgeconfigapiport-fabric:c1486f80f7"){
+        transitive = false
+    }
 }
 
 architectury {
-    common()
+    common("forge", "fabric")
 }
-
-/*
-publishing {
-    tasks.publish.dependsOn "build", "reobfJar"
-    publications {
-        mavenJava(org.gradle.api.publish.maven.MavenPublication) {
-            //artifactId = archivesBaseName
-            artifact shadowJar
-        }
-    }
-    repositories {
-        if (rootProject.isCI && rootProject.isRELEASE) {
-            maven {
-                name = "GitHubPackages"
-                url = "https://maven.pkg.github.com/GregTech-Intergalactical/TesseractAPI"
-                credentials {
-                    username = System.getenv("GITHUB_ACTOR")
-                    password = System.getenv("GITHUB_TOKEN")
-                }
-            }
-        } else {
-            maven { url "file:///${project.projectDir}/mcmodsrepo"}
-        }
-    }
-    //repositories {
-    //    rootProject.configurePublishingRepositories(delegate)
-    //}
-}*/

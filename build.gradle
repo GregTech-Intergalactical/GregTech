@@ -14,23 +14,6 @@ println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getPro
 
 def isCI = System.getenv("GITHUB_ACTION")
 def isRELEASE = System.getenv("GITHUB_RELEASE")
-boolean hasTesseract = new File("AntimatterAPI/TesseractAPI").exists()
-
-if (hasTesseract) {
-    println('TesseractAPI in local workspace')
-}
-
-boolean hasAntimatter = new File("AntimatterAPI").exists()
-
-if (hasTesseract) {
-    println('AntimatterAPI in local workspace')
-}
-
-static def gitHash() {
-    String hash = System.getenv("GITHUB_SHA")
-    if (hash != null) return hash.substring(0,8)
-    return ""
-}
 
 subprojects {
     apply plugin: "dev.architectury.loom"
@@ -71,19 +54,24 @@ allprojects {
             name = 'parchment'
             url = 'https://maven.parchmentmc.org'
         }
-        //JEI
         maven { url 'https://dvs1.progwml6.com/files/maven' }
+        //Needed for intellij
+        maven {
+            name = 'sponge'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
+        }
         maven {
             url "https://www.cursemaven.com"
             content {
                 includeGroup "curse.maven"
             }
         }
-        maven { url = "https://mvn.devos.one/snapshots/" }
-        //Needed for intellij
+        maven { url "https://maven.shedaniel.me" }
         maven {
-            name = 'sponge'
-            url = 'https://repo.spongepowered.org/repository/maven-public/'
+            url "https://maven.terraformersmc.com"
+            content {
+                includeGroup "com.terraformersmc"
+            }
         }
         maven {
             // Shedaniel's maven (Architectury API)
@@ -96,6 +84,7 @@ allprojects {
             url = 'https://maven.blamejared.com'
             name = 'BlameJared Maven'
         }
+        maven { url = "https://mvn.devos.one/snapshots/" }
         maven {
             // saps.dev Maven (KubeJS and Rhino)
             url = "https://maven.saps.dev/minecraft"
@@ -103,7 +92,7 @@ allprojects {
                 includeGroup "dev.latvian.mods"
             }
         }
-        //GT.
+        //GT and Felt.
         maven { url 'https://jitpack.io' }
     }
 
