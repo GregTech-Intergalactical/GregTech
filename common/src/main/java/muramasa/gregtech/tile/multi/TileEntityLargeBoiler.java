@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLargeBoiler> {
 
-    public TileEntityLargeBoiler(Machine type, BlockPos pos, BlockState state) {
+    public TileEntityLargeBoiler(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 }

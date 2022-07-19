@@ -7,6 +7,7 @@ import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.TileEntityMachine;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.tags.TagKey;
@@ -15,7 +16,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +24,7 @@ import static muramasa.antimatter.machine.Tier.BRONZE;
 
 public class TileEntitySteamMachine<T extends TileEntitySteamMachine<T>> extends TileEntityMachine<T> {
 
-    public static final TagKey<Fluid> STEAM =  TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation("forge", "steam"));
+    public static final TagKey<Fluid> STEAM =  TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation((AntimatterPlatformUtils.isForge() ? "forge" : "c"), "steam"));
 
     public TileEntitySteamMachine(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -62,7 +62,7 @@ public class TileEntitySteamMachine<T extends TileEntitySteamMachine<T>> extends
 
             @Override
             public boolean accepts(FluidStack stack) {
-                return stack.getFluid().builtInRegistryHolder().is(STEAM);
+                return stack.getFluid().is(STEAM);
             }
         });
     }

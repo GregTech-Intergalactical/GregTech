@@ -28,17 +28,17 @@ public class PulverizerLoader {
             Material aOreByProduct1 = m.getByProducts().size() >= 1 ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
             Material aOreByProduct2 = m.getByProducts().size() >= 2 ? m.getByProducts().get(1) : aOreByProduct1;
 
-            PULVERIZING.RB().ii(ore).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m) * multiplier) * 2, crushedStack), m.getByProducts().size() > 0 ? DUST.get(m.getByProducts().get(0), 1) : dustStack, stoneDust).chances(100, 10 * multiplier * MaterialTags.BY_PRODUCT_MULTI.getInt(m), 50).add(400, 2);
-            PULVERIZING.RB().ii(crushed).io(DUST_IMPURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), DUST.get(aOreByProduct1, 1)).chances(100, 10).add(400, 2);
+            PULVERIZING.RB().ii(ore).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m) * multiplier) * 2, crushedStack), m.getByProducts().size() > 0 ? DUST.get(m.getByProducts().get(0), 1) : dustStack, stoneDust).chances(1.0, 0.1 * multiplier * MaterialTags.BY_PRODUCT_MULTI.getInt(m), 50).add(400, 2);
+            PULVERIZING.RB().ii(crushed).io(DUST_IMPURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1).add(400, 2);
 
             if (m.has(CRUSHED_CENTRIFUGED)) {
-                PULVERIZING.RB().ii(RecipeIngredient.of(CRUSHED_CENTRIFUGED.get(m,1))).io(DUST.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), DUST.get(aOreByProduct2, 1)).chances(100, 10).add(400, 2);
+                PULVERIZING.RB().ii(RecipeIngredient.of(CRUSHED_CENTRIFUGED.get(m,1))).io(DUST.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), DUST.get(aOreByProduct2, 1)).chances(1.0, 0.1).add(400, 2);
             }
             if (m.has(CRUSHED_PURIFIED) && m.has(DUST_PURE)) {
-                PULVERIZING.RB().ii(CRUSHED_PURIFIED.getIngredient(m, 1)).io(DUST_PURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), DUST.get(aOreByProduct1, 1)).chances(100, 10).add(400, 2);
+                PULVERIZING.RB().ii(CRUSHED_PURIFIED.getIngredient(m, 1)).io(DUST_PURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1).add(400, 2);
             }
             if (m.has(RAW_ORE)){
-                PULVERIZING.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m) * multiplier) * 2, crushedStack), DUST.get(aOreByProduct1, 1)).chances(100, 10 * multiplier * MaterialTags.BY_PRODUCT_MULTI.getInt(m)).add(400, 2);
+                PULVERIZING.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m) * multiplier) * 2, crushedStack), DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1 * multiplier * MaterialTags.BY_PRODUCT_MULTI.getInt(m)).add(400, 2);
             }
         });
         GEM_BRITTLE.all().forEach(m -> {

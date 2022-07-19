@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityFusionReactor extends TileEntityMultiMachine<TileEntityFusionReactor> {
 
-    public TileEntityFusionReactor(Machine type, BlockPos pos, BlockState state) {
+    public TileEntityFusionReactor(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 

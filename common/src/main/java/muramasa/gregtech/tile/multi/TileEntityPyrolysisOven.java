@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityPyrolysisOven extends TileEntityMultiMachine<TileEntityPyrolysisOven> {
 
-    public TileEntityPyrolysisOven(Machine type, BlockPos pos, BlockState state) {
+    public TileEntityPyrolysisOven(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 }

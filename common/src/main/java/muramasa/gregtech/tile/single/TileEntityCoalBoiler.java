@@ -27,6 +27,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import tesseract.Tesseract;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -150,7 +151,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
                 tile.fluidHandler.ifPresent(f -> {
                     FluidStack[] inputs = f.getInputs();
                     if (this.heat > 100) {
-                        if (inputs[0].getAmount() == 0) {
+                        if (inputs[0].getRealAmount() == 0) {
                             hadNoWater = true;
                         } else {
                             if (hadNoWater) {
@@ -159,12 +160,12 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
                                 return;
                             }
                             f.drainInput(new FluidStack(Fluids.WATER, 1), IFluidHandler.FluidAction.EXECUTE);
-                            int room = 16000 - f.getOutputs()[0].getAmount();
-                            int fill = Math.min(room, 150);
+                            long room = (16000 * Tesseract.dropletMultiplier) - f.getOutputs()[0].getRealAmount();
+                            long fill = Math.min(room, (150 * Tesseract.dropletMultiplier));
                             if (room > 0){
                                 f.fillOutput(Steam.getGas(fill), IFluidHandler.FluidAction.EXECUTE);
                             }
-                            if (fill < 150) {
+                            if (fill < (150 * Tesseract.dropletMultiplier)) {
                                 //TODO:steam sounds
                                 tile.getLevel().playSound(null, tile.getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
                                 if (tile.getLevel() instanceof ServerLevel)
@@ -286,7 +287,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
         }
 
         @Override
-        public void fillCell(int cellSlot, int maxFill) {
+        public void fillCell(int cellSlot, long maxFill) {
             if (fillingCell) return;
             fillingCell = true;
             if (getInputTanks() != null) {

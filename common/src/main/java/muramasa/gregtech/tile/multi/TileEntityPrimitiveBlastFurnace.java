@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine<TileEntityPrimitiveBlastFurnace> {
 
-    public TileEntityPrimitiveBlastFurnace(Machine type, BlockPos pos, BlockState state) {
+    public TileEntityPrimitiveBlastFurnace(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         recipeHandler.set(() -> new CookingRecipeHandler<>(this));
     }

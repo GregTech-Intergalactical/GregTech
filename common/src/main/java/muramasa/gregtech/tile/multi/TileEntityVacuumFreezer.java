@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityVacuumFreezer extends TileEntityMultiMachine<TileEntityVacuumFreezer> {
 
-    public TileEntityVacuumFreezer(Machine type, BlockPos pos, BlockState state) {
+    public TileEntityVacuumFreezer(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 

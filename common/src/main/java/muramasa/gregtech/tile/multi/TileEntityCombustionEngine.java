@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityCombustionEngine extends TileEntityMultiMachine<TileEntityCombustionEngine> {
 
-    public TileEntityCombustionEngine(Machine type, BlockPos pos, BlockState state) {
+    public TileEntityCombustionEngine(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 }

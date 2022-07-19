@@ -4,11 +4,16 @@ import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTypeItem;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.TagUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.List;
 import java.util.Set;
 
 public class TileEntityTypeFilter extends TileEntityItemFilter {
@@ -18,19 +23,17 @@ public class TileEntityTypeFilter extends TileEntityItemFilter {
 
     @Override
     public boolean accepts(ItemStack stack) {
-        boolean proceed = itemHandler.map(i -> {
+        return itemHandler.map(i -> {
             ItemStack tagStack = i.getHandler(SlotType.DISPLAY_SETTABLE).getStackInSlot(0);
             if (tagStack.isEmpty()) return false;
-            boolean hasTag = tagStack.getItem().builtInRegistryHolder().tags().filter(tag -> {
-                ResourceLocation loc = tag.location();
-                if ((loc.getNamespace().equals("forge") || loc.getNamespace().equals("minecraft")) && !loc.getPath().contains("/")){
-                    return true;
-                }
-                return false;
-            }).count() > 0;
-                
+            List<TagKey<Item>> tags = tagStack.getItem().builtInRegistryHolder().tags().toList();
+            String forge = AntimatterPlatformUtils.isForge() ? "forge" : "c";
+            String compare = tags.stream().filter(t -> t.location().toString().contains("/") && t.location().getNamespace().equals(forge)).findFirst().map(t -> t.location().toString()).orElse("");
+            if (compare.isEmpty()) return false;
+            compare = compare.substring(0, compare.lastIndexOf("/"));
+
+            boolean hasTag = tags.contains(TagUtils.getItemTag(new ResourceLocation(compare)));
             return blacklist != hasTag;
         }).orElse(false);
-        return proceed;
     }
 }

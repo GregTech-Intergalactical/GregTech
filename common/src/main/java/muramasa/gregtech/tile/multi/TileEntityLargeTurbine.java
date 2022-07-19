@@ -17,7 +17,6 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import java.util.Collections;
 import java.util.List;
@@ -30,14 +29,14 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
     /**
      * SYNC-DATA
      */
-    protected int lastConsume = 0;
-    protected int recipeConsumption = 0;
+    protected long lastConsume = 0;
+    protected long recipeConsumption = 0;
     protected long lastEU = 0;
 
-    public TileEntityLargeTurbine(Machine type, BlockPos pos, BlockState state) {
+    public TileEntityLargeTurbine(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         recipeHandler.set(() ->
-                new MachineRecipeHandler<TileEntityLargeTurbine>(this) {
+                new MachineRecipeHandler<>(this) {
 
                     private Recipe sourceRecipe;
                     private double efficiency;
@@ -62,9 +61,9 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
                         efficiency = 1.15;//turbine.efficency;
                         long toConsume = calculateGeneratorConsumption(flow, sourceRecipe);
                         TileEntityLargeTurbine.this.recipeConsumption = (int) toConsume;
-                        return Utils.getFluidPoweredRecipe(Collections.singletonList(stacks.get(0).copy((int)toConsume)),
+                        return Utils.getFluidPoweredRecipe(Collections.singletonList(stacks.get(0).copy((int) toConsume)),
                                 new FluidStack[]{new FluidStack(DistilledWater.getLiquid(), stacks.get(0).getAmount())},// Arrays.stream(sourceRecipe.getOutputFluids()).map(tt -> new FluidStack(tt.getFluid(), (int) (tt.getAmount()*toConsume))).toArray(FluidStack[]::new),
-                                1, flow,1);
+                                1, flow, 1);
                     }
 
                     @Override
@@ -74,15 +73,15 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
                         }
                         //boolean shouldRun = tile.energyHandler.map(h -> h.insert((long)(tile.getMachineType().getMachineEfficiency()*(double)tile.getMachineTier().getVoltage()),true) > 0).orElse(false);
                         ///if (!shouldRun) return false;
-                        int recipeAmount = activeRecipe.getInputFluids().get(0).getAmount();
+                        long recipeAmount = activeRecipe.getInputFluids().get(0).getAmount();
                         long toConsume = recipeAmount; // calculateGeneratorConsumption(tile.getMachineTier().getVoltage(), activeRecipe);// (long) ((double)tile.getMachineTier().getVoltage() / (activeRecipe.getPower() /(double) Objects.requireNonNull(activeRecipe.getInputFluids())[0].getAmount()));
-                        int consumed = tile.fluidHandler.map(h -> {
+                        long consumed = tile.fluidHandler.map(h -> {
                         /*
                             How much wiggle room? So, at optimal flow : generate regular. Otherwise, dampen by a factor of 1/(optimal-current) or 1/(current-optimal). Allow
                             consuming up to 1.5x optimal
                          */
                             FluidIngredient input = activeRecipe.getInputFluids().get(0);
-                            int amount = input.drainedAmount((int) (toConsume*1.5), h, true, true);
+                            long amount = input.drainedAmount((long) (toConsume * 1.5), h, true, true);
 
                             if (amount > 0) {
                                 if (!simulate) {
@@ -91,16 +90,16 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
                                 }
                                 return amount;
                             }
-                            return 0;
-                        }).orElse(0);
-                        if (consumed > 0){
-                            if (consumed < recipeAmount) consumed *= Math.pow(1d/(recipeAmount-consumed),0.04);
-                            if (consumed > recipeAmount) consumed *= Math.pow(1d/(consumed-recipeAmount),0.04);
+                            return 0L;
+                        }).orElse(0L);
+                        if (consumed > 0) {
+                            if (consumed < recipeAmount) consumed *= Math.pow(1d / (recipeAmount - consumed), 0.04);
+                            if (consumed > recipeAmount) consumed *= Math.pow(1d / (consumed - recipeAmount), 0.04);
                             //Input energy
-                            int finalConsumed = consumed;
+                            long finalConsumed = consumed;
                             //Ignore the actual inserted amount a la multiblock.
                             if (!simulate) tile.energyHandler.ifPresent(handler -> {
-                                long eu = (long) (efficiency*activeRecipe.getPower()*finalConsumed/ recipeAmount);
+                                long eu = (long) (efficiency * activeRecipe.getPower() * finalConsumed / recipeAmount);
                                 Utils.addEnergy(handler, eu);
                                 TileEntityLargeTurbine.this.lastEU = eu;
                             });
@@ -108,7 +107,7 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
                         }
                         return false;
                     }
-            });
+                });
     }
 
     @Override
@@ -127,9 +126,9 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
 
     public static class LargeTurbineWidget extends InfoRenderWidget.MultiRenderWidget {
 
-        public int currentConsumption = 0;
+        public long currentConsumption = 0;
         public long lastEU = 0;
-        public int recommendedConsumption = 0;
+        public long recommendedConsumption = 0;
 
         protected LargeTurbineWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
             super(gui, parent, renderer);
@@ -139,8 +138,8 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
         public void init() {
             super.init();
             TileEntityLargeTurbine turbine = (TileEntityLargeTurbine) gui.handler;
-            gui.syncInt(() -> turbine.lastConsume, i -> this.currentConsumption = i, SERVER_TO_CLIENT);
-            gui.syncInt(() -> turbine.recipeConsumption, i -> this.recommendedConsumption = i, SERVER_TO_CLIENT);
+            gui.syncLong(() -> turbine.lastConsume, i -> this.currentConsumption = i, SERVER_TO_CLIENT);
+            gui.syncLong(() -> turbine.recipeConsumption, i -> this.recommendedConsumption = i, SERVER_TO_CLIENT);
             gui.syncLong(() -> turbine.lastEU, i -> this.lastEU = i, SERVER_TO_CLIENT);
         }
 

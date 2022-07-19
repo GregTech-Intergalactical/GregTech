@@ -1,8 +1,6 @@
 package muramasa.gregtech.tile.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import muramasa.antimatter.capability.IComponentHandler;
-import muramasa.antimatter.capability.IHeatHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
@@ -14,6 +12,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.util.LazyOptional;
+import tesseract.api.heat.IHeatHandler;
 
 import java.util.Collections;
 import java.util.List;

@@ -12,7 +12,7 @@ public class TileEntityMultiSmelter extends TileEntityMultiMachine<TileEntityMul
 
     private int level = 1, discount = 1;
 
-    public TileEntityMultiSmelter(Machine type, BlockPos pos, BlockState state) {
+    public TileEntityMultiSmelter(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 

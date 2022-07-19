@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityCharcoalPit extends TileEntityMultiMachine<TileEntityCharcoalPit> {
 
-    public TileEntityCharcoalPit(Machine type, BlockPos pos, BlockState state) {
+    public TileEntityCharcoalPit(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 }

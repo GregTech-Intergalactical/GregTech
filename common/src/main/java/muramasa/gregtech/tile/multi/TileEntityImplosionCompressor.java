@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityImplosionCompressor extends TileEntityMultiMachine<TileEntityImplosionCompressor> {
 
-    public TileEntityImplosionCompressor(Machine type, BlockPos pos, BlockState state) {
+    public TileEntityImplosionCompressor(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 

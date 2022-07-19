@@ -14,7 +14,7 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileE
 
     private int heatingCapacity;
 
-    public TileEntityElectricBlastFurnace(Machine type, BlockPos pos, BlockState state) {
+    public TileEntityElectricBlastFurnace(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         recipeHandler.set(() -> new MachineRecipeHandler<>(this) {
 
