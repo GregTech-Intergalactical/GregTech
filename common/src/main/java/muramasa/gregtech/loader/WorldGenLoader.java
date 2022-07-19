@@ -1,7 +1,7 @@
 package muramasa.gregtech.loader;
 
 import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.event.AntimatterWorldGenEvent;
+import muramasa.antimatter.event.WorldGenEvent;
 import muramasa.antimatter.worldgen.vein.WorldGenVein;
 import muramasa.antimatter.worldgen.vein.WorldGenVeinBuilder;
 import net.minecraft.world.level.Level;
@@ -13,7 +13,7 @@ import static net.minecraft.world.level.Level.*;
 
 public class WorldGenLoader {
 
-  public static void init(AntimatterWorldGenEvent ev) {
+  public static void init(WorldGenEvent ev) {
       if (AntimatterConfig.WORLD.STONE_LAYERS) {
           initStoneVeins(ev);
       }
@@ -25,7 +25,7 @@ public class WorldGenLoader {
       }
   }
 
-  private static void initStoneVeins(AntimatterWorldGenEvent ev) {
+  private static void initStoneVeins(WorldGenEvent ev) {
     WorldGenVein.setLayerChance(WorldGenVein.STONE_VEIN_LAYER, 0.25f);
 
     ev.vein(new WorldGenVeinBuilder("vein_gravel")
@@ -140,7 +140,7 @@ public class WorldGenLoader {
 
   }
 
-  private static void initStoneOreVeins(AntimatterWorldGenEvent ev) {
+  private static void initStoneOreVeins(WorldGenEvent ev) {
     WorldGenVein.setLayerChance(WorldGenVein.STONE_ORE_VEIN_LAYER, 0.05f);
 
       ev.vein( new WorldGenVeinBuilder("vein_coal")
@@ -168,7 +168,7 @@ public class WorldGenLoader {
         .buildVein());
   }
 
-  private static void initOreVeins(AntimatterWorldGenEvent ev) {
+  private static void initOreVeins(WorldGenEvent ev) {
     WorldGenVein.setLayerChance(WorldGenVein.ORE_VEIN_LAYER, 0.1f);
     // TODO: move veins from initOld here
       ev.vein(new WorldGenVeinBuilder("naquadah").asOreVein(-54, 21, 10, 5, 32, Naquadah, Naquadah, Naquadah, EnrichedNaquadah,

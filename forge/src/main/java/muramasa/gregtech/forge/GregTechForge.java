@@ -3,6 +3,7 @@ package muramasa.gregtech.forge;
 import muramasa.antimatter.event.forge.AntimatterCraftingEvent;
 import muramasa.antimatter.event.forge.AntimatterLoaderEvent;
 import muramasa.antimatter.event.forge.AntimatterProvidersEvent;
+import muramasa.antimatter.event.forge.AntimatterWorldGenEvent;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.Ref;
 import muramasa.gregtech.events.forge.RemappingEvents;
@@ -24,7 +25,7 @@ public class GregTechForge {
         MinecraftForge.EVENT_BUS.addListener(GregTechForge::registerRecipeLoaders);
         MinecraftForge.EVENT_BUS.addListener(GregTechForge::registerCraftingLoaders);
         MinecraftForge.EVENT_BUS.addListener(GregTechForge::onProviders);
-        MinecraftForge.EVENT_BUS.addListener(WorldGenLoader::init);
+        MinecraftForge.EVENT_BUS.addListener(GregTechForge::onWorldGen);
     }
 
     private static void onProviders(AntimatterProvidersEvent ev) {
@@ -37,6 +38,10 @@ public class GregTechForge {
 
     private static void registerRecipeLoaders(AntimatterLoaderEvent event) {
         GregTech.registerRecipeLoaders(event.sender, event.registrat);
+    }
+
+    private static void onWorldGen(AntimatterWorldGenEvent event){
+        WorldGenLoader.init(event.getEvent());
     }
 
     private void clientSetup(final FMLClientSetupEvent e) {
