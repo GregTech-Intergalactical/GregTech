@@ -22,6 +22,6 @@ public class Fuels {
                 }
             }
         });
-        STEAM_FUELS.RB().fi(FluidIngredient.of(Steam, 2)).add(1,1);
+        STEAM_FUELS.RB().fi(FluidIngredient.ofMB(Steam, 2)).add(1,1);
     }
 }
