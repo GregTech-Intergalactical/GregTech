@@ -103,7 +103,7 @@ public class Materials {
     // we're
     // thinking
     // about
-    // fusio;
+    // fusion;
     public static Material Antimony = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "antimony", 0xdcdcf0, SHINY, Sb)).asMetal(1449, 0);
     public static Material Argon = AntimatterAPI
@@ -532,8 +532,6 @@ public class Materials {
             .mats(of(Indium, 1, Gallium, 1, Phosphor, 1));
     public static Material PlatinumGroupSludge = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "platinum_group_sludge", 0x001e00, NONE)).asDust();
-    public static Material Glowstone = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "glowstone", 0xffff00, SHINY)).asDust();
     public static Material Graphene = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "graphene", 0x808080, DULL)).asDust(PLATE);
     public static Material Oilsands = AntimatterAPI
@@ -711,12 +709,6 @@ public class Materials {
     // new Material(Ref.ID, "sealed_wood", 0x502800, NONE)).asDust().addTools(3.0F,
     // 24, 0).addComposition(of(Wood, 1; TODO: Perhaps with IE integration or when
     // we have some utility stuf;
-    public static Material Blaze = AntimatterAPI.register(Material.class, new Material(Ref.ID, "blaze", 0xffc800, NONE))
-            .asDust().addHandleStat(-10, -0.5F, of(Enchantments.FIRE_ASPECT, 1))
-            .mats(of(Sulfur, 1, DarkAsh, 1/* , Magic, 1 */));
-    public static Material Flint = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "flint", 0x002040, TextureSet.FLINT)).asDust(ROCK)
-            .addTools(0.0F, 2.0F, 48, 1, of(Enchantments.FIRE_ASPECT, 1)).mats(of(SiliconDioxide, 1));
     public static Material PotassiumFeldspar = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "potassium_feldspar", 0x782828, FINE)).asDust()
             .mats(of(Potassium, 1, Aluminium, 1, Silicon, 3, Oxygen, 8));
@@ -749,7 +741,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "bentonite", 0xf5d7d2, ROUGH)).asOre(true).mats(b -> b
                     .put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)); // TODO:
     // Ore
-    // Ge;
+    // Gen;
     public static Material Pitchblende = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "pitchblende", 0xc8d200, DULL)).asOre(true)
             .mats(of(Uraninite, 3, Thorium, 1, Lead, 1));
@@ -1105,191 +1097,7 @@ public class Materials {
             new Material(Ref.ID, "plasma_containment", 0xffff00, NONE));
 
     static {
-        CHEMBATH_MERCURY.add(Chalcopyrite,Gold);
-        CHEMBATH_MERCURY.add(Gold,Nickel);
-        CHEMBATH_MERCURY.add(Silver,Sulfur);
-        //CHEMBATH_MERCURY.add(Osmium,Iridium);
-        CHEMBATH_MERCURY.add(Platinum,Iridium);
-        CHEMBATH_PERSULFATE.add(Nickel,Iron);
-        CHEMBATH_PERSULFATE.add(Cobalt,Cobaltite);
-        CHEMBATH_PERSULFATE.add(Cobaltite,Cobalt);
-        CHEMBATH_PERSULFATE.add(Sphalerite,Zinc);
-        CHEMBATH_PERSULFATE.add(Tetrahedrite,Zinc);
-        CHEMBATH_PERSULFATE.add(Zinc,Gallium);
-        CHEMBATH_PERSULFATE.add(Copper,Nickel);
-        MaterialTags.ELECSEPI.add(Bastnasite/* , Monazite */);
-        MaterialTags.ELECSEPG.add(Magnetite, VanadiumMagnetite);
-        MaterialTags.ELECSEPN.add(YellowLimonite, BrownLimonite, Pyrite, BandedIron, Nickel, Glauconite, Pentlandite, Tin, Antimony,
-                Ilmenite, Manganese, Chrome, Andradite);
-        MaterialTags.ELEC.add(Methane, CarbonDioxide, NitrogenDioxide, Toluene, VinylChloride, SulfurDioxide, SulfurTrioxide,
-                Dimethylamine, DinitrogenTetroxide, NitricOxide, Ammonia, Chloromethane, Tetrafluoroethylene,
-                CarbonMonoxide, Ethylene, Propane, Ethenone, Ethanol, Glyceryl, SodiumPersulfate, Dichlorobenzene,
-                Styrene, Isoprene, Tetranitromethane, Epichlorohydrin, NitricAcid, Dimethylhydrazine, Chloramine,
-                Dimethyldichlorosilane, HydrofluoricAcid, Chloroform, BisphenolA, AceticAcid, Acetone, Methanol,
-                VinylAcetate, MethylAcetate, AllylChloride, HypochlorousAcid, Cumene, PhosphoricAcid, SulfuricAcid,
-                Benzene, Phenol, Glycerol, SodiumSulfide, Almandine, Andradite, BandedIron, Calcite, Cassiterite,
-                Chalcopyrite, Cobaltite, Galena, Garnierite, Grossular, Bauxite, Magnesite, Magnetite, Molybdenite,
-                Obsidian, Phosphate, Polydimethylsiloxane, Pyrite, Pyrolusite, Pyrope, RockSalt, Saltpeter,
-                SiliconDioxide, Massicot, ArsenicTrioxide, CobaltOxide, Magnesia, Quicklime, Potash, SodaAsh,
-                PhosphorousPentoxide, SodiumHydroxide, Spessartine, Sphalerite, Uvarovite, PotassiumFeldspar, Biotite,
-                RedGranite, Bastnasite, Pentlandite, Spodumene, Glauconite, Bentonite, Malachite, Barite, Talc,
-                AntimonyTrioxide, CupricOxide, Ferrosilite, Quartzite, Charcoal, Coal, Lignite, Diamond, Emerald, Ruby,
-                BlueSapphire, Tanzanite, Topaz, Olivine, Opal, Amethyst, EnderPearl, StainlessSteel, Steel, Ultimet,
-                IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium, Sodalite);
-        MaterialTags.CENT.add(/* NobleGases, */Air, BrownLimonite, Cinnabar, Clay, Cooperite/* , Powellite */, Stibnite,
-                Tetrahedrite, Uraninite, Wulfenite, YellowLimonite, Blaze, Flint, Marble, BlackGranite,
-                VanadiumMagnetite, Pitchblende, Glass, Lapis, EnderEye, Phosphorus, Redstone, Basalt, AnnealedCopper,
-                BatteryAlloy, Brass, Bronze, Cupronickel, Electrum, Invar, Kanthal, Magnalium, Nichrome,
-                NiobiumTitanium, SolderingAlloy, VanadiumGallium, WroughtIron, SterlingSilver, RoseGold, BismuthBronze,
-                TungstenSteel, RedAlloy, CobaltBrass, TungstenCarbide, VanadiumSteel, HSSG, HSSE, HSSS,
-                GalliumArsenide/* , IndiumGalliumPhosphide, BorosilicateGlass */);
-        MaterialTags.CRACK.add(RefineryGas, Naphtha, Ethane, Propane, Butane, Butene, Ethylene, Propene, LightDiesel, HeavyDiesel);
-        MaterialTags.CALCITE2X.add(Pyrite, BrownLimonite, YellowLimonite, Magnetite);
-        MaterialTags.CALCITE3X.add(Iron, WroughtIron);
-        MaterialTags.WASHM.add(Gold, Silver, Osmium, Platinum, Cooperite, Galena, Nickel, Tungstate, Lead, Magnetite, Iridium,
-                Copper, Chalcopyrite);
-        MaterialTags.WASHS.add(Zinc, Nickel, Copper, Cobaltite, Tetrahedrite, Gold, Sphalerite, Garnierite, Chalcopyrite, Cooperite,
-                Platinum, Pentlandite, Tin, Malachite, YellowLimonite);
-        MaterialTags.NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Glyceryl,
-                NitroFuel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ BlueSapphire, Ruby, Opal, Olivine,
-                Lapis/* , Sodalite, Lazurite, Monazite */, Quartzite, Quartz, Phosphorus, Phosphate, NetherStar,
-                EnderPearl, EnderEye, Blaze);
-        MaterialTags.NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Rubber,
-                StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone, Glyceryl, NitroFuel,
-                Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
-                RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
-                /* Amber, */ BlueSapphire, Ruby, Opal, Olivine, Lapis, Quartzite, Quartz, Phosphorus, Phosphate,
-                NetherStar, EnderPearl, EnderEye);
-        MaterialTags.GRINDABLE.add(/* Paper, */Coal, Charcoal, Lignite, Lead, Tin, SolderingAlloy, Flint, Gold, Silver, Iron,
-                IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar,
-                Brass, WroughtIron, Electrum, Clay, Blaze);
-        MaterialTags.SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);
 
-        MaterialTags.NOBBF.add(Tetrahedrite, Chalcopyrite, Cooperite, Pyrolusite, Magnesite, Molybdenite, Galena);
-        MaterialTags.CRYSTALLIZE.add(Lapis, Quartzite, Quartz);
-        MaterialTags.BRITTLEG.add(Coal, Charcoal, Lignite);
-        MaterialTags.RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone);
-
-        MaterialTags.SOLDER.subTag(SubTag.BAD_SOLDER, Lead, Tin);
-        MaterialTags.SOLDER.subTag(SubTag.GOOD_SOLDER, SolderingAlloy, Tin);
-        MaterialTags.SOLDER.add(Lead, Tin, SolderingAlloy);
-        MaterialTags.WIRE.subTag(SubTag.COPPER_WIRE, AnnealedCopper);
-        MaterialTags.WIRE.subTag(SubTag.COPPER_WIRE, Copper);
-
-        Data.Redstone.mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).asFluid(0, MaterialTags.MELTING_POINT.getInt(Redstone));//.setOreMulti(4);
-        Data.Prismarine.mats(of(Potassium, 2, Oxygen, 8, Manganese, 1, Silicon, 5));
-        Data.Basalt.mats(of(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4));
-        Data.Lapis.mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));//.setOreMulti(6);
-        Data.EnderEye.asGemBasic(true, ROD, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
-        Data.EnderPearl.mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5, Chlorine, 6));
-        Data.Diamond.asGem(true).mats(of(Carbon, 64));
-        Data.Emerald.asGem(true).mats(of(Beryllium, 3, Aluminium, 2, Silicon, 3, Oxygen, 18));//.addTools(3.0F, 9.0F, 590, 3);
-        Data.Coal.flags(ORE_STONE).mats(of(Carbon, 2));
-        Data.Iron.flags(RING, GEAR, FRAME);
-        Data.Gold.flags(FOIL, ROD, WIRE_FINE, GEAR);
-        Data.Copper.flags(PLATE, ROD, FOIL, WIRE_FINE, GEAR, BOLT);
-        Quartz.asOre();
-        Data.Water.mats(of(Hydrogen, 2, Oxygen, 1));
-
-        BlueTopaz.remove(ORE);
-
-        NeodymiumMagnetic.setSmeltInto(Neodymium).setMacerateInto(Neodymium).setArcSmeltInto(Neodymium);
-        SteelMagnetic.setSmeltInto(Steel).setMacerateInto(Steel).setArcSmeltInto(Steel);
-        Iron.setSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
-        WroughtIron.setSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
-        IronMagnetic.setSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
-        Copper.setSmeltInto(Copper).setMacerateInto(Copper).setArcSmeltInto(AnnealedCopper);
-        AnnealedCopper.setSmeltInto(Copper).setMacerateInto(Copper).setArcSmeltInto(AnnealedCopper);
-
-        Cinnabar.setDirectSmeltInto(Mercury);
-        Tetrahedrite.setDirectSmeltInto(Copper);
-        Chalcopyrite.setDirectSmeltInto(Copper);
-        Malachite.setDirectSmeltInto(Copper);
-        Pentlandite.setDirectSmeltInto(Nickel);
-        Sphalerite.setDirectSmeltInto(Zinc);
-        Pyrite.setDirectSmeltInto(Iron);
-        YellowLimonite.setDirectSmeltInto(Iron);
-        BrownLimonite.setDirectSmeltInto(Iron);
-        BandedIron.setDirectSmeltInto(Iron);
-        Magnetite.setDirectSmeltInto(Iron);
-        Cassiterite.setDirectSmeltInto(Tin);
-        Garnierite.setDirectSmeltInto(Nickel);
-        Cobaltite.setDirectSmeltInto(Cobalt);
-        Stibnite.setDirectSmeltInto(Antimony);
-        Cooperite.setDirectSmeltInto(Platinum);
-        Pyrolusite.setDirectSmeltInto(Manganese);
-        Magnesite.setDirectSmeltInto(Magnesium);
-        Molybdenite.setDirectSmeltInto(Molybdenum);
-        Galena.setDirectSmeltInto(Lead);
-        Salt.setOreMulti(2).setSmeltingMulti(2);
-        RockSalt.setOreMulti(2).setSmeltingMulti(2);
-        Scheelite.setOreMulti(2).setSmeltingMulti(2);
-        Tungstate.setOreMulti(2).setSmeltingMulti(2);
-        Cassiterite.setOreMulti(2).setSmeltingMulti(2);
-        Quartz.setOreMulti(2).setSmeltingMulti(2);
-        Phosphorus.setOreMulti(3).setSmeltingMulti(3);
-        Saltpeter.setOreMulti(4).setSmeltingMulti(4);
-        Redstone.setOreMulti(5).setSmeltingMulti(5);
-        Glowstone.setOreMulti(5).setSmeltingMulti(5);
-        Lapis.setOreMulti(6).setSmeltingMulti(6).setByProductMulti(4);
-        // Plastic.setEnchantmentForTools(Enchantment.knockback, 1);
-        // PolyvinylChloride.setEnchantmentForTools(Enchantment.knockback, 1);
-        // Polystyrene.setEnchantmentForTools(Enchantment.knockback, 1);
-        // Rubber.setEnchantmentForTools(Enchantment.knockback, 2);
-        // StyreneButadieneRubber.setEnchantmentForTools(Enchantment.knockback, 2);
-        // Flint.setEnchantmentForTools(Enchantment.fireAspect, 1);
-        // Blaze.setEnchantmentForTools(Enchantment.fireAspect, 3);
-        // EnderPearl.setEnchantmentForTools(Enchantment.silkTouch, 1);
-        // NetherStar.setEnchantmentForTools(Enchantment.silkTouch, 1);
-        // BlackBronze.setEnchantmentForTools(Enchantment.smite, 2);
-        // Gold.setEnchantmentForTools(Enchantment.smite, 3);
-        // RoseGold.setEnchantmentForTools(Enchantment.smite, 4);
-        // Platinum.setEnchantmentForTools(Enchantment.smite, 5);
-        // Lead.setEnchantmentForTools(Enchantment.baneOfArthropods, 2);
-        // Nickel.setEnchantmentForTools(Enchantment.baneOfArthropods, 2);
-        // Invar.setEnchantmentForTools(Enchantment.baneOfArthropods, 3);
-        // Antimony.setEnchantmentForTools(Enchantment.baneOfArthropods, 3);
-        // BatteryAlloy.setEnchantmentForTools(Enchantment.baneOfArthropods, 4);
-        // Bismuth.setEnchantmentForTools(Enchantment.baneOfArthropods, 4);
-        // BismuthBronze.setEnchantmentForTools(Enchantment.baneOfArthropods, 5);
-        // Iron.setEnchantmentForTools(Enchantment.sharpness, 1);
-        // Bronze.setEnchantmentForTools(Enchantment.sharpness, 1);
-        // Brass.setEnchantmentForTools(Enchantment.sharpness, 2);
-        // Steel.setEnchantmentForTools(Enchantment.sharpness, 2);
-        // WroughtIron.setEnchantmentForTools(Enchantment.sharpness, 2);
-        // StainlessSteel.setEnchantmentForTools(Enchantment.sharpness, 3);
-        // BlackSteel.setEnchantmentForTools(Enchantment.sharpness, 4);
-        // RedSteel.setEnchantmentForTools(Enchantment.sharpness, 4);
-        // BlueSteel.setEnchantmentForTools(Enchantment.sharpness, 5);
-        // DamascusSteel.setEnchantmentForTools(Enchantment.sharpness, 5);
-        // TungstenCarbide.setEnchantmentForTools(Enchantment.sharpness, 5);
-        // HSSE.setEnchantmentForTools(Enchantment.sharpness, 5);
-        // HSSG.setEnchantmentForTools(Enchantment.sharpness, 4);
-        // HSSS.setEnchantmentForTools(Enchantment.sharpness, 5);
-        // Lava.setTemperatureDamage(3.0F);
-
-
-        // Glue.mChemicalFormula = "No Horses were harmed for the Production";
-        // UUAmplifier.mChemicalFormula = "Accelerates the Mass Fabricator";
-        // WoodSealed.mChemicalFormula = "";
-        // Wood.mChemicalFormula = "";
-
-        // Naquadah.mMoltenRGBa[0] = 0;
-        // Naquadah.mMoltenRGBa[1] = 255;
-        // Naquadah.mMoltenRGBa[2] = 0;
-        // Naquadah.mMoltenRGBa[3] = 0;
-        // NaquadahEnriched.mMoltenRGBa[0] = 64;
-        // NaquadahEnriched.mMoltenRGBa[1] = 255;
-        // NaquadahEnriched.mMoltenRGBa[2] = 64;
-        // NaquadahEnriched.mMoltenRGBa[3] = 0;
-        // Naquadria.mMoltenRGBa[0] = 128;
-        // Naquadria.mMoltenRGBa[1] = 255;
-        // Naquadria.mMoltenRGBa[2] = 128;
-        // Naquadria.mMoltenRGBa[3] = 0;
-
-        // NaquadahEnriched.mChemicalFormula = "Nq+";
-        // Naquadah.mChemicalFormula = "Nq";
-        // Naquadria.mChemicalFormula = "NqX";
     }
 
     // TODO go through the GT_Loader_Item_Block_And_Fluid and make sure all
