@@ -6,7 +6,7 @@ import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.Widget;
 import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
-import muramasa.antimatter.integration.jeirei.jei.AntimatterJEIPlugin;
+import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.mixin.client.AbstractContainerScreenAccessor;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
@@ -77,7 +77,7 @@ public class CoalBoilerFuelWidget extends Widget {
     public void onClick(double mouseX, double mouseY, int button) {
         super.onClick(mouseX, mouseY, button);
         if (this.gui.handler instanceof TileEntityMachine) {
-            AntimatterJEIPlugin.showCategory(((TileEntityMachine<?>)this.gui.handler).getMachineType());
+            AntimatterJEIREIPlugin.showCategory(((TileEntityMachine<?>)this.gui.handler).getMachineType());
         }
     }
 }
