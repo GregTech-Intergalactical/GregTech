@@ -1,7 +1,0 @@
-{
-  "parent": "gtu:block/pipe/vtiny/line_inv",
-  "textures": {
-    "0": "gtu:block/pipe/pipe_side",
-    "1": "gtu:block/pipe/pipe_vtiny"
-  }
-}

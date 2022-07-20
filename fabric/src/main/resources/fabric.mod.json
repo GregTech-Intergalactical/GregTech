@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "gregtech",
+  "version": "${version}",
+  "name": "GregTech Intergalactical",
+  "description": "The Approved Continuation. Rewrite. And Re-envisioning of GregTech 5",
+  "authors": [
+    "Muramasa",
+    "Rongmario",
+    "Abbe",
+    "Trinsdar"
+  ],
+  "contact": {
+    "sources": "https://github.com/GregTech-Intergalactical/GregTech",
+    "issues": "https://github.com/GregTech-Intergalactical/GregTech/issues",
+    "discord": "https://discord.gg/9kM4bRj"
+  },
+  "license": "LGPL-3.0",
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "tesseractapi": ">=0.1",
+    "antimatter": ">=0.1"
+  },
+  "entrypoints": {
+    "client": [
+      "muramasa.gregtech.client.fabric.GregTechFabricClient"
+    ],
+    "main": [
+      "muramasa.gregtech.fabric.GregTechFabric"
+    ],
+    "antimatter": [
+      "muramasa.gregtech.GregTech",
+      "muramasa.gregtech.GregTechPostRegistrar",
+      "muramasa.gregtech.fabric.GregTechFabricRegistrar"
+    ]
+  }
+}

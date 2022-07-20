@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtu:item/tool/saw",
-    "layer1": "gtu:item/tool/overlay/saw"
-  }
-}

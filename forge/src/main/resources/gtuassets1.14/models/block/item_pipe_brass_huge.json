@@ -1,7 +1,0 @@
-{
-  "parent": "gtu:block/pipe/huge/line_inv",
-  "textures": {
-    "0": "gtu:block/pipe/pipe_side",
-    "1": "gtu:block/pipe/pipe_huge"
-  }
-}

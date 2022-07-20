@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtu:item/tool/file",
-    "layer1": "gtu:item/tool/overlay/file"
-  }
-}

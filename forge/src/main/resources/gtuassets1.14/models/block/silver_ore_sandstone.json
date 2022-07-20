@@ -1,7 +1,0 @@
-{
-  "parent": "gtu:block/preset/layered",
-  "textures": {
-    "base": "block/sandstone",
-    "overlay": "gtu:material/shiny/ore"
-  }
-}

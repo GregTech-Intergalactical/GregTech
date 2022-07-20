@@ -1,8 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtu:item/tool/screwdriver_p",
-    "layer1": "gtu:item/tool/overlay/screwdriver_p_1",
-    "layer2": "gtu:item/tool/overlay/screwdriver_p_2"
-  }
-}

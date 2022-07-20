@@ -1,7 +1,0 @@
-{
-  "parent": "gtu:block/preset/layered",
-  "textures": {
-    "base": "block/diorite",
-    "overlay": "gtu:material/ruby/ore_small"
-  }
-}

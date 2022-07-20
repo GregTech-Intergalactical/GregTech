@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtu:material/fine/rock",
-    "layer1": "gtu:material/fine/rock_overlay"
-  }
-}

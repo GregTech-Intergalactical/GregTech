@@ -1,8 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gtu:item/tool/buzzsaw",
-    "layer1": "gtu:item/tool/overlay/buzzsaw_1",
-    "layer2": "gtu:item/tool/overlay/buzzsaw_2"
-  }
-}

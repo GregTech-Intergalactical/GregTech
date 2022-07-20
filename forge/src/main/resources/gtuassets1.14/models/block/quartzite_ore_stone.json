@@ -1,7 +1,0 @@
-{
-  "parent": "gtu:block/preset/layered",
-  "textures": {
-    "base": "block/stone",
-    "overlay": "gtu:material/quartz/ore"
-  }
-}

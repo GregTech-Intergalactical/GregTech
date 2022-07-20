@@ -1,35 +1,17 @@
 package muramasa.gregtech.data;
 
-import com.sun.jna.platform.mac.Carbon;
-import muramasa.antimatter.Antimatter;
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Data;
 import muramasa.antimatter.event.MaterialEvent;
-import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
-import muramasa.antimatter.material.TextureSet;
-import muramasa.gregtech.Ref;
-import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.redstone.Redstone;
-import org.checkerframework.checker.units.qual.C;
-import org.checkerframework.checker.units.qual.K;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.Data.Blaze;
 import static muramasa.antimatter.Data.Charcoal;
-import static muramasa.antimatter.Data.Glowstone;
 import static muramasa.antimatter.Data.Wood;
-import static muramasa.antimatter.material.Element.*;
-import static muramasa.antimatter.material.Element.Zn;
-import static muramasa.antimatter.material.MaterialTags.*;
+import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.material.MaterialTags.CHEMBATH_MERCURY;
 import static muramasa.antimatter.material.MaterialTags.CHEMBATH_PERSULFATE;
-import static muramasa.antimatter.material.TextureSet.*;
-import static muramasa.antimatter.material.TextureSet.NONE;
 import static muramasa.gregtech.data.Materials.*;
-import static net.minecraft.world.item.Tiers.IRON;
 
 public class GregTechMaterialEvents {
 
@@ -589,13 +571,10 @@ public class GregTechMaterialEvents {
                 .mats(of(Iron, 6, Chrome, 1, Manganese, 1, Nickel, 1));
         event.setMaterial(Ultimet).asMetal(2700, 2700, PLATE)
                 .mats(of(Cobalt, 5, Chrome, 2, Nickel, 1, Molybdenum, 1));
-        VanadiumGallium
-                .asMetal(4500, 4500, ROD, PLATE).mats(of(Vanadium, 3, Gallium, 1));
-        WroughtIron
-                .asMetal(1811, 0, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).addTools(Iron)
+        event.setMaterial(VanadiumGallium).asMetal(4500, 4500, ROD, PLATE).mats(of(Vanadium, 3, Gallium, 1));
+        event.setMaterial(WroughtIron).asMetal(1811, 0, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).addTools(Iron)
                 .mats(of(Iron, 1)).asOre();
-        YttriumBariumCuprate
-                .asMetal(4500, 4500, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Yttrium, 1, Barium, 2, Copper, 3, Oxygen, 7));
+        event.setMaterial(YttriumBariumCuprate).asMetal(4500, 4500, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Yttrium, 1, Barium, 2, Copper, 3, Oxygen, 7));
         event.setMaterial(SterlingSilver).asMetal(1700, 1700)
                 .addTools(3.0F, 10.5F, 96, 2, of(Enchantments.BLOCK_EFFICIENCY, 2)).mats(of(Copper, 1, Silver, 4));
         event.setMaterial(RoseGold).asMetal(1600, 1600, WIRE_FINE)
@@ -621,10 +600,8 @@ public class GregTechMaterialEvents {
                 .addTools(2.5F, 8.0F, 256, 2).mats(of(Brass, 7, Aluminium, 1, Cobalt, 1));
         event.setMaterial(IronMagnetic).asMetal(1811, 0, ROD)
                 .addTools(Iron).mats(of(Iron, 1));
-        SteelMagnetic
-                .asMetal(1000, 1000, ROD).addTools(Steel).mats(of(Steel, 1));
-        NeodymiumMagnetic
-                .asMetal(1297, 1297, ROD).mats(of(Neodymium, 1));
+        event.setMaterial(SteelMagnetic).asMetal(1000, 1000, ROD).addTools(Steel).mats(of(Steel, 1));
+        event.setMaterial(NeodymiumMagnetic).asMetal(1297, 1297, ROD).mats(of(Neodymium, 1));
         event.setMaterial(NickelZincFerrite).asMetal(1500, 1500)
                 .addTools(0.0F, 3.0F, 32, 1).mats(of(Nickel, 1, Zinc, 1, Iron, 4, Oxygen, 8));
         event.setMaterial(TungstenCarbide).asMetal(2460, 2460)
@@ -667,7 +644,7 @@ public class GregTechMaterialEvents {
                 .addHandleStat(-40, 2.0F).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
         event.setMaterial(Polycaprolactam).asSolid(500, 0)
                 .mats(of(Carbon, 6, Hydrogen, 11, Nitrogen, 1, Oxygen, 1));
-        Polytetrafluoroethylene.asSolid(1400, 0, PLATE, FRAME).mats(of(Carbon, 2, Fluorine, 4));
+        event.setMaterial(Polytetrafluoroethylene).asSolid(1400, 0, PLATE, FRAME).mats(of(Carbon, 2, Fluorine, 4));
         event.setMaterial(Rubber).asSolid(295, 0, PLATE, RING)
                 .addHandleStat(11, 0.4F).mats(of(Carbon, 5, Hydrogen, 8));
         event.setMaterial(PolyphenyleneSulfide).asSolid(295, 0, PLATE, FOIL).mats(of(Carbon, 6, Hydrogen, 4, Sulfur, 1));
@@ -677,8 +654,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(PolyvinylChloride).asSolid(295, 0, PLATE, FOIL).addHandleStat(210, 0.5F).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
         event.setMaterial(GalliumArsenide).asSolid(295, 1200)
                 .mats(of(Arsenic, 1, Gallium, 1));
-        EpoxidFiberReinforced
-                .asSolid(400, 0, PLATE).mats(of(Epoxid, 1));
+        event.setMaterial(EpoxidFiberReinforced).asSolid(400, 0, PLATE).mats(of(Epoxid, 1));
 
         event.setMaterial(RedGranite).asDust(ROCK)
                 .addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1))

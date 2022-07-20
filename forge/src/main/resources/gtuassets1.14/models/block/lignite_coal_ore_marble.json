@@ -1,7 +1,0 @@
-{
-  "parent": "gtu:block/preset/layered",
-  "textures": {
-    "base": "gtu:block/stone/marble",
-    "overlay": "gtu:material/lignite/ore"
-  }
-}
