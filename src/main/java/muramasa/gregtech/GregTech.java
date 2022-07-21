@@ -82,13 +82,14 @@ public class GregTech extends AntimatterMod {
     }
     
     private static void registerCraftingLoaders(AntimatterCraftingEvent event) {
-        event.addLoader(Parts::loadRecipes);
+        event.addLoader(Miscellaneous::loadRecipes);
         event.addLoader(Smelting::loadRecipes);
         event.addLoader(WireCablesPlates::loadRecipes);
         event.addLoader(VanillaExtensions::loadRecipes);
         event.addLoader(muramasa.gregtech.loader.crafting.Machines::loadRecipes);
         event.addLoader(SteamMachines::loadRecipes);
         event.addLoader(BlockParts::loadRecipes);
+        event.addLoader(Parts::loadRecipes);
     }
 
     private static void registerRecipeLoaders(AntimatterLoaderEvent event) {
@@ -130,6 +131,8 @@ public class GregTech extends AntimatterMod {
         loader.accept("pressing", FormingPress::init);
         loader.accept("chemical_bathing", ChemicalBath::init);
         loader.accept("heat_exchanging", HeatExchangerLoader::init);
+        loader.accept("extruding", ExtruderLoader::init);
+        loader.accept("distilling", DistilleryLoader::init);
     }
 
     private void clientSetup(final FMLClientSetupEvent e) {

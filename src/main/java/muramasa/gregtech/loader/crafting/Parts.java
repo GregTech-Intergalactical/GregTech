@@ -15,10 +15,13 @@ import muramasa.gregtech.Ref;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.tags.Tag;
 import net.minecraft.tags.TagKey;
+import net.minecraftforge.common.Tags;
+
 import java.util.Arrays;
 import java.util.function.Consumer;
 
@@ -112,8 +115,6 @@ public class Parts {
                                       () -> new RuntimeException("Missing copper wire")).getBlockItem(PipeSize.VTINY))
                       .build(),
               " P ", "WCW", " P ");
-
-
 
     provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
             INT_CIRCUITS.get(0).getItems()[0], CircuitBasic);

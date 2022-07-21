@@ -16,11 +16,10 @@ public class WiremillLoader {
             Item wireItem = t.getBlockItem(PipeSize.VTINY);
             ItemStack stack = new ItemStack(wireItem,2);
             RecipeIngredient ing = t.getMaterial().has(INGOT) ? INGOT.getMaterialIngredient(t.getMaterial(),1) : DUST.getMaterialIngredient(t.getMaterial(),1);
-            WIRE_MILLING.RB().ii(ing).io(stack).add(t.getMaterial().getMass()*2,24);
+            WIRE_MILLING.RB().ii(ing).io(stack).add(t.getMaterial().getHardness()*2,24);
             if (WIRE_FINE.allowItemGen(t.getMaterial())) {
-                WIRE_MILLING.RB().ii(RecipeIngredient.of(wireItem,1)).io(WIRE_FINE.get(t.getMaterial(),4)).add((long)( t.getMaterial().getMass()*2.5),16);
+                WIRE_MILLING.RB().ii(RecipeIngredient.of(wireItem,1)).io(WIRE_FINE.get(t.getMaterial(),4)).add(t.getMaterial().getHardness(),16);
             }
         });
-
     }
 }

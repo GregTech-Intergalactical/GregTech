@@ -1,17 +1,52 @@
 package muramasa.gregtech.loader.multi;
 
-import static muramasa.gregtech.data.Materials.*;
+import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.material.Material;
 import static muramasa.gregtech.data.RecipeMaps.DISTILLATION;
 
 public class DistillationTower {
     public static void init() {
-        DISTILLATION.RB().fi(Oil.getLiquid(100)).fo(SulfuricLightFuel.getLiquid(100), SulfuricHeavyFuel.getLiquid(30), SulfuricNaphtha.getLiquid(40), SulfuricGas.getGas(120),
-                SulfuricAcid.getLiquid(20)).add(15, 384);
-        DISTILLATION.RB().fi(OilMedium.getLiquid(100)).fo(SulfuricLightFuel.getLiquid(100), SulfuricHeavyFuel.getLiquid(30), SulfuricNaphtha.getLiquid(40), SulfuricGas.getGas(120),
-                SulfuricAcid.getLiquid(20)).add(15, 384);
-        DISTILLATION.RB().fi(OilHeavy.getLiquid(100)).fo(SulfuricLightFuel.getLiquid(20), SulfuricHeavyFuel.getLiquid(200), SulfuricNaphtha.getLiquid(10), SulfuricGas.getGas(100),
-                SulfuricAcid.getLiquid(30)).add(20, 384);
-        DISTILLATION.RB().fi(OilLight.getLiquid(125)).fo(SulfuricLightFuel.getLiquid(150), SulfuricHeavyFuel.getLiquid(10), SulfuricNaphtha.getLiquid(30), SulfuricGas.getGas(80),
-                SulfuricAcid.getLiquid(5)).add(10, 384);
+        AntimatterAPI.all(Material.class).forEach(m -> {
+            if (!(m.canDistill)) return;
+            int max = m.distillsInto.length;
+            if (max==6){
+                DISTILLATION.RB()
+                        .fi(m.getLiquid(fluidamount(m.amount)))
+                        .fo(m.distillsInto[0].getLiquid(m.amount[0]),m.distillsInto[1].getLiquid(m.amount[1]),m.distillsInto[2].getLiquid(m.amount[2]),
+                                m.distillsInto[3].getLiquid(m.amount[3]),m.distillsInto[4].getLiquid(m.amount[4]),m.distillsInto[5].getLiquid(m.amount[5]))
+                        .add(m.getDensity(),100);
+            } else if (max==5){
+                DISTILLATION.RB()
+                        .fi(m.getLiquid(fluidamount(m.amount)))
+                        .fo(m.distillsInto[0].getLiquid(m.amount[0]),m.distillsInto[1].getLiquid(m.amount[1]),m.distillsInto[2].getLiquid(m.amount[2]),m.distillsInto[3].getLiquid(m.amount[3]),m.distillsInto[4].getLiquid(m.amount[4]))
+                        .add(m.getDensity(),100);
+            } else if (max==4){
+                DISTILLATION.RB()
+                        .fi(m.getLiquid(fluidamount(m.amount)))
+                        .fo(m.distillsInto[0].getLiquid(m.amount[0]),m.distillsInto[1].getLiquid(m.amount[1]),m.distillsInto[2].getLiquid(m.amount[2]),m.distillsInto[3].getLiquid(m.amount[3]))
+                        .add(m.getDensity(),100);
+            }
+            else if (max==3){
+                DISTILLATION.RB()
+                        .fi(m.getLiquid(fluidamount(m.amount)))
+                        .fo(m.distillsInto[0].getLiquid(m.amount[0]),m.distillsInto[1].getLiquid(m.amount[1]),m.distillsInto[2].getLiquid(m.amount[2]))
+                        .add(m.getDensity(),100);
+            }
+            else if (max==2){
+                DISTILLATION.RB().fi(m.getLiquid(fluidamount(m.amount)))
+                        .fo(m.distillsInto[0].getLiquid(m.amount[0]),m.distillsInto[1].getLiquid(m.amount[1])).add(m.getDensity(),100);
+            }
+            else{
+                DISTILLATION.RB().fi(m.getLiquid(fluidamount(m.amount))).fo(m.distillsInto[0].getLiquid(m.amount[0])).add(m.getDensity(),100);
+            }
+        });
+    }
+
+    private static int fluidamount(int[] amount){
+        int x=0;
+        for(int i=0;i<amount.length;i++){
+            x += amount[i];
+        }
+        return x;
     }
 }

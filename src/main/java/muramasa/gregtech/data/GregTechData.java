@@ -55,7 +55,6 @@ public class GregTechData {
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/s (as Cover)", CoverPump.speeds.get(b))))
             .addTextures(new Texture(Ref.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(Ref.ID, "pump");
 
-    public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 
     public static ItemFluidCell CellTin = new ItemFluidCell(Ref.ID, Tin, 1000);
@@ -391,7 +390,6 @@ public class GregTechData {
     public static final Cable<?> CABLE_DURANIUM = AntimatterAPI.register(Cable.class, new Cable<>(Ref.ID, Duranium, HC ? 8 : 64, Tier.ZPM).amps(1));
     public static final Cable<?> CABLE_SUPERCONDUCTOR = AntimatterAPI.register(Cable.class, new Cable<>(Ref.ID, Superconductor, 0, Tier.MAX).amps(4)); //MA);
 
-
     public static final Wire<?> WIRE_RED_ALLOY = AntimatterAPI.register(Wire.class, new Wire<>(Ref.ID, RedAlloy, 1, Tier.ULV).amps(1));
     public static final Wire<?> WIRE_COBALT = AntimatterAPI.register(Wire.class, new Wire<>(Ref.ID, Cobalt, 4, Tier.LV).amps(2)); //L);
     public static final Wire<?> WIRE_LEAD = AntimatterAPI.register(Wire.class,  new Wire<>(Ref.ID, Lead, 4, Tier.LV).amps(2));
@@ -468,4 +466,8 @@ public class GregTechData {
     public static final BlockRubberLeaves RUBBER_LEAVES = new BlockRubberLeaves(Ref.ID, "rubber_leaves");
     public static final BlockRubberLog RUBBER_LOG = new BlockRubberLog(Ref.ID, "rubber_log");
     public static final BlockRubberSapling RUBBER_SAPLING = new BlockRubberSapling(Ref.ID, "rubber_sapling");
+
+    //Miscellaneous
+    public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
+    public static ItemBasic<?> PlantBall = new ItemBasic<>(Ref.ID, "plant_ball");
 }
