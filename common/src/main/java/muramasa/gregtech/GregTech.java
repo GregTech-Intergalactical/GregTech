@@ -10,6 +10,8 @@ import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.block.tree.RubberFoliagePlacer;
 import muramasa.gregtech.block.tree.RubberTree;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.data.Machines;
@@ -25,6 +27,8 @@ import muramasa.gregtech.loader.multi.*;
 
 import java.util.function.BiConsumer;
 
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -138,6 +142,9 @@ public class GregTech extends AntimatterMod {
                 Models.init();
                 GregTechSounds.init();
                 RubberTree.init();
+                if (AntimatterPlatformUtils.isFabric()){
+                    Registry.register(Registry.FOLIAGE_PLACER_TYPES, new ResourceLocation(Ref.ID, "rubber_foilage_placer"), RubberFoliagePlacer.RUBBER);
+                }
             }
             case DATA_READY -> {
                 Structures.init();

@@ -43,15 +43,15 @@ public class RubberTreeWorldGen extends WorldGenBase<RubberTreeWorldGen> {
     
     final static TreeConfiguration RUBBER_TREE_CONFIG_SWAMP =
             (new TreeConfiguration.TreeConfigurationBuilder(RubberTree.TRUNK_BLOCKS, new StraightTrunkPlacer(5, 2, 2), BlockStateProvider.simple(GregTechData.RUBBER_LEAVES.defaultBlockState()),
-                    new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),  new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build();
+                    new RubberFoliagePlacer(),  new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build();
 
     final static TreeConfiguration RUBBER_TREE_CONFIG_JUNGLE =
             (new TreeConfiguration.TreeConfigurationBuilder(RubberTree.TRUNK_BLOCKS, new StraightTrunkPlacer(7, 2, 2), BlockStateProvider.simple(GregTechData.RUBBER_LEAVES.defaultBlockState()),
-                    new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),  new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build();
+                    new RubberFoliagePlacer(),  new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build();
 
     final static TreeConfiguration RUBBER_TREE_CONFIG_NORMAL =
             (new TreeConfiguration.TreeConfigurationBuilder(RubberTree.TRUNK_BLOCKS, new StraightTrunkPlacer(5, 2, 2),BlockStateProvider.simple(GregTechData.RUBBER_LEAVES.defaultBlockState()),
-                    new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),  new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build();
+                    new RubberFoliagePlacer(),  new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build();
 
     public RubberTreeWorldGen(){
         super("rubber_tree", RubberTreeWorldGen.class, Level.OVERWORLD);

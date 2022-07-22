@@ -7,10 +7,13 @@ import muramasa.antimatter.event.forge.AntimatterWorldGenEvent;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.GregTechPostRegistrar;
 import muramasa.gregtech.Ref;
+import muramasa.gregtech.block.tree.RubberFoliagePlacer;
 import muramasa.gregtech.events.forge.RemappingEvents;
 import muramasa.gregtech.loader.WorldGenLoader;
 import muramasa.gregtech.proxy.ClientHandler;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -22,6 +25,7 @@ public class GregTechForge {
     public GregTechForge(){
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(GregTechForge::onRegisterFoilagePlacers);
         MinecraftForge.EVENT_BUS.register(RemappingEvents.class);
         MinecraftForge.EVENT_BUS.addListener(GregTechForge::registerRecipeLoaders);
         MinecraftForge.EVENT_BUS.addListener(GregTechForge::registerCraftingLoaders);
@@ -29,6 +33,10 @@ public class GregTechForge {
         MinecraftForge.EVENT_BUS.addListener(GregTechForge::onWorldGen);
         new GregTechPostRegistrar();
         new GregTech();
+    }
+
+    private static void onRegisterFoilagePlacers(final RegistryEvent.Register<FoliagePlacerType<?>> e){
+        e.getRegistry().register(RubberFoliagePlacer.RUBBER.setRegistryName(Ref.ID, "rubber_foilage_placer"));
     }
 
     private static void onProviders(AntimatterProvidersEvent ev) {
