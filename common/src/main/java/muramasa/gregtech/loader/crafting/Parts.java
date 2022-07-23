@@ -87,7 +87,7 @@ public class Parts {
     provider.addItemRecipe(output, "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBoardCoated,
         ImmutableMap.<Character, Object>builder()
                 .put('R', StickyResin)
-                .put('P', PLATE.get(Materials.Wood))
+                .put('P', PLATE.get(Wood))
             .build(),
         " R ", "PPP", " R ");
 

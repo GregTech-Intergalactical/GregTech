@@ -2,9 +2,8 @@ package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 
-import static muramasa.antimatter.Data.BLOCK;
-import static muramasa.antimatter.Data.GEM;
-import static muramasa.antimatter.Data.INGOT;
+import static muramasa.antimatter.Data.*;
+import static muramasa.gregtech.data.Materials.WoodPulp;
 import static muramasa.gregtech.data.RecipeMaps.COMPRESSING;
 
 public class CompressorLoader {
@@ -21,5 +20,6 @@ public class CompressorLoader {
                         .add(Math.max(80, ingot.getMass() * 2), 16);
             }
         });
+        COMPRESSING.RB().ii(RecipeIngredient.of(DUST.get(WoodPulp), 1)).io(PLATE.get(Wood, 1)).add(60, 4);
     }
 }

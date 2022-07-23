@@ -5,32 +5,31 @@ import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.Ref;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.entity.player.Player;
+import muramasa.gregtech.data.GregTechData;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.level.Level;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 
 import java.util.Random;
 
-import static muramasa.antimatter.Data.DUST;
 import static muramasa.antimatter.Data.HAMMER;
-import static muramasa.gregtech.data.Materials.RawRubber;
 
 public class BlockRubberLog extends BlockBasic {
 
@@ -68,9 +67,9 @@ public class BlockRubberLog extends BlockBasic {
             worldIn.setBlock(pos, state.setValue(ResinState.INSTANCE, ResinState.EMPTY), 3);
             Direction dir = state.getValue(RESIN_FACING);
             BlockPos spawnPos = pos.offset(dir.getStepX(), dir.getStepY(), dir.getStepZ());
-            Containers.dropItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), DUST.get(RawRubber, 1));
+            Containers.dropItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), GregTechData.StickyResin.get(1));
             if (worldIn.random.nextDouble() > 0.5) {
-                Containers.dropItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), DUST.get(RawRubber, 1));
+                Containers.dropItemStack(worldIn, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), GregTechData.StickyResin.get(1));
             }
             return InteractionResult.SUCCESS;
         }

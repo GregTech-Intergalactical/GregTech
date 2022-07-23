@@ -425,7 +425,7 @@ public class GregTechData {
     public static final Wire<?> WIRE_DURANIUM = AntimatterAPI.register(Wire.class,new Wire<>(Ref.ID, Duranium, HC ? 16 : 128, Tier.ZPM).amps(1));
     public static final Wire<?> WIRE_SUPERCONDUCTOR = AntimatterAPI.register(Wire.class,new Wire<>(Ref.ID, Superconductor, 1, Tier.MAX).amps(4)); //MA);
 
-    public static final FluidPipe<?> FLUID_PIPE_WOOD = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(Ref.ID, Materials.Wood, 350, false).caps(1).pressures(getPressures(150)));
+    public static final FluidPipe<?> FLUID_PIPE_WOOD = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(Ref.ID, Wood, 350, false).caps(1).pressures(getPressures(150)));
     public static final FluidPipe<?> FLUID_PIPE_COPPER = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(Ref.ID, Copper, 1696, true).caps(1).pressures(getPressures(300)));
     public static final FluidPipe<?> FLUID_PIPE_BRONZE = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(Ref.ID, Bronze, 1696, true).caps(1).pressures(getPressures(450)));
     // it's not in gt6, not sure whether to keep it or not

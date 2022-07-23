@@ -7,10 +7,12 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.Materials;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.Data.*;
+import static muramasa.gregtech.data.Materials.WoodPulp;
 import static muramasa.gregtech.data.RecipeMaps.PULVERIZING;
 
 public class PulverizerLoader {
@@ -54,6 +56,7 @@ public class PulverizerLoader {
         PULVERIZING.RB().ii(RecipeIngredient.of(Items.GRAVEL,1)).io(new ItemStack(Items.SAND,1)).add(100,2);
         PULVERIZING.RB().ii(RecipeIngredient.of(Items.SAND,1)).io(DUST.get(Sand, 1)).add(50,4);
         PULVERIZING.RB().ii(RecipeIngredient.of(Items.BRICK,1)).io(DUST.get(Materials.Brick, 1)).add(50,4);
+        PULVERIZING.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(DUST.get(WoodPulp, 2)).add(40, 2);
 
 
         //INGOT -> DUST

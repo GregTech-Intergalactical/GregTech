@@ -542,7 +542,6 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "uraninite", 0x232323, METALLIC));
     public static Material Uvarovite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "uvarovite", 0xb4ffb4, DIAMOND));
-    public static Material Wood = AntimatterAPI.register(Material.class, new Material(Ref.ID, "wood", 0x643200, NONE));
     public static Material Wulfenite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "wulfenite", 0xff8000, DULL));
     public static Material YellowLimonite = AntimatterAPI

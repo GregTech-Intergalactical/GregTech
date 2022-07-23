@@ -27,12 +27,12 @@ public class Circuitry {
 
     private static void boards () {
         //Coated
-        ASSEMBLING.RB().ii(of(GregTechData.StickyResin,2), of(PLATE.get(Materials.Wood),8))
+        ASSEMBLING.RB().ii(of(GregTechData.StickyResin,2), of(PLATE.get(Wood),8))
                 .fi(Glue.getLiquid(100))
                 .io(new ItemStack(GregTechData.CircuitBoardCoated,8))
                 .add(8*20, 8);
         //Phenolic
-        ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardCoated,1), of(PLATE.get(Materials.Wood),1))
+        ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardCoated,1), of(PLATE.get(Wood),1))
                 .fi(Phenol.getLiquid(100))
                 .io(new ItemStack(GregTechData.CircuitBoardPhenolic,1))
                 .add(8*20, 32);

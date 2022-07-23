@@ -14,7 +14,7 @@ import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_BATHING;
 public class ChemicalBath {
     public static void init() {
         CHEMICAL_BATHING.RB()
-                .ii(RecipeIngredient.of(DUST.get(Materials.Wood),1))
+                .ii(RecipeIngredient.of(DUST.get(Wood),1))
                 .fi(Water.getLiquid(100))
                 .io(new ItemStack(Items.PAPER))
                 .add(200,4);
