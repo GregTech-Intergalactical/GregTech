@@ -40,7 +40,7 @@ dependencies {
     implementation 'org.apache.commons:commons-collections4:4.4'
     //implementation project(path: ":TesseractAPI")
     //GT
-    common(project(path: ":tesseract-forge", configuration: "namedElements"))
+    implementation(project(path: ":tesseract-forge", configuration: "namedElements"))
     common(project(path: ":tesseract-common", configuration: "namedElements"))
 
     //MIXIN
@@ -50,14 +50,15 @@ dependencies {
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive false }
 
-    common(project(path: ":antimatter-forge", configuration: "namedElements")){
+    implementation(project(path: ":antimatter-forge", configuration: "namedElements")){
         transitive = false;
     }
     common(project(path: ":antimatter-common", configuration: "namedElements")){
         transitive = false;
     }
     //JEI
-    modRuntimeOnly("mezz.jei:jei-${rootProject.minecraft_version}-forge:${rootProject.jei_version}")
+    //modRuntimeOnly("mezz.jei:jei-${rootProject.minecraft_version}-forge:${rootProject.jei_version}")
+    modRuntimeOnly("mezz.jei:jei-1.18.2:9.5.0.132")
 }
 
 jar {
