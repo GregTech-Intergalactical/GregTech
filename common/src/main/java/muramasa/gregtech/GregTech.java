@@ -142,9 +142,6 @@ public class GregTech extends AntimatterMod {
                 Models.init();
                 GregTechSounds.init();
                 RubberTree.init();
-                if (AntimatterPlatformUtils.isFabric()){
-                    Registry.register(Registry.FOLIAGE_PLACER_TYPES, new ResourceLocation(Ref.ID, "rubber_foilage_placer"), RubberFoliagePlacer.RUBBER);
-                }
             }
             case DATA_READY -> {
                 Structures.init();

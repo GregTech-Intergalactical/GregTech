@@ -1,9 +1,10 @@
 package muramasa.gregtech.block.tree;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.worldgen.AntimatterWorldGenerator;
 import muramasa.antimatter.worldgen.feature.IAntimatterFeature;
+import muramasa.gregtech.Ref;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
@@ -68,7 +69,9 @@ public class RubberTree extends AbstractTreeGrower {
         TREE = PlacementUtils.register("gregtech:rubber",TREE_FEATURE_CONFIG, PlacementUtils.countExtra(2, 0.1F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(GregTechData.RUBBER_SAPLING.defaultBlockState(), BlockPos.ZERO)));
         TREE_JUNGLE = PlacementUtils.register("gregtech:rubber_jungle", TREE_FEATURE_JUNGLE_CONFIG, PlacementUtils.countExtra(5, 0.1F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(GregTechData.RUBBER_SAPLING.defaultBlockState(), BlockPos.ZERO)));
         TREE_SWAMP = PlacementUtils.register("gregtech:rubber_swamp", TREE_FEATURE_SWAMP_CONFIG, PlacementUtils.countExtra(2, 0.1F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(2), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(GregTechData.RUBBER_SAPLING.defaultBlockState(), BlockPos.ZERO)));
-
+        if (AntimatterPlatformUtils.isFabric()){
+            Registry.register(Registry.FOLIAGE_PLACER_TYPES, new ResourceLocation(Ref.ID, "rubber_foilage_placer"), RubberFoliagePlacer.RUBBER);
+        }
     }
 
 

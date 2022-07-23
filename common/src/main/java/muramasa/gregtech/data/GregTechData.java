@@ -27,7 +27,6 @@ import muramasa.gregtech.block.tree.BlockRubberLog;
 import muramasa.gregtech.block.tree.BlockRubberSapling;
 import muramasa.gregtech.machine.HeatHatch;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraftforge.api.distmarker.Dist;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.gregtech.data.Materials.*;

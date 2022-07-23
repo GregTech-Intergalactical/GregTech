@@ -8,11 +8,11 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Consumer;
 
+import static muramasa.antimatter.Data.Flint;
 import static muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider.buildRootAdvancement;
 import static muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider.getLoc;
 import static muramasa.antimatter.util.TagUtils.getForgelikeItemTag;
 import static muramasa.antimatter.util.Utils.hasItem;
-import static muramasa.gregtech.data.Materials.Flint;
 
 public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> {
 
