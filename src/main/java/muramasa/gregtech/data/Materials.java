@@ -3,6 +3,7 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.Material.*;
 import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.material.TextureSet;
 import muramasa.gregtech.Ref;
@@ -132,9 +133,9 @@ public class Materials {
     public static Material Helium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "helium", 0xffff00, NONE, He)).asPlasma();
     public static Material Neon = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "helium", 0xffff00, NONE, Ne)).asPlasma();
+            .register(Material.class, new Material(Ref.ID, "neon", 0xffff00, NONE, Ne)).asPlasma();
     public static Material Xenon = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "helium", 0xffff00, NONE, Xe)).asPlasma();
+            .register(Material.class, new Material(Ref.ID, "xenon", 0xffff00, NONE, Xe)).asPlasma();
     public static Material Helium3 = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "helium_3", 0xffffff, NONE, He_3)).asGas();
     public static Material Indium = AntimatterAPI
@@ -186,28 +187,36 @@ public class Materials {
     /**
      * Gases
      **/
-    public static Material WoodGas = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "wood_gas", 0xdecd87, NONE)).asGas(24);
     public static Material Methane = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "methane", 0xffffff, NONE)).asGas(104)
             .mats(of(Carbon, 1, Hydrogen, 4));
     public static Material CarbonDioxide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "carbon_dioxide", 0xa9d0f5, NONE)).asGas()
             .mats(of(Carbon, 1, Oxygen, 2));
+    public static Material CarbonMonoxide = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "carbon_monoxide", 0x0e4880, NONE)).asGas(24)
+            .mats(of(Carbon, 1, Oxygen, 1));
+    public static Material Ethylene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "ethylene", 0xe1e1e1, NONE)).asGas(128)
+            .mats(of(Carbon, 2, Hydrogen, 4));
+    public static Material WoodGas = AntimatterAPI.register(Material.class, new Material(Ref.ID, "wood_gas", 0xdecd87, NONE))
+            .asGas(24,0,true,new DistillationProduct[]{
+                    new DistillationProduct(CarbonDioxide,"gas",720),
+                    new DistillationProduct(CarbonMonoxide,"gas",360),
+                    new DistillationProduct(Ethylene,"gas",90),
+                    new DistillationProduct(Methane,"gas",180),
+                    new DistillationProduct(Hydrogen,"gas",90)
+            },1440).mats(of(CarbonDioxide,8,CarbonMonoxide,4,Methane,2,Ethylene,1,Hydrogen,1));
     public static Material NobleGases = AntimatterAPI.register(Material.class,
-    new Material(Ref.ID, "noble_gases", 0xc9e3fc, NONE)).asGas(0,790).mats(of(Helium, 18, Neon, 18, Argon, 18, Xenon,
-    18));
+    new Material(Ref.ID, "noble_gases", 0xc9e3fc, NONE)).asGas(0,790).mats(of(Helium, 10, Neon, 10, Argon, 10, Xenon,
+    10));
     public static Material Air = AntimatterAPI.register(Material.class, new Material(Ref.ID, "air", 0xc9e3fc, NONE))
             .asGas().mats(of(Nitrogen, 72, Oxygen, 54, NobleGases, 18));
     public static Material NitrogenDioxide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "nitrogen_dioxide", 0x64afff, NONE)).asGas()
             .mats(of(Nitrogen, 1, Oxygen, 2));
-    public static Material NaturalGas = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "natural_gas", 0xffffff, NONE)).asGas(15);
-    public static Material SulfuricGas = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "sulfuric_gas", 0xffffff, NONE)).asGas(20);
-    public static Material RefineryGas = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "refinery_gas", 0xffffff, NONE)).asGas(128);
+
+
     public static Material LPG = AntimatterAPI.register(Material.class, new Material(Ref.ID, "lpg", 0xffff00, NONE))
             .asGas(256);
     public static Material Ethane = AntimatterAPI
@@ -225,6 +234,15 @@ public class Materials {
     public static Material Butadiene = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "butadiene", 0xe86900, NONE)).asGas(206)
             .mats(of(Carbon, 4, Hydrogen, 6));
+    public static Material NaturalGas = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "natural_gas", 0xffffff, NONE)).asGas(15)
+            .mats(of(Methane,4,Ethane,2,Propane,2,Butane,1));
+
+    public static Material RefineryGas = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "refinery_gas", 0xffffff, NONE)).asGas(128).mats(of(NaturalGas,1));
+    public static Material SulfuricGas = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "sulfuric_gas", 0xffffff, NONE)).asGas(20)
+            .mats(of(NaturalGas,1,Sulfur,1));
     public static Material VinylChloride = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "vinyl_chloride", 0xfff0f0, NONE)).asGas()
             .mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
@@ -252,12 +270,7 @@ public class Materials {
     public static Material Tetrafluoroethylene = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "tetrafluoroethylene", 0x7d7d7d, NONE)).asGas()
             .mats(of(Carbon, 2, Fluorine, 4));
-    public static Material CarbonMonoxide = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "carbon_monoxide", 0x0e4880, NONE)).asGas(24)
-            .mats(of(Carbon, 1, Oxygen, 1));
-    public static Material Ethylene = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "ethylene", 0xe1e1e1, NONE)).asGas(128)
-            .mats(of(Carbon, 2, Hydrogen, 4));
+
     public static Material Propene = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "propene", 0xffdd55, NONE)).asGas(192)
             .mats(of(Carbon, 3, Hydrogen, 6));
@@ -272,7 +285,7 @@ public class Materials {
      * Fluids
      **/
     public static Material Steam = AntimatterAPI.register(Material.class, new Material(Ref.ID, "steam", 0xa0a0a0, NONE))
-            .asGas(1, 395);
+            .asGas(1, 395).mats(of(Water,1));
     public static Material SaltWater = AntimatterAPI.register(Material.class, new Material(Ref.ID, "salt_water", 0x0760b9, NONE))
             .asFluid().mats(of(Water,1,Sodium,1,Chlorine,1));
     public static Material UUAmplifier = AntimatterAPI
@@ -281,21 +294,62 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "uu_matter", 0x8000c4, NONE)).asFluid();
     public static Material Antimatter = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "anti_matter", 0x8000c4, NONE)).asFluid();
-    // public static Material CharcoalByproducts =
-    // AntimatterAPI.register(Material.class, new Material(Ref.ID,
-    // "charcoal_byproducts", 0x784421, NONE)).asFluid(; //TODO I'll think about
-    // this and woods when I get started on pyrolysi;
+    public static Material Lubricant = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "lubricant", 0xffc400, NONE)).asFluid();
+    public static Material Creosote = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "creosote", 0x804000, NONE))
+            .asFluid(8,0,true,new DistillationProduct[]{new DistillationProduct(Lubricant,"fluid",144)},288);
+    public static Material Benzene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "benzene", 0x1a1a1a, NONE)).asFluid(288)
+            .mats(of(Carbon, 6, Hydrogen, 6));
+    public static Material Phenol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "phenol", 0x784421, NONE)).asFluid(288)
+            .mats(of(Carbon, 6, Hydrogen, 6, Oxygen, 1));
+    public static Material Toluene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "toluene", 0x501d05, NONE)).asFluid(328)
+            .mats(of(Carbon, 7, Hydrogen, 8));
+    public static Material WoodTar = AntimatterAPI.register(Material.class, new Material(Ref.ID, "wood_tar", 0x28170b, NONE))
+            .asFluid(0,0,true,new DistillationProduct[]{new DistillationProduct(Creosote,"fluid",720),new DistillationProduct(Phenol,"fluid",180),
+                    new DistillationProduct(Benzene,"fluid",360),new DistillationProduct(Toluene,"fluid",180)},1440)
+            .mats(of(Creosote,4,Phenol,1,Benzene,2,Toluene,1));
+    public static Material AceticAcid = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "acetic_acid", 0xc8b4a0, NONE)).asFluid()
+            .mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 2));
+    public static Material Acetone = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "acetone", 0xafafaf, NONE))
+            .asFluid(0,0,true,new DistillationProduct[]{new DistillationProduct(Ethenone,"gas",144),new DistillationProduct(Methane,"gas",144)},288)
+            .mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 1));
+    public static Material Methanol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "methanol", 0xaa8800, NONE)).asFluid(84)
+            .mats(of(Carbon, 1, Hydrogen, 4, Oxygen, 1));
+    public static Material Ethanol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "ethanol", 0xff8000, NONE)).asFluid(148)
+            .mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1));
+    public static Material MethylAcetate = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "methyl_acetate", 0xeec6af, NONE)).asFluid()
+            .mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 2));
+    public static Material WoodVinegar = AntimatterAPI.register(Material.class, new Material(Ref.ID, "wood_vinegar", 0xd45500, NONE))
+            .asFluid(0,0,true,new DistillationProduct[]{
+                new DistillationProduct(AceticAcid,"fluid",180),
+                new DistillationProduct(Water,"fluid",720),
+                new DistillationProduct(Ethanol,"fluid",90),
+                new DistillationProduct(Methanol,"fluid",360),
+                new DistillationProduct(Acetone,"fluid",45),
+                new DistillationProduct(MethylAcetate,"fluid",45)
+            },1440).mats(of(MethylAcetate,1,Acetone,1,Ethanol,2,AceticAcid,4,Methanol,8,Water,16));
+
+    public static Material CharcoalByproducts =
+    AntimatterAPI.register(Material.class, new Material(Ref.ID, "charcoal_byproducts", 0x784421, NONE))
+            .asFluid(0,0,true,new DistillationProduct[]{
+                    new DistillationProduct(WoodTar,"fluid",360),
+                    new DistillationProduct(WoodVinegar,"fluid",720),
+                    new DistillationProduct(WoodGas,"gas",360)
+            },1440).mats(of(WoodTar,1,WoodGas,1,WoodVinegar,2));
     public static Material Glue = AntimatterAPI.register(Material.class, new Material(Ref.ID, "glue", 0xc8c400, NONE))
             .asFluid();
     public static Material Honey = AntimatterAPI.register(Material.class, new Material(Ref.ID, "honey", 0xd2c800, NONE))
             .asFluid(); // TODO: Only when Forestry's present;
-    public static Material Lubricant = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "lubricant", 0xffc400, NONE)).asFluid();
-    // public static Material WoodTar = AntimatterAPI.register(Material.class, new
-    // Material(Ref.ID, "wood_tar", 0x28170b, NONE)).asFluid(; TODO: not sure if
-    // neede;
-    public static Material WoodVinegar = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "wood_vinegar", 0xd45500, NONE)).asFluid();
+
     public static Material LiquidAir = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "liquid_air", 0xa9d0f5, NONE)).asFluid(0,79)
             .mats(of(Nitrogen, 72, Oxygen, 54, NobleGases, 18));
@@ -311,12 +365,16 @@ public class Materials {
     public static Material SodiumPersulfate = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sodium_persulfate", 0xffffff, NONE)).asFluid()
             .mats(of(Sodium, 2, Sulfur, 2, Oxygen, 8));
-    public static Material DilutedHydrochloricAcid = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "diluted_hydrochloric_acid", 0x99a7a3, NONE)).asFluid()
-            .mats(of(Hydrogen, 1, Chlorine, 1));
     public static Material SulfuricAcid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sulfuric_acid", 0xff8000, NONE)).asFluid()
             .mats(of(Hydrogen, 2, Sulfur, 1, Oxygen, 4));
+    public static Material HydrochloricAcid = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydrochloric_acid", 0x6f8a91, NONE)).asFluid()
+            .mats(of(Hydrogen, 1, Chlorine, 1));
+    public static Material DilutedHydrochloricAcid = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "diluted_hydrochloric_acid", 0x99a7a3, NONE))
+            .asFluid(0,0,true,new DistillationProduct[]{new DistillationProduct(HydrochloricAcid,"fluid",144),new DistillationProduct(Water,"fluid",144)},288)
+            .mats(of(HydrochloricAcid,1,Water,1));
     public static Material NitricAcid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "nitric_acid", 0xe6e2ab, NONE)).asFluid()
             .mats(of(Hydrogen, 1, Nitrogen, 1, Oxygen, 3));
@@ -356,35 +414,22 @@ public class Materials {
     public static Material BisphenolA = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "bisphenol_a", 0xd4b300, NONE)).asFluid()
             .mats(of(Carbon, 15, Hydrogen, 16, Oxygen, 2));
-    public static Material AceticAcid = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "acetic_acid", 0xc8b4a0, NONE)).asFluid()
-            .mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 2));
     // public static Material CalciumAcetateSolution =
     // AntimatterAPI.register(Material.class, new Material(Ref.ID,
     // "calcium_acetate_solution", 0xdcc8b4,
     // RUBY)).asFluid().addComposition(of(Calcium, 1, Carbon, 2, Oxygen, 4,
     // Hydrogen, 6);
-    public static Material Acetone = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "acetone", 0xafafaf, NONE)).asFluid()
-            .mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 1));
-    public static Material Methanol = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "methanol", 0xaa8800, NONE)).asFluid(84)
-            .mats(of(Carbon, 1, Hydrogen, 4, Oxygen, 1));
+
     public static Material VinylAcetate = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "vinyl_acetate", 0xffb380, NONE)).asFluid()
             .mats(of(Carbon, 4, Hydrogen, 6, Oxygen, 2));
     public static Material PolyvinylAcetate = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "polyvinyl_acetate", 0xff9955, NONE)).asFluid()
             .mats(of(Carbon, 4, Hydrogen, 6, Oxygen, 2));
-    public static Material MethylAcetate = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "methyl_acetate", 0xeec6af, NONE)).asFluid()
-            .mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 2));
+
     public static Material AllylChloride = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "allyl_chloride", 0x87deaa, NONE)).asFluid()
             .mats(of(Carbon, 3, Hydrogen, 5, Chlorine, 1));
-    public static Material HydrochloricAcid = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "hydrochloric_acid", 0x6f8a91, NONE)).asFluid()
-            .mats(of(Hydrogen, 1, Chlorine, 1));
     public static Material HypochlorousAcid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "hypochlorous_acid", 0x6f8a91, NONE)).asFluid()
             .mats(of(Hydrogen, 1, Chlorine, 1, Oxygen, 1));
@@ -401,21 +446,16 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "sulfuric_dioxide", 0x8d8d27, NONE)).asGas()
             .mats(of(Sulfur, 1, Oxygen, 2));
     public static Material DilutedSulfuricAcid = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "diluted_sulfuric_acid", 0xc07820, NONE)).asFluid()
-            .mats(of(SulfuricAcid, 1));
-    public static Material Benzene = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "benzene", 0x1a1a1a, NONE)).asFluid(288)
-            .mats(of(Carbon, 6, Hydrogen, 6));
-    public static Material Phenol = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "phenol", 0x784421, NONE)).asFluid(288)
-            .mats(of(Carbon, 6, Hydrogen, 6, Oxygen, 1));
-    public static Material Toluene = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "toluene", 0x501d05, NONE)).asFluid(328)
-            .mats(of(Carbon, 7, Hydrogen, 8));
-    public static Material SulfuricNaphtha = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "sulfuric_naphtha", 0xffff00, NONE)).asFluid(32);
+            .register(Material.class, new Material(Ref.ID, "diluted_sulfuric_acid", 0xc07820, NONE))
+            .asFluid(0,0,true,
+                    new DistillationProduct[]{new DistillationProduct(SulfuricAcid,"fluid",144),new DistillationProduct(Water,"fluid",144)},288)
+            .mats(of(SulfuricAcid, 1,Water,1));
     public static Material Naphtha = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "naphtha", 0xffff00, NONE)).asFluid(256);
+            .register(Material.class, new Material(Ref.ID, "naphtha", 0xffff00, NONE)).asFluid(256)
+            .mats(of(Carbon,8,Hydrogen,16));
+    public static Material SulfuricNaphtha = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "sulfuric_naphtha", 0xffff00, NONE)).asFluid(32)
+            .mats(of(Naphtha,1,Sulfur,1));
     public static Material DrillingFluid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "drilling_fluid", 0xffffff, NONE)).asFluid();
     public static Material BlueVitriol = AntimatterAPI
@@ -442,10 +482,9 @@ public class Materials {
     public static Material Biomass = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "biomass", 0x00ff00, NONE)).asFluid(8);
     public static Material FermentedBiomass = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "fermented_biomass", 0x09964a, NONE)).asFluid(16);
-    public static Material Ethanol = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "ethanol", 0xff8000, NONE)).asFluid(148)
-            .mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1));
+            .register(Material.class, new Material(Ref.ID, "fermented_biomass", 0x09964a, NONE))
+            .asFluid(16,0,true,new DistillationProduct[]{new DistillationProduct(AceticAcid,"fluid",25),new DistillationProduct(Water,"fluid",395),new DistillationProduct(Ethanol,"fluid",250),
+                            new DistillationProduct(Methanol,"fluid",250),new DistillationProduct(Ammonia,"gas",100),new DistillationProduct(Methane,"gas",600),new DistillationProduct(CarbonDioxide,"gas",400)},2000);
     public static Material Ethanediol = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "ethanediol", 0xff8000, NONE)).asFluid(216)
             .mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 2));
@@ -473,28 +512,35 @@ public class Materials {
     public static Material Heptanol = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "heptanol", 0xff8000, NONE)).asFluid(226)
             .mats(of(Carbon, 7, Hydrogen, 16, Oxygen, 1));
-    public static Material Creosote = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "creosote", 0x804000, NONE)).asFluid(8);
     public static Material FishOil = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "fish_oil", 0xffc400, NONE)).asFluid(2);
+    public static Material LightFuel = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "light_diesel", 0xffff00, NONE)).asFluid(48);
+    public static Material HeavyFuel = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "heavy_diesel", 0xffff00, NONE)).asFluid(48);
     public static Material SulfuricLightFuel = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "sulfuric_light_diesel", 0xffff00, NONE)).asFluid(32);
+            .register(Material.class, new Material(Ref.ID, "sulfuric_light_diesel", 0xffff00, NONE)).asFluid(32)
+            .mats(of(LightFuel,1,Sulfur,1));
     public static Material SulfuricHeavyFuel = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "sulfuric_heavy_diesel", 0xffff00, NONE)).asFluid(32);
-    public static Material LightDiesel = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "light_diesel", 0xffff00, NONE)).asFluid(256);
-    public static Material HeavyDiesel = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "heavy_diesel", 0xffff00, NONE)).asFluid(192);
+            .register(Material.class, new Material(Ref.ID, "sulfuric_heavy_diesel", 0xffff00, NONE)).asFluid(32)
+            .mats(of(HeavyFuel,1,Sulfur,1));
     public static Material Oil = AntimatterAPI.register(Material.class, new Material(Ref.ID, "oil", 0x0a0a0a, NONE))
-            .asFluid(16,0,true, new Material[]{SulfuricLightFuel,SulfuricHeavyFuel,Naphtha}, new int[]{50,15,20});
+            .asFluid(16,0,true,
+                    new DistillationProduct[]{new DistillationProduct(SulfuricLightFuel,"fluid",50), new DistillationProduct(SulfuricHeavyFuel,"fluid",15),
+                            new DistillationProduct(Naphtha,"fluid",20),new DistillationProduct(SulfuricGas,"gas",60)},290);
     public static Material SeedOil = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "seed_oil", 0xc4ff00, NONE)).asFluid(2);
+            .register(Material.class, new Material(Ref.ID, "seed_oil", 0xc4ff00, NONE))
+            .asFluid(2,0,true,new DistillationProduct[]{new DistillationProduct(Lubricant,"fluid",10)},20);
     public static Material OilHeavy = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "heavy_oil", 0x0a0a0a, NONE)).asFluid(32);
+            .register(Material.class, new Material(Ref.ID, "heavy_oil", 0x0a0a0a, NONE))
+            .asFluid(32,0,true,new DistillationProduct[]{new DistillationProduct(SulfuricLightFuel,"fluid",250), new DistillationProduct(SulfuricHeavyFuel,"fluid",45),
+            new DistillationProduct(Naphtha,"fluid",15),new DistillationProduct(SulfuricGas,"gas",600)},910);
     public static Material OilMedium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "raw_oil", 0x0a0a0a, NONE)).asFluid(24);
     public static Material OilLight = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "light_oil", 0x0a0a0a, NONE)).asFluid(16);
+            .register(Material.class, new Material(Ref.ID, "light_oil", 0x0a0a0a, NONE))
+            .asFluid(16,0,true,new DistillationProduct[]{new DistillationProduct(SulfuricLightFuel,"fluid",10), new DistillationProduct(SulfuricHeavyFuel,"fluid",20),
+                    new DistillationProduct(Naphtha,"fluid",30),new DistillationProduct(SulfuricGas,"gas",240)},300);
     public static Material Glycerol = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "glycerol", 0x87de87, NONE)).asFluid(164)
             .mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 3));
@@ -1072,6 +1118,137 @@ public class Materials {
             .mats(of(Rutile, 2, Aluminium, 16, Hydrogen, 10, Oxygen, 11));
     public static Material OilShale = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "oil_shale", 0x32323c, NONE)).asOreStone(ORE_SMALL);
+    public static Material Energium = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "energium", 0xe81e21, NONE)).asDust()
+            .mats(of(Redstone,1,Ruby,1));
+
+    //Cracked Stuff
+
+    public static Material SteamCrackedEthane = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "steam_cracked_ethane", 0xc8c8ff, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Methane,"gas",288)},144)
+            .mats(of(Ethane,1,Steam,1));
+    public static Material SteamCrackedEthylene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "steam_cracked_ethylene", 0xe1e1e1, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Methane,"gas",288)},144)
+            .mats(of(Ethylene,1,Steam,1));
+    public static Material SteamCrackedPropane = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "steam_cracked_propane", 0xfae250, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Methane,"gas",3*144),new DistillationProduct(Ethylene,"gas",144)},288)
+            .mats(of(Propane,1,Steam,1));
+    public static Material SteamCrackedPropene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "steam_cracked_propene", 0xffdd55, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Methane,"gas",3*144)},144)
+            .mats(of(Propene,1,Steam,1));
+    public static Material SteamCrackedButane = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "steam_cracked_butane", 0xb6371e, NONE))
+            .asGas(0,0,true,
+                    new DistillationProduct[]{new DistillationProduct(Methane,"gas",4*144),new DistillationProduct(Ethane,"gas",36),
+                    new DistillationProduct(Ethylene,"gas",36),new DistillationProduct(Propane,"gas",36)},288)
+            .mats(of(Butane,1,Steam,1));
+    public static Material SteamCrackedButene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "steam_cracked_butene", 0xcf5005, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{
+                    new DistillationProduct(Methane,"gas",3*144),new DistillationProduct(Ethylene,"gas",90),
+            new DistillationProduct(Propene,"gas",36)},288)
+            .mats(of(Butene,1,Steam,1));
+    public static Material SteamCrackedButadiene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "steam_cracked_butadiene", 0xe86900, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{
+                    new DistillationProduct(Methane,"gas",324),new DistillationProduct(Ethylene,"gas",54),
+                    new DistillationProduct(Propene,"gas",36)},288)
+            .mats(of(Butadiene,1,Steam,1));
+    public static Material SteamCrackedLightFuel = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "steam_cracked_light_fuel", 0xffff00, NONE))
+            .asFluid(0,0,true,new DistillationProduct[]{
+                    new DistillationProduct(Methane,"gas",36),new DistillationProduct(Ethane,"gas",9),
+                    new DistillationProduct(Ethylene,"gas",36),new DistillationProduct(Propane,"gas",9),
+                    new DistillationProduct(Propene,"gas",36),new DistillationProduct(Butene,"gas",18),
+                    new DistillationProduct(Butadiene,"gas",9),new DistillationProduct(Benzene,"fluid",36),
+                    new DistillationProduct(Toluene,"fluid",18),new DistillationProduct(Naphtha,"fluid",9),
+                    new DistillationProduct(HeavyFuel,"fluid",9)},144)
+            .mats(of(LightFuel,1,Steam,1));
+    public static Material SteamCrackedHeavyFuel = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "steam_cracked_heavy_fuel", 0xffff00, NONE))
+            .asFluid(0,0,true,new DistillationProduct[]{
+                    new DistillationProduct(Methane,"gas",18),new DistillationProduct(Ethane,"gas",9),
+                    new DistillationProduct(Ethylene,"gas",18),new DistillationProduct(Propane,"gas",9),
+                    new DistillationProduct(Propene,"gas",18),new DistillationProduct(Butene,"gas",9),
+                    new DistillationProduct(Butadiene,"gas",9),new DistillationProduct(Benzene,"fluid",72),
+                    new DistillationProduct(Toluene,"fluid",12),new DistillationProduct(Naphtha,"fluid",36),new DistillationProduct(SulfuricHeavyFuel,"liquid",9)
+            },144)
+            .mats(of(HeavyFuel,1,Steam,1));
+    public static Material SteamCrackedNaphtha = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "steam_cracked_naphtha", 0xffff00, NONE))
+            .asFluid(0,0,true,new DistillationProduct[]{
+                    new DistillationProduct(Methane,"gas",72),new DistillationProduct(Ethane,"gas",36),
+                    new DistillationProduct(Ethylene,"gas",72),new DistillationProduct(Propane,"gas",9),
+                    new DistillationProduct(Propene,"gas",18),new DistillationProduct(Butene,"gas",9),
+                    new DistillationProduct(Butadiene,"gas",9),new DistillationProduct(Benzene,"fluid",18),
+                    new DistillationProduct(Toluene,"fluid",9),new DistillationProduct(LightFuel,"fluid",9),
+                    new DistillationProduct(HeavyFuel,"fluid",9)
+            },144)
+            .mats(of(Naphtha,1,Steam,1));
+    public static Material SteamCrackedRefineryGas = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "steam_cracked_refinery_gas", 0xffffff, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{
+                    new DistillationProduct(Methane,"gas",144),new DistillationProduct(Ethane,"gas",9),
+                    new DistillationProduct(Ethylene,"gas",18), new DistillationProduct(Propene,"gas",9)},144)
+            .mats(of(RefineryGas,1,Steam,1));
+
+    public static Material HydroCrackedEthane = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydro_cracked_ethane", 0xc8c8ff, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Methane,"gas",288)},144)
+            .mats(of(Ethane,1,Hydrogen,2));
+    public static Material HydroCrackedEthylene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydro_cracked_ethylene", 0xe1e1e1, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Ethane,"gas",144)},144)
+            .mats(of(Ethylene,1,Hydrogen,2));
+    public static Material HydroCrackedPropane = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydro_cracked_propane", 0xfae250, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Methane,"gas",144),new DistillationProduct(Ethane,"gas",144)},144)
+            .mats(of(Propane,1,Hydrogen,2));
+    public static Material HydroCrackedPropene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydro_cracked_propene", 0xffdd55, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Methane,"gas",144),
+            new DistillationProduct(Ethylene,"gas",144),new DistillationProduct(Propane,"gas",144)},288)
+            .mats(of(Propene,1,Hydrogen,2));
+    public static Material HydroCrackedButane = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydro_cracked_butane", 0xb6371e, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Methane,"gas",144),new DistillationProduct(Ethane,"gas",288),
+            new DistillationProduct(Propane,"gas",144)},288)
+            .mats(of(Butane,1,Hydrogen,2));
+    public static Material HydroCrackedButene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydro_cracked_butene", 0xcf5005, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Methane,"gas",144),new DistillationProduct(Ethane,"gas",288),
+            new DistillationProduct(Propene,"gas",144),new DistillationProduct(Butane,"gas",144)},3*144)
+            .mats(of(Butene,1,Hydrogen,2));
+    public static Material HydroCrackedButadiene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydro_cracked_butadiene", 0xe86900, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Ethylene,"gas",288),new DistillationProduct(Butene,"gas",144)},288)
+            .mats(of(Butadiene,1,Hydrogen,2));
+    public static Material HydroCrackedLightFuel = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydro_cracked_light_fuel", 0xffff00, NONE))
+            .asFluid(0,0,true,new DistillationProduct[]{new DistillationProduct(Naphtha,"fluid",144),
+            new DistillationProduct(Butane,"gas",288),new DistillationProduct(Propane,"gas",288),
+            new DistillationProduct(Ethane,"gas",4*144),new DistillationProduct(Methane,"gas",288)},4*144)
+            .mats(of(LightFuel,1,Hydrogen,2));
+    public static Material HydroCrackedHeavyFuel = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydro_cracked_heavy_fuel", 0xffff00, NONE))
+            .asFluid(0,0,true,new DistillationProduct[]{new DistillationProduct(LightFuel,"fluid",144),new DistillationProduct(Naphtha,"fluid",144),
+                    new DistillationProduct(Butane,"gas",288),new DistillationProduct(Propane,"gas",288),
+                    new DistillationProduct(Ethane,"gas",4*144),new DistillationProduct(Methane,"gas",288)},5*144)
+            .mats(of(HeavyFuel,1,Hydrogen,2));
+    public static Material HydroCrackedNaphtha = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydro_cracked_naphtha", 0xffff00, NONE))
+            .asFluid(0,0,true,new DistillationProduct[]{
+                    new DistillationProduct(Methane,"gas",288),new DistillationProduct(Ethane,"gas",4*144),
+                    new DistillationProduct(Propane,"gas",288),new DistillationProduct(Butane,"gas",288)},3*144)
+            .mats(of(Naphtha,1,Hydrogen,2));
+    public static Material HydroCrackedRefineryGas = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydro_cracked_refinery_gas", 0xffffff, NONE))
+            .asGas(0,0,true,new DistillationProduct[]{new DistillationProduct(Methane,"gas",144),new DistillationProduct(Hydrogen,"gas",144)},144)
+            .mats(of(RefineryGas,1,Hydrogen,2));
 
     /**
      * Reference Materials
@@ -1084,9 +1261,6 @@ public class Materials {
             new Material(Ref.ID, "high_capacity", 0xb00b69, NONE));
     public static Material PlasmaContainment = AntimatterAPI.register(Material.class,
             new Material(Ref.ID, "plasma_containment", 0xffff00, NONE));
-    public static Material Energium = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "energium", 0xe81e21, NONE)).asDust()
-            .mats(of(Redstone,1,Ruby,1));
 
     static {
         CHEMBATH_MERCURY.add(Chalcopyrite,Gold);
@@ -1127,7 +1301,7 @@ public class Materials {
                 NiobiumTitanium, SolderingAlloy, VanadiumGallium, WroughtIron, SterlingSilver, RoseGold, BismuthBronze,
                 TungstenSteel, RedAlloy, CobaltBrass, TungstenCarbide, VanadiumSteel, HSSG, HSSE, HSSS,
                 GalliumArsenide/* , IndiumGalliumPhosphide, BorosilicateGlass */);
-        CRACK.add(RefineryGas, Naphtha, Ethane, Propane, Butane, Butene, Ethylene, Propene, LightDiesel, HeavyDiesel);
+        CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene, LightFuel, HeavyFuel);
         CALCITE2X.add(Pyrite, BrownLimonite, YellowLimonite, Magnetite);
         CALCITE3X.add(Iron, WroughtIron);
         WASHM.add(Gold, Silver, Osmium, Platinum, Cooperite, Galena, Nickel, Tungstate, Lead, Magnetite, Iridium,
