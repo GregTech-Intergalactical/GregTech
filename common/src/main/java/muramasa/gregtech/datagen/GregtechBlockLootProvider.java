@@ -17,8 +17,8 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import static muramasa.antimatter.Data.*;
 
 public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
-    public GregtechBlockLootProvider(String providerDomain, String providerName, DataGenerator gen) {
-        super(providerDomain, providerName, gen);
+    public GregtechBlockLootProvider(String providerDomain, String providerName) {
+        super(providerDomain, providerName);
     }
 
     @Override
@@ -28,17 +28,5 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
         this.add(GregTechData.RUBBER_LOG);
         this.add(GregTechData.RUBBER_SAPLING);
         AntimatterAPI.all(BlockCasing.class,providerDomain, this::add);
-        AntimatterAPI.all(BlockOre.class, o -> {
-            if (o.getOreType() != ORE) return;
-            Material mat = o.getMaterial();
-            if (mat.has(GEM)){
-                Item item = GEM.get(mat);
-                if (mat == Lapis /*|| mat == Sodalite || mat == Lazurite */) {
-                    tables.put(o, b -> createSilkTouchDispatchTable(b, applyExplosionDecay(b, LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 9.0F))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
-                } else {
-                    tables.put(o, b -> createOreDrop(b, item));
-                }
-            }
-        });
     }
 }

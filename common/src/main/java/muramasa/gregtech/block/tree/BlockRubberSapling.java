@@ -60,7 +60,7 @@ public class BlockRubberSapling extends SaplingBlock implements IAntimatterObjec
 
     @Override
     public void onItemModelBuild(ItemLike item, AntimatterItemModelProvider prov) {
-        prov.getBuilder(item).parent(prov.getExistingFile(new ResourceLocation("item/generated"))).texture("layer0", getTextures()[0]);
+        prov.getBuilder(item).parent(new ResourceLocation("item/generated")).texture("layer0", getTextures()[0]);
     }
 
     @Override

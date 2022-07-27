@@ -3,7 +3,12 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.Charcoal;
@@ -12,6 +17,8 @@ import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTags.CHEMBATH_MERCURY;
 import static muramasa.antimatter.material.MaterialTags.CHEMBATH_PERSULFATE;
 import static muramasa.gregtech.data.Materials.*;
+import static net.minecraft.data.loot.BlockLoot.applyExplosionDecay;
+import static net.minecraft.data.loot.BlockLoot.createSilkTouchDispatchTable;
 
 public class GregTechMaterialEvents {
 
@@ -20,6 +27,7 @@ public class GregTechMaterialEvents {
         flags(event);
         antimatterMaterials(event);
         byproducts(event);
+        MaterialTags.CUSTOM_ORE_DROPS.add(Lapis, b -> createSilkTouchDispatchTable(b, applyExplosionDecay(b, LootItem.lootTableItem(Items.LAPIS_LAZULI).apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 9.0F))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
 
         event.setMaterial(Aluminium).asMetal(933, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL).asOre()
                 .addTools(1.5F, 10.0F, 140, 2);

@@ -15,8 +15,8 @@ public class GregTechLocalizations {
 
     public static class en_US extends AntimatterLanguageProvider {
 
-        public en_US(DataGenerator gen) {
-            super(Ref.ID, Ref.NAME + " en_us Localization", "en_us", gen);
+        public en_US() {
+            super(Ref.ID, Ref.NAME + " en_us Localization", "en_us");
         }
 
         @Override

@@ -1,8 +1,8 @@
 package muramasa.gregtech;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterDynamics;
 import muramasa.antimatter.AntimatterMod;
+import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.datagen.providers.*;
 import muramasa.antimatter.event.CraftingEvent;
 import muramasa.antimatter.event.ProvidersEvent;
@@ -10,11 +10,9 @@ import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.gregtech.block.tree.RubberFoliagePlacer;
 import muramasa.gregtech.block.tree.RubberTree;
-import muramasa.gregtech.data.*;
 import muramasa.gregtech.data.Machines;
+import muramasa.gregtech.data.*;
 import muramasa.gregtech.datagen.GregTechBlockTagProvider;
 import muramasa.gregtech.datagen.GregtechBlockLootProvider;
 import muramasa.gregtech.datagen.ProgressionAdvancements;
@@ -24,13 +22,10 @@ import muramasa.gregtech.loader.machines.*;
 import muramasa.gregtech.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gregtech.loader.machines.generator.Fuels;
 import muramasa.gregtech.loader.multi.*;
-
-import java.util.function.BiConsumer;
-
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.function.BiConsumer;
 
 public class GregTech extends AntimatterMod {
 
@@ -49,30 +44,26 @@ public class GregTech extends AntimatterMod {
 
 
         AntimatterDynamics.clientProvider(Ref.ID,
-                g -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", g));
+                () -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates"));
         AntimatterDynamics.clientProvider(Ref.ID,
-                g -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", g));
+                () -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models"));
         AntimatterDynamics.clientProvider(Ref.ID, GregTechLocalizations.en_US::new);
     }
 
     public static void onProviders(ProvidersEvent ev) {
-        if (ev.getSide() == Side.CLIENT) {
-
-        } else {
-            final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
-            ev.addProvider(Ref.ID, g -> {
-                p[0] = new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, g);
-                return p[0];
-            });
-            ev.addProvider(Ref.ID, g -> new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"),
-                    false, g, p[0]));
-            ev.addProvider(Ref.ID, g -> new AntimatterFluidTagProvider(Ref.ID,
-                    Ref.NAME.concat(" Fluid Tags"), false, g));
-            ev.addProvider(Ref.ID, g -> new AntimatterAdvancementProvider(Ref.ID,
-                    Ref.NAME.concat(" Advancements"), g, new ProgressionAdvancements()));
-            ev.addProvider(Ref.ID,
-                    g -> new GregtechBlockLootProvider(Ref.ID, Ref.NAME.concat(" Loot generator"), g));
-        }
+        final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
+        ev.addProvider(Ref.ID, () -> {
+            p[0] = new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false);
+            return p[0];
+        });
+        ev.addProvider(Ref.ID, () -> new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"),
+                false, p[0]));
+        ev.addProvider(Ref.ID, () -> new AntimatterFluidTagProvider(Ref.ID,
+                Ref.NAME.concat(" Fluid Tags"), false));
+        ev.addProvider(Ref.ID, () -> new AntimatterAdvancementProvider(Ref.ID,
+                Ref.NAME.concat(" Advancements"), new ProgressionAdvancements()));
+        ev.addProvider(Ref.ID,
+                () -> new GregtechBlockLootProvider(Ref.ID, Ref.NAME.concat(" Loot generator")));
     }
     
     public static void registerCraftingLoaders(CraftingEvent event) {

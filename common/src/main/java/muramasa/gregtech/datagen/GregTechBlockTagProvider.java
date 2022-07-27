@@ -12,13 +12,13 @@ import net.minecraft.tags.BlockTags;
 
 public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
 
-    public GregTechBlockTagProvider(String providerDomain, String providerName, boolean replace, DataGenerator gen) {
-        super(providerDomain, providerName, replace, gen);
+    public GregTechBlockTagProvider(String providerDomain, String providerName, boolean replace) {
+        super(providerDomain, providerName, replace);
     }
 
     @Override
-    public void addTags() {
-        super.addTags();
+    public void processTags(String domain){
+        super.processTags(domain);
         this.tag(BlockTags.LOGS).add(GregTechData.RUBBER_LOG);
         this.tag(BlockTags.LEAVES).add(GregTechData.RUBBER_LEAVES);
         this.tag(BlockTags.SAPLINGS).add(GregTechData.RUBBER_SAPLING);
