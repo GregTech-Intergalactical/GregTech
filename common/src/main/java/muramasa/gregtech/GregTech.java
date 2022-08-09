@@ -139,8 +139,7 @@ public class GregTech extends AntimatterMod {
               //  if (side == Dist.CLIENT) StructureInfo.init();
                 TierMaps.providerInit();
             }
-            default -> {
-            }
+            case CLIENT_DATA_INIT -> ClientData.init();
         }
     }
 

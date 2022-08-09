@@ -59,8 +59,13 @@ public class Guis {
         }
 
         @Override
-        public Object screen() {
-            return ClientData.SCREEN_COAL;
+        public String screenDomain() {
+            return muramasa.gregtech.Ref.ID;
+        }
+
+        @Override
+        public String screenID() {
+            return "coal";
         }
     };
 
