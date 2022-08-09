@@ -2,6 +2,7 @@ package muramasa.gregtech.block;
 
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.builder.AntimatterBlockModelBuilder;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
@@ -172,7 +173,7 @@ public class BlockTurbineCasing extends BlockCasingMachine {
     }
 
     protected Level getWorld(BlockGetter reader) {
-        if (AntimatterPlatformUtils.isServer()){
+        if (AntimatterAPI.getSIDE().isServer()){
             if (reader instanceof Level l) {
                 return l;
             }
