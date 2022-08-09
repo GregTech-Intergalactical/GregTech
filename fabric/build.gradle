@@ -30,16 +30,15 @@ dependencies{
     implementation(project(path: ":tesseract-fabric", configuration: "namedElements")) { transitive false }
     implementation(project(path: ":antimatter-fabric", configuration: "namedElements"))
     modImplementation("com.github.FeltMC.Fabricated-Forge-API:fabricated-forge-caps:${rootProject.fabricated_forge_hash}") { transitive false }
-    modImplementation("com.github.FeltMC.Fabricated-Forge-API:fabricated-forge-recipe-api:${rootProject.fabricated_forge_hash}") { transitive false }
+    modImplementation("com.github.FeltMC.Fabricated-Forge-API:fabricated-forge-tag-extensions:${rootProject.fabricated_forge_hash}") { transitive false }
     modImplementation("com.github.FeltMC.Fabricated-Forge-API:fabricated-forge-modeldata:${rootProject.fabricated_forge_hash}") { transitive false }
     modImplementation("com.github.Trinsdar.Felt-API:felt-item-api:05a5fe1533") { transitive false }
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
-    modImplementation("com.github.FeltMC:Porting-Lib:${rootProject.port_lib_hash}"){
+    modImplementation("io.github.fabricators_of_create:Porting-Lib:1.1.310-beta+1.18.2-dev.${rootProject.port_lib_hash}"){
         exclude(group: "net.fabricmc.fabric-api")
-        exclude(group: "com.github.FeltMC.Fabricated-Forge-API")
     }
-    modImplementation(include("net.devtech:arrp:0.+"))
+    modImplementation("net.devtech:arrp:0.5.5")
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
     modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}")
     modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-fabric-api:${rootProject.jei_version}")
