@@ -25,7 +25,7 @@ public class GregTechForge {
     public GregTechForge(){
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(GregTechForge::onRegisterFoilagePlacers);
+        FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(FoliagePlacerType.class, GregTechForge::onRegisterFoilagePlacers);
         MinecraftForge.EVENT_BUS.register(RemappingEvents.class);
         MinecraftForge.EVENT_BUS.addListener(GregTechForge::registerRecipeLoaders);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(GregTechForge::registerCraftingLoaders);

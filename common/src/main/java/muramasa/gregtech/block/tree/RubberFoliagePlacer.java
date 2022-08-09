@@ -26,7 +26,7 @@ public class RubberFoliagePlacer extends FoliagePlacer {
     }
 
     public RubberFoliagePlacer() {
-        super(ConstantInt.of(2), ConstantInt.of(-1));
+        super(ConstantInt.of(2), ConstantInt.of(0));
     }
 
     @Override

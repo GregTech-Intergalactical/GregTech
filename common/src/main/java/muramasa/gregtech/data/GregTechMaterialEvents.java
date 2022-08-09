@@ -1003,5 +1003,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Water).mats(of(Hydrogen, 2, Oxygen, 1));
         event.setMaterial(Blaze)
                 .mats(of(Sulfur, 1, DarkAsh, 1/* , Magic, 1 */));
+        event.setMaterial(Flint).flags(ROCK);
     }
 }
