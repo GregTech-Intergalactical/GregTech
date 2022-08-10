@@ -43,12 +43,13 @@ public class RubberFoliagePlacer extends FoliagePlacer {
         BlockPos center = treeNode.pos();
         BlockPos.MutableBlockPos pos = center.mutable();
 
+        int offset1 = offset - 1;
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
         double treeRadius = 2.5;
-        for(int i = offset; i >= offset - foliageHeight; --i) {
-            if (i == offset){
+        for(int i = offset1; i >= offset1 - foliageHeight; --i) {
+            if (i == offset1){
                 this.placeLeavesRow(world, pBlockSetter, random, config, center, 1, i, treeNode.doubleTrunk());
                 continue;
             }
