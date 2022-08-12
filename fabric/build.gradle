@@ -38,7 +38,7 @@ dependencies{
     modImplementation("io.github.fabricators_of_create:Porting-Lib:1.1.310-beta+1.18.2-dev.${rootProject.port_lib_hash}"){
         exclude(group: "net.fabricmc.fabric-api")
     }
-    modImplementation("net.devtech:arrp:0.5.5")
+    modImplementation("net.devtech:arrp:0.5.7")
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
     modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}")
     modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-fabric-api:${rootProject.jei_version}")

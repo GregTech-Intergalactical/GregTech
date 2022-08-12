@@ -56,7 +56,7 @@ dependencies {
     common(project(path: ":antimatter-common", configuration: "namedElements")){
         transitive = false;
     }
-    modRuntimeOnly("com.github.Reforged-Mods:ARRP-forge:0.5.5")
+    modRuntimeOnly("com.github.Reforged-Mods:ARRP-forge:362cae740e")
     modRuntimeOnly("com.github.FeltMC.Fabricated-Forge-API:fluidhandler-extras:${rootProject.fabricated_forge_hash}")
     //JEI
     //modRuntimeOnly("mezz.jei:jei-${rootProject.minecraft_version}-forge:${rootProject.jei_version}")
