@@ -15,6 +15,12 @@ println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getPro
 def isCI = System.getenv("GITHUB_ACTION")
 def isRELEASE = System.getenv("GITHUB_RELEASE")
 
+def gitHash() {
+    String hash = System.getenv("GITHUB_SHA")
+    if (hash != null) return hash.substring(0,8)
+    return ""
+}
+
 subprojects {
     apply plugin: "dev.architectury.loom"
     java.toolchain.languageVersion = JavaLanguageVersion.of(17)
