@@ -1,4 +1,4 @@
-archivesBaseName = rootProject.archive_base_name
+archivesBaseName = "${rootProject.archive_base_name}-forge"
 version = "${rootProject.minecraft_version}-${rootProject.mod_version}"
 
 architectury {
