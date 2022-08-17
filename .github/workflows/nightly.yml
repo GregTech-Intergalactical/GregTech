@@ -49,7 +49,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: GregTech JAR
-        path: build/libs
+        path: ./*/build/libs
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
