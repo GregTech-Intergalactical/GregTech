@@ -278,14 +278,16 @@ public class Guis {
                     .addButton(152, 63, 14, 14, APAD_RIGHT);
         });
 
-        ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
-        ELECTRIC_ITEM_FILTER.addGuiCallback(t -> {
-            t.addWidget(FilterButtonArrayWidget.build());
-        });
-        ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
-        ELECTRIC_TYPE_FILTER.addGuiCallback(t -> {
-            t.addWidget(FilterButtonArrayWidget.build());
-        });
+        if (!AntimatterAPI.isModLoaded("gt4r")){
+            ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
+            ELECTRIC_ITEM_FILTER.addGuiCallback(t -> {
+                t.addWidget(FilterButtonArrayWidget.build());
+            });
+            ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
+            ELECTRIC_TYPE_FILTER.addGuiCallback(t -> {
+                t.addWidget(FilterButtonArrayWidget.build());
+            });
+        }
     }
     // }
 }
