@@ -22,7 +22,7 @@
     "antimatter": ">=0.1"
   },
   "entrypoints": {
-    "client": [
+    "antimatter_client": [
       "muramasa.gregtech.client.fabric.GregTechFabricClient"
     ],
     "main": [
