@@ -324,18 +324,20 @@ public class Machines {
                             .put('C', Items.CHEST)
                             .put('H', casing)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.LARGE)).build(), "LCL", "LHL", "   "));
-            add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
-                    ImmutableMap.<Character, Object>builder()
-                    .put('H', casing)
-                    .put('C', CircuitAdv)
-                    .put('F', ItemFilter)
-                    .put('E', Items.CHEST).build(), " H ", "ECE", " F "));
-             add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
-                    ImmutableMap.<Character, Object>builder()
-                    .put('H', casing)
-                    .put('C', CircuitBasic)
-                    .put('F', ItemFilter)
-                    .put('E', Items.CHEST).build(), " H ", "ECE", " F "));
+            if (!AntimatterAPI.isModLoaded("gt4r")){
+                add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
+                        ImmutableMap.<Character, Object>builder()
+                                .put('H', casing)
+                                .put('C', CircuitAdv)
+                                .put('F', ItemFilter)
+                                .put('E', Items.CHEST).build(), " H ", "ECE", " F "));
+                add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                        ImmutableMap.<Character, Object>builder()
+                                .put('H', casing)
+                                .put('C', CircuitBasic)
+                                .put('F', ItemFilter)
+                                .put('E', Items.CHEST).build(), " H ", "ECE", " F "));
+            }
 
             provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(CASING_FIRE_BRICK), PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()),
                     ImmutableMap.<Character, Object>builder()
