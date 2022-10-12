@@ -11,11 +11,6 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 public class GregTechFabricRegistrar extends AntimatterMod {
 
     @Override
-    public void onRegistrarInit() {
-        AntimatterAPI.addRegistrar(this);
-    }
-
-    @Override
     public String getId() {
         return Ref.ID + "_fabric";
     }
