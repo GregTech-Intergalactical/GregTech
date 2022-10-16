@@ -12,6 +12,9 @@ dependencies{
     modCompileOnly("dev.latvian.mods:kubejs-fabric:${rootProject.kubejs_version}")
     implementation(project(path: ":tesseract-common", configuration: "namedElements"))
     implementation(project(path: ":antimatter-common", configuration: "namedElements"))
+    modImplementation(include("com.github.gregtech-intergalactical:gtrubber-common:1.18.2-0.1")){
+        transitive = false
+    }
     modImplementation("com.github.FeltMC.Fabricated-Forge-API:fabricated-forge-caps:${rootProject.fabricated_forge_hash}")
     modImplementation("com.github.FeltMC.Fabricated-Forge-API:fabricated-forge-tag-extensions:${rootProject.fabricated_forge_hash}")
     modImplementation("com.github.FeltMC.Fabricated-Forge-API:fabricated-forge-modeldata:${rootProject.fabricated_forge_hash}")

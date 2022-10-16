@@ -40,6 +40,9 @@ dependencies{
         exclude(group: "net.fabricmc.fabric-api")
     }
     modImplementation("net.devtech:arrp:0.5.7")
+    modImplementation(include("com.github.gregtech-intergalactical:gtrubber-fabric:1.18.2-0.1")){
+        transitive = false
+    }
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
     modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}")
     modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-fabric-api:${rootProject.jei_version}")

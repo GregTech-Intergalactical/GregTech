@@ -56,8 +56,12 @@ dependencies {
     common(project(path: ":antimatter-common", configuration: "namedElements")){
         transitive = false;
     }
-    modRuntimeOnly("com.github.Reforged-Mods:ARRP-forge:362cae740e")
-    modRuntimeOnly("com.github.FeltMC.Fabricated-Forge-API:fluidhandler-extras:${rootProject.fabricated_forge_hash}")
+    modRuntimeOnly("com.github.Reforged-Mods:ARRP-forge:0.5.7.2")
+    modRuntimeOnly("io.github.feltmc:fluidhandler-extras:1.0.0")
+    modImplementation("com.github.gregtech-intergalactical:gtrubber-forge:1.18.2-0.1.1:dev-shadow"){
+        transitive = false
+    }
+    include("com.github.gregtech-intergalactical:gtrubber-forge:1.18.2-0.1.1")
     //JEI
     //modRuntimeOnly("mezz.jei:jei-${rootProject.minecraft_version}-forge:${rootProject.jei_version}")
     modRuntimeOnly("mezz.jei:jei-1.18.2:9.5.0.132")
