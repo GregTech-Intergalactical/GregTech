@@ -19,9 +19,6 @@ public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
     @Override
     public void processTags(String domain){
         super.processTags(domain);
-        this.tag(BlockTags.LOGS).add(GregTechData.RUBBER_LOG);
-        this.tag(BlockTags.LEAVES).add(GregTechData.RUBBER_LEAVES);
-        this.tag(BlockTags.SAPLINGS).add(GregTechData.RUBBER_SAPLING);
         AntimatterAPI.all(BlockCasing.class, Ref.ID, cas -> {
             this.tag(Data.WRENCH.getToolType()).add(cas);
         });

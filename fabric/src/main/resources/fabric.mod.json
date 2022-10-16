@@ -30,8 +30,7 @@
     ],
     "antimatter": [
       "muramasa.gregtech.GregTech",
-      "muramasa.gregtech.GregTechPostRegistrar",
-      "muramasa.gregtech.fabric.GregTechFabricRegistrar"
+      "muramasa.gregtech.GregTechPostRegistrar"
     ]
   }
 }

@@ -1,5 +1,6 @@
 package muramasa.gregtech.events.forge;
 
+import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.fluid.AntimatterFluid;
@@ -48,15 +49,37 @@ public class RemappingEvents {
             if (replacement != null){
                 map.remap(replacement);
             }
+            if (id.equals("rubber_log")){
+                map.remap(GTRubberData.RUBBER_LOG);
+            }
+            if (id.equals("rubber_leaves")){
+                map.remap(GTRubberData.RUBBER_LEAVES);
+            }
+            if (id.equals("rubber_sapling")){
+                map.remap(GTRubberData.RUBBER_SAPLING);
+            }
         }
     }
 
     @SubscribeEvent
     public static void remapMissingItems(final RegistryEvent.MissingMappings<Item> event){
         for (RegistryEvent.MissingMappings.Mapping<Item> map : event.getMappings(Ref.ID)) {
-            Item replacement = AntimatterAPI.get(Item.class, map.key.getPath(), Ref.ANTIMATTER_SHARED);
+            String id = map.key.getPath();
+            Item replacement = AntimatterAPI.get(Item.class, id, Ref.ANTIMATTER_SHARED);
             if (replacement != null){
                 map.remap(replacement);
+            }
+            if (id.equals("rubber_log")){
+                map.remap(GTRubberData.RUBBER_LOG.asItem());
+            }
+            if (id.equals("rubber_leaves")){
+                map.remap(GTRubberData.RUBBER_LEAVES.asItem());
+            }
+            if (id.equals("rubber_sapling")){
+                map.remap(GTRubberData.RUBBER_SAPLING.asItem());
+            }
+            if (id.equals("sticky_resin")){
+                map.remap(GTRubberData.StickyResin);
             }
         }
     }

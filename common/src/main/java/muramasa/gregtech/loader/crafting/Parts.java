@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.crafting;
 
+import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
@@ -86,7 +87,7 @@ public class Parts {
     // MANUAL COATED BOARD CRAFTING
     provider.addItemRecipe(output, "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBoardCoated,
         ImmutableMap.<Character, Object>builder()
-                .put('R', StickyResin)
+                .put('R', GTRubberData.StickyResin)
                 .put('P', PLATE.get(Wood))
             .build(),
         " R ", "PPP", " R ");

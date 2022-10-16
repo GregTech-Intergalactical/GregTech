@@ -33,9 +33,6 @@ public class GregTechLocalizations {
             AntimatterAPI.all(BlockCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Integrated Circuit (" + i.circuitId + ")"));
-            add(GregTechData.RUBBER_LEAVES, "Rubber Leaves");
-            add(GregTechData.RUBBER_LOG, "Rubber Log");
-            add(GregTechData.RUBBER_SAPLING, "Rubber Sapling");
         }
     }
 

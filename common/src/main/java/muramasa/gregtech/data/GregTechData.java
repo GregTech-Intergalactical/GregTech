@@ -2,7 +2,6 @@ package muramasa.gregtech.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.Data;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
@@ -19,13 +18,8 @@ import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockFusionCasing;
 import muramasa.gregtech.block.BlockTurbineCasing;
-import muramasa.gregtech.block.tree.RubberTree;
 import muramasa.gregtech.cover.CoverConveyor;
 import muramasa.gregtech.cover.CoverPump;
-import muramasa.gregtech.block.tree.BlockRubberLeaves;
-import muramasa.gregtech.block.tree.BlockRubberLog;
-import muramasa.gregtech.block.tree.BlockRubberSapling;
-import muramasa.gregtech.machine.HeatHatch;
 import net.minecraft.world.level.block.SoundType;
 
 import static muramasa.antimatter.Data.*;
@@ -55,7 +49,6 @@ public class GregTechData {
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/s (as Cover)", CoverPump.speeds.get(b))))
             .addTextures(new Texture(Ref.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(Ref.ID, "pump");
 
-    public static ItemBasic<?> StickyResin = new ItemBasic<>(Ref.ID, "sticky_resin");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 
     public static ItemFluidCell CellTin = new ItemFluidCell(Ref.ID, Tin, 1000);
@@ -463,9 +456,4 @@ public class GregTechData {
         basePressure *= 20;
         return new int[]{basePressure / 6, basePressure / 6, basePressure / 3, basePressure, basePressure * 2, basePressure * 4};
     }
-
-    // Rubber Tree
-    public static final BlockRubberLeaves RUBBER_LEAVES = new BlockRubberLeaves(Ref.ID, "rubber_leaves");
-    public static final BlockRubberLog RUBBER_LOG = new BlockRubberLog(Ref.ID, "rubber_log");
-    public static final BlockRubberSapling RUBBER_SAPLING = new BlockRubberSapling(Ref.ID, "rubber_sapling");
 }

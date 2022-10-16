@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.items;
 
+import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.SubTag;
@@ -27,7 +28,7 @@ public class Circuitry {
 
     private static void boards () {
         //Coated
-        ASSEMBLING.RB().ii(of(GregTechData.StickyResin,2), of(PLATE.get(Wood),8))
+        ASSEMBLING.RB().ii(of(GTRubberData.StickyResin,2), of(PLATE.get(Wood),8))
                 .fi(Glue.getLiquid(100))
                 .io(new ItemStack(GregTechData.CircuitBoardCoated,8))
                 .add(8*20, 8);
