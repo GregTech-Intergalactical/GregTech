@@ -81,7 +81,7 @@ processResources {
     }
 }
 sourcesJar {
-    def commonSources = project(":antimatter-common").sourcesJar
+    def commonSources = project(":common").sourcesJar
     dependsOn commonSources
     from commonSources.archiveFile.map { zipTree(it) }
 }
