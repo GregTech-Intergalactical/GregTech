@@ -28,6 +28,7 @@ import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import tesseract.Tesseract;
+import tesseract.TesseractGraphWrappers;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -160,12 +161,12 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
                                 return;
                             }
                             f.drainInput(new FluidStack(Fluids.WATER, 1), IFluidHandler.FluidAction.EXECUTE);
-                            long room = (16000 * Tesseract.dropletMultiplier) - f.getOutputs()[0].getRealAmount();
-                            long fill = Math.min(room, (150 * Tesseract.dropletMultiplier));
+                            long room = (16000 * TesseractGraphWrappers.dropletMultiplier) - f.getOutputs()[0].getRealAmount();
+                            long fill = Math.min(room, (150 * TesseractGraphWrappers.dropletMultiplier));
                             if (room > 0){
                                 f.fillOutput(Steam.getGas(fill), IFluidHandler.FluidAction.EXECUTE);
                             }
-                            if (fill < (150 * Tesseract.dropletMultiplier)) {
+                            if (fill < (150 * TesseractGraphWrappers.dropletMultiplier)) {
                                 //TODO:steam sounds
                                 tile.getLevel().playSound(null, tile.getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
                                 if (tile.getLevel() instanceof ServerLevel)
