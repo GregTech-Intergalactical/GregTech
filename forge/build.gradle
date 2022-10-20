@@ -57,7 +57,7 @@ dependencies {
         transitive = false;
     }
     modRuntimeOnly("com.github.Reforged-Mods:ARRP-forge:0.5.7.2")
-    modRuntimeOnly("io.github.feltmc:fluidhandler-extras:1.0.0")
+    modRuntimeOnly("io.github.feltmc:fluidhandler-extras:1.0.1")
     modImplementation("com.github.gregtech-intergalactical:gtrubber-forge:1.18.2-0.1.1:dev-shadow"){
         transitive = false
     }
