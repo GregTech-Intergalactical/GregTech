@@ -1,0 +1,95 @@
+archivesBaseName = "${rootProject.archive_base_name}-forge"
+version = "${rootProject.minecraft_version}-${rootProject.mod_version}"
+
+architectury {
+    forge()
+}
+
+//sourceSets {
+//    main {
+//        java {
+//            srcDir 'src/main/java'
+//        }
+//        resources {
+//            include '**/**'
+//            srcDirs += 'src/generated/resources'
+//            exclude '.cache'
+//            exclude 'Thumbs.db'
+//        }
+//    }
+//
+//}
+
+loom{
+    forge {
+        dataGen {
+            mod project.modid
+        }
+
+        launches {
+            data {
+                arg "--existing", file("src/main/resources").absolutePath
+            }
+        }
+    }
+}
+
+
+dependencies {
+    forge "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+    implementation 'org.apache.commons:commons-collections4:4.4'
+    //implementation project(path: ":TesseractAPI")
+    //GT
+    implementation(project(path: ":tesseract-forge", configuration: "namedElements"))
+    common(project(path: ":tesseract-common", configuration: "namedElements"))
+
+    //MIXIN
+    if (System.getProperty('idea.sync.active') != 'true') {
+        annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
+    }
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive false }
+
+    implementation(project(path: ":antimatter-forge", configuration: "namedElements")){
+        transitive = false;
+    }
+    common(project(path: ":antimatter-common", configuration: "namedElements")){
+        transitive = false;
+    }
+    modRuntimeOnly("com.github.Reforged-Mods:ARRP-forge:0.5.7.2")
+    modRuntimeOnly("io.github.feltmc:fluidhandler-extras:1.0.1")
+    modImplementation("com.github.gregtech-intergalactical:gtrubber-forge:1.18.2-0.1.1:dev-shadow"){
+        transitive = false
+    }
+    include("com.github.gregtech-intergalactical:gtrubber-forge:1.18.2-0.1.1")
+    //JEI
+    //modRuntimeOnly("mezz.jei:jei-${rootProject.minecraft_version}-forge:${rootProject.jei_version}")
+    modRuntimeOnly("mezz.jei:jei-1.18.2:9.5.0.132")
+}
+
+jar {
+    zip64 true
+    manifest {
+        attributes([
+                "Specification-Title": project.name,
+                "Specification-Vendor": "GregTech Intergalactical",
+                "Specification-Version": project.version,
+                "Implementation-Title": project.name,
+                "Implementation-Version": project.version,
+                "Implementation-Vendor": "GregTech Intergalactical",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            ])
+    }
+}
+
+
+processResources {
+    exclude('gtuassets1.14')
+    exclude('assets/gt4r/textures/old_textures')
+
+    inputs.property "version", project.version
+
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
+    }
+}

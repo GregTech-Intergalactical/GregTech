@@ -1,0 +1,112 @@
+archivesBaseName = "${rootProject.archive_base_name}-fabric"
+version = "${rootProject.minecraft_version}-${project.mod_version}"
+
+def generatedResources = file("src/generated/resources")
+def accessWidenerFile = project(":antimatter-common").file("src/main/resources/antimatter.accesswidener")
+
+loom {
+    accessWidenerPath = accessWidenerFile
+}
+
+repositories {
+    maven {
+        url = uri("https://storage.googleapis.com/devan-maven/")
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir generatedResources
+        }
+    }
+}
+
+dependencies{
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+    common(project(path: ":tesseract-common", configuration: "namedElements")) { transitive false }
+    common(project(path: ":antimatter-common", configuration: "namedElements")) { transitive false }
+    implementation(project(path: ":tesseract-fabric", configuration: "namedElements")) { transitive false }
+    implementation(project(path: ":antimatter-fabric", configuration: "namedElements"))
+    modImplementation("io.github.feltmc:fabricated-forge-caps:${rootProject.fabricated_forge_hash}")
+    modImplementation("io.github.feltmc:fabricated-forge-tag-extensions:${rootProject.fabricated_forge_hash}")
+    modImplementation("io.github.feltmc:fabricated-forge-modeldata:${rootProject.fabricated_forge_hash}")
+    modImplementation("com.github.FeltMC.Felt-API:felt-item-api:05a5fe1533") { transitive false }
+    modImplementation("com.github.FeltMC.Felt-API:felt-recipe-api:2a689af1cb")
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+    modImplementation("net.devtech:arrp:0.5.7")
+    modImplementation(include("com.github.gregtech-intergalactical:gtrubber-fabric:1.18.2-0.1")){
+        transitive = false
+    }
+    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
+    modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}")
+    modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-fabric-api:${rootProject.jei_version}")
+    implementation("com.electronwill.night-config:toml:${rootProject.nightconfig_version}")
+    implementation("com.electronwill.night-config:core:${rootProject.nightconfig_version}")
+    modImplementation("teamreborn:energy:${rootProject.energy_version}") {
+        transitive = false
+    }
+    modRuntimeOnly("com.terraformersmc:modmenu:${rootProject.mod_menu_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
+    modImplementation("com.github.FeltMC:forgeconfigapiport-fabric:c1486f80f7"){
+        transitive = false
+    }
+}
+
+architectury {
+    fabric()
+}
+
+task copyAccessWidener(type: Copy) {
+    from accessWidenerFile
+    into generatedResources
+}
+
+processResources {
+    //dependsOn copyAccessWidener
+
+    def toReplace = [
+            "version"             : project.version
+    ]
+
+    inputs.properties toReplace
+    filesMatching("fabric.mod.json") {
+        expand toReplace
+    }
+}
+sourcesJar {
+    def commonSources = project(":common").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+}
+
+/*
+publishing {
+    tasks.publish.dependsOn "build", "reobfJar"
+    publications {
+        mavenJava(org.gradle.api.publish.maven.MavenPublication) {
+            //artifactId = archivesBaseName
+            artifact shadowJar
+        }
+    }
+    repositories {
+        if (rootProject.isCI && rootProject.isRELEASE) {
+            maven {
+                name = "GitHubPackages"
+                url = "https://maven.pkg.github.com/GregTech-Intergalactical/TesseractAPI"
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+            }
+        } else {
+            maven { url "file:///${project.projectDir}/mcmodsrepo"}
+        }
+    }
+    //repositories {
+    //    rootProject.configurePublishingRepositories(delegate)
+    //}
+}*/

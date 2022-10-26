@@ -1,11 +1,35 @@
-def folder = new File( 'AntimatterAPI' )
-if(folder.exists() ) {
-    include 'AntimatterAPI'
-    project(':AntimatterAPI').setProjectDir(new File("AntimatterAPI"))
+pluginManagement {
+    repositories {
+
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        maven { url "https://maven.architectury.dev/" }
+        maven { url "https://maven.minecraftforge.net/" }
+        maven {
+            name = 'parchment'
+            url = 'https://maven.parchmentmc.org'
+        }
+        gradlePluginPortal()
+        mavenCentral()
+    }
 }
-def tesseractFolder = new File('AntimatterAPI/TesseractAPI')
-if (tesseractFolder.exists()) {
-    include 'TesseractAPI'
-    project(':TesseractAPI').setProjectDir(new File("AntimatterAPI/TesseractAPI/forge"))
-}
+include 'tesseract-forge'
+project(':tesseract-forge').setProjectDir(new File("AntimatterAPI/TesseractAPI/forge"))
+include 'tesseract-common'
+project(':tesseract-common').setProjectDir(new File("AntimatterAPI/TesseractAPI/common"))
+include 'tesseract-fabric'
+project(':tesseract-fabric').setProjectDir(new File("AntimatterAPI/TesseractAPI/fabric"))
+
+
+include("antimatter-common")
+include("antimatter-fabric")
+include("antimatter-forge")
+project(':antimatter-common').setProjectDir(new File("AntimatterAPI/common"))
+project(':antimatter-forge').setProjectDir(new File("AntimatterAPI/forge"))
+project(':antimatter-fabric').setProjectDir(new File("AntimatterAPI/fabric"))
+include("common")
+include("fabric")
+include("forge")
 

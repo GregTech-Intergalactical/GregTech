@@ -1,0 +1,33 @@
+modLoader="javafml"
+license="LGPLv3"
+loaderVersion="[31,)"
+issueTrackerURL="https://github.com/GregTech-Intergalactical/GregTech/issues"
+
+[[mods]]
+modId="gregtech"
+version="${version}"
+displayName="GregTech Intergalactical"
+#updateJSONURL="http://myurl.me/"
+displayURL="https://github.com/GregTech-Intergalactical/GregTech"
+#logoFile="gregtech.png"
+credits="GregoriusTechneticies for his previous versions of GregTech. And the current GregTech community for suggestions and ideas."
+authors="Muramasa, Rongmario"
+description='''The Approved Continuation. Rewrite. And Re-envisioning of GregTech 5'''
+[[dependencies.gregtech]]
+    modId="antimatter"
+    mandatory=true
+    versionRange="[0.0.4,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.gregtech]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36.1.0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.gregtech]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18,)"
+    ordering="NONE"
+    side="BOTH"
