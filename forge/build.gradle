@@ -65,6 +65,7 @@ dependencies {
     //JEI
     //modRuntimeOnly("mezz.jei:jei-${rootProject.minecraft_version}-forge:${rootProject.jei_version}")
     modRuntimeOnly("mezz.jei:jei-1.18.2:9.5.0.132")
+    modCompileOnly "me.shedaniel:RoughlyEnoughItems-forge:${rootProject.rei_version}"
 }
 
 jar {
