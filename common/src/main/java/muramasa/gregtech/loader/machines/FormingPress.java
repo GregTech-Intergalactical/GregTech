@@ -18,8 +18,21 @@ public class FormingPress {
         molds(GregTechData.MoldIngot);
         molds(GregTechData.MoldNugget);
         molds(GregTechData.MoldPlate);
+
+        molds(GregTechData.ShapeBolt);
+        molds(GregTechData.ShapeGear);
+        molds(GregTechData.ShapeGearSmall);
+        molds(GregTechData.ShapeRing);
+        molds(GregTechData.ShapeRod);
+        molds(GregTechData.ShapePipeHuge);
+        molds(GregTechData.ShapePipeLarge);
+        molds(GregTechData.ShapePipeNormal);
+        molds(GregTechData.ShapePipeSmall);
+        molds(GregTechData.ShapePipeTiny);
+        molds(GregTechData.ShapeWire);
+        molds(GregTechData.ShapePlate);
     }
     private static void molds(ItemBasic mold){
-        PRESSING.RB().ii(of(GregTechData.EmptyShape,1),of(mold,1)).io(new ItemStack(mold,1)).add(120,20);
+        PRESSING.RB().ii(of(GregTechData.EmptyShape,1),of(mold,1).setNoConsume()).io(new ItemStack(mold,1)).add(120,20);
     }
 }

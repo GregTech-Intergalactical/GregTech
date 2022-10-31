@@ -75,11 +75,6 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "graphite", 0x808080, DULL));
     public static Material Americium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "americium", 0xc8c8c8, METALLIC, Am)); // TODO:
-    // When
-    // we're
-    // thinking
-    // about
-    // fusion;
     public static Material Antimony = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "antimony", 0xdcdcf0, SHINY, Sb));
     public static Material Argon = AntimatterAPI
@@ -99,7 +94,7 @@ public class Materials {
     public static Material Cerium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "cerium", 0xffffff, METALLIC, Ce));
     public static Material Chlorine = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "chlorine", 0x00ffff, NONE, Cr));
+            .register(Material.class, new Material(Ref.ID, "chlorine", 0x00ffff, NONE, Cl));
     public static Material Deuterium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "deuterium", 0xffff00, NONE, D));
     public static Material Dysprosium = AntimatterAPI
@@ -126,6 +121,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "magnesium", 0xffc8c8, METALLIC, Mg));
     public static Material Mercury = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "mercury", 0xffdcdc, SHINY, Hg));
+    public static Material Neon = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "helium", 0xffff00, NONE, Ne));
     public static Material Niobium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "niobium", 0xbeb4c8, METALLIC, Nb));
     public static Material Nitrogen = AntimatterAPI
@@ -152,6 +149,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "tritium", 0xff0000, METALLIC, T));
     public static Material Vanadium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "vanadium", 0x323232, METALLIC, V));
+    public static Material Xenon = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "helium", 0xffff00, NONE, Xe));
     public static Material Yttrium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "yttrium", 0xdcfadc, METALLIC, Y));
     public static Material Zinc = AntimatterAPI
@@ -169,10 +168,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "methane", 0xffffff, NONE));
     public static Material CarbonDioxide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "carbon_dioxide", 0xa9d0f5, NONE));
-    // public static Material NobleGases = AntimatterAPI.register(Material.class,
-    // new Material(Ref.ID, "noble_gases", 0xc9e3fc, NONE))/*.setTemp(79,
-    // 0)*/.addComposition(of(CarbonDioxide, 21, Helium, 9, Methane, 3, Deuterium,
-    // 1));
+    public static Material NobleGases = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "noble_gases", 0xc9e3fc, NONE));
     public static Material Air = AntimatterAPI.register(Material.class, new Material(Ref.ID, "air", 0xc9e3fc, NONE));
     public static Material NitrogenDioxide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "nitrogen_dioxide", 0x64afff, NONE));
@@ -220,8 +217,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "propene", 0xffdd55, NONE));
     public static Material Ethenone = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "ethenone", 0x141446, NONE));
-    public static Material HydricSulfide = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "hydric_sulfide", 0xffffff, NONE));
+    public static Material HydrogenSulfide = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydrogen_sulfide", 0xffffff, NONE));
 
     /**
      * Fluids
@@ -262,6 +259,10 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "sodium_persulfate", 0xffffff, NONE));
     public static Material DilutedHydrochloricAcid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "diluted_hydrochloric_acid", 0x99a7a3, NONE));
+    public static Material SulfuricAcid = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "sulfuric_acid", 0xff8000, NONE));
+    public static Material NitricAcid = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "nitric_acid", 0xe6e2ab, NONE));
     public static Material NitrationMixture = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "nitration_mixture", 0xe6e2ab, NONE));
     public static Material Dichlorobenzene = AntimatterAPI
@@ -274,8 +275,6 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "tetranitromethane", 0x0f2828, NONE));
     public static Material Epichlorohydrin = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "epichlorohydrin", 0x501d05, NONE));
-    public static Material NitricAcid = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "nitric_acid", 0xe6e2ab, NONE));
     public static Material Dimethylhydrazine = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "dimethylhydrazine", 0x000055, NONE));
     public static Material Chloramine = AntimatterAPI
@@ -315,8 +314,6 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "cumene", 0x552200, NONE));
     public static Material PhosphoricAcid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "phosphoric_acid", 0xdcdc00, NONE));
-    public static Material SulfuricAcid = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "sulfuric_acid", 0xff8000, NONE));
     public static Material SulfuricTrioxide = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sulfuric_trioxide", 0x8d8d21, NONE));
     public static Material SulfuricDioxide = AntimatterAPI
@@ -379,6 +376,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "butenol", 0xff8000, NONE));
     public static Material Butanediol = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "butanediol", 0xff8000, NONE));
+    public static Material Heptanol = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "heptanol", 0xff8000, NONE));
     public static Material Creosote = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "creosote", 0x804000, NONE));
     public static Material FishOil = AntimatterAPI
@@ -522,6 +521,8 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "fireclay", 0xada09b, ROUGH));
     public static Material SodiumBisulfate = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sodium_bisulfate", 0x004455, NONE));
+    public static Material SodiumSulfate = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "sodium_sulfate", 0x004455, NONE));
     public static Material RawStyreneButadieneRubber = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "raw_styrene_butadiene_rubber", 0x54403d, SHINY));
     public static Material PhosphorousPentoxide = AntimatterAPI

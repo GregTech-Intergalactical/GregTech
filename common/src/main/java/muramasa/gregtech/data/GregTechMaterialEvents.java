@@ -100,6 +100,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Lutetium).asMetal(1925, 1925);
         event.setMaterial(Magnesium).asMetal(923, 0);
         event.setMaterial(Mercury).asFluid();
+        event.setMaterial(Neon).asPlasma();
         event.setMaterial(Niobium).asMetal(2750, 2750);
         event.setMaterial(Nitrogen).asPlasma();
         event.setMaterial(Oxygen).asPlasma();
@@ -113,6 +114,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Tin).asMetal(505, 505, PLATE, ROD, SCREW, BOLT, RING, GEAR, FOIL, WIRE_FINE, FRAME, ROTOR).asOre();
         event.setMaterial(Tritium).asGas();
         event.setMaterial(Vanadium).asMetal(2183, 2183);
+        event.setMaterial(Xenon).asPlasma();
         event.setMaterial(Yttrium).asMetal(1799, 1799);
         event.setMaterial(Zinc).asMetal(692, 0, PLATE, FOIL)
                 .asOre();
@@ -128,10 +130,7 @@ public class GregTechMaterialEvents {
                 .mats(of(Carbon, 1, Hydrogen, 4));
         event.setMaterial(CarbonDioxide).asGas()
                 .mats(of(Carbon, 1, Oxygen, 2));
-        // event.setMaterial(NobleGases).asGas()/*.setTemp(79,
-        // 0)*/.addComposition(of(CarbonDioxide, 21, Helium, 9, Methane, 3, Deuterium,
-        // 1));
-        event.setMaterial(Air).asGas().mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1/* , NobleGases, 1 */));
+        event.setMaterial(Air).asGas().mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1, NobleGases, 1 ));
         event.setMaterial(NitrogenDioxide).asGas()
                 .mats(of(Nitrogen, 1, Oxygen, 2));
         event.setMaterial(NaturalGas).asGas(15);
@@ -152,8 +151,8 @@ public class GregTechMaterialEvents {
                 .mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
         event.setMaterial(SulfurDioxide).asGas()
                 .mats(of(Sulfur, 1, Oxygen, 2));
-        event.setMaterial(SulfurTrioxide).asGas()
-                /* .setTemp(344, 1) */.mats(of(Sulfur, 1, Oxygen, 3));
+        event.setMaterial(SulfurTrioxide).asGas(0,344)
+                .mats(of(Sulfur, 1, Oxygen, 3));
         event.setMaterial(Dimethylamine).asGas()
                 .mats(of(Carbon, 2, Hydrogen, 7, Nitrogen, 1));
         event.setMaterial(DinitrogenTetroxide).asGas()
@@ -174,14 +173,17 @@ public class GregTechMaterialEvents {
                 .mats(of(Carbon, 3, Hydrogen, 6));
         event.setMaterial(Ethenone).asGas()
                 .mats(of(Carbon, 2, Hydrogen, 2, Oxygen, 1));
-        event.setMaterial(HydricSulfide).asGas()
+        event.setMaterial(HydrogenSulfide).asGas()
                 .mats(of(Hydrogen, 2, Sulfur, 1));
+        event.setMaterial(NobleGases).asGas(0,790)
+                .mats(of(Helium, 18, Neon, 18, Argon, 18, Xenon, 18));
 
         /**
          * Fluids
          **/
         event.setMaterial(Steam).asGas(1, 395);
-        event.setMaterial(SaltWater).asFluid();
+        event.setMaterial(SaltWater).asFluid()
+                .mats(of(Water,1,Sodium,1,Chlorine,1));;
         event.setMaterial(UUAmplifier).asFluid();
         event.setMaterial(UUMatter).asFluid();
         event.setMaterial(Antimatter).asFluid();
@@ -193,13 +195,13 @@ public class GregTechMaterialEvents {
         // event.setMaterial(WoodTar).asFluid(; TODO: not sure if
         // neede;
         event.setMaterial(WoodVinegar).asFluid();
-        event.setMaterial(LiquidAir).asFluid()
-                /* .setTemp(79, 0) */.mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1/* , NobleGases, 1 */)); // TODO Rrename to
+        event.setMaterial(LiquidAir).asFluid(0, 79)
+                .mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1, NobleGases, 1 )); // TODO Rrename to
         // liquid
         // oxygen <- Nope, add
         // fluid to Oxyge;
         event.setMaterial(DistilledWater).asFluid()
-                .mats(of(Hydrogen, 2, Oxygen, 1));
+                .mats(of(Water,1));
         event.setMaterial(Glyceryl).asFluid()
                 .mats(of(Carbon, 3, Hydrogen, 5, Nitrogen, 3, Oxygen, 9));
         event.setMaterial(Titaniumtetrachloride).asFluid()
@@ -208,7 +210,12 @@ public class GregTechMaterialEvents {
                 .mats(of(Sodium, 2, Sulfur, 2, Oxygen, 8));
         event.setMaterial(DilutedHydrochloricAcid).asFluid()
                 .mats(of(Hydrogen, 1, Chlorine, 1));
-        event.setMaterial(NitrationMixture).asFluid();
+        event.setMaterial(SulfuricAcid).asFluid()
+                .mats(of(Hydrogen, 2, Sulfur, 1, Oxygen, 4));
+        event.setMaterial(NitricAcid).asFluid()
+                .mats(of(Hydrogen, 1, Nitrogen, 1, Oxygen, 3));
+        event.setMaterial(NitrationMixture).asFluid()
+                .mats(of(SulfuricAcid,1,NitricAcid,1));
         event.setMaterial(Dichlorobenzene).asFluid()
                 .mats(of(Carbon, 6, Hydrogen, 4, Chlorine, 2));
         event.setMaterial(Styrene).asFluid()
@@ -219,8 +226,6 @@ public class GregTechMaterialEvents {
                 .mats(of(Carbon, 1, Nitrogen, 4, Oxygen, 8));
         event.setMaterial(Epichlorohydrin).asFluid()
                 .mats(of(Carbon, 3, Hydrogen, 5, Chlorine, 1, Oxygen, 1));
-        event.setMaterial(NitricAcid).asFluid()
-                .mats(of(Hydrogen, 1, Nitrogen, 1, Oxygen, 3));
         event.setMaterial(Dimethylhydrazine).asFluid()
                 .mats(of(Carbon, 2, Hydrogen, 8, Nitrogen, 2));
         event.setMaterial(Chloramine).asFluid()
@@ -257,8 +262,6 @@ public class GregTechMaterialEvents {
                 .mats(of(Carbon, 9, Hydrogen, 12));
         event.setMaterial(PhosphoricAcid).asFluid()
                 .mats(of(Hydrogen, 3, Phosphor, 1, Oxygen, 4));
-        event.setMaterial(SulfuricAcid).asFluid()
-                .mats(of(Hydrogen, 2, Sulfur, 1, Oxygen, 4));
         event.setMaterial(SulfuricTrioxide).asGas()
                 .mats(of(Sulfur, 1, Oxygen, 3));
         event.setMaterial(SulfuricDioxide).asGas()
@@ -278,7 +281,8 @@ public class GregTechMaterialEvents {
         // a bedrock drill;
         event.setMaterial(BlueVitriol).asFluid();
         event.setMaterial(IndiumConcentrate).asFluid();
-        event.setMaterial(NickelSulfate).asFluid();
+        event.setMaterial(NickelSulfate).asFluid()
+                .mats(of(Nickel,1,Sulfur,1,Oxygen,4));
         event.setMaterial(RocketFuel).asFluid();
         event.setMaterial(LeadZincSolution).asFluid();
 
@@ -308,6 +312,8 @@ public class GregTechMaterialEvents {
                 .mats(of(Carbon, 4, Hydrogen, 8, Oxygen, 1));
         event.setMaterial(Butanediol).asFluid(286)
                 .mats(of(Carbon, 4, Hydrogen, 10, Oxygen, 2));
+        event.setMaterial(Heptanol).asFluid(226)
+                .mats(of(Carbon, 7, Hydrogen, 16, Oxygen, 1));
         event.setMaterial(Creosote).asFluid(8);
         event.setMaterial(FishOil).asFluid(2);
         event.setMaterial(Oil).asFluid(16);
@@ -333,10 +339,12 @@ public class GregTechMaterialEvents {
                 .mats(of(Sodium, 2, Sulfur, 1));
         event.setMaterial(TinAlloy).asDust()
                 .mats(of(Tin, 1, Iron, 1));
-        event.setMaterial(Energium).asDust();
+        event.setMaterial(Energium).asDust()
+                .mats(of(Redstone,1,Ruby,1));
         event.setMaterial(BorosilicateGlass).asDust()
                 .mats(of(Boron, 1, Silicon, 7, Oxygen,14));
-        event.setMaterial(IridiumSodiumOxide).asDust();
+        event.setMaterial(IridiumSodiumOxide).asDust()
+                .mats(of(Iridium,1,Sodium,1,Oxygen,2));
         event.setMaterial(IndiumGalliumPhosphide).asDust()
                 .mats(of(Indium, 1, Gallium, 1, Phosphor, 1));
         event.setMaterial(PlatinumGroupSludge).asDust();
@@ -426,6 +434,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Fireclay).asDust(INGOT, PLATE).mats(of(Brick, 1));
         event.setMaterial(SodiumBisulfate).asDust()
                 .mats(of(Sodium, 1, Hydrogen, 1, Sulfur, 1, Oxygen, 4));
+        event.setMaterial(SodiumSulfate).asDust()
+                .mats(of(Sodium, 2, Sulfur, 1, Oxygen, 4));
         event.setMaterial(RawStyreneButadieneRubber).asDust()
                 .mats(of(Styrene, 1, Butadiene, 3));
         event.setMaterial(PhosphorousPentoxide).asDust()
