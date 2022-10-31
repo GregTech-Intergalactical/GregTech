@@ -125,7 +125,8 @@ public class GregTechMaterialEvents {
         /**
          * Gases
          **/
-        event.setMaterial(WoodGas).asGas(24);
+        event.setMaterial(WoodGas).asGas(24)
+                .mats(of(CarbonDioxide,8,CarbonMonoxide,4,Methane,2,Ethylene,1,Hydrogen,1));
         event.setMaterial(Methane).asGas(104)
                 .mats(of(Carbon, 1, Hydrogen, 4));
         event.setMaterial(CarbonDioxide).asGas()
@@ -133,8 +134,10 @@ public class GregTechMaterialEvents {
         event.setMaterial(Air).asGas().mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1, NobleGases, 1 ));
         event.setMaterial(NitrogenDioxide).asGas()
                 .mats(of(Nitrogen, 1, Oxygen, 2));
-        event.setMaterial(NaturalGas).asGas(15);
-        event.setMaterial(SulfuricGas).asGas(20);
+        event.setMaterial(NaturalGas).asGas(15)
+                .mats(of(Methane,4,Ethane,2,Propane,2,Butane,1));
+        event.setMaterial(SulfuricGas).asGas(20)
+                .mats(of(NaturalGas,1,Sulfur,1));
         event.setMaterial(RefineryGas).asGas(128);
         event.setMaterial(LPG).asGas(256);
         event.setMaterial(Ethane).asGas(168)
@@ -176,12 +179,13 @@ public class GregTechMaterialEvents {
         event.setMaterial(HydrogenSulfide).asGas()
                 .mats(of(Hydrogen, 2, Sulfur, 1));
         event.setMaterial(NobleGases).asGas(0,790)
-                .mats(of(Helium, 18, Neon, 18, Argon, 18, Xenon, 18));
+                .mats(of(Helium, 10, Neon, 10, Argon, 10, Xenon, 10));
 
         /**
          * Fluids
          **/
-        event.setMaterial(Steam).asGas(1, 395);
+        event.setMaterial(Steam).asGas(1, 395)
+                .mats(of(Water,1));
         event.setMaterial(SaltWater).asFluid()
                 .mats(of(Water,1,Sodium,1,Chlorine,1));;
         event.setMaterial(UUAmplifier).asFluid();
@@ -192,9 +196,10 @@ public class GregTechMaterialEvents {
         event.setMaterial(Glue).asFluid();
         event.setMaterial(Honey).asFluid(); // TODO: Only when Forestry's present;
         event.setMaterial(Lubricant).asFluid();
-        // event.setMaterial(WoodTar).asFluid(; TODO: not sure if
-        // neede;
-        event.setMaterial(WoodVinegar).asFluid();
+        event.setMaterial(WoodTar).asFluid()
+                .mats(of(Creosote,4,Phenol,1,Benzene,2,Toluene,1));
+        event.setMaterial(WoodVinegar).asFluid()
+                .mats(of(MethylAcetate,1,Acetone,1,Ethanol,2,AceticAcid,4,Methanol,8,Water,16));
         event.setMaterial(LiquidAir).asFluid(0, 79)
                 .mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1, NobleGases, 1 )); // TODO Rrename to
         // liquid
@@ -274,8 +279,10 @@ public class GregTechMaterialEvents {
                 .mats(of(Carbon, 6, Hydrogen, 6, Oxygen, 1));
         event.setMaterial(Toluene).asFluid(328)
                 .mats(of(Carbon, 7, Hydrogen, 8));
-        event.setMaterial(SulfuricNaphtha).asFluid(32);
-        event.setMaterial(Naphtha).asFluid(256);
+        event.setMaterial(SulfuricNaphtha).asFluid(32)
+                .mats(of(SulfuricAcid, 1,Water,1));
+        event.setMaterial(Naphtha).asFluid(256)
+                .mats(of(Carbon,8,Hydrogen,16));
         event.setMaterial(DrillingFluid).asFluid(); // TODO:
         // Perhaps for
         // a bedrock drill;
@@ -324,10 +331,12 @@ public class GregTechMaterialEvents {
         event.setMaterial(OilHeavy).asFluid(32);
         event.setMaterial(OilMedium).asFluid(24);
         event.setMaterial(OilLight).asFluid(16);
-        event.setMaterial(SulfuricLightFuel).asFluid(32);
-        event.setMaterial(SulfuricHeavyFuel).asFluid(32);
-        event.setMaterial(LightDiesel).asFluid(256);
-        event.setMaterial(HeavyDiesel).asFluid(192);
+        event.setMaterial(SulfuricLightFuel).asFluid(32)
+                .mats(of(LightFuel,1,Sulfur,1));
+        event.setMaterial(SulfuricHeavyFuel).asFluid(32)
+                .mats(of(HeavyFuel,1,Sulfur,1));
+        event.setMaterial(LightFuel).asFluid(48);
+        event.setMaterial(HeavyFuel).asFluid(48);
         event.setMaterial(Glycerol).asFluid(164)
                 .mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 3));
 
@@ -860,7 +869,7 @@ public class GregTechMaterialEvents {
                 NiobiumTitanium, SolderingAlloy, VanadiumGallium, WroughtIron, SterlingSilver, RoseGold, BismuthBronze,
                 TungstenSteel, RedAlloy, CobaltBrass, TungstenCarbide, VanadiumSteel, HSSG, HSSE, HSSS,
                 GalliumArsenide/* , IndiumGalliumPhosphide, BorosilicateGlass */);
-        MaterialTags.CRACK.add(RefineryGas, Naphtha, Ethane, Propane, Butane, Butene, Ethylene, Propene, LightDiesel, HeavyDiesel);
+        MaterialTags.CRACK.add(RefineryGas, Naphtha, Ethane, Propane, Butane, Butene, Ethylene, Propene, LightFuel, HeavyFuel);
         MaterialTags.CALCITE2X.add(Pyrite, BrownLimonite, YellowLimonite, Magnetite);
         MaterialTags.CALCITE3X.add(Iron, WroughtIron);
         MaterialTags.WASHM.add(Gold, Silver, Osmium, Platinum, Cooperite, Galena, Nickel, Tungstate, Lead, Magnetite, Iridium,

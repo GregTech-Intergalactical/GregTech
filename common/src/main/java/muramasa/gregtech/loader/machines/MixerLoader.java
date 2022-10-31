@@ -73,7 +73,7 @@ public class MixerLoader {
         MIXING.RB().fi(Diesel.getLiquid(1000),Tetranitromethane.getLiquid(20)).fo(NitroFuel.getLiquid(1000)).add(1 * 20, 480);
         MIXING.RB().fi(Oxygen.getGas(1000),Dimethylhydrazine.getLiquid(1000)).fo(RocketFuel.getLiquid(3000)).add(3 * 20, 16);
         MIXING.RB().fi(DinitrogenTetroxide.getGas(1000),Dimethylhydrazine.getLiquid(1000)).fo(RocketFuel.getLiquid(6000)).add(3 * 20, 16);
-        MIXING.RB().fi(LightDiesel.getLiquid(5000),HeavyDiesel.getLiquid(1000)).fo(Diesel.getLiquid(6000)).add(8 * 2, 120);
+        MIXING.RB().fi(LightFuel.getLiquid(5000),HeavyFuel.getLiquid(1000)).fo(Diesel.getLiquid(6000)).add(8 * 2, 120);
         MIXING.RB().ii(of(DUST.get(WoodPulp,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add(60*20, 2);
         MIXING.RB().ii(of(DUST.get(Sugar,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add(60*20, 2);
         MIXING.RB().ii(of(DUST.get(Salt,2))).fi(Water.getLiquid(1000)).fo(SaltWater.getLiquid(1000)).add(2*20, 8);

@@ -122,7 +122,7 @@ public class Materials {
     public static Material Mercury = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "mercury", 0xffdcdc, SHINY, Hg));
     public static Material Neon = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "helium", 0xffff00, NONE, Ne));
+            .register(Material.class, new Material(Ref.ID, "neon", 0xffff00, NONE, Ne));
     public static Material Niobium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "niobium", 0xbeb4c8, METALLIC, Nb));
     public static Material Nitrogen = AntimatterAPI
@@ -150,7 +150,7 @@ public class Materials {
     public static Material Vanadium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "vanadium", 0x323232, METALLIC, V));
     public static Material Xenon = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "helium", 0xffff00, NONE, Xe));
+            .register(Material.class, new Material(Ref.ID, "xenon", 0xffff00, NONE, Xe));
     public static Material Yttrium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "yttrium", 0xdcfadc, METALLIC, Y));
     public static Material Zinc = AntimatterAPI
@@ -239,9 +239,7 @@ public class Materials {
     public static Material Honey = AntimatterAPI.register(Material.class, new Material(Ref.ID, "honey", 0xd2c800, NONE)); // TODO: Only when Forestry's present;
     public static Material Lubricant = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "lubricant", 0xffc400, NONE));
-    // public static Material WoodTar = AntimatterAPI.register(Material.class, new
-    // Material(Ref.ID, "wood_tar", 0x28170b, NONE)).asFluid(; TODO: not sure if
-    // neede;
+    public static Material WoodTar = AntimatterAPI.register(Material.class, new Material(Ref.ID, "wood_tar", 0x28170b, NONE));
     public static Material WoodVinegar = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "wood_vinegar", 0xd45500, NONE));
     public static Material LiquidAir = AntimatterAPI
@@ -401,9 +399,9 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "sulfuric_light_diesel", 0xffff00, NONE));
     public static Material SulfuricHeavyFuel = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sulfuric_heavy_diesel", 0xffff00, NONE));
-    public static Material LightDiesel = AntimatterAPI
+    public static Material LightFuel = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "light_diesel", 0xffff00, NONE));
-    public static Material HeavyDiesel = AntimatterAPI
+    public static Material HeavyFuel = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "heavy_diesel", 0xffff00, NONE));
     public static Material Glycerol = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "glycerol", 0x87de87, NONE));
