@@ -20,16 +20,16 @@ public class ChemicalReactorLoader {
         batteries();
         titanium();
         sulfuric();
-        organic_chemistry();
-        inorganic_chemistry();
+        organicChemistry();
+        inorganicChemistry();
     }
 
-    private static void organic_chemistry() {
+    private static void organicChemistry() {
         rubber();
         plastics();
-        misc_carbohydrates();
-        alkaloids_2_alkanoles();
-        alkanoles_2_alkenes();
+        miscCarbohydrates();
+        alkaloidsToAlkanols();
+        alkanolsToAlkenes();
     }
 
     private static void titanium() {
@@ -75,7 +75,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000),Tetrafluoroethylene.getGas(288)).io(DUST.get(Polytetrafluoroethylene,3)).add(160, 30);
     }
 
-    private static void misc_carbohydrates() {
+    private static void miscCarbohydrates() {
         CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Carbon, 1)).fi(Hydrogen.getGas(144*4)).fo(Methane.getGas(144)).add(200, 30);
         CHEMICAL_REACTING.RB().ii(INT_CIRCUITS.get(2).setNoConsume()).fi(Propene.getGas(288)).fo(Methane.getGas(144),Isoprene.getLiquid(1000)).add(120, 30);
         CHEMICAL_REACTING.RB().fi(Propene.getGas(144),Ethylene.getGas(144)).fo(Hydrogen.getGas(288),Isoprene.getLiquid(144)).add(120, 30);
@@ -107,7 +107,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(of(DUST.get(SodiumHydroxide),1).setNoConsume()).fi(MethylAcetate.getLiquid(144),Water.getLiquid(144)).fo(AceticAcid.getLiquid(144),Methanol.getLiquid(144)).add(260, 60);
     }
 
-    private static void inorganic_chemistry(){
+    private static void inorganicChemistry(){
         CHEMICAL_REACTING.RB().fi(Chlorine.getGas(144),Hydrogen.getGas(144)).fo(HydrochloricAcid.getLiquid(144)).add(60, 8);
         CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(144)).ii(of(DUST.get(Salt,1))).fo(HydrochloricAcid.getLiquid(288)).io(DUST.get(SodiumSulfate,1)).add(60, 30);
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Sodium,2))).fi(Water.getLiquid(288)).fo(Hydrogen.getGas(144)).io(DUST.get(SodiumHydroxide,2)).add(40, 8);
@@ -134,50 +134,50 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(of(DUST.get(SodiumHydroxide,4))).fi(Dichlorobenzene.getLiquid(288)).io(DUST.get(Salt,4)).fo(Phenol.getLiquid(288),Oxygen.getGas(144)).add(120, 30);
     }
 
-    private static void alkaloids_2_alkanoles(){
-        alkane_2_alkanole(Methane,Methanol,2,1);
-        alkane_2_alkanole(Ethane,Ethanol,2,1,INT_CIRCUITS.get(1).setNoConsume());
-        alkane_2_alkanole(Ethane,Ethanediol,1,1,INT_CIRCUITS.get(2).setNoConsume());
-        alkane_2_alkanole(Propane,Propanol,2,1,INT_CIRCUITS.get(1).setNoConsume());
-        alkane_2_alkanole(Propane,Propanediol,1,1,INT_CIRCUITS.get(2).setNoConsume());
-        alkane_2_alkanole(Propene,Propenol,2,1);
-        alkane_2_alkanole(Butane,Butanol,2,1,INT_CIRCUITS.get(1).setNoConsume());
-        alkane_2_alkanole(Butane,Butanediol,1,1,INT_CIRCUITS.get(2).setNoConsume());
-        alkane_2_alkanole(Butene,Butenol,2,1);
+    private static void alkaloidsToAlkanols(){
+        alkaneToAlkanol(Methane,Methanol,2,1);
+        alkaneToAlkanol(Ethane,Ethanol,2,1,INT_CIRCUITS.get(1).setNoConsume());
+        alkaneToAlkanol(Ethane,Ethanediol,1,1,INT_CIRCUITS.get(2).setNoConsume());
+        alkaneToAlkanol(Propane,Propanol,2,1,INT_CIRCUITS.get(1).setNoConsume());
+        alkaneToAlkanol(Propane,Propanediol,1,1,INT_CIRCUITS.get(2).setNoConsume());
+        alkaneToAlkanol(Propene,Propenol,2,1);
+        alkaneToAlkanol(Butane,Butanol,2,1,INT_CIRCUITS.get(1).setNoConsume());
+        alkaneToAlkanol(Butane,Butanediol,1,1,INT_CIRCUITS.get(2).setNoConsume());
+        alkaneToAlkanol(Butene,Butenol,2,1);
     }
 
-    private static void alkanoles_2_alkenes(){
-        alkanole_2_alkene(Ethanol,Ethylene,1,1);
-        alkanole_2_alkene(Propanol,Propene,1,1);
-        alkanole_2_alkene(Butane,Butene,1,1);
-        alkanole_2_alkene(Butanediol,Butadiene,1,2);
+    private static void alkanolsToAlkenes(){
+        alkanolToAlkene(Ethanol,Ethylene,1,1);
+        alkanolToAlkene(Propanol,Propene,1,1);
+        alkanolToAlkene(Butane,Butene,1,1);
+        alkanolToAlkene(Butanediol,Butadiene,1,2);
     }
 
-    private static void alkane_2_alkanole(Material alkane, Material alkanole, int mol_alk, int mol_ox, RecipeIngredient... circuit){
+    private static void alkaneToAlkanol(Material alkane, Material alkanol, int mol_alk, int mol_ox, RecipeIngredient... circuit){
         if(circuit!=null){
             if(alkane.has(LIQUID)){
-                CHEMICAL_REACTING.RB().ii(circuit).fi(alkane.getLiquid(mol_alk*144),Oxygen.getGas(mol_ox*144)).fo(alkanole.getLiquid(mol_alk*144)).add(200,50);
+                CHEMICAL_REACTING.RB().ii(circuit).fi(alkane.getLiquid(mol_alk*144),Oxygen.getGas(mol_ox*144)).fo(alkanol.getLiquid(mol_alk*144)).add(200,50);
             }else if(alkane.has(GAS)){
-                CHEMICAL_REACTING.RB().ii(circuit).fi(alkane.getGas(mol_alk*144),Oxygen.getGas(mol_ox*144)).fo(alkanole.getLiquid(mol_alk*144)).add(200,50);
+                CHEMICAL_REACTING.RB().ii(circuit).fi(alkane.getGas(mol_alk*144),Oxygen.getGas(mol_ox*144)).fo(alkanol.getLiquid(mol_alk*144)).add(200,50);
             }else{
                 return;
             }
         }else{
             if(alkane.has(LIQUID)){
-                CHEMICAL_REACTING.RB().fi(alkane.getLiquid(mol_alk*144),Oxygen.getGas(mol_ox*144)).fo(alkanole.getLiquid(mol_alk*144)).add(200,50);
+                CHEMICAL_REACTING.RB().fi(alkane.getLiquid(mol_alk*144),Oxygen.getGas(mol_ox*144)).fo(alkanol.getLiquid(mol_alk*144)).add(200,50);
             }else if(alkane.has(GAS)){
-                CHEMICAL_REACTING.RB().fi(alkane.getGas(mol_alk*144),Oxygen.getGas(mol_ox*144)).fo(alkanole.getLiquid(mol_alk*144)).add(200,50);
+                CHEMICAL_REACTING.RB().fi(alkane.getGas(mol_alk*144),Oxygen.getGas(mol_ox*144)).fo(alkanol.getLiquid(mol_alk*144)).add(200,50);
             }else{
                 return;
             }
         }
     }
 
-    private static void alkanole_2_alkene(Material alkanole, Material alkene, int mol_alk, int mol_sulf){
+    private static void alkanolToAlkene(Material alkanol, Material alkene, int mol_alk, int mol_sulf){
         if(alkene.has(LIQUID)){
-            CHEMICAL_REACTING.RB().fi(alkanole.getLiquid(mol_alk*144),SulfuricAcid.getLiquid(mol_sulf*144)).fo(alkene.getLiquid(mol_alk*144),DilutedSulfuricAcid.getLiquid(mol_sulf*144)).add(200,50);
+            CHEMICAL_REACTING.RB().fi(alkanol.getLiquid(mol_alk*144),SulfuricAcid.getLiquid(mol_sulf*144)).fo(alkene.getLiquid(mol_alk*144),DilutedSulfuricAcid.getLiquid(mol_sulf*144)).add(200,50);
         }else if(alkene.has(GAS)){
-            CHEMICAL_REACTING.RB().fi(alkanole.getLiquid(mol_alk*144),SulfuricAcid.getGas(mol_sulf*144)).fo(alkene.getLiquid(mol_alk*144),DilutedSulfuricAcid.getLiquid(mol_sulf*144)).add(200,50);
+            CHEMICAL_REACTING.RB().fi(alkanol.getLiquid(mol_alk*144),SulfuricAcid.getGas(mol_sulf*144)).fo(alkene.getLiquid(mol_alk*144),DilutedSulfuricAcid.getLiquid(mol_sulf*144)).add(200,50);
         }else{
             return;
         }
