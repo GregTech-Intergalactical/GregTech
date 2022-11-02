@@ -71,6 +71,8 @@ public class Guis {
 
     public static void init(Side side) {
         ALLOY_SMELTER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
+        ARC_FURNACE.add(IT_IN, 53, 25).add(FL_IN, 53, 63).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16)
+                .add(IT_OUT, 125, 34).add(IT_OUT, 107, 34).add(ENERGY, 80, 63);
         ASSEMBLER.add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34)
                 .add(IT_IN, 53, 34).add(IT_OUT, 107, 25)
                 .add(FL_IN, 53, 63)
@@ -122,7 +124,6 @@ public class Guis {
         FORMING_PRESS.add(ALLOY_SMELTER);
         FORGE_HAMMER.add(FURNACE);
         SIFTER.add(DISASSEMBLER);
-        ARC_FURNACE.add(ALLOY_SMELTER);
         PLASMA_ARC_FURNACE.add(ARC_FURNACE);
 
         COKE_OVEN.add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_IN, 53, 52).add(IT_OUT, 107, 25);
