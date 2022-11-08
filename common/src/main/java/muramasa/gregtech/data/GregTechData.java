@@ -22,6 +22,7 @@ import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockFusionCasing;
 import muramasa.gregtech.block.BlockTurbineCasing;
 import muramasa.gregtech.cover.CoverConveyor;
+import muramasa.gregtech.cover.CoverDrain;
 import muramasa.gregtech.cover.CoverPump;
 import muramasa.gregtech.cover.CoverTypeFilter;
 import net.minecraft.world.level.block.SoundType;
@@ -52,6 +53,8 @@ public class GregTechData {
     public static final CoverFactory COVER_PUMP = CoverFactory.builder(CoverPump::new).gui().item((a,b) ->
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/s (as Cover)", CoverPump.speeds.get(b))))
             .addTextures(new Texture(Ref.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(Ref.ID, "pump");
+    public static final CoverFactory COVER_DRAIN = CoverFactory.builder(CoverDrain::new).item((a, b) ->
+            new ItemCover(Ref.ID, "drain").tip("Can be placed on machines as a cover")).addTextures(new Texture(Ref.ID, "block/cover/drain")).build(Ref.ID, "drain");
 
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 
