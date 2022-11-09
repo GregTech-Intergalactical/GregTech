@@ -13,6 +13,7 @@ import muramasa.antimatter.registration.Side;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.datagen.GregTechBlockTagProvider;
+import muramasa.gregtech.datagen.GregTechItemTagProvider;
 import muramasa.gregtech.datagen.GregtechBlockLootProvider;
 import muramasa.gregtech.datagen.ProgressionAdvancements;
 import muramasa.gregtech.loader.crafting.*;
@@ -55,7 +56,7 @@ public class GregTech extends AntimatterMod {
             p[0] = new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false);
             return p[0];
         });
-        ev.addProvider(Ref.ID, () -> new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"),
+        ev.addProvider(Ref.ID, () -> new GregTechItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"),
                 false, p[0]));
         ev.addProvider(Ref.ID, () -> new AntimatterFluidTagProvider(Ref.ID,
                 Ref.NAME.concat(" Fluid Tags"), false));

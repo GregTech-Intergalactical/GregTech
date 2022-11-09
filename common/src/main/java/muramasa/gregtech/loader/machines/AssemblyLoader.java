@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.machines;
 import com.google.common.collect.ImmutableSet;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
@@ -10,6 +11,7 @@ import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.GregTech;
+import muramasa.gregtech.Ref;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
@@ -20,7 +22,9 @@ import net.minecraft.tags.ItemTags;
 import java.util.Arrays;
 
 import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.GregTechData.*;
+import static muramasa.gregtech.data.GregTechTags.PLATES_IRON_ALUMINIUM;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ASSEMBLING;
 import static muramasa.gregtech.data.TierMaps.*;
@@ -56,6 +60,7 @@ public class AssemblyLoader {
         });
         casings();
         batteries();
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_DRAIN.getId()))).add(800, 16);
     }
 
     private static void batteries() {
