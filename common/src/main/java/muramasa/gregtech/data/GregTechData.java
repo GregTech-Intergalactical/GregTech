@@ -2,12 +2,15 @@ package muramasa.gregtech.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.material.MaterialType;
+import muramasa.antimatter.material.MaterialTypeFluid;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.*;
@@ -19,7 +22,9 @@ import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockFusionCasing;
 import muramasa.gregtech.block.BlockTurbineCasing;
 import muramasa.gregtech.cover.CoverConveyor;
+import muramasa.gregtech.cover.CoverDrain;
 import muramasa.gregtech.cover.CoverPump;
+import muramasa.gregtech.cover.CoverTypeFilter;
 import net.minecraft.world.level.block.SoundType;
 
 import static muramasa.antimatter.Data.*;
@@ -32,14 +37,14 @@ public class GregTechData {
     public static void init(Side side) {
         if (side == Side.CLIENT)
             RecipeMaps.clientMaps();
-        /*AntimatterAPI.all(MaterialType.class, t -> {
+        AntimatterAPI.all(MaterialType.class, t -> {
             if (t instanceof MaterialTypeFluid) return;
             if (t.getClass() == MaterialType.class) return;
             //TODO: add better check
             if (t == Data.ORE_STONE) return;
-            CoverFactory.builder((a,b,c,d) -> new CoverTypeFilter(a,b,c,d,t)).addTextures(Data.NULL.getSet().getTextures(t)).item((a,b) -> {
+            CoverFactory.builder((a,b,c,d) -> new CoverTypeFilter(a,b,c,d,t)).addTextures(Data.NULL.getSet().getTextures(t)).item((a, b) -> {
             return new ItemCover(a.getDomain(), a.getId()).tip("Filters for " + t.getId()).texture(Data.NULL.getSet().getTextures(t));}).build(Ref.ID, "cover_type_" + t.getId());
-        });*/
+        });
     }
 
     public static final CoverFactory COVER_CONVEYOR = CoverFactory.builder(CoverConveyor::new).gui().item((a,b) ->
@@ -48,6 +53,8 @@ public class GregTechData {
     public static final CoverFactory COVER_PUMP = CoverFactory.builder(CoverPump::new).gui().item((a,b) ->
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/s (as Cover)", CoverPump.speeds.get(b))))
             .addTextures(new Texture(Ref.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(Ref.ID, "pump");
+    public static final CoverFactory COVER_DRAIN = CoverFactory.builder(CoverDrain::new).item((a, b) ->
+            new ItemCover(Ref.ID, "drain").tip("Can be placed on machines as a cover")).addTextures(new Texture(Ref.ID, "block/cover/drain")).build(Ref.ID, "drain");
 
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(Ref.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 

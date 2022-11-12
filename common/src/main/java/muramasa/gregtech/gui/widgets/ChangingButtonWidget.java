@@ -20,17 +20,16 @@ import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
 public class ChangingButtonWidget extends ButtonWidget {
-    public ChangingButtonWidget(GuiInstance instance, IGuiElement parent, ResourceLocation res, @Nullable ButtonBody body, @Nullable ButtonOverlay overlay, @Nullable Consumer<ButtonWidget> onPress) {
-        super(instance, parent, res, body, overlay, onPress);
+    public ChangingButtonWidget(GuiInstance instance, IGuiElement parent, ResourceLocation res, @Nullable ButtonBody body, @Nullable ButtonOverlay overlayOn, @Nullable ButtonOverlay overlayOff, @Nullable Consumer<ButtonWidget> onPress) {
+        super(instance, parent, res, body, overlayOn, overlayOff, onPress);
     }
 
     public static WidgetSupplier build(ResourceLocation res, ButtonBody body, ButtonOverlay overlay, IGuiEvent.IGuiEventFactory ev, int id) {
-        return builder(((a,b) -> new ChangingButtonWidget(a,b, res, body, overlay, but -> but.gui.sendPacket(but.gui.handler.createGuiPacket(new GuiEvents.GuiEvent(ev, id, Screen.hasShiftDown() ? 1 : 0)))))).clientSide();
+        return builder(((a,b) -> new ChangingButtonWidget(a,b, res, body, overlay, null, but -> but.gui.sendPacket(but.gui.handler.createGuiPacket(new GuiEvents.GuiEvent(ev, id, Screen.hasShiftDown() ? 1 : 0)))))).clientSide();
     }
 
     @Override
     public void render(PoseStack matrixStack, double mouseX, double mouseY, float partialTicks) {
-        Minecraft minecraft = Minecraft.getInstance();
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, res);
         RenderSystem.disableDepthTest();
