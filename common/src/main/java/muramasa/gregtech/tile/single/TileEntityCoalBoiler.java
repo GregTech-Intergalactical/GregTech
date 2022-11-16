@@ -271,7 +271,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
         }
     }
 
-    public static class CoalBoilerFluidHandler extends MachineFluidHandler<TileEntityCoalBoiler> {lg
+    public static class CoalBoilerFluidHandler extends MachineFluidHandler<TileEntityCoalBoiler> {
 
         public CoalBoilerFluidHandler(TileEntityCoalBoiler tile) {
             super(tile, 16000, 1000 * (250 + tile.getMachineTier().getIntegerId()));
