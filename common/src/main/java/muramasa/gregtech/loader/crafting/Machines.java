@@ -366,21 +366,49 @@ public class Machines {
                             .put('C', Items.CHEST)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.TINY)).build(), "LCL", "LHL", "   "));
+
             add(BATTERY_BUFFER_FOUR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', Items.CHEST)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.NORMAL)).build(), "LCL", "LHL", "   "));
+
             add(BATTERY_BUFFER_NINE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', Items.CHEST)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.LARGE)).build(), "LCL", "LHL", "   "));
+
             add(HATCH_ITEM_I, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', Items.CHEST)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.LARGE)).build(), "LCL", "LHL", "   "));
+
+            add(HATCH_FLUID_I, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('G', Items.GLASS)
+                            .put('H', hull)
+                            .build(), " G ", " H ", "   "));
+
+            add(HATCH_ITEM_O, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('C', Items.CHEST)
+                            .put('H', hull)
+                            .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.LARGE)).build(), "LHL", "LCL", "   "));
+
+            add(HATCH_FLUID_O, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('G', Items.GLASS)
+                            .put('H', hull)
+                            .build(), " H ", " G ", "   "));
+
+            add(HATCH_ENERGY, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('C', cable)
+                            .put('H', hull)
+                            .build(), "CH  ", "   ", "   "));
+
             if (!AntimatterAPI.isModLoaded("gt4r")){
                 add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
                         ImmutableMap.<Character, Object>builder()
