@@ -407,7 +407,7 @@ public class Machines {
                     ImmutableMap.<Character, Object>builder()
                             .put('C', cable)
                             .put('H', hull)
-                            .build(), "CH  ", "   ", "   "));
+                            .build(), "CH ", "   ", "   "));
 
             if (!AntimatterAPI.isModLoaded("gt4r")){
                 add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
