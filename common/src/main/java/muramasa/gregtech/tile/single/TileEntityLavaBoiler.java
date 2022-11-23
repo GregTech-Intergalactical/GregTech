@@ -16,7 +16,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -24,7 +23,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
@@ -36,7 +34,6 @@ import static muramasa.antimatter.machine.MachineState.IDLE;
 import static muramasa.antimatter.machine.Tier.BRONZE;
 import static muramasa.gregtech.data.Materials.DistilledWater;
 import static muramasa.gregtech.data.Materials.Steam;
-import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 
 public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler> {
     int maxHeat = 500, heat, fuel = 0, maxFuel, lossTimer = 0;

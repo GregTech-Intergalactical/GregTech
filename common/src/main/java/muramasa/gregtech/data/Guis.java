@@ -14,9 +14,7 @@ import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tile.TileEntityMachine;
-import muramasa.gregtech.gui.widgets.CoalBoilerFuelWidget;
-import muramasa.gregtech.gui.widgets.CoalBoilerWidget;
-import muramasa.gregtech.gui.widgets.FilterButtonArrayWidget;
+import muramasa.gregtech.gui.widgets.*;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
@@ -138,7 +136,8 @@ public class Guis {
                 IT_IN, 116, 62);
         COAL_BOILER.add(STEEL, CELL_IN, 44, 26).add(STEEL, CELL_OUT, 44, 62).add(STEEL, IT_OUT, 116, 26).add(STEEL,
                 IT_IN, 116, 62);
-        LAVA_BOILER.add(ALLOY_SMELTER);
+        LAVA_BOILER.add(STEEL, CELL_IN, 44, 26).add(STEEL, CELL_OUT, 44, 62).add(STEEL, IT_OUT, 116, 26).add(STEEL,
+                IT_IN, 116, 62);
         SOLAR_BOILER.add(ALLOY_SMELTER);
 
         STEAM_ALLOY_SMELTER.add(BRONZE, ALLOY_SMELTER).add(BRONZE, FL_IN, 53, 63);
@@ -235,6 +234,15 @@ public class Guis {
                     .setPos(9, 5).clientSide());
             t.addWidget(CoalBoilerWidget.build().setSize(70, 25, 36, 54))
                     .addWidget(CoalBoilerFuelWidget.build().setSize(115, 43, 18, 18));
+        });
+
+        LAVA_BOILER.addGuiCallback(t -> {
+            t.addWidget(WidgetSupplier
+                    .build((a, b) -> TextWidget
+                            .build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a, b))
+                    .setPos(9, 5).clientSide());
+            t.addWidget(LavaBoilerWidget.build().setSize(70, 25, 36, 54))
+                    .addWidget(LavaBoilerFuelWidget.build().setSize(115, 43, 18, 18));
         });
  
         if (!AntimatterAPI.isModLoaded("gt4r")) {
