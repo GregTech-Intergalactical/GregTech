@@ -43,7 +43,6 @@ subprojects {
     processResources {
         exclude('gtuassets1.14')
     }
-
 }
 
 allprojects {

@@ -54,6 +54,7 @@ dependencies{
     modImplementation("com.github.FeltMC:forgeconfigapiport-fabric:c1486f80f7"){
         transitive = false
     }
+    modRuntimeOnly("dev.latvian.mods:kubejs-fabric:${rootProject.kubejs_version}")
 }
 
 architectury {
