@@ -16,10 +16,7 @@ import muramasa.gregtech.machine.SteamMachine;
 import muramasa.gregtech.machine.maps.DisassemblingMap;
 import muramasa.gregtech.nuclear.TileEntityNuclearReactor;
 import muramasa.gregtech.tile.multi.*;
-import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
-import muramasa.gregtech.tile.single.TileEntityInfiniteFluid;
-import muramasa.gregtech.tile.single.TileEntityItemFilter;
-import muramasa.gregtech.tile.single.TileEntityTypeFilter;
+import muramasa.gregtech.tile.single.*;
 import net.minecraft.resources.ResourceLocation;
 
 import static muramasa.antimatter.Data.*;
@@ -69,7 +66,7 @@ public class Machines {
     public static BasicMachine PACKAGER = new BasicMachine(Ref.ID, "packager").setMap(PACKAGING).addFlags(GUI, ITEM);
 
     public static SteamMachine COAL_BOILER = new SteamMachine(Ref.ID, "coal_boiler").setMap(COAL_BOILERS).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(TileEntityCoalBoiler::new);
-    public static SteamMachine LAVA_BOILER = new SteamMachine(Ref.ID, "lava_boiler").setMap(SMALL_BOILERS).setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID);
+    public static SteamMachine LAVA_BOILER = new SteamMachine(Ref.ID, "lava_boiler").setMap(LAVA_BOILERS).setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntityLavaBoiler::new);
     public static BasicMachine SOLAR_BOILER = new BasicMachine(Ref.ID, "solar_boiler").setMap(SMALL_BOILERS).setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID);
     public static SteamMachine STEAM_FURNACE = new SteamMachine(Ref.ID, "steam_furnace").setMap(STEAM_SMELTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
     public static SteamMachine STEAM_PULVERIZER = new SteamMachine(Ref.ID, "steam_pulverizer").setMap(STEAM_PULVERIZING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
