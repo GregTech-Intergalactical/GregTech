@@ -31,13 +31,10 @@ import java.util.stream.Collectors;
 
 import static muramasa.antimatter.machine.MachineState.ACTIVE;
 import static muramasa.antimatter.machine.MachineState.IDLE;
-import static muramasa.antimatter.machine.Tier.BRONZE;
 import static muramasa.gregtech.data.Materials.DistilledWater;
 import static muramasa.gregtech.data.Materials.Steam;
 
 public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler> {
-    int maxHeat = 500, heat, fuel = 0, maxFuel, lossTimer = 0;
-    boolean hadNoWater;
 
     public TileEntityLavaBoiler(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -45,17 +42,8 @@ public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler
         recipeHandler.set(() -> new LavaBoilerRecipeHandler(this));
     }
 
-    public int getFuel() {
-        return recipeHandler.map(r -> (((LavaBoilerRecipeHandler) r).getFuel())).orElse(0);
-    }
-
     public int getHeat() {
         return recipeHandler.map(r -> (((LavaBoilerRecipeHandler) r).getHeat())).orElse(0);
-    }
-
-    public int getMaxFuel() {
-        return recipeHandler.map(r -> (((LavaBoilerRecipeHandler) r).getMaxFuel())).orElse(0);
-
     }
 
     public int getMaxHeat() {
@@ -63,66 +51,16 @@ public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler
     }
 
     public static class LavaBoilerRecipeHandler extends MachineRecipeHandler<TileEntityLavaBoiler> {
-        int maxHeat = 500, heat, fuel = 0, maxFuel, lossTimer = 0;
+        int maxHeat, heat, fuel = 0, maxFuel, lossTimer = 0, lavaPerOperation = 100;
         boolean hadNoWater;
-
-        protected final ContainerData GUI_SYNC_DATA2 = new ContainerData() {
-
-            @Override
-            public int get(int index) {
-                switch (index) {
-                    case 0:
-                        return LavaBoilerRecipeHandler.this.heat;
-                    case 1:
-                        return LavaBoilerRecipeHandler.this.maxHeat;
-                    case 2:
-                        return LavaBoilerRecipeHandler.this.fuel;
-                    case 3:
-                        return LavaBoilerRecipeHandler.this.maxFuel;
-                }
-                return 0;
-            }
-
-            @Override
-            public void set(int index, int value) {
-                switch (index) {
-                    case 0:
-                        LavaBoilerRecipeHandler.this.heat = value;
-                        break;
-                    case 1:
-                        LavaBoilerRecipeHandler.this.maxHeat = value;
-                        break;
-                    case 2:
-                        LavaBoilerRecipeHandler.this.fuel = value;
-                        break;
-                    case 3:
-                        LavaBoilerRecipeHandler.this.maxFuel = value;
-                        break;
-                }
-            }
-
-            @Override
-            public int getCount() {
-                return 4;
-            }
-        };
 
         public LavaBoilerRecipeHandler(TileEntityLavaBoiler tile) {
             super(tile);
-            GUI_SYNC_DATA2.set(0, 0);
-            maxHeat = tile.getMachineTier() == BRONZE ? 500 : 1000;
-        }
-
-        public int getFuel() {
-            return fuel;
+            maxHeat = 1000;
         }
 
         public int getHeat() {
             return heat;
-        }
-
-        public int getMaxFuel() {
-            return maxFuel;
         }
 
         public int getMaxHeat() {
@@ -131,20 +69,33 @@ public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler
 
         @Override
         public void onServerUpdate() {
-            if (this.heat <= 20) {
-                this.heat = 20;
-                this.lossTimer = 0;
-            }
-            int delay = tile.getMachineTier() == BRONZE ? 45 : 40;
-            if (++this.lossTimer > delay) {
-                this.heat -= 1;
-                this.lossTimer = 0;
-            }
             Arrays.stream(Direction.values()).filter(f -> f != Direction.DOWN).collect(Collectors.toList()).forEach(this::exportFluidFromMachineToSide);
-            delay = tile.getMachineTier() == BRONZE ? 25 : 10;
-            if (tile.getLevel().getGameTime() % delay == 0) {
+
+            if (tile.getLevel().getGameTime() % 10L == 0L) {
                 tile.fluidHandler.ifPresent(f -> {
                     FluidStack[] inputs = f.getInputs();
+
+                    // If we have lava then produce heat
+                    if(inputs[1].getAmount() >= lavaPerOperation) {
+                        setActive(true);
+                        if(this.heat < this.maxHeat) {
+                            this.heat += 1;
+                            // Gets about 77 heat per lava bucket
+                            if(tile.getLevel().getGameTime() % 16L == 0L) {
+                                f.drainInput(new FluidStack(inputs[1].getFluid(), lavaPerOperation), IFluidHandler.FluidAction.EXECUTE);
+                            }
+                        }
+                    } else {
+                        // Start to cool down if we have no fuel
+                        if (++this.lossTimer > 20 && this.heat > 0) {
+                            this.heat -= 1;
+                            this.lossTimer = 0;
+                        }
+
+                        setActive(false);
+                    }
+
+                    // If heat is above 100, and we have water then produce steam otherwise explode
                     if (this.heat > 100) {
                         if (inputs[0].getAmount() == 0) {
                             hadNoWater = true;
@@ -154,7 +105,8 @@ public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler
                                 tile.getLevel().setBlockAndUpdate(tile.getBlockPos(), Blocks.AIR.defaultBlockState());
                                 return;
                             }
-                            f.drainInput(new FluidStack(Fluids.WATER, 1), IFluidHandler.FluidAction.EXECUTE);
+                            f.drainInput(new FluidStack(inputs[0].getFluid(), 1), IFluidHandler.FluidAction.EXECUTE);
+
                             int room = 16000 - f.getOutputs()[0].getAmount();
                             int fill = Math.min(room, 150);
                             if (room > 0){
@@ -173,6 +125,7 @@ public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler
                     }
                 });
             }
+
             super.onServerUpdate();
         }
 
@@ -181,46 +134,6 @@ public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler
             if (adjTile == null) return;
             LazyOptional<IFluidHandler> cap = adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
             tile.fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
-        }
-
-        @Override
-        protected MachineState recipeFinish() {
-            if (!canRecipeContinue()) {
-                this.resetRecipe();
-                return IDLE;
-            } else {
-                return ACTIVE;
-            }
-        }
-
-        @Override
-        protected MachineState tickRecipe() {
-            if (this.activeRecipe == null) {
-                System.out.println("Check Recipe when active recipe is null");
-                return tile.getMachineState();
-            }
-            else {
-                tile.onRecipePreTick();
-                if (fuel <= 0 && canRecipeContinue()) {
-                    if (fuel < 0) {
-                        fuel = 0;
-                    }
-                    this.maxFuel = activeRecipe.getDuration();
-                    addOutputs();
-                    this.fuel += maxFuel;
-                    consumeInputs();
-                }
-                if ((this.heat < maxHeat) && (this.fuel > 0) && (tile.getLevel().getGameTime() % 12L == 0L)) {
-                    int fuelSubtract = tile.getMachineTier() == BRONZE ? 1 : 2;
-                    this.fuel -= fuelSubtract;
-                    this.heat += 1;
-                }
-                tile.onRecipePostTick();
-                if (fuel == 0){
-                    return this.recipeFinish();
-                }
-                return ACTIVE;
-            }
         }
 
         public void setActive(boolean t){
@@ -233,7 +146,9 @@ public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler
 
         @Override
         public boolean accepts(FluidStack fluid) {
-            return fluid.getFluid() == Fluids.WATER || fluid.getFluid() == DistilledWater.getLiquid();
+            return fluid.getFluid() == Fluids.WATER
+                    || fluid.getFluid() == DistilledWater.getLiquid()
+                    || fluid.getFluid() == Fluids.LAVA;
         }
 
         @Override
@@ -266,13 +181,11 @@ public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler
     }
 
     public static class LavaBoilerFluidHandler extends MachineFluidHandler<TileEntityLavaBoiler> {
-
-        private boolean fillingCell = false;
-
         public LavaBoilerFluidHandler(TileEntityLavaBoiler tile) {
             super(tile, 16000, 1000 * (250 + tile.getMachineTier().getIntegerId()));
             tanks.put(FluidDirection.INPUT, FluidTanks.create(tile, ContentEvent.FLUID_INPUT_CHANGED, b -> {
-                b.tank(16000);
+                b.tank(p -> p.getFluid() == Fluids.WATER || p.getFluid() == DistilledWater.getLiquid(), 16000)
+                        .tank(p -> p.getFluid() == Fluids.LAVA, 16000);
                 return b;
             }));
             tanks.put(FluidDirection.OUTPUT, FluidTanks.create(tile, ContentEvent.FLUID_OUTPUT_CHANGED, b -> {

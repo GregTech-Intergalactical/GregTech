@@ -136,8 +136,7 @@ public class Guis {
                 IT_IN, 116, 62);
         COAL_BOILER.add(STEEL, CELL_IN, 44, 26).add(STEEL, CELL_OUT, 44, 62).add(STEEL, IT_OUT, 116, 26).add(STEEL,
                 IT_IN, 116, 62);
-        LAVA_BOILER.add(STEEL, CELL_IN, 44, 26).add(STEEL, CELL_OUT, 44, 62).add(STEEL, IT_OUT, 116, 26).add(STEEL,
-                IT_IN, 116, 62);
+        LAVA_BOILER.add(STEEL, CELL_IN, 44, 26).add(STEEL, CELL_OUT, 44, 62);
         SOLAR_BOILER.add(ALLOY_SMELTER);
 
         STEAM_ALLOY_SMELTER.add(BRONZE, ALLOY_SMELTER).add(BRONZE, FL_IN, 53, 63);
@@ -241,8 +240,7 @@ public class Guis {
                     .build((a, b) -> TextWidget
                             .build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a, b))
                     .setPos(9, 5).clientSide());
-            t.addWidget(LavaBoilerWidget.build().setSize(70, 25, 36, 54))
-                    .addWidget(LavaBoilerFuelWidget.build().setSize(115, 43, 18, 18));
+            t.addWidget(LavaBoilerWidget.build().setSize(70, 25, 62, 54));
         });
  
         if (!AntimatterAPI.isModLoaded("gt4r")) {

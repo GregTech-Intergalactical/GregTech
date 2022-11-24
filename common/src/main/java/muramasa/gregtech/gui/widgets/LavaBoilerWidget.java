@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 
 public class LavaBoilerWidget extends Widget {
-    private int heat = 0, maxHeat = 0, water = 0, steam = 0;
+    private int heat = 0, maxHeat = 0, water = 0, steam = 0, lava = 0;
 
     protected LavaBoilerWidget(@Nonnull GuiInstance gui, @Nullable IGuiElement parent) {
         super(gui, parent);
@@ -34,6 +34,7 @@ public class LavaBoilerWidget extends Widget {
         gui.syncInt(() -> ((TileEntityLavaBoiler)((ContainerMachine<?>)gui.container).getTile()).getHeat(), i -> heat = i, SERVER_TO_CLIENT);
         gui.syncInt(() -> ((TileEntityLavaBoiler)((ContainerMachine<?>)gui.container).getTile()).getMaxHeat(), i -> maxHeat = i, SERVER_TO_CLIENT);
         gui.syncInt(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[0].getAmount()).orElse(0), i -> water = i, SERVER_TO_CLIENT);
+        gui.syncInt(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[1].getAmount()).orElse(0), i -> lava = i, SERVER_TO_CLIENT);
         gui.syncInt(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getOutputs()[0].getAmount()).orElse(0), i -> steam = i, SERVER_TO_CLIENT);
     }
 
@@ -64,6 +65,19 @@ public class LavaBoilerWidget extends Widget {
             int y = (realY() + 54) - lvl;
             drawTexture(stack, gui.handler.getGuiTexture(), realX(), y, ((AbstractContainerScreenAccessor)gui.screen).getImageWidth() + 18, 54 - lvl, 10, lvl);
         }
+        if (lava >= 1) {
+            float per = (float) lava / 16000;
+            if (per > 1.0F) {
+                per = 1.0F;
+            }
+            int lvl = (int) (per * (float) 54);
+            if (lvl < 0) {
+                return;
+            }
+            int y = (realY() + 54) - lvl;
+            drawTexture(stack, gui.handler.getGuiTexture(), realX() + 52, y, ((AbstractContainerScreenAccessor)gui.screen).getImageWidth() + 48, 54 - lvl, 10, lvl);
+        }
+
         if (heat >= 1) {
             float per = (float) heat / maxHeat;
             if (per > 1.0F) {
@@ -85,6 +99,9 @@ public class LavaBoilerWidget extends Widget {
         }
         if (steam >= 1) {
             renderTooltip(stack,"Steam: " + steam + " MB", mouseX, mouseY, 0, 0, 10, 54);
+        }
+        if (lava >= 1) {
+            renderTooltip(stack,"Lava: " + lava + " MB", mouseX, mouseY, 52, 0, 10, 54);
         }
         renderTooltip(stack,"Heat: " + heat + "K out of " + maxHeat, mouseX, mouseY, 26, 0, 10, 54);
     }
