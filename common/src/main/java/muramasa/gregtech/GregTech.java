@@ -21,7 +21,6 @@ import muramasa.gregtech.loader.items.Circuitry;
 import muramasa.gregtech.loader.machines.*;
 import muramasa.gregtech.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gregtech.loader.machines.generator.Fuels;
-import muramasa.gregtech.loader.machines.generator.LavaBoilerHandler;
 import muramasa.gregtech.loader.multi.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -96,7 +95,6 @@ public class GregTech extends AntimatterMod {
         loader.accept("nuclear", NuclearLoader::init);
         loader.accept("fuels", Fuels::init);
         loader.accept("coal_boiler", CoalBoilerHandler::init);
-        loader.accept("lava_boiler", LavaBoilerHandler::init);
         loader.accept("fluid_extracting", FluidExtractor::init);
         loader.accept("alloy_loading", AlloyLoader::init);
         loader.accept("distillation_tower", DistillationTower::init);
