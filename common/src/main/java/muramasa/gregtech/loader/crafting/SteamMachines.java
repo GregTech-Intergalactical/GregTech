@@ -20,6 +20,7 @@ public class SteamMachines {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
         Object bronzePlate = PLATE.get(Bronze);
         Object steelPlate = PLATE.get(Materials.Steel);
+        Object silverPlate = PLATE.get(Materials.Silver);
         Object wrench = WRENCH.getTag();
         Object bricks = Items.BRICKS;
         Object furnace = Items.FURNACE;
@@ -62,6 +63,13 @@ public class SteamMachines {
                         'B', Items.LAVA_BUCKET,
                         'F', furnace
                 ), "PPP", "PWP", "BFB");
+        provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.SOLAR_BOILER.getItem(Tier.BRONZE),
+                ImmutableMap.of(
+                        'P', silverPlate,
+                        'G', Items.GLASS,
+                        'I', bronzePipe,
+                        'H', brickedHull
+                ), "GGG", "PPP", "IHI");
         provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_PULVERIZER.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'B', bronzePipe,

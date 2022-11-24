@@ -67,7 +67,7 @@ public class Machines {
 
     public static SteamMachine COAL_BOILER = new SteamMachine(Ref.ID, "coal_boiler").setMap(COAL_BOILERS).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(TileEntityCoalBoiler::new);
     public static SteamMachine LAVA_BOILER = new SteamMachine(Ref.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntityLavaBoiler::new);
-    public static BasicMachine SOLAR_BOILER = new BasicMachine(Ref.ID, "solar_boiler").setMap(SMALL_BOILERS).setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID);
+    public static SteamMachine SOLAR_BOILER = new SteamMachine(Ref.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntitySolarBoiler::new);
     public static SteamMachine STEAM_FURNACE = new SteamMachine(Ref.ID, "steam_furnace").setMap(STEAM_SMELTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
     public static SteamMachine STEAM_PULVERIZER = new SteamMachine(Ref.ID, "steam_pulverizer").setMap(STEAM_PULVERIZING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
     public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(Ref.ID, "steam_extractor").setMap(STEAM_EXTRACTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f);
