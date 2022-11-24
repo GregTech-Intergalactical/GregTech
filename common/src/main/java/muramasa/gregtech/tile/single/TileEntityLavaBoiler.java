@@ -78,12 +78,15 @@ public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler
                     // If we have lava then produce heat
                     if(inputs[1].getAmount() >= lavaPerOperation) {
                         setActive(true);
-                        if(this.heat < this.maxHeat) {
-                            this.heat += 1;
-                            // Gets about 77 heat per lava bucket
-                            if(tile.getLevel().getGameTime() % 16L == 0L) {
-                                f.drainInput(new FluidStack(inputs[1].getFluid(), lavaPerOperation), IFluidHandler.FluidAction.EXECUTE);
-                            }
+                        this.heat += 1;
+
+                        // Gets approximately 77 heat per lava bucket
+                        if(tile.getLevel().getGameTime() % 16L == 0L) {
+                            f.drainInput(new FluidStack(inputs[1].getFluid(), lavaPerOperation), IFluidHandler.FluidAction.EXECUTE);
+                        }
+
+                        if(this.heat >= this.maxHeat) {
+                            this.heat = this.maxHeat;
                         }
                     } else {
                         // Start to cool down if we have no fuel
