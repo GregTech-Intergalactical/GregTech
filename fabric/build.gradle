@@ -37,7 +37,8 @@ dependencies{
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
     modImplementation("net.devtech:arrp:0.5.7")
-    modImplementation(include("com.github.gregtech-intergalactical:gtrubber-fabric:1.18.2-0.1")){
+    include("com.github.gregtech-intergalactical:gtrubber-fabric:1.18.2-0.1.1")
+    modImplementation("com.github.gregtech-intergalactical:gtrubber-fabric:1.18.2-0.1.1:dev-shadow"){
         transitive = false
     }
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
