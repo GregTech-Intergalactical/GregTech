@@ -56,6 +56,7 @@ dependencies{
         transitive = false
     }
     modRuntimeOnly("dev.latvian.mods:kubejs-fabric:${rootProject.kubejs_version}")
+    //modRuntimeOnly("curse.maven:the-one-probe-fabric-581847:${rootProject.top_fabric_file}")
 }
 
 architectury {

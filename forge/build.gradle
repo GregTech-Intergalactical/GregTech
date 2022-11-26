@@ -73,6 +73,7 @@ dependencies {
     }
     include("com.github.gregtech-intergalactical:gtrubber-forge:1.18.2-0.1.1")
     modRuntimeOnly("dev.latvian.mods:kubejs-forge:${rootProject.kubejs_version}")
+    modRuntimeOnly("curse.maven:the-one-probe-245211:${rootProject.top_forge_file}")
 }
 
 jar {
