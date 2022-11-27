@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.crafting;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
@@ -33,26 +34,26 @@ public class WireCablesPlates {
                 }
             }
             if (wire.getMaterial().has(PLATE)) {
-                provider.shapeless(output, "platewire","wire","has_cutter", provider.hasSafeItem(WIRE_CUTTER.getTag()),
+                provider.shapeless(output, "platewire","wire","has_cutter", provider.hasSafeItem(AntimatterDefaultTools.WIRE_CUTTER.getTag()),
                         new ItemStack(wires.get(VTINY)),
-                        WIRE_CUTTER.getTag(), PLATE.get(wire.getMaterial()));
+                        AntimatterDefaultTools.WIRE_CUTTER.getTag(), PLATE.get(wire.getMaterial()));
             }
         });
 
     }
 
     private static void twoToOne(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        provider.shapeless(output,"twoone","wire","has_cutter",provider.hasSafeItem(WIRE_CUTTER.getTag()),
+        provider.shapeless(output,"twoone","wire","has_cutter",provider.hasSafeItem(AntimatterDefaultTools.WIRE_CUTTER.getTag()),
                 new ItemStack(wires.get(to),1),wires.get(from),wires.get(from));
     }
 
     private static void oneToTwo(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        provider.shapeless(output,"onetwo","wire","has_cutter",provider.hasSafeItem(WIRE_CUTTER.getTag()),
+        provider.shapeless(output,"onetwo","wire","has_cutter",provider.hasSafeItem(AntimatterDefaultTools.WIRE_CUTTER.getTag()),
                 new ItemStack(wires.get(to),2),wires.get(from));
     }
 
     private static void fourToOne(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        provider.shapeless(output,"fourone","wire","has_cutter",provider.hasSafeItem(WIRE_CUTTER.getTag()),
+        provider.shapeless(output,"fourone","wire","has_cutter",provider.hasSafeItem(AntimatterDefaultTools.WIRE_CUTTER.getTag()),
                 new ItemStack(wires.get(to),1),wires.get(from),wires.get(from),wires.get(from),wires.get(from));
     }
 }

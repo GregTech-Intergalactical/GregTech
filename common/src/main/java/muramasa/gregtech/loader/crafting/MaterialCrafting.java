@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.crafting;
 
+import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.gregtech.Ref;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -18,6 +19,6 @@ public class MaterialCrafting {
     private static void addShapelessDustRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, String recipeName, ItemStack outputItem, Object... inputs)
     {
         provider.shapeless(output, Ref.ID, recipeName, "misc", "has_wrench",
-                provider.hasSafeItem(WRENCH.getTag()), outputItem, inputs);
+                provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), outputItem, inputs);
     }
 }

@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
+import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.pipe.PipeSize;
@@ -13,6 +14,7 @@ import net.minecraft.world.item.Items;
 import java.util.function.Consumer;
 
 import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.Bronze;
 
