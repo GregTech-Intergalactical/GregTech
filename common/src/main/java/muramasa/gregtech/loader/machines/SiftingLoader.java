@@ -2,13 +2,13 @@ package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.RecipeHelper;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.world.item.ItemStack;
 
-import static muramasa.antimatter.Data.*;
 import static muramasa.gregtech.data.RecipeMaps.SIFTING;
 
 public class SiftingLoader {
@@ -16,7 +16,7 @@ public class SiftingLoader {
         AntimatterMaterialTypes.CRUSHED_PURIFIED.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.GEM) || !m.has(AntimatterMaterialTypes.ORE)) return;
             int multiplier = 1;
-            RecipeIngredient ore = AntimatterMaterialTypes.ORE.get().get(m, STONE).asIngredient(), crushed = AntimatterMaterialTypes.CRUSHED.getIngredient(m, 1), dust = AntimatterMaterialTypes.DUST.getIngredient(m, 1);
+            RecipeIngredient ore = AntimatterMaterialTypes.ORE.get().get(m, AntimatterStoneTypes.STONE).asIngredient(), crushed = AntimatterMaterialTypes.CRUSHED.getIngredient(m, 1), dust = AntimatterMaterialTypes.DUST.getIngredient(m, 1);
             ItemStack dustStack = AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone, 1);
             ItemStack gem = m != MaterialTags.DIRECT_SMELT_INTO.getMapping(m) ? AntimatterMaterialTypes.GEM.get(MaterialTags.DIRECT_SMELT_INTO.getMapping(m), 1) : AntimatterMaterialTypes.GEM.get(m, 1);
             RecipeHelper.addSmelting(ore, Utils.ca(multiplier * MaterialTags.SMELTING_MULTI.getInt(m), gem));

@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.multi;
 
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
@@ -9,7 +10,6 @@ import muramasa.gregtech.Ref;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTags.CALCITE2X;
 import static muramasa.antimatter.material.MaterialTags.CALCITE3X;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
@@ -27,7 +27,7 @@ public class Blasting {
             if (!m.has(AntimatterMaterialTypes.ORE) || !m.has(AntimatterMaterialTypes.INGOT)) return;
             Item crushed = AntimatterMaterialTypes.CRUSHED.get(m);
             Item dust = AntimatterMaterialTypes.DUST.get(m);
-            RecipeIngredient ore = AntimatterMaterialTypes.ORE.get().get(m, STONE).asIngredient();
+            RecipeIngredient ore = AntimatterMaterialTypes.ORE.get().get(m, AntimatterStoneTypes.STONE).asIngredient();
             ItemStack ingot = m != MaterialTags.DIRECT_SMELT_INTO.getMapping(m) ? AntimatterMaterialTypes.INGOT.get(MaterialTags.DIRECT_SMELT_INTO.getMapping(m), 1) : AntimatterMaterialTypes.INGOT.get(m, 1);
             ItemStack aIngotSmeltInto = m == MaterialTags.SMELT_INTO.getMapping(m) ? ingot : AntimatterMaterialTypes.INGOT.get(MaterialTags.SMELT_INTO.getMapping(m), 1);
             if (needsBF) {

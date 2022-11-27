@@ -2,12 +2,12 @@ package muramasa.gregtech.loader;
 
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.event.WorldGenEvent;
 import muramasa.antimatter.worldgen.vein.WorldGenVein;
 import muramasa.antimatter.worldgen.vein.WorldGenVeinBuilder;
 import net.minecraft.world.level.Level;
 
-import static muramasa.antimatter.Data.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 import static net.minecraft.world.level.Level.*;
@@ -30,27 +30,27 @@ public class WorldGenLoader {
     WorldGenVein.setLayerChance(WorldGenVein.STONE_VEIN_LAYER, 0.25f);
 
     ev.vein(new WorldGenVeinBuilder("vein_gravel")
-        .asSmallStoneVein(10, -64, 320, GRAVEL, OVERWORLD)
+        .asSmallStoneVein(10, -64, 320, AntimatterStoneTypes.GRAVEL, OVERWORLD)
         .buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_dirt")
-        .asSmallStoneVein(10, 0, 320, DIRT, OVERWORLD)
+        .asSmallStoneVein(10, 0, 320, AntimatterStoneTypes.DIRT, OVERWORLD)
         .buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_tuff")
-        .asSmallStoneVein(5, -64, 16, TUFF, OVERWORLD)
+        .asSmallStoneVein(5, -64, 16, AntimatterStoneTypes.TUFF, OVERWORLD)
         .buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_granite")
-        .asMediumStoneVein(5, 128, 32, GRANITE, OVERWORLD)
+        .asMediumStoneVein(5, 128, 32, AntimatterStoneTypes.GRANITE, OVERWORLD)
         .buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_diorite")
-        .asMediumStoneVein(5, 128, 32, DIORITE, OVERWORLD)
+        .asMediumStoneVein(5, 128, 32, AntimatterStoneTypes.DIORITE, OVERWORLD)
         .buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_andesite")
-        .asMediumStoneVein(5, 128, 32, ANDESITE, OVERWORLD)
+        .asMediumStoneVein(5, 128, 32, AntimatterStoneTypes.ANDESITE, OVERWORLD)
         .buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_granite_black")
