@@ -2,8 +2,8 @@ package muramasa.gregtech.loader;
 
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 
-import static muramasa.antimatter.Data.Gold;
-import static muramasa.antimatter.Data.Iron;
+import static muramasa.antimatter.data.AntimatterMaterials.Gold;
+import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.FUSION;
 

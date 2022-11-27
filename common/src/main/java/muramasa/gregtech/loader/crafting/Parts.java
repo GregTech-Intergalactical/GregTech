@@ -4,6 +4,7 @@ import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
@@ -92,7 +93,7 @@ public class Parts {
     provider.addItemRecipe(output, "board_basic", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), CircuitBoardCoated,
         ImmutableMap.<Character, Object>builder()
                 .put('R', GTRubberData.StickyResin)
-                .put('P', PLATE.get(Wood))
+                .put('P', PLATE.get(AntimatterMaterials.Wood))
             .build(),
         " R ", "PPP", " R ");
 
@@ -102,7 +103,7 @@ public class Parts {
                       .put('G', Items.GLASS)
                       .put('P', Items.PAPER)
                       .put('W',
-                              AntimatterAPI.getOrThrow(Wire.class, "wire_" + Copper.getId(),
+                              AntimatterAPI.getOrThrow(Wire.class, "wire_" + AntimatterMaterials.Copper.getId(),
                                       () -> new RuntimeException("Missing copper wire")).getBlockItem(PipeSize.VTINY))
                       .build(),
               "   ", "PGP", "WWW");
@@ -110,10 +111,10 @@ public class Parts {
       // MANUAL RESISTOR CRAFTING
       provider.addItemRecipe(output, "resistor", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), Resistor,
               ImmutableMap.<Character, Object>builder()
-                      .put('C', DUST.get(Coal))
+                      .put('C', DUST.get(AntimatterMaterials.Coal))
                       .put('P', Items.PAPER)
                       .put('W',
-                              AntimatterAPI.getOrThrow(Wire.class, "wire_" + Copper.getId(),
+                              AntimatterAPI.getOrThrow(Wire.class, "wire_" + AntimatterMaterials.Copper.getId(),
                                       () -> new RuntimeException("Missing copper wire")).getBlockItem(PipeSize.VTINY))
                       .build(),
               " P ", "WCW", " P ");
@@ -147,7 +148,7 @@ public class Parts {
 
       provider.addItemRecipe(output, Ref.ID, "diamondsaw_blade", "gtparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), DiamondSawBlade, of(
               'G', GEAR.get(CobaltBrass),
-              'D', DUST_SMALL.get(Diamond)
+              'D', DUST_SMALL.get(AntimatterMaterials.Diamond)
       ), " D ", "DGD", " D ");
   }
 }

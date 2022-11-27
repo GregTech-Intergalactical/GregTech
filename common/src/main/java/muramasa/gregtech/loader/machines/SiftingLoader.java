@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.machines;
 
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.RecipeHelper;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
@@ -15,7 +16,7 @@ public class SiftingLoader {
             if (!m.has(GEM) || !m.has(ORE)) return;
             int multiplier = 1;
             RecipeIngredient ore = ORE.get().get(m, STONE).asIngredient(), crushed = CRUSHED.getIngredient(m, 1), dust = DUST.getIngredient(m, 1);
-            ItemStack dustStack = DUST.get(Stone, 1);
+            ItemStack dustStack = DUST.get(AntimatterMaterials.Stone, 1);
             ItemStack gem = m != MaterialTags.DIRECT_SMELT_INTO.getMapping(m) ? GEM.get(MaterialTags.DIRECT_SMELT_INTO.getMapping(m), 1) : GEM.get(m, 1);
             RecipeHelper.addSmelting(ore, Utils.ca(multiplier * MaterialTags.SMELTING_MULTI.getInt(m), gem));
             if (m.has(GEM_BRITTLE)) {

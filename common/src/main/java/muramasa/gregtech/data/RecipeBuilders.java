@@ -1,7 +1,7 @@
 package muramasa.gregtech.data;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Data;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
@@ -82,8 +82,8 @@ public class RecipeBuilders {
 
         static {
             AntimatterAPI.runOnEvent(RegistrationEvent.DATA_READY, () -> FUELS = new ItemStack[]{
-                    GEM.get(Data.Coal, 1),
-                    DUST.get(Data.Coal, 1),
+                    GEM.get(AntimatterMaterials.Coal, 1),
+                    DUST.get(AntimatterMaterials.Coal, 1),
                     GEM.get(Materials.Charcoal, 1),
                     DUST.get(Materials.Charcoal, 1),
                     GEM.get(Materials.CoalCoke, 1),

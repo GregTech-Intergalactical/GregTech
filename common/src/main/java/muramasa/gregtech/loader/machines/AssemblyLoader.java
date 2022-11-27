@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.machines;
 
 import com.google.common.collect.ImmutableSet;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
@@ -11,7 +12,6 @@ import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.GregTech;
-import muramasa.gregtech.Ref;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
@@ -71,7 +71,7 @@ public class AssemblyLoader {
 
     private static void casings() {
         addTierCasing(WroughtIron, Lead, GregTechData.CASING_ULV, 1);
-        addTierCasing(Steel, Copper, GregTechData.CASING_LV, 2);
+        addTierCasing(Steel, AntimatterMaterials.Copper, GregTechData.CASING_LV, 2);
         addTierCasing(Aluminium, StainlessSteel, GregTechData.CASING_MV, 3);
         addTierCasing(TungstenSteel, TungstenCarbide, GregTechData.CASING_HV, 4);
         addTierCasing(Ultimet, HSSG, GregTechData.CASING_EV, 5);
@@ -81,8 +81,8 @@ public class AssemblyLoader {
         //addTierCasing(Ultimet, GregTechData.CASING_UV);
         //addTierCasing(RedSteel, GregTechData.CASING_MAX);
 
-        addTierHull(Iron, WIRE_RED_ALLOY, CircuitBasic, GregTechData.CASING_ULV, GregTechData.HULL_ULV, 1);
-        addTierHull(Iron, WIRE_RED_ALLOY, CircuitBasicElectronic, GregTechData.CASING_ULV, GregTechData.HULL_ULV, 1);
+        addTierHull(AntimatterMaterials.Iron, WIRE_RED_ALLOY, CircuitBasic, GregTechData.CASING_ULV, GregTechData.HULL_ULV, 1);
+        addTierHull(AntimatterMaterials.Iron, WIRE_RED_ALLOY, CircuitBasicElectronic, GregTechData.CASING_ULV, GregTechData.HULL_ULV, 1);
         addTierHull(AnnealedCopper, WIRE_TIN, CircuitGood, GregTechData.CASING_LV, GregTechData.HULL_LV, 2);
         addTierHull(Silver, WIRE_CUPRONICKEL, CircuitAdv, GregTechData.CASING_MV, GregTechData.HULL_MV, 3);
         addTierHull(SterlingSilver, WIRE_ELECTRUM, CircuitNanoProcessor, GregTechData.CASING_HV, GregTechData.HULL_HV, 4);

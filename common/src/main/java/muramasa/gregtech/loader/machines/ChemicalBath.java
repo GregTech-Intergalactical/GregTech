@@ -1,7 +1,7 @@
 package muramasa.gregtech.loader.machines;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.GregTechData;
-import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -14,13 +14,13 @@ import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_BATHING;
 public class ChemicalBath {
     public static void init() {
         CHEMICAL_BATHING.RB()
-                .ii(RecipeIngredient.of(DUST.get(Wood),1))
-                .fi(Water.getLiquid(100))
+                .ii(RecipeIngredient.of(DUST.get(AntimatterMaterials.Wood),1))
+                .fi(AntimatterMaterials.Water.getLiquid(100))
                 .io(new ItemStack(Items.PAPER))
                 .add(200,4);
         CHEMICAL_BATHING.RB()
                 .ii(RecipeIngredient.of(Items.SUGAR_CANE,1))
-                .fi(Water.getLiquid(100))
+                .fi(AntimatterMaterials.Water.getLiquid(100))
                 .io(new ItemStack(Items.PAPER))
                 .add(100,4);
         CHEMICAL_BATHING.RB()
@@ -36,7 +36,7 @@ public class ChemicalBath {
             CHEMICAL_BATHING.RB()
                     .ii(RecipeIngredient.of(CRUSHED.get(main),1))
                     .fi(Mercury.getLiquid(1000))
-                    .io(new ItemStack(CRUSHED_PURIFIED.get(main)),new ItemStack(DUST.get(side)),new ItemStack(DUST.get(Stone)))
+                    .io(new ItemStack(CRUSHED_PURIFIED.get(main)),new ItemStack(DUST.get(side)),new ItemStack(DUST.get(AntimatterMaterials.Stone)))
                     .add(40*20,8));
     }
     public static void persulfatebathing(){
@@ -44,7 +44,7 @@ public class ChemicalBath {
                 CHEMICAL_BATHING.RB()
                         .ii(RecipeIngredient.of(CRUSHED.get(main),1))
                         .fi(SodiumPersulfate.getLiquid(1000))
-                        .io(new ItemStack(CRUSHED_PURIFIED.get(main)),new ItemStack(DUST.get(side)),new ItemStack(DUST.get(Stone)))
+                        .io(new ItemStack(CRUSHED_PURIFIED.get(main)),new ItemStack(DUST.get(side)),new ItemStack(DUST.get(AntimatterMaterials.Stone)))
                         .add(40*20,8));
     }
 }

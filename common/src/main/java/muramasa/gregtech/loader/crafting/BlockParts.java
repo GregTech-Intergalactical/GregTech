@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.data.AntimatterDefaultTools;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.Material;
@@ -51,7 +52,7 @@ public class BlockParts {
         addCasing(output, provider, TungstenSteel, GregTechData.CASING_TUNGSTENSTEEL);
 
         addTierCasing(output, provider, WroughtIron, Lead, GregTechData.CASING_ULV,1);
-        addTierCasing(output, provider, Steel, Copper, GregTechData.CASING_LV,2);
+        addTierCasing(output, provider, Steel, AntimatterMaterials.Copper, GregTechData.CASING_LV,2);
         addTierCasing(output, provider, Aluminium, StainlessSteel, GregTechData.CASING_MV,3);
         addTierCasing(output, provider, TungstenSteel, TungstenCarbide, GregTechData.CASING_HV,4);
         addTierCasing(output, provider, Ultimet, HSSG, GregTechData.CASING_EV,5);
@@ -61,7 +62,7 @@ public class BlockParts {
         //addTierCasing(output, provider, Ultimet, GregTechData.CASING_UV);
         //addTierCasing(output, provider, RedSteel, GregTechData.CASING_MAX);
 
-        addTierHull(output, provider, Iron, WIRE_RED_ALLOY, CircuitBasic, GregTechData.CASING_ULV, GregTechData.HULL_ULV,1);
+        addTierHull(output, provider, AntimatterMaterials.Iron, WIRE_RED_ALLOY, CircuitBasic, GregTechData.CASING_ULV, GregTechData.HULL_ULV,1);
         addTierHull(output, provider, AnnealedCopper, WIRE_TIN, CircuitBasic, GregTechData.CASING_LV, GregTechData.HULL_LV,2);
         addTierHull(output, provider, Silver, WIRE_CUPRONICKEL, CircuitGood, GregTechData.CASING_MV,GregTechData.HULL_MV,3);
         addTierHull(output, provider, SterlingSilver, WIRE_ELECTRUM, CircuitGood, GregTechData.CASING_HV, GregTechData.HULL_HV,4);

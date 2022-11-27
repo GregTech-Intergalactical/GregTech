@@ -1,6 +1,6 @@
 package muramasa.gregtech.loader.machines;
 
-import muramasa.antimatter.Data;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
@@ -36,7 +36,7 @@ public class AlloyLoader {
         });
 
         ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(Materials.Brick), 1),
-                RecipeIngredient.of(DUST.getMaterialTag(Data.Sand), 2))
+                RecipeIngredient.of(DUST.getMaterialTag(AntimatterMaterials.Sand), 2))
                 .io(DUST.get(Materials.Fireclay, 1))
                 .add(20, 10);
     }

@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.multi;
 
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
@@ -54,7 +55,7 @@ public class Blasting {
         });
 
         /* PRIMITIVE */
-        BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(1.0, 0.5).add(1200, 0);
+        BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(1.0, 0.5).add(1200, 0);
 
         /* TITANIUM */
         BLASTING.RB().temperature(1700).ii(RecipeIngredient.of(DUST.get(Magnesium,2)), INT_CIRCUITS.get(1))

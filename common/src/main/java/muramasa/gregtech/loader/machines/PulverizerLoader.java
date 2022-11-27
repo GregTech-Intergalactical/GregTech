@@ -1,8 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
-import muramasa.antimatter.Data;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTag;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
@@ -23,8 +22,8 @@ public class PulverizerLoader {
             int multiplier = 1;
             RecipeIngredient ore = RecipeIngredient.of(ORE.getMaterialTag(m),1), crushed = CRUSHED.getIngredient(m, 1);
             ItemStack crushedStack = CRUSHED.get(m,1);
-            ItemStack stoneDust = DUST.get(Stone, 1);
-            ItemStack dustStack = DUST.get(Stone, 1);
+            ItemStack stoneDust = DUST.get(AntimatterMaterials.Stone, 1);
+            ItemStack dustStack = DUST.get(AntimatterMaterials.Stone, 1);
 
             //TODO better way to do this
             Material aOreByProduct1 = m.getByProducts().size() >= 1 ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
@@ -54,9 +53,9 @@ public class PulverizerLoader {
         PULVERIZING.RB().ii(RecipeIngredient.of(Items.STONE,1)).io(new ItemStack(Items.COBBLESTONE,1)).add(100,2);
         PULVERIZING.RB().ii(RecipeIngredient.of(Items.COBBLESTONE,1)).io(new ItemStack(Items.GRAVEL,1)).add(100,2);
         PULVERIZING.RB().ii(RecipeIngredient.of(Items.GRAVEL,1)).io(new ItemStack(Items.SAND,1)).add(100,2);
-        PULVERIZING.RB().ii(RecipeIngredient.of(Items.SAND,1)).io(DUST.get(Sand, 1)).add(50,4);
+        PULVERIZING.RB().ii(RecipeIngredient.of(Items.SAND,1)).io(DUST.get(AntimatterMaterials.Sand, 1)).add(50,4);
         PULVERIZING.RB().ii(RecipeIngredient.of(Items.BRICK,1)).io(DUST.get(Materials.Brick, 1)).add(50,4);
-        PULVERIZING.RB().ii(RecipeIngredient.of(Items.COAL,1)).io(DUST.get(Coal, 1)).add(50,4);
+        PULVERIZING.RB().ii(RecipeIngredient.of(Items.COAL,1)).io(DUST.get(AntimatterMaterials.Coal, 1)).add(50,4);
         PULVERIZING.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(DUST.get(WoodPulp, 2)).add(40, 2);
 
 

@@ -14,7 +14,7 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import static muramasa.antimatter.Data.NULL;
+import static muramasa.antimatter.material.Material.NULL;
 
 public class RemappingEvents {
 

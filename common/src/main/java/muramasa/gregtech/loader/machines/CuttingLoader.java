@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.Data;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.Materials;
@@ -16,7 +17,7 @@ public class CuttingLoader {
             if (!mat.has(Data.BLOCK))
                 continue;
             int multiplier = mat.has(Data.GEM) ? 8 : 3;
-            if (mat == Data.Diamond)
+            if (mat == AntimatterMaterials.Diamond)
                 multiplier = 20;
             CUTTING.RB().ii(RecipeIngredient.of(Data.BLOCK.getMaterialTag(mat), 1)).io(Data.PLATE.get(mat, 9))
                     .fi(new FluidStack(Fluids.WATER, 1000)).add(mat.getMass() * 2 * multiplier, 24);

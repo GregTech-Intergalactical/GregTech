@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.machines;
 
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
@@ -35,7 +36,7 @@ public class CentrifugingLoader {
             CENTRIFUGING.RB().ii(input).io(items).fo(fluids).add(t.getMass()*10, t.getMass() < 10 ? 30 : 64);
         });
         //some stone dust recipe from gtnh without metal mixture
-        CENTRIFUGING.RB().ii(RecipeIngredient.of(DUST.get(Stone, 32))).io(DUST.get(Quartz, 9), DUST.get(Materials.PotassiumFeldspar, 9), DUST.get(Materials.Marble, 8), DUST.get(Materials.Biotite, 4),
+        CENTRIFUGING.RB().ii(RecipeIngredient.of(DUST.get(AntimatterMaterials.Stone, 32))).io(DUST.get(AntimatterMaterials.Quartz, 9), DUST.get(Materials.PotassiumFeldspar, 9), DUST.get(Materials.Marble, 8), DUST.get(Materials.Biotite, 4),
                 DUST.get(Materials.Sodalite, 4)).add(7680, 30);
     }
 }
