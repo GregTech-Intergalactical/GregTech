@@ -20,6 +20,7 @@ public class SteamMachines {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
         Object bronzePlate = PLATE.get(Bronze);
         Object steelPlate = PLATE.get(Materials.Steel);
+        Object silverPlate = PLATE.get(Materials.Silver);
         Object wrench = WRENCH.getTag();
         Object bricks = Items.BRICKS;
         Object furnace = Items.FURNACE;
@@ -29,7 +30,8 @@ public class SteamMachines {
 
         Object bronzePipe = FLUID_PIPE_BRONZE.getBlock(PipeSize.SMALL);
         Object hull = CASING_BRONZE;
-        Object brickedHull = CASING_BRICKED_BRONZE;
+        Object brickedBronzeHull = CASING_BRICKED_BRONZE;
+        Object brickedSteelHull = CASING_BRICKED_STEEL;
         provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.COAL_BOILER.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'P', bronzePlate,
@@ -55,10 +57,23 @@ public class SteamMachines {
                         'B', bricks,
                         'F', furnace
                 ), "PPP", "PWP", "BFB");
+        provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.LAVA_BOILER.getItem(Tier.STEEL),
+                ImmutableMap.of(
+                        'P', steelPlate,
+                        'G', Items.GLASS,
+                        'H', brickedSteelHull
+                ), "PPP", "GGG", "PHP");
+        provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.SOLAR_BOILER.getItem(Tier.BRONZE),
+                ImmutableMap.of(
+                        'P', silverPlate,
+                        'G', Items.GLASS,
+                        'I', bronzePipe,
+                        'H', brickedBronzeHull
+                ), "GGG", "PPP", "IHI");
         provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_PULVERIZER.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'B', bronzePipe,
-                        'H', brickedHull,
+                        'H', brickedBronzeHull,
                         'P', piston,
                         'D', diamond
                 ), "DBD", "BHB", "PBP");
@@ -85,13 +100,13 @@ public class SteamMachines {
         provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_ALLOY_SMELTER.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'B', bronzePipe,
-                        'H', brickedHull,
+                        'H', brickedBronzeHull,
                         'F', Items.FURNACE
                 ), "BBB", "FHF", "BBB");
         provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_FURNACE.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'B', bronzePipe,
-                        'H', brickedHull,
+                        'H', brickedBronzeHull,
                         'F', Items.FURNACE
                 ), "BBB", "BHB", "BFB");
     }
