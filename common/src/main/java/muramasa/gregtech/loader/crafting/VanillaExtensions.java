@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.crafting;
 
 import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import muramasa.antimatter.data.AntimatterDefaultTools;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
@@ -15,8 +16,7 @@ import net.minecraft.tags.ItemTags;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.Data.ROD;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.ROD;
 import static muramasa.gregtech.data.GregTechData.ItemFilter;
 import static muramasa.gregtech.data.Materials.IronMagnetic;
 import static muramasa.gregtech.data.Materials.Neodymium;
@@ -33,16 +33,16 @@ public class VanillaExtensions {
                 ItemFilter, of('Z', TagUtils.getForgelikeItemTag("foils/zinc"), 'I', TagUtils.getForgelikeItemTag("plates/iron")), "ZZZ", "ZIZ", "ZZZ");
 
         provider.addItemRecipe(consumer,Ref.ID,"gears", "gears", "has_wooden_rod", provider.hasSafeItem(ForgeCTags.RODS_WOODEN),
-                GEAR.get(AntimatterMaterials.Wood), of('P', ItemTags.PLANKS, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'R', ForgeCTags.RODS_WOODEN), "RPR", "PWP", "RPR");
+                AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood), of('P', ItemTags.PLANKS, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'R', ForgeCTags.RODS_WOODEN), "RPR", "PWP", "RPR");
 
-        provider.addItemRecipe(consumer, Ref.ID, GEAR.get(AntimatterMaterials.Wood).getRegistryName().getPath() + "_alt", "gears", "has_wooden_rod", provider.hasSafeItem(ForgeCTags.RODS_WOODEN),
-                GEAR.get(AntimatterMaterials.Wood), of('P', ItemTags.PLANKS, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'R', ForgeCTags.RODS_WOODEN), "RPR", "PWP", "RPR");
+        provider.addItemRecipe(consumer, Ref.ID, AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood).getRegistryName().getPath() + "_alt", "gears", "has_wooden_rod", provider.hasSafeItem(ForgeCTags.RODS_WOODEN),
+                AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood), of('P', ItemTags.PLANKS, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'R', ForgeCTags.RODS_WOODEN), "RPR", "PWP", "RPR");
 
         provider.addItemRecipe(consumer,Ref.ID, "gears", "gears", "has_stone", provider.hasSafeItem(ForgeCTags.STONE),
-                GEAR.get(AntimatterMaterials.Stone), of('S', ForgeCTags.STONE, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'C', ForgeCTags.COBBLESTONE), "SCS", "CWC", "SCS");
+                AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone), of('S', ForgeCTags.STONE, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'C', ForgeCTags.COBBLESTONE), "SCS", "CWC", "SCS");
 
-        provider.addItemRecipe(consumer, Ref.ID, GEAR.get(AntimatterMaterials.Stone).getRegistryName().getPath() + "_alt", "gears", "has_stone", provider.hasSafeItem(ForgeCTags.STONE),
-                GEAR.get(AntimatterMaterials.Stone), of('S', ForgeCTags.STONE, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'C', ForgeCTags.COBBLESTONE), "CSC", "SWS", "CSC");
+        provider.addItemRecipe(consumer, Ref.ID, AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone).getRegistryName().getPath() + "_alt", "gears", "has_stone", provider.hasSafeItem(ForgeCTags.STONE),
+                AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone), of('S', ForgeCTags.STONE, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'C', ForgeCTags.COBBLESTONE), "CSC", "SWS", "CSC");
 
         provider.addItemRecipe(consumer, Ref.ID, "piston_sticky","gears", "has_stone", provider.hasSafeItem(Blocks.PISTON), Blocks.STICKY_PISTON, of('S', GTRubberData.StickyResin, 'P', Blocks.PISTON), "S", "P");
 

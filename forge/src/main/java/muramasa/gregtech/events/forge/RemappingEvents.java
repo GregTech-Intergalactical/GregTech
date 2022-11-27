@@ -2,7 +2,7 @@ package muramasa.gregtech.events.forge;
 
 import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Data;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.ore.BlockOre;
@@ -26,16 +26,16 @@ public class RemappingEvents {
             if (id.startsWith("block_")){
                 Material mat = Material.get(id.replace("block_", ""));
                 if (mat != NULL){
-                    map.remap(Data.BLOCK.get().get(mat).asBlock());
+                    map.remap(AntimatterMaterialTypes.BLOCK.get().get(mat).asBlock());
                     continue;
                 }
             }
             if (id.equals("ore_stone_salt")){
-                map.remap(Data.ORE_STONE.get().get(Materials.Salt).asBlock());
+                map.remap(AntimatterMaterialTypes.ORE_STONE.get().get(Materials.Salt).asBlock());
                 continue;
             }
             if (id.equals("ore_stone_rock_salt")){
-                map.remap(Data.ORE_STONE.get().get(Materials.RockSalt).asBlock());
+                map.remap(AntimatterMaterialTypes.ORE_STONE.get().get(Materials.RockSalt).asBlock());
                 continue;
             }
             if (id.startsWith("ore_")){

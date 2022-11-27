@@ -9,8 +9,8 @@ import muramasa.antimatter.recipe.map.RecipeMap;
 import muramasa.antimatter.registration.RegistrationEvent;
 import net.minecraft.world.item.ItemStack;
 
-import static muramasa.antimatter.Data.DUST;
-import static muramasa.antimatter.Data.GEM;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
 
 public class RecipeBuilders {
 

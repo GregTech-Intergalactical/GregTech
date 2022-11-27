@@ -3,7 +3,7 @@ package muramasa.gregtech.loader.machines;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.gregtech.data.Materials;
 
-import static muramasa.antimatter.Data.INGOT;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
 import static muramasa.gregtech.data.RecipeMaps.ARC_SMELTING;
 
 public class ArcFurnace {

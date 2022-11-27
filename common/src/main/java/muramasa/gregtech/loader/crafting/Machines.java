@@ -2,18 +2,16 @@ package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Data;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
-import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.TierMaps;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -24,8 +22,8 @@ import java.util.Arrays;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.Data.DUST;
-import static muramasa.antimatter.Data.PLATE;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
 import static muramasa.antimatter.machine.Tier.IV;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Machines.*;
@@ -342,7 +340,7 @@ public class Machines {
                             .put('L', cable).build(), "GZG", "CHC", "LPL"));
             add(AUTOCLAVE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('T', Data.PLATE.getMaterialTag(TierMaps.TIER_MATERIALS.get(tier)))
+                            .put('T', AntimatterMaterialTypes.PLATE.getMaterialTag(TierMaps.TIER_MATERIALS.get(tier)))
                             .put('C', circuit)
                             .put('G', glass)
                             .put('H', hull)

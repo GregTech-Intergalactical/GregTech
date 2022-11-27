@@ -1,11 +1,11 @@
 package muramasa.gregtech.loader.machines;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.MaterialTags.CHEMBATH_MERCURY;
 import static muramasa.antimatter.material.MaterialTags.CHEMBATH_PERSULFATE;
 import static muramasa.gregtech.data.Materials.*;
@@ -14,7 +14,7 @@ import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_BATHING;
 public class ChemicalBath {
     public static void init() {
         CHEMICAL_BATHING.RB()
-                .ii(RecipeIngredient.of(DUST.get(AntimatterMaterials.Wood),1))
+                .ii(RecipeIngredient.of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Wood),1))
                 .fi(AntimatterMaterials.Water.getLiquid(100))
                 .io(new ItemStack(Items.PAPER))
                 .add(200,4);
@@ -34,17 +34,17 @@ public class ChemicalBath {
     public static void mercurybathing(){
         CHEMBATH_MERCURY.getAll().forEach((main,side) ->
             CHEMICAL_BATHING.RB()
-                    .ii(RecipeIngredient.of(CRUSHED.get(main),1))
+                    .ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(main),1))
                     .fi(Mercury.getLiquid(1000))
-                    .io(new ItemStack(CRUSHED_PURIFIED.get(main)),new ItemStack(DUST.get(side)),new ItemStack(DUST.get(AntimatterMaterials.Stone)))
+                    .io(new ItemStack(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(AntimatterMaterialTypes.DUST.get(side)),new ItemStack(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone)))
                     .add(40*20,8));
     }
     public static void persulfatebathing(){
         CHEMBATH_PERSULFATE.getAll().forEach((main,side) ->
                 CHEMICAL_BATHING.RB()
-                        .ii(RecipeIngredient.of(CRUSHED.get(main),1))
+                        .ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(main),1))
                         .fi(SodiumPersulfate.getLiquid(1000))
-                        .io(new ItemStack(CRUSHED_PURIFIED.get(main)),new ItemStack(DUST.get(side)),new ItemStack(DUST.get(AntimatterMaterials.Stone)))
+                        .io(new ItemStack(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(AntimatterMaterialTypes.DUST.get(side)),new ItemStack(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone)))
                         .add(40*20,8));
     }
 }

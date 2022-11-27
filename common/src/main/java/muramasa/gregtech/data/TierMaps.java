@@ -20,8 +20,8 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.function.BiFunction;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Copper;
-import static muramasa.antimatter.Data.GEM;
-import static muramasa.antimatter.Data.ROTOR;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.ROTOR;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;

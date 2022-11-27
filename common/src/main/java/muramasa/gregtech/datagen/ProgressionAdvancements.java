@@ -1,6 +1,6 @@
 package muramasa.gregtech.datagen;
 
-import muramasa.antimatter.Data;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.gregtech.Ref;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
@@ -20,7 +20,7 @@ public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> 
 
     @Override
     public void accept(Consumer<Advancement> consumer) {
-        progressionRoot = buildRootAdvancement(Data.ROCK.get(Flint), new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"),
+        progressionRoot = buildRootAdvancement(AntimatterMaterialTypes.ROCK.get(Flint), new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"),
                 Ref.ID + ".advancements.greg", Ref.ID + ".advancements.greg.desc", FrameType.TASK, true, true, false)
                 .addCriterion("has_rocks", hasItem(getForgelikeItemTag("rocks"))).save(consumer, getLoc(Ref.ID, "progression/root"));
     }

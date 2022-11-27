@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
@@ -15,7 +16,6 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.pipe.PipeSize.VTINY;
 import static muramasa.antimatter.pipe.PipeSize.values;
 
@@ -33,10 +33,10 @@ public class WireCablesPlates {
                     fourToOne(wires, val[i-2], val[i], output, provider);
                 }
             }
-            if (wire.getMaterial().has(PLATE)) {
+            if (wire.getMaterial().has(AntimatterMaterialTypes.PLATE)) {
                 provider.shapeless(output, "platewire","wire","has_cutter", provider.hasSafeItem(AntimatterDefaultTools.WIRE_CUTTER.getTag()),
                         new ItemStack(wires.get(VTINY)),
-                        AntimatterDefaultTools.WIRE_CUTTER.getTag(), PLATE.get(wire.getMaterial()));
+                        AntimatterDefaultTools.WIRE_CUTTER.getTag(), AntimatterMaterialTypes.PLATE.get(wire.getMaterial()));
             }
         });
 

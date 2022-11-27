@@ -9,8 +9,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.Data.DUST;
-import static muramasa.antimatter.Data.INGOT;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
 import static muramasa.antimatter.util.TagUtils.nc;
 
 public class Smelting {

@@ -1,7 +1,7 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.data.AntimatterDefaultTools;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.pipe.PipeSize;
@@ -13,16 +13,15 @@ import net.minecraft.world.item.Items;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.Bronze;
 
 public class SteamMachines {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        Object bronzePlate = PLATE.get(Bronze);
-        Object steelPlate = PLATE.get(Materials.Steel);
-        Object silverPlate = PLATE.get(Materials.Silver);
+        Object bronzePlate = AntimatterMaterialTypes.PLATE.get(Bronze);
+        Object steelPlate = AntimatterMaterialTypes.PLATE.get(Materials.Steel);
+        Object silverPlate = AntimatterMaterialTypes.PLATE.get(Materials.Silver);
         Object wrench = WRENCH.getTag();
         Object bricks = Items.BRICKS;
         Object furnace = Items.FURNACE;
@@ -41,12 +40,12 @@ public class SteamMachines {
                         'B', bricks,
                         'F', furnace
                 ), "PPP", "PWP", "BFB");
-        provider.addItemRecipe(output, "steam_machines", "has_bronze", provider.hasSafeItem(INGOT.getMaterialTag(Bronze)), CASING_BRONZE,
+        provider.addItemRecipe(output, "steam_machines", "has_bronze", provider.hasSafeItem(AntimatterMaterialTypes.INGOT.getMaterialTag(Bronze)), CASING_BRONZE,
                 ImmutableMap.of(
                         'P', bronzePlate,
                         'W', wrench
                 ), "PPP", "PWP", "PPP");
-        provider.addItemRecipe(output, "steam_machines", "has_bronze", provider.hasSafeItem(INGOT.getMaterialTag(Bronze)), CASING_BRICKED_BRONZE,
+        provider.addItemRecipe(output, "steam_machines", "has_bronze", provider.hasSafeItem(AntimatterMaterialTypes.INGOT.getMaterialTag(Bronze)), CASING_BRICKED_BRONZE,
                 ImmutableMap.of(
                         'P', bronzePlate,
                         'W', wrench,

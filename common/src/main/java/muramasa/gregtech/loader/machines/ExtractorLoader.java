@@ -1,10 +1,9 @@
 package muramasa.gregtech.loader.machines;
 
 import com.github.gregtechintergalactical.gtrubber.GTRubberData;
-import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.ItemStack;
 
-import static muramasa.antimatter.Data.DUST;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.RawRubber;
 import static muramasa.gregtech.data.RecipeMaps.EXTRACTING;

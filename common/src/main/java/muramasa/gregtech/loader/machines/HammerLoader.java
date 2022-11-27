@@ -1,8 +1,8 @@
 package muramasa.gregtech.loader.machines;
 
 
-import static muramasa.antimatter.Data.INGOT;
-import static muramasa.antimatter.Data.PLATE;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
 import static muramasa.gregtech.data.RecipeMaps.HAMMERING;
 
 public class HammerLoader {

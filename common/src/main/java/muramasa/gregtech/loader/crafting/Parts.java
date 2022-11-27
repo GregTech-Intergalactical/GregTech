@@ -4,6 +4,7 @@ import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
@@ -25,7 +26,6 @@ import java.util.Arrays;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.antimatter.Data.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechTags.PLATES_IRON_ALUMINIUM;
 import static muramasa.gregtech.data.Materials.*;
@@ -40,9 +40,9 @@ public class Parts {
       Item wire = TIER_WIRES.get(t);
       Material mat = TIER_MATERIALS.get(t);
       // Item smallGear = GEAR_SMALL.get(mat);
-      Item smallGear = GEAR.get(mat);
-      TagKey<Item> plate = PLATE.getMaterialTag(mat);
-      TagKey<Item> rod = ROD.getMaterialTag(mat);
+      Item smallGear = AntimatterMaterialTypes.GEAR.get(mat);
+      TagKey<Item> plate = AntimatterMaterialTypes.PLATE.getMaterialTag(mat);
+      TagKey<Item> rod = AntimatterMaterialTypes.ROD.getMaterialTag(mat);
       Item circuit = TIER_CIRCUITS.getOrDefault(t, CircuitBasic);
 
       Item motor = GregTech.get(ItemBasic.class, "motor_" + t.getId());
@@ -52,14 +52,14 @@ public class Parts {
       Item sensor = GregTech.get(ItemBasic.class, "sensor_" + t.getId());
       Item pump = GregTech.get(ItemCover.class, "pump_" + t.getId());
       Item conveyor = GregTech.get(ItemCover.class, "conveyor_" + t.getId());
-      Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
+      Object emitterRod = AntimatterMaterialTypes.ROD.getMaterialTag(EMITTER_RODS.get(t));
       Object emitterGem = EMITTER_GEMS.get(t);
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), motor,
-          of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', rod), "CWR", "WMW", "RWC");
+          of('M', AntimatterMaterialTypes.ROD.get(magnet), 'C', cable, 'W', wire, 'R', rod), "CWR", "WMW", "RWC");
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), piston,
           of('M', motor, 'C', cable, 'G', smallGear, 'P', plate, 'R', rod), "PPP", "CRR", "CMG");
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), conveyor,
-          of('M', motor, 'C', cable, 'P', PLATE.get(Rubber)), "PPP", "MCM", "PPP");
+          of('M', motor, 'C', cable, 'P', AntimatterMaterialTypes.PLATE.get(Rubber)), "PPP", "MCM", "PPP");
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), robotArm,
           of('M', motor, 'C', cable, 'P', piston, 'I', circuit, 'R', rod), "CCC", "MRM", "PIR");
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(circuit), emitter,
@@ -69,8 +69,8 @@ public class Parts {
       Material rotorMat = ((MaterialItem) TIER_ROTORS.get(t)).getMaterial();
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), pump,
           ImmutableMap.<Character, Object>builder().put('M', motor).put('C', cable).put('W', AntimatterDefaultTools.WRENCH.getTag())
-              .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag()).put('R', SCREW.get(rotorMat)).put('T', TIER_ROTORS.get(t))
-              .put('O', t == Tier.IV ? RING.get(StyreneButadieneRubber) : RING.get(Rubber)).put('P', TIER_PIPES.get(t))
+              .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag()).put('R', AntimatterMaterialTypes.SCREW.get(rotorMat)).put('T', TIER_ROTORS.get(t))
+              .put('O', t == Tier.IV ? AntimatterMaterialTypes.RING.get(StyreneButadieneRubber) : AntimatterMaterialTypes.RING.get(Rubber)).put('P', TIER_PIPES.get(t))
               .build(),
           "RTO", "SPW", "OMC");
     });
@@ -85,7 +85,7 @@ public class Parts {
             .put('W',
                 AntimatterAPI.getOrThrow(Wire.class, "wire_" + RedAlloy.getId(),
                     () -> new RuntimeException("Missing red alloy wire")).getBlockItem(PipeSize.VTINY))
-                .put('R',Resistor).put('P',PLATE.get(Steel))
+                .put('R',Resistor).put('P', AntimatterMaterialTypes.PLATE.get(Steel))
             .build(),
         "RPR", "VBV", "WWW");
 
@@ -93,7 +93,7 @@ public class Parts {
     provider.addItemRecipe(output, "board_basic", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), CircuitBoardCoated,
         ImmutableMap.<Character, Object>builder()
                 .put('R', GTRubberData.StickyResin)
-                .put('P', PLATE.get(AntimatterMaterials.Wood))
+                .put('P', AntimatterMaterialTypes.PLATE.get(AntimatterMaterials.Wood))
             .build(),
         " R ", "PPP", " R ");
 
@@ -111,7 +111,7 @@ public class Parts {
       // MANUAL RESISTOR CRAFTING
       provider.addItemRecipe(output, "resistor", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), Resistor,
               ImmutableMap.<Character, Object>builder()
-                      .put('C', DUST.get(AntimatterMaterials.Coal))
+                      .put('C', AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Coal))
                       .put('P', Items.PAPER)
                       .put('W',
                               AntimatterAPI.getOrThrow(Wire.class, "wire_" + AntimatterMaterials.Copper.getId(),
@@ -132,23 +132,23 @@ public class Parts {
               INT_CIRCUITS.get(0).getItems()[0], CircuitBasic);
 
       provider.addItemRecipe(output, Ref.ID, "small_battery_hull","batteries", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), BatteryHullSmall, of(
-              'P', PLATE.get(BatteryAlloy),
+              'P', AntimatterMaterialTypes.PLATE.get(BatteryAlloy),
               'C', TIER_CABLES.get(Tier.LV)
       ), "C", "P", "P");
 
       provider.addItemRecipe(output,  Ref.ID, "medium_battery_hull","batteries", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), BatteryHullMedium, of(
-              'P', PLATE.get(BatteryAlloy),
+              'P', AntimatterMaterialTypes.PLATE.get(BatteryAlloy),
               'C', TIER_CABLES.get(Tier.MV)
       ), "C C", "PPP", "PPP");
 
       provider.addItemRecipe(output, Ref.ID, "empty_shape", "gtparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), EmptyShape, of(
-              'P', PLATE.get(Steel),
+              'P', AntimatterMaterialTypes.PLATE.get(Steel),
               'H', AntimatterDefaultTools.HAMMER.getTag()
       ), "PPH", "PP ");
 
       provider.addItemRecipe(output, Ref.ID, "diamondsaw_blade", "gtparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), DiamondSawBlade, of(
-              'G', GEAR.get(CobaltBrass),
-              'D', DUST_SMALL.get(AntimatterMaterials.Diamond)
+              'G', AntimatterMaterialTypes.GEAR.get(CobaltBrass),
+              'D', AntimatterMaterialTypes.DUST_SMALL.get(AntimatterMaterials.Diamond)
       ), " D ", "DGD", " D ");
   }
 }

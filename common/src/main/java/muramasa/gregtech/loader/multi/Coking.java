@@ -3,7 +3,7 @@ package muramasa.gregtech.loader.multi;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.tags.ItemTags;
 
-import static muramasa.antimatter.Data.GEM;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
 import static muramasa.gregtech.data.Materials.Charcoal;
 import static muramasa.gregtech.data.RecipeMaps.COKING;
 

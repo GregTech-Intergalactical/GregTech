@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.data.AntimatterDefaultTools;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
@@ -15,17 +16,16 @@ import net.minecraft.world.item.Items;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.Data.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.TIER_CIRCUITS;
 
 public class BlockParts {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        FRAME.all().forEach(frame -> {
-            if (!frame.has(ROD)) return;
-            provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()),FRAME.get().get(frame).asItem(),
-                    ImmutableMap.of('R', ROD.get(frame), 'W', AntimatterDefaultTools.WRENCH.getTag())
+        AntimatterMaterialTypes.FRAME.all().forEach(frame -> {
+            if (!frame.has(AntimatterMaterialTypes.ROD)) return;
+            provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), AntimatterMaterialTypes.FRAME.get().get(frame).asItem(),
+                    ImmutableMap.of('R', AntimatterMaterialTypes.ROD.get(frame), 'W', AntimatterDefaultTools.WRENCH.getTag())
             , "RRR","RWR", "RRR");
         });
 
@@ -72,38 +72,38 @@ public class BlockParts {
 
     private static void addCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), casing,
-                ImmutableMap.of('P', PLATE.getMaterialTag(mat), 'W', AntimatterDefaultTools.WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', FRAME.get().get(mat).asItem())
+                ImmutableMap.of('P', AntimatterMaterialTypes.PLATE.getMaterialTag(mat), 'W', AntimatterDefaultTools.WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem())
                 ,
                 "PHP", "PFP", "PWP");
     }
 
     private static void addBrickedCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), casing,
-                ImmutableMap.of('B', Items.BRICK, 'P', PLATE.getMaterialTag(mat), 'H', AntimatterDefaultTools.HAMMER.getTag())
+                ImmutableMap.of('B', Items.BRICK, 'P', AntimatterMaterialTypes.PLATE.getMaterialTag(mat), 'H', AntimatterDefaultTools.HAMMER.getTag())
                 , "PPP", "PHP", "BBB");
     }
 
     private static void addFirebox(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), casing,
-                ImmutableMap.of('P', PLATE.getMaterialTag(mat), 'W', AntimatterDefaultTools.WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', FRAME.get().get(mat).asItem())
+                ImmutableMap.of('P', AntimatterMaterialTypes.PLATE.getMaterialTag(mat), 'W', AntimatterDefaultTools.WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem())
                 , "PHP", "PFP", "PWP");
     }
 
     private static void addTurbine(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), casing,
-                ImmutableMap.of('P', PLATE.getMaterialTag(mat), 'R', ROD.getMaterialTag(mat), 'F', FRAME.get().get(mat).asItem())
+                ImmutableMap.of('P', AntimatterMaterialTypes.PLATE.getMaterialTag(mat), 'R', AntimatterMaterialTypes.ROD.getMaterialTag(mat), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem())
                 , "PRP", "PFP", "PRP");
     }
 
     private static void addTierCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Material mat2, Block casing, int tier) {
         provider.addItemRecipe(output, "casings", "has_casing", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), casing,
-                ImmutableMap.of('P', PLATE.getMaterialTag(mat), 'W', AntimatterDefaultTools.WRENCH.getTag(), 'B', BOLT.getMaterialTag(mat2))
+                ImmutableMap.of('P', AntimatterMaterialTypes.PLATE.getMaterialTag(mat), 'W', AntimatterDefaultTools.WRENCH.getTag(), 'B', AntimatterMaterialTypes.BOLT.getMaterialTag(mat2))
                 , "BPB", "PWP", "BPB");
         }
 
     private static void addTierHull(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Wire w, ItemBasic circ, Block casing, Block hull, int tier) {
         provider.addItemRecipe(output, "hulls", "has_hull", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), hull,
-                ImmutableMap.of('S', SCREW.getMaterialTag(mat), 'R', Items.REDSTONE, 'W', w.getBlockItem(PipeSize.VTINY), 'K', casing, 'C', TIER_CIRCUITS.getOrDefault(tier, circ))
+                ImmutableMap.of('S', AntimatterMaterialTypes.SCREW.getMaterialTag(mat), 'R', Items.REDSTONE, 'W', w.getBlockItem(PipeSize.VTINY), 'K', casing, 'C', TIER_CIRCUITS.getOrDefault(tier, circ))
                 , "SRS", "WKW", "SCS");
         }
 }

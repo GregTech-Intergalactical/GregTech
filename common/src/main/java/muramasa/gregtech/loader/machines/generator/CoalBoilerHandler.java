@@ -3,8 +3,8 @@ package muramasa.gregtech.loader.machines.generator;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.Items;
 
-import static muramasa.antimatter.Data.DUST;
-import static muramasa.antimatter.Data.GEM;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.COAL_BOILERS;
 

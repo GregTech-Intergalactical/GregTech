@@ -2,8 +2,8 @@ package muramasa.gregtech.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.Data;
 import muramasa.antimatter.cover.CoverFactory;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
@@ -42,7 +42,7 @@ public class GregTechData {
             if (t instanceof MaterialTypeFluid) return;
             if (t.getClass() == MaterialType.class) return;
             //TODO: add better check
-            if (t == Data.ORE_STONE) return;
+            if (t == AntimatterMaterialTypes.ORE_STONE) return;
             CoverFactory.builder((a,b,c,d) -> new CoverTypeFilter(a,b,c,d,t)).addTextures(Material.NULL.getSet().getTextures(t)).item((a, b) -> {
             return new ItemCover(a.getDomain(), a.getId()).tip("Filters for " + t.getId()).texture(Material.NULL.getSet().getTextures(t));}).build(Ref.ID, "cover_type_" + t.getId());
         });

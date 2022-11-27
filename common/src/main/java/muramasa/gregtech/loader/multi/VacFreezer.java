@@ -5,8 +5,8 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-import static muramasa.antimatter.Data.INGOT;
-import static muramasa.antimatter.Data.INGOT_HOT;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT_HOT;
 import static muramasa.gregtech.data.RecipeMaps.VACUUM_FREEZING;
 
 public class VacFreezer {

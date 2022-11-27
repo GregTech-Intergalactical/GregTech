@@ -1,6 +1,6 @@
 package muramasa.gregtech.loader.machines;
 
-import static muramasa.antimatter.Data.DUST;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.RecipeMaps.CANNING;
 import static muramasa.gregtech.data.Materials.*;
