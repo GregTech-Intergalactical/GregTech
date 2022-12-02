@@ -97,6 +97,10 @@ allprojects {
                 includeGroup "dev.latvian.mods"
             }
         }
+        maven {
+            name = "Fuzs Mod Resources"
+            url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+        }
         //GT and Felt.
         maven {  url = "https://repo.repsy.io/mvn/trinsdar/gregtech-intergalactical/"}
         maven {
