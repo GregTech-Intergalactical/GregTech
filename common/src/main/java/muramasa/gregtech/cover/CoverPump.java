@@ -13,10 +13,12 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import tesseract.TesseractCapUtils;
 
 import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 public class CoverPump extends BaseCover {
 
@@ -41,8 +43,8 @@ public class CoverPump extends BaseCover {
     }
 
     @Override
-    public <T> boolean blocksCapability(Capability<T> cap, Direction side) {
-        return side == null && cap != CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
+    public <T> boolean blocksCapability(Class<T> cap, Direction side) {
+        return side == null && cap != IFluidHandler.class;
     }
 
     @Override
@@ -51,8 +53,8 @@ public class CoverPump extends BaseCover {
         if (handler.getTile().getLevel().isClientSide) return;
         BlockEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
         if (adjTile == null) return;
-        LazyOptional<IFluidHandler> handler = adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
-        if (!handler.isPresent()) return;
-        this.handler.getTile().getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side).ifPresent(ih -> handler.ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
+        Optional<IFluidHandler> handler = TesseractCapUtils.getFluidHandler(adjTile, side.getOpposite());
+        if (handler.isEmpty()) return;
+        TesseractCapUtils.getFluidHandler(this.handler.getTile(), side).ifPresent(ih -> handler.ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
     }
 }

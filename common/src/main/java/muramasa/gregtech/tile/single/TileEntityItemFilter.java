@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
+import tesseract.TesseractCapUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -127,7 +128,7 @@ public class TileEntityItemFilter extends TileEntityMachine<TileEntityItemFilter
         if (adjTile == null) return false;
         boolean[] booleans = new boolean[1];
         booleans[0] = false;
-        adjTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, outputDir.getOpposite()).ifPresent(adjHandler -> {
+        TesseractCapUtils.getItemHandler(adjTile, outputDir.getOpposite()).ifPresent(adjHandler -> {
             booleans[0] = this.itemHandler.map(h -> Utils.transferItems(h.getHandler(SlotTypes.FILTERABLE), adjHandler,true)).orElse(false);
         });
         return booleans[0];

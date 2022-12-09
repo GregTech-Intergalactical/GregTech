@@ -25,8 +25,10 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import tesseract.TesseractCapUtils;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static muramasa.antimatter.machine.MachineState.ACTIVE;
@@ -135,7 +137,7 @@ public class TileEntityLavaBoiler extends TileEntityMachine<TileEntityLavaBoiler
         public void exportFluidFromMachineToSide(Direction side){
             BlockEntity adjTile = tile.getLevel().getBlockEntity(tile.getBlockPos().relative(side));
             if (adjTile == null) return;
-            LazyOptional<IFluidHandler> cap = adjTile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
+            Optional<IFluidHandler> cap = TesseractCapUtils.getFluidHandler(adjTile, side.getOpposite());
             tile.fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
         }
 

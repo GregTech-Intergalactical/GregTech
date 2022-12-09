@@ -31,11 +31,13 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import tesseract.TesseractCapUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
@@ -65,8 +67,8 @@ public class CoverConveyor extends BaseCover {
 
 
     @Override
-    public <T> boolean blocksCapability(Capability<T> cap, Direction side) {
-        return side == null && cap != CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
+    public <T> boolean blocksCapability(Class<T> cap, Direction side) {
+        return side == null && cap != IItemHandler.class;
     }
 
     @Override
@@ -115,7 +117,7 @@ public class CoverConveyor extends BaseCover {
         if (state == Blocks.AIR.defaultBlockState() && extracting) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
-            ItemStack stack = handler.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
+            ItemStack stack = TesseractCapUtils.getItemHandler(handler.getTile(), side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
             world.addFreshEntity(new ItemEntity(world, pos.getX() + side.getStepX(), pos.getY() + side.getStepY(), pos.getZ() + side.getStepZ(), stack));
         }
@@ -124,9 +126,9 @@ public class CoverConveyor extends BaseCover {
         if (adjTile == null) {
             return;
         }
-        LazyOptional<IItemHandler> handler = adjTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite());
-        if (!handler.isPresent()) return;
-        this.handler.getTile().getCapability(ITEM_HANDLER_CAPABILITY, side).ifPresent(ih -> handler.ifPresent(other -> {
+        Optional<IItemHandler> handler = TesseractCapUtils.getItemHandler(adjTile, side.getOpposite());
+        if (handler.isEmpty()) return;
+        TesseractCapUtils.getItemHandler(this.handler.getTile(), side).ifPresent(ih -> handler.ifPresent(other -> {
             if (extracting) {
                 Utils.transferItems(ih, other, true);
             } else {

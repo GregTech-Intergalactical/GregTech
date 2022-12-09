@@ -98,13 +98,6 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
         return 0;
     }
 
-    @NotNull
-    @Override
-    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, Direction side) {
-
-        return super.getCapability(cap, side);
-    }
-
     @Override
     public WidgetSupplier getInfoWidget() {
         return HeatInfoWidget.build().setPos(10, 10);

@@ -8,11 +8,22 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.ore.BlockOre;
 import muramasa.gregtech.Ref;
 import muramasa.gregtech.data.Materials;
+import muramasa.gregtech.machine.BlockEntityHatchHeat;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tesseract.api.forge.TesseractCaps;
 
 import static muramasa.antimatter.material.Material.NULL;
 
@@ -93,6 +104,19 @@ public class RemappingEvents {
             if (fluid != null){
                 map.remap(id.startsWith("flowing_") ? fluid.getFlowingFluid() : fluid.getFluid());
             }
+        }
+    }
+
+    public static void onAttachCapabilitiesEvent(AttachCapabilitiesEvent<BlockEntity> event){
+        if (event.getObject() instanceof BlockEntityHatchHeat<?> heat){
+            event.addCapability(new ResourceLocation(Ref.ID, "heat_hatch"), new ICapabilityProvider() {
+                @NotNull
+                @Override
+                public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction arg) {
+                    if (capability == TesseractCaps.HEAT_CAPABILITY && heat.heatHandler.isPresent()) return heat.heatHandler.side(arg).cast();
+                    return LazyOptional.empty();
+                }
+            });
         }
     }
 }

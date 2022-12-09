@@ -24,6 +24,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import tesseract.TesseractCapUtils;
 
 import javax.annotation.Nullable;
 
@@ -50,9 +51,9 @@ public class CoverDrain extends BaseCover {
         }
         if (tile.getLevel().isClientSide) return;
         Level world = tile.getLevel();
-        LazyOptional<IFluidHandler> cap = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);
+        LazyOptional<IFluidHandler> cap = TesseractCapUtils.getLazyFluidHandler(tile, side);
         if (tile instanceof TileEntityPipe){
-            cap = ((TileEntityPipe<?>)tile).getCoverCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);
+            cap = ((TileEntityPipe<?>)tile).getCoverCapability(IFluidHandler.class, side);
         }
         BlockPos offset = tile.getBlockPos().relative(side);
         if (side == Direction.UP && world.isRainingAt(offset) && world.getGameTime() % 60 == 0){
