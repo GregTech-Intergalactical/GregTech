@@ -17,16 +17,20 @@ import muramasa.gregtech.data.TierMaps;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.Arrays;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
+import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 import static muramasa.antimatter.machine.Tier.IV;
+import static muramasa.antimatter.machine.Tier.STEEL;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Machines.*;
+import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.TIER_CIRCUITS;
 import static muramasa.gregtech.data.TierMaps.WIRE_GETTER;
 
@@ -428,6 +432,105 @@ public class Machines {
                             .put('F', Items.FURNACE)
                             .put('C', Items.IRON_BLOCK).build(), "HFH", "HCH", "HFH");
 
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), COKE_OVEN.getItem(COKE_OVEN.getFirstTier()),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', CASING_FIRE_BRICK)
+                            .put('W', Items.FURNACE)
+                            .put('P', PLATE.get(Iron)).build(), "HPH", "PWP", "HPH");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BRONZE_BLAST_FURNACE.getItem(BRONZE_BLAST_FURNACE.getFirstTier()),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', CASING_BRONZE_PLATED_BRICK)
+                            .put('F', PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()))
+                            .put('C', CASING_FIRE_BRICK).build(), "HCH", "CFC", "HCH");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CHARCOAL_PIT.getItem(CHARCOAL_PIT.getFirstTier()),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', CASING_BRONZE_PLATED_BRICK)
+                            .put('G', GEAR.get(Steel))
+                            .put('B', Blocks.COAL_BLOCK).build(), "GHG", "HBH", "GHG");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), PYROLYSIS_OVEN.getItem(PYROLYSIS_OVEN.getFirstTier()),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_MV)
+                            .put('C', CircuitGood)
+                            .put('P', COVER_PUMP.getItem(Tier.MV).getItem())
+                            .put('M', MotorMV)
+                            .put('W', CABLE_CUPRONICKEL.getBlockItem(PipeSize.SMALL))
+                            .put('B', Blocks.PISTON).build(), "BMW", "CHC", "MPW");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), NUCLEAR_REACTOR.getItem(NUCLEAR_REACTOR.getFirstTier()),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_EV)
+                            .put('A', RobotArmEV)
+                            .put('G', GEAR.get(NiobiumTitanium))
+                            .put('P', PLATE.get(Iridium))
+                            .put('T', PLATE_DENSE.get(Thorium)).build(), "GTG", "AHA", "PTP");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.LV),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_LV)
+                            .put('C', CircuitBasicElectronic)
+                            .put('F', FieldGenLV)
+                            .put('P', PLATE.get(Steel)).build(), "CFC", "PHP", "CPC");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.MV),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_MV)
+                            .put('C', CircuitGood)
+                            .put('F', FieldGenMV)
+                            .put('P', PLATE.get(Aluminium)).build(), "CFC", "PHP", "CPC");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.HV),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_HV)
+                            .put('C', CircuitAdv)
+                            .put('F', FieldGenHV)
+                            .put('P', PLATE.get(StainlessSteel)).build(), "CFC", "PHP", "CPC");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.EV),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_EV)
+                            .put('C', CircuitNanoProcessor)
+                            .put('F', FieldGenEV)
+                            .put('P', PLATE.get(Titanium)).build(), "CFC", "PHP", "CPC");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.IV),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_IV)
+                            .put('C', CircuitQuantumProcessor)
+                            .put('F', FieldGenIV)
+                            .put('P', PLATE.get(TungstenSteel)).build(), "CFC", "PHP", "CPC");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.LV),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_LV)
+                            .put('C', CABLE_LEAD.getBlockItem(PipeSize.VTINY))
+                            .put('W', CABLE_TIN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.MV),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_MV)
+                            .put('C', CABLE_TIN.getBlockItem(PipeSize.VTINY))
+                            .put('W', CABLE_COPPER.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.HV),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_HV)
+                            .put('C', CABLE_COPPER.getBlockItem(PipeSize.VTINY))
+                            .put('W', CABLE_GOLD.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.EV),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_EV)
+                            .put('C', CABLE_GOLD.getBlockItem(PipeSize.VTINY))
+                            .put('W', CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+
+            provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.IV),
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL_IV)
+                            .put('C', CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY))
+                            .put('W', CABLE_PLATINUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         });
     }
