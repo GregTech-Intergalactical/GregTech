@@ -15,7 +15,6 @@ import java.util.function.Consumer;
 
 import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.gregtech.data.GregTechData.*;
-import static muramasa.gregtech.data.Machines.PRIMITIVE_BLAST_FURNACE;
 import static muramasa.gregtech.data.Materials.Bronze;
 
 public class SteamMachines {
