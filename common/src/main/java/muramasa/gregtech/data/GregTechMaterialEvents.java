@@ -41,7 +41,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Chrome).asMetal(2180, 1700, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROTOR).addTools(2.5F, 11.0F, 256, 3);
         event.setMaterial(Cobalt).asMetal(1768, 0).asOre()
                 .addTools(3.0F, 8.0F, 512, 3);
-        event.setMaterial(Iridium).asMetal(2719, 2719, AntimatterMaterialTypes.FRAME)
+        event.setMaterial(Iridium).asMetal(2719, 2719, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.PLATE)
                 .asOre().addTools(5.0F, 8.0F, 2560, 4);
         event.setMaterial(Lanthanum).asSolid(1193, 1193);
         event.setMaterial(Lead).asMetal(600, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.PLATE_DENSE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.BOLT).asOre();
@@ -62,7 +62,7 @@ public class GregTechMaterialEvents {
                 .addTools(2.5F, 6.0F, 280, 3);
         event.setMaterial(Silver).asMetal(1234, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.SCREW)
                 .asOre();
-        event.setMaterial(Thorium).asMetal(2115, 0).asOre()
+        event.setMaterial(Thorium).asMetal(2115, 0, AntimatterMaterialTypes.PLATE_DENSE).asOre()
                 .addTools(1.5F, 6.0F, 512, 2);
         event.setMaterial(Titanium).asMetal(1941, 1940, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.GEAR_SMALL, AntimatterMaterialTypes.ROTOR).asOre()
                 .addTools(2.5F, 7.0F, 1600, 3);
@@ -103,7 +103,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Magnesium).asMetal(923, 0);
         event.setMaterial(Mercury).asFluid();
         event.setMaterial(Neon).asPlasma();
-        event.setMaterial(Niobium).asMetal(2750, 2750);
+        event.setMaterial(Niobium).asMetal(2750, 2750, AntimatterMaterialTypes.GEAR);
         event.setMaterial(Nitrogen).asPlasma();
         event.setMaterial(Oxygen).asPlasma();
         event.setMaterial(Phosphor).asDust(317);
@@ -651,7 +651,7 @@ public class GregTechMaterialEvents {
                 .mats(of(Magnesium, 1, Aluminium, 2));
         event.setMaterial(Nichrome).asMetal(2700, 2700)
                 .addTools(2.0F, 6.0F, 81, 2, of(Enchantments.BANE_OF_ARTHROPODS, 3)).mats(of(Nickel, 4, Chrome, 1));
-        event.setMaterial(NiobiumTitanium).asMetal(4500, 4500, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE).mats(of(Nickel, 4, Chrome, 1));
+        event.setMaterial(NiobiumTitanium).asMetal(4500, 4500, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE, AntimatterMaterialTypes.GEAR).mats(of(Nickel, 4, Chrome, 1));
         event.setMaterial(SolderingAlloy).asMetal(400, 400, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE).mats(of(Tin, 9, Antimony, 1));
         event.setMaterial(Steel).asMetal(1811, 1000, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.ROTOR, AntimatterMaterialTypes.GEAR_SMALL).addTools(AntimatterMaterials.Iron)
                 .mats(of(AntimatterMaterials.Iron, 50, Carbon, 1));

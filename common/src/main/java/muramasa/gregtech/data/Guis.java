@@ -124,7 +124,7 @@ public class Guis {
         SIFTER.add(DISASSEMBLER);
         PLASMA_ARC_FURNACE.add(ARC_FURNACE);
 
-        COKE_OVEN.add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_IN, 53, 52).add(IT_OUT, 107, 25);
+        COKE_OVEN.add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25);
 
         BATTERY_BUFFER_FOUR.add(ENERGY, 71, 27).add(ENERGY, 89, 27).add(ENERGY, 71, 45).add(ENERGY, 89, 45);
         BATTERY_BUFFER_ONE.add(ENERGY, 80, 40);
