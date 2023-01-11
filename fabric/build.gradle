@@ -32,8 +32,14 @@ dependencies{
     modImplementation("io.github.feltmc:fabricated-forge-caps:${rootProject.fabricated_forge_hash}")
     modImplementation("io.github.feltmc:fabricated-forge-tag-extensions:${rootProject.fabricated_forge_hash}")
     modImplementation("io.github.feltmc:fabricated-forge-modeldata:${rootProject.fabricated_forge_hash}")
-    modImplementation("io.github.feltmc:felt-recipe-api:1.0.0")
-    modImplementation("io.github.feltmc:felt-player-item-api:1.0.0")
+    modImplementation(include("io.github.feltmc:felt-recipe-api:1.0.0")){
+        exclude(group: "net.fabricmc.fabric-api")
+        exclude(group: "com.terraformersmc")
+    }
+    modImplementation(include("io.github.feltmc:felt-player-item-api:1.0.0")){
+        exclude(group: "net.fabricmc.fabric-api")
+        exclude(group: "com.terraformersmc")
+    }
     modImplementation("com.github.Trinsdar.Felt-API:felt-enchanting-api:c372f99be1") { transitive false }
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
