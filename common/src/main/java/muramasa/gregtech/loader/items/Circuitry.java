@@ -1,12 +1,10 @@
 package muramasa.gregtech.loader.items;
 
 import com.github.gregtechintergalactical.gtrubber.GTRubberData;
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.SubTag;
-import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.ItemStack;
 
@@ -18,12 +16,8 @@ import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_REACTING;
 
 public class Circuitry {
     public static void init() {
-        Wire<?> redAlloyWire = AntimatterAPI.getOrThrow(Wire.class,"wire_" + RedAlloy.getId(), () -> new RuntimeException("Missing Red Alloy Wire in Circuitry.java"));
-        Wire<?> copperWire = AntimatterAPI.getOrThrow(Wire.class,"wire_" + AntimatterMaterials.Copper.getId(), () -> new RuntimeException("Missing Copper Wire in Circuitry.java"));
-        Wire<?> goldWire = AntimatterAPI.getOrThrow(Wire.class,"wire_" + AntimatterMaterials.Gold.getId(), () -> new RuntimeException("Missing Copper Wire in Circuitry.java"));
         boards();
         circuits();
-        parts();
     }
 
     private static void boards () {
@@ -114,21 +108,5 @@ public class Circuitry {
                     .io(new ItemStack(GregTechData.CircuitWetware,1))
                     .fi(material.getLiquid(base * 4)).add(20*20, 32768);
         }
-    }
-
-    private static void parts () {
-        //Transistor
-        ASSEMBLING.RB().ii(of(AntimatterMaterialTypes.PLATE.get(Silicon),1), of(AntimatterMaterialTypes.FOIL.get(Tin),6))
-                .fi(Polyethylene.getLiquid(144))
-                .io(new ItemStack(GregTechData.Transistor,6))
-                .add(8*20, 32);
-        //Resistor
-        ASSEMBLING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Coal),2), of(AntimatterMaterialTypes.WIRE_FINE.get(AntimatterMaterials.Copper),4))
-                .io(new ItemStack(GregTechData.Resistor,6))
-                .add(8*20, 32);
-        //Capacitor
-        ASSEMBLING.RB().ii(of(AntimatterMaterialTypes.PLATE.get(Polyethylene),1), of(AntimatterMaterialTypes.FOIL.get(Aluminium),4))
-                .io(new ItemStack(GregTechData.Capacitor,6))
-                .add(8*20, 32);
     }
 }
