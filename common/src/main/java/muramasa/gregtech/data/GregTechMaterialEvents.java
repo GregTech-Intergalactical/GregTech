@@ -192,6 +192,11 @@ public class GregTechMaterialEvents {
         /**
          * Fluids
          **/
+        event.setMaterial(Benzoylchloride).asFluid().mats(of(Carbon,7,Hydrogen,5,Chlorine,1,Oxygen,1));
+        event.setMaterial(Benzaldehyde).asFluid().mats(of(Carbon,7,Hydrogen,6,Oxygen,1));
+        event.setMaterial(HydrogenPeroxide).asFluid().mats(of(Hydrogen,2,Oxygen,2));
+        event.setMaterial(Dichloroethane).asFluid().mats(of(Carbon,2,Hydrogen,4,Chlorine,2));
+        event.setMaterial(PeroxydisulfuricAcid).asFluid().mats(of(Sulfur,2,Hydrogen,2,Oxygen,8));
         event.setMaterial(Steam).asGas(1, 395)
                 .mats(of(AntimatterMaterials.Water,1));
         event.setMaterial(SaltWater).asFluid()
@@ -229,7 +234,7 @@ public class GregTechMaterialEvents {
         // fluid to Oxyge;
         event.setMaterial(DistilledWater).asFluid()
                 .mats(of(AntimatterMaterials.Water,1));
-        event.setMaterial(Glyceryl).asFluid()
+        event.setMaterial(GlycerylTrinitrate).asFluid()
                 .mats(of(Carbon, 3, Hydrogen, 5, Nitrogen, 3, Oxygen, 9));
         event.setMaterial(Titaniumtetrachloride).asFluid()
                 .mats(of(Titanium, 1, Chlorine, 4));
@@ -398,25 +403,24 @@ public class GregTechMaterialEvents {
                 .mats(of(HeavyFuel,1,Sulfur,1));
         event.setMaterial(LightFuel).asFluid(48);
         event.setMaterial(HeavyFuel).asFluid(48);
-        event.setMaterial(Glycerol).asFluid(164)
+        event.setMaterial(Glyceryl).asFluid(164)
                 .mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 3));
 
         /**
          * Dusts
          **/
+        event.setMaterial(Aluminiumtrichloride).asDust().mats(of(Aluminium,1,Chlorine,3));
+        event.setMaterial(Dialuminiumtrioxide).asDust().mats(of(Aluminium,2,Oxygen,3));
+        event.setMaterial(Dibenzene).asDust().mats(of(Carbon,12,Hydrogen,10));
+        event.setMaterial(Dibenzoylperoxide).asDust().mats(of(Carbon,14,Hydrogen,10,Oxygen,4));
+        event.setMaterial(ReactionCatalyst).asDust().mats(of(AntimatterMaterials.Copper,1,Zinc,1,Aluminium,2,Oxygen,4));
         event.setMaterial(WoodPulp).asDust();
-        event.setMaterial(SodiumSulfide).asDust()
-                .mats(of(Sodium, 2, Sulfur, 1));
-        event.setMaterial(TinAlloy).asDust()
-                .mats(of(Tin, 1, AntimatterMaterials.Iron, 1));
-        event.setMaterial(Energium).asDust()
-                .mats(of(AntimatterMaterials.Redstone,1,Ruby,1));
-        event.setMaterial(BorosilicateGlass).asDust()
-                .mats(of(Boron, 1, Silicon, 7, Oxygen,14));
-        event.setMaterial(IridiumSodiumOxide).asDust()
-                .mats(of(Iridium,1,Sodium,1,Oxygen,2));
-        event.setMaterial(IndiumGalliumPhosphide).asDust()
-                .mats(of(Indium, 1, Gallium, 1, Phosphor, 1));
+        event.setMaterial(SodiumSulfide).asDust().mats(of(Sodium, 2, Sulfur, 1));
+        event.setMaterial(TinAlloy).asDust().mats(of(Tin, 1, AntimatterMaterials.Iron, 1));
+        event.setMaterial(Energium).asDust().mats(of(AntimatterMaterials.Redstone,1,Ruby,1));
+        event.setMaterial(BorosilicateGlass).asDust().mats(of(Boron, 1, Silicon, 7, Oxygen,14));
+        event.setMaterial(IridiumSodiumOxide).asDust().mats(of(Iridium,1,Sodium,1,Oxygen,2));
+        event.setMaterial(IndiumGalliumPhosphide).asDust().mats(of(Indium, 1, Gallium, 1, Phosphor, 1));
         event.setMaterial(PlatinumGroupSludge).asDust();
         event.setMaterial(Graphene).asDust(AntimatterMaterialTypes.PLATE);
         event.setMaterial(Oilsands).asOre(true);
@@ -465,6 +469,7 @@ public class GregTechMaterialEvents {
                 .mats(of(Magnesium, 1, AntimatterMaterials.Iron, 1, Silicon, 2, Oxygen, 8));
         event.setMaterial(Phosphate).asOre(true)
                 .mats(of(Phosphor, 1, Oxygen, 4));
+        event.setMaterial(GelledToluene).asDust();
         event.setMaterial(Polydimethylsiloxane).asDust()
                 .mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
         // event.setMaterial(Powellite).asDust(ORE).addComposition(of(Calcium, 1, Molybdenum, 1, Oxygen, 4));
@@ -1024,11 +1029,11 @@ public class GregTechMaterialEvents {
                 Ilmenite, Manganese, Chrome, Andradite);
         MaterialTags.ELEC.add(Methane, CarbonDioxide, NitrogenDioxide, Toluene, VinylChloride, SulfurDioxide, SulfurTrioxide,
                 Dimethylamine, DinitrogenTetroxide, NitricOxide, Ammonia, Chloromethane, Tetrafluoroethylene,
-                CarbonMonoxide, Ethylene, Propane, Ethenone, Ethanol, Glyceryl, SodiumPersulfate, Dichlorobenzene,
+                CarbonMonoxide, Ethylene, Propane, Ethenone, Ethanol, SodiumPersulfate, Dichlorobenzene,
                 Styrene, Isoprene, Tetranitromethane, Epichlorohydrin, NitricAcid, Dimethylhydrazine, Chloramine,
                 Dimethyldichlorosilane, HydrofluoricAcid, Chloroform, BisphenolA, AceticAcid, Acetone, Methanol,
                 VinylAcetate, MethylAcetate, AllylChloride, HypochlorousAcid, Cumene, PhosphoricAcid, SulfuricAcid,
-                Benzene, Phenol, Glycerol, SodiumSulfide, Almandine, Andradite, BandedIron, Calcite, Cassiterite,
+                Benzene, Phenol, Glyceryl, SodiumSulfide, Almandine, Andradite, BandedIron, Calcite, Cassiterite,
                 Chalcopyrite, Cobaltite, Galena, Garnierite, Grossular, Bauxite, Magnesite, Magnetite, Molybdenite,
                 Obsidian, Phosphate, Polydimethylsiloxane, Pyrite, Pyrolusite, Pyrope, RockSalt, Saltpeter,
                 SiliconDioxide, Massicot, ArsenicTrioxide, CobaltOxide, Magnesia, Quicklime, Potash, SodaAsh,
@@ -1051,12 +1056,12 @@ public class GregTechMaterialEvents {
                 AntimatterMaterials.Copper, Chalcopyrite);
         MaterialTags.WASHS.add(Zinc, Nickel, AntimatterMaterials.Copper, Cobaltite, Tetrahedrite, AntimatterMaterials.Gold, Sphalerite, Garnierite, Chalcopyrite, Cooperite,
                 Platinum, Pentlandite, Tin, Malachite, YellowLimonite);
-        MaterialTags.NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */AntimatterMaterials.Coal, Charcoal, Lignite, Glyceryl,
+        MaterialTags.NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */AntimatterMaterials.Coal, Charcoal, Lignite,
                 NitroFuel, AntimatterMaterials.Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ BlueSapphire, Ruby, Opal, Olivine,
                 AntimatterMaterials.Lapis/* , Sodalite, Lazurite, Monazite */, Quartzite, AntimatterMaterials.Quartz, Phosphorus, Phosphate, NetherStar,
                 AntimatterMaterials.EnderPearl, AntimatterMaterials.EnderEye, AntimatterMaterials.Blaze);
         MaterialTags.NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */AntimatterMaterials.Coal, Charcoal, Lignite, Rubber,
-                StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone, Glyceryl, NitroFuel,
+                StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone, NitroFuel,
                 Concrete, AntimatterMaterials.Redstone, AntimatterMaterials.Glowstone, AntimatterMaterials.Netherrack, AntimatterMaterials.Stone, Brick, AntimatterMaterials.Endstone, Marble, AntimatterMaterials.Basalt, Obsidian, AntimatterMaterials.Flint,
                 RedGranite, BlackGranite, Salt, RockSalt, Glass, AntimatterMaterials.Diamond, AntimatterMaterials.Emerald, Amethyst, Tanzanite, Topaz,
                 /* Amber, */ BlueSapphire, Ruby, Opal, Olivine, AntimatterMaterials.Lapis, Quartzite, AntimatterMaterials.Quartz, Phosphorus, Phosphate,

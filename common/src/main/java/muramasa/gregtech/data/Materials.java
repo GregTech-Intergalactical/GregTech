@@ -27,7 +27,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "bismuth", 0x64a0a0, METALLIC, Bi));
     public static Material Carbon = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "carbon", 0x141414, DULL, C)); // TODO: Tools,
-                                                                                                    // Carbon
+    // Carbon
     // Fluid? Removed Tool;
     public static Material Chrome = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "chrome", 0xffe6e6, SHINY, Cr));
@@ -242,13 +242,11 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "wood_vinegar", 0xd45500, NONE));
     public static Material LiquidAir = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "liquid_air", 0xa9d0f5, NONE));// TODO Rrename to
-                                                                                                     // liquid
+    // liquid
     // oxygen <- Nope, add
     // fluid to Oxyge;
     public static Material DistilledWater = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "distilled_water", 0x5C5CFF, NONE));
-    public static Material Glyceryl = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "glyceryl", 0x009696, NONE));
     public static Material Titaniumtetrachloride = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "titaniumtetrachloride", 0xd40d5c, NONE));
     public static Material SodiumPersulfate = AntimatterAPI
@@ -318,6 +316,10 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "diluted_sulfuric_acid", 0xc07820, NONE));
     public static Material Benzene = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "benzene", 0x1a1a1a, NONE));
+    public static Material Benzaldehyde = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "benzaldehyde", 0xf7dea3, NONE));
+    public static Material HydrogenPeroxide = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "hydrogenperoxide", 0xf8efb4, NONE));
     public static Material Phenol = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "phenol", 0x784421, NONE));
     public static Material Toluene = AntimatterAPI
@@ -328,7 +330,7 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "naphtha", 0xffff00, NONE));
     public static Material DrillingFluid = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "drilling_fluid", 0xffffff, NONE)); // TODO:
-                                                                                                         // Perhaps for
+    // Perhaps for
     // a bedrock drill;
     public static Material BlueVitriol = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "blue_vitriol_water_solution", 0xffffff, NONE));
@@ -401,12 +403,18 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "light_diesel", 0xffff00, NONE));
     public static Material HeavyFuel = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "heavy_diesel", 0xffff00, NONE));
-    public static Material Glycerol = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "glycerol", 0x87de87, NONE));
+    public static Material Glyceryl = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "glyceryl", 0x87de87, NONE));
+    public static Material GlycerylTrinitrate = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "glyceryltrinitrate", 0x87de87, NONE));
 
     /**
      * Dusts
      **/
+    public static Material ReactionCatalyst = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "reactioncatalyst", 0x43ab43, NONE));
+    public static Material GelledToluene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "gelled_toluene", 0xeeeee, NONE));
     public static Material WoodPulp = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "wood_pulp", 0x3f2620, NONE));
     public static Material SodiumSulfide = AntimatterAPI
@@ -568,8 +576,21 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "glauconite", 0x82b43c, DULL)); // TODO: Ore Gen;
     public static Material Bentonite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "bentonite", 0xf5d7d2, ROUGH)); // TODO:
-    // Ore
-    // Gen;
+    public static Material Aluminiumtrichloride = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "aluminiumtrichloride", 0xf0d77d, FINE));
+    public static Material Dialuminiumtrioxide = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "dialuminiumtrioxide", 0xfaf6e6, FINE));
+    public static Material Dibenzene = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "dibenzene", 0xfaf0c8, FINE));
+    public static Material Dibenzoylperoxide = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "dibenzoylperoxide", 0xf7f5eb, FINE));
+    public static Material Benzoylchloride = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "benzoylchloride", 0xf7f5eb, NONE));
+    public static Material Dichloroethane = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "dichloroethane", 0xf8f6fc, NONE));
+    public static Material PeroxydisulfuricAcid = AntimatterAPI
+            .register(Material.class, new Material(Ref.ID, "peroxydisulfuricacid", 0xff9000, NONE));
+    // OreGen
     public static Material Pitchblende = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "pitchblende", 0xc8d200, DULL));
     public static Material Malachite = AntimatterAPI
@@ -613,13 +634,13 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "green_sapphire", 0x64c882, GEM_H));
     public static Material Lazurite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "lazurite", 0x6478ff, LAPIS)); // TODO I think this is
-                                                                                          // needed;
+    // needed;
     public static Material Ruby = AntimatterAPI.register(Material.class, new Material(Ref.ID, "ruby", 0xff6464, RUBY));
     public static Material BlueSapphire = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "blue_sapphire", 0x6464c8, GEM_V));
     public static Material Sodalite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "sodalite", 0x1414ff, LAPIS)); // TODO I think this is
-                                                                                           // needed;
+    // needed;
     public static Material Tanzanite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "tanzanite", 0x4000c8, GEM_V));
     public static Material Topaz = AntimatterAPI
@@ -774,7 +795,6 @@ public class Materials {
             .register(Material.class, new Material(Ref.ID, "gallium_arsenide", 0xa0a0a0, DULL));
     public static Material EpoxidFiberReinforced = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "fiber_reinforced_epoxy_resin", 0xa07010, DULL));
-
     public static Material RedGranite = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "red_granite", 0xff0080, ROUGH));
     public static Material BlackGranite = AntimatterAPI
