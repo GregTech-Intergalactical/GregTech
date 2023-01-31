@@ -11,7 +11,7 @@ public class BendingLoader {
     public static void init() {
         AntimatterMaterialTypes.PLATE.all().forEach(t -> {
             if (!t.has(AntimatterMaterialTypes.INGOT)) return;
-                long duration = Math.max(t.getMass(), 1);
+            long duration = Math.max(t.getMass(), 1);
             BENDING.RB().ii(AntimatterMaterialTypes.INGOT.getMaterialIngredient(t,1),INT_CIRCUITS.get(1)).io(AntimatterMaterialTypes.PLATE.get(t,1)).add(duration, 24);
         });
         AntimatterMaterialTypes.FOIL.all().forEach(foil -> {
