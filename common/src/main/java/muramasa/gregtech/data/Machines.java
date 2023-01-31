@@ -75,7 +75,7 @@ public class Machines {
     public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(Ref.ID, "steam_compressor").setMap(STEAM_COMPRESSING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
     public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(Ref.ID, "steam_alloy_smelter").setMap(STEAM_ALLOY_SMELTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
 
-    public static BasicMultiMachine<?> COKE_OVEN = new BasicMultiMachine<>(Ref.ID, "coke_oven").setMap(COKING).setTiers(BRONZE).addFlags(GUI, ITEM).setTile(TileEntityCokeOven::new);
+    public static BasicMultiMachine<?> COKE_OVEN = new BasicMultiMachine<>(Ref.ID, "coke_oven").setMap(COKING).setTiers(BRONZE).addFlags(GUI, ITEM, FLUID).setTile(TileEntityCokeOven::new);
     public static BasicMultiMachine<?> PRIMITIVE_BLAST_FURNACE = new BasicMultiMachine<>(Ref.ID, "primitive_blast_furnace").setMap(BASIC_BLASTING).setTiers(BRONZE).addFlags(GUI, ITEM).setTile(TileEntityPrimitiveBlastFurnace::new);
     public static BasicMultiMachine<?> BRONZE_BLAST_FURNACE = new BasicMultiMachine<>(Ref.ID, "bronze_blast_furnace").setMap(BASIC_BLASTING).setTiers(BRONZE).addFlags(GUI, ITEM).setTile(TileEntityBronzeBlastFurnace::new);
     public static BasicMultiMachine<?> CHARCOAL_PIT = new BasicMultiMachine<>(Ref.ID, "charcoal_pit").setTiers(BRONZE).setTile(TileEntityCharcoalPit::new);
