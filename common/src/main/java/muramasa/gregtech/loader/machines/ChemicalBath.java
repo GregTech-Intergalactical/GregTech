@@ -17,17 +17,17 @@ public class ChemicalBath {
                 .ii(RecipeIngredient.of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Wood),1))
                 .fi(AntimatterMaterials.Water.getLiquid(100))
                 .io(new ItemStack(Items.PAPER))
-                .add(200,4);
+                .add("paper",200,4);
         CHEMICAL_BATHING.RB()
                 .ii(RecipeIngredient.of(Items.SUGAR_CANE,1))
                 .fi(AntimatterMaterials.Water.getLiquid(100))
                 .io(new ItemStack(Items.PAPER))
-                .add(100,4);
+                .add("paper_1",100,4);
         CHEMICAL_BATHING.RB()
                 .ii(RecipeIngredient.of(Items.NETHER_STAR,1))
                 .fi(Plutonium.getLiquid(1152))
                 .io(new ItemStack(GregTechData.QuantumStat))
-                .add(96*20,384);
+                .add("quantum_stat",96*20,384);
         mercurybathing();
         persulfatebathing();
     }
@@ -37,7 +37,7 @@ public class ChemicalBath {
                     .ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(main),1))
                     .fi(Mercury.getLiquid(1000))
                     .io(new ItemStack(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(AntimatterMaterialTypes.DUST.get(side)),new ItemStack(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone)))
-                    .add(40*20,8));
+                    .add("mercury_" + main.getId(),40*20,8));
     }
     public static void persulfatebathing(){
         CHEMBATH_PERSULFATE.getAll().forEach((main,side) ->
@@ -45,6 +45,6 @@ public class ChemicalBath {
                         .ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(main),1))
                         .fi(SodiumPersulfate.getLiquid(1000))
                         .io(new ItemStack(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(AntimatterMaterialTypes.DUST.get(side)),new ItemStack(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone)))
-                        .add(40*20,8));
+                        .add("persulfate_"+main.getId(),40*20,8));
     }
 }
