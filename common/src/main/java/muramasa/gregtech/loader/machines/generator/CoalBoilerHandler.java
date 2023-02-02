@@ -10,8 +10,8 @@ import static muramasa.gregtech.data.RecipeMaps.COAL_BOILERS;
 
 public class CoalBoilerHandler {
     public static void init(){
-        COAL_BOILERS.RB().ii(RecipeIngredient.of(Items.COAL, 1)).io(DUST.get(DarkAsh, 1)).add(160);
-        COAL_BOILERS.RB().ii(RecipeIngredient.of(Items.CHARCOAL, 1)).io(DUST.get(Ash, 1)).add(160);
-        COAL_BOILERS.RB().ii(RecipeIngredient.of(GEM.get(CoalCoke), 1)).io(DUST.get(DarkAsh, 1)).add(320);
+        COAL_BOILERS.RB().ii(RecipeIngredient.of(Items.COAL, 1)).io(DUST.get(DarkAsh, 1)).add("coal",160);
+        COAL_BOILERS.RB().ii(RecipeIngredient.of(Items.CHARCOAL, 1)).io(DUST.get(Ash, 1)).add("charcoal",160);
+        COAL_BOILERS.RB().ii(RecipeIngredient.of(GEM.get(CoalCoke), 1)).io(DUST.get(DarkAsh, 1)).add("coal_coke",320);
     }
 }

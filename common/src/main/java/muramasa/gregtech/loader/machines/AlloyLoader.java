@@ -27,17 +27,17 @@ public class AlloyLoader {
             int cumulative = stacks.get(0).s + stacks.get(1).s;
             MaterialStack first = stacks.get(0);
             MaterialStack second = stacks.get(1);
-            ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(first.m),first.s),RecipeIngredient.of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 16);
+            ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(first.m),first.s),RecipeIngredient.of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(t.getId() +"_ingot",100, 16);
             boolean firstIngot = first.m.has(INGOT);
             boolean secondIngot = second.m.has(INGOT);
-            if (firstIngot && secondIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(first.m),first.s),RecipeIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 12);
-            if (firstIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(first.m),first.s),RecipeIngredient.of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 12);
-            if (secondIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(first.m),first.s),RecipeIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(100, 12);
+            if (firstIngot && secondIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(first.m),first.s),RecipeIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(t.getId() +"_ingot_2",100, 12);
+            if (firstIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(first.m),first.s),RecipeIngredient.of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(t.getId() +"_ingot_3",100, 12);
+            if (secondIngot) ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(first.m),first.s),RecipeIngredient.of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(t.getId() +"_ingot_4",100, 12);
         });
 
         ALLOY_SMELTING.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(Materials.Brick), 1),
                 RecipeIngredient.of(DUST.getMaterialTag(AntimatterMaterials.Sand), 2))
                 .io(DUST.get(Materials.Fireclay, 1))
-                .add(20, 10);
+                .add("fireclay",20, 10);
     }
 }

@@ -12,6 +12,7 @@ import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.level.block.Block;
@@ -40,20 +41,20 @@ public class AssemblyLoader {
             sizes.forEach(size -> {
                 Item wireItem = t.getBlockItem(size);
                 Item cableItem = cable.getBlockItem(size);
-                ASSEMBLING.RB().ii(RecipeIngredient.of(wireItem,1), INT_CIRCUITS.get(24)).fi(Rubber.getLiquid(size.getCableThickness()*16)).io(new ItemStack(cableItem,1)).add(size.getCableThickness()* 20L,8);
+                ASSEMBLING.RB().ii(RecipeIngredient.of(wireItem,1), INT_CIRCUITS.get(24)).fi(Rubber.getLiquid(size.getCableThickness()*16)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId(),size.getCableThickness()* 20L,8);
             });
         });
 
         ROTOR.all().forEach(r -> {
-            ASSEMBLING.RB().ii(AntimatterMaterialTypes.PLATE.getMaterialIngredient(r,4),AntimatterMaterialTypes.SCREW.getMaterialIngredient(r,1),of(RING.get(Rubber,1))).fi(SolderingAlloy.getLiquid(144)).io(new ItemStack(ROTOR.get(r),1)).add(240,24);
+            ASSEMBLING.RB().ii(AntimatterMaterialTypes.PLATE.getMaterialIngredient(r,4),AntimatterMaterialTypes.SCREW.getMaterialIngredient(r,1),of(RING.get(Rubber,1))).fi(SolderingAlloy.getLiquid(144)).io(new ItemStack(ROTOR.get(r),1)).add(r.getId() + "_rotor",240,24);
         });
 
-        ASSEMBLING.RB().ii(RecipeIngredient.of(ItemTags.PLANKS,8), INT_CIRCUITS.get(8)).io(new ItemStack(Items.CHEST,1)).add(100,4);
+        ASSEMBLING.RB().ii(RecipeIngredient.of(ItemTags.PLANKS,8), INT_CIRCUITS.get(8)).io(new ItemStack(Items.CHEST,1)).add("chest",100,4);
         Arrays.stream(Tier.getStandard()).forEach(t -> {
             Material magnet = (t == Tier.ULV || t == Tier.LV) ? IronMagnetic : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
             ASSEMBLING.RB().ii(RecipeIngredient.of(TIER_WIRES.get(t),4), RecipeIngredient.of(AntimatterMaterialTypes.ROD.get(TIER_MATERIALS.get(t)),2),
                     RecipeIngredient.of(AntimatterMaterialTypes.ROD.get(magnet),1)
-                    , RecipeIngredient.of(TIER_CABLES.get(t),2)).io(new ItemStack(GregTech.get(ItemBasic.class,"motor_"+t.getId()))).add(150,16);
+                    , RecipeIngredient.of(TIER_CABLES.get(t),2)).io(new ItemStack(GregTech.get(ItemBasic.class,"motor_"+t.getId()))).add("motor_"+t.getId(),150,16);
 
             ASSEMBLING.RB().ii(RecipeIngredient.of(TIER_CABLES.get(t),2),
                     RecipeIngredient.of(AntimatterMaterialTypes.ROD.get(TIER_MATERIALS.get(t)),2),
@@ -61,18 +62,18 @@ public class AssemblyLoader {
                     RecipeIngredient.of(GregTech.get(ItemBasic.class,"motor_"+t.getId()),1),
                     RecipeIngredient.of(AntimatterMaterialTypes.GEAR.get(TIER_MATERIALS.get(t)),1))
                     .io(new ItemStack(GregTech.get(ItemBasic.class,"piston_"+t.getId())))
-                    .add(150,16);
+                    .add("piston_"+t.getId(),150,16);
         });
         casings();
         batteries();
         smdComponents();
-        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_DRAIN.getId()))).add(800, 16);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_DRAIN.getId()))).add("drain",800, 16);
     }
 
     private static void batteries() {
-        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,1), RecipeIngredient.of(TIER_CABLES.get(Tier.LV) ,1)).fi(Polyethylene.getLiquid(144)).io(BatteryHullSmall.getDefaultInstance()).add(80, 2);
-        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,3), RecipeIngredient.of(TIER_CABLES.get(Tier.MV) ,2)).fi(Polyethylene.getLiquid(432)).io(BatteryHullMedium.getDefaultInstance()).add(120, 4);
-        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,9), RecipeIngredient.of(TIER_CABLES.get(Tier.HV) ,3)).fi(Polyethylene.getLiquid(1296)).io(BatteryHullLarge.getDefaultInstance()).add(160, 8);
+        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,1), RecipeIngredient.of(TIER_CABLES.get(Tier.LV) ,1)).fi(Polyethylene.getLiquid(144)).io(BatteryHullSmall.getDefaultInstance()).add("battery_hull_small",80, 2);
+        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,3), RecipeIngredient.of(TIER_CABLES.get(Tier.MV) ,2)).fi(Polyethylene.getLiquid(432)).io(BatteryHullMedium.getDefaultInstance()).add("battery_hull_medium",120, 4);
+        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,9), RecipeIngredient.of(TIER_CABLES.get(Tier.HV) ,3)).fi(Polyethylene.getLiquid(1296)).io(BatteryHullLarge.getDefaultInstance()).add("battery_hull_large",160, 8);
     }
 
     private static void casings() {
@@ -88,7 +89,7 @@ public class AssemblyLoader {
         //addTierCasing(RedSteel, GregTechData.CASING_MAX);
 
         addTierHull(AntimatterMaterials.Iron, WIRE_RED_ALLOY, CircuitBasic, GregTechData.CASING_ULV, GregTechData.HULL_ULV, 1);
-        addTierHull(AntimatterMaterials.Iron, WIRE_RED_ALLOY, CircuitBasicElectronic, GregTechData.CASING_ULV, GregTechData.HULL_ULV, 1);
+        addTierHull(AntimatterMaterials.Iron, WIRE_RED_ALLOY, CircuitBasicElectronic, GregTechData.CASING_ULV, GregTechData.HULL_ULV, 1, 1);
         addTierHull(AnnealedCopper, WIRE_TIN, CircuitGood, GregTechData.CASING_LV, GregTechData.HULL_LV, 2);
         addTierHull(Silver, WIRE_CUPRONICKEL, CircuitAdv, GregTechData.CASING_MV, GregTechData.HULL_MV, 3);
         addTierHull(SterlingSilver, WIRE_ELECTRUM, CircuitNanoProcessor, GregTechData.CASING_HV, GregTechData.HULL_HV, 4);
@@ -97,17 +98,21 @@ public class AssemblyLoader {
     }
 
     private static void addTierCasing (Material mat, Material mat2, Block casing, int tier) {
-        ASSEMBLING.RB().ii(of(PLATE.get(mat, 2)), of(AntimatterMaterialTypes.BOLT.get(mat2, 2))).io(new ItemStack(casing)).add(5 * 20, (long) Math.pow(2, 2 * tier + 1));
+        ASSEMBLING.RB().ii(of(PLATE.get(mat, 2)), of(AntimatterMaterialTypes.BOLT.get(mat2, 2))).io(new ItemStack(casing)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),5 * 20, (long) Math.pow(2, 2 * tier + 1));
     }
 
     private static void addTierHull (Material mat, Wire w, ItemBasic circ, Block casing, Block hull, int tier) {
-            ASSEMBLING.RB().ii(of(AntimatterMaterialTypes.SCREW.get(mat), 2), of(casing, 1), of(Items.REDSTONE, 1), of(w.getBlockItem(PipeSize.VTINY), 1), of(TIER_CIRCUITS.getOrDefault(tier, circ), 1)).io(new ItemStack(hull)).add(5 * 20, (long) Math.pow(2, 2 * tier + 1));
+            ASSEMBLING.RB().ii(of(AntimatterMaterialTypes.SCREW.get(mat), 2), of(casing, 1), of(Items.REDSTONE, 1), of(w.getBlockItem(PipeSize.VTINY), 1), of(TIER_CIRCUITS.getOrDefault(tier, circ), 1)).io(new ItemStack(hull)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),5 * 20, (long) Math.pow(2, 2 * tier + 1));
+    }
+
+    private static void addTierHull (Material mat, Wire w, ItemBasic circ, Block casing, Block hull, int tier, int idOffset) {
+        ASSEMBLING.RB().ii(of(AntimatterMaterialTypes.SCREW.get(mat), 2), of(casing, 1), of(Items.REDSTONE, 1), of(w.getBlockItem(PipeSize.VTINY), 1), of(TIER_CIRCUITS.getOrDefault(tier, circ), 1)).io(new ItemStack(hull)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath() + "_" + idOffset,5 * 20, (long) Math.pow(2, 2 * tier + 1));
     }
 
     private static void smdComponents () {
-        ASSEMBLING.RB().ii(of(PLATE.get(Silicon), 1), of(WIRE_FINE.get(AnnealedCopper), 8)).fi(Polyethylene.getLiquid(288)).io(new ItemStack(Transistor,32)).add(80, 96);
-        ASSEMBLING.RB().ii(of(DUST.get(Carbon), 1), of(WIRE_FINE.get(Electrum), 4)).fi(Polyethylene.getLiquid(288)).io(new ItemStack(Resistor,24)).add(80, 96);
-        ASSEMBLING.RB().ii(of(FOIL.get(PolyvinylChloride), 4), of(FOIL.get(Aluminium), 2)).fi(Polyethylene.getLiquid(288)).io(new ItemStack(Capacitor,16)).add(80, 96);
+        ASSEMBLING.RB().ii(of(PLATE.get(Silicon), 1), of(WIRE_FINE.get(AnnealedCopper), 8)).fi(Polyethylene.getLiquid(288)).io(new ItemStack(Transistor,32)).add("transistor",80, 96);
+        ASSEMBLING.RB().ii(of(DUST.get(Carbon), 1), of(WIRE_FINE.get(Electrum), 4)).fi(Polyethylene.getLiquid(288)).io(new ItemStack(Resistor,24)).add("resistor",80, 96);
+        ASSEMBLING.RB().ii(of(FOIL.get(PolyvinylChloride), 4), of(FOIL.get(Aluminium), 2)).fi(Polyethylene.getLiquid(288)).io(new ItemStack(Capacitor,16)).add("capacitor",80, 96);
     }
 
 }

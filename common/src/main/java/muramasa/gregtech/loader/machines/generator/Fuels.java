@@ -16,12 +16,12 @@ public class Fuels {
         AntimatterAPI.all(Material.class, mat -> {
             if (mat != Materials.Steam && mat.has(MaterialTags.FUEL_POWER) && MaterialTags.FUEL_POWER.getInt(mat) > 0) {
                 if (mat.has(LIQUID))
-                    COMBUSTION_FUELS.RB().fi(mat.getLiquid(1)).add(1, MaterialTags.FUEL_POWER.getInt(mat));
+                    COMBUSTION_FUELS.RB().fi(mat.getLiquid(1)).add(mat.getId(),1, MaterialTags.FUEL_POWER.getInt(mat));
                 if (mat.has(GAS)) {
-                    GAS_FUELS.RB().fi(mat.getGas(1)).add(1, MaterialTags.FUEL_POWER.getInt(mat));
+                    GAS_FUELS.RB().fi(mat.getGas(1)).add(mat.getId(),1, MaterialTags.FUEL_POWER.getInt(mat));
                 }
             }
         });
-        STEAM_FUELS.RB().fi(FluidIngredient.ofMB(Steam, 2)).add(1,1);
+        STEAM_FUELS.RB().fi(FluidIngredient.ofMB(Steam, 2)).add("steam",1,1);
     }
 }
