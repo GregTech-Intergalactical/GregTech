@@ -19,7 +19,7 @@ public class ElectrolyzerLoader {
             if (fluids.length > 2) return;
             ItemStack[] items = t.getProcessInto().stream().filter(mat -> mat.m.has(AntimatterMaterialTypes.DUST)).map(mat -> AntimatterMaterialTypes.DUST.get(mat.m, mat.s)).toArray(ItemStack[]::new);
             RecipeIngredient input = AntimatterMaterialTypes.DUST.getMaterialIngredient(t, t.getProcessInto().stream().mapToInt(mat -> mat.s).sum());
-            ELECTROLYZING.RB().ii(input).io(items).fo(fluids).add(t.getMass()*20, t.getMass() < 15 ? 30 : 64);
+            ELECTROLYZING.RB().ii(input).io(items).fo(fluids).add("dust_" + t.getId(),t.getMass()*20, t.getMass() < 15 ? 30 : 64);
         });
     }
 

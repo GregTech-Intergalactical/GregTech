@@ -61,38 +61,38 @@ public class MixerLoader {
             if (ings.size() == 0) return;
             int count = mat.getProcessInto().stream().mapToInt(t -> t.s).sum();
             ings.add(INT_CIRCUITS.get(4));
-            MIXING.RB().ii(ings).io(type.get(mat,count)).add(duration,eut);
+            MIXING.RB().ii(ings).io(type.get(mat,count)).add("dust_" + mat.getId(),duration,eut);
         }
     }
 
     private static void recipes() {
-        MIXING.RB().fi(NitricAcid.getLiquid(1000),SulfuricAcid.getLiquid(1000)).fo(NitrationMixture.getLiquid(2000)).add(25 * 20, 2);
-        MIXING.RB().fi(PolyvinylAcetate.getLiquid(1000),Acetone.getLiquid(1500)).fo(Glue.getLiquid(2500)).add(25 * 2, 8);
-        MIXING.RB().fi(PolyvinylAcetate.getLiquid(1000),MethylAcetate.getLiquid(1500)).fo(Glue.getLiquid(2500)).add(25 * 2, 8);
-        MIXING.RB().fi(BioDiesel.getLiquid(1000),Tetranitromethane.getLiquid(40)).fo(NitroFuel.getLiquid(750)).add(1 * 20, 480);
-        MIXING.RB().fi(Diesel.getLiquid(1000),Tetranitromethane.getLiquid(20)).fo(NitroFuel.getLiquid(1000)).add(1 * 20, 480);
-        MIXING.RB().fi(Oxygen.getGas(1000),Dimethylhydrazine.getLiquid(1000)).fo(RocketFuel.getLiquid(3000)).add(3 * 20, 16);
-        MIXING.RB().fi(DinitrogenTetroxide.getGas(1000),Dimethylhydrazine.getLiquid(1000)).fo(RocketFuel.getLiquid(6000)).add(3 * 20, 16);
-        MIXING.RB().fi(LightFuel.getLiquid(5000),HeavyFuel.getLiquid(1000)).fo(Diesel.getLiquid(6000)).add(8 * 2, 120);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(WoodPulp,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add(60*20, 2);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Sugar,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add(60*20, 2);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Salt,2))).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(SaltWater.getLiquid(1000)).add(2*20, 8);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Copper,3)),of(AntimatterMaterialTypes.DUST.get(Barium,2)),of(AntimatterMaterialTypes.DUST.get(Yttrium,1))).fi(Oxygen.getGas(7000)).io(AntimatterMaterialTypes.DUST.get(YttriumBariumCuprate,13)).add(40*20, 8);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Talc,1))).fi(Oil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add(64*2, 4);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Talc,1))).fi(Creosote.getLiquid(750)).fo(Lubricant.getLiquid(750)).add(64*2, 4);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Talc,1))).fi(SeedOil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add(64*2, 4);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Soapstone,1))).fi(Oil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add(64*2, 4);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Soapstone,1))).fi(Creosote.getLiquid(750)).fo(Lubricant.getLiquid(750)).add(64*2, 4);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Soapstone,1))).fi(SeedOil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add(64*2, 4);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Redstone,1))).fi(Oil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add(64*2, 4);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Redstone,1))).fi(Creosote.getLiquid(750)).fo(Lubricant.getLiquid(750)).add(64*2, 4);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Redstone,1))).fi(SeedOil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add(64*2, 4);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Glass,7)),of(AntimatterMaterialTypes.DUST.get(Boron,1))).io(AntimatterMaterialTypes.DUST.get(BorosilicateGlass,8)).add(40*20, 8);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.EnderPearl,1)),of(AntimatterMaterialTypes.DUST.get(Blaze,1))).io(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.EnderEye,1)).add(5*20, 8);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Saltpeter,2)),of(AntimatterMaterialTypes.DUST.get(Sulfur,1)),of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Coal,1))).io(Items.GUNPOWDER).add(20*20, 8);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Saltpeter,2)),of(AntimatterMaterialTypes.DUST.get(Sulfur,1)),of(AntimatterMaterialTypes.DUST.get(Materials.Charcoal,1))).io(new ItemStack(Items.GUNPOWDER,2)).add(15*20, 8);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone,1))).fi(Lubricant.getLiquid(20), AntimatterMaterials.Water.getLiquid(4980)).fo(DrillingFluid.getLiquid(5000)).add(32*2, 16);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone,3)),of(AntimatterMaterialTypes.DUST.get(Clay,1))).fi(AntimatterMaterials.Water.getLiquid(500)).fo(Concrete.getLiquid(576)).add(1*20, 16);
+        MIXING.RB().fi(NitricAcid.getLiquid(1000),SulfuricAcid.getLiquid(1000)).fo(NitrationMixture.getLiquid(2000)).add("nitration_mixture",25 * 20, 2);
+        MIXING.RB().fi(PolyvinylAcetate.getLiquid(1000),Acetone.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue",25 * 2, 8);
+        MIXING.RB().fi(PolyvinylAcetate.getLiquid(1000),MethylAcetate.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue_1",25 * 2, 8);
+        MIXING.RB().fi(BioDiesel.getLiquid(1000),Tetranitromethane.getLiquid(40)).fo(NitroFuel.getLiquid(750)).add("nitro_fuel", 20, 480);
+        MIXING.RB().fi(Diesel.getLiquid(1000),Tetranitromethane.getLiquid(20)).fo(NitroFuel.getLiquid(1000)).add("nitro_fuel_1", 20, 480);
+        MIXING.RB().fi(Oxygen.getGas(1000),Dimethylhydrazine.getLiquid(1000)).fo(RocketFuel.getLiquid(3000)).add("rocket_fuel",3 * 20, 16);
+        MIXING.RB().fi(DinitrogenTetroxide.getGas(1000),Dimethylhydrazine.getLiquid(1000)).fo(RocketFuel.getLiquid(6000)).add("rocket_fuel_1",3 * 20, 16);
+        MIXING.RB().fi(LightFuel.getLiquid(5000),HeavyFuel.getLiquid(1000)).fo(Diesel.getLiquid(6000)).add("diesel",8 * 2, 120);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(WoodPulp,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid",60*20, 2);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Sugar,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid_1",60*20, 2);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Salt,2))).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(SaltWater.getLiquid(1000)).add("salt_water",2*20, 8);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Copper,3)),of(AntimatterMaterialTypes.DUST.get(Barium,2)),of(AntimatterMaterialTypes.DUST.get(Yttrium,1))).fi(Oxygen.getGas(7000)).io(AntimatterMaterialTypes.DUST.get(YttriumBariumCuprate,13)).add("yttrium_barium_cuprate",40*20, 8);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Talc,1))).fi(Oil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant",64*2, 4);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Talc,1))).fi(Creosote.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_1",64*2, 4);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Talc,1))).fi(SeedOil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_2",64*2, 4);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Soapstone,1))).fi(Oil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_3",64*2, 4);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Soapstone,1))).fi(Creosote.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_4",64*2, 4);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Soapstone,1))).fi(SeedOil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_5",64*2, 4);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Redstone,1))).fi(Oil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_6",64*2, 4);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Redstone,1))).fi(Creosote.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_7",64*2, 4);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Redstone,1))).fi(SeedOil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_8",64*2, 4);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Glass,7)),of(AntimatterMaterialTypes.DUST.get(Boron,1))).io(AntimatterMaterialTypes.DUST.get(BorosilicateGlass,8)).add("borosilicate_glass",40*20, 8);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.EnderPearl,1)),of(AntimatterMaterialTypes.DUST.get(Blaze,1))).io(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.EnderEye,1)).add("ender_eye_dust",5*20, 8);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Saltpeter,2)),of(AntimatterMaterialTypes.DUST.get(Sulfur,1)),of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Coal,1))).io(Items.GUNPOWDER).add("gunpowder",20*20, 8);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Saltpeter,2)),of(AntimatterMaterialTypes.DUST.get(Sulfur,1)),of(AntimatterMaterialTypes.DUST.get(Materials.Charcoal,1))).io(new ItemStack(Items.GUNPOWDER,2)).add("gunpowder_1",15*20, 8);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone,1))).fi(Lubricant.getLiquid(20), AntimatterMaterials.Water.getLiquid(4980)).fo(DrillingFluid.getLiquid(5000)).add("drilling_fluid",32*2, 16);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone,3)),of(AntimatterMaterialTypes.DUST.get(Clay,1))).fi(AntimatterMaterials.Water.getLiquid(500)).fo(Concrete.getLiquid(576)).add("concrete", 20, 16);
     }
 
 }

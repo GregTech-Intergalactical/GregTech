@@ -31,7 +31,7 @@ public class OreByproducts {
 
                 List<ItemStack> dusts = new ObjectArrayList<>(byProductsCount);
                 byProducts.forEach(p -> dusts.add(AntimatterMaterialTypes.DUST.get(p, 1)));
-                ORE_BYPRODUCTS.RB().ii(ores).io(dusts.toArray(new ItemStack[byProductsCount])).add();
+                ORE_BYPRODUCTS.RB().ii(ores).io(dusts.toArray(new ItemStack[byProductsCount])).add(m.getId() + "_byproducts");
             }
         });
     }

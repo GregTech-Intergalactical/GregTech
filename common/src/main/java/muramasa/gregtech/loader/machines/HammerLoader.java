@@ -10,7 +10,7 @@ public class HammerLoader {
         PLATE.all().forEach(plate -> {
             if (!plate.has(INGOT)) return;
 
-            HAMMERING.RB().ii(INGOT.getMaterialIngredient(plate, 3)).io(PLATE.get(plate, 2)).add(plate.getMass()*2, 13);
+            HAMMERING.RB().ii(INGOT.getMaterialIngredient(plate, 3)).io(PLATE.get(plate, 2)).add("plate_" + plate.getId(),plate.getMass()*2, 13);
         });
     }
 }

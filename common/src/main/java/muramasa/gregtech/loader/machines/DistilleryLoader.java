@@ -12,7 +12,7 @@ public class DistilleryLoader {
                     .ii(INT_CIRCUITS.get(1).setNoConsume())
                     .fi(material.getLiquid(DISTILLATION_FLUID_INPUT_AMOUNT.getInt(material)))
                     .fo(fluidProducts.get(0).mat().getLiquid(fluidProducts.get(0).amount()))
-                    .add(material.getMass(), 20);
+                    .add(material.getId(), material.getMass(), 20);
         });
     }
 }

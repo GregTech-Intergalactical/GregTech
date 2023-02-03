@@ -20,19 +20,19 @@ public class CuttingLoader {
             if (mat == AntimatterMaterials.Diamond)
                 multiplier = 20;
             CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.BLOCK.getMaterialTag(mat), 1)).io(AntimatterMaterialTypes.PLATE.get(mat, 9))
-                    .fi(new FluidStack(Fluids.WATER, 1000)).add(mat.getMass() * 2 * multiplier, 24);
+                    .fi(new FluidStack(Fluids.WATER, 1000)).add("plate_" + mat.getId() + "_with_water",mat.getMass() * 2 * multiplier, 24);
             CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.BLOCK.getMaterialTag(mat), 1)).io(AntimatterMaterialTypes.PLATE.get(mat, 9))
-                    .fi(Materials.Lubricant.getLiquid(250)).add(mat.getMass() * multiplier, 16);
+                    .fi(Materials.Lubricant.getLiquid(250)).add("plate_" + mat.getId() + "_with_lubricant",mat.getMass() * multiplier, 16);
 
         }
         AntimatterMaterialTypes.BOLT.all().forEach(t -> {
             if (t.has(AntimatterMaterialTypes.ROD)) {
                 RecipeMaps.CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.ROD.getMaterialTag(t), 1))
                         .fi(new FluidStack(Fluids.WATER, 1000))
-                        .io(AntimatterMaterialTypes.BOLT.get(t, 2)).add(t.getMass()/4, 8);
+                        .io(AntimatterMaterialTypes.BOLT.get(t, 2)).add("bolt_" + t.getId() + "_with_water",t.getMass()/4, 8);
                 RecipeMaps.CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.ROD.getMaterialTag(t), 1))
                         .fi(Materials.Lubricant.getLiquid(250))
-                        .io(AntimatterMaterialTypes.BOLT.get(t, 2)).add(t.getMass()/4, 8);
+                        .io(AntimatterMaterialTypes.BOLT.get(t, 2)).add("bolt_" + t.getId() + "_with_lubricant",t.getMass()/4, 8);
             }
         });
     }

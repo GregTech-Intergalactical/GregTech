@@ -22,9 +22,9 @@ public class SiftingLoader {
             RecipeHelper.addSmelting(ore, Utils.ca(multiplier * MaterialTags.SMELTING_MULTI.getInt(m), gem));
             if (m.has(AntimatterMaterialTypes.GEM_BRITTLE)) {
                 ItemStack gemBrittle = AntimatterMaterialTypes.GEM_BRITTLE.get(m, 1);
-                SIFTING.RB().ii(crushed).io(AntimatterMaterialTypes.GEM_POLISHED.get(m, 1), gem, gem, dustStack, gemBrittle, gemBrittle).chances(0.05, 0.15, 0.32, 0.44, 0.78, 1.0).add(800, 16);
+                SIFTING.RB().ii(crushed).io(AntimatterMaterialTypes.GEM_POLISHED.get(m, 1), gem, gem, dustStack, gemBrittle, gemBrittle).chances(0.05, 0.15, 0.32, 0.44, 0.78, 1.0).add("crushed_" + m.getId(),800, 16);
             } else {
-                SIFTING.RB().ii(crushed).io(gem, gem, gem, gem, dustStack, dustStack).chances(0.01, 0.04, 0.15, 0.2, 0.4, 0.5).add(800, 16);
+                SIFTING.RB().ii(crushed).io(gem, gem, gem, gem, dustStack, dustStack).chances(0.01, 0.04, 0.15, 0.2, 0.4, 0.5).add("crushed_" + m.getId(),800, 16);
             }
         });
     }

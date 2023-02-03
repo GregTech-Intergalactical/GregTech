@@ -9,16 +9,16 @@ public class LatheLoader {
         AntimatterMaterialTypes.ROD.all().forEach(t -> {
             if (t.has(AntimatterMaterialTypes.INGOT)) {
                 RecipeMaps.LATHING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.INGOT.getMaterialTag(t), 1))
-                .io(AntimatterMaterialTypes.ROD.get(t, 1), AntimatterMaterialTypes.DUST_SMALL.get(t, 2)).add(t.getMass() * 2, 24);
+                .io(AntimatterMaterialTypes.ROD.get(t, 1), AntimatterMaterialTypes.DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",t.getMass() * 2, 24);
             } else if (t.has(AntimatterMaterialTypes.GEM)) {
                 RecipeMaps.LATHING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.GEM.getMaterialTag(t), 1))
-                .io(AntimatterMaterialTypes.ROD.get(t, 1), AntimatterMaterialTypes.DUST_SMALL.get(t, 2)).add(t.getMass() * 2, 24);
+                .io(AntimatterMaterialTypes.ROD.get(t, 1), AntimatterMaterialTypes.DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",t.getMass() * 2, 24);
             }
         });
         AntimatterMaterialTypes.SCREW.all().forEach(t -> {
             if (t.has(AntimatterMaterialTypes.BOLT)) {
                   RecipeMaps.LATHING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.BOLT.getMaterialTag(t), 1))
-                          .io(AntimatterMaterialTypes.SCREW.get(t, 1)).add(t.getMass()/2, 8);
+                          .io(AntimatterMaterialTypes.SCREW.get(t, 1)).add(t.getId() + "_screw",t.getMass()/2, 8);
             }
         });
     }
