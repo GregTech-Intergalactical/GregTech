@@ -35,33 +35,33 @@ public class Blasting {
 
                 ItemStack blastOut = MaterialTags.BLAST_FURNACE_TEMP.getInt(m) > 1750 && MaterialTags.SMELT_INTO.getMapping(m).has(AntimatterMaterialTypes.INGOT_HOT) ? AntimatterMaterialTypes.INGOT_HOT.get(MaterialTags.SMELT_INTO.getMapping(m), 1) : aIngotSmeltInto;
 
-                BLASTING.RB().ii(RecipeIngredient.of(crushed,1), INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(RecipeIngredient.of(dust,1), INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration/4, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(AntimatterMaterialTypes.CRUSHED_PURIFIED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(AntimatterMaterialTypes.CRUSHED_CENTRIFUGED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(AntimatterMaterialTypes.DUST_PURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(AntimatterMaterialTypes.DUST_IMPURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add(aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(RecipeIngredient.of(crushed,1), INT_CIRCUITS.get(1)).io(blastOut).add("crushed_" + m.getId(), aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(RecipeIngredient.of(dust,1), INT_CIRCUITS.get(1)).io(blastOut).add("dust_" + m.getId(),aBlastDuration/4, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(AntimatterMaterialTypes.CRUSHED_PURIFIED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("purified_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(AntimatterMaterialTypes.CRUSHED_CENTRIFUGED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("refined_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(AntimatterMaterialTypes.DUST_PURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("dust_pure_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(AntimatterMaterialTypes.DUST_IMPURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("dust_impure_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
             }
 
             if (m.has(CALCITE3X)) {
                 ItemStack ingotMulti = Utils.mul(multiplier * 3 * MaterialTags.SMELTING_MULTI.getInt(m), ingot);
                 ItemStack darkAsh = AntimatterMaterialTypes.DUST_SMALL.get(DarkAsh, 1);
-                BLASTING.RB().ii(ore, AntimatterMaterialTypes.DUST.getIngredient(Calcite, multiplier)).io(ingotMulti, darkAsh).add(ingot.getCount() * 500L, 120, 1500);
-                BLASTING.RB().ii(ore, AntimatterMaterialTypes.DUST.getIngredient(Quicklime, multiplier)).io(ingotMulti, darkAsh).add(ingot.getCount() * 500L, 120, 1500);
+                BLASTING.RB().ii(ore, AntimatterMaterialTypes.DUST.getIngredient(Calcite, multiplier)).io(ingotMulti, darkAsh).add("ore_" + m.getId(),ingot.getCount() * 500L, 120, 1500);
+                BLASTING.RB().ii(ore, AntimatterMaterialTypes.DUST.getIngredient(Quicklime, multiplier)).io(ingotMulti, darkAsh).add("ore_" + m.getId() +"_2",ingot.getCount() * 500L, 120, 1500);
             } else if (m.has(CALCITE2X)) {
                 ItemStack darkAsh = AntimatterMaterialTypes.DUST_SMALL.get(DarkAsh, 1);
-                BLASTING.RB().ii(ore, AntimatterMaterialTypes.DUST.getIngredient(Calcite, multiplier)).io(Utils.mul(multiplier * mixedOreYield * MaterialTags.SMELTING_MULTI.getInt(m), ingot), darkAsh).add(ingot.getCount() * 500L, 120, 1500);
-                BLASTING.RB().ii(ore, AntimatterMaterialTypes.DUST_TINY.getIngredient(Quicklime, multiplier * 3)).io(Utils.mul(multiplier * 3 * MaterialTags.SMELTING_MULTI.getInt(m), ingot), darkAsh).add(ingot.getCount() * 500L, 120, 1500);
+                BLASTING.RB().ii(ore, AntimatterMaterialTypes.DUST.getIngredient(Calcite, multiplier)).io(Utils.mul(multiplier * mixedOreYield * MaterialTags.SMELTING_MULTI.getInt(m), ingot), darkAsh).add("ore_" + m.getId(),ingot.getCount() * 500L, 120, 1500);
+                BLASTING.RB().ii(ore, AntimatterMaterialTypes.DUST_TINY.getIngredient(Quicklime, multiplier * 3)).io(Utils.mul(multiplier * 3 * MaterialTags.SMELTING_MULTI.getInt(m), ingot), darkAsh).add("ore_" + m.getId() + "_2",ingot.getCount() * 500L, 120, 1500);
             }
         });
 
         /* PRIMITIVE */
-        BASIC_BLASTING.RB().ii(AntimatterMaterialTypes.INGOT.getMaterialIngredient(AntimatterMaterials.Iron,1)).io(AntimatterMaterialTypes.INGOT.get(Steel, 1), AntimatterMaterialTypes.DUST_SMALL.get(DarkAsh,8)).chances(1.0, 0.5).add(1200, 0);
+        BASIC_BLASTING.RB().ii(AntimatterMaterialTypes.INGOT.getMaterialIngredient(AntimatterMaterials.Iron,1)).io(AntimatterMaterialTypes.INGOT.get(Steel, 1), AntimatterMaterialTypes.DUST_SMALL.get(DarkAsh,8)).chances(1.0, 0.5).add("steel_ingot",1200, 0);
 
         /* TITANIUM */
         BLASTING.RB().temperature(1700).ii(RecipeIngredient.of(AntimatterMaterialTypes.DUST.get(Magnesium,2)), INT_CIRCUITS.get(1))
                 .fi(Titaniumtetrachloride.getLiquid(1000))
                 .io(AntimatterMaterialTypes.INGOT_HOT.get(Titanium,1), AntimatterMaterialTypes.DUST.get(MagnesiumChloride,2))
-                .add(40*20, 480);
+                .add("titanium_ingot",40*20, 480);
     }
 }

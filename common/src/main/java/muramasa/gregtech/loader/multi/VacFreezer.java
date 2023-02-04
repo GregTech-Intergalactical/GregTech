@@ -23,7 +23,7 @@ public class VacFreezer {
                 voltage = 1920;
             }
             VACUUM_FREEZING.RB().ii(RecipeIngredient.of(INGOT_HOT.get(hi),1))
-                    .io(new ItemStack(ingot,1)).add(hi.getMass(), voltage);
+                    .io(new ItemStack(ingot,1)).add("ingot_hot_" + hi.getId(),hi.getMass(), voltage);
         });
     }
 }

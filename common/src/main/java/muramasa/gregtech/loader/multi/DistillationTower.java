@@ -16,7 +16,7 @@ public class DistillationTower {
                builder.fo(fluidProducts.get(i).mat().getLiquid(fluidProducts.get(i).amount()));
            }
 
-           builder.add(material.getMass(), 20);
+           builder.add(material.getId(), material.getMass(), 20);
         });
     }
 }

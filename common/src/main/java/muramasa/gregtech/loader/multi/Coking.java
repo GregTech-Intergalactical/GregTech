@@ -11,8 +11,8 @@ import static muramasa.gregtech.data.RecipeMaps.COKING;
 
 public class Coking {
     public static void init() {
-        COKING.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(GEM.get(Charcoal, 1)).fo(Creosote.getLiquid(100)).add(600, 0);
-        COKING.RB().ii(RecipeIngredient.of(ItemTags.COALS, 1)).io(GEM.get(CoalCoke, 1)).fo(Creosote.getLiquid(200)).add(600, 0);
+        COKING.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(GEM.get(Charcoal, 1)).fo(Creosote.getLiquid(100)).add("charcoal",600, 0);
+        COKING.RB().ii(RecipeIngredient.of(ItemTags.COALS, 1)).io(GEM.get(CoalCoke, 1)).fo(Creosote.getLiquid(200)).add("coal_coke",600, 0);
         //COKING.RB().ii(RecipeIngredient.of(Blocks.COAL_BLOCK, 1)).io(BLOCK.get(CoalCoke)).fo(Creosote.getLiquid(1800)).add(5400, 0);
     }
 }
