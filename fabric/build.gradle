@@ -43,7 +43,7 @@ dependencies{
     modImplementation("com.github.Trinsdar.Felt-API:felt-enchanting-api:c372f99be1") { transitive false }
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
-    modImplementation("net.devtech:arrp:0.5.7")
+    modImplementation("com.github.Trinsdar:ARRP:0.6.7-hotfix")
     include("com.github.gregtech-intergalactical:gtrubber-fabric:1.18.2-0.1.2")
     modImplementation("com.github.gregtech-intergalactical:gtrubber-fabric:1.18.2-0.1.2:dev-shadow"){
         transitive = false
