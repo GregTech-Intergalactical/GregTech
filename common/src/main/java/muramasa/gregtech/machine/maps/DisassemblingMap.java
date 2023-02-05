@@ -5,6 +5,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.BlockMachine;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.IRecipeMap;
@@ -38,7 +39,7 @@ public class DisassemblingMap implements IRecipeMap {
     }
 
     @Override
-    public Recipe find(@Nonnull ItemStack[] items, @Nonnull FluidStack[] fluids, Tier tier, @Nonnull Predicate<Recipe> canHandle) {
+    public Recipe find(@Nonnull ItemStack[] items, @Nonnull FluidStack[] fluids, Tier tier, @Nonnull Predicate<IRecipe> canHandle) {
         if (items.length == 0) return null;
 
         Machine<?> machine = ((BlockMachine)((BlockItem)items[0].getItem()).getBlock()).getType();
@@ -82,12 +83,12 @@ public class DisassemblingMap implements IRecipeMap {
     }
 
     @Override
-    public void add(Recipe recipe) {
+    public void add(IRecipe recipe) {
 
     }
 
     @Override
-    public void compileRecipe(Recipe recipe) {
+    public void compileRecipe(IRecipe recipe) {
 
     }
 
@@ -103,7 +104,7 @@ public class DisassemblingMap implements IRecipeMap {
     }
 
     @Override
-    public Collection<Recipe> getRecipes(boolean filterHidden) {
+    public Collection<IRecipe> getRecipes(boolean filterHidden) {
         return Collections.emptyList();
     }
 

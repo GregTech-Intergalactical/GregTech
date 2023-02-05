@@ -10,6 +10,7 @@ import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.structure.StructureHandle;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
@@ -47,7 +48,7 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
             }
 
             @Override
-            protected boolean validateRecipe(Recipe r) {
+            protected boolean validateRecipe(IRecipe r) {
                 return r.getPower() > 0 && r.getDuration() > 0;
             }
         });
@@ -64,7 +65,7 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
     public void onRecipePostTick() {
         super.onRecipePostTick();
         //Insert heat
-        Recipe r = this.recipeHandler.map(MachineRecipeHandler::getActiveRecipe).orElse(null);
+        IRecipe r = this.recipeHandler.map(MachineRecipeHandler::getActiveRecipe).orElse(null);
         long power = r.getPower();
         int in = (int)((float)power*efficiencyBonus);
         HeatTransaction tx = new HeatTransaction(in, 0, Utils.sink()).ignoreTemperature();

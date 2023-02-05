@@ -2,6 +2,7 @@ package muramasa.gregtech.tile.multi;
 
 import muramasa.antimatter.capability.machine.CookingRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityBasicMultiMachine;
 import muramasa.antimatter.util.int3;
@@ -17,7 +18,7 @@ public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine
     }
 
     @Override
-    public void onMachineStarted(Recipe r) {
+    public void onMachineStarted(IRecipe r) {
         super.onMachineStarted(r);
         int3 controller = new int3(getBlockPos(), getFacing());
         controller.back(1);

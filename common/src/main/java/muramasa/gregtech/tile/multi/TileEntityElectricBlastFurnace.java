@@ -3,6 +3,7 @@ package muramasa.gregtech.tile.multi;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
@@ -53,7 +54,7 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileE
             }
 
             @Override
-            protected boolean validateRecipe(Recipe r) {
+            protected boolean validateRecipe(IRecipe r) {
                 return super.validateRecipe(r) && heatingCapacity > r.getSpecialValue();
             }
         });

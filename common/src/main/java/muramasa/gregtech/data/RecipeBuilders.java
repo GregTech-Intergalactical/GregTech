@@ -3,6 +3,7 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.recipe.map.RecipeMap;
@@ -16,38 +17,36 @@ public class RecipeBuilders {
 
     public static class SmeltingBuilder extends RecipeBuilder {
         @Override
-        public Recipe build(int duration, long power, int special, int amps) {
-            Recipe r = super.build(duration, power, special, amps);
-            addRecipeToSteamMap(RecipeMaps.STEAM_SMELTING, r);
-            return r;
+        public IRecipe add(String domain, String id) {
+            return addRecipeToSteamMap(RecipeMaps.STEAM_SMELTING, super.add(domain, id), domain, id);
         }
     }
 
     public static class PulverizingBuilder extends RecipeBuilder {
         @Override
-        public Recipe add() {
-            return addRecipeToSteamMap(RecipeMaps.STEAM_PULVERIZING, super.add());
+        public IRecipe add(String domain, String id) {
+            return addRecipeToSteamMap(RecipeMaps.STEAM_PULVERIZING, super.add(domain, id), domain, id);
         }
     }
 
     public static class ExtractingBuilder extends RecipeBuilder {
         @Override
-        public Recipe add() {
-            return addRecipeToSteamMap(RecipeMaps.STEAM_EXTRACTING, super.add());
+        public IRecipe add(String domain, String id) {
+            return addRecipeToSteamMap(RecipeMaps.STEAM_EXTRACTING, super.add(domain, id), domain, id);
         }
     }
 
     public static class HammeringBuilder extends RecipeBuilder {
         @Override
-        public Recipe add() {
-            return addRecipeToSteamMap(RecipeMaps.STEAM_HAMMERING, super.add());
+        public IRecipe add(String domain, String id) {
+            return addRecipeToSteamMap(RecipeMaps.STEAM_HAMMERING, super.add(domain, id), domain, id);
         }
     }
 
     public static class CompressingBuilder extends RecipeBuilder {
         @Override
-        public Recipe add() {
-            return addRecipeToSteamMap(RecipeMaps.STEAM_COMPRESSING, super.add());
+        public IRecipe add(String domain, String id) {
+            return addRecipeToSteamMap(RecipeMaps.STEAM_COMPRESSING, super.add(domain, id), domain, id);
         }
     }
 
@@ -60,15 +59,15 @@ public class RecipeBuilders {
 
     public static class AlloySmeltingBuilder extends RecipeBuilder {
         @Override
-        public Recipe add() {
-            return addRecipeToSteamMap(RecipeMaps.STEAM_ALLOY_SMELTING, super.add());
+        public IRecipe add(String domain, String id) {
+            return addRecipeToSteamMap(RecipeMaps.STEAM_ALLOY_SMELTING, super.add(domain, id), domain, id);
         }
     }
 
-    public static Recipe addRecipeToSteamMap(RecipeMap map, Recipe recipe) {
+    public static IRecipe addRecipeToSteamMap(RecipeMap map, IRecipe recipe, String domain, String id) {
         try {
             if (recipe.getPower() > 0 && (recipe.getPower()-1)*2 <= Tier.LV.getVoltage()) {
-                map.RB().ii(recipe.getInputItems()).io(recipe.getFlatOutputItems()).add(recipe.getDuration()* 3L, recipe.getPower() * 2);
+                map.RB().ii(recipe.getInputItems()).io(recipe.getFlatOutputItems()).add(domain, id,recipe.getDuration()* 3L, recipe.getPower() * 2, 0, 1);
             }
         } catch (Exception e) {
             System.out.println("bleh");
@@ -92,7 +91,7 @@ public class RecipeBuilders {
         }
 
         @Override
-        public Recipe add() {
+        public IRecipe add(String domain, String id) {
           /*  Recipe r = null;
             List<RecipeIngredient> ings = this.ingredientInput;
             for (ItemStack fuel : FUELS) {
@@ -105,7 +104,7 @@ public class RecipeBuilders {
                 addToMap(r);
             }
             return r;*/
-            return super.add();
+            return super.add(domain, id);
         }
     }
 }

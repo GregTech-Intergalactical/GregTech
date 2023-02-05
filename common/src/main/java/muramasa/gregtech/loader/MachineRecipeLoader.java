@@ -77,30 +77,30 @@ public class MachineRecipeLoader {
         /** FUSION AGE **/
 
         //Power Gen Recipes
-        FUSION.RB().fi(Deuterium.getGas(125), Tritium.getGas(125)).fo(Helium.getPlasma(125)).add(16, 4096, 40000000); //Mark 1 Cheap
-        FUSION.RB().fi(Deuterium.getGas(125), Helium3.getGas(125)).fo(Helium.getPlasma(125)).add(16, 2048, 60000000); //Mark 1 Expensive
-        FUSION.RB().fi(Carbon.getLiquid(125), Helium3.getGas(125)).fo(Oxygen.getPlasma(125)).add(32, 4096, 80000000); //Mark 1 Expensive
-        FUSION.RB().fi(Aluminium.getLiquid(16), Lithium.getLiquid(125)).fo(Sulfur.getPlasma(125)).add(32, 10240, 240000000); //Mark 2 Cheap
-        FUSION.RB().fi(Beryllium.getLiquid(16), Deuterium.getGas(375)).fo(Nitrogen.getPlasma(175)).add(16, 16384, 180000000); //Mark 2 Expensive
-        FUSION.RB().fi(Silicon.getLiquid(16), Magnesium.getLiquid(16)).fo(Iron.getPlasma(125)).add(32, 8192, 360000000); //Mark 3 Cheap
-        FUSION.RB().fi(Potassium.getLiquid(16), Fluorine.getGas(125)).fo(Nickel.getPlasma(125)).add(16, 32768, 480000000); //Mark 3 Expensive
+        FUSION.RB().fi(Deuterium.getGas(125), Tritium.getGas(125)).fo(Helium.getPlasma(125)).add("helium",16, 4096, 40000000); //Mark 1 Cheap
+        FUSION.RB().fi(Deuterium.getGas(125), Helium3.getGas(125)).fo(Helium.getPlasma(125)).add("helium_2",16, 2048, 60000000); //Mark 1 Expensive
+        FUSION.RB().fi(Carbon.getLiquid(125), Helium3.getGas(125)).fo(Oxygen.getPlasma(125)).add("oxygen",32, 4096, 80000000); //Mark 1 Expensive
+        FUSION.RB().fi(Aluminium.getLiquid(16), Lithium.getLiquid(125)).fo(Sulfur.getPlasma(125)).add("sulfur",32, 10240, 240000000); //Mark 2 Cheap
+        FUSION.RB().fi(Beryllium.getLiquid(16), Deuterium.getGas(375)).fo(Nitrogen.getPlasma(175)).add("nitrogen",16, 16384, 180000000); //Mark 2 Expensive
+        FUSION.RB().fi(Silicon.getLiquid(16), Magnesium.getLiquid(16)).fo(Iron.getPlasma(125)).add("iron",32, 8192, 360000000); //Mark 3 Cheap
+        FUSION.RB().fi(Potassium.getLiquid(16), Fluorine.getGas(125)).fo(Nickel.getPlasma(125)).add("nickel",16, 32768, 480000000); //Mark 3 Expensive
 
         //Material Gen Recipes
-        FUSION.RB().fi(Beryllium.getLiquid(16), Tungsten.getLiquid(16)).fo(Platinum.getLiquid(16)).add(32, 32768, 150000000);
-        FUSION.RB().fi(Neodymium.getLiquid(16), Hydrogen.getGas(16)).fo(Europium.getLiquid(16)).add(64, 24576, 150000000);
-        FUSION.RB().fi(Lutetium.getLiquid(16), Chrome.getLiquid(16)).fo(Americium.getLiquid(16)).add(96, 49152, 200000000);
-        FUSION.RB().fi(Plutonium.getLiquid(16), Thorium.getLiquid(16)).fo(Naquadah.getLiquid(16)).add(64, 32768, 300000000);
-        FUSION.RB().fi(Americium.getLiquid(16), Naquadria.getLiquid(16)).fo(Neutronium.getLiquid(1)).add(1200, 98304, 600000000);
-        FUSION.RB().fi(Lithium.getLiquid(16), Tungsten.getLiquid(16), Iridium.getLiquid(16)).add(32, 32768, 300000000);
-        FUSION.RB().fi(Tungsten.getLiquid(16), Helium.getGas(16)).fo(Osmium.getLiquid(16)).add(64, 24578, 150000000);
-        FUSION.RB().fi(Manganese.getLiquid(16), Hydrogen.getGas(16)).fo(Iron.getLiquid(16)).add(64, 8192, 120000000);
-        FUSION.RB().fi(Mercury.getLiquid(16), Magnesium.getLiquid(16)).fo(Uranium.getLiquid(16)).add(64, 49152, 240000000);
-        FUSION.RB().fi(Gold.getLiquid(16), Aluminium.getLiquid(16)).fo(Uranium.getLiquid(16)).add(64, 49152, 240000000);
-        FUSION.RB().fi(Uranium.getLiquid(16), Helium.getGas(16)).fo(Plutonium.getLiquid(16)).add(128, 49152, 480000000);
-        FUSION.RB().fi(Vanadium.getLiquid(16), Hydrogen.getGas(125)).fo(Chrome.getLiquid(16)).add(64, 24576, 140000000);
-        FUSION.RB().fi(Gallium.getLiquid(16), Radon.getGas(125)).fo(Duranium.getLiquid(16)).add(64, 16384, 140000000);
-        FUSION.RB().fi(Titanium.getLiquid(16), Duranium.getLiquid(125)).fo(Tritanium.getLiquid(16)).add(64, 32768, 200000000);
-        FUSION.RB().fi(Gold.getLiquid(16), Mercury.getLiquid(16)).fo(Radon.getGas(125)).add(64, 32768, 200000000);
-        FUSION.RB().fi(EnrichedNaquadah.getLiquid(15), Radon.getGas(125)).fo(Naquadria.getLiquid(3)).add(64, 49152, 400000000);
+        FUSION.RB().fi(Beryllium.getLiquid(16), Tungsten.getLiquid(16)).fo(Platinum.getLiquid(16)).add("beryllium",32, 32768, 150000000);
+        FUSION.RB().fi(Neodymium.getLiquid(16), Hydrogen.getGas(16)).fo(Europium.getLiquid(16)).add("europium",64, 24576, 150000000);
+        FUSION.RB().fi(Lutetium.getLiquid(16), Chrome.getLiquid(16)).fo(Americium.getLiquid(16)).add("americium",96, 49152, 200000000);
+        FUSION.RB().fi(Plutonium.getLiquid(16), Thorium.getLiquid(16)).fo(Naquadah.getLiquid(16)).add("naquadah",64, 32768, 300000000);
+        FUSION.RB().fi(Americium.getLiquid(16), Naquadria.getLiquid(16)).fo(Neutronium.getLiquid(1)).add("neutronium",1200, 98304, 600000000);
+        FUSION.RB().fi(Lithium.getLiquid(16), Tungsten.getLiquid(16), Iridium.getLiquid(16)).add("iridium",32, 32768, 300000000);
+        FUSION.RB().fi(Tungsten.getLiquid(16), Helium.getGas(16)).fo(Osmium.getLiquid(16)).add("osmium",64, 24578, 150000000);
+        FUSION.RB().fi(Manganese.getLiquid(16), Hydrogen.getGas(16)).fo(Iron.getLiquid(16)).add("iron_2",64, 8192, 120000000);
+        FUSION.RB().fi(Mercury.getLiquid(16), Magnesium.getLiquid(16)).fo(Uranium.getLiquid(16)).add("uranium",64, 49152, 240000000);
+        FUSION.RB().fi(Gold.getLiquid(16), Aluminium.getLiquid(16)).fo(Uranium.getLiquid(16)).add("uranium_2",64, 49152, 240000000);
+        FUSION.RB().fi(Uranium.getLiquid(16), Helium.getGas(16)).fo(Plutonium.getLiquid(16)).add("plutonium",128, 49152, 480000000);
+        FUSION.RB().fi(Vanadium.getLiquid(16), Hydrogen.getGas(125)).fo(Chrome.getLiquid(16)).add("chrome",64, 24576, 140000000);
+        FUSION.RB().fi(Gallium.getLiquid(16), Radon.getGas(125)).fo(Duranium.getLiquid(16)).add("duranium",64, 16384, 140000000);
+        FUSION.RB().fi(Titanium.getLiquid(16), Duranium.getLiquid(125)).fo(Tritanium.getLiquid(16)).add("tritanium",64, 32768, 200000000);
+        FUSION.RB().fi(Gold.getLiquid(16), Mercury.getLiquid(16)).fo(Radon.getGas(125)).add("radon",64, 32768, 200000000);
+        FUSION.RB().fi(EnrichedNaquadah.getLiquid(15), Radon.getGas(125)).fo(Naquadria.getLiquid(3)).add("naquadria",64, 49152, 400000000);
     }
 }

@@ -5,6 +5,7 @@ import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.gregtech.nuclear.TileEntityNuclearReactor;
@@ -38,7 +39,7 @@ public class TileEntityHeatExchanger extends TileEntityMultiMachine<TileEntityHe
         recipeHandler.set(() -> new MachineRecipeHandler<>(this) {
             @Override
             public boolean consumeResourceForRecipe(boolean simulate) {
-                Recipe r = activeRecipe;
+                IRecipe r = activeRecipe;
                 if (simulate) return TileEntityHeatExchanger.this.HEAT_HANDLERS.stream().mapToInt(IHeatHandler::getHeat).sum() >= r.getPower();
                 int[] count = new int[1];
                 count[0] = (int) r.getPower();

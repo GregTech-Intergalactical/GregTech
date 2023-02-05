@@ -5,6 +5,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
@@ -36,7 +37,7 @@ public class TileEntitySteamMachine<T extends TileEntitySteamMachine<T>> extends
             }
             //Allow up to 16 .
             @Override
-            protected boolean validateRecipe(Recipe r) {
+            protected boolean validateRecipe(IRecipe r) {
                 List<ItemStack> consumed = this.tile.itemHandler.map(t -> t.consumeInputs(r, true)).orElse(Collections.emptyList());
                 return r.getPower() <= Tier.LV.getVoltage() && consumed.size() > 0;
             }
