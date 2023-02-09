@@ -25,6 +25,7 @@ public class GregTechLocalizations {
             add(Ref.ID + ".advancements.greg", "GregTech Intergalactical");
             add(Ref.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
             add(Ref.ID + ".tooltip.occurrence", "Indicates occurrence of ");
+            add(Ref.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
         }
 
         @Override
