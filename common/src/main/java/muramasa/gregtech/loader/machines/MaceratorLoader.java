@@ -1,34 +1,72 @@
 package muramasa.gregtech.loader.machines;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
+import muramasa.antimatter.ore.BlockOre;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.recipe.map.RecipeMap;
+import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static muramasa.antimatter.material.MaterialTags.*;
+import static muramasa.antimatter.util.Utils.getConventionalMaterialType;
+import static muramasa.antimatter.util.Utils.getConventionalStoneType;
 import static muramasa.gregtech.data.Materials.WoodPulp;
 import static muramasa.gregtech.data.RecipeMaps.MACERATING;
+import static muramasa.gregtech.data.RecipeMaps.SIFTING;
 
 public class MaceratorLoader {
     public static void init() {
+        AntimatterAPI.all(BlockOre.class, o -> {
+            if (o.getOreType() != AntimatterMaterialTypes.ORE) return;
+            Material m = o.getMaterial();
+            Material sm = o.getStoneType().getMaterial();
+            if (!m.has(AntimatterMaterialTypes.DUST) || !m.has(AntimatterMaterialTypes.CRUSHED)) return;
+            ItemStack stoneDust = sm.has(AntimatterMaterialTypes.DUST) ? AntimatterMaterialTypes.DUST.get(sm, 1) : ItemStack.EMPTY;
+            TagKey<Item> oreTag = TagUtils.getForgelikeItemTag(String.join("", getConventionalStoneType(o.getStoneType()), "_", getConventionalMaterialType(o.getOreType()), "/", o.getMaterial().getId()));
+            RecipeIngredient ore = RecipeIngredient.of(oreTag,1);
+            ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(m, ORE_MULTI.getInt(m));
+            Material oreByProduct1 = m.getByProducts().size() > 0 ? m.getByProducts().get(0) : MACERATE_INTO.getMapping(m);
+            RecipeMap<?> rm = MACERATING;
+            if (sm == AntimatterMaterials.Sand || sm == AntimatterMaterials.RedSand || sm == AntimatterMaterials.Gravel || sm == AntimatterMaterials.Dirt){
+                rm = SIFTING;
+            }
+            List<ItemStack> stacks = new ArrayList<>();
+            stacks.add(Utils.ca((ORE_MULTI.getInt(m)) * (rm == SIFTING ? 1 : 2), crushedStack));
+            if (rm == SIFTING) stacks.add(crushedStack);
+            stacks.add(AntimatterMaterialTypes.DUST.get(oreByProduct1, 1));
+            if (!stoneDust.isEmpty()) stacks.add(stoneDust);
+            ItemStack[] stackArray = stacks.toArray(new ItemStack[0]);
+            List<Double> ints = new ArrayList<>();
+            ints.add(1.0);
+            if (rm == SIFTING) ints.add(0.5);
+            ints.add(0.1 * BY_PRODUCT_MULTI.getInt(m));
+            if (!stoneDust.isEmpty()) ints.add(0.5);
+            double[] chances = ints.stream().mapToDouble(i -> i).toArray();
+            rm.RB().ii(ore).io(stackArray).chances(chances).add(sm.getId() + "_" + m.getId() + "_ore",400, 2);
+        });
         AntimatterMaterialTypes.CRUSHED.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.ORE)) return;
             if (!m.has(AntimatterMaterialTypes.CRUSHED)) return;
             int multiplier = 1;
             RecipeIngredient ore = RecipeIngredient.of(AntimatterMaterialTypes.ORE.getMaterialTag(m),1), crushed = AntimatterMaterialTypes.CRUSHED.getIngredient(m, 1);
             ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(m,1);
-            ItemStack stoneDust = AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone, 1);
-            ItemStack dustStack = AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone, 1);
 
             //TODO better way to do this
             Material aOreByProduct1 = m.getByProducts().size() >= 1 ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
             Material aOreByProduct2 = m.getByProducts().size() >= 2 ? m.getByProducts().get(1) : aOreByProduct1;
-            MACERATING.RB().ii(ore).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m) * multiplier) * 2, crushedStack), m.getByProducts().size() > 0 ? AntimatterMaterialTypes.DUST.get(m.getByProducts().get(0), 1) : dustStack, stoneDust).chances(1.0, 0.1 * multiplier * MaterialTags.BY_PRODUCT_MULTI.getInt(m), 0.5).add("ore_" + m.getId(),400, 2);
             MACERATING.RB().ii(crushed).io(AntimatterMaterialTypes.DUST_IMPURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1).add("crushed_" + m.getId(),400, 2);
 
             if (m.has(AntimatterMaterialTypes.CRUSHED_CENTRIFUGED)) {
