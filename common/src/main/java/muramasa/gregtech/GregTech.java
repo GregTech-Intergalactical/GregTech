@@ -1,11 +1,16 @@
 package muramasa.gregtech;
 
+import me.shedaniel.rei.api.common.entry.EntryStack;
+import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterMod;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.datagen.providers.*;
 import muramasa.antimatter.event.CraftingEvent;
 import muramasa.antimatter.event.ProvidersEvent;
+import muramasa.antimatter.integration.rei.REIUtils;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
@@ -16,12 +21,15 @@ import muramasa.gregtech.datagen.GregTechBlockTagProvider;
 import muramasa.gregtech.datagen.GregTechItemTagProvider;
 import muramasa.gregtech.datagen.GregtechBlockLootProvider;
 import muramasa.gregtech.datagen.ProgressionAdvancements;
+import muramasa.gregtech.integration.rei.OreProcessingCategory;
+import muramasa.gregtech.integration.rei.OreProcessingDisplay;
 import muramasa.gregtech.loader.crafting.*;
 import muramasa.gregtech.loader.items.Circuitry;
 import muramasa.gregtech.loader.machines.*;
 import muramasa.gregtech.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gregtech.loader.machines.generator.Fuels;
 import muramasa.gregtech.loader.multi.*;
+import net.minecraft.world.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -136,6 +144,24 @@ public class GregTech extends AntimatterMod {
                 Guis.init(side);
                 Models.init();
                 GregTechSounds.init();
+                if (AntimatterAPI.isModLoaded(muramasa.antimatter.Ref.MOD_REI)){
+                    REIUtils.addExtraCategory(r -> {
+                        OreProcessingCategory cat = new OreProcessingCategory();
+                        r.add(cat);
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.MACERATOR.getItem(Tier.LV))));
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.ORE_WASHER.getItem(Tier.LV))));
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.CENTRIFUGE.getItem(Tier.LV))));
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.THERMAL_CENTRIFUGE.getItem(Tier.LV))));
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.CHEMICAL_BATH.getItem(Tier.LV))));
+                        //r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines..getItem(Tier.LV))));
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.SIFTER.getItem(Tier.LV))));
+                    });
+                    REIUtils.addExtraDisplay(r -> {
+                        AntimatterMaterialTypes.ORE.all().forEach(m -> {
+                            r.add(new OreProcessingDisplay(m));
+                        });
+                    });
+                }
             }
             case DATA_READY -> {
                 Structures.init();
