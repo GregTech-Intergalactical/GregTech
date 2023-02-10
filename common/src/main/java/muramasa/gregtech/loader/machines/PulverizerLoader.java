@@ -28,8 +28,7 @@ public class PulverizerLoader {
             //TODO better way to do this
             Material aOreByProduct1 = m.getByProducts().size() >= 1 ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
             Material aOreByProduct2 = m.getByProducts().size() >= 2 ? m.getByProducts().get(1) : aOreByProduct1;
-
-            PULVERIZING.RB().ii(ore).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m) * multiplier) * 2, crushedStack), m.getByProducts().size() > 0 ? AntimatterMaterialTypes.DUST.get(m.getByProducts().get(0), 1) : dustStack, stoneDust).chances(1.0, 0.1 * multiplier * MaterialTags.BY_PRODUCT_MULTI.getInt(m), 50).add("ore_" + m.getId(),400, 2);
+            PULVERIZING.RB().ii(ore).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m) * multiplier) * 2, crushedStack), m.getByProducts().size() > 0 ? AntimatterMaterialTypes.DUST.get(m.getByProducts().get(0), 1) : dustStack, stoneDust).chances(1.0, 0.1 * multiplier * MaterialTags.BY_PRODUCT_MULTI.getInt(m), 0.5).add("ore_" + m.getId(),400, 2);
             PULVERIZING.RB().ii(crushed).io(AntimatterMaterialTypes.DUST_IMPURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1).add("crushed_" + m.getId(),400, 2);
 
             if (m.has(AntimatterMaterialTypes.CRUSHED_CENTRIFUGED)) {
