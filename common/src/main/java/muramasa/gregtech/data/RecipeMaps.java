@@ -60,8 +60,8 @@ public class RecipeMaps {
             new RecipeMap<>(Ref.ID, "extruding", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> LATHING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "lathing", new RecipeBuilder()));
-    public static RecipeMap<PulverizingBuilder> PULVERIZING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(Ref.ID, "pulverizing", new PulverizingBuilder()).setGuiTier(Tier.IV));
+    public static RecipeMap<MaceratingBuilder> MACERATING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(Ref.ID, "macerating", new MaceratingBuilder()).setGuiTier(Tier.IV));
     // For LV machine!
     public static RecipeMap<RecipeBuilder> RECYCLING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "recycling", new RecipeBuilder()));
@@ -115,8 +115,8 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> STEAM_SMELTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "steam_smelting", new RecipeBuilder())
                     .setProxy(RecipeProxies.FURNACE_PROXY.apply(8, 160)).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_PULVERIZING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(Ref.ID, "steam_pulverizing", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
+    public static RecipeMap<RecipeBuilder> STEAM_MACERATING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(Ref.ID, "steam_macerating", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
     public static RecipeMap<RecipeBuilder> STEAM_EXTRACTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "steam_extracting", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
     public static RecipeMap<RecipeBuilder> STEAM_HAMMERING = AntimatterAPI.register(RecipeMap.class,
@@ -167,7 +167,7 @@ public class RecipeMaps {
         STEAM_COMPRESSING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         STEAM_ALLOY_SMELTING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         STEAM_EXTRACTING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
-        STEAM_PULVERIZING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
+        STEAM_MACERATING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         STEAM_HAMMERING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
     }
 }

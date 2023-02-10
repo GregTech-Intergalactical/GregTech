@@ -4,7 +4,6 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.recipe.map.RecipeMap;
 import muramasa.antimatter.registration.RegistrationEvent;
@@ -22,10 +21,10 @@ public class RecipeBuilders {
         }
     }
 
-    public static class PulverizingBuilder extends RecipeBuilder {
+    public static class MaceratingBuilder extends RecipeBuilder {
         @Override
         public IRecipe add(String domain, String id) {
-            return addRecipeToSteamMap(RecipeMaps.STEAM_PULVERIZING, super.add(domain, id), domain, id);
+            return addRecipeToSteamMap(RecipeMaps.STEAM_MACERATING, super.add(domain, id), domain, id);
         }
     }
 

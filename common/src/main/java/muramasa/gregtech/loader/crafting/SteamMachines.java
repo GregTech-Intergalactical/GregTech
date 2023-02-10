@@ -72,7 +72,7 @@ public class SteamMachines {
                         'I', bronzePipe,
                         'H', brickedBronzeHull
                 ), "GGG", "PPP", "IHI");
-        provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_PULVERIZER.getItem(Tier.BRONZE),
+        provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_MACERATOR.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'B', bronzePipe,
                         'H', brickedBronzeHull,
@@ -118,7 +118,7 @@ public class SteamMachines {
                         .put('F', Items.FURNACE)
                         .put('P', steelPipe).build(), "PPP", "PHP", "PFP");
 
-        provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_PULVERIZER.getItem(Tier.STEEL),
+        provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_MACERATOR.getItem(Tier.STEEL),
                 ImmutableMap.of(
                         'B', bronzePipe,
                         'H', brickedSteelHull,

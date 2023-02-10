@@ -3,7 +3,6 @@ package muramasa.gregtech.data;
 import com.google.common.collect.ImmutableMap;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Data;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
@@ -11,13 +10,11 @@ import muramasa.antimatter.tile.single.TileEntityDigitalTransformer;
 import muramasa.antimatter.tile.single.TileEntityInfiniteStorage;
 import muramasa.antimatter.tile.single.TileEntityTransformer;
 import muramasa.gregtech.Ref;
-import muramasa.gregtech.machine.HeatHatch;
 import muramasa.gregtech.machine.SteamMachine;
 import muramasa.gregtech.machine.maps.DisassemblingMap;
 import muramasa.gregtech.nuclear.TileEntityNuclearReactor;
 import muramasa.gregtech.tile.multi.*;
 import muramasa.gregtech.tile.single.*;
-import net.minecraft.resources.ResourceLocation;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.machine.MachineFlag.*;
@@ -36,7 +33,7 @@ public class Machines {
     public static BasicMachine EXTRACTOR = new BasicMachine(Ref.ID, "extractor").setMap(EXTRACTING).addFlags(GUI, ITEM).setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static BasicMachine EXTRUDER = new BasicMachine(Ref.ID, "extruder").setMap(EXTRUDING).addFlags(GUI, ITEM).custom();
     public static BasicMachine LATHE = new BasicMachine(Ref.ID, "lathe").setMap(LATHING).addFlags(GUI, ITEM);
-    public static BasicMachine PULVERIZER = new BasicMachine(Ref.ID, "pulverizer").setMap(PULVERIZING).custom().addFlags(GUI, ITEM).setGuiTiers(ImmutableMap.<Tier, Tier>builder().put(HV, HV).put(EV, EV).put(IV, IV)).setSound(GregTechSounds.PULVERIZER,  0.6f);
+    public static BasicMachine MACERATOR = new BasicMachine(Ref.ID, "macerator").setMap(MACERATING).custom().addFlags(GUI, ITEM).setGuiTiers(ImmutableMap.<Tier, Tier>builder().put(HV, HV).put(EV, EV).put(IV, IV)).setSound(GregTechSounds.PULVERIZER,  0.6f);
     public static BasicMachine RECYCLER = new BasicMachine(Ref.ID, "recycler").setMap(RECYCLING).addFlags(GUI, ITEM);
     public static BasicMachine SCANNER = new BasicMachine(Ref.ID, "scanner").setMap(SCANNING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.MAGNETIZER,  0.6f);
     public static BasicMachine WIRE_MILL = new BasicMachine(Ref.ID, "wire_mill").setMap(WIRE_MILLING).addFlags(GUI, ITEM).custom();
@@ -69,7 +66,7 @@ public class Machines {
     public static SteamMachine LAVA_BOILER = new SteamMachine(Ref.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntityLavaBoiler::new);
     public static SteamMachine SOLAR_BOILER = new SteamMachine(Ref.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntitySolarBoiler::new);
     public static SteamMachine STEAM_FURNACE = new SteamMachine(Ref.ID, "steam_furnace").setMap(STEAM_SMELTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
-    public static SteamMachine STEAM_PULVERIZER = new SteamMachine(Ref.ID, "steam_pulverizer").setMap(STEAM_PULVERIZING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
+    public static SteamMachine STEAM_MACERATOR = new SteamMachine(Ref.ID, "steam_macerator").setMap(STEAM_MACERATING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
     public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(Ref.ID, "steam_extractor").setMap(STEAM_EXTRACTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(Ref.ID, "steam_forge_hammer").setMap(STEAM_HAMMERING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
     public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(Ref.ID, "steam_compressor").setMap(STEAM_COMPRESSING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
