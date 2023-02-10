@@ -35,7 +35,8 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
         widgets.add(Widgets.createDrawableWidget((helper, matrices, mouseX, mouseY, delta) -> {
-            drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/oreby-base.png"), bounds.x + 3, bounds.y + 3, 3 + 1, 3 + 1, bounds.getWidth() - 6, bounds.getHeight() - 6);
+            drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/background.png"), bounds.x + 3, bounds.y + 3, 3 + 1, 3 + 1, bounds.getWidth() - 6, bounds.getHeight() - 6);
+            drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/base.png"), bounds.x + 3, bounds.y + 3, 3 + 1, 3 + 1, bounds.getWidth() - 6, bounds.getHeight() - 6);
         }));
         //widgets.addAll(setupSlots(display, bounds));
         return widgets;
