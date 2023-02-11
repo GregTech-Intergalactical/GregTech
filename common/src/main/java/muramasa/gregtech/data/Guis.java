@@ -123,6 +123,7 @@ public class Guis {
         FORGE_HAMMER.add(FURNACE);
         SIFTER.add(DISASSEMBLER);
         PLASMA_ARC_FURNACE.add(ARC_FURNACE);
+        ELECTROMAGNETIC_SEPARATOR.add(COMPRESSOR).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25);
 
         COKE_OVEN.add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25);
 

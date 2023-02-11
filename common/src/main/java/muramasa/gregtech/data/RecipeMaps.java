@@ -111,6 +111,8 @@ public class RecipeMaps {
             new RecipeMap<>(Ref.ID, "plasma_arc_smelting", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PACKAGING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "packaging", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> ELECTROMAGNETIC_SEPARATING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(Ref.ID, "electromagnetic_separating", new RecipeBuilder()));
 
     public static RecipeMap<RecipeBuilder> STEAM_SMELTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "steam_smelting", new RecipeBuilder())
