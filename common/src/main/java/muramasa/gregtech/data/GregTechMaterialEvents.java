@@ -1023,10 +1023,11 @@ public class GregTechMaterialEvents {
         CHEMBATH_PERSULFATE.add(Tetrahedrite,Zinc);
         CHEMBATH_PERSULFATE.add(Zinc,Gallium);
         CHEMBATH_PERSULFATE.add(AntimatterMaterials.Copper,Nickel);
-        MaterialTags.ELECSEPI.add(Bastnasite/* , Monazite */);
-        MaterialTags.ELECSEPG.add(Magnetite, VanadiumMagnetite);
-        MaterialTags.ELECSEPN.add(YellowLimonite, BrownLimonite, Pyrite, BandedIron, Nickel, Glauconite, Pentlandite, Tin, Antimony,
-                Ilmenite, Manganese, Chrome, Andradite);
+        GregTechMaterialTags.ELECTROMAGNETIC_SEPARATOR_IRON.add(YellowLimonite, BrownLimonite, Tin/*, Chrome*/, Ilmenite, BandedIron, Pyrite, Glauconite, Nickel, /*Chromite, */Pentlandite, Manganese);
+        GregTechMaterialTags.ELECTROMAGNETIC_SEPARATOR_GOLD.add(VanadiumMagnetite, Magnetite);
+        GregTechMaterialTags.ELECTROMAGNETIC_SEPARATOR_NEODYMIUM.add(/*Monazite, */Bastnasite);
+        //MaterialTags.ELECSEPN.add(YellowLimonite, BrownLimonite, Pyrite, BandedIron, Nickel, Glauconite, Pentlandite, Tin, Antimony,
+        //        Ilmenite, Manganese, Chrome, Andradite);
         MaterialTags.ELEC.add(Methane, CarbonDioxide, NitrogenDioxide, Toluene, VinylChloride, SulfurDioxide, SulfurTrioxide,
                 Dimethylamine, DinitrogenTetroxide, NitricOxide, Ammonia, Chloromethane, Tetrafluoroethylene,
                 CarbonMonoxide, Ethylene, Propane, Ethenone, Ethanol, SodiumPersulfate, Dichlorobenzene,
@@ -1052,10 +1053,6 @@ public class GregTechMaterialEvents {
         MaterialTags.CRACK.add(RefineryGas, Naphtha, Ethane, Propane, Butane, Butene, Ethylene, Propene, LightFuel, HeavyFuel);
         MaterialTags.CALCITE2X.add(Pyrite, BrownLimonite, YellowLimonite, Magnetite);
         MaterialTags.CALCITE3X.add(AntimatterMaterials.Iron, WroughtIron);
-        MaterialTags.WASHM.add(AntimatterMaterials.Gold, Silver, Osmium, Platinum, Cooperite, Galena, Nickel, Tungstate, Lead, Magnetite, Iridium,
-                AntimatterMaterials.Copper, Chalcopyrite);
-        MaterialTags.WASHS.add(Zinc, Nickel, AntimatterMaterials.Copper, Cobaltite, Tetrahedrite, AntimatterMaterials.Gold, Sphalerite, Garnierite, Chalcopyrite, Cooperite,
-                Platinum, Pentlandite, Tin, Malachite, YellowLimonite);
         MaterialTags.NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */AntimatterMaterials.Coal, Charcoal, Lignite,
                 NitroFuel, AntimatterMaterials.Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ BlueSapphire, Ruby, Opal, Olivine,
                 AntimatterMaterials.Lapis/* , Sodalite, Lazurite, Monazite */, Quartzite, AntimatterMaterials.Quartz, Phosphorus, Phosphate, NetherStar,
