@@ -11,6 +11,7 @@ import muramasa.antimatter.event.CraftingEvent;
 import muramasa.antimatter.event.ProvidersEvent;
 import muramasa.antimatter.integration.rei.REIUtils;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
@@ -159,7 +160,17 @@ public class GregTech extends AntimatterMod {
                     });
                     REIUtils.addExtraDisplay(r -> {
                         AntimatterMaterialTypes.ORE.all().forEach(m -> {
-                            r.add(new OreProcessingDisplay(m));
+                            if (m.has(MaterialTags.CHEMBATH_PERSULFATE) || m.has(MaterialTags.CHEMBATH_MERCURY)){
+                                if (m.has(MaterialTags.CHEMBATH_MERCURY)){
+                                    r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.MERCURY));
+                                }
+                                if (m.has(MaterialTags.CHEMBATH_PERSULFATE)){
+                                    r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.PERSULFATE));
+                                }
+                            } else {
+                                r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.NONE));
+                            }
+
                         });
                     });
                 }
