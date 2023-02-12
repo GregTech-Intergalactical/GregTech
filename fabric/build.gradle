@@ -31,7 +31,9 @@ dependencies{
     implementation(project(path: ":antimatter-fabric", configuration: "namedElements"))
     modImplementation("io.github.feltmc:fabricated-forge-caps:${rootProject.fabricated_forge_hash}")
     modImplementation("io.github.feltmc:fabricated-forge-tag-extensions:${rootProject.fabricated_forge_hash}")
-    modImplementation("io.github.feltmc:fabricated-forge-modeldata:${rootProject.fabricated_forge_hash}")
+    modImplementation("io.github.feltmc:fabricated-forge-modeldata:${rootProject.fabricated_forge_hash}"){
+        exclude(group: "curse.maven")
+    }
     modImplementation(include("io.github.feltmc:felt-recipe-api:1.0.0")){
         exclude(group: "net.fabricmc.fabric-api")
         exclude(group: "com.terraformersmc")
