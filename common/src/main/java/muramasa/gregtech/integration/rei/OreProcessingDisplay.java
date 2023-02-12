@@ -1,5 +1,6 @@
 package muramasa.gregtech.integration.rei;
 
+import com.ibm.icu.text.ListFormatter;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.Display;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
@@ -29,7 +30,7 @@ public class OreProcessingDisplay implements Display {
     private final List<EntryIngredient> input, output;
     SepMode sepMode;
     BathingMode bathingMode;
-    Material byProduct1, byProduct2, byProduct3;
+    Material byProduct1, byProduct2, byProduct3, byProduct4;
 
     public OreProcessingDisplay(Material material, BathingMode bathingMode){
 
