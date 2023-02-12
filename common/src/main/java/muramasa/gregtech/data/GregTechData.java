@@ -19,10 +19,7 @@ import muramasa.antimatter.pipe.types.*;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.Ref;
-import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.block.BlockCoil;
-import muramasa.gregtech.block.BlockFusionCasing;
-import muramasa.gregtech.block.BlockTurbineCasing;
+import muramasa.gregtech.block.*;
 import muramasa.gregtech.cover.CoverConveyor;
 import muramasa.gregtech.cover.CoverDrain;
 import muramasa.gregtech.cover.CoverPump;
@@ -315,10 +312,10 @@ public class GregTechData {
 
     public static final BlockCasing CASING_FIRE_BRICK = new BlockCasing(Ref.ID, "casing_fire_brick");
     public static final BlockCasing CASING_BRONZE = new BlockCasing(Ref.ID, "casing_bronze");
-    public static final BlockCasing CASING_BRICKED_BRONZE = new BlockCasing(Ref.ID, "casing_bricked_bronze");
+    public static final BlockCasing CASING_BRICKED_BRONZE = new BlockSidedCasing(Ref.ID, "casing_bricked_bronze", "brick", "bronze");
     public static final BlockCasing CASING_BRONZE_PLATED_BRICK = new BlockCasing(Ref.ID, "casing_bronze_plated_brick");
     public static final BlockCasing CASING_STEEL = new BlockCasing(Ref.ID, "casing_steel");
-    public static final BlockCasing CASING_BRICKED_STEEL = new BlockCasing(Ref.ID, "casing_bricked_steel");
+    public static final BlockCasing CASING_BRICKED_STEEL = new BlockSidedCasing(Ref.ID, "casing_bricked_steel", "brick", "steel");
     public static final BlockCasing CASING_SOLID_STEEL = new BlockCasing(Ref.ID, "casing_solid_steel");
     public static final BlockCasing CASING_STAINLESS_STEEL = new BlockCasing(Ref.ID, "casing_stainless_steel");
     public static final BlockCasing CASING_TITANIUM = new BlockCasing(Ref.ID, "casing_titanium");

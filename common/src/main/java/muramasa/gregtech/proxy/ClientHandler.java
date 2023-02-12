@@ -40,5 +40,24 @@ public class ClientHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        target = new File(dir, "GregTech-New-Machine-Textures.zip");
+
+
+        //if(!target.exists())
+        try {
+            dir.mkdirs();
+            InputStream in = GregTech.class.getResourceAsStream("/assets/gregtech/new-machine-base.zip");
+            FileOutputStream out = new FileOutputStream(target);
+
+            byte[] buf = new byte[16384];
+            int len = 0;
+            while((len = in.read(buf)) > 0)
+                out.write(buf, 0, len);
+
+            in.close();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
