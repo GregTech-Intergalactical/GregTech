@@ -5,7 +5,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.gui.Renderer;
-import me.shedaniel.rei.api.client.gui.widgets.Slot;
 import me.shedaniel.rei.api.client.gui.widgets.Widget;
 import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
@@ -15,21 +14,14 @@ import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import muramasa.antimatter.Data;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.gui.SlotData;
-import muramasa.antimatter.gui.SlotType;
-import muramasa.antimatter.integration.rei.category.RecipeMapDisplay;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.gregtech.Ref;
-import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.Materials;
-import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -41,8 +33,6 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -51,7 +41,7 @@ import static muramasa.antimatter.material.MaterialTags.*;
 
 public class OreProcessingCategory implements DisplayCategory<OreProcessingDisplay> {
     protected static Renderer icon = EntryStacks.of(Items.IRON_ORE);
-    private static Component title = new TranslatableComponent(Ref.ID + ".rei.tooltip.ore.byproducts");
+    private static final Component title = new TranslatableComponent(Ref.ID + ".rei.tooltip.ore.byproducts");
     static CategoryIdentifier<? extends OreProcessingDisplay> id = CategoryIdentifier.of(Ref.ID, "ore_byproducts");
 
     @Override
@@ -241,9 +231,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
 
     private EntryIngredient ofMachine(Machine<?> machine, Item... extra){
         List<EntryStack<?>> stacks = new ArrayList<>();
-        machine.getTiers().forEach(t -> {
-            stacks.add(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(machine.getItem(t))));
-        });
+        machine.getTiers().forEach(t -> stacks.add(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(machine.getItem(t)))));
         for (Item item : extra) {
             stacks.add(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(item)));
         }
