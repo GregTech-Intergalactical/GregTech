@@ -150,7 +150,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
     private List<Widget> setupBaseMachineSlots(OreProcessingDisplay display, Rectangle bounds){
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createSlot(xy(4, 26, bounds)).entries(ofMachine(Machines.MACERATOR)).markInput().disableBackground());
-        widgets.add(Widgets.createSlot(xy(4, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED.get(display.ore, ORE_MULTI.getInt(display.ore))))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(4, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED.get(display.ore, 2 * ORE_MULTI.getInt(display.ore))))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(4, 66, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(display.byProduct1),1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(25, 72, bounds)).entries(ofMachine(Machines.MACERATOR)).markInput().disableBackground());
         widgets.add(Widgets.createSlot(xy(25, 93, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST_IMPURE.get(display.ore, 1)))).markOutput().disableBackground());
