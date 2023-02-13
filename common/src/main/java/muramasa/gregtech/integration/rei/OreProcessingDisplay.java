@@ -30,7 +30,7 @@ public class OreProcessingDisplay implements Display {
     private final List<EntryIngredient> input, output;
     SepMode sepMode;
     BathingMode bathingMode;
-    Material byProduct1, byProduct2, byProduct3, byProduct4;
+    Material byProduct1, byProduct2, byProduct3;
 
     public OreProcessingDisplay(Material material, BathingMode bathingMode){
 

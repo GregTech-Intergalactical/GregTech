@@ -75,7 +75,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
             if (display.sepMode != OreProcessingDisplay.SepMode.NONE){
                 drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/sep.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
-            if (DIRECT_SMELT_INTO.getMapping(display.ore) != null){
+            if (!display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE)){
                 drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/smelt1.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.ore.has(DUST) && display.ore.has(INGOT)){
@@ -93,10 +93,12 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createSlot(xy(4, 4, bounds)).entries(EntryIngredients.ofIngredient(ORE.getMaterialIngredient(display.ore, 1))).markInput().disableBackground());
         widgets.addAll(setupBaseMachineSlots(display, bounds));
-        if(DIRECT_SMELT_INTO.getMapping(display.ore) != null){
+        if (!display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE)){
             widgets.addAll(setupPrimaryFurnaceSlot(display, bounds));
         }
-        widgets.addAll(setupSecondaryFurnaceSlots(display, bounds));
+        if (display.ore.has(INGOT)){
+            widgets.addAll(setupSecondaryFurnaceSlots(display, bounds));
+        }
         if (display.bathingMode != OreProcessingDisplay.BathingMode.NONE){
             widgets.addAll(setupChemMachineSlots(display, bounds));
         }
@@ -104,10 +106,10 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
             widgets.addAll(setupSiftMachineSlots(bounds));
         }
         if (display.sepMode != OreProcessingDisplay.SepMode.NONE){
-            widgets.addAll(setupSepMachineSlots(bounds));
+            widgets.addAll(setupSepMachineSlots(display, bounds));
         }
         if (display.ore.has(INGOT_HOT)){
-            widgets.addAll(setupVacMachineSlots(bounds));
+            widgets.addAll(setupVacMachineSlots(display, bounds));
         }
         return widgets;
     }
@@ -134,6 +136,11 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         if (display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE)){
             widgets.add(Widgets.createSlot(xy(122, 111, bounds)).entries(ofMachine(Machines.BLAST_FURNACE)).markOutput().disableBackground());
             widgets.add(Widgets.createSlot(xy(72, 146, bounds)).entries(ofMachine(Machines.BLAST_FURNACE)).markOutput().disableBackground());
+            if(display.ore.has(INGOT_HOT)){
+                widgets.add(Widgets.createSlot(xy(97, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(INGOT_HOT.get(display.ore),1)))).markOutput().disableBackground());
+            }else{
+                widgets.add(Widgets.createSlot(xy(97, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(INGOT.get(display.ore),1)))).markOutput().disableBackground());
+            }
         }else{
             widgets.add(Widgets.createSlot(xy(122, 111, bounds)).entries(
                             EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(Items.FURNACE)),
@@ -143,6 +150,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
                             EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(Items.FURNACE)),
                                     EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(Items.BLAST_FURNACE))))
                     .markInput().disableBackground());
+            widgets.add(Widgets.createSlot(xy(97, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(INGOT.get(display.ore),1)))).markOutput().disableBackground());
         }
         return widgets;
     }
@@ -169,11 +177,11 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         widgets.add(Widgets.createSlot(xy(148, 93, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(display.ore, 1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(148, 111, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST_TINY.get(display.byProduct2),1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(50, 81, bounds)).entries(ofMachine(Machines.CENTRIFUGE)).markInput().disableBackground());
-        widgets.add(Widgets.createSlot(xy(50, 102, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST_TINY.get(display.ore, 1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(50, 102, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(display.ore, 1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(50, 120, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST_TINY.get(display.byProduct1),1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(72, 81, bounds)).entries(ofMachine(Machines.MACERATOR)).markInput().disableBackground());
-        widgets.add(Widgets.createSlot(xy(50, 102, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(display.ore, 1)))).markOutput().disableBackground());
-        widgets.add(Widgets.createSlot(xy(50, 120, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(display.byProduct3),1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(72, 102, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(display.ore, 1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(72, 120, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(display.byProduct3),1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(4, 128, bounds)).entries(ofMachine(Machines.ORE_WASHER, Items.CAULDRON)).markInput().disableBackground());
         widgets.add(Widgets.createSlot(xy(25, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(display.ore, 1)))).markOutput().disableBackground());
         return widgets;
@@ -199,15 +207,30 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         return widgets;
     }
 
-    private List<Widget> setupSepMachineSlots(Rectangle bounds){
+    private List<Widget> setupSepMachineSlots(OreProcessingDisplay display, Rectangle bounds){
+        Item dust, nugget;
         List<Widget> widgets = new ArrayList<>();
+        if(display.sepMode == OreProcessingDisplay.SepMode.IRON){
+            dust = DUST_SMALL.get(AntimatterMaterials.Iron);
+            nugget = NUGGET.get(AntimatterMaterials.Iron);
+        } else if(display.sepMode == OreProcessingDisplay.SepMode.GOLD){
+            dust = DUST_SMALL.get(AntimatterMaterials.Gold);
+            nugget = NUGGET.get(AntimatterMaterials.Gold);
+        }else{
+            dust = DUST_SMALL.get(Materials.Neodymium);
+            nugget = NUGGET.get(Materials.Neodymium);
+        }
         widgets.add(Widgets.createSlot(xy(166, 72, bounds)).entries(ofMachine(Machines.ELECTROMAGNETIC_SEPARATOR)).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(166, 93, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(display.ore),1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(166, 111, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(dust,2)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(166, 129, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(nugget,1)))).markOutput().disableBackground());
         return widgets;
     }
 
-    private List<Widget> setupVacMachineSlots(Rectangle bounds){
+    private List<Widget> setupVacMachineSlots(OreProcessingDisplay display, Rectangle bounds){
         List<Widget> widgets = new ArrayList<>();
-        widgets.add(Widgets.createSlot(xy(116, 146, bounds)).entries(ofMachine(Machines.VACUUM_FREEZER)).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(123, 146, bounds)).entries(ofMachine(Machines.VACUUM_FREEZER)).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(148, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(INGOT.get(display.ore),1)))).markOutput().disableBackground());
         return widgets;
     }
 
