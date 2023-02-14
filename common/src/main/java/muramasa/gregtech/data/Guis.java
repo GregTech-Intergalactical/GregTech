@@ -3,14 +3,14 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.capability.IGuiHandler;
+import muramasa.antimatter.gui.BarDir;
 import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.gui.MenuHandlerMachine;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
 import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
 import muramasa.antimatter.gui.slot.ISlotProvider;
-import muramasa.antimatter.gui.widget.TextWidget;
-import muramasa.antimatter.gui.widget.WidgetSupplier;
+import muramasa.antimatter.gui.widget.*;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tile.TileEntityMachine;
@@ -226,6 +226,21 @@ public class Guis {
                 .add(UV, FL_OUT, 79, 34).add(UV, FL_OUT, 97, 34).add(UV, FL_OUT, 61, 52).add(UV, FL_OUT, 79, 52)
                 .add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.add(MAX, HATCH_FLUID_O, ULV);
+
+        FORGE_HAMMER.getCallbacks().remove(1);
+        FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).addGuiCallback(t -> {
+            t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a,b)).setPos(9, 5).clientSide())
+                    .addWidget(ProgressWidget.build(BarDir.BOTTOM, false))
+                    .addWidget(MachineStateWidget.build().setPos(84,46).setWH(8,8))
+                    .addWidget(IOWidget.build(9,63,16,16));
+        });
+
+        STEAM_FORGE_HAMMER.getCallbacks().remove(1);
+        STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).addGuiCallback(t -> {
+            t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a,b)).setPos(9, 5).clientSide())
+                    .addWidget(ProgressWidget.build(BarDir.BOTTOM, false))
+                    .addWidget(MachineStateWidget.build().setPos(84,46).setWH(8,8));
+        });
 
         COAL_BOILER.addGuiCallback(t -> {
             t.addWidget(WidgetSupplier
