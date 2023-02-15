@@ -93,7 +93,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
             widgets.addAll(setupChemMachineSlots(display, bounds));
         }
         if (display.ore.has(AntimatterMaterialTypes.GEM)){
-            widgets.addAll(setupSiftMachineSlots(bounds));
+            widgets.addAll(setupSiftMachineSlots(display, bounds));
         }
         if (display.sepMode != OreProcessingDisplay.SepMode.NONE){
             widgets.addAll(setupSepMachineSlots(display, bounds));
@@ -191,9 +191,23 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         return widgets;
     }
 
-    private List<Widget> setupSiftMachineSlots(Rectangle bounds){
+    private List<Widget> setupSiftMachineSlots(OreProcessingDisplay display, Rectangle bounds){
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createSlot(xy(110, 25, bounds)).entries(ofMachine(Machines.SIFTER)).markInput().disableBackground());
+        if (display.ore.has(GEM_EXQUISITE)){
+            widgets.add(Widgets.createSlot(xy(130, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(GEM_EXQUISITE.get(display.ore),1)))).markOutput().disableBackground());
+        }
+        if (display.ore.has(GEM_FLAWLESS)){
+            widgets.add(Widgets.createSlot(xy(148, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(GEM_FLAWLESS.get(display.ore),1)))).markOutput().disableBackground());
+        }
+        if (display.ore.has(GEM_FLAWED)){
+            widgets.add(Widgets.createSlot(xy(130, 22, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(GEM_FLAWED.get(display.ore),1)))).markOutput().disableBackground());
+        }
+        if (display.ore.has(GEM_CHIPPED)){
+            widgets.add(Widgets.createSlot(xy(148, 22, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(GEM_CHIPPED.get(display.ore),1)))).markOutput().disableBackground());
+        }
+        widgets.add(Widgets.createSlot(xy(166, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(GEM.get(display.ore),1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(166, 22, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST_PURE.get(display.ore),1)))).markOutput().disableBackground());
         return widgets;
     }
 
