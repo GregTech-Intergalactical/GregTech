@@ -1014,7 +1014,7 @@ public class GregTechMaterialEvents {
         CHEMBATH_MERCURY.add(Chalcopyrite, AntimatterMaterials.Gold);
         CHEMBATH_MERCURY.add(AntimatterMaterials.Gold,Nickel);
         CHEMBATH_MERCURY.add(Silver,Sulfur);
-        //CHEMBATH_MERCURY.add(Osmium,Iridium);
+        CHEMBATH_MERCURY.add(Osmium,Iridium);
         CHEMBATH_MERCURY.add(Platinum,Iridium);
         CHEMBATH_PERSULFATE.add(Nickel, AntimatterMaterials.Iron);
         CHEMBATH_PERSULFATE.add(Cobalt,Cobaltite);

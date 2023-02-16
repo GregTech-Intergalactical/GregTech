@@ -170,7 +170,6 @@ public class GregTech extends AntimatterMod {
                             } else {
                                 r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.NONE));
                             }
-
                         });
                     });
                 }

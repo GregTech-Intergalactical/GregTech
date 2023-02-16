@@ -9,23 +9,14 @@ import me.shedaniel.rei.api.common.util.EntryStacks;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.recipe.map.RecipeMap;
 import muramasa.gregtech.data.GregTechMaterialTags;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class OreProcessingDisplay implements Display {
     Material ore;
-    IRecipe[] recipes;
     private final List<EntryIngredient> input, output;
     SepMode sepMode;
     BathingMode bathingMode;
@@ -36,7 +27,6 @@ public class OreProcessingDisplay implements Display {
         this.ore = material;
         this.bathingMode = bathingMode;
         this.sepMode = material.has(GregTechMaterialTags.ELECTROMAGNETIC_SEPARATOR_IRON) ? SepMode.IRON : material.has(GregTechMaterialTags.ELECTROMAGNETIC_SEPARATOR_GOLD) ? SepMode.GOLD : material.has(GregTechMaterialTags.ELECTROMAGNETIC_SEPARATOR_NEODYMIUM) ? SepMode.NEODYMIUM : SepMode.NONE;
-        //this.recipes = recipes;
         this.input = createInputEntries(List.of(AntimatterMaterialTypes.ORE.getMaterialIngredient(material, 1)));
         Material aOreByProduct1 = ore.getByProducts().size() >= 1 ? ore.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(ore);
         Material aOreByProduct2 = ore.getByProducts().size() >= 2 ? ore.getByProducts().get(1) : aOreByProduct1;
@@ -52,9 +42,7 @@ public class OreProcessingDisplay implements Display {
     }
 
     public static List<EntryIngredient> createInputEntries(List<Ingredient> input) {
-        return input.stream().map(i -> {
-            return Arrays.stream(i.getItems()).map(EntryStacks::of).toList();
-        }).map(EntryIngredient::of).toList();
+        return input.stream().map(i -> Arrays.stream(i.getItems()).map(EntryStacks::of).toList()).map(EntryIngredient::of).toList();
     }
 
     @Override
