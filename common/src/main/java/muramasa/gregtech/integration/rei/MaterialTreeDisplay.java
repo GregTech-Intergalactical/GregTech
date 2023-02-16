@@ -75,7 +75,7 @@ public class MaterialTreeDisplay implements Display {
             this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(SCREW.get(mat),1))));
         }
         if(mat.has(WIRE)){
-            Item wireItem = AntimatterAPI.get(WIRE.getClass(),"wire_"+mat.getId()).getBlockItem(PipeSize.VTINY);
+            Item wireItem = AntimatterAPI.get(Wire.class,"wire_"+mat.getId()).getBlockItem(PipeSize.VTINY);
             this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(wireItem))));
         }
         if(mat.has(CABLE)){
