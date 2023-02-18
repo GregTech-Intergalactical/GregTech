@@ -91,7 +91,7 @@ public class Guis {
         RECYCLER.add(COMPRESSOR);
         SCANNER.add(COMPRESSOR);
         WIRE_MILL.add(COMPRESSOR);
-        CENTRIFUGE.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 142, 16)
+        CENTRIFUGE.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16)
                 .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(ENERGY, 80, 63).add(FL_OUT, 107, 63)
                 .add(FL_OUT, 125, 63);
         ELECTROLYZER.add(CENTRIFUGE);
