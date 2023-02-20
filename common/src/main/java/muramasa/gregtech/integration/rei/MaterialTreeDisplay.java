@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class MaterialTreeDisplay implements Display {
     public MaterialTreeDisplay(Material material){
         this.mat = material;
         this.input = createInputEntries(List.of(AntimatterMaterialTypes.DUST.getMaterialIngredient(material, 1)));
-        this.output = List.of(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.FLUID, toREIFLuidStack((mat.getLiquid(1000))))));
+        this.output = new ArrayList<>(List.of(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.FLUID, toREIFLuidStack((mat.getLiquid(1000)))))));
         if(mat.has(DUST_SMALL)){
             this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(DUST_SMALL.get(mat),1))));
         }
