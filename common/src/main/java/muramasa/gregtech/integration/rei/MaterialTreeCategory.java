@@ -19,6 +19,9 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
+import muramasa.antimatter.pipe.PipeSize;
+import muramasa.antimatter.pipe.types.Cable;
+import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.Ref;
 import muramasa.gregtech.data.Machines;
 import net.minecraft.client.gui.GuiComponent;
@@ -108,10 +111,12 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
             widgets.add(Widgets.createSlot(xy(156, 83, bounds)).entries(EntryIngredients.ofIngredient(SCREW.getMaterialIngredient(mat, 1))).markOutput().disableBackground());
         }
         if(mat.has(WIRE)){
-            widgets.add(Widgets.createSlot(xy(86, 4, bounds)).entries(EntryIngredients.ofIngredient(AntimatterAPI.get(String.valueOf(WIRE.getClass()),mat.getId()))).markOutput().disableBackground());
+            Item wireItem = AntimatterAPI.get(Wire.class,"wire_"+mat.getId()).getBlockItem(PipeSize.VTINY);
+            widgets.add(Widgets.createSlot(xy(86, 4, bounds)).entries(EntryIngredients.of(wireItem)).markOutput().disableBackground());
         }
         if(mat.has(MaterialTags.CABLE)){
-            widgets.add(Widgets.createSlot(xy(127, 4, bounds)).entries(EntryIngredients.ofIngredient(AntimatterAPI.get(String.valueOf(CABLE.getClass()),mat.getId()))).markOutput().disableBackground());
+            Item wireItem = AntimatterAPI.get(Cable.class,"cable_"+mat.getId()).getBlockItem(PipeSize.VTINY);
+            widgets.add(Widgets.createSlot(xy(127, 4, bounds)).entries(EntryIngredients.of(wireItem)).markOutput().disableBackground());
         }
         if(mat.has(WIRE_FINE)){
             widgets.add(Widgets.createSlot(xy(45, 4, bounds)).entries(EntryIngredients.ofIngredient(WIRE_FINE.getMaterialIngredient(mat, 1))).markOutput().disableBackground());
