@@ -186,7 +186,7 @@ public class GregTech extends AntimatterMod {
                         });
                     });
                     REIUtils.addExtraDisplay(r -> {
-                        AntimatterMaterialTypes.INGOT.all().forEach(m -> {
+                        AntimatterMaterialTypes.DUST.all().forEach(m -> {
                             r.add(new MaterialTreeDisplay(m));
                         });
                     });
