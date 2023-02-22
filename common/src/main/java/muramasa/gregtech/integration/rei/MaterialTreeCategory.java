@@ -17,21 +17,20 @@ import me.shedaniel.rei.api.common.util.EntryStacks;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.Ref;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-import java.nio.channels.Pipe;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -143,6 +142,7 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
             if(mat.has(WIRE_FINE)){
                 drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/wire_fine.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
+            setupInfo(display, bounds, matrices);
         }));
         widgets.addAll(setupSlots(display, bounds));
         return widgets;
@@ -221,6 +221,17 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
             widgets.add(Widgets.createSlot(xy(120, 50, bounds)).entries(EntryIngredients.ofIngredient(WIRE_FINE.getMaterialIngredient(mat, 1))).markOutput().disableBackground());
         }
         return widgets;
+    }
+
+    private void setupInfo(MaterialTreeDisplay display, Rectangle bounds, PoseStack stack){
+        Material mat = display.mat;
+        renderString(stack, "Name: "+mat.getId(), Minecraft.getInstance().font, 12, 3, 0xFFFFFF, bounds.x, bounds.y);
+        renderString(stack, "Formula: "+mat.getChemicalFormula(), Minecraft.getInstance().font, 12, 13, 0xFFFFFF, bounds.x, bounds.y);
+        renderString(stack, "Mass: "+mat.getMass(), Minecraft.getInstance().font, 12, 23, 0xFFFFFF, bounds.x, bounds.y);
+    }
+
+    private void renderString(PoseStack stack, String string, Font render, float x, float y, int color, int guiOffsetX, int guiOffsetY) {
+        render.drawShadow(stack, string, (guiOffsetX + x), guiOffsetY + y, color);
     }
 
     private Point xy(int x, int y, Rectangle bounds){
