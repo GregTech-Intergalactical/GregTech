@@ -16,9 +16,12 @@ import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
+import muramasa.antimatter.pipe.types.FluidPipe;
+import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.Ref;
 import net.minecraft.client.Minecraft;
@@ -29,6 +32,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -101,9 +105,9 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
             if(mat.has(FRAME)){
                 drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/frame.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
-            //if(AntimatterAPI.get(Pipe.class,"pipe_"+mat.getId()).getBlockItem(PipeSize.VTINY) != null){
-            //drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/pipe.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
-            //}
+            if(mat.has(FLUIDPIPE) || mat.has(ITEMPIPE)){
+                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/pipe.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            }
             if(mat.has(GEAR)){
                 drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/gear.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
@@ -182,9 +186,34 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
         if(mat.has(FRAME)){
             widgets.add(Widgets.createSlot(xy(90, 74, bounds)).entries(EntryIngredients.ofIngredient(FRAME.getMaterialIngredient(mat, 1))).markOutput().disableBackground());
         }
-        //if(AntimatterAPI.get(Pipe.class,"pipe_"+mat.getId()).getBlockItem(PipeSize.VTINY) != null){
-            //widgets.add(Widgets.createSlot(xy(180, 146, bounds)).entries(EntryIngredients.ofIngredient(AntimatterAPI.get(Pipe.class,"pipe_"+mat.getId()).getBlockItem(PipeSize.VTINY))).markOutput().disableBackground());
-        //}
+        if(mat.has(FLUIDPIPE) || mat.has(ITEMPIPE)){
+            if(mat.has(FLUIDPIPE) && !mat.has(ITEMPIPE)){
+                Item fPipeItemT = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.TINY);
+                Item fPipeItemS = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.SMALL);
+                Item fPipeItemN = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.NORMAL);
+                Item fPipeItemL = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.LARGE);
+                Item fPipeItemH = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.HUGE);
+                widgets.add(Widgets.createSlot(xy(90, 110, bounds)).entries(ofItems(fPipeItemT,fPipeItemS,fPipeItemN,fPipeItemL,fPipeItemH
+                        )).markOutput().disableBackground());
+            }else if(mat.has(ITEMPIPE) && !mat.has(FLUIDPIPE)){
+                Item iPipeItemN = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.NORMAL);
+                Item iPipeItemL = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.LARGE);
+                Item iPipeItemH = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.HUGE);
+                widgets.add(Widgets.createSlot(xy(90, 110, bounds)).entries(ofItems(iPipeItemN,iPipeItemL,iPipeItemH
+                        )).markOutput().disableBackground());
+            }else{
+                Item fPipeItemT = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.TINY);
+                Item fPipeItemS = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.SMALL);
+                Item fPipeItemN = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.NORMAL);
+                Item fPipeItemL = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.LARGE);
+                Item fPipeItemH = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.HUGE);
+                Item iPipeItemN = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.NORMAL);
+                Item iPipeItemL = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.LARGE);
+                Item iPipeItemH = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.HUGE);
+                widgets.add(Widgets.createSlot(xy(90, 110, bounds)).entries(ofItems(fPipeItemT,fPipeItemS,fPipeItemN,fPipeItemL,fPipeItemH,
+                        iPipeItemN,iPipeItemL,iPipeItemH)).markOutput().disableBackground());
+            }
+        }
         if(mat.has(GEAR)){
             widgets.add(Widgets.createSlot(xy(120, 110, bounds)).entries(EntryIngredients.ofIngredient(GEAR.getMaterialIngredient(mat, 1))).markOutput().disableBackground());
         }
@@ -225,9 +254,9 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
 
     private void setupInfo(MaterialTreeDisplay display, Rectangle bounds, PoseStack stack){
         Material mat = display.mat;
-        renderString(stack, "Name: "+mat.getId(), Minecraft.getInstance().font, 12, 3, 0xFFFFFF, bounds.x, bounds.y);
-        renderString(stack, "Formula: "+mat.getChemicalFormula(), Minecraft.getInstance().font, 12, 13, 0xFFFFFF, bounds.x, bounds.y);
-        renderString(stack, "Mass: "+mat.getMass(), Minecraft.getInstance().font, 12, 23, 0xFFFFFF, bounds.x, bounds.y);
+        renderString(stack, "Name: "+mat.getId(), Minecraft.getInstance().font, 12, 10, 0xFFFFFF, bounds.x, bounds.y);
+        renderString(stack, "Formula: "+mat.getChemicalFormula(), Minecraft.getInstance().font, 12, 20, 0xFFFFFF, bounds.x, bounds.y);
+        renderString(stack, "Mass: "+mat.getMass(), Minecraft.getInstance().font, 12, 30, 0xFFFFFF, bounds.x, bounds.y);
     }
 
     private void renderString(PoseStack stack, String string, Font render, float x, float y, int color, int guiOffsetX, int guiOffsetY) {
@@ -247,6 +276,15 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
             stack = fluid.getGas(amount);
         }
         stacks.add(EntryStack.of(VanillaEntryTypes.FLUID, toREIFLuidStack(stack)));
+        return EntryIngredient.of(stacks);
+    }
+
+    private EntryIngredient ofItems(Item item, Item... extras){
+        List<EntryStack<?>> stacks = new ArrayList<>();
+        stacks.add(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(item)));
+        for (Item extra : extras) {
+            stacks.add(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(extra)));
+        }
         return EntryIngredient.of(stacks);
     }
 

@@ -163,7 +163,6 @@ public class GregTech extends AntimatterMod {
                     REIUtils.addExtraCategory(r -> {
                         MaterialTreeCategory cat = new MaterialTreeCategory();
                         r.add(cat);
-                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.MACERATOR.getItem(Tier.LV))));
                         r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.LATHE.getItem(Tier.LV))));
                         r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.BENDER.getItem(Tier.LV))));
                         r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.CUTTER.getItem(Tier.LV))));

@@ -1,5 +1,6 @@
 package muramasa.gregtech.integration.rei;
 
+import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.Display;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
@@ -11,6 +12,8 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
+import muramasa.antimatter.pipe.types.FluidPipe;
+import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.antimatter.pipe.types.Wire;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,8 +26,8 @@ import java.util.List;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.integration.rei.REIUtils.toREIFLuidStack;
-import static muramasa.antimatter.material.MaterialTags.CABLE;
-import static muramasa.antimatter.material.MaterialTags.WIRE;
+import static muramasa.antimatter.material.MaterialTags.*;
+import static muramasa.antimatter.material.MaterialTags.ITEMPIPE;
 
 public class MaterialTreeDisplay implements Display {
     Material mat;
@@ -89,6 +92,26 @@ public class MaterialTreeDisplay implements Display {
         }
         if(mat.has(WIRE_FINE)){
             this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(WIRE_FINE.get(mat),1))));
+        }
+        if (mat.has(FLUIDPIPE)) {
+            Item fPipeItemT = AntimatterAPI.get(FluidPipe.class, "fluid_" + mat.getId()).getBlockItem(PipeSize.TINY);
+            Item fPipeItemS = AntimatterAPI.get(FluidPipe.class, "fluid_" + mat.getId()).getBlockItem(PipeSize.SMALL);
+            Item fPipeItemN = AntimatterAPI.get(FluidPipe.class, "fluid_" + mat.getId()).getBlockItem(PipeSize.NORMAL);
+            Item fPipeItemL = AntimatterAPI.get(FluidPipe.class, "fluid_" + mat.getId()).getBlockItem(PipeSize.LARGE);
+            Item fPipeItemH = AntimatterAPI.get(FluidPipe.class, "fluid_" + mat.getId()).getBlockItem(PipeSize.HUGE);
+            this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(fPipeItemT))));
+            this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(fPipeItemS))));
+            this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(fPipeItemN))));
+            this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(fPipeItemL))));
+            this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(fPipeItemH))));
+        }
+        if (mat.has(ITEMPIPE)) {
+            Item iPipeItemN = AntimatterAPI.get(ItemPipe.class, "item_" + mat.getId()).getBlockItem(PipeSize.NORMAL);
+            Item iPipeItemL = AntimatterAPI.get(ItemPipe.class, "item_" + mat.getId()).getBlockItem(PipeSize.LARGE);
+            Item iPipeItemH = AntimatterAPI.get(ItemPipe.class, "item_" + mat.getId()).getBlockItem(PipeSize.HUGE);
+            this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(iPipeItemN))));
+            this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(iPipeItemL))));
+            this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(iPipeItemH))));
         }
     }
 
