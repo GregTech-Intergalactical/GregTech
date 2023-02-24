@@ -22,6 +22,8 @@ import muramasa.gregtech.datagen.GregTechBlockTagProvider;
 import muramasa.gregtech.datagen.GregTechItemTagProvider;
 import muramasa.gregtech.datagen.GregtechBlockLootProvider;
 import muramasa.gregtech.datagen.ProgressionAdvancements;
+import muramasa.gregtech.integration.rei.MaterialTreeCategory;
+import muramasa.gregtech.integration.rei.MaterialTreeDisplay;
 import muramasa.gregtech.integration.rei.OreProcessingCategory;
 import muramasa.gregtech.integration.rei.OreProcessingDisplay;
 import muramasa.gregtech.loader.crafting.*;
@@ -158,6 +160,16 @@ public class GregTech extends AntimatterMod {
                         r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.ELECTROMAGNETIC_SEPARATOR.getItem(Tier.LV))));
                         r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.SIFTER.getItem(Tier.LV))));
                     });
+                    REIUtils.addExtraCategory(r -> {
+                        MaterialTreeCategory cat = new MaterialTreeCategory();
+                        r.add(cat);
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.LATHE.getItem(Tier.LV))));
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.BENDER.getItem(Tier.LV))));
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.CUTTER.getItem(Tier.LV))));
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.ASSEMBLER.getItem(Tier.LV))));
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.COMPRESSOR.getItem(Tier.LV))));
+                        r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.FLUID_EXTRACTOR.getItem(Tier.LV))));
+                    });
                     REIUtils.addExtraDisplay(r -> {
                         AntimatterMaterialTypes.ORE.all().forEach(m -> {
                             if (m.has(MaterialTags.CHEMBATH_PERSULFATE) || m.has(MaterialTags.CHEMBATH_MERCURY)){
@@ -170,6 +182,11 @@ public class GregTech extends AntimatterMod {
                             } else {
                                 r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.NONE));
                             }
+                        });
+                    });
+                    REIUtils.addExtraDisplay(r -> {
+                        AntimatterMaterialTypes.DUST.all().forEach(m -> {
+                            r.add(new MaterialTreeDisplay(m));
                         });
                     });
                 }
