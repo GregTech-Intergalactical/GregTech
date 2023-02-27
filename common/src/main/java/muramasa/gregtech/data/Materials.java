@@ -110,7 +110,7 @@ public class Materials {
     public static Material Helium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "helium", 0xffff00, NONE, He));
     public static Material Helium3 = AntimatterAPI
-            .register(Material.class, new Material(Ref.ID, "helium_3", 0xffffff, NONE, He_3));
+            .register(Material.class, new Material(Ref.ID, "helium_3", 0xffffff, NONE, He3));
     public static Material Indium = AntimatterAPI
             .register(Material.class, new Material(Ref.ID, "indium", 0x400080, METALLIC, In));
     public static Material Lithium = AntimatterAPI
