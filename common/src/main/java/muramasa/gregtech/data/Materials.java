@@ -1,21 +1,11 @@
 package muramasa.gregtech.data;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Data;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.material.TextureSet;
 import muramasa.gregtech.Ref;
-import muramasa.gregtech.nuclear.ItemNuclearFuel;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.Items;
 
-import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.material.Element.*;
-import static muramasa.antimatter.material.MaterialTags.CHEMBATH_MERCURY;
-import static muramasa.antimatter.material.MaterialTags.CHEMBATH_PERSULFATE;
 import static muramasa.antimatter.material.TextureSet.*;
 
 public class Materials {
