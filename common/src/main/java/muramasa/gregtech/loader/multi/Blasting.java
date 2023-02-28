@@ -38,7 +38,7 @@ public class Blasting {
                 BLASTING.RB().ii(RecipeIngredient.of(crushed,1), INT_CIRCUITS.get(1)).io(blastOut).add("crushed_" + m.getId(), aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
                 BLASTING.RB().ii(RecipeIngredient.of(dust,1), INT_CIRCUITS.get(1)).io(blastOut).add("dust_" + m.getId(),aBlastDuration/4, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
                 BLASTING.RB().ii(AntimatterMaterialTypes.CRUSHED_PURIFIED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("purified_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(AntimatterMaterialTypes.CRUSHED_CENTRIFUGED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("refined_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(AntimatterMaterialTypes.CRUSHED_REFINED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("refined_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
                 BLASTING.RB().ii(AntimatterMaterialTypes.DUST_PURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("dust_pure_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
                 BLASTING.RB().ii(AntimatterMaterialTypes.DUST_IMPURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("dust_impure_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
             }

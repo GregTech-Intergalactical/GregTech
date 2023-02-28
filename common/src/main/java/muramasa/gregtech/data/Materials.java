@@ -102,6 +102,7 @@ public class Materials {
     /**
      *** Isotopes
      **/
+     
     public static Material Deuterium = AntimatterAPI.register(Material.class, new Material(Ref.ID, "deuterium", 0xffff00, NONE, D));
     public static Material Tritium = AntimatterAPI.register(Material.class, new Material(Ref.ID, "tritium", 0xff0000, METALLIC, T));
     public static Material Helium3 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "helium_3", 0xffffff, NONE, He3));

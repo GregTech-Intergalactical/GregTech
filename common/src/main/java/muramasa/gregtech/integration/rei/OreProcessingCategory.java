@@ -161,7 +161,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         widgets.add(Widgets.createSlot(xy(148, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST_PURE.get(display.ore, 1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(166, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(display.byProduct2),1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(97, 72, bounds)).entries(ofMachine(Machines.THERMAL_CENTRIFUGE)).markInput().disableBackground());
-        widgets.add(Widgets.createSlot(xy(97, 93, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED_CENTRIFUGED.get(display.ore, 1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(97, 93, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED_REFINED.get(display.ore, 1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(97, 111, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST_TINY.get(display.byProduct2),3)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(148, 72, bounds)).entries(ofMachine(Machines.CENTRIFUGE)).markInput().disableBackground());
         widgets.add(Widgets.createSlot(xy(148, 93, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(display.ore, 1)))).markOutput().disableBackground());

@@ -26,7 +26,7 @@ public class OreByproducts {
                 if (m.has(AntimatterMaterialTypes.ROCK)) ores.add(AntimatterMaterialTypes.ROCK.getIngredient(m, 1));
                 if (m.has(AntimatterMaterialTypes.CRUSHED)) ores.add(crushed);
                 if (m.has(AntimatterMaterialTypes.CRUSHED_PURIFIED)) ores.add(AntimatterMaterialTypes.CRUSHED_PURIFIED.getIngredient(m, 1));
-                if (m.has(AntimatterMaterialTypes.CRUSHED_CENTRIFUGED)) ores.add(AntimatterMaterialTypes.CRUSHED_CENTRIFUGED.getIngredient(m, 1));
+                if (m.has(AntimatterMaterialTypes.CRUSHED_REFINED)) ores.add(AntimatterMaterialTypes.CRUSHED_REFINED.getIngredient(m, 1));
 
 
                 List<ItemStack> dusts = new ObjectArrayList<>(byProductsCount);
