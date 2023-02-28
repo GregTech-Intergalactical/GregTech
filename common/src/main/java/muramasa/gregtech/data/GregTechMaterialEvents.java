@@ -223,7 +223,7 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(AnnealedCopper).asMetal(1357, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE, AntimatterMaterialTypes.SCREW).mats(of(AntimatterMaterials.Copper, 1));
         event.setMaterial(BatteryAlloy).asMetal(295, 0, AntimatterMaterialTypes.PLATE).mats(of(Lead, 4, Antimony, 1));
-        event.setMaterial(BismuthBronze).asMetal(1100, 900, AntimatterMaterialTypes.PLATE).addTools(2.5F, MaterialTags.TOOLS.getToolData(Bronze).toolSpeed() + 2.0F, 350, 2, of(Enchantments.BANE_OF_ARTHROPODS, 4)).mats(of(Bismuth, 1, Zinc, 1, AntimatterMaterials.Copper, 3));
+        event.setMaterial(BismuthBronze).asMetal(1100, 900, AntimatterMaterialTypes.PLATE).addTools(2.5F, 8.5F, 350, 2, of(Enchantments.BANE_OF_ARTHROPODS, 4)).mats(of(Bismuth, 1, Zinc, 1, AntimatterMaterials.Copper, 3));
         event.setMaterial(BlackBronze).asMetal(2000, 2000).addTools(Bronze, of(Enchantments.SWEEPING_EDGE, 1)).mats(of(AntimatterMaterials.Gold, 1, Silver, 1, AntimatterMaterials.Copper, 3));
         event.setMaterial(BlackSteel).asMetal(1200, 1200, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.PLATE).addTools(3.5F, 6.5F, 768, 2).mats(of(Nickel, 1, BlackBronze, 1, Steel, 3));
         event.setMaterial(BlueSteel).asMetal(1400, 1400, AntimatterMaterialTypes.FRAME).addTools(3.5F, 7.5F, 1024, 2).mats(of(RoseGold, 1, Brass, 1, Steel, 2, BlackSteel, 4));
