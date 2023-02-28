@@ -130,10 +130,10 @@ public class Materials {
     public static Material Actinium225 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "actinium_225", 0xB8C5F1, METALLIC, Ac225));
     public static Material Actinium227 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "actinium_227", 0xB8C5F1, METALLIC, Ac227));
     public static Material Actinium228 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "actinium_228", 0xB8C5F1, METALLIC, Ac228));
-    public static Material Thorium227 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "thorium_231", 0x001e00, METALLIC, Th227));
-    public static Material Thorium228 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "thorium_231", 0x001e00, METALLIC, Th228));
-    public static Material Thorium229 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "thorium_231", 0x001e00, METALLIC, Th229));
-    public static Material Thorium230 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "thorium_231", 0x001e00, METALLIC, Th230));
+    public static Material Thorium227 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "thorium_227", 0x001e00, METALLIC, Th227));
+    public static Material Thorium228 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "thorium_228", 0x001e00, METALLIC, Th228));
+    public static Material Thorium229 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "thorium_229", 0x001e00, METALLIC, Th229));
+    public static Material Thorium230 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "thorium_230", 0x001e00, METALLIC, Th230));
     public static Material Thorium231 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "thorium_231", 0x001e00, METALLIC, Th231));
     public static Material Thorium233 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "thorium_233", 0x001e00, METALLIC, Th233));
     public static Material Thorium234 = AntimatterAPI.register(Material.class, new Material(Ref.ID, "thorium_234", 0x001e00, METALLIC, Th234));
