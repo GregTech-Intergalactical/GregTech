@@ -39,10 +39,10 @@ public class ChemicalReactorLoader {
     }
 
     private static void sulfuric() {
-        CHEMICAL_REACTING.RB().fi(SulfuricTrioxide.getGas(1000), AntimatterMaterials.Water.getLiquid(1000)).fo(SulfuricAcid.getLiquid(1000)).add("sulfuric_acid",320, 7);
-        CHEMICAL_REACTING.RB().fi(SulfuricDioxide.getGas(1000), Oxygen.getGas(1000)).fo(SulfuricTrioxide.getGas(1000)).add("sulfuric_trioxide",200, 30);
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Sulfur, 1))).fi(Oxygen.getGas(2000)).fo(SulfuricDioxide.getGas(1000)).add("sulfuric_dioxide",60, 7);
-        CHEMICAL_REACTING.RB().fi(HydrogenSulfide.getGas(1000), Oxygen.getGas(2000)).fo(SulfuricDioxide.getGas(1000), AntimatterMaterials.Water.getLiquid(2000)).add("sulfuric_dioxide_2",120, 30);
+        CHEMICAL_REACTING.RB().fi(SulfurTrioxide.getGas(1000), AntimatterMaterials.Water.getLiquid(1000)).fo(SulfuricAcid.getLiquid(1000)).add("sulfuric_acid",320, 7);
+        CHEMICAL_REACTING.RB().fi(SulfurDioxide.getGas(1000), Oxygen.getGas(1000)).fo(SulfurTrioxide.getGas(1000)).add("sulfuric_trioxide",200, 30);
+        CHEMICAL_REACTING.RB().ii(of(DUST.get(Sulfur, 1))).fi(Oxygen.getGas(2000)).fo(SulfurDioxide.getGas(1000)).add("sulfuric_dioxide",60, 7);
+        CHEMICAL_REACTING.RB().fi(HydrogenSulfide.getGas(1000), Oxygen.getGas(2000)).fo(SulfurDioxide.getGas(1000), AntimatterMaterials.Water.getLiquid(2000)).add("sulfuric_dioxide_2",120, 30);
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Sulfur,1))).fi(Hydrogen.getGas(2000)).fo(HydrogenSulfide.getGas(1000)).add("hydrogen_sulfide",60, 8);
     }
 
@@ -162,7 +162,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(RecipeIngredient.of(DUST.get(Quicklime,1))).fi(CarbonDioxide.getGas(1000)).io(DUST.get(Calcite,1)).fo().add("calcite",30,120);
         CHEMICAL_REACTING.RB().fi(Propene.getGas(2000)).fo(Isoprene.getGas(1000),Methane.getGas(1000)).add("isoprene",30,120);
         CHEMICAL_REACTING.RB().fi(HydrogenSulfide.getGas(2000),SulfurDioxide.getGas(1000)).io(DUST.get(Sulfur,3)).fo(AntimatterMaterials.Water.getLiquid(2000)).add("sulfur",30,120);
-        CHEMICAL_REACTING.RB().fi(HydrogenSulfide.getGas(1000),Oxygen.getGas(3000)).fo(SulfuricDioxide.getGas(1000),AntimatterMaterials.Water.getLiquid(1000)).add("sulfuric_dioxide",30,120);
+        CHEMICAL_REACTING.RB().fi(HydrogenSulfide.getGas(1000),Oxygen.getGas(3000)).fo(SulfurDioxide.getGas(1000),AntimatterMaterials.Water.getLiquid(1000)).add("sulfuric_dioxide",30,120);
         CHEMICAL_REACTING.RB().fi(Benzene.getLiquid(1000),Ethylene.getGas(1000)).fo(Styrene.getGas(1000),Hydrogen.getGas(2000)).add("styrene",30,120);
         CHEMICAL_REACTING.RB().fi(Propene.getGas(1000),Ethylene.getGas(1000)).fo(Isoprene.getGas(1000),Hydrogen.getGas(2000)).add("isoprene_2",30,120);
         CHEMICAL_REACTING.RB().fi(HydrochloricAcid.getLiquid(1000),Ethylene.getGas(1000),Oxygen.getGas(1000)).fo(Dichloroethane.getLiquid(1000),AntimatterMaterials.Water.getLiquid(1000)).add("dichloroethane",30,160);
