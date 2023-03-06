@@ -374,7 +374,7 @@ public class Machines {
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.NORMAL)).build(), "LCL", "LHL", "   "));
 
-            add(BATTERY_BUFFER_NINE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+            add(BATTERY_BUFFER_EIGHT, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', Items.CHEST)
                             .put('H', hull)
