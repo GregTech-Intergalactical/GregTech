@@ -100,12 +100,12 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(of(DUST.get(SodiumHydroxide),1).setNoConsume()).fi(MethylAcetate.getLiquid(1000), AntimatterMaterials.Water.getLiquid(1000)).fo(AceticAcid.getLiquid(1000),Methanol.getLiquid(1000)).add("acetic_acid",260, 60);
         CHEMICAL_REACTING.RB().ii(of(DUST.get(AluminiumTrichloride),1).setNoConsume()).fi(Benzene.getLiquid(1000), Chloromethane.getGas(1000)).fo(Toluene.getLiquid(1000),HydrochloricAcid.getLiquid(1000)).add("toluene",140, 30);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000), Toluene.getLiquid(1000)).fo(Benzaldehyde.getLiquid(1000)).add("benzaldehyde",120, 30);
-        CHEMICAL_REACTING.RB().fi(Benzaldehyde.getLiquid(1000), Chlorine.getGas(2000)).fo(Benzoylchloride.getLiquid(1000),HydrochloricAcid.getLiquid(1000)).add("benzoylchloride",120, 30);
-        CHEMICAL_REACTING.RB().fi(Benzoylchloride.getLiquid(2000), HydrogenPeroxide.getLiquid(2000)).io(DUST.get(Dibenzoylperoxide,1)).fo(HydrochloricAcid.getLiquid(2000)).add("dibenzoylperoxide",120, 30);
+        CHEMICAL_REACTING.RB().fi(Benzaldehyde.getLiquid(1000), Chlorine.getGas(2000)).fo(BenzoylChloride.getLiquid(1000),HydrochloricAcid.getLiquid(1000)).add("benzoylchloride",120, 30);
+        CHEMICAL_REACTING.RB().fi(BenzoylChloride.getLiquid(2000), HydrogenPeroxide.getLiquid(2000)).io(DUST.get(DibenzoylPeroxide,1)).fo(HydrochloricAcid.getLiquid(2000)).add("dibenzoylperoxide",120, 30);
         CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Carbon, 1)).fi(Hydrogen.getGas(4000)).fo(Methane.getGas(1000)).add("methane_3",200, 30);
         CHEMICAL_REACTING.RB().ii(of(DUST.get(SodiumHydroxide,4))).fi(Dichlorobenzene.getLiquid(2000)).io(DUST.get(Salt,4)).fo(Phenol.getLiquid(2000),Oxygen.getGas(1000)).add("phenol_2",120, 30);
         CHEMICAL_REACTING.RB().ii(of(DUST.get(SodiumHydroxide,1))).fi(BisphenolA.getLiquid(1000),Epichlorohydrin.getLiquid(1000)).io(DUST.get(Epoxid,1)).fo(SaltWater.getLiquid(1000)).add("epoxid",120, 30);
-        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Aluminiumtrichloride,1).setNoConsume()).fi(Benzene.getLiquid(1000),Chlorine.getGas(2000)).fo(Dichlorobenzene.getLiquid(1000),HydrochloricAcid.getLiquid(2000)).add("dichlorobenzene_2",120, 30);
+        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(AluminiumTrichloride,1).setNoConsume()).fi(Benzene.getLiquid(1000),Chlorine.getGas(2000)).fo(Dichlorobenzene.getLiquid(1000),HydrochloricAcid.getLiquid(2000)).add("dichlorobenzene_2",120, 30);
         CHEMICAL_REACTING.RB().fi(Diesel.getLiquid(1000),GlycerylTrinitrate.getLiquid(1000)).fo(NitroFuel.getLiquid(1000)).add("nitrofuel",120, 30);
         CHEMICAL_REACTING.RB().fi(Diesel.getLiquid(1000),Tetranitromethane.getLiquid(1000)).fo(NitroFuel.getLiquid(1000)).add("nitrofuel_2",120, 30);
         CHEMICAL_REACTING.RB().fi(Glyceryl.getLiquid(1000),HydrochloricAcid.getLiquid(1000)).fo(Epichlorohydrin.getLiquid(1000),AntimatterMaterials.Water.getLiquid(2000)).add("epichlorohydrin_3",240, 30);
@@ -114,14 +114,14 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(ReactionCatalyst,1).setNoConsume()).fi(CarbonMonoxide.getGas(1000),Hydrogen.getGas(4000)).fo(Methanol.getLiquid(1000)).add("methanol_2",60, 96);
         CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(ReactionCatalyst,1).setNoConsume()).fi(CarbonDioxide.getGas(1000),Hydrogen.getGas(6000)).fo(Methanol.getLiquid(1000),AntimatterMaterials.Water.getLiquid(1000)).add("methanol_3",60, 96);
         CHEMICAL_REACTING.RB().fi(Dimethyldichlorosilane.getLiquid(2000),AntimatterMaterials.Water.getLiquid(1000)).io(DUST.get(Polydimethylsiloxane,1)).fo(DilutedHydrochloricAcid.getLiquid(1000)).add("diluted_hydrochloric_acid",60, 96);
-        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Dialuminiumtrioxide,1).setNoConsume()).fi(Methanol.getLiquid(2000),Ammonia.getGas(1000)).fo(Dimethylamine.getGas(2000),AntimatterMaterials.Water.getLiquid(1000)).add("dimethylamine",60, 96);
+        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(DialuminiumTrioxide,1).setNoConsume()).fi(Methanol.getLiquid(2000),Ammonia.getGas(1000)).fo(Dimethylamine.getGas(2000),AntimatterMaterials.Water.getLiquid(1000)).add("dimethylamine",60, 96);
         CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(1000),AceticAcid.getLiquid(1000)).fo(Ethenone.getGas(1000),DilutedSulfuricAcid.getLiquid(1000)).add("ethenone_2",160, 120);
         CHEMICAL_REACTING.RB().ii(of(Items.SUGAR),of(DUST.get(Polyethylene,1))).fi(Toluene.getLiquid(1000)).io(DUST.get(GelledToluene,1)).add("gelled_toluene",140, 192);
         CHEMICAL_REACTING.RB().fi(HydrofluoricAcid.getLiquid(4000),Chloroform.getLiquid(2000)).io(DUST.get(Tetrafluoroethylene,1)).fo(HydrochloricAcid.getLiquid(6000)).add("tetrafluoroethylene",240, 256);
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Salt,1)),of(DUST.get(Dibenzoylperoxide,1))).fi(Dichlorobenzene.getLiquid(2000),AntimatterMaterials.Water.getLiquid(1000)).io(DUST.get(PolyphenyleneSulfide,1),DUST.get(Dibenzene,1)).fo(SaltWater.getLiquid(1000),CarbonDioxide.getGas(1000)).add("polyphenylene_sulfide_2",240, 360);
+        CHEMICAL_REACTING.RB().ii(of(DUST.get(Salt,1)),of(DUST.get(DibenzoylPeroxide,1))).fi(Dichlorobenzene.getLiquid(2000),AntimatterMaterials.Water.getLiquid(1000)).io(DUST.get(PolyphenyleneSulfide,1),DUST.get(Dibenzene,1)).fo(SaltWater.getLiquid(1000),CarbonDioxide.getGas(1000)).add("polyphenylene_sulfide_2",240, 360);
         CHEMICAL_REACTING.RB().fi(Dimethylamine.getGas(1000),Chloramine.getLiquid(1000)).fo(Dimethylhydrazine.getLiquid(1000),DilutedHydrochloricAcid.getLiquid(1000)).add("dimethylhydrazine_2",240, 360);
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Silicon,1))).fi(Chloromethane.getGas(2000),AntimatterMaterials.Water.getLiquid(1000)).fo(Dimethyldichlorosilane.getLiquid(1000)).add("dimethyldichlorosilane_2",240, 96);
-        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Aluminiumtrichloride,1).setNoConsume()).fi(Propene.getGas(1000)).fo(Cumene.getLiquid(1000)).add("cumene_2",240, 120);
+        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(AluminiumTrichloride,1).setNoConsume()).fi(Propene.getGas(1000)).fo(Cumene.getLiquid(1000)).add("cumene_2",240, 120);
 
     }
 
@@ -223,7 +223,7 @@ public class ChemicalReactorLoader {
         FluidStack fi = monomer.has(AntimatterMaterialTypes.LIQUID) ? monomer.getLiquid(2000) : monomer.has(AntimatterMaterialTypes.GAS) ? monomer.getGas(2000) : FluidStack.EMPTY;
         FluidStack fo = polymer.has(AntimatterMaterialTypes.LIQUID) ? polymer.getLiquid(1000) : polymer.has(AntimatterMaterialTypes.GAS) ? polymer.getGas(1000) : FluidStack.EMPTY;
         if (fi.isEmpty()) return;
-        RecipeBuilder rb = CHEMICAL_REACTING.RB().ii(RecipeIngredient.of(DUST.get(Dibenzoylperoxide,1))).fi(fi).io(DUST.get(Dibenzene,1)).fo(CarbonDioxide.getGas(2000));
+        RecipeBuilder rb = CHEMICAL_REACTING.RB().ii(RecipeIngredient.of(DUST.get(DibenzoylPeroxide,1))).fi(fi).io(DUST.get(Dibenzene,1)).fo(CarbonDioxide.getGas(2000));
         if (fo.isEmpty()){
             if (!polymer.has(DUST)) return;
             rb.io(DUST.get(polymer, 1));
@@ -231,5 +231,18 @@ public class ChemicalReactorLoader {
             rb.fo(fo);
         }
         rb.add(monomer.getId() +"_to_" + polymer.getId(),dur,volt);
+    }
+
+    private static void nuclear_processing() {
+        CHEMICAL_REACTING.RB().ii(of(DUST.get(Salt,4))).fi(CarbonDioxide.getGas(2000),Ammonia.getGas(2000),AntimatterMaterials.Water.getLiquid(2000)).io(new ItemStack(DUST.get(AmmoniumChloride),12)).fo(SodiumBicarbonateSolution.getLiquid(1000)).add("sodium_bicarbonate_solution",80,100);
+        CHEMICAL_REACTING.RB().fi(SodiumBicarbonateSolution.getLiquid(1000)).fo(SodiumCarbonateSolution.getLiquid(1000),CarbonDioxide.getGas(1000),AntimatterMaterials.Water.getLiquid(1000)).add("sodium_carbonate_solution",100,200);
+        CHEMICAL_REACTING.RB().ii(of(DUST.get(Thorium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedThorium.getLiquid(1000)).add("thorium_leaching",120,1000);
+        CHEMICAL_REACTING.RB().ii(of(DUST.get(Uranium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedUranium.getLiquid(1000)).add("uranium_leaching",120,1000);
+
+        CHEMICAL_REACTING.RB().ii(of(DUST.get(TrithoriumOctoxide,11))).fi(NitricAcid.getLiquid(3000)).fo(Thoriumdioxidedinitrate.getLiquid(3000),AntimatterMaterials.Water.getLiquid(4000),NitrogenDioxide.getGas(2000)).add("thoriumdioxidedinatrate",120,1000);
+        CHEMICAL_REACTING.RB().fi(Thoriumdioxidedinitrate.getLiquid(10000),Ammonia.getGas(22000)).fo(Ammoniumdithoranate.getLiquid(5000)).add("uranium_leaching",120,1000);
+        CHEMICAL_REACTING.RB().ii(of(DUST.get(Uranium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedUranium.getLiquid(1000)).add("uranium_leaching",120,1000);
+        CHEMICAL_REACTING.RB().ii(of(DUST.get(Uranium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedUranium.getLiquid(1000)).add("uranium_leaching",120,1000);
+        CHEMICAL_REACTING.RB().ii(of(DUST.get(Uranium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedUranium.getLiquid(1000)).add("uranium_leaching",120,1000);
     }
 }
