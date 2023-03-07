@@ -26,7 +26,7 @@ public class DecayChamber {
                 decaytime = 20*60;
             }else if (hls < 3600*24*7*30){
                 decaytime = 20*120;
-            }else if (hls < 3600*24*356){
+            }else if (hls < 3600*24*365){
                 decaytime = 20*300;
             }else{
                 decaytime = 20*600;
