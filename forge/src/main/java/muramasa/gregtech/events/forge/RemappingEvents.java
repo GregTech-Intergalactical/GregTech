@@ -69,6 +69,34 @@ public class RemappingEvents {
             if (id.equals("rubber_sapling")){
                 map.remap(GTRubberData.RUBBER_SAPLING);
             }
+
+            if (id.contains("pulverizer")){
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("pulverizer", "macerator"), Ref.ID);
+                if (block != null){
+                    map.remap(block);
+                }
+            }
+
+            if (id.contains("battery_buffer_one")){
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_one", "1x_battery_buffer"), Ref.ID);
+                if (block != null){
+                    map.remap(block);
+                }
+            }
+
+            if (id.contains("battery_buffer_four")){
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_four", "4x_battery_buffer"), Ref.ID);
+                if (block != null){
+                    map.remap(block);
+                }
+            }
+
+            if (id.contains("battery_buffer_nine")){
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_nine", "8x_battery_buffer"), Ref.ID);
+                if (block != null){
+                    map.remap(block);
+                }
+            }
         }
     }
 
@@ -91,6 +119,33 @@ public class RemappingEvents {
             }
             if (id.equals("sticky_resin")){
                 map.remap(GTRubberData.StickyResin);
+            }
+            if (id.contains("pulverizer")){
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("pulverizer", "macerator"), Ref.ID);
+                if (block != null){
+                    map.remap(block.asItem());
+                }
+            }
+
+            if (id.contains("battery_buffer_one")){
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_one", "1x_battery_buffer"), Ref.ID);
+                if (block != null){
+                    map.remap(block.asItem());
+                }
+            }
+
+            if (id.contains("battery_buffer_four")){
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_four", "4x_battery_buffer"), Ref.ID);
+                if (block != null){
+                    map.remap(block.asItem());
+                }
+            }
+
+            if (id.contains("battery_buffer_nine")){
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_nine", "8x_battery_buffer"), Ref.ID);
+                if (block != null){
+                    map.remap(block.asItem());
+                }
             }
         }
     }

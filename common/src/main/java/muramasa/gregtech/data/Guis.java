@@ -3,14 +3,14 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.capability.IGuiHandler;
+import muramasa.antimatter.gui.BarDir;
 import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.gui.MenuHandlerMachine;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
 import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
 import muramasa.antimatter.gui.slot.ISlotProvider;
-import muramasa.antimatter.gui.widget.TextWidget;
-import muramasa.antimatter.gui.widget.WidgetSupplier;
+import muramasa.antimatter.gui.widget.*;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tile.TileEntityMachine;
@@ -34,8 +34,10 @@ public class Guis {
             .add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63));
     public static GuiData MULTI_DISPLAY_COMPACT = new GuiData("antimatter", "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots())).setPadding(0, 0, 0, 0);
-    public static GuiData BASIC_TANK = new GuiData("antimatter", "basic_tank")
-            .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58).add(FL_IN, 106, 43));
+    public static GuiData BASIC_TANK = new GuiData("gregtech", "basic_tank")
+            .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43));
+
+    public static GuiData MULTIBLOCK = new GuiData("gregtech", "multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
     public static GuiData ORE_BYPRODUCTS = new GuiData("antimatter", "ore_byproducts") {
         @Override
@@ -140,9 +142,9 @@ public class Guis {
         COKE_OVEN.add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25);
         BATTERY_BUFFER_FOUR.add(ENERGY, 71, 27).add(ENERGY, 89, 27).add(ENERGY, 71, 45).add(ENERGY, 89, 45);
         BATTERY_BUFFER_ONE.add(ENERGY, 80, 40);
-        BATTERY_BUFFER_NINE.add(ENERGY, 62, 21).add(ENERGY, 80, 21).add(ENERGY, 98, 21)
-                .add(ENERGY, 62, 39).add(ENERGY, 80, 39).add(ENERGY, 98, 39)
-                .add(ENERGY, 62, 57).add(ENERGY, 80, 57).add(ENERGY, 98, 57);
+        BATTERY_BUFFER_EIGHT
+                .add(ENERGY,53,27).add(ENERGY,71,27).add(ENERGY,89,27).add(ENERGY,107,27)
+                .add(ENERGY,53,45).add(ENERGY,71,45).add(ENERGY,89,45).add(ENERGY,107,45);
 
         COAL_BOILER.add(BRONZE, CELL_IN, 44, 26).add(BRONZE, CELL_OUT, 44, 62).add(BRONZE, IT_OUT, 116, 26).add(BRONZE,
                 IT_IN, 116, 62);
@@ -164,15 +166,15 @@ public class Guis {
         STEAM_FORGE_HAMMER.add(BRONZE, FORGE_HAMMER).add(BRONZE, FL_IN, 53, 63);
         STEAM_FORGE_HAMMER.add(STEEL, FORGE_HAMMER).add(STEEL, FL_IN, 53, 63);
 
-        STEAM_GENERATOR.add(BASIC_TANK.getSlots());
-        GAS_GENERATOR.add(BASIC_TANK.getSlots());
-        COMBUSTION_GENERATOR.add(BASIC_TANK.getSlots());
-        NAQUADAH_GENERATOR.add(BASIC_TANK.getSlots());
-        PLASMA_GENERATOR.add(BASIC_TANK.getSlots());
+        STEAM_GENERATOR.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
+        GAS_GENERATOR.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
+        COMBUSTION_GENERATOR.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
+        NAQUADAH_GENERATOR.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
+        PLASMA_GENERATOR.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
 
-        INFINITE_STEAM.add(BASIC_TANK.getSlots());
+        INFINITE_STEAM.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
 
-        QUANTUM_TANK.add(BASIC_TANK.getSlots());
+        QUANTUM_TANK.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
 
         PRIMITIVE_BLAST_FURNACE.add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_IN, 53, 52).add(IT_OUT, 107, 25)
                 .add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).getGui().setPadding(0, 0, 0, 0);
@@ -237,6 +239,21 @@ public class Guis {
                 .add(UV, FL_OUT, 79, 34).add(UV, FL_OUT, 97, 34).add(UV, FL_OUT, 61, 52).add(UV, FL_OUT, 79, 52)
                 .add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.add(MAX, HATCH_FLUID_O, ULV);
+
+        FORGE_HAMMER.getCallbacks().remove(1);
+        FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).addGuiCallback(t -> {
+            t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a,b)).setPos(9, 5).clientSide())
+                    .addWidget(ProgressWidget.build(BarDir.BOTTOM, false))
+                    .addWidget(MachineStateWidget.build().setPos(84,46).setWH(8,8))
+                    .addWidget(IOWidget.build(9,63,16,16));
+        });
+
+        STEAM_FORGE_HAMMER.getCallbacks().remove(1);
+        STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).addGuiCallback(t -> {
+            t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a,b)).setPos(9, 5).clientSide())
+                    .addWidget(ProgressWidget.build(BarDir.BOTTOM, false))
+                    .addWidget(MachineStateWidget.build().setPos(84,46).setWH(8,8));
+        });
 
         COAL_BOILER.addGuiCallback(t -> {
             t.addWidget(WidgetSupplier
@@ -315,6 +332,21 @@ public class Guis {
                 t.addWidget(FilterButtonArrayWidget.build());
             });
         }
+
+        BLAST_FURNACE.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        IMPLOSION_COMPRESSOR.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        VACUUM_FREEZER.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        MULTI_SMELTER.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        LARGE_BOILER.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        LARGE_TURBINE.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        HEAT_EXCHANGER.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        OIL_DRILLING_RIG.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        ADVANCED_MINER.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        PYROLYSIS_OVEN.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        COMBUSTION_ENGINE.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        DISTLLATION_TOWER.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        CRACKING_UNIT.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        NUCLEAR_REACTOR.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
     }
     // }
 }

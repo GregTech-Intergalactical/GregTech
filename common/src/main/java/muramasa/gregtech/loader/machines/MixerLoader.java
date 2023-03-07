@@ -60,7 +60,7 @@ public class MixerLoader {
             if (ings.size() == 0) return;
             int count = mat.getProcessInto().stream().mapToInt(t -> t.s).sum();
             ings.add(INT_CIRCUITS.get(4));
-            MIXING.RB().ii(ings).io(type.get(mat,count)).add("dust_" + mat.getId(),duration,eut);
+            MIXING.RB().ii(ings).io(type.get(mat,count)).add(type.getId() + "_" + mat.getId(),duration,eut);
         }
     }
 
