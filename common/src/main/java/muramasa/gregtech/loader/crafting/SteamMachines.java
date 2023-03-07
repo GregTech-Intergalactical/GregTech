@@ -46,12 +46,6 @@ public class SteamMachines {
                         'P', bronzePlate,
                         'W', wrench
                 ), "PPP", "PWP", "PPP");
-        provider.addItemRecipe(output, "steam_machines", "has_bronze", provider.hasSafeItem(AntimatterMaterialTypes.INGOT.getMaterialTag(Bronze)), CASING_BRICKED_BRONZE,
-                ImmutableMap.of(
-                        'P', bronzePlate,
-                        'W', wrench,
-                        'B', Items.BRICKS
-                ), "PPP", "PWP", "BBB");
         provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.COAL_BOILER.getItem(Tier.STEEL),
                 ImmutableMap.of(
                         'P', steelPlate,

@@ -32,13 +32,13 @@ public class VanillaExtensions {
         provider.addItemRecipe(consumer,Ref.ID,"filter", "", "has_iron_plate", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()),
                 ItemFilter, of('Z', TagUtils.getForgelikeItemTag("foils/zinc"), 'I', TagUtils.getForgelikeItemTag("plates/iron")), "ZZZ", "ZIZ", "ZZZ");
 
-        provider.addItemRecipe(consumer,Ref.ID,"gears", "gears", "has_wooden_rod", provider.hasSafeItem(ForgeCTags.RODS_WOODEN),
+        provider.addItemRecipe(consumer,Ref.ID,AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood).getRegistryName().getPath() , "gears", "has_wooden_rod", provider.hasSafeItem(ForgeCTags.RODS_WOODEN),
                 AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood), of('P', ItemTags.PLANKS, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'R', ForgeCTags.RODS_WOODEN), "RPR", "PWP", "RPR");
 
         provider.addItemRecipe(consumer, Ref.ID, AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood).getRegistryName().getPath() + "_alt", "gears", "has_wooden_rod", provider.hasSafeItem(ForgeCTags.RODS_WOODEN),
                 AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood), of('P', ItemTags.PLANKS, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'R', ForgeCTags.RODS_WOODEN), "RPR", "PWP", "RPR");
 
-        provider.addItemRecipe(consumer,Ref.ID, "gears", "gears", "has_stone", provider.hasSafeItem(ForgeCTags.STONE),
+        provider.addItemRecipe(consumer,Ref.ID, AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone).getRegistryName().getPath() , "gears", "has_stone", provider.hasSafeItem(ForgeCTags.STONE),
                 AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone), of('S', ForgeCTags.STONE, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'C', ForgeCTags.COBBLESTONE), "SCS", "CWC", "SCS");
 
         provider.addItemRecipe(consumer, Ref.ID, AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone).getRegistryName().getPath() + "_alt", "gears", "has_stone", provider.hasSafeItem(ForgeCTags.STONE),
@@ -46,10 +46,10 @@ public class VanillaExtensions {
 
         provider.addItemRecipe(consumer, Ref.ID, "piston_sticky","gears", "has_stone", provider.hasSafeItem(Blocks.PISTON), Blocks.STICKY_PISTON, of('S', GTRubberData.StickyResin, 'P', Blocks.PISTON), "S", "P");
 
-        provider.addItemRecipe(consumer, "magnetic_rods", "has_redstone", provider.hasSafeItem(ForgeCTags.DUSTS_REDSTONE), ROD.get(IronMagnetic),
+        provider.addItemRecipe(consumer, "magnetic_rods_iron", "has_redstone", provider.hasSafeItem(ForgeCTags.DUSTS_REDSTONE), ROD.get(IronMagnetic),
                 of('R', ForgeCTags.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/iron")), " R ", "RSR", " R ");
 
-        provider.addItemRecipe(consumer, "magnetic_rods", "has_redstone", provider.hasSafeItem(ForgeCTags.DUSTS_REDSTONE), ROD.get(Neodymium),
+        provider.addItemRecipe(consumer, "magnetic_rods_neodymium", "has_redstone", provider.hasSafeItem(ForgeCTags.DUSTS_REDSTONE), ROD.get(Neodymium),
                 of('R', ForgeCTags.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/neodymium")), " R ", "RSR", " R ");
     }
 }

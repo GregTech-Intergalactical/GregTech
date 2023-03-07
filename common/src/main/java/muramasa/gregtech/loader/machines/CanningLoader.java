@@ -17,9 +17,9 @@ public class CanningLoader {
         CANNING.RB().ii(of(BatteryHullSmall.getDefaultInstance()), of(DUST.get(Cadmium, MULTIPLE_SMALL))).io(BatterySmallCadmium.getDefaultInstance()).add("battery_small_cadmium",50, 16);
         CANNING.RB().ii(of(BatteryHullSmall.getDefaultInstance()), of(DUST.get(Lithium, MULTIPLE_SMALL))).io(BatterySmallLithium.getDefaultInstance()).add("battery_small_lithium",60, 16);
 
-        CANNING.RB().ii(of(BatteryHullMedium.getDefaultInstance()), of(DUST.get(Sodium, MULTIPLE_MEDIUM))).io(BatteryMediumSodium.getDefaultInstance()).add("battery_medium",40, 64);
-        CANNING.RB().ii(of(BatteryHullMedium.getDefaultInstance()), of(DUST.get(Cadmium, MULTIPLE_MEDIUM))).io(BatteryMediumCadmium.getDefaultInstance()).add("battery_medium",50, 64);
-        CANNING.RB().ii(of(BatteryHullMedium.getDefaultInstance()), of(DUST.get(Lithium, MULTIPLE_MEDIUM))).io(BatteryMediumLithium.getDefaultInstance()).add("battery_medium",60, 64);
+        CANNING.RB().ii(of(BatteryHullMedium.getDefaultInstance()), of(DUST.get(Sodium, MULTIPLE_MEDIUM))).io(BatteryMediumSodium.getDefaultInstance()).add("battery_medium_sodium",40, 64);
+        CANNING.RB().ii(of(BatteryHullMedium.getDefaultInstance()), of(DUST.get(Cadmium, MULTIPLE_MEDIUM))).io(BatteryMediumCadmium.getDefaultInstance()).add("battery_medium_cadmium",50, 64);
+        CANNING.RB().ii(of(BatteryHullMedium.getDefaultInstance()), of(DUST.get(Lithium, MULTIPLE_MEDIUM))).io(BatteryMediumLithium.getDefaultInstance()).add("battery_medium_lithium",60, 64);
 
         CANNING.RB().ii(of(BatteryHullLarge.getDefaultInstance()), of(DUST.get(Sodium, MULTIPLE_LARGE))).io(BatteryLargeSodium.getDefaultInstance()).add("battery_large_sodium",40, 256);
         CANNING.RB().ii(of(BatteryHullLarge.getDefaultInstance()), of(DUST.get(Cadmium, MULTIPLE_LARGE))).io(BatteryLargeCadmium.getDefaultInstance()).add("battery_large_cadmium",50, 256);
