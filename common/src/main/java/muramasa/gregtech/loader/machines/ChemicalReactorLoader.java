@@ -236,13 +236,14 @@ public class ChemicalReactorLoader {
     private static void nuclear_processing() {
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Salt,4))).fi(CarbonDioxide.getGas(2000),Ammonia.getGas(2000),AntimatterMaterials.Water.getLiquid(2000)).io(new ItemStack(DUST.get(AmmoniumChloride),12)).fo(SodiumBicarbonateSolution.getLiquid(1000)).add("sodium_bicarbonate_solution",80,100);
         CHEMICAL_REACTING.RB().fi(SodiumBicarbonateSolution.getLiquid(1000)).fo(SodiumCarbonateSolution.getLiquid(1000),CarbonDioxide.getGas(1000),AntimatterMaterials.Water.getLiquid(1000)).add("sodium_carbonate_solution",100,200);
+
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Thorium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedThorium.getLiquid(1000)).add("thorium_leaching",120,1000);
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Uranium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedUranium.getLiquid(1000)).add("uranium_leaching",120,1000);
 
         CHEMICAL_REACTING.RB().ii(of(DUST.get(TrithoriumOctoxide,11))).fi(NitricAcid.getLiquid(3000)).fo(Thoriumdioxidedinitrate.getLiquid(3000),AntimatterMaterials.Water.getLiquid(4000),NitrogenDioxide.getGas(2000)).add("thoriumdioxidedinatrate",120,1000);
-        CHEMICAL_REACTING.RB().fi(Thoriumdioxidedinitrate.getLiquid(10000),Ammonia.getGas(22000)).fo(Ammoniumdithoranate.getLiquid(5000)).add("uranium_leaching",120,1000);
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Uranium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedUranium.getLiquid(1000)).add("uranium_leaching",120,1000);
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Uranium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedUranium.getLiquid(1000)).add("uranium_leaching",120,1000);
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Uranium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedUranium.getLiquid(1000)).add("uranium_leaching",120,1000);
+        CHEMICAL_REACTING.RB().ii(of(DUST.get(TriuraniumOctoxide,11))).fi(NitricAcid.getLiquid(3000)).fo(Uraniumdioxidedinitrate.getLiquid(3000),AntimatterMaterials.Water.getLiquid(4000),NitrogenDioxide.getGas(2000)).add("uraniumdioxidedinatrate",120,1000);
+
+        CHEMICAL_REACTING.RB().fi(Thoriumdioxidedinitrate.getLiquid(10000),Ammonia.getGas(22000)).io(DUST.get(Ammoniumdithoranate,5)).add("ammoniumdithoranate",120,1000);
+        CHEMICAL_REACTING.RB().fi(Uraniumdioxidedinitrate.getLiquid(10000),Ammonia.getGas(22000)).io(DUST.get(Ammoniumdiuranate,5)).add("ammoniumdiuranate",120,1000);
     }
 }
