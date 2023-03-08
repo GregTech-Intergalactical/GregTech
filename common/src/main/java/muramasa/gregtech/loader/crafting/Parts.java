@@ -128,7 +128,7 @@ public class Parts {
     provider.shapeless(output, "int_circuit_to_circuit", "gtparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()),
         CircuitBasic.getDefaultInstance(), ing);
     // });
-      provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()),
+      provider.shapeless(output, "int_circuit_1", "gtparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()),
               INT_CIRCUITS.get(0).getItems()[0], CircuitBasic);
 
       provider.addItemRecipe(output, Ref.ID, "small_battery_hull","batteries", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), BatteryHullSmall, of(
