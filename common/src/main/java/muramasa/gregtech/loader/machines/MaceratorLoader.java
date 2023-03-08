@@ -55,7 +55,7 @@ public class MaceratorLoader {
             ints.add(0.1 * BY_PRODUCT_MULTI.getInt(m));
             if (!stoneDust.isEmpty()) ints.add(0.5);
             double[] chances = ints.stream().mapToDouble(i -> i).toArray();
-            rm.RB().ii(ore).io(stackArray).chances(chances).add(sm.getId() + "_" + m.getId() + "_ore",400, 2);
+            rm.RB().ii(ore).io(stackArray).chances(chances).add(o.getId(),400, 2);
         });
         AntimatterMaterialTypes.CRUSHED.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.ORE)) return;
