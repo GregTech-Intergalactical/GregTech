@@ -48,7 +48,7 @@ public class CrackingUnit {
         CRACKING.RB().ii(INT_CIRCUITS.get(1).setNoConsume()).fi(Butadiene.getGas(1000),Steam.getGas(2000)).fo(Ethanol.getLiquid(2000),Hydrogen.getGas(2000)).add("ethanol_hydrogen_2",100, 172);
         CRACKING.RB().ii(INT_CIRCUITS.get(2).setNoConsume()).fi(Butadiene.getGas(1000),Steam.getGas(1000)).fo(Ethanol.getLiquid(1000),Ethane.getGas(1000)).add("ethanol_ethane",100, 172);
         CRACKING.RB().ii(INT_CIRCUITS.get(3).setNoConsume()).fi(Butadiene.getGas(1000),Steam.getGas(1000)).fo(Butenol.getLiquid(1000)).add("butenol",100, 172);
-        CRACKING.RB().ii(INT_CIRCUITS.get(4).setNoConsume()).fi(Butadiene.getGas(1000),Steam.getGas(2000)).fo(Butanediol.getLiquid(1000),Hydrogen.getGas(2000)).add("butanediol_hydrogen",200, 172);
+        CRACKING.RB().ii(INT_CIRCUITS.get(4).setNoConsume()).fi(Butadiene.getGas(1000),Steam.getGas(2000)).fo(Butanediol.getLiquid(1000),Hydrogen.getGas(2000)).add("butanediol_hydrogen_2",200, 172);
         CRACKING.RB().ii(INT_CIRCUITS.get(5).setNoConsume()).fi(Butadiene.getGas(1000),Steam.getGas(3000)).fo(Ethanediol.getLiquid(2000)).add("ethanediol",300, 172);
     }
 }
