@@ -122,7 +122,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().fi(Dimethylamine.getGas(1000),Chloramine.getLiquid(1000)).fo(Dimethylhydrazine.getLiquid(1000),DilutedHydrochloricAcid.getLiquid(1000)).add("dimethylhydrazine_2",240, 360);
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Silicon,1))).fi(Chloromethane.getGas(2000),AntimatterMaterials.Water.getLiquid(1000)).fo(Dimethyldichlorosilane.getLiquid(1000)).add("dimethyldichlorosilane_2",240, 96);
         CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(AluminiumTrichloride,1).setNoConsume()).fi(Propene.getGas(1000)).fo(Cumene.getLiquid(1000)).add("cumene_2",240, 120);
-
+        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Dibenzene,1)).fi(Hydrogen.getGas(2000)).fo(Benzene.getLiquid(2000)).add("diebzene_separation",200, 80);
     }
 
     private static void inorganicChemistry(){

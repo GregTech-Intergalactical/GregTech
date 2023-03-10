@@ -5,7 +5,6 @@ import muramasa.antimatter.material.Element;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DEPLETED_FISSILE_FUEL;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.FISSILE_FUEL;
 import static muramasa.antimatter.material.Element.getFromProtons;
-import static muramasa.antimatter.material.Element.getFromProtonsAndNeutrons;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.RecipeMaps.NUCLEAR;
 
