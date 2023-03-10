@@ -11,6 +11,7 @@ import muramasa.gregtech.Ref;
 import net.minecraft.world.item.ItemStack;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DEPLETED_FISSILE_FUEL;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_SMALL;
 import static muramasa.antimatter.material.Element.getFromProtons;
 import static muramasa.gregtech.data.RecipeMaps.THERMAL_CENTRIFUGING;
 import static net.minecraft.world.item.crafting.Ingredient.of;
@@ -32,10 +33,9 @@ public class ThermalCentrifuge {
             int protons = f.getElement().getProtons();
             if(protons != 101){
                 String id = getFromProtons(protons + 1, false).getId().split("_")[0];
-                System.out.println(f.getId().split("_")[0]);
-                THERMAL_CENTRIFUGING.RB().ii(of(DEPLETED_FISSILE_FUEL.get(f))).io(new ItemStack(AntimatterAPI.get(ItemBasic.class, f.getId().split("_")[0]+"_waste", Ref.ID),3),new ItemStack(AntimatterAPI.get(ItemBasic.class, id+"_waste", Ref.ID))).add(f.getId()+"_depleted_fuel_reprocessing",200,1000);
+                THERMAL_CENTRIFUGING.RB().ii(of(DEPLETED_FISSILE_FUEL.get(f))).io(new ItemStack(AntimatterAPI.get(ItemBasic.class, f.getId().split("_")[0]+"_waste", Ref.ID),3),new ItemStack(AntimatterAPI.get(ItemBasic.class, id+"_waste", Ref.ID)),DUST_SMALL.get(f,2)).add(f.getId()+"_depleted_fuel_reprocessing",200,1000);
             }else{
-                THERMAL_CENTRIFUGING.RB().ii(of(DEPLETED_FISSILE_FUEL.get(f))).io(new ItemStack(AntimatterAPI.get(ItemBasic.class, f.getId().split("_")[0]+"_waste", Ref.ID),4)).add(f.getId()+"_depleted_fuel_reprocessing",200,1000);
+                THERMAL_CENTRIFUGING.RB().ii(of(DEPLETED_FISSILE_FUEL.get(f))).io(new ItemStack(AntimatterAPI.get(ItemBasic.class, f.getId().split("_")[0]+"_waste", Ref.ID),4),DUST_SMALL.get(f,2)).add(f.getId()+"_depleted_fuel_reprocessing",200,1000);
             }
         });
     }
