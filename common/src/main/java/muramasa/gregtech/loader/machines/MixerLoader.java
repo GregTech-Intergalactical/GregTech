@@ -51,7 +51,6 @@ public class MixerLoader {
         addDust(Brass, 7, 20*20);
         addDust(BatteryAlloy, 7, 25*20);
         addDust(Cupronickel, 7, 10*20);
-
         recipes();
     }
 
@@ -93,6 +92,7 @@ public class MixerLoader {
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Saltpeter,2)),of(AntimatterMaterialTypes.DUST.get(Sulfur,1)),of(AntimatterMaterialTypes.DUST.get(Materials.Charcoal,1))).io(new ItemStack(Items.GUNPOWDER,2)).add("gunpowder_1",15*20, 8);
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone,1))).fi(Lubricant.getLiquid(20), AntimatterMaterials.Water.getLiquid(4980)).fo(DrillingFluid.getLiquid(5000)).add("drilling_fluid",32*2, 16);
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone,3)),of(AntimatterMaterialTypes.DUST.get(Clay,1))).fi(AntimatterMaterials.Water.getLiquid(500)).fo(Concrete.getLiquid(576)).add("concrete", 20, 16);
+        MIXING.RB().fi(SodiumCarbonateSolution.getLiquid(1000),SodiumBicarbonateSolution.getLiquid(1000)).fo(LeachingSolution.getLiquid(2000)).add("leaching_solution", 60, 32);
     }
 
 }

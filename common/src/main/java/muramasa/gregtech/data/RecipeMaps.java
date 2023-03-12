@@ -113,7 +113,10 @@ public class RecipeMaps {
             new RecipeMap<>(Ref.ID, "packaging", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ELECTROMAGNETIC_SEPARATING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "electromagnetic_separating", new RecipeBuilder()));
-
+    public static RecipeMap<RecipeBuilder> DECAYING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(Ref.ID, "decaying", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> DEHYDRATING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(Ref.ID, "dehydrating", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> STEAM_SMELTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(Ref.ID, "steam_smelting", new RecipeBuilder())
                     .setProxy(RecipeProxies.FURNACE_PROXY.apply(8, 160)).setGuiTier(Tier.BRONZE));
