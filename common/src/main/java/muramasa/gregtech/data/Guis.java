@@ -146,7 +146,7 @@ public class Guis {
                 .add(FL_OUT,107,63).add(FL_OUT,125,63).add(FL_OUT,143,63)
                 .add(ENERGY,80,63);
 
-        COKE_OVEN.add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25);
+        COKE_OVEN.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25);
         BATTERY_BUFFER_FOUR.add(ENERGY, 71, 27).add(ENERGY, 89, 27).add(ENERGY, 71, 45).add(ENERGY, 89, 45);
         BATTERY_BUFFER_ONE.add(ENERGY, 80, 40);
         BATTERY_BUFFER_EIGHT
