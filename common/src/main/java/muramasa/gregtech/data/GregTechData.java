@@ -195,9 +195,27 @@ public class GregTechData {
     public static ItemBasic<?> ShapeHeadSaw = new ItemBasic<>(Ref.ID, "shape_head_saw").tip("Shape for making Saw Heads");
     public static ItemBasic<?> ShapeGear = new ItemBasic<>(Ref.ID, "shape_gear").tip("Shape for making Gears");
     public static ItemBasic<?> ShapeGearSmall = new ItemBasic<>(Ref.ID, "shape_gear_small").tip("Shape for making Small Gears");
-    public static ItemBasic<?> ShapeBottle = new ItemBasic<>(Ref.ID, "shape_bottle").tip("Shape for making Bottles"); //TODO needed?
-    public static ItemBasic<?> UraniumFuelCell = new ItemBasic<>(Ref.ID, "uranium_fuel_cell").tip("Fuel cell");
-    public static ItemBasic<?> ThoriumFuelCell = new ItemBasic<>(Ref.ID, "thorium_fuel_cell").tip("Fuel cell");
+    public static ItemBasic<?> NuclearWaste = new ItemBasic<>(Ref.ID, "nuclear_waste").tip("Common Waste extracted from depleted Fuel");
+    public static ItemBasic<?> AlkalineWaste = new ItemBasic<>(Ref.ID, "alkaline_waste").tip("Waste containing alkaline metals");
+    public static ItemBasic<?> NonmetalWaste = new ItemBasic<>(Ref.ID, "nonmetal_waste").tip("Waste containing non-metal substances");
+    public static ItemBasic<?> MetaloidWaste = new ItemBasic<>(Ref.ID, "metaloid_waste").tip("Waste containing metal substances");
+    public static ItemBasic<?> HeavyMetalWaste = new ItemBasic<>(Ref.ID, "heavy_metal_waste").tip("Waste containing heavy metal substances");
+    public static ItemBasic<?> MetalGroupAWaste = new ItemBasic<>(Ref.ID, "metal_group_a_waste").tip("Waste containing rare metals");
+    public static ItemBasic<?> MetalGroupBWaste = new ItemBasic<>(Ref.ID, "metal_group_b_waste").tip("Waste semi-rare metals");
+    public static ItemBasic<?> MetalGroupCWaste = new ItemBasic<>(Ref.ID, "metal_group_c_waste").tip("Waste containing common metals");
+    public static ItemBasic<?> LanthanideGroupAWaste = new ItemBasic<>(Ref.ID, "lanthanide_group_a_waste").tip("Waste containing rare Lanthanides");
+    public static ItemBasic<?> LanthanideGroupBWaste = new ItemBasic<>(Ref.ID, "lanthanide_group_b_waste").tip("Waste containing semi-rare Lanthanides");
+    public static ItemBasic<?> ThoriumWaste = new ItemBasic<>(Ref.ID, "thorium_waste").tip("Waste extracted from depleted Thorium Fuel");
+    public static ItemBasic<?> UraniumWaste = new ItemBasic<>(Ref.ID, "uranium_waste").tip("Waste extracted from depleted Uranium Fuel");
+    public static ItemBasic<?> NeptuniumWaste = new ItemBasic<>(Ref.ID, "neptunium_waste").tip("Waste extracted from depleted Neptunium Fuel");
+    public static ItemBasic<?> PlutoniumWaste = new ItemBasic<>(Ref.ID, "plutonium_waste").tip("Waste extracted from depleted Plutonium Fuel");
+    public static ItemBasic<?> AmericiumWaste = new ItemBasic<>(Ref.ID, "americium_waste").tip("Waste extracted from depleted Americium Fuel");
+    public static ItemBasic<?> CuriumWaste = new ItemBasic<>(Ref.ID, "curium_waste").tip("Waste extracted from depleted Curium Fuel");
+    public static ItemBasic<?> BerkeliumWaste = new ItemBasic<>(Ref.ID, "berkelium_waste").tip("Waste extracted from depleted Berkelium Fuel");
+    public static ItemBasic<?> CaliforniumWaste = new ItemBasic<>(Ref.ID, "californium_waste").tip("Waste extracted from depleted Californium Fuel");
+    public static ItemBasic<?> EinsteiniumWaste = new ItemBasic<>(Ref.ID, "einsteinium_waste").tip("Waste extracted from depleted Einsteinium Fuel");
+    public static ItemBasic<?> FermiumWaste = new ItemBasic<>(Ref.ID, "fermium_waste").tip("Waste extracted from depleted Fermium Fuel");
+    public static ItemBasic<?> MendeleviumWaste = new ItemBasic<>(Ref.ID, "mendelevium_waste").tip("Waste extracted from depleted Mendelevium Fuel");
     //
     //    //TODO optional items (register anyway, but don't show in JEI?)
     //    //TODO move to IC2+IC2C Registrar
