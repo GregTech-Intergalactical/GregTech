@@ -329,6 +329,7 @@ public class GregTechData {
     public static final BlockCasing HULL_MAX = new BlockCasing(Ref.ID, "hull_max");
 
     public static final BlockCasing CASING_FIRE_BRICK = new BlockCasing(Ref.ID, "casing_fire_brick");
+    public static final BlockCasing CASING_BLAST_BRICK = new BlockCasing(Ref.ID, "casing_blast_brick");
     public static final BlockCasing CASING_BRONZE = new BlockCasing(Ref.ID, "casing_bronze");
     public static final BlockCasing CASING_BRICKED_BRONZE = new BlockSidedCasing(Ref.ID, "casing_bricked_bronze", "brick", "bronze");
     public static final BlockCasing CASING_BRONZE_PLATED_BRICK = new BlockCasing(Ref.ID, "casing_bronze_plated_brick");
