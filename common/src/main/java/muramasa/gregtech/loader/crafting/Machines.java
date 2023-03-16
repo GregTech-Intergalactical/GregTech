@@ -427,7 +427,7 @@ public class Machines {
         });
         provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(CASING_FIRE_BRICK), PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', CASING_FIRE_BRICK)
+                        .put('H', CASING_BLAST_BRICK)
                         .put('F', Items.FURNACE)
                         .put('C', Items.IRON_BLOCK).build(), "HFH", "HCH", "HFH");
 
