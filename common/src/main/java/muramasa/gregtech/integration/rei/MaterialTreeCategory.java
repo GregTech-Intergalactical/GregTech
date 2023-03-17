@@ -254,9 +254,11 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
 
     private void setupInfo(MaterialTreeDisplay display, Rectangle bounds, PoseStack stack){
         Material mat = display.mat;
-        renderString(stack, "Name: "+mat.getDisplayName().getString(), Minecraft.getInstance().font, 12, 10, 0xFFFFFF, bounds.x, bounds.y);
-        renderString(stack, "Formula: "+mat.getChemicalFormula(), Minecraft.getInstance().font, 12, 20, 0xFFFFFF, bounds.x, bounds.y);
-        renderString(stack, "Mass: "+mat.getMass(), Minecraft.getInstance().font, 12, 30, 0xFFFFFF, bounds.x, bounds.y);
+        renderString(stack, mat.getDisplayName().getString(), Minecraft.getInstance().font, 12, 10, 0xFFFFFF, bounds.x, bounds.y);
+        renderString(stack, "Mass: "+mat.getMass(), Minecraft.getInstance().font, 12, 20, 0xFFFFFF, bounds.x, bounds.y);
+        renderString(stack, "Formula: "+mat.getChemicalFormula(), Minecraft.getInstance().font, 12, 30, 0xFFFFFF, bounds.x, bounds.y);
+        renderString(stack, "Density: "+mat.getDensity(), Minecraft.getInstance().font, 120, 10, 0xFFFFFF, bounds.x, bounds.y);
+        renderString(stack, "Hardness: "+mat.getHardness(), Minecraft.getInstance().font, 120, 20, 0xFFFFFF, bounds.x, bounds.y);
     }
 
     private void renderString(PoseStack stack, String string, Font render, float x, float y, int color, int guiOffsetX, int guiOffsetY) {
