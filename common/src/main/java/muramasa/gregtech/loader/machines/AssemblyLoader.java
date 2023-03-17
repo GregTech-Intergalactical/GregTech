@@ -41,7 +41,7 @@ public class AssemblyLoader {
             sizes.forEach(size -> {
                 Item wireItem = t.getBlockItem(size);
                 Item cableItem = cable.getBlockItem(size);
-                ASSEMBLING.RB().ii(RecipeIngredient.of(wireItem,1), INT_CIRCUITS.get(24)).fi(Rubber.getLiquid(size.getCableThickness()*16)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId(),size.getCableThickness()* 20L,8);
+                ASSEMBLING.RB().ii(RecipeIngredient.of(wireItem,1), INT_CIRCUITS.get(size.getCableThickness())).fi(Rubber.getLiquid(size.getCableThickness()*16)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId(),size.getCableThickness()* 20L,8);
             });
         });
 
