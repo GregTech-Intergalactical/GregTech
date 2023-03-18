@@ -2,11 +2,9 @@ package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.pipe.types.FluidPipe;
-import muramasa.antimatter.pipe.types.HeatPipe;
-import muramasa.antimatter.pipe.types.ItemPipe;
-import muramasa.antimatter.pipe.types.Wire;
+import muramasa.antimatter.pipe.types.*;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -61,60 +59,44 @@ public class ExtruderLoader {
         });
 
         AntimatterAPI.all(FluidPipe.class).forEach(t -> {
-            Item pipeT = t.getBlockItem(PipeSize.TINY);
-            Item pipeS = t.getBlockItem(PipeSize.SMALL);
-            Item pipeM = t.getBlockItem(PipeSize.NORMAL);
-            Item pipeL = t.getBlockItem(PipeSize.LARGE);
-            Item pipeH = t.getBlockItem(PipeSize.HUGE);
-            ItemStack stackT = new ItemStack(pipeT,4);
-            ItemStack stackS = new ItemStack(pipeS,2);
-            ItemStack stackM = new ItemStack(pipeM,1);
-            ItemStack stackL = new ItemStack(pipeL,2);
-            ItemStack stackH = new ItemStack(pipeH,1);
-            long duration = t.getMaterial().getElement() == null ? Math.max(t.getMaterial().getMass(), 1) : t.getMaterial().getElement().getHardness();
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),3),of(GregTechData.ShapePipeTiny,1).setNoConsume()).io(stackT).add("tiny_fluid_pipe_" + t.getMaterial().getId(),duration*3,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),3),of(GregTechData.ShapePipeSmall,1).setNoConsume()).io(stackS).add("small_fluid_pipe_" + t.getMaterial().getId(),duration*3,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),3),of(GregTechData.ShapePipeNormal,1).setNoConsume()).io(stackM).add("normal_fluid_pipe_" + t.getMaterial().getId(),duration*3,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),6),of(GregTechData.ShapePipeLarge,1).setNoConsume()).io(stackL).add("large_fluid_pipe_" + t.getMaterial().getId(),duration*6,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),6),of(GregTechData.ShapePipeHuge,1).setNoConsume()).io(stackH).add("huge_fluid_pipe_" + t.getMaterial().getId(),duration*6,30);
+            addPipeRecipe(t.getMaterial(), 1, 2, PipeSize.TINY, t, 2);
+            addPipeRecipe(t.getMaterial(), 1, 1, PipeSize.SMALL, t, 1);
+            addPipeRecipe(t.getMaterial(), 3, 1, PipeSize.NORMAL, t, 3);
+            addPipeRecipe(t.getMaterial(), 6, 1, PipeSize.LARGE, t, 6);
+            addPipeRecipe(t.getMaterial(), 12, 1, PipeSize.HUGE, t, 12);
         });
 
         AntimatterAPI.all(ItemPipe.class).forEach(t -> {
-            Item pipeT = t.getBlockItem(PipeSize.TINY);
-            Item pipeS = t.getBlockItem(PipeSize.SMALL);
-            Item pipeM = t.getBlockItem(PipeSize.NORMAL);
-            Item pipeL = t.getBlockItem(PipeSize.LARGE);
-            Item pipeH = t.getBlockItem(PipeSize.HUGE);
-            ItemStack stackT = new ItemStack(pipeT,4);
-            ItemStack stackS = new ItemStack(pipeS,2);
-            ItemStack stackM = new ItemStack(pipeM,1);
-            ItemStack stackL = new ItemStack(pipeL,2);
-            ItemStack stackH = new ItemStack(pipeH,1);
-            long duration = t.getMaterial().getElement() == null ? Math.max(t.getMaterial().getMass(), 1) : t.getMaterial().getElement().getHardness();
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),3),of(GregTechData.ShapePipeTiny,1).setNoConsume()).io(stackT).add("tiny_item_pipe_" + t.getMaterial().getId(),duration*3,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),3),of(GregTechData.ShapePipeSmall,1).setNoConsume()).io(stackS).add("small_item_pipe_" + t.getMaterial().getId(),duration*3,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),3),of(GregTechData.ShapePipeNormal,1).setNoConsume()).io(stackM).add("normal_item_pipe_" + t.getMaterial().getId(),duration*3,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),6),of(GregTechData.ShapePipeLarge,1).setNoConsume()).io(stackL).add("large_item_pipe_" + t.getMaterial().getId(),duration*6,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),6),of(GregTechData.ShapePipeHuge,1).setNoConsume()).io(stackH).add("huge_item_pipe_" + t.getMaterial().getId(),duration*6,30);
+            addPipeRecipe(t.getMaterial(), 1, 2, PipeSize.TINY, t, 2);
+            addPipeRecipe(t.getMaterial(), 1, 1, PipeSize.SMALL, t, 1);
+            addPipeRecipe(t.getMaterial(), 3, 1, PipeSize.NORMAL, t, 3);
+            addPipeRecipe(t.getMaterial(), 6, 1, PipeSize.LARGE, t, 6);
+            addPipeRecipe(t.getMaterial(), 12, 1, PipeSize.HUGE, t, 12);
         });
 
         AntimatterAPI.all(HeatPipe.class).forEach(t -> {
-            Item pipeT = t.getBlockItem(PipeSize.TINY);
-            Item pipeS = t.getBlockItem(PipeSize.SMALL);
-            Item pipeM = t.getBlockItem(PipeSize.NORMAL);
-            Item pipeL = t.getBlockItem(PipeSize.LARGE);
-            Item pipeH = t.getBlockItem(PipeSize.HUGE);
-            ItemStack stackT = new ItemStack(pipeT,4);
-            ItemStack stackS = new ItemStack(pipeS,2);
-            ItemStack stackM = new ItemStack(pipeM,1);
-            ItemStack stackL = new ItemStack(pipeL,2);
-            ItemStack stackH = new ItemStack(pipeH,1);
-            long duration = t.getMaterial().getElement() == null ? Math.max(t.getMaterial().getMass(), 1) : t.getMaterial().getElement().getHardness();
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),3),of(GregTechData.ShapePipeTiny,1).setNoConsume()).io(stackT).add("tiny_heat_pipe_" + t.getMaterial().getId(),duration*10,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),3),of(GregTechData.ShapePipeSmall,1).setNoConsume()).io(stackS).add("small_heat_pipe_" + t.getMaterial().getId(),duration*20,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),3),of(GregTechData.ShapePipeNormal,1).setNoConsume()).io(stackM).add("normal_heat_pipe_" + t.getMaterial().getId(),duration*30,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),6),of(GregTechData.ShapePipeLarge,1).setNoConsume()).io(stackL).add("large_heat_pipe_" + t.getMaterial().getId(),duration*40,30);
-            EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),6),of(GregTechData.ShapePipeHuge,1).setNoConsume()).io(stackH).add("huge_heat_pipe_" + t.getMaterial().getId(),duration*50,30);
+            addPipeRecipe(t.getMaterial(), 1, 2, PipeSize.TINY, t, 10);
+            addPipeRecipe(t.getMaterial(), 1, 1, PipeSize.SMALL, t, 20);
+            addPipeRecipe(t.getMaterial(), 3, 1, PipeSize.NORMAL, t, 30);
+            addPipeRecipe(t.getMaterial(), 6, 1, PipeSize.LARGE, t, 40);
+            addPipeRecipe(t.getMaterial(), 12, 1, PipeSize.HUGE, t, 50);
         });
+    }
+
+    private static void addPipeRecipe(Material material, int countIn, int countOut, PipeSize size, PipeType<?> pipe, int durationMultiplier){
+        if (pipe.getSizes().contains(size)) {
+            long duration = material.getElement() == null ? Math.max(material.getMass(), 1) : material.getElement().getHardness();
+            EXTRUDING.RB().ii(AntimatterMaterialTypes.INGOT.getMaterialIngredient(material, countIn), of(getPipeMold(size), 1).setNoConsume()).io(new ItemStack(pipe.getBlockItem(size), countOut)).add(size.getId() + "_" + pipe.getType() + "_pipe_" + material.getId(), duration * durationMultiplier, 30);
+        }
+    }
+
+    private static Item getPipeMold(PipeSize size){
+        return switch (size) {
+            case HUGE -> GregTechData.ShapePipeHuge;
+            case LARGE -> GregTechData.ShapePipeLarge;
+            case NORMAL -> GregTechData.ShapePipeNormal;
+            case SMALL -> GregTechData.ShapePipeSmall;
+            case TINY, VTINY -> GregTechData.ShapePipeTiny;
+        };
     }
 }
