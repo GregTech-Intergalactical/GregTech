@@ -1,10 +1,7 @@
 package muramasa.gregtech.data;
 
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.material.FluidProduct;
-import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
 import net.minecraft.world.item.Items;
@@ -14,12 +11,10 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
-import java.util.*;
-
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Charcoal;
-import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.*;
 import static muramasa.gregtech.data.Materials.*;
@@ -31,7 +26,7 @@ public class GregTechMaterialEvents {
         flags(event);
         antimatterMaterials(event);
         byproducts(event);
-        MaterialTags.CUSTOM_ORE_DROPS.add(AntimatterMaterials.Lapis, b -> createSilkTouchDispatchTable(b, applyExplosionDecay(b, LootItem.lootTableItem(Items.LAPIS_LAZULI).apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 9.0F))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+        MaterialTags.CUSTOM_ORE_DROPS.add(Lapis, b -> createSilkTouchDispatchTable(b, applyExplosionDecay(b, LootItem.lootTableItem(Items.LAPIS_LAZULI).apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 9.0F))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
         /**
          *** PSE (Solids, no Isotopes)
          **/
@@ -41,19 +36,19 @@ public class GregTechMaterialEvents {
         event.setMaterial(Carbon).asSolid();
         event.setMaterial(Sodium).asDust(370);
         event.setMaterial(Magnesium).asMetal(1383, 1383);
-        event.setMaterial(Aluminium).asMetal(933, 1700, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.GEAR_SMALL, AntimatterMaterialTypes.FOIL).asOre().addTools(1.5F, 10.0F, 140, 2);
-        event.setMaterial(Silicon).asMetal(1683, 1683, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL);
+        event.setMaterial(Aluminium).asMetal(933, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL).asOre().addTools(1.5F, 10.0F, 140, 2);
+        event.setMaterial(Silicon).asMetal(1683, 1683, PLATE, FOIL);
         event.setMaterial(Phosphor).asDust(933);
         event.setMaterial(Sulfur).asDust(388).asOre().asPlasma();
         event.setMaterial(Potassium).asSolid(336, 0);
         event.setMaterial(Calcium).asDust(1115);
-        event.setMaterial(Titanium).asMetal(1941, 1940, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.GEAR_SMALL, AntimatterMaterialTypes.ROTOR).asOre().addTools(2.5F, 7.0F, 1600, 3);
+        event.setMaterial(Titanium).asMetal(1941, 1940, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, ROTOR).asOre().addTools(2.5F, 7.0F, 1600, 3);
         event.setMaterial(Vanadium).asMetal(2183, 2183);
-        event.setMaterial(Chrome).asMetal(2180, 1700, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROTOR).addTools(2.5F, 11.0F, 256, 3);
+        event.setMaterial(Chrome).asMetal(2180, 1700, SCREW, BOLT, RING, PLATE, ROTOR).addTools(2.5F, 11.0F, 256, 3);
         event.setMaterial(Manganese).asMetal(1519, 0).asOre();
         event.setMaterial(Cobalt).asMetal(1768, 0).asOre().addTools(3.0F, 8.0F, 512, 3);
-        event.setMaterial(Nickel).asMetal(1728, 0, AntimatterMaterialTypes.PLATE).asOre().asPlasma();
-        event.setMaterial(Zinc).asMetal(692, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL).asOre();
+        event.setMaterial(Nickel).asMetal(1728, 0, PLATE).asOre().asPlasma();
+        event.setMaterial(Zinc).asMetal(692, 0, PLATE, FOIL).asOre();
         event.setMaterial(Gallium).asMetal(302, 0);
         event.setMaterial(Germanium).asMetal(1211,1211);
         event.setMaterial(Arsenic).asMetal(1090, 1090);
@@ -63,16 +58,16 @@ public class GregTechMaterialEvents {
         event.setMaterial(Strontium).asMetal(1050, 1050);
         event.setMaterial(Yttrium).asMetal(1799, 1799);
         event.setMaterial(Zirconium).asMetal(2130,2130);
-        event.setMaterial(Niobium).asMetal(2750, 2750, AntimatterMaterialTypes.GEAR);
+        event.setMaterial(Niobium).asMetal(2750, 2750, GEAR);
         event.setMaterial(Molybdenum).asMetal(2896, 2896).asOre().addTools(2.0F, 7.0F, 512, 2);
         event.setMaterial(Technetium).asMetal(2430,2430);
         event.setMaterial(Ruthenium).asMetal(2607,2607);
         event.setMaterial(Rhodium).asMetal(2237, 2237);
         event.setMaterial(Palladium).asMetal(1828, 1828).asOre().addTools(3.0F, 10.0F, 420, 2);
-        event.setMaterial(Silver).asMetal(1234, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.SCREW).asOre();
+        event.setMaterial(Silver).asMetal(1234, 0, PLATE, SCREW).asOre();
         event.setMaterial(Cadmium).asDust(594);
         event.setMaterial(Indium).asSolid(429, 0);
-        event.setMaterial(Tin).asMetal(505, 505, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.WIRE_FINE, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.ROTOR).asOre();
+        event.setMaterial(Tin).asMetal(505, 505, PLATE, ROD, SCREW, BOLT, RING, GEAR, FOIL, WIRE_FINE, FRAME, ROTOR).asOre();
         event.setMaterial(Antimony).asMetal(1449, 1449);
         event.setMaterial(Tellurium).asMetal(723,0);
         event.setMaterial(Iodine).asSolid(387,0);
@@ -82,7 +77,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Lanthanum).asMetal(1193, 1193);
         event.setMaterial(Cerium).asMetal(1068, 1068);
         event.setMaterial(Praseodymium).asMetal(1208,1208);
-        event.setMaterial(Neodymium).asMetal(1297, 1297, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROD).asOre(); // TODO: Bastnasite or Monazite for Ore For;
+        event.setMaterial(Neodymium).asMetal(1297, 1297, PLATE, ROD).asOre(); // TODO: Bastnasite or Monazite for Ore For;
         event.setMaterial(Promethium).asMetal(1353,1353);
         event.setMaterial(Samarium).asMetal(1345,1345);
         event.setMaterial(Europium).asMetal(1099, 1099);
@@ -96,20 +91,20 @@ public class GregTechMaterialEvents {
         event.setMaterial(Lutetium).asMetal(1925, 1925);
         event.setMaterial(Hafnium).asMetal(2506,2506);
         event.setMaterial(Tantalum).asSolid(3290, 0);
-        event.setMaterial(Tungsten).asMetal(3695, 3000, AntimatterMaterialTypes.FOIL).addTools(2.0F, 6.0F, 512, 3); // Tungstensteel would be the one with tool;
+        event.setMaterial(Tungsten).asMetal(3695, 3000, FOIL).addTools(2.0F, 6.0F, 512, 3); // Tungstensteel would be the one with tool;
         event.setMaterial(Rhenium).asMetal(3459,3459);
-        event.setMaterial(Osmium).asMetal(3306, 3306, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE).addTools(4.0F, 16.0F, 1080, 4);
-        event.setMaterial(Iridium).asMetal(2719, 2719, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.PLATE).asOre().addTools(5.0F, 8.0F, 2560, 4);
-        event.setMaterial(Platinum).asMetal(2041, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE).asOre().addTools(4.5F, 18.0F, 48, 2);
+        event.setMaterial(Osmium).asMetal(3306, 3306, SCREW, BOLT, RING, PLATE, FOIL, ROD, WIRE_FINE).addTools(4.0F, 16.0F, 1080, 4);
+        event.setMaterial(Iridium).asMetal(2719, 2719, FRAME, PLATE).asOre().addTools(5.0F, 8.0F, 2560, 4);
+        event.setMaterial(Platinum).asMetal(2041, 0, PLATE, FOIL, ROD, WIRE_FINE).asOre().addTools(4.5F, 18.0F, 48, 2);
         event.setMaterial(Thallium).asMetal(577, 0);
-        event.setMaterial(Lead).asMetal(600, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.PLATE_DENSE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.BOLT).asOre();
+        event.setMaterial(Lead).asMetal(600, 0, PLATE, PLATE_DENSE, FOIL, ROD, FRAME, BOLT).asOre();
         event.setMaterial(Bismuth).asOre();
         event.setMaterial(Polonium).asMetal(527, 0);
         event.setMaterial(Astatine).asMetal(575, 0);
         event.setMaterial(Francium).asMetal(298, 0);
         event.setMaterial(Radium).asMetal(973, 0);
         event.setMaterial(Actinium).asMetal(1323, 0);
-        event.setMaterial(Thorium).asMetal(2115, 0, AntimatterMaterialTypes.PLATE_DENSE).asOre().addTools(1.5F, 6.0F, 512, 2);
+        event.setMaterial(Thorium).asMetal(2115, 0, PLATE_DENSE).asOre().addTools(1.5F, 6.0F, 512, 2);
         event.setMaterial(Protactinium).asMetal(1841, 0);
         event.setMaterial(Uranium).asMetal(1405, 0).asOre();
         event.setMaterial(Neptunium).asMetal(912, 0);
@@ -261,53 +256,53 @@ public class GregTechMaterialEvents {
         /**
          **  Metals
          **/
-        event.setMaterial(AnnealedCopper).asMetal(1357, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE, AntimatterMaterialTypes.SCREW).mats(of(AntimatterMaterials.Copper, 1));
-        event.setMaterial(BatteryAlloy).asMetal(295, 0, AntimatterMaterialTypes.PLATE).mats(of(Lead, 4, Antimony, 1));
-        event.setMaterial(BismuthBronze).asMetal(1100, 900, AntimatterMaterialTypes.PLATE).addTools(2.5F, 8.5F, 350, 2, of(Enchantments.BANE_OF_ARTHROPODS, 4)).mats(of(Bismuth, 1, Zinc, 1, AntimatterMaterials.Copper, 3));
-        event.setMaterial(BlackBronze).asMetal(2000, 2000).addTools(1.5F, 6.5F, 182, 2, of(Enchantments.SWEEPING_EDGE, 1)).mats(of(AntimatterMaterials.Gold, 1, Silver, 1, AntimatterMaterials.Copper, 3));
-        event.setMaterial(BlackSteel).asMetal(1200, 1200, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.PLATE).addTools(3.5F, 6.5F, 768, 2).mats(of(Nickel, 1, BlackBronze, 1, Steel, 3));
-        event.setMaterial(BlueSteel).asMetal(1400, 1400, AntimatterMaterialTypes.FRAME).addTools(3.5F, 7.5F, 1024, 2).mats(of(RoseGold, 1, Brass, 1, Steel, 2, BlackSteel, 4));
-        event.setMaterial(Brass).asMetal(1170, 0, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.PLATE).mats(of(Zinc, 1, AntimatterMaterials.Copper, 3));
-        event.setMaterial(Bronze).asMetal(1125, 0, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.ROTOR).addTools(1.5F, 6.5F, 182, 2, of(Enchantments.UNBREAKING, 1)).mats(of(Tin, 1, AntimatterMaterials.Copper, 3));
-        event.setMaterial(CobaltBrass).asMetal(1500, 0, AntimatterMaterialTypes.GEAR).addTools(2.5F, 8.0F, 256, 2).mats(of(Brass, 7, Aluminium, 1, Cobalt, 1));
-        event.setMaterial(Cupronickel).asMetal(1728, 0, AntimatterMaterialTypes.PLATE).mats(of(AntimatterMaterials.Copper, 1, Nickel, 1));
+        event.setMaterial(AnnealedCopper).asMetal(1357, 0, PLATE, FOIL, ROD, WIRE_FINE, SCREW).mats(of(Copper, 1));
+        event.setMaterial(BatteryAlloy).asMetal(295, 0, PLATE).mats(of(Lead, 4, Antimony, 1));
+        event.setMaterial(BismuthBronze).asMetal(1100, 900, PLATE).addTools(2.5F, 8.5F, 350, 2, of(Enchantments.BANE_OF_ARTHROPODS, 4)).mats(of(Bismuth, 1, Zinc, 1, Copper, 3));
+        event.setMaterial(BlackBronze).asMetal(2000, 2000).addTools(1.5F, 6.5F, 182, 2, of(Enchantments.SWEEPING_EDGE, 1)).mats(of(Gold, 1, Silver, 1, Copper, 3));
+        event.setMaterial(BlackSteel).asMetal(1200, 1200, FRAME, PLATE).addTools(3.5F, 6.5F, 768, 2).mats(of(Nickel, 1, BlackBronze, 1, Steel, 3));
+        event.setMaterial(BlueSteel).asMetal(1400, 1400, FRAME).addTools(3.5F, 7.5F, 1024, 2).mats(of(RoseGold, 1, Brass, 1, Steel, 2, BlackSteel, 4));
+        event.setMaterial(Brass).asMetal(1170, 0, FRAME, ROD, PLATE).mats(of(Zinc, 1, Copper, 3));
+        event.setMaterial(Bronze).asMetal(1125, 0, GEAR, FRAME, ROTOR).addTools(1.5F, 6.5F, 182, 2, of(Enchantments.UNBREAKING, 1)).mats(of(Tin, 1, Copper, 3));
+        event.setMaterial(CobaltBrass).asMetal(1500, 0, GEAR).addTools(2.5F, 8.0F, 256, 2).mats(of(Brass, 7, Aluminium, 1, Cobalt, 1));
+        event.setMaterial(Cupronickel).asMetal(1728, 0, PLATE).mats(of(Copper, 1, Nickel, 1));
         event.setMaterial(Duranium).asMetal(295, 0).addHandleStat(620, -1.0F, of(Enchantments.SILK_TOUCH, 1)).addTools(6.5F, 16.0F, 5120, 5);
-        event.setMaterial(Electrum).asMetal(1330, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE).addTools(1.0F, 13.0F, 48, 2, of(Enchantments.UNBREAKING, 3)).mats(of(Silver, 1, AntimatterMaterials.Gold, 1));
+        event.setMaterial(Electrum).asMetal(1330, 0, PLATE, FOIL, ROD, WIRE_FINE).addTools(1.0F, 13.0F, 48, 2, of(Enchantments.UNBREAKING, 3)).mats(of(Silver, 1, Gold, 1));
         event.setMaterial(EnrichedNaquadah).asMetal(4500, 4500).asOre().addTools(5.0F, 6.0F, 1280, 4);
-        event.setMaterial(HSSE).asMetal(5400, 5400, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME).addTools(4.2F, 10.0F, 5120, 4).mats(of(HSSG, 6, Cobalt, 1, Manganese, 1, Silicon, 1));
-        event.setMaterial(HSSG).asMetal(4500, 4500, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME).addTools(3.8F, 10.0F, 4000, 3).mats(of(TungstenSteel, 5, Chrome, 1, Molybdenum, 2, Vanadium, 1));
+        event.setMaterial(HSSE).asMetal(5400, 5400, GEAR, FRAME).addTools(4.2F, 10.0F, 5120, 4).mats(of(HSSG, 6, Cobalt, 1, Manganese, 1, Silicon, 1));
+        event.setMaterial(HSSG).asMetal(4500, 4500, GEAR, FRAME).addTools(3.8F, 10.0F, 4000, 3).mats(of(TungstenSteel, 5, Chrome, 1, Molybdenum, 2, Vanadium, 1));
         event.setMaterial(HSSS).asMetal(5400, 5400).addTools(5.0F, 14.0F, 3000, 4).mats(of(HSSG, 6, Iridium, 2, Osmium, 1));
-        event.setMaterial(Invar).asMetal(1700, 0, AntimatterMaterialTypes.FRAME).addTools(2.5F, 7.0F, 320, 2, of(Enchantments.BANE_OF_ARTHROPODS, 2)).mats(of(AntimatterMaterials.Iron, 2, Nickel, 1));
-        event.setMaterial(IronMagnetic).asMetal(1811, 0, AntimatterMaterialTypes.ROD).addTools(AntimatterMaterials.Iron).mats(of(AntimatterMaterials.Iron, 1));
-        event.setMaterial(Kanthal).asMetal(1800, 1800).addTools(2.5F, 6.0F, 64, 2, of(Enchantments.BANE_OF_ARTHROPODS, 1)).mats(of(AntimatterMaterials.Iron, 1, Aluminium, 1, Chrome, 1));
-        event.setMaterial(Magnalium).asMetal(870, 0, AntimatterMaterialTypes.PLATE).mats(of(Magnesium, 1, Aluminium, 2));
-        event.setMaterial(NeodymiumMagnetic).asMetal(1297, 1297, AntimatterMaterialTypes.ROD).mats(of(Neodymium, 1));
-        event.setMaterial(Neutronium).asMetal(10000, 10000, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME).addTools(9.0F, 24.0F, 655360, 6);
+        event.setMaterial(Invar).asMetal(1700, 0, FRAME).addTools(2.5F, 7.0F, 320, 2, of(Enchantments.BANE_OF_ARTHROPODS, 2)).mats(of(Iron, 2, Nickel, 1));
+        event.setMaterial(IronMagnetic).asMetal(1811, 0, ROD).addTools(Iron).mats(of(Iron, 1));
+        event.setMaterial(Kanthal).asMetal(1800, 1800).addTools(2.5F, 6.0F, 64, 2, of(Enchantments.BANE_OF_ARTHROPODS, 1)).mats(of(Iron, 1, Aluminium, 1, Chrome, 1));
+        event.setMaterial(Magnalium).asMetal(870, 0, PLATE).mats(of(Magnesium, 1, Aluminium, 2));
+        event.setMaterial(NeodymiumMagnetic).asMetal(1297, 1297, ROD).mats(of(Neodymium, 1));
+        event.setMaterial(Neutronium).asMetal(10000, 10000, SCREW, BOLT, RING, GEAR, FRAME).addTools(9.0F, 24.0F, 655360, 6);
         event.setMaterial(Naquadah).asMetal(5400, 5400).asOre().addHandleStat(102, 0.5F, of(Enchantments.BLOCK_EFFICIENCY, 2)).addTools(4.0F, 6.0F, 890, 4);
         event.setMaterial(NaquadahAlloy).asMetal(7200, 7200).addTools(4.5F, 8.0F, 5120, 5);
         event.setMaterial(Naquadria).asMetal(9000, 9000);
         event.setMaterial(Nichrome).asMetal(2700, 2700).addTools(2.0F, 6.0F, 81, 2, of(Enchantments.BANE_OF_ARTHROPODS, 3)).mats(of(Nickel, 4, Chrome, 1));
-        event.setMaterial(NickelZincFerrite).asMetal(1500, 1500).addTools(0.0F, 3.0F, 32, 1).mats(of(Nickel, 1, Zinc, 1, AntimatterMaterials.Iron, 4, Oxygen, 8));
-        event.setMaterial(NiobiumTitanium).asMetal(4500, 4500, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE, AntimatterMaterialTypes.GEAR).mats(of(Nickel, 4, Chrome, 1));
-        event.setMaterial(Osmiridium).asMetal(3333, 2500, AntimatterMaterialTypes.FRAME).addTools(6.0F, 15.0F, 1940, 5).mats(of(Iridium, 3, Osmium, 1));
-        event.setMaterial(RedAlloy).asMetal(295, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE).mats(of(AntimatterMaterials.Copper, 1, AntimatterMaterials.Redstone, 4));
+        event.setMaterial(NickelZincFerrite).asMetal(1500, 1500).addTools(0.0F, 3.0F, 32, 1).mats(of(Nickel, 1, Zinc, 1, Iron, 4, Oxygen, 8));
+        event.setMaterial(NiobiumTitanium).asMetal(4500, 4500, PLATE, FOIL, ROD, WIRE_FINE, GEAR).mats(of(Nickel, 4, Chrome, 1));
+        event.setMaterial(Osmiridium).asMetal(3333, 2500, FRAME).addTools(6.0F, 15.0F, 1940, 5).mats(of(Iridium, 3, Osmium, 1));
+        event.setMaterial(RedAlloy).asMetal(295, 0, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Copper, 1, Redstone, 4));
         event.setMaterial(RedSteel).asMetal(1300, 1300).addTools(3.5F, 7.0F, 896, 2).mats(of(SterlingSilver, 1, BismuthBronze, 1, Steel, 2, BlackSteel, 4));
-        event.setMaterial(RoseGold).asMetal(1600, 1600, AntimatterMaterialTypes.WIRE_FINE).addTools(AntimatterMaterials.Gold, of(Enchantments.BLOCK_FORTUNE, 3, Enchantments.SMITE, 3)).mats(of(AntimatterMaterials.Copper, 1, AntimatterMaterials.Gold, 4));
-        event.setMaterial(SolderingAlloy).asMetal(400, 400, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE).mats(of(Tin, 9, Antimony, 1));
-        event.setMaterial(Steel).asMetal(1811, 1000, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.ROTOR, AntimatterMaterialTypes.GEAR_SMALL).addTools(AntimatterMaterials.Iron).mats(of(AntimatterMaterials.Iron, 50, Carbon, 1));
-        event.setMaterial(SteelMagnetic).asMetal(1000, 1000, AntimatterMaterialTypes.ROD).addTools(Steel).mats(of(Steel, 1));
-        event.setMaterial(SterlingSilver).asMetal(1700, 1700).addTools(3.0F, 10.5F, 96, 2, of(Enchantments.BLOCK_EFFICIENCY, 2)).mats(of(AntimatterMaterials.Copper, 1, Silver, 4));
-        event.setMaterial(StainlessSteel).asMetal(1700, 1700, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.ROTOR, AntimatterMaterialTypes.GEAR_SMALL).addTools(Steel).mats(of(AntimatterMaterials.Iron, 6, Chrome, 1, Manganese, 1, Nickel, 1));
-        event.setMaterial(TinAlloy).asMetal(1158,1158).mats(of(Tin, 1, AntimatterMaterials.Iron, 1));
-        event.setMaterial(Tritanium).asMetal(295, 0, AntimatterMaterialTypes.FRAME).addTools(9.0F, 15.0F, 9400, 6);
+        event.setMaterial(RoseGold).asMetal(1600, 1600, WIRE_FINE).addTools(Gold, of(Enchantments.BLOCK_FORTUNE, 3, Enchantments.SMITE, 3)).mats(of(Copper, 1, Gold, 4));
+        event.setMaterial(SolderingAlloy).asMetal(400, 400, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Tin, 9, Antimony, 1));
+        event.setMaterial(Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).addTools(Iron).mats(of(Iron, 50, Carbon, 1));
+        event.setMaterial(SteelMagnetic).asMetal(1000, 1000, ROD).addTools(Steel).mats(of(Steel, 1));
+        event.setMaterial(SterlingSilver).asMetal(1700, 1700).addTools(3.0F, 10.5F, 96, 2, of(Enchantments.BLOCK_EFFICIENCY, 2)).mats(of(Copper, 1, Silver, 4));
+        event.setMaterial(StainlessSteel).asMetal(1700, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).addTools(Steel).mats(of(Iron, 6, Chrome, 1, Manganese, 1, Nickel, 1));
+        event.setMaterial(TinAlloy).asMetal(1158,1158).mats(of(Tin, 1, Iron, 1));
+        event.setMaterial(Tritanium).asMetal(295, 0, FRAME).addTools(9.0F, 15.0F, 9400, 6);
         event.setMaterial(TungstenCarbide).asMetal(2460, 2460).addTools(5.0F, 14.0F, 1280, 4).mats(of(Tungsten, 1, Carbon, 1));
-        event.setMaterial(TungstenSteel).asMetal(3000, 3000, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.ROTOR, AntimatterMaterialTypes.GEAR_SMALL).asOre().addTools(4.0F, 8.0F, 2560, 4).mats(of(Steel, 1, Tungsten, 1));
-        event.setMaterial(Ultimet).asMetal(2700, 2700, AntimatterMaterialTypes.PLATE).mats(of(Cobalt, 5, Chrome, 2, Nickel, 1, Molybdenum, 1));
-        event.setMaterial(VanadiumGallium).asMetal(4500, 4500, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.PLATE).mats(of(Vanadium, 3, Gallium, 1));
+        event.setMaterial(TungstenSteel).asMetal(3000, 3000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).asOre().addTools(4.0F, 8.0F, 2560, 4).mats(of(Steel, 1, Tungsten, 1));
+        event.setMaterial(Ultimet).asMetal(2700, 2700, PLATE).mats(of(Cobalt, 5, Chrome, 2, Nickel, 1, Molybdenum, 1));
+        event.setMaterial(VanadiumGallium).asMetal(4500, 4500, ROD, PLATE).mats(of(Vanadium, 3, Gallium, 1));
         event.setMaterial(VanadiumSteel).asMetal(1453, 1453).addTools(3.0F, 5.0F, 1920, 3).mats(of(Vanadium, 1, Chrome, 1, Steel, 7));
-        event.setMaterial(Vibranium).asMetal(295, 0, AntimatterMaterialTypes.FRAME).addTools(10.0F, 20.0F, 12240, 6);
-        event.setMaterial(WroughtIron).asMetal(1811, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.SCREW, AntimatterMaterialTypes.BOLT, AntimatterMaterialTypes.RING, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME, AntimatterMaterialTypes.ROTOR, AntimatterMaterialTypes.GEAR_SMALL).addTools(AntimatterMaterials.Iron).mats(of(AntimatterMaterials.Iron, 1)).asOre();
-        event.setMaterial(YttriumBariumCuprate).asMetal(4500, 4500, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE).mats(of(Yttrium, 1, Barium, 2, AntimatterMaterials.Copper, 3, Oxygen, 7));
+        event.setMaterial(Vibranium).asMetal(295, 0, FRAME).addTools(10.0F, 20.0F, 12240, 6);
+        event.setMaterial(WroughtIron).asMetal(1811, 0, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).addTools(Iron).mats(of(Iron, 1)).asOre();
+        event.setMaterial(YttriumBariumCuprate).asMetal(4500, 4500, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Yttrium, 1, Barium, 2, Copper, 3, Oxygen, 7));
         /**
          **  Dusts
          **/
@@ -316,19 +311,19 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Ash).asDust();
         event.setMaterial(AntimonyTrioxide).asDust().mats(of(Antimony, 2, Oxygen, 3));
-        event.setMaterial(Clay).asDust().mats(of(Sodium, 2, Lithium, 1, Aluminium, 2, Silicon, 2, AntimatterMaterials.Water, 6));
-        event.setMaterial(CupricOxide).asDust().mats(of(AntimatterMaterials.Copper, 1, Oxygen, 1));
+        event.setMaterial(Clay).asDust().mats(of(Sodium, 2, Lithium, 1, Aluminium, 2, Silicon, 2, Water, 6));
+        event.setMaterial(CupricOxide).asDust().mats(of(Copper, 1, Oxygen, 1));
         event.setMaterial(DarkAsh).asDust();
         event.setMaterial(Dibenzene).asDust().mats(of(Carbon,12,Hydrogen,10));
         event.setMaterial(DibenzoylPeroxide).asDust().mats(of(Carbon,14,Hydrogen,10,Oxygen,4));
         event.setMaterial(GelledToluene).asDust();
-        event.setMaterial(Graphene).asDust(AntimatterMaterialTypes.PLATE);
+        event.setMaterial(Graphene).asDust(PLATE);
         event.setMaterial(Polydimethylsiloxane).asDust().mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
         event.setMaterial(RareEarth).asDust();
         event.setMaterial(RawRubber).asDust().mats(of(Carbon, 5, Hydrogen, 8));
         event.setMaterial(RawStyreneButadieneRubber).asDust().mats(of(Styrene, 1, Butadiene, 3));
         event.setMaterial(SodaAsh).asDust().mats(of(Sodium, 2, Carbon, 1, Oxygen, 3));
-        event.setMaterial(Wood).asDust(AntimatterMaterialTypes.GEAR).addHandleStat(12, 0.0F).mats(of(Carbon, 1, Oxygen, 1, Hydrogen, 1));
+        event.setMaterial(Wood).asDust(GEAR).addHandleStat(12, 0.0F).mats(of(Carbon, 1, Oxygen, 1, Hydrogen, 1));
         event.setMaterial(WoodPulp).asDust();
         /**
          *  Inorganic
@@ -337,28 +332,28 @@ public class GregTechMaterialEvents {
         event.setMaterial(AmmoniumChloride).asDust().mats(of(Nitrogen,1, Hydrogen,4,Chlorine,1));
         event.setMaterial(ArsenicTrioxide).asDust().mats(of(Arsenic, 2, Oxygen, 3));
         event.setMaterial(Biotite).asDust().mats(b -> b.put(Potassium, 1).put(Magnesium, 3).put(Aluminium, 3).put(Fluorine, 2).put(Silicon, 3).put(Oxygen, 10));
-        event.setMaterial(BlackGranite).asDust(AntimatterMaterialTypes.ROCK).addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1)).mats(of(SiliconDioxide, 4, Biotite, 1));
-        event.setMaterial(BlueSchist).asDust(AntimatterMaterialTypes.ROCK);
+        event.setMaterial(BlackGranite).asDust(ROCK).addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1)).mats(of(SiliconDioxide, 4, Biotite, 1));
+        event.setMaterial(BlueSchist).asDust(ROCK);
         event.setMaterial(BorosilicateGlass).asDust().mats(of(Boron, 1, Silicon, 7, Oxygen,14));
         event.setMaterial(Brick).asDust().mats(of(Aluminium, 4, Silicon, 3, Oxygen, 12));
         event.setMaterial(CobaltOxide).asDust().mats(of(Cobalt, 1, Oxygen, 1));
-        event.setMaterial(Concrete).asDust(300).mats(of(AntimatterMaterials.Stone, 1)).asFluid();
+        event.setMaterial(Concrete).asDust(300).mats(of(Stone, 1)).asFluid();
         event.setMaterial(DialuminiumTrioxide).asDust().mats(of(Aluminium,2,Oxygen,3));
-        event.setMaterial(Energium).asDust().mats(of(AntimatterMaterials.Redstone,1,Ruby,1));
-        event.setMaterial(FerriteMixture).asDust().mats(of(Nickel, 1, Zinc, 1, AntimatterMaterials.Iron, 4));
-        event.setMaterial(Ferrosilite).asDust().mats(of(AntimatterMaterials.Iron, 1, Silicon, 1, Oxygen, 3));
-        event.setMaterial(Fireclay).asDust(AntimatterMaterialTypes.INGOT, AntimatterMaterialTypes.PLATE).mats(of(Brick, 1));
-        event.setMaterial(GreenSchist).asDust(AntimatterMaterialTypes.ROCK);
+        event.setMaterial(Energium).asDust().mats(of(Redstone,1,Ruby,1));
+        event.setMaterial(FerriteMixture).asDust().mats(of(Nickel, 1, Zinc, 1, Iron, 4));
+        event.setMaterial(Ferrosilite).asDust().mats(of(Iron, 1, Silicon, 1, Oxygen, 3));
+        event.setMaterial(Fireclay).asDust(INGOT, PLATE).mats(of(Brick, 1));
+        event.setMaterial(GreenSchist).asDust(ROCK);
         event.setMaterial(IndiumGalliumPhosphide).asDust().mats(of(Indium, 1, Gallium, 1, Phosphor, 1));
         event.setMaterial(IridiumSodiumOxide).asDust().mats(of(Iridium,1,Sodium,1,Oxygen,2));
-        event.setMaterial(Kimberlite).asDust(AntimatterMaterialTypes.ROCK);
-        event.setMaterial(Komatiite).asDust(AntimatterMaterialTypes.ROCK).mats(of(Olivine, 1, /* MgCO3, 2, */AntimatterMaterials.Flint, 6, DarkAsh, 3));
-        event.setMaterial(Limestone).asDust(AntimatterMaterialTypes.ROCK).mats(of(Calcite, 1));
+        event.setMaterial(Kimberlite).asDust(ROCK);
+        event.setMaterial(Komatiite).asDust(ROCK).mats(of(Olivine, 1, /* MgCO3, 2, */Flint, 6, DarkAsh, 3));
+        event.setMaterial(Limestone).asDust(ROCK).mats(of(Calcite, 1));
         event.setMaterial(Magnesia).asDust().mats(of(Magnesium, 1, Oxygen, 1));
         event.setMaterial(MagnesiumChloride).asDust().mats(of(Magnesium, 1, Chlorine, 2));
-        event.setMaterial(Marble).asDust(AntimatterMaterialTypes.ROCK).mats(of(Magnesium, 1, Calcite, 7));
+        event.setMaterial(Marble).asDust(ROCK).mats(of(Magnesium, 1, Calcite, 7));
         event.setMaterial(Massicot).asDust().mats(of(Lead, 1, Oxygen, 1));
-        event.setMaterial(Obsidian).asDust().addHandleStat(222, -0.5F, of(Enchantments.UNBREAKING, 2)).mats(of(Magnesium, 1, AntimatterMaterials.Iron, 1, Silicon, 2, Oxygen, 8));
+        event.setMaterial(Obsidian).asDust().addHandleStat(222, -0.5F, of(Enchantments.UNBREAKING, 2)).mats(of(Magnesium, 1, Iron, 1, Silicon, 2, Oxygen, 8));
         event.setMaterial(PlatinumGroupSludge).asDust();
         event.setMaterial(PhosphorousPentoxide).asDust().mats(of(Phosphor, 4, Oxygen, 10));
         event.setMaterial(Potash).asDust().mats(of(Potassium, 2, Oxygen, 1));
@@ -366,8 +361,8 @@ public class GregTechMaterialEvents {
         //event.setMaterial(Powellite).asDust(ORE).mats(of(Calcium, 1, Molybdenum, 1, Oxygen, 4));
         //event.setMaterial(Pyrochlore).asDust(ORE).addComposition(of(Calcium, 2, Niobium, 2, Oxygen, 7));
         event.setMaterial(Quicklime).asDust().mats(of(Calcium, 1, Oxygen, 1));
-        event.setMaterial(ReactionCatalyst).asDust().mats(of(AntimatterMaterials.Copper,1,Zinc,1,Aluminium,2,Oxygen,4));
-        event.setMaterial(RedGranite).asDust(AntimatterMaterialTypes.ROCK).addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1)).mats(of(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3));
+        event.setMaterial(ReactionCatalyst).asDust().mats(of(Copper,1,Zinc,1,Aluminium,2,Oxygen,4));
+        event.setMaterial(RedGranite).asDust(ROCK).addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1)).mats(of(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3));
         event.setMaterial(SiliconDioxide).asDust().mats(of(Silicon, 1, Oxygen, 2));
         event.setMaterial(SodiumBisulfate).asDust().mats(of(Sodium, 1, Hydrogen, 1, Sulfur, 1, Oxygen, 4));
         event.setMaterial(SodiumHydroxide).asDust().mats(of(Sodium, 1, Oxygen, 1, Hydrogen, 1));
@@ -399,16 +394,16 @@ public class GregTechMaterialEvents {
         /**
          **  Ores
          **/
-        event.setMaterial(Almandine).asOre().mats(of(Aluminium, 2, AntimatterMaterials.Iron, 3, Silicon, 3, Oxygen, 12));
-        event.setMaterial(Andradite).asOre().mats(of(Calcium, 3, AntimatterMaterials.Iron, 2, Silicon, 3, Oxygen, 12));
-        event.setMaterial(BandedIron).asOre(true).mats(of(AntimatterMaterials.Iron, 2, Oxygen, 3));
+        event.setMaterial(Almandine).asOre().mats(of(Aluminium, 2, Iron, 3, Silicon, 3, Oxygen, 12));
+        event.setMaterial(Andradite).asOre().mats(of(Calcium, 3, Iron, 2, Silicon, 3, Oxygen, 12));
+        event.setMaterial(BandedIron).asOre(true).mats(of(Iron, 2, Oxygen, 3));
         event.setMaterial(Bastnasite).asOre(true).mats(of(Cerium, 1, Carbon, 1, Fluorine, 1, Oxygen, 3));
         event.setMaterial(Barite).asOre(true).mats(of(Barium, 1, Sulfur, 1, Oxygen, 4));
-        event.setMaterial(Bentonite).asOre(true).mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(AntimatterMaterials.Water, 5).put(Oxygen, 36)); // TODO: Ore Gen
-        event.setMaterial(BrownLimonite).asOre(true).mats(of(AntimatterMaterials.Iron, 1, Hydrogen, 1, Oxygen, 2));
+        event.setMaterial(Bentonite).asOre(true).mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)); // TODO: Ore Gen
+        event.setMaterial(BrownLimonite).asOre(true).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
         event.setMaterial(Calcite).asOre(true).mats(of(Calcium, 1, Carbon, 1, Oxygen, 3));
         event.setMaterial(Cassiterite).asOre().mats(of(Tin, 1, Oxygen, 2));
-        event.setMaterial(Chalcopyrite).asOre().mats(of(AntimatterMaterials.Copper, 1, AntimatterMaterials.Iron, 1, Sulfur, 2));
+        event.setMaterial(Chalcopyrite).asOre().mats(of(Copper, 1, Iron, 1, Sulfur, 2));
         event.setMaterial(Cinnabar).asOre(true).mats(of(Mercury, 1, Sulfur, 1));
         event.setMaterial(Cobaltite).asOre(true).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
         event.setMaterial(Cooperite).asOre().mats(of(Platinum, 3, Nickel, 1, Sulfur, 1, Palladium, 1));
@@ -417,18 +412,18 @@ public class GregTechMaterialEvents {
         event.setMaterial(Glauconite).asOre(true).mats(of(Potassium, 1, Magnesium, 2, Aluminium, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Gen;
         event.setMaterial(Graphite).asDust().asOre();
         event.setMaterial(Grossular).asOre().mats(of(Calcium, 3, Aluminium, 2, Silicon, 3, Oxygen, 12));
-        event.setMaterial(Ilmenite).asOre().mats(of(AntimatterMaterials.Iron, 1, Titanium, 1, Oxygen, 3));
+        event.setMaterial(Ilmenite).asOre().mats(of(Iron, 1, Titanium, 1, Oxygen, 3));
         event.setMaterial(Lepidolite).asOre(true).mats(of(Potassium, 1, Lithium, 3, Aluminium, 4, Fluorine, 2, Oxygen, 10)); // TODO: Ore Gen;
         event.setMaterial(Rutile).asOre().mats(of(Titanium, 1, Oxygen, 2)); event.setMaterial(Cobaltite).asOre(true).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
         event.setMaterial(Magnesite).asOre(true).mats(of(Magnesium, 1, Carbon, 1, Oxygen, 3));
-        event.setMaterial(Magnetite).asOre().mats(of(AntimatterMaterials.Iron, 3, Oxygen, 4));
-        event.setMaterial(Malachite).asOre(true).mats(of(AntimatterMaterials.Copper, 2, Carbon, 1, Hydrogen, 2, Oxygen, 5));
+        event.setMaterial(Magnetite).asOre().mats(of(Iron, 3, Oxygen, 4));
+        event.setMaterial(Malachite).asOre(true).mats(of(Copper, 2, Carbon, 1, Hydrogen, 2, Oxygen, 5));
         event.setMaterial(Molybdenite).asOre(true).mats(of(Molybdenum, 1, Sulfur, 2));
         event.setMaterial(Oilsands).asOre(true);
         event.setMaterial(Pentlandite).asOre().mats(of(Nickel, 9, Sulfur, 8));
         event.setMaterial(Phosphate).asOre(true).mats(of(Phosphor, 1, Oxygen, 4));
         event.setMaterial(Pitchblende).asOre(true).mats(of(Uraninite, 3, Thorium, 1, Lead, 1));
-        event.setMaterial(Pyrite).asOre().mats(of(AntimatterMaterials.Iron, 1, Sulfur, 2));
+        event.setMaterial(Pyrite).asOre().mats(of(Iron, 1, Sulfur, 2));
         event.setMaterial(Pyrolusite).asOre().mats(of(Manganese, 1, Oxygen, 2));
         event.setMaterial(Pyrope).asOre().mats(of(Aluminium, 2, Magnesium, 3, Silicon, 3, Oxygen, 12));
         event.setMaterial(Saltpeter).asOre().mats(of(Potassium, 1, Nitrogen, 1, Oxygen, 3));
@@ -440,33 +435,33 @@ public class GregTechMaterialEvents {
         event.setMaterial(Stibnite).asOre().mats(of(Antimony, 2, Sulfur, 3));
         event.setMaterial(Tantalite).asOre(true).mats(of(Manganese, 1, Tantalum, 2, Oxygen, 6));
         event.setMaterial(Talc).asOre(true).mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12));
-        event.setMaterial(Tetrahedrite).asOre(true).mats(of(AntimatterMaterials.Copper, 3, Antimony, 1, Sulfur, 3, AntimatterMaterials.Iron, 1));
+        event.setMaterial(Tetrahedrite).asOre(true).mats(of(Copper, 3, Antimony, 1, Sulfur, 3, Iron, 1));
         event.setMaterial(Tungstate).asOre(true).mats(of(Tungsten, 1, Lithium, 2, Oxygen, 4));
         event.setMaterial(Uraninite).asOre(true).mats(of(Uranium, 1, Oxygen, 2));
         event.setMaterial(Uvarovite).asOre().mats(of(Calcium, 3, Chrome, 2, Silicon, 3, Oxygen, 12));
         event.setMaterial(VanadiumMagnetite).asOre(true).mats(of(Magnetite, 1, Vanadium, 1));
         event.setMaterial(Wulfenite).asOre(true).mats(of(Lead, 1, Molybdenum, 1, Oxygen, 4));
-        event.setMaterial(YellowLimonite).asOre(true).mats(of(AntimatterMaterials.Iron, 1, Hydrogen, 1, Oxygen, 2));
+        event.setMaterial(YellowLimonite).asOre(true).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
         /**
          **  Ore Stones
          **/
-        event.setMaterial(Bauxite).asOreStone(AntimatterMaterialTypes.ORE_SMALL).mats(of(Rutile, 2, Aluminium, 16, Hydrogen, 10, Oxygen, 11));
-        event.setMaterial(Lignite).asGemBasic(false).asOreStone(0, 2, AntimatterMaterialTypes.ORE_SMALL).mats(of(Carbon, 3, AntimatterMaterials.Water, 1));
-        event.setMaterial(OilShale).asOreStone(AntimatterMaterialTypes.ORE_SMALL);
-        event.setMaterial(RockSalt).asOreStone(AntimatterMaterialTypes.ORE_SMALL).mats(of(Potassium, 1, Chlorine, 1));
-        event.setMaterial(Salt).asOreStone(AntimatterMaterialTypes.ORE_SMALL).mats(of(Sodium, 1, Chlorine, 1));
+        event.setMaterial(Bauxite).asOreStone(ORE_SMALL).mats(of(Rutile, 2, Aluminium, 16, Hydrogen, 10, Oxygen, 11));
+        event.setMaterial(Lignite).asGemBasic(false).asOreStone(0, 2, ORE_SMALL).mats(of(Carbon, 3, Water, 1));
+        event.setMaterial(OilShale).asOreStone(ORE_SMALL);
+        event.setMaterial(RockSalt).asOreStone(ORE_SMALL).mats(of(Potassium, 1, Chlorine, 1));
+        event.setMaterial(Salt).asOreStone(ORE_SMALL).mats(of(Sodium, 1, Chlorine, 1));
         /**
          **  Gems
          **/
         /**
          *  Regular
          **/
-        event.setMaterial(Amethyst).asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 3).mats(of(SiliconDioxide, 4, AntimatterMaterials.Iron, 1));
+        event.setMaterial(Amethyst).asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 3).mats(of(SiliconDioxide, 4, Iron, 1));
         event.setMaterial(BlueSapphire).asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3));
         event.setMaterial(BlueTopaz).asGem(true).asOre(3, 7, true).addTools(2.5F, 7.0F, 256, 3).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
-        event.setMaterial(Glass).asDust(AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.LENS).mats(of(SiliconDioxide, 1));
+        event.setMaterial(Glass).asDust(PLATE, LENS).mats(of(SiliconDioxide, 1));
         event.setMaterial(GreenSapphire).asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3));
-        event.setMaterial(Olivine).asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2, of(Enchantments.SILK_TOUCH, 1)).mats(of(Magnesium, 2, AntimatterMaterials.Iron, 1, SiliconDioxide, 2));
+        event.setMaterial(Olivine).asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2, of(Enchantments.SILK_TOUCH, 1)).mats(of(Magnesium, 2, Iron, 1, SiliconDioxide, 2));
         event.setMaterial(Opal).asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2).mats(of(SiliconDioxide, 1));
         event.setMaterial(Ruby).asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2).mats(of(Chrome, 1, Aluminium, 2, Oxygen, 3));
         event.setMaterial(Tanzanite).asGem(true).asOre(3, 7, true).addTools(2.0F, 7.0F, 256, 2).mats(of(Calcium, 2, Aluminium, 3, Silicon, 3, Hydrogen, 1, Oxygen, 13));
@@ -483,29 +478,29 @@ public class GregTechMaterialEvents {
         //event.setMaterial(Monazite).asGemBasic(false,ORE).addComposition(of(RareEarth, 1, Phosphate, 1)); TODO: Add Monazite;
         event.setMaterial(NetherStar).asGemBasic(false).addTools(3.5F, 6.0F, 3620, 4, of(Enchantments.SILK_TOUCH, 1));
         event.setMaterial(Phosphorus).asGemBasic(false).asOre(3, 7, true).mats(of(Calcium, 3, Phosphate, 2));
-        event.setMaterial(Quartzite).asGemBasic(false, AntimatterMaterialTypes.ROCK, AntimatterMaterialTypes.ROD).asOre(2, 5, true).mats(of(Silicon, 1, Oxygen, 2));
+        event.setMaterial(Quartzite).asGemBasic(false, ROCK, ROD).asOre(2, 5, true).mats(of(Silicon, 1, Oxygen, 2));
         event.setMaterial(RedGarnet).asGemBasic(true).asOre(3, 7, true).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
         event.setMaterial(Sodalite).asGemBasic(false).asOre(2, 5, true).mats(of(Aluminium, 3, Silicon, 3, Sodium, 4, Chlorine, 1));
         event.setMaterial(YellowGarnet).asGemBasic(true).asOre(3, 7, true).mats(of(Andradite, 5, Grossular, 8, Uvarovite, 3));
         /**
          **  Plastic Related
          **/
-        event.setMaterial(Epoxid).asSolid(400, 0, AntimatterMaterialTypes.PLATE).addHandleStat(70, 1.5F).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
-        event.setMaterial(EpoxidFiberReinforced).asSolid(400, 0, AntimatterMaterialTypes.PLATE).mats(of(Epoxid, 1));
+        event.setMaterial(Epoxid).asSolid(400, 0, PLATE).addHandleStat(70, 1.5F).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
+        event.setMaterial(EpoxidFiberReinforced).asSolid(400, 0, PLATE).mats(of(Epoxid, 1));
         event.setMaterial(Polycaprolactam).asSolid(500, 0).mats(of(Carbon, 6, Hydrogen, 11, Nitrogen, 1, Oxygen, 1));
-        event.setMaterial(Polyethylene).asSolid(295, 0, AntimatterMaterialTypes.PLATE).asFluid().addHandleStat(66, 0.5F).mats(of(Carbon, 1, Hydrogen, 2));
-        event.setMaterial(PolyphenyleneSulfide).asSolid(295, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL).mats(of(Carbon, 6, Hydrogen, 4, Sulfur, 1));
+        event.setMaterial(Polyethylene).asSolid(295, 0, PLATE).asFluid().addHandleStat(66, 0.5F).mats(of(Carbon, 1, Hydrogen, 2));
+        event.setMaterial(PolyphenyleneSulfide).asSolid(295, 0, PLATE, FOIL).mats(of(Carbon, 6, Hydrogen, 4, Sulfur, 1));
         event.setMaterial(Polystyrene).asSolid(295, 0).addHandleStat(3, 1.0F).mats(of(Carbon, 8, Hydrogen, 8));
-        event.setMaterial(Polytetrafluoroethylene).asSolid(1400, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FRAME).mats(of(Carbon, 2, Fluorine, 4));
-        event.setMaterial(PolyvinylChloride).asSolid(295, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL).addHandleStat(210, 0.5F).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
-        event.setMaterial(Rubber).asSolid(295, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.RING).addHandleStat(11, 0.4F).mats(of(Carbon, 5, Hydrogen, 8));
-        event.setMaterial(Silicone).asSolid(900, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.FOIL).addHandleStat(-40, 2.0F).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
-        event.setMaterial(StyreneButadieneRubber).asSolid(295, 0, AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.RING).addHandleStat(66, 1.2F).mats(of(Styrene, 1, Butadiene, 3));
+        event.setMaterial(Polytetrafluoroethylene).asSolid(1400, 0, PLATE, FRAME).mats(of(Carbon, 2, Fluorine, 4));
+        event.setMaterial(PolyvinylChloride).asSolid(295, 0, PLATE, FOIL).addHandleStat(210, 0.5F).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
+        event.setMaterial(Rubber).asSolid(295, 0, PLATE, RING).addHandleStat(11, 0.4F).mats(of(Carbon, 5, Hydrogen, 8));
+        event.setMaterial(Silicone).asSolid(900, 0, PLATE, FOIL).addHandleStat(-40, 2.0F).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
+        event.setMaterial(StyreneButadieneRubber).asSolid(295, 0, PLATE, RING).addHandleStat(66, 1.2F).mats(of(Styrene, 1, Butadiene, 3));
         /**
          **  Misc
          **/
         event.setMaterial(GalliumArsenide).asSolid(295, 1200).mats(of(Arsenic, 1, Gallium, 1));
-        event.setMaterial(Superconductor).asSolid(AntimatterMaterialTypes.PLATE);
+        event.setMaterial(Superconductor).asSolid(PLATE);
         /**
          ***  Fluids
          **/
@@ -526,7 +521,7 @@ public class GregTechMaterialEvents {
         },1440).mats(of(WoodTar,1,WoodGas,1,WoodVinegar,2));
         event.setMaterial(FermentedBiomass).asFluid(16,0,true,new FluidProduct[]{
                 new FluidProduct(AceticAcid,"fluid",25),
-                new FluidProduct(AntimatterMaterials.Water,"fluid",395),
+                new FluidProduct(Water,"fluid",395),
                 new FluidProduct(Ethanol,"fluid",250),
                 new FluidProduct(Methanol,"fluid",250),
                 new FluidProduct(Ammonia,"gas",100),
@@ -543,22 +538,22 @@ public class GregTechMaterialEvents {
         },1440).mats(of(Creosote,4,Phenol,1,Benzene,2,Toluene,1));
         event.setMaterial(WoodVinegar).asFluid(0,0,true,new FluidProduct[]{
                 new FluidProduct(AceticAcid,"fluid",180),
-                new FluidProduct(AntimatterMaterials.Water,"fluid",720),
+                new FluidProduct(Water,"fluid",720),
                 new FluidProduct(Ethanol,"fluid",90),
                 new FluidProduct(Methanol,"fluid",360),
                 new FluidProduct(Acetone,"fluid",45),
                 new FluidProduct(MethylAcetate,"fluid",45)
-        },1440).mats(of(MethylAcetate,1,Acetone,1,Ethanol,2,AceticAcid,4,Methanol,8, AntimatterMaterials.Water,16));
+        },1440).mats(of(MethylAcetate,1,Acetone,1,Ethanol,2,AceticAcid,4,Methanol,8, Water,16));
         /**
          *  Inorganic
          **/
         event.setMaterial(DilutedHydrochloricAcid).asFluid(0,0,true,new FluidProduct[]{
                 new FluidProduct(HydrochloricAcid,"fluid",1000),
-                new FluidProduct(AntimatterMaterials.Water,"fluid",1000)
+                new FluidProduct(Water,"fluid",1000)
         },2000).mats(of(Hydrogen, 1, Chlorine, 1));
         event.setMaterial(DilutedSulfuricAcid).asFluid().asFluid(0,0,true, new FluidProduct[]{
                 new FluidProduct(SulfuricAcid,"fluid",1000),
-                new FluidProduct(AntimatterMaterials.Water,"fluid",1000)
+                new FluidProduct(Water,"fluid",1000)
         },2000).mats(of(Hydrogen,2,Sulfur,1,Oxygen,4));
         /**
          **  Without Distillation Products
@@ -616,9 +611,9 @@ public class GregTechMaterialEvents {
          *  Inorganic
          **/
         event.setMaterial(Antimatter).asFluid();
-        event.setMaterial(BlueVitriol).asFluid().mats(of(AntimatterMaterials.Copper,1,Sulfur,1,Oxygen,4,AntimatterMaterials.Water,5));
+        event.setMaterial(BlueVitriol).asFluid().mats(of(Copper,1,Sulfur,1,Oxygen,4,Water,5));
         //event.setMaterial(CalciumAcetateSolution).asFluid().mats(of(Calcium, 1, Carbon, 2, Oxygen, 4, Hydrogen, 6);
-        event.setMaterial(DistilledWater).asFluid().mats(of(AntimatterMaterials.Water,1));
+        event.setMaterial(DistilledWater).asFluid().mats(of(Water,1));
         event.setMaterial(DrillingFluid).asFluid(); // TODO: Perhaps for a bedrock drill;
         event.setMaterial(HydrochloricAcid).asFluid().mats(of(Hydrogen, 1, Chlorine, 1));
         event.setMaterial(HydrofluoricAcid).asFluid().mats(of(Hydrogen, 1, Fluorine, 1));
@@ -634,11 +629,11 @@ public class GregTechMaterialEvents {
         event.setMaterial(NitricAcid).asFluid().mats(of(Hydrogen, 1, Nitrogen, 1, Oxygen, 3));
         event.setMaterial(PeroxydisulfuricAcid).asFluid().mats(of(Sulfur,2,Hydrogen,2,Oxygen,8));
         event.setMaterial(PhosphoricAcid).asFluid().mats(of(Hydrogen, 3, Phosphor, 1, Oxygen, 4));
-        event.setMaterial(SaltWater).asFluid().mats(of(AntimatterMaterials.Water,1,Sodium,1,Chlorine,1));
+        event.setMaterial(SaltWater).asFluid().mats(of(Water,1,Sodium,1,Chlorine,1));
         event.setMaterial(SodiumPersulfate).asFluid().mats(of(Sodium, 2, Sulfur, 2, Oxygen, 8));
-        event.setMaterial(SodiumBicarbonateSolution).asFluid().mats(of(Sodium, 1, Hydrogen,1 ,Carbon, 1, Oxygen, 3, AntimatterMaterials.Water, 1));
-        event.setMaterial(SodiumCarbonateSolution).asFluid().mats(of(Sodium, 2, Carbon, 1, Oxygen, 3, AntimatterMaterials.Water, 1));
-        event.setMaterial(Steam).asGas(1, 395).mats(of(AntimatterMaterials.Water,1));
+        event.setMaterial(SodiumBicarbonateSolution).asFluid().mats(of(Sodium, 1, Hydrogen,1 ,Carbon, 1, Oxygen, 3, Water, 1));
+        event.setMaterial(SodiumCarbonateSolution).asFluid().mats(of(Sodium, 2, Carbon, 1, Oxygen, 3, Water, 1));
+        event.setMaterial(Steam).asGas(1, 395).mats(of(Water,1));
         event.setMaterial(SulfuricAcid).asFluid().mats(of(Hydrogen, 2, Sulfur, 1, Oxygen, 4));
         event.setMaterial(SulfurTrioxide).asGas().mats(of(Sulfur, 1, Oxygen, 3));
         event.setMaterial(SulfurDioxide).asGas().mats(of(Sulfur, 1, Oxygen, 2));
@@ -921,81 +916,81 @@ public class GregTechMaterialEvents {
         event.setMaterial(Aluminium).addByProduct(Bauxite);
         //event.setMaterial(Amber).addByProduct(Amber); TODO: Add Amber
         event.setMaterial(Amethyst).addByProduct(Amethyst);
-        event.setMaterial(Andradite).addByProduct(YellowGarnet, AntimatterMaterials.Iron, Boron);
-        event.setMaterial(Antimony).addByProduct(Zinc, AntimatterMaterials.Iron);
+        event.setMaterial(Andradite).addByProduct(YellowGarnet, Iron, Boron);
+        event.setMaterial(Antimony).addByProduct(Zinc, Iron);
         event.setMaterial(Ash).addByProduct(Carbon);
-        event.setMaterial(AntimatterMaterials.Basalt).addByProduct(Olivine, DarkAsh);
+        event.setMaterial(Basalt).addByProduct(Olivine, DarkAsh);
         event.setMaterial(Bastnasite).addByProduct(Neodymium, RareEarth);
         event.setMaterial(Bauxite).addByProduct(Grossular, Rutile, Gallium);
         event.setMaterial(Bentonite).addByProduct(Aluminium, Calcium, Magnesium);
-        event.setMaterial(Beryllium).addByProduct(AntimatterMaterials.Emerald);
+        event.setMaterial(Beryllium).addByProduct(Emerald);
         event.setMaterial(BlackGranite).addByProduct(Biotite);
         event.setMaterial(BlueSapphire).addByProduct(Aluminium);
-        event.setMaterial(Brass).addByProduct(AntimatterMaterials.Copper, Tin);
-        event.setMaterial(Bronze).addByProduct(AntimatterMaterials.Copper, Zinc);
+        event.setMaterial(Brass).addByProduct(Copper, Tin);
+        event.setMaterial(Bronze).addByProduct(Copper, Zinc);
         event.setMaterial(BrownLimonite).addByProduct(Malachite, YellowLimonite);
         event.setMaterial(Calcite).addByProduct(Andradite, Malachite);
         event.setMaterial(Cassiterite).addByProduct(Tin);
-        event.setMaterial(Chalcopyrite).addByProduct(Pyrite, Cobalt, Cadmium, AntimatterMaterials.Gold);
-        event.setMaterial(Chrome).addByProduct(AntimatterMaterials.Iron, Magnesium);
-        event.setMaterial(Cinnabar).addByProduct(AntimatterMaterials.Redstone, Sulfur, AntimatterMaterials.Glowstone);
+        event.setMaterial(Chalcopyrite).addByProduct(Pyrite, Cobalt, Cadmium, Gold);
+        event.setMaterial(Chrome).addByProduct(Iron, Magnesium);
+        event.setMaterial(Cinnabar).addByProduct(Redstone, Sulfur, Glowstone);
         event.setMaterial(Clay).addByProduct(Clay);
-        event.setMaterial(AntimatterMaterials.Coal).addByProduct(Lignite, Thorium);
+        event.setMaterial(Coal).addByProduct(Lignite, Thorium);
         event.setMaterial(Cobalt).addByProduct(Cobaltite);
         event.setMaterial(Cobaltite).addByProduct(Cobalt);
         event.setMaterial(Cooperite).addByProduct(Palladium, Nickel, Iridium);
-        event.setMaterial(AntimatterMaterials.Copper).addByProduct(Cobalt, AntimatterMaterials.Gold, Nickel);
+        event.setMaterial(Copper).addByProduct(Cobalt, Gold, Nickel);
         event.setMaterial(DarkAsh).addByProduct(Carbon);
-        event.setMaterial(AntimatterMaterials.Diamond).addByProduct(Graphite);
-        event.setMaterial(Electrum).addByProduct(AntimatterMaterials.Gold, Silver);
-        event.setMaterial(AntimatterMaterials.Emerald).addByProduct(Beryllium, Aluminium);
-        event.setMaterial(AntimatterMaterials.Endstone).addByProduct(Helium3);
+        event.setMaterial(Diamond).addByProduct(Graphite);
+        event.setMaterial(Electrum).addByProduct(Gold, Silver);
+        event.setMaterial(Emerald).addByProduct(Beryllium, Aluminium);
+        event.setMaterial(Endstone).addByProduct(Helium3);
         event.setMaterial(EnrichedNaquadah).addByProduct(Naquadah, Naquadria);
-        event.setMaterial(AntimatterMaterials.Flint).addByProduct(Obsidian);
+        event.setMaterial(Flint).addByProduct(Obsidian);
         event.setMaterial(Galena).addByProduct(Sulfur, Silver, Lead);
         event.setMaterial(Garnierite).addByProduct(Nickel);
-        event.setMaterial(Glauconite).addByProduct(Sodium, Aluminium, AntimatterMaterials.Iron);
-        event.setMaterial(AntimatterMaterials.Glowstone).addByProduct(AntimatterMaterials.Redstone, AntimatterMaterials.Gold);
-        event.setMaterial(AntimatterMaterials.Gold).addByProduct(AntimatterMaterials.Copper, Nickel);
+        event.setMaterial(Glauconite).addByProduct(Sodium, Aluminium, Iron);
+        event.setMaterial(Glowstone).addByProduct(Redstone, Gold);
+        event.setMaterial(Gold).addByProduct(Copper, Nickel);
         event.setMaterial(Graphite).addByProduct(Carbon);
         event.setMaterial(Grossular).addByProduct(YellowGarnet, Calcium);
-        event.setMaterial(Ilmenite).addByProduct(AntimatterMaterials.Iron, Rutile);
+        event.setMaterial(Ilmenite).addByProduct(Iron, Rutile);
         event.setMaterial(Iridium).addByProduct(Platinum, Osmium);
-        event.setMaterial(AntimatterMaterials.Iron).addByProduct(Nickel, Tin);
-        event.setMaterial(AntimatterMaterials.Lapis).addByProduct(Calcite, Pyrite);
+        event.setMaterial(Iron).addByProduct(Nickel, Tin);
+        event.setMaterial(Lapis).addByProduct(Calcite, Pyrite);
         event.setMaterial(Lead).addByProduct(Silver, Sulfur);
-        event.setMaterial(Lignite).addByProduct(AntimatterMaterials.Coal);
+        event.setMaterial(Lignite).addByProduct(Coal);
         event.setMaterial(Lithium).addByProduct(Dilithium);
         event.setMaterial(Magnesite).addByProduct(Magnesium);
         event.setMaterial(Magnesium).addByProduct(Olivine);
-        event.setMaterial(Magnetite).addByProduct(AntimatterMaterials.Iron, AntimatterMaterials.Gold);
-        event.setMaterial(Malachite).addByProduct(AntimatterMaterials.Copper, BrownLimonite, Calcite);
-        event.setMaterial(Manganese).addByProduct(Chrome, AntimatterMaterials.Iron);
+        event.setMaterial(Magnetite).addByProduct(Iron, Gold);
+        event.setMaterial(Malachite).addByProduct(Copper, BrownLimonite, Calcite);
+        event.setMaterial(Manganese).addByProduct(Chrome, Iron);
         event.setMaterial(Marble).addByProduct(Calcite);
         event.setMaterial(Molybdenite).addByProduct(Molybdenum);
         event.setMaterial(Naquadah).addByProduct(EnrichedNaquadah);
         event.setMaterial(Neodymium).addByProduct(RareEarth);
-        event.setMaterial(AntimatterMaterials.Netherrack).addByProduct(Sulfur);
+        event.setMaterial(Netherrack).addByProduct(Sulfur);
         event.setMaterial(Neutronium).addByProduct(Neutronium);
-        event.setMaterial(Nickel).addByProduct(Cobalt, Platinum, AntimatterMaterials.Iron);
+        event.setMaterial(Nickel).addByProduct(Cobalt, Platinum, Iron);
         event.setMaterial(Obsidian).addByProduct(Olivine);
         event.setMaterial(Olivine).addByProduct(Pyrope, Magnesium);
         event.setMaterial(Opal).addByProduct(Tanzanite);
         event.setMaterial(Osmium).addByProduct(Iridium);
-        event.setMaterial(Pentlandite).addByProduct(AntimatterMaterials.Iron, Sulfur, Cobalt);
+        event.setMaterial(Pentlandite).addByProduct(Iron, Sulfur, Cobalt);
         event.setMaterial(Phosphate).addByProduct(Phosphor);
         event.setMaterial(Phosphor).addByProduct(Phosphate);
         event.setMaterial(Phosphorus).addByProduct(Phosphate);
         event.setMaterial(Pitchblende).addByProduct(Thorium, Uranium, Lead);
         event.setMaterial(Platinum).addByProduct(Nickel, Iridium);
         event.setMaterial(Plutonium).addByProduct(Uranium, Lead);
-        event.setMaterial(Pyrite).addByProduct(Sulfur, Phosphorus, AntimatterMaterials.Iron);
+        event.setMaterial(Pyrite).addByProduct(Sulfur, Phosphorus, Iron);
         event.setMaterial(Pyrolusite).addByProduct(Manganese);
         event.setMaterial(Pyrope).addByProduct(RedGarnet, Magnesium);
-        event.setMaterial(AntimatterMaterials.Quartz).addByProduct(AntimatterMaterials.Netherrack);
+        event.setMaterial(Quartz).addByProduct(Netherrack);
         event.setMaterial(Quartzite).addByProduct(Barite);
         event.setMaterial(RedGarnet).addByProduct(Spessartine, Pyrope, Almandine);
-        event.setMaterial(AntimatterMaterials.Redstone).addByProduct(Cinnabar, RareEarth, AntimatterMaterials.Glowstone);
+        event.setMaterial(Redstone).addByProduct(Cinnabar, RareEarth, Glowstone);
         event.setMaterial(RedGranite).addByProduct(PotassiumFeldspar);
         event.setMaterial(RockSalt).addByProduct(Salt);
         event.setMaterial(Ruby).addByProduct(Chrome, RedGarnet);
@@ -1007,14 +1002,14 @@ public class GregTechMaterialEvents {
         event.setMaterial(Spessartine).addByProduct(RedGarnet, Manganese);
         event.setMaterial(Sphalerite).addByProduct(YellowGarnet, Cadmium, Gallium, Zinc);
         event.setMaterial(Spodumene).addByProduct(Aluminium, Lithium);
-        event.setMaterial(Steel).addByProduct(AntimatterMaterials.Iron);
+        event.setMaterial(Steel).addByProduct(Iron);
         event.setMaterial(Stibnite).addByProduct(Antimony);
         event.setMaterial(Sulfur).addByProduct(Sulfur);
         event.setMaterial(Tantalite).addByProduct(Manganese, Niobium, Tantalum);
         event.setMaterial(Tanzanite).addByProduct(Opal);
         event.setMaterial(Tetrahedrite).addByProduct(Antimony, Zinc);
         event.setMaterial(Thorium).addByProduct(Uranium, Lead);
-        event.setMaterial(Tin).addByProduct(AntimatterMaterials.Iron, Zinc);
+        event.setMaterial(Tin).addByProduct(Iron, Zinc);
         event.setMaterial(Titanium).addByProduct(Almandine);
         event.setMaterial(Tungstate).addByProduct(Manganese, Silver, Lithium);
         event.setMaterial(Tungsten).addByProduct(Manganese, Molybdenum);
@@ -1028,30 +1023,30 @@ public class GregTechMaterialEvents {
     }
 
     private static void flags(MaterialEvent event){
-        BRITTLEG.add(AntimatterMaterials.Coal, Charcoal, Lignite);
+        BRITTLEG.add(Coal, Charcoal, Lignite);
         CALCITE2X.add(Pyrite, BrownLimonite, YellowLimonite, Magnetite);
-        CALCITE3X.add(AntimatterMaterials.Iron, WroughtIron);
+        CALCITE3X.add(Iron, WroughtIron);
         CENT.add(NobleGases, Air, BrownLimonite, Cinnabar, Clay, Cooperite, Stibnite,
-                Tetrahedrite, Uraninite, Wulfenite, YellowLimonite, AntimatterMaterials.Blaze, AntimatterMaterials.Flint, Marble, BlackGranite,
-                VanadiumMagnetite, Pitchblende, Glass, AntimatterMaterials.Lapis, AntimatterMaterials.EnderEye, Phosphorus, AntimatterMaterials.Redstone, AntimatterMaterials.Basalt, AnnealedCopper,
+                Tetrahedrite, Uraninite, Wulfenite, YellowLimonite, Blaze, Flint, Marble, BlackGranite,
+                VanadiumMagnetite, Pitchblende, Glass, Lapis, EnderEye, Phosphorus, Redstone, Basalt, AnnealedCopper,
                 BatteryAlloy, Brass, Bronze, Cupronickel, Electrum, Invar, Kanthal, Magnalium, Nichrome,
                 NiobiumTitanium, SolderingAlloy, VanadiumGallium, WroughtIron, SterlingSilver, RoseGold, BismuthBronze,
                 TungstenSteel, RedAlloy, CobaltBrass, TungstenCarbide, VanadiumSteel, HSSG, HSSE, HSSS,
                 GalliumArsenide, IndiumGalliumPhosphide, BorosilicateGlass);
-        CHEMBATH_MERCURY.add(Chalcopyrite, AntimatterMaterials.Gold);
-        CHEMBATH_MERCURY.add(AntimatterMaterials.Gold,Nickel);
+        CHEMBATH_MERCURY.add(Chalcopyrite, Gold);
+        CHEMBATH_MERCURY.add(Gold,Nickel);
         CHEMBATH_MERCURY.add(Osmium,Iridium);
         CHEMBATH_MERCURY.add(Platinum,Iridium);
         CHEMBATH_MERCURY.add(Silver,Sulfur);
         CHEMBATH_PERSULFATE.add(Cobalt,Cobaltite);
         CHEMBATH_PERSULFATE.add(Cobaltite,Cobalt);
-        CHEMBATH_PERSULFATE.add(AntimatterMaterials.Copper,Nickel);
-        CHEMBATH_PERSULFATE.add(Nickel, AntimatterMaterials.Iron);
+        CHEMBATH_PERSULFATE.add(Copper,Nickel);
+        CHEMBATH_PERSULFATE.add(Nickel, Iron);
         CHEMBATH_PERSULFATE.add(Sphalerite,Zinc);
         CHEMBATH_PERSULFATE.add(Tetrahedrite,Zinc);
         CHEMBATH_PERSULFATE.add(Zinc,Gallium);
         CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene, LightFuel, HeavyFuel);
-        CRYSTALLIZE.add(AntimatterMaterials.Lapis, Quartzite, AntimatterMaterials.Quartz);
+        CRYSTALLIZE.add(Lapis, Quartzite, Quartz);
         DECAYABLE.add(Thallium209,Thallium210,Bismuth213,Bismuth214,Polonium213,Polonium214,Polonium215,Polonium216,Polonium218,Astatine217,Astatine218,
                 Radon219,Radon220,Radon222,Francium221,Francium223,Radium223,Radium224,Radium225,Radium226,Radium228,Actinium225,Actinium227,Actinium228,
                 Thorium227,Thorium228,Thorium229,Thorium230,Thorium231,Thorium233,Thorium234,Protactinium231,Protactinium232,Protactinium233,Protactinium234,
@@ -1074,70 +1069,70 @@ public class GregTechMaterialEvents {
                 SiliconDioxide, Massicot, ArsenicTrioxide, CobaltOxide, Magnesia, Quicklime, Potash, SodaAsh,
                 PhosphorousPentoxide, SodiumHydroxide, Spessartine, Sphalerite, Uvarovite, PotassiumFeldspar, Biotite,
                 RedGranite, Bastnasite, Pentlandite, Spodumene, Glauconite, Bentonite, Malachite, Barite, Talc,
-                AntimonyTrioxide, CupricOxide, Ferrosilite, Quartzite, Charcoal, AntimatterMaterials.Coal, Lignite, AntimatterMaterials.Diamond, AntimatterMaterials.Emerald, Ruby,
-                BlueSapphire, Tanzanite, Topaz, Olivine, Opal, Amethyst, AntimatterMaterials.EnderPearl, StainlessSteel, Steel, Ultimet,
+                AntimonyTrioxide, CupricOxide, Ferrosilite, Quartzite, Charcoal, Coal, Lignite, Diamond, Emerald, Ruby,
+                BlueSapphire, Tanzanite, Topaz, Olivine, Opal, Amethyst, EnderPearl, StainlessSteel, Steel, Ultimet,
                 IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium, Sodalite);
         ELECTROMAGNETIC_SEPARATOR_GOLD.add(VanadiumMagnetite, Magnetite);
         ELECTROMAGNETIC_SEPARATOR_IRON.add(YellowLimonite, BrownLimonite, Tin, Chrome, Ilmenite, BandedIron, Pyrite, Glauconite, Nickel, /*Chromite, */Pentlandite, Manganese);
         ELECTROMAGNETIC_SEPARATOR_NEODYMIUM.add(/*Monazite, */Bastnasite);
         ELECSEPN.add(YellowLimonite, BrownLimonite, Pyrite, BandedIron, Nickel, Glauconite, Pentlandite, Tin, Antimony, Ilmenite, Manganese, Chrome, Andradite);
-        GRINDABLE.add(/* Paper, */AntimatterMaterials.Coal, Charcoal, Lignite, Lead, Tin, SolderingAlloy, AntimatterMaterials.Flint, AntimatterMaterials.Gold, Silver, AntimatterMaterials.Iron,
-                IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, AntimatterMaterials.Copper, AnnealedCopper, Bronze, Nickel, Invar,
-                Brass, WroughtIron, Electrum, Clay, AntimatterMaterials.Blaze);
+        GRINDABLE.add(/* Paper, */Coal, Charcoal, Lignite, Lead, Tin, SolderingAlloy, Flint, Gold, Silver, Iron,
+                IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar,
+                Brass, WroughtIron, Electrum, Clay, Blaze);
         NOBBF.add(Tetrahedrite, Chalcopyrite, Cooperite, Pyrolusite, Magnesite, Molybdenite, Galena);
-        NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */AntimatterMaterials.Coal, Charcoal, Lignite, Rubber,
+        NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Rubber,
                 StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone, NitroFuel,
-                Concrete, AntimatterMaterials.Redstone, AntimatterMaterials.Glowstone, AntimatterMaterials.Netherrack, AntimatterMaterials.Stone, Brick, AntimatterMaterials.Endstone, Marble, AntimatterMaterials.Basalt, Obsidian, AntimatterMaterials.Flint,
-                RedGranite, BlackGranite, Salt, RockSalt, Glass, AntimatterMaterials.Diamond, AntimatterMaterials.Emerald, Amethyst, Tanzanite, Topaz,
-                /* Amber, */ BlueSapphire, Ruby, Opal, Olivine, AntimatterMaterials.Lapis, Quartzite, AntimatterMaterials.Quartz, Phosphorus, Phosphate,
-                NetherStar, AntimatterMaterials.EnderPearl, AntimatterMaterials.EnderEye);
-        NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */AntimatterMaterials.Coal, Charcoal, Lignite,
-                NitroFuel, AntimatterMaterials.Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ BlueSapphire, Ruby, Opal, Olivine,
-                AntimatterMaterials.Lapis, Sodalite, Lazurite, /*Monazite ,*/ Quartzite, AntimatterMaterials.Quartz, Phosphorus, Phosphate, NetherStar,
-                AntimatterMaterials.EnderPearl, AntimatterMaterials.EnderEye, AntimatterMaterials.Blaze);
+                Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
+                RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
+                /* Amber, */ BlueSapphire, Ruby, Opal, Olivine, Lapis, Quartzite, Quartz, Phosphorus, Phosphate,
+                NetherStar, EnderPearl, EnderEye);
+        NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite,
+                NitroFuel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ BlueSapphire, Ruby, Opal, Olivine,
+                Lapis, Sodalite, Lazurite, /*Monazite ,*/ Quartzite, Quartz, Phosphorus, Phosphate, NetherStar,
+                EnderPearl, EnderEye, Blaze);
         RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone);
-        SMELTF.add(Concrete, AntimatterMaterials.Redstone, AntimatterMaterials.Glowstone, Glass, AntimatterMaterials.Blaze);
+        SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);
         SOLDER.add(Lead, Tin, SolderingAlloy);
         SOLDER.subTag(SubTag.BAD_SOLDER, Lead, Tin);
         SOLDER.subTag(SubTag.GOOD_SOLDER, SolderingAlloy, Tin);
         WIRE.subTag(SubTag.COPPER_WIRE, AnnealedCopper);
-        WIRE.subTag(SubTag.COPPER_WIRE, AntimatterMaterials.Copper);
+        WIRE.subTag(SubTag.COPPER_WIRE, Copper);
 
-        event.setMaterial(AnnealedCopper).setSmeltInto(AntimatterMaterials.Copper).setMacerateInto(AntimatterMaterials.Copper).setArcSmeltInto(AnnealedCopper);
-        event.setMaterial(AntimatterMaterials.Copper).setSmeltInto(AntimatterMaterials.Copper).setMacerateInto(AntimatterMaterials.Copper).setArcSmeltInto(AnnealedCopper);
-        event.setMaterial(AntimatterMaterials.Iron).setSmeltInto(AntimatterMaterials.Iron).setMacerateInto(AntimatterMaterials.Iron).setArcSmeltInto(WroughtIron);
-        event.setMaterial(IronMagnetic).setSmeltInto(AntimatterMaterials.Iron).setMacerateInto(AntimatterMaterials.Iron).setArcSmeltInto(WroughtIron);
+        event.setMaterial(AnnealedCopper).setSmeltInto(Copper).setMacerateInto(Copper).setArcSmeltInto(AnnealedCopper);
+        event.setMaterial(Copper).setSmeltInto(Copper).setMacerateInto(Copper).setArcSmeltInto(AnnealedCopper);
+        event.setMaterial(Iron).setSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
+        event.setMaterial(IronMagnetic).setSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
         event.setMaterial(NeodymiumMagnetic).setSmeltInto(Neodymium).setMacerateInto(Neodymium).setArcSmeltInto(Neodymium);
         event.setMaterial(SteelMagnetic).setSmeltInto(Steel).setMacerateInto(Steel).setArcSmeltInto(Steel);
-        event.setMaterial(WroughtIron).setSmeltInto(AntimatterMaterials.Iron).setMacerateInto(AntimatterMaterials.Iron).setArcSmeltInto(WroughtIron);
+        event.setMaterial(WroughtIron).setSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
 
-        event.setMaterial(BandedIron).setDirectSmeltInto(AntimatterMaterials.Iron);
-        event.setMaterial(BrownLimonite).setDirectSmeltInto(AntimatterMaterials.Iron);
+        event.setMaterial(BandedIron).setDirectSmeltInto(Iron);
+        event.setMaterial(BrownLimonite).setDirectSmeltInto(Iron);
         event.setMaterial(Cassiterite).setDirectSmeltInto(Tin);
-        event.setMaterial(Chalcopyrite).setDirectSmeltInto(AntimatterMaterials.Copper);
+        event.setMaterial(Chalcopyrite).setDirectSmeltInto(Copper);
         event.setMaterial(Cinnabar).setDirectSmeltInto(Mercury);
         event.setMaterial(Cobaltite).setDirectSmeltInto(Cobalt);
         event.setMaterial(Cooperite).setDirectSmeltInto(Platinum);
         event.setMaterial(Galena).setDirectSmeltInto(Lead);
         event.setMaterial(Garnierite).setDirectSmeltInto(Nickel);
         event.setMaterial(Magnesite).setDirectSmeltInto(Magnesium);
-        event.setMaterial(Magnetite).setDirectSmeltInto(AntimatterMaterials.Iron);
-        event.setMaterial(Malachite).setDirectSmeltInto(AntimatterMaterials.Copper);
+        event.setMaterial(Magnetite).setDirectSmeltInto(Iron);
+        event.setMaterial(Malachite).setDirectSmeltInto(Copper);
         event.setMaterial(Molybdenite).setDirectSmeltInto(Molybdenum);
         event.setMaterial(Pentlandite).setDirectSmeltInto(Nickel);
-        event.setMaterial(Pyrite).setDirectSmeltInto(AntimatterMaterials.Iron);
+        event.setMaterial(Pyrite).setDirectSmeltInto(Iron);
         event.setMaterial(Pyrolusite).setDirectSmeltInto(Manganese);
         event.setMaterial(Sphalerite).setDirectSmeltInto(Zinc);
         event.setMaterial(Stibnite).setDirectSmeltInto(Antimony);
-        event.setMaterial(Tetrahedrite).setDirectSmeltInto(AntimatterMaterials.Copper);
-        event.setMaterial(YellowLimonite).setDirectSmeltInto(AntimatterMaterials.Iron);
+        event.setMaterial(Tetrahedrite).setDirectSmeltInto(Copper);
+        event.setMaterial(YellowLimonite).setDirectSmeltInto(Iron);
 
         event.setMaterial(Cassiterite).setOreMulti(2).setSmeltingMulti(2);
-        event.setMaterial(AntimatterMaterials.Glowstone).setOreMulti(5).setSmeltingMulti(5);
-        event.setMaterial(AntimatterMaterials.Lapis).setOreMulti(6).setSmeltingMulti(6).setByProductMulti(4);
+        event.setMaterial(Glowstone).setOreMulti(5).setSmeltingMulti(5);
+        event.setMaterial(Lapis).setOreMulti(6).setSmeltingMulti(6).setByProductMulti(4);
         event.setMaterial(Phosphorus).setOreMulti(3).setSmeltingMulti(3);
-        event.setMaterial(AntimatterMaterials.Quartz).setOreMulti(2).setSmeltingMulti(2);
-        event.setMaterial(AntimatterMaterials.Redstone).setOreMulti(5).setSmeltingMulti(5);
+        event.setMaterial(Quartz).setOreMulti(2).setSmeltingMulti(2);
+        event.setMaterial(Redstone).setOreMulti(5).setSmeltingMulti(5);
         event.setMaterial(RockSalt).setOreMulti(2).setSmeltingMulti(2);
         event.setMaterial(Salt).setOreMulti(2).setSmeltingMulti(2);
         event.setMaterial(Saltpeter).setOreMulti(4).setSmeltingMulti(4);
@@ -1205,21 +1200,21 @@ public class GregTechMaterialEvents {
     }
 
     private static void antimatterMaterials(MaterialEvent event){
-        event.setMaterial(AntimatterMaterials.Basalt).mats(of(Olivine, 1, Calcite, 3, AntimatterMaterials.Flint, 8, DarkAsh, 4));
-        event.setMaterial(AntimatterMaterials.Blaze).mats(of(Sulfur, 1, DarkAsh, 1));
-        event.setMaterial(AntimatterMaterials.Coal).flags(AntimatterMaterialTypes.ORE_STONE).mats(of(Carbon, 2));
-        event.setMaterial(AntimatterMaterials.Copper).flags(AntimatterMaterialTypes.PLATE, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.WIRE_FINE, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.BOLT);
-        event.setMaterial(AntimatterMaterials.Diamond).asGem(true).mats(of(Carbon, 64));
-        event.setMaterial(AntimatterMaterials.Emerald).asGem(true).mats(of(Beryllium, 3, Aluminium, 2, Silicon, 3, Oxygen, 18)).addTools(3.0F, 9.0F, 590, 3);
-        event.setMaterial(AntimatterMaterials.EnderEye).asGemBasic(true, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.PLATE).mats(of(AntimatterMaterials.EnderPearl, 1, AntimatterMaterials.Blaze, 1));
-        event.setMaterial(AntimatterMaterials.EnderPearl).mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5, Chlorine, 6));
-        event.setMaterial(AntimatterMaterials.Flint).flags(AntimatterMaterialTypes.ROCK);
-        event.setMaterial(AntimatterMaterials.Gold).flags(AntimatterMaterialTypes.FOIL, AntimatterMaterialTypes.ROD, AntimatterMaterialTypes.WIRE_FINE, AntimatterMaterialTypes.GEAR);
-        event.setMaterial(AntimatterMaterials.Iron).flags(AntimatterMaterialTypes.RING, AntimatterMaterialTypes.GEAR, AntimatterMaterialTypes.FRAME);
-        event.setMaterial(AntimatterMaterials.Lapis).mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));
-        event.setMaterial(AntimatterMaterials.Prismarine).mats(of(Potassium, 2, Oxygen, 8, Manganese, 1, Silicon, 5));
-        event.setMaterial(AntimatterMaterials.Quartz).asOre();
-        event.setMaterial(AntimatterMaterials.Redstone).mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).asFluid(0, MaterialTags.MELTING_POINT.getInt(AntimatterMaterials.Redstone));//.setOreMulti(4);
-        event.setMaterial(AntimatterMaterials.Water).mats(of(Hydrogen, 2, Oxygen, 1));
+        event.setMaterial(Basalt).mats(of(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4));
+        event.setMaterial(Blaze).mats(of(Sulfur, 1, DarkAsh, 1));
+        event.setMaterial(Coal).flags(ORE_STONE).mats(of(Carbon, 2));
+        event.setMaterial(Copper).flags(PLATE, ROD, FOIL, WIRE_FINE, GEAR, BOLT);
+        event.setMaterial(Diamond).asGem(true).mats(of(Carbon, 64));
+        event.setMaterial(Emerald).asGem(true).mats(of(Beryllium, 3, Aluminium, 2, Silicon, 3, Oxygen, 18)).addTools(3.0F, 9.0F, 590, 3);
+        event.setMaterial(EnderEye).asGemBasic(true, ROD, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
+        event.setMaterial(EnderPearl).mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5, Chlorine, 6));
+        event.setMaterial(Flint).flags(ROCK);
+        event.setMaterial(Gold).flags(FOIL, ROD, WIRE_FINE, GEAR);
+        event.setMaterial(Iron).flags(RING, GEAR, FRAME);
+        event.setMaterial(Lapis).mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));
+        event.setMaterial(Prismarine).mats(of(Potassium, 2, Oxygen, 8, Manganese, 1, Silicon, 5));
+        event.setMaterial(Quartz).asOre();
+        event.setMaterial(Redstone).mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).asFluid(0, MaterialTags.MELTING_POINT.getInt(Redstone));//.setOreMulti(4);
+        event.setMaterial(Water).mats(of(Hydrogen, 2, Oxygen, 1));
     }
 }
