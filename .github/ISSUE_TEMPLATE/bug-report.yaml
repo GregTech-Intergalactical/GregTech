@@ -54,7 +54,7 @@ body:
   - type: checkboxes
     id: updates
     attributes:
-      label: By submitting this issue, I have confirmed Antimatter and Tesseract are up to date.
+      label: By submitting this issue, I have confirmed GregTech, Antimatter, and Tesseract are up to date.
       options:
         - label: 'Yes'
           required: true
