@@ -130,6 +130,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("electromagnetic_separating", ElectromagneticSeparatorLoader::init);
         loader.accept("decaying", DecayChamber::init);
         loader.accept("dehydrating", ChemicalDehydrator::init);
+        loader.accept("autoclaving", Autoclave::init);
     }
 
     public static <T> T get(Class<? extends T> clazz, String id) {
