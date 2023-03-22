@@ -1,7 +1,7 @@
 package muramasa.gregtech.data;
 
 import muramasa.antimatter.event.MaterialEvent;
-import muramasa.antimatter.material.FluidProduct;
+import muramasa.antimatter.material.data.FluidProduct;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
 import net.minecraft.world.item.Items;

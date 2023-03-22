@@ -1,6 +1,5 @@
 package muramasa.gregtech.data;
 
-import muramasa.antimatter.material.DoubleMaterialTag;
 import muramasa.antimatter.material.MaterialTag;
 
 public class GregTechMaterialTags {
