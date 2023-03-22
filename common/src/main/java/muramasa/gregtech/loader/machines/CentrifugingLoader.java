@@ -1,16 +1,12 @@
 package muramasa.gregtech.loader.machines;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.gregtech.Ref;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Quartz;
 import static muramasa.antimatter.data.AntimatterMaterials.Stone;
-import static muramasa.antimatter.material.Element.getFromProtons;
 import static muramasa.antimatter.material.MaterialTags.CENT;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
@@ -31,7 +27,7 @@ public class CentrifugingLoader {
         });
         DUST.all().stream().filter(t -> t.has(CENT)).forEach(t -> {
             FluidStack[] fluids = t.getProcessInto().stream().filter(mat -> ((mat.m.has(GAS) || mat.m.has(LIQUID)) && !mat.m.has(DUST))).map(mat -> mat.m.has(GAS) ? mat.m.getGas(mat.s*1000) : mat.m.getLiquid(mat.s*1000)).toArray(FluidStack[]::new);
-            if (fluids.length > 2) return;
+            if (fluids.length > 6) return;
             for (FluidStack fluid : fluids) {
                 if (fluid.isEmpty())
                     return;
