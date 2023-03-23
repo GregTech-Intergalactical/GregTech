@@ -84,7 +84,7 @@ public class Guis {
         FURNACE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
         EXTRACTOR.add(COMPRESSOR);
         EXTRUDER.add(ALLOY_SMELTER);
-        LATHE.add(CUTTER);
+        LATHE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY, 80, 63);
         MACERATOR.add(COMPRESSOR);
         MACERATOR.add(HV, MACERATOR).add(HV, IT_OUT, 125, 25);
         MACERATOR.add(EV, MACERATOR).add(EV, IT_OUT, 125, 25).add(EV, IT_OUT, 143, 25);
