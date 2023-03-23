@@ -6,12 +6,14 @@ import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
+import muramasa.gregtech.block.BlockCoil;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -32,6 +34,7 @@ import static muramasa.gregtech.data.TierMaps.*;
 public class AssemblyLoader {
     public static void init() {
         cables();
+        coils();
         misc();
         motors();
         pistons();
@@ -52,6 +55,17 @@ public class AssemblyLoader {
                 ASSEMBLING.RB().ii(of(wireItem,1), INT_CIRCUITS.get(size.getCableThickness())).fi(Rubber.getLiquid(size.getCableThickness()*16)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId(),size.getCableThickness()* 20L,8);
             });
         });
+    }
+
+    private static void coils(){
+        addCoil(GregTech.get(BlockCoil.class, "coil_cupronickel"), WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL), Tin, 1);
+        addCoil(GregTech.get(BlockCoil.class, "coil_kanthal"), WIRE_KANTHAL.getBlockItem(PipeSize.SMALL), AnnealedCopper, 2);
+        addCoil(GregTech.get(BlockCoil.class, "coil_nichrome"), WIRE_NICHROME.getBlockItem(PipeSize.SMALL), Kanthal, 3);
+        addCoil(GregTech.get(BlockCoil.class, "coil_tungstensteel"), WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.SMALL), Nichrome, 4);
+        addCoil(GregTech.get(BlockCoil.class, "coil_hssg"), WIRE_HSSG.getBlockItem(PipeSize.SMALL), TungstenSteel, 5);
+        addCoil(GregTech.get(BlockCoil.class, "coil_naquadah"), WIRE_NAQUADAH.getBlockItem(PipeSize.SMALL), HSSG, 6);
+        addCoil(GregTech.get(BlockCoil.class, "coil_naquadah_alloy"), WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL), Naquadah, 7);
+        addCoil(GregTech.get(BlockCoil.class, "coil_superconductor"), WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.SMALL), NaquadahAlloy, 8);
     }
 
     private static void misc(){
@@ -112,8 +126,6 @@ public class AssemblyLoader {
         addTierHull(RoseGold, WIRE_NICHROME, CircuitQuantumProcessor, CASING_EV, HULL_EV, 5);
         addTierHull(RedSteel, WIRE_NIOBIUM_TITANIUM, CircuitEnergyFlow, CASING_IV, HULL_IV, 6);
 
-        FRAME.all().forEach(f -> addFrame(f, FRAME.get(f)));
-
         addCasing(Bronze, GregTech.get(BlockCasing.class,"casing_bronze"));
         addCasing(Steel, GregTech.get(BlockCasing.class,"casing_solid_steel"));
         addCasing(StainlessSteel, GregTech.get(BlockCasing.class,"casing_stainless_steel"));
@@ -136,12 +148,16 @@ public class AssemblyLoader {
         ASSEMBLING.RB().ii(of(SCREW.get(mat), 2), of(casing, 1), of(Items.REDSTONE, 1), of(w.getBlockItem(PipeSize.VTINY), 1), of(TIER_CIRCUITS.getOrDefault(tier, circ), 1)).io(new ItemStack(hull)).add(AntimatterPlatformUtils.getIdFromBlock(hull).getPath() + "_" + idOffset,5 * 20, (long) Math.pow(2, 2 * tier + 1));
     }
 
-    private static void addFrame (Material mat, Item frame) {
+    private static void addFrame (Material mat, Block frame) {
         ASSEMBLING.RB().ii(of(ROD.get(mat), 4), of(PLATE.get(mat), 4)).io(new ItemStack(frame,2)).add(AntimatterPlatformUtils.getIdFromBlock(frame).getPath(),40, 24);
     }
 
     private static void addCasing (Material mat, BlockCasing casing) {
         ASSEMBLING.RB().ii(of(ROD.get(mat), 4), of(PLATE.get(mat), 4)).io(new ItemStack(casing,2)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),40, 24);
+    }
+
+    private static void addCoil (BlockCoil coil, PipeItemBlock wire, Material fluidmat, int tier) {
+        ASSEMBLING.RB().ii(of(wire,8), of(DUST.get(Aluminosilicate), 4)).fi(fluidmat.getLiquid(288)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.getIdFromBlock(coil).getPath(), 100*tier, (long) (30*Math.pow(4,tier-1)));
     }
 
     private static void smdComponents () {
