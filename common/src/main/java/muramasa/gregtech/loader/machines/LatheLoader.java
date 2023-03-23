@@ -9,10 +9,10 @@ public class LatheLoader {
         ROD.all().forEach(t -> {
             if (t.has(INGOT)) {
                 RecipeMaps.LATHING.RB().ii(of(INGOT.getMaterialTag(t), 1))
-                .io(ROD.get(t, 1), DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",t.getHardness(), 24);
+                .io(ROD.get(t, 2), DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",t.getHardness(), 24);
             } else if (t.has(GEM)) {
                 RecipeMaps.LATHING.RB().ii(of(GEM.getMaterialTag(t), 1))
-                .io(ROD.get(t, 1), DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",t.getHardness(), 24);
+                .io(ROD.get(t, 2), DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",t.getHardness(), 24);
             }
         });
         SCREW.all().forEach(t -> {
