@@ -69,7 +69,7 @@ public class ChemicalReactorLoader {
     }
 
     private static void miscCarbohydrates() {
-        CHEMICAL_REACTING.RB().fi(Chloroform.getLiquid(2000), HydrofluoricAcid.getLiquid(4000)).fo(Tetrafluoroethylene.getGas(5000), HydrochloricAcid.getLiquid(6000)).add("tetrafluoroethylene",240, 240);
+        CHEMICAL_REACTING.RB().fi(Chloroform.getLiquid(2000), HydrofluoricAcid.getLiquid(4000)).fo(Tetrafluoroethylene.getGas(5000), HydrochloricAcid.getLiquid(6000)).add("tetrafluoroethylene",240, 256);
         CHEMICAL_REACTING.RB().fi(Chlorine.getGas(6000), Methane.getGas(1000)).fo(Chloroform.getLiquid(1000), HydrofluoricAcid.getLiquid(3000)).add("chloroform",80, 30);
         CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Carbon, 1)).fi(Hydrogen.getGas(1000)).fo(Methane.getGas(1000)).add("methane",200, 30);
         CHEMICAL_REACTING.RB().ii(INT_CIRCUITS.get(2).setNoConsume()).fi(Propene.getGas(2000)).fo(Methane.getGas(1000),Isoprene.getLiquid(1000)).add("methane_2",120, 30);
@@ -115,7 +115,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(DialuminiumTrioxide,1).setNoConsume()).fi(Methanol.getLiquid(2000),Ammonia.getGas(1000)).fo(Dimethylamine.getGas(2000),Water.getLiquid(1000)).add("dimethylamine",60, 96);
         CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(1000),AceticAcid.getLiquid(1000)).fo(Ethenone.getGas(1000),DilutedSulfuricAcid.getLiquid(1000)).add("ethenone_2",160, 120);
         CHEMICAL_REACTING.RB().ii(of(Items.SUGAR),of(DUST.get(Polyethylene,1))).fi(Toluene.getLiquid(1000)).io(DUST.get(GelledToluene,1)).add("gelled_toluene",140, 192);
-        CHEMICAL_REACTING.RB().fi(HydrofluoricAcid.getLiquid(4000),Chloroform.getLiquid(2000)).io(DUST.get(Tetrafluoroethylene,1)).fo(HydrochloricAcid.getLiquid(6000)).add("tetrafluoroethylene",240, 256);
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Salt,1)),of(DUST.get(DibenzoylPeroxide,1))).fi(Dichlorobenzene.getLiquid(2000),Water.getLiquid(1000)).io(DUST.get(PolyphenyleneSulfide,1),DUST.get(Dibenzene,1)).fo(SaltWater.getLiquid(1000),CarbonDioxide.getGas(1000)).add("polyphenylene_sulfide_2",240, 360);
         CHEMICAL_REACTING.RB().fi(Dimethylamine.getGas(1000),Chloramine.getLiquid(1000)).fo(Dimethylhydrazine.getLiquid(1000),DilutedHydrochloricAcid.getLiquid(1000)).add("dimethylhydrazine_2",240, 360);
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Silicon,1))).fi(Chloromethane.getGas(2000),Water.getLiquid(1000)).fo(Dimethyldichlorosilane.getLiquid(1000)).add("dimethyldichlorosilane_2",240, 96);
