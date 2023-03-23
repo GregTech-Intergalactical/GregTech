@@ -206,6 +206,7 @@ public class GregTechData {
     public static ItemBasic<?> LanthanideGroupAWaste = new ItemBasic<>(Ref.ID, "lanthanide_group_a_waste").tip("Waste containing rare Lanthanides");
     public static ItemBasic<?> LanthanideGroupBWaste = new ItemBasic<>(Ref.ID, "lanthanide_group_b_waste").tip("Waste containing semi-rare Lanthanides");
     public static ItemBasic<?> ThoriumWaste = new ItemBasic<>(Ref.ID, "thorium_waste").tip("Waste extracted from depleted Thorium Fuel");
+    public static ItemBasic<?> ProtactiniumWaste = new ItemBasic<>(Ref.ID, "protactinium_waste").tip("Waste extracted from depleted Protactinium Fuel");
     public static ItemBasic<?> UraniumWaste = new ItemBasic<>(Ref.ID, "uranium_waste").tip("Waste extracted from depleted Uranium Fuel");
     public static ItemBasic<?> NeptuniumWaste = new ItemBasic<>(Ref.ID, "neptunium_waste").tip("Waste extracted from depleted Neptunium Fuel");
     public static ItemBasic<?> PlutoniumWaste = new ItemBasic<>(Ref.ID, "plutonium_waste").tip("Waste extracted from depleted Plutonium Fuel");

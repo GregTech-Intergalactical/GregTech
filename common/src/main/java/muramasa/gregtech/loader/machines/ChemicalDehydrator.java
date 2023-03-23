@@ -15,6 +15,7 @@ public class ChemicalDehydrator {
         DEHYDRATING.RB().fi(LeachedUranium.getLiquid(1000)).io(DUST.get(UraniumCake)).add("uranium_cake_dehydrating",1000,8);
         //Waste Processing
         DEHYDRATING.RB().ii(of(ThoriumWaste)).fi(SulfuricAcid.getLiquid(100)).io(new ItemStack(NuclearWaste),DUST_SMALL.get(Rhodium,4)).add("thorium_waste_reprocessing",500,8);
+        DEHYDRATING.RB().ii(of(ProtactiniumWaste)).fi(SulfuricAcid.getLiquid(100)).io(new ItemStack(NuclearWaste),DUST_SMALL.get(Rhodium,2),DUST_SMALL.get(Palladium,2)).add("protactinium_waste_reprocessing",500,8);
         DEHYDRATING.RB().ii(of(UraniumWaste)).fi(SulfuricAcid.getLiquid(100)).io(new ItemStack(NuclearWaste),DUST_SMALL.get(Palladium,4)).add("uranium_waste_reprocessing",500,8);
         DEHYDRATING.RB().ii(of(NeptuniumWaste)).fi(SulfuricAcid.getLiquid(100)).io(new ItemStack(NuclearWaste),DUST_SMALL.get(Palladium,2),DUST_SMALL.get(Silver,2)).add("neptunium_waste_reprocessing",500,8);
         DEHYDRATING.RB().ii(of(PlutoniumWaste)).fi(SulfuricAcid.getLiquid(100)).io(new ItemStack(NuclearWaste),DUST_SMALL.get(Silver,4)).add("plutonium_waste_reprocessing",500,8);
