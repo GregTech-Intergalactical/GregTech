@@ -329,6 +329,7 @@ public class GregTechMaterialEvents {
          *  Inorganic
          **/
         event.setMaterial(AluminiumTrichloride).asDust().mats(of(Aluminium,1,Chlorine,3));
+        event.setMaterial(Aluminosilicate).asDust().mats(of(Aluminium, 2, Silicon, 1, Oxygen, 5));
         event.setMaterial(AmmoniumChloride).asDust().mats(of(Nitrogen,1, Hydrogen,4,Chlorine,1));
         event.setMaterial(ArsenicTrioxide).asDust().mats(of(Arsenic, 2, Oxygen, 3));
         event.setMaterial(Biotite).asDust().mats(b -> b.put(Potassium, 1).put(Magnesium, 3).put(Aluminium, 3).put(Fluorine, 2).put(Silicon, 3).put(Oxygen, 10));
