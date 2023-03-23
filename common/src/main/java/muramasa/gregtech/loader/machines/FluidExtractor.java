@@ -19,7 +19,7 @@ public class FluidExtractor {
             add(r, AntimatterMaterialTypes.PLATE, 1f);
         });
         AntimatterMaterialTypes.INGOT.all().forEach(r -> {
-            add(r, AntimatterMaterialTypes.INGOT, 0.5f);
+            add(r, AntimatterMaterialTypes.INGOT, 1f);
         });
         AntimatterMaterialTypes.SCREW.all().forEach(r -> {
             add(r, AntimatterMaterialTypes.SCREW, 0.125f);
