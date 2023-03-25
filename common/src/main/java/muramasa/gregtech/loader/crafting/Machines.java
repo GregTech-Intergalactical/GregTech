@@ -30,8 +30,7 @@ import static muramasa.antimatter.machine.Tier.IV;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.TierMaps.TIER_CIRCUITS;
-import static muramasa.gregtech.data.TierMaps.WIRE_GETTER;
+import static muramasa.gregtech.data.TierMaps.*;
 
 public class Machines {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
@@ -82,7 +81,7 @@ public class Machines {
                     ImmutableMap.<Character, Object>builder().put('P', piston).put('M', pump).put('G', glass).put('C', circuit).put('L', cable).put('H', hull).build(), "GCG", "PHM", "LCL"));
 
             add(EXTRUDER, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
-                    ImmutableMap.<Character, Object>builder().put('P', piston).put('I', AntimatterAPI.get(FluidPipe.class,"fluid_"+ TierMaps.TIER_PIPE_MATERIAL.get(tier).getId()).getBlockItem(PipeSize.NORMAL)).put('W', WIRE_GETTER.apply(PipeSize.SMALL, tier)).put('C', circuit).put('H', hull).build(), "WWC", "PHI", "WWC"));
+                    ImmutableMap.<Character, Object>builder().put('P', piston).put('I', TIER_PIPES.get(tier)).put('W', WIRE_GETTER.apply(PipeSize.SMALL, tier)).put('C', circuit).put('H', hull).build(), "WWC", "PHI", "WWC"));
 
             add(LATHE, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder().put('P', piston).put('M', motor).put('C', circuit).put('L', cable).put('H', hull).put('D', diamond).build(), "LCL", "MHD", "CLP"));
@@ -173,7 +172,7 @@ public class Machines {
                             .put('H', hull)
                             .put('R', rotor)
                             .put('C', circuit)
-                            .put('P',  AntimatterAPI.get(FluidPipe.class,"fluid_"+ TierMaps.TIER_PIPE_MATERIAL.get(tier).getId()).getBlockItem(PipeSize.NORMAL))
+                            .put('P',  TIER_PIPES.get(tier))
                             .build(), "PCP", "RHR", "MLM"));
 
             add(BLAST_FURNACE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,

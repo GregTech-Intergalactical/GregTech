@@ -86,7 +86,7 @@ public class ExtruderLoader {
     private static void addPipeRecipe(Material material, int countIn, int countOut, PipeSize size, PipeType<?> pipe, int durationMultiplier){
         if (pipe.getSizes().contains(size)) {
             long duration = material.getElement() == null ? Math.max(material.getMass(), 1) : material.getElement().getHardness();
-            EXTRUDING.RB().ii(AntimatterMaterialTypes.INGOT.getMaterialIngredient(material, countIn), of(getPipeMold(size), 1).setNoConsume()).io(new ItemStack(pipe.getBlockItem(size), countOut)).add(size.getId() + "_" + pipe.getType() + "_pipe_" + material.getId(), duration * durationMultiplier, 30);
+            EXTRUDING.RB().ii(AntimatterMaterialTypes.INGOT.getMaterialIngredient(material, countIn), of(getPipeMold(size), 1).setNoConsume()).io(new ItemStack(pipe.getBlockItem(size), countOut)).add(size.getId() + "_" + pipe.getType() + "_" + material.getId(), duration * durationMultiplier, 30);
         }
     }
 

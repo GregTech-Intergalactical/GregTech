@@ -163,12 +163,12 @@ public class TierMaps {
         }
         {
             ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Copper.getId()).getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.LV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Copper.getId()).getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.MV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Copper.getId()).getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.HV, AntimatterAPI.get(FluidPipe.class, "fluid_"+StainlessSteel.getId()).getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.EV, AntimatterAPI.get(FluidPipe.class, "fluid_"+Titanium.getId()).getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.IV, AntimatterAPI.get(FluidPipe.class, "fluid_"+TungstenSteel.getId()).getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.ULV, FLUID_PIPE_COPPER.getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.LV, FLUID_PIPE_COPPER.getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.MV, FLUID_PIPE_COPPER.getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.HV, FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.EV, FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.IV, FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(PipeSize.NORMAL));
             TIER_PIPES = builder.build();
         }
         {
