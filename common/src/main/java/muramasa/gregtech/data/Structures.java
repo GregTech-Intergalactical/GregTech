@@ -90,7 +90,7 @@ public class Structures {
 
         NUCLEAR_REACTOR.setStructure(b -> b
                 .of("CCC", "CCM", "CCC").of("CGC", "GLG", "CGC").of(1).of(1).of("CCC", "CCC", "CCC")
-                .at("C", CASING_RADIATION_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_DYNAMO)
+                .at("C", CASING_RADIATION_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O)
                 .at("G", GLASS_BLOCK).at("L", LITHIUM_BLOCK).at("M", NUCLEAR_REACTOR)
                 .build().offset(2,0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O)
         );

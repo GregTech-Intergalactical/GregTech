@@ -579,10 +579,12 @@ public class Materials {
 
     public static Material Antimatter = AntimatterAPI.register(Material.class, new Material(Ref.ID, "anti_matter", 0x8000c4, NONE));
     public static Material BlueVitriol = AntimatterAPI.register(Material.class, new Material(Ref.ID, "blue_vitriol_water_solution", 0xffffff, NONE));
+    public static Material Coolant = AntimatterAPI.register(Material.class, new Material(Ref.ID, "coolant", 0x0506be, NONE));
     public static Material DilutedHydrochloricAcid = AntimatterAPI.register(Material.class, new Material(Ref.ID, "diluted_hydrochloric_acid", 0x99a7a3, NONE));
     public static Material DilutedSulfuricAcid = AntimatterAPI.register(Material.class, new Material(Ref.ID, "diluted_sulfuric_acid", 0xc07820, NONE));
     public static Material DistilledWater = AntimatterAPI.register(Material.class, new Material(Ref.ID, "distilled_water", 0x5C5CFF, NONE));
     public static Material DrillingFluid = AntimatterAPI.register(Material.class, new Material(Ref.ID, "drilling_fluid", 0xffffff, NONE)); // TODO: Perhaps for a bedrock drill;
+    public static Material HotCoolant = AntimatterAPI.register(Material.class, new Material(Ref.ID, "hot_coolant", 0x7a111a, NONE));
     public static Material HydrochloricAcid = AntimatterAPI.register(Material.class, new Material(Ref.ID, "hydrochloric_acid", 0x6f8a91, NONE));
     public static Material HydrofluoricAcid = AntimatterAPI.register(Material.class, new Material(Ref.ID, "hydrofluoric_acid", 0x0088aa, NONE));
     public static Material HydrogenPeroxide = AntimatterAPI.register(Material.class, new Material(Ref.ID, "hydrogen_peroxide", 0xf8efb4, NONE));

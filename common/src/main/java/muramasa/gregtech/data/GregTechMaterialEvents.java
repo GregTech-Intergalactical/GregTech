@@ -614,8 +614,10 @@ public class GregTechMaterialEvents {
         event.setMaterial(Antimatter).asFluid();
         event.setMaterial(BlueVitriol).asFluid().mats(of(Copper,1,Sulfur,1,Oxygen,4,Water,5));
         //event.setMaterial(CalciumAcetateSolution).asFluid().mats(of(Calcium, 1, Carbon, 2, Oxygen, 4, Hydrogen, 6);
+        event.setMaterial(Coolant).asFluid();
         event.setMaterial(DistilledWater).asFluid().mats(of(Water,1));
         event.setMaterial(DrillingFluid).asFluid(); // TODO: Perhaps for a bedrock drill;
+        event.setMaterial(HotCoolant).asFluid(0,500);
         event.setMaterial(HydrochloricAcid).asFluid().mats(of(Hydrogen, 1, Chlorine, 1));
         event.setMaterial(HydrofluoricAcid).asFluid().mats(of(Hydrogen, 1, Fluorine, 1));
         event.setMaterial(HydrogenPeroxide).asFluid().mats(of(Hydrogen,2,Oxygen,2));

@@ -9,9 +9,9 @@ import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
+import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.structure.StructureHandle;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
@@ -19,18 +19,19 @@ import muramasa.antimatter.util.int3;
 import muramasa.gregtech.GregTech;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
-import org.jetbrains.annotations.NotNull;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import tesseract.api.heat.HeatTransaction;
 import tesseract.api.heat.IHeatHandler;
+
+import static muramasa.gregtech.data.Materials.Coolant;
+import static muramasa.gregtech.data.Materials.HotCoolant;
 
 public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityNuclearReactor> {
 
     protected float efficiencyBonus;
+    int count = 0;
 
 
     protected final StructureHandle<TileEntityNuclearReactor> LEFT = new StructureHandle<>(TileEntityNuclearReactor.class, this, new int3(3, 0, 0), this::onRemoveReactor, this::onAddReactor);
@@ -42,14 +43,27 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
         super(type, pos, state);
         efficiencyBonus = 1;
         recipeHandler.set(() -> new MachineRecipeHandler<>(this) {
-            @Override
-            public boolean consumeResourceForRecipe(boolean simulate) {
-                return true;
-            }
 
             @Override
             protected boolean validateRecipe(IRecipe r) {
                 return r.getPower() > 0 && r.getDuration() > 0;
+            }
+
+            @Override
+            protected MachineState tickRecipe(){
+                MachineState state = super.tickRecipe();
+                if (state == MachineState.ACTIVE){
+                    long conversionAmount = activeRecipe.getPower();
+                    int fluidAmount = fluidHandler.get().getFluidInTank(0).getAmount();
+                    if((fluidAmount >= conversionAmount)){
+                        fluidHandler.ifPresent(handler -> {
+                            handler.drainInput(Coolant.getLiquid(conversionAmount), IFluidHandler.FluidAction.EXECUTE);
+                            handler.addOutputs(HotCoolant.getLiquid(conversionAmount));
+                            onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
+                        });
+                    }
+                }
+                return state;
             }
         });
     }
@@ -58,7 +72,6 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
         GregTech.LOGGER.info("Added reactor at " + reactor.getBlockPos());
         efficiencyBonus += 0.3;
     }
-
 
 
     @Override
@@ -83,6 +96,7 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
     public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
         int size = super.drawInfo(instance, stack, renderer, left, top);
         renderer.draw(stack, "Heat: " + ((HeatInfoWidget)instance).heat, left, top + size, 16448255);
+        //renderer.draw(stack, "So oft gecalled: " + count, left, top + 4*size, 16448255);
         return size + 8;
     }
 
