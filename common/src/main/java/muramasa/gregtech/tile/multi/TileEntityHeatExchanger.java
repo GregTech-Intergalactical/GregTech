@@ -6,16 +6,13 @@ import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.gregtech.nuclear.TileEntityNuclearReactor;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.util.LazyOptional;
 import tesseract.api.heat.IHeatHandler;
 
-import java.util.Collections;
 import java.util.List;
 
 public class TileEntityHeatExchanger extends TileEntityMultiMachine<TileEntityHeatExchanger> {

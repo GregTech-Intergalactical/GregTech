@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.multi;
 
 import muramasa.antimatter.material.Element;
+import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DEPLETED_FISSILE_FUEL;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.FISSILE_FUEL;
@@ -48,5 +49,6 @@ public class NuclearLoader {
             pow = 1000 * free_neutrons;
             NUCLEAR.RB().ii(of(FISSILE_FUEL.get(f))).io(DEPLETED_FISSILE_FUEL.get(f)).add(f.getId()+"_fissile_nuclear_processing",dur,pow);
         });
+        NUCLEAR.RB().ii(of(Items.STONE)).io(Items.COBBLESTONE).add("nuc_nuc_test",200, 10);
     }
 }
