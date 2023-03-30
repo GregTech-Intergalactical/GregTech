@@ -25,22 +25,22 @@ public class Machines {
     /**
      ** Steam Singleblock Machines
      **/
-    public static SteamMachine COAL_BOILER = new SteamMachine(Ref.ID, "coal_boiler").setMap(COAL_BOILERS).setTiers(BRONZE, STEEL).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(TileEntityCoalBoiler::new);
+    public static SteamMachine COAL_BOILER = new SteamMachine(Ref.ID, "coal_boiler").setTiers(BRONZE, STEEL).setMap(COAL_BOILERS).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(TileEntityCoalBoiler::new);
     public static SteamMachine LAVA_BOILER = new SteamMachine(Ref.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntityLavaBoiler::new);
     public static SteamMachine SOLAR_BOILER = new SteamMachine(Ref.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntitySolarBoiler::new);
-    public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(Ref.ID, "steam_alloy_smelter").setMap(STEAM_ALLOY_SMELTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
-    public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(Ref.ID, "steam_compressor").setMap(STEAM_COMPRESSING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
-    public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(Ref.ID, "steam_extractor").setMap(STEAM_EXTRACTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f);
-    public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(Ref.ID, "steam_forge_hammer").setMap(STEAM_HAMMERING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
-    public static SteamMachine STEAM_FURNACE = new SteamMachine(Ref.ID, "steam_furnace").setMap(STEAM_SMELTING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
-    public static SteamMachine STEAM_MACERATOR = new SteamMachine(Ref.ID, "steam_macerator").setMap(STEAM_MACERATING).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID);
+    public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(Ref.ID, "steam_alloy_smelter").setTiers(BRONZE, STEEL).setMap(STEAM_ALLOY_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
+    public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(Ref.ID, "steam_compressor").setTiers(BRONZE, STEEL).setMap(STEAM_COMPRESSING).addFlags(GUI, ITEM, FLUID);
+    public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(Ref.ID, "steam_extractor").setTiers(BRONZE, STEEL).setMap(STEAM_EXTRACTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f);
+    public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(Ref.ID, "steam_forge_hammer").setTiers(BRONZE, STEEL).setMap(STEAM_HAMMERING).addFlags(GUI, ITEM, FLUID);
+    public static SteamMachine STEAM_FURNACE = new SteamMachine(Ref.ID, "steam_furnace").setTiers(BRONZE, STEEL).setMap(STEAM_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
+    public static SteamMachine STEAM_MACERATOR = new SteamMachine(Ref.ID, "steam_macerator").setTiers(BRONZE, STEEL).setMap(STEAM_MACERATING).addFlags(GUI, ITEM, FLUID);
     /**
      ** Hatchless Multiblock Machines (Steam Age)
      **/
-    public static BasicMultiMachine<?> BRONZE_BLAST_FURNACE = new BasicMultiMachine<>(Ref.ID, "bronze_blast_furnace").setMap(BASIC_BLASTING).setTiers(BRONZE).addFlags(GUI, ITEM).setTile(TileEntityBronzeBlastFurnace::new);
+    public static BasicMultiMachine<?> BRONZE_BLAST_FURNACE = new BasicMultiMachine<>(Ref.ID, "bronze_blast_furnace").setTiers(BRONZE).setMap(BASIC_BLASTING).addFlags(GUI, ITEM).setTile(TileEntityBronzeBlastFurnace::new);
     public static BasicMultiMachine<?> CHARCOAL_PIT = new BasicMultiMachine<>(Ref.ID, "charcoal_pit").setTiers(BRONZE).setTile(TileEntityCharcoalPit::new);
-    public static BasicMultiMachine<?> COKE_OVEN = new BasicMultiMachine<>(Ref.ID, "coke_oven").setMap(COKING).setTiers(BRONZE).addFlags(GUI, ITEM, FLUID).setTile(TileEntityCokeOven::new);
-    public static BasicMultiMachine<?> PRIMITIVE_BLAST_FURNACE = new BasicMultiMachine<>(Ref.ID, "primitive_blast_furnace").setMap(BASIC_BLASTING).setTiers(BRONZE).addFlags(GUI, ITEM).setTile(TileEntityPrimitiveBlastFurnace::new);
+    public static BasicMultiMachine<?> COKE_OVEN = new BasicMultiMachine<>(Ref.ID, "coke_oven").setTiers(BRONZE).setMap(COKING).addFlags(GUI, ITEM, FLUID).setTile(TileEntityCokeOven::new);
+    public static BasicMultiMachine<?> PRIMITIVE_BLAST_FURNACE = new BasicMultiMachine<>(Ref.ID, "primitive_blast_furnace").setTiers(BRONZE).setMap(BASIC_BLASTING).addFlags(GUI, ITEM).setTile(TileEntityPrimitiveBlastFurnace::new);
     /**
      ** Electric Singleblock Machines
      **/
@@ -110,28 +110,28 @@ public class Machines {
      ** Multiblock Hatch Machines (Electrical Age)
      **/
     public static MultiMachine ADVANCED_MINER = new MultiMachine(Ref.ID, "advanced_miner").setTiers(LV).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityAdvancedMiner::new);
-    public static MultiMachine BLAST_FURNACE = new MultiMachine(Ref.ID, "electric_blast_furnace").setMap(BLASTING).setTiers(LV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityElectricBlastFurnace::new).setAllowVerticalFacing(true);
-    public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(Ref.ID, "combustion_engine").setMap(COMBUSTION_FUELS).setTiers(EV).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityCombustionEngine::new).custom();
-    public static MultiMachine CRACKING_UNIT = new MultiMachine(Ref.ID, "cracking_unit").setMap(CRACKING).setTiers(HV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityOilCrackingUnit::new);
-    public static MultiMachine DISTLLATION_TOWER = new MultiMachine(Ref.ID, "distillation_tower").setMap(DISTILLATION).setTiers(HV).addFlags(GUI, ITEM, FLUID,ENERGY).setTile(TileEntityDistillationTower::new);
-    public static MultiMachine FUSION_REACTOR = new MultiMachine(Ref.ID, "fusion_reactor").setMap(FUSION).setTiers(LUV, ZPM, UV).addFlags(GUI, FLUID,ENERGY).setTile(TileEntityFusionReactor::new);
-    public static MultiMachine HEAT_EXCHANGER = new MultiMachine(Ref.ID, "heat_exchanger").setTiers(EV).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityHeatExchanger::new);
-    public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(Ref.ID, "implosion_compressor").setMap(IMPLOSION_COMPRESSING).setTiers(HV).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityImplosionCompressor::new).setAllowVerticalFacing(true);
+    public static MultiMachine BLAST_FURNACE = new MultiMachine(Ref.ID, "electric_blast_furnace").setTiers(LV).setMap(BLASTING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityElectricBlastFurnace::new).setAllowVerticalFacing(true);
+    public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(Ref.ID, "combustion_engine").setTiers(EV).setMap(COMBUSTION_FUELS).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityCombustionEngine::new).custom();
+    public static MultiMachine CRACKING_UNIT = new MultiMachine(Ref.ID, "cracking_unit").setTiers(HV).setMap(CRACKING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityOilCrackingUnit::new);
+    public static MultiMachine DISTLLATION_TOWER = new MultiMachine(Ref.ID, "distillation_tower").setTiers(HV).setMap(DISTILLATION).addFlags(GUI, ITEM, FLUID,ENERGY).setTile(TileEntityDistillationTower::new);
+    public static MultiMachine FUSION_REACTOR = new MultiMachine(Ref.ID, "fusion_reactor").setTiers(LUV, ZPM, UV).setMap(FUSION).addFlags(GUI, FLUID,ENERGY).setTile(TileEntityFusionReactor::new);
+    public static MultiMachine HEAT_EXCHANGER = new MultiMachine(Ref.ID, "heat_exchanger").setTiers(EV).setMap(HEAT_EXCHANGING).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityHeatExchanger::new);
+    public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(Ref.ID, "implosion_compressor").setTiers(HV).setMap(IMPLOSION_COMPRESSING).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityImplosionCompressor::new).setAllowVerticalFacing(true);
     public static MultiMachine LARGE_BOILER = new MultiMachine(Ref.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setTile(TileEntityLargeBoiler::new);
-    public static MultiMachine LARGE_TURBINE = new MultiMachine(Ref.ID, "large_turbine").setMap(STEAM_FUELS).setTiers(HV, EV, IV, UV).addFlags(GUI, FLUID, ENERGY, GENERATOR).setTile(TileEntityLargeTurbine::new);
-    public static MultiMachine MULTI_SMELTER = new MultiMachine(Ref.ID, "multi_smelter").setMap(SMELTING).setTiers(HV).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityMultiSmelter::new);
-    public static MultiMachine NUCLEAR_REACTOR = new MultiMachine(Ref.ID, "nuclear_reactor").setMap(NUCLEAR).setTiers(EV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityNuclearReactor::new).setAllowVerticalFacing(true);
+    public static MultiMachine LARGE_TURBINE = new MultiMachine(Ref.ID, "large_turbine").setTiers(HV, EV, IV, UV).setMap(STEAM_FUELS).addFlags(GUI, FLUID, ENERGY, GENERATOR).setTile(TileEntityLargeTurbine::new);
+    public static MultiMachine MULTI_SMELTER = new MultiMachine(Ref.ID, "multi_smelter").setTiers(HV).setMap(SMELTING).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityMultiSmelter::new);
+    public static MultiMachine NUCLEAR_REACTOR = new MultiMachine(Ref.ID, "nuclear_reactor").setTiers(EV).setMap(NUCLEAR).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityNuclearReactor::new).setAllowVerticalFacing(true);
     public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(Ref.ID, "oil_drilling_rig").setTiers(EV, IV, LUV, ZPM).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityOilDrillingRig::new);
     public static MultiMachine PYROLYSIS_OVEN = new MultiMachine(Ref.ID, "pyrolysis_oven").setTiers(MV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityPyrolysisOven::new);
-    public static MultiMachine VACUUM_FREEZER = new MultiMachine(Ref.ID, "vacuum_freezer").setMap(VACUUM_FREEZING).setTiers(HV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityVacuumFreezer::new);
+    public static MultiMachine VACUUM_FREEZER = new MultiMachine(Ref.ID, "vacuum_freezer").setTiers(HV).setMap(VACUUM_FREEZING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityVacuumFreezer::new);
     /**
      ** Generators
      **/
-    public static GeneratorMachine COMBUSTION_GENERATOR = new GeneratorMachine(Ref.ID, "combustion_generator").setMap(COMBUSTION_FUELS).setTiers(LV, MV, HV).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO().custom();
-    public static GeneratorMachine GAS_GENERATOR = new GeneratorMachine(Ref.ID, "gas_generator").setMap(GAS_FUELS).setTiers(LV, MV, HV).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
-    public static GeneratorMachine NAQUADAH_GENERATOR = new GeneratorMachine(Ref.ID, "naquadah_generator").setMap(NAQUADAH_FUELS).setTiers(EV, IV, LUV).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
-    public static GeneratorMachine PLASMA_GENERATOR = new GeneratorMachine(Ref.ID, "plasma_generator").setMap(PLASMA_FUELS).setTiers(IV, LUV, ZPM).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
-    public static GeneratorMachine STEAM_GENERATOR = new GeneratorMachine(Ref.ID, "steam_generator").setMap(STEAM_FUELS).setTiers(LV, MV, HV).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
+    public static GeneratorMachine COMBUSTION_GENERATOR = new GeneratorMachine(Ref.ID, "combustion_generator").setTiers(LV, MV, HV).setMap(COMBUSTION_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO().custom();
+    public static GeneratorMachine GAS_GENERATOR = new GeneratorMachine(Ref.ID, "gas_generator").setTiers(LV, MV, HV).setMap(GAS_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
+    public static GeneratorMachine NAQUADAH_GENERATOR = new GeneratorMachine(Ref.ID, "naquadah_generator").setTiers(EV, IV, LUV).setMap(NAQUADAH_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
+    public static GeneratorMachine PLASMA_GENERATOR = new GeneratorMachine(Ref.ID, "plasma_generator").setTiers(IV, LUV, ZPM).setMap(PLASMA_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
+    public static GeneratorMachine STEAM_GENERATOR = new GeneratorMachine(Ref.ID, "steam_generator").setTiers(LV, MV, HV).setMap(STEAM_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
     /**
      ** Hatches
      **/
