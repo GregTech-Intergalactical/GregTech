@@ -151,7 +151,7 @@ public class Machines {
      ** Creative Machines
      **/
     public static TankMachine INFINITE_STEAM = new TankMachine(Ref.ID, "infinite_steam").addFlags(FLUID, CELL, GUI).setTile(TileEntityInfiniteFluid::new).setTiers(LV);
-    public static BasicMachine INFINITE_STORAGE = new BasicMachine(Ref.ID, "infinite_storage").setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV, MAX).addFlags(ENERGY).setTile((v,pos,state) -> new TileEntityInfiniteStorage<>(v,pos,state, 16)).noCovers().setAllowVerticalFacing(true).allowFrontIO();
+    //public static BasicMachine INFINITE_STORAGE = new BasicMachine(Ref.ID, "infinite_storage").setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV, MAX).addFlags(ENERGY).setTile(TileEntityInfiniteStorage::new).noCovers().setAllowVerticalFacing(true).allowFrontIO();
 
     public static void init() {
         if (!AntimatterAPI.isModLoaded("gt4r")) {
