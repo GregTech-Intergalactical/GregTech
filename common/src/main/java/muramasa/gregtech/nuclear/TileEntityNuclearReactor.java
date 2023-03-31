@@ -62,13 +62,19 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
                         FluidStack drained = handler.drainInput(coolant, IFluidHandler.FluidAction.SIMULATE);
                         if (drained.getRealAmount() == coolant.getRealAmount()){
                             if (handler.canOutputsFit(new FluidStack[]{HotCoolant.getLiquid(conversionAmount)})){
-                                handler.fillOutput(handler.drainInput(coolant, IFluidHandler.FluidAction.EXECUTE), IFluidHandler.FluidAction.EXECUTE);
+                                handler.drainInput(coolant, IFluidHandler.FluidAction.EXECUTE);
+                                handler.fillOutput(HotCoolant.getLiquid(conversionAmount), IFluidHandler.FluidAction.EXECUTE);
                                 onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
                             }
                         }
                     });
                 }
                 return state;
+            }
+
+            @Override
+            public boolean consumeResourceForRecipe(boolean simulate) {
+                return true;
             }
         });
     }
