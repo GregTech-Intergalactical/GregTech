@@ -5,6 +5,7 @@ import muramasa.antimatter.datagen.providers.AntimatterBlockLootProvider;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.ore.BlockOre;
 import muramasa.gregtech.block.BlockCasing;
+import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -25,5 +26,6 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
     protected void loot() {
         super.loot();
         AntimatterAPI.all(BlockCasing.class,providerDomain, this::add);
+        AntimatterAPI.all(BlockCoil.class,providerDomain, this::add);
     }
 }

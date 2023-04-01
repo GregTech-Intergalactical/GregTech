@@ -21,7 +21,10 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import tesseract.Tesseract;
+import tesseract.TesseractGraphWrappers;
 import tesseract.api.heat.HeatTransaction;
 import tesseract.api.heat.IHeatHandler;
 
@@ -53,17 +56,25 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
             protected MachineState tickRecipe(){
                 MachineState state = super.tickRecipe();
                 if (state == MachineState.ACTIVE){
-                    long conversionAmount = activeRecipe.getPower();
-                    int fluidAmount = fluidHandler.get().getFluidInTank(0).getAmount();
-                    if((fluidAmount >= conversionAmount)){
-                        fluidHandler.ifPresent(handler -> {
-                            handler.drainInput(Coolant.getLiquid(conversionAmount), IFluidHandler.FluidAction.EXECUTE);
-                            handler.addOutputs(HotCoolant.getLiquid(conversionAmount));
-                            onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
-                        });
-                    }
+                    long conversionAmount = activeRecipe.getPower() * TesseractGraphWrappers.dropletMultiplier;
+                    fluidHandler.ifPresent(handler -> {
+                        FluidStack coolant = Coolant.getLiquid(conversionAmount);
+                        FluidStack drained = handler.drainInput(coolant, IFluidHandler.FluidAction.SIMULATE);
+                        if (drained.getRealAmount() == coolant.getRealAmount()){
+                            if (handler.canOutputsFit(new FluidStack[]{HotCoolant.getLiquid(conversionAmount)})){
+                                handler.drainInput(coolant, IFluidHandler.FluidAction.EXECUTE);
+                                handler.fillOutput(HotCoolant.getLiquid(conversionAmount), IFluidHandler.FluidAction.EXECUTE);
+                                onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
+                            }
+                        }
+                    });
                 }
                 return state;
+            }
+
+            @Override
+            public boolean consumeResourceForRecipe(boolean simulate) {
+                return true;
             }
         });
     }
