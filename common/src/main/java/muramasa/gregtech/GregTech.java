@@ -145,6 +145,7 @@ public class GregTech extends AntimatterMod {
                 TierMaps.init();
                 GregTechData.init(side);
                 Machines.init();
+                MenuHandlers.init();
                 Guis.init(side);
                 Models.init();
                 GregTechSounds.init();

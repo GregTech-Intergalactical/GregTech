@@ -357,7 +357,15 @@ public class Guis {
         DISTLLATION_TOWER.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         CRACKING_UNIT.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         NUCLEAR_REACTOR.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        FUSION_REACTOR.setGUI(MenuHandlers.FUSION_MENU_HANDLER);
         FUSION_REACTOR.getGui().setEnablePlayerSlots(false);
+        FUSION_REACTOR.addGuiCallback(t -> {
+            t.addButton(155, 23, 16, 16, ButtonBody.NO_OVERLAY).addButton(155, 41, 16, 16, NO_OVERLAY).addButton(155, 59, 16, 16, NO_OVERLAY).addWidget(makeProgress(BarDir.LEFT, true, new int4(0, 235, 149, 16)).setSize(4,162, 149, 16)).addWidget(FusionButtonWidget.build());
+        });
+    }
+
+    public static WidgetSupplier makeProgress(BarDir dir, boolean barFill, int4 loc){
+        return builder((screen, handler) -> new ProgressWidget(screen, handler, loc, dir, dir.getPos().x + 6, dir.getPos().y + 6, dir.getUV().z, dir.getUV().w, barFill));
     }
     // }
 }
