@@ -4,6 +4,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.gui.BarDir;
+import muramasa.antimatter.gui.ButtonBody;
 import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.gui.MenuHandlerMachine;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
@@ -14,6 +15,7 @@ import muramasa.antimatter.gui.widget.*;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tile.TileEntityMachine;
+import muramasa.antimatter.util.int4;
 import muramasa.gregtech.gui.widgets.*;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
@@ -21,6 +23,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import static muramasa.antimatter.gui.ButtonBody.*;
 import static muramasa.antimatter.gui.SlotType.*;
+import static muramasa.antimatter.gui.Widget.builder;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.Machines.*;
 
@@ -354,6 +357,7 @@ public class Guis {
         DISTLLATION_TOWER.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         CRACKING_UNIT.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         NUCLEAR_REACTOR.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        FUSION_REACTOR.getGui().setEnablePlayerSlots(false);
     }
     // }
 }
