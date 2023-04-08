@@ -23,13 +23,11 @@ public class FusionButtonWidget extends Widget {
     ResourceLocation top_bottom = new ResourceLocation(Ref.ID, "textures/gui/machine/fusion_computer_top_bottom_overlay.png");
 
     TileEntityFusionReactor.Display display = TileEntityFusionReactor.Display.REGULAR;
-    Widget jei;
 
     protected FusionButtonWidget(@Nonnull GuiInstance gui, @Nullable IGuiElement parent) {
         super(gui, parent);
         setW(176);
         setH(182);
-        jei = new BlankWidget(gui, this);
     }
 
     @Override
@@ -44,13 +42,28 @@ public class FusionButtonWidget extends Widget {
     @Override
     public void onClick(double mouseX, double mouseY, int button) {
         super.onClick(mouseX, mouseY, button);
-        jei.onClick(mouseX, mouseY, button);
+        if (isInside(154, 4, 18, 18, mouseX, mouseY)){
+            AntimatterJEIREIPlugin.showCategory(getTile().getMachineType());
+        }
+    }
+
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        return isInside(154, 4, 18, 18, mouseX, mouseY) && super.mouseClicked(mouseX, mouseY, button);
     }
 
     @Override
     public void mouseOver(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
         super.mouseOver(stack, mouseX, mouseY, partialTicks);
-        jei.mouseOver(stack, mouseX, mouseY, partialTicks);
+        if (isInside(154, 4, 18, 18, mouseX, mouseY)){
+            renderTooltip(stack, new TranslatableComponent("antimatter.gui.show_recipes"), mouseX, mouseY);
+        }
+    }
+
+    public boolean isInside(int x, int y, int w, int h, double mouseX, double mouseY) {
+        int realX = realX() + x;
+        int realY = realY() + y;
+        return ((mouseX >= realX && mouseX <= realX + w) && (mouseY >= realY && mouseY <= realY + h));
     }
 
     public static WidgetSupplier build() {
@@ -68,36 +81,6 @@ public class FusionButtonWidget extends Widget {
         } else {
             drawTexture(matrixStack, gui.handler.getGuiTexture(), realX() + 154, realY() + 58, 176, 36, 18, 18);
             drawTexture(matrixStack, top_bottom, realX() + 6, realY() + 6, 0, 0, 145, 145);
-        }
-    }
-
-    private class BlankWidget extends Widget {
-
-        protected BlankWidget(@NotNull GuiInstance gui, @org.jetbrains.annotations.Nullable IGuiElement parent) {
-            super(gui, parent);
-            setX(154);
-            setY(4);
-            setW(18);
-            setH(18);
-        }
-
-        @Override
-        public void onClick(double mouseX, double mouseY, int button) {
-            super.onClick(mouseX, mouseY, button);
-            AntimatterJEIREIPlugin.showCategory(getTile().getMachineType());
-        }
-
-        @Override
-        public void mouseOver(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
-            super.mouseOver(stack, mouseX, mouseY, partialTicks);
-            if (isInside(mouseX, mouseY)) {
-                renderTooltip(stack, new TranslatableComponent("antimatter.gui.show_recipes"), mouseX, mouseY);
-            }
-        }
-
-        @Override
-        public void render(PoseStack matrixStack, double mouseX, double mouseY, float partialTicks) {
-
         }
     }
 }
