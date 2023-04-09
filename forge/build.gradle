@@ -1,5 +1,5 @@
 archivesBaseName = "${rootProject.archive_base_name}-forge"
-version = "${rootProject.minecraft_version}-${rootProject.mod_version}"
+version = "${project.mod_version}-${rootProject.minecraft_version}"
 
 architectury {
     forge()
