@@ -13,6 +13,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.capabilities.Capability;
@@ -93,6 +94,42 @@ public class RemappingEvents {
 
             if (id.contains("battery_buffer_nine")){
                 Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_nine", "8x_battery_buffer"), Ref.ID);
+                if (block != null){
+                    map.remap(block);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void remapMissingBlockEntities(final RegistryEvent.MissingMappings<BlockEntityType<?>> event){
+        for (RegistryEvent.MissingMappings.Mapping<BlockEntityType<?>> map : event.getMappings(Ref.ID)) {
+            String domain = map.key.getNamespace();
+            String id = map.key.getPath();
+
+            if (id.contains("pulverizer")){
+                BlockEntityType<?> block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("pulverizer", "macerator"), Ref.ID);
+                if (block != null){
+                    map.remap(block);
+                }
+            }
+
+            if (id.contains("battery_buffer_one")){
+                BlockEntityType<?> block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_one", "1x_battery_buffer"), Ref.ID);
+                if (block != null){
+                    map.remap(block);
+                }
+            }
+
+            if (id.contains("battery_buffer_four")){
+                BlockEntityType<?> block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_four", "4x_battery_buffer"), Ref.ID);
+                if (block != null){
+                    map.remap(block);
+                }
+            }
+
+            if (id.contains("battery_buffer_nine")){
+                BlockEntityType<?> block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_nine", "8x_battery_buffer"), Ref.ID);
                 if (block != null){
                     map.remap(block);
                 }
