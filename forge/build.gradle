@@ -96,9 +96,9 @@ processResources {
     exclude('gtuassets1.14')
     exclude('assets/gt4r/textures/old_textures')
 
-    inputs.property "version", project.version
+    inputs.property "version", project.mod_version
 
     filesMatching("META-INF/mods.toml") {
-        expand "version": project.version
+        expand "version": project.mod_version
     }
 }

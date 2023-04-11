@@ -80,7 +80,7 @@ processResources {
     //dependsOn copyAccessWidener
 
     def toReplace = [
-            "version"             : project.version
+            "version"             : project.mod_version
     ]
 
     inputs.properties toReplace
