@@ -52,12 +52,12 @@ public class ChemicalReactorLoader {
 
     private static void rubber() {
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Sulfur), 1), of(DUST.get(RawRubber), 9)).fo(Rubber.getLiquid(9000)).add("rubber",200, 8);
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Sulfur), 1), of(DUST.get(Polydimethylsiloxane), 9)).fo(SiliconRubber.getLiquid(9000)).add("silicon_rubber",200, 32);
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Sulfur), 1), of(DUST.get(RawStyreneButadieneRubber), 9)).fo(StyreneButadieneRubber.getLiquid(9000)).add("styrene_rubber",200, 128);
+        //CHEMICAL_REACTING.RB().ii(of(DUST.get(Sulfur), 1), of(DUST.get(Polydimethylsiloxane), 9)).fo(SiliconRubber.getLiquid(9000)).add("silicon_rubber",200, 32);
+        //CHEMICAL_REACTING.RB().ii(of(DUST.get(Sulfur), 1), of(DUST.get(RawStyreneButadieneRubber), 9)).fo(StyreneButadieneRubber.getLiquid(9000)).add("styrene_rubber",200, 128);
         CHEMICAL_REACTING.RB().fi(Air.getGas(2000),Isoprene.getLiquid(100)).io(new ItemStack(DUST.get(RawRubber),1)).add("raw_rubber_dust",160, 30);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000),Isoprene.getLiquid(100)).io(new ItemStack(DUST.get(RawRubber),3)).add("raw_rubber_dust_2",160, 30);
-        CHEMICAL_REACTING.RB().fi(Air.getGas(2000),Styrene.getLiquid(100),Butadiene.getGas(1000)).io(new ItemStack(DUST.get(RawStyreneButadieneRubber),1)).add("raw_styrene_rubber_dust",160, 240);
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000),Styrene.getLiquid(100),Butadiene.getGas(1000)).io(new ItemStack(DUST.get(RawStyreneButadieneRubber),3)).add("raw_styrene_rubber_dust_2",160, 240);
+        //CHEMICAL_REACTING.RB().fi(Air.getGas(2000),Styrene.getLiquid(100),Butadiene.getGas(1000)).io(new ItemStack(DUST.get(RawStyreneButadieneRubber),1)).add("raw_styrene_rubber_dust",160, 240);
+        //CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000),Styrene.getLiquid(100),Butadiene.getGas(1000)).io(new ItemStack(DUST.get(RawStyreneButadieneRubber),3)).add("raw_styrene_rubber_dust_2",160, 240);
     }
 
 

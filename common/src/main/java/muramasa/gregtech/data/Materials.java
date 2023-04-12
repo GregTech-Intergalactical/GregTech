@@ -380,7 +380,7 @@ public class Materials {
     public static Material Quicklime = AntimatterAPI.register(Material.class, new Material(Ref.ID, "quicklime", 0xf0f0f0, DULL));
     public static Material RareEarth = AntimatterAPI.register(Material.class, new Material(Ref.ID, "rare_earth", 0x808064, FINE));
     public static Material RawRubber = AntimatterAPI.register(Material.class, new Material(Ref.ID, "raw_rubber", 0xccc789, DULL));
-    public static Material RawStyreneButadieneRubber = AntimatterAPI.register(Material.class, new Material(Ref.ID, "raw_styrene_butadiene_rubber", 0x54403d, SHINY));
+    //public static Material RawStyreneButadieneRubber = AntimatterAPI.register(Material.class, new Material(Ref.ID, "raw_styrene_butadiene_rubber", 0x54403d, SHINY));
     public static Material ReactionCatalyst = AntimatterAPI.register(Material.class, new Material(Ref.ID, "reaction_catalyst", 0x43ab43, NONE));
     public static Material Rubber = AntimatterAPI.register(Material.class, new Material(Ref.ID, "rubber", 0x000000, SHINY));
     public static Material SiliconDioxide = AntimatterAPI.register(Material.class, new Material(Ref.ID, "silicon_dioxide", 0xc8c8c8, QUARTZ));
@@ -494,8 +494,8 @@ public class Materials {
     public static Material Polytetrafluoroethylene = AntimatterAPI.register(Material.class, new Material(Ref.ID, "polytetrafluoroethylene", 0x646464, DULL));
     public static Material PolyvinylChloride = AntimatterAPI.register(Material.class, new Material(Ref.ID, "polyvinyl_chloride", 0xd7e6e6, NONE));
     public static Material Silicone = AntimatterAPI.register(Material.class, new Material(Ref.ID, "silicone", 0xdcdcdc, DULL));
-    public static Material SiliconRubber = AntimatterAPI.register(Material.class, new Material(Ref.ID, "siliconrubber", 0x9fadbb, NONE));
-    public static Material StyreneButadieneRubber = AntimatterAPI.register(Material.class, new Material(Ref.ID, "styrene_butadiene_rubber", 0x211a18, SHINY));
+    //public static Material SiliconRubber = AntimatterAPI.register(Material.class, new Material(Ref.ID, "siliconrubber", 0x9fadbb, NONE));
+    //public static Material StyreneButadieneRubber = AntimatterAPI.register(Material.class, new Material(Ref.ID, "styrene_butadiene_rubber", 0x211a18, SHINY));
 
     /**
      ** Stones
