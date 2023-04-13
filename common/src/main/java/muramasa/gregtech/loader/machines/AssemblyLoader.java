@@ -90,10 +90,12 @@ public class AssemblyLoader {
             sizes.forEach(size -> {
                 Item wireItem = t.getBlockItem(size);
                 Item cableItem = cable.getBlockItem(size);
-                ASSEMBLING.RB().ii(of(wireItem,1), INT_CIRCUITS.get(size.getCableThickness())).fi(Rubber.getLiquid(size.getCableThickness()*16)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId(),size.getCableThickness()* 20L,8);
+                long multiplier = AntimatterPlatformUtils.isFabric() ? 1000L : 16L;
+                ASSEMBLING.RB().ii(of(wireItem,1), INT_CIRCUITS.get(size.getCableThickness())).fi(Rubber.getLiquid(size.getCableThickness()*multiplier)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId(),size.getCableThickness()* 20L,8);
             });
         });
     }
+
 
     private static void coils(){
         addCoil(GregTech.get(BlockCoil.class, "coil_cupronickel"), WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL), Tin, 1);
