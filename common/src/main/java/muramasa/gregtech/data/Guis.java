@@ -155,6 +155,11 @@ public class Guis {
         BATTERY_BUFFER_EIGHT
                 .add(ENERGY,53,27).add(ENERGY,71,27).add(ENERGY,89,27).add(ENERGY,107,27)
                 .add(ENERGY,53,45).add(ENERGY,71,45).add(ENERGY,89,45).add(ENERGY,107,45);
+        BATTERY_BUFFER_SIXTEEN
+                .add(ENERGY,53,9).add(ENERGY,71,9).add(ENERGY,89,9).add(ENERGY,107,9)
+                .add(ENERGY,53,27).add(ENERGY,71,27).add(ENERGY,89,27).add(ENERGY,107,27)
+                .add(ENERGY,53,45).add(ENERGY,71,45).add(ENERGY,89,45).add(ENERGY,107,45)
+                .add(ENERGY,53,63).add(ENERGY,71,63).add(ENERGY,89,63).add(ENERGY,107,63);
 
         COAL_BOILER.add(BRONZE, CELL_IN, 44, 26).add(BRONZE, CELL_OUT, 44, 62).add(BRONZE, IT_OUT, 116, 26).add(BRONZE,
                 IT_IN, 116, 62);

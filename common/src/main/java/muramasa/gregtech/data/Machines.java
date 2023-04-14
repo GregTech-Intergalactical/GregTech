@@ -91,6 +91,7 @@ public class Machines {
     /**
      * Battery Buffers
      **/
+    public static BasicMachine BATTERY_BUFFER_SIXTEEN = new BasicMachine(Ref.ID, "16x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(TileEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
     public static BasicMachine BATTERY_BUFFER_EIGHT = new BasicMachine(Ref.ID, "8x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(TileEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
     public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(Ref.ID, "4x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(TileEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
     public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(Ref.ID, "1x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(TileEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();

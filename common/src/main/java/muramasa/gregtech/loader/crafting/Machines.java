@@ -378,6 +378,11 @@ public class Machines {
                             .put('C', Items.CHEST)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.NORMAL)).build(), "LCL", "LHL"));
+            add(BATTERY_BUFFER_SIXTEEN, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('C', Items.CHEST)
+                            .put('H', hull)
+                            .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.HUGE)).build(), "LCL", "LHL", "   "));
 
             add(HATCH_ITEM_I, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
