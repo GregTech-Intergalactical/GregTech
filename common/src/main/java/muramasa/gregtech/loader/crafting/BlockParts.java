@@ -70,10 +70,10 @@ public class BlockParts {
         addTierCasing(output, provider, Tier.HV);
         addTierCasing(output, provider, Tier.EV);
         addTierCasing(output, provider, Tier.IV);
-        //addTierCasing(output, provider, TungstenSteel, GregTechData.CASING_LUV);
-        //addTierCasing(output, provider, Osmiridium, GregTechData.CASING_ZPM);
-        //addTierCasing(output, provider, Ultimet, GregTechData.CASING_UV);
-        //addTierCasing(output, provider, RedSteel, GregTechData.CASING_MAX);
+        addTierCasing(output, provider, Tier.LUV);
+        addTierCasing(output, provider, Tier.ZPM);
+        addTierCasing(output, provider, Tier.UV);
+        addTierCasing(output, provider, Tier.MAX);
 
         addTierHull(output, provider, AntimatterMaterials.Wood,Tier.ULV);
         addTierHull(output, provider, WroughtIron,Tier.LV);
@@ -81,6 +81,10 @@ public class BlockParts {
         addTierHull(output, provider, Polyethylene,Tier.HV);
         addTierHull(output, provider, Polyethylene,Tier.EV);
         addTierHull(output, provider, Polyethylene,Tier.IV);
+        addTierHull(output, provider, Polyethylene,Tier.LUV);
+        addTierHull(output, provider, Polytetrafluoroethylene,Tier.ZPM);
+        addTierHull(output, provider, Polytetrafluoroethylene,Tier.UV);
+        addTierHull(output, provider, Polytetrafluoroethylene,Tier.MAX);
 
         provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CASING_BRONZE_PLATED_BRICK,
                 ImmutableMap.<Character, Object>builder()
