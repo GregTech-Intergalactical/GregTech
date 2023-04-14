@@ -108,10 +108,10 @@ public class TierMaps {
             ImmutableMap.Builder<Tier, PipeItemBlock> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.LV, WIRE_TIN.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.MV, WIRE_COPPER.getBlockItem(PipeSize.TINY));
-            builder.put(Tier.HV, WIRE_GOLD.getBlockItem(PipeSize.TINY));
-            builder.put(Tier.EV, WIRE_ALUMINIUM.getBlockItem(PipeSize.SMALL));
-            builder.put(Tier.IV, WIRE_TUNGSTEN.getBlockItem(PipeSize.SMALL));
+            builder.put(Tier.MV, WIRE_COPPER.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.HV, WIRE_GOLD.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.EV, WIRE_ALUMINIUM.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.IV, WIRE_TUNGSTEN.getBlockItem(PipeSize.VTINY));
             TIER_WIRES = builder.build();
         }
         {
