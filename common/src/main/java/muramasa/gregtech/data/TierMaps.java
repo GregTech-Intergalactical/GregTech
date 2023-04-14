@@ -67,9 +67,9 @@ public class TierMaps {
 
         {
             ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, WroughtIron);
+            builder.put(Tier.ULV, Copper);
             builder.put(Tier.LV, Bronze);
-            builder.put(Tier.MV, Bronze);
+            builder.put(Tier.MV, Steel);
             builder.put(Tier.HV, StainlessSteel);
             builder.put(Tier.EV, Titanium);
             builder.put(Tier.IV, TungstenSteel);
@@ -164,8 +164,8 @@ public class TierMaps {
         {
             ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, FLUID_PIPE_COPPER.getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.LV, FLUID_PIPE_COPPER.getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.MV, FLUID_PIPE_COPPER.getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.LV, FLUID_PIPE_BRONZE.getBlockItem(PipeSize.NORMAL));
+            builder.put(Tier.MV, FLUID_PIPE_STEEL.getBlockItem(PipeSize.NORMAL));
             builder.put(Tier.HV, FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL));
             builder.put(Tier.EV, FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL));
             builder.put(Tier.IV, FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(PipeSize.NORMAL));
