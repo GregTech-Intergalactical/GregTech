@@ -27,6 +27,7 @@ import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
+import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechTags.PLATES_IRON_ALUMINIUM;
 import static muramasa.gregtech.data.Materials.*;
@@ -35,7 +36,7 @@ import static muramasa.gregtech.data.TierMaps.*;
 public class Parts {
   public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
     Arrays.stream(Tier.getStandard()).forEach(t -> {
-      Material magnet = (t == Tier.ULV || t == Tier.LV) ? IronMagnetic
+      Material magnet = (t == Tier.ULV || t == LV) ? IronMagnetic
           : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
       Item cable = TIER_CABLES.get(t);
       Item wire = TIER_WIRES.get(t);
@@ -56,7 +57,7 @@ public class Parts {
       Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
       Object emitterGem = EMITTER_GEMS.get(t);
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), motor,
-          of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', rod), "CWR", "WMW", "RWC");
+          of('M', ROD.get(magnet), 'C', cable, 'W', WIRE_COPPER.getBlockItem(fromTier(t)), 'R', rod), "CWR", "WMW", "RWC");
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), piston,
           of('M', motor, 'C', cable, 'G', smallGear, 'P', plate, 'R', rod), "PPP", "CRR", "CMG");
       provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), conveyor,
@@ -137,12 +138,12 @@ public class Parts {
 
       provider.addItemRecipe(output, Ref.ID, "small_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullSmall, of(
               'P', PLATE.get(BatteryAlloy),
-              'C', TIER_CABLES.get(Tier.LV)
+              'C', TIER_CABLES.get(LV)
       ), "C", "P", "P");
 
       provider.addItemRecipe(output,  Ref.ID, "medium_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullMedium, of(
               'P', PLATE.get(BatteryAlloy),
-              'C', TIER_CABLES.get(Tier.MV)
+              'C', TIER_CABLES.get(MV)
       ), "C C", "PPP", "PPP");
 
       provider.addItemRecipe(output, Ref.ID, "empty_shape", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), EmptyShape, of(
@@ -154,5 +155,13 @@ public class Parts {
               'G', GEAR.get(CobaltBrass),
               'D', DUST_SMALL.get(Diamond)
       ), " D ", "DGD", " D ");
+  }
+
+  static PipeSize fromTier(Tier tier){
+      if (tier == LV) return PipeSize.VTINY;
+      if (tier == MV) return PipeSize.TINY;
+      if (tier == HV) return PipeSize.SMALL;
+      if (tier == IV) return PipeSize.HUGE;
+      return PipeSize.NORMAL;
   }
 }
