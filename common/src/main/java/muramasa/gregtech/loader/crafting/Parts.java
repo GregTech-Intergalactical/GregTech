@@ -39,7 +39,6 @@ public class Parts {
       Material magnet = (t == Tier.ULV || t == LV) ? IronMagnetic
           : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
       Item cable = TIER_CABLES.get(t);
-      Item wire = TIER_WIRES.get(t);
       Material mat = TIER_MATERIALS.get(t);
       // Item smallGear = GEAR_SMALL.get(mat);
       Item smallGear = GEAR.get(mat);
