@@ -106,22 +106,22 @@ public class TierMaps {
         doneMaps = true;
         {
             ImmutableMap.Builder<Tier, PipeItemBlock> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, WIRE_LEAD.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.LV, WIRE_ZINC.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.MV, WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY));
-            builder.put(Tier.HV, WIRE_ELECTRUM.getBlockItem(PipeSize.TINY));
-            builder.put(Tier.EV, WIRE_NICHROME.getBlockItem(PipeSize.SMALL));
-            builder.put(Tier.IV, WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.SMALL));
+            builder.put(Tier.ULV, WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.LV, WIRE_TIN.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.MV, WIRE_COPPER.getBlockItem(PipeSize.TINY));
+            builder.put(Tier.HV, WIRE_GOLD.getBlockItem(PipeSize.TINY));
+            builder.put(Tier.EV, WIRE_ALUMINIUM.getBlockItem(PipeSize.SMALL));
+            builder.put(Tier.IV, WIRE_TUNGSTEN.getBlockItem(PipeSize.SMALL));
             TIER_WIRES = builder.build();
         }
         {
             ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.LV, CABLE_TIN.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.MV, CABLE_IRON.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.HV, CABLE_KANTHAL.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.MV, CABLE_COPPER.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.HV, CABLE_GOLD.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.EV, CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.IV, CABLE_PLATINUM.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.IV, CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY));
             TIER_CABLES = builder.build();
         }
         {
