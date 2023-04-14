@@ -62,6 +62,10 @@ public class TierMaps {
             builder.put(Tier.HV, StainlessSteel);
             builder.put(Tier.EV, Titanium);
             builder.put(Tier.IV, TungstenSteel);
+            builder.put(LUV, Chrome);
+            builder.put(ZPM, Iridium);
+            builder.put(UV, Osmium);
+            builder.put(MAX, Neutronium);
             TIER_MATERIALS = builder.build();
         }
 
@@ -112,6 +116,9 @@ public class TierMaps {
             builder.put(Tier.HV, WIRE_GOLD.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.EV, WIRE_ALUMINIUM.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.IV, WIRE_TUNGSTEN.getBlockItem(PipeSize.VTINY));
+            builder.put(LUV, WIRE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY));
+            builder.put(ZPM, WIRE_NAQUADAH.getBlockItem(PipeSize.VTINY));
+            builder.put(UV, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL));
             TIER_WIRES = builder.build();
         }
         {
@@ -122,6 +129,10 @@ public class TierMaps {
             builder.put(Tier.HV, CABLE_GOLD.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.EV, CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.IV, CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY));
+            builder.put(LUV, CABLE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY));
+            builder.put(ZPM, CABLE_NAQUADAH.getBlockItem(PipeSize.VTINY));
+            builder.put(UV, CABLE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL));
+            builder.put(MAX, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY));
             TIER_CABLES = builder.build();
         }
         {
