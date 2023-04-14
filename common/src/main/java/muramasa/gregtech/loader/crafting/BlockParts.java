@@ -75,10 +75,10 @@ public class BlockParts {
 
         addTierHull(output, provider, AntimatterMaterials.Iron, WIRE_RED_ALLOY, CircuitBasic, GregTechData.CASING_ULV, GregTechData.HULL_ULV,1);
         addTierHull(output, provider, AnnealedCopper, WIRE_TIN, CircuitBasic, GregTechData.CASING_LV, GregTechData.HULL_LV,2);
-        addTierHull(output, provider, Silver, WIRE_CUPRONICKEL, CircuitGood, GregTechData.CASING_MV,GregTechData.HULL_MV,3);
-        addTierHull(output, provider, SterlingSilver, WIRE_ELECTRUM, CircuitGood, GregTechData.CASING_HV, GregTechData.HULL_HV,4);
-        addTierHull(output, provider, RoseGold, WIRE_NICHROME, CircuitAdv, GregTechData.CASING_EV, GregTechData.HULL_EV,5);
-        addTierHull(output, provider, RedSteel, WIRE_NIOBIUM_TITANIUM, CircuitAdv, GregTechData.CASING_IV, GregTechData.HULL_IV,6);
+        addTierHull(output, provider, Silver, WIRE_COPPER, CircuitGood, GregTechData.CASING_MV,GregTechData.HULL_MV,3);
+        addTierHull(output, provider, SterlingSilver, WIRE_GOLD, CircuitGood, GregTechData.CASING_HV, GregTechData.HULL_HV,4);
+        addTierHull(output, provider, RoseGold, WIRE_ALUMINIUM, CircuitAdv, GregTechData.CASING_EV, GregTechData.HULL_EV,5);
+        addTierHull(output, provider, RedSteel, WIRE_TUNGSTEN, CircuitAdv, GregTechData.CASING_IV, GregTechData.HULL_IV,6);
 
         provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CASING_BRONZE_PLATED_BRICK,
                 ImmutableMap.<Character, Object>builder()
