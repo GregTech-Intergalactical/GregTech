@@ -252,7 +252,7 @@ public class Machines {
                             .put('O', COIL_CUPRONICKEL)
                             .put('H', hull)
                             .put('C', circuit)
-                            .build(), "POP", "CHC", "POP"));
+                            .build(), "OPO", "CHC", "OPO"));
 
             add(CANNER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
                     ImmutableMap.<Character, Object>builder()
@@ -420,31 +420,41 @@ public class Machines {
                     ImmutableMap.<Character, Object>builder()
                             .put('C', ForgeCTags.CHESTS)
                             .put('H', hull)
-                            .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.LARGE)).build(), "LCL", "LHL", "   "));
+                            .build(), "C", "H"));
 
             add(HATCH_FLUID_I, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('G', Items.GLASS)
                             .put('H', hull)
-                            .build(), " G ", " H ", "   "));
+                            .build(), "G", "H"));
 
             add(HATCH_ITEM_O, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', ForgeCTags.CHESTS)
                             .put('H', hull)
-                            .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.LARGE)).build(), "LHL", "LCL", "   "));
+                            .build(), "H", "C"));
 
             add(HATCH_FLUID_O, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('G', Items.GLASS)
                             .put('H', hull)
-                            .build(), " H ", " G ", "   "));
+                            .build(), "H", "G"));
 
             add(HATCH_ENERGY, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', cable)
                             .put('H', hull)
-                            .build(), "CH ", "   ", "   "));
+                            .build(), "CH"));
+            add(HATCH_DYNAMO, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('C', cable)
+                            .put('H', hull)
+                            .build(), "HC"));
+            add(HATCH_MUFFLER, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('C', FLUID_PIPE_STEEL.getBlockItem(PipeSize.NORMAL))
+                            .put('H', hull)
+                            .build(), "H", "C"));
 
             if (!AntimatterAPI.isModLoaded("gt4r")){
                 add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
