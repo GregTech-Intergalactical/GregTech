@@ -100,10 +100,11 @@ public class TierMaps {
             throw new IllegalArgumentException("Too high tier in WIRE_GETTER");
         };
         CABLE_GETTER = (size, tier, machine) -> {
-            if (tier == LV){
+            if (tier == ULV) return CABLE_RED_ALLOY.getBlockItem(size);
+            if (tier == LV) return CABLE_TIN.getBlockItem(size);
+            if (tier == MV){
                 return TagUtils.getItemTag(new ResourceLocation(Ref.ANTIMATTER, SubTag.COPPER_CABLE.getId()+"_"+ size.getId()));
             }
-            if (tier == MV) return CABLE_COPPER.getBlockItem(size);
             if (tier == HV) return CABLE_GOLD.getBlockItem(size);
             if (tier == EV) return CABLE_ALUMINIUM.getBlockItem(size);
             if (tier == IV) return machine ? CABLE_PLATINUM.getBlockItem(size) : CABLE_TUNGSTEN.getBlockItem(size);
