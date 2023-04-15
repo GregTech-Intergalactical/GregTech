@@ -37,10 +37,10 @@ public class Guis {
             .add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63));
     public static GuiData MULTI_DISPLAY_COMPACT = new GuiData("antimatter", "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots())).setPadding(0, 0, 0, 0);
-    public static GuiData BASIC_TANK = new GuiData("gregtech", "basic_tank")
+    public static GuiData BASIC_TANK = new GuiData(muramasa.gregtech.Ref.ID, "basic_tank")
             .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43));
 
-    public static GuiData MULTIBLOCK = new GuiData("gregtech", "multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
+    public static GuiData MULTIBLOCK = new GuiData(muramasa.gregtech.Ref.ID, "multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
     public static GuiData ORE_BYPRODUCTS = new GuiData("antimatter", "ore_byproducts") {
         @Override

@@ -3,6 +3,7 @@ package muramasa.gregtech.proxy;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.client.ModelUtils;
 import muramasa.gregtech.GregTech;
+import muramasa.gregtech.Ref;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.client.renderer.RenderType;
@@ -27,7 +28,7 @@ public class ClientHandler {
         //if(!target.exists())
         try {
             dir.mkdirs();
-            InputStream in = GregTech.class.getResourceAsStream("/assets/gregtech/gt5u-machine-base.zip");
+            InputStream in = GregTech.class.getResourceAsStream("/assets/" + Ref.ID + "/gt5u-machine-base.zip");
             FileOutputStream out = new FileOutputStream(target);
 
             byte[] buf = new byte[16384];
@@ -46,7 +47,7 @@ public class ClientHandler {
         //if(!target.exists())
         try {
             dir.mkdirs();
-            InputStream in = GregTech.class.getResourceAsStream("/assets/gregtech/new-machine-base.zip");
+            InputStream in = GregTech.class.getResourceAsStream("/assets/" + Ref.ID + "/new-machine-base.zip");
             FileOutputStream out = new FileOutputStream(target);
 
             byte[] buf = new byte[16384];
