@@ -11,10 +11,13 @@ import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -25,7 +28,9 @@ import java.util.Arrays;
 
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.ofObject;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechTags.PLATES_IRON_ALUMINIUM;
 import static muramasa.gregtech.data.Materials.*;
@@ -46,10 +51,11 @@ public class AssemblyLoader {
         smdComponents();
     }
 
+    //TODO proper type check for the cables
     private static void batteries() {
-        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,1), of(TIER_CABLES.get(Tier.LV) ,1)).fi(Polyethylene.getLiquid(144)).io(BatteryHullSmall.getDefaultInstance()).add("battery_hull_small",80, 2);
-        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,3), of(TIER_CABLES.get(Tier.MV) ,2)).fi(Polyethylene.getLiquid(432)).io(BatteryHullMedium.getDefaultInstance()).add("battery_hull_medium",120, 4);
-        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,9), of(TIER_CABLES.get(Tier.HV) ,3)).fi(Polyethylene.getLiquid(1296)).io(BatteryHullLarge.getDefaultInstance()).add("battery_hull_large",160, 8);
+        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,1), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, LV, false) ,1)).fi(Polyethylene.getLiquid(144)).io(BatteryHullSmall.getDefaultInstance()).add("battery_hull_small",80, 2);
+        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,3), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, MV, false) ,2)).fi(Polyethylene.getLiquid(432)).io(BatteryHullMedium.getDefaultInstance()).add("battery_hull_medium",120, 4);
+        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,9), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, HV, false) ,3)).fi(Polyethylene.getLiquid(1296)).io(BatteryHullLarge.getDefaultInstance()).add("battery_hull_large",160, 8);
     }
 
     private static void casings() {
@@ -125,13 +131,13 @@ public class AssemblyLoader {
             Material magnet = (t == Tier.ULV || t == Tier.LV) ? IronMagnetic : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
             ASSEMBLING.RB().ii(of(TIER_WIRES.get(t),4), of(ROD.get(TIER_MATERIALS.get(t)),2),
                     of(ROD.get(magnet),1)
-                    , of(TIER_CABLES.get(t),2)).io(new ItemStack(GregTech.get(ItemBasic.class,"motor_"+t.getId()))).add("motor_"+t.getId(),150,16);
+                    , ofObject(CABLE_GETTER.apply(PipeSize.VTINY, t, false), 2)).io(new ItemStack(GregTech.get(ItemBasic.class,"motor_"+t.getId()))).add("motor_"+t.getId(),150,16);
         });
     }
 
     private static void pistons(){
         Arrays.stream(Tier.getStandard()).forEach(t -> {
-            ASSEMBLING.RB().ii(of(TIER_CABLES.get(t),2),
+            ASSEMBLING.RB().ii(ofObject(CABLE_GETTER.apply(PipeSize.VTINY, t, false),2),
                             of(ROD.get(TIER_MATERIALS.get(t)),2),
                             of(PLATE.get(TIER_MATERIALS.get(t)),3),
                             of(GregTech.get(ItemBasic.class,"motor_"+t.getId()),1),

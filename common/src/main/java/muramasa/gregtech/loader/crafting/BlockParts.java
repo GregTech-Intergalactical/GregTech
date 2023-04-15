@@ -138,7 +138,7 @@ public class BlockParts {
 
     private static void addTierHull(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Tier tier) {
         provider.addItemRecipe(output, "hulls", "has_hull", provider.hasSafeItem(WRENCH.getTag()), AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), Ref.ID),
-                of('P', PLATE.getMaterialTag(mat), 'R', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', TIER_CABLES.get(tier), 'K', AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), Ref.ID))
+                of('P', PLATE.getMaterialTag(mat), 'R', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 'K', AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), Ref.ID))
                 , "PRP", "WKW");
         }
 }

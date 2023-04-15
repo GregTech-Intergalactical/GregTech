@@ -38,7 +38,7 @@ public class Parts {
     Arrays.stream(Tier.getStandard()).forEach(t -> {
       Material magnet = (t == Tier.ULV || t == LV) ? IronMagnetic
           : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
-      Item cable = TIER_CABLES.get(t);
+      Object cable = CABLE_GETTER.apply(PipeSize.VTINY, t, false);
       Material mat = TIER_MATERIALS.get(t);
       // Item smallGear = GEAR_SMALL.get(mat);
       Item smallGear = GEAR.get(mat);
@@ -137,12 +137,12 @@ public class Parts {
 
       provider.addItemRecipe(output, Ref.ID, "small_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullSmall, of(
               'P', PLATE.get(BatteryAlloy),
-              'C', TIER_CABLES.get(LV)
+              'C', CABLE_GETTER.apply(PipeSize.VTINY, LV, false)
       ), "C", "P", "P");
 
       provider.addItemRecipe(output,  Ref.ID, "medium_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullMedium, of(
               'P', PLATE.get(BatteryAlloy),
-              'C', TIER_CABLES.get(MV)
+              'C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false)
       ), "C C", "PPP", "PPP");
 
       provider.addItemRecipe(output, Ref.ID, "empty_shape", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), EmptyShape, of(

@@ -1100,6 +1100,8 @@ public class GregTechMaterialEvents {
         SOLDER.subTag(SubTag.GOOD_SOLDER, SolderingAlloy, Tin);
         WIRE.subTag(SubTag.COPPER_WIRE, AnnealedCopper);
         WIRE.subTag(SubTag.COPPER_WIRE, Copper);
+        CABLE.subTag(SubTag.COPPER_CABLE, AnnealedCopper);
+        CABLE.subTag(SubTag.COPPER_CABLE, Copper);
 
         event.setMaterial(AnnealedCopper).setSmeltInto(Copper).setMacerateInto(Copper).setArcSmeltInto(AnnealedCopper);
         event.setMaterial(Copper).setSmeltInto(Copper).setMacerateInto(Copper).setArcSmeltInto(AnnealedCopper);

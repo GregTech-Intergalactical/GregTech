@@ -16,6 +16,7 @@ import muramasa.gregtech.items.ItemIntCircuit;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.resources.ResourceLocation;
+import org.apache.commons.lang3.function.TriFunction;
 
 import java.util.function.BiFunction;
 
@@ -32,11 +33,9 @@ public class TierMaps {
     public static final ImmutableMap<Tier, Material> TIER_MATERIALS;
     public static final ImmutableMap<Tier, Material> TIER_PIPE_MATERIAL;
     public static ImmutableMap<Tier, PipeItemBlock> TIER_WIRES;
-    public static ImmutableMap<Tier, Item> TIER_CABLES;
+    //public static ImmutableMap<Tier, Item> TIER_CABLES;
     public static ImmutableMap<Tier, ItemBasic<?>> TIER_CIRCUITS;
     public static ImmutableMap<Tier, ItemBasic<?>> TIER_BOARDS;
-    //Used by special machines, 4x cables.
-    public static ImmutableMap<Tier, Item> EXTRA_4_CABLES_TIER;
 
     public static ImmutableMap<Tier, Material> EMITTER_RODS;
     public static ImmutableMap<Tier, Object> EMITTER_GEMS;
@@ -45,6 +44,8 @@ public class TierMaps {
     public static ImmutableMap<Tier, Item> TIER_PIPES;
 
     public static final BiFunction<PipeSize, Tier, Object> WIRE_GETTER;
+
+    public static final TriFunction<PipeSize, Tier, Boolean, Object> CABLE_GETTER;
 
     static {
         {
@@ -98,6 +99,20 @@ public class TierMaps {
             }
             throw new IllegalArgumentException("Too high tier in WIRE_GETTER");
         };
+        CABLE_GETTER = (size, tier, machine) -> {
+            if (tier == LV){
+                return TagUtils.getItemTag(new ResourceLocation(Ref.ANTIMATTER, SubTag.COPPER_CABLE.getId()+"_"+ size.getId()));
+            }
+            if (tier == MV) return CABLE_COPPER.getBlockItem(size);
+            if (tier == HV) return CABLE_GOLD.getBlockItem(size);
+            if (tier == EV) return CABLE_ALUMINIUM.getBlockItem(size);
+            if (tier == IV) return machine ? CABLE_PLATINUM.getBlockItem(size) : CABLE_TUNGSTEN.getBlockItem(size);
+            if(tier == LUV) return CABLE_VANADIUM_GALLIUM.getBlockItem(size);
+            if(tier == ZPM) return CABLE_NAQUADAH.getBlockItem(size);
+            if(tier == UV) return CABLE_NAQUADAH_ALLOY.getBlockItem(size);
+            if(tier == MAX) return WIRE_SUPERCONDUCTOR.getBlockItem(size);
+            throw new IllegalArgumentException("Invalid tier in CABLE_GETTER");
+        };
     }
     //Called to init the INT CIRCUITS and tier materials early on.
     public static void init() {
@@ -121,7 +136,7 @@ public class TierMaps {
             builder.put(UV, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL));
             TIER_WIRES = builder.build();
         }
-        {
+        /*{
             ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.LV, CABLE_TIN.getBlockItem(PipeSize.VTINY));
@@ -134,14 +149,14 @@ public class TierMaps {
             builder.put(UV, CABLE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL));
             builder.put(MAX, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY));
             TIER_CABLES = builder.build();
-        }
+        }*/
         {
             ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, ROTOR.get(Bronze));
-            builder.put(Tier.LV, ROTOR.get(Bronze));
-            builder.put(Tier.MV, ROTOR.get(Steel));
-            builder.put(Tier.HV, ROTOR.get(StainlessSteel));
-            builder.put(Tier.EV, ROTOR.get(Titanium));
+            builder.put(Tier.LV, ROTOR.get(Tin));
+            builder.put(Tier.MV, ROTOR.get(Bronze));
+            builder.put(Tier.HV, ROTOR.get(Steel));
+            builder.put(Tier.EV, ROTOR.get(StainlessSteel));
             builder.put(Tier.IV, ROTOR.get(TungstenSteel));
             TIER_ROTORS = builder.build();
         }
@@ -162,15 +177,6 @@ public class TierMaps {
             builder.put(Tier.EV, Items.ENDER_PEARL);
             builder.put(Tier.IV, Items.ENDER_EYE);
             EMITTER_GEMS = builder.build();
-        }
-        {
-            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
-            builder.put(Tier.LV, CABLE_TIN.getBlockItem(PipeSize.SMALL));
-            builder.put(Tier.MV, CABLE_COPPER.getBlockItem(PipeSize.SMALL));
-            builder.put(Tier.HV, CABLE_GOLD.getBlockItem(PipeSize.SMALL));
-            builder.put(Tier.EV, CABLE_ALUMINIUM.getBlockItem(PipeSize.SMALL));
-            builder.put(Tier.IV, CABLE_TUNGSTEN.getBlockItem(PipeSize.SMALL));
-            EXTRA_4_CABLES_TIER = builder.build();
         }
         {
             ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();

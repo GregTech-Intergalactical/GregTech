@@ -57,7 +57,7 @@ public class Machines {
             if (field == null) return;
             Item circuit = TIER_CIRCUITS.getOrDefault(tier, CircuitBasic);
             if (circuit == null) return;
-            Item cable = TierMaps.TIER_CABLES.get(tier);
+            Object cable = CABLE_GETTER.apply(PipeSize.VTINY, tier, true);
             if (cable == null) return;
             Item rotor = TierMaps.TIER_ROTORS.get(tier);
             if (rotor == null) return;
@@ -102,7 +102,7 @@ public class Machines {
                     ImmutableMap.of(
                             'C', circuit,
                             'W', DUST.get(Materials.Graphite),
-                            'L', TierMaps.EXTRA_4_CABLES_TIER.get(tier),
+                            'L', CABLE_GETTER.apply(PipeSize.SMALL, tier, true),
                             'H', PLATE.get(TierMaps.TIER_MATERIALS.get(tier)),
                             'M', hull
                     ), "LWL", "CMC", "HHH"));
@@ -110,7 +110,7 @@ public class Machines {
                     ImmutableMap.of(
                             'C', circuit,
                             'W', DUST.get(Materials.Graphite),
-                            'L', TierMaps.EXTRA_4_CABLES_TIER.get(tier),
+                            'L', CABLE_GETTER.apply(PipeSize.SMALL, tier, true),
                             'H', PLATE.get(TierMaps.TIER_MATERIALS.get(tier)),
                             'M', hull,
                             'P', pump
@@ -289,7 +289,7 @@ public class Machines {
                             .put('E', emitter)
                             .put('C', circuit)
                             .put('H', hull)
-                            .put('L', cable).build(), "CEC", "LHL", "CSC"));
+                            .put('L', CABLE_GETTER.apply(PipeSize.VTINY, tier, false)).build(), "CEC", "LHL", "CSC"));
             add(THERMAL_CENTRIFUGE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('M', motor)
@@ -325,11 +325,11 @@ public class Machines {
                             .put('R', arm)
                             .put('C', circuit)
                             .put('H', hull)
-                            .put('L', cable).build(), "RCR", "LHL", "RCR"));
+                            .put('L', CABLE_GETTER.apply(PipeSize.VTINY, tier, false)).build(), "RCR", "LHL", "RCR"));
             add(MASS_FABRICATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('F', field)
-                            .put('B', TierMaps.EXTRA_4_CABLES_TIER.get(tier))
+                            .put('B', CABLE_GETTER.apply(PipeSize.SMALL, tier, true))
                             .put('C', circuit)
                             .put('H', hull).build(), "CFC", "BHB", "CFC"));
             add(REPLICATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
@@ -338,7 +338,7 @@ public class Machines {
                             .put('E', emitter)
                             .put('C', circuit)
                             .put('H', hull)
-                            .put('B', TierMaps.EXTRA_4_CABLES_TIER.get(tier))
+                            .put('B', CABLE_GETTER.apply(PipeSize.SMALL, tier, true))
                             .build(), "EFE", "CHC", "EBE"));
             add(FERMENTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
                     ImmutableMap.<Character, Object>builder()
@@ -442,12 +442,12 @@ public class Machines {
 
             add(HATCH_ENERGY, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', cable)
+                            .put('C', CABLE_GETTER.apply(PipeSize.VTINY, tier, false))
                             .put('H', hull)
                             .build(), "CH"));
             add(HATCH_DYNAMO, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', cable)
+                            .put('C', CABLE_GETTER.apply(PipeSize.VTINY, tier, false))
                             .put('H', hull)
                             .build(), "HC"));
             add(HATCH_MUFFLER, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
