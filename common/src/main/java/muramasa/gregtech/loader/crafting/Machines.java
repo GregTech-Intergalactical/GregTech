@@ -9,6 +9,7 @@ import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.pipe.types.Wire;
@@ -19,6 +20,7 @@ import muramasa.gregtech.data.TierMaps;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.Arrays;
@@ -63,6 +65,8 @@ public class Machines {
             if (rotor == null) return;
             Item glass = Items.GLASS;
             Object diamond = Items.DIAMOND;
+            Material material = TIER_MATERIALS.getOrDefault(tier, Material.NULL);
+
 
             add(MACERATOR, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder().put('P', piston).put('M', motor).put('C', circuit).put('L', cable).put('H', hull).put('D', Items.DIAMOND).build(), "PMD", "LLH", "CCL"));
@@ -103,7 +107,7 @@ public class Machines {
                             'C', circuit,
                             'W', DUST.get(Materials.Graphite),
                             'L', CABLE_GETTER.apply(PipeSize.SMALL, tier, true),
-                            'H', PLATE.get(TierMaps.TIER_MATERIALS.get(tier)),
+                            'H', PLATE.get(material),
                             'M', hull
                     ), "LWL", "CMC", "HHH"));
             add(PLASMA_ARC_FURNACE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
@@ -111,7 +115,7 @@ public class Machines {
                             'C', circuit,
                             'W', DUST.get(Materials.Graphite),
                             'L', CABLE_GETTER.apply(PipeSize.SMALL, tier, true),
-                            'H', PLATE.get(TierMaps.TIER_MATERIALS.get(tier)),
+                            'H', PLATE.get(material),
                             'M', hull,
                             'P', pump
                     ), "LWL", "CMC", "PHP"));
@@ -142,7 +146,7 @@ public class Machines {
                             .put('W', cable)
                             .put('w', esWire)
                             .put('H', hull)
-                            .put('R', ROD.getMaterialTag(TIER_MATERIALS.get(tier)))
+                            .put('R', ROD.getMaterialTag(material))
                             .put('C', circuit)
                             .build(), "cWw", "WHR", "CWw"));
 
@@ -198,6 +202,23 @@ public class Machines {
                             .put('C', circuit)
                             .put('P',  TIER_PIPES.get(tier))
                             .build(), "PCP", "RHR", "MLM"));
+            add(COMBUSTION_GENERATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('M', motor)
+                            .put('L', cable)
+                            .put('H', hull)
+                            .put('G', GEAR.getMaterialTag(material))
+                            .put('C', circuit)
+                            .put('P',  piston)
+                            .build(), "PCP", "MHM", "GLG"));
+            add(GAS_GENERATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('M', motor)
+                            .put('L', cable)
+                            .put('H', hull)
+                            .put('R', rotor)
+                            .put('C', circuit)
+                            .build(), "CRC", "RHR", "MLM"));
 
             add(BLAST_FURNACE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
@@ -206,6 +227,24 @@ public class Machines {
                             .put('C', circuit)
                             .put('F', Items.FURNACE)
                             .build(), "FFF", "CHC", "LCL"));
+            Block firebox = tier == LV ? CASING_FIREBOX_BRONZE : tier == MV ? CASING_FIREBOX_STEEL : tier == HV ? CASING_FIREBOX_TITANIUM : CASING_FIREBOX_TUNGSTENSTEEL;
+            Item circuit2 = tier == LV ? circuit : tier == MV ? CircuitAdv : tier == HV ? CircuitQuantumProcessor : CircuitEnergyFlow;
+            add(LARGE_BOILER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_circuit", provider.hasSafeItem(circuit), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('L', cable)
+                            .put('H', firebox)
+                            .put('C', circuit2)
+                            .build(), "LCL", "CHC", "LCL"));
+
+            add(COMBUSTION_ENGINE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('L', CABLE_TUNGSTEN_STEEL.getBlockItem(PipeSize.VTINY))
+                            .put('H', hull)
+                            .put('C', circuit)
+                            .put('P', piston)
+                            .put('G', GEAR.getMaterialTag(material))
+                            .put('M', motor)
+                            .build(), "PCP", "MHM", "GLG"));
 
             add(VACUUM_FREEZER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
@@ -373,7 +412,7 @@ public class Machines {
                             .put('L', cable).build(), "GZG", "CHC", "LPL"));
             add(AUTOCLAVE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('T', AntimatterMaterialTypes.PLATE.getMaterialTag(TierMaps.TIER_MATERIALS.get(tier)))
+                            .put('T', AntimatterMaterialTypes.PLATE.getMaterialTag(material))
                             .put('C', circuit)
                             .put('G', glass)
                             .put('H', hull)
