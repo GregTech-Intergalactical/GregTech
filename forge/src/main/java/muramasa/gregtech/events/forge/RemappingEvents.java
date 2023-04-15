@@ -32,8 +32,8 @@ public class RemappingEvents {
 
     @SubscribeEvent
     public static void remapMissingBlocks(final RegistryEvent.MissingMappings<Block> event){
-        for (RegistryEvent.MissingMappings.Mapping<Block> map : event.getMappings(GTIRef.ID)) {
-            String domain = map.key.getNamespace();
+        for (RegistryEvent.MissingMappings.Mapping<Block> map : event.getMappings("gregtech")) {
+
             String id = map.key.getPath();
             if (id.startsWith("block_")){
                 Material mat = Material.get(id.replace("block_", ""));
@@ -60,6 +60,12 @@ public class RemappingEvents {
             Block replacement = AntimatterAPI.get(Block.class, id, GTIRef.ANTIMATTER_SHARED);
             if (replacement != null){
                 map.remap(replacement);
+                continue;
+            }
+            replacement = AntimatterAPI.get(Block.class, id, GTIRef.ID);
+            if (replacement != null){
+                map.remap(replacement);
+                continue;
             }
             if (id.equals("rubber_log")){
                 map.remap(GTRubberData.RUBBER_LOG);
@@ -98,38 +104,43 @@ public class RemappingEvents {
                     map.remap(block);
                 }
             }
+
         }
     }
 
     @SubscribeEvent
     public static void remapMissingBlockEntities(final RegistryEvent.MissingMappings<BlockEntityType<?>> event){
-        for (RegistryEvent.MissingMappings.Mapping<BlockEntityType<?>> map : event.getMappings(GTIRef.ID)) {
+        for (RegistryEvent.MissingMappings.Mapping<BlockEntityType<?>> map : event.getMappings("gregtech")) {
             String domain = map.key.getNamespace();
             String id = map.key.getPath();
-
+            BlockEntityType<?> block = AntimatterAPI.get(BlockEntityType.class, id, GTIRef.ID);
+            if (block != null){
+                map.remap(block);
+                continue;
+            }
             if (id.contains("pulverizer")){
-                BlockEntityType<?> block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("pulverizer", "macerator"), GTIRef.ID);
+                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("pulverizer", "macerator"), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
             }
 
             if (id.contains("battery_buffer_one")){
-                BlockEntityType<?> block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_one", "1x_battery_buffer"), GTIRef.ID);
+                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_one", "1x_battery_buffer"), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
             }
 
             if (id.contains("battery_buffer_four")){
-                BlockEntityType<?> block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_four", "4x_battery_buffer"), GTIRef.ID);
+                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_four", "4x_battery_buffer"), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
             }
 
             if (id.contains("battery_buffer_nine")){
-                BlockEntityType<?> block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_nine", "8x_battery_buffer"), GTIRef.ID);
+                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_nine", "8x_battery_buffer"), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
@@ -144,6 +155,12 @@ public class RemappingEvents {
             Item replacement = AntimatterAPI.get(Item.class, id, GTIRef.ANTIMATTER_SHARED);
             if (replacement != null){
                 map.remap(replacement);
+                continue;
+            }
+            replacement = AntimatterAPI.get(Item.class, id, GTIRef.ID);
+            if (replacement != null){
+                map.remap(replacement);
+                continue;
             }
             if (id.equals("rubber_log")){
                 map.remap(GTRubberData.RUBBER_LOG.asItem());
