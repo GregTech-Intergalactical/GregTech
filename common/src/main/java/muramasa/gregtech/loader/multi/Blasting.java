@@ -57,7 +57,15 @@ public class Blasting {
 
         /* PRIMITIVE */
         BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(1.0, 0.5).add("steel_ingot",1200, 0);
+        INGOT.all().forEach(m -> {
+            if (m.has(NEEDS_BLAST_FURNACE) && m.has(BLAST_FURNACE_TEMP)){
+                ItemStack ingot = m.has(INGOT_HOT) ? INGOT_HOT.get(m, 1) : INGOT.get(m, 1);
+                int heat = BLAST_FURNACE_TEMP.getInt(m);
+                BLASTING.RB().ii(DUST.getMaterialIngredient(m, 1)).io(ingot).add(m.getId() + "ingot_from_dust", Math.max(m.getMass() / 40L, 1L) * heat, 120, heat);
+            }
+        });
 
+        BLASTING.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron, 1)).fi(Oxygen.getGas(1000)).io(INGOT.get(Steel), DUST_SMALL.get(DarkAsh)).add("steel_ingot", 500, 120, 1000);
         /* TITANIUM */
         BLASTING.RB().temperature(1700).ii(RecipeIngredient.of(DUST.get(Magnesium,2)), INT_CIRCUITS.get(1).setNoConsume())
                 .fi(Titaniumtetrachloride.getLiquid(1000))
