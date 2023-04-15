@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
+import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
@@ -10,6 +11,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.FluidPipe;
+import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.data.Materials;
@@ -26,7 +28,7 @@ import java.util.function.Consumer;
 import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
-import static muramasa.antimatter.machine.Tier.IV;
+import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
@@ -75,7 +77,7 @@ public class Machines {
                     ImmutableMap.<Character, Object>builder().put('M', motor).put('C', circuit).put('L', cable).put('H', hull).put('D', DiamondSawBlade).put('V', conveyor).put('G', glass).build(), "LCG", "VHD", "CLM"));
 
             add(FURNACE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
-                    ImmutableMap.of('C', circuit, 'L', cable, 'H', hull, 'W', TierMaps.WIRE_GETTER.apply(PipeSize.TINY, tier)), "CWC", "CHC", "LWL"));
+                    ImmutableMap.of('C', circuit, 'L', cable, 'H', hull, 'W', TierMaps.WIRE_GETTER.apply(PipeSize.TINY, tier)), "CWC", "WHW", "LWL"));
 
             add(EXTRACTOR, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder().put('P', piston).put('M', pump).put('G', glass).put('C', circuit).put('L', cable).put('H', hull).build(), "GCG", "PHM", "LCL"));
@@ -86,10 +88,11 @@ public class Machines {
             add(LATHE, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder().put('P', piston).put('M', motor).put('C', circuit).put('L', cable).put('H', hull).put('D', diamond).build(), "LCL", "MHD", "CLP"));
 
+            Wire<?> electroWire = tier == LV ? WIRE_GOLD : tier == MV ? WIRE_SILVER : tier == HV ? WIRE_ELECTRUM : tier == EV ? WIRE_PLATINUM : WIRE_OSMIUM;
             add(ELECTROLYZER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.of(
                             'C', circuit,
-                            'W', WIRE_SILVER.getBlockItem(PipeSize.VTINY),
+                            'W', electroWire.getBlockItem(PipeSize.VTINY),
                             'L', cable,
                             'H', hull,
                             'G', glass
@@ -100,8 +103,18 @@ public class Machines {
                             'C', circuit,
                             'W', DUST.get(Materials.Graphite),
                             'L', TierMaps.EXTRA_4_CABLES_TIER.get(tier),
-                            'H', PLATE.get(TierMaps.TIER_MATERIALS.get(tier))
-                    ), "LWL", "CHC", "HHH"));
+                            'H', PLATE.get(TierMaps.TIER_MATERIALS.get(tier)),
+                            'M', hull
+                    ), "LWL", "CMC", "HHH"));
+            add(PLASMA_ARC_FURNACE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.of(
+                            'C', circuit,
+                            'W', DUST.get(Materials.Graphite),
+                            'L', TierMaps.EXTRA_4_CABLES_TIER.get(tier),
+                            'H', PLATE.get(TierMaps.TIER_MATERIALS.get(tier)),
+                            'M', hull,
+                            'P', pump
+                    ), "LWL", "CMC", "PHP"));
 
             add(CHEMICAL_BATH, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
@@ -121,6 +134,17 @@ public class Machines {
                             .put('H', hull)
                             .put('F', ItemFilter)
                             .build(), "LFL", "PHP", "CFC"));
+
+            Item esWire = tier == LV ? WIRE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? WIRE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? WIRE_COPPER.getBlockItem(PipeSize.SMALL) : WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
+            add(ELECTROMAGNETIC_SEPARATOR, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_conveyor", provider.hasSafeItem(conveyor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('c', conveyor)
+                            .put('W', cable)
+                            .put('w', esWire)
+                            .put('H', hull)
+                            .put('R', ROD.getMaterialTag(TIER_MATERIALS.get(tier)))
+                            .put('C', circuit)
+                            .build(), "cWw", "WHR", "CWw"));
 
             add(BENDER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.of(
@@ -154,7 +178,7 @@ public class Machines {
                             'C', circuit,
                             'L', cable,
                             'H', hull
-                    ), "CMC", "LHL", "CHC"));
+                    ), "CMC", "LHL", "CMC"));
 
             add(MIXER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.of(
@@ -245,6 +269,13 @@ public class Machines {
                             .put('C', circuit)
                             .put('H', hull)
                             .put('A', Items.ANVIL).build(), "LPL", "CHC", "LAL"));
+            add(FORMING_PRESS, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('L', cable)
+                            .put('P', piston)
+                            .put('C', circuit)
+                            .put('H', hull)
+                            .build(), "LPL", "CHC", "LPL"));
             add(RECYCLER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('G', Items.GLOWSTONE_DUST)
@@ -330,7 +361,7 @@ public class Machines {
                             .put('C', circuit)
                             .put('G', glass)
                             .put('H', hull)
-                            .put('E', Items.CHEST)
+                            .put('E', ForgeCTags.CHESTS)
                             .put('L', cable).build(), "PGP", "LHL", "CEC"));
             add(DISTILLERY, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
                     ImmutableMap.<Character, Object>builder()
@@ -356,37 +387,38 @@ public class Machines {
                             .put('L', cable).build(), "PEP", "CHC", "LCL"));
             add(PACKAGER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('P', piston)
-                            .put('E', emitter)
+                            .put('c', conveyor)
+                            .put('R', arm)
                             .put('C', circuit)
                             .put('H', hull)
-                            .put('L', cable).build(), "PEP", "CHC", "LCL"));
+                            .put('L', cable)
+                            .put('S', ForgeCTags.CHESTS).build(), "SCS", "RHc", "LCL"));
             add(BATTERY_BUFFER_ONE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', Items.CHEST)
+                            .put('C', ForgeCTags.CHESTS)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.VTINY)).build(), "LCL", "LHL"));
 
             add(BATTERY_BUFFER_FOUR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', Items.CHEST)
+                            .put('C', ForgeCTags.CHESTS)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.SMALL)).build(), "LCL", "LHL"));
 
             add(BATTERY_BUFFER_EIGHT, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', Items.CHEST)
+                            .put('C', ForgeCTags.CHESTS)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.NORMAL)).build(), "LCL", "LHL"));
             add(BATTERY_BUFFER_SIXTEEN, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', Items.CHEST)
+                            .put('C', ForgeCTags.CHESTS)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.HUGE)).build(), "LCL", "LHL"));
 
             add(HATCH_ITEM_I, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', Items.CHEST)
+                            .put('C', ForgeCTags.CHESTS)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.LARGE)).build(), "LCL", "LHL", "   "));
 
@@ -398,7 +430,7 @@ public class Machines {
 
             add(HATCH_ITEM_O, tier, (m,item) ->  provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', Items.CHEST)
+                            .put('C', ForgeCTags.CHESTS)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.LARGE)).build(), "LHL", "LCL", "   "));
 
@@ -420,13 +452,13 @@ public class Machines {
                                 .put('H', hull)
                                 .put('C', CircuitAdv)
                                 .put('F', ItemFilter)
-                                .put('E', Items.CHEST).build(), " H ", "ECE", " F "));
+                                .put('E', ForgeCTags.CHESTS).build(), " H ", "ECE", " F "));
                 add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                         ImmutableMap.<Character, Object>builder()
                                 .put('H', hull)
                                 .put('C', CircuitBasic)
                                 .put('F', ItemFilter)
-                                .put('E', Items.CHEST).build(), " H ", "ECE", " F "));
+                                .put('E', ForgeCTags.CHESTS).build(), " H ", "ECE", " F "));
             }
         });
         provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(CASING_FIRE_BRICK), PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()),
@@ -457,7 +489,7 @@ public class Machines {
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_MV)
                         .put('C', CircuitGood)
-                        .put('P', COVER_PUMP.getItem(Tier.MV).getItem())
+                        .put('P', COVER_PUMP.getItem(MV).getItem())
                         .put('M', MotorMV)
                         .put('W', WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL))
                         .put('B', Blocks.PISTON).build(), "BMW", "CHC", "MPW");
@@ -477,7 +509,7 @@ public class Machines {
                         .put('F', FieldGenLV)
                         .put('P', PLATE.get(Steel)).build(), "CFC", "PHP", "CPC");
 
-        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.MV),
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(MV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_MV)
                         .put('C', CircuitGood)
@@ -511,7 +543,7 @@ public class Machines {
                         .put('C', CABLE_LEAD.getBlockItem(PipeSize.VTINY))
                         .put('W', CABLE_TIN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
-        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.MV),
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(MV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_MV)
                         .put('C', CABLE_TIN.getBlockItem(PipeSize.VTINY))
@@ -533,7 +565,7 @@ public class Machines {
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_IV)
                         .put('C', CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_PLATINUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('W', CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
     }
 
     private static <T extends Machine<T>> void add(T machine, Tier tier, BiConsumer<T, Item> callback) {
