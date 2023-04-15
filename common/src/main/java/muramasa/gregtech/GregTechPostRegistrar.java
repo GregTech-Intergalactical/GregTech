@@ -1,7 +1,6 @@
 package muramasa.gregtech;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
@@ -18,7 +17,7 @@ public class GregTechPostRegistrar implements IAntimatterRegistrar {
 
     @Override
     public String getId() {
-        return Ref.ID + "_post";
+        return GTIRef.ID + "_post";
     }
 
     @Override

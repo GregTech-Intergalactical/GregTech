@@ -4,9 +4,9 @@ import muramasa.antimatter.event.forge.AntimatterCraftingEvent;
 import muramasa.antimatter.event.forge.AntimatterLoaderEvent;
 import muramasa.antimatter.event.forge.AntimatterProvidersEvent;
 import muramasa.antimatter.event.forge.AntimatterWorldGenEvent;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.GregTechPostRegistrar;
-import muramasa.gregtech.Ref;
 import muramasa.gregtech.events.forge.RemappingEvents;
 import muramasa.gregtech.loader.WorldGenLoader;
 import muramasa.gregtech.proxy.ClientHandler;
@@ -16,7 +16,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod(Ref.ID)
+@Mod(GTIRef.ID)
 public class GregTechForge {
 
     public GregTechForge(){

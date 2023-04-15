@@ -19,7 +19,7 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
-import muramasa.gregtech.Ref;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.client.gui.GuiComponent;
@@ -41,8 +41,8 @@ import static muramasa.antimatter.material.MaterialTags.*;
 
 public class OreProcessingCategory implements DisplayCategory<OreProcessingDisplay> {
     protected static Renderer icon = EntryStacks.of(Items.IRON_ORE);
-    private static final Component title = new TranslatableComponent(Ref.ID + ".rei.tooltip.ore.byproducts");
-    static CategoryIdentifier<? extends OreProcessingDisplay> id = CategoryIdentifier.of(Ref.ID, "ore_byproducts");
+    private static final Component title = new TranslatableComponent(GTIRef.ID + ".rei.tooltip.ore.byproducts");
+    static CategoryIdentifier<? extends OreProcessingDisplay> id = CategoryIdentifier.of(GTIRef.ID, "ore_byproducts");
 
     @Override
     public CategoryIdentifier<? extends OreProcessingDisplay> getCategoryIdentifier() {
@@ -54,25 +54,25 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
         widgets.add(Widgets.createDrawableWidget((helper, matrices, mouseX, mouseY, delta) -> {
-            drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/background.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
-            drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/base.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/background.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/base.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             if (display.bathingMode != OreProcessingDisplay.BathingMode.NONE){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/chem.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/chem.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.ore.has(AntimatterMaterialTypes.GEM)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/sift.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/sift.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.sepMode != OreProcessingDisplay.SepMode.NONE){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/sep.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/sep.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (!display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/smelt1.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/smelt1.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.ore.has(DUST) && display.ore.has(INGOT)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/smelt2.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/smelt2.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE) && display.ore.has(INGOT_HOT)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/ore_byproducts/vac.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/vac.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
         }));
         widgets.addAll(setupSlots(display, bounds));

@@ -22,8 +22,8 @@ public class TileEntityVacuumFreezer extends TileEntityMultiMachine<TileEntityVa
 //        } else {
 //            EUt = activeRecipe.getPower();
 //            maxProgress = activeRecipe.getDuration();
-//            for (int i = 0; i < Ref.V.length; i++) {
-//                if (EUt > Ref.V[tier - 1]) break;
+//            for (int i = 0; i < GTIRef.V.length; i++) {
+//                if (EUt > GTIRef.V[tier - 1]) break;
 //                EUt *= 4;
 //                maxProgress /= 2;
 //            }

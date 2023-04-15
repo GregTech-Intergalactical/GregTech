@@ -16,6 +16,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.int4;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.gui.widgets.*;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
@@ -37,10 +38,10 @@ public class Guis {
             .add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63));
     public static GuiData MULTI_DISPLAY_COMPACT = new GuiData("antimatter", "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots())).setPadding(0, 0, 0, 0);
-    public static GuiData BASIC_TANK = new GuiData(muramasa.gregtech.Ref.ID, "basic_tank")
+    public static GuiData BASIC_TANK = new GuiData(GTIRef.ID, "basic_tank")
             .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43));
 
-    public static GuiData MULTIBLOCK = new GuiData(muramasa.gregtech.Ref.ID, "multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
+    public static GuiData MULTIBLOCK = new GuiData(GTIRef.ID, "multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
     public static GuiData ORE_BYPRODUCTS = new GuiData("antimatter", "ore_byproducts") {
         @Override
@@ -63,7 +64,7 @@ public class Guis {
 
         @Override
         public String screenDomain() {
-            return muramasa.gregtech.Ref.ID;
+            return GTIRef.ID;
         }
 
         @Override

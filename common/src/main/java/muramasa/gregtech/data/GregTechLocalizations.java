@@ -3,11 +3,10 @@ package muramasa.gregtech.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
-import muramasa.gregtech.Ref;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.items.ItemIntCircuit;
-import net.minecraft.data.DataGenerator;
 
 import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpaced;
 
@@ -16,17 +15,17 @@ public class GregTechLocalizations {
     public static class en_US extends AntimatterLanguageProvider {
 
         public en_US() {
-            super(Ref.ID, Ref.NAME + " en_us Localization", "en_us");
+            super(GTIRef.ID, GTIRef.NAME + " en_us Localization", "en_us");
         }
 
         @Override
         protected void addTranslations() {
             super.addTranslations();
-            add(Ref.ID + ".advancements.greg", "GregTech Intergalactical");
-            add(Ref.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
-            add(Ref.ID + ".tooltip.occurrence", "Indicates occurrence of ");
-            add(Ref.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
-            add(Ref.ID + ".rei.tooltip.material_tree", "Material Tree");
+            add(GTIRef.ID + ".advancements.greg", "GregTech Intergalactical");
+            add(GTIRef.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
+            add(GTIRef.ID + ".tooltip.occurrence", "Indicates occurrence of ");
+            add(GTIRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
+            add(GTIRef.ID + ".rei.tooltip.material_tree", "Material Tree");
         }
 
         @Override

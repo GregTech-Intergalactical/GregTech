@@ -1,11 +1,10 @@
 package muramasa.gregtech.loader.multi;
 
-import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.Ref;
+import muramasa.gregtech.GTIRef;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -19,7 +18,7 @@ import static muramasa.gregtech.data.RecipeMaps.BASIC_BLASTING;
 import static muramasa.gregtech.data.RecipeMaps.BLASTING;
 
 public class Blasting {
-    public static int mixedOreYield = Ref.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
+    public static int mixedOreYield = GTIRef.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
 
     public static void init() {
         final int multiplier = 1;

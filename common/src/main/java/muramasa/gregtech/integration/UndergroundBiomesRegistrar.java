@@ -1,7 +1,7 @@
 //package muramasa.gtu.integration;
 //
 //import muramasa.gtu.Configs;
-//import muramasa.gtu.Ref;
+//import muramasa.gtu.GTIRef;
 //import muramasa.antimatter.GregTechAPI;
 //import muramasa.antimatter.materials.MaterialType;
 //import muramasa.antimatter.ore.BlockOre;
@@ -32,39 +32,39 @@
 //
 //    /*
 //    //UB Igneous
-//    public static StoneType UB_RED_GRANITE = new StoneType("ub_red_granite", Configs.MODCOMPAT.ENABLE_UB_CROSS_OREDICT ? "granite_red" : "", Ref.MOD_UB, Materials.GraniteRed, new Texture(Ref.MOD_UB, "blocks/red_granite"));
-//    public static StoneType UB_BLACK_GRANITE = new StoneType("ub_black_granite", Configs.MODCOMPAT.ENABLE_UB_CROSS_OREDICT ? "granite_black" : "", Ref.MOD_UB, Materials.GraniteBlack, new Texture(Ref.MOD_UB, "blocks/black_granite"));
-//    public static StoneType UB_RHYOLITE = new StoneType("ub_rhyolite", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/rhyolite"));
-//    public static StoneType UB_ANDESITE = new StoneType("ub_andesite", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/andesite"));
-//    public static StoneType UB_GABBRO = new StoneType("ub_gabbro", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/gabbro"));
-//    public static StoneType UB_BASALT = new StoneType("ub_basalt", Configs.MODCOMPAT.ENABLE_UB_CROSS_OREDICT ? "basalt" : "", Ref.MOD_UB, Materials.Basalt, new Texture(Ref.MOD_UB, "blocks/basalt"));
-//    public static StoneType UB_KOMATIITE = new StoneType("ub_komatiite", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/komatiite"));
-//    public static StoneType UB_DACITE = new StoneType("ub_dacite", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/dacite"));
+//    public static StoneType UB_RED_GRANITE = new StoneType("ub_red_granite", Configs.MODCOMPAT.ENABLE_UB_CROSS_OREDICT ? "granite_red" : "", GTIRef.MOD_UB, Materials.GraniteRed, new Texture(GTIRef.MOD_UB, "blocks/red_granite"));
+//    public static StoneType UB_BLACK_GRANITE = new StoneType("ub_black_granite", Configs.MODCOMPAT.ENABLE_UB_CROSS_OREDICT ? "granite_black" : "", GTIRef.MOD_UB, Materials.GraniteBlack, new Texture(GTIRef.MOD_UB, "blocks/black_granite"));
+//    public static StoneType UB_RHYOLITE = new StoneType("ub_rhyolite", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/rhyolite"));
+//    public static StoneType UB_ANDESITE = new StoneType("ub_andesite", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/andesite"));
+//    public static StoneType UB_GABBRO = new StoneType("ub_gabbro", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/gabbro"));
+//    public static StoneType UB_BASALT = new StoneType("ub_basalt", Configs.MODCOMPAT.ENABLE_UB_CROSS_OREDICT ? "basalt" : "", GTIRef.MOD_UB, Materials.Basalt, new Texture(GTIRef.MOD_UB, "blocks/basalt"));
+//    public static StoneType UB_KOMATIITE = new StoneType("ub_komatiite", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/komatiite"));
+//    public static StoneType UB_DACITE = new StoneType("ub_dacite", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/dacite"));
 //
 //    //UB Metamorphic
-//    public static StoneType UB_GNEISS = new StoneType("ub_gneiss", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/gneiss"));
-//    public static StoneType UB_ECLOGITE = new StoneType("ub_eclogite", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/eclogite"));
-//    public static StoneType UB_MARBLE = new StoneType("ub_marble", Configs.MODCOMPAT.ENABLE_UB_CROSS_OREDICT ? "marble" : "", Ref.MOD_UB, Materials.Marble, new Texture(Ref.MOD_UB, "blocks/marble"));
-//    public static StoneType UB_QUARTZITE = new StoneType("ub_quartzite", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/quartzite"));
-//    public static StoneType UB_BLUE_SCHIST = new StoneType("ub_blue_schist", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/blueschist"));
-//    public static StoneType UB_GREEN_SCHIST = new StoneType("ub_green_schist", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/greenschist"));
-//    public static StoneType UB_SOAPSTONE = new StoneType("ub_soapstone", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/soapstone"));
-//    public static StoneType UB_MIGMATITE = new StoneType("ub_migmatite", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/migmatite"));
+//    public static StoneType UB_GNEISS = new StoneType("ub_gneiss", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/gneiss"));
+//    public static StoneType UB_ECLOGITE = new StoneType("ub_eclogite", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/eclogite"));
+//    public static StoneType UB_MARBLE = new StoneType("ub_marble", Configs.MODCOMPAT.ENABLE_UB_CROSS_OREDICT ? "marble" : "", GTIRef.MOD_UB, Materials.Marble, new Texture(GTIRef.MOD_UB, "blocks/marble"));
+//    public static StoneType UB_QUARTZITE = new StoneType("ub_quartzite", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/quartzite"));
+//    public static StoneType UB_BLUE_SCHIST = new StoneType("ub_blue_schist", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/blueschist"));
+//    public static StoneType UB_GREEN_SCHIST = new StoneType("ub_green_schist", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/greenschist"));
+//    public static StoneType UB_SOAPSTONE = new StoneType("ub_soapstone", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/soapstone"));
+//    public static StoneType UB_MIGMATITE = new StoneType("ub_migmatite", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/migmatite"));
 //
 //    //UB Sedimentary
-//    public static StoneType UB_LIMESTONE = new StoneType("ub_limestone", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/limestone"));
-//    public static StoneType UB_CHALK = new StoneType("ub_chalk", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/chalk"));
-//    public static StoneType UB_SHALE = new StoneType("ub_shale", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/shale"));
-//    public static StoneType UB_SILTSTONE = new StoneType("ub_siltstone", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/siltstone"));
-//    public static StoneType UB_LIGNITE = new StoneType("ub_lignite", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/lignite")); //Should we have lignite ores?
-//    public static StoneType UB_DOLOMITE = new StoneType("ub_dolomite", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/dolomite"));
-//    public static StoneType UB_GREYWACKE = new StoneType("ub_greywacke", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/greywacke"));
-//    public static StoneType UB_CHERT = new StoneType("ub_chert", Ref.MOD_UB, new Texture(Ref.MOD_UB, "blocks/chert"));
+//    public static StoneType UB_LIMESTONE = new StoneType("ub_limestone", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/limestone"));
+//    public static StoneType UB_CHALK = new StoneType("ub_chalk", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/chalk"));
+//    public static StoneType UB_SHALE = new StoneType("ub_shale", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/shale"));
+//    public static StoneType UB_SILTSTONE = new StoneType("ub_siltstone", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/siltstone"));
+//    public static StoneType UB_LIGNITE = new StoneType("ub_lignite", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/lignite")); //Should we have lignite ores?
+//    public static StoneType UB_DOLOMITE = new StoneType("ub_dolomite", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/dolomite"));
+//    public static StoneType UB_GREYWACKE = new StoneType("ub_greywacke", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/greywacke"));
+//    public static StoneType UB_CHERT = new StoneType("ub_chert", GTIRef.MOD_UB, new Texture(GTIRef.MOD_UB, "blocks/chert"));
 //    */
 //
 //    @Override
 //    public String getId() {
-//        return Ref.MOD_UB;
+//        return GTIRef.MOD_UB;
 //    }
 //
 //    @Override
@@ -99,21 +99,21 @@
 //                        String matId = m.getId();
 //                        String capitalizedMatId = StringUtils.capitalize(matId);
 //                        String baseName = "ore_".concat(matId);
-//                        Block igneousBlock = GregTechAPI.getBlock(Ref.MOD_UB, "igneous_stone_gtu_".concat(baseName));
+//                        Block igneousBlock = GregTechAPI.getBlock(GTIRef.MOD_UB, "igneous_stone_gtu_".concat(baseName));
 //                        OreDictionary.registerOre("oreGraniteRed".concat(capitalizedMatId), new ItemStack(igneousBlock, 1, 0));
 //                        OreDictionary.registerOre("oreGraniteBlack".concat(capitalizedMatId), new ItemStack(igneousBlock, 1, 1));
 //                        OreDictionary.registerOre("oreBasalt".concat(capitalizedMatId), new ItemStack(igneousBlock, 1, 5));
-//                        OreDictionary.registerOre("oreMarble".concat(capitalizedMatId), new ItemStack(GregTechAPI.getBlock(Ref.MOD_UB, "metamorphic_stone_gtu_".concat(baseName)), 1, 2));
+//                        OreDictionary.registerOre("oreMarble".concat(capitalizedMatId), new ItemStack(GregTechAPI.getBlock(GTIRef.MOD_UB, "metamorphic_stone_gtu_".concat(baseName)), 1, 2));
 //                    });
 //                    MaterialType.ORE_SMALL.all().forEach(m -> {
 //                        String matId = m.getId();
 //                        String capitalizedMatId = StringUtils.capitalize(matId);
 //                        String baseName = "ore_small_".concat(matId);
-//                        Block igneousBlock = GregTechAPI.getBlock(Ref.MOD_UB, "igneous_stone_gtu_".concat(baseName));
+//                        Block igneousBlock = GregTechAPI.getBlock(GTIRef.MOD_UB, "igneous_stone_gtu_".concat(baseName));
 //                        OreDictionary.registerOre("oreSmallGraniteRed".concat(capitalizedMatId), new ItemStack(igneousBlock, 1, 0));
 //                        OreDictionary.registerOre("oreSmallGraniteBlack".concat(capitalizedMatId), new ItemStack(igneousBlock, 1, 1));
 //                        OreDictionary.registerOre("oreSmallBasalt".concat(capitalizedMatId), new ItemStack(igneousBlock, 1, 5));
-//                        OreDictionary.registerOre("oreSmallMarble".concat(capitalizedMatId), new ItemStack(GregTechAPI.getBlock(Ref.MOD_UB, "metamorphic_stone_gtu_".concat(baseName)), 1, 2));
+//                        OreDictionary.registerOre("oreSmallMarble".concat(capitalizedMatId), new ItemStack(GregTechAPI.getBlock(GTIRef.MOD_UB, "metamorphic_stone_gtu_".concat(baseName)), 1, 2));
 //                    });
 //                }
 //                break;

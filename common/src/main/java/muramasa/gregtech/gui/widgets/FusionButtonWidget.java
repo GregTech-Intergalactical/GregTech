@@ -7,20 +7,17 @@ import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.Widget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
-import muramasa.antimatter.machine.MachineFlag;
-import muramasa.gregtech.Ref;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.tile.multi.TileEntityFusionReactor;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class FusionButtonWidget extends Widget {
-    ResourceLocation middle = new ResourceLocation(Ref.ID, "textures/gui/machine/fusion_computer_middle_overlay.png");
-    ResourceLocation top_bottom = new ResourceLocation(Ref.ID, "textures/gui/machine/fusion_computer_top_bottom_overlay.png");
+    ResourceLocation middle = new ResourceLocation(GTIRef.ID, "textures/gui/machine/fusion_computer_middle_overlay.png");
+    ResourceLocation top_bottom = new ResourceLocation(GTIRef.ID, "textures/gui/machine/fusion_computer_top_bottom_overlay.png");
 
     TileEntityFusionReactor.Display display = TileEntityFusionReactor.Display.REGULAR;
 

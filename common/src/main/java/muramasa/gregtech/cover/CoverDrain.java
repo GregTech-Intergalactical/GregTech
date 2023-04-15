@@ -5,7 +5,7 @@ import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tile.pipe.TileEntityPipe;
-import muramasa.gregtech.Ref;
+import muramasa.gregtech.GTIRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -22,7 +22,6 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import tesseract.TesseractCapUtils;
 
@@ -40,7 +39,7 @@ public class CoverDrain extends BaseCover {
 
     @Override
     public String getDomain() {
-        return Ref.ID;
+        return GTIRef.ID;
     }
 
     @Override

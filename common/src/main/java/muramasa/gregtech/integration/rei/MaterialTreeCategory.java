@@ -16,14 +16,13 @@ import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.antimatter.pipe.types.Wire;
-import muramasa.gregtech.Ref;
+import muramasa.gregtech.GTIRef;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
@@ -44,8 +43,8 @@ import static muramasa.antimatter.material.MaterialTags.*;
 
 public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay> {
     protected static Renderer icon = EntryStacks.of(DUST.get(AntimatterMaterials.Iron));
-    private static final Component title = new TranslatableComponent(Ref.ID + ".rei.tooltip.material_tree");
-    static CategoryIdentifier<? extends MaterialTreeDisplay> id = CategoryIdentifier.of(Ref.ID, "material_tree");
+    private static final Component title = new TranslatableComponent(GTIRef.ID + ".rei.tooltip.material_tree");
+    static CategoryIdentifier<? extends MaterialTreeDisplay> id = CategoryIdentifier.of(GTIRef.ID, "material_tree");
 
     @Override
     public CategoryIdentifier<? extends MaterialTreeDisplay> getCategoryIdentifier() {
@@ -58,93 +57,93 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
         widgets.add(Widgets.createDrawableWidget((helper, matrices, mouseX, mouseY, delta) -> {
-            drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/background.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
-            drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/base.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/background.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/base.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             if(mat.has(INGOT) && !mat.has(INGOT_HOT)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/ingot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/ingot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(INGOT_HOT)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/ingot_hot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/ingot_hot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(NUGGET)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/nugget.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/nugget.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(LIQUID)){
                 if(mat.has(INGOT)){
-                    drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/fluid_from_ingot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                    drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/fluid_from_ingot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
                 }else{
-                    drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/fluid_from_dust.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                    drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/fluid_from_dust.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
                 }
             }
             if(mat.has(BLOCK)){
                 if(mat.has(INGOT)){
-                    drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/block.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                    drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/block.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
                 }
 
                 else{
-                    drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/block_no_ingot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                    drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/block_no_ingot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
                 }
             }
             if(mat.has(PLATE)){
                 if(mat.has(INGOT) && mat.has(BLOCK)){
-                    drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/plate_from_ingot_and_block.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                    drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/plate_from_ingot_and_block.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
                 }else if(mat.has(INGOT)){
-                    drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/plate_from_ingot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                    drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/plate_from_ingot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
                 }else if(mat.has(BLOCK)){
-                    drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/plate_no_ingot_from_dust_and_block.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                    drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/plate_no_ingot_from_dust_and_block.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
                 }else{
-                    drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/plate_no_ingot_from_dust.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                    drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/plate_no_ingot_from_dust.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
                 }
             }
             if(mat.has(PLATE_DENSE)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/plate_dense.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/plate_dense.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(FOIL)){
-              drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/foil.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+              drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/foil.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(FRAME)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/frame.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/frame.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(FLUIDPIPE) || mat.has(ITEMPIPE)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/pipe.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/pipe.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(GEAR)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/gear.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/gear.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(GEAR_SMALL)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/gear_small.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/gear_small.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(ROD)){
                 if(mat.has(INGOT)){
-                    drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/rod.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                    drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/rod.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
                 }
                 else{
-                    drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/rod_no_ingot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                    drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/rod_no_ingot.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
                 }
             }
             if(mat.has(ROD_LONG)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/rod_long.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/rod_long.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(RING)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/ring.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/ring.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(BOLT)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/bolt.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/bolt.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(SCREW)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/screw.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/screw.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(SPRING)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/spring.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/spring.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(WIRE)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/wire.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/wire.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(CABLE)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/cable.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/cable.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if(mat.has(WIRE_FINE)){
-                drawTexture(matrices, new ResourceLocation(Ref.ID, "textures/gui/material_tree/wire_fine.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/material_tree/wire_fine.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             setupInfo(display, bounds, matrices);
         }));

@@ -1,17 +1,15 @@
 package muramasa.gregtech.data;
 
 import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
-import muramasa.gregtech.Ref;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.items.ItemIntCircuit;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -51,7 +49,7 @@ public class TierMaps {
         {
             ImmutableMap.Builder<Integer, RecipeIngredient> builder = ImmutableMap.builder();
             for (int i = 0; i <= 24; i++) {
-                builder.put(i, RecipeIngredient.of(new ItemIntCircuit(Ref.ID, "int_circuit_"+i,i).tip("ID: " + i),1).setNoConsume());
+                builder.put(i, RecipeIngredient.of(new ItemIntCircuit(GTIRef.ID, "int_circuit_"+i,i).tip("ID: " + i),1).setNoConsume());
             }
             INT_CIRCUITS = builder.build();
         }
@@ -83,7 +81,7 @@ public class TierMaps {
 
         WIRE_GETTER = (size, tier) -> {
             if (tier == LV) {
-                return TagUtils.getItemTag(new ResourceLocation(Ref.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ size.getId()));
+                return TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ size.getId()));
             }
             if (tier == MV) {
                 return WIRE_CUPRONICKEL.getBlockItem(size);
@@ -103,7 +101,7 @@ public class TierMaps {
             if (tier == ULV) return CABLE_RED_ALLOY.getBlockItem(size);
             if (tier == LV) return CABLE_TIN.getBlockItem(size);
             if (tier == MV){
-                return TagUtils.getItemTag(new ResourceLocation(Ref.ANTIMATTER, SubTag.COPPER_CABLE.getId()+"_"+ size.getId()));
+                return TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_CABLE.getId()+"_"+ size.getId()));
             }
             if (tier == HV) return CABLE_GOLD.getBlockItem(size);
             if (tier == EV) return CABLE_ALUMINIUM.getBlockItem(size);

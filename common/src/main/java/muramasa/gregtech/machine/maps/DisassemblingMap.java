@@ -10,8 +10,6 @@ import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.IRecipeMap;
 import muramasa.antimatter.recipe.map.RecipeMap;
-import muramasa.antimatter.registration.ISharedAntimatterObject;
-import muramasa.gregtech.Ref;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;

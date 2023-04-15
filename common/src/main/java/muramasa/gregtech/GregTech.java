@@ -1,17 +1,12 @@
 package muramasa.gregtech;
 
-import me.shedaniel.rei.api.common.entry.EntryStack;
-import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterMod;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.datagen.providers.*;
 import muramasa.antimatter.event.CraftingEvent;
 import muramasa.antimatter.event.ProvidersEvent;
-import muramasa.antimatter.integration.rei.REIUtils;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
@@ -29,7 +24,6 @@ import muramasa.gregtech.loader.machines.*;
 import muramasa.gregtech.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gregtech.loader.machines.generator.Fuels;
 import muramasa.gregtech.loader.multi.*;
-import net.minecraft.world.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,7 +32,7 @@ import java.util.function.BiConsumer;
 public class GregTech extends AntimatterMod {
 
     public static GregTech INSTANCE;
-    public static Logger LOGGER = LogManager.getLogger(Ref.ID);
+    public static Logger LOGGER = LogManager.getLogger(GTIRef.ID);
 
     public GregTech() {
         super();
@@ -51,27 +45,27 @@ public class GregTech extends AntimatterMod {
         INSTANCE = this;
 
 
-        AntimatterDynamics.clientProvider(Ref.ID,
-                () -> new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates"));
-        AntimatterDynamics.clientProvider(Ref.ID,
-                () -> new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models"));
-        AntimatterDynamics.clientProvider(Ref.ID, GregTechLocalizations.en_US::new);
+        AntimatterDynamics.clientProvider(GTIRef.ID,
+                () -> new AntimatterBlockStateProvider(GTIRef.ID, GTIRef.NAME + " BlockStates"));
+        AntimatterDynamics.clientProvider(GTIRef.ID,
+                () -> new AntimatterItemModelProvider(GTIRef.ID, GTIRef.NAME + " Item Models"));
+        AntimatterDynamics.clientProvider(GTIRef.ID, GregTechLocalizations.en_US::new);
     }
 
     public static void onProviders(ProvidersEvent ev) {
         final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
-        ev.addProvider(Ref.ID, () -> {
-            p[0] = new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false);
+        ev.addProvider(GTIRef.ID, () -> {
+            p[0] = new GregTechBlockTagProvider(GTIRef.ID, GTIRef.NAME.concat(" Block Tags"), false);
             return p[0];
         });
-        ev.addProvider(Ref.ID, () -> new GregTechItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"),
+        ev.addProvider(GTIRef.ID, () -> new GregTechItemTagProvider(GTIRef.ID, GTIRef.NAME.concat(" Item Tags"),
                 false, p[0]));
-        ev.addProvider(Ref.ID, () -> new AntimatterFluidTagProvider(Ref.ID,
-                Ref.NAME.concat(" Fluid Tags"), false));
-        ev.addProvider(Ref.ID, () -> new AntimatterAdvancementProvider(Ref.ID,
-                Ref.NAME.concat(" Advancements"), new ProgressionAdvancements()));
-        ev.addProvider(Ref.ID,
-                () -> new GregtechBlockLootProvider(Ref.ID, Ref.NAME.concat(" Loot generator")));
+        ev.addProvider(GTIRef.ID, () -> new AntimatterFluidTagProvider(GTIRef.ID,
+                GTIRef.NAME.concat(" Fluid Tags"), false));
+        ev.addProvider(GTIRef.ID, () -> new AntimatterAdvancementProvider(GTIRef.ID,
+                GTIRef.NAME.concat(" Advancements"), new ProgressionAdvancements()));
+        ev.addProvider(GTIRef.ID,
+                () -> new GregtechBlockLootProvider(GTIRef.ID, GTIRef.NAME.concat(" Loot generator")));
     }
     
     public static void registerCraftingLoaders(CraftingEvent event) {
@@ -87,7 +81,7 @@ public class GregTech extends AntimatterMod {
     }
 
     public static void registerRecipeLoaders(IAntimatterRegistrar registrar, IRecipeRegistrate reg) {
-        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> reg.add(Ref.ID, a, b);
+        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> reg.add(GTIRef.ID, a, b);
         loader.accept("wiremill", WiremillLoader::init);
         loader.accept("washer", WasherLoader::init);
         loader.accept("blasting", Blasting::init);
@@ -134,7 +128,7 @@ public class GregTech extends AntimatterMod {
     }
 
     public static <T> T get(Class<? extends T> clazz, String id) {
-        return AntimatterAPI.get(clazz, id, Ref.ID);
+        return AntimatterAPI.get(clazz, id, GTIRef.ID);
     }
 
     @Override
@@ -149,7 +143,7 @@ public class GregTech extends AntimatterMod {
                 Guis.init(side);
                 Models.init();
                 GregTechSounds.init();
-                if (AntimatterAPI.isModLoaded(muramasa.antimatter.Ref.MOD_REI)){
+                if (AntimatterAPI.isModLoaded(Ref.MOD_REI)){
                     REIRegistrar.init();
                 }
             }
@@ -164,6 +158,6 @@ public class GregTech extends AntimatterMod {
 
     @Override
     public String getId() {
-        return Ref.ID;
+        return GTIRef.ID;
     }
 }

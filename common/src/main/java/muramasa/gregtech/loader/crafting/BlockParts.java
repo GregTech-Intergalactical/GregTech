@@ -2,20 +2,17 @@ package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.pipe.types.Cable;
-import muramasa.antimatter.pipe.types.Wire;
-import muramasa.gregtech.Ref;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.data.GregTechData;
-import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -98,10 +95,10 @@ public class BlockParts {
                         .put('B', INGOT.get(Steel))
                         .put('W', WRENCH.getTag()).build(), "BPB", "PWP", "BPB");
 
-        provider.addStackRecipe(output, Ref.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
+        provider.addStackRecipe(output, GTIRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
                 of('C', CASING_FIRE_BRICK,
                 'P', PLATE.get(AntimatterMaterials.Iron),
-                        'B', AntimatterAPI.get(Item.class, "liquid_creosote_bucket", muramasa.antimatter.Ref.SHARED_ID)
+                        'B', AntimatterAPI.get(Item.class, "liquid_creosote_bucket", Ref.SHARED_ID)
         ), "PCP", "CBC", "PCP");
     }
 
@@ -131,14 +128,14 @@ public class BlockParts {
     }
 
     private static void addTierCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Tier tier) {
-        provider.addItemRecipe(output, "casings", "has_casing", provider.hasSafeItem(WRENCH.getTag()), AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), Ref.ID),
+        provider.addItemRecipe(output, "casings", "has_casing", provider.hasSafeItem(WRENCH.getTag()), AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID),
                 of('P', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', WRENCH.getTag())
                 , "PPP", "PWP", "PPP");
         }
 
     private static void addTierHull(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Tier tier) {
-        provider.addItemRecipe(output, "hulls", "has_hull", provider.hasSafeItem(WRENCH.getTag()), AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), Ref.ID),
-                of('P', PLATE.getMaterialTag(mat), 'R', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 'K', AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), Ref.ID))
+        provider.addItemRecipe(output, "hulls", "has_hull", provider.hasSafeItem(WRENCH.getTag()), AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID),
+                of('P', PLATE.getMaterialTag(mat), 'R', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 'K', AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID))
                 , "PRP", "WKW");
         }
 }

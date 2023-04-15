@@ -6,7 +6,7 @@ public class MaterialRecipeLoader {
 //
 //    //TODO register purified dust processing to centrifuged processing to regain lost benefits
 //
-//    public static int mixedOreYield = Ref.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
+//    public static int mixedOreYield = GTIRef.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
 //
 //    //TODO: When we do have MaterialInfo or a MaterialType 'amount' system, some of this would need to adapt to it!
 //    //TODO: Plasma Arc/Normal Arc smelting will be handled differently, when we have said amount system.
@@ -525,7 +525,7 @@ public class MaterialRecipeLoader {
 //                }
 //            } else if (m.has(INGOT)) { //Solid Specific Recipes
 //                ItemStack ingot = m.hasDirectSmeltInto() ? INGOT.get(m.getDirectSmeltInto(), 1) : INGOT.get(m, 1);
-//                ItemStack aNonDirectSmeltingOutput = Ref.mixedOreYieldsTwoThirdsPureOre ? NUGGET.get(m, 6) : INGOT.get(m.getDirectSmeltInto(), 1);
+//                ItemStack aNonDirectSmeltingOutput = GTIRef.mixedOreYieldsTwoThirdsPureOre ? NUGGET.get(m, 6) : INGOT.get(m.getDirectSmeltInto(), 1);
 //                if (m == m.getDirectSmeltInto()) {
 //                    ItemStack aCrushedSmeltingOutput = NUGGET.get(m, 10);
 //                    RecipeHelper.addSmelting(crushed, aCrushedSmeltingOutput);
@@ -583,7 +583,7 @@ public class MaterialRecipeLoader {
 ////            PULVERIZING.RB().ii(aCrushedC).io(DUST.get(m.getMacerateInto(), 1), DUST.get(aOreByProduct3, 1)).chances(100, 10).add(400, 2);
 ////            if (m.has(INGOT)) {
 ////                if (!(m.needsBlastFurnace() || m.getDirectSmeltInto().needsBlastFurnace())) {
-////                    ItemStack aNonDirectSmeltingOutput = Ref.mixedOreYieldsTwoThirdsPureOre ? NUGGET.get(m, 6) : INGOT.get(m.getDirectSmeltInto(), 1);
+////                    ItemStack aNonDirectSmeltingOutput = GTIRef.mixedOreYieldsTwoThirdsPureOre ? NUGGET.get(m, 6) : INGOT.get(m.getDirectSmeltInto(), 1);
 ////                    if (!m.hasDirectSmeltInto()) {
 ////                        ItemStack aCrushedSmeltingOutput = NUGGET.get(m, 10);
 ////                        RecipeHelper.addSmelting(aCrushedC, aCrushedSmeltingOutput);

@@ -12,8 +12,8 @@ import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
-import muramasa.gregtech.Ref;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -76,7 +76,7 @@ public class Parts {
           "RTO", "SPW", "OMC");
     });
 
-      provider.addStackRecipe(output, Ref.ID, "drain_expensive", "parts", "has_battery", provider.hasSafeItem(Items.IRON_BARS),
+      provider.addStackRecipe(output, GTIRef.ID, "drain_expensive", "parts", "has_battery", provider.hasSafeItem(Items.IRON_BARS),
               new ItemStack(GregTech.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");
 
     // MANUAL TIER 0 CIRCUIT CRAFTING
@@ -135,22 +135,22 @@ public class Parts {
       provider.shapeless(output, "int_circuit_1", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
               INT_CIRCUITS.get(0).getItems()[0], CircuitBasic);
 
-      provider.addItemRecipe(output, Ref.ID, "small_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullSmall, of(
+      provider.addItemRecipe(output, GTIRef.ID, "small_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullSmall, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, LV, false)
       ), "C", "P", "P");
 
-      provider.addItemRecipe(output,  Ref.ID, "medium_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullMedium, of(
+      provider.addItemRecipe(output,  GTIRef.ID, "medium_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullMedium, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false)
       ), "C C", "PPP", "PPP");
 
-      provider.addItemRecipe(output, Ref.ID, "empty_shape", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), EmptyShape, of(
+      provider.addItemRecipe(output, GTIRef.ID, "empty_shape", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), EmptyShape, of(
               'P', PLATE.get(Steel),
               'H', HAMMER.getTag()
       ), "PPH", "PP ");
 
-      provider.addItemRecipe(output, Ref.ID, "diamondsaw_blade", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), DiamondSawBlade, of(
+      provider.addItemRecipe(output, GTIRef.ID, "diamondsaw_blade", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), DiamondSawBlade, of(
               'G', GEAR.get(CobaltBrass),
               'D', DUST_SMALL.get(Diamond)
       ), " D ", "DGD", " D ");

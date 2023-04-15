@@ -1,6 +1,6 @@
 //package muramasa.gtu.integration;
 //
-//import muramasa.gtu.Ref;
+//import muramasa.gtu.GTIRef;
 //import muramasa.antimatter.blocks.BlockStorage;
 //import muramasa.antimatter.materials.Material;
 //import muramasa.antimatter.materials.MaterialType;
@@ -33,7 +33,7 @@
 //
 //    @Override
 //    public String getId() {
-//        return Ref.MOD_FR;
+//        return GTIRef.MOD_FR;
 //    }
 //
 //    @Override
