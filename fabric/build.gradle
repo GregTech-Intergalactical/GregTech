@@ -77,7 +77,6 @@ task copyAccessWidener(type: Copy) {
 }
 
 processResources {
-    exclude('assets/gregtech')
     //dependsOn copyAccessWidener
 
     def toReplace = [

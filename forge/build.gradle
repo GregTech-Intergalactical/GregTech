@@ -90,7 +90,6 @@ jar {
 
 processResources {
     exclude('gtuassets1.14')
-    exclude('assets/gti')
     exclude('assets/gt4r/textures/old_textures')
 
     inputs.property "version", project.mod_version
