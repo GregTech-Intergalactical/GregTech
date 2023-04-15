@@ -11,13 +11,12 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.util.TagUtils.nc;
 
 public class Smelting {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        //SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.IRON_INGOT), INGOT.get(Materials.WroughtIron), 0.5f, 200).unlockedBy("has_ingot_iron", provider.hasSafeItem(Items.IRON_INGOT)).save(output, "smelting_ingot_wrought_iron");
-        //SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.IRON_INGOT), INGOT.get(Materials.WroughtIron), 0.5f, 100).unlockedBy("has_dust_iron", provider.hasSafeItem(Items.IRON_INGOT)).save(output, "blasting_ingot_wrought_iron");
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.IRON_NUGGET), NUGGET.get(Materials.WroughtIron), 0.5f, 200).unlockedBy("has_nugget_iron", provider.hasSafeItem(Items.IRON_NUGGET)).save(output, "smelting_nugget_wrought_iron");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.IRON_NUGGET), NUGGET.get(Materials.WroughtIron), 0.5f, 100).unlockedBy("has_nugget_iron", provider.hasSafeItem(Items.IRON_NUGGET)).save(output, "blasting_nugget_wrought_iron");
     }
 }
