@@ -17,7 +17,7 @@ import static muramasa.antimatter.util.TagUtils.nc;
 
 public class Smelting {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.IRON_INGOT), INGOT.get(Materials.WroughtIron), 0.5f, 200).unlockedBy("has_ingot_iron", provider.hasSafeItem(Items.IRON_INGOT)).save(output, "smelting_ingot_wrought_iron");
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.IRON_INGOT), INGOT.get(Materials.WroughtIron), 0.5f, 100).unlockedBy("has_dust_iron", provider.hasSafeItem(Items.IRON_INGOT)).save(output, "blasting_ingot_wrought_iron");
+        //SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.IRON_INGOT), INGOT.get(Materials.WroughtIron), 0.5f, 200).unlockedBy("has_ingot_iron", provider.hasSafeItem(Items.IRON_INGOT)).save(output, "smelting_ingot_wrought_iron");
+        //SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.IRON_INGOT), INGOT.get(Materials.WroughtIron), 0.5f, 100).unlockedBy("has_dust_iron", provider.hasSafeItem(Items.IRON_INGOT)).save(output, "blasting_ingot_wrought_iron");
     }
 }
