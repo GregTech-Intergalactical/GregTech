@@ -24,6 +24,7 @@ import muramasa.gregtech.loader.machines.*;
 import muramasa.gregtech.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gregtech.loader.machines.generator.Fuels;
 import muramasa.gregtech.loader.multi.*;
+import muramasa.gregtech.proxy.ServerHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -43,6 +44,7 @@ public class GregTech extends AntimatterMod {
         super.onRegistrarInit();
         LOGGER.info("Loading GregTech");
         INSTANCE = this;
+        ServerHandler.setup();
 
 
         AntimatterDynamics.clientProvider(GTIRef.ID,
