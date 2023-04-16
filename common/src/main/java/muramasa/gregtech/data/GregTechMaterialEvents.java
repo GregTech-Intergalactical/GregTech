@@ -35,7 +35,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Boron).asDust(2349);
         event.setMaterial(Carbon).asSolid();
         event.setMaterial(Sodium).asDust(370);
-        event.setMaterial(Magnesium).asMetal(1383, 1383);
+        event.setMaterial(Magnesium).asMetal(1383, 0/*1383*/);
         event.setMaterial(Aluminium).asMetal(933, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL).asOre().addTools(1.5F, 10.0F, 140, 2);
         event.setMaterial(Silicon).asMetal(1683, 1683, PLATE, FOIL);
         event.setMaterial(Phosphor).asDust(933);
