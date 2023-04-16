@@ -98,7 +98,7 @@ public class Blasting {
                 .io(INGOT.get(StainlessSteel, 9), DUST_SMALL.get(DarkAsh, 1))
                 .add("stainless_steel_ingot", 1000, 120);
         /* TITANIUM */
-        BLASTING.RB().temperature(2140).ii(RecipeIngredient.of(DUST.getMaterialTag(Magnesium), 2), INT_CIRCUITS.get(1).setNoConsume())
+        BLASTING.RB().temperature(2140).ii(RecipeIngredient.of(DUST.getMaterialTag(Magnesium), 2))
                 .fi(Titaniumtetrachloride.getLiquid(1000))
                 .io(INGOT_HOT.get(Titanium,1), DUST.get(MagnesiumChloride,2))
                 .add("titanium_ingot",40*20, 480);
