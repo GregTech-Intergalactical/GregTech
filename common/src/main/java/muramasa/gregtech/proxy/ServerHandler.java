@@ -13,7 +13,7 @@ import java.io.InputStream;
 public class ServerHandler {
     public static void setup(){
         if (AntimatterPlatformUtils.isForge() && AntimatterAPI.getSIDE().isServer() && AntimatterPlatformUtils.isProduction()){
-            copyGTRubberJarIfMissing();
+            //copyGTRubberJarIfMissing();
         }
     }
 
