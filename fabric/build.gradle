@@ -46,8 +46,8 @@ dependencies{
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
     modImplementation("com.github.Trinsdar:ARRP:0.6.7-hotfix")
-    include("com.github.gregtech-intergalactical:gtrubber-fabric:0.2-1.18.2")
-    implementation("com.github.gregtech-intergalactical:gtrubber-fabric:0.2-1.18.2:dev-shadow"){
+    include("com.github.gregtech-intergalactical:gtrubber-fabric:0.2.1-1.18.2")
+    implementation("com.github.gregtech-intergalactical:gtrubber-fabric:0.2.1-1.18.2:dev-shadow"){
         transitive = false
     }
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
