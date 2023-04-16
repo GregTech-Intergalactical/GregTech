@@ -27,7 +27,7 @@ public class Blasting {
             if (!m.has(ORE) || !m.has(INGOT)) return;
             Item crushed = CRUSHED.get(m);
             Item dust = DUST.get(m);
-            RecipeIngredient ore = ORE.get().get(m, STONE).asIngredient();
+            RecipeIngredient ore = ORE.getMaterialIngredient(m, 1);
             ItemStack ingot = m != DIRECT_SMELT_INTO.getMapping(m) ? INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(m, 1);
             ItemStack aIngotSmeltInto = m == SMELT_INTO.getMapping(m) ? ingot : INGOT.get(SMELT_INTO.getMapping(m), 1);
             if (needsBF) {
