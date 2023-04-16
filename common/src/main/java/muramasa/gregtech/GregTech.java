@@ -145,7 +145,7 @@ public class GregTech extends AntimatterMod {
                 Guis.init(side);
                 Models.init();
                 GregTechSounds.init();
-                if (AntimatterAPI.isModLoaded(Ref.MOD_REI)){
+                if (AntimatterAPI.isModLoaded(Ref.MOD_REI) && side.isClient()){
                     REIRegistrar.init();
                 }
             }
