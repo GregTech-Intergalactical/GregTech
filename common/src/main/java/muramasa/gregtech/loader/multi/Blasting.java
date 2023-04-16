@@ -119,7 +119,7 @@ public class Blasting {
                 .add("vanadium_gallium_ingot", 225 * 20, 480);
         /* Kanthal*/
         BLASTING.RB().temperature(1800).ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron, 1), INGOT.getMaterialIngredient(Aluminium, 1), INGOT.getMaterialIngredient(Chrome, 1))
-                .io(INGOT_HOT.get(Kanthal, 5), DUST_SMALL.get(DarkAsh, 1))
+                .io(INGOT_HOT.get(Kanthal, 3), DUST_SMALL.get(DarkAsh, 1))
                 .add("kanthal_ingot", 90 * 20, 120);
         /* Nichrome*/
         BLASTING.RB().temperature(2700).ii(INGOT.getMaterialIngredient(Nickel, 4), INGOT.getMaterialIngredient(Chrome, 1))
