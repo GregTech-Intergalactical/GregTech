@@ -13,19 +13,20 @@ import java.io.InputStream;
 public class ServerHandler {
     public static void setup(){
         if (AntimatterPlatformUtils.isForge() && AntimatterAPI.getSIDE().isServer() && AntimatterPlatformUtils.isProduction()){
-            //copyGTRubberJarIfMissing();
+            copyGTRubberJarIfMissing();
         }
     }
 
     private static void copyGTRubberJarIfMissing() {
         File dir = new File(AntimatterPlatformUtils.getConfigDir().getParent().toFile(), "mods");
-        File target = new File(dir, "gtrubber-forge-0.2-1.18.2.jar");
+        File target = new File(dir, "gtrubber-forge-0.2.1-1.18.2.jar");
 
 
         //if(!target.exists())
         try {
             dir.mkdirs();
-            InputStream in = GregTech.class.getResourceAsStream("/META-INF/jars/gtrubber-forge-0.2-1.18.2.jar");
+            InputStream in = GregTech.class.getResourceAsStream("/META-INF/jars/gtrubber-forge-0.2.1-1.18.2.jar");
+            if (in == null) return;
             FileOutputStream out = new FileOutputStream(target);
 
             byte[] buf = new byte[16384];
