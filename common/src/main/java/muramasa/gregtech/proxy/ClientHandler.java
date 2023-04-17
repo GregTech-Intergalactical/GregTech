@@ -2,6 +2,7 @@ package muramasa.gregtech.proxy;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.client.ModelUtils;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
@@ -20,33 +21,21 @@ public class ClientHandler {
     }
 
     private static void copyProgrammerArtIfMissing() {
-        File dir = new File(".", "resourcepacks");
-        File target = new File(dir, "GregTech-Old-Machine-Textures.zip");
+        writeResourcePack("GregTech-Old-Machine-Textures", "gt5u-machine-base");
+        writeResourcePack("GregTech-New-Machine-Textures", "new-machine-base");
+        writeResourcePack("New-Stone-Textures", "new-stone-textures");
+        writeResourcePack("Former-Gui-Textures", "new-gui-textures");
+    }
+
+    private static void writeResourcePack(String writeName, String readName){
+        File dir = new File(AntimatterPlatformUtils.getConfigDir().getParent().toFile(), "resourcepacks");
+        File target = new File(dir, writeName + ".zip");
 
 
         //if(!target.exists())
         try {
             dir.mkdirs();
-            InputStream in = GregTech.class.getResourceAsStream("/assets/" + GTIRef.ID + "/gt5u-machine-base.zip");
-            FileOutputStream out = new FileOutputStream(target);
-
-            byte[] buf = new byte[16384];
-            int len = 0;
-            while((len = in.read(buf)) > 0)
-                out.write(buf, 0, len);
-
-            in.close();
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        target = new File(dir, "GregTech-New-Machine-Textures.zip");
-
-
-        //if(!target.exists())
-        try {
-            dir.mkdirs();
-            InputStream in = GregTech.class.getResourceAsStream("/assets/" + GTIRef.ID + "/new-machine-base.zip");
+            InputStream in = GregTech.class.getResourceAsStream("/assets/" + GTIRef.ID + "/" + readName + ".zip");
             FileOutputStream out = new FileOutputStream(target);
 
             byte[] buf = new byte[16384];
