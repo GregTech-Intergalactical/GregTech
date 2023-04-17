@@ -35,8 +35,8 @@ public class RemappingEvents {
     public static void remapMissingBlocks(final RegistryEvent.MissingMappings<Block> event){
         event.getMappings(Ref.SHARED_ID).forEach(map -> {
             String id = map.key.getPath();
-            if (id.equals("granite_red") || id.equals("granite_black")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("granite_", "").concat("_granite"), Ref.SHARED_ID);
+            if (id.contains("granite_red") || id.contains("granite_black")){
+                Block block = AntimatterAPI.get(Block.class, id.replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                 }
@@ -162,8 +162,8 @@ public class RemappingEvents {
     public static void remapMissingItems(final RegistryEvent.MissingMappings<Item> event){
         event.getMappings(Ref.SHARED_ID).forEach(map -> {
             String id = map.key.getPath();
-            if (id.equals("granite_red") || id.equals("granite_black")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("granite_", "").concat("_granite"), Ref.SHARED_ID);
+            if (id.contains("granite_red") || id.contains("granite_black")){
+                Block block = AntimatterAPI.get(Block.class, id.replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block.asItem());
                 }
