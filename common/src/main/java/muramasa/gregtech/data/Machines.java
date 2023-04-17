@@ -75,7 +75,7 @@ public class Machines {
     public static BasicMachine FURNACE = new BasicMachine(GTIRef.ID, "furnace").setMap(SMELTING).addFlags(GUI, ITEM).setSound(GregTechSounds.FURNACE,  0.6f);
     public static BasicMachine LASER_ENGRAVER = new BasicMachine(GTIRef.ID, "laser_engraver").setMap(LASER_ENGRAVING).addFlags(GUI, ITEM).setSound(GregTechSounds.MAGNETIZER,  0.6f);
     public static BasicMachine LATHE = new BasicMachine(GTIRef.ID, "lathe").setMap(LATHING).addFlags(GUI, ITEM);
-    public static BasicMachine MACERATOR = new BasicMachine(GTIRef.ID, "macerator").setMap(MACERATING).custom().addFlags(GUI, ITEM).setGuiTiers(ImmutableMap.<Tier, Tier>builder().put(HV, HV).put(EV, EV).put(IV, IV)).setSound(GregTechSounds.PULVERIZER,  0.6f);
+    public static BasicMachine MACERATOR = new BasicMachine(GTIRef.ID, "macerator").setMap(MACERATING).custom().addFlags(GUI, ITEM).setGuiTiers(ImmutableMap.<Tier, Tier>builder().put(HV, HV).put(EV, EV).put(IV, IV)).setSound(GregTechSounds.MACERATOR,  0.6f);
     public static BasicMachine MASS_FABRICATOR = new BasicMachine(GTIRef.ID, "mass_fabricator").setMap(MASS_FABRICATING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine MIXER = new BasicMachine(GTIRef.ID, "mixer").setMap(MIXING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine ORE_WASHER = new BasicMachine(GTIRef.ID, "ore_washer").setMap(ORE_WASHING).addFlags(GUI, ITEM, FLUID);
