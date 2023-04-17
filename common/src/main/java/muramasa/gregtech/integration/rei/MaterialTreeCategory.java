@@ -186,31 +186,21 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
             widgets.add(Widgets.createSlot(xy(90, 74, bounds)).entries(EntryIngredients.ofIngredient(FRAME.getMaterialIngredient(mat, 1))).markOutput().disableBackground());
         }
         if(mat.has(FLUIDPIPE) || mat.has(ITEMPIPE)){
-            if(mat.has(FLUIDPIPE) && !mat.has(ITEMPIPE)){
-                Item fPipeItemT = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.TINY);
-                Item fPipeItemS = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.SMALL);
-                Item fPipeItemN = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.NORMAL);
-                Item fPipeItemL = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.LARGE);
-                Item fPipeItemH = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.HUGE);
-                widgets.add(Widgets.createSlot(xy(90, 110, bounds)).entries(ofItems(fPipeItemT,fPipeItemS,fPipeItemN,fPipeItemL,fPipeItemH
-                        )).markOutput().disableBackground());
-            }else if(mat.has(ITEMPIPE) && !mat.has(FLUIDPIPE)){
-                Item iPipeItemN = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.NORMAL);
-                Item iPipeItemL = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.LARGE);
-                Item iPipeItemH = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.HUGE);
-                widgets.add(Widgets.createSlot(xy(90, 110, bounds)).entries(ofItems(iPipeItemN,iPipeItemL,iPipeItemH
-                        )).markOutput().disableBackground());
-            }else{
-                Item fPipeItemT = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.TINY);
-                Item fPipeItemS = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.SMALL);
-                Item fPipeItemN = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.NORMAL);
-                Item fPipeItemL = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.LARGE);
-                Item fPipeItemH = AntimatterAPI.get(FluidPipe.class,"fluid_"+mat.getId()).getBlockItem(PipeSize.HUGE);
-                Item iPipeItemN = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.NORMAL);
-                Item iPipeItemL = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.LARGE);
-                Item iPipeItemH = AntimatterAPI.get(ItemPipe.class,"item_"+mat.getId()).getBlockItem(PipeSize.HUGE);
-                widgets.add(Widgets.createSlot(xy(90, 110, bounds)).entries(ofItems(fPipeItemT,fPipeItemS,fPipeItemN,fPipeItemL,fPipeItemH,
-                        iPipeItemN,iPipeItemL,iPipeItemH)).markOutput().disableBackground());
+            List<Item> itemList = new ArrayList<>();
+            if (mat.has(FLUIDPIPE)){
+                FluidPipe<?> fluidPipe = AntimatterAPI.get(FluidPipe.class,"fluid_pipe_"+mat.getId());
+                if (fluidPipe != null){
+                    fluidPipe.getSizes().forEach(s -> itemList.add(fluidPipe.getBlockItem(s)));
+                }
+            }
+            if (mat.has(ITEMPIPE)){
+                ItemPipe<?> itemPipe = AntimatterAPI.get(ItemPipe.class,"item_pipe_"+mat.getId());
+                if (itemPipe != null){
+                    itemPipe.getSizes().forEach(s -> itemList.add(itemPipe.getBlockItem(s)));
+                }
+            }
+            if (!itemList.isEmpty()){
+                widgets.add(Widgets.createSlot(xy(90, 110, bounds)).entries(ofItems(itemList)).markOutput().disableBackground());
             }
         }
         if(mat.has(GEAR)){
@@ -280,10 +270,9 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
         return EntryIngredient.of(stacks);
     }
 
-    private EntryIngredient ofItems(Item item, Item... extras){
+    private EntryIngredient ofItems(List<Item> items){
         List<EntryStack<?>> stacks = new ArrayList<>();
-        stacks.add(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(item)));
-        for (Item extra : extras) {
+        for (Item extra : items) {
             stacks.add(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(extra)));
         }
         return EntryIngredient.of(stacks);
