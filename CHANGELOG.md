@@ -1,4 +1,4 @@
-- Warning: the modid has been renamed from gregtech to gti, so some stuff in world may break. I managed to remap most blocks and items, but machines will still lose stuff inside them and such. therefore I reccomend picking up all machines and pipes. Make sure to backup your worlds before loading this.
+- **_Warning: the modid has been renamed from gregtech to gti, so some stuff in world may break. I managed to remap blocks and items, but machines will still lose stuff inside them and such. therefore I reccomend picking up all machines and pipes. Make sure to backup your worlds before loading this._**
 - Textures have changed to more match original gt5u, though the base textures are still colored
 - Bunch of recipes have been changed/added, not really sure what all has been done
 - changed 9x battery buffer to 8x
