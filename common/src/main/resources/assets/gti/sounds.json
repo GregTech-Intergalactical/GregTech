@@ -1,6 +1,6 @@
 {
   "wrench": {
-    "sounds": [ "gregtech:wrench" ]
+    "sounds": [ "gti:wrench" ]
   },
   "drill": {
     "sounds": [ "gti:drill" ]
