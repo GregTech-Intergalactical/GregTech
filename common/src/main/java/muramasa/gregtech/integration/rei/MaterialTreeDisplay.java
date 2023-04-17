@@ -93,27 +93,19 @@ public class MaterialTreeDisplay implements Display {
         if (mat.has(FLUIDPIPE)) {
             FluidPipe<?> pipe = AntimatterAPI.get(FluidPipe.class, "fluid_pipe_" + mat.getId());
             if (pipe != null){
-                addPipe(pipe, PipeSize.TINY);
-                addPipe(pipe, PipeSize.SMALL);
-                addPipe(pipe, PipeSize.NORMAL);
-                addPipe(pipe, PipeSize.LARGE);
-                addPipe(pipe, PipeSize.HUGE);
+                pipe.getSizes().forEach(s -> addPipe(pipe, s));
             }
         }
         if (mat.has(ITEMPIPE)) {
             ItemPipe<?> pipe = AntimatterAPI.get(ItemPipe.class, "item_pipe_" + mat.getId());
             if (pipe != null){
-                addPipe(pipe, PipeSize.NORMAL);
-                addPipe(pipe, PipeSize.LARGE);
-                addPipe(pipe, PipeSize.HUGE);
+                pipe.getSizes().forEach(s -> addPipe(pipe, s));
             }
         }
     }
 
     private void addPipe(PipeType<?> type, PipeSize size){
-        if (type.getSizes().contains(size)){
-            this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(type.getBlockItem(size)))));
-        }
+        this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(type.getBlockItem(size)))));
     }
 
     public Material getMat() {
