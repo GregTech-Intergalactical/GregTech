@@ -1,0 +1,23 @@
+{
+  "wrench": {
+    "sounds": [ "gti:wrench" ]
+  },
+  "drill": {
+    "sounds": [ "gti:drill" ]
+  },
+  "extractor": {
+    "sounds": [ "gti:extractor" ]
+  },
+  "furnace": {
+    "sounds": [ "gti:furnace" ]
+  },
+  "macerator": {
+    "sounds": [ "gti:macerator" ]
+  },
+  "magnetizer": {
+    "sounds": [ "gti:magnetizer" ]
+  },
+  "treetap": {
+    "sounds": [ "gti:treetap" ]
+  }
+}
