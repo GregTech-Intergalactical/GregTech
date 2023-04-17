@@ -3,21 +3,21 @@
     "sounds": [ "gregtech:wrench" ]
   },
   "drill": {
-    "sounds": [ "gregtech:drill" ]
+    "sounds": [ "gti:drill" ]
   },
   "extractor": {
-    "sounds": [ "gregtech:extractor" ]
+    "sounds": [ "gti:extractor" ]
   },
   "furnace": {
-    "sounds": [ "gregtech:furnace" ]
+    "sounds": [ "gti:furnace" ]
   },
   "macerator": {
-    "sounds": [ "gregtech:macerator" ]
+    "sounds": [ "gti:macerator" ]
   },
   "magnetizer": {
-    "sounds": [ "gregtech:magnetizer" ]
+    "sounds": [ "gti:magnetizer" ]
   },
   "treetap": {
-    "sounds": [ "gregtech:treetap" ]
+    "sounds": [ "gti:treetap" ]
   }
 }
