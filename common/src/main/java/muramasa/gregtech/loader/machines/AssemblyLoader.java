@@ -13,9 +13,11 @@ import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
+import muramasa.gregtech.data.TierMaps;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -59,12 +61,12 @@ public class AssemblyLoader {
     }
 
     private static void casings() {
-        addTierCasing(WroughtIron, Lead, CASING_ULV, 1);
-        addTierCasing(Steel, Copper, CASING_LV, 2);
-        addTierCasing(Aluminium, StainlessSteel, CASING_MV, 3);
-        addTierCasing(TungstenSteel, TungstenCarbide, CASING_HV, 4);
-        addTierCasing(Ultimet, HSSG, CASING_EV, 5);
-        addTierCasing(HSSE, HSSS, CASING_IV, 6);
+        addTierCasing(ULV);
+        addTierCasing(LV);
+        addTierCasing(MV);
+        addTierCasing(HV);
+        addTierCasing(EV);
+        addTierCasing(IV);
         //addTierCasing(TungstenSteel, CASING_LUV);
         //addTierCasing(Osmiridium, CASING_ZPM);
         //addTierCasing(Ultimet, CASING_UV);
@@ -159,8 +161,8 @@ public class AssemblyLoader {
         ASSEMBLING.RB().ii(of(FOIL.get(PolyvinylChloride), 4), of(FOIL.get(Aluminium), 2)).fi(Polyethylene.getLiquid(288)).io(new ItemStack(Capacitor,16)).add("capacitor",80, 96);
     }
 
-    private static void addTierCasing (Material mat, Material mat2, Block casing, int tier) {
-        ASSEMBLING.RB().ii(of(PLATE.get(mat, 2)), of(BOLT.get(mat2, 2))).io(new ItemStack(casing)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),5 * 20, (long) Math.pow(2, 2 * tier + 1));
+    private static void addTierCasing (Tier tier) {
+        ASSEMBLING.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 4)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID))).add("casing_" + tier.getId(),5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
     }
 
     private static void addTierHull (Material mat, Wire w, ItemBasic circ, Block casing, Block hull, int tier) {
