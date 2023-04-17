@@ -150,7 +150,7 @@ public class RemappingEvents {
 
     @SubscribeEvent
     public static void remapMissingItems(final RegistryEvent.MissingMappings<Item> event){
-        for (RegistryEvent.MissingMappings.Mapping<Item> map : event.getMappings(GTIRef.ID)) {
+        for (RegistryEvent.MissingMappings.Mapping<Item> map : event.getMappings("gregtech")) {
             String id = map.key.getPath();
             Item replacement = AntimatterAPI.get(Item.class, id, GTIRef.ANTIMATTER_SHARED);
             if (replacement != null){
