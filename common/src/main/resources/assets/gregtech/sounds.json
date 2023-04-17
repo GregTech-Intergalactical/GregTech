@@ -11,8 +11,8 @@
   "furnace": {
     "sounds": [ "gregtech:furnace" ]
   },
-  "pulverizer": {
-    "sounds": [ "gregtech:pulverizer" ]
+  "macerator": {
+    "sounds": [ "gregtech:macerator" ]
   },
   "magnetizer": {
     "sounds": [ "gregtech:magnetizer" ]
