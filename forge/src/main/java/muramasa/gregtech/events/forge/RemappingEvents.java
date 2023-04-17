@@ -2,6 +2,7 @@ package muramasa.gregtech.events.forge;
 
 import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.material.Material;
@@ -32,6 +33,15 @@ public class RemappingEvents {
 
     @SubscribeEvent
     public static void remapMissingBlocks(final RegistryEvent.MissingMappings<Block> event){
+        event.getMappings(Ref.SHARED_ID).forEach(map -> {
+            String id = map.key.getPath();
+            if (id.equals("granite_red") || id.equals("granite_black")){
+                Block block = AntimatterAPI.get(Block.class, id.replace("granite_", "").concat("_granite"), Ref.SHARED_ID);
+                if (block != null){
+                    map.remap(block);
+                }
+            }
+        });
         for (RegistryEvent.MissingMappings.Mapping<Block> map : event.getMappings("gregtech")) {
 
             String id = map.key.getPath();
@@ -150,6 +160,15 @@ public class RemappingEvents {
 
     @SubscribeEvent
     public static void remapMissingItems(final RegistryEvent.MissingMappings<Item> event){
+        event.getMappings(Ref.SHARED_ID).forEach(map -> {
+            String id = map.key.getPath();
+            if (id.equals("granite_red") || id.equals("granite_black")){
+                Block block = AntimatterAPI.get(Block.class, id.replace("granite_", "").concat("_granite"), Ref.SHARED_ID);
+                if (block != null){
+                    map.remap(block.asItem());
+                }
+            }
+        });
         for (RegistryEvent.MissingMappings.Mapping<Item> map : event.getMappings("gregtech")) {
             String id = map.key.getPath();
             Item replacement = AntimatterAPI.get(Item.class, id, GTIRef.ANTIMATTER_SHARED);
