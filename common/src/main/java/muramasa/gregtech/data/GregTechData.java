@@ -13,6 +13,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.material.MaterialTypeFluid;
+import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.*;
@@ -280,17 +281,17 @@ public class GregTechData {
     //    public static final RegistryObject<Item> CombNaquadah = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_naquadah", "")/*.optional(GTIRef.MOD_FR)*/;
 
 
-    public static StoneType GRANITE_RED = AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "granite_red", Materials.RedGranite, new Texture(GTIRef.ID, "block/stone/granite_red"), SoundType.STONE, true));
-    public static StoneType GRANITE_BLACK = AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "granite_black", Materials.BlackGranite, new Texture(GTIRef.ID, "block/stone/granite_black"), SoundType.STONE, true));
-    public static StoneType MARBLE = AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "marble", Materials.Marble, new Texture(GTIRef.ID, "block/stone/marble"), SoundType.STONE, true));
-    public static StoneType BASALT = AntimatterAPI.register(StoneType.class,new StoneType(GTIRef.ID, "basalt", AntimatterMaterials.Basalt, new Texture(GTIRef.ID, "block/stone/basalt"), SoundType.STONE, true));
+    public static StoneType GRANITE_RED = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "red_granite", Materials.RedGranite, "block/stone/", SoundType.STONE, true));
+    public static StoneType GRANITE_BLACK = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "black_granite", Materials.BlackGranite, "block/stone/", SoundType.STONE, true));
+    public static StoneType MARBLE = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "marble", Materials.Marble, "block/stone/", SoundType.STONE, true));
+    public static StoneType BASALT = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "basalt", AntimatterMaterials.Basalt, "block/stone/", SoundType.STONE, true));
 
-    public static StoneType KOMATIITE = AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "komatiite", Materials.Komatiite, new Texture(GTIRef.ID, "block/stone/komatiite"), SoundType.STONE, true));
-    public static StoneType LIMESTONE = AntimatterAPI.register(StoneType.class,  new StoneType(GTIRef.ID, "limestone", Limestone, new Texture(GTIRef.ID, "block/stone/limestone"), SoundType.STONE, true));
-    public static StoneType GREEN_SCHIST = AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "green_schist", GreenSchist, new Texture(GTIRef.ID, "block/stone/green_schist"), SoundType.STONE, true));
-    public static StoneType BLUE_SCHIST = AntimatterAPI.register(StoneType.class,  new StoneType(GTIRef.ID, "blue_schist", BlueSchist, new Texture(GTIRef.ID, "block/stone/blue_schist"), SoundType.STONE, true));
-    public static StoneType KIMBERLITE = AntimatterAPI.register(StoneType.class,  new StoneType(GTIRef.ID, "kimberlite", Kimberlite, new Texture(GTIRef.ID, "block/stone/kimberlite"), SoundType.STONE, true));
-    public static StoneType QUARTZITE = AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "quartzite", Quartzite, new Texture(GTIRef.ID, "block/stone/quartzite"), SoundType.STONE, true));
+    public static StoneType KOMATIITE = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "komatiite", Materials.Komatiite, "block/stone/", SoundType.STONE, true));
+    public static StoneType LIMESTONE = AntimatterAPI.register(StoneType.class,  new CobbleStoneType(GTIRef.ID, "limestone", Limestone, "block/stone/", SoundType.STONE, true));
+    public static StoneType GREEN_SCHIST = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "green_schist", GreenSchist, "block/stone/", SoundType.STONE, true));
+    public static StoneType BLUE_SCHIST = AntimatterAPI.register(StoneType.class,  new CobbleStoneType(GTIRef.ID, "blue_schist", BlueSchist, "block/stone/", SoundType.STONE, true));
+    public static StoneType KIMBERLITE = AntimatterAPI.register(StoneType.class,  new CobbleStoneType(GTIRef.ID, "kimberlite", Kimberlite, "block/stone/", SoundType.STONE, true));
+    public static StoneType QUARTZITE = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "quartzite", Quartzite, "block/stone/", SoundType.STONE, true));
 
     //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(GTIRef.ID, "anthracite_coal", new Texture(GTIRef.ID, "block/basic/anthracite_coal");
     //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(GTIRef.ID, "anthracite_coal", new Texture(GTIRef.ID, "block/basic/anthracite_coal");
