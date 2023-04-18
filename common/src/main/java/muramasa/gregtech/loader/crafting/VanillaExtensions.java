@@ -52,6 +52,5 @@ public class VanillaExtensions {
 
         provider.addItemRecipe(consumer, "magnetic_rods_neodymium", "has_redstone", provider.hasSafeItem(ForgeCTags.DUSTS_REDSTONE), ROD.get(Neodymium),
                 of('R', ForgeCTags.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/neodymium")), " R ", "RSR", " R ");
-        provider.addStackRecipe(consumer, GTIRef.ID, "torch", "torches", "has_sticky_resin", provider.hasSafeItem(GTRubberData.StickyResin), new ItemStack(Items.TORCH, 4), of('S', GTRubberData.StickyResin, 'R', Items.STICK), "S", "R");
     }
 }
