@@ -1,7 +1,10 @@
 package muramasa.gregtech.loader.machines;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
@@ -18,6 +21,7 @@ import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.data.TierMaps;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -27,7 +31,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.tags.ItemTags;
 
 import java.util.Arrays;
+import java.util.function.Consumer;
 
+import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.machine.Tier.*;
@@ -67,18 +73,22 @@ public class AssemblyLoader {
         addTierCasing(HV);
         addTierCasing(EV);
         addTierCasing(IV);
-        //addTierCasing(TungstenSteel, CASING_LUV);
-        //addTierCasing(Osmiridium, CASING_ZPM);
-        //addTierCasing(Ultimet, CASING_UV);
-        //addTierCasing(RedSteel, CASING_MAX);
+        addTierCasing(LUV);
+        addTierCasing(ZPM);
+        addTierCasing(UV);
+        addTierCasing(MAX);
 
-        addTierHull(Iron, WIRE_RED_ALLOY, CircuitBasic, CASING_ULV, HULL_ULV, 1);
-        addTierHull(Iron, WIRE_RED_ALLOY, CircuitBasicElectronic, CASING_ULV, HULL_ULV, 1, 1);
-        addTierHull(AnnealedCopper, WIRE_TIN, CircuitGood, CASING_LV, HULL_LV, 2);
-        addTierHull(Silver, WIRE_CUPRONICKEL, CircuitAdv, CASING_MV, HULL_MV, 3);
-        addTierHull(SterlingSilver, WIRE_ELECTRUM, CircuitNanoProcessor, CASING_HV, HULL_HV, 4);
-        addTierHull(RoseGold, WIRE_NICHROME, CircuitQuantumProcessor, CASING_EV, HULL_EV, 5);
-        addTierHull(RedSteel, WIRE_NIOBIUM_TITANIUM, CircuitEnergyFlow, CASING_IV, HULL_IV, 6);
+
+        addTierHull(AntimatterMaterials.Wood,Tier.ULV);
+        addTierHull(WroughtIron,Tier.LV);
+        addTierHull(WroughtIron,Tier.MV);
+        addTierHull(Polyethylene,Tier.HV);
+        addTierHull(Polyethylene,Tier.EV);
+        addTierHull(Polyethylene,Tier.IV);
+        addTierHull(Polyethylene,Tier.LUV);
+        addTierHull(Polytetrafluoroethylene,Tier.ZPM);
+        addTierHull(Polytetrafluoroethylene,Tier.UV);
+        addTierHull(Polytetrafluoroethylene,Tier.MAX);
 
         addCasing(Bronze, GregTech.get(BlockCasing.class,"casing_bronze"));
         addCasing(Steel, GregTech.get(BlockCasing.class,"casing_solid_steel"));
@@ -171,6 +181,11 @@ public class AssemblyLoader {
 
     private static void addTierHull (Material mat, Wire w, ItemBasic circ, Block casing, Block hull, int tier, int idOffset) {
         ASSEMBLING.RB().ii(of(SCREW.get(mat), 2), of(casing, 1), of(Items.REDSTONE, 1), of(w.getBlockItem(PipeSize.VTINY), 1), of(TIER_CIRCUITS.getOrDefault(tier, circ), 1)).io(new ItemStack(hull)).add(AntimatterPlatformUtils.getIdFromBlock(hull).getPath() + "_" + idOffset,5 * 20, (long) Math.pow(2, 2 * tier + 1));
+    }
+
+    private static void addTierHull(Material mat, Tier tier) {
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(mat, 1), ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 1), PLATE.getMaterialIngredient(TIER_MATERIALS.get(tier), 1), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID)))
+                .io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID))).add("hull_" + tier.getId(), 5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
     }
 
     private static void addCasing (Material mat, BlockCasing casing) {
