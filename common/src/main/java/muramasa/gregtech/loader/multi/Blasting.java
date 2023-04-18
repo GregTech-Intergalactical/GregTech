@@ -23,7 +23,7 @@ public class Blasting {
     public static void init() {
         final int multiplier = 1;
         CRUSHED.all().forEach(m -> {
-            boolean needsBF = m.has(NEEDS_BLAST_FURNACE) || DIRECT_SMELT_INTO.getMapping(m).has(NEEDS_BLAST_FURNACE);
+            boolean needsBF = m.has(NEEDS_BLAST_FURNACE) || BLAST_INTO.getMapping(m).has(NEEDS_BLAST_FURNACE);
             if (!m.has(ORE) || !m.has(INGOT)) return;
             Item crushed = CRUSHED.get(m);
             Item dust = DUST.get(m);
@@ -33,7 +33,7 @@ public class Blasting {
             if (needsBF) {
                 long aBlastDuration = Math.max(m.getMass() / 6, 1) * BLAST_FURNACE_TEMP.getInt(m);
 
-                ItemStack blastOut = BLAST_FURNACE_TEMP.getInt(m) > 1750 && SMELT_INTO.getMapping(m).has(INGOT_HOT) ? INGOT_HOT.get(MaterialTags.SMELT_INTO.getMapping(m), 1) : aIngotSmeltInto;
+                ItemStack blastOut = BLAST_FURNACE_TEMP.getInt(m) > 1750 && BLAST_INTO.getMapping(m).has(INGOT_HOT) ? INGOT_HOT.get(MaterialTags.BLAST_INTO.getMapping(m), 1) : aIngotSmeltInto;
 
                 BLASTING.RB().ii(of(crushed,1), INT_CIRCUITS.get(1)).io(blastOut).add("crushed_" + m.getId(), aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
                 BLASTING.RB().ii(of(dust,1), INT_CIRCUITS.get(1)).io(blastOut).add("dust_" + m.getId(),aBlastDuration/4, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));

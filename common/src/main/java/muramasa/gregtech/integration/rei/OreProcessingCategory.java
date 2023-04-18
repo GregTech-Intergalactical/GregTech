@@ -83,7 +83,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createSlot(xy(4, 4, bounds)).entries(EntryIngredients.ofIngredient(ORE.getMaterialIngredient(display.ore, 1))).markInput().disableBackground());
         widgets.addAll(setupBaseMachineSlots(display, bounds));
-        if (!display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE)){
+        if (!display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE) && display.ore.has(SMELT_INTO_2)){
             widgets.addAll(setupPrimaryFurnaceSlot(display, bounds));
         }
         if (display.ore.has(INGOT)){
@@ -105,20 +105,9 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
     }
 
     private List<Widget> setupPrimaryFurnaceSlot(OreProcessingDisplay display, Rectangle bounds){
-        Item ingot, gem, dust;
-        if (!SMELT_INTO.getMapping(display.ore).has(INGOT) && !SMELT_INTO.getMapping(display.ore).has(GEM) && !SMELT_INTO.getMapping(display.ore).has(DUST)) return List.of();
-        if (display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE)) return List.of();
-        if(SMELT_INTO.getMapping(display.ore).has(INGOT) && !SMELT_INTO.getMapping(display.ore).has(GEM)){
-            ingot = INGOT.get(SMELT_INTO.getMapping(display.ore));
-            return List.of(Widgets.createSlot(xy(50, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(ingot, SMELTING_MULTI.getInt(display.ore))))).markOutput().disableBackground());
-        }else if(!SMELT_INTO.getMapping(display.ore).has(INGOT) && SMELT_INTO.getMapping(display.ore).has(GEM)){
-            gem = GEM.get(SMELT_INTO.getMapping(display.ore));
-            return List.of(Widgets.createSlot(xy(50, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(gem, SMELTING_MULTI.getInt(display.ore))))).markOutput().disableBackground());
-        }else if(!SMELT_INTO.getMapping(display.ore).has(INGOT) && !SMELT_INTO.getMapping(display.ore).has(GEM) && SMELT_INTO.getMapping(display.ore).has(DUST)){
-            dust = DUST.get(SMELT_INTO.getMapping(display.ore));
-            return List.of(Widgets.createSlot(xy(50, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(dust, SMELTING_MULTI.getInt(display.ore))))).markOutput().disableBackground());
-        }
-        return List.of();
+        ItemStack smelt = SMELT_INTO_2.get(display.ore).get();
+        if (smelt.isEmpty()) return List.of();
+        return List.of(Widgets.createSlot(xy(50, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, smelt))).markOutput().disableBackground());
     }
 
     private List<Widget> setupSecondaryFurnaceSlots(OreProcessingDisplay display, Rectangle bounds){
