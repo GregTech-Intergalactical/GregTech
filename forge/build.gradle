@@ -71,6 +71,7 @@ dependencies {
     modRuntimeOnly("dev.latvian.mods:kubejs-forge:${rootProject.kubejs_version}")
     modRuntimeOnly("curse.maven:the-one-probe-245211:${rootProject.top_forge_file}")
     modRuntimeOnly("curse.maven:rubidium-574856:4451888")
+    modRuntimeOnly("com.blamejared.crafttweaker:CraftTweaker-forge-1.18.2:${rootProject.crafttweaker_version}")
 }
 
 jar {
