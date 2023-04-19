@@ -1218,7 +1218,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Iron).flags(RING, GEAR, FRAME);
         event.setMaterial(Lapis).asGem(false).mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));
         event.setMaterial(Prismarine).mats(of(Potassium, 2, Oxygen, 8, Manganese, 1, Silicon, 5));
-        event.setMaterial(Quartz).asOre();
         event.setMaterial(Redstone).mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).asFluid(0, MaterialTags.MELTING_POINT.getInt(Redstone));//.setOreMulti(4);
         event.setMaterial(Water).mats(of(Hydrogen, 2, Oxygen, 1));
     }
