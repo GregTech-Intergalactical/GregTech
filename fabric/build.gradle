@@ -51,8 +51,7 @@ dependencies{
         transitive = false
     }
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
-    modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}")
-    modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-fabric-api:${rootProject.jei_version}")
+    modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-fabric:${rootProject.jei_version}")
     implementation("com.electronwill.night-config:toml:${rootProject.nightconfig_version}")
     implementation("com.electronwill.night-config:core:${rootProject.nightconfig_version}")
     modImplementation("teamreborn:energy:${rootProject.energy_version}") {
