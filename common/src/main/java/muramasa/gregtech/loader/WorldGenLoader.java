@@ -126,7 +126,7 @@ public class WorldGenLoader {
         .buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_basalt")
-        .asMediumStoneVein(5, -64, 0, BASALT, OVERWORLD)
+        .asMediumStoneVein(5, -64, 0, AntimatterStoneTypes.BASALT, OVERWORLD)
         .withVariant(90)
         .buildVariant()
         .withVariant(7)
