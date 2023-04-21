@@ -64,11 +64,11 @@ public class Blasting {
 
         /* PRIMITIVE */
         BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(1.0, 0.5).add("steel_ingot",1200, 0);
-        INGOT.all().forEach(m -> {
+        DUST.all().forEach(m -> {
             if (m.has(NEEDS_BLAST_FURNACE) && m.has(BLAST_FURNACE_TEMP)){
-                ItemStack ingot = m.has(INGOT_HOT) ? INGOT_HOT.get(m, 1) : INGOT.get(m, 1);
+                ItemStack ingot = DIRECT_SMELT_INTO.getMapping(m).has(INGOT_HOT) ? INGOT_HOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1);
                 int heat = BLAST_FURNACE_TEMP.getInt(m);
-                BLASTING.RB().temperature(heat).ii(DUST.getMaterialIngredient(m, 1)).io(ingot).add(m.getId() + "ingot_from_dust", Math.max(m.getMass() / 40L, 1L) * heat, 120);
+                BLASTING.RB().temperature(heat).ii(DUST.getMaterialIngredient(m, 1)).io(ingot).add(DIRECT_SMELT_INTO.getMapping(m).getId() + "_ingot_from_" + m.getId() + "_dust", Math.max(m.getMass() / 40L, 1L) * heat, 120);
             }
         });
 
