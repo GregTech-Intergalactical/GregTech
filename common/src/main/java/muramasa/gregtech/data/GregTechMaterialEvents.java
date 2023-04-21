@@ -1,10 +1,13 @@
 package muramasa.gregtech.data;
 
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.material.data.FluidProduct;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
@@ -477,7 +480,9 @@ public class GregTechMaterialEvents {
         /**
          *  Basic
          **/
-        //event.setMaterial(CertusQuartz).asGemBasic(false,PLATE, ORE).addTools(5.0F, 32, 1; TODO: Only when AE2 is loaded;
+        event.setMaterial(CertusQuartz).asGemBasic(false,PLATE).asOre(1, 5, true).addTools(Tiers.IRON.getAttackDamageBonus(), Tiers.IRON.getSpeed(), 256, Tiers.IRON.getLevel());
+        GEM.replacement(CertusQuartz, () -> AntimatterPlatformUtils.getItemFromID(Ref.MOD_AE, "certus_quartz_crystal"));
+        GEM.replacement(ChargedCertusQuartz, () -> AntimatterPlatformUtils.getItemFromID(Ref.MOD_AE, "charged_certus_quartz_crystal"));
         event.setMaterial(Charcoal).asGemBasic(false).mats(of(Carbon, 1));
         event.setMaterial(CoalCoke).asGemBasic(false);
         event.setMaterial(Dilithium).asGemBasic(true);

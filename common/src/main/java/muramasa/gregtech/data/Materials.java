@@ -1,6 +1,7 @@
 package muramasa.gregtech.data;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.TextureSet;
 import muramasa.gregtech.GTIRef;
@@ -461,7 +462,8 @@ public class Materials {
     public static Material Amethyst = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "amethyst", 0xd232d2, RUBY));
     public static Material BlueSapphire = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_sapphire", 0x6464c8, GEM_V));
     public static Material BlueTopaz = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_topaz", 0x0000ff, GEM_H));
-    //public static Material CertusQuartz = AntimatterAPI.register(Material.class,new Material(GTIRef.ID, "certus_quartz", 0xd2d2e6, QUARTZ); TODO: Only when AE2 is loaded
+    public static Material CertusQuartz = AntimatterAPI.register(Material.class,new Material(GTIRef.ID, "certus_quartz", 0xd2d2e6, QUARTZ, Ref.MOD_AE));
+    public static Material ChargedCertusQuartz = AntimatterAPI.register(Material.class,new Material(GTIRef.ID, "charged_certus_quartz", 0xd2d2e6, QUARTZ, Ref.MOD_AE));
     public static Material Charcoal = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "charcoal", 0x644646, LIGNITE));
     public static Material CoalCoke = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "coal_coke", 0x8c8caa, LIGNITE));
     public static Material Dilithium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dilithium", 0xfffafa, DIAMOND));
