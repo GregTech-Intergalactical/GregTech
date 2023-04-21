@@ -21,11 +21,9 @@ public class WorldGenLoader {
       if (AntimatterConfig.WORLD.STONE_LAYERS) {
           initStoneVeins(ev);
       }
-      if (AntimatterConfig.WORLD.STONE_LAYER_ORES) {
-          initStoneOreVeins(ev);
-      }
       if (AntimatterConfig.WORLD.ORE_VEINS) {
           initOreVeins(ev);
+          initStoneOreVeins(ev);
       }
       if (AntimatterConfig.WORLD.SMALL_ORES){
           initSmallOres(ev);
@@ -96,67 +94,75 @@ public class WorldGenLoader {
         .asMediumStoneVein(5, 128, 32, AntimatterStoneTypes.ANDESITE, OVERWORLD)
         .buildVein());
 
-      ev.vein(new WorldGenVeinBuilder("vein_granite_black")
-        .asLargeStoneVein(2, -64, 0, GRANITE_BLACK, OVERWORLD)
-        .withVariant(93)
-        .buildVariant()
-        .withVariant(5)
-        .withThinChance()
-        .withMaterial(Cooperite, 1, -64, -32)
-        .buildVariant()
-        .withVariant(2)
-        .withThinChance()
-        .withMaterial(Iridium, 1, -64, -46)
-        .buildVariant()
-        .buildVein());
+      WorldGenVeinBuilder veinBuilder = new WorldGenVeinBuilder("vein_granite_black")
+              .asLargeStoneVein(2, -64, 0, GRANITE_BLACK, OVERWORLD);
+      if (AntimatterConfig.WORLD.STONE_LAYER_ORES){
+          veinBuilder.withVariant(93)
+                  .buildVariant()
+                  .withVariant(5)
+                  .withThinChance()
+                  .withMaterial(Cooperite, 1, -64, -32)
+                  .buildVariant()
+                  .withVariant(2)
+                  .withThinChance()
+                  .withMaterial(Iridium, 1, -64, -46)
+                  .buildVariant();
+      }
+      ev.vein(veinBuilder.buildVein());
 
-      ev.vein(new WorldGenVeinBuilder("vein_granite_red")
-        .asLargeStoneVein(2, -32, 32, GRANITE_RED, OVERWORLD)
-        .withVariant(85)
-        .buildVariant()
-        .withVariant(10)
-        .withThinChance()
-        .withMaterial(Pitchblende, -64, -32)
-        .withMaterial(Uraninite, -64, -32)
-        .buildVariant()
-        .withVariant(5)
-        .withThinChance()
-        .withMaterial(Tantalite)
-        .buildVariant()
-        .buildVein());
+      veinBuilder = new WorldGenVeinBuilder("vein_granite_red")
+              .asLargeStoneVein(2, -32, 32, GRANITE_RED, OVERWORLD);
+      if (AntimatterConfig.WORLD.STONE_LAYER_ORES){
+          veinBuilder.withVariant(85)
+                  .buildVariant()
+                  .withVariant(10)
+                  .withThinChance()
+                  .withMaterial(Pitchblende, -64, -32)
+                  .withMaterial(Uraninite, -64, -32)
+                  .buildVariant()
+                  .withVariant(5)
+                  .withThinChance()
+                  .withMaterial(Tantalite)
+                  .buildVariant();
+      }
+      ev.vein(veinBuilder.buildVein());
 
-      ev.vein(new WorldGenVeinBuilder("vein_basalt")
-        .asMediumStoneVein(5, -64, 0, AntimatterStoneTypes.BASALT, OVERWORLD)
-        .withVariant(90)
-        .buildVariant()
-        .withVariant(7)
-        .withThinChance()
-        .withMaterial(Ilmenite)
-        .buildVariant()
-        .withVariant(3)
-        .withThinChance()
-        .withMaterial(Rutile)
-        .buildVariant()
-        .buildVein());
+      veinBuilder = new WorldGenVeinBuilder("vein_basalt")
+              .asMediumStoneVein(5, -64, 0, AntimatterStoneTypes.BASALT, OVERWORLD);
+      if (AntimatterConfig.WORLD.STONE_LAYER_ORES){
+          veinBuilder.withVariant(90)
+                  .buildVariant()
+                  .withVariant(7)
+                  .withThinChance()
+                  .withMaterial(Ilmenite)
+                  .buildVariant()
+                  .withVariant(3)
+                  .withThinChance()
+                  .withMaterial(Rutile)
+                  .buildVariant();
+      }
+      ev.vein(veinBuilder.buildVein());
 
-      ev.vein(new WorldGenVeinBuilder("vein_komatiite")
-        .asMediumStoneVein(4, 0, 64, KOMATIITE, OVERWORLD)
-        .withVariant(86)
-        .buildVariant()
-        .withVariant(7)
-        .withThinChance()
-        .withMaterial(Cinnabar, 1)
-        .withMaterial(AntimatterMaterials.Redstone, 2)
-        .buildVariant()
-        .withVariant(4)
-        .withThinChance()
-        .withMaterial(Magnesite)
-        .buildVariant()
-        .withVariant(3)
-        .withThinChance()
-        .withMaterial(Pyrite)
-        .buildVariant()
-        .buildVein());
+      veinBuilder = new WorldGenVeinBuilder("vein_komatiite")
+              .asMediumStoneVein(4, 0, 64, KOMATIITE, OVERWORLD);
+      if (AntimatterConfig.WORLD.STONE_LAYER_ORES){
+          veinBuilder.withVariant(86)
+                  .buildVariant()
+                  .withVariant(7)
+                  .withThinChance()
+                  .withMaterial(Cinnabar, 1)
+                  .withMaterial(AntimatterMaterials.Redstone, 2)
+                  .buildVariant()
+                  .withVariant(4)
+                  .withThinChance()
+                  .withMaterial(Magnesite)
+                  .buildVariant()
+                  .withVariant(3)
+                  .withThinChance()
+                  .withMaterial(Pyrite)
+                  .buildVariant();
+      }
+      ev.vein(veinBuilder.buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_marble")
         .asLargeStoneVein(4, 32, 160, MARBLE, OVERWORLD)
