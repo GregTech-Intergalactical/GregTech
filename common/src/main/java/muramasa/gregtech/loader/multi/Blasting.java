@@ -7,6 +7,7 @@ import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.data.AntimatterStoneTypes.STONE;
 import static muramasa.antimatter.material.MaterialTags.*;
@@ -27,7 +28,6 @@ public class Blasting {
             if (!m.has(ORE) || !m.has(INGOT)) return;
             Item crushed = CRUSHED.get(m);
             Item dust = DUST.get(m);
-            RecipeIngredient ore = ORE.getMaterialIngredient(m, 1);
             ItemStack ingot = m != DIRECT_SMELT_INTO.getMapping(m) ? INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(m, 1);
             ItemStack aIngotSmeltInto = m == SMELT_INTO.getMapping(m) ? ingot : INGOT.get(SMELT_INTO.getMapping(m), 1);
             if (needsBF) {
@@ -43,15 +43,22 @@ public class Blasting {
                 BLASTING.RB().ii(DUST_IMPURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("dust_impure_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
             }
 
+
+        });
+
+        CRUSHED.all().forEach(m -> {
+            if (!m.has(ORE)) return;
+            ItemStack ingot = new ItemStack(Items.IRON_INGOT);
+            RecipeIngredient ore = ORE.getMaterialIngredient(m, 1);
             if (m.has(CALCITE3X)) {
-                ItemStack ingotMulti = Utils.mul(multiplier * 3 * MaterialTags.SMELTING_MULTI.getInt(m), ingot);
+                ItemStack ingotMulti = Utils.mul(multiplier * 3, ingot);
                 ItemStack darkAsh = DUST_SMALL.get(DarkAsh, 1);
                 BLASTING.RB().ii(ore, DUST.getIngredient(Calcite, multiplier)).io(ingotMulti, darkAsh).add("ore_" + m.getId(),ingot.getCount() * 500L, 120, 1500);
                 BLASTING.RB().ii(ore, DUST.getIngredient(Quicklime, multiplier)).io(ingotMulti, darkAsh).add("ore_" + m.getId() +"_2",ingot.getCount() * 500L, 120, 1500);
             } else if (m.has(CALCITE2X)) {
                 ItemStack darkAsh = DUST_SMALL.get(DarkAsh, 1);
-                BLASTING.RB().ii(ore, DUST.getIngredient(Calcite, multiplier)).io(Utils.mul(multiplier * mixedOreYield * MaterialTags.SMELTING_MULTI.getInt(m), ingot), darkAsh).add("ore_" + m.getId(),ingot.getCount() * 500L, 120, 1500);
-                BLASTING.RB().ii(ore, DUST_TINY.getIngredient(Quicklime, multiplier * 3)).io(Utils.mul(multiplier * 3 * MaterialTags.SMELTING_MULTI.getInt(m), ingot), darkAsh).add("ore_" + m.getId() + "_2",ingot.getCount() * 500L, 120, 1500);
+                BLASTING.RB().ii(ore, DUST.getIngredient(Calcite, multiplier)).io(Utils.mul(multiplier * 2, ingot), darkAsh).add("ore_" + m.getId(),ingot.getCount() * 500L, 120, 1500);
+                BLASTING.RB().ii(ore, DUST.getIngredient(Quicklime, multiplier)).io(Utils.mul(multiplier * 2, ingot), darkAsh).add("ore_" + m.getId() + "_2",ingot.getCount() * 500L, 120, 1500);
             }
         });
 

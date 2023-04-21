@@ -1027,8 +1027,8 @@ public class GregTechMaterialEvents {
 
     private static void flags(MaterialEvent event){
         BRITTLEG.add(Coal, Charcoal, Lignite);
-        CALCITE2X.add(Pyrite, BrownLimonite, YellowLimonite, Magnetite);
-        CALCITE3X.add(Iron, WroughtIron);
+        CALCITE2X.add(Pyrite, YellowLimonite);
+        CALCITE3X.add(Iron, BrownLimonite);
         CENT.add(NobleGases, Air, BrownLimonite, Cinnabar, Clay, Cooperite, Stibnite,
                 Tetrahedrite, Uraninite, Wulfenite, YellowLimonite, Blaze, Flint, Marble, BlackGranite,
                 VanadiumMagnetite, Pitchblende, Glass, Lapis, EnderEye, Phosphorus, Redstone, Basalt, AnnealedCopper,
