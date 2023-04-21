@@ -1103,15 +1103,15 @@ public class GregTechMaterialEvents {
         CABLE.subTag(SubTag.COPPER_CABLE, AnnealedCopper);
         CABLE.subTag(SubTag.COPPER_CABLE, Copper);
 
-        event.setMaterial(AnnealedCopper).setSmeltInto(Copper).setMacerateInto(Copper).setArcSmeltInto(AnnealedCopper);
-        event.setMaterial(Copper).setSmeltInto(Copper).setMacerateInto(Copper).setArcSmeltInto(AnnealedCopper);
-        event.setMaterial(Iron).setSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
-        event.setMaterial(IronMagnetic).setSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
-        event.setMaterial(NeodymiumMagnetic).setSmeltInto(Neodymium).setMacerateInto(Neodymium).setArcSmeltInto(Neodymium);
-        event.setMaterial(SteelMagnetic).setSmeltInto(Steel).setMacerateInto(Steel).setArcSmeltInto(Steel);
+        event.setMaterial(AnnealedCopper).setDirectSmeltInto(Copper).setMacerateInto(Copper).setArcSmeltInto(AnnealedCopper);
+        event.setMaterial(Copper).setArcSmeltInto(AnnealedCopper);
+        event.setMaterial(Iron).setArcSmeltInto(WroughtIron);
+        event.setMaterial(IronMagnetic).setDirectSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
+        event.setMaterial(NeodymiumMagnetic).setDirectSmeltInto(Neodymium).setMacerateInto(Neodymium).setArcSmeltInto(Neodymium);
+        event.setMaterial(SteelMagnetic).setDirectSmeltInto(Steel).setMacerateInto(Steel).setArcSmeltInto(Steel);
         event.setMaterial(WroughtIron).setSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
 
-        event.setMaterial(BandedIron).setDirectSmeltInto(Iron);
+        /*event.setMaterial(BandedIron).setDirectSmeltInto(Iron);
         event.setMaterial(BrownLimonite).setDirectSmeltInto(Iron);
         event.setMaterial(Cassiterite).setDirectSmeltInto(Tin);
         event.setMaterial(Chalcopyrite).setDirectSmeltInto(Copper);
@@ -1130,7 +1130,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Sphalerite).setDirectSmeltInto(Zinc);
         event.setMaterial(Stibnite).setDirectSmeltInto(Antimony);
         event.setMaterial(Tetrahedrite).setDirectSmeltInto(Copper);
-        event.setMaterial(YellowLimonite).setDirectSmeltInto(Iron);
+        event.setMaterial(YellowLimonite).setDirectSmeltInto(Iron);*/
 
         event.setMaterial(Cassiterite).setOreMulti(2).setSmeltingMulti(2);
         event.setMaterial(Glowstone).setOreMulti(5).setSmeltingMulti(5);
