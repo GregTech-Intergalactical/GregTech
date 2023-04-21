@@ -223,8 +223,8 @@ public class WorldGenLoader {
     // TODO: move veins from initOld here
       ev.vein(new WorldGenVeinBuilder("naquadah").asOreVein(-54, 21, 10, 5, 32, Naquadah, Naquadah, Naquadah, EnrichedNaquadah,
         Level.END).buildVein());
-      ev.vein(new WorldGenVeinBuilder("lignite").asOreVein(-54, 21, 10, 5, 32, Naquadah, Naquadah, Naquadah, EnrichedNaquadah,
-        Level.END).buildVein());
+      ev.vein(new WorldGenVeinBuilder("lignite").asOreVein(-14, 100, 160, 8, 32, Lignite, Lignite, Lignite, Coal,
+        OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("coal").asOreVein(-14, 31, 80, 6, 32, AntimatterMaterials.Coal, AntimatterMaterials.Coal, AntimatterMaterials.Coal, Lignite, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("magnetite").asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite,
         OVERWORLD, Level.NETHER).buildVein());
