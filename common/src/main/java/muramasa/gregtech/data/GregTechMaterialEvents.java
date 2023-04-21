@@ -1109,7 +1109,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(IronMagnetic).setDirectSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
         event.setMaterial(NeodymiumMagnetic).setDirectSmeltInto(Neodymium).setMacerateInto(Neodymium).setArcSmeltInto(Neodymium);
         event.setMaterial(SteelMagnetic).setDirectSmeltInto(Steel).setMacerateInto(Steel).setArcSmeltInto(Steel);
-        event.setMaterial(WroughtIron).setSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
+        event.setMaterial(WroughtIron).setDirectSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
 
         /*event.setMaterial(BandedIron).setDirectSmeltInto(Iron);
         event.setMaterial(BrownLimonite).setDirectSmeltInto(Iron);
