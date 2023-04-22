@@ -270,7 +270,7 @@ public class WorldGenLoader {
         OVERWORLD, Level.END).buildVein());
       Material third = CertusQuartz.enabled ? CertusQuartz : Barite;
       ev.vein(new WorldGenVeinBuilder("quartz").asOreVein(-24, 36, 60, 3, 16, Quartzite, Barite, third, third, OVERWORLD).buildVein());
-      ev.vein(new WorldGenVeinBuilder("diamond").asOreVein(-119, -81, 40, 2, 16, Graphite, Graphite, Diamond, Coal, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("diamond").asOreVein(-54, -9, 40, 2, 16, Graphite, Graphite, Diamond, Coal, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("olivine").asOreVein(-54, -9, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite,
         OVERWORLD, Level.END).buildVein());
       ev.vein(new WorldGenVeinBuilder("apatite").asOreVein(-4, 41, 60, 3, 16, Apatite, Apatite, Phosphorus, Phosphate, OVERWORLD).buildVein());
