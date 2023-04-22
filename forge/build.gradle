@@ -21,6 +21,7 @@ architectury {
 //}
 
 loom{
+    accessWidenerPath = project(":antimatter-common").file("src/main/resources/antimatter.accesswidener")
     forge {
         dataGen {
             mod project.modid
