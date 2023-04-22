@@ -422,7 +422,7 @@ public class Materials {
     public static Material Pentlandite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pentlandite", 0xa59605, DULL));
     public static Material Phosphate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "phosphate", 0xffff00, DULL));
     public static Material Pitchblende = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pitchblende", 0xc8d200, DULL));
-    // public static Material Powellite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "powellite", 0xffff00, DULL));
+    public static Material Powellite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "powellite", 0xffff00, DULL));
     public static Material Pyrite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pyrite", 0x967828, ROUGH));
     // public static Material Pyrochlore = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pyrochlore", 0x2b1100,METALLIC));
     public static Material Pyrolusite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pyrolusite", 0x9696aa, DULL));
@@ -471,7 +471,8 @@ public class Materials {
     public static Material GreenSapphire = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "green_sapphire", 0x64c882, GEM_H));
     public static Material Lazurite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lazurite", 0x6478ff, LAPIS));
     public static Material LigniteCoke = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lignite_coke", 0x8c6464, LIGNITE));
-    //public static Material Monazite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "monazite", 0x324632, DIAMOND);
+    public static Material Monazite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "monazite", 0x324632, DIAMOND));
+    public static Material Apatite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "apatite", 0x78B4FA, DIAMOND));
     public static Material NetherStar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nether_star", 0xffffff, NONE));
     public static Material Olivine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "olivine", 0x96ff96, RUBY));
     public static Material Opal = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "opal", 0x0000ff, RUBY));
