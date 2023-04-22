@@ -1,9 +1,12 @@
 package muramasa.gregtech.loader;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.event.WorldGenEvent;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.worldgen.smallore.WorldGenSmallOreBuilder;
 import muramasa.antimatter.worldgen.vein.WorldGenVein;
 import muramasa.antimatter.worldgen.vein.WorldGenVeinBuilder;
@@ -223,7 +226,7 @@ public class WorldGenLoader {
     // TODO: move veins from initOld here
       ev.vein(new WorldGenVeinBuilder("naquadah").asOreVein(-54, 21, 10, 5, 32, Naquadah, Naquadah, Naquadah, EnrichedNaquadah,
         Level.END).buildVein());
-      ev.vein(new WorldGenVeinBuilder("lignite").asOreVein(-14, 100, 160, 8, 32, Lignite, Lignite, Lignite, Coal,
+      ev.vein(new WorldGenVeinBuilder("lignite").asOreVein(-14, 106, 160, 8, 32, Lignite, Lignite, Lignite, Coal,
         OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("coal").asOreVein(-14, 31, 80, 6, 32, AntimatterMaterials.Coal, AntimatterMaterials.Coal, AntimatterMaterials.Coal, Lignite, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("magnetite").asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite,
@@ -241,6 +244,8 @@ public class WorldGenLoader {
       ev.vein(new WorldGenVeinBuilder("sulfur").asOreVein(-59, -36, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite, Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinBuilder("copper").asOreVein(-54, -24, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, OVERWORLD,
         Level.NETHER).buildVein());
+      ev.vein(new WorldGenVeinBuilder("bauxite").asOreVein(-14, 46, 80, 4, 24, Bauxite, Bauxite, Aluminium, Ilmenite, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("salts").asOreVein(-14, 1, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("redstone").asOreVein(-54, -9, 60, 3, 24, AntimatterMaterials.Redstone, AntimatterMaterials.Redstone, Ruby, Cinnabar, OVERWORLD,
         Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinBuilder("soapstone").asOreVein(-54, -9, 40, 3, 16, Soapstone, Talc, Glauconite, Pentlandite,
@@ -263,8 +268,8 @@ public class WorldGenLoader {
         OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("manganese").asOreVein(-44, -29, 20, 3, 16, Grossular, Spessartine, Pyrolusite, Tantalite,
         OVERWORLD, Level.END).buildVein());
-      ev.vein(new WorldGenVeinBuilder("quartz").asOreVein(-24, 36, 60, 3, 16, Quartzite, Barite, Barite/* CertusQuartz */,
-        Barite/* CertusQuartz */, OVERWORLD).buildVein());
+      Material third = CertusQuartz.enabled ? CertusQuartz : Barite;
+      ev.vein(new WorldGenVeinBuilder("quartz").asOreVein(-24, 36, 60, 3, 16, Quartzite, Barite, third, third, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("diamond").asOreVein(-119, -81, 40, 2, 16, Graphite, Graphite, AntimatterMaterials.Diamond, AntimatterMaterials.Coal, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("olivine").asOreVein(-54, -9, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite,
         OVERWORLD, Level.END).buildVein());
@@ -275,7 +280,7 @@ public class WorldGenLoader {
         OVERWORLD, Level.END).buildVein());
       ev.vein(new WorldGenVeinBuilder("oilsands").asOreVein(-14, 31, 80, 6, 32, Oilsands, Oilsands, Oilsands, Oilsands,
         OVERWORLD).buildVein());
-      ev.vein(new WorldGenVeinBuilder("apatite").asOreVein(-14, 31, 80, 6, 32, Oilsands, Oilsands, Oilsands, Oilsands, OVERWORLD).buildVein());
+      //ev.vein(new WorldGenVeinBuilder("apatite").asOreVein(-4, 41, 60, 3, 16, Apatite, Apatite, Phosphorus, Phosphate, OVERWORLD).buildVein());
 
   }
 
