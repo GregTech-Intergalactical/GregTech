@@ -194,20 +194,13 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
     private List<Widget> setupSiftMachineSlots(OreProcessingDisplay display, Rectangle bounds){
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createSlot(xy(110, 25, bounds)).entries(ofMachine(Machines.SIFTER)).markInput().disableBackground());
-        if (display.ore.has(GEM_EXQUISITE)){
-            widgets.add(Widgets.createSlot(xy(130, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(GEM_EXQUISITE.get(display.ore),1)))).markOutput().disableBackground());
-        }
-        if (display.ore.has(GEM_FLAWLESS)){
-            widgets.add(Widgets.createSlot(xy(148, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(GEM_FLAWLESS.get(display.ore),1)))).markOutput().disableBackground());
-        }
-        if (display.ore.has(GEM_FLAWED)){
-            widgets.add(Widgets.createSlot(xy(130, 22, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(GEM_FLAWED.get(display.ore),1)))).markOutput().disableBackground());
-        }
-        if (display.ore.has(GEM_CHIPPED)){
-            widgets.add(Widgets.createSlot(xy(148, 22, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(GEM_CHIPPED.get(display.ore),1)))).markOutput().disableBackground());
-        }
+        boolean e = display.ore.has(GEM_EXQUISITE);
+        widgets.add(Widgets.createSlot(xy(130, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(e ? GEM_EXQUISITE.get(display.ore) : GEM.get(display.ore),1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(148, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(e ? GEM_FLAWLESS.get(display.ore) : GEM.get(display.ore),1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(130, 22, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(e ? GEM_FLAWED.get(display.ore) : GEM.get(display.ore),1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(148, 22, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(e ? GEM_CHIPPED.get(display.ore) : GEM.get(display.ore),1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(166, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(GEM.get(display.ore),1)))).markOutput().disableBackground());
-        widgets.add(Widgets.createSlot(xy(166, 22, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST_PURE.get(display.ore),1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(166, 22, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(display.ore),1)))).markOutput().disableBackground());
         return widgets;
     }
 
