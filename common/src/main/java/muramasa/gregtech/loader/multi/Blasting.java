@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.multi;
 
 import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
@@ -46,7 +47,7 @@ public class Blasting {
 
         });
 
-        CRUSHED.all().forEach(m -> {
+        /*CRUSHED.all().forEach(m -> {
             if (!m.has(ORE)) return;
             ItemStack ingot = new ItemStack(Items.IRON_INGOT);
             RecipeIngredient ore = ORE.getMaterialIngredient(m, 1);
@@ -60,7 +61,7 @@ public class Blasting {
                 BLASTING.RB().ii(ore, DUST.getIngredient(Calcite, multiplier)).io(Utils.mul(multiplier * 2, ingot), darkAsh).add("ore_" + m.getId(),ingot.getCount() * 500L, 120, 1500);
                 BLASTING.RB().ii(ore, DUST.getIngredient(Quicklime, multiplier)).io(Utils.mul(multiplier * 2, ingot), darkAsh).add("ore_" + m.getId() + "_2",ingot.getCount() * 500L, 120, 1500);
             }
-        });
+        });*/
 
         /* PRIMITIVE */
         BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(1.0, 0.5).add("steel_ingot",1200, 0);
@@ -72,6 +73,15 @@ public class Blasting {
             }
         });
 
+        addCalciteRecipe(BandedIron, 4, new ItemStack(Items.IRON_INGOT, 1));
+        addCalciteRecipe(YellowLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
+        addCalciteRecipe(BrownLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
+        addCalciteRecipe(Magnetite, 11, new ItemStack(Items.IRON_INGOT, 3));
+        addCalciteRecipe(Cassiterite, 5, INGOT.get(Tin, 1));
+        addCalciteRecipe(Chalcopyrite, 6, new ItemStack(Items.COPPER_INGOT), new ItemStack(Items.IRON_INGOT));
+        addCalciteRecipe(Tetrahedrite, 12, new ItemStack(Items.COPPER_INGOT, 3), new ItemStack(Items.IRON_INGOT));
+        addCalciteRecipe(Galena, 4, INGOT.get(Lead, 1), INGOT.get(Silver, 1));
+        addCalciteRecipe(Garnierite, 3, INGOT.get(Nickel, 1));
         /* Annealed Copper*/
         BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(AntimatterMaterials.Copper, 1))
                 .fi(Oxygen.getGas(1000))
@@ -163,5 +173,16 @@ public class Blasting {
         BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium240Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium240,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium240_ingot",40*20, 480);
 
 
+    }
+
+    private static void addCalciteRecipe(Material ore, int input, ItemStack... outputs){
+        BASIC_BLASTING.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add(ore.getId() + "_calcite", input * 1000);
+        BASIC_BLASTING.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add(ore.getId() + "_limestone", input * 1000);
+        BASIC_BLASTING.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add(ore.getId() + "_marble", input * 1000);
+        BASIC_BLASTING.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Quicklime, 1)).io(outputs).add(ore.getId() + "_quicklime", input * 1000);
+        BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add(ore.getId() + "_calcite", input * 500, 120);
+        BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add(ore.getId() + "_limestone", input * 500, 120);
+        BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add(ore.getId() + "_marble", input * 500, 120);
+        BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Quicklime, 1)).io(outputs).add(ore.getId() + "_quicklime", input * 500, 120);
     }
 }
