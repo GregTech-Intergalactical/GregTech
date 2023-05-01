@@ -308,7 +308,7 @@ public class Materials {
     public static Material IronMagnetic = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnetic_iron", 0xc8c8c8, MAGNETIC));
     public static Material Kanthal = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "kanthal", 0xc2d2df, METALLIC));
     public static Material Magnalium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnalium", 0xc8beff, DULL));
-    public static Material Naquadah = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "naquadah", 0x323232, METALLIC));
+    public static Material Naquadah = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "naquadah", 0x323232, METALLIC, Naq));
     public static Material NaquadahAlloy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "naquadah_alloy", 0x282828, METALLIC));
     public static Material Naquadria = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "naquadria", 0x1e1e1e, SHINY));
     public static Material NeodymiumMagnetic = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnetic_neodymium", 0x646464, MAGNETIC));
