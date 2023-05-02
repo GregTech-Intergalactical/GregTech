@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 
 import static muramasa.gregtech.data.Materials.WoodPulp;
@@ -11,13 +12,15 @@ public class CompressorLoader {
     public static void init() {
         AntimatterMaterialTypes.INGOT.all().forEach(ingot -> {
             if (ingot.has(AntimatterMaterialTypes.BLOCK)) {
-                COMPRESSING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.INGOT.get(ingot), 9)).io(AntimatterMaterialTypes.BLOCK.get().get(ingot).asStack(1))
+                int count = ingot.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
+                COMPRESSING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.INGOT.get(ingot), count)).io(AntimatterMaterialTypes.BLOCK.get().get(ingot).asStack(1))
                         .add("block_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
             }
         });
         AntimatterMaterialTypes.GEM.all().forEach(ingot -> {
             if (ingot.has(AntimatterMaterialTypes.BLOCK)) {
-                COMPRESSING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.GEM.get(ingot), 9)).io(AntimatterMaterialTypes.BLOCK.get().get(ingot).asStack(1))
+                int count = ingot.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
+                COMPRESSING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.GEM.get(ingot), count)).io(AntimatterMaterialTypes.BLOCK.get().get(ingot).asStack(1))
                         .add("gem_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
             }
         });
