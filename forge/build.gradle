@@ -73,6 +73,7 @@ dependencies {
     modRuntimeOnly("curse.maven:the-one-probe-245211:${rootProject.top_forge_file}")
     modRuntimeOnly("curse.maven:rubidium-574856:4451888")
     modRuntimeOnly("curse.maven:worldstripper-250603:3670854")
+    modRuntimeOnly("curse.maven:ae2-223794:4498141")
     modRuntimeOnly("com.blamejared.crafttweaker:CraftTweaker-forge-1.18.2:${rootProject.crafttweaker_version}")
 }
 

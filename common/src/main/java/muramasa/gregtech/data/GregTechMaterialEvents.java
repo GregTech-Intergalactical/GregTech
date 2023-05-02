@@ -483,8 +483,7 @@ public class GregTechMaterialEvents {
          *  Basic
          **/
         event.setMaterial(CertusQuartz).asGemBasic(false,PLATE).asOre(1, 5, true).addTools(Tiers.IRON.getAttackDamageBonus(), Tiers.IRON.getSpeed(), 256, Tiers.IRON.getLevel());
-        GEM.replacement(CertusQuartz, () -> AntimatterPlatformUtils.getItemFromID(Ref.MOD_AE, "certus_quartz_crystal"));
-        GEM.replacement(ChargedCertusQuartz, () -> AntimatterPlatformUtils.getItemFromID(Ref.MOD_AE, "charged_certus_quartz_crystal"));
+        event.setMaterial(Fluix).asGemBasic(false).addTools(2.4f, Tiers.IRON.getSpeed(), 768, Tiers.IRON.getLevel(), of(Enchantments.MOB_LOOTING, 1, Enchantments.BLOCK_FORTUNE, 1));
         event.setMaterial(Charcoal).asGemBasic(false).mats(of(Carbon, 1));
         event.setMaterial(CoalCoke).asGemBasic(false);
         event.setMaterial(Dilithium).asGemBasic(true);

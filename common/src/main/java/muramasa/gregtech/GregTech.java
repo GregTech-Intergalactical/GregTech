@@ -17,6 +17,7 @@ import muramasa.gregtech.datagen.GregTechBlockTagProvider;
 import muramasa.gregtech.datagen.GregTechItemTagProvider;
 import muramasa.gregtech.datagen.GregtechBlockLootProvider;
 import muramasa.gregtech.datagen.ProgressionAdvancements;
+import muramasa.gregtech.integration.AppliedEnergisticsRegistrar;
 import muramasa.gregtech.integration.rei.*;
 import muramasa.gregtech.loader.crafting.*;
 import muramasa.gregtech.loader.items.Circuitry;
@@ -42,6 +43,7 @@ public class GregTech extends AntimatterMod {
     @Override
     public void onRegistrarInit() {
         super.onRegistrarInit();
+        new AppliedEnergisticsRegistrar();
         LOGGER.info("Loading GregTech");
         INSTANCE = this;
         ServerHandler.setup();
@@ -127,6 +129,9 @@ public class GregTech extends AntimatterMod {
         loader.accept("decaying", DecayChamber::init);
         loader.accept("dehydrating", ChemicalDehydrator::init);
         loader.accept("autoclaving", Autoclave::init);
+        if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
+            loader.accept("ae2", AppliedEnergisticsRegistrar::machineRecipes);
+        }
     }
 
     public static <T> T get(Class<? extends T> clazz, String id) {
