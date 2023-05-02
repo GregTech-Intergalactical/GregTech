@@ -19,7 +19,7 @@ public class Autoclave {
             }else{
                 dur = 400;
             }
-            AUTOCLAVING.RB().ii(of(DUST.get(g))).fi(Water.getLiquid(1000)).io(GEM.get(g)).add(g.getId()+"_autoclaving", dur,8);
+            AUTOCLAVING.RB().ii(of(DUST.get(g))).fi(Water.getLiquid(200)).io(GEM.get(g)).add(g.getId(), dur,8);
         });
     }
 }
