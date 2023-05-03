@@ -472,7 +472,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Olivine).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2, of(Enchantments.SILK_TOUCH, 1)).mats(of(Magnesium, 2, Iron, 1, SiliconDioxide, 2));
         event.setMaterial(Opal).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(SiliconDioxide, 1));
         event.setMaterial(Phosphorus).asGemBasic(false).asOre(3, 7, true).mats(of(Calcium, 3, Phosphate, 2));
-        event.setMaterial(Quartzite).asGemBasic(false, ROCK, ROD).asOre(2, 5, true).mats(of(Silicon, 1, Oxygen, 2));
+        event.setMaterial(Quartzite).asGemBasic(false, ROCK, ROD, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).mats(of(Silicon, 1, Oxygen, 2));
         event.setMaterial(RedGarnet).asGem(false).asOre(3, 7, true).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
         event.setMaterial(Ruby).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(Chrome, 1, Aluminium, 2, Oxygen, 3));
         event.setMaterial(Sodalite).asGemBasic(false).asOre(2, 5, true).mats(of(Aluminium, 3, Silicon, 3, Sodium, 4, Chlorine, 1));
@@ -482,8 +482,8 @@ public class GregTechMaterialEvents {
         /**
          *  Basic
          **/
-        event.setMaterial(CertusQuartz).asGemBasic(false,PLATE).asOre(1, 5, true).addTools(Tiers.IRON.getAttackDamageBonus(), Tiers.IRON.getSpeed(), 256, Tiers.IRON.getLevel());
-        event.setMaterial(Fluix).asGemBasic(false).addTools(2.4f, Tiers.IRON.getSpeed(), 768, Tiers.IRON.getLevel(), of(Enchantments.MOB_LOOTING, 1, Enchantments.BLOCK_FORTUNE, 1));
+        event.setMaterial(CertusQuartz).asGemBasic(false,PLATE, QUARTZ_LIKE_BLOCKS).asOre(1, 5, true).addTools(Tiers.IRON.getAttackDamageBonus(), Tiers.IRON.getSpeed(), 256, Tiers.IRON.getLevel());
+        event.setMaterial(Fluix).asGemBasic(false, QUARTZ_LIKE_BLOCKS).addTools(2.4f, Tiers.IRON.getSpeed(), 768, Tiers.IRON.getLevel(), of(Enchantments.MOB_LOOTING, 1, Enchantments.BLOCK_FORTUNE, 1));
         event.setMaterial(Charcoal).asGemBasic(false).mats(of(Carbon, 1));
         event.setMaterial(CoalCoke).asGemBasic(false);
         event.setMaterial(Dilithium).asGemBasic(true);

@@ -2,6 +2,7 @@ package muramasa.gregtech.integration;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
@@ -37,6 +38,10 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
             GEM.replacement(Fluix, () -> getAe2Item("fluix_crystal"));
             DUST.replacement(CertusQuartz, () -> getAe2Item("certus_quartz_dust"));
             DUST.replacement(Fluix, () -> getAe2Item("fluix_dust"));
+            BLOCK.replacement(CertusQuartz, () -> getAe2Item("quartz_block"));
+            BLOCK.replacement(Fluix, () -> getAe2Item("fluix_block"));
+            ORE.replacement(CertusQuartz, AntimatterStoneTypes.STONE, () -> getAe2Item("quartz_ore"));
+            ORE.replacement(CertusQuartz, AntimatterStoneTypes.DEEPSLATE, () -> getAe2Item("deepslate_quartz_ore"));
         }
     }
 
