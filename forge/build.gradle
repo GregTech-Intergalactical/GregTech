@@ -65,10 +65,10 @@ dependencies {
     //modRuntimeOnly("mezz.jei:jei-1.18.2:9.5.0.132")
     modImplementation("com.github.Reforged-Mods:ARRP-forge:0.6.7-1.18.2")
     modRuntimeOnly("io.github.feltmc:fluidhandler-extras:1.0.1")
-    implementation("com.github.gregtech-intergalactical:gtrubber-forge:0.2.1-1.18.2:dev-shadow"){
+    implementation("com.github.gregtech-intergalactical:gtrubber-forge:0.2.2-1.18.2:dev-shadow"){
         transitive = false
     }
-    include("com.github.gregtech-intergalactical:gtrubber-forge:0.2.1-1.18.2")
+    include("com.github.gregtech-intergalactical:gtrubber-forge:0.2.2-1.18.2")
     modRuntimeOnly("dev.latvian.mods:kubejs-forge:${rootProject.kubejs_version}")
     modRuntimeOnly("curse.maven:the-one-probe-245211:${rootProject.top_forge_file}")
     modRuntimeOnly("curse.maven:rubidium-574856:4451888")
