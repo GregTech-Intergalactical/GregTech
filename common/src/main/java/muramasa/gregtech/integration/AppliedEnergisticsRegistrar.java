@@ -78,8 +78,8 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         RecipeMaps.ASSEMBLING.RB().ii(of(getAe2Item("printed_logic_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(AntimatterPlatformUtils.isForge() ? 144L : 9000L)).io(new ItemStack(getAe2Item("logic_processor"))).add("logic_processor", 64, 32);
         RecipeMaps.ASSEMBLING.RB().ii(of(getAe2Item("printed_engineering_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(AntimatterPlatformUtils.isForge() ? 144L : 9000L)).io(new ItemStack(getAe2Item("engineering_processor"))).add("engineering_processor", 64, 32);
         RecipeMaps.ASSEMBLING.RB().ii(of(getAe2Item("printed_calculation_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(AntimatterPlatformUtils.isForge() ? 144L : 9000L)).io(new ItemStack(getAe2Item("calculation_processor"))).add("calculation_processor", 64, 32);
-        RecipeMaps.ASSEMBLING.RB().ii(DUST.getMaterialIngredient(CertusQuartz, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("certus_crystal_seed"))).add("certus_crystal_seed", 64, 8);
-        RecipeMaps.ASSEMBLING.RB().ii(DUST.getMaterialIngredient(Fluix, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("fluix_crystal_seed"))).add("fluix_crystal_seed", 64, 8);
+        RecipeMaps.ASSEMBLING.RB().ii(DUST.getMaterialIngredient(CertusQuartz, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("certus_crystal_seed"), 2)).add("certus_crystal_seed", 64, 8);
+        RecipeMaps.ASSEMBLING.RB().ii(DUST.getMaterialIngredient(Fluix, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("fluix_crystal_seed"), 2)).add("fluix_crystal_seed", 64, 8);
         RecipeMaps.MACERATING.RB().ii(of(getAe2Item("sky_stone_chest"))).io(new ItemStack(getAe2Item("sky_dust"), 8)).add("sky_dust_from_chest", 400, 2);
         RecipeMaps.MACERATING.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
     }
