@@ -1,4 +1,4 @@
-package muramasa.gregtech.data;
+package muramasa.gregtech.datagen;
 
 
 import muramasa.antimatter.AntimatterAPI;
@@ -23,7 +23,6 @@ public class GregTechLocalizations {
             super.addTranslations();
             add(GTIRef.ID + ".advancements.greg", "GregTech Intergalactical");
             add(GTIRef.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
-            add(GTIRef.ID + ".tooltip.occurrence", "Indicates occurrence of ");
             add(GTIRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
             add(GTIRef.ID + ".rei.tooltip.material_tree", "Material Tree");
         }
@@ -34,6 +33,8 @@ public class GregTechLocalizations {
             AntimatterAPI.all(BlockCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Integrated Circuit (" + i.circuitId + ")"));
+            override("machine.primitive_blast_furnace", "Primitive Blast Furnace");
+            override("machine.coke_oven", "Coke Oven");
         }
     }
 
