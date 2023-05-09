@@ -284,8 +284,8 @@ public class GregTechData {
     //    public static final RegistryObject<Item> CombNaquadah = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_naquadah", "")/*.optional(GTIRef.MOD_FR)*/;
 
 
-    public static StoneType GRANITE_RED = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "red_granite", Materials.RedGranite, "block/stone/", SoundType.STONE, true));
-    public static StoneType GRANITE_BLACK = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "black_granite", Materials.BlackGranite, "block/stone/", SoundType.STONE, true));
+    public static StoneType GRANITE_RED = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "red_granite", Materials.RedGranite, "block/stone/", SoundType.STONE, true)).setHarvestLevel(3);
+    public static StoneType GRANITE_BLACK = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "black_granite", Materials.BlackGranite, "block/stone/", SoundType.STONE, true)).setHarvestLevel(3);
     public static StoneType MARBLE = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "marble", Materials.Marble, "block/stone/", SoundType.STONE, true));
 
     public static StoneType KOMATIITE = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "komatiite", Materials.Komatiite, "block/stone/", SoundType.STONE, true));
