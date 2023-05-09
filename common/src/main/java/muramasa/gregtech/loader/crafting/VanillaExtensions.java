@@ -26,7 +26,7 @@ import static muramasa.gregtech.data.Materials.*;
 public class VanillaExtensions {
     public static void loadRecipes(Consumer<FinishedRecipe> consumer, AntimatterRecipeProvider provider) {
         provider.addConditionalRecipe(consumer, provider.getStackRecipe("", "has_sulfur_dust", provider.hasSafeItem(TagUtils.getForgelikeItemTag("dusts/sulfur")),
-                new ItemStack(Blocks.TORCH, 6), of('D', TagUtils.getForgelikeItemTag("dusts/sulfur"), 'R', ForgeCTags.RODS_WOODEN), "D", "R"), GTIRef.class, "sulfurTorch", GTIRef.ID, "sulfur_torch");
+                new ItemStack(Blocks.TORCH, 2), of('D', TagUtils.getForgelikeItemTag("dusts/sulfur"), 'R', ForgeCTags.RODS_WOODEN), "D", "R"), GTIRef.class, "sulfurTorch", GTIRef.ID, "sulfur_torch");
 
         provider.addItemRecipe(consumer, GTIRef.ID, "hopper", "", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()),
                 Blocks.HOPPER, of('C', Blocks.CHEST, 'I', TagUtils.getForgelikeItemTag("plates/iron"), 'W', AntimatterDefaultTools.WRENCH.getTag()), "IWI", "ICI", " I ");
