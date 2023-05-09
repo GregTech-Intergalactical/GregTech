@@ -467,7 +467,6 @@ public class Materials {
     public static Material CertusQuartz = AntimatterAPI.register(Material.class,new Material(GTIRef.ID, "certus_quartz", 0xd2d2e6, QUARTZ, Ref.MOD_AE));
     public static Material ChargedCertusQuartz = AntimatterAPI.register(Material.class,new Material(GTIRef.ID, "charged_certus_quartz", 0xd2d2e6, QUARTZ, Ref.MOD_AE));
     public static Material Fluix = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fluix", 0x78468C, QUARTZ, Ref.MOD_AE));
-    public static Material Charcoal = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "charcoal", 0x644646, LIGNITE));
     public static Material CoalCoke = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "coal_coke", 0x8c8caa, LIGNITE));
     public static Material Dilithium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dilithium", 0xfffafa, DIAMOND));
     public static Material Glass = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glass", 0xfafafa, SHINY));

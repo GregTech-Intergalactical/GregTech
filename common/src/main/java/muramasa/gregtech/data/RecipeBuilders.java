@@ -82,8 +82,8 @@ public class RecipeBuilders {
             AntimatterAPI.runOnEvent(RegistrationEvent.DATA_READY, () -> FUELS = new ItemStack[]{
                     GEM.get(AntimatterMaterials.Coal, 1),
                     DUST.get(AntimatterMaterials.Coal, 1),
-                    GEM.get(Materials.Charcoal, 1),
-                    DUST.get(Materials.Charcoal, 1),
+                    GEM.get(AntimatterMaterials.Charcoal, 1),
+                    DUST.get(AntimatterMaterials.Charcoal, 1),
                     GEM.get(Materials.CoalCoke, 1),
                     GEM.get(Materials.LigniteCoke, 1),
             });
