@@ -37,8 +37,8 @@ public class CentrifugingLoader {
             CENTRIFUGING.RB().ii(input).io(items).fo(fluids).add("dust_" + t.getId(),t.getMass()*10, t.getMass() < 10 ? 30 : 64);
         });
         //some stone dust recipe from gtnh without metal mixture
-        CENTRIFUGING.RB().ii(of(DUST.get(Stone, 32))).io(DUST.get(Quartz, 9), DUST.get(PotassiumFeldspar, 9), DUST.get(Marble, 8), DUST.get(Biotite, 4),
-                DUST.get(Sodalite, 4)).add("stone_dust",7680, 30);
+        //CENTRIFUGING.RB().ii(of(DUST.get(Stone, 32))).io(DUST.get(Quartz, 9), DUST.get(PotassiumFeldspar, 9), DUST.get(Marble, 8), DUST.get(Biotite, 4),
+        //        DUST.get(Sodalite, 4)).add("stone_dust",7680, 30);
 
         //Cake Centrifuging
         CENTRIFUGING.RB().ii(of(DUST.get(ThoriumCake, 5))).io(DUST.get(ThoriumDioxide, 1), DUST.get(TrithoriumOctoxide, 4)).add("thorium_cake_centrifuging",400, 500);
