@@ -2,6 +2,7 @@ package muramasa.gregtech.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -71,6 +72,8 @@ public class GregTechData {
     public static ItemBasic<?> QuantumEye = new ItemBasic<>(GTIRef.ID, "quantum_eye").tip("Improved Ender Eye");
     public static ItemBasic<?> QuantumStat = new ItemBasic<>(GTIRef.ID, "quantum_star").tip("Improved Nether Star");
     public static ItemBasic<?> GraviStar = new ItemBasic<>(GTIRef.ID, "gravi_star").tip("Ultimate Nether Star");
+    public static ItemBasic<?> CompressedFireClay = new ItemBasic<>(GTIRef.ID, "compressed_fire_clay").tip("Brick Shaped");
+    public static ItemBasic<?> FireBrick = new ItemBasic<>(GTIRef.ID, "fire_brick").tip("Heat Resistant");
 
     public static ItemBasic<?> MotorLV = new ItemBasic<>(GTIRef.ID, "motor_lv");
     public static ItemBasic<?> MotorMV = new ItemBasic<>(GTIRef.ID, "motor_mv");
@@ -294,19 +297,6 @@ public class GregTechData {
 
     //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(GTIRef.ID, "anthracite_coal", new Texture(GTIRef.ID, "block/basic/anthracite_coal");
     //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(GTIRef.ID, "anthracite_coal", new Texture(GTIRef.ID, "block/basic/anthracite_coal");
-
-    //    public static BlockStone STONE_GRANITE_RED = new BlockStone(GTIRef.ID, GRANITE_RED);
-    //    public static BlockStone STONE_GRANITE_BLACK = new BlockStone(GTIRef.ID, GRANITE_BLACK);
-    //    public static BlockStone STONE_MARBLE = new BlockStone(GTIRef.ID, MARBLE);
-    //    public static BlockStone STONE_BASALT = new BlockStone(GTIRef.ID, BASALT);
-    //
-    //    public static BlockStone STONE_KOMATIITE = new BlockStone(GTIRef.ID, KOMATIITE);
-    //    public static BlockStone STONE_LIMESTONE = new BlockStone(GTIRef.ID, LIMESTONE);
-    //    public static BlockStone STONE_GREEN_SCHIST = new BlockStone(GTIRef.ID, GREEN_SCHIST);
-    //    public static BlockStone STONE_BLUE_SCHIST = new BlockStone(GTIRef.ID, BLUE_SCHIST);
-    //    public static BlockStone STONE_KIMBERLITE = new BlockStone(GTIRef.ID, KIMBERLITE);
-    //    public static BlockStone STONE_QUARTZITE = new BlockStone(GTIRef.ID, QUARTZITE);
-
     public static final BlockCasing CASING_ULV = new BlockCasing(GTIRef.ID, "casing_ulv");
     public static final BlockCasing CASING_LV = new BlockCasing(GTIRef.ID, "casing_lv");
     public static final BlockCasing CASING_MV = new BlockCasing(GTIRef.ID, "casing_mv");
@@ -329,7 +319,7 @@ public class GregTechData {
     public static final BlockCasing HULL_UV = new BlockCasing(GTIRef.ID, "hull_uv");
     public static final BlockCasing HULL_MAX = new BlockCasing(GTIRef.ID, "hull_max");
 
-    public static final BlockCasing CASING_FIRE_BRICK = new BlockCasing(GTIRef.ID, "casing_fire_brick");
+    public static final BlockCasing CASING_FIRE_BRICK = new BlockCasing(GTIRef.ID, "fire_bricks");
     public static final BlockCasing CASING_BLAST_BRICK = new BlockCasing(GTIRef.ID, "casing_blast_brick");
     public static final BlockCasing CASING_BRONZE = new BlockCasing(GTIRef.ID, "casing_bronze");
     public static final BlockCasing CASING_BRICKED_BRONZE = new BlockSidedCasing(GTIRef.ID, "casing_bricked_bronze", "brick", "bronze");

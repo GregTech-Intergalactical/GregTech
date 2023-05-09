@@ -4,7 +4,11 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import net.minecraft.world.item.ItemStack;
 
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.gregtech.data.GregTechData.CompressedFireClay;
+import static muramasa.gregtech.data.Materials.Fireclay;
 import static muramasa.gregtech.data.Materials.WoodPulp;
 import static muramasa.gregtech.data.RecipeMaps.COMPRESSING;
 
@@ -25,5 +29,6 @@ public class CompressorLoader {
             }
         });
         COMPRESSING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.DUST.get(WoodPulp), 1)).io(AntimatterMaterialTypes.PLATE.get(AntimatterMaterials.Wood, 1)).add("wood_plate",60, 4);
+        COMPRESSING.RB().ii(DUST.getMaterialIngredient(Fireclay, 1)).io(new ItemStack(CompressedFireClay)).add("compressed_fireclay",200, 2);
     }
 }

@@ -40,7 +40,8 @@ public class BlockParts {
         });
 
         addBrickedCasing(output, provider, Bronze, GregTechData.CASING_BRICKED_BRONZE);
-        addBrickedCasing(output, provider, Fireclay, CASING_FIRE_BRICK);
+        provider.addStackRecipe(output, GTIRef.ID, "firebricks", "blocks", "has_fire_brick", provider.hasSafeItem(FireBrick),
+                new ItemStack(CASING_FIRE_BRICK), of('F', FireBrick), "FF", "FF");
         addBrickedCasing(output, provider, Steel, GregTechData.CASING_BRICKED_STEEL);
 
         addFirebox(output, provider, Bronze, GregTechData.CASING_FIREBOX_BRONZE);

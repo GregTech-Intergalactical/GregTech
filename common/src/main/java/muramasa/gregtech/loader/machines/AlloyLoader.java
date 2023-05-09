@@ -32,9 +32,6 @@ public class AlloyLoader {
             if (firstIngot) ALLOY_SMELTING.RB().ii(of(INGOT.getMaterialTag(first.m),first.s),of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(t.getId() +"_ingot_3",100, 12);
             if (secondIngot) ALLOY_SMELTING.RB().ii(of(DUST.getMaterialTag(first.m),first.s),of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(t.getId() +"_ingot_4",100, 12);
         });
-        //Fireclay
-        ALLOY_SMELTING.RB().ii(of(DUST.getMaterialTag(Brick), 1), of(DUST.getMaterialTag(Sand), 2))
-                .io(DUST.get(Fireclay, 1)).add("fireclay",20, 10);
         //pre Chemical Reactor Rubber
         ALLOY_SMELTING.RB().ii(of(DUST.get(RawRubber), 1), of(DUST.getMaterialTag(Sulfur), 1))
                 .io(DUST.get(Rubber, 1)).add("rubber_via_alloy_smelter",20, 10);

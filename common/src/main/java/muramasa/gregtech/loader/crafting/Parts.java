@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.crafting;
 import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
@@ -75,6 +76,8 @@ public class Parts {
               .build(),
           "RTO", "SPW", "OMC");
     });
+      provider.shapeless(output, "fire_clay_dust", "parts", "has_clay_dust", provider.hasSafeItem(AntimatterMaterialTypes.DUST.getMaterialTag(Clay)), AntimatterMaterialTypes.DUST.get(Fireclay, 2),
+              AntimatterMaterialTypes.DUST.getMaterialTag(Brick), AntimatterMaterialTypes.DUST.getMaterialTag(Clay));
 
       provider.addStackRecipe(output, GTIRef.ID, "drain_expensive", "parts", "has_battery", provider.hasSafeItem(Items.IRON_BARS),
               new ItemStack(GregTech.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");

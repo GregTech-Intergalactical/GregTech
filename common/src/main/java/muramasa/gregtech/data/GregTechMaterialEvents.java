@@ -346,7 +346,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Energium).asDust().mats(of(Redstone,1,Ruby,1));
         event.setMaterial(FerriteMixture).asDust().mats(of(Nickel, 1, Zinc, 1, Iron, 4));
         event.setMaterial(Ferrosilite).asDust().mats(of(Iron, 1, Silicon, 1, Oxygen, 3));
-        event.setMaterial(Fireclay).asDust(INGOT, PLATE).mats(of(Brick, 1));
+        event.setMaterial(Fireclay).asDust().mats(of(Brick, 1));
         event.setMaterial(GreenSchist).asDust(ROCK);
         event.setMaterial(IndiumGalliumPhosphide).asDust().mats(of(Indium, 1, Gallium, 1, Phosphor, 1));
         event.setMaterial(IridiumSodiumOxide).asDust().mats(of(Iridium,1,Sodium,1,Oxygen,2));
