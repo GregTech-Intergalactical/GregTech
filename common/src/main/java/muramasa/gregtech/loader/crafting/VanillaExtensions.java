@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.github.gregtechintergalactical.gtrubber.GTRubberData;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -45,6 +46,19 @@ public class VanillaExtensions {
 
         provider.addItemRecipe(consumer, GTIRef.ID, AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone).getRegistryName().getPath() + "_alt", "gears", "has_stone", provider.hasSafeItem(ForgeCTags.STONE),
                 AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone), of('S', ForgeCTags.STONE, 'W', AntimatterDefaultTools.WRENCH.getTag(), 'C', ForgeCTags.COBBLESTONE), "CSC", "SWS", "CSC");
+
+        provider.addItemRecipe(consumer, GTIRef.ID, "chainmail_helmet", "chainmail_armor", "has_hammer", provider.hasSafeItem(AntimatterDefaultTools.HAMMER.getTag()),
+                Items.CHAINMAIL_HELMET, of('R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'H', AntimatterDefaultTools.HAMMER.getTag()), "RRR", "RHR");
+        provider.addItemRecipe(consumer, GTIRef.ID, "chainmail_chestplate", "chainmail_armor", "has_hammer", provider.hasSafeItem(AntimatterDefaultTools.HAMMER.getTag()),
+                Items.CHAINMAIL_CHESTPLATE, of('R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'H', AntimatterDefaultTools.HAMMER.getTag()), "RHR", "RRR", "RRR");
+        provider.addItemRecipe(consumer, GTIRef.ID, "chainmail_leggings", "chainmail_armor", "has_hammer", provider.hasSafeItem(AntimatterDefaultTools.HAMMER.getTag()),
+                Items.CHAINMAIL_LEGGINGS, of('R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'H', AntimatterDefaultTools.HAMMER.getTag()), "RRR", "RHR", "R R");
+        provider.addItemRecipe(consumer, GTIRef.ID, "chainmail_boots", "chainmail_armor", "has_hammer", provider.hasSafeItem(AntimatterDefaultTools.HAMMER.getTag()),
+                Items.CHAINMAIL_BOOTS, of('R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'H', AntimatterDefaultTools.HAMMER.getTag()), "R R", "RHR");
+        provider.addItemRecipe(consumer, GTIRef.ID, "saddle", "", "has_leather", provider.hasSafeItem(Items.LEATHER), Items.SADDLE,
+                of('L', Items.LEATHER, 'R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'S', AntimatterMaterialTypes.SCREW.getMaterialTag(Steel)), "LLL", "LSL", "R R");
+        provider.addStackRecipe(consumer, GTIRef.ID, "lead_from_resin", "", "has_resin", provider.hasSafeItem(GTRubberData.StickyResin), new ItemStack(Items.LEAD, 2), of('S', Items.STRING, 'R', GTRubberData.StickyResin), "SS ", "SR ", "  S");
+        provider.shapeless(consumer, "gravel_to_flint", "mortar_recipes", "has_mortar", provider.hasSafeItem(AntimatterDefaultTools.MORTAR.getTag()), new ItemStack(Items.FLINT), AntimatterDefaultTools.MORTAR.getTag(), Items.GRAVEL);
 
         provider.addItemRecipe(consumer, GTIRef.ID, "piston_sticky","gears", "has_stone", provider.hasSafeItem(Blocks.PISTON), Blocks.STICKY_PISTON, of('S', GTRubberData.StickyResin, 'P', Blocks.PISTON), "S", "P");
 
