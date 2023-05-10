@@ -1,10 +1,11 @@
 package muramasa.gregtech.data;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.material.MaterialTag;
 import muramasa.antimatter.material.tags.DoubleMaterialTag;
 
 public class GregTechMaterialTags {
-    public static final MaterialTag ELEC = new MaterialTag("elec"); //Add Electrolyzer Recipes - SHOULD NOT SHARE MATS WITH CENT
+    public static final MaterialTag ELEC = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec", true)); //Add Electrolyzer Recipes - SHOULD NOT SHARE MATS WITH CENT
     public static final MaterialTag CENT = new MaterialTag("cent"); //Add Centrifuging Recipes - SHOULD NOT SHARE MATS WITH ELEC
     public static final MaterialTag CRACK = new MaterialTag("crack"); //Add Cracking Recipes
     public static final MaterialTag SMELTG = new MaterialTag("smelt_g"); //Add Smelting to Gem Recipes
