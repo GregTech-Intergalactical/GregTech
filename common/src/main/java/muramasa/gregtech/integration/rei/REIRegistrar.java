@@ -5,7 +5,7 @@ import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.integration.rei.REIUtils;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.material.MaterialTags;
+import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Machines;
 import net.minecraft.world.item.ItemStack;
 
@@ -33,11 +33,11 @@ public class REIRegistrar {
         });
         REIUtils.addExtraDisplay(r -> {
             AntimatterMaterialTypes.ORE.all().forEach(m -> {
-                if (m.has(MaterialTags.CHEMBATH_PERSULFATE) || m.has(MaterialTags.CHEMBATH_MERCURY)){
-                    if (m.has(MaterialTags.CHEMBATH_MERCURY)){
+                if (m.has(GregTechMaterialTags.CHEMBATH_PERSULFATE) || m.has(GregTechMaterialTags.CHEMBATH_MERCURY)){
+                    if (m.has(GregTechMaterialTags.CHEMBATH_MERCURY)){
                         r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.MERCURY));
                     }
-                    if (m.has(MaterialTags.CHEMBATH_PERSULFATE)){
+                    if (m.has(GregTechMaterialTags.CHEMBATH_PERSULFATE)){
                         r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.PERSULFATE));
                     }
                 } else {

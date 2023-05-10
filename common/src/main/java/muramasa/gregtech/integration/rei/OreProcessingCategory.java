@@ -20,6 +20,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.client.gui.GuiComponent;
@@ -182,10 +183,10 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         widgets.add(Widgets.createSlot(xy(29, 48, bounds)).entries(ofMachine(Machines.CHEMICAL_BATH)).markInput().disableBackground());
         if(display.bathingMode == OreProcessingDisplay.BathingMode.MERCURY){
             widgets.add(Widgets.createSlot(xy(50, 48, bounds)).entries(ofFluid(Materials.Mercury,1000)).markInput().disableBackground());
-            widgets.add(Widgets.createSlot(xy(90, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(CHEMBATH_MERCURY.getMapping(display.ore)),1)))).markOutput().disableBackground());
+            widgets.add(Widgets.createSlot(xy(90, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(GregTechMaterialTags.CHEMBATH_MERCURY.getMapping(display.ore)),1)))).markOutput().disableBackground());
         }else{
             widgets.add(Widgets.createSlot(xy(50, 48, bounds)).entries(ofFluid(Materials.SodiumPersulfate,1000)).markInput().disableBackground());
-            widgets.add(Widgets.createSlot(xy(90, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(CHEMBATH_PERSULFATE.getMapping(display.ore)),1)))).markOutput().disableBackground());
+            widgets.add(Widgets.createSlot(xy(90, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(GregTechMaterialTags.CHEMBATH_PERSULFATE.getMapping(display.ore)),1)))).markOutput().disableBackground());
         }
         widgets.add(Widgets.createSlot(xy(72, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(CRUSHED_PURIFIED.get(display.ore),1)))).markOutput().disableBackground());
         return widgets;

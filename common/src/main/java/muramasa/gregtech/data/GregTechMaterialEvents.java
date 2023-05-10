@@ -1,18 +1,11 @@
 package muramasa.gregtech.data;
 
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.material.data.FluidProduct;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -21,15 +14,12 @@ import static muramasa.antimatter.data.AntimatterMaterials.Charcoal;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.*;
 import static muramasa.gregtech.data.Materials.*;
-import static net.minecraft.data.loot.BlockLoot.applyExplosionDecay;
-import static net.minecraft.data.loot.BlockLoot.createSilkTouchDispatchTable;
 
 public class GregTechMaterialEvents {
     public static void onMaterialEvent(MaterialEvent event){
         flags(event);
         antimatterMaterials(event);
         byproducts(event);
-        MaterialTags.CUSTOM_ORE_DROPS.add(Lapis, b -> createSilkTouchDispatchTable(b, applyExplosionDecay(b, LootItem.lootTableItem(Items.LAPIS_LAZULI).apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 9.0F))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
         /**
          *** PSE (Solids, no Isotopes)
          **/
@@ -409,7 +399,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Cassiterite).asOre().mats(of(Tin, 1, Oxygen, 2));
         event.setMaterial(Chalcopyrite).asOre().mats(of(Copper, 1, Iron, 1, Sulfur, 2));
         event.setMaterial(Cinnabar).asOre(true).mats(of(Mercury, 1, Sulfur, 1));
-        event.setMaterial(Cobaltite).asOre(true).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
+        event.setMaterial(Cobaltite).asOre(true).harvestLevel(2).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
         event.setMaterial(Cooperite).asOre().mats(of(Platinum, 3, Nickel, 1, Sulfur, 1, Palladium, 1));
         event.setMaterial(Galena).asOre().mats(of(Lead, 3, Silver, 3, Sulfur, 2));
         event.setMaterial(Garnierite).asOre().mats(of(Nickel, 1, Oxygen, 1));
@@ -1102,16 +1092,15 @@ public class GregTechMaterialEvents {
                 Benzene, Phenol, Glyceryl, SodiumSulfide, Almandine, Andradite, BandedIron, Calcite, Cassiterite,
                 Chalcopyrite, Cobaltite, Galena, Garnierite, Grossular, Bauxite, Magnesite, Magnetite, Molybdenite,
                 Obsidian, Phosphate, Polydimethylsiloxane, Pyrite, Pyrolusite, Pyrope, RockSalt, Saltpeter,
-                SiliconDioxide, Massicot, ArsenicTrioxide, CobaltOxide, Magnesia, Quicklime, Potash, SodaAsh,
+                SiliconDioxide, Massicot, ArsenicTrioxide, CobaltOxide, Magnesia, Potash, SodaAsh,
                 PhosphorousPentoxide, SodiumHydroxide, Spessartine, Sphalerite, Uvarovite, PotassiumFeldspar, Biotite,
                 RedGranite, Bastnasite, Pentlandite, Spodumene, Glauconite, Bentonite, Malachite, Barite, Talc,
                 AntimonyTrioxide, CupricOxide, Ferrosilite, Quartzite, Charcoal, Coal, Lignite, Diamond, Emerald, Ruby,
                 BlueSapphire, Tanzanite, Topaz, Olivine, Opal, Amethyst, EnderPearl, StainlessSteel, Steel, Ultimet,
                 IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium, Sodalite, Apatite, Monazite);
-        ELECTROMAGNETIC_SEPARATOR_GOLD.add(VanadiumMagnetite, Magnetite);
-        ELECTROMAGNETIC_SEPARATOR_IRON.add(YellowLimonite, BrownLimonite, Tin, Chrome, Ilmenite, BandedIron, Pyrite, Glauconite, Nickel, /*Chromite, */Pentlandite, Manganese);
-        ELECTROMAGNETIC_SEPARATOR_NEODYMIUM.add(Monazite, Bastnasite);
-        ELECSEPN.add(YellowLimonite, BrownLimonite, Pyrite, BandedIron, Nickel, Glauconite, Pentlandite, Tin, Antimony, Ilmenite, Manganese, Chrome, Andradite);
+        ELECSEPG.add(VanadiumMagnetite, Magnetite);
+        ELECSEPI.add(YellowLimonite, BrownLimonite, Tin, Chrome, Ilmenite, BandedIron, Pyrite, Glauconite, Nickel, /*Chromite, */Pentlandite, Manganese);
+        ELECSEPN.add(Monazite, Bastnasite);
         GRINDABLE.add(/* Paper, */Coal, Charcoal, Lignite, Lead, Tin, SolderingAlloy, Flint, Gold, Silver, Iron,
                 IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar,
                 Brass, WroughtIron, Electrum, Clay, Blaze);

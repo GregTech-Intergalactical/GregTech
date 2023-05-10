@@ -1,6 +1,5 @@
 package muramasa.gregtech.loader.machines;
 
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.GTIRef;

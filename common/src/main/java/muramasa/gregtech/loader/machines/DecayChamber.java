@@ -1,11 +1,11 @@
 package muramasa.gregtech.loader.machines;
 import muramasa.antimatter.material.Material;
+import muramasa.gregtech.data.GregTechMaterialTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.antimatter.material.Material.get;
 import static muramasa.gregtech.data.RecipeMaps.DECAYING;
@@ -13,7 +13,7 @@ import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 public class DecayChamber {
     public static void init() {
-        DECAYABLE.all().forEach(d -> {
+        GregTechMaterialTags.DECAYABLE.all().forEach(d -> {
             int decaytime;
             long hls = d.getElement().halfLifeSeconds;
             if (hls < 60){

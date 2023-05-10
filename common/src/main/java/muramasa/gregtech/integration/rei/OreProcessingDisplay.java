@@ -26,7 +26,7 @@ public class OreProcessingDisplay implements Display {
 
         this.ore = material;
         this.bathingMode = bathingMode;
-        this.sepMode = material.has(GregTechMaterialTags.ELECTROMAGNETIC_SEPARATOR_IRON) ? SepMode.IRON : material.has(GregTechMaterialTags.ELECTROMAGNETIC_SEPARATOR_GOLD) ? SepMode.GOLD : material.has(GregTechMaterialTags.ELECTROMAGNETIC_SEPARATOR_NEODYMIUM) ? SepMode.NEODYMIUM : SepMode.NONE;
+        this.sepMode = material.has(GregTechMaterialTags.ELECSEPI) ? SepMode.IRON : material.has(GregTechMaterialTags.ELECSEPG) ? SepMode.GOLD : material.has(GregTechMaterialTags.ELECSEPN) ? SepMode.NEODYMIUM : SepMode.NONE;
         this.input = createInputEntries(List.of(AntimatterMaterialTypes.ORE.getMaterialIngredient(material, 1)));
         Material aOreByProduct1 = ore.getByProducts().size() >= 1 ? ore.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(ore);
         Material aOreByProduct2 = ore.getByProducts().size() >= 2 ? ore.getByProducts().get(1) : aOreByProduct1;
