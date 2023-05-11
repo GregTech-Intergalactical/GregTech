@@ -118,7 +118,7 @@ public class Machines {
     public static MultiMachine HEAT_EXCHANGER = new MultiMachine(GTIRef.ID, "heat_exchanger").setTiers(EV).setMap(HEAT_EXCHANGING).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityHeatExchanger::new).custom();
     public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(GTIRef.ID, "implosion_compressor").setTiers(HV).setMap(IMPLOSION_COMPRESSING).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityImplosionCompressor::new).setAllowVerticalFacing(true);
     public static MultiMachine LARGE_BOILER = new MultiMachine(GTIRef.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setTile(TileEntityLargeBoiler::new).custom();
-    public static MultiMachine LARGE_TURBINE = new MultiMachine(GTIRef.ID, "large_turbine").setTiers(HV, EV, IV, UV).setMap(STEAM_FUELS).addFlags(GUI, FLUID, ENERGY, GENERATOR).setTile(TileEntityLargeTurbine::new);
+    public static MultiMachine LARGE_TURBINE = new MultiMachine(GTIRef.ID, "large_turbine").setTiers(HV, EV, IV, UV).setMap(STEAM_FUELS).addFlags(GUI, FLUID, ENERGY, GENERATOR).setTile(TileEntityLargeTurbine::new).custom(Textures.TURBINE);
     public static MultiMachine MULTI_SMELTER = new MultiMachine(GTIRef.ID, "multi_smelter").setTiers(HV).setMap(SMELTING).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityMultiSmelter::new).custom();
     public static MultiMachine NUCLEAR_REACTOR = new MultiMachine(GTIRef.ID, "nuclear_reactor").setTiers(EV).setMap(NUCLEAR).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityNuclearReactor::new).setAllowVerticalFacing(true).custom();
     public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(GTIRef.ID, "oil_drilling_rig").setTiers(EV, IV, LUV, ZPM).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityOilDrillingRig::new).custom();

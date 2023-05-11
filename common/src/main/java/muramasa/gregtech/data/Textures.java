@@ -1,10 +1,13 @@
 package muramasa.gregtech.data;
 
 import muramasa.antimatter.machine.MachineState;
+import muramasa.antimatter.texture.IOverlayModeler;
 import muramasa.antimatter.texture.IOverlayTexturer;
 import muramasa.antimatter.texture.ITextureHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 
 public class Textures {
 
@@ -45,28 +48,12 @@ public class Textures {
         };
     };
 
-    public static final Texture[] LARGE_TURBINE = new Texture[] {
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_0"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_1"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_2"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_3"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_4"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_5"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_6"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_7"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_8")
-    };
-
-    public static final Texture[] LARGE_TURBINE_ACTIVE = new Texture[] {
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_active_0"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_active_1"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_active_2"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_active_3"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_active_4"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_active_5"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_active_6"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_active_7"),
-        new Texture(GTIRef.ID, "block/ct/turbine/large_turbine_active_8")
+    public static IOverlayModeler TURBINE = (type, state, side) -> {
+        String suffix = "";
+        if (side == Direction.SOUTH && state != MachineState.INVALID_STRUCTURE){
+            suffix = "_" + state.getId();
+        }
+        return new ResourceLocation(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + side.getSerializedName() + suffix);
     };
 
     public static final Texture[] FUSION_1_CT = new Texture[] {

@@ -351,10 +351,10 @@ public class GregTechData {
     public static final BlockFusionCasing CASING_FUSION_2 = new BlockFusionCasing(GTIRef.ID, "fusion_2");
     public static final BlockFusionCasing CASING_FUSION_3 = new BlockFusionCasing(GTIRef.ID, "fusion_3");
 
-    public static final BlockTurbineCasing CASING_TURBINE_1 = new BlockTurbineCasing(GTIRef.ID, "casing_turbine_1");
-    public static final BlockTurbineCasing CASING_TURBINE_2 = new BlockTurbineCasing(GTIRef.ID, "casing_turbine_2");
-    public static final BlockTurbineCasing CASING_TURBINE_3 = new BlockTurbineCasing(GTIRef.ID, "casing_turbine_3");
-    public static final BlockTurbineCasing CASING_TURBINE_4 = new BlockTurbineCasing(GTIRef.ID, "casing_turbine_4");
+    public static final BlockCasing CASING_TURBINE_1 = new BlockCasing(GTIRef.ID, "casing_turbine_1");
+    public static final BlockCasing CASING_TURBINE_2 = new BlockCasing(GTIRef.ID, "casing_turbine_2");
+    public static final BlockCasing CASING_TURBINE_3 = new BlockCasing(GTIRef.ID, "casing_turbine_3");
+    public static final BlockCasing CASING_TURBINE_4 = new BlockCasing(GTIRef.ID, "casing_turbine_4");
 
     public static final BlockCoil COIL_CUPRONICKEL = new BlockCoil(GTIRef.ID, "coil_cupronickel", 113); //1808
     public static final BlockCoil COIL_KANTHAL = new BlockCoil(GTIRef.ID, "coil_kanthal", 169); //2704

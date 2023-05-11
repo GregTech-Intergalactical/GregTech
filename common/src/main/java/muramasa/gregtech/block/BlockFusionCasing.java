@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 
 import static muramasa.antimatter.client.AntimatterModelManager.LOADER_DYNAMIC;
 
-public class BlockFusionCasing extends BlockTurbineCasing {
+public class BlockFusionCasing extends BlockCasingMachine {
 
     @Override
     protected String getTextureID() {
