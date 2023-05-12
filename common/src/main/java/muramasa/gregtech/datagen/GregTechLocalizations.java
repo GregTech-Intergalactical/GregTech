@@ -43,8 +43,8 @@ public class GregTechLocalizations {
                     add(i, lowerUnderscoreToUpperSpacedReversed(i.getId()));
                     return;
                 }
-                if (i.getId().startsWith("casing_")){
-                    add(i, lowerUnderscoreToUpperSpaced(i.getId().replace("casing_", "")) + " Casing");
+                if (i.getId().startsWith("casing_") || i.getId().startsWith("hull_")){
+                    add(i, lowerUnderscoreToUpperSpacedRotated(i.getId()));
                     return;
                 }
                 add(i, lowerUnderscoreToUpperSpaced(i.getId()));
