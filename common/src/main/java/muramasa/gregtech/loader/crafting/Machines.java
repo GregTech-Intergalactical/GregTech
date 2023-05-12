@@ -510,17 +510,15 @@ public class Machines {
                                 .put('E', ForgeCTags.CHESTS).build(), " H ", "ECE", " F "));
             }
         });
-        provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(CASING_FIRE_BRICK), PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()),
+        provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(FireBrick), PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', CASING_BLAST_BRICK)
-                        .put('F', Items.FURNACE)
-                        .put('C', Items.IRON_BLOCK).build(), "HFH", "HCH", "HFH");
+                        .put('H', FireBrick)
+                        .put('C', PLATE.getMaterialTag(Iron)).build(), "HHH", "HCH", "HHH");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), COKE_OVEN.getItem(COKE_OVEN.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', CASING_FIRE_BRICK)
-                        .put('W', Items.FURNACE)
-                        .put('P', PLATE.get(Iron)).build(), "HPH", "PWP", "HPH");
+                        .put('H', FireBrick)
+                        .put('W', Items.FURNACE).build(), "HHH", "H H", "HHH");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BRONZE_BLAST_FURNACE.getItem(BRONZE_BLAST_FURNACE.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()

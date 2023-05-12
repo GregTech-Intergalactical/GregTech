@@ -96,11 +96,11 @@ public class BlockParts {
                         .put('B', INGOT.get(Steel))
                         .put('W', WRENCH.getTag()).build(), "BPB", "PWP", "BPB");
 
-        provider.addStackRecipe(output, GTIRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
+        /*provider.addStackRecipe(output, GTIRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
                 of('C', CASING_FIRE_BRICK,
                 'P', PLATE.get(AntimatterMaterials.Iron),
                         'B', AntimatterAPI.get(Item.class, "liquid_creosote_bucket", Ref.SHARED_ID)
-        ), "PCP", "CBC", "PCP");
+        ), "PCP", "CBC", "PCP");*/
     }
 
     private static void addCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
