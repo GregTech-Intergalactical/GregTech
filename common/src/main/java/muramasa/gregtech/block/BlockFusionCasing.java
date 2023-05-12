@@ -27,11 +27,4 @@ public class BlockFusionCasing extends BlockCasingMachine {
     public boolean canConnect(BlockGetter world, BlockState state, @Nullable BlockEntity tile, BlockPos pos) {
         return state.getBlock() instanceof BlockFusionCasing;
     }
-
-    //Default code for connected textures.
-    @Override
-    public AntimatterBlockModelBuilder buildBlock(Block block, AntimatterBlockStateProvider prov) {
-        AntimatterBlockModelBuilder builder = prov.getBuilder(block);
-        return builder.loader(LOADER_DYNAMIC).basicConfig(block, getConnectedTextures());
-    }
 }

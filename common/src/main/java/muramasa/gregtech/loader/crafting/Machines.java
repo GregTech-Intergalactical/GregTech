@@ -517,8 +517,7 @@ public class Machines {
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), COKE_OVEN.getItem(COKE_OVEN.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', FireBrick)
-                        .put('W', Items.FURNACE).build(), "HHH", "H H", "HHH");
+                        .put('H', FireBrick).build(), "HHH", "H H", "HHH");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BRONZE_BLAST_FURNACE.getItem(BRONZE_BLAST_FURNACE.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
