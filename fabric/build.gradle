@@ -66,6 +66,7 @@ dependencies{
         transitive = false
     }
     modRuntimeOnly("dev.latvian.mods:kubejs-fabric:${rootProject.kubejs_version}")
+    modImplementation("curse.maven:ctm-refabricated-633997:3834064")
 }
 
 architectury {

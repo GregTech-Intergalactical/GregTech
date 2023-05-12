@@ -31,7 +31,7 @@ public class BlockFusionCasing extends BlockCasingMachine {
     //Default code for connected textures.
     @Override
     public AntimatterBlockModelBuilder buildBlock(Block block, AntimatterBlockStateProvider prov) {
-        AntimatterBlockModelBuilder builder = super.buildBlock(block, prov);
+        AntimatterBlockModelBuilder builder = prov.getBuilder(block);
         return builder.loader(LOADER_DYNAMIC).basicConfig(block, getConnectedTextures());
     }
 }

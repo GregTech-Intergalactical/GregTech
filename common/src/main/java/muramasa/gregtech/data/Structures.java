@@ -148,7 +148,7 @@ public class Structures {
                 "    OOCCCOO    ",
                 "      OOO      "
             ).of(0)
-            .at("O", CASING_FUSION_3).at("C", COIL_FUSION).at("M", FUSION_REACTOR).at("B", CASING_FUSION_3, HATCH_FLUID_I).at("H", CASING_FUSION_3, HATCH_FLUID_O).at("E", CASING_FUSION_3, HATCH_ENERGY)
+            .at("O", CASING_FUSION_2).at("C", COIL_FUSION).at("M", FUSION_REACTOR).at("B", CASING_FUSION_2, HATCH_FLUID_I).at("H", CASING_FUSION_2, HATCH_FLUID_O).at("E", CASING_FUSION_2, HATCH_ENERGY)
             .build().offset(2, -1).min(2, HATCH_FLUID_I).min(1, HATCH_FLUID_O, HATCH_ENERGY));
     }
 }
