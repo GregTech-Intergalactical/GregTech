@@ -8,7 +8,7 @@ import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.items.ItemIntCircuit;
 
-import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpaced;
+import static muramasa.antimatter.util.Utils.*;
 
 public class GregTechLocalizations {
 
@@ -30,7 +30,25 @@ public class GregTechLocalizations {
         @Override
         protected void english(String domain, String locale) {
             super.english(domain, locale);
-            AntimatterAPI.all(BlockCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+            AntimatterAPI.all(BlockCasing.class, domain).forEach(i -> {
+                if (i.getId().contains("fusion")){
+                    add(i, "Fusion Casing MK " + i.getId().replace("fusion_", ""));
+                    return;
+                }
+                if (i.getId().contains("turbine")){
+                    add(i, "Turbine Casing MK " + i.getId().replace("casing_turbine_", ""));
+                    return;
+                }
+                if (i.getId().contains("firebox") || i.getId().contains("gearbox") || i.getId().contains("pipe")){
+                    add(i, lowerUnderscoreToUpperSpacedReversed(i.getId()));
+                    return;
+                }
+                if (i.getId().startsWith("casing_")){
+                    add(i, lowerUnderscoreToUpperSpaced(i.getId().replace("casing_", "")) + " Casing");
+                    return;
+                }
+                add(i, lowerUnderscoreToUpperSpaced(i.getId()));
+            });
             AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Integrated Circuit (" + i.circuitId + ")"));
             override("machine.primitive_blast_furnace", "Primitive Blast Furnace");
