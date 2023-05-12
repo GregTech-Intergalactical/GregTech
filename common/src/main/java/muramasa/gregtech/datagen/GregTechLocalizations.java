@@ -49,7 +49,7 @@ public class GregTechLocalizations {
                 }
                 add(i, lowerUnderscoreToUpperSpaced(i.getId()));
             });
-            AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+            AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpacedRotated(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Integrated Circuit (" + i.circuitId + ")"));
             override("machine.primitive_blast_furnace", "Primitive Blast Furnace");
             override("machine.coke_oven", "Coke Oven");
