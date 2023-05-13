@@ -69,9 +69,9 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
                 .io(/*DUST_SMALL.get(BasalticMineralSand, 1), */DUST_SMALL.get(Olivine, 1), DUST_SMALL.get(Obsidian, 1), DUST_SMALL.get(Basalt, 1), DUST_SMALL.get(Flint, 1),DUST_SMALL.get(RareEarth, 1))
                 .chances(0.2,0.2,0.2,0.2,0.2)
                 .add("sky_dust", 64, 20);
-        RecipeMaps.AUTOCLAVING.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(CertusQuartz, 1)).add("certus_quartz_from_seed", 2000, 24);
-        RecipeMaps.AUTOCLAVING.RB().ii(of(getAe2Item("fluix_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(Fluix, 1)).add("fluix_from_seed", 2000, 24);
-        RecipeMaps.AUTOCLAVING.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(DistilledWater.getLiquid(200)).io(GEM.get(CertusQuartz, 1)).add("certus_quartz_from_seed_2", 1000, 24);
+        RecipeMaps.AUTOCLAVING.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(CertusQuartz, 2)).add("certus_quartz_from_seed", 2000, 24);
+        RecipeMaps.AUTOCLAVING.RB().ii(of(getAe2Item("fluix_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(Fluix, 2)).add("fluix_from_seed", 2000, 24);
+        RecipeMaps.AUTOCLAVING.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(DistilledWater.getLiquid(200)).io(GEM.get(CertusQuartz, 2)).add("certus_quartz_from_seed_2", 1000, 24);
         RecipeMaps.AUTOCLAVING.RB().ii(of(getAe2Item("fluix_crystal_seed"), 1).setIgnoreNbt()).fi(DistilledWater.getLiquid(200)).io(GEM.get(Fluix, 1)).add("fluix_from_seed_2", 1000, 24);
         RecipeMaps.MIXING.RB().ii(GEM.getIngredient(ChargedCertusQuartz, 1), DUST.getMaterialIngredient(Redstone, 1), GEM.getMaterialIngredient(Quartz, 1)).fi(Water.getLiquid(500)).io(DUST.get(Fluix, 2)).add("fluix_crystal", 20, 16);
         RecipeMaps.MIXING.RB().ii(GEM.getIngredient(ChargedCertusQuartz, 1), DUST.getMaterialIngredient(Redstone, 1), GEM.getMaterialIngredient(Quartz, 1)).fi(DistilledWater.getLiquid(500)).io(DUST.get(Fluix, 2)).add("fluix_crystal_2", 20, 16);
