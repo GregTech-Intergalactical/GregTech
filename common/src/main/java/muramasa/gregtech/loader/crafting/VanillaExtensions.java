@@ -70,6 +70,6 @@ public class VanillaExtensions {
         provider.addStackRecipe(consumer, GTIRef.ID, "torch_from_coal", "torches", "has_coal_dust", provider.hasSafeItem(DUST_IMPURE.get(Coal)), new ItemStack(Items.TORCH, 4),
                 of('C', Ingredient.of(RAW_ORE.get(Coal), DUST.get(Coal), DUST_IMPURE.get(Coal), DUST_PURE.get(Coal), CRUSHED.get(Coal),CRUSHED_PURIFIED.get(Coal), CRUSHED_REFINED.get(Coal)), 'S', Items.STICK), "C", "S");
         provider.addStackRecipe(consumer, GTIRef.ID, "torch_from_lignite", "torches", "has_lignite_dust", provider.hasSafeItem(DUST_IMPURE.get(Lignite)), new ItemStack(Items.TORCH, 2),
-                of('C', Ingredient.of(GEM.get(Lignite), RAW_ORE.get(Lignite), DUST.get(Lignite), DUST_IMPURE.get(Lignite), DUST_PURE.get(Lignite), CRUSHED.get(Coal),CRUSHED_PURIFIED.get(Lignite), CRUSHED_REFINED.get(Lignite)), 'S', Items.STICK), "C", "S");
+                of('C', Ingredient.of(GEM.get(Lignite), RAW_ORE.get(Lignite), DUST.get(Lignite), DUST_IMPURE.get(Lignite), DUST_PURE.get(Lignite), CRUSHED.get(Lignite),CRUSHED_PURIFIED.get(Lignite), CRUSHED_REFINED.get(Lignite)), 'S', Items.STICK), "C", "S");
     }
 }
