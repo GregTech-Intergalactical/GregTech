@@ -21,6 +21,7 @@ import java.util.function.Consumer;
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Coal;
+import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 import static muramasa.gregtech.data.GregTechData.ItemFilter;
 import static muramasa.gregtech.data.Materials.*;
 
@@ -60,6 +61,7 @@ public class VanillaExtensions {
         provider.addStackRecipe(consumer, GTIRef.ID, "lead_from_resin", "", "has_resin", provider.hasSafeItem(GTRubberData.StickyResin), new ItemStack(Items.LEAD, 2), of('S', Items.STRING, 'R', GTRubberData.StickyResin), "SS ", "SR ", "  S");
         provider.shapeless(consumer, "gravel_to_flint", "mortar_recipes", "has_mortar", provider.hasSafeItem(AntimatterDefaultTools.MORTAR.getTag()), new ItemStack(Items.FLINT), AntimatterDefaultTools.MORTAR.getTag(), Items.GRAVEL);
 
+        provider.addStackRecipe(consumer, "minecraft", "", "misc", "has_iron_rod", provider.hasSafeItem(ROD.getMaterialTag(Iron)), new ItemStack(Items.IRON_BARS, 8), of('R', ROD.getMaterialTag(Iron)), "RRR", "RRR");
         provider.addItemRecipe(consumer, GTIRef.ID, "piston_sticky","gears", "has_stone", provider.hasSafeItem(Blocks.PISTON), Blocks.STICKY_PISTON, of('S', GTRubberData.StickyResin, 'P', Blocks.PISTON), "S", "P");
 
         provider.addItemRecipe(consumer, "magnetic_rods_iron", "has_redstone", provider.hasSafeItem(ForgeCTags.DUSTS_REDSTONE), ROD.get(IronMagnetic),
