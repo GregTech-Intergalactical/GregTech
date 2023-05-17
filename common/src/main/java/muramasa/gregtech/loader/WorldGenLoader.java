@@ -46,7 +46,7 @@ public class WorldGenLoader {
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Silver).withAmountPerChunk(8).atHeight(-40, 0).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Nickel).withAmountPerChunk(8).atHeight(-20, 20).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Lapis).withAmountPerChunk(4).atHeight(-20, 20).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Diamond).withAmountPerChunk(2).atHeight(-48, 0).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Diamond).withAmountPerChunk(2).atHeight(-64, -48).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Emerald).withAmountPerChunk(1).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Ruby).withAmountPerChunk(1).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(BlueSapphire).withAmountPerChunk(1).buildMaterial());
@@ -62,13 +62,13 @@ public class WorldGenLoader {
       //event.smallOre(new WorldGenSmallOreBuilder().withMaterial(FoolsRuby).withAmountPerChunk(1).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(RedGarnet).withAmountPerChunk(1).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(YellowGarnet).withAmountPerChunk(1).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Redstone).withAmountPerChunk(8).atHeight(-64, 0).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Redstone).withAmountPerChunk(8).atHeight(-64, -48).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Platinum).withAmountPerChunk(8).atHeight(20, 40).withDimensions(new ResourceLocation("the_end")).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Iridium).withAmountPerChunk(8).atHeight(20, 40).withDimensions(new ResourceLocation("the_end")).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Quartz).withAmountPerChunk(64).atHeight(30, 120).withDimensions(new ResourceLocation("the_nether")).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Saltpeter).withAmountPerChunk(8).atHeight(10, 60).withDimensions(new ResourceLocation("the_nether")).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Sulfur).withAmountPerChunk(32).atHeight(10, 60).withDimensions(new ResourceLocation("the_nether")).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Sulfur).withAmountPerChunk(8).atHeight(5, 15).withCustomId("sulfur_overworld").buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Sulfur).withAmountPerChunk(8).atHeight(-64, -48).withCustomId("sulfur_overworld").buildMaterial());
   }
 
   private static void initStoneVeins(WorldGenEvent ev) {
@@ -87,15 +87,15 @@ public class WorldGenLoader {
         .buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_granite")
-        .asMediumStoneVein(5, 128, 32, AntimatterStoneTypes.GRANITE, OVERWORLD)
+        .asMediumStoneVein(5, 32,128, AntimatterStoneTypes.GRANITE, OVERWORLD)
         .buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_diorite")
-        .asMediumStoneVein(5, 128, 32, AntimatterStoneTypes.DIORITE, OVERWORLD)
+        .asMediumStoneVein(5, 32,128, AntimatterStoneTypes.DIORITE, OVERWORLD)
         .buildVein());
 
       ev.vein(new WorldGenVeinBuilder("vein_andesite")
-        .asMediumStoneVein(5, 128, 32, AntimatterStoneTypes.ANDESITE, OVERWORLD)
+        .asMediumStoneVein(5, 32,128, AntimatterStoneTypes.ANDESITE, OVERWORLD)
         .buildVein());
 
       WorldGenVeinBuilder veinBuilder = new WorldGenVeinBuilder("vein_granite_black")
@@ -225,11 +225,11 @@ public class WorldGenLoader {
   private static void initOreVeins(WorldGenEvent ev) {
     WorldGenVein.setLayerChance(WorldGenVein.ORE_VEIN_LAYER, 0.1f);
     // TODO: move veins from initOld here
-      ev.vein(new WorldGenVeinBuilder("naquadah").asOreVein(-54, 21, 10, 5, 32, Naquadah, Naquadah, Naquadah, Naquadah,
+      ev.vein(new WorldGenVeinBuilder("naquadah").asOreVein(0, 21, 10, 5, 32, Naquadah, Naquadah, Naquadah, Naquadah,
         Level.END).buildVein());
-      ev.vein(new WorldGenVeinBuilder("lignite").asOreVein(-14, 106, 160, 8, 32, Lignite, Lignite, Lignite, Coal,
+      ev.vein(new WorldGenVeinBuilder("lignite").asOreVein(0, 200, 160, 8, 32, Lignite, Lignite, Lignite, Coal,
         OVERWORLD).buildVein());
-      ev.vein(new WorldGenVeinBuilder("coal").asOreVein(-14, 31, 80, 6, 32, Coal, Coal, Coal, Lignite, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("coal").asOreVein(0, 200, 80, 6, 32, Coal, Coal, Coal, Lignite, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("magnetite").asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite,
         OVERWORLD, Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinBuilder("gold").asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, AntimatterMaterials.Gold,
