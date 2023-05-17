@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.*;
@@ -58,7 +59,7 @@ public class ExtruderLoader {
             EXTRUDING.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),1),of(GregTechData.ShapeWire,1).setNoConsume()).io(stack).add("wire_" + t.getMaterial().getId(),duration,30);
         });
 
-        AntimatterAPI.all(FluidPipe.class).forEach(t -> {
+        AntimatterAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != AntimatterMaterials.Wood).forEach(t -> {
             addPipeRecipe(t.getMaterial(), 1, 2, PipeSize.TINY, t, 2);
             addPipeRecipe(t.getMaterial(), 1, 1, PipeSize.SMALL, t, 1);
             addPipeRecipe(t.getMaterial(), 3, 1, PipeSize.NORMAL, t, 3);
