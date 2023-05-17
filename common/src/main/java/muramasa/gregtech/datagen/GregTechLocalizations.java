@@ -3,6 +3,7 @@ package muramasa.gregtech.datagen;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
+import muramasa.antimatter.item.ItemBasic;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
@@ -53,6 +54,7 @@ public class GregTechLocalizations {
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Integrated Circuit (" + i.circuitId + ")"));
             override("machine.primitive_blast_furnace", "Primitive Blast Furnace");
             override("machine.coke_oven", "Coke Oven");
+            AntimatterAPI.all(ItemBasic.class, domain).stream().filter(i -> i.getId().startsWith("circuit")).forEach(i -> add(i, lowerUnderscoreToUpperSpacedRotated(i.getId())));
         }
     }
 
