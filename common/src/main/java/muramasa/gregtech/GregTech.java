@@ -80,6 +80,7 @@ public class GregTech extends AntimatterMod {
         event.addLoader(Parts::loadRecipes);
         event.addLoader(MaterialCrafting::loadRecipes);
         event.addLoader(FurnaceLoader::loadRecipes);
+        event.addLoader(WoodCrafting::loadRecipes);
     }
 
     public static void registerRecipeLoaders(IAntimatterRegistrar registrar, IRecipeRegistrate reg) {
