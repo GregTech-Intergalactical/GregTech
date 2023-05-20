@@ -223,7 +223,7 @@ public class WorldGenLoader {
   }
 
   private static void initOreVeins(WorldGenEvent ev) {
-    WorldGenVein.setLayerChance(WorldGenVein.ORE_VEIN_LAYER, 0.1f);
+    WorldGenVein.setLayerChance(WorldGenVein.ORE_VEIN_LAYER, 0.05f);
     // TODO: move veins from initOld here
       ev.vein(new WorldGenVeinBuilder("naquadah").asOreVein(0, 21, 10, 5, 32, Naquadah, Naquadah, Naquadah, Naquadah,
         Level.END).buildVein());
