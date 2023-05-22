@@ -273,13 +273,17 @@ public class WorldGenLoader {
       ev.vein(new WorldGenVeinBuilder("quartz").asOreVein(-24, 36, 60, 3, 16, Quartzite, Barite, third, third, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("diamond").asOreVein(-59, -35, 40, 2, 16, Graphite, Graphite, Diamond, Coal, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("olivine").asOreVein(-54, -9, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite,
-        OVERWORLD, Level.END).buildVein());
+        OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("olivine_end").asOreVein(10, 40, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite,
+              Level.END).buildVein());
       ev.vein(new WorldGenVeinBuilder("apatite").asOreVein(-4, 41, 60, 3, 16, Apatite, Apatite, Phosphorus, Phosphate, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("galena").asOreVein(-34, 11, 40, 5, 16, Galena, Galena, Silver, Lead, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("lapis").asOreVein(-44, 1, 40, 5, 16, Lazurite, Sodalite, Lapis,
         Calcite, OVERWORLD, Level.END).buildVein());
       ev.vein(new WorldGenVeinBuilder("beryllium").asOreVein(-59, -21, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
-        OVERWORLD, Level.END).buildVein());
+        OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("beryllium_end").asOreVein(5, 30, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
+              Level.END).buildVein());
       ev.vein(new WorldGenVeinBuilder("oilsands").asOreVein(-14, 31, 80, 6, 32, Oilsands, Oilsands, Oilsands, Oilsands,
         OVERWORLD).buildVein());
 
