@@ -197,27 +197,27 @@ public class WorldGenLoader {
   private static void initStoneOreVeins(WorldGenEvent ev) {
     WorldGenVein.setLayerChance(WorldGenVein.STONE_ORE_VEIN_LAYER, 0.05f);
 
-      ev.vein( new WorldGenVeinBuilder("vein_coal")
+      ev.vein( new WorldGenVeinBuilder("dense_coal")
         .asMediumStoneOreVein(1, 32, 320, Coal, OVERWORLD)
         .buildVein());
 
-      ev.vein(new WorldGenVeinBuilder("vein_lignite")
+      ev.vein(new WorldGenVeinBuilder("dense_lignite")
         .asMediumStoneOreVein(1, 32, 320, Lignite, OVERWORLD)
         .buildVein());
 
-      ev.vein(new WorldGenVeinBuilder("vein_salt")
+      ev.vein(new WorldGenVeinBuilder("dense_salt")
         .asMediumStoneOreVein(1, 32, 320, Salt, OVERWORLD)
         .buildVein());
 
-      ev.vein(new WorldGenVeinBuilder("vein_rock_salt")
+      ev.vein(new WorldGenVeinBuilder("dense_rock_salt")
         .asMediumStoneOreVein(1, 32, 320, RockSalt, OVERWORLD)
         .buildVein());
 
-      ev.vein(new WorldGenVeinBuilder("vein_bauxite")
+      ev.vein(new WorldGenVeinBuilder("dense_bauxite")
         .asMediumStoneOreVein(1, 32, 320, Bauxite, OVERWORLD)
         .buildVein());
 
-      ev.vein(new WorldGenVeinBuilder("vein_oil_shale")
+      ev.vein(new WorldGenVeinBuilder("dense_oil_shale")
         .asMediumStoneOreVein(1, 32, 320, OilShale, OVERWORLD)
         .buildVein());
   }
