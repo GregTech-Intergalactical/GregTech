@@ -225,7 +225,7 @@ public class WorldGenLoader {
   private static void initOreVeins(WorldGenEvent ev) {
     WorldGenVein.setLayerChance(WorldGenVein.ORE_VEIN_LAYER, 0.05f);
     // TODO: move veins from initOld here
-      ev.vein(new WorldGenVeinBuilder("naquadah").asOreVein(-54, 21, 10, 5, 32, Naquadah, Naquadah, Naquadah, Naquadah,
+      ev.vein(new WorldGenVeinBuilder("naquadah").asOreVein(10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, Naquadah,
         Level.END).buildVein());
       ev.vein(new WorldGenVeinBuilder("lignite").asOreVein(0, 200, 160, 8, 32, Lignite, Lignite, Lignite, Coal,
         OVERWORLD).buildVein());
@@ -234,24 +234,24 @@ public class WorldGenLoader {
         OVERWORLD, Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinBuilder("gold").asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, AntimatterMaterials.Gold,
         OVERWORLD).buildVein());
-      ev.vein(new WorldGenVeinBuilder("iron").asOreVein(-54, -9, 120, 4, 24, BrownLimonite, YellowLimonite, BandedIron, Malachite,
+      ev.vein(new WorldGenVeinBuilder("iron").asOreVein(-14, 51, 120, 4, 24, BrownLimonite, YellowLimonite, BandedIron, Malachite,
         OVERWORLD, Level.NETHER).buildVein());
-      ev.vein(new WorldGenVeinBuilder("cassiterite").asOreVein(-24, 96, 50, 5, 24, Tin, Tin, Cassiterite, Tin, OVERWORLD,
+      ev.vein(new WorldGenVeinBuilder("cassiterite").asOreVein(6, 126, 50, 5, 24, Tin, Tin, Cassiterite, Tin, OVERWORLD,
         Level.END).buildVein());
       ev.vein(new WorldGenVeinBuilder("tetrahedrite").asOreVein(16, 76, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite,
         OVERWORLD, Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinBuilder("nether_quartz").asOreVein(40, 80, 80, 5, 24, Quartz, Quartz, Quartz, Quartz,
         Level.NETHER).buildVein());
-      ev.vein(new WorldGenVeinBuilder("sulfur").asOreVein(-59, -36, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite, Level.NETHER).buildVein());
-      ev.vein(new WorldGenVeinBuilder("copper").asOreVein(-54, -24, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, OVERWORLD,
+      ev.vein(new WorldGenVeinBuilder("sulfur").asOreVein(5, 20, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite, Level.NETHER).buildVein());
+      ev.vein(new WorldGenVeinBuilder("copper").asOreVein(46, 76, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, OVERWORLD,
         Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinBuilder("bauxite").asOreVein(-14, 46, 80, 4, 24, Bauxite, Bauxite, Aluminium, Ilmenite, OVERWORLD).buildVein());
-      ev.vein(new WorldGenVeinBuilder("salts").asOreVein(-14, 1, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("salts").asOreVein(51, 66, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("redstone").asOreVein(-54, -9, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar, OVERWORLD,
         Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinBuilder("soapstone").asOreVein(-54, -9, 40, 3, 16, Soapstone, Talc, Glauconite, Pentlandite,
         OVERWORLD).buildVein());
-      ev.vein(new WorldGenVeinBuilder("nickel").asOreVein(-54, -9, 40, 3, 16, Garnierite, Nickel, Cobaltite, Pentlandite,
+      ev.vein(new WorldGenVeinBuilder("nickel").asOreVein(11, 56, 40, 3, 16, Garnierite, Nickel, Cobaltite, Pentlandite,
         OVERWORLD, Level.NETHER, Level.END).buildVein());
       ev.vein(new WorldGenVeinBuilder("platinum").asOreVein(-24, -9, 5, 3, 16, Cooperite, Palladium, Platinum, Iridium, OVERWORLD,
         Level.END).buildVein());
@@ -270,14 +270,14 @@ public class WorldGenLoader {
       ev.vein(new WorldGenVeinBuilder("manganese").asOreVein(-44, -29, 20, 3, 16, Grossular, Spessartine, Pyrolusite, Tantalite,
         OVERWORLD, Level.END).buildVein());
       Material third = CertusQuartz.enabled ? CertusQuartz : Barite;
-      ev.vein(new WorldGenVeinBuilder("quartz").asOreVein(-24, 36, 60, 3, 16, Quartzite, Barite, third, third, OVERWORLD).buildVein());
-      ev.vein(new WorldGenVeinBuilder("diamond").asOreVein(-59, -35, 40, 2, 16, Graphite, Graphite, Diamond, Coal, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("quartz").asOreVein(6, 66, 60, 3, 16, Quartzite, Barite, third, third, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("diamond").asOreVein(-59, -36, 40, 2, 16, Graphite, Graphite, Diamond, Coal, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("olivine").asOreVein(-54, -9, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite,
         OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("olivine_end").asOreVein(10, 40, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite,
               Level.END).buildVein());
       ev.vein(new WorldGenVeinBuilder("apatite").asOreVein(-4, 41, 60, 3, 16, Apatite, Apatite, Phosphorus, Phosphate, OVERWORLD).buildVein());
-      ev.vein(new WorldGenVeinBuilder("galena").asOreVein(-34, 11, 40, 5, 16, Galena, Galena, Silver, Lead, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinBuilder("galena").asOreVein(6, 51, 40, 5, 16, Galena, Galena, Silver, Lead, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("lapis").asOreVein(-44, 1, 40, 5, 16, Lazurite, Sodalite, Lapis,
         Calcite, OVERWORLD, Level.END).buildVein());
       ev.vein(new WorldGenVeinBuilder("beryllium").asOreVein(-59, -21, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
