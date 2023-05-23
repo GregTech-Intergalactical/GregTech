@@ -35,17 +35,17 @@ public class WorldGenLoader {
   }
 
   private static void initSmallOres(WorldGenEvent event){
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Copper).withAmountPerChunk(32).atHeight(60, 120).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Tin).withAmountPerChunk(32).atHeight(60, 120).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Bismuth).withAmountPerChunk(8).atHeight(80, 120).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Copper).withAmountPerChunk(32).atHeight(46, 76).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Tin).withAmountPerChunk(32).atHeight(6, 126).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Bismuth).withAmountPerChunk(8).atHeight(66, 126).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Coal).withAmountPerChunk(24).atHeight(60, 100).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Iron).withAmountPerChunk(16).atHeight(-24, 36).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Lead).withAmountPerChunk(16).atHeight(-24, 36).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Iron).withAmountPerChunk(16).atHeight(-14, 51).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Lead).withAmountPerChunk(16).atHeight(-14, 51).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Zinc).withAmountPerChunk(12).atHeight(-34, 11).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Gold).withAmountPerChunk(8).atHeight(-44, -14).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Silver).withAmountPerChunk(8).atHeight(-44, -14).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Nickel).withAmountPerChunk(8).atHeight(-44, -14).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Lapis).withAmountPerChunk(4).atHeight(-44, -14).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Nickel).withAmountPerChunk(8).atHeight(11, 56).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Lapis).withAmountPerChunk(4).atHeight(-44, 1).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Diamond).withAmountPerChunk(2).atHeight(-59, -49).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Emerald).withAmountPerChunk(1).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Ruby).withAmountPerChunk(1).buildMaterial());
@@ -121,12 +121,12 @@ public class WorldGenLoader {
                   .buildVariant()
                   .withVariant(10)
                   .withThinChance()
-                  .withMaterial(Pitchblende, -64, -32)
-                  .withMaterial(Uraninite, -64, -32)
+                  .withMaterial(Pitchblende, -32, 0)
+                  .withMaterial(Uraninite, -32, 0)
                   .buildVariant()
                   .withVariant(5)
                   .withThinChance()
-                  .withMaterial(Tantalite)
+                  .withMaterial(Tantalite, -32, 0)
                   .buildVariant();
       }
       ev.vein(veinBuilder.buildVein());
@@ -223,7 +223,7 @@ public class WorldGenLoader {
   }
 
   private static void initOreVeins(WorldGenEvent ev) {
-    WorldGenVein.setLayerChance(WorldGenVein.ORE_VEIN_LAYER, 0.05f);
+    WorldGenVein.setLayerChance(WorldGenVein.ORE_VEIN_LAYER, 0.1f);
     // TODO: move veins from initOld here
       ev.vein(new WorldGenVeinBuilder("naquadah").asOreVein(10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, Naquadah,
         Level.END).buildVein());
