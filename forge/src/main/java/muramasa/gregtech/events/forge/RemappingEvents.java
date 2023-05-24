@@ -35,12 +35,20 @@ public class RemappingEvents {
     public static void remapMissingBlocks(final RegistryEvent.MissingMappings<Block> event){
         event.getMappings(Ref.SHARED_ID).forEach(map -> {
             String id = map.key.getPath();
+            if (id.contains("oilsands")){
+                Block block = AntimatterAPI.get(Block.class, id.replace("oilsands", "oilshale").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                if (block != null){
+                    map.remap(block);
+                    return;
+                }
+            }
             if (id.contains("granite_red") || id.contains("granite_black")){
                 Block block = AntimatterAPI.get(Block.class, id.replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                 }
             }
+
         });
         for (RegistryEvent.MissingMappings.Mapping<Block> map : event.getMappings("gregtech")) {
 
@@ -162,6 +170,13 @@ public class RemappingEvents {
     public static void remapMissingItems(final RegistryEvent.MissingMappings<Item> event){
         event.getMappings(Ref.SHARED_ID).forEach(map -> {
             String id = map.key.getPath();
+            if (id.contains("oilsands")){
+                Item block = AntimatterAPI.get(Item.class, id.replace("oilsands", "oilshale").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                if (block != null){
+                    map.remap(block);
+                    return;
+                }
+            }
             if (id.contains("granite_red") || id.contains("granite_black")){
                 Block block = AntimatterAPI.get(Block.class, id.replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){

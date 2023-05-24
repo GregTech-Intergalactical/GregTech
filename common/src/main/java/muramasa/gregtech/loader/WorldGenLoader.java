@@ -296,7 +296,7 @@ public class WorldGenLoader {
         OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("beryllium_end").asOreVein(5, 30, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
               Level.END).buildVein());
-      ev.vein(new WorldGenVeinBuilder("oilsands").asOreVein(-14, 31, 80, 6, 32, Oilsands, Oilsands, Oilsands, Oilsands,
+      ev.vein(new WorldGenVeinBuilder("oilshale").asOreVein(-14, 31, 80, 6, 32, Oilshale, Oilshale, Oilshale, Oilshale,
         OVERWORLD).buildVein());
 
   }
