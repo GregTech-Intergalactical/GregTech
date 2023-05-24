@@ -36,7 +36,7 @@ public class RemappingEvents {
         event.getMappings(Ref.SHARED_ID).forEach(map -> {
             String id = map.key.getPath();
             if (id.contains("oilsands")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("oilsands", "oilshale").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = AntimatterAPI.get(Block.class, id.replace("oilsands", "oil_shale").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
@@ -171,7 +171,7 @@ public class RemappingEvents {
         event.getMappings(Ref.SHARED_ID).forEach(map -> {
             String id = map.key.getPath();
             if (id.contains("oilsands")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("oilsands", "oilshale").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Item block = AntimatterAPI.get(Item.class, id.replace("oilsands", "oil_shale").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;

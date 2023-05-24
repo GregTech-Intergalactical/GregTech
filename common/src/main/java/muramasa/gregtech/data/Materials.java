@@ -418,7 +418,6 @@ public class Materials {
     public static Material Magnetite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnetite", 0x1e1e1e, METALLIC));
     public static Material Malachite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "malachite", 0x055f05, DULL));
     public static Material Molybdenite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "molybdenite", 0x91919, METALLIC));
-    public static Material Oilshale = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "oilshale", 0x0a0a0a, NONE));
     public static Material Pentlandite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pentlandite", 0xa59605, DULL));
     public static Material Phosphate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "phosphate", 0xffff00, DULL));
     public static Material Pitchblende = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pitchblende", 0xc8d200, DULL));

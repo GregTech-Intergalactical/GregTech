@@ -413,7 +413,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Magnetite).asOre().harvestLevel(2).mats(of(Iron, 3, Oxygen, 4));
         event.setMaterial(Malachite).asOre(true).harvestLevel(2).mats(of(Copper, 2, Carbon, 1, Hydrogen, 2, Oxygen, 5));
         event.setMaterial(Molybdenite).asOre(true).harvestLevel(2).mats(of(Molybdenum, 1, Sulfur, 2));
-        event.setMaterial(Oilshale).asOre(true).harvestLevel(1);
         event.setMaterial(Pentlandite).asOre().harvestLevel(2).mats(of(Nickel, 9, Sulfur, 8));
         event.setMaterial(Phosphate).asOre(true).harvestLevel(1).mats(of(Phosphor, 1, Oxygen, 4));
         event.setMaterial(Pitchblende).asOre(true).mats(of(Uraninite, 3, Thorium, 1, Lead, 1));
@@ -441,7 +440,7 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Bauxite).asOreStone(ORE_SMALL).harvestLevel(1).mats(of(Rutile, 2, Aluminium, 16, Hydrogen, 10, Oxygen, 11));
         event.setMaterial(Lignite).asGemBasic(false).asOreStone(0, 2, ORE_SMALL).mats(of(Carbon, 3, Water, 1));
-        event.setMaterial(OilShale).asOreStone(ORE_SMALL);
+        event.setMaterial(OilShale).asOreStone(ORE_SMALL).harvestLevel(1);
         event.setMaterial(RockSalt).asOreStone(ORE_SMALL).harvestLevel(1).mats(of(Potassium, 1, Chlorine, 1));
         event.setMaterial(Salt).asOreStone(ORE_SMALL).harvestLevel(1).mats(of(Sodium, 1, Chlorine, 1));
         /**
