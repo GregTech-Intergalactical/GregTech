@@ -390,51 +390,51 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Almandine).asOre().harvestLevel(1).mats(of(Aluminium, 2, Iron, 3, Silicon, 3, Oxygen, 12));
         event.setMaterial(Andradite).asOre().mats(of(Calcium, 3, Iron, 2, Silicon, 3, Oxygen, 12));
-        event.setMaterial(BandedIron).asOre(true).harvestLevel(2).mats(of(Iron, 2, Oxygen, 3));
-        event.setMaterial(Bastnasite).asOre(true).harvestLevel(2).mats(of(Cerium, 1, Carbon, 1, Fluorine, 1, Oxygen, 3));
-        event.setMaterial(Barite).asOre(true).harvestLevel(2).mats(of(Barium, 1, Sulfur, 1, Oxygen, 4));
-        event.setMaterial(Bentonite).asOre(true).mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)); // TODO: Ore Gen
-        event.setMaterial(BrownLimonite).asOre(true).harvestLevel(1).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
-        event.setMaterial(Calcite).asOre(true).harvestLevel(1).mats(of(Calcium, 1, Carbon, 1, Oxygen, 3));
+        event.setMaterial(BandedIron).asOre().harvestLevel(2).mats(of(Iron, 2, Oxygen, 3));
+        event.setMaterial(Bastnasite).asOre().harvestLevel(2).mats(of(Cerium, 1, Carbon, 1, Fluorine, 1, Oxygen, 3));
+        event.setMaterial(Barite).asOre().harvestLevel(2).mats(of(Barium, 1, Sulfur, 1, Oxygen, 4));
+        event.setMaterial(Bentonite).asOre().mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)); // TODO: Ore Gen
+        event.setMaterial(BrownLimonite).asOre().harvestLevel(1).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
+        event.setMaterial(Calcite).asOre().harvestLevel(1).mats(of(Calcium, 1, Carbon, 1, Oxygen, 3));
         event.setMaterial(Cassiterite).asOre().harvestLevel(1).mats(of(Tin, 1, Oxygen, 2));
         event.setMaterial(Chalcopyrite).asOre().harvestLevel(1).mats(of(Copper, 1, Iron, 1, Sulfur, 2));
-        event.setMaterial(Cinnabar).asOre(true).harvestLevel(1).mats(of(Mercury, 1, Sulfur, 1));
-        event.setMaterial(Cobaltite).asOre(true).harvestLevel(2).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
+        event.setMaterial(Cinnabar).asOre().harvestLevel(1).mats(of(Mercury, 1, Sulfur, 1));
+        event.setMaterial(Cobaltite).asOre().harvestLevel(2).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
         event.setMaterial(Cooperite).asOre().harvestLevel(1).mats(of(Platinum, 3, Nickel, 1, Sulfur, 1, Palladium, 1));
         event.setMaterial(Galena).asOre().harvestLevel(3).mats(of(Lead, 3, Silver, 3, Sulfur, 2));
         event.setMaterial(Garnierite).asOre().harvestLevel(3).mats(of(Nickel, 1, Oxygen, 1));
-        event.setMaterial(Glauconite).asOre(true).harvestLevel(2).mats(of(Potassium, 1, Magnesium, 2, Aluminium, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Gen;
+        event.setMaterial(Glauconite).asOre().harvestLevel(2).mats(of(Potassium, 1, Magnesium, 2, Aluminium, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Gen;
         event.setMaterial(Graphite).asDust().asOre().harvestLevel(2);
         event.setMaterial(Grossular).asOre().harvestLevel(1).mats(of(Calcium, 3, Aluminium, 2, Silicon, 3, Oxygen, 12));
         event.setMaterial(Ilmenite).asOre().harvestLevel(3).mats(of(Iron, 1, Titanium, 1, Oxygen, 3));
-        event.setMaterial(Lepidolite).asOre(true).harvestLevel(2).mats(of(Potassium, 1, Lithium, 3, Aluminium, 4, Fluorine, 2, Oxygen, 10)); // TODO: Ore Gen;
-        event.setMaterial(Rutile).asOre().mats(of(Titanium, 1, Oxygen, 2)); event.setMaterial(Cobaltite).asOre(true).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
-        event.setMaterial(Magnesite).asOre(true).harvestLevel(2).mats(of(Magnesium, 1, Carbon, 1, Oxygen, 3));
+        event.setMaterial(Lepidolite).asOre().harvestLevel(2).mats(of(Potassium, 1, Lithium, 3, Aluminium, 4, Fluorine, 2, Oxygen, 10)); // TODO: Ore Gen;
+        event.setMaterial(Rutile).asOre().mats(of(Titanium, 1, Oxygen, 2)); event.setMaterial(Cobaltite).asOre().mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
+        event.setMaterial(Magnesite).asOre().harvestLevel(2).mats(of(Magnesium, 1, Carbon, 1, Oxygen, 3));
         event.setMaterial(Magnetite).asOre().harvestLevel(2).mats(of(Iron, 3, Oxygen, 4));
-        event.setMaterial(Malachite).asOre(true).harvestLevel(2).mats(of(Copper, 2, Carbon, 1, Hydrogen, 2, Oxygen, 5));
-        event.setMaterial(Molybdenite).asOre(true).harvestLevel(2).mats(of(Molybdenum, 1, Sulfur, 2));
+        event.setMaterial(Malachite).asOre().harvestLevel(2).mats(of(Copper, 2, Carbon, 1, Hydrogen, 2, Oxygen, 5));
+        event.setMaterial(Molybdenite).asOre().harvestLevel(2).mats(of(Molybdenum, 1, Sulfur, 2));
         event.setMaterial(Pentlandite).asOre().harvestLevel(2).mats(of(Nickel, 9, Sulfur, 8));
-        event.setMaterial(Phosphate).asOre(true).harvestLevel(1).mats(of(Phosphor, 1, Oxygen, 4));
-        event.setMaterial(Pitchblende).asOre(true).mats(of(Uraninite, 3, Thorium, 1, Lead, 1));
+        event.setMaterial(Phosphate).asOre().harvestLevel(1).mats(of(Phosphor, 1, Oxygen, 4));
+        event.setMaterial(Pitchblende).asOre().mats(of(Uraninite, 3, Thorium, 1, Lead, 1));
         event.setMaterial(Pyrite).asOre().harvestLevel(1).mats(of(Iron, 1, Sulfur, 2));
         event.setMaterial(Pyrolusite).asOre().harvestLevel(2).mats(of(Manganese, 1, Oxygen, 2));
         event.setMaterial(Pyrope).asOre().harvestLevel(2).mats(of(Aluminium, 2, Magnesium, 3, Silicon, 3, Oxygen, 12));
         event.setMaterial(Saltpeter).asOre().mats(of(Potassium, 1, Nitrogen, 1, Oxygen, 3));
-        event.setMaterial(Scheelite).asDust(2500).asOre(true).harvestLevel(3).mats(of(Tungsten, 1, Calcium, 2, Oxygen, 4));
-        event.setMaterial(Soapstone).asOre(true).harvestLevel(1).mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Gen;
-        event.setMaterial(Spodumene).asOre(true).harvestLevel(2).mats(of(Lithium, 1, Aluminium, 1, Silicon, 2, Oxygen, 6));
+        event.setMaterial(Scheelite).asDust(2500).asOre().harvestLevel(3).mats(of(Tungsten, 1, Calcium, 2, Oxygen, 4));
+        event.setMaterial(Soapstone).asOre().harvestLevel(1).mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Gen;
+        event.setMaterial(Spodumene).asOre().harvestLevel(2).mats(of(Lithium, 1, Aluminium, 1, Silicon, 2, Oxygen, 6));
         event.setMaterial(Spessartine).asOre().harvestLevel(2).mats(of(Aluminium, 2, Manganese, 3, Silicon, 3, Oxygen, 12));
         event.setMaterial(Sphalerite).asOre().harvestLevel(1).mats(of(Zinc, 1, Sulfur, 1));
         event.setMaterial(Stibnite).asOre().harvestLevel(2).mats(of(Antimony, 2, Sulfur, 3));
-        event.setMaterial(Tantalite).asOre(true).harvestLevel(3).mats(of(Manganese, 1, Tantalum, 2, Oxygen, 6));
-        event.setMaterial(Talc).asOre(true).mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12));
-        event.setMaterial(Tetrahedrite).asOre(true).harvestLevel(2).mats(of(Copper, 3, Antimony, 1, Sulfur, 3, Iron, 1));
-        event.setMaterial(Tungstate).asOre(true).harvestLevel(3).mats(of(Tungsten, 1, Lithium, 2, Oxygen, 4));
-        event.setMaterial(Uraninite).asOre(true).harvestLevel(3).mats(of(Uranium, 1, Oxygen, 2));
+        event.setMaterial(Tantalite).asOre().harvestLevel(3).mats(of(Manganese, 1, Tantalum, 2, Oxygen, 6));
+        event.setMaterial(Talc).asOre().mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12));
+        event.setMaterial(Tetrahedrite).asOre().harvestLevel(2).mats(of(Copper, 3, Antimony, 1, Sulfur, 3, Iron, 1));
+        event.setMaterial(Tungstate).asOre().harvestLevel(3).mats(of(Tungsten, 1, Lithium, 2, Oxygen, 4));
+        event.setMaterial(Uraninite).asOre().harvestLevel(3).mats(of(Uranium, 1, Oxygen, 2));
         event.setMaterial(Uvarovite).asOre().mats(of(Calcium, 3, Chrome, 2, Silicon, 3, Oxygen, 12));
-        event.setMaterial(VanadiumMagnetite).asOre(true).harvestLevel(2).mats(of(Magnetite, 1, Vanadium, 1));
-        event.setMaterial(Wulfenite).asOre(true).harvestLevel(3).mats(of(Lead, 1, Molybdenum, 1, Oxygen, 4));
-        event.setMaterial(YellowLimonite).asOre(true).harvestLevel(2).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
+        event.setMaterial(VanadiumMagnetite).asOre().harvestLevel(2).mats(of(Magnetite, 1, Vanadium, 1));
+        event.setMaterial(Wulfenite).asOre().harvestLevel(3).mats(of(Lead, 1, Molybdenum, 1, Oxygen, 4));
+        event.setMaterial(YellowLimonite).asOre().harvestLevel(2).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
         /**
          **  Ore Stones
          **/
