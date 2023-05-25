@@ -113,6 +113,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "plasma_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PRESSING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "pressing", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> PYROLYSISING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "pyrolysising", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> RECYCLING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "recycling", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> REPLICATING = AntimatterAPI.register(RecipeMap.class,

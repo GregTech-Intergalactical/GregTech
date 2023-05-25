@@ -122,7 +122,7 @@ public class Machines {
     public static MultiMachine MULTI_SMELTER = new MultiMachine(GTIRef.ID, "multi_smelter").setTiers(HV).setMap(SMELTING).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityMultiSmelter::new).custom();
     public static MultiMachine NUCLEAR_REACTOR = new MultiMachine(GTIRef.ID, "nuclear_reactor").setTiers(EV).setMap(NUCLEAR).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityNuclearReactor::new).setAllowVerticalFacing(true).custom();
     public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(GTIRef.ID, "oil_drilling_rig").setTiers(EV, IV, LUV, ZPM).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityOilDrillingRig::new).custom();
-    public static MultiMachine PYROLYSIS_OVEN = new MultiMachine(GTIRef.ID, "pyrolysis_oven").setTiers(MV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityPyrolysisOven::new).custom();
+    public static MultiMachine PYROLYSIS_OVEN = new MultiMachine(GTIRef.ID, "pyrolysis_oven").setTiers(MV).setMap(PYROLYSISING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityPyrolysisOven::new).custom();
     public static MultiMachine VACUUM_FREEZER = new MultiMachine(GTIRef.ID, "vacuum_freezer").setTiers(HV).setMap(VACUUM_FREEZING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityVacuumFreezer::new);
     /**
      ** Generators
