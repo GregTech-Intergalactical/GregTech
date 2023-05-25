@@ -7,6 +7,7 @@ import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.data.GregTechMaterialEvents;
+import muramasa.gregtech.material.GregTechMaterialEvent;
 
 public class GregTechPostRegistrar implements IAntimatterRegistrar {
     public GregTechPostRegistrar(){
@@ -27,7 +28,8 @@ public class GregTechPostRegistrar implements IAntimatterRegistrar {
 
     @Override
     public void onMaterialEvent(MaterialEvent event) {
-        GregTechMaterialEvents.onMaterialEvent(event);
+        event = new GregTechMaterialEvent();
+        GregTechMaterialEvents.onMaterialEvent((GregTechMaterialEvent) event);
     }
 
     @Override

@@ -1,9 +1,11 @@
 package muramasa.gregtech.data;
 
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.material.data.FluidProduct;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
+import muramasa.gregtech.material.GregTechMaterialEvent;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.enchantment.Enchantments;
 
@@ -16,7 +18,7 @@ import static muramasa.gregtech.data.GregTechMaterialTags.*;
 import static muramasa.gregtech.data.Materials.*;
 
 public class GregTechMaterialEvents {
-    public static void onMaterialEvent(MaterialEvent event){
+    public static void onMaterialEvent(GregTechMaterialEvent event){
         flags(event);
         antimatterMaterials(event);
         byproducts(event);
@@ -910,7 +912,7 @@ public class GregTechMaterialEvents {
          */
     }
 
-    public static void byproducts(MaterialEvent event){
+    public static void byproducts(GregTechMaterialEvent event){
         event.setMaterial(Almandine).addByProduct(RedGarnet, Aluminium);
         event.setMaterial(Aluminium).addByProduct(Bauxite);
         //event.setMaterial(Amber).addByProduct(Amber); TODO: Add Amber
@@ -1023,7 +1025,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Zinc).addByProduct(Tin, Gallium);
     }
 
-    private static void flags(MaterialEvent event){
+    private static void flags(GregTechMaterialEvent event){
         BRITTLEG.add(Coal, Charcoal, Lignite);
         CALCITE2X.add(Pyrite, YellowLimonite);
         CALCITE3X.add(Iron, BrownLimonite);
@@ -1231,7 +1233,7 @@ public class GregTechMaterialEvents {
         // Naquadria.mChemicalFormula = "NqX";
     }
 
-    private static void antimatterMaterials(MaterialEvent event){
+    private static void antimatterMaterials(GregTechMaterialEvent event){
         event.setMaterial(Basalt).mats(of(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4));
         event.setMaterial(Blaze).mats(of(Sulfur, 1, DarkAsh, 1));
         event.setMaterial(Coal).asGemBasic(false).flags(ORE_STONE).mats(of(Carbon, 2));
@@ -1243,6 +1245,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Flint).flags(ROCK);
         event.setMaterial(Gold).flags(FOIL, ROD, WIRE_FINE, GEAR);
         event.setMaterial(Iron).flags(RING, GEAR, FRAME);
+        event.setMaterial(AntimatterMaterials.Netherite).asMetal(2246, 1300);
         event.setMaterial(Lapis).asGemBasic(false).mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));
         event.setMaterial(Prismarine).mats(of(Potassium, 2, Oxygen, 8, Manganese, 1, Silicon, 5));
         event.setMaterial(Redstone).mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).asFluid(0, MaterialTags.MELTING_POINT.getInt(Redstone));//.setOreMulti(4);

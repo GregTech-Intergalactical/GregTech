@@ -3,6 +3,7 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.material.MaterialTag;
 import muramasa.antimatter.material.tags.DoubleMaterialTag;
+import muramasa.antimatter.material.tags.NumberMaterialTag;
 
 public class GregTechMaterialTags {
     public static final MaterialTag ELEC = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec", true)); //Add Electrolyzer Recipes - SHOULD NOT SHARE MATS WITH CENT
@@ -25,6 +26,9 @@ public class GregTechMaterialTags {
     public static final MaterialTag SOLDER = new MaterialTag("solder"); //Can be used in Soldering Recipes
     public static final MaterialTag BRITTLEG = new MaterialTag("brittle_g"); //This is for Gems that cannot be used in recipes such as Gem > Rod in Lathe
     public static final MaterialTag DECAYABLE = new MaterialTag("decayable");
+
+    public static final MaterialTag NEEDS_BLAST_FURNACE = AntimatterAPI.register(MaterialTag.class, new MaterialTag("needs_blast_furnace", true));
+    public static final NumberMaterialTag BLAST_FURNACE_TEMP = (NumberMaterialTag) AntimatterAPI.register(MaterialTag.class, new NumberMaterialTag("blast_furnace_temp", true));
     public static final DoubleMaterialTag CHEMBATH_MERCURY = new DoubleMaterialTag("chembath_mercury");
     public static final DoubleMaterialTag CHEMBATH_PERSULFATE = new DoubleMaterialTag("chembath_persulfate");
 }

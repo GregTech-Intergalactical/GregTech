@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.material.MaterialTags;
+import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
 
@@ -18,7 +19,7 @@ public class AlloyLoader {
 
     public static void init() {
         INGOT.all().forEach(t -> {
-            if (t.has(MaterialTags.NEEDS_BLAST_FURNACE)) return;
+            if (t.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)) return;
             if (!t.has(METAL)) return;
             List<MaterialStack> stacks = t.getProcessInto();
             if (stacks.size() != 2) return;

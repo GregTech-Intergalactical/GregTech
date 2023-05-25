@@ -66,13 +66,13 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
             if (display.sepMode != OreProcessingDisplay.SepMode.NONE){
                 drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/sep.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
-            if (!display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE)){
+            if (!display.ore.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)){
                 drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/smelt1.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.ore.has(DUST) && display.ore.has(INGOT)){
                 drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/smelt2.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
-            if (display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE) && display.ore.has(INGOT_HOT)){
+            if (display.ore.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE) && display.ore.has(INGOT_HOT)){
                 drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/vac.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
         }));
@@ -84,7 +84,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createSlot(xy(4, 4, bounds)).entries(EntryIngredients.ofIngredient(ORE.getMaterialIngredient(display.ore, 1))).markInput().disableBackground());
         widgets.addAll(setupBaseMachineSlots(display, bounds));
-        if (!display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE)){
+        if (!display.ore.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)){
             widgets.addAll(setupPrimaryFurnaceSlot(display, bounds));
         }
         if (display.ore.has(INGOT)){
@@ -108,7 +108,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
     private List<Widget> setupPrimaryFurnaceSlot(OreProcessingDisplay display, Rectangle bounds){
         Item ingot, gem, dust;
         if (!SMELT_INTO.getMapping(display.ore).has(INGOT) && !SMELT_INTO.getMapping(display.ore).has(GEM) && !SMELT_INTO.getMapping(display.ore).has(DUST)) return List.of();
-        if (display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE)) return List.of();
+        if (display.ore.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)) return List.of();
         if(SMELT_INTO.getMapping(display.ore).has(INGOT) && !SMELT_INTO.getMapping(display.ore).has(GEM)){
             ingot = INGOT.get(SMELT_INTO.getMapping(display.ore));
             return List.of(Widgets.createSlot(xy(50, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(ingot, SMELTING_MULTI.getInt(display.ore))))).markOutput().disableBackground());
@@ -124,7 +124,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
 
     private List<Widget> setupSecondaryFurnaceSlots(OreProcessingDisplay display, Rectangle bounds){
         List<Widget> widgets = new ArrayList<>();
-        if (display.ore.has(MaterialTags.NEEDS_BLAST_FURNACE)){
+        if (display.ore.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)){
             widgets.add(Widgets.createSlot(xy(122, 111, bounds)).entries(ofMachine(Machines.BLAST_FURNACE)).markOutput().disableBackground());
             widgets.add(Widgets.createSlot(xy(72, 146, bounds)).entries(ofMachine(Machines.BLAST_FURNACE)).markOutput().disableBackground());
             if(display.ore.has(INGOT_HOT)){

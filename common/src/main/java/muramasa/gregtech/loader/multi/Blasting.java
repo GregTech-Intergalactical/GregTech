@@ -6,6 +6,7 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.data.GregTechMaterialTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -25,23 +26,23 @@ public class Blasting {
     public static void init() {
         final int multiplier = 1;
         CRUSHED.all().forEach(m -> {
-            boolean needsBF = m.has(NEEDS_BLAST_FURNACE) || DIRECT_SMELT_INTO.getMapping(m).has(NEEDS_BLAST_FURNACE);
+            boolean needsBF = m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE) || DIRECT_SMELT_INTO.getMapping(m).has(GregTechMaterialTags.NEEDS_BLAST_FURNACE);
             if (!m.has(ORE) || !m.has(INGOT)) return;
             Item crushed = CRUSHED.get(m);
             Item dust = DUST.get(m);
             ItemStack ingot = m != DIRECT_SMELT_INTO.getMapping(m) ? INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(m, 1);
             ItemStack aIngotSmeltInto = m == SMELT_INTO.getMapping(m) ? ingot : INGOT.get(SMELT_INTO.getMapping(m), 1);
             if (needsBF) {
-                long aBlastDuration = Math.max(m.getMass() / 6, 1) * BLAST_FURNACE_TEMP.getInt(m);
+                long aBlastDuration = Math.max(m.getMass() / 6, 1) * GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m);
 
-                ItemStack blastOut = BLAST_FURNACE_TEMP.getInt(m) > 1750 && SMELT_INTO.getMapping(m).has(INGOT_HOT) ? INGOT_HOT.get(MaterialTags.SMELT_INTO.getMapping(m), 1) : aIngotSmeltInto;
+                ItemStack blastOut = GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m) > 1750 && SMELT_INTO.getMapping(m).has(INGOT_HOT) ? INGOT_HOT.get(MaterialTags.SMELT_INTO.getMapping(m), 1) : aIngotSmeltInto;
 
-                BLASTING.RB().ii(of(crushed,1), INT_CIRCUITS.get(1)).io(blastOut).add("crushed_" + m.getId(), aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(of(dust,1), INT_CIRCUITS.get(1)).io(blastOut).add("dust_" + m.getId(),aBlastDuration/4, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(CRUSHED_PURIFIED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("purified_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(CRUSHED_REFINED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("refined_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(DUST_PURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("dust_pure_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(DUST_IMPURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("dust_impure_" + m.getId(),aBlastDuration, 120, MaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(of(crushed,1), INT_CIRCUITS.get(1)).io(blastOut).add("crushed_" + m.getId(), aBlastDuration, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(of(dust,1), INT_CIRCUITS.get(1)).io(blastOut).add("dust_" + m.getId(),aBlastDuration/4, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(CRUSHED_PURIFIED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("purified_" + m.getId(),aBlastDuration, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(CRUSHED_REFINED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("refined_" + m.getId(),aBlastDuration, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(DUST_PURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("dust_pure_" + m.getId(),aBlastDuration, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
+                BLASTING.RB().ii(DUST_IMPURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("dust_impure_" + m.getId(),aBlastDuration, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
             }
 
 
@@ -66,9 +67,9 @@ public class Blasting {
         /* PRIMITIVE */
         BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(1.0, 0.5).add("steel_ingot",1200, 0);
         DUST.all().forEach(m -> {
-            if (m.has(NEEDS_BLAST_FURNACE) && m.has(BLAST_FURNACE_TEMP)){
+            if (m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE) && m.has(GregTechMaterialTags.BLAST_FURNACE_TEMP)){
                 ItemStack ingot = DIRECT_SMELT_INTO.getMapping(m).has(INGOT_HOT) ? INGOT_HOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1);
-                int heat = BLAST_FURNACE_TEMP.getInt(m);
+                int heat = GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m);
                 BLASTING.RB().temperature(heat).ii(DUST.getMaterialIngredient(m, 1)).io(ingot).add(DIRECT_SMELT_INTO.getMapping(m).getId() + "_ingot_from_" + m.getId() + "_dust", Math.max(m.getMass() / 40L, 1L) * heat, 120);
             }
         });
