@@ -31,12 +31,19 @@ import static muramasa.gregtech.data.Machines.*;
 public class Guis {
 
     // TODO move these to the API somehow
-    public static GuiData MULTI_DISPLAY = new GuiData("antimatter", "multi_display").setSlots(ISlotProvider.DEFAULT()
+    public static GuiData MULTI_DISPLAY = new GuiData(GTIRef.ID, "multi_display").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34)
             .add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16).add(IT_OUT, 107, 34)
             .add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
             .add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63));
-    public static GuiData MULTI_DISPLAY_COMPACT = new GuiData("antimatter", "multi_display")
+
+    public static GuiData MULTI_DISPLAY_FLUID = new GuiData(GTIRef.ID, "multi_display_fluid").setSlots(ISlotProvider.DEFAULT()
+            .add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
+            .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7)
+            .add(FL_OUT, 107, 25).add(FL_OUT, 125, 25).add(FL_OUT, 143, 25)
+            .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
+            .add(FL_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61));
+    public static GuiData MULTI_DISPLAY_COMPACT = new GuiData(GTIRef.ID, "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots())).setPadding(0, 0, 0, 0);
     public static GuiData BASIC_TANK = new GuiData(GTIRef.ID, "basic_tank")
             .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43));

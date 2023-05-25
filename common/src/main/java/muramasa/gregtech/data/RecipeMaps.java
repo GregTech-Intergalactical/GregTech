@@ -9,6 +9,7 @@ import muramasa.antimatter.recipe.map.RecipeMap;
 import muramasa.gregtech.GTIRef;
 
 import static muramasa.gregtech.data.Guis.MULTI_DISPLAY;
+import static muramasa.gregtech.data.Guis.MULTI_DISPLAY_FLUID;
 import static muramasa.gregtech.data.RecipeBuilders.*;
 
 @SuppressWarnings("unchecked")
@@ -58,7 +59,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> DISASSEMBLING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "disassembling", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> DISTILLATION = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "distillation", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
+            new RecipeMap<>(GTIRef.ID, "distillation", new RecipeBuilder()).setGuiData(MULTI_DISPLAY_FLUID));
     public static RecipeMap<RecipeBuilder> DISTILLING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "distilling", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ELECTROLYZING = AntimatterAPI.register(RecipeMap.class,
