@@ -54,7 +54,7 @@ public class Structures {
                 .of("CCC", "CCM", "CCC").of("CCC","CAC", "CCC").of(1).of(1).of(1).of(1).of(1).of(1).of(1).of(1).of("CCC", "CCC", "CCC")
                 .at("M", DISTLLATION_TOWER)
                 .at("C", CASING_STAINLESS_STEEL,HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
-                .build().offset(2,0).min(30, CASING_STAINLESS_STEEL).min(1, HATCH_ENERGY, HATCH_FLUID_I).min(4, HATCH_FLUID_O)
+                .build().offset(2,0).min(30, CASING_STAINLESS_STEEL).min(1, HATCH_ENERGY).exact(1, HATCH_FLUID_I).min(4, HATCH_FLUID_O)
         );
 
         HEAT_EXCHANGER.setStructure(b -> b
