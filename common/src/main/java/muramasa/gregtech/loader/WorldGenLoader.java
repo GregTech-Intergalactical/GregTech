@@ -235,12 +235,12 @@ public class WorldGenLoader {
         OVERWORLD, Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinBuilder("cassiterite").asOreVein(6, 126, 50, 5, 24, Tin, Tin, Cassiterite, Tin, OVERWORLD,
         Level.END).buildVein());
-      ev.vein(new WorldGenVeinBuilder("tetrahedrite").asOreVein(16, 76, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite,
+      ev.vein(new WorldGenVeinBuilder("tetrahedrite").asOreVein(51, 131, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite,
         OVERWORLD, Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinBuilder("nether_quartz").asOreVein(40, 80, 80, 5, 24, Quartz, Quartz, Quartz, Quartz,
         Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinBuilder("sulfur").asOreVein(5, 20, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite, Level.NETHER).buildVein());
-      ev.vein(new WorldGenVeinBuilder("copper").asOreVein(46, 76, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, OVERWORLD,
+      ev.vein(new WorldGenVeinBuilder("copper").asOreVein(36, 66, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, OVERWORLD,
         Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinBuilder("bauxite").asOreVein(-14, 46, 80, 4, 24, Bauxite, Bauxite, Aluminium, Ilmenite, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinBuilder("salts").asOreVein(51, 66, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene, OVERWORLD).buildVein());
