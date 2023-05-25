@@ -9,6 +9,7 @@ import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeMap;
 import muramasa.antimatter.util.Utils;
+import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -22,6 +23,7 @@ import java.util.List;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.material.MaterialTags.*;
+import static muramasa.gregtech.data.GregTechData.Biochaff;
 import static muramasa.gregtech.data.Materials.Clay;
 import static muramasa.gregtech.data.Materials.WoodPulp;
 import static muramasa.gregtech.data.RecipeMaps.MACERATING;
@@ -105,5 +107,7 @@ public class MaceratorLoader {
         MACERATING.RB().ii(RecipeIngredient.of(Items.CLAY_BALL, 1)).io(DUST_SMALL.get(Clay, 2)).add("clay_dust_small",16, 4);
         MACERATING.RB().ii(RecipeIngredient.of(Items.CLAY, 1)).io(DUST.get(Clay, 2)).add("clay_dust",30, 4);
         MACERATING.RB().ii(RecipeIngredient.of(Items.TERRACOTTA, 1)).io(DUST.get(Clay, 1)).add("clay_dust_1",16, 4);
+        MACERATING.RB().ii(RecipeIngredient.of(GregTechData.PlantBall, 1)).io(new ItemStack(Biochaff, 1)).add("biochaff",32, 2);
+        MACERATING.RB().ii(RecipeIngredient.of(Biochaff, 1)).io(new ItemStack(Items.DIRT, 1)).add("dirt",32, 2);
     }
 }
