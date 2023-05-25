@@ -4,10 +4,15 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.BlockStateElement;
 import muramasa.antimatter.structure.FakeTileElement;
+import muramasa.antimatter.structure.Structure;
+import muramasa.antimatter.structure.StructureBuilder;
 import muramasa.gregtech.block.BlockCoil;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.BLOCK;
 import static muramasa.gregtech.data.GregTechData.*;
@@ -49,13 +54,28 @@ public class Structures {
                 .at("H", CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
                 .build().offset(2, -1)
         );
-
-        DISTLLATION_TOWER.setStructure(b -> b
+        List<Structure> structures = new ArrayList<>();
+        for (int i = 0; i < 11; i++){
+            StructureBuilder builder = new StructureBuilder().of("ccc", "ccM", "ccc").of("CCC","CAC", "CCC");
+            if (i != 0){
+                for (int j = 0; j < i; j++){
+                    builder.of(1);
+                }
+            }
+            builder.of("CCC", "CCC", "CCC").at("M", DISTLLATION_TOWER)
+                    .at("c", CASING_STAINLESS_STEEL,HATCH_FLUID_I, HATCH_ENERGY)
+                    .at("C", CASING_STAINLESS_STEEL,HATCH_FLUID_O);;
+            Structure structure = builder
+                    .build().offset(2,0).min(20 + (i * 7), CASING_STAINLESS_STEEL).min(1, HATCH_ENERGY).exact(1, HATCH_FLUID_I).min(i+2, HATCH_FLUID_O);
+            structures.add(structure);
+        }
+        DISTLLATION_TOWER.setStructures(structures);
+        /*DISTLLATION_TOWER.setStructure(b -> b
                 .of("CCC", "CCM", "CCC").of("CCC","CAC", "CCC").of(1).of(1).of(1).of(1).of(1).of(1).of(1).of(1).of("CCC", "CCC", "CCC")
                 .at("M", DISTLLATION_TOWER)
                 .at("C", CASING_STAINLESS_STEEL,HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
                 .build().offset(2,0).min(30, CASING_STAINLESS_STEEL).min(1, HATCH_ENERGY).exact(1, HATCH_FLUID_I).min(4, HATCH_FLUID_O)
-        );
+        );*/
 
         HEAT_EXCHANGER.setStructure(b -> b
                 .of("DDD", "DDM", "DDD").of("CCC","CPC", "CCC").of(1).of("DDD", "DDD", "DDD")
