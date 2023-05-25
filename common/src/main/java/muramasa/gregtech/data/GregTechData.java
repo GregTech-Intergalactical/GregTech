@@ -62,6 +62,8 @@ public class GregTechData {
     public static ItemFluidCell CellSteel = new ItemFluidCell(GTIRef.ID, Steel, 16000);
     public static ItemFluidCell CellTungstensteel = new ItemFluidCell(GTIRef.ID, TungstenSteel, 64000);
 
+    public static ItemBasic<?> Biochaff = new ItemBasic<>(GTIRef.ID, "biochaff");
+
     public static ItemBasic<?> ItemFilter = new ItemBasic<>(GTIRef.ID, "item_filter");
     public static ItemBasic<?> DiamondSawBlade = new ItemBasic<>(GTIRef.ID, "diamond_saw_blade");
     public static ItemBasic<?> DiamondGrindHead = new ItemBasic<>(GTIRef.ID, "diamond_grind_head");
