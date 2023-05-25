@@ -4,8 +4,8 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 
-import static muramasa.antimatter.material.MaterialTags.DISTILLATION_FLUID_INPUT_AMOUNT;
-import static muramasa.antimatter.material.MaterialTags.DISTILL_INTO;
+import static muramasa.gregtech.data.GregTechMaterialTags.DISTILLATION_FLUID_INPUT_AMOUNT;
+import static muramasa.gregtech.data.GregTechMaterialTags.DISTILL_INTO;
 import static muramasa.gregtech.data.RecipeMaps.DISTILLATION;
 
 public class DistillationTower {

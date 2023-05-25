@@ -3,7 +3,9 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.material.MaterialTag;
 import muramasa.antimatter.material.tags.DoubleMaterialTag;
+import muramasa.antimatter.material.tags.ListMaterialTag;
 import muramasa.antimatter.material.tags.NumberMaterialTag;
+import muramasa.gregtech.material.FluidProduct;
 
 public class GregTechMaterialTags {
     public static final MaterialTag ELEC = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec", true)); //Add Electrolyzer Recipes - SHOULD NOT SHARE MATS WITH CENT
@@ -31,4 +33,6 @@ public class GregTechMaterialTags {
     public static final NumberMaterialTag BLAST_FURNACE_TEMP = (NumberMaterialTag) AntimatterAPI.register(MaterialTag.class, new NumberMaterialTag("blast_furnace_temp", true));
     public static final DoubleMaterialTag CHEMBATH_MERCURY = new DoubleMaterialTag("chembath_mercury");
     public static final DoubleMaterialTag CHEMBATH_PERSULFATE = new DoubleMaterialTag("chembath_persulfate");
+    public static final ListMaterialTag<FluidProduct> DISTILL_INTO = new ListMaterialTag<>("distill_into");
+    public static final NumberMaterialTag DISTILLATION_FLUID_INPUT_AMOUNT = new NumberMaterialTag("distillation_fluid_input_amount");
 }
