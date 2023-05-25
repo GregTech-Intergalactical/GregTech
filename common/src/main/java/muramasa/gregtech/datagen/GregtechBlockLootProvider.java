@@ -1,6 +1,7 @@
 package muramasa.gregtech.datagen;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.datagen.providers.AntimatterBlockLootProvider;
@@ -10,6 +11,8 @@ import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.Materials;
+import muramasa.gregtech.integration.AppliedEnergisticsRegistrar;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.Item;
@@ -49,5 +52,9 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
         tables.put(Blocks.DIORITE, b -> createSingleItemTableWithSilkTouch(Blocks.DIORITE, ((CobbleStoneType)AntimatterStoneTypes.DIORITE).getBlock("cobble")));
         tables.put(Blocks.GRANITE, b -> createSingleItemTableWithSilkTouch(Blocks.GRANITE, ((CobbleStoneType)AntimatterStoneTypes.GRANITE).getBlock("cobble")));
         tables.put(Blocks.BASALT, b -> createSingleItemTableWithSilkTouch(Blocks.BASALT, ((CobbleStoneType)AntimatterStoneTypes.BASALT).getBlock("cobble")));
+        if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
+            tables.put(AppliedEnergisticsRegistrar.getAe2Block("quartz_ore"), b -> createOreDrop(b, RAW_ORE.get(Materials.CertusQuartz)));
+            tables.put(AppliedEnergisticsRegistrar.getAe2Block("deepslate_quartz_ore"), b -> createOreDrop(b, RAW_ORE.get(Materials.CertusQuartz)));
+        }
     }
 }

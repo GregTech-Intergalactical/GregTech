@@ -13,6 +13,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -84,7 +85,11 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         RecipeMaps.MACERATING.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
     }
 
-    private static Item getAe2Item(String id){
+    public static Item getAe2Item(String id){
         return AntimatterPlatformUtils.getItemFromID(Ref.MOD_AE, id);
+    }
+
+    public static Block getAe2Block(String id){
+        return AntimatterPlatformUtils.getBlockFromId(Ref.MOD_AE, id);
     }
 }
