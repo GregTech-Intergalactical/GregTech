@@ -519,12 +519,6 @@ public class Machines {
                 ImmutableMap.<Character, Object>builder()
                         .put('H', FireBrick).build(), "HHH", "H H", "HHH");
 
-        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BRONZE_BLAST_FURNACE.getItem(BRONZE_BLAST_FURNACE.getFirstTier()),
-                ImmutableMap.<Character, Object>builder()
-                        .put('H', CASING_BRONZE_PLATED_BRICK)
-                        .put('F', PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()))
-                        .put('C', CASING_FIRE_BRICK).build(), "HCH", "CFC", "HCH");
-
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CHARCOAL_PIT.getItem(CHARCOAL_PIT.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', CASING_BRONZE_PLATED_BRICK)

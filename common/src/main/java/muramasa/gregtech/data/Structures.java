@@ -30,12 +30,6 @@ public class Structures {
                 .build().offset(2, 0).min(12, CASING_HEAT_PROOF).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
         );
 
-        BRONZE_BLAST_FURNACE.setStructure(b -> b
-                .of("CCC", "CCC", "CCC").of("CCC", "CBM", "CCC").of("CCC", "CBC", "CCC").of("CCC", "CAC", "CCC")
-                .at("C", CASING_BRONZE_PLATED_BRICK).at("B", AIR_OR_LAVA).at("M", BRONZE_BLAST_FURNACE)
-                .build().offset(2, -1).min(32, CASING_BRONZE_PLATED_BRICK)
-        );
-
         COKE_OVEN.setStructure(b -> b
             .of("CCC", "CCC", "CCC").of("CCC", "CAM", "CCC").of(0)
             .at("C", FAKE_CASING).at("M", COKE_OVEN)
