@@ -46,13 +46,23 @@ public class MaceratorLoader {
                 }
                 List<ItemStack> stacks = new ArrayList<>();
                 stacks.add(Utils.ca((ORE_MULTI.getInt(m)) * (rm == SIFTING ? 1 : 2), crushedStack));
-                if (rm == SIFTING) stacks.add(crushedStack);
+                if (rm == SIFTING){ 
+                    stacks.add(crushedStack);
+                    stacks.add(crushedStack);
+                    stacks.add(crushedStack);
+                }
                 stacks.add(AntimatterMaterialTypes.DUST.get(oreByProduct1, 1));
                 if (!stoneDust.isEmpty()) stacks.add(stoneDust);
                 ItemStack[] stackArray = stacks.toArray(new ItemStack[0]);
                 List<Double> ints = new ArrayList<>();
-                ints.add(1.0);
-                if (rm == SIFTING) ints.add(0.5);
+                if (rm == SIFTING){ 
+                    ints.add(0.5);
+                    ints.add(0.4);
+                    ints.add(0.3);
+                    ints.add(0.2);
+                } else {
+                    ints.add(1.0);
+                }
                 ints.add(0.1 * BY_PRODUCT_MULTI.getInt(m));
                 if (!stoneDust.isEmpty()) ints.add(0.5);
                 double[] chances = ints.stream().mapToDouble(i -> i).toArray();
