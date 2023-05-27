@@ -56,10 +56,10 @@ public class MaceratorLoader {
                 ItemStack[] stackArray = stacks.toArray(new ItemStack[0]);
                 List<Double> ints = new ArrayList<>();
                 if (rm == SIFTING){ 
+                    ints.add(0.7);
                     ints.add(0.5);
-                    ints.add(0.4);
                     ints.add(0.3);
-                    ints.add(0.2);
+                    ints.add(0.1);
                 } else {
                     ints.add(1.0);
                 }
