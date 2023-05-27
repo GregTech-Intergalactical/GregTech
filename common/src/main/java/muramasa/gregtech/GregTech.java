@@ -1,6 +1,7 @@
 package muramasa.gregtech;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.AntimatterDynamics;
@@ -158,6 +159,9 @@ public class GregTech extends AntimatterMod {
                 Structures.init();
               //  if (side == Dist.CLIENT) StructureInfo.init();
                 TierMaps.providerInit();
+                if (!AntimatterConfig.WORLD.VANILLA_ORE_GEN){
+                    AntimatterConfig.COMMON_CONFIG.VANILLA_ORE_GEN.set(true);
+                }
             }
             case CLIENT_DATA_INIT -> ClientData.init();
         }
