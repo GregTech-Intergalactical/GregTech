@@ -29,7 +29,6 @@ public class MixerLoader {
         addDust(Nichrome, 8, 25*20);
         addDust(Invar, 8, 15*20);
         addDust(Bronze, 8, 10*20);
-        addDust(BismuthBronze, 8, 25*20);
         addDust(BlackBronze, 8, 25*20);
         addDust(FerriteMixture, 8, 30*20);
         addDust(IndiumGalliumPhosphide, 8, 20*20);
