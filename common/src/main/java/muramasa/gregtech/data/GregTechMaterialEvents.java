@@ -1055,8 +1055,8 @@ public class GregTechMaterialEvents {
         FURNACE_FUELS.add(Lignite, RAW_ORE, 800);
         FURNACE_FUELS.add(Lignite, CRUSHED, 900);
         FURNACE_FUELS.add(Lignite, CRUSHED_PURIFIED, 1000);
-        FURNACE_FUELS.add(Coal, DUST_IMPURE, 800);
-        FURNACE_FUELS.add(Coal, DUST_PURE, 800);
+        FURNACE_FUELS.add(Lignite, DUST_IMPURE, 800);
+        FURNACE_FUELS.add(Lignite, DUST_PURE, 800);
         FURNACE_FUELS.add(Lignite, CRUSHED_REFINED, 1100);
         FURNACE_FUELS.add(Lignite, BLOCK, 8000);
         FURNACE_FUELS.add(LigniteCoke, GEM, 1600);
