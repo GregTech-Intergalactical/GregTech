@@ -1071,6 +1071,13 @@ public class GregTechMaterialEvents {
         FURNACE_FUELS.add(Coal, CRUSHED_REFINED, 2200);
         FURNACE_FUELS.add(Charcoal, DUST, 1600);
         FURNACE_FUELS.add(Charcoal, BLOCK, 16000);
+        FURNACE_FUELS.add(OilShale, DUST, 400);
+        FURNACE_FUELS.add(OilShale, RAW_ORE, 400);
+        FURNACE_FUELS.add(OilShale, CRUSHED, 450);
+        FURNACE_FUELS.add(OilShale, CRUSHED_PURIFIED, 500);
+        FURNACE_FUELS.add(OilShale, DUST_IMPURE, 400);
+        FURNACE_FUELS.add(OilShale, DUST_PURE, 400);
+        FURNACE_FUELS.add(OilShale, CRUSHED_REFINED, 550);
         CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene, LightFuel, HeavyFuel);
         CRYSTALLIZE.add(Lapis, Quartzite, Quartz);
         DECAYABLE.add(Thallium209,Thallium210,Bismuth213,Bismuth214,Polonium213,Polonium214,Polonium215,Polonium216,Polonium218,Astatine217,Astatine218,
