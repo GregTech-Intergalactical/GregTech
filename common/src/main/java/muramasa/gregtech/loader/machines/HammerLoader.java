@@ -17,7 +17,7 @@ public class HammerLoader {
         //Wrought Iron and Annealed Copper 2 to 1 (pre Arc Furnace)
         HAMMERING.RB().ii(DUST.getMaterialIngredient(Iron, 2)).io(DUST.get(WroughtIron, 1)).add("wrought_iron_pre_arc",Iron.getHardness()/20, 10);
         HAMMERING.RB().ii(DUST.getMaterialIngredient(Copper, 2)).io(DUST.get(AnnealedCopper, 1)).add("annealed_copper_pre_arc",AnnealedCopper.getHardness()/20, 10);
-        HAMMERING.RB().ii(RecipeIngredient.of(Items.BRICK, 1)).io(DUST_SMALL.get(Brick, 1)).add("brick_dust_small",10, 16);
-        HAMMERING.RB().ii(RecipeIngredient.of(Items.BRICKS, 1)).io(DUST.get(Brick, 1)).add("brick_dust",40, 16);
+        HAMMERING.RB().ii(RecipeIngredient.of(Items.BRICK, 1)).io(DUST_SMALL.get(Brick, 2)).add("brick_dust_small",10, 16);
+        HAMMERING.RB().ii(RecipeIngredient.of(Items.BRICKS, 1)).io(DUST.get(Brick, 2)).add("brick_dust",40, 16);
     }
 }

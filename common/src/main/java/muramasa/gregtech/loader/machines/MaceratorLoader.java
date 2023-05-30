@@ -111,7 +111,7 @@ public class MaceratorLoader {
         MACERATING.RB().ii(RecipeIngredient.of(Items.STONE,1)).io(new ItemStack(Items.GRAVEL,1)).add("gravel",100,2);
         MACERATING.RB().ii(RecipeIngredient.of(Items.COBBLESTONE,1)).io(new ItemStack(Items.SAND,1)).add("sand",100,2);
         MACERATING.RB().ii(RecipeIngredient.of(Items.SAND,1)).io(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Sand, 1)).add("sand_dust",50,4);
-        MACERATING.RB().ii(RecipeIngredient.of(Items.BRICK,1)).io(AntimatterMaterialTypes.DUST.get(Materials.Brick, 1)).add("brick_dust",50,4);
+        MACERATING.RB().ii(RecipeIngredient.of(Items.BRICK,1)).io(DUST_SMALL.get(Materials.Brick, 2)).add("brick_dust",50,4);
         MACERATING.RB().ii(RecipeIngredient.of(Items.COAL,1)).io(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Coal, 1)).add("coal_dust",50,4);
         MACERATING.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(AntimatterMaterialTypes.DUST.get(WoodPulp, 2)).add("wood_dust",40, 2);
         MACERATING.RB().ii(RecipeIngredient.of(Items.CLAY_BALL, 1)).io(DUST_SMALL.get(Clay, 2)).add("clay_dust_small",16, 4);
