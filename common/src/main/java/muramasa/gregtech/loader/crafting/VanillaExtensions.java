@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.github.gregtechintergalactical.gtrubber.GTRubberData;
+import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
@@ -27,6 +28,7 @@ import static muramasa.gregtech.data.Materials.*;
 
 public class VanillaExtensions {
     public static void loadRecipes(Consumer<FinishedRecipe> consumer, AntimatterRecipeProvider provider) {
+        provider.addItemRecipe(consumer, "minecraft", "", "furnaces","has_cobble", provider.hasSafeItem(ItemTags.STONE_TOOL_MATERIALS), Items.FURNACE, ImmutableMap.of('C', ItemTags.STONE_TOOL_MATERIALS), "CCC", "C C", "CCC");
         provider.addConditionalRecipe(consumer, provider.getStackRecipe("", "has_sulfur_dust", provider.hasSafeItem(TagUtils.getForgelikeItemTag("dusts/sulfur")),
                 new ItemStack(Blocks.TORCH, 2), of('D', TagUtils.getForgelikeItemTag("dusts/sulfur"), 'R', ForgeCTags.RODS_WOODEN), "D", "R"), GTIRef.class, "sulfurTorch", GTIRef.ID, "sulfur_torch");
 
