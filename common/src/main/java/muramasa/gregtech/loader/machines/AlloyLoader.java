@@ -34,7 +34,7 @@ public class AlloyLoader {
             if (firstIngot) ALLOY_SMELTING.RB().ii(of(INGOT.getMaterialTag(first.m),first.s),of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(t.getId() +"_ingot_3",100, 12);
             if (secondIngot) ALLOY_SMELTING.RB().ii(of(DUST.getMaterialTag(first.m),first.s),of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(t.getId() +"_ingot_4",100, 12);
         });
-        //addAlloyRecipes(Copper, 3,Electrum, 2, BlackBronze, 5);
+        addAlloyRecipes(Copper, 3,Electrum, 2, BlackBronze, 5);
         addAlloyRecipes(Bismuth, 1, Brass, 4, BismuthBronze, 5);
         //pre Chemical Reactor Rubber
         ALLOY_SMELTING.RB().ii(of(DUST.get(RawRubber), 1), of(DUST.getMaterialTag(Sulfur), 1))

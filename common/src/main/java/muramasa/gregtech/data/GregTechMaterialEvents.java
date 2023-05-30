@@ -253,7 +253,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(AnnealedCopper).asMetal(1357, PLATE, FOIL, ROD, WIRE_FINE, SCREW).mats(of(Copper, 1));
         event.setMaterial(BatteryAlloy).asMetal(295, PLATE).mats(of(Lead, 4, Antimony, 1));
         event.setMaterial(BismuthBronze).asMetal(1100, 900, PLATE).addTools(2.5F, 8.5F, 350, 2, of(Enchantments.BANE_OF_ARTHROPODS, 4)).mats(of(Bismuth, 1, Zinc, 1, Copper, 3));
-        event.setMaterial(BlackBronze).asMetal(2000, 2000).addTools(1.5F, 6.5F, 182, 2, of(Enchantments.SWEEPING_EDGE, 1)).mats(of(Gold, 1, Silver, 1, Copper, 3));
+        event.setMaterial(BlackBronze).asMetal(2000).addTools(1.5F, 6.5F, 182, 2, of(Enchantments.SWEEPING_EDGE, 1)).mats(of(Gold, 1, Silver, 1, Copper, 3));
         event.setMaterial(BlackSteel).asMetal(1200, 1200, FRAME, PLATE).addTools(3.5F, 6.5F, 768, 2).mats(of(Nickel, 1, BlackBronze, 1, Steel, 3));
         event.setMaterial(BlueSteel).asMetal(1400, 1400, FRAME).addTools(3.5F, 7.5F, 1024, 2).mats(of(RoseGold, 1, Brass, 1, Steel, 2, BlackSteel, 4));
         event.setMaterial(Brass).asMetal(1170, FRAME, ROD, PLATE).mats(of(Zinc, 1, Copper, 3));
@@ -281,11 +281,11 @@ public class GregTechMaterialEvents {
         event.setMaterial(Osmiridium).asMetal(3333, 2500, FRAME).addTools(6.0F, 15.0F, 1940, 5).mats(of(Iridium, 3, Osmium, 1));
         event.setMaterial(RedAlloy).asMetal(295, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Copper, 1, Redstone, 4));
         event.setMaterial(RedSteel).asMetal(1300, 1300).addTools(3.5F, 7.0F, 896, 2).mats(of(SterlingSilver, 1, BismuthBronze, 1, Steel, 2, BlackSteel, 4));
-        event.setMaterial(RoseGold).asMetal(1600, 1600, WIRE_FINE).addTools(Gold, of(Enchantments.BLOCK_FORTUNE, 3, Enchantments.SMITE, 3)).mats(of(Copper, 1, Gold, 4));
+        event.setMaterial(RoseGold).asMetal(1600, WIRE_FINE).addTools(Gold, of(Enchantments.BLOCK_FORTUNE, 3, Enchantments.SMITE, 3)).mats(of(Copper, 1, Gold, 4));
         event.setMaterial(SolderingAlloy).asMetal(400, 400, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Tin, 9, Antimony, 1));
         event.setMaterial(Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).addTools(Iron).mats(of(Iron, 50, Carbon, 1));
         event.setMaterial(SteelMagnetic).asMetal(1000, 1000, ROD).addTools(Steel).mats(of(Steel, 1));
-        event.setMaterial(SterlingSilver).asMetal(1700, 1700).addTools(3.0F, 10.5F, 96, 2, of(Enchantments.BLOCK_EFFICIENCY, 2)).mats(of(Copper, 1, Silver, 4));
+        event.setMaterial(SterlingSilver).asMetal(1700).addTools(3.0F, 10.5F, 96, 2, of(Enchantments.BLOCK_EFFICIENCY, 2)).mats(of(Copper, 1, Silver, 4));
         event.setMaterial(StainlessSteel).asMetal(1700, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).addTools(Steel).mats(of(Iron, 6, Chrome, 1, Manganese, 1, Nickel, 1));
         event.setMaterial(TinAlloy).asMetal(1158,1158).mats(of(Tin, 1, Iron, 1));
         event.setMaterial(Tritanium).asMetal(295, FRAME).addTools(9.0F, 15.0F, 9400, 6);
