@@ -334,7 +334,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(CobaltOxide).asDust().mats(of(Cobalt, 1, Oxygen, 1));
         event.setMaterial(Concrete).asDust(300).mats(of(Stone, 1)).asFluid();
         event.setMaterial(DialuminiumTrioxide).asDust().mats(of(Aluminium,2,Oxygen,3));
-        event.setMaterial(Energium).asDust().mats(of(Redstone,1,Ruby,1));
+        event.setMaterial(Energium).asDust().mats(of(Redstone,5,Ruby,4));
         event.setMaterial(FerriteMixture).asDust().mats(of(Nickel, 1, Zinc, 1, Iron, 4));
         event.setMaterial(Ferrosilite).asDust().mats(of(Iron, 1, Silicon, 1, Oxygen, 3));
         event.setMaterial(Fireclay).asDust().mats(of(Brick, 1));
