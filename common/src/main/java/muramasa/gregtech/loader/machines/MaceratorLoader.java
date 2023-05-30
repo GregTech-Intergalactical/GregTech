@@ -40,10 +40,7 @@ public class MaceratorLoader {
                 RecipeIngredient ore = RecipeIngredient.of(oreTag,1);
                 ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(m, ORE_MULTI.getInt(m));
                 Material oreByProduct1 = m.getByProducts().size() > 0 ? m.getByProducts().get(0) : MACERATE_INTO.getMapping(m);
-                RecipeMap<?> rm = MACERATING;
-                if (sm == AntimatterMaterials.Sand || sm == AntimatterMaterials.RedSand || sm == AntimatterMaterials.Gravel || sm == AntimatterMaterials.Dirt){
-                    rm = SIFTING;
-                }
+                RecipeMap<?> rm = s.isSandLike() ? SIFTING : MACERATING;
                 List<ItemStack> stacks = new ArrayList<>();
                 stacks.add(Utils.ca((ORE_MULTI.getInt(m)) * (rm == SIFTING ? 1 : 2), crushedStack));
                 if (rm == SIFTING){ 
