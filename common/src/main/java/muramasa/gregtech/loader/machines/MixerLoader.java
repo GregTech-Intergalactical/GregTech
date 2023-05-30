@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Blaze;
+import static muramasa.antimatter.data.AntimatterMaterials.EnderEye;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.*;
 
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
@@ -24,33 +25,35 @@ import static muramasa.gregtech.data.RecipeMaps.MIXING;
 public class MixerLoader {
 
     public static void init() {
-        addDust(StainlessSteel, 7, 45*20);
-        addDust(Nichrome, 7, 25*20);
-        addDust(Invar, 7, 15*20);
-        addDust(Bronze, 7, 10*20);
-        addDust(FerriteMixture, 7, 30*20);
-        addDust(IndiumGalliumPhosphide, 7, 20*20);
-        addDust(Energium, 7, 10*20);
-        addDust(GalliumArsenide, 7, 15*20);
-        addDust(VanadiumSteel, 7, 50*20);
-        addDust(CobaltBrass, 7, 45*20);
-        addDust(BlueSteel, 7, 40*20);
-        addDust(RedSteel, 7, 40*20);
-        addDust(BlackSteel, 7, 25*20);
-        addDust(SterlingSilver, 7, 25*20);
-        addDust(RoseGold, 7, 25*20);
-        addDust(BismuthBronze, 7, 25*20);
-        addDust(Osmiridium, 7, 50*20);
-        addDust(VanadiumGallium, 7, 20*20);
-        addDust(Ultimet, 7, 45*20);
-        addDust(TinAlloy, 7, 10*20);
-        addDust(SodiumSulfide, 7, 3*20);
-        addDust(Magnalium, 7, 20*20);
-        addDust(Kanthal, 7, 15*20);
-        addDust(Electrum, 7, 10*20);
-        addDust(Brass, 7, 20*20);
-        addDust(BatteryAlloy, 7, 25*20);
-        addDust(Cupronickel, 7, 10*20);
+        addDust(StainlessSteel, 8, 45*20);
+        addDust(Nichrome, 8, 25*20);
+        addDust(Invar, 8, 15*20);
+        addDust(Bronze, 8, 10*20);
+        addDust(BismuthBronze, 8, 25*20);
+        addDust(BlackBronze, 8, 25*20);
+        addDust(FerriteMixture, 8, 30*20);
+        addDust(IndiumGalliumPhosphide, 8, 20*20);
+        addDust(Energium, 8, 10*20);
+        addDust(GalliumArsenide, 8, 15*20);
+        addDust(VanadiumSteel, 8, 50*20);
+        addDust(CobaltBrass, 8, 45*20);
+        addDust(BlueSteel, 8, 40*20);
+        addDust(RedSteel, 8, 40*20);
+        addDust(BlackSteel, 8, 25*20);
+        addDust(SterlingSilver, 8, 25*20);
+        addDust(RoseGold, 8, 25*20);
+        addDust(BismuthBronze, 8, 25*20);
+        addDust(VanadiumGallium, 8, 20*20);
+        addDust(Ultimet, 8, 45*20);
+        addDust(TinAlloy, 8, 10*20);
+        addDust(SodiumSulfide, 8, 3*20);
+        addDust(Magnalium, 8, 20*20);
+        addDust(Kanthal, 8, 15*20);
+        addDust(Electrum, 8, 10*20);
+        addDust(Brass, 8, 20*20);
+        addDust(BatteryAlloy, 8, 25*20);
+        addDust(Cupronickel, 8, 10*20);
+        addDust(EnderEye, 8, 5*20);
         recipes();
     }
 
@@ -58,9 +61,24 @@ public class MixerLoader {
         for (MaterialTypeItem<?> type : new MaterialTypeItem[]{AntimatterMaterialTypes.DUST, AntimatterMaterialTypes.DUST_SMALL, AntimatterMaterialTypes.DUST_TINY}) {
             List<Ingredient> ings = mat.getProcessInto().stream().map(t -> type.getMaterialIngredient(t.m, t.s)).collect(Collectors.toList());
             if (ings.size() == 0) return;
+            var type2 = type;
             int count = mat.getProcessInto().stream().mapToInt(t -> t.s).sum();
-            ings.add(INT_CIRCUITS.get(4));
-            MIXING.RB().ii(ings).io(type.get(mat,count)).add(type.getId() + "_" + mat.getId(),duration,eut);
+            if (type != AntimatterMaterialTypes.DUST){
+                if (type == AntimatterMaterialTypes.DUST_SMALL){
+                    if (count % 4 == 0){
+                        count /=4;
+                        type2 = AntimatterMaterialTypes.DUST;
+                    }
+                } else {
+                    if (count % 9 == 0){
+                        count /=9;
+                        type2 = AntimatterMaterialTypes.DUST;
+                    }
+                }
+            }
+
+
+            MIXING.RB().ii(ings).io(type2.get(mat,count)).add(type.getId() + "_" + mat.getId(),duration,eut);
         }
     }
 
@@ -87,7 +105,6 @@ public class MixerLoader {
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Redstone,1))).fi(Creosote.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_7",64*2, 4);
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Redstone,1))).fi(SeedOil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_8",64*2, 4);
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Glass,7)),of(AntimatterMaterialTypes.DUST.get(Boron,1))).io(AntimatterMaterialTypes.DUST.get(BorosilicateGlass,8)).add("borosilicate_glass",40*20, 8);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.EnderPearl,1)),of(AntimatterMaterialTypes.DUST.get(Blaze,1))).io(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.EnderEye,1)).add("ender_eye_dust",5*20, 8);
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Saltpeter,2)),of(AntimatterMaterialTypes.DUST.get(Sulfur,1)),of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Coal,1))).io(Items.GUNPOWDER).add("gunpowder",20*20, 8);
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Saltpeter,2)),of(AntimatterMaterialTypes.DUST.get(Sulfur,1)),of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Charcoal,1))).io(new ItemStack(Items.GUNPOWDER,2)).add("gunpowder_1",15*20, 8);
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone,1))).fi(Lubricant.getLiquid(20), AntimatterMaterials.Water.getLiquid(4980)).fo(DrillingFluid.getLiquid(5000)).add("drilling_fluid",32*2, 16);
