@@ -153,6 +153,25 @@ public class Blasting {
                 .fi(Argon.getGas(1000))
                 .io(INGOT_HOT.get(NaquadahAlloy, 2))
                 .add("naquadah_ingot",25 * 20, 30720);
+        /* TFC stuff and hss */
+        BLASTING.RB().temperature(1200).ii(INGOT.getMaterialIngredient(Nickel, 1), INGOT.getMaterialIngredient(BlackBronze, 1), INGOT.getMaterialIngredient(Steel, 3))
+                .io(INGOT.get(BlackSteel, 5))
+                .add("black_steel_ingot", 60 * 20, 120);
+        BLASTING.RB().temperature(1400).ii(INGOT.getMaterialIngredient(SterlingSilver, 1), INGOT.getMaterialIngredient(BismuthBronze, 1), INGOT.getMaterialIngredient(Steel, 2), INGOT.getMaterialIngredient(BlackSteel, 4))
+                .io(INGOT.get(BlueSteel, 8))
+                .add("blue_steel_ingot", 70 * 20, 120);
+        BLASTING.RB().temperature(1300).ii(INGOT.getMaterialIngredient(RoseGold, 1), INGOT.getMaterialIngredient(Brass, 1), INGOT.getMaterialIngredient(Steel, 2), INGOT.getMaterialIngredient(BlackSteel, 4))
+                .io(INGOT.get(RedSteel, 8))
+                .add("red_steel_ingot", 65 * 20, 120);
+        BLASTING.RB().temperature(4500).ii(INGOT.getMaterialIngredient(TungstenSteel, 5), INGOT.getMaterialIngredient(Chrome, 1), INGOT.getMaterialIngredient(Molybdenum, 2), INGOT.getMaterialIngredient(Vanadium, 1))
+                .io(INGOT_HOT.get(HSSG, 9))
+                .add("hssg_ingot", 450 * 20, 120);
+        BLASTING.RB().temperature(5400).ii(INGOT.getMaterialIngredient(HSSG, 6), INGOT.getMaterialIngredient(Cobalt, 1), INGOT.getMaterialIngredient(Manganese, 1), INGOT.getMaterialIngredient(Silicon, 1))
+                .io(INGOT_HOT.get(HSSE, 8))
+                .add("hsse_ingot", 540 * 20, 120);
+        BLASTING.RB().temperature(5400).ii(INGOT.getMaterialIngredient(HSSG, 6), INGOT.getMaterialIngredient(Osmiridium, 2), INGOT.getMaterialIngredient(Iridium, 1))
+                .io(INGOT_HOT.get(HSSS, 9))
+                .add("hsss_ingot", 810 * 20, 120);
 
         //Nuclear Processing
         BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium227Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium227,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium227_ingot",40*20, 480);
