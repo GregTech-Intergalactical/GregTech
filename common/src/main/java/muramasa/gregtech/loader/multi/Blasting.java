@@ -200,6 +200,9 @@ public class Blasting {
         BASIC_BLASTING.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add(ore.getId() + "_calcite", input * 1000);
         BASIC_BLASTING.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add(ore.getId() + "_limestone", input * 1000);
         BASIC_BLASTING.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add(ore.getId() + "_marble", input * 1000);
+        BASIC_BLASTING.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("crushed_" + ore.getId() + "_calcite", input * 1000);
+        BASIC_BLASTING.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("crushed_" + ore.getId() + "_limestone", input * 1000);
+        BASIC_BLASTING.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("crushed_" + ore.getId() + "_marble", input * 1000);
         BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add(ore.getId() + "_calcite", input * 500, 120);
         BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add(ore.getId() + "_limestone", input * 500, 120);
         BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add(ore.getId() + "_marble", input * 500, 120);
