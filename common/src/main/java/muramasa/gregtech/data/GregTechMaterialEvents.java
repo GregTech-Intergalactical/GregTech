@@ -100,7 +100,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Actinium).asMetal(1323, 0);
         event.setMaterial(Thorium).asMetal(2115, 0, PLATE_DENSE).asOre().addTools(1.5F, 6.0F, 512, 2).harvestLevel(2);
         event.setMaterial(Protactinium).asMetal(1841, 0);
-        event.setMaterial(Uranium).asMetal(1405, 0).asOre().harvestLevel(3);
+        event.setMaterial(Uranium).asMetal(1405, 0).asOre().harvestLevel(2);
         event.setMaterial(Neptunium).asMetal(912, 0);
         event.setMaterial(Plutonium).asMetal(912, 0).addTools(2.5F, 6.0F, 280, 3, of(Enchantments.FIRE_ASPECT, 2)); // TODO: Enchantment: Radioactivit;
         event.setMaterial(Americium).asMetal(1149, 0);
@@ -431,7 +431,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Talc).asOre().mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12));
         event.setMaterial(Tetrahedrite).asOre().harvestLevel(2).mats(of(Copper, 3, Antimony, 1, Sulfur, 3, Iron, 1));
         event.setMaterial(Tungstate).asOre().harvestLevel(3).mats(of(Tungsten, 1, Lithium, 2, Oxygen, 4));
-        event.setMaterial(Uraninite).asOre().harvestLevel(3).mats(of(Uranium, 1, Oxygen, 2));
+        event.setMaterial(Uraninite).asOre().harvestLevel(2).mats(of(Uranium, 1, Oxygen, 2));
         event.setMaterial(Uvarovite).asOre().mats(of(Calcium, 3, Chrome, 2, Silicon, 3, Oxygen, 12));
         event.setMaterial(VanadiumMagnetite).asOre().harvestLevel(2).mats(of(Magnetite, 1, Vanadium, 1));
         event.setMaterial(Wulfenite).asOre().harvestLevel(3).mats(of(Lead, 1, Molybdenum, 1, Oxygen, 4));
