@@ -2,12 +2,19 @@ package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.util.TagUtils;
+import muramasa.gregtech.data.GregTechData;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.gregtech.data.GregTechData.CompressedFireClay;
+import static muramasa.gregtech.data.GregTechData.PlantBall;
 import static muramasa.gregtech.data.Materials.Fireclay;
 import static muramasa.gregtech.data.Materials.WoodPulp;
 import static muramasa.gregtech.data.RecipeMaps.COMPRESSING;
@@ -30,5 +37,25 @@ public class CompressorLoader {
         });
         COMPRESSING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.DUST.get(WoodPulp), 1)).io(AntimatterMaterialTypes.PLATE.get(AntimatterMaterials.Wood, 1)).add("wood_plate",60, 4);
         COMPRESSING.RB().ii(DUST.getMaterialIngredient(Fireclay, 1)).io(new ItemStack(CompressedFireClay)).add("compressed_fireclay",200, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(ItemTags.SAPLINGS, 4)).io(new ItemStack(PlantBall)).add("plantball",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(ItemTags.SMALL_FLOWERS, 8)).io(new ItemStack(PlantBall)).add("plantball_1",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(ForgeCTags.CROPS, 8)).io(new ItemStack(PlantBall)).add("plantball_2",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(ForgeCTags.SEEDS, 16)).io(new ItemStack(PlantBall)).add("plantball_3",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(ItemTags.LEAVES, 8)).io(new ItemStack(PlantBall)).add("plantball_4",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.CACTUS, 8)).io(new ItemStack(PlantBall)).add("plantball_5",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.DEAD_BUSH, 8)).io(new ItemStack(PlantBall)).add("plantball_6",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(ForgeCTags.MUSHROOMS, 8)).io(new ItemStack(PlantBall)).add("plantball_8",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.NETHER_WART_BLOCK, 8)).io(new ItemStack(PlantBall)).add("plantball_9",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.WARPED_FUNGUS, 4)).io(new ItemStack(PlantBall)).add("plantball_10",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.WARPED_ROOTS, 8)).io(new ItemStack(PlantBall)).add("plantball_11",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.CRIMSON_FUNGUS, 4)).io(new ItemStack(PlantBall)).add("plantball_12",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.CRIMSON_ROOTS, 8)).io(new ItemStack(PlantBall)).add("plantball_13",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.WARPED_WART_BLOCK, 8)).io(new ItemStack(PlantBall)).add("plantball_14",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.KELP, 8)).io(new ItemStack(PlantBall)).add("plantball_16",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.DRIED_KELP, 8)).io(new ItemStack(PlantBall)).add("plantball_17",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.PUMPKIN, 4)).io(new ItemStack(PlantBall)).add("plantball_18",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.MELON, 4)).io(new ItemStack(PlantBall)).add("plantball_19",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.MELON_SLICE, 8)).io(new ItemStack(PlantBall)).add("plantball_20",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.SUGAR_CANE, 8)).io(new ItemStack(PlantBall)).add("plantball_21",300, 2);
     }
 }
