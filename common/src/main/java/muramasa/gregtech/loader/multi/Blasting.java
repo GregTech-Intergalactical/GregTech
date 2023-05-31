@@ -83,6 +83,7 @@ public class Blasting {
         addCalciteRecipe(Tetrahedrite, 12, new ItemStack(Items.COPPER_INGOT, 3), new ItemStack(Items.IRON_INGOT));
         addCalciteRecipe(Galena, 4, INGOT.get(Lead, 1), INGOT.get(Silver, 1));
         addCalciteRecipe(Garnierite, 3, INGOT.get(Nickel, 1));
+        addCalciteRecipe(Cobaltite, 5, INGOT.get(Cobalt, 1));
         /* Annealed Copper*/
         BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(AntimatterMaterials.Copper, 1))
                 .fi(Oxygen.getGas(1000))
