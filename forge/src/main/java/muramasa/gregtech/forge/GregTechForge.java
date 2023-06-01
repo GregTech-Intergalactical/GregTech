@@ -29,6 +29,7 @@ public class GregTechForge {
         MinecraftForge.EVENT_BUS.addListener(GregTechForge::onWorldGen);
         new GregTechPostRegistrar();
         new GregTech();
+        RemappingEvents.init();
     }
 
     private static void onProviders(AntimatterProvidersEvent ev) {

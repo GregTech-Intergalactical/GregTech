@@ -37,8 +37,8 @@ public class Machines {
      ** Hatchless Multiblock Machines (Steam Age)
      **/
     public static BasicMultiMachine<?> CHARCOAL_PIT = new BasicMultiMachine<>(GTIRef.ID, "charcoal_pit").setTiers(BRONZE).setTile(TileEntityCharcoalPit::new);
-    public static BasicMultiMachine<?> COKE_OVEN = new BasicMultiMachine<>(GTIRef.ID, "coke_oven").setTiers(BRONZE).setMap(COKING).addFlags(GUI, ITEM, FLUID).setTile(TileEntityCokeOven::new);
-    public static BasicMultiMachine<?> PRIMITIVE_BLAST_FURNACE = new BasicMultiMachine<>(GTIRef.ID, "primitive_blast_furnace").setTiers(BRONZE).setMap(BASIC_BLASTING).addFlags(GUI, ITEM).setTile(TileEntityPrimitiveBlastFurnace::new);
+    public static BasicMultiMachine<?> COKE_OVEN = new BasicMultiMachine<>(GTIRef.ID, "coke_oven").setTiers(NONE).setMap(COKING).addFlags(GUI, ITEM, FLUID).setTile(TileEntityCokeOven::new);
+    public static BasicMultiMachine<?> PRIMITIVE_BLAST_FURNACE = new BasicMultiMachine<>(GTIRef.ID, "primitive_blast_furnace").setTiers(NONE).setMap(BASIC_BLASTING).addFlags(GUI, ITEM).setTile(TileEntityPrimitiveBlastFurnace::new);
     /**
      ** Electric Singleblock Machines
      **/

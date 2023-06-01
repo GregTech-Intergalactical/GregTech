@@ -1,6 +1,7 @@
 package muramasa.gregtech.events.forge;
 
 import com.github.gregtechintergalactical.gtrubber.GTRubberData;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
@@ -27,9 +28,23 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.api.forge.TesseractCaps;
 
+import java.util.Map;
+
 import static muramasa.antimatter.material.Material.NULL;
 
 public class RemappingEvents {
+
+    private static final Map<String, String> REMAPPING_MAP = new Object2ObjectArrayMap<>();
+
+    public static void init(){
+        REMAPPING_MAP.put("coke_oven_bronze", "coke_oven");
+        REMAPPING_MAP.put("primitive_blast_furnace_bronze", "primitive_blast_furnace");
+        REMAPPING_MAP.put("pulverizer_lv", "macerator_lv");
+        REMAPPING_MAP.put("pulverizer_mv", "macerator_mv");
+        REMAPPING_MAP.put("pulverizer_hv", "macerator_hv");
+        REMAPPING_MAP.put("pulverizer_ev", "macerator_ev");
+        REMAPPING_MAP.put("pulverizer_iv", "macerator_iv");
+    }
 
     @SubscribeEvent
     public static void remapMissingBlocks(final RegistryEvent.MissingMappings<Block> event){
@@ -95,34 +110,39 @@ public class RemappingEvents {
                 map.remap(GTRubberData.RUBBER_SAPLING);
             }
 
-            if (id.contains("pulverizer")){
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("pulverizer", "macerator"), GTIRef.ID);
+            if (id.contains("battery_buffer")){
+                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
+                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
+                if (block != null){
+                    map.remap(block);
+                }
+            }
+            if (REMAPPING_MAP.containsKey(id)){
+                Block block = AntimatterAPI.get(Block.class, REMAPPING_MAP.get(id), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
             }
 
-            if (id.contains("battery_buffer_one")){
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_one", "1x_battery_buffer"), GTIRef.ID);
+        }
+        for (RegistryEvent.MissingMappings.Mapping<Block> map : event.getMappings(GTIRef.ID)) {
+            String id = map.key.getPath();
+
+            if (id.contains("battery_buffer")){
+                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
+                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
             }
-
-            if (id.contains("battery_buffer_four")){
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_four", "4x_battery_buffer"), GTIRef.ID);
+            if (REMAPPING_MAP.containsKey(id)){
+                Block block = AntimatterAPI.get(Block.class, REMAPPING_MAP.get(id), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
             }
-
-            if (id.contains("battery_buffer_nine")){
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_nine", "8x_battery_buffer"), GTIRef.ID);
-                if (block != null){
-                    map.remap(block);
-                }
-            }
-
         }
     }
 
@@ -136,29 +156,37 @@ public class RemappingEvents {
                 map.remap(block);
                 continue;
             }
-            if (id.contains("pulverizer")){
-                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("pulverizer", "macerator"), GTIRef.ID);
+
+            if (id.contains("battery_buffer")){
+                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
+                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
+                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
             }
-
-            if (id.contains("battery_buffer_one")){
-                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_one", "1x_battery_buffer"), GTIRef.ID);
+            if (REMAPPING_MAP.containsKey(id)){
+                block = AntimatterAPI.get(BlockEntityType.class, REMAPPING_MAP.get(id), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
             }
+        }
+        for (RegistryEvent.MissingMappings.Mapping<BlockEntityType<?>> map : event.getMappings(GTIRef.ID)) {
+            String id = map.key.getPath();
+            BlockEntityType<?> block;
 
-            if (id.contains("battery_buffer_four")){
-                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_four", "4x_battery_buffer"), GTIRef.ID);
+
+            if (id.contains("battery_buffer")){
+                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
+                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
+                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
             }
-
-            if (id.contains("battery_buffer_nine")){
-                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_nine", "8x_battery_buffer"), GTIRef.ID);
+            if (REMAPPING_MAP.containsKey(id)){
+                block = AntimatterAPI.get(BlockEntityType.class, REMAPPING_MAP.get(id), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
@@ -208,31 +236,37 @@ public class RemappingEvents {
             if (id.equals("sticky_resin")){
                 map.remap(GTRubberData.StickyResin);
             }
-            if (id.contains("pulverizer")){
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("pulverizer", "macerator"), GTIRef.ID);
+
+            if (id.contains("battery_buffer")){
+                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
+                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
                 if (block != null){
                     map.remap(block.asItem());
                 }
             }
+            if (REMAPPING_MAP.containsKey(id)){
+                Item block = AntimatterAPI.get(Item.class, REMAPPING_MAP.get(id), GTIRef.ID);
+                if (block != null){
+                    map.remap(block);
+                }
+            }
+        }
+        for (RegistryEvent.MissingMappings.Mapping<Item> map : event.getMappings(GTIRef.ID)) {
+            String id = map.key.getPath();
 
-            if (id.contains("battery_buffer_one")){
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_one", "1x_battery_buffer"), GTIRef.ID);
+            if (id.contains("battery_buffer")){
+                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
+                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
+                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
                 if (block != null){
                     map.remap(block.asItem());
                 }
             }
-
-            if (id.contains("battery_buffer_four")){
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_four", "4x_battery_buffer"), GTIRef.ID);
+            if (REMAPPING_MAP.containsKey(id)){
+                Item block = AntimatterAPI.get(Item.class, REMAPPING_MAP.get(id), GTIRef.ID);
                 if (block != null){
-                    map.remap(block.asItem());
-                }
-            }
-
-            if (id.contains("battery_buffer_nine")){
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_nine", "8x_battery_buffer"), GTIRef.ID);
-                if (block != null){
-                    map.remap(block.asItem());
+                    map.remap(block);
                 }
             }
         }
@@ -250,6 +284,7 @@ public class RemappingEvents {
         }
     }
 
+    @SubscribeEvent
     public static void onAttachCapabilitiesEvent(AttachCapabilitiesEvent<BlockEntity> event){
         if (event.getObject() instanceof BlockEntityHatchHeat<?> heat){
             event.addCapability(new ResourceLocation(GTIRef.ID, "heat_hatch"), new ICapabilityProvider() {
