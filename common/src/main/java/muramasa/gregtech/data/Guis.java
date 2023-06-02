@@ -262,10 +262,13 @@ public class Guis {
                 .add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.add(MAX, HATCH_FLUID_O, ULV);
 
-        FORGE_HAMMER.getCallbacks().remove(1);
+        STEAM_FORGE_HAMMER.getGui().getProgressData().setBarDir(BarDir.BOTTOM).setBarFill(false).setUVs(93, 0);
+        FORGE_HAMMER.getGui().getProgressData().setBarDir(BarDir.BOTTOM).setBarFill(false).setUVs(0, 198);
+
+        /*FORGE_HAMMER.getCallbacks().remove(1);
         FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).addGuiCallback(t -> {
             t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a,b)).setPos(9, 5).clientSide())
-                    .addWidget(ProgressWidget.build(BarDir.BOTTOM, false))
+                    .addWidget(ProgressWidget.build(BarDir.BOTTOM, false, t.handler.getGui().getProgressData().uv, t.handler.getGui().getProgressData().pos))
                     .addWidget(MachineStateWidget.build().setPos(84,46).setWH(8,8))
                     .addWidget(IOWidget.build(9,63,16,16));
         });
@@ -273,9 +276,9 @@ public class Guis {
         STEAM_FORGE_HAMMER.getCallbacks().remove(1);
         STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).addGuiCallback(t -> {
             t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a,b)).setPos(9, 5).clientSide())
-                    .addWidget(ProgressWidget.build(BarDir.BOTTOM, false))
+                    .addWidget(ProgressWidget.build(BarDir.BOTTOM, false, t.handler.getGui().getProgressData().uv, t.handler.getGui().getProgressData().pos))
                     .addWidget(MachineStateWidget.build().setPos(84,46).setWH(8,8));
-        });
+        });*/
 
         COAL_BOILER.addGuiCallback(t -> {
             t.addWidget(WidgetSupplier

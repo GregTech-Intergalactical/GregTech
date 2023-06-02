@@ -27,7 +27,7 @@ public class SteamMachine extends Machine<SteamMachine> {
         addGuiCallback(t -> {
             t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>) b).getTitle().getString(), 4210752).build(a, b)).setPos(9, 5).clientSide());
             if (has(RECIPE)) {
-                t.addWidget(ProgressWidget.build(BarDir.LEFT, true))
+                t.addWidget(ProgressWidget.build(() -> t.handler.getGui().getProgressData()))
                         .addWidget(MachineStateWidget.build().setPos(84, 46).setWH(8, 8));
             }
            // if ((has(ITEM) || has(FLUID)))
