@@ -3,10 +3,7 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.capability.IGuiHandler;
-import muramasa.antimatter.gui.BarDir;
-import muramasa.antimatter.gui.ButtonBody;
-import muramasa.antimatter.gui.GuiData;
-import muramasa.antimatter.gui.MenuHandlerMachine;
+import muramasa.antimatter.gui.*;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
 import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
@@ -15,6 +12,7 @@ import muramasa.antimatter.gui.widget.*;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tile.TileEntityMachine;
+import muramasa.antimatter.util.int2;
 import muramasa.antimatter.util.int4;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.gui.widgets.*;
@@ -373,14 +371,9 @@ public class Guis {
         CRACKING_UNIT.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         NUCLEAR_REACTOR.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         FUSION_REACTOR.setGUI(MenuHandlers.FUSION_MENU_HANDLER);
-        FUSION_REACTOR.getGui().setEnablePlayerSlots(false);
+        FUSION_REACTOR.getGui().setEnablePlayerSlots(false).setProgressTexture(FUSION_REACTOR.getGui().getTexture(LV, "machine"));
         FUSION_REACTOR.addGuiCallback(t -> {
-            t.addButton(155, 23, 16, 16, ButtonBody.NO_OVERLAY).addButton(155, 41, 16, 16, NO_OVERLAY).addButton(155, 59, 16, 16, NO_OVERLAY).addWidget(makeProgress(BarDir.LEFT, true, new int4(0, 235, 149, 16)).setSize(4,162, 149, 16)).addWidget(FusionButtonWidget.build());
+            t.addButton(155, 23, 16, 16, ButtonBody.NO_OVERLAY).addButton(155, 41, 16, 16, NO_OVERLAY).addButton(155, 59, 16, 16, NO_OVERLAY).addWidget(ProgressWidget.build(new ProgressData().setPos(new int2(4, 162)).setUV(new int4(0, 235, 149, 16)).setBackgroundUV(null))).addWidget(FusionButtonWidget.build());
         });
     }
-
-    public static WidgetSupplier makeProgress(BarDir dir, boolean barFill, int4 loc){
-        return builder((screen, handler) -> new ProgressWidget(screen, handler, loc, dir, dir.getPos().x + 6, dir.getPos().y + 6, dir.getUV().z, dir.getUV().w, barFill));
-    }
-    // }
 }
