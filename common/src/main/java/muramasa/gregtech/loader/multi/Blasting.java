@@ -84,6 +84,7 @@ public class Blasting {
         addCalciteRecipe(Galena, 4, INGOT.get(Lead, 1), INGOT.get(Silver, 1));
         addCalciteRecipe(Garnierite, 3, INGOT.get(Nickel, 1));
         addCalciteRecipe(Cobaltite, 5, INGOT.get(Cobalt, 1));
+        addCalciteRecipe(Pyrite, 4, new ItemStack(Items.IRON_INGOT));
         /* Annealed Copper*/
         BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(AntimatterMaterials.Copper, 1))
                 .fi(Oxygen.getGas(1000))
@@ -203,8 +204,12 @@ public class Blasting {
         BASIC_BLASTING.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("crushed_" + ore.getId() + "_calcite", input * 1000);
         BASIC_BLASTING.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("crushed_" + ore.getId() + "_limestone", input * 1000);
         BASIC_BLASTING.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("crushed_" + ore.getId() + "_marble", input * 1000);
+        BASIC_BLASTING.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("impure_" + ore.getId() + "_calcite", input * 1000);
+        BASIC_BLASTING.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("impure_" + ore.getId() + "_limestone", input * 1000);
+        BASIC_BLASTING.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("impure_" + ore.getId() + "_marble", input * 1000);
         BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add(ore.getId() + "_calcite", input * 500, 120);
         BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add(ore.getId() + "_limestone", input * 500, 120);
         BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add(ore.getId() + "_marble", input * 500, 120);
+
     }
 }
