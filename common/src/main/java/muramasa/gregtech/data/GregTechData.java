@@ -19,10 +19,7 @@ import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.*;
-import muramasa.gregtech.cover.CoverConveyor;
-import muramasa.gregtech.cover.CoverDrain;
-import muramasa.gregtech.cover.CoverPump;
-import muramasa.gregtech.cover.CoverTypeFilter;
+import muramasa.gregtech.cover.*;
 import net.minecraft.world.level.block.SoundType;
 
 import static muramasa.gregtech.data.Materials.*;
@@ -53,6 +50,8 @@ public class GregTechData {
     public static final CoverFactory COVER_DRAIN = CoverFactory.builder(CoverDrain::new).item((a, b) ->
             new ItemCover(GTIRef.ID, "drain").tip("Can be placed on machines as a cover")).addTextures(new Texture(GTIRef.ID, "block/cover/drain")).build(GTIRef.ID, "drain");
 
+    public static final CoverFactory COVER_STEAM_VENT = CoverFactory.builder(CoverSteamVent::new)
+            .addTextures(new Texture(GTIRef.ID, "block/cover/output")).build(Ref.ID, "steam_vent");;
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(GTIRef.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 
     public static ItemFluidCell CellTin = new ItemFluidCell(GTIRef.ID, Tin, 1000);

@@ -18,6 +18,7 @@ import muramasa.gregtech.tile.single.*;
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.machine.MachineFlag.*;
 import static muramasa.antimatter.machine.Tier.*;
+import static muramasa.gregtech.data.GregTechData.COVER_STEAM_VENT;
 import static muramasa.gregtech.data.RecipeMaps.*;
 
 public class Machines {
@@ -27,12 +28,12 @@ public class Machines {
     public static SteamMachine COAL_BOILER = new SteamMachine(GTIRef.ID, "coal_boiler").setTiers(BRONZE, STEEL).setMap(COAL_BOILERS).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(TileEntityCoalBoiler::new);
     public static SteamMachine LAVA_BOILER = new SteamMachine(GTIRef.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntityLavaBoiler::new);
     public static SteamMachine SOLAR_BOILER = new SteamMachine(GTIRef.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntitySolarBoiler::new);
-    public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(GTIRef.ID, "steam_alloy_smelter").setTiers(BRONZE, STEEL).setMap(STEAM_ALLOY_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
-    public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(GTIRef.ID, "steam_compressor").setTiers(BRONZE, STEEL).setMap(STEAM_COMPRESSING).addFlags(GUI, ITEM, FLUID);
-    public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(GTIRef.ID, "steam_extractor").setTiers(BRONZE, STEEL).setMap(STEAM_EXTRACTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f);
-    public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(GTIRef.ID, "steam_forge_hammer").setTiers(BRONZE, STEEL).setMap(STEAM_HAMMERING).addFlags(GUI, ITEM, FLUID);
-    public static SteamMachine STEAM_FURNACE = new SteamMachine(GTIRef.ID, "steam_furnace").setTiers(BRONZE, STEEL).setMap(STEAM_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f);
-    public static SteamMachine STEAM_MACERATOR = new SteamMachine(GTIRef.ID, "steam_macerator").setTiers(BRONZE, STEEL).setMap(STEAM_MACERATING).addFlags(GUI, ITEM, FLUID);
+    public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(GTIRef.ID, "steam_alloy_smelter").setTiers(BRONZE, STEEL).setMap(STEAM_ALLOY_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f).covers(COVER_STEAM_VENT);
+    public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(GTIRef.ID, "steam_compressor").setTiers(BRONZE, STEEL).setMap(STEAM_COMPRESSING).addFlags(GUI, ITEM, FLUID).covers(COVER_STEAM_VENT);
+    public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(GTIRef.ID, "steam_extractor").setTiers(BRONZE, STEEL).setMap(STEAM_EXTRACTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f).covers(COVER_STEAM_VENT);
+    public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(GTIRef.ID, "steam_forge_hammer").setTiers(BRONZE, STEEL).setMap(STEAM_HAMMERING).addFlags(GUI, ITEM, FLUID).covers(COVER_STEAM_VENT);
+    public static SteamMachine STEAM_FURNACE = new SteamMachine(GTIRef.ID, "steam_furnace").setTiers(BRONZE, STEEL).setMap(STEAM_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f).covers(COVER_STEAM_VENT);
+    public static SteamMachine STEAM_MACERATOR = new SteamMachine(GTIRef.ID, "steam_macerator").setTiers(BRONZE, STEEL).setMap(STEAM_MACERATING).addFlags(GUI, ITEM, FLUID).covers(COVER_STEAM_VENT);
     /**
      ** Hatchless Multiblock Machines (Steam Age)
      **/

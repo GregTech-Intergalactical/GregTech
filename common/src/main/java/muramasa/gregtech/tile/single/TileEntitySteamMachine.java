@@ -22,54 +22,91 @@ import java.util.Collections;
 import java.util.List;
 
 import static muramasa.antimatter.machine.Tier.BRONZE;
+import static muramasa.gregtech.data.Machines.STEAM_FORGE_HAMMER;
 
-public class TileEntitySteamMachine<T extends TileEntitySteamMachine<T>> extends TileEntityMachine<T> {
+public class TileEntitySteamMachine extends TileEntityMachine<TileEntitySteamMachine> {
 
     public static final TagKey<Fluid> STEAM =  TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation((AntimatterPlatformUtils.isForge() ? "forge" : "c"), "steam"));
 
     public TileEntitySteamMachine(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        recipeHandler.set(() -> new MachineRecipeHandler<T>((T)this) {
-            @Override
-            public boolean consumeResourceForRecipe(boolean simulate) {
-                return tile.fluidHandler.map(t -> t.consumeTaggedInput(STEAM, (int) getPower(), simulate).getAmount() > 0)
-                        .orElse(false);
-            }
-            //Allow up to 16 .
-            @Override
-            protected boolean validateRecipe(IRecipe r) {
-                List<ItemStack> consumed = this.tile.itemHandler.map(t -> t.consumeInputs(r, true)).orElse(Collections.emptyList());
-                return r.getPower() <= Tier.LV.getVoltage() && consumed.size() > 0;
-            }
-
-            @Override
-            public void onMachineEvent(IMachineEvent event, Object... data) {
-                super.onMachineEvent(event, data);
-                if (event instanceof ContentEvent) {
-                    if (event == ContentEvent.FLUID_INPUT_CHANGED) {
-                        if (data != null && data.length > 0) {
-                            if (data[0] instanceof FluidStack && ((FluidStack)data[0]).getFluid().builtInRegistryHolder().is(STEAM)) {
-                                checkRecipe();
-                            }
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public int getOverclock() {
-                return tile.getMachineTier() == BRONZE ? 0 : 1;
-            }
-
-            @Override
-            public boolean accepts(FluidStack stack) {
-                return stack.getFluid().is(STEAM);
-            }
-        });
+        recipeHandler.set(() -> new SteamMachineRecipeHandler(this));
     }
 
     @Override
     public Tier getPowerLevel() {
         return Tier.LV;
+    }
+
+    public static class SteamMachineRecipeHandler extends MachineRecipeHandler<TileEntitySteamMachine>{
+        protected boolean isSteamClear = false;
+
+        public SteamMachineRecipeHandler(TileEntitySteamMachine tile) {
+            super(tile);
+        }
+
+        @Override
+        public boolean consumeResourceForRecipe(boolean simulate) {
+            return tile.fluidHandler.map(t -> t.consumeTaggedInput(STEAM, (int) getPower(), simulate).getAmount() > 0)
+                    .orElse(false);
+        }
+        //Allow up to 16 .
+        @Override
+        protected boolean validateRecipe(IRecipe r) {
+            return r.getPower() <= Tier.LV.getVoltage();
+        }
+
+        public void setSteamClear(boolean steamClear) {
+            isSteamClear = steamClear;
+        }
+
+        @Override
+        protected boolean canRecipeContinue() {
+            isSteamClear = tile.level.isEmptyBlock(tile.worldPosition.relative(tile.getOutputFacing()));
+            return super.canRecipeContinue() && isSteamClear;
+        }
+
+        @Override
+        public float getClientProgress() {
+            if (tile.getMachineType() == STEAM_FORGE_HAMMER){
+                float percent = (float) currentProgress / ((float) maxProgress / 3);
+                if (percent > 2){
+                    percent -= 2;
+                } else if (percent > 1){
+                    percent -=1;
+                }
+                return percent;
+            }
+            return super.getClientProgress();
+        }
+
+        @Override
+        public int getOverclock() {
+            return tile.getMachineTier() == BRONZE ? 0 : 1;
+        }
+
+        @Override
+        public boolean accepts(FluidStack stack) {
+            return stack.getFluid().builtInRegistryHolder().is(STEAM);
+        }
+
+        @Override
+        protected boolean consumeGeneratorResources(boolean simulate) {
+            return isSteamClear && super.consumeGeneratorResources(simulate);
+        }
+
+        @Override
+        public void onMachineEvent(IMachineEvent event, Object... data) {
+            super.onMachineEvent(event, data);
+            if (event instanceof ContentEvent) {
+                if (event == ContentEvent.FLUID_INPUT_CHANGED) {
+                    if (data != null && data.length > 0) {
+                        if (data[0] instanceof FluidStack && ((FluidStack)data[0]).getFluid().builtInRegistryHolder().is(STEAM)) {
+                            checkRecipe();
+                        }
+                    }
+                }
+            }
+        }
     }
 }

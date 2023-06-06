@@ -8,7 +8,7 @@ import muramasa.gregtech.tile.single.TileEntitySteamMachine;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.network.chat.Component;
 
-public class ScreenSteamMachine<T extends TileEntitySteamMachine<T>, U extends ContainerBasicMachine<T>> extends ScreenMachine<T, U> {
+public class ScreenSteamMachine<T extends TileEntitySteamMachine, U extends ContainerBasicMachine<TileEntitySteamMachine>> extends ScreenMachine<TileEntitySteamMachine, U> {
 
     private final static ButtonBody FLUID = new ButtonBody("fluid_eject", 8, 63, 169, -44,16, 16);
     private final static ButtonBody ITEM = new ButtonBody("item_eject", 26, 63, 151, -26,16, 16);
