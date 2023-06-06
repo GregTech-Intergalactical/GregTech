@@ -105,7 +105,7 @@ public class MaceratorLoader {
             MACERATING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.INGOT.getMaterialTag(t),1)).io(AntimatterMaterialTypes.DUST.get(t,1)).add("dust_" + t.getId(),40,2);
         });
         AntimatterAPI.all(StoneType.class, s -> {
-            if (s.getMaterial() == NULL || !s.getMaterial().has(DUST)) return;
+            if (s.getMaterial() == NULL || !s.getMaterial().has(DUST) || s.isSandLike()) return;
             MACERATING.RB().ii(RecipeIngredient.of(s.getState().getBlock().asItem(), 1)).io(DUST.get(s.getMaterial(), 1)).add(s.getMaterial().getId() + "_dust",400, 2);
             if (s instanceof CobbleStoneType){
                 MACERATING.RB().ii(RecipeIngredient.of(((CobbleStoneType)s).getBlock("cobble").asItem(), 1)).io(DUST.get(s.getMaterial(), 1)).add("cobbled_" + s.getMaterial().getId() + "_dust",400, 2);
@@ -116,7 +116,6 @@ public class MaceratorLoader {
     public static void init(){
         MACERATING.RB().ii(RecipeIngredient.of(Items.STONE,1)).io(new ItemStack(Items.GRAVEL,1)).add("gravel",100,2);
         MACERATING.RB().ii(RecipeIngredient.of(Items.COBBLESTONE,1)).io(new ItemStack(Items.SAND,1)).add("sand",100,2);
-        MACERATING.RB().ii(RecipeIngredient.of(Items.SAND,1)).io(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Sand, 1)).add("sand_dust",50,4);
         MACERATING.RB().ii(RecipeIngredient.of(Items.BRICK,1)).io(DUST_SMALL.get(Materials.Brick, 2)).add("brick_dust",50,4);
         MACERATING.RB().ii(RecipeIngredient.of(Items.COAL,1)).io(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Coal, 1)).add("coal_dust",50,4);
         MACERATING.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(AntimatterMaterialTypes.DUST.get(WoodPulp, 2)).add("wood_dust",40, 2);
