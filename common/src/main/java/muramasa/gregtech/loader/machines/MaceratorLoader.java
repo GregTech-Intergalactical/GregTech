@@ -5,6 +5,7 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
+import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeMap;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.material.Material.NULL;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.gregtech.data.GregTechData.Biochaff;
 import static muramasa.gregtech.data.Materials.Clay;
@@ -101,6 +103,13 @@ public class MaceratorLoader {
         AntimatterMaterialTypes.INGOT.all().forEach(t -> {
             if (!t.has(AntimatterMaterialTypes.DUST)) return;
             MACERATING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.INGOT.getMaterialTag(t),1)).io(AntimatterMaterialTypes.DUST.get(t,1)).add("dust_" + t.getId(),40,2);
+        });
+        AntimatterAPI.all(StoneType.class, s -> {
+            if (s.getMaterial() == NULL || !s.getMaterial().has(DUST)) return;
+            MACERATING.RB().ii(RecipeIngredient.of(s.getState().getBlock().asItem(), 1)).io(DUST.get(s.getMaterial(), 1)).add(s.getMaterial().getId() + "_dust",400, 2);
+            if (s instanceof CobbleStoneType){
+                MACERATING.RB().ii(RecipeIngredient.of(((CobbleStoneType)s).getBlock("cobble").asItem(), 1)).io(DUST.get(s.getMaterial(), 1)).add("cobbled_" + s.getMaterial().getId() + "_dust",400, 2);
+            }
         });
     }
 
