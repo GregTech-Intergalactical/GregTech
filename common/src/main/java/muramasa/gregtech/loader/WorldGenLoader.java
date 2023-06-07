@@ -154,7 +154,7 @@ public class WorldGenLoader {
       ev.stoneLayer(new WorldGenStoneLayerBuilder("bauxite").withStone(ORE_STONE.get().get(Bauxite).asState()).withWeight(1).buildVein());
       ev.stoneLayer(new WorldGenStoneLayerBuilder("oil_shale").withStone(ORE_STONE.get().get(OilShale).asState()).withWeight(1).buildVein());
 
-      WorldGenStoneLayer.addCollision(BASALT.getState(), GregTechData.LIMESTONE.getState(),
+      ev.addCollision(BASALT.getState(), GregTechData.LIMESTONE.getState(),
               new StoneLayerOre(Ilmenite, U8, -64, 0),
               new StoneLayerOre(Rutile, U12, -64, 0)
       );
