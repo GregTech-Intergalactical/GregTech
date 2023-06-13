@@ -54,7 +54,7 @@ public class WorldGenLoader {
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Silver).withAmountPerChunk(8).atHeight(-34, 16).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Nickel).withAmountPerChunk(8).atHeight(-34, 16).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Lapis).withAmountPerChunk(4).atHeight(-34, 16).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Diamond).withAmountPerChunk(2).atHeight(-59, -49).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Diamond).withAmountPerChunk(3).atHeight(-59, -52).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Emerald).withAmountPerChunk(2).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Ruby).withAmountPerChunk(2).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(BlueSapphire).withAmountPerChunk(2).buildMaterial());
