@@ -188,6 +188,8 @@ public class Guis {
         STEAM_MACERATOR.add(STEEL, MACERATOR).add(STEEL, FL_IN, 53, 63);
         STEAM_FORGE_HAMMER.add(BRONZE, FORGE_HAMMER).add(BRONZE, FL_IN, 53, 63);
         STEAM_FORGE_HAMMER.add(STEEL, FORGE_HAMMER).add(STEEL, FL_IN, 53, 63);
+        STEAM_SIFTER.add(BRONZE, SIFTER).add(BRONZE, FL_IN, 53, 63);
+        STEAM_SIFTER.add(STEEL, SIFTER).add(STEEL, FL_IN, 53, 63);
 
         STEAM_GENERATOR.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
         GAS_GENERATOR.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));

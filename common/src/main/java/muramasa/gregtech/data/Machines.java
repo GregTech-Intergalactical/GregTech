@@ -34,6 +34,7 @@ public class Machines {
     public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(GTIRef.ID, "steam_forge_hammer").setTiers(BRONZE, STEEL).setMap(STEAM_HAMMERING).addFlags(GUI, ITEM, FLUID).covers(COVER_STEAM_VENT);
     public static SteamMachine STEAM_FURNACE = new SteamMachine(GTIRef.ID, "steam_furnace").setTiers(BRONZE, STEEL).setMap(STEAM_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f).covers(COVER_STEAM_VENT);
     public static SteamMachine STEAM_MACERATOR = new SteamMachine(GTIRef.ID, "steam_macerator").setTiers(BRONZE, STEEL).setMap(STEAM_MACERATING).addFlags(GUI, ITEM, FLUID).covers(COVER_STEAM_VENT);
+    public static SteamMachine STEAM_SIFTER = new SteamMachine(GTIRef.ID, "steam_sifter").setTiers(BRONZE, STEEL).setMap(STEAM_SIFTING).addFlags(GUI, ITEM, FLUID).covers(COVER_STEAM_VENT);
     /**
      ** Hatchless Multiblock Machines (Steam Age)
      **/

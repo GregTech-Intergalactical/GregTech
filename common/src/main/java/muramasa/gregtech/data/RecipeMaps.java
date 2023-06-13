@@ -14,8 +14,26 @@ import static muramasa.gregtech.data.RecipeBuilders.*;
 
 @SuppressWarnings("unchecked")
 public class RecipeMaps {
+    public static RecipeMap<RecipeBuilder> STEAM_ALLOY_SMELTING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "steam_alloy_smelting", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
+    public static RecipeMap<RecipeBuilder> STEAM_COMPRESSING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "steam_compressing", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
+    public static RecipeMap<RecipeBuilder> STEAM_EXTRACTING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "steam_extracting", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
+    public static RecipeMap<RecipeBuilder> STEAM_FUELS = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "steam_fuels", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> STEAM_HAMMERING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "steam_hammering", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
+    public static RecipeMap<RecipeBuilder> STEAM_MACERATING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "steam_macerating", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
+    public static RecipeMap<RecipeBuilder> STEAM_SIFTING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "steam_sifting", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
+    public static RecipeMap<RecipeBuilder> STEAM_SMELTING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "steam_smelting", new RecipeBuilder())
+                    .setProxy(RecipeProxies.FURNACE_PROXY.apply(8, 160)).setGuiTier(Tier.BRONZE));
+
     public static RecipeMap<RecipeBuilder> ALLOY_SMELTING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "alloy_smelting", new AlloySmeltingBuilder()));
+            new RecipeMap<>(GTIRef.ID, "alloy_smelting", new SteamBuilder(STEAM_ALLOY_SMELTING)));
     public static RecipeMap<RecipeBuilder> AMP_FABRICATING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "amp_fabricating", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ARC_SMELTING = AntimatterAPI.register(RecipeMap.class,
@@ -45,7 +63,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> COMBUSTION_FUELS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "combustion_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> COMPRESSING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "compressing", new CompressingBuilder()));
+            new RecipeMap<>(GTIRef.ID, "compressing", new SteamBuilder(STEAM_COMPRESSING)));
     public static RecipeMap<RecipeBuilder> CUTTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "cutting", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CRACKING = AntimatterAPI.register(RecipeMap.class,
@@ -67,7 +85,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> ELECTROMAGNETIC_SEPARATING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "electromagnetic_separating", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> EXTRACTING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "extracting", new ExtractingBuilder()));
+            new RecipeMap<>(GTIRef.ID, "extracting", new SteamBuilder(STEAM_EXTRACTING)));
     public static RecipeMap<RecipeBuilder> EXTRUDING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "extruding", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FERMENTING = AntimatterAPI.register(RecipeMap.class,
@@ -83,7 +101,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> GAS_FUELS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "gas_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> HAMMERING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "hammering", new HammeringBuilder()));
+            new RecipeMap<>(GTIRef.ID, "hammering", new SteamBuilder(STEAM_HAMMERING)));
     public static RecipeMap<RecipeBuilder> HEAT_EXCHANGING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "heat_exchanging", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
     public static RecipeMap<RecipeBuilder> IMPLOSION_COMPRESSING = AntimatterAPI.register(RecipeMap.class,
@@ -92,8 +110,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "laser_engraving", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> LATHING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "lathing", new RecipeBuilder()));
-    public static RecipeMap<MaceratingBuilder> MACERATING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "macerating", new MaceratingBuilder()).setGuiTier(Tier.IV));
+    public static RecipeMap<RecipeBuilder> MACERATING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "macerating", new SteamBuilder(STEAM_MACERATING)).setGuiTier(Tier.IV));
     public static RecipeMap<RecipeBuilder> MASS_FABRICATING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "mass_fabricating", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MIXING = AntimatterAPI.register(RecipeMap.class,
@@ -123,27 +141,12 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> SCANNING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "scanning", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SIFTING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "sifting", new RecipeBuilder()));
+            new RecipeMap<>(GTIRef.ID, "sifting", new SteamBuilder(STEAM_SIFTING)));
     public static RecipeMap<RecipeBuilder> SMALL_BOILERS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "small_boilers", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SMELTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "smelting", new RecipeBuilder())
                     .setProxy(RecipeProxies.FURNACE_PROXY.apply(8, 60)));
-    public static RecipeMap<RecipeBuilder> STEAM_ALLOY_SMELTING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "steam_alloy_smelting", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_COMPRESSING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "steam_compressing", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_EXTRACTING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "steam_extracting", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_FUELS = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "steam_fuels", new RecipeBuilder()));
-    public static RecipeMap<RecipeBuilder> STEAM_HAMMERING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "steam_hammering", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_MACERATING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "steam_macerating", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_SMELTING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "steam_smelting", new RecipeBuilder())
-                    .setProxy(RecipeProxies.FURNACE_PROXY.apply(8, 160)).setGuiTier(Tier.BRONZE));
     public static RecipeMap<RecipeBuilder> THERMAL_CENTRIFUGING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "thermal_centrifuging", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> VACUUM_FREEZING = AntimatterAPI.register(RecipeMap.class,
@@ -175,5 +178,6 @@ public class RecipeMaps {
         STEAM_HAMMERING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         STEAM_MACERATING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         STEAM_SMELTING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
+        STEAM_SIFTING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
     }
 }
