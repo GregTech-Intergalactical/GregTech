@@ -83,8 +83,8 @@ public class SolarBoilerWidget extends Widget {
         }
 
         if(isAllowedToWork) {
-            int y = (((AbstractContainerScreenAccessor)gui.screen).getTopPos() + 48);
-            drawTexture(stack, gui.handler.getGuiTexture(), realX() + 65, y, ((AbstractContainerScreenAccessor)gui.screen).getImageWidth(), 0, 3, 8);
+            int y = (((AbstractContainerScreenAccessor)gui.screen).getTopPos() + 45);
+            drawTexture(stack, gui.handler.getGuiTexture(), realX() + 61, y, ((AbstractContainerScreenAccessor)gui.screen).getImageWidth(), 0, 12, 12);
         }
     }
 
