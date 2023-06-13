@@ -6,6 +6,7 @@ import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.util.TagUtils;
+import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -99,6 +100,13 @@ public class SteamMachines {
                         'H', brickedBronzeHull,
                         'F', Items.FURNACE
                 ), "BBB", "FHF", "BBB");
+        provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_SIFTER.getItem(Tier.BRONZE),
+                ImmutableMap.of(
+                        'B', bronzePipe,
+                        'H', hullBronze,
+                        'P', piston,
+                        'S', WIRE_STEEL.getBlock(PipeSize.VTINY)
+                ), "SSS", "PHP", "BBB");
         provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_FURNACE.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'B', bronzePipe,
@@ -114,7 +122,7 @@ public class SteamMachines {
 
         provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_MACERATOR.getItem(Tier.STEEL),
                 ImmutableMap.of(
-                        'B', bronzePipe,
+                        'B', steelPipe,
                         'H', brickedSteelHull,
                         'P', piston,
                         'D', diamond
@@ -149,5 +157,12 @@ public class SteamMachines {
                         'P', piston,
                         'A', Items.ANVIL
                 ), "BPB", "BHB", "BAB");
+        provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.STEAM_SIFTER.getItem(Tier.STEEL),
+                ImmutableMap.of(
+                        'B', steelPipe,
+                        'H', hullSteel,
+                        'P', piston,
+                        'S', WIRE_STEEL.getBlock(PipeSize.VTINY)
+                ), "SSS", "PHP", "BBB");
     }
 }
