@@ -79,7 +79,7 @@ public class CoverDrain extends BaseCover {
             for (int i = 0; i < f.getTanks(); i++) {
                 FluidStack toInsert = new FluidStack(fluid, 1000);
                 int filled = f.fill(toInsert, SIMULATE);
-                if (filled > 0) {
+                if (filled == 1000) {
                     f.fill(new FluidStack(toInsert.getFluid(), filled), EXECUTE);
                     Holder<Biome> biome = world.getBiome(offset);
                     if (fluid != Fluids.WATER || (!biome.is(BiomeTags.IS_DEEP_OCEAN) && !biome.is(BiomeTags.IS_OCEAN) && !biome.is(BiomeTags.IS_RIVER))){
