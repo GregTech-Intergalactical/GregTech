@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.data.AntimatterMaterialTypes;
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Materials;
 
@@ -10,7 +11,7 @@ import static muramasa.gregtech.data.RecipeMaps.BENDING;
 public class BendingLoader {
     public static void init() {
         AntimatterMaterialTypes.PLATE.all().forEach(t -> {
-            if (!t.has(AntimatterMaterialTypes.INGOT)) return;
+            if (!t.has(AntimatterMaterialTypes.INGOT) || t.has(MaterialTags.RUBBERTOOLS)) return;
             BENDING.RB().ii(AntimatterMaterialTypes.INGOT.getMaterialIngredient(t,1),INT_CIRCUITS.get(1)).io(AntimatterMaterialTypes.PLATE.get(t,1)).add("plate_" + t.getId(),t.getHardness(), 24);
         });
         AntimatterMaterialTypes.FOIL.all().forEach(foil -> {

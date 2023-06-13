@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.machines;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.material.MaterialTags;
+import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
@@ -39,6 +40,15 @@ public class AlloyLoader {
         //pre Chemical Reactor Rubber
         ALLOY_SMELTING.RB().ii(of(DUST.get(RawRubber), 1), of(DUST.getMaterialTag(Sulfur), 1))
                 .io(DUST.get(Rubber, 1)).add("rubber_via_alloy_smelter",20, 10);
+        MaterialTags.RUBBERTOOLS.all().forEach(m ->{
+            if (m.has(PLATE)) {
+                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1), of(GregTechData.MoldPlate)).io(PLATE.get(m, 1)).add(m.getId() + "_plate", 20, 10);
+            }
+            if (m.has(INGOT)) {
+                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1), of(GregTechData.MoldIngot)).io(INGOT.get(m, 1)).add(m.getId() + "_ingot", 20, 10);
+            }
+        });
+
         //Fissile Fuels
         FISSILE_FUEL.all().forEach(f -> ALLOY_SMELTING.RB().ii(of(INGOT.get(f), 1), of(INGOT.get(f))).io(FISSILE_FUEL.get(f)).add(f.getId() + "_fissile_fuel_smelting"));
 

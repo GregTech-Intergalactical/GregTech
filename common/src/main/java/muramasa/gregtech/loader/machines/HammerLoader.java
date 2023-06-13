@@ -5,6 +5,7 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.data.ForgeCTags;
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
@@ -40,7 +41,7 @@ public class HammerLoader {
             }
         });
         PLATE.all().forEach(plate -> {
-            if (!plate.has(INGOT)) return;
+            if (!plate.has(INGOT) || plate.has(MaterialTags.RUBBERTOOLS)) return;
             HAMMERING.RB().ii(INGOT.getMaterialIngredient(plate, 3)).io(PLATE.get(plate, 2)).add("plate_" + plate.getId(),plate.getHardness()/2, 13);
         });
         AntimatterAPI.all(StoneType.class, GTIRef.ID, s -> {
