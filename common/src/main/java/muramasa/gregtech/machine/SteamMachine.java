@@ -19,6 +19,7 @@ public class SteamMachine extends Machine<SteamMachine> {
         setTile(TileEntitySteamMachine::new);
         addFlags(BASIC, STEAM, COVERABLE);
         setGUI(Data.BASIC_MENU_HANDLER);
+        setClientTick();
         setGuiTiers(ImmutableMap.<Tier, Tier>builder().put(BRONZE, BRONZE).put(STEEL, STEEL));
     }
 

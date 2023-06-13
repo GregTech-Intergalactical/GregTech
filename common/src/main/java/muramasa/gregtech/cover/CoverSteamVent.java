@@ -3,13 +3,22 @@ package muramasa.gregtech.cover;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
+import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gregtech.tile.single.TileEntitySteamMachine;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class CoverSteamVent extends BaseCover {
 
@@ -43,6 +52,28 @@ public class CoverSteamVent extends BaseCover {
                 }
             });
         }
+    }
 
+    @Override
+    public void onUpdate() {
+        BlockPos offset = this.handler.getTile().getBlockPos().relative(this.side);
+        Level level = handler.getTile().getLevel();
+        if (level == null) return;
+        if (!(handler.getTile() instanceof TileEntityMachine<?> machine) || machine.getMachineState() != MachineState.ACTIVE) return;
+        level.getEntitiesOfClass(Player.class, new AABB(offset)).forEach(p -> {
+            p.hurt(DamageSource.HOT_FLOOR, 1.0f);
+        });
+        if (level.isClientSide && level.getGameTime() % 20 == 0){
+            ClientLevel clientLevel = (ClientLevel) level;
+            Random random = level.random;
+            double xR = random.nextDouble();
+            double yR = random.nextDouble();
+            double zR = random.nextDouble();
+            clientLevel.addParticle(ParticleTypes.SMOKE, offset.getX() + + xR, offset.getY() + yR, offset.getZ() + zR, 0, 0, 0);
+            xR = random.nextDouble();
+            yR = random.nextDouble();
+            zR = random.nextDouble();
+            clientLevel.addParticle(ParticleTypes.SMOKE, offset.getX() + + xR, offset.getY() + yR, offset.getZ() + zR, 0, 0, 0);
+        }
     }
 }
