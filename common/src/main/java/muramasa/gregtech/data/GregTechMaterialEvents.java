@@ -319,7 +319,6 @@ public class GregTechMaterialEvents {
         //event.setMaterial(RawStyreneButadieneRubber).asDust().mats(of(Styrene, 1, Butadiene, 3));
         event.setMaterial(SodaAsh).asDust().mats(of(Sodium, 2, Carbon, 1, Oxygen, 3));
         event.setMaterial(Wood).asDust(GEAR).addHandleStat(12, 0.0F).mats(of(Carbon, 1, Oxygen, 1, Hydrogen, 1));
-        event.setMaterial(WoodPulp).asDust();
         /**
          *  Inorganic
          **/

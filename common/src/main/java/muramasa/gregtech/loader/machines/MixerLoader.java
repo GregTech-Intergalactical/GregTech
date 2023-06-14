@@ -12,8 +12,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static muramasa.antimatter.data.AntimatterMaterials.Blaze;
-import static muramasa.antimatter.data.AntimatterMaterials.EnderEye;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.*;
 
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
@@ -90,7 +89,7 @@ public class MixerLoader {
         MIXING.RB().fi(Oxygen.getGas(1000),Dimethylhydrazine.getLiquid(1000)).fo(RocketFuel.getLiquid(3000)).add("rocket_fuel",3 * 20, 16);
         MIXING.RB().fi(DinitrogenTetroxide.getGas(1000),Dimethylhydrazine.getLiquid(1000)).fo(RocketFuel.getLiquid(6000)).add("rocket_fuel_1",3 * 20, 16);
         MIXING.RB().fi(LightFuel.getLiquid(5000),HeavyFuel.getLiquid(1000)).fo(Diesel.getLiquid(6000)).add("diesel",8 * 2, 120);
-        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(WoodPulp,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid",60*20, 2);
+        MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Wood,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid",60*20, 2);
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Sugar,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid_1",60*20, 2);
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(Salt,2))).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(SaltWater.getLiquid(1000)).add("salt_water",2*20, 8);
         MIXING.RB().ii(of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Copper,3)),of(AntimatterMaterialTypes.DUST.get(Barium,2)),of(AntimatterMaterialTypes.DUST.get(Yttrium,1))).fi(Oxygen.getGas(7000)).io(AntimatterMaterialTypes.DUST.get(YttriumBariumCuprate,13)).add("yttrium_barium_cuprate",40*20, 8);

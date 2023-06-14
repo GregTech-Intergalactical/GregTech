@@ -390,7 +390,6 @@ public class Materials {
     public static Material SodiumHydroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_hydroxide", 0x003380, DULL));
     public static Material SodiumSulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_sulfate", 0x004455, NONE));
     public static Material SodiumSulfide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_sulfide", 0xffe680, NONE));
-    public static Material WoodPulp = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "wood_pulp", 0x3f2620, NONE));
 
     /**
      ** Ores
