@@ -34,9 +34,6 @@ public class VanillaExtensions {
         provider.addConditionalRecipe(consumer, provider.getStackRecipe("", "has_sulfur_dust", provider.hasSafeItem(TagUtils.getForgelikeItemTag("dusts/sulfur")),
                 new ItemStack(Blocks.TORCH, 2), of('D', TagUtils.getForgelikeItemTag("dusts/sulfur"), 'R', ForgeCTags.RODS_WOODEN), "D", "R"), GTIRef.class, "sulfurTorch", GTIRef.ID, "sulfur_torch");
 
-        provider.addItemRecipe(consumer, GTIRef.ID, "hopper", "", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
-                Blocks.HOPPER, of('C', Blocks.CHEST, 'I', TagUtils.getForgelikeItemTag("plates/iron"), 'W', WRENCH.getTag()), "IWI", "ICI", " I ");
-
         provider.addItemRecipe(consumer, GTIRef.ID,"filter", "", "has_iron_plate", provider.hasSafeItem(WRENCH.getTag()),
                 ItemFilter, of('Z', TagUtils.getForgelikeItemTag("foils/zinc"), 'I', TagUtils.getForgelikeItemTag("plates/iron")), "ZZZ", "ZIZ", "ZZZ");
 
