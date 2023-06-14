@@ -29,8 +29,8 @@ import static muramasa.antimatter.material.Material.NULL;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.gregtech.data.GregTechData.Biochaff;
 import static muramasa.gregtech.data.Materials.Clay;
-import static muramasa.gregtech.data.RecipeMaps.MACERATING;
-import static muramasa.gregtech.data.RecipeMaps.SIFTING;
+import static muramasa.gregtech.data.RecipeMaps.*;
+import static muramasa.gregtech.data.RecipeMaps.HAMMERING;
 
 public class MaceratorLoader {
     public static void initAuto() {
@@ -90,6 +90,11 @@ public class MaceratorLoader {
             if (m.has(AntimatterMaterialTypes.RAW_ORE)){
                 MACERATING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m) * multiplier) * 2, crushedStack), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1 * multiplier * MaterialTags.BY_PRODUCT_MULTI.getInt(m)).add("raw_" + m.getId(),400, 2);
             }
+        });
+        GEM_EXQUISITE.all().forEach(m -> {
+            if (!m.has(AntimatterMaterialTypes.DUST)) return;
+            MACERATING.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(DUST.get(m, 4)).add(m.getId() + "_exquisite", m.getHardness(), 4);
+            MACERATING.RB().ii(GEM_FLAWLESS.getMaterialIngredient(m, 1)).io(DUST.get(m, 2)).add(m.getId() + "_flawless", m.getHardness(), 4);
         });
         AntimatterMaterialTypes.GEM_BRITTLE.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.DUST)) return;

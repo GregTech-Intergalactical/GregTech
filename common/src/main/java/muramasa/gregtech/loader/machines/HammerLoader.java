@@ -45,6 +45,10 @@ public class HammerLoader {
             if (!plate.has(INGOT) || plate.has(MaterialTags.RUBBERTOOLS)) return;
             HAMMERING.RB().ii(INGOT.getMaterialIngredient(plate, 3)).io(PLATE.get(plate, 2)).add("plate_" + plate.getId(),plate.getHardness()/2, 13);
         });
+        GEM_EXQUISITE.all().forEach(m -> {
+            HAMMERING.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(GEM_FLAWLESS.get(m, 2)).add(m.getId() + "_exquisite", 64, 16);
+            HAMMERING.RB().ii(GEM_FLAWLESS.getMaterialIngredient(m, 1)).io(GEM.get(m, 2)).add(m.getId() + "_flawless", 64, 16);
+        });
         AntimatterAPI.all(StoneType.class, GTIRef.ID, s -> {
             if (!(s instanceof CobbleStoneType)) return;
             HAMMERING.RB().ii(RecipeIngredient.of(((CobbleStoneType)s).getBlock(""), 1)).io(new ItemStack(((CobbleStoneType)s).getBlock("cobble"))).add(s.getId() + "_to_cobble",10, 16);
