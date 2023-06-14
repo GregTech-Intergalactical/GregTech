@@ -21,6 +21,7 @@ import static muramasa.antimatter.material.MaterialTags.MACERATE_INTO;
 import static muramasa.antimatter.material.MaterialTags.ORE_MULTI;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.HAMMERING;
+import static muramasa.gregtech.data.RecipeMaps.MACERATING;
 
 public class HammerLoader {
     public static void init() {
@@ -47,8 +48,9 @@ public class HammerLoader {
         AntimatterAPI.all(StoneType.class, GTIRef.ID, s -> {
             if (!(s instanceof CobbleStoneType)) return;
             HAMMERING.RB().ii(RecipeIngredient.of(((CobbleStoneType)s).getBlock(""), 1)).io(new ItemStack(((CobbleStoneType)s).getBlock("cobble"))).add(s.getId() + "_to_cobble",10, 16);
+            HAMMERING.RB().ii(RecipeIngredient.of(((CobbleStoneType)s).getBlock("cobble").asItem(), 1)).io(DUST.get(s.getMaterial(), 1)).add("cobbled_" + s.getMaterial().getId() + "_dust",10, 16);
         });
-        HAMMERING.RB().ii(RecipeIngredient.of(ForgeCTags.COBBLESTONE, 1)).io(new ItemStack(Items.GRAVEL)).add("gravel",10, 16);
+        HAMMERING.RB().ii(RecipeIngredient.of(Items.COBBLESTONE, 1)).io(new ItemStack(Items.GRAVEL)).add("gravel",10, 16);
         HAMMERING.RB().ii(RecipeIngredient.of(Items.STONE, 1)).io(new ItemStack(Items.COBBLESTONE)).add("cobblestone",10, 16);
         HAMMERING.RB().ii(RecipeIngredient.of(ForgeCTags.GRAVEL, 1)).io(new ItemStack(Items.SAND)).add("sand",10, 16);
         //Wrought Iron and Annealed Copper 2 to 1 (pre Arc Furnace)

@@ -2,8 +2,10 @@ package muramasa.gregtech.events.forge;
 
 import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.material.Material;
@@ -13,6 +15,8 @@ import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.machine.BlockEntityHatchHeat;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -23,16 +27,20 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.api.forge.TesseractCaps;
 
 import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
 
 import static muramasa.antimatter.material.Material.NULL;
 
 public class RemappingEvents {
+    UUID bearUUID = UUID.fromString("1964e3d1-6500-40e7-9ff2-e6161d41a8c2");
 
     private static final Map<String, String> REMAPPING_MAP = new Object2ObjectArrayMap<>();
 
@@ -44,6 +52,30 @@ public class RemappingEvents {
         REMAPPING_MAP.put("pulverizer_hv", "macerator_hv");
         REMAPPING_MAP.put("pulverizer_ev", "macerator_ev");
         REMAPPING_MAP.put("pulverizer_iv", "macerator_iv");
+    }
+
+    @SubscribeEvent
+    public static void rightClickEntity(PlayerInteractEvent.EntityInteract event){
+        /*if (event.getTarget() instanceof Player targetPlayer){
+
+        }*/
+        /*ItemStack handStack = event.getPlayer().getItemInHand(event.getHand());
+        if(handStack.is(AntimatterDefaultTools.WRENCH.getTag())){
+            Random random = event.getPlayer().getRandom();
+
+            float x = random.nextInt(10 + 10) - 10;
+
+            float y = random.nextInt(90) - 45;
+
+            float yaw = event.getPlayer().getYRot();
+
+            Antimatter.LOGGER.info("yaw: " + yaw);
+            Antimatter.LOGGER.info("pitch: " + event.getPlayer().getXRot());
+            event.getPlayer().moveTo(event.getPlayer().getOnPos().above(), yaw + y, 180);
+        }
+        if (handStack.is(AntimatterDefaultTools.HAMMER.getTag())){
+            event.getPlayer().setSwimming(true);
+        }*/
     }
 
     @SubscribeEvent
