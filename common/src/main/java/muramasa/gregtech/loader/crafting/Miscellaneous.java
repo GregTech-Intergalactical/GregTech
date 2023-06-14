@@ -29,10 +29,5 @@ public class Miscellaneous {
         provider.addItemRecipe(output, GTIRef.ID, "plantball3", "misc", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), PlantBall, of(
                 'S', TagUtils.getItemTag(new ResourceLocation("saplings"))
         ), "SSS", "S S", "SSS");
-
-        provider.addStackRecipe(output, GTIRef.ID, "stickyresin", "misc", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(StickyResin,8), of(
-                'P', PlantBall,
-                'D', AntimatterMaterialTypes.DUST.get(RawRubber)
-        ), "PPP", "PDP", "PPP");
     }
 }
