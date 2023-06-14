@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.machines;
 
+import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -23,11 +24,11 @@ import java.util.List;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.material.Material.NULL;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.gregtech.data.GregTechData.Biochaff;
 import static muramasa.gregtech.data.Materials.Clay;
-import static muramasa.gregtech.data.Materials.WoodPulp;
 import static muramasa.gregtech.data.RecipeMaps.MACERATING;
 import static muramasa.gregtech.data.RecipeMaps.SIFTING;
 
@@ -118,11 +119,12 @@ public class MaceratorLoader {
         MACERATING.RB().ii(RecipeIngredient.of(Items.COBBLESTONE,1)).io(new ItemStack(Items.SAND,1)).add("sand",100,2);
         MACERATING.RB().ii(RecipeIngredient.of(Items.BRICK,1)).io(DUST_SMALL.get(Materials.Brick, 2)).add("brick_dust",50,4);
         MACERATING.RB().ii(RecipeIngredient.of(Items.COAL,1)).io(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Coal, 1)).add("coal_dust",50,4);
-        MACERATING.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(AntimatterMaterialTypes.DUST.get(WoodPulp, 2)).add("wood_dust",40, 2);
+        MACERATING.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(AntimatterMaterialTypes.DUST.get(Wood, 2)).add("wood_dust",40, 2);
         MACERATING.RB().ii(RecipeIngredient.of(Items.CLAY_BALL, 1)).io(DUST_SMALL.get(Clay, 2)).add("clay_dust_small",16, 4);
         MACERATING.RB().ii(RecipeIngredient.of(Items.CLAY, 1)).io(DUST.get(Clay, 2)).add("clay_dust",30, 4);
         MACERATING.RB().ii(RecipeIngredient.of(Items.TERRACOTTA, 1)).io(DUST.get(Clay, 1)).add("clay_dust_1",16, 4);
         MACERATING.RB().ii(RecipeIngredient.of(GregTechData.PlantBall, 1)).io(new ItemStack(Biochaff, 1)).add("biochaff",32, 2);
         MACERATING.RB().ii(RecipeIngredient.of(Biochaff, 1)).io(new ItemStack(Items.DIRT, 1)).add("dirt",32, 2);
+        MACERATING.RB().ii(RecipeIngredient.of(GTRubberData.RUBBER_LOGS)).io(DUST.get(Wood, 6), new ItemStack(GTRubberData.StickyResin, 1)).chances(1.0, 0.33).add("rubber_log", 400, 2);
     }
 }

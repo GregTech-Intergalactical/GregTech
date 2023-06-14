@@ -1,10 +1,13 @@
 package muramasa.gregtech.loader.machines;
 
+import com.github.gregtechintergalactical.gtrubber.GTRubberData;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.gregtech.data.GregTechMaterialTags.CENT;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
@@ -41,7 +44,7 @@ public class CentrifugingLoader {
         //Cake Centrifuging
         CENTRIFUGING.RB().ii(of(DUST.get(ThoriumCake, 5))).io(DUST.get(ThoriumDioxide, 1), DUST.get(TrithoriumOctoxide, 4)).add("thorium_cake_centrifuging",400, 500);
         CENTRIFUGING.RB().ii(of(DUST.get(UraniumCake, 5))).io(DUST.get(UraniumDioxide, 1), DUST.get(TriuraniumOctoxide, 4)).add("uranium_cake_centrifuging",400, 500);
-
+        CENTRIFUGING.RB().ii(of(GTRubberData.RUBBER_LOGS)).io(new ItemStack(GTRubberData.StickyResin), new ItemStack(GregTechData.PlantBall), DUST.get(Carbon, 1), DUST.get(Wood, 1)).fo(Methane.getLiquid(60)).chances(0.5, 0.375, 0.25, 0.25).add("rubber_logs", 200, 20);
 
     }
 }
