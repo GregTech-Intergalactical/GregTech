@@ -1,18 +1,13 @@
 package muramasa.gregtech.loader;
 
 import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.event.WorldGenEvent;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.worldgen.StoneLayerOre;
-import muramasa.antimatter.worldgen.object.WorldGenStoneLayer;
 import muramasa.antimatter.worldgen.object.WorldGenStoneLayerBuilder;
 import muramasa.antimatter.worldgen.smallore.WorldGenSmallOreBuilder;
 import muramasa.antimatter.worldgen.vein.WorldGenVeinLayerBuilder;
-import muramasa.antimatter.worldgen.vein.old.WorldGenVein;
-import muramasa.antimatter.worldgen.vein.old.WorldGenVeinBuilder;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
@@ -24,7 +19,6 @@ import static muramasa.antimatter.data.AntimatterStoneTypes.*;
 import static muramasa.antimatter.data.AntimatterStoneTypes.DIORITE;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
-import static net.minecraft.world.level.Level.*;
 import static net.minecraft.world.level.Level.OVERWORLD;
 
 public class WorldGenLoader {
@@ -57,7 +51,7 @@ public class WorldGenLoader {
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Diamond).withAmountPerChunk(3).atHeight(-59, -52).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Emerald).withAmountPerChunk(2).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Ruby).withAmountPerChunk(2).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(BlueSapphire).withAmountPerChunk(2).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Sapphire).withAmountPerChunk(2).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(GreenSapphire).withAmountPerChunk(2).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Olivine).withAmountPerChunk(2).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Topaz).withAmountPerChunk(2).buildMaterial());
@@ -217,7 +211,7 @@ public class WorldGenLoader {
         OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinLayerBuilder("tungstate_end").asOreVein(20, 50, 10, 3, 16, Scheelite, Scheelite, Tungstate, Lithium,
               Level.END).buildVein());
-      ev.vein(new WorldGenVeinLayerBuilder("sapphire").asOreVein(-54, -9, 60, 3, 16, Almandine, Pyrope, BlueSapphire, GreenSapphire,
+      ev.vein(new WorldGenVeinLayerBuilder("sapphire").asOreVein(-54, -9, 60, 3, 16, Almandine, Pyrope, Sapphire, GreenSapphire,
         OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinLayerBuilder("manganese").asOreVein(-44, -29, 20, 3, 16, Grossular, Spessartine, Pyrolusite, Tantalite,
         OVERWORLD).buildVein());

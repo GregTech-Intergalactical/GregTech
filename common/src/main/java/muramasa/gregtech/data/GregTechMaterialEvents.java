@@ -452,7 +452,7 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Amber).asGem(false).asOre(3, 7, true).addTools(1.5f, 4.0f, 128, 2, of(Enchantments.SILK_TOUCH, 1));
         event.setMaterial(Amethyst).asGem(false).asOre(3, 7, true).addTools(2.5F, 7.0F, 256, 3).mats(of(SiliconDioxide, 4, Iron, 1));
-        event.setMaterial(BlueSapphire).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3)).harvestLevel(2);
+        event.setMaterial(Sapphire).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3)).harvestLevel(2);
         event.setMaterial(BlueTopaz).asGem(false).asOre(3, 7, true).addTools(2.5F, 7.0F, 256, 3).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
         event.setMaterial(Glass).asDust(PLATE, LENS).mats(of(SiliconDioxide, 1));
         event.setMaterial(GreenSapphire).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3)).harvestLevel(2);
@@ -927,7 +927,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Bentonite).addByProduct(Aluminium, Calcium, Magnesium);
         event.setMaterial(Beryllium).addByProduct(Emerald);
         event.setMaterial(BlackGranite).addByProduct(Biotite);
-        event.setMaterial(BlueSapphire).addByProduct(Aluminium);
+        event.setMaterial(Sapphire).addByProduct(Aluminium);
         event.setMaterial(Brass).addByProduct(Copper, Tin);
         event.setMaterial(Bronze).addByProduct(Copper, Zinc);
         event.setMaterial(BrownLimonite).addByProduct(Malachite, YellowLimonite);
@@ -1103,7 +1103,7 @@ public class GregTechMaterialEvents {
                 PhosphorousPentoxide, SodiumHydroxide, Spessartine, Sphalerite, Uvarovite, PotassiumFeldspar, Biotite,
                 RedGranite, Bastnasite, Pentlandite, Spodumene, Glauconite, Bentonite, Malachite, Barite, Talc,
                 AntimonyTrioxide, CupricOxide, Ferrosilite, Quartzite, Charcoal, Coal, Lignite, Diamond, Emerald, Ruby,
-                BlueSapphire, Tanzanite, Topaz, Olivine, Opal, Amethyst, EnderPearl, StainlessSteel, Steel, Ultimet,
+                Sapphire, Tanzanite, Topaz, Olivine, Opal, Amethyst, EnderPearl, StainlessSteel, Steel, Ultimet,
                 IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium, Sodalite, Apatite, Monazite);
         ELECSEPG.add(VanadiumMagnetite, Magnetite);
         ELECSEPI.add(YellowLimonite, BrownLimonite, Tin, Chrome, Ilmenite, BandedIron, Pyrite, Glauconite, Nickel, /*Chromite, */Pentlandite, Manganese);
@@ -1116,10 +1116,10 @@ public class GregTechMaterialEvents {
                 /*StyreneButadieneRubber,*/ Polyethylene, PolyvinylChloride, Polystyrene, Silicone, NitroFuel,
                 Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
                 RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
-                /* Amber, */ BlueSapphire, Ruby, Opal, Olivine, Lapis, Quartzite, Quartz, Phosphorus, Phosphate,
+                /* Amber, */ Sapphire, Ruby, Opal, Olivine, Lapis, Quartzite, Quartz, Phosphorus, Phosphate,
                 NetherStar, EnderPearl, EnderEye);
         NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite,
-                NitroFuel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ BlueSapphire, Ruby, Opal, Olivine,
+                NitroFuel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ Sapphire, Ruby, Opal, Olivine,
                 Lapis, Sodalite, Lazurite, Monazite , Quartzite, Quartz, Phosphorus, Phosphate, NetherStar,
                 EnderPearl, EnderEye, Blaze);
         RUBBERTOOLS.add(Rubber, /*StyreneButadieneRubber,*/ Polyethylene, PolyvinylChloride, Polystyrene, Silicone);

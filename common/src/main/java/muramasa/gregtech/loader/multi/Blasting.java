@@ -4,14 +4,12 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import static muramasa.antimatter.data.AntimatterStoneTypes.STONE;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -107,7 +105,7 @@ public class Blasting {
         BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Ruby, 1))
                 .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
                 .add("aluminium_ingot_from_ruby", 400, 100);
-        BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(BlueSapphire, 1))
+        BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Sapphire, 1))
                 .io(NUGGET.get(Aluminium, 3))
                 .add("aluminium_ingot_from_blud_sapphire", 400, 100);
         BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(GreenSapphire, 1))
