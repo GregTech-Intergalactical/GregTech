@@ -26,9 +26,9 @@ public class Machines {
     /**
      ** Steam Singleblock Machines
      **/
-    public static SteamMachine COAL_BOILER = new SteamMachine(GTIRef.ID, "coal_boiler").setTiers(BRONZE, STEEL).setMap(COAL_BOILERS).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(TileEntityCoalBoiler::new);
-    public static SteamMachine LAVA_BOILER = new SteamMachine(GTIRef.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntityLavaBoiler::new);
-    public static SteamMachine SOLAR_BOILER = new SteamMachine(GTIRef.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntitySolarBoiler::new);
+    public static SteamMachine COAL_BOILER = new SteamMachine(GTIRef.ID, "coal_boiler").setTiers(BRONZE, STEEL).setMap(COAL_BOILERS).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(TileEntityCoalBoiler::new).noCovers();
+    public static SteamMachine LAVA_BOILER = new SteamMachine(GTIRef.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntityLavaBoiler::new).noCovers();
+    public static SteamMachine SOLAR_BOILER = new SteamMachine(GTIRef.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntitySolarBoiler::new).allowFrontIO().noCovers();
     public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(GTIRef.ID, "steam_alloy_smelter").setTiers(BRONZE, STEEL).setMap(STEAM_ALLOY_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f).covers(COVER_STEAM_VENT);
     public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(GTIRef.ID, "steam_compressor").setTiers(BRONZE, STEEL).setMap(STEAM_COMPRESSING).addFlags(GUI, ITEM, FLUID).covers(COVER_STEAM_VENT);
     public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(GTIRef.ID, "steam_extractor").setTiers(BRONZE, STEEL).setMap(STEAM_EXTRACTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f).covers(COVER_STEAM_VENT);

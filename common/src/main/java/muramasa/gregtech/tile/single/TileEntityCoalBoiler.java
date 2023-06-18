@@ -70,7 +70,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
 
     }
 
-    public static class CoalBoilerRecipeHandler extends MachineRecipeHandler<TileEntityCoalBoiler> {
+    public static class CoalBoilerRecipeHandler extends MachineRecipeHandler<TileEntityCoalBoiler> implements ISteamBoilerHandler {
         int maxHeat = 500, heat, fuel = 0, maxFuel, lossTimer = 0;
         boolean hadNoWater;
 
@@ -125,8 +125,54 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
             return fuel;
         }
 
+        @Override
+        public int getProcessDelay() {
+            return tile.getMachineTier() == BRONZE ? 25 : 10;
+        }
+
+        @Override
+        public int getLossTimerMax() {
+            return tile.getMachineTier() == BRONZE ? 45 : 40;
+        }
+
+        @Override
         public int getHeat() {
             return heat;
+        }
+
+        @Override
+        public void setHeat(int heat) {
+            this.heat = heat;
+        }
+
+        @Override
+        public int getLossTimer() {
+            return lossTimer;
+        }
+
+        @Override
+        public void setLossTimer(int lossTimer) {
+            this.lossTimer = lossTimer;
+        }
+
+        @Override
+        public boolean hadNoWater() {
+            return hadNoWater;
+        }
+
+        @Override
+        public void setHadNoWater(boolean hadNoWater) {
+            this.hadNoWater = hadNoWater;
+        }
+
+        @Override
+        public TileEntityMachine<?> getTile() {
+            return tile;
+        }
+
+        @Override
+        public void exportFluid() {
+            Arrays.stream(Direction.values()).filter(f -> f != Direction.DOWN).collect(Collectors.toList()).forEach(this::exportFluidFromMachineToSide);
         }
 
         public int getMaxFuel() {
@@ -139,48 +185,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
 
         @Override
         public void onServerUpdate() {
-            if (this.heat <= 20) {
-                this.heat = 20;
-                this.lossTimer = 0;
-            }
-            int delay = tile.getMachineTier() == BRONZE ? 45 : 40;
-            if (++this.lossTimer > delay) {
-                this.heat -= 1;
-                this.lossTimer = 0;
-            }
-            Arrays.stream(Direction.values()).filter(f -> f != Direction.DOWN).collect(Collectors.toList()).forEach(this::exportFluidFromMachineToSide);
-            delay = tile.getMachineTier() == BRONZE ? 25 : 10;
-            if (tile.getLevel().getGameTime() % delay == 0) {
-                tile.fluidHandler.ifPresent(f -> {
-                    FluidStack[] inputs = f.getInputs();
-                    if (this.heat > 100) {
-                        if (inputs[0].getRealAmount() == 0) {
-                            hadNoWater = true;
-                        } else {
-                            if (hadNoWater) {
-                                tile.getLevel().explode(null, tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ(), 4.0F, Explosion.BlockInteraction.DESTROY);
-                                tile.getLevel().setBlockAndUpdate(tile.getBlockPos(), Blocks.AIR.defaultBlockState());
-                                return;
-                            }
-                            f.drainInput(new FluidStack(Fluids.WATER, 1), IFluidHandler.FluidAction.EXECUTE);
-                            long room = (16000 * TesseractGraphWrappers.dropletMultiplier) - f.getOutputs()[0].getRealAmount();
-                            long fill = Math.min(room, (150 * TesseractGraphWrappers.dropletMultiplier));
-                            if (room > 0){
-                                f.fillOutput(Steam.getGas(fill), IFluidHandler.FluidAction.EXECUTE);
-                            }
-                            if (fill < (150 * TesseractGraphWrappers.dropletMultiplier)) {
-                                //TODO:steam sounds
-                                tile.getLevel().playSound(null, tile.getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
-                                if (tile.getLevel() instanceof ServerLevel)
-                                    ((ServerLevel) tile.getLevel()).sendParticles(ParticleTypes.SMOKE, tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ(), tile.getLevel().getRandom().nextInt(8) + 1, 0.0D, 0.2D, 0.0D, 0.0D);
-                                f.drain(4000, IFluidHandler.FluidAction.EXECUTE);
-                            }
-                        }
-                    } else {
-                        this.hadNoWater = false;
-                    }
-                });
-            }
+            tick();
             super.onServerUpdate();
         }
 
