@@ -1,6 +1,6 @@
 package muramasa.gregtech.loader.crafting;
 
-import com.github.gregtechintergalactical.gtrubber.GTRubberData;
+import io.github.gregtechintergalactical.gtrubber.GTRubberData;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;

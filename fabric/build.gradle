@@ -46,8 +46,12 @@ dependencies{
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
     modImplementation("com.github.Trinsdar:ARRP:0.6.7-hotfix")
-    include("com.github.gregtech-intergalactical:gtrubber-fabric:${rootProject.gt_rubber_version}-${rootProject.minecraft_version}")
-    implementation("com.github.gregtech-intergalactical:gtrubber-fabric:${rootProject.gt_rubber_version}-${rootProject.minecraft_version}:dev-shadow"){
+    include("io.github.gregtechintergalactical:gtrubber-fabric:${rootProject.gt_rubber_version}-${rootProject.minecraft_version}")
+    implementation("io.github.gregtechintergalactical:gtrubber-fabric:${rootProject.gt_rubber_version}-${rootProject.minecraft_version}:dev-shadow"){
+        transitive = false
+    }
+    include("io.github.gregtechintergalactical:gtutility-fabric:1.0.0-${rootProject.minecraft_version}")
+    implementation("io.github.gregtechintergalactical:gtutility-fabric:1.0.0-${rootProject.minecraft_version}:dev-shadow"){
         transitive = false
     }
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"

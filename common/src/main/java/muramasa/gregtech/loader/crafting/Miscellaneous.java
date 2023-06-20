@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Consumer;
 
-import static com.github.gregtechintergalactical.gtrubber.GTRubberData.StickyResin;
+import static io.github.gregtechintergalactical.gtrubber.GTRubberData.StickyResin;
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;

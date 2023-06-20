@@ -1,7 +1,10 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtutility.GTUtility;
+import io.github.gregtechintergalactical.gtutility.machine.DrumMachine;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
@@ -27,6 +30,7 @@ import java.util.Arrays;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
+import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
@@ -38,6 +42,14 @@ import static muramasa.gregtech.data.TierMaps.*;
 
 public class Machines {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
+        AntimatterAPI.all(Machine.class, GTUtility.ID).forEach(machine -> {
+            if (machine instanceof DrumMachine d){
+                Material m = d.getMaterial();
+                if (m.has(AntimatterMaterialTypes.PLATE) && m.has(AntimatterMaterialTypes.ROD)){
+                    provider.addItemRecipe(output, GTUtility.ID, "", "machines", "has_hammer", provider.hasSafeItem(AntimatterDefaultTools.HAMMER.getTag()), d.getItem(Tier.NONE), of('H', AntimatterDefaultTools.HAMMER.getTag(), 'R', AntimatterMaterialTypes.ROD.getMaterialTag(m), 'P', AntimatterMaterialTypes.PLATE.getMaterialTag(m)), " H ", "PRP", "PRP");
+                }
+            }
+        });
         Arrays.stream(Tier.getAllElectric()).forEach(tier -> {
             Item motor = GregTech.get(ItemBasic.class, "motor_"+tier.getId());
             if (motor == null) return;

@@ -1,6 +1,6 @@
 package muramasa.gregtech.loader.machines;
 
-import com.github.gregtechintergalactical.gtrubber.GTRubberData;
+import io.github.gregtechintergalactical.gtrubber.GTRubberData;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.ItemStack;

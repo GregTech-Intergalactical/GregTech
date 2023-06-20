@@ -2,7 +2,10 @@ package muramasa.gregtech.data;
 
 import com.google.common.collect.ImmutableMap;
 
+import io.github.gregtechintergalactical.gtutility.GTUtilityData;
+import io.github.gregtechintergalactical.gtutility.machine.DrumMachine;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
@@ -101,6 +104,17 @@ public class Machines {
      **/
     public static BasicMachine ELECTRIC_ITEM_FILTER = null;
     public static BasicMachine ELECTRIC_TYPE_FILTER = null;
+    /**
+     * Drums
+     */
+    public static DrumMachine BRONZE_DRUM = GTUtilityData.createDrum(Materials.Bronze, 64000);
+    public static DrumMachine INVAR_DRUM = GTUtilityData.createDrum(Materials.Invar, 64000);
+    public static DrumMachine STAINLESS_DRUM = GTUtilityData.createDrum(Materials.StainlessSteel, 64000);
+    public static DrumMachine TITANIUM_DRUM = GTUtilityData.createDrum(Materials.Titanium, 128000);
+    public static DrumMachine NETHERRITE_DRUM = GTUtilityData.createDrum(AntimatterMaterials.Netherite, 128000);
+    public static DrumMachine TUNGSTENSTEEL_DRUM = GTUtilityData.createDrum(Materials.TungstenSteel, 256000);
+    public static DrumMachine TUNGSTEN_DRUM = GTUtilityData.createDrum(Materials.Tungsten, 256000);
+
     /**
      * Transformers
      **/
