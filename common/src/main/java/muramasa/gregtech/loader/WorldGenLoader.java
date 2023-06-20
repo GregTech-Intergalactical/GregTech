@@ -69,7 +69,7 @@ public class WorldGenLoader {
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Iridium).withAmountPerChunk(8).atHeight(20, 40).withDimensions(new ResourceLocation("the_end")).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Quartz).withAmountPerChunk(64).atHeight(30, 120).withDimensions(new ResourceLocation("the_nether")).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Saltpeter).withAmountPerChunk(8).atHeight(10, 60).withDimensions(new ResourceLocation("the_nether")).buildMaterial());
-      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Sulfur).withAmountPerChunk(32).atHeight(10, 60).withDimensions(new ResourceLocation("the_nether")).buildMaterial());
+      event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Sulfur).withAmountPerChunk(32).atHeight(5, 60).withDimensions(new ResourceLocation("the_nether")).buildMaterial());
       event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Sulfur).withAmountPerChunk(8).atHeight(-59, -34).withCustomId("sulfur_overworld").buildMaterial());
   }
 
