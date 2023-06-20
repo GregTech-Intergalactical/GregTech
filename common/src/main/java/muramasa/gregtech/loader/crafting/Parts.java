@@ -152,15 +152,15 @@ public class Parts {
               'P', PLATE.get(Steel),
               'H', HAMMER.getTag()
       ), "PPH", "PP ");
-      provider.addItemRecipe(output, GTIRef.ID, "mold_plate", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldPlate, of(
+      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldPlate, of(
               'P', EmptyShape,
               'H', HAMMER.getTag()
       ), "H", "P");
-      provider.addItemRecipe(output, GTIRef.ID, "mold_ingot", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldIngot, of(
+      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldIngot, of(
               'P', EmptyShape,
               'H', HAMMER.getTag()
       ), "P", "H");
-      provider.addItemRecipe(output, GTIRef.ID, "mold_gear", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldGear, of(
+      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldGear, of(
               'P', EmptyShape,
               'H', HAMMER.getTag()
       ), "PH");
