@@ -50,8 +50,8 @@ dependencies{
     implementation("io.github.gregtechintergalactical:gtrubber-fabric:${rootProject.gt_rubber_version}-${rootProject.minecraft_version}:dev-shadow"){
         transitive = false
     }
-    include("io.github.gregtechintergalactical:gtutility-fabric:1.0.0-${rootProject.minecraft_version}")
-    implementation("io.github.gregtechintergalactical:gtutility-fabric:1.0.0-${rootProject.minecraft_version}:dev-shadow"){
+    include("io.github.gregtechintergalactical:gtutility-fabric:${rootProject.gt_utility_version}-${rootProject.minecraft_version}")
+    implementation("io.github.gregtechintergalactical:gtutility-fabric:${rootProject.gt_utility_version}-${rootProject.minecraft_version}:dev-shadow"){
         transitive = false
     }
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"

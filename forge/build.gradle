@@ -70,10 +70,10 @@ dependencies {
         transitive = false
     }
     include("io.github.gregtechintergalactical:gtrubber-forge:${rootProject.gt_rubber_version}-${rootProject.minecraft_version}")
-    implementation("io.github.gregtechintergalactical:gtutility-forge:1.0.0-${rootProject.minecraft_version}:dev-shadow"){
+    implementation("io.github.gregtechintergalactical:gtutility-forge:${rootProject.gt_utility_version}-${rootProject.minecraft_version}:dev-shadow"){
         transitive = false
     }
-    include("io.github.gregtechintergalactical:gtutility-forge:1.0.0-${rootProject.minecraft_version}")
+    include("io.github.gregtechintergalactical:gtutility-forge:${rootProject.gt_utility_version}-${rootProject.minecraft_version}")
     modRuntimeOnly("dev.latvian.mods:kubejs-forge:${rootProject.kubejs_version}")
     modRuntimeOnly("curse.maven:the-one-probe-245211:${rootProject.top_forge_file}")
     //modRuntimeOnly("curse.maven:rubidium-574856:4451888")
