@@ -42,14 +42,6 @@ import static muramasa.gregtech.data.TierMaps.*;
 
 public class Machines {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        AntimatterAPI.all(Machine.class, GTUtility.ID).forEach(machine -> {
-            if (machine instanceof DrumMachine d){
-                Material m = d.getMaterial();
-                if (m.has(AntimatterMaterialTypes.PLATE) && m.has(AntimatterMaterialTypes.ROD)){
-                    provider.addItemRecipe(output, GTUtility.ID, "", "machines", "has_hammer", provider.hasSafeItem(AntimatterDefaultTools.HAMMER.getTag()), d.getItem(Tier.NONE), of('H', AntimatterDefaultTools.HAMMER.getTag(), 'R', AntimatterMaterialTypes.ROD.getMaterialTag(m), 'P', AntimatterMaterialTypes.PLATE.getMaterialTag(m)), " H ", "PRP", "PRP");
-                }
-            }
-        });
         Arrays.stream(Tier.getAllElectric()).forEach(tier -> {
             Item motor = GregTech.get(ItemBasic.class, "motor_"+tier.getId());
             if (motor == null) return;
