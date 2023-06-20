@@ -19,32 +19,7 @@ public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine
 
     public TileEntityPrimitiveBlastFurnace(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        recipeHandler.set(() -> new CookingRecipeHandler<>(this){
-            private boolean consume(boolean simulate) {
-                List<ItemStack> stack;
-                if (simulate) {
-                    stack = tile.itemHandler.map(t -> t.consumeInputs(BURNABLE.get(), true)).orElse(Collections.emptyList());
-                    return !stack.isEmpty();
-                }
-                if (!(stack = tile.itemHandler.map(t -> t.consumeInputs(BURNABLE.get(), false)).orElse(Collections.emptyList())).isEmpty()) {
-                    burnDuration += AntimatterPlatformUtils.getBurnTime(stack.get(0), null)* 2;
-                    return true;
-                }
-                return false;
-            }
-
-            @Override
-            public boolean consumeResourceForRecipe(boolean simulate) {
-                if (simulate) return consume(true);
-                if (burnDuration == 0) {
-                    if (!consume(false)) return false;
-                } else {
-                    burnDuration--;
-                    return burnDuration >= 0;
-                }
-                return burnDuration > 0;
-            }
-        });
+        recipeHandler.set(() -> new CookingRecipeHandler<>(this, 2.0f));
     }
 
     @Override
