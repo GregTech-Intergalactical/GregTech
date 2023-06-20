@@ -7,6 +7,7 @@ import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.multi.TileEntityBasicMultiMachine;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.int3;
+import muramasa.gregtech.data.GregTechData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
@@ -27,9 +28,9 @@ public class TileEntityPrimitiveBlastFurnace extends TileEntityBasicMultiMachine
         super.onMachineStarted(r);
         int3 controller = new int3(getBlockPos(), getFacing());
         controller.back(1);
-        getLevel().setBlock(controller, Blocks.LAVA.defaultBlockState(), 2);
+        getLevel().setBlock(controller, GregTechData.LAVA.defaultBlockState(), 2);
         controller.above(1);
-        getLevel().setBlock(controller, Blocks.LAVA.defaultBlockState(), 2);
+        getLevel().setBlock(controller, GregTechData.LAVA.defaultBlockState(), 2);
     }
 
     @Override

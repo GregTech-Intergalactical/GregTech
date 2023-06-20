@@ -8,6 +8,7 @@ import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.datagen.providers.*;
 import muramasa.antimatter.event.CraftingEvent;
 import muramasa.antimatter.event.ProvidersEvent;
+import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
@@ -158,6 +159,7 @@ public class GregTech extends AntimatterMod {
             }
             case DATA_READY -> {
                 Structures.init();
+                AntimatterJEIREIPlugin.addItemsToHide(GregTechData.LAVA);
               //  if (side == Dist.CLIENT) StructureInfo.init();
                 TierMaps.providerInit();
             }

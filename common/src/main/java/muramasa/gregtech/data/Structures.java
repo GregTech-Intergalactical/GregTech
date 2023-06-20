@@ -22,7 +22,7 @@ import static muramasa.gregtech.data.Materials.Lithium;
 public class Structures {
 
     /** Special Case Elements **/
-    public static BlockStateElement AIR_OR_LAVA = new BlockStateElement("air_or_lava", (w, p, s) -> s.isAir() || s.getBlock() == Blocks.LAVA);
+    public static BlockStateElement AIR_OR_LAVA = new BlockStateElement("air_or_lava", (w, p, s) -> s.isAir() || s.getBlock() == Blocks.LAVA || s.getBlock() == LAVA);
     public static BlockStateElement GLASS_BLOCK = new BlockStateElement("glass_block", (w, p, s) -> s.getBlock() == Blocks.GLASS);
     public static BlockStateElement LITHIUM_BLOCK = new BlockStateElement("lithium_block", (w, p, s) -> s.getBlock() == BLOCK.get().get(Lithium).asBlock());
     public static final FakeTileElement FAKE_CASING = new FakeTileElement(CASING_FIRE_BRICK);
