@@ -21,5 +21,10 @@ public class LatheLoader {
                           .io(SCREW.get(t, 1)).add(t.getId() + "_screw",t.getHardness()/2, 8);
             }
         });
+        LENS.all().forEach(m -> {
+            if (m.has(PLATE) && m.has(DUST)){
+                RecipeMaps.LATHING.RB().ii(PLATE.getMaterialIngredient(m, 1)).io(LENS.get(m, 1), DUST_SMALL.get(m, 1)).add(m.getId() + "_lens", m.getHardness(), 16);
+            }
+        });
     }
 }

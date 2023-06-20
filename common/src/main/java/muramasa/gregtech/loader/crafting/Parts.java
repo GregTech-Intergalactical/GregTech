@@ -37,54 +37,13 @@ import static muramasa.gregtech.data.TierMaps.*;
 
 public class Parts {
   public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-    Arrays.stream(Tier.getStandard()).forEach(t -> {
-      Material magnet = (t == Tier.ULV || t == LV) ? IronMagnetic
-          : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
-      Object cable = CABLE_GETTER.apply(PipeSize.VTINY, t, false);
-      Material mat = TIER_MATERIALS.get(t);
-      // Item smallGear = GEAR_SMALL.get(mat);
-      Item smallGear = GEAR.get(mat);
-      TagKey<Item> plate = PLATE.getMaterialTag(mat);
-      TagKey<Item> rod = ROD.getMaterialTag(mat);
-      TagKey<Item> circuit = TIER_CIRCUITS.getOrDefault(t, GregTechTags.CIRCUITS_BASIC);
-
-      Item motor = GregTech.get(ItemBasic.class, "motor_" + t.getId());
-      Item piston = GregTech.get(ItemBasic.class, "piston_" + t.getId());
-      Item robotArm = GregTech.get(ItemBasic.class, "robot_arm_" + t.getId());
-      Item emitter = GregTech.get(ItemBasic.class, "emitter_" + t.getId());
-      Item sensor = GregTech.get(ItemBasic.class, "sensor_" + t.getId());
-      Item pump = GregTech.get(ItemCover.class, "pump_" + t.getId());
-      Item conveyor = GregTech.get(ItemCover.class, "conveyor_" + t.getId());
-      Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
-      Object emitterGem = EMITTER_GEMS.get(t);
-      provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), motor,
-          of('M', ROD.get(magnet), 'C', cable, 'W', WIRE_COPPER.getBlockItem(fromTier(t)), 'R', rod), "CWR", "WMW", "RWC");
-      provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), piston,
-          of('M', motor, 'C', cable, 'G', smallGear, 'P', plate, 'R', rod), "PPP", "CRR", "CMG");
-      provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), conveyor,
-          of('M', motor, 'C', cable, 'P', PLATE.get(Rubber)), "PPP", "MCM", "PPP");
-      provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), robotArm,
-          of('M', motor, 'C', cable, 'P', piston, 'I', circuit, 'R', rod), "CCC", "MRM", "PIR");
-      provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(circuit), emitter,
-          of('R', emitterRod, 'G', emitterGem, 'L', cable, 'C', circuit), "RRC", "LGR", "CLR");
-      provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(circuit), sensor,
-          of('R', emitterRod, 'G', emitterGem, 'C', circuit, 'P', plate), "P G", "PR ", "CPP");
-      Material rotorMat = ((MaterialItem) TIER_ROTORS.get(t)).getMaterial();
-      provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), pump,
-          ImmutableMap.<Character, Object>builder().put('M', motor).put('C', cable).put('W', WRENCH.getTag())
-              .put('S', SCREWDRIVER.getTag()).put('R', SCREW.get(rotorMat)).put('T', TIER_ROTORS.get(t))
-              .put('O', RING.get(Rubber)).put('P', TIER_PIPES.get(t))
-              .build(),
-          "RTO", "SPW", "OMC");
-    });
+      tieredItems(output, provider);
+      circuits(output, provider);
       provider.shapeless(output, "fire_clay_dust", "parts", "has_clay_dust", provider.hasSafeItem(AntimatterMaterialTypes.DUST.getMaterialTag(Clay)), AntimatterMaterialTypes.DUST.get(Fireclay, 2),
               AntimatterMaterialTypes.DUST.getMaterialTag(Brick), AntimatterMaterialTypes.DUST.getMaterialTag(Clay));
 
       provider.addStackRecipe(output, GTIRef.ID, "drain_expensive", "parts", "has_battery", provider.hasSafeItem(Items.IRON_BARS),
               new ItemStack(GregTech.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");
-
-
-
 
     provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
             INT_CIRCUITS.get(0).getItems()[0], GregTechTags.CIRCUITS_BASIC);
@@ -111,6 +70,49 @@ public class Parts {
               'G', GEAR.get(CobaltBrass),
               'D', DUST_SMALL.get(Diamond)
       ), " D ", "DGD", " D ");
+  }
+
+  private static void tieredItems(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+      Arrays.stream(Tier.getStandard()).forEach(t -> {
+          Material magnet = (t == Tier.ULV || t == LV) ? IronMagnetic
+                  : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
+          Object cable = CABLE_GETTER.apply(PipeSize.VTINY, t, false);
+          Material mat = TIER_MATERIALS.get(t);
+          // Item smallGear = GEAR_SMALL.get(mat);
+          Item smallGear = GEAR.get(mat);
+          TagKey<Item> plate = PLATE.getMaterialTag(mat);
+          TagKey<Item> rod = ROD.getMaterialTag(mat);
+          TagKey<Item> circuit = TIER_CIRCUITS.getOrDefault(t, GregTechTags.CIRCUITS_BASIC);
+
+          Item motor = GregTech.get(ItemBasic.class, "motor_" + t.getId());
+          Item piston = GregTech.get(ItemBasic.class, "piston_" + t.getId());
+          Item robotArm = GregTech.get(ItemBasic.class, "robot_arm_" + t.getId());
+          Item emitter = GregTech.get(ItemBasic.class, "emitter_" + t.getId());
+          Item sensor = GregTech.get(ItemBasic.class, "sensor_" + t.getId());
+          Item pump = GregTech.get(ItemCover.class, "pump_" + t.getId());
+          Item conveyor = GregTech.get(ItemCover.class, "conveyor_" + t.getId());
+          Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
+          Object emitterGem = EMITTER_GEMS.get(t);
+          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), motor,
+                  of('M', ROD.get(magnet), 'C', cable, 'W', WIRE_COPPER.getBlockItem(fromTier(t)), 'R', rod), "CWR", "WMW", "RWC");
+          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), piston,
+                  of('M', motor, 'C', cable, 'G', smallGear, 'P', plate, 'R', rod), "PPP", "CRR", "CMG");
+          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), conveyor,
+                  of('M', motor, 'C', cable, 'P', PLATE.get(Rubber)), "PPP", "MCM", "PPP");
+          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), robotArm,
+                  of('M', motor, 'C', cable, 'P', piston, 'I', circuit, 'R', rod), "CCC", "MRM", "PIR");
+          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(circuit), emitter,
+                  of('R', emitterRod, 'G', emitterGem, 'L', cable, 'C', circuit), "RRC", "LGR", "CLR");
+          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(circuit), sensor,
+                  of('R', emitterRod, 'G', emitterGem, 'C', circuit, 'P', plate), "P G", "PR ", "CPP");
+          Material rotorMat = ((MaterialItem) TIER_ROTORS.get(t)).getMaterial();
+          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), pump,
+                  ImmutableMap.<Character, Object>builder().put('M', motor).put('C', cable).put('W', WRENCH.getTag())
+                          .put('S', SCREWDRIVER.getTag()).put('R', SCREW.get(rotorMat)).put('T', TIER_ROTORS.get(t))
+                          .put('O', RING.get(Rubber)).put('P', TIER_PIPES.get(t))
+                          .build(),
+                  "RTO", "SPW", "OMC");
+      });
   }
 
   private static void molds(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
@@ -179,25 +181,25 @@ public class Parts {
   }
 
   private static void circuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
-      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_H", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasicElectronic,
+      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_h", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasicElectronic,
               ImmutableMap.<Character, Object>builder()
                       .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                       .put('N', NandChip)
                       .put('S', PLATE.getMaterialTag(Steel))
                       .build(), "CCC", "NSN", "CCC");
-      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_V", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasicElectronic,
+      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_v", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasicElectronic,
               ImmutableMap.<Character, Object>builder()
                       .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                       .put('N', NandChip)
                       .put('S', PLATE.getMaterialTag(Steel))
                       .build(), "CNC", "CSC", "CNC");
-      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_H", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
+      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_h", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
               ImmutableMap.<Character, Object>builder()
                       .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                       .put('N', NandChip)
                       .put('S', PLATE.getMaterialTag(Steel))
                       .build(), "CCC", "NSN", "CCC");
-      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_V", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
+      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_v", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
               ImmutableMap.<Character, Object>builder()
                       .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                       .put('N', NandChip)

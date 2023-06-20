@@ -128,6 +128,7 @@ public class GregTechData {
     public static ItemBasic<?> EngravedLapotronChip = new ItemBasic<>(GTIRef.ID, "engraved_lapotron_chip").tip("Needed for Circuits");
 
     public static ItemBasic<?> CircuitBoardBasic = new ItemBasic<>(GTIRef.ID, "basic_circuit_board");
+    public static ItemBasic<?> CircuitBoardAdvanced = new ItemBasic<>(GTIRef.ID, "advanced_circuit_board");
     public static ItemBasic<?> CircuitBoardEmpty = new ItemBasic<>(GTIRef.ID, "empty_circuit_board");
     public static ItemBasic<?> CircuitBoardProcessor = new ItemBasic<>(GTIRef.ID, "processor_circuit_board");
     public static ItemBasic<?> CircuitBoardProcessorEmpty = new ItemBasic<>(GTIRef.ID, "empty_processor_circuit_board");

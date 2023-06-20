@@ -5,52 +5,95 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.SubTag;
+import muramasa.antimatter.pipe.PipeSize;
 import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechTags;
+import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.world.item.ItemStack;
 
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.SOLDER;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.RecipeMaps.ASSEMBLING;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
-import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_REACTING;
+import static muramasa.gregtech.data.RecipeMaps.*;
+import static muramasa.gregtech.loader.machines.FluidAmountUtils.*;
 
 public class Circuitry {
     public static void init() {
         boards();
         circuits();
+        //bloodyBoards();
+        //bloodyCircuits();
     }
 
-    private static void boards () {
+    private static void boards(){
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Silicon, 1), PLATE.getMaterialIngredient(Polyethylene, 1)).io(new ItemStack(CircuitBoardEmpty)).add("empty_circuit_board", 32, 16);
+        PRESSING.RB().ii(of(CircuitBoardEmpty), of(EtchedWiringMV, 4)).io(new ItemStack(CircuitBoardBasic)).add("basic_circuit_board", 32, 16);
+        PRESSING.RB().ii(of(CircuitBoardEmpty), of(EtchedWiringHV, 4)).io(new ItemStack(CircuitBoardAdvanced)).add("advanced_circuit_board", 32, 16);
+        PRESSING.RB().ii(of(CircuitBoardProcessorEmpty), of(EtchedWiringEV, 4)).io(new ItemStack(CircuitBoardProcessor)).add("processor_circuit_board", 32, 256);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Silicon, 2), PLATE.getMaterialIngredient(Polytetrafluoroethylene, 1)).io(new ItemStack(CircuitBoardProcessorEmpty)).add("empty_processor_circuit_board", 32, 256);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Lazurite, 1), DUST.getMaterialIngredient(AntimatterMaterials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts", 32, 64);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Polyethylene, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Tin.getLiquid(quarter())).io(new ItemStack(NandChip)).add("nand_chip_tin_poly", 32, 16);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Polyethylene, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(SolderingAlloy.getLiquid(quarter() / 2)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_poly", 32, 16);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Polyethylene, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Lead.getLiquid(quarter() * 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_poly", 32, 16);
+        ASSEMBLING.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Tin.getLiquid(quarter())).io(new ItemStack(NandChip)).add("nand_chip_tin_steel", 32, 16);
+        ASSEMBLING.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(SolderingAlloy.getLiquid(quarter() / 2)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_steel", 32, 16);
+        ASSEMBLING.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Lead.getLiquid(quarter() * 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_steel", 32, 16);
+    }
+
+    private static void circuits(){
+        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Tin.getLiquid(quarter() * 2)).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_tin", 32, 16);
+        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(quarter())).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_soldering_alloy", 32, 16);
+        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Lead.getLiquid(ingot())).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_lead", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Tin.getLiquid(quarter() * 2)).io(new ItemStack(CircuitGood)).add("good_circuit_tin", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(quarter())).io(new ItemStack(CircuitGood)).add("good_circuit_soldering_alloy", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Lead.getLiquid(ingot())).io(new ItemStack(CircuitGood)).add("good_circuit_lead", 32, 16);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(Tin.getLiquid(ingot())).io(new ItemStack(CircuitAdv)).add("advanced_circuit_tin", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(quarter() * 2)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_soldering_alloy", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(Lead.getLiquid(ingot() * 2)).io(new ItemStack(CircuitDataStorage)).add("data_storage__circuit_lead", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(Tin.getLiquid(ingot())).io(new ItemStack(CircuitDataStorage)).add("data_storage_circuit_tin", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(SolderingAlloy.getLiquid(quarter() * 2)).io(new ItemStack(CircuitDataStorage)).add("data_storage__circuit_soldering_alloy", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(Lead.getLiquid(ingot() * 2)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_lead", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(Tin.getLiquid(ingot() * 2)).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_tin", 32, 256);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(SolderingAlloy.getLiquid(ingot())).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_soldering_alloy", 32, 256);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(Lead.getLiquid(ingot() * 4)).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_lead", 32, 256);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(EngravedLapotronChip, 3)).fi(Tin.getLiquid(ingot() * 2)).io(new ItemStack(CircuitEnergyFlow)).add("energy_flow_circuit_tin", 32, 256);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(EngravedLapotronChip, 3)).fi(SolderingAlloy.getLiquid(ingot())).io(new ItemStack(CircuitEnergyFlow)).add("energy_flow_circuit_soldering_alloy", 32, 256);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(EngravedLapotronChip, 3)).fi(Lead.getLiquid(ingot() * 4)).io(new ItemStack(CircuitEnergyFlow)).add("energy_flow_circuit_lead", 32, 256);
+    }
+
+    private static void bloodyBoards() {
         //Coated
-        ASSEMBLING.RB().ii(of(GTRubberData.StickyResin,2), of(AntimatterMaterialTypes.PLATE.get(AntimatterMaterials.Wood),8))
+        ASSEMBLING.RB().ii(of(GTRubberData.StickyResin,2), of(PLATE.get(AntimatterMaterials.Wood),8))
                 .fi(Glue.getLiquid(100))
                 .io(new ItemStack(GregTechData.CircuitBoardCoated,8))
                 .add("coated_circuit_board",8*20, 8);
         //Phenolic
-        ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardCoated,1), of(AntimatterMaterialTypes.PLATE.get(AntimatterMaterials.Wood),1))
+        ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardCoated,1), of(PLATE.get(AntimatterMaterials.Wood),1))
                 .fi(Phenol.getLiquid(100))
                 .io(new ItemStack(GregTechData.CircuitBoardPhenolic,1))
                 .add("phenolic_circuit_board",8*20, 32);
         //Plastic
-        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardPhenolic,1), of(AntimatterMaterialTypes.PLATE.get(Polyethylene),1), of(AntimatterMaterialTypes.FOIL.get(AntimatterMaterials.Copper),1))
+        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardPhenolic,1), of(PLATE.get(Polyethylene),1), of(AntimatterMaterialTypes.FOIL.get(AntimatterMaterials.Copper),1))
                 .fi(SulfuricAcid.getLiquid(125))
                 .io(new ItemStack(GregTechData.CircuitBoardPlastic,1))
                 .add("plastic_circuit_board",8*20, 128);
-        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardPhenolic,1), of(AntimatterMaterialTypes.PLATE.get(PolyvinylChloride),1), of(AntimatterMaterialTypes.FOIL.get(AntimatterMaterials.Copper),1))
+        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardPhenolic,1), of(PLATE.get(PolyvinylChloride),1), of(AntimatterMaterialTypes.FOIL.get(AntimatterMaterials.Copper),1))
                 .fi(SulfuricAcid.getLiquid(125))
                 .io(new ItemStack(GregTechData.CircuitBoardPlastic,2))
                 .add("plastic_circuit_board_2",8*20, 128);
-        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardPhenolic,1), of(AntimatterMaterialTypes.PLATE.get(Polytetrafluoroethylene),1), of(AntimatterMaterialTypes.FOIL.get(AntimatterMaterials.Copper),1))
+        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardPhenolic,1), of(PLATE.get(Polytetrafluoroethylene),1), of(AntimatterMaterialTypes.FOIL.get(AntimatterMaterials.Copper),1))
                 .fi(SulfuricAcid.getLiquid(125))
                 .io(new ItemStack(GregTechData.CircuitBoardPlastic,4))
                 .add("plastic_circuit_board_3",8*20, 128);
         //Epoxy
-        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardPlastic,1), of(AntimatterMaterialTypes.PLATE.get(Epoxid),1), of(AntimatterMaterialTypes.FOIL.get(AnnealedCopper),1))
+        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardPlastic,1), of(PLATE.get(Epoxid),1), of(AntimatterMaterialTypes.FOIL.get(AnnealedCopper),1))
                 .fi(SulfuricAcid.getLiquid(125))
                 .io(new ItemStack(GregTechData.CircuitBoardEpoxy,1))
                 .add("epoxy_circuit_board",8*20, 512);
         //Fiber
-        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardEpoxy,1), of(AntimatterMaterialTypes.PLATE.get(EpoxidFiberReinforced),1), of(AntimatterMaterialTypes.FOIL.get(AnnealedCopper),1))
+        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardEpoxy,1), of(PLATE.get(EpoxidFiberReinforced),1), of(AntimatterMaterialTypes.FOIL.get(AnnealedCopper),1))
                 .fi(SulfuricAcid.getLiquid(125))
                 .io(new ItemStack(GregTechData.CircuitBoardFiber,1))
                 .add("fiber_circuit_board",8*20, 2048);
@@ -66,7 +109,7 @@ public class Circuitry {
                 .add("wetware_circuit_board",8*20, 32768);
     }
 
-    private static void circuits () {
+    private static void bloodyCircuits() {
         for (Material material : SOLDER.all()) {
             int base = 18;
             boolean hasGood = SOLDER.has(SubTag.GOOD_SOLDER, material);

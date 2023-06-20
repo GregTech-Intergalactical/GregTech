@@ -5,6 +5,7 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
 import muramasa.gregtech.material.FluidProduct;
 import muramasa.gregtech.material.GregTechMaterialEvent;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.enchantment.Enchantments;
 
@@ -452,23 +453,23 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Amber).asGem(false).asOre(3, 7, true).addTools(1.5f, 4.0f, 128, 2, of(Enchantments.SILK_TOUCH, 1));
         event.setMaterial(Amethyst).asGem(false).asOre(3, 7, true).addTools(2.5F, 7.0F, 256, 3).mats(of(SiliconDioxide, 4, Iron, 1));
-        event.setMaterial(Sapphire).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3)).harvestLevel(2);
-        event.setMaterial(BlueTopaz).asGem(false).asOre(3, 7, true).addTools(2.5F, 7.0F, 256, 3).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
+        event.setMaterial(Sapphire).asGem(true).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3)).harvestLevel(2);
+        event.setMaterial(BlueTopaz).asGem(true).asOre(3, 7, true).addTools(2.5F, 7.0F, 256, 3).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
         event.setMaterial(Glass).asDust(PLATE, LENS).mats(of(SiliconDioxide, 1));
-        event.setMaterial(GreenSapphire).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3)).harvestLevel(2);
+        event.setMaterial(GreenSapphire).asGem(true).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3)).harvestLevel(2);
         event.setMaterial(Jade).asGem(false).asOre(3, 7, true).addTools(1.5f, 8.0f, 512, 2, of(Enchantments.BLOCK_FORTUNE, 3, Enchantments.MOB_LOOTING, 3));
-        event.setMaterial(Lazurite).asGemBasic(false).asOre(2, 5, true).harvestLevel(1).mats(of(Aluminium, 6, Silicon, 6, Calcium, 8, Sodium, 8));
+        event.setMaterial(Lazurite).asGemBasic(false, PLATE).asOre(2, 5, true).harvestLevel(1).mats(of(Aluminium, 6, Silicon, 6, Calcium, 8, Sodium, 8));
         event.setMaterial(LigniteCoke).asGemBasic(false);
-        event.setMaterial(Olivine).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2, of(Enchantments.SILK_TOUCH, 1)).mats(of(Magnesium, 2, Iron, 1, SiliconDioxide, 2)).harvestLevel(2);
-        event.setMaterial(Opal).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(SiliconDioxide, 1));
+        event.setMaterial(Olivine).asGem(false, PLATE).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2, of(Enchantments.SILK_TOUCH, 1)).mats(of(Magnesium, 2, Iron, 1, SiliconDioxide, 2)).harvestLevel(2);
+        event.setMaterial(Opal).asGem(true).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(SiliconDioxide, 1));
         event.setMaterial(Phosphorus).asGemBasic(false).asOre(3, 7, true).harvestLevel(2).mats(of(Calcium, 3, Phosphate, 2));
         event.setMaterial(Quartzite).asGemBasic(false, ROCK, ROD, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1).mats(of(Silicon, 1, Oxygen, 2));
-        event.setMaterial(RedGarnet).asGem(false).asOre(3, 7, true).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
-        event.setMaterial(Ruby).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(Chrome, 1, Aluminium, 2, Oxygen, 3)).harvestLevel(2);
+        event.setMaterial(RedGarnet).asGem(true).asOre(3, 7, true).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
+        event.setMaterial(Ruby).asGem(true).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(Chrome, 1, Aluminium, 2, Oxygen, 3)).harvestLevel(2);
         event.setMaterial(Sodalite).asGemBasic(false).asOre(2, 5, true).harvestLevel(1).mats(of(Aluminium, 3, Silicon, 3, Sodium, 4, Chlorine, 1));
         event.setMaterial(Tanzanite).asGem(false).asOre(3, 7, true).addTools(1.5F, 7.0F, 256, 2).mats(of(Calcium, 2, Aluminium, 3, Silicon, 3, Hydrogen, 1, Oxygen, 13));
         event.setMaterial(Topaz).asGem(false).asOre(3, 7, true).addTools(2.5F, 7.0F, 256, 2).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
-        event.setMaterial(YellowGarnet).asGem(false).asOre(3, 7, true).mats(of(Andradite, 5, Grossular, 8, Uvarovite, 3));
+        event.setMaterial(YellowGarnet).asGem(true).asOre(3, 7, true).mats(of(Andradite, 5, Grossular, 8, Uvarovite, 3));
         /**
          *  Basic
          **/
@@ -479,14 +480,14 @@ public class GregTechMaterialEvents {
         event.setMaterial(Dilithium).asGemBasic(true);
         event.setMaterial(Apatite).asGemBasic(false, PLATE).asOre(2, 5, true).harvestLevel(1).mats(of(Calcium, 5, Phosphate, 3, Chlorine, 1));
         event.setMaterial(Monazite).asGemBasic(false, PLATE).asOre(3, 7, true).harvestLevel(1).mats(of(RareEarth, 1, Phosphate, 1));
-        event.setMaterial(NetherStar).asGemBasic(false).addTools(3.5F, 6.0F, 3620, 4, of(Enchantments.SILK_TOUCH, 1));
+        event.setMaterial(NetherStar).replaceItem(GEM, Items.NETHER_STAR).asGemBasic(false).addTools(3.5F, 6.0F, 3620, 4, of(Enchantments.SILK_TOUCH, 1));
         /**
          **  Plastic Related
          **/
         event.setMaterial(Epoxid).asSolid(400, 0, PLATE).addHandleStat(70, 1.5F).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
         event.setMaterial(EpoxidFiberReinforced).asSolid(400, 0, PLATE).mats(of(Epoxid, 1));
         event.setMaterial(Polycaprolactam).asSolid(500, 0).mats(of(Carbon, 6, Hydrogen, 11, Nitrogen, 1, Oxygen, 1));
-        event.setMaterial(Polyethylene).asSolid(295, 0, PLATE).asFluid().addHandleStat(66, 0.5F).mats(of(Carbon, 1, Hydrogen, 2));
+        event.setMaterial(Polyethylene).asSolid(295, 0, PLATE, RUBBERTOOLS).asFluid().addHandleStat(66, 0.5F).mats(of(Carbon, 1, Hydrogen, 2));
         event.setMaterial(PolyphenyleneSulfide).asSolid(295, 0, PLATE, FOIL).mats(of(Carbon, 6, Hydrogen, 4, Sulfur, 1));
         event.setMaterial(Polystyrene).asSolid(295, 0).addHandleStat(3, 1.0F).mats(of(Carbon, 8, Hydrogen, 8));
         event.setMaterial(Polytetrafluoroethylene).asSolid(1400, 0, PLATE, FRAME, ROD).mats(of(Carbon, 2, Fluorine, 4));
@@ -1244,9 +1245,9 @@ public class GregTechMaterialEvents {
         event.setMaterial(Blaze).mats(of(Sulfur, 1, DarkAsh, 1));
         event.setMaterial(Coal).asGemBasic(false).flags(ORE_STONE).mats(of(Carbon, 2));
         event.setMaterial(Copper).flags(PLATE, ROD, FOIL, WIRE_FINE, GEAR, BOLT);
-        event.setMaterial(Diamond).asGem(false).mats(of(Carbon, 64));
-        event.setMaterial(Emerald).asGem(false).mats(of(Beryllium, 3, Aluminium, 2, Silicon, 3, Oxygen, 18)).addTools(3.0F, 9.0F, 590, 3);
-        event.setMaterial(EnderEye).asGemBasic(true, ROD, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
+        event.setMaterial(Diamond).asGem(true).mats(of(Carbon, 64));
+        event.setMaterial(Emerald).asGem(true).mats(of(Beryllium, 3, Aluminium, 2, Silicon, 3, Oxygen, 18)).addTools(3.0F, 9.0F, 590, 3);
+        event.setMaterial(EnderEye).asGemBasic(false, ROD, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
         event.setMaterial(EnderPearl).mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5, Chlorine, 6));
         event.setMaterial(Flint).flags(ROCK);
         event.setMaterial(Gold).flags(FOIL, ROD, WIRE_FINE, GEAR);
