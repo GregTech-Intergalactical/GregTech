@@ -23,6 +23,8 @@ public class CoalBoilerHandler {
         COAL_BOILERS.RB().ii(RecipeIngredient.of(DUST_IMPURE.getMaterialTag(Lignite), 1)).io(DUST.get(DarkAsh, 1)).add("lignite_dust_impure",80);
         COAL_BOILERS.RB().ii(RecipeIngredient.of(CRUSHED.getMaterialTag(Coal), 1)).io(DUST.get(DarkAsh, 1)).add("coal_crushed",180);
         COAL_BOILERS.RB().ii(RecipeIngredient.of(CRUSHED.getMaterialTag(Lignite), 1)).io(DUST.get(DarkAsh, 1)).add("lignite_crushed",90);
+        COAL_BOILERS.RB().ii(RecipeIngredient.of(CRUSHED_PURIFIED.getMaterialTag(Coal), 1)).io(DUST.get(DarkAsh, 1)).add("coal_crushed_purified",200);
+        COAL_BOILERS.RB().ii(RecipeIngredient.of(CRUSHED_PURIFIED.getMaterialTag(Lignite), 1)).io(DUST.get(DarkAsh, 1)).add("lignite_crushed_purified",100);
         COAL_BOILERS.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(OilShale), 1)).io(DUST.get(Stone, 1)).add("oilshale_dust",40);
         COAL_BOILERS.RB().ii(RecipeIngredient.of(DUST_IMPURE.getMaterialTag(OilShale), 1)).io(DUST.get(Stone, 1)).add("oilshale_dust_impure",40);
         COAL_BOILERS.RB().ii(RecipeIngredient.of(CRUSHED.getMaterialTag(OilShale), 1)).io(DUST.get(Stone, 1)).add("oilshale_crushed",45);
