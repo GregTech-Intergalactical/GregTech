@@ -52,6 +52,15 @@ public class RemappingEvents {
         REMAPPING_MAP.put("pulverizer_hv", "macerator_hv");
         REMAPPING_MAP.put("pulverizer_ev", "macerator_ev");
         REMAPPING_MAP.put("pulverizer_iv", "macerator_iv");
+        REMAPPING_MAP.put("circuit_basic", "basic_circuit");
+        REMAPPING_MAP.put("circuit_basic_electronic", "basic_electronic_circuit");
+        REMAPPING_MAP.put("circuit_good", "good_circuit");
+        REMAPPING_MAP.put("circuit_adv", "advanced_circuit");
+        REMAPPING_MAP.put("circuit_nanoprocessor", "nanoprocessor_circuit");
+        REMAPPING_MAP.put("circuit_quantumprocessor", "quantumprocessor_circuit");
+        REMAPPING_MAP.put("circuit_energy_flow", "energy_flow_circuit");
+        REMAPPING_MAP.put("circuit_wetware", "wetware_circuit");
+        REMAPPING_MAP.put("adv_circuit_parts", "advanced_circuit_parts");
     }
 
     @SubscribeEvent

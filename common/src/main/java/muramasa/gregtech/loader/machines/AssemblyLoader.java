@@ -175,11 +175,11 @@ public class AssemblyLoader {
         ASSEMBLING.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 4)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID))).add("casing_" + tier.getId(),5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
     }
 
-    private static void addTierHull (Material mat, Wire w, ItemBasic circ, Block casing, Block hull, int tier) {
+    private static void addTierHull (Material mat, Wire w, TagKey<Item> circ, Block casing, Block hull, int tier) {
         ASSEMBLING.RB().ii(of(SCREW.get(mat), 2), of(casing, 1), of(Items.REDSTONE, 1), of(w.getBlockItem(PipeSize.VTINY), 1), of(TIER_CIRCUITS.getOrDefault(tier, circ), 1)).io(new ItemStack(hull)).add(AntimatterPlatformUtils.getIdFromBlock(hull).getPath(),5 * 20, (long) Math.pow(2, 2 * tier + 1));
     }
 
-    private static void addTierHull (Material mat, Wire w, ItemBasic circ, Block casing, Block hull, int tier, int idOffset) {
+    private static void addTierHull (Material mat, Wire w, TagKey<Item> circ, Block casing, Block hull, int tier, int idOffset) {
         ASSEMBLING.RB().ii(of(SCREW.get(mat), 2), of(casing, 1), of(Items.REDSTONE, 1), of(w.getBlockItem(PipeSize.VTINY), 1), of(TIER_CIRCUITS.getOrDefault(tier, circ), 1)).io(new ItemStack(hull)).add(AntimatterPlatformUtils.getIdFromBlock(hull).getPath() + "_" + idOffset,5 * 20, (long) Math.pow(2, 2 * tier + 1));
     }
 

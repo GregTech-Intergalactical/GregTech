@@ -15,6 +15,7 @@ import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
+import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -30,7 +31,7 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechData.*;
-import static muramasa.gregtech.data.GregTechTags.PLATES_IRON_ALUMINIUM;
+import static muramasa.gregtech.data.GregTechTags.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
 
@@ -45,7 +46,7 @@ public class Parts {
       Item smallGear = GEAR.get(mat);
       TagKey<Item> plate = PLATE.getMaterialTag(mat);
       TagKey<Item> rod = ROD.getMaterialTag(mat);
-      Item circuit = TIER_CIRCUITS.getOrDefault(t, CircuitBasic);
+      TagKey<Item> circuit = TIER_CIRCUITS.getOrDefault(t, GregTechTags.CIRCUITS_BASIC);
 
       Item motor = GregTech.get(ItemBasic.class, "motor_" + t.getId());
       Item piston = GregTech.get(ItemBasic.class, "piston_" + t.getId());
@@ -82,27 +83,77 @@ public class Parts {
       provider.addStackRecipe(output, GTIRef.ID, "drain_expensive", "parts", "has_battery", provider.hasSafeItem(Items.IRON_BARS),
               new ItemStack(GregTech.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");
 
-    // MANUAL TIER 0 CIRCUIT CRAFTING
-    provider.addItemRecipe(output, "circuit_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBasic,
-        ImmutableMap.<Character, Object>builder()
-                .put('V', VacuumTube).put('B', CircuitBoardCoated)
-            .put('W',
-                AntimatterAPI.getOrThrow(Cable.class, "cable_" + RedAlloy.getId(),
-                    () -> new RuntimeException("Missing red alloy cable")).getBlockItem(PipeSize.VTINY))
-                .put('C',
-                        AntimatterAPI.getOrThrow(Cable.class, "cable_" + Tin.getId(),
-                                () -> new RuntimeException("Missing tin cable")).getBlockItem(PipeSize.VTINY))
-                .put('R',Resistor).put('P', PLATE.get(Steel))
-            .build(),
-        "RPR", "VBV", "CWC");
 
-    // MANUAL COATED BOARD CRAFTING
-    provider.addItemRecipe(output, "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBoardCoated,
-        ImmutableMap.<Character, Object>builder()
-                .put('R', GTRubberData.StickyResin)
-                .put('P', PLATE.get(Wood))
-            .build(),
-        " R ", "PPP", " R ");
+
+
+    provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
+            INT_CIRCUITS.get(0).getItems()[0], GregTechTags.CIRCUITS_BASIC);
+    // INT_CIRCUITS.forEach((k, v) -> {
+    Ingredient ing = INT_CIRCUITS.get(0);
+    provider.shapeless(output, "int_circuit_to_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
+        CircuitBasicElectronic.getDefaultInstance(), ing);
+    // });
+
+      provider.addItemRecipe(output, GTIRef.ID, "small_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullSmall, of(
+              'P', PLATE.get(BatteryAlloy),
+              'C', CABLE_GETTER.apply(PipeSize.VTINY, LV, false)
+      ), "C", "P", "P");
+
+      provider.addItemRecipe(output,  GTIRef.ID, "medium_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullMedium, of(
+              'P', PLATE.get(BatteryAlloy),
+              'C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false)
+      ), "C C", "PPP", "PPP");
+      provider.addStackRecipe(output, GTIRef.ID, "", "batteries", "has_ruby_dust", provider.hasSafeItem(DUST.getMaterialTag(Ruby)), DUST.get(Energium, 9),
+              of('R', DUST.getMaterialTag(Redstone), 'r', DUST.getMaterialTag(Ruby)), "RrR", "rRr", "RrR");
+
+
+      provider.addItemRecipe(output, GTIRef.ID, "diamondsaw_blade", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), DiamondSawBlade, of(
+              'G', GEAR.get(CobaltBrass),
+              'D', DUST_SMALL.get(Diamond)
+      ), " D ", "DGD", " D ");
+  }
+
+  private static void molds(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+      provider.addItemRecipe(output, GTIRef.ID, "empty_shape", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), EmptyShape, of(
+              'P', PLATE.get(Steel),
+              'H', HAMMER.getTag()
+      ), "PPH", "PP ");
+      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldPlate, of(
+              'P', EmptyShape,
+              'H', HAMMER.getTag()
+      ), "H", "P");
+      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldIngot, of(
+              'P', EmptyShape,
+              'H', HAMMER.getTag()
+      ), "P", "H");
+      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldGear, of(
+              'P', EmptyShape,
+              'H', HAMMER.getTag()
+      ), "PH");
+  }
+
+  private static void bloodyCircuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+      // MANUAL TIER 0 CIRCUIT CRAFTING
+      provider.addItemRecipe(output, "circuit_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBasic,
+              ImmutableMap.<Character, Object>builder()
+                      .put('V', VacuumTube).put('B', CircuitBoardCoated)
+                      .put('W',
+                              AntimatterAPI.getOrThrow(Cable.class, "cable_" + RedAlloy.getId(),
+                                      () -> new RuntimeException("Missing red alloy cable")).getBlockItem(PipeSize.VTINY))
+                      .put('C',
+                              AntimatterAPI.getOrThrow(Cable.class, "cable_" + Tin.getId(),
+                                      () -> new RuntimeException("Missing tin cable")).getBlockItem(PipeSize.VTINY))
+                      .put('R',Resistor).put('P', PLATE.get(Steel))
+                      .build(),
+              "RPR", "VBV", "CWC");
+
+      // MANUAL COATED BOARD CRAFTING
+      provider.addItemRecipe(output, "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBoardCoated,
+              ImmutableMap.<Character, Object>builder()
+                      .put('R', GTRubberData.StickyResin)
+                      .put('P', PLATE.get(Wood))
+                      .build(),
+              " R ", "PPP", " R ");
 
       // MANUAL VAC TUBE CRAFTING
       provider.addItemRecipe(output, "vac_tube", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), VacuumTube,
@@ -125,50 +176,39 @@ public class Parts {
                                       () -> new RuntimeException("Missing copper wire")).getBlockItem(PipeSize.VTINY))
                       .build(),
               " P ", "WCW", " P ");
+  }
 
-
-
-    provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
-            INT_CIRCUITS.get(0).getItems()[0], CircuitBasic);
-    // INT_CIRCUITS.forEach((k, v) -> {
-    Ingredient ing = INT_CIRCUITS.get(0);
-    provider.shapeless(output, "int_circuit_to_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
-        CircuitBasic.getDefaultInstance(), ing);
-    // });
-      provider.shapeless(output, "int_circuit_1", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
-              INT_CIRCUITS.get(0).getItems()[0], CircuitBasic);
-
-      provider.addItemRecipe(output, GTIRef.ID, "small_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullSmall, of(
-              'P', PLATE.get(BatteryAlloy),
-              'C', CABLE_GETTER.apply(PipeSize.VTINY, LV, false)
-      ), "C", "P", "P");
-
-      provider.addItemRecipe(output,  GTIRef.ID, "medium_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullMedium, of(
-              'P', PLATE.get(BatteryAlloy),
-              'C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false)
-      ), "C C", "PPP", "PPP");
-
-      provider.addItemRecipe(output, GTIRef.ID, "empty_shape", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), EmptyShape, of(
-              'P', PLATE.get(Steel),
-              'H', HAMMER.getTag()
-      ), "PPH", "PP ");
-      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldPlate, of(
-              'P', EmptyShape,
-              'H', HAMMER.getTag()
-      ), "H", "P");
-      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldIngot, of(
-              'P', EmptyShape,
-              'H', HAMMER.getTag()
-      ), "P", "H");
-      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldGear, of(
-              'P', EmptyShape,
-              'H', HAMMER.getTag()
-      ), "PH");
-
-      provider.addItemRecipe(output, GTIRef.ID, "diamondsaw_blade", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), DiamondSawBlade, of(
-              'G', GEAR.get(CobaltBrass),
-              'D', DUST_SMALL.get(Diamond)
-      ), " D ", "DGD", " D ");
+  private static void circuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_H", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasicElectronic,
+              ImmutableMap.<Character, Object>builder()
+                      .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
+                      .put('N', NandChip)
+                      .put('S', PLATE.getMaterialTag(Steel))
+                      .build(), "CCC", "NSN", "CCC");
+      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_V", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasicElectronic,
+              ImmutableMap.<Character, Object>builder()
+                      .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
+                      .put('N', NandChip)
+                      .put('S', PLATE.getMaterialTag(Steel))
+                      .build(), "CNC", "CSC", "CNC");
+      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_H", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
+              ImmutableMap.<Character, Object>builder()
+                      .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
+                      .put('N', NandChip)
+                      .put('S', PLATE.getMaterialTag(Steel))
+                      .build(), "CCC", "NSN", "CCC");
+      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_V", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
+              ImmutableMap.<Character, Object>builder()
+                      .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
+                      .put('N', NandChip)
+                      .put('S', PLATE.getMaterialTag(Steel))
+                      .build(), "CNC", "CSC", "CNC");
+      provider.addItemRecipe(output, GTIRef.ID, "", "circuits", "has_item_casing", provider.hasSafeItem(ITEM_CASING.getMaterialTag(Steel)), NandChip,
+              of('C', ITEM_CASING.getMaterialTag(Steel), 'R', WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', WIRE_GETTER.apply(PipeSize.VTINY, LV)), "CR", "RT");
+      provider.addItemRecipe(output, GTIRef.ID, "lapotron_crystal_upgrade", "energy_orbs", "has_circuit", provider.hasSafeItem(CIRCUITS_ADVANCED), LapotronCrystal,
+              of('C', CIRCUITS_ADVANCED, 'L', GregTechTags.DUST_LAPIS_LAZURITE, 'E', EnergyCrystal), "LCL", "LEL", "LCL");
+      provider.addItemRecipe(output, GTIRef.ID, "", "energy_orbs", "has_circuit", provider.hasSafeItem(CIRCUITS_ADVANCED), LapotronCrystal,
+              of('C', CIRCUITS_ADVANCED, 'L', GregTechTags.DUST_LAPIS_LAZURITE, 'S', GEM.getMaterialTag(Sapphire)), "LCL", "LSL", "LCL");
   }
 
   static PipeSize fromTier(Tier tier){

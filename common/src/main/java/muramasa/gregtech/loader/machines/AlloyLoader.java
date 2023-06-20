@@ -26,7 +26,7 @@ public class AlloyLoader {
             if (!t.has(METAL)) return;
             List<MaterialStack> stacks = t.getProcessInto();
             if (stacks.size() != 2) return;
-            int cumulative = stacks.get(0).s + stacks.get(1).s;
+            int cumulative = t == RedAlloy ? 1 : stacks.get(0).s + stacks.get(1).s;
             MaterialStack first = stacks.get(0);
             MaterialStack second = stacks.get(1);
             ALLOY_SMELTING.RB().ii(of(DUST.getMaterialTag(first.m),first.s),of(DUST.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(t.getId() +"_ingot",100, 16);
@@ -39,11 +39,14 @@ public class AlloyLoader {
         addAlloyRecipes(Copper, 3,Electrum, 2, BlackBronze, 5);
         addAlloyRecipes(Bismuth, 1, Brass, 4, BismuthBronze, 5);
         //pre Chemical Reactor Rubber
-        ALLOY_SMELTING.RB().ii(of(DUST.get(RawRubber), 1), of(DUST.getMaterialTag(Sulfur), 1))
-                .io(DUST.get(Rubber, 1)).add("rubber_via_alloy_smelter",20, 10);
+        ALLOY_SMELTING.RB().ii(of(DUST.get(RawRubber), 3), of(DUST.getMaterialTag(Sulfur), 1))
+                .io(INGOT.get(Rubber, 1)).add("rubber_via_alloy_smelter",20, 10);
         MaterialTags.RUBBERTOOLS.all().forEach(m ->{
             if (m.has(PLATE)) {
-                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate", 20, 10);
+                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate", 20, 10);
+                if (m.has(INGOT)) {
+                    ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_ingot", 20, 10);
+                }
             }
             if (m.has(INGOT)) {
                 ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1), RecipeIngredient.of(GregTechData.MoldIngot, 1).setNoConsume()).io(INGOT.get(m, 1)).add(m.getId() + "_ingot", 20, 10);

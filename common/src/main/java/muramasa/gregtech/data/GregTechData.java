@@ -112,12 +112,17 @@ public class GregTechData {
     /** CIRCUIT ITEMS **/
 
     public static ItemBasic<?> NandChip = new ItemBasic<>(GTIRef.ID, "nand_chip").tip("A very simple circuit");
-    public static ItemBasic<?> AdvCircuitParts = new ItemBasic<>(GTIRef.ID, "adv_circuit_parts").tip("Used for making Advanced Circuits");
+    public static ItemBasic<?> AdvCircuitParts = new ItemBasic<>(GTIRef.ID, "advanced_circuit_parts").tip("Used for making Advanced Circuits");
     public static ItemBasic<?> EtchedWiringMV = new ItemBasic<>(GTIRef.ID, "etched_wiring_mv").tip("Circuit board parts");
     public static ItemBasic<?> EtchedWiringHV = new ItemBasic<>(GTIRef.ID, "etched_wiring_hv").tip("Circuit board parts");
     public static ItemBasic<?> EtchedWiringEV = new ItemBasic<>(GTIRef.ID, "etched_wiring_ev").tip("Circuit board parts");
     public static ItemBasic<?> EngravedCrystalChip = new ItemBasic<>(GTIRef.ID, "engraved_crystal_chip").tip("Needed for Circuits");
     public static ItemBasic<?> EngravedLapotronChip = new ItemBasic<>(GTIRef.ID, "engraved_lapotron_chip").tip("Needed for Circuits");
+
+    public static ItemBasic<?> CircuitBoardBasic = new ItemBasic<>(GTIRef.ID, "basic_circuit_board");
+    public static ItemBasic<?> CircuitBoardEmpty = new ItemBasic<>(GTIRef.ID, "empty_circuit_board");
+    public static ItemBasic<?> CircuitBoardProcessor = new ItemBasic<>(GTIRef.ID, "processor_circuit_board");
+    public static ItemBasic<?> CircuitBoardProcessorEmpty = new ItemBasic<>(GTIRef.ID, "empty_processor_circuit_board");
 
     public static ItemBasic<?> CircuitBoardCoated = new ItemBasic<>(GTIRef.ID, "board_coated").tip("The most basic Board");
     public static ItemBasic<?> CircuitBoardPhenolic = new ItemBasic<>(GTIRef.ID, "board_phenolic").tip("A basic Board");
@@ -127,14 +132,17 @@ public class GregTechData {
     public static ItemBasic<?> CircuitBoardMultiFiber = new ItemBasic<>(GTIRef.ID, "board_multilayer_fiber_reinforced").tip("6th Tier Board");
     public static ItemBasic<?> CircuitBoardWetware = new ItemBasic<>(GTIRef.ID, "board_wetware").tip("7th Tier Board");
 
-    public static ItemBasic<?> CircuitBasic = new ItemBasic<>(GTIRef.ID, "circuit_basic").tip("The breakthrough to the electrical age");
-    public static ItemBasic<?> CircuitBasicElectronic = new ItemBasic<>(GTIRef.ID, "circuit_basic_electronic").tip("A basic Circuit");
-    public static ItemBasic<?> CircuitGood = new ItemBasic<>(GTIRef.ID, "circuit_good").tip("A good Circuit");
-    public static ItemBasic<?> CircuitAdv = new ItemBasic<>(GTIRef.ID, "circuit_adv").tip("An advanced Circuit");
-    public static ItemBasic<?> CircuitNanoProcessor = new ItemBasic<>(GTIRef.ID, "circuit_nanoprocessor").tip("A Nanoprocessor");
-    public static ItemBasic<?> CircuitQuantumProcessor = new ItemBasic<>(GTIRef.ID, "circuit_quantumprocessor").tip("A Quantumprocessor");
-    public static ItemBasic<?> CircuitEnergyFlow = new ItemBasic<>(GTIRef.ID, "circuit_energy_flow").tip("A High Voltage Processor");
-    public static ItemBasic<?> CircuitWetware = new ItemBasic<>(GTIRef.ID, "circuit_wetware").tip("You feel like it's watching you");
+    public static ItemBasic<?> CircuitBasic = new ItemBasic<>(GTIRef.ID, "basic_circuit").tip("The breakthrough to the electrical age");
+    public static ItemBasic<?> CircuitBasicElectronic = new ItemBasic<>(GTIRef.ID, "basic_electronic_circuit").tip("A basic Circuit");
+    public static ItemBasic<?> CircuitGood = new ItemBasic<>(GTIRef.ID, "good_circuit").tip("A good Circuit");
+    public static ItemBasic<?> CircuitAdv = new ItemBasic<>(GTIRef.ID, "advanced_circuit").tip("An advanced Circuit");
+    public static ItemBasic<?> CircuitDataStorage = new ItemBasic<>(GTIRef.ID, "data_storage_circuit");
+    public static ItemBasic<?> CircuitDataControl = new ItemBasic<>(GTIRef.ID, "data_control_circuit");
+    public static ItemBasic<?> CircuitNanoProcessor = new ItemBasic<>(GTIRef.ID, "nanoprocessor_circuit").tip("A Nanoprocessor");
+    public static ItemBasic<?> CircuitQuantumProcessor = new ItemBasic<>(GTIRef.ID, "quantumprocessor_circuit").tip("A Quantumprocessor");
+    public static ItemBasic<?> CircuitEnergyFlow = new ItemBasic<>(GTIRef.ID, "energy_flow_circuit").tip("A High Voltage Processor");
+    public static ItemBasic<?> CircuitWetware = new ItemBasic<>(GTIRef.ID, "wetware_circuit").tip("You feel like it's watching you");
+    public static ItemBasic<?> DataOrb = new ItemBasic<>(GTIRef.ID, "data_orb");
 
     public static ItemBasic<?> Transistor = new ItemBasic<>(GTIRef.ID, "transistor").tip("An integral part to Circuitry");
     public static ItemBasic<?> Resistor = new ItemBasic<>(GTIRef.ID, "resistor").tip("An integral part to Circuitry");
@@ -160,11 +168,14 @@ public class GregTechData {
     public static ItemBasic<?> BatteryLargeCadmium = new ItemMultiTextureBattery(GTIRef.ID, "battery_large_cadmium", Tier.HV, 1200000, true).tip("Reusable");
     public static ItemBasic<?> BatteryLargeLithium = new ItemMultiTextureBattery(GTIRef.ID, "battery_large_lithium", Tier.HV, 1600000, true).tip("Reusable");
     public static ItemBasic<?> BatteryLargeSodium = new ItemMultiTextureBattery(GTIRef.ID, "battery_large_sodium", Tier.HV, 800000, true).tip("Reusable");
+    public static ItemBasic<?> LapotronCrystal = new ItemMultiTextureBattery(GTIRef.ID, "lapotron_crystal", Tier.EV, 10000000, true);
+    public static ItemBasic<?> EnergyCrystal = new ItemMultiTextureBattery(GTIRef.ID, "energy_crystal", Tier.HV, 1000000, true);
     public static ItemBasic<?> BatteryEnergyOrb = new ItemBasic<>(GTIRef.ID, "battery_energy_orb");
     public static ItemBasic<?> BatteryEnergyOrbCluster = new ItemBasic<>(GTIRef.ID, "battery_energy_orb_cluster");
 
     public static ItemBasic<?> EmptyShape = new ItemBasic<>(GTIRef.ID, "empty_shape_plate").tip("Raw plate to make Molds and Extruder Shapes");
     public static ItemBasic<?> MoldPlate = new ItemBasic<>(GTIRef.ID, "mold_plate").tip("Mold for making Plates");
+    public static ItemBasic<?> MoldCasing = new ItemBasic<>(GTIRef.ID, "mold_casing").tip("Mold for making Item Casings");
     public static ItemBasic<?> MoldGear = new ItemBasic<>(GTIRef.ID, "mold_gear").tip("Mold for making Gears");
     public static ItemBasic<?> MoldGearSmall = new ItemBasic<>(GTIRef.ID, "mold_small_gear").tip("Mold for making Small Gears");
     public static ItemBasic<?> MoldCoinage = new ItemBasic<>(GTIRef.ID, "mold_coinage").tip("Secure Mold for making Coins (Don't lose it!)");
@@ -175,6 +186,7 @@ public class GregTechData {
     public static ItemBasic<?> MoldNugget = new ItemBasic<>(GTIRef.ID, "mold_nugget").tip("Mold for making Nuggets");
     public static ItemBasic<?> MoldAnvil = new ItemBasic<>(GTIRef.ID, "mold_anvil").tip("Mold for making Anvils");
     public static ItemBasic<?> ShapePlate = new ItemBasic<>(GTIRef.ID, "shape_plate").tip("Shape for making Plates");
+    public static ItemBasic<?> ShapeCasing = new ItemBasic<>(GTIRef.ID, "shape_casing").tip("Shape for making Item Casings");
     public static ItemBasic<?> ShapeRod = new ItemBasic<>(GTIRef.ID, "shape_rod").tip("Shape for making Rods");
     public static ItemBasic<?> ShapeBolt = new ItemBasic<>(GTIRef.ID, "shape_bolt").tip("Shape for making Bolts");
     public static ItemBasic<?> ShapeRing = new ItemBasic<>(GTIRef.ID, "shape_ring").tip("Shape for making Rings");
@@ -219,67 +231,6 @@ public class GregTechData {
     public static ItemBasic<?> EinsteiniumWaste = new ItemBasic<>(GTIRef.ID, "einsteinium_waste").tip("Waste extracted from depleted Einsteinium Fuel");
     public static ItemBasic<?> FermiumWaste = new ItemBasic<>(GTIRef.ID, "fermium_waste").tip("Waste extracted from depleted Fermium Fuel");
     public static ItemBasic<?> MendeleviumWaste = new ItemBasic<>(GTIRef.ID, "mendelevium_waste").tip("Waste extracted from depleted Mendelevium Fuel");
-    //
-    //    //TODO optional items (register anyway, but don't show in JEI?)
-    //    //TODO move to IC2+IC2C Registrar
-    //    public static final RegistryObject<Item> DropTin = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_tin", "Source of Tin")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropLead = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_lead", "Source of Lead")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropSilver = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_silver", "Source of Silver")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropIron = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_iron", "Source of Iron")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropGold = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_gold", "Source of Gold")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropAluminium = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_aluminium", "Source of Aluminium")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropTitanium = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_titanium", "Source of Titanium")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropUranium = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_uranium", "Source of Uranium")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropUranite = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_uranite", "Source of Uranite")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropThorium = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_thorium", "Source of Thorium")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropNickel = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_nickel", "Source of Nickel")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropZinc = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_zinc", "Source of Zinc")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropManganese = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_manganese", "Source of Manganese")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropCopper = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_copper", "Source of Copper")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropTungsten = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_tungsten", "Source of Tungsten")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropPlatinum = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_platinum", "Source of Platinum")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropIridium = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_iridium", "Source of Iridium")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropOsmium = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_osmium", "Source of Osmium")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropNaquadah = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_naquadah", "Source of Naquadah")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropEmerald = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_emerald", "Source of Emeralds")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropOil = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_oil", "Source of Oil")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropUUM = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_uum", "Source of UU Matter")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //    public static final RegistryObject<Item> DropUUA = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "drop_uua", "Source of UU Amplifier")/*.optional(GTIRef.MOD_IC2, GTIRef.MOD_IC2C)*/;
-    //
-    //    //TODO move to Forestry Registrar
-    //    public static final RegistryObject<Item> CombLignite = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_lignite", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombCoal = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_coal", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombResin = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_resin", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombOil = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_oil", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombStone = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_stone", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombCertus = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_certus", "")/*.required(GTIRef.MOD_FR, GTIRef.MOD_AE)*/;
-    //    public static final RegistryObject<Item> CombRedstone = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_redstone", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombLapis = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_lapis", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombRuby = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_ruby", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombSapphire = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_sapphire", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombDiamond = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_diamond", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombOlivine = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_olivine", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombEmerald = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_emerald", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombSlag = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_slag", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombCopper = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_copper", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombTin = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_tin", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombLead = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_lead", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombIron = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_iron", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombSteel = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_steel", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombNickel = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_nickel", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombZinc = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_zinc", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombSilver = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_silver", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombGold = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_gold", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombAluminium = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_aluminium", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombManganese = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_manganese", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombTitanium = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_titanium", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombChrome = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_chrome", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombTungsten = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_tungsten", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombPlatinum = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_platinum", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombIridium = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_iridium", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombUranium = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_uranium", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombPlutonium = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_plutonium", "")/*.optional(GTIRef.MOD_FR)*/;
-    //    public static final RegistryObject<Item> CombNaquadah = new ItemBasic<>(GTIRef.ID, "").tip(GTIRef.ID, "comb_naquadah", "")/*.optional(GTIRef.MOD_FR)*/;
 
 
     public static StoneType GRANITE_RED = AntimatterAPI.register(StoneType.class, new CobbleStoneType(GTIRef.ID, "red_granite", Materials.RedGranite, "block/stone/", SoundType.STONE, true)).setHardnessAndResistance(4.5F, 60.0F).setHarvestLevel(3);

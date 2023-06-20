@@ -11,6 +11,7 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.items.ItemIntCircuit;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.resources.ResourceLocation;
@@ -32,7 +33,7 @@ public class TierMaps {
     public static final ImmutableMap<Tier, Material> TIER_PIPE_MATERIAL;
     public static ImmutableMap<Tier, PipeItemBlock> TIER_WIRES;
     //public static ImmutableMap<Tier, Item> TIER_CABLES;
-    public static ImmutableMap<Tier, ItemBasic<?>> TIER_CIRCUITS;
+    public static ImmutableMap<Tier, TagKey<Item>> TIER_CIRCUITS;
     public static ImmutableMap<Tier, ItemBasic<?>> TIER_BOARDS;
 
     public static ImmutableMap<Tier, Material> EMITTER_RODS;
@@ -188,14 +189,14 @@ public class TierMaps {
             TIER_PIPES = builder.build();
         }
         {
-            ImmutableMap.Builder<Tier, ItemBasic<?>> builder = ImmutableMap.builder();
-            builder.put(Tier.LV, CircuitBasic);
-            builder.put(Tier.MV, CircuitGood);
-            builder.put(Tier.HV, CircuitAdv);
-            builder.put(Tier.EV, CircuitNanoProcessor);
-            builder.put(Tier.IV, CircuitQuantumProcessor);
-            builder.put(Tier.LUV, CircuitEnergyFlow);
-            builder.put(Tier.ZPM, CircuitWetware);
+            ImmutableMap.Builder<Tier, TagKey<Item>> builder = ImmutableMap.builder();
+            builder.put(Tier.LV, GregTechTags.CIRCUITS_BASIC);
+            builder.put(Tier.MV, GregTechTags.CIRCUITS_GOOD);
+            builder.put(Tier.HV, GregTechTags.CIRCUITS_ADVANCED);
+            builder.put(Tier.EV, GregTechTags.CIRCUITS_ELITE);
+            builder.put(Tier.IV, GregTechTags.CIRCUITS_MASTER);
+            builder.put(Tier.LUV, GregTechTags.CIRCUITS_MASTER);
+            builder.put(Tier.ZPM, GregTechTags.CIRCUITS_MASTER);
             TIER_CIRCUITS = builder.build();
         }
         {

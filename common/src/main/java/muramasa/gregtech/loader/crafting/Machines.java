@@ -18,9 +18,11 @@ import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
+import muramasa.gregtech.data.GregTechTags;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.TierMaps;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -61,7 +63,7 @@ public class Machines {
             if (emitter == null) return;
             Item field = GregTech.get(ItemBasic.class, "field_gen_"+tier.getId());
             if (field == null) return;
-            Item circuit = TIER_CIRCUITS.getOrDefault(tier, CircuitBasic);
+            TagKey<Item> circuit = TIER_CIRCUITS.getOrDefault(tier, GregTechTags.CIRCUITS_BASIC);
             if (circuit == null) return;
             Object cable = CABLE_GETTER.apply(PipeSize.VTINY, tier, true);
             if (cable == null) return;
@@ -232,7 +234,7 @@ public class Machines {
                             .put('F', Items.FURNACE)
                             .build(), "FFF", "CHC", "LCL"));
             Block firebox = tier == LV ? CASING_FIREBOX_BRONZE : tier == MV ? CASING_FIREBOX_STEEL : tier == HV ? CASING_FIREBOX_TITANIUM : CASING_FIREBOX_TUNGSTENSTEEL;
-            Item circuit2 = tier == LV ? circuit : tier == MV ? CircuitAdv : tier == HV ? CircuitQuantumProcessor : CircuitEnergyFlow;
+            TagKey<Item> circuit2 = tier == LV ? circuit : tier == MV ? GregTechTags.CIRCUITS_ADVANCED : tier == HV ? GregTechTags.CIRCUITS_ELITE : GregTechTags.CIRCUITS_MASTER;
             add(LARGE_BOILER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_circuit", provider.hasSafeItem(circuit), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('L', cable)
@@ -509,7 +511,7 @@ public class Machines {
                 add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                         ImmutableMap.<Character, Object>builder()
                                 .put('H', hull)
-                                .put('C', CircuitBasic)
+                                .put('C', GregTechTags.CIRCUITS_BASIC)
                                 .put('F', ItemFilter)
                                 .put('E', ForgeCTags.CHESTS).build(), " H ", "ECE", " F "));
             }
