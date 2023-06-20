@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.machines;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.material.MaterialTags;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Materials;
@@ -42,10 +43,10 @@ public class AlloyLoader {
                 .io(DUST.get(Rubber, 1)).add("rubber_via_alloy_smelter",20, 10);
         MaterialTags.RUBBERTOOLS.all().forEach(m ->{
             if (m.has(PLATE)) {
-                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1), of(GregTechData.MoldPlate)).io(PLATE.get(m, 1)).add(m.getId() + "_plate", 20, 10);
+                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate", 20, 10);
             }
             if (m.has(INGOT)) {
-                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1), of(GregTechData.MoldIngot)).io(INGOT.get(m, 1)).add(m.getId() + "_ingot", 20, 10);
+                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1), RecipeIngredient.of(GregTechData.MoldIngot, 1).setNoConsume()).io(INGOT.get(m, 1)).add(m.getId() + "_ingot", 20, 10);
             }
         });
 
