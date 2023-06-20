@@ -45,7 +45,7 @@ public class AlloyLoader {
             if (m.has(PLATE)) {
                 ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate", 20, 10);
                 if (m.has(INGOT)) {
-                    ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_ingot", 20, 10);
+                    ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate_from_ingot", 20, 10);
                 }
             }
             if (m.has(INGOT)) {
