@@ -52,6 +52,12 @@ public class RemappingEvents {
         REMAPPING_MAP.put("pulverizer_hv", "macerator_hv");
         REMAPPING_MAP.put("pulverizer_ev", "macerator_ev");
         REMAPPING_MAP.put("pulverizer_iv", "macerator_iv");
+        REMAPPING_MAP.put("steam_generator_lv", "steam_turbine_lv");
+        REMAPPING_MAP.put("steam_generator_mv", "steam_turbine_mv");
+        REMAPPING_MAP.put("steam_generator_hv", "steam_turbine_hv");
+        REMAPPING_MAP.put("gas_generator_lv", "gas_turbine_lv");
+        REMAPPING_MAP.put("gas_generator_mv", "gas_turbine_mv");
+        REMAPPING_MAP.put("gas_generator_hv", "gas_turbine_hv");
         REMAPPING_MAP.put("circuit_basic", "basic_circuit");
         REMAPPING_MAP.put("circuit_basic_electronic", "basic_electronic_circuit");
         REMAPPING_MAP.put("circuit_good", "good_circuit");
