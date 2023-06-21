@@ -39,6 +39,7 @@ public class Parts {
   public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
       tieredItems(output, provider);
       circuits(output, provider);
+      molds(output, provider);
       provider.shapeless(output, "fire_clay_dust", "parts", "has_clay_dust", provider.hasSafeItem(AntimatterMaterialTypes.DUST.getMaterialTag(Clay)), AntimatterMaterialTypes.DUST.get(Fireclay, 2),
               AntimatterMaterialTypes.DUST.getMaterialTag(Brick), AntimatterMaterialTypes.DUST.getMaterialTag(Clay));
 
@@ -135,10 +136,15 @@ public class Parts {
               'P', EmptyShape,
               'H', HAMMER.getTag()
       ), "P", "H");
+      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldCasing, of(
+              'P', EmptyShape,
+              'H', HAMMER.getTag()
+      ), " H", "P ");
       provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldGear, of(
               'P', EmptyShape,
               'H', HAMMER.getTag()
       ), "PH");
+
   }
 
   private static void bloodyCircuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
