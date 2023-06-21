@@ -70,6 +70,13 @@ public class Parts {
               'G', GEAR.get(CobaltBrass),
               'D', DUST_SMALL.get(Diamond)
       ), " D ", "DGD", " D ");
+      // MANUAL COATED BOARD CRAFTING
+      provider.addItemRecipe(output, "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBoardCoated,
+              ImmutableMap.<Character, Object>builder()
+                      .put('R', GTRubberData.StickyResin)
+                      .put('P', PLATE.get(Wood))
+                      .build(),
+              " R ", "PPP", " R ");
   }
 
   private static void tieredItems(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
@@ -149,14 +156,6 @@ public class Parts {
                       .build(),
               "RPR", "VBV", "CWC");
 
-      // MANUAL COATED BOARD CRAFTING
-      provider.addItemRecipe(output, "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBoardCoated,
-              ImmutableMap.<Character, Object>builder()
-                      .put('R', GTRubberData.StickyResin)
-                      .put('P', PLATE.get(Wood))
-                      .build(),
-              " R ", "PPP", " R ");
-
       // MANUAL VAC TUBE CRAFTING
       provider.addItemRecipe(output, "vac_tube", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), VacuumTube,
               ImmutableMap.<Character, Object>builder()
@@ -185,25 +184,25 @@ public class Parts {
               ImmutableMap.<Character, Object>builder()
                       .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                       .put('N', NandChip)
-                      .put('S', PLATE.getMaterialTag(Steel))
+                      .put('S', CircuitBoardCoated)
                       .build(), "CCC", "NSN", "CCC");
       provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_v", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasicElectronic,
               ImmutableMap.<Character, Object>builder()
                       .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                       .put('N', NandChip)
-                      .put('S', PLATE.getMaterialTag(Steel))
+                      .put('S', CircuitBoardCoated)
                       .build(), "CNC", "CSC", "CNC");
       provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_h", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
               ImmutableMap.<Character, Object>builder()
                       .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                       .put('N', NandChip)
-                      .put('S', PLATE.getMaterialTag(Steel))
+                      .put('S', CircuitBoardCoated)
                       .build(), "CCC", "NSN", "CCC");
       provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_v", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
               ImmutableMap.<Character, Object>builder()
                       .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                       .put('N', NandChip)
-                      .put('S', PLATE.getMaterialTag(Steel))
+                      .put('S', CircuitBoardCoated)
                       .build(), "CNC", "CSC", "CNC");
       provider.addItemRecipe(output, GTIRef.ID, "", "circuits", "has_item_casing", provider.hasSafeItem(ITEM_CASING.getMaterialTag(Steel)), NandChip,
               of('C', ITEM_CASING.getMaterialTag(Steel), 'R', WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', WIRE_GETTER.apply(PipeSize.VTINY, LV)), "CR", "RT");
