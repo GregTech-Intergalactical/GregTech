@@ -10,6 +10,7 @@ import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
+import static muramasa.antimatter.data.AntimatterMaterialTypes.ITEM_CASING;
 import static muramasa.gregtech.data.RecipeMaps.CUTTING;
 
 public class CuttingLoader {
@@ -25,6 +26,12 @@ public class CuttingLoader {
                     .fi(new FluidStack(Fluids.WATER, 1000)).add("plate_" + mat.getId() + "_with_water",mat.getMass() * 2 * multiplier, 24);
             CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.BLOCK.getMaterialTag(mat), 1)).io(AntimatterMaterialTypes.PLATE.get(mat, count))
                     .fi(Materials.Lubricant.getLiquid(250)).add("plate_" + mat.getId() + "_with_lubricant",mat.getMass() * multiplier, 16);
+            if (mat.has(ITEM_CASING)){
+                CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.PLATE.getMaterialTag(mat), 1)).io(ITEM_CASING.get(mat, 2))
+                        .fi(new FluidStack(Fluids.WATER, 1000)).add("item_casing_" + mat.getId() + "_with_water",mat.getMass() * 2 * multiplier, 24);
+                CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.PLATE.getMaterialTag(mat), 1)).io(ITEM_CASING.get(mat, 2))
+                        .fi(Materials.Lubricant.getLiquid(250)).add("item_casing_" + mat.getId() + "_with_lubricant",mat.getMass() * multiplier, 16);
+            }
 
         }
         AntimatterMaterialTypes.BOLT.all().forEach(t -> {

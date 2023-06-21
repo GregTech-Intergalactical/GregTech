@@ -52,6 +52,9 @@ public class AlloyLoader {
                 ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1), RecipeIngredient.of(GregTechData.MoldIngot, 1).setNoConsume()).io(INGOT.get(m, 1)).add(m.getId() + "_ingot", 20, 10);
             }
         });
+        ITEM_CASING.all().forEach(m -> {
+            ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2)).io(ITEM_CASING.get(m, 3)).add(m.getId() + "_item_casing", 20, 10);
+        });
 
         //Fissile Fuels
         FISSILE_FUEL.all().forEach(f -> ALLOY_SMELTING.RB().ii(of(INGOT.get(f), 1), of(INGOT.get(f))).io(FISSILE_FUEL.get(f)).add(f.getId() + "_fissile_fuel_smelting"));
