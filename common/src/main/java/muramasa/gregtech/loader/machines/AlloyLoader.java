@@ -53,7 +53,7 @@ public class AlloyLoader {
             }
         });
         ITEM_CASING.all().forEach(m -> {
-            ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2)).io(ITEM_CASING.get(m, 3)).add(m.getId() + "_item_casing", 20, 10);
+            ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2), of(GregTechData.MoldCasing, 1).setNoConsume()).io(ITEM_CASING.get(m, 3)).add(m.getId() + "_item_casing", 20, 10);
         });
 
         //Fissile Fuels
