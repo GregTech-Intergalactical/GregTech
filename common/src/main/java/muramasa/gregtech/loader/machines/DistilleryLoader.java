@@ -17,7 +17,7 @@ public class DistilleryLoader {
                         .ii(INT_CIRCUITS.get(i + 1).setNoConsume())
                         .fi(material.has(AntimatterMaterialTypes.LIQUID) ? material.getLiquid(GregTechMaterialTags.DISTILLATION_FLUID_INPUT_AMOUNT.getInt(material)) : material.getGas(GregTechMaterialTags.DISTILLATION_FLUID_INPUT_AMOUNT.getInt(material)))
                         .fo(fo.has(AntimatterMaterialTypes.LIQUID) ? fo.getLiquid(fluidProducts.get(i).amount()) : fo.getGas(fluidProducts.get(i).amount()))
-                        .add(material.getId(), material.getMass(), 20);
+                        .add(material.getId() + "_" + fo.getId(), material.getMass(), 20);
             }
         });
     }
