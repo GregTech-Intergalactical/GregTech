@@ -9,21 +9,24 @@ public class LatheLoader {
         ROD.all().forEach(t -> {
             if (t.has(INGOT)) {
                 RecipeMaps.LATHING.RB().ii(of(INGOT.getMaterialTag(t), 1))
-                .io(ROD.get(t, 2), DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",t.getHardness(), 24);
+                .io(ROD.get(t, 2)).add(t.getId() + "_rod",t.getMass() * 5, 16);
             } else if (t.has(GEM)) {
                 RecipeMaps.LATHING.RB().ii(of(GEM.getMaterialTag(t), 1))
-                .io(ROD.get(t, 2), DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",t.getHardness(), 24);
+                .io(ROD.get(t, 2)).add(t.getId() + "_rod",t.getMass() * 5, 16);
             }
         });
         SCREW.all().forEach(t -> {
             if (t.has(BOLT)) {
                   RecipeMaps.LATHING.RB().ii(of(BOLT.getMaterialTag(t), 1))
-                          .io(SCREW.get(t, 1)).add(t.getId() + "_screw",t.getHardness()/2, 8);
+                          .io(SCREW.get(t, 1)).add(t.getId() + "_screw",t.getMass()/8, 4);
             }
         });
-        LENS.all().forEach(m -> {
-            if (m.has(PLATE) && m.has(DUST)){
-                RecipeMaps.LATHING.RB().ii(PLATE.getMaterialIngredient(m, 1)).io(LENS.get(m, 1), DUST_SMALL.get(m, 1)).add(m.getId() + "_lens", m.getHardness(), 16);
+        LENS.all().stream().filter(m -> m.has(DUST)).forEach(m -> {
+            if (m.has(PLATE)){
+                RecipeMaps.LATHING.RB().ii(PLATE.getMaterialIngredient(m, 1)).io(LENS.get(m, 1), DUST_SMALL.get(m, 1)).add(m.getId() + "_lens", Math.max(m.getMass() / 2, 1), 480);
+            }
+            if (m.has(GEM_EXQUISITE)){
+                RecipeMaps.LATHING.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(LENS.get(m, 1), DUST.get(m, 2)).add(m.getId() + "_lens_exquisite", Math.max(m.getMass(), 1), 24);
             }
         });
     }

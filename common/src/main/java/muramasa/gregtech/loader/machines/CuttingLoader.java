@@ -38,10 +38,10 @@ public class CuttingLoader {
             if (t.has(AntimatterMaterialTypes.ROD)) {
                 RecipeMaps.CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.ROD.getMaterialTag(t), 1))
                         .fi(new FluidStack(Fluids.WATER, 1000))
-                        .io(AntimatterMaterialTypes.BOLT.get(t, 2)).add("bolt_" + t.getId() + "_with_water",t.getMass()/4, 8);
+                        .io(AntimatterMaterialTypes.BOLT.get(t, 4)).add("bolt_" + t.getId() + "_with_water",t.getMass() * 2, 4);
                 RecipeMaps.CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.ROD.getMaterialTag(t), 1))
                         .fi(Materials.Lubricant.getLiquid(250))
-                        .io(AntimatterMaterialTypes.BOLT.get(t, 2)).add("bolt_" + t.getId() + "_with_lubricant",t.getMass()/4, 8);
+                        .io(AntimatterMaterialTypes.BOLT.get(t, 4)).add("bolt_" + t.getId() + "_with_lubricant",t.getMass() * 2, 4);
             }
         });
     }
