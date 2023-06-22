@@ -17,7 +17,6 @@ public class GregTechMaterialTags {
     public static final MaterialTag CRYSTALLIZE = new MaterialTag("crystallize"); //Allows Dust > Gem Recipes
     public static final MaterialTag CALCITE2X = new MaterialTag("calcite_2x"); //Blast Furnace Calcite 2x Multiplier
     public static final MaterialTag CALCITE3X = new MaterialTag("calcite_3x"); //Blast Furnace Calcite 3x Multiplier
-    public static final MaterialTag NOSMASH = new MaterialTag("no_smash"); //Material is not able to be smashed
     public static final MaterialTag NOSMELT = new MaterialTag("no_smelt"); //Material is not able to be smelted
     public static final MaterialTag WASHM = new MaterialTag("wash_m"); //Adds Crushed > ByProducts with Mercury
     public static final MaterialTag WASHS = new MaterialTag("wash_s"); //Adds Crushed > ByProducts with Sodium
