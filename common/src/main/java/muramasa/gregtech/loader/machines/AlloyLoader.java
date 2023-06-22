@@ -14,6 +14,7 @@ import java.util.List;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.material.MaterialTags.METAL;
+import static muramasa.antimatter.material.MaterialTags.RUBBERTOOLS;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ALLOY_SMELTING;
@@ -41,19 +42,17 @@ public class AlloyLoader {
         //pre Chemical Reactor Rubber
         ALLOY_SMELTING.RB().ii(of(DUST.get(RawRubber), 3), of(DUST.getMaterialTag(Sulfur), 1))
                 .io(INGOT.get(Rubber, 1)).add("rubber_via_alloy_smelter",20, 10);
-        MaterialTags.RUBBERTOOLS.all().forEach(m ->{
-            if (m.has(PLATE)) {
-                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate", 20, 10);
-                if (m.has(INGOT)) {
-                    ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate_from_ingot", 20, 10);
-                }
-            }
-            if (m.has(INGOT)) {
-                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1), RecipeIngredient.of(GregTechData.MoldIngot, 1).setNoConsume()).io(INGOT.get(m, 1)).add(m.getId() + "_ingot", 20, 10);
+        PLATE.all().stream().filter(m -> !m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)).forEach(m ->{
+            ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate", m.getMass() * 2, 32);
+            if (m.has(RUBBERTOOLS)) {
+                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate_from_dust", m.getMass() * 2, 32);
             }
         });
+        INGOT.all().stream().filter(m -> m.has(RUBBERTOOLS)).forEach(m -> {
+            ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1), RecipeIngredient.of(GregTechData.MoldIngot, 1).setNoConsume()).io(INGOT.get(m, 1)).add(m.getId() + "_ingot", m.getMass(), 10);
+        });
         ITEM_CASING.all().forEach(m -> {
-            ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2), of(GregTechData.MoldCasing, 1).setNoConsume()).io(ITEM_CASING.get(m, 3)).add(m.getId() + "_item_casing", 20, 10);
+            ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2), of(GregTechData.MoldCasing, 1).setNoConsume()).io(ITEM_CASING.get(m, 3)).add(m.getId() + "_item_casing", Math.max(m.getMass() * 2 / 3, 1), 16);
         });
 
         //Fissile Fuels

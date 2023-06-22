@@ -12,13 +12,20 @@ import net.minecraft.world.item.Items;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.data.AntimatterDefaultTools.MORTAR;
+import static muramasa.antimatter.data.AntimatterDefaultTools.*;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.ROD;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.ROD_LONG;
 import static muramasa.gregtech.data.Materials.*;
 
 public class MaterialCrafting {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
         addShapelessDustRecipe(output, provider, "bronze_dust", AntimatterMaterialTypes.DUST.get(Bronze, 4), AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Copper), AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Copper), AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Copper), AntimatterMaterialTypes.DUST.get(Tin));
         provider.shapeless(output, GTIRef.ID, "", "dusts", "has_mortor", provider.hasSafeItem(MORTAR.getTag()), AntimatterMaterialTypes.DUST_SMALL.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
+        loadAutoRecipes(output, provider);
+    }
+
+    public static void loadAutoRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+
     }
 
     private static void addShapelessDustRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, String recipeName, ItemStack outputItem, Object... inputs)
