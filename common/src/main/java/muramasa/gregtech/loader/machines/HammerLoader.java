@@ -51,6 +51,8 @@ public class HammerLoader {
         GEM_EXQUISITE.all().forEach(m -> {
             HAMMERING.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(GEM_FLAWLESS.get(m, 2)).add(m.getId() + "_exquisite", 64, 16);
             HAMMERING.RB().ii(GEM_FLAWLESS.getMaterialIngredient(m, 1)).io(GEM.get(m, 2)).add(m.getId() + "_flawless", 64, 16);
+            HAMMERING.RB().ii(GEM.getMaterialIngredient(m, 1)).io(GEM_FLAWED.get(m, 2)).add(m.getId() + "_flawed", 64, 16);
+            HAMMERING.RB().ii(GEM_FLAWED.getMaterialIngredient(m, 1)).io(GEM_CHIPPED.get(m, 2)).add(m.getId() + "_chipped", 64, 16);
         });
         AntimatterAPI.all(StoneType.class, GTIRef.ID, s -> {
             if (!(s instanceof CobbleStoneType)) return;
