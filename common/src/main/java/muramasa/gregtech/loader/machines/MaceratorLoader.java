@@ -93,8 +93,8 @@ public class MaceratorLoader {
         });
         GEM_EXQUISITE.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.DUST)) return;
-            MACERATING.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(DUST.get(m, 4)).add(m.getId() + "_exquisite", m.getHardness(), 4);
-            MACERATING.RB().ii(GEM_FLAWLESS.getMaterialIngredient(m, 1)).io(DUST.get(m, 2)).add(m.getId() + "_flawless", m.getHardness(), 4);
+            MACERATING.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(DUST.get(m, 4)).add(m.getId() + "_exquisite", m.getMass(), 4);
+            MACERATING.RB().ii(GEM_FLAWLESS.getMaterialIngredient(m, 1)).io(DUST.get(m, 2)).add(m.getId() + "_flawless", m.getMass(), 4);
         });
         AntimatterMaterialTypes.GEM_BRITTLE.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.DUST)) return;
