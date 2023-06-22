@@ -7,10 +7,13 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.RecipeMaps;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.ITEM_CASING;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.RecipeMaps.CUTTING;
 
 public class CuttingLoader {
@@ -18,31 +21,35 @@ public class CuttingLoader {
         for (Material mat : AntimatterMaterialTypes.PLATE.all()) {
             if (!mat.has(AntimatterMaterialTypes.BLOCK))
                 continue;
-            int multiplier = mat.has(AntimatterMaterialTypes.GEM) ? 8 : 3;
-            if (mat == AntimatterMaterials.Diamond)
-                multiplier = 20;
+            int multiplier = 1;//mat.has(AntimatterMaterialTypes.GEM) ? 8 : 3;
+            if (mat == AntimatterMaterials.Diamond || mat == AntimatterMaterials.NetherizedDiamond)
+                multiplier = 5;
             int count = mat.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
-            CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.BLOCK.getMaterialTag(mat), 1)).io(AntimatterMaterialTypes.PLATE.get(mat, count))
-                    .fi(new FluidStack(Fluids.WATER, 1000)).add("plate_" + mat.getId() + "_with_water",mat.getMass() * 2 * multiplier, 24);
-            CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.BLOCK.getMaterialTag(mat), 1)).io(AntimatterMaterialTypes.PLATE.get(mat, count))
-                    .fi(Materials.Lubricant.getLiquid(250)).add("plate_" + mat.getId() + "_with_lubricant",mat.getMass() * multiplier, 16);
+            addCutterRecipe(BLOCK.getMaterialTag(mat), PLATE.get(mat, count), "plate_" + mat.getId(), (int) (mat.getMass() * 10 * multiplier), 30);
             if (mat.has(ITEM_CASING)){
-                CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.PLATE.getMaterialTag(mat), 1)).io(ITEM_CASING.get(mat, 2))
-                        .fi(new FluidStack(Fluids.WATER, 1000)).add("item_casing_" + mat.getId() + "_with_water",mat.getMass() * 2 * multiplier, 24);
-                CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.PLATE.getMaterialTag(mat), 1)).io(ITEM_CASING.get(mat, 2))
-                        .fi(Materials.Lubricant.getLiquid(250)).add("item_casing_" + mat.getId() + "_with_lubricant",mat.getMass() * multiplier, 16);
+                addCutterRecipe(PLATE.getMaterialTag(mat), ITEM_CASING.get(mat, 2), "item_casing_" + mat.getId(), (int) (mat.getMass() * 5 * multiplier), 16);
             }
 
         }
         AntimatterMaterialTypes.BOLT.all().forEach(t -> {
             if (t.has(AntimatterMaterialTypes.ROD)) {
-                RecipeMaps.CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.ROD.getMaterialTag(t), 1))
-                        .fi(new FluidStack(Fluids.WATER, 1000))
-                        .io(AntimatterMaterialTypes.BOLT.get(t, 4)).add("bolt_" + t.getId() + "_with_water",t.getMass() * 2, 4);
-                RecipeMaps.CUTTING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.ROD.getMaterialTag(t), 1))
-                        .fi(Materials.Lubricant.getLiquid(250))
-                        .io(AntimatterMaterialTypes.BOLT.get(t, 4)).add("bolt_" + t.getId() + "_with_lubricant",t.getMass() * 2, 4);
+                addCutterRecipe(ROD.getMaterialTag(t), BOLT.get(t, 4), "bolt_" + t.getId(), (int) (t.getMass() * 2), 4);
             }
         });
+        AntimatterMaterialTypes.ROD_LONG.all().forEach(m -> {
+            addCutterRecipe(ROD_LONG.getMaterialTag(m), ROD.get(m, 2), "rod_" + m.getId(), (int) (m.getMass() * 2), 4);
+        });
+    }
+
+    private static void addCutterRecipe(TagKey<Item> input, ItemStack output, String id, int duration, int euPerTick){
+        CUTTING.RB().ii(RecipeIngredient.of(input, 1))
+                .fi(new FluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320))))
+                .io(output).add(id + "_with_water", duration * 2L, euPerTick);
+        CUTTING.RB().ii(RecipeIngredient.of(input, 1))
+                .fi(Materials.Lubricant.getLiquid(Math.max(1, Math.min(250, duration * euPerTick / 1280))))
+                .io(output).add(id + "_with_lubricant", duration, euPerTick);
+        CUTTING.RB().ii(RecipeIngredient.of(input, 1))
+                .fi(Materials.DistilledWater.getLiquid(Math.max(3, Math.min(750, duration * euPerTick / 426))))
+                .io(output).add(id + "_with_distilled_water", duration * 2L, euPerTick);
     }
 }
