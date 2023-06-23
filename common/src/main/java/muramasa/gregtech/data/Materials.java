@@ -582,6 +582,8 @@ public class Materials {
 
     public static Material Antimatter = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "anti_matter", 0x8000c4, NONE));
     public static Material BlueVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_vitriol_water_solution", 0xffffff, NONE));
+
+    public static Material CalciumAcetateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "calcium_acetate_solution", 0xDCC8B4, NONE));
     public static Material Coolant = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "coolant", 0x0506be, NONE));
     public static Material DilutedHydrochloricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "diluted_hydrochloric_acid", 0x99a7a3, NONE));
     public static Material DilutedSulfuricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "diluted_sulfuric_acid", 0xc07820, NONE));

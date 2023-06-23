@@ -510,50 +510,36 @@ public class GregTechMaterialEvents {
          *  Organic
          **/
         event.setMaterial(Acetone).asFluid(0,0,new FluidProduct[]{
-                new FluidProduct(Ethenone,"gas",144),
-                new FluidProduct(Methane,"gas",144)
+                new FluidProduct(Ethenone,144),
+                new FluidProduct(Methane,144)
         },288).mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 1));
         event.setMaterial(CharcoalByproducts).asFluid(0,0,new FluidProduct[]{
-                new FluidProduct(WoodTar,"fluid",360),
-                new FluidProduct(WoodVinegar,"fluid",720),
-                new FluidProduct(WoodGas,"gas",360)
+                new FluidProduct(WoodTar,360),
+                new FluidProduct(WoodVinegar,720),
+                new FluidProduct(WoodGas,360)
         },1440).mats(of(WoodTar,1,WoodGas,1,WoodVinegar,2));
         event.setMaterial(FermentedBiomass).asFluid(16,0,new FluidProduct[]{
-                new FluidProduct(AceticAcid,"fluid",25),
-                new FluidProduct(Water,"fluid",395),
-                new FluidProduct(Ethanol,"fluid",250),
-                new FluidProduct(Methanol,"fluid",250),
-                new FluidProduct(Ammonia,"gas",100),
-                new FluidProduct(Methane,"gas",600),
-                new FluidProduct(CarbonDioxide,"gas",400)
+                new FluidProduct(AceticAcid,25),
+                new FluidProduct(Water,395),
+                new FluidProduct(Ethanol,250),
+                new FluidProduct(Methanol,250),
+                new FluidProduct(Ammonia,100),
+                new FluidProduct(Methane,600),
+                new FluidProduct(CarbonDioxide,400)
         },2000);
-        event.setMaterial(SeedOil).asFluid(2,0,new FluidProduct[]{new FluidProduct(Lubricant,"fluid",10)
+        event.setMaterial(SeedOil).asFluid(2,0,new FluidProduct[]{new FluidProduct(Lubricant,10)
         },20);
         event.setMaterial(WoodTar).asFluid(0,0,new FluidProduct[]{
-                new FluidProduct(Creosote,"fluid",500),
-                new FluidProduct(Benzene,"fluid",425),
-                new FluidProduct(Toluene,"fluid",75)
+                new FluidProduct(Creosote,500),
+                new FluidProduct(Benzene,425),
+                new FluidProduct(Toluene,75)
         },1000).mats(of(Creosote,4,Phenol,1,Benzene,2,Toluene,1));
-        event.setMaterial(WoodVinegar).asFluid(0,0,new FluidProduct[]{
-                new FluidProduct(AceticAcid,"fluid",150),
-                new FluidProduct(Water,"fluid",500),
-                new FluidProduct(Ethanol,"fluid",20),
-                new FluidProduct(Methanol,"fluid",300)
-        },1000);
+        event.setMaterial(WoodVinegar).asFluid();
         /**
          *  Inorganic
          **/
-        event.setMaterial(DilutedHydrochloricAcid).asFluid(0,0,new FluidProduct[]{
-                new FluidProduct(HydrochloricAcid,"fluid",1000),
-                new FluidProduct(Water,"fluid",1000)
-        },2000).mats(of(Hydrogen, 1, Chlorine, 1));
-        event.setMaterial(DilutedSulfuricAcid).asFluid().asFluid(0,0, new FluidProduct[]{
-                new FluidProduct(SulfuricAcid,"fluid",1000),
-                new FluidProduct(Water,"fluid",1000)
-        },2000).mats(of(Hydrogen,2,Sulfur,1,Oxygen,4));
-        /**
-         **  Without Distillation Products
-         **/
+        event.setMaterial(DilutedHydrochloricAcid).asFluid().mats(of(Hydrogen, 1, Chlorine, 1));
+        event.setMaterial(DilutedSulfuricAcid).asFluid().mats(of(Hydrogen,2,Sulfur,1,Oxygen,4));
         /**
          *  Organic
          **/
@@ -654,11 +640,11 @@ public class GregTechMaterialEvents {
          *  Organic
          **/
         event.setMaterial(WoodGas).asGas(24,0,new FluidProduct[]{
-                        new FluidProduct(CarbonDioxide,"gas",720),
-                        new FluidProduct(CarbonMonoxide,"gas",360),
-                        new FluidProduct(Ethylene,"gas",90),
-                        new FluidProduct(Methane,"gas",180),
-                        new FluidProduct(Hydrogen,"gas",90)
+                        new FluidProduct(CarbonDioxide,720),
+                        new FluidProduct(CarbonMonoxide,360),
+                        new FluidProduct(Ethylene,90),
+                        new FluidProduct(Methane,180),
+                        new FluidProduct(Hydrogen,90)
         }, 1440).mats(of(CarbonDioxide,8,CarbonMonoxide,4,Methane,2,Ethylene,1,Hydrogen,1));
         /**
          *  Inorganic
@@ -707,27 +693,10 @@ public class GregTechMaterialEvents {
         /**
          ** Fuels
          **/
-        /**
-         *  With Distillation Products
-         **/
-        event.setMaterial(Creosote).asFluid(8,0,new FluidProduct[]{new FluidProduct(Lubricant,"fluid",12)},24);
-        event.setMaterial(Oil).asFluid(16,0,
-                new FluidProduct[]{
-                        new FluidProduct(SulfuricLightFuel,"fluid",50),
-                        new FluidProduct(SulfuricHeavyFuel,"fluid",15),
-                        new FluidProduct(Naphtha,"fluid",20),
-                        new FluidProduct(SulfuricGas,"gas",60)
-                },290);
-        event.setMaterial(OilHeavy).asFluid(32,0,new FluidProduct[]{
-                new FluidProduct(SulfuricLightFuel,"fluid",250),
-                new FluidProduct(SulfuricHeavyFuel,"fluid",45),
-                new FluidProduct(Naphtha,"fluid",15),
-                new FluidProduct(SulfuricGas,"gas",600)
-        },910);
-        event.setMaterial(OilLight).asFluid(16,0);
-        /**
-         *  Without Distillation Products
-         **/
+        event.setMaterial(Creosote).asFluid(8);
+        event.setMaterial(Oil).asFluid(16);
+        event.setMaterial(OilHeavy).asFluid(32);
+        event.setMaterial(OilLight).asFluid(16);
         event.setMaterial(BioDiesel).asFluid(192);
         event.setMaterial(Diesel).asFluid(128);
         event.setMaterial(FishOil).asFluid(2);
@@ -741,63 +710,39 @@ public class GregTechMaterialEvents {
         /**
          ** Cracked Stuff
          */
-        event.setMaterial(SteamCrackedEthane).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000)},1000).mats(of(Ethane,1,Steam,1));
-        event.setMaterial(SteamCrackedEthylene).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000)},1000).mats(of(Ethylene,1,Steam,1));
-        event.setMaterial(SteamCrackedPropane).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000),new FluidProduct(Ethylene,"gas",1000)},2000).mats(of(Propane,1,Steam,1));
-        event.setMaterial(SteamCrackedPropene).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000)},1000).mats(of(Propene,1,Steam,1));
+        event.setMaterial(SteamCrackedEthane).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,1000)},1000).mats(of(Ethane,1,Steam,1));
+        event.setMaterial(SteamCrackedEthylene).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,1000)},1000).mats(of(Ethylene,1,Steam,1));
+        event.setMaterial(SteamCrackedPropane).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,1000),new FluidProduct(Ethylene,1000)},2000).mats(of(Propane,1,Steam,1));
+        event.setMaterial(SteamCrackedPropene).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,1000)},1000).mats(of(Propene,1,Steam,1));
         event.setMaterial(SteamCrackedButane).asGas(0,0, new FluidProduct[]{
-                    new FluidProduct(Methane,"gas",1000),new FluidProduct(Ethane,"gas",1000),
-                    new FluidProduct(Ethylene,"gas",2000),new FluidProduct(Propane,"gas",500)
+                    new FluidProduct(Methane,1000),new FluidProduct(Ethane,1000),
+                    new FluidProduct(Ethylene,2000),new FluidProduct(Propane,500)
         },1000).mats(of(Butane,1,Steam,1));
         event.setMaterial(SteamCrackedButene).asGas(0,0, new FluidProduct[]{
-                    new FluidProduct(Methane,"gas",1000),
-                    new FluidProduct(Ethylene,"gas",2000),
-                    new FluidProduct(Propene,"gas",1500)
+                    new FluidProduct(Methane,1000),
+                    new FluidProduct(Ethylene,2000),
+                    new FluidProduct(Propene,1500)
         },1000).mats(of(Butene,1,Steam,1));
         event.setMaterial(SteamCrackedButadiene).asGas(0,0,new FluidProduct[]{
-                    new FluidProduct(Methane,"gas",1000),
-                    new FluidProduct(Ethylene,"gas",2000),
-                    new FluidProduct(Propene,"gas",1500)
+                    new FluidProduct(Methane,1000),
+                    new FluidProduct(Ethylene,2000),
+                    new FluidProduct(Propene,1500)
         },1000).mats(of(Butadiene,1,Steam,1));
-        event.setMaterial(SteamCrackedLightFuel).asFluid(0,0,new FluidProduct[]{
-                    new FluidProduct(Methane,"gas",100),new FluidProduct(Ethane,"gas",100),
-                    new FluidProduct(Ethylene,"gas",400),new FluidProduct(Propane,"gas",100),
-                    new FluidProduct(Propene,"gas",200),new FluidProduct(Butene,"gas",200),
-                    new FluidProduct(Butadiene,"gas",100),new FluidProduct(Benzene,"fluid",100),
-                    new FluidProduct(Toluene,"fluid",100),new FluidProduct(Naphtha,"fluid",100),
-                    new FluidProduct(HeavyFuel,"fluid",100)
-        },1000).mats(of(LightFuel,1,Steam,1));
-        event.setMaterial(SteamCrackedHeavyFuel).asFluid(0,0,new FluidProduct[]{
-                        new FluidProduct(Methane,"gas",100),new FluidProduct(Ethane,"gas",100),
-                        new FluidProduct(Ethylene,"gas",200),new FluidProduct(Propane,"gas",100),
-                        new FluidProduct(Propene,"gas",400),new FluidProduct(Butene,"gas",200),
-                        new FluidProduct(Butadiene,"gas",200),new FluidProduct(Benzene,"fluid",400),
-                        new FluidProduct(Toluene,"fluid",200),new FluidProduct(Naphtha,"fluid",200),
-                        new FluidProduct(SulfuricHeavyFuel,"liquid",9)
-        },1000).mats(of(HeavyFuel,1,Steam,1));
-        event.setMaterial(SteamCrackedNaphtha).asFluid(0,0,new FluidProduct[]{
-                        new FluidProduct(Methane,"gas",200),new FluidProduct(Ethane,"gas",200),
-                        new FluidProduct(Ethylene,"gas",400),new FluidProduct(Propane,"gas",200),
-                        new FluidProduct(Propene,"gas",600),new FluidProduct(Butene,"gas",100),
-                        new FluidProduct(Butadiene,"gas",400),new FluidProduct(Benzene,"fluid",200),
-                        new FluidProduct(Toluene,"fluid",400),new FluidProduct(LightFuel,"fluid",200),
-                        new FluidProduct(HeavyFuel,"fluid",200)
-        },1000).mats(of(Naphtha,1,Steam,1));
-        event.setMaterial(SteamCrackedRefineryGas).asGas(0,0,new FluidProduct[]{
-                        new FluidProduct(Methane,"gas",200),new FluidProduct(Ethane,"gas",200),
-                        new FluidProduct(Ethylene,"gas",800), new FluidProduct(Propene,"gas",400)
-        },1000).mats(of(RefineryGas,1,Steam,1));
-        event.setMaterial(HydroCrackedEthane).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000)},1000).mats(of(Ethane,1,Hydrogen,1));
-        event.setMaterial(HydroCrackedEthylene).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000),new FluidProduct(Ethane,"gas",1000)},2000).mats(of(Ethylene,1,Hydrogen,1));
-        event.setMaterial(HydroCrackedPropane).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000),new FluidProduct(Ethane,"gas",1000)},2000).mats(of(Propane,1,Hydrogen,1));
-        event.setMaterial(HydroCrackedPropene).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000), new FluidProduct(Ethylene,"gas",1000),new FluidProduct(Propane,"gas",1000)},3000).mats(of(Propene,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedButane).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000),new FluidProduct(Ethane,"gas",1000), new FluidProduct(Propane,"gas",1000)},3000).mats(of(Butane,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedButene).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000),new FluidProduct(Ethane,"gas",1000), new FluidProduct(Propene,"gas",1000),new FluidProduct(Propene,"gas",1000), new FluidProduct(Butane,"gas",1000)},6000).mats(of(Butene,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedButadiene).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000),new FluidProduct(Ethane,"gas",1000),new FluidProduct(Ethylene,"gas",1000),new FluidProduct(Butane,"gas",1000),new FluidProduct(Butene,"gas",1000)},7000).mats(of(Butadiene,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedLightFuel).asFluid(0,0,new FluidProduct[]{new FluidProduct(Naphtha,"fluid",1000), new FluidProduct(Butane,"gas",1000),new FluidProduct(Propane,"gas",1000), new FluidProduct(Ethane,"gas",2000),new FluidProduct(Methane,"gas",2000)},6000).mats(of(LightFuel,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedHeavyFuel).asFluid(0,0,new FluidProduct[]{new FluidProduct(LightFuel,"fluid",144),new FluidProduct(Naphtha,"fluid",2000), new FluidProduct(Butane,"gas",2000),new FluidProduct(Propane,"gas",1000), new FluidProduct(Ethane,"gas",2000),new FluidProduct(Methane,"gas",1000)},8000).mats(of(HeavyFuel,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedNaphtha).asFluid(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",1000),new FluidProduct(Ethane,"gas",2000), new FluidProduct(Propane,"gas",1000),new FluidProduct(Butane,"gas",1000)},5000).mats(of(Naphtha,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedRefineryGas).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,"gas",2000),new FluidProduct(Hydrogen,"gas",1000)},3000).mats(of(RefineryGas,1,Hydrogen,2));
+        event.setMaterial(SteamCrackedLightFuel).asFluid().mats(of(LightFuel,1,Steam,1));
+        event.setMaterial(SteamCrackedHeavyFuel).asFluid().mats(of(HeavyFuel,1,Steam,1));
+        event.setMaterial(SteamCrackedNaphtha).asFluid().mats(of(Naphtha,1,Steam,1));
+        event.setMaterial(SteamCrackedRefineryGas).asGas().mats(of(RefineryGas,1,Steam,1));
+        event.setMaterial(HydroCrackedEthane).asGas().mats(of(Ethane,1,Hydrogen,1));
+        event.setMaterial(HydroCrackedEthylene).asGas().mats(of(Ethylene,1,Hydrogen,1));
+        event.setMaterial(HydroCrackedPropane).asGas().mats(of(Propane,1,Hydrogen,1));
+        event.setMaterial(HydroCrackedPropene).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,1000), new FluidProduct(Ethylene,1000),new FluidProduct(Propane,1000)},3000).mats(of(Propene,1,Hydrogen,2));
+        event.setMaterial(HydroCrackedButane).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,1000),new FluidProduct(Ethane,1000), new FluidProduct(Propane,1000)},3000).mats(of(Butane,1,Hydrogen,2));
+        event.setMaterial(HydroCrackedButene).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,1000),new FluidProduct(Ethane,1000), new FluidProduct(Propene,1000),new FluidProduct(Propene,1000), new FluidProduct(Butane,1000)},6000).mats(of(Butene,1,Hydrogen,2));
+        event.setMaterial(HydroCrackedButadiene).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,1000),new FluidProduct(Ethane,1000),new FluidProduct(Ethylene,1000),new FluidProduct(Butane,1000),new FluidProduct(Butene,1000)},7000).mats(of(Butadiene,1,Hydrogen,2));
+        event.setMaterial(HydroCrackedLightFuel).asFluid(0,0,new FluidProduct[]{new FluidProduct(Naphtha,1000), new FluidProduct(Butane,1000),new FluidProduct(Propane,1000), new FluidProduct(Ethane,2000),new FluidProduct(Methane,2000)},6000).mats(of(LightFuel,1,Hydrogen,2));
+        event.setMaterial(HydroCrackedHeavyFuel).asFluid(0,0,new FluidProduct[]{new FluidProduct(LightFuel,144),new FluidProduct(Naphtha,2000), new FluidProduct(Butane,2000),new FluidProduct(Propane,1000), new FluidProduct(Ethane,2000),new FluidProduct(Methane,1000)},8000).mats(of(HeavyFuel,1,Hydrogen,2));
+        event.setMaterial(HydroCrackedNaphtha).asFluid(0,0,new FluidProduct[]{new FluidProduct(Methane,1000),new FluidProduct(Ethane,2000), new FluidProduct(Propane,1000),new FluidProduct(Butane,1000)},5000).mats(of(Naphtha,1,Hydrogen,2));
+        event.setMaterial(HydroCrackedRefineryGas).asGas(0,0,new FluidProduct[]{new FluidProduct(Methane,2000),new FluidProduct(Hydrogen,1000)},3000).mats(of(RefineryGas,1,Hydrogen,2));
         /**
          ** Nuclear Processing
          */
