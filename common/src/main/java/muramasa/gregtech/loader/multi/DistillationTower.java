@@ -97,7 +97,7 @@ public class DistillationTower {
         }
 
         addDistillationRecipe(Water, 576, 16, 120, new FluidProduct(DistilledWater,520));
-        addDistillationRecipe(SteamCrackedLightFuel, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
+        addDistillationRecipe(SteamCrackedHeavyFuel, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
                 new FluidProduct(HeavyFuel,100), new FluidProduct(Naphtha,100),
                 new FluidProduct(Toluene,150),new FluidProduct(Benzene,300),
                 new FluidProduct(Butadiene,300),new FluidProduct(Propene,450),
