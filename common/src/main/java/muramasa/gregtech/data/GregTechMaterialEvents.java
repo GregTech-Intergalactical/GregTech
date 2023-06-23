@@ -504,9 +504,6 @@ public class GregTechMaterialEvents {
          ***  Fluids
          **/
         /**
-         **  With Distillation Products
-         **/
-        /**
          *  Organic
          **/
         event.setMaterial(Acetone).asFluid().mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 1));
@@ -518,8 +515,6 @@ public class GregTechMaterialEvents {
         /**
          *  Inorganic
          **/
-        event.setMaterial(DilutedHydrochloricAcid).asFluid().mats(of(Hydrogen, 1, Chlorine, 1));
-        event.setMaterial(DilutedSulfuricAcid).asFluid().mats(of(Hydrogen,2,Sulfur,1,Oxygen,4));
         /**
          *  Organic
          **/
@@ -574,9 +569,11 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Antimatter).asFluid();
         event.setMaterial(BlueVitriol).asFluid().mats(of(Copper,1,Sulfur,1,Oxygen,4,Water,5));
-        //event.setMaterial(CalciumAcetateSolution).asFluid().mats(of(Calcium, 1, Carbon, 2, Oxygen, 4, Hydrogen, 6);
+        event.setMaterial(CalciumAcetateSolution).asFluid().mats(of(Calcium, 1, Carbon, 2, Oxygen, 4, Hydrogen, 6));
         event.setMaterial(Coolant).asFluid();
         event.setMaterial(DistilledWater).asFluid().mats(of(Water,1));
+        event.setMaterial(DilutedHydrochloricAcid).asFluid().mats(of(Hydrogen, 1, Chlorine, 1));
+        event.setMaterial(DilutedSulfuricAcid).asFluid().mats(of(Hydrogen,2,Sulfur,1,Oxygen,4));
         event.setMaterial(DrillingFluid).asFluid(); // TODO: Perhaps for a bedrock drill;
         event.setMaterial(HotCoolant).asFluid(0,500);
         event.setMaterial(HydrochloricAcid).asFluid().mats(of(Hydrogen, 1, Chlorine, 1));
@@ -614,19 +611,6 @@ public class GregTechMaterialEvents {
          ***  Gases/Plasmas
          **/
         /**
-         **  With Distillation Products
-         **/
-        /**
-         *  Organic
-         **/
-        event.setMaterial(WoodGas).asGas(24).mats(of(CarbonDioxide,8,CarbonMonoxide,4,Methane,2,Ethylene,1,Hydrogen,1));
-        /**
-         *  Inorganic
-         **/
-        /**
-         **  Without Distillation Products
-         **/
-        /**
          *  Organic
          **/
         //Alkanes
@@ -652,6 +636,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SulfuricGas).asGas(20).mats(of(NaturalGas,1,Sulfur,1));
         event.setMaterial(Tetrafluoroethylene).asGas().mats(of(Carbon, 2, Fluorine, 4));
         event.setMaterial(VinylChloride).asGas().mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
+        event.setMaterial(WoodGas).asGas(24).mats(of(CarbonDioxide,8,CarbonMonoxide,4,Methane,2,Ethylene,1,Hydrogen,1));
         /**
          *  Inorganic
          **/
@@ -685,23 +670,15 @@ public class GregTechMaterialEvents {
          ** Cracked Stuff
          */
         event.setMaterial(SteamCrackedEthane).asGas().mats(of(Ethane,1,Steam,1));
-        event.setMaterial(SteamCrackedEthylene).asGas().mats(of(Ethylene,1,Steam,1));
         event.setMaterial(SteamCrackedPropane).asGas().mats(of(Propane,1,Steam,1));
-        event.setMaterial(SteamCrackedPropene).asGas().mats(of(Propene,1,Steam,1));
         event.setMaterial(SteamCrackedButane).asGas().mats(of(Butane,1,Steam,1));
-        event.setMaterial(SteamCrackedButene).asGas().mats(of(Butene,1,Steam,1));
-        event.setMaterial(SteamCrackedButadiene).asGas().mats(of(Butadiene,1,Steam,1));
         event.setMaterial(SteamCrackedLightFuel).asFluid().mats(of(LightFuel,1,Steam,1));
         event.setMaterial(SteamCrackedHeavyFuel).asFluid().mats(of(HeavyFuel,1,Steam,1));
         event.setMaterial(SteamCrackedNaphtha).asFluid().mats(of(Naphtha,1,Steam,1));
         event.setMaterial(SteamCrackedRefineryGas).asGas().mats(of(RefineryGas,1,Steam,1));
         event.setMaterial(HydroCrackedEthane).asGas().mats(of(Ethane,1,Hydrogen,1));
-        event.setMaterial(HydroCrackedEthylene).asGas().mats(of(Ethylene,1,Hydrogen,1));
         event.setMaterial(HydroCrackedPropane).asGas().mats(of(Propane,1,Hydrogen,1));
-        event.setMaterial(HydroCrackedPropene).asGas().mats(of(Propene,1,Hydrogen,2));
         event.setMaterial(HydroCrackedButane).asGas().mats(of(Butane,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedButene).asGas().mats(of(Butene,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedButadiene).asGas().mats(of(Butadiene,1,Hydrogen,2));
         event.setMaterial(HydroCrackedLightFuel).asFluid().mats(of(LightFuel,1,Hydrogen,2));
         event.setMaterial(HydroCrackedHeavyFuel).asFluid().mats(of(HeavyFuel,1,Hydrogen,2));
         event.setMaterial(HydroCrackedNaphtha).asFluid().mats(of(Naphtha,1,Hydrogen,2));
