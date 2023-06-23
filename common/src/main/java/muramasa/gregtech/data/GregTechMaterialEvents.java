@@ -530,19 +530,16 @@ public class GregTechMaterialEvents {
         event.setMaterial(SeedOil).asFluid(2,0,new FluidProduct[]{new FluidProduct(Lubricant,"fluid",10)
         },20);
         event.setMaterial(WoodTar).asFluid(0,0,new FluidProduct[]{
-                new FluidProduct(Creosote,"fluid",720),
-                new FluidProduct(Phenol,"fluid",180),
-                new FluidProduct(Benzene,"fluid",360),
-                new FluidProduct(Toluene,"fluid",180)
-        },1440).mats(of(Creosote,4,Phenol,1,Benzene,2,Toluene,1));
+                new FluidProduct(Creosote,"fluid",500),
+                new FluidProduct(Benzene,"fluid",425),
+                new FluidProduct(Toluene,"fluid",75)
+        },1000).mats(of(Creosote,4,Phenol,1,Benzene,2,Toluene,1));
         event.setMaterial(WoodVinegar).asFluid(0,0,new FluidProduct[]{
-                new FluidProduct(AceticAcid,"fluid",180),
-                new FluidProduct(Water,"fluid",720),
-                new FluidProduct(Ethanol,"fluid",90),
-                new FluidProduct(Methanol,"fluid",360),
-                new FluidProduct(Acetone,"fluid",45),
-                new FluidProduct(MethylAcetate,"fluid",45)
-        },1440).mats(of(MethylAcetate,1,Acetone,1,Ethanol,2,AceticAcid,4,Methanol,8, Water,16));
+                new FluidProduct(AceticAcid,"fluid",150),
+                new FluidProduct(Water,"fluid",500),
+                new FluidProduct(Ethanol,"fluid",20),
+                new FluidProduct(Methanol,"fluid",300)
+        },1000);
         /**
          *  Inorganic
          **/
@@ -713,7 +710,7 @@ public class GregTechMaterialEvents {
         /**
          *  With Distillation Products
          **/
-        event.setMaterial(Creosote).asFluid(8,0,new FluidProduct[]{new FluidProduct(Lubricant,"fluid",144)},288);
+        event.setMaterial(Creosote).asFluid(8,0,new FluidProduct[]{new FluidProduct(Lubricant,"fluid",12)},24);
         event.setMaterial(Oil).asFluid(16,0,
                 new FluidProduct[]{
                         new FluidProduct(SulfuricLightFuel,"fluid",50),
@@ -727,12 +724,7 @@ public class GregTechMaterialEvents {
                 new FluidProduct(Naphtha,"fluid",15),
                 new FluidProduct(SulfuricGas,"gas",600)
         },910);
-        event.setMaterial(OilLight).asFluid(16,0,new FluidProduct[]{
-                new FluidProduct(SulfuricLightFuel,"fluid",10),
-                new FluidProduct(SulfuricHeavyFuel,"fluid",20),
-                new FluidProduct(Naphtha,"fluid",30),
-                new FluidProduct(SulfuricGas,"gas",240)
-        },300);
+        event.setMaterial(OilLight).asFluid(16,0);
         /**
          *  Without Distillation Products
          **/
