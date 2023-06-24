@@ -671,6 +671,7 @@ public class Materials {
     public static Material DinitrogenTetroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dinitrogen_tetroxide", 0x004184, NONE));
     public static Material HydrogenSulfide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydrogen_sulfide", 0xffffff, NONE));
     public static Material NitricOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitric_oxide", 0x7dc8f0, NONE));
+    public static Material NitrousOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitrous_oxide", 0x7DC8FF, NONE));
     public static Material NitrogenDioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitrogen_dioxide", 0x64afff, NONE));
     public static Material NobleGases = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "noble_gases", 0xc9e3fc, NONE));
     public static Material Steam = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam", 0xa0a0a0, NONE));

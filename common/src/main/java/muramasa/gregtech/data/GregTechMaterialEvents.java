@@ -645,6 +645,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(DinitrogenTetroxide).asGas().mats(of(Nitrogen, 2, Oxygen, 4));
         event.setMaterial(HydrogenSulfide).asGas().mats(of(Hydrogen, 2, Sulfur, 1));
         event.setMaterial(NitricOxide).asGas().mats(of(Nitrogen, 1, Oxygen, 1));
+        event.setMaterial(NitrousOxide).asGas().mats(of(Nitrogen, 2, Oxygen, 1));
         event.setMaterial(NitrogenDioxide).asGas().mats(of(Nitrogen, 1, Oxygen, 2));
         event.setMaterial(NobleGases).asGas(0,790).mats(of(Helium, 10, Neon, 10, Argon, 10, Xenon, 10));
         event.setMaterial(SulfurDioxide).asGas().mats(of(Sulfur, 1, Oxygen, 2));
@@ -982,7 +983,7 @@ public class GregTechMaterialEvents {
                 RedGranite, Bastnasite, Pentlandite, Spodumene, Glauconite, Bentonite, Malachite, Barite, Talc,
                 AntimonyTrioxide, CupricOxide, Ferrosilite, Quartzite, Charcoal, Coal, Lignite, Diamond, Emerald, Ruby,
                 Sapphire, Tanzanite, Topaz, Olivine, Opal, Amethyst, EnderPearl, StainlessSteel, Steel, Ultimet,
-                IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium, Sodalite, Apatite, Monazite);
+                IronMagnetic, SteelMagnetic, NeodymiumMagnetic, Osmiridium, Sodalite, Apatite, Monazite, NitrousOxide);
         ELECSEPG.add(VanadiumMagnetite, Magnetite);
         ELECSEPI.add(YellowLimonite, BrownLimonite, Tin, Chrome, Ilmenite, BandedIron, Pyrite, Glauconite, Nickel, /*Chromite, */Pentlandite, Manganese);
         ELECSEPN.add(Monazite, Bastnasite);
