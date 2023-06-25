@@ -1,21 +1,14 @@
 package muramasa.gregtech.material;
 
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Objects;
 
-public record FluidProduct(Material mat, String mattype, int amount){
+public record FluidProduct(Material mat, int amount){
     public FluidStack convert(){
-        if(Objects.equals(mattype, "fluid")){
-            return mat.getLiquid(amount);
-        }else if(Objects.equals(mattype, "gas")){
-            return mat.getGas(amount);
-        }else if(Objects.equals(mattype, "plasma")){
-            return mat.getPlasma(amount);
-        }else{
-            return AntimatterMaterials.Water.getLiquid(1);
-        }
+        return mat.has(AntimatterMaterialTypes.LIQUID) ? mat.getLiquid(amount) : mat.getGas(amount);
     }
 }

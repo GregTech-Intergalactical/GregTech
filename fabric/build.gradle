@@ -70,6 +70,7 @@ dependencies{
         transitive = false
     }
     modImplementation("com.github.Trinsdar.Botarium:botarium-fabric-1.18.2:${project.botarium_version}")
+    modRuntimeOnly("io.github.trinsdar:networkapi-fabric:0.1")
     modRuntimeOnly("dev.latvian.mods:kubejs-fabric:${rootProject.kubejs_version}")
     modImplementation("curse.maven:ctm-refabricated-633997:3834064")
 }
