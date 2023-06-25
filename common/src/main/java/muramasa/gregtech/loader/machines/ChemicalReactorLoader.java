@@ -343,7 +343,7 @@ public class ChemicalReactorLoader {
         //TITANIUMTETRACHLORIDE
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Rutile, 1), DUST.get(Carbon, 2)), INT_CIRCUITS.get(2).setNoConsume()).fi(Chlorine.getGas(4000)).fo(Titaniumtetrachloride.getLiquid(1000)).add("titaniumtetrachloride",500, 480);
         //ETHYL TERT-BUTYL ETHER
-        // CHEMICAL_REACTING.RB().fi(Ethanol.getLiquid(1000), Butene.getGas(1000)).fo(Ethy.getGas(2000)).add("carbon_monoxide_6",400, 480);
+        CHEMICAL_REACTING.RB().fi(Ethanol.getLiquid(1000), Butene.getGas(1000)).fo(EthylTertButylEther.getLiquid(2000)).add("ethyltertbutylether",400, 480);
         //ROCKET FUEL
         CHEMICAL_REACTING.RB().fi(NitrogenDioxide.getGas(1000), Hydrogen.getGas(3000)).fo(RocketFuel.getLiquid(3000), Water.getLiquid(4000)).add("rocketfuel",1000,388);
         CHEMICAL_REACTING.RB().fi(Chlorine.getGas(1000), Ammonia.getGas(3000), Methanol.getLiquid(4000)).fo(RocketFuel.getLiquid(7000)).add("rocketfuel_1",3600,480);
