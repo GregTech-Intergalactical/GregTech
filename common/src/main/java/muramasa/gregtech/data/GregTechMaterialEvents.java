@@ -508,16 +508,11 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Acetone).asFluid().mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 1));
         event.setMaterial(CharcoalByproducts).asFluid().mats(of(WoodTar,1,WoodGas,1,WoodVinegar,2));
+        event.setMaterial(EthylTertButylEther).asFluid();
         event.setMaterial(FermentedBiomass).asFluid(16);
         event.setMaterial(SeedOil).asFluid(2);
         event.setMaterial(WoodTar).asFluid().mats(of(Creosote,4,Phenol,1,Benzene,2,Toluene,1));
         event.setMaterial(WoodVinegar).asFluid();
-        /**
-         *  Inorganic
-         **/
-        /**
-         *  Organic
-         **/
         //Alkanoles
         event.setMaterial(Methanol).asFluid(84).mats(of(Carbon, 1, Hydrogen, 4, Oxygen, 1));
         event.setMaterial(Ethanol).asFluid(148).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1));
@@ -665,6 +660,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(NitroFuel).asFluid(512);
         event.setMaterial(OilMedium).asFluid(24);
         event.setMaterial(RocketFuel).asFluid();
+        event.setMaterial(Gasoline).asFluid(384);
+        event.setMaterial(HighOctaneGasoline).asFluid(768);
         event.setMaterial(SulfuricLightFuel).asFluid(32).mats(of(LightFuel,1,HydrogenSulfide,1));
         event.setMaterial(SulfuricHeavyFuel).asFluid(32).mats(of(HeavyFuel,1,HydrogenSulfide,1));
         /**

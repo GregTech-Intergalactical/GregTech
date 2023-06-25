@@ -554,6 +554,7 @@ public class Materials {
     public static Material Ethanediol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethanediol", 0xff8000, NONE));
     public static Material Ethanol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethanol", 0xff8000, NONE));
     public static Material Ethenol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethenol", 0xff8000, NONE));
+    public static Material EthylTertButylEther = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethyl_tert_butyl_ether", 0xffffff, NONE));
     public static Material FermentedBiomass = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fermented_biomass", 0x09964a, NONE));
     public static Material Glue = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glue", 0xc8c400, NONE));
     public static Material Heptanol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heptanol", 0xff8000, NONE));
@@ -619,17 +620,19 @@ public class Materials {
     public static Material Creosote = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "creosote", 0x804000, NONE));
     public static Material Diesel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "diesel", 0xffff00, NONE));
     public static Material FishOil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fish_oil", 0xffc400, NONE));
-    public static Material HeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heavy_diesel", 0xffff00, NONE));
+    public static Material HeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heavy_fuel", 0xffff00, NONE));
     public static Material NitroFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cetane_boosted_diesel", 0xc8ff00, NONE));
-    public static Material LightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_diesel", 0xffff00, NONE));
+    public static Material LightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_fuel", 0xffff00, NONE));
     public static Material RocketFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rocket_fuel", 0xffffff, NONE));
+    public static Material Gasoline = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "gasoline", 0xFFA500, NONE));
+    public static Material HighOctaneGasoline = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "high_octane_gasoline", 0xFFA500, NONE));
     public static Material Oil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "oil", 0x0a0a0a, NONE));
     public static Material OilHeavy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heavy_oil", 0x0a0a0a, NONE));
     public static Material OilMedium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "raw_oil", 0x0a0a0a, NONE));
     public static Material OilLight = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_oil", 0x0a0a0a, NONE));
     public static Material SeedOil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "seed_oil", 0xc4ff00, NONE));
-    public static Material SulfuricLightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_light_diesel", 0xffff00, NONE));
-    public static Material SulfuricHeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_heavy_diesel", 0xffff00, NONE));
+    public static Material SulfuricLightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_light_fuel", 0xffff00, NONE));
+    public static Material SulfuricHeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_heavy_fuel", 0xffff00, NONE));
     public static Material Glyceryl = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glyceryl", 0x87de87, NONE));
     public static Material GlycerylTrinitrate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glyceryl_trinitrate", 0x87de87, NONE));
 
