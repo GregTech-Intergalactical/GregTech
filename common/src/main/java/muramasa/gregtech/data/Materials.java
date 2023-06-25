@@ -554,6 +554,7 @@ public class Materials {
     public static Material Ethanediol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethanediol", 0xff8000, NONE));
     public static Material Ethanol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethanol", 0xff8000, NONE));
     public static Material Ethenol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethenol", 0xff8000, NONE));
+    public static Material EthylTertButylEther = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethyl_tert_butyl_ether", 0xffffff, NONE));
     public static Material FermentedBiomass = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fermented_biomass", 0x09964a, NONE));
     public static Material Glue = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glue", 0xc8c400, NONE));
     public static Material Heptanol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heptanol", 0xff8000, NONE));
@@ -582,6 +583,8 @@ public class Materials {
 
     public static Material Antimatter = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "anti_matter", 0x8000c4, NONE));
     public static Material BlueVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_vitriol_water_solution", 0xffffff, NONE));
+
+    public static Material CalciumAcetateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "calcium_acetate_solution", 0xDCC8B4, NONE));
     public static Material Coolant = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "coolant", 0x0506be, NONE));
     public static Material DilutedHydrochloricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "diluted_hydrochloric_acid", 0x99a7a3, NONE));
     public static Material DilutedSulfuricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "diluted_sulfuric_acid", 0xc07820, NONE));
@@ -617,17 +620,19 @@ public class Materials {
     public static Material Creosote = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "creosote", 0x804000, NONE));
     public static Material Diesel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "diesel", 0xffff00, NONE));
     public static Material FishOil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fish_oil", 0xffc400, NONE));
-    public static Material HeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heavy_diesel", 0xffff00, NONE));
+    public static Material HeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heavy_fuel", 0xffff00, NONE));
     public static Material CetaneBoostedDiesel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cetane_boosted_diesel", 0xc8ff00, NONE));
-    public static Material LightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_diesel", 0xffff00, NONE));
+    public static Material LightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_fuel", 0xffff00, NONE));
     public static Material RocketFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rocket_fuel", 0xffffff, NONE));
+    public static Material Gasoline = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "gasoline", 0xFFA500, NONE));
+    public static Material HighOctaneGasoline = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "high_octane_gasoline", 0xFFA500, NONE));
     public static Material Oil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "oil", 0x0a0a0a, NONE));
     public static Material OilHeavy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heavy_oil", 0x0a0a0a, NONE));
     public static Material OilMedium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "raw_oil", 0x0a0a0a, NONE));
     public static Material OilLight = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_oil", 0x0a0a0a, NONE));
     public static Material SeedOil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "seed_oil", 0xc4ff00, NONE));
-    public static Material SulfuricLightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_light_diesel", 0xffff00, NONE));
-    public static Material SulfuricHeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_heavy_diesel", 0xffff00, NONE));
+    public static Material SulfuricLightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_light_fuel", 0xffff00, NONE));
+    public static Material SulfuricHeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_heavy_fuel", 0xffff00, NONE));
     public static Material Glyceryl = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glyceryl", 0x87de87, NONE));
     public static Material GlycerylTrinitrate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glyceryl_trinitrate", 0x87de87, NONE));
 
@@ -669,6 +674,7 @@ public class Materials {
     public static Material DinitrogenTetroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dinitrogen_tetroxide", 0x004184, NONE));
     public static Material HydrogenSulfide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydrogen_sulfide", 0xffffff, NONE));
     public static Material NitricOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitric_oxide", 0x7dc8f0, NONE));
+     public static Material NitrousOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitrous_oxide", 0x7DC8FF, NONE));
     public static Material NitrogenDioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitrogen_dioxide", 0x64afff, NONE));
     public static Material NobleGases = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "noble_gases", 0xc9e3fc, NONE));
     public static Material Steam = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam", 0xa0a0a0, NONE));
@@ -680,12 +686,12 @@ public class Materials {
      **/
 
     public static Material HydroCrackedEthane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_ethane", 0xc8c8ff, NONE));
-    public static Material HydroCrackedEthylene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_ethylene", 0xe1e1e1, NONE));
+    //public static Material HydroCrackedEthylene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_ethylene", 0xe1e1e1, NONE));
     public static Material HydroCrackedPropane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_propane", 0xfae250, NONE));
-    public static Material HydroCrackedPropene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_propene", 0xffdd55, NONE));
+    //public static Material HydroCrackedPropene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_propene", 0xffdd55, NONE));
     public static Material HydroCrackedButane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_butane", 0xb6371e, NONE));
-    public static Material HydroCrackedButene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_butene", 0xcf5005, NONE));
-    public static Material HydroCrackedButadiene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_butadiene", 0xe86900, NONE));
+    //public static Material HydroCrackedButene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_butene", 0xcf5005, NONE));
+    //public static Material HydroCrackedButadiene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_butadiene", 0xe86900, NONE));
     public static Material HydroCrackedHeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_heavy_fuel", 0xffff00, NONE));
     public static Material HydroCrackedLightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_light_fuel", 0xffff00, NONE));
     public static Material HydroCrackedNaphtha = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_naphtha", 0xffff00, NONE));
