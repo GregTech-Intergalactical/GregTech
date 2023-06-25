@@ -3,7 +3,9 @@ package muramasa.gregtech.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtutility.GTUtility;
 import io.github.gregtechintergalactical.gtutility.machine.DrumMachine;
+import io.github.gregtechintergalactical.gtutility.machine.WorkbenchMachine;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.ForgeCTags;
@@ -16,6 +18,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.pipe.types.Wire;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.data.GregTechTags;
@@ -33,11 +36,12 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
+import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechData.*;
+import static muramasa.gregtech.data.GregTechTags.CIRCUITS_ADVANCED;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
@@ -234,7 +238,7 @@ public class Machines {
                             .put('F', Items.FURNACE)
                             .build(), "FFF", "CHC", "LCL"));
             Block firebox = tier == LV ? CASING_FIREBOX_BRONZE : tier == MV ? CASING_FIREBOX_STEEL : tier == HV ? CASING_FIREBOX_TITANIUM : CASING_FIREBOX_TUNGSTENSTEEL;
-            TagKey<Item> circuit2 = tier == LV ? circuit : tier == MV ? GregTechTags.CIRCUITS_ADVANCED : tier == HV ? GregTechTags.CIRCUITS_ELITE : GregTechTags.CIRCUITS_MASTER;
+            TagKey<Item> circuit2 = tier == LV ? circuit : tier == MV ? CIRCUITS_ADVANCED : tier == HV ? GregTechTags.CIRCUITS_ELITE : GregTechTags.CIRCUITS_MASTER;
             add(LARGE_BOILER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_circuit", provider.hasSafeItem(circuit), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('L', cable)
@@ -612,6 +616,16 @@ public class Machines {
                         .put('H', HULL_IV)
                         .put('C', CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY))
                         .put('W', CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+
+        AntimatterAPI.all(WorkbenchMachine.class).forEach(m -> {
+            if (!m.getId().contains("charging")) {
+                provider.addItemRecipe(output, GTIRef.ID, "", "machines", "has_chest", provider.hasSafeItem(ForgeCTags.CHESTS_WOODEN), m.getItem(NONE),
+                        of('P', PLATE.getMaterialTag(m.getMaterial()), 'C', ForgeCTags.CHESTS_WOODEN, 'c', Items.CRAFTING_TABLE, 'S', SCREWDRIVER.getTag()), "PSP", "PcP", "PCP");
+            } else {
+                provider.addItemRecipe(output, Ref.ID, "", "machines", "has_chest", provider.hasSafeItem(ForgeCTags.CHESTS_WOODEN), m.getItem(HV),
+                        of('S', SCREWDRIVER.getTag(), 'w', WIRE_CUTTER.getTag(), 'W', Machine.get(m.getId().replace("charging_", ""), GTUtility.ID).map(mch -> mch.getItem(NONE)).orElse(Items.AIR), 'c', CABLE_GETTER.apply(PipeSize.SMALL, HV, false), 'C', CIRCUITS_ADVANCED, 'R', ROD.getMaterialTag(m.getMaterial())), "RCR", "SWw", "ccc");
+            }
+        });
     }
 
     private static <T extends Machine<T>> void add(T machine, Tier tier, BiConsumer<T, Item> callback) {

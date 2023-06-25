@@ -1,5 +1,6 @@
 package muramasa.gregtech.data;
 
+import io.github.gregtechintergalactical.gtutility.GTUtilityData;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
@@ -550,6 +551,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Ammoniumdithoranate).asDust().mats(of(Nitrogen,2,Hydrogen,8,Thorium,2,Oxygen,7));
         event.setMaterial(Ammoniumdiuranate).asDust().mats(of(Nitrogen,2,Hydrogen,8,Uranium,2,Oxygen,7));
         nuclearIsotopes(event);
+        workbenches(event);
     }
 
 
@@ -797,6 +799,15 @@ public class GregTechMaterialEvents {
          */
     }
 
+
+    private static void workbenches(GregTechMaterialEvent event){
+        METAL.all().forEach(m -> {
+            if ((m.getElement() == null || !m.getElement().isIsotope) && m.has(PLATE) && m.has(ROD)){
+                GTUtilityData.createWorkbench(m, false);
+                GTUtilityData.createWorkbench(m, true);
+            }
+        });
+    }
 
     public static void byproducts(GregTechMaterialEvent event){
         event.setMaterial(Almandine).addByProduct(RedGarnet, Aluminium);
