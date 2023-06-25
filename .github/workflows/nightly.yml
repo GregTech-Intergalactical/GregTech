@@ -41,8 +41,6 @@ jobs:
         key: build.gradle
     - name: Build with Gradle
       run: ./gradlew build --stacktrace
-      with:
-        arguments: build
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
     - name: Upload Artifact
