@@ -1,5 +1,6 @@
 package muramasa.gregtech.data;
 
+import io.github.gregtechintergalactical.gtutility.GTUtilityData;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
@@ -129,123 +130,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Argon).asGas();
         event.setMaterial(Xenon).asPlasma();
         event.setMaterial(Radon).asGas();
-        /**
-         *** Isotopes (Solids)
-         **/
-        event.setMaterial(Thallium207).asMetal(577).mats(of(Thallium, 1));
-        event.setMaterial(Thallium209).asMetal(577).mats(of(Thallium, 1));
-        event.setMaterial(Thallium210).asMetal(577).mats(of(Thallium, 1));
-        event.setMaterial(Bismuth211).asMetal(544).mats(of(Bismuth, 1));
-        event.setMaterial(Bismuth213).asMetal(544).mats(of(Bismuth, 1));
-        event.setMaterial(Bismuth214).asMetal(544).mats(of(Bismuth, 1));
-        event.setMaterial(Bismuth215).asMetal(544).mats(of(Bismuth, 1));
-        event.setMaterial(Polonium211).asMetal(527).mats(of(Polonium, 1));
-        event.setMaterial(Polonium213).asMetal(527).mats(of(Polonium, 1));
-        event.setMaterial(Polonium214).asMetal(527).mats(of(Polonium, 1));
-        event.setMaterial(Polonium215).asMetal(527).mats(of(Polonium, 1));
-        event.setMaterial(Polonium216).asMetal(527).mats(of(Polonium, 1));
-        event.setMaterial(Polonium218).asMetal(527).mats(of(Polonium, 1));
-        event.setMaterial(Astatine215).asMetal(575).mats(of(Astatine, 1));
-        event.setMaterial(Astatine217).asMetal(575).mats(of(Astatine, 1));
-        event.setMaterial(Astatine218).asMetal(575).mats(of(Astatine, 1));
-        event.setMaterial(Astatine219).asMetal(575).mats(of(Astatine, 1));
-        event.setMaterial(Francium221).asMetal(298).mats(of(Francium, 1));
-        event.setMaterial(Francium223).asMetal(298).mats(of(Francium, 1));
-        event.setMaterial(Radium221).asMetal(973).mats(of(Radium, 1));
-        event.setMaterial(Radium223).asMetal(973).mats(of(Radium, 1));
-        event.setMaterial(Radium224).asMetal(973).mats(of(Radium, 1));
-        event.setMaterial(Radium225).asMetal(973).mats(of(Radium, 1));
-        event.setMaterial(Radium226).asMetal(973).mats(of(Radium, 1));
-        event.setMaterial(Radium228).asMetal(973).mats(of(Radium, 1));
-        event.setMaterial(Actinium225).asMetal(1323, 1323).mats(of(Actinium, 1));
-        event.setMaterial(Actinium227).asMetal(1323, 1323).mats(of(Actinium, 1));
-        event.setMaterial(Actinium228).asMetal(1323, 1323).mats(of(Actinium, 1));
-        event.setMaterial(Thorium227).asMetal(2028, 3000).mats(of(Thorium, 1));
-        event.setMaterial(Thorium228).asMetal(2028, 3000).mats(of(Thorium, 1));
-        event.setMaterial(Thorium229).asMetal(2028, 3000).mats(of(Thorium, 1));
-        event.setMaterial(Thorium230).asMetal(2028, 3000).mats(of(Thorium, 1));
-        event.setMaterial(Thorium231).asMetal(2028, 3000).mats(of(Thorium, 1));
-        event.setMaterial(Thorium232).asMetal(2028, 3000).mats(of(Thorium, 1));
-        event.setMaterial(Thorium233).asMetal(2028, 3000).mats(of(Thorium, 1));
-        event.setMaterial(Thorium234).asMetal(2028, 3000).mats(of(Thorium, 1));
-        event.setMaterial(Protactinium231).asMetal(1841).mats(of(Protactinium, 1));
-        event.setMaterial(Protactinium232).asMetal(1841).mats(of(Protactinium, 1));
-        event.setMaterial(Protactinium233).asMetal(1841).mats(of(Protactinium, 1));
-        event.setMaterial(Protactinium234).asMetal(1841).mats(of(Protactinium, 1));
-        event.setMaterial(Uranium232).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium233).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium234).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium235).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium236).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium237).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium238).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium239).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium240).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Neptunium236).asMetal(912).mats(of(Neptunium, 1));
-        event.setMaterial(Neptunium237).asMetal(912).mats(of(Neptunium, 1));
-        event.setMaterial(Neptunium238).asMetal(912).mats(of(Neptunium, 1));
-        event.setMaterial(Neptunium239).asMetal(912).mats(of(Neptunium, 1));
-        event.setMaterial(Neptunium240).asMetal(912).mats(of(Neptunium, 1));
-        event.setMaterial(Plutonium236).asMetal(1406).mats(of(Plutonium, 1));
-        event.setMaterial(Plutonium238).asMetal(1406).mats(of(Plutonium, 1));
-        event.setMaterial(Plutonium239).asMetal(912).mats(of(Plutonium, 1));
-        event.setMaterial(Plutonium240).asMetal(912).mats(of(Plutonium, 1));
-        event.setMaterial(Plutonium241).asMetal(912).mats(of(Plutonium, 1));
-        event.setMaterial(Plutonium242).asMetal(912).mats(of(Plutonium, 1));
-        event.setMaterial(Plutonium243).asMetal(912).mats(of(Plutonium, 1));
-        event.setMaterial(Plutonium244).asMetal(912).mats(of(Plutonium, 1));
-        event.setMaterial(Plutonium246).asMetal(912).mats(of(Plutonium, 1));
-        event.setMaterial(Americium241).asMetal(1449).mats(of(Americium, 1));
-        event.setMaterial(Americium242).asMetal(1449).mats(of(Americium, 1));
-        event.setMaterial(Americium244).asMetal(1449).mats(of(Americium, 1));
-        event.setMaterial(Americium245).asMetal(1449).mats(of(Americium, 1));
-        event.setMaterial(Americium246).asMetal(1449).mats(of(Americium, 1));
-        event.setMaterial(Curium242).asMetal(1613).mats(of(Curium, 1));
-        event.setMaterial(Curium244).asMetal(1613).mats(of(Curium, 1));
-        event.setMaterial(Curium245).asMetal(1613).mats(of(Curium, 1));
-        event.setMaterial(Curium246).asMetal(1613).mats(of(Curium, 1));
-        event.setMaterial(Curium247).asMetal(1613).mats(of(Curium, 1));
-        event.setMaterial(Curium248).asMetal(1613).mats(of(Curium, 1));
-        event.setMaterial(Curium249).asMetal(1613).mats(of(Curium, 1));
-        event.setMaterial(Curium250).asMetal(1613).mats(of(Curium, 1));
-        event.setMaterial(Berkelium248).asMetal(1259).mats(of(Berkelium, 1));
-        event.setMaterial(Berkelium249).asMetal(1259).mats(of(Berkelium, 1));
-        event.setMaterial(Berkelium250).asMetal(1259).mats(of(Berkelium, 1));
-        event.setMaterial(Berkelium251).asMetal(1259).mats(of(Berkelium, 1));
-        event.setMaterial(Californium248).asMetal(1173).mats(of(Californium, 1));
-        event.setMaterial(Californium249).asMetal(1173).mats(of(Californium, 1));
-        event.setMaterial(Californium250).asMetal(1173).mats(of(Californium, 1));
-        event.setMaterial(Californium251).asMetal(1173).mats(of(Californium, 1));
-        event.setMaterial(Californium252).asMetal(1173).mats(of(Californium, 1));
-        event.setMaterial(Californium253).asMetal(1173).mats(of(Californium, 1));
-        event.setMaterial(Californium254).asMetal(1173).mats(of(Californium, 1));
-        event.setMaterial(Californium255).asMetal(1173).mats(of(Californium, 1));
-        event.setMaterial(Einsteinium253).asMetal(1133).mats(of(Einsteinium, 1));
-        event.setMaterial(Einsteinium254).asMetal(1133).mats(of(Einsteinium, 1));
-        event.setMaterial(Einsteinium255).asMetal(1133).mats(of(Einsteinium, 1));
-        event.setMaterial(Einsteinium256).asMetal(1133).mats(of(Einsteinium, 1));
-        event.setMaterial(Fermium255).asMetal(1125).mats(of(Fermium, 1));
-        event.setMaterial(Fermium256).asMetal(1125).mats(of(Fermium, 1));
-        event.setMaterial(Fermium257).asMetal(1125).mats(of(Fermium, 1));
-        event.setMaterial(Fermium258).asMetal(1125).mats(of(Fermium, 1));
-        event.setMaterial(Fermium259).asMetal(1125).mats(of(Fermium, 1));
-        event.setMaterial(Fermium260).asMetal(1125).mats(of(Fermium, 1));
-        event.setMaterial(Mendelevium259).asMetal(1111).mats(of(Mendelevium, 1));
-        event.setMaterial(Mendelevium260).asMetal(1111).mats(of(Mendelevium, 1));
-        /**
-         *** Isotopes (Fluids)
-         **/
-        /**
-         *** Isotopes (Gases/Plasmas)
-         **/
-        event.setMaterial(Deuterium).asGas();
-        event.setMaterial(Tritium).asGas();
-        event.setMaterial(Helium3).asGas();
-        event.setMaterial(Radon217).asGas().mats(of(Radon, 1));
-        event.setMaterial(Radon218).asGas().mats(of(Radon, 1));
-        event.setMaterial(Radon219).asGas().mats(of(Radon, 1));
-        event.setMaterial(Radon220).asGas().mats(of(Radon, 1));
-        event.setMaterial(Radon222).asGas().mats(of(Radon, 1));
+
         /**
          ***  Solids
          **/
@@ -365,28 +250,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SodiumSulfate).asDust().mats(of(Sodium, 2, Sulfur, 1, Oxygen, 4));
         event.setMaterial(SodiumSulfide).asDust().mats(of(Sodium, 2, Sulfur, 1));
         //Nuclear
-        event.setMaterial(ThoriumCake).asDust().mats(of(ThoriumDioxide,1,TrithoriumOctoxide,4));
-        event.setMaterial(UraniumCake).asDust().mats(of(UraniumDioxide,1,TriuraniumOctoxide,4));
-        event.setMaterial(ThoriumDioxide).asDust().mats(of(Thorium,1,Oxygen,2));
-        event.setMaterial(Thorium227Dioxide).asDust().mats(of(Thorium227,1,Oxygen,2));
-        event.setMaterial(Thorium228Dioxide).asDust().mats(of(Thorium228,1,Oxygen,2));
-        event.setMaterial(Thorium229Dioxide).asDust().mats(of(Thorium229,1,Oxygen,2));
-        event.setMaterial(Thorium230Dioxide).asDust().mats(of(Thorium230,1,Oxygen,2));
-        event.setMaterial(Thorium231Dioxide).asDust().mats(of(Thorium231,1,Oxygen,2));
-        event.setMaterial(Thorium233Dioxide).asDust().mats(of(Thorium233,1,Oxygen,2));
-        event.setMaterial(Thorium234Dioxide).asDust().mats(of(Thorium234,1,Oxygen,2));
-        event.setMaterial(UraniumDioxide).asDust().mats(of(Uranium,1,Oxygen,2));
-        event.setMaterial(Uranium232Dioxide).asDust().mats(of(Uranium232,1,Oxygen,2));
-        event.setMaterial(Uranium233Dioxide).asDust().mats(of(Uranium233,1,Oxygen,2));
-        event.setMaterial(Uranium234Dioxide).asDust().mats(of(Uranium234,1,Oxygen,2));
-        event.setMaterial(Uranium235Dioxide).asDust().mats(of(Uranium235,1,Oxygen,2));
-        event.setMaterial(Uranium236Dioxide).asDust().mats(of(Uranium236,1,Oxygen,2));
-        event.setMaterial(Uranium237Dioxide).asDust().mats(of(Uranium237,1,Oxygen,2));
-        event.setMaterial(Uranium238Dioxide).asDust().mats(of(Uranium238,1,Oxygen,2));
-        event.setMaterial(Uranium239Dioxide).asDust().mats(of(Uranium239,1,Oxygen,2));
-        event.setMaterial(Uranium240Dioxide).asDust().mats(of(Uranium240,1,Oxygen,2));
-        event.setMaterial(TrithoriumOctoxide).asDust().mats(of(Thorium,3,Oxygen,8));
-        event.setMaterial(TriuraniumOctoxide).asDust().mats(of(Uranium,3,Oxygen,8));
+
         /**
          **  Ores
          **/
@@ -686,6 +550,154 @@ public class GregTechMaterialEvents {
          */
         event.setMaterial(Ammoniumdithoranate).asDust().mats(of(Nitrogen,2,Hydrogen,8,Thorium,2,Oxygen,7));
         event.setMaterial(Ammoniumdiuranate).asDust().mats(of(Nitrogen,2,Hydrogen,8,Uranium,2,Oxygen,7));
+        nuclearIsotopes(event);
+        workbenches(event);
+    }
+
+
+    private static void nuclearIsotopes(GregTechMaterialEvent event){
+        /**
+         *** Isotopes (Solids)
+         **/
+        event.setMaterial(Thallium207).asMetal(577).mats(of(Thallium, 1));
+        event.setMaterial(Thallium209).asMetal(577).mats(of(Thallium, 1));
+        event.setMaterial(Thallium210).asMetal(577).mats(of(Thallium, 1));
+        event.setMaterial(Bismuth211).asMetal(544).mats(of(Bismuth, 1));
+        event.setMaterial(Bismuth213).asMetal(544).mats(of(Bismuth, 1));
+        event.setMaterial(Bismuth214).asMetal(544).mats(of(Bismuth, 1));
+        event.setMaterial(Bismuth215).asMetal(544).mats(of(Bismuth, 1));
+        event.setMaterial(Polonium211).asMetal(527).mats(of(Polonium, 1));
+        event.setMaterial(Polonium213).asMetal(527).mats(of(Polonium, 1));
+        event.setMaterial(Polonium214).asMetal(527).mats(of(Polonium, 1));
+        event.setMaterial(Polonium215).asMetal(527).mats(of(Polonium, 1));
+        event.setMaterial(Polonium216).asMetal(527).mats(of(Polonium, 1));
+        event.setMaterial(Polonium218).asMetal(527).mats(of(Polonium, 1));
+        event.setMaterial(Astatine215).asMetal(575).mats(of(Astatine, 1));
+        event.setMaterial(Astatine217).asMetal(575).mats(of(Astatine, 1));
+        event.setMaterial(Astatine218).asMetal(575).mats(of(Astatine, 1));
+        event.setMaterial(Astatine219).asMetal(575).mats(of(Astatine, 1));
+        event.setMaterial(Francium221).asMetal(298).mats(of(Francium, 1));
+        event.setMaterial(Francium223).asMetal(298).mats(of(Francium, 1));
+        event.setMaterial(Radium221).asMetal(973).mats(of(Radium, 1));
+        event.setMaterial(Radium223).asMetal(973).mats(of(Radium, 1));
+        event.setMaterial(Radium224).asMetal(973).mats(of(Radium, 1));
+        event.setMaterial(Radium225).asMetal(973).mats(of(Radium, 1));
+        event.setMaterial(Radium226).asMetal(973).mats(of(Radium, 1));
+        event.setMaterial(Radium228).asMetal(973).mats(of(Radium, 1));
+        event.setMaterial(Actinium225).asMetal(1323, 1323).mats(of(Actinium, 1));
+        event.setMaterial(Actinium227).asMetal(1323, 1323).mats(of(Actinium, 1));
+        event.setMaterial(Actinium228).asMetal(1323, 1323).mats(of(Actinium, 1));
+        event.setMaterial(Thorium227).asMetal(2028, 3000).mats(of(Thorium, 1));
+        event.setMaterial(Thorium228).asMetal(2028, 3000).mats(of(Thorium, 1));
+        event.setMaterial(Thorium229).asMetal(2028, 3000).mats(of(Thorium, 1));
+        event.setMaterial(Thorium230).asMetal(2028, 3000).mats(of(Thorium, 1));
+        event.setMaterial(Thorium231).asMetal(2028, 3000).mats(of(Thorium, 1));
+        event.setMaterial(Thorium232).asMetal(2028, 3000).mats(of(Thorium, 1));
+        event.setMaterial(Thorium233).asMetal(2028, 3000).mats(of(Thorium, 1));
+        event.setMaterial(Thorium234).asMetal(2028, 3000).mats(of(Thorium, 1));
+        event.setMaterial(Protactinium231).asMetal(1841).mats(of(Protactinium, 1));
+        event.setMaterial(Protactinium232).asMetal(1841).mats(of(Protactinium, 1));
+        event.setMaterial(Protactinium233).asMetal(1841).mats(of(Protactinium, 1));
+        event.setMaterial(Protactinium234).asMetal(1841).mats(of(Protactinium, 1));
+        event.setMaterial(Uranium232).asMetal(1406, 3000).mats(of(Uranium, 1));
+        event.setMaterial(Uranium233).asMetal(1406, 3000).mats(of(Uranium, 1));
+        event.setMaterial(Uranium234).asMetal(1406, 3000).mats(of(Uranium, 1));
+        event.setMaterial(Uranium235).asMetal(1406, 3000).mats(of(Uranium, 1));
+        event.setMaterial(Uranium236).asMetal(1406, 3000).mats(of(Uranium, 1));
+        event.setMaterial(Uranium237).asMetal(1406, 3000).mats(of(Uranium, 1));
+        event.setMaterial(Uranium238).asMetal(1406, 3000).mats(of(Uranium, 1));
+        event.setMaterial(Uranium239).asMetal(1406, 3000).mats(of(Uranium, 1));
+        event.setMaterial(Uranium240).asMetal(1406, 3000).mats(of(Uranium, 1));
+        event.setMaterial(Neptunium236).asMetal(912).mats(of(Neptunium, 1));
+        event.setMaterial(Neptunium237).asMetal(912).mats(of(Neptunium, 1));
+        event.setMaterial(Neptunium238).asMetal(912).mats(of(Neptunium, 1));
+        event.setMaterial(Neptunium239).asMetal(912).mats(of(Neptunium, 1));
+        event.setMaterial(Neptunium240).asMetal(912).mats(of(Neptunium, 1));
+        event.setMaterial(Plutonium236).asMetal(1406).mats(of(Plutonium, 1));
+        event.setMaterial(Plutonium238).asMetal(1406).mats(of(Plutonium, 1));
+        event.setMaterial(Plutonium239).asMetal(912).mats(of(Plutonium, 1));
+        event.setMaterial(Plutonium240).asMetal(912).mats(of(Plutonium, 1));
+        event.setMaterial(Plutonium241).asMetal(912).mats(of(Plutonium, 1));
+        event.setMaterial(Plutonium242).asMetal(912).mats(of(Plutonium, 1));
+        event.setMaterial(Plutonium243).asMetal(912).mats(of(Plutonium, 1));
+        event.setMaterial(Plutonium244).asMetal(912).mats(of(Plutonium, 1));
+        event.setMaterial(Plutonium246).asMetal(912).mats(of(Plutonium, 1));
+        event.setMaterial(Americium241).asMetal(1449).mats(of(Americium, 1));
+        event.setMaterial(Americium242).asMetal(1449).mats(of(Americium, 1));
+        event.setMaterial(Americium244).asMetal(1449).mats(of(Americium, 1));
+        event.setMaterial(Americium245).asMetal(1449).mats(of(Americium, 1));
+        event.setMaterial(Americium246).asMetal(1449).mats(of(Americium, 1));
+        event.setMaterial(Curium242).asMetal(1613).mats(of(Curium, 1));
+        event.setMaterial(Curium244).asMetal(1613).mats(of(Curium, 1));
+        event.setMaterial(Curium245).asMetal(1613).mats(of(Curium, 1));
+        event.setMaterial(Curium246).asMetal(1613).mats(of(Curium, 1));
+        event.setMaterial(Curium247).asMetal(1613).mats(of(Curium, 1));
+        event.setMaterial(Curium248).asMetal(1613).mats(of(Curium, 1));
+        event.setMaterial(Curium249).asMetal(1613).mats(of(Curium, 1));
+        event.setMaterial(Curium250).asMetal(1613).mats(of(Curium, 1));
+        event.setMaterial(Berkelium248).asMetal(1259).mats(of(Berkelium, 1));
+        event.setMaterial(Berkelium249).asMetal(1259).mats(of(Berkelium, 1));
+        event.setMaterial(Berkelium250).asMetal(1259).mats(of(Berkelium, 1));
+        event.setMaterial(Berkelium251).asMetal(1259).mats(of(Berkelium, 1));
+        event.setMaterial(Californium248).asMetal(1173).mats(of(Californium, 1));
+        event.setMaterial(Californium249).asMetal(1173).mats(of(Californium, 1));
+        event.setMaterial(Californium250).asMetal(1173).mats(of(Californium, 1));
+        event.setMaterial(Californium251).asMetal(1173).mats(of(Californium, 1));
+        event.setMaterial(Californium252).asMetal(1173).mats(of(Californium, 1));
+        event.setMaterial(Californium253).asMetal(1173).mats(of(Californium, 1));
+        event.setMaterial(Californium254).asMetal(1173).mats(of(Californium, 1));
+        event.setMaterial(Californium255).asMetal(1173).mats(of(Californium, 1));
+        event.setMaterial(Einsteinium253).asMetal(1133).mats(of(Einsteinium, 1));
+        event.setMaterial(Einsteinium254).asMetal(1133).mats(of(Einsteinium, 1));
+        event.setMaterial(Einsteinium255).asMetal(1133).mats(of(Einsteinium, 1));
+        event.setMaterial(Einsteinium256).asMetal(1133).mats(of(Einsteinium, 1));
+        event.setMaterial(Fermium255).asMetal(1125).mats(of(Fermium, 1));
+        event.setMaterial(Fermium256).asMetal(1125).mats(of(Fermium, 1));
+        event.setMaterial(Fermium257).asMetal(1125).mats(of(Fermium, 1));
+        event.setMaterial(Fermium258).asMetal(1125).mats(of(Fermium, 1));
+        event.setMaterial(Fermium259).asMetal(1125).mats(of(Fermium, 1));
+        event.setMaterial(Fermium260).asMetal(1125).mats(of(Fermium, 1));
+        event.setMaterial(Mendelevium259).asMetal(1111).mats(of(Mendelevium, 1));
+        event.setMaterial(Mendelevium260).asMetal(1111).mats(of(Mendelevium, 1));
+        /**
+         *** Isotopes (Fluids)
+         **/
+        /**
+         *** Isotopes (Gases/Plasmas)
+         **/
+        event.setMaterial(Deuterium).asGas();
+        event.setMaterial(Tritium).asGas();
+        event.setMaterial(Helium3).asGas();
+        event.setMaterial(Radon217).asGas().mats(of(Radon, 1));
+        event.setMaterial(Radon218).asGas().mats(of(Radon, 1));
+        event.setMaterial(Radon219).asGas().mats(of(Radon, 1));
+        event.setMaterial(Radon220).asGas().mats(of(Radon, 1));
+        event.setMaterial(Radon222).asGas().mats(of(Radon, 1));
+        /**
+         * Cakes and dioxides
+         */
+        event.setMaterial(ThoriumCake).asDust().mats(of(ThoriumDioxide,1,TrithoriumOctoxide,4));
+        event.setMaterial(UraniumCake).asDust().mats(of(UraniumDioxide,1,TriuraniumOctoxide,4));
+        event.setMaterial(ThoriumDioxide).asDust().mats(of(Thorium,1,Oxygen,2));
+        event.setMaterial(Thorium227Dioxide).asDust().mats(of(Thorium227,1,Oxygen,2));
+        event.setMaterial(Thorium228Dioxide).asDust().mats(of(Thorium228,1,Oxygen,2));
+        event.setMaterial(Thorium229Dioxide).asDust().mats(of(Thorium229,1,Oxygen,2));
+        event.setMaterial(Thorium230Dioxide).asDust().mats(of(Thorium230,1,Oxygen,2));
+        event.setMaterial(Thorium231Dioxide).asDust().mats(of(Thorium231,1,Oxygen,2));
+        event.setMaterial(Thorium233Dioxide).asDust().mats(of(Thorium233,1,Oxygen,2));
+        event.setMaterial(Thorium234Dioxide).asDust().mats(of(Thorium234,1,Oxygen,2));
+        event.setMaterial(UraniumDioxide).asDust().mats(of(Uranium,1,Oxygen,2));
+        event.setMaterial(Uranium232Dioxide).asDust().mats(of(Uranium232,1,Oxygen,2));
+        event.setMaterial(Uranium233Dioxide).asDust().mats(of(Uranium233,1,Oxygen,2));
+        event.setMaterial(Uranium234Dioxide).asDust().mats(of(Uranium234,1,Oxygen,2));
+        event.setMaterial(Uranium235Dioxide).asDust().mats(of(Uranium235,1,Oxygen,2));
+        event.setMaterial(Uranium236Dioxide).asDust().mats(of(Uranium236,1,Oxygen,2));
+        event.setMaterial(Uranium237Dioxide).asDust().mats(of(Uranium237,1,Oxygen,2));
+        event.setMaterial(Uranium238Dioxide).asDust().mats(of(Uranium238,1,Oxygen,2));
+        event.setMaterial(Uranium239Dioxide).asDust().mats(of(Uranium239,1,Oxygen,2));
+        event.setMaterial(Uranium240Dioxide).asDust().mats(of(Uranium240,1,Oxygen,2));
+        event.setMaterial(TrithoriumOctoxide).asDust().mats(of(Thorium,3,Oxygen,8));
+        event.setMaterial(TriuraniumOctoxide).asDust().mats(of(Uranium,3,Oxygen,8));
         /**
          * Tetrafluorides
          */
@@ -785,6 +797,16 @@ public class GregTechMaterialEvents {
         /**
          * Breeder Fuels
          */
+    }
+
+
+    private static void workbenches(GregTechMaterialEvent event){
+        METAL.all().forEach(m -> {
+            if ((m.getElement() == null || !m.getElement().isIsotope) && m.has(PLATE) && m.has(ROD)){
+                GTUtilityData.createWorkbench(m, false);
+                GTUtilityData.createWorkbench(m, true);
+            }
+        });
     }
 
     public static void byproducts(GregTechMaterialEvent event){

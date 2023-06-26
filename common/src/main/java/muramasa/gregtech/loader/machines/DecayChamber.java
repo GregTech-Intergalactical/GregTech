@@ -13,6 +13,8 @@ import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 public class DecayChamber {
     public static void init() {
+        //TODO figure out proper nuclear
+        if (true) return;
         GregTechMaterialTags.DECAYABLE.all().forEach(d -> {
             int decaytime;
             long hls = d.getElement().halfLifeSeconds;

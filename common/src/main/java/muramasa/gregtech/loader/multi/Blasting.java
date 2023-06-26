@@ -172,6 +172,8 @@ public class Blasting {
         BLASTING.RB().temperature(5400).ii(INGOT.getMaterialIngredient(HSSG, 6), INGOT.getMaterialIngredient(Osmiridium, 2), INGOT.getMaterialIngredient(Iridium, 1))
                 .io(INGOT_HOT.get(HSSS, 9))
                 .add("hsss_ingot", 810 * 20, 120);
+        //TODO figure out proper nuclear
+        if (true) return;
 
         //Nuclear Processing
         BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium227Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium227,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium227_ingot",40*20, 480);
