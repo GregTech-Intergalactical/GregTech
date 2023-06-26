@@ -88,12 +88,12 @@ public class Circuitry {
                 .io(new ItemStack(GregTechData.CircuitBoardPlastic,4))
                 .add("plastic_circuit_board_3",8*20, 128);
         //Epoxy
-        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardPlastic,1), of(PLATE.get(Epoxid),1), of(AntimatterMaterialTypes.FOIL.get(AnnealedCopper),1))
+        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardPlastic,1), of(PLATE.get(EpoxyResin),1), of(AntimatterMaterialTypes.FOIL.get(AnnealedCopper),1))
                 .fi(SulfuricAcid.getLiquid(125))
                 .io(new ItemStack(GregTechData.CircuitBoardEpoxy,1))
                 .add("epoxy_circuit_board",8*20, 512);
         //Fiber
-        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardEpoxy,1), of(PLATE.get(EpoxidFiberReinforced),1), of(AntimatterMaterialTypes.FOIL.get(AnnealedCopper),1))
+        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardEpoxy,1), of(PLATE.get(FiberReinforcedEpoxyResin),1), of(AntimatterMaterialTypes.FOIL.get(AnnealedCopper),1))
                 .fi(SulfuricAcid.getLiquid(125))
                 .io(new ItemStack(GregTechData.CircuitBoardFiber,1))
                 .add("fiber_circuit_board",8*20, 2048);
