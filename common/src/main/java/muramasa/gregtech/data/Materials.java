@@ -674,7 +674,7 @@ public class Materials {
     public static Material DinitrogenTetroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dinitrogen_tetroxide", 0x004184, NONE));
     public static Material HydrogenSulfide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydrogen_sulfide", 0xffffff, NONE));
     public static Material NitricOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitric_oxide", 0x7dc8f0, NONE));
-     public static Material NitrousOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitrous_oxide", 0x7DC8FF, NONE));
+    public static Material NitrousOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitrous_oxide", 0x7DC8FF, NONE));
     public static Material NitrogenDioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitrogen_dioxide", 0x64afff, NONE));
     public static Material NobleGases = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "noble_gases", 0xc9e3fc, NONE));
     public static Material Steam = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam", 0xa0a0a0, NONE));
@@ -697,12 +697,12 @@ public class Materials {
     public static Material HydroCrackedNaphtha = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_naphtha", 0xffff00, NONE));
     public static Material HydroCrackedRefineryGas = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydro_cracked_refinery_gas", 0xffffff, NONE));
     public static Material SteamCrackedEthane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_ethane", 0xc8c8ff, NONE));
-    public static Material SteamCrackedEthylene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_ethylene", 0xe1e1e1, NONE));
+    //public static Material SteamCrackedEthylene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_ethylene", 0xe1e1e1, NONE));
     public static Material SteamCrackedPropane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_propane", 0xfae250, NONE));
-    public static Material SteamCrackedPropene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_propene", 0xffdd55, NONE));
+    //public static Material SteamCrackedPropene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_propene", 0xffdd55, NONE));
     public static Material SteamCrackedButane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_butane", 0xb6371e, NONE));
-    public static Material SteamCrackedButene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_butene", 0xcf5005, NONE));
-    public static Material SteamCrackedButadiene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_butadiene", 0xe86900, NONE));
+    //public static Material SteamCrackedButene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_butene", 0xcf5005, NONE));
+    //public static Material SteamCrackedButadiene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_butadiene", 0xe86900, NONE));
     public static Material SteamCrackedHeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_heavy_fuel", 0xffff00, NONE));
     public static Material SteamCrackedLightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_light_fuel", 0xffff00, NONE));
     public static Material SteamCrackedNaphtha = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_naphtha", 0xffff00, NONE));
