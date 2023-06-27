@@ -8,6 +8,7 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import net.minecraft.world.item.Item;
 
+import static muramasa.antimatter.Ref.L;
 import static muramasa.gregtech.data.RecipeMaps.FLUID_EXTRACTING;
 
 public class FluidExtractor {
@@ -40,18 +41,10 @@ public class FluidExtractor {
 
     private static void add(Material m, MaterialTypeItem<?> i, float ratio) {
         if (!m.has(AntimatterMaterialTypes.LIQUID)) return;
-        long amount = amount(ratio);
+        long amount = (long) (L * ratio);
         FLUID_EXTRACTING.RB()
                 .ii(RecipeIngredient.of(i.getMaterialTag(m),1))
                 .fo(m.getLiquid(amount))
-                .add(m.getId() + "_from_" + i.getId(), (long)(m.getMass()*((float)amount/ratio())), 64, MaterialTags.MELTING_POINT.getInt(m));
-    }
-
-    private static long ratio(){
-        return AntimatterPlatformUtils.isForge() ? 144L : 9000L;
-    }
-
-    private static long amount(float ingots){
-        return (long) (ratio() * ingots);
+                .add(m.getId() + "_from_" + i.getId(), (long)(m.getMass()*((float)amount/L)), 64, MaterialTags.MELTING_POINT.getInt(m));
     }
 }

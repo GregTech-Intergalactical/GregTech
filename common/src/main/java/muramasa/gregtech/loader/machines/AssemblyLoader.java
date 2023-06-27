@@ -34,6 +34,7 @@ import net.minecraft.tags.ItemTags;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
+import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -187,7 +188,7 @@ public class AssemblyLoader {
     private static void addTierHull(Material mat, Tier tier) {
         Material liquid = tier == ZPM || tier == UV || tier == MAX ? Polytetrafluoroethylene : Polyethylene;
         ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(mat, 1), ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), PLATE.getMaterialIngredient(TIER_MATERIALS.get(tier), 1), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID)))
-                .fi(liquid.getLiquid(FluidAmountUtils.ingot() * 2)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID))).add("hull_" + tier.getId(), 5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
+                .fi(liquid.getLiquid(L * 2)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID))).add("hull_" + tier.getId(), 5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
     }
 
     private static void addCasing (Material mat, BlockCasing casing) {
@@ -195,6 +196,6 @@ public class AssemblyLoader {
     }
 
     private static void addCoil (BlockCoil coil, PipeItemBlock wire, Material fluidmat, int tier) {
-        ASSEMBLING.RB().ii(of(wire,8), of(DUST.get(Aluminosilicate), 4)).fi(fluidmat.getLiquid(288)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.getIdFromBlock(coil).getPath(), 100*tier, (long) (30*Math.pow(4,tier-1)));
+        ASSEMBLING.RB().ii(of(wire,8), of(DUST.get(Aluminosilicate), 4)).fi(fluidmat.getLiquid(L * 2)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.getIdFromBlock(coil).getPath(), 100*tier, (long) (30*Math.pow(4,tier-1)));
     }
 }

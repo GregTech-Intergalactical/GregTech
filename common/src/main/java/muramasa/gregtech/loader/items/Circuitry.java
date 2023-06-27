@@ -11,13 +11,13 @@ import muramasa.gregtech.data.GregTechTags;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.world.item.ItemStack;
 
+import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.SOLDER;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.RecipeMaps.*;
-import static muramasa.gregtech.loader.machines.FluidAmountUtils.*;
 
 public class Circuitry {
     public static void init() {
@@ -34,33 +34,33 @@ public class Circuitry {
         PRESSING.RB().ii(of(CircuitBoardProcessorEmpty), of(EtchedWiringEV, 4)).io(new ItemStack(CircuitBoardProcessor)).add("processor_circuit_board", 32, 256);
         ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Silicon, 2), PLATE.getMaterialIngredient(Polytetrafluoroethylene, 1)).io(new ItemStack(CircuitBoardProcessorEmpty)).add("empty_processor_circuit_board", 32, 256);
         ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Lazurite, 1), DUST.getMaterialIngredient(AntimatterMaterials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts", 32, 64);
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Polyethylene, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Tin.getLiquid(quarter())).io(new ItemStack(NandChip)).add("nand_chip_tin_poly", 32, 16);
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Polyethylene, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(SolderingAlloy.getLiquid(quarter() / 2)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_poly", 32, 16);
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Polyethylene, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Lead.getLiquid(quarter() * 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_poly", 32, 16);
-        ASSEMBLING.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Tin.getLiquid(quarter())).io(new ItemStack(NandChip)).add("nand_chip_tin_steel", 32, 16);
-        ASSEMBLING.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(SolderingAlloy.getLiquid(quarter() / 2)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_steel", 32, 16);
-        ASSEMBLING.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Lead.getLiquid(quarter() * 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_steel", 32, 16);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Polyethylene, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_poly", 32, 16);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Polyethylene, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_poly", 32, 16);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Polyethylene, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Lead.getLiquid(L / 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_poly", 32, 16);
+        ASSEMBLING.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_steel", 32, 16);
+        ASSEMBLING.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_steel", 32, 16);
+        ASSEMBLING.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Lead.getLiquid(L / 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_steel", 32, 16);
     }
 
     private static void circuits(){
-        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Tin.getLiquid(quarter() * 2)).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_tin", 32, 16);
-        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(quarter())).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_soldering_alloy", 32, 16);
-        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Lead.getLiquid(ingot())).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_lead", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Tin.getLiquid(quarter() * 2)).io(new ItemStack(CircuitGood)).add("good_circuit_tin", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(quarter())).io(new ItemStack(CircuitGood)).add("good_circuit_soldering_alloy", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Lead.getLiquid(ingot())).io(new ItemStack(CircuitGood)).add("good_circuit_lead", 32, 16);
-        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(Tin.getLiquid(ingot())).io(new ItemStack(CircuitAdv)).add("advanced_circuit_tin", 32, 64);
-        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(quarter() * 2)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_soldering_alloy", 32, 64);
-        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(Lead.getLiquid(ingot() * 2)).io(new ItemStack(CircuitDataStorage)).add("data_storage__circuit_lead", 32, 64);
-        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(Tin.getLiquid(ingot())).io(new ItemStack(CircuitDataStorage)).add("data_storage_circuit_tin", 32, 64);
-        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(SolderingAlloy.getLiquid(quarter() * 2)).io(new ItemStack(CircuitDataStorage)).add("data_storage__circuit_soldering_alloy", 32, 64);
-        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(Lead.getLiquid(ingot() * 2)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_lead", 32, 64);
-        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(Tin.getLiquid(ingot() * 2)).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_tin", 32, 256);
-        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(SolderingAlloy.getLiquid(ingot())).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_soldering_alloy", 32, 256);
-        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(Lead.getLiquid(ingot() * 4)).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_lead", 32, 256);
-        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(EngravedLapotronChip, 3)).fi(Tin.getLiquid(ingot() * 2)).io(new ItemStack(CircuitEnergyFlow)).add("energy_flow_circuit_tin", 32, 256);
-        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(EngravedLapotronChip, 3)).fi(SolderingAlloy.getLiquid(ingot())).io(new ItemStack(CircuitEnergyFlow)).add("energy_flow_circuit_soldering_alloy", 32, 256);
-        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(EngravedLapotronChip, 3)).fi(Lead.getLiquid(ingot() * 4)).io(new ItemStack(CircuitEnergyFlow)).add("energy_flow_circuit_lead", 32, 256);
+        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_tin", 32, 16);
+        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_soldering_alloy", 32, 16);
+        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_lead", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitGood)).add("good_circuit_tin", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitGood)).add("good_circuit_soldering_alloy", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitGood)).add("good_circuit_lead", 32, 16);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(Tin.getLiquid(L)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_tin", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_soldering_alloy", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitDataStorage)).add("data_storage__circuit_lead", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(Tin.getLiquid(L)).io(new ItemStack(CircuitDataStorage)).add("data_storage_circuit_tin", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(CircuitDataStorage)).add("data_storage__circuit_soldering_alloy", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_lead", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(Tin.getLiquid(L * 2)).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_tin", 32, 256);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(SolderingAlloy.getLiquid(L)).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_soldering_alloy", 32, 256);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(Lead.getLiquid(L * 4)).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_lead", 32, 256);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(EngravedLapotronChip, 3)).fi(Tin.getLiquid(L * 2)).io(new ItemStack(CircuitEnergyFlow)).add("energy_flow_circuit_tin", 32, 256);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(EngravedLapotronChip, 3)).fi(SolderingAlloy.getLiquid(L)).io(new ItemStack(CircuitEnergyFlow)).add("energy_flow_circuit_soldering_alloy", 32, 256);
+        ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(EngravedLapotronChip, 3)).fi(Lead.getLiquid(L * 4)).io(new ItemStack(CircuitEnergyFlow)).add("energy_flow_circuit_lead", 32, 256);
     }
 
     private static void bloodyBoards() {
@@ -111,7 +111,7 @@ public class Circuitry {
 
     private static void bloodyCircuits() {
         for (Material material : SOLDER.all()) {
-            int base = 18;
+            long base = L / 8;
             boolean hasGood = SOLDER.has(SubTag.GOOD_SOLDER, material);
             boolean hasBad = SOLDER.has(SubTag.BAD_SOLDER, material);
             base *= hasBad ? (hasGood ? 2 : 4) : 1;
