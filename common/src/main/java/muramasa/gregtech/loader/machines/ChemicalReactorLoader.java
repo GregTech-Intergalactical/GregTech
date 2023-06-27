@@ -144,8 +144,6 @@ public class ChemicalReactorLoader {
         titanium();
         sulfuric();
         nuclear_processing();
-        //SODIUM HYDROXIDE
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Sodium,1))).fi(Water.getLiquid(3000)).fo(Hydrogen.getGas(1000)).io(DUST.get(SodiumHydroxide, 3)).add("sodium_hydroxide",600, 30);
         //NITROGEN DIOXIDE
         CHEMICAL_REACTING.RB().fi(Nitrogen.getGas(500),Oxygen.getGas(1000)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(NitrogenDioxide.getGas(1500)).add("nitrogen_dioxide",625, 30);
         CHEMICAL_REACTING.RB().fi(Nitrogen.getGas(1000),Oxygen.getGas(2000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(NitrogenDioxide.getGas(3000)).add("nitrogen_dioxide_2",1250, 30);
