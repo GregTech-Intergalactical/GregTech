@@ -42,10 +42,11 @@ public class AlloyLoader {
         //pre Chemical Reactor Rubber
         ALLOY_SMELTING.RB().ii(of(DUST.get(RawRubber), 3), of(DUST.getMaterialTag(Sulfur), 1))
                 .io(INGOT.get(Rubber, 1)).add("rubber_via_alloy_smelter",20, 10);
-        PLATE.all().stream().filter(m -> !m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)).forEach(m ->{
-            ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate", m.getMass() * 2, 32);
+        PLATE.all().stream().filter(m -> !m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE) && m.has(INGOT)).forEach(m ->{
+            int euPerTick = m.has(RUBBERTOOLS) ? 8 : 32;
+            ALLOY_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate", m.getMass() * 2, euPerTick);
             if (m.has(RUBBERTOOLS)) {
-                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate_from_dust", m.getMass() * 2, 32);
+                ALLOY_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 2), RecipeIngredient.of(GregTechData.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate_from_dust", m.getMass() * 2, euPerTick);
             }
         });
         INGOT.all().stream().filter(m -> m.has(RUBBERTOOLS)).forEach(m -> {

@@ -20,6 +20,7 @@ import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
+import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.TierMaps;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
@@ -172,7 +173,7 @@ public class AssemblyLoader {
     }
 
     private static void addTierCasing (Tier tier) {
-        ASSEMBLING.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 4)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID))).add("casing_" + tier.getId(),5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
+        ASSEMBLING.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 8), INT_CIRCUITS.get(8)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID))).add("casing_" + tier.getId(),5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
     }
 
     private static void addTierHull (Material mat, Wire w, TagKey<Item> circ, Block casing, Block hull, int tier) {
@@ -184,8 +185,9 @@ public class AssemblyLoader {
     }
 
     private static void addTierHull(Material mat, Tier tier) {
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(mat, 1), ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 1), PLATE.getMaterialIngredient(TIER_MATERIALS.get(tier), 1), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID)))
-                .io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID))).add("hull_" + tier.getId(), 5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
+        Material liquid = tier == ZPM || tier == UV || tier == MAX ? Polytetrafluoroethylene : Polyethylene;
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(mat, 1), ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), PLATE.getMaterialIngredient(TIER_MATERIALS.get(tier), 1), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID)))
+                .fi(liquid.getLiquid(FluidAmountUtils.ingot() * 2)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID))).add("hull_" + tier.getId(), 5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
     }
 
     private static void addCasing (Material mat, BlockCasing casing) {

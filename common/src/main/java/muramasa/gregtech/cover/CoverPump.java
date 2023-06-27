@@ -40,7 +40,7 @@ public class CoverPump extends CoverBasicTransport {
         addGuiCallback(t -> {
             for (int x = 0; x < 6; x++){
                 for (int y = 0; y < 2; y++){
-                    t.addButton(35 + (x * 18), 25 + (y * 18), 16, 16, overlays[y][x]);
+                    t.addButton(35 + (x * 18), 25 + (y * 18), 16, 16, overlays[y][x], "tooltip.gti." + overlays[y][x].getId());
                 }
             }
         });

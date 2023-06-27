@@ -7,6 +7,8 @@ import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gregtech.tile.single.TileEntitySteamMachine;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -64,16 +66,21 @@ public class CoverSteamVent extends BaseCover {
             p.hurt(DamageSource.HOT_FLOOR, 1.0f);
         });
         if (level.isClientSide && level.getGameTime() % 20 == 0){
-            ClientLevel clientLevel = (ClientLevel) level;
-            Random random = level.random;
-            double xR = random.nextDouble();
-            double yR = random.nextDouble();
-            double zR = random.nextDouble();
-            clientLevel.addParticle(ParticleTypes.SMOKE, offset.getX() + + xR, offset.getY() + yR, offset.getZ() + zR, 0, 0, 0);
-            xR = random.nextDouble();
-            yR = random.nextDouble();
-            zR = random.nextDouble();
-            clientLevel.addParticle(ParticleTypes.SMOKE, offset.getX() + + xR, offset.getY() + yR, offset.getZ() + zR, 0, 0, 0);
+            addParticle(level, offset);
         }
+    }
+
+    @Environment(EnvType.CLIENT)
+    private void addParticle(Level level, BlockPos offset){
+        ClientLevel clientLevel = (ClientLevel) level;
+        Random random = level.random;
+        double xR = random.nextDouble();
+        double yR = random.nextDouble();
+        double zR = random.nextDouble();
+        clientLevel.addParticle(ParticleTypes.SMOKE, offset.getX() + + xR, offset.getY() + yR, offset.getZ() + zR, 0, 0, 0);
+        xR = random.nextDouble();
+        yR = random.nextDouble();
+        zR = random.nextDouble();
+        clientLevel.addParticle(ParticleTypes.SMOKE, offset.getX() + + xR, offset.getY() + yR, offset.getZ() + zR, 0, 0, 0);
     }
 }

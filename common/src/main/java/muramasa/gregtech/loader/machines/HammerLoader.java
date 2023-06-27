@@ -43,10 +43,10 @@ public class HammerLoader {
         });
         PLATE.all().forEach(plate -> {
             if (!plate.has(INGOT) || plate.has(MaterialTags.NOSMASH)) return;
-            HAMMERING.RB().ii(INGOT.getMaterialIngredient(plate, 3)).io(PLATE.get(plate, 2)).add("plate_" + plate.getId(),plate.getMass(), 16);
+            HAMMERING.RB().ii(INGOT.getMaterialIngredient(plate, 3)).io(PLATE.get(plate, 2)).add("plate_" + plate.getId(),plate.getHardness(), 16);
         });
         ROD_LONG.all().stream().filter(m -> !m.has(MaterialTags.NOSMASH)).forEach(rod -> {
-            HAMMERING.RB().ii(ROD.getMaterialIngredient(rod, 2)).io(ROD_LONG.get(rod, 1)).add("rod_long_" + rod.getId(), rod.getMass(), 16);
+            HAMMERING.RB().ii(ROD.getMaterialIngredient(rod, 2)).io(ROD_LONG.get(rod, 1)).add("rod_long_" + rod.getId(), rod.getHardness(), 16);
         });
         GEM_EXQUISITE.all().forEach(m -> {
             HAMMERING.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(GEM_FLAWLESS.get(m, 2)).add(m.getId() + "_exquisite", 64, 16);
