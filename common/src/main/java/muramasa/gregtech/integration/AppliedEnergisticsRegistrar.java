@@ -83,6 +83,7 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         RecipeMaps.ASSEMBLING.RB().ii(DUST.getMaterialIngredient(Fluix, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("fluix_crystal_seed"), 2)).add("fluix_crystal_seed", 64, 8);
         RecipeMaps.MACERATING.RB().ii(of(getAe2Item("sky_stone_chest"))).io(new ItemStack(getAe2Item("sky_dust"), 8)).add("sky_dust_from_chest", 400, 2);
         RecipeMaps.MACERATING.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
+        RecipeMaps.ELECTROLYZING.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1)).io(new ItemStack(getAe2Item("charged_certus_quartz_crystal"))).add("charged_certus_quartz", 2000, 30);
     }
 
     public static Item getAe2Item(String id){

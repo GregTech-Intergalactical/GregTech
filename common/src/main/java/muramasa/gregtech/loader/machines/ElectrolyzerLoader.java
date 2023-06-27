@@ -5,7 +5,7 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-import static muramasa.gregtech.data.GregTechMaterialTags.ELEC;
+import static muramasa.gregtech.data.GregTechMaterialTags.*;
 import static muramasa.gregtech.data.RecipeMaps.ELECTROLYZING;
 
 public class ElectrolyzerLoader {
@@ -17,9 +17,10 @@ public class ElectrolyzerLoader {
                     return;
             }
             if (fluids.length > 6) return;
+            int euPerTick = t.has(ELEC30) ? 30 : t.has(ELEC60) ? 60 : t.has(ELEC90) ? 90 : 120;
             ItemStack[] items = t.getProcessInto().stream().filter(mat -> mat.m.has(AntimatterMaterialTypes.DUST)).map(mat -> AntimatterMaterialTypes.DUST.get(mat.m, mat.s)).toArray(ItemStack[]::new);
             RecipeIngredient input = AntimatterMaterialTypes.DUST.getMaterialIngredient(t, t.getProcessInto().stream().mapToInt(mat -> mat.s).sum());
-            ELECTROLYZING.RB().ii(input).io(items).fo(fluids).add("dust_" + t.getId(),t.getMass()*20, t.getMass() < 15 ? 30 : 64);
+            ELECTROLYZING.RB().ii(input).io(items).fo(fluids).add("dust_" + t.getId(),t.getMass()*20, euPerTick);
         });
     }
 
