@@ -12,13 +12,17 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.gregtech.data.Materials.Mercury;
+import static muramasa.gregtech.data.Materials.SulfuricAcid;
 import static muramasa.gregtech.data.RecipeMaps.FLUID_CANNING;
 
 public class FluidCanningLoader {
     public static void init() {
-        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullSmall, 1)).fi(Mercury.getLiquid(500)).io(ItemBattery.getFilledBattery(GregTechData.BatterySmallMercury)).add("battery_small_mercury",20, 2);
-        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullMedium, 1)).fi(Mercury.getLiquid(2000)).io(ItemBattery.getFilledBattery(GregTechData.BatteryMediumMercury)).add("battery_medium_mercury",20, 2);
-        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullLarge, 1)).fi(Mercury.getLiquid(8000)).io(ItemBattery.getFilledBattery(GregTechData.BatteryLargeMercury)).add("battery_large_mercury",20, 2);
+        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullSmall, 1)).fi(Mercury.getLiquid(1000)).io(ItemBattery.getFilledBattery(GregTechData.BatterySmallMercury)).add("battery_small_mercury",16, 1);
+        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullMedium, 1)).fi(Mercury.getLiquid(4000)).io(ItemBattery.getFilledBattery(GregTechData.BatteryMediumMercury)).add("battery_medium_mercury",64, 1);
+        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullLarge, 1)).fi(Mercury.getLiquid(16000)).io(ItemBattery.getFilledBattery(GregTechData.BatteryLargeMercury)).add("battery_large_mercury",258, 1);
+        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullSmall, 1)).fi(SulfuricAcid.getLiquid(1000)).io(ItemBattery.getFilledBattery(GregTechData.BatterySmallAcid)).add("battery_small_acid",16, 1);
+        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullMedium, 1)).fi(SulfuricAcid.getLiquid(4000)).io(ItemBattery.getFilledBattery(GregTechData.BatteryMediumAcid)).add("battery_medium_acid",64, 1);
+        FLUID_CANNING.RB().ii(RecipeIngredient.of(GregTechData.BatteryHullLarge, 1)).fi(SulfuricAcid.getLiquid(16000)).io(ItemBattery.getFilledBattery(GregTechData.BatteryLargeAcid)).add("battery_large_acid",258, 1);
         AntimatterPlatformUtils.getAllFluids().forEach(fluid -> {
             Item bucket = fluid.getBucket();
             if (bucket == Items.AIR) return;

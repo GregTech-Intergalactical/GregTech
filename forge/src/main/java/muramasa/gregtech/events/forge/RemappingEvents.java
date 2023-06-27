@@ -67,6 +67,25 @@ public class RemappingEvents {
         REMAPPING_MAP.put("circuit_energy_flow", "energy_flow_circuit");
         REMAPPING_MAP.put("circuit_wetware", "wetware_circuit");
         REMAPPING_MAP.put("adv_circuit_parts", "advanced_circuit_parts");
+        REMAPPING_MAP.put("battery_hull_small", "small_battery_hull");
+        REMAPPING_MAP.put("battery_hull_medium", "medium_battery_hull");
+        REMAPPING_MAP.put("battery_hull_large", "large_battery_hull");
+        REMAPPING_MAP.put("battery_small_mercury", "small_mercury_battery");
+        REMAPPING_MAP.put("battery_small_acid", "small_acid_battery");
+        REMAPPING_MAP.put("battery_small_cadmium", "small_cadmium_battery");
+        REMAPPING_MAP.put("battery_small_lithium", "small_lithium_battery");
+        REMAPPING_MAP.put("battery_small_sodium", "small_sodium_battery");
+        REMAPPING_MAP.put("battery_medium_mercury", "medium_mercury_battery");
+        REMAPPING_MAP.put("battery_medium_acid", "medium_acid_battery");
+        REMAPPING_MAP.put("battery_medium_cadmium", "medium_cadmium_battery");
+        REMAPPING_MAP.put("battery_medium_lithium", "medium_lithium_battery");
+        REMAPPING_MAP.put("battery_medium_sodium", "medium_sodium_battery");
+        REMAPPING_MAP.put("battery_large_mercury", "large_mercury_battery");
+        REMAPPING_MAP.put("battery_large_acid", "large_acid_battery");
+        REMAPPING_MAP.put("battery_large_cadmium", "large_cadmium_battery");
+        REMAPPING_MAP.put("battery_large_lithium", "large_lithium_battery");
+        REMAPPING_MAP.put("battery_large_sodium", "large_sodium_battery");
+
     }
 
     @SubscribeEvent

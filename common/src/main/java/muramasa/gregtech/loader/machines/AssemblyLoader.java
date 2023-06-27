@@ -63,9 +63,11 @@ public class AssemblyLoader {
 
     //TODO proper type check for the cables
     private static void batteries() {
-        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,1), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, LV, false) ,1)).fi(Polyethylene.getLiquid(144)).io(BatteryHullSmall.getDefaultInstance()).add("battery_hull_small",80, 2);
-        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,3), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, MV, false) ,2)).fi(Polyethylene.getLiquid(432)).io(BatteryHullMedium.getDefaultInstance()).add("battery_hull_medium",120, 4);
-        ASSEMBLING.RB().ii(PLATE.getIngredient(BatteryAlloy,9), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, HV, false) ,3)).fi(Polyethylene.getLiquid(1296)).io(BatteryHullLarge.getDefaultInstance()).add("battery_hull_large",160, 8);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,1), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, LV, false) ,1)).fi(Polyethylene.getLiquid(L)).io(BatteryHullSmall.getDefaultInstance()).add("battery_hull_small",800, 1);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,3), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, MV, false) ,2)).fi(Polyethylene.getLiquid(L * 3)).io(BatteryHullMedium.getDefaultInstance()).add("battery_hull_medium",1600, 2);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,9), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, HV, false) ,4)).fi(Polyethylene.getLiquid(L * 9)).io(BatteryHullLarge.getDefaultInstance()).add("battery_hull_large",3200, 4);
+        ASSEMBLING.RB().ii(DUST.getMaterialIngredient(Tantalum, 1), FOIL.getMaterialIngredient(Manganese, 1)).fi(Polyethylene.getLiquid(L)).io(new ItemStack(BatteryTantalum, 8)).add("tantalum_capacitor", 100, 4);
+
     }
 
     private static void casings() {

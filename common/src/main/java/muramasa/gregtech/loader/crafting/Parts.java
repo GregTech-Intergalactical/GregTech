@@ -54,12 +54,12 @@ public class Parts {
         CircuitBasicElectronic.getDefaultInstance(), ing);
     // });
 
-      provider.addItemRecipe(output, GTIRef.ID, "small_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullSmall, of(
+      provider.addItemRecipe(output, GTIRef.ID, "","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullSmall, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, LV, false)
       ), "C", "P", "P");
 
-      provider.addItemRecipe(output,  GTIRef.ID, "medium_battery_hull","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullMedium, of(
+      provider.addItemRecipe(output,  GTIRef.ID, "","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullMedium, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false)
       ), "C C", "PPP", "PPP");
