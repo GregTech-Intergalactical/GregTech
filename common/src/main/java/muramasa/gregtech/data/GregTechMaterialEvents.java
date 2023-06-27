@@ -551,8 +551,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Ammoniumdithoranate).asDust().mats(of(Nitrogen,2,Hydrogen,8,Thorium,2,Oxygen,7));
         event.setMaterial(Ammoniumdiuranate).asDust().mats(of(Nitrogen,2,Hydrogen,8,Uranium,2,Oxygen,7));
         nuclearIsotopes(event);
-        workbenches(event);
         toolsAndArmor(event);
+        workbenches(event);
     }
 
     private static void toolsAndArmor(GregTechMaterialEvent event){
