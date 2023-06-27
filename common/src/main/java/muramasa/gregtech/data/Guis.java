@@ -327,7 +327,7 @@ public class Guis {
         }
 
         // if (side.isClient()) {
-        TRANSFORMER_DIGITAL.addGuiCallback(t -> {
+        ADJUSTABLE_TRANSFORMER.addGuiCallback(t -> {
             t.addButton(10, 18, 14, 14, APAD_LEFT)
                     .addButton(25, 18, 14, 14, PAD_LEFT)
                     .addButton(10, 33, 14, 14, APAD_LEFT)

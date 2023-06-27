@@ -107,8 +107,8 @@ public class Machines {
     /**
      * Drums
      */
-    public static DrumMachine BRONZE_DRUM = GTUtilityData.createDrum(Materials.Bronze, 64000);
-    public static DrumMachine INVAR_DRUM = GTUtilityData.createDrum(Materials.Invar, 64000);
+    public static DrumMachine BRONZE_DRUM = GTUtilityData.createDrum(Materials.Bronze, 16000);
+    public static DrumMachine INVAR_DRUM = GTUtilityData.createDrum(Materials.Invar, 32000);
     public static DrumMachine STAINLESS_DRUM = GTUtilityData.createDrum(Materials.StainlessSteel, 64000);
     public static DrumMachine TITANIUM_DRUM = GTUtilityData.createDrum(Materials.Titanium, 128000);
     public static DrumMachine NETHERRITE_DRUM = GTUtilityData.createDrum(AntimatterMaterials.Netherite, 128000);
@@ -119,9 +119,9 @@ public class Machines {
      * Transformers
      **/
     public static BasicMachine TRANSFORMER = new BasicMachine(GTIRef.ID, "transformer").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new TileEntityTransformer<>(v, pos, state, 1)).noCovers().allowFrontIO();
-    public static BasicMachine TRANSFORMER_DIGITAL = new BasicMachine(GTIRef.ID, "transformer_digital").setTiers(EV, IV).addFlags(GUI, ENERGY).setTile(TileEntityDigitalTransformer::new).noCovers().allowFrontIO();
-    public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(GTIRef.ID, "transformer_hiamp").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new TileEntityTransformer<>(v, pos, state, 4)).noCovers().allowFrontIO();
-    public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(GTIRef.ID, "transformer_ultra").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new TileEntityTransformer<>(v, pos, state, 16)).noCovers().allowFrontIO();
+    public static BasicMachine ADJUSTABLE_TRANSFORMER = new BasicMachine(GTIRef.ID, "adjustable_transformer").setTiers(EV, IV).addFlags(GUI, ENERGY).setTile(TileEntityDigitalTransformer::new).noCovers().allowFrontIO();
+    //public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(GTIRef.ID, "transformer_hiamp").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new TileEntityTransformer<>(v, pos, state, 4)).noCovers().allowFrontIO();
+    //public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(GTIRef.ID, "transformer_ultra").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new TileEntityTransformer<>(v, pos, state, 16)).noCovers().allowFrontIO();
     /**
      ** Multiblock Hatch Machines (Electrical Age)
      **/
