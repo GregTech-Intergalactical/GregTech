@@ -31,6 +31,7 @@ public abstract class CoverBasicTransport extends BaseCover implements ICoverMod
     public CoverBasicTransport(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         this.coverMode = source.getTile() instanceof TileEntityPipe<?> ? IMPORT : EXPORT;
+        coverModeInt = coverMode.ordinal();
     }
 
     @Override
