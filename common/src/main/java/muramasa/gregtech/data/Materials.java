@@ -10,6 +10,9 @@ import static muramasa.antimatter.material.Element.*;
 import static muramasa.antimatter.material.TextureSet.*;
 
 public class Materials {
+    //TODO add Zincite, chromium dioxide(mass multi=3), niobium nitride, nitro carbon, wollastonite, kyanite, chromite, pyrochlore, gypsum,
+    // dymethylamine, mirabilite, dolomite, borax, kaolinite, asbestos, glycerol, chlorobenzene, trona, Pollucite, Fullers Earth, alunite, mica, vermiculate, zeolite
+
 
     /**
      *** PSE (No Isotopes)
@@ -305,24 +308,24 @@ public class Materials {
     public static Material HSSG = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hssg", 0x999900, METALLIC));
     public static Material HSSS = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hsss", 0x660033, METALLIC));
     public static Material Invar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "invar", 0xb4b478, METALLIC));
-    public static Material IronMagnetic = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnetic_iron", 0xc8c8c8, MAGNETIC));
+    public static Material IronMagnetic = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnetic_iron", 0xc8c8c8, MAGNETIC)).setMassMultiplierAndDivider(51, 50);
     public static Material Kanthal = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "kanthal", 0xc2d2df, METALLIC));
     public static Material Magnalium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnalium", 0xc8beff, DULL));
     public static Material Naquadah = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "naquadah", 0x323232, METALLIC, Naq));
     public static Material NaquadahAlloy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "naquadah_alloy", 0x282828, METALLIC));
     public static Material Naquadria = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "naquadria", 0x1e1e1e, SHINY));
-    public static Material NeodymiumMagnetic = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnetic_neodymium", 0x646464, MAGNETIC));
+    public static Material NeodymiumMagnetic = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnetic_neodymium", 0x646464, MAGNETIC)).setMassMultiplierAndDivider(51, 50);
     public static Material Neutronium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "neutronium", 0xfafafa, DULL, Nt));
     public static Material Nichrome = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nichrome", 0xcdcef6, METALLIC));
     public static Material NickelZincFerrite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nickel_zinc_ferrite", 0x3c3c3c, ROUGH));
     public static Material NiobiumTitanium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "niobium_titanium", 0x1d1d29, DULL));
     public static Material Osmiridium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "osmiridium", 0x6464ff, METALLIC));
-    public static Material RedAlloy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_alloy", 0xc80000, DULL));
+    public static Material RedAlloy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_alloy", 0xc80000, DULL)).setMassMultiplierAndDivider(5, 1);
     public static Material RedSteel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_steel", 0x8c6464, METALLIC));
     public static Material RoseGold = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rose_gold", 0xffe61e, SHINY));
     public static Material SolderingAlloy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "soldering_alloy", 0xdcdce6, DULL));
-    public static Material Steel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steel", 0x808080, METALLIC));
-    public static Material SteelMagnetic = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnetic_steel", 0x808080, MAGNETIC));
+    public static Material Steel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steel", 0x808080, METALLIC)).setMassMultiplierAndDivider(51, 50);
+    public static Material SteelMagnetic = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnetic_steel", 0x808080, MAGNETIC)).setMassMultiplierAndDivider(51, 50);
     public static Material SterlingSilver = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sterling_silver", 0xfadce1, SHINY));
     public static Material StainlessSteel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "stainless_steel", 0xc8c8dc, SHINY));
     public static Material TinAlloy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tin_alloy", 0x9fadbb, NONE));
@@ -356,7 +359,7 @@ public class Materials {
     public static Material CobaltOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cobalt_oxide", 0x668000, DULL));
     public static Material Concrete = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "concrete", 0x646464, ROUGH));
     public static Material CupricOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cupric_oxide", 0x0f0f0f, DULL));
-    public static Material DarkAsh = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dark_ash", 0x323232, DULL));
+    public static Material DarkAsh = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dark_ash", 0x323232, DULL)).setMassMultiplierAndDivider(2, 1);
     public static Material DialuminiumTrioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dialuminium_trioxide", 0xfaf6e6, FINE));
     public static Material Dibenzene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dibenzene", 0xfaf0c8, FINE));
     public static Material DibenzoylPeroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dibenzoyl_peroxide", 0xf7f5eb, FINE));
@@ -402,7 +405,7 @@ public class Materials {
     public static Material Bastnasite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "bastnasite", 0xc86e2d, FINE));
     public static Material Bentonite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "bentonite", 0xf5d7d2, ROUGH)); // TODO: Ore Gen
     public static Material BrownLimonite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "brown_limonite", 0xc86400, METALLIC));
-    public static Material Cassiterite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cassiterite", 0xdcdcdc, METALLIC));
+    public static Material Cassiterite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cassiterite", 0xdcdcdc, METALLIC)).setMassMultiplierAndDivider(3, 1);
     public static Material Chalcopyrite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chalcopyrite", 0xa07828, DULL));
     public static Material Cobaltite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cobaltite", 0x5050fa, METALLIC));
     public static Material Cooperite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cooperite", 0xffffc8, METALLIC));
@@ -411,7 +414,7 @@ public class Materials {
     public static Material Glauconite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glauconite", 0x82b43c, DULL)); // TODO: Ore Gen;
     public static Material Graphite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "graphite", 0x808080, DULL));
     public static Material Grossular = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "grossular", 0xc86400, ROUGH));
-    public static Material Ilmenite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ilmenite", 0x463732, METALLIC));
+    public static Material Ilmenite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ilmenite", 0x463732, METALLIC)).setMassMultiplierAndDivider(2, 1);
     public static Material Lepidolite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lepidolite", 0xf0328c, FINE)); // TODO: Ore Gen;
     public static Material Magnesite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesite", 0xfafab4, METALLIC));
     public static Material Magnetite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnetite", 0x1e1e1e, METALLIC));
@@ -425,7 +428,7 @@ public class Materials {
     // public static Material Pyrochlore = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pyrochlore", 0x2b1100,METALLIC));
     public static Material Pyrolusite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pyrolusite", 0x9696aa, DULL));
     public static Material Pyrope = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pyrope", 0x783264, METALLIC));
-    public static Material Rutile = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rutile", 0xd40d5c, GEM_H));
+    public static Material Rutile = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rutile", 0xd40d5c, GEM_H)).setMassMultiplierAndDivider(2, 1);
     public static Material Saltpeter = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "saltpeter", 0xe6e6e6, FINE));
     public static Material Scheelite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "scheelite", 0xc88c14, DULL));
     public static Material Soapstone = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "soapstone", 0x5f915f, DULL)); // TODO: Ore Gen;
