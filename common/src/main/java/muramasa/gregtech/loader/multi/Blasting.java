@@ -10,6 +10,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
+import static muramasa.antimatter.data.AntimatterMaterials.Copper;
+import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -78,13 +80,15 @@ public class Blasting {
         addCalciteRecipe(Magnetite, 11, new ItemStack(Items.IRON_INGOT, 3));
         addCalciteRecipe(Cassiterite, 5, INGOT.get(Tin, 1));
         addCalciteRecipe(Chalcopyrite, 6, new ItemStack(Items.COPPER_INGOT), new ItemStack(Items.IRON_INGOT));
-        addCalciteRecipe(Tetrahedrite, 12, new ItemStack(Items.COPPER_INGOT, 3), new ItemStack(Items.IRON_INGOT));
         addCalciteRecipe(Galena, 4, INGOT.get(Lead, 1), INGOT.get(Silver, 1));
         addCalciteRecipe(Garnierite, 3, INGOT.get(Nickel, 1));
         addCalciteRecipe(Cobaltite, 5, INGOT.get(Cobalt, 1));
         addCalciteRecipe(Pyrite, 4, new ItemStack(Items.IRON_INGOT));
+        addCalciteRecipe(Stibnite, 4, INGOT.get(Antimony, 1));
+        addCalciteRecipe(Tetrahedrite, 12, INGOT.get(Copper, 3), INGOT.get(Antimony, 1), INGOT.get(Iron, 1));
+        addCalciteRecipe(Malachite, 15, INGOT.get(Copper, 2));
         /* Annealed Copper*/
-        BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(AntimatterMaterials.Copper, 1))
+        BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Copper, 1))
                 .fi(Oxygen.getGas(1000))
                 .io(INGOT.get(AnnealedCopper))
                 .add("annealed_copper_ingot", 25 * 20, 120);
@@ -173,10 +177,9 @@ public class Blasting {
                 .io(INGOT_HOT.get(HSSS, 9))
                 .add("hsss_ingot", 810 * 20, 120);
         //TODO figure out proper nuclear
-        if (true) return;
 
         //Nuclear Processing
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium227Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium227,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium227_ingot",40*20, 480);
+        /*BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium227Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium227,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium227_ingot",40*20, 480);
         BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium228Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium228,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium228_ingot",40*20, 480);
         BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium229Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium229,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium229_ingot",40*20, 480);
         BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium230Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium230,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium230_ingot",40*20, 480);
@@ -192,7 +195,7 @@ public class Blasting {
         BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium237Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium237,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium237_ingot",40*20, 480);
         BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium238Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium238,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium238_ingot",40*20, 480);
         BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium239Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium239,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium239_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium240Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium240,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium240_ingot",40*20, 480);
+        BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium240Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium240,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium240_ingot",40*20, 480);*/
 
 
     }
