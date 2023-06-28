@@ -1,28 +1,17 @@
 package muramasa.gregtech.loader.machines;
 
-import me.jellysquid.mods.sodium.client.model.light.data.LightDataAccess;
-import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.item.ItemBattery;
+
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.gregtech.data.GregTechData;
-import muramasa.antimatter.material.Material;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.TntBlock;
-import net.minecraftforge.fluids.FluidStack;
-import org.lwjgl.system.CallbackI;
-
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
-import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
+import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_REACTING;
+import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 public class ChemicalReactorLoader {
 
