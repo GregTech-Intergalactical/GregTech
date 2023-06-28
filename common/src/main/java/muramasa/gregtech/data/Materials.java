@@ -320,7 +320,7 @@ public class Materials {
     public static Material NickelZincFerrite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nickel_zinc_ferrite", 0x3c3c3c, ROUGH));
     public static Material NiobiumTitanium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "niobium_titanium", 0x1d1d29, DULL));
     public static Material Osmiridium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "osmiridium", 0x6464ff, METALLIC));
-    public static Material RedAlloy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_alloy", 0xc80000, DULL)).setMassMultiplierAndDivider(5, 1);
+    public static Material RedAlloy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_alloy", 0xc80000, DULL)).setMassMultiplierAndDivider(5, 4);
     public static Material RedSteel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_steel", 0x8c6464, METALLIC));
     public static Material RoseGold = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rose_gold", 0xffe61e, SHINY));
     public static Material SolderingAlloy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "soldering_alloy", 0xdcdce6, DULL));
