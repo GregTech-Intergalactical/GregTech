@@ -962,6 +962,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Iron).addByProduct(Nickel, Tin);
         event.setMaterial(Lapis).addByProduct(Calcite, Pyrite);
         event.setMaterial(Lead).addByProduct(Silver, Sulfur);
+        event.setMaterial(Lepidolite).addByProduct(Lithium, Caesium, Boron);
         event.setMaterial(Lignite).addByProduct(Coal);
         event.setMaterial(Lithium).addByProduct(Dilithium);
         event.setMaterial(Magnesite).addByProduct(Magnesium);
