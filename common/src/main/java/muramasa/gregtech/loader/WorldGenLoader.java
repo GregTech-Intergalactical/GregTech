@@ -83,23 +83,23 @@ public class WorldGenLoader {
 
       ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite").withStone(GRANITE_BLACK).withWeight(2).buildVein());
       ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite_ores").withStone(GRANITE_BLACK).withWeight(1).addOres(
-              new StoneLayerOre(Cooperite, U32, -64, -32),
-              new StoneLayerOre(Iridium, U64, -64, -46)
+              new StoneLayerOre(Cooperite, O32, -64, -32),
+              new StoneLayerOre(Iridium, O64, -64, -46)
       ).buildVein());
 
       ev.stoneLayer(new WorldGenStoneLayerBuilder("red_granite").withStone(GRANITE_RED).withWeight(2).buildVein());
       ev.stoneLayer(new WorldGenStoneLayerBuilder("red_granite_ores").withStone(GRANITE_RED).withWeight(1).addOres(
-              new StoneLayerOre(Pitchblende, U32, -32, 0),
-              new StoneLayerOre(Uraninite, U32, -32, 0),
-              new StoneLayerOre(Tantalite, U16, -32, 0)
+              new StoneLayerOre(Pitchblende, O32, -32, 0),
+              new StoneLayerOre(Uraninite, O32, -32, 0),
+              new StoneLayerOre(Tantalite, O16, -32, 0)
       ).buildVein());
 
       ev.stoneLayer(new WorldGenStoneLayerBuilder("komatiite").withStone(KOMATIITE).withWeight(4).buildVein());
       ev.stoneLayer(new WorldGenStoneLayerBuilder("komatiite_ores").withStone(KOMATIITE).withWeight(1).addOres(
-              new StoneLayerOre(Magnesite, U16, -54, -9),
-              new StoneLayerOre(Cinnabar, U12, -64, -19),
-              new StoneLayerOre(Redstone, U8, -54, -9),
-              new StoneLayerOre(Pyrite, U12, 5, 66)
+              new StoneLayerOre(Magnesite, O16, -54, -9),
+              new StoneLayerOre(Cinnabar, O12, -64, -19),
+              new StoneLayerOre(Redstone, O8, -54, -9),
+              new StoneLayerOre(Pyrite, O12, 5, 66)
       ).buildVein());
 
       ev.stoneLayer(new WorldGenStoneLayerBuilder("basalt").withStone(BASALT).withWeight(3).buildVein());
@@ -146,11 +146,11 @@ public class WorldGenLoader {
       ev.stoneLayer(new WorldGenStoneLayerBuilder("salt").withStone(ORE_STONE.get().get(Salt).asState()).withWeight(1).buildVein());
       ev.stoneLayer(new WorldGenStoneLayerBuilder("rock_salt").withStone(ORE_STONE.get().get(RockSalt).asState()).withWeight(1).buildVein());
       ev.stoneLayer(new WorldGenStoneLayerBuilder("bauxite").withStone(ORE_STONE.get().get(Bauxite).asState()).withWeight(1).buildVein());
-      ev.stoneLayer(new WorldGenStoneLayerBuilder("oil_shale").withStone(ORE_STONE.get().get(OilShale).asState()).withWeight(1).buildVein());
+      ev.stoneLayer(new WorldGenStoneLayerBuilder("oinanl_shale").withStone(ORE_STONE.get().get(OilShale).asState()).withWeight(1).buildVein());
 
       ev.addCollision(BASALT.getState(), GregTechData.LIMESTONE.getState(),
-              new StoneLayerOre(Ilmenite, U8, -64, 0),
-              new StoneLayerOre(Rutile, U12, -64, 0)
+              new StoneLayerOre(Ilmenite, O8, -64, 0),
+              new StoneLayerOre(Rutile, O12, -64, 0)
       );
 
   }
