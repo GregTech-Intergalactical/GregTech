@@ -52,7 +52,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Titanium).asMetal(1941, 1940, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, ROTOR).asOre();
         event.setMaterial(Vanadium).asMetal(2183, 2183);
         event.setMaterial(Chrome).asMetal(2180, 1700, SCREW, BOLT, RING, PLATE, ROTOR); //aka Chromium
-        event.setMaterial(Manganese).asMetal(1519, 0).asOre();
+        event.setMaterial(Manganese).asMetal(1519, FOIL).asOre();
         //Iron, added by vanilla
         event.setMaterial(Cobalt).asMetal(1768, 0).asOre();
         event.setMaterial(Nickel).asMetal(1728, 0, PLATE).asOre().harvestLevel(2).asPlasma();
