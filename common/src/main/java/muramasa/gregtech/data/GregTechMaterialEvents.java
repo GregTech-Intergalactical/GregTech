@@ -58,8 +58,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Nickel).asMetal(1728, 0, PLATE).asOre().harvestLevel(2).asPlasma();
         //Copper, by vanilla
         event.setMaterial(Zinc).asMetal(692, 0, PLATE, FOIL).asOre();
-        event.setMaterial(Gallium).asMetal(302, 0);
-        event.setMaterial(Germanium).asMetal(1211,1211);
+        event.setMaterial(Gallium).asMetal(302);
+        event.setMaterial(Germanium).asMetal(1211);
         event.setMaterial(Arsenic).asMetal(1090, 1090);
         event.setMaterial(Selenium).asMetal(494, 0);
         //Bromine, not added
@@ -78,7 +78,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Cadmium).asDust(594);
         event.setMaterial(Indium).asSolid(429, 0);
         event.setMaterial(Tin).asMetal(505, 505, PLATE, ROD, SCREW, BOLT, RING, GEAR, FOIL, WIRE_FINE, FRAME, ROTOR).asOre().harvestLevel(1);
-        event.setMaterial(Antimony).asMetal(1449, 1449);
+        event.setMaterial(Antimony).asMetal(1449);
         event.setMaterial(Tellurium).asMetal(723,0);
         event.setMaterial(Iodine).asSolid(387,0);
         event.setMaterial(Xenon).asPlasma();
@@ -99,7 +99,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Thulium).asMetal(1818,1818);
         event.setMaterial(Ytterbium).asMetal(1097,1097);
         event.setMaterial(Lutetium).asMetal(1925, 1925);
-        event.setMaterial(Hafnium).asMetal(2506,2506);
+        event.setMaterial(Hafnium).asMetal(2506);
         event.setMaterial(Tantalum).asSolid(3290, 0);
         event.setMaterial(Tungsten).asMetal(3695, 3000, FOIL);
         event.setMaterial(Rhenium).asMetal(3459,3459);
@@ -117,9 +117,9 @@ public class GregTechMaterialEvents {
         event.setMaterial(Francium).asMetal(298, 0);
         event.setMaterial(Radium).asMetal(973, 0);
         event.setMaterial(Actinium).asMetal(1323, 0);
-        event.setMaterial(Thorium).asMetal(2115, 0, PLATE_DENSE).asOre();
+        event.setMaterial(Thorium).asMetal(2115, PLATE_DENSE).asOre();
         event.setMaterial(Protactinium).asMetal(1841, 0);
-        event.setMaterial(Uranium).asMetal(1405, 0).asOre().harvestLevel(2);
+        event.setMaterial(Uranium).asMetal(1405).asOre().harvestLevel(2);
         event.setMaterial(Neptunium).asMetal(912, 0);
         event.setMaterial(Plutonium).asMetal(912, 0);
         event.setMaterial(Americium).asMetal(1149, 0);
@@ -174,7 +174,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SteelMagnetic).asMetal(1000, 1000, ROD).mats(of(Steel, 1));
         event.setMaterial(SterlingSilver).asMetal(1700).mats(of(Copper, 1, Silver, 4));
         event.setMaterial(StainlessSteel).asMetal(1700, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).mats(of(Iron, 6, Chrome, 1, Manganese, 1, Nickel, 1));
-        event.setMaterial(TinAlloy).asMetal(1158,1158).mats(of(Tin, 1, Iron, 1));
+        event.setMaterial(TinAlloy).asMetal(1158).mats(of(Tin, 1, Iron, 1));
         event.setMaterial(Tritanium).asMetal(295, FRAME);
         event.setMaterial(TungstenCarbide).asMetal(2460, 2460).mats(of(Tungsten, 1, Carbon, 1));
         event.setMaterial(TungstenSteel).asMetal(3000, 3000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).mats(of(Steel, 1, Tungsten, 1));
