@@ -61,6 +61,7 @@ dependencies {
     modRuntimeOnly("io.github.feltmc:fluidhandler-extras:1.0.1")
     modImplementation("earth.terrarium:botarium-forge-1.18.2:${project.botarium_version}")
     modRuntimeOnly("io.github.trinsdar:networkapi-forge:${project.networkapi_version}")
+    modImplementation("com.teamresourceful.resourcefullib:resourcefullib-forge-1.18.2:${project.resourcefullib_version}")
     //JEI
     //modRuntimeOnly("mezz.jei:jei-${rootProject.minecraft_version}-forge:${rootProject.jei_version}")
     modImplementation "me.shedaniel:RoughlyEnoughItems-forge:${rootProject.rei_version}"
