@@ -69,7 +69,7 @@ dependencies{
     modImplementation("com.github.FeltMC:forgeconfigapiport-fabric:c1486f80f7"){
         transitive = false
     }
-    modImplementation("com.github.Trinsdar.Botarium:botarium-fabric-1.18.2:${project.botarium_version}")
+    modImplementation("earth.terrarium:botarium-forge-1.18.2:${project.botarium_version}")
     modRuntimeOnly("io.github.trinsdar:networkapi-fabric:${project.networkapi_version}")
     modRuntimeOnly("dev.latvian.mods:kubejs-fabric:${rootProject.kubejs_version}")
     modImplementation("curse.maven:ctm-refabricated-633997:3834064")
