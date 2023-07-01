@@ -170,7 +170,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(RedSteel).asMetal(1300, 1300).mats(of(SterlingSilver, 1, BismuthBronze, 1, Steel, 2, BlackSteel, 4));
         event.setMaterial(RoseGold).asMetal(1600, WIRE_FINE).mats(of(Copper, 1, Gold, 4));
         event.setMaterial(SolderingAlloy).asMetal(400, 400, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Tin, 9, Antimony, 1));
-        event.setMaterial(Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING).mats(of(Iron, 50, Carbon, 1));
+        event.setMaterial(Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING).mats(of(Iron, 50, Carbon, 1), 50);
         event.setMaterial(SteelMagnetic).asMetal(1000, 1000, ROD).mats(of(Steel, 1));
         event.setMaterial(SterlingSilver).asMetal(1700).mats(of(Copper, 1, Silver, 4));
         event.setMaterial(StainlessSteel).asMetal(1700, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).mats(of(Iron, 6, Chrome, 1, Manganese, 1, Nickel, 1));
@@ -316,7 +316,7 @@ public class GregTechMaterialEvents {
          *  Regular
          **/
         event.setMaterial(Amber).asGem(false).asOre(3, 7, true);
-        event.setMaterial(Amethyst).asGem(false).asOre(3, 7, true).mats(of(SiliconDioxide, 4, Iron, 1));
+        event.setMaterial(Amethyst).asGem(false).replaceItem(GEM_FLAWED, Items.AMETHYST_SHARD).asOre(3, 7, true).mats(of(SiliconDioxide, 4, Iron, 1));
         event.setMaterial(Sapphire).asGem(true).asOre(3, 7, true).mats(of(Aluminium, 2, Oxygen, 3));
         event.setMaterial(BlueTopaz).asGem(true).asOre(3, 7, true).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
         event.setMaterial(Glass).asDust(PLATE, LENS).mats(of(SiliconDioxide, 1));
