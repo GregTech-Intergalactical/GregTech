@@ -1,5 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
+import muramasa.gregtech.data.GregTechMaterialTags;
+
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
@@ -8,10 +10,9 @@ import static muramasa.gregtech.data.RecipeMaps.AUTOCLAVING;
 
 public class Autoclave {
     public static void init() {
-        GEM.all().forEach(g -> {
-            if(!g.has(DUST)) return;
+        GregTechMaterialTags.CRYSTALLIZE.all().stream().filter(m -> m.has(GEM) && m.has(DUST)).forEach(m -> {
             int dur;
-            long d = g.getDensity();
+            long d = m.getDensity();
             if(d <= 1000){
                 dur = 100;
             }else if(d <= 2000){
@@ -19,7 +20,7 @@ public class Autoclave {
             }else{
                 dur = 400;
             }
-            AUTOCLAVING.RB().ii(of(DUST.get(g))).fi(Water.getLiquid(200)).io(GEM.get(g)).add(g.getId(), dur,8);
+            AUTOCLAVING.RB().ii(DUST.getMaterialIngredient(m, 1)).fi(Water.getLiquid(200)).io(GEM.get(m, 1)).add(m.getId(), dur,8);
         });
     }
 }
