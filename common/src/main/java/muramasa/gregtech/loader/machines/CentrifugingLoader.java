@@ -81,6 +81,7 @@ public class CentrifugingLoader {
         addMethaneRecipe(COOKED_PORKCHOP, 36, 288);
         addMethaneRecipe(ROTTEN_FLESH, 36, 288);
         addMethaneRecipe(CARROT, 36, 288);
+        addMethaneRecipe(BEETROOT, 36, 288);
         addMethaneRecipe(COOKED_SALMON, 36, 288);
         addMethaneRecipe(COOKED_COD, 36, 288);
         addMethaneRecipe(COOKED_CHICKEN, 36, 288);
