@@ -1030,13 +1030,18 @@ public class GregTechMaterialEvents {
         BRITTLEG.add(Coal, Charcoal, Lignite);
         CALCITE2X.add(Pyrite, YellowLimonite);
         CALCITE3X.add(Iron, BrownLimonite);
-        CENT.add(NobleGases, Air, BrownLimonite, Cinnabar, Cooperite, Stibnite,
-                Tetrahedrite, Uraninite, Wulfenite, YellowLimonite, Blaze, Flint, Marble, BlackGranite,
-                VanadiumMagnetite, Pitchblende, Glass, Lapis, EnderEye, Phosphorus, Redstone, Basalt, AnnealedCopper,
-                BatteryAlloy, Brass, Bronze, Cupronickel, Electrum, Invar, Kanthal, Magnalium, Nichrome,
-                NiobiumTitanium, SolderingAlloy, VanadiumGallium, WroughtIron, SterlingSilver, RoseGold, BismuthBronze,
-                TungstenSteel, RedAlloy, CobaltBrass, TungstenCarbide, VanadiumSteel, HSSG, HSSE, HSSS,
-                GalliumArsenide, IndiumGalliumPhosphide, BorosilicateGlass, Powellite);
+        CENT5.add(FiberReinforcedEpoxyResin, /*Chrysolite*/ Flint, /*Niter*/ Glass, /*Perlite*/ WroughtIron, DarkAsh, AnnealedCopper, NobleGases,
+                Cinnabar, Uraninite, Air);
+        CENT10.add(Magnalium, VanadiumMagnetite, BrownLimonite, YellowLimonite, BlackGranite, Cupronickel, NiobiumTitanium, BorosilicateGlass,
+                GalliumArsenide, Marble, Limestone, Invar, TinAlloy, TungstenCarbide, EnderEye, Powellite, VanadiumGallium, Blaze,
+                TungstenSteel, Brass, Nichrome, Electrum, Bronze, Stibnite, Wulfenite, RedAlloy, SterlingSilver, RoseGold, BatteryAlloy, SolderingAlloy);
+        CENT15.add(Kanthal, IndiumGalliumPhosphide, BlackSteel, RedGarnet, YellowGarnet, BismuthBronze, BlackBronze, VanadiumSteel, CobaltBrass,
+                Pitchblende, Redstone, HSSS);
+        CENT20.add(Lapis, Tetrahedrite, RedSteel, BlueSteel, Basalt, HSSE, Cooperite, HSSG);
+        CENT.add(CENT5.all().toArray(new Material[0]));
+        CENT.add(CENT10.all().toArray(new Material[0]));
+        CENT.add(CENT15.all().toArray(new Material[0]));
+        CENT.add(CENT20.all().toArray(new Material[0]));
         CHEMBATH_MERCURY.add(Chalcopyrite, Gold);
         CHEMBATH_MERCURY.add(Gold,Nickel);
         CHEMBATH_MERCURY.add(Osmium,Iridium);
