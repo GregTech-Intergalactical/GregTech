@@ -13,9 +13,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
+import static muramasa.antimatter.data.AntimatterMaterials.Diamond;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
-import static muramasa.gregtech.data.GregTechData.CompressedFireClay;
-import static muramasa.gregtech.data.GregTechData.PlantBall;
+import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.Fireclay;
 import static muramasa.gregtech.data.RecipeMaps.COMPRESSING;
 
@@ -57,5 +58,7 @@ public class CompressorLoader {
         COMPRESSING.RB().ii(RecipeIngredient.of(Items.MELON, 4)).io(new ItemStack(PlantBall)).add("plantball_19",300, 2);
         COMPRESSING.RB().ii(RecipeIngredient.of(Items.MELON_SLICE, 8)).io(new ItemStack(PlantBall)).add("plantball_20",300, 2);
         COMPRESSING.RB().ii(RecipeIngredient.of(Items.SUGAR_CANE, 8)).io(new ItemStack(PlantBall)).add("plantball_21",300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(CoalBall)).io(CompressedCoalBall).add("compressed_coal_ball", 300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(CoalChunk)).io(GEM.get(Diamond)).add("diamond_from_coal", 300, 2);
     }
 }

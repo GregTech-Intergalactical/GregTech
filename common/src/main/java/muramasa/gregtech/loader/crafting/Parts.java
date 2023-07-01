@@ -15,7 +15,9 @@ import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
+import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechTags;
+import muramasa.gregtech.loader.machines.CompressorLoader;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -54,6 +56,12 @@ public class Parts {
         CircuitBasicElectronic.getDefaultInstance(), ing);
     // });
 
+      provider.shapeless(output, GTIRef.ID, "", "carbon", "has_carbon_fibre", provider.hasSafeItem(CarbonFibre), DUST.get(FiberReinforcedEpoxyResin, 1), CarbonFibre, DUST.getMaterialTag(EpoxyResin));
+      provider.shapeless(output, GTIRef.ID, "", "carbon", "has_carbon_fibre", provider.hasSafeItem(CarbonFibre), new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
+      provider.addItemRecipe(output, GTIRef.ID, "", "carbon", "has_coal", provider.hasSafeItem(DUST.getMaterialTag(Coal)), CoalBall,
+              of('F', Items.FLINT, 'C', DUST.getMaterialTag(Coal)), "CCC", "CFC", "CCC");
+      provider.addItemRecipe(output, GTIRef.ID, "", "carbon", "has_coal", provider.hasSafeItem(DUST.getMaterialTag(Coal)), CoalChunk,
+              of('F', Items.OBSIDIAN, 'C', CompressedCoalBall), "CCC", "CFC", "CCC");
       provider.addItemRecipe(output, GTIRef.ID, "","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullSmall, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, LV, false)
