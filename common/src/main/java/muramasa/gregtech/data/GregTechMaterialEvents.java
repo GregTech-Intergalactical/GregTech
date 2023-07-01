@@ -268,7 +268,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Cobaltite).asOre().harvestLevel(2).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
         event.setMaterial(Cooperite).asOre().harvestLevel(1).mats(of(Platinum, 3, Nickel, 1, Sulfur, 1, Palladium, 1));
         event.setMaterial(Galena).asOre().harvestLevel(3).mats(of(Lead, 3, Silver, 3, Sulfur, 2));
-        event.setMaterial(Garnierite).asOre().harvestLevel(3).mats(of(Nickel, 1, Oxygen, 1));
+        event.setMaterial(Garnierite).asOre().harvestLevel(3).mats(of(Nickel, 1, Oxygen, 1), 1);
         event.setMaterial(Glauconite).asOre().harvestLevel(2).mats(of(Potassium, 1, Magnesium, 2, Aluminium, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Gen;
         event.setMaterial(Graphite).asDust().asOre().harvestLevel(2);
         event.setMaterial(Grossular).asOre().harvestLevel(1).mats(of(Calcium, 3, Aluminium, 2, Silicon, 3, Oxygen, 12));
