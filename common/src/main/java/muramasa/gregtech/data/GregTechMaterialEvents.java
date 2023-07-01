@@ -194,7 +194,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(AntimonyTrioxide).asDust().mats(of(Antimony, 2, Oxygen, 3));
         event.setMaterial(Clay).asDust().mats(of(Sodium, 2, Lithium, 1, Aluminium, 2, Silicon, 2, Water, 6));
         event.setMaterial(CupricOxide).asDust().mats(of(Copper, 1, Oxygen, 1));
-        event.setMaterial(DarkAsh).asDust();
+        event.setMaterial(DarkAsh).asDust().mats(of(Carbon, 1, Ash, 1), 1);
         event.setMaterial(Dibenzene).asDust().mats(of(Carbon,12,Hydrogen,10));
         event.setMaterial(DibenzoylPeroxide).asDust().mats(of(Carbon,14,Hydrogen,10,Oxygen,4));
         event.setMaterial(GelledToluene).asDust();
