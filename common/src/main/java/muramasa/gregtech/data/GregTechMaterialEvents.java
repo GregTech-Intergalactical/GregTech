@@ -2,6 +2,7 @@ package muramasa.gregtech.data;
 
 import io.github.gregtechintergalactical.gtutility.GTUtilityData;
 import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
@@ -137,53 +138,53 @@ public class GregTechMaterialEvents {
         /**
          **  Metals
          **/
-        event.setMaterial(AnnealedCopper).asMetal(1357, PLATE, FOIL, ROD, WIRE_FINE, SCREW).mats(of(Copper, 1));
-        event.setMaterial(BatteryAlloy).asMetal(295, PLATE).mats(of(Lead, 4, Antimony, 1));
-        event.setMaterial(BismuthBronze).asMetal(1100, 900, PLATE).mats(of(Bismuth, 1, Zinc, 1, Copper, 3));
-        event.setMaterial(BlackBronze).asMetal(2000).mats(of(Gold, 1, Silver, 1, Copper, 3));
-        event.setMaterial(BlackSteel).asMetal(1200, 1200, FRAME, PLATE).mats(of(Nickel, 1, BlackBronze, 1, Steel, 3));
-        event.setMaterial(BlueSteel).asMetal(1400, 1400, FRAME).mats(of(RoseGold, 1, Brass, 1, Steel, 2, BlackSteel, 4));
-        event.setMaterial(Brass).asMetal(1170, FRAME, ROD, PLATE).mats(of(Zinc, 1, Copper, 3));
-        event.setMaterial(Bronze).asMetal(1125, GEAR, FRAME, ROTOR).mats(of(Tin, 1, Copper, 3));
-        event.setMaterial(CobaltBrass).asMetal(1500, GEAR).mats(of(Brass, 7, Aluminium, 1, Cobalt, 1));
-        event.setMaterial(Cupronickel).asMetal(1728, PLATE).mats(of(Copper, 1, Nickel, 1));
+        event.setMaterial(AnnealedCopper).asMetal(1357, PLATE, FOIL, ROD, WIRE_FINE, SCREW);
+        event.setMaterial(BatteryAlloy).asMetal(295, PLATE);
+        event.setMaterial(BismuthBronze).asMetal(1100, 900, PLATE);
+        event.setMaterial(BlackBronze).asMetal(2000);
+        event.setMaterial(BlackSteel).asMetal(1200, 1200, FRAME, PLATE);
+        event.setMaterial(BlueSteel).asMetal(1400, 1400, FRAME);
+        event.setMaterial(Brass).asMetal(1170, FRAME, ROD, PLATE);
+        event.setMaterial(Bronze).asMetal(1125, GEAR, FRAME, ROTOR);
+        event.setMaterial(CobaltBrass).asMetal(1500, GEAR);
+        event.setMaterial(Cupronickel).asMetal(1728, PLATE);
         event.setMaterial(Duranium).asMetal(295);
-        event.setMaterial(Electrum).asMetal(1330, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Silver, 1, Gold, 1));
+        event.setMaterial(Electrum).asMetal(1330, PLATE, FOIL, ROD, WIRE_FINE);
         event.setMaterial(EnrichedNaquadah).asMetal(4500, 4500);
-        event.setMaterial(HSSE).asMetal(5400, 5400, GEAR, FRAME).mats(of(HSSG, 6, Cobalt, 1, Manganese, 1, Silicon, 1));
-        event.setMaterial(HSSG).asMetal(4500, 4500, GEAR, FRAME).mats(of(TungstenSteel, 5, Chrome, 1, Molybdenum, 2, Vanadium, 1));
-        event.setMaterial(HSSS).asMetal(5400, 5400).mats(of(HSSG, 6, Iridium, 2, Osmium, 1));
-        event.setMaterial(Invar).asMetal(1700, FRAME).mats(of(Iron, 2, Nickel, 1));
-        event.setMaterial(IronMagnetic).asMetal(1811, ROD).mats(of(Iron, 1));
-        event.setMaterial(Kanthal).asMetal(1800, 1800).mats(of(Iron, 1, Aluminium, 1, Chrome, 1));
-        event.setMaterial(Magnalium).asMetal(870, 0, PLATE).mats(of(Magnesium, 1, Aluminium, 2));
-        event.setMaterial(NeodymiumMagnetic).asMetal(1297, 1297, ROD).mats(of(Neodymium, 1));
+        event.setMaterial(HSSE).asMetal(5400, 5400, GEAR, FRAME);
+        event.setMaterial(HSSG).asMetal(4500, 4500, GEAR, FRAME);
+        event.setMaterial(HSSS).asMetal(5400, 5400);
+        event.setMaterial(Invar).asMetal(1700, FRAME);
+        event.setMaterial(IronMagnetic).asMetal(1811, ROD);
+        event.setMaterial(Kanthal).asMetal(1800, 1800);
+        event.setMaterial(Magnalium).asMetal(870, 0, PLATE);
+        event.setMaterial(NeodymiumMagnetic).asMetal(1297, 1297, ROD);
         event.setMaterial(Neutronium).asMetal(10000, 10000, SCREW, BOLT, RING, GEAR, FRAME);
         event.setMaterial(Naquadah).asMetal(5400, 5400).asOre();
         event.setMaterial(NaquadahAlloy).asMetal(7200, 7200);
         event.setMaterial(Naquadria).asMetal(9000, 9000);
-        event.setMaterial(Nichrome).asMetal(2700, 2700).mats(of(Nickel, 4, Chrome, 1));
-        event.setMaterial(NickelZincFerrite).asMetal(1500, 1500).mats(of(Nickel, 1, Zinc, 1, Iron, 4, Oxygen, 8));
-        event.setMaterial(NiobiumTitanium).asMetal(4500, 4500, PLATE, FOIL, ROD, WIRE_FINE, GEAR).mats(of(Nickel, 4, Chrome, 1));
-        event.setMaterial(Osmiridium).asMetal(3333, 2500, FRAME).mats(of(Iridium, 3, Osmium, 1));
-        event.setMaterial(RedAlloy).asMetal(295, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Copper, 1, Redstone, 4));
-        event.setMaterial(RedSteel).asMetal(1300, 1300).mats(of(SterlingSilver, 1, BismuthBronze, 1, Steel, 2, BlackSteel, 4));
-        event.setMaterial(RoseGold).asMetal(1600, WIRE_FINE).mats(of(Copper, 1, Gold, 4));
-        event.setMaterial(SolderingAlloy).asMetal(400, 400, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Tin, 9, Antimony, 1));
-        event.setMaterial(Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING).mats(of(Iron, 50, Carbon, 1), 50);
-        event.setMaterial(SteelMagnetic).asMetal(1000, 1000, ROD).mats(of(Steel, 1));
-        event.setMaterial(SterlingSilver).asMetal(1700).mats(of(Copper, 1, Silver, 4));
-        event.setMaterial(StainlessSteel).asMetal(1700, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).mats(of(Iron, 6, Chrome, 1, Manganese, 1, Nickel, 1));
-        event.setMaterial(TinAlloy).asMetal(1158).mats(of(Tin, 1, Iron, 1));
+        event.setMaterial(Nichrome).asMetal(2700, 2700);
+        event.setMaterial(NickelZincFerrite).asMetal(1500, 1500);
+        event.setMaterial(NiobiumTitanium).asMetal(4500, 4500, PLATE, FOIL, ROD, WIRE_FINE, GEAR);
+        event.setMaterial(Osmiridium).asMetal(3333, 2500, FRAME);
+        event.setMaterial(RedAlloy).asMetal(295, PLATE, FOIL, ROD, WIRE_FINE);
+        event.setMaterial(RedSteel).asMetal(1300, 1300);
+        event.setMaterial(RoseGold).asMetal(1600, WIRE_FINE);
+        event.setMaterial(SolderingAlloy).asMetal(400, 400, PLATE, FOIL, ROD, WIRE_FINE);
+        event.setMaterial(Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING);
+        event.setMaterial(SteelMagnetic).asMetal(1000, 1000, ROD);
+        event.setMaterial(SterlingSilver).asMetal(1700);
+        event.setMaterial(StainlessSteel).asMetal(1700, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL);
+        event.setMaterial(TinAlloy).asMetal(1158);
         event.setMaterial(Tritanium).asMetal(295, FRAME);
-        event.setMaterial(TungstenCarbide).asMetal(2460, 2460).mats(of(Tungsten, 1, Carbon, 1));
-        event.setMaterial(TungstenSteel).asMetal(3000, 3000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).mats(of(Steel, 1, Tungsten, 1));
-        event.setMaterial(Ultimet).asMetal(2700, 2700, PLATE).mats(of(Cobalt, 5, Chrome, 2, Nickel, 1, Molybdenum, 1));
-        event.setMaterial(VanadiumGallium).asMetal(4500, 4500, ROD, PLATE).mats(of(Vanadium, 3, Gallium, 1));
-        event.setMaterial(VanadiumSteel).asMetal(1453, 1453).mats(of(Vanadium, 1, Chrome, 1, Steel, 7));
+        event.setMaterial(TungstenCarbide).asMetal(2460, 2460);
+        event.setMaterial(TungstenSteel).asMetal(3000, 3000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL);
+        event.setMaterial(Ultimet).asMetal(2700, 2700, PLATE);
+        event.setMaterial(VanadiumGallium).asMetal(4500, 4500, ROD, PLATE);
+        event.setMaterial(VanadiumSteel).asMetal(1453, 1453);
         event.setMaterial(Vibranium).asMetal(295, FRAME);
-        event.setMaterial(WroughtIron).asMetal(1811, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL).mats(of(Iron, 1));
-        event.setMaterial(YttriumBariumCuprate).asMetal(4500, 4500, PLATE, FOIL, ROD, WIRE_FINE).mats(of(Yttrium, 1, Barium, 2, Copper, 3, Oxygen, 7));
+        event.setMaterial(WroughtIron).asMetal(1811, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL);
+        event.setMaterial(YttriumBariumCuprate).asMetal(4500, 4500, PLATE, FOIL, ROD, WIRE_FINE);
         /**
          **  Dusts
          **/
@@ -191,124 +192,124 @@ public class GregTechMaterialEvents {
          *  Organic
          **/
         event.setMaterial(Ash).asDust();
-        event.setMaterial(AntimonyTrioxide).asDust().mats(of(Antimony, 2, Oxygen, 3));
-        event.setMaterial(Clay).asDust().mats(of(Sodium, 2, Lithium, 1, Aluminium, 2, Silicon, 2, Water, 6));
-        event.setMaterial(CupricOxide).asDust().mats(of(Copper, 1, Oxygen, 1));
-        event.setMaterial(DarkAsh).asDust().mats(of(Carbon, 1, Ash, 1), 1);
-        event.setMaterial(Dibenzene).asDust().mats(of(Carbon,12,Hydrogen,10));
-        event.setMaterial(DibenzoylPeroxide).asDust().mats(of(Carbon,14,Hydrogen,10,Oxygen,4));
+        event.setMaterial(AntimonyTrioxide).asDust();
+        event.setMaterial(Clay).asDust();
+        event.setMaterial(CupricOxide).asDust();
+        event.setMaterial(DarkAsh).asDust();
+        event.setMaterial(Dibenzene).asDust();
+        event.setMaterial(DibenzoylPeroxide).asDust();
         event.setMaterial(GelledToluene).asDust();
         event.setMaterial(Graphene).asDust(PLATE);
-        event.setMaterial(Polydimethylsiloxane).asDust().mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
+        event.setMaterial(Polydimethylsiloxane).asDust();
         event.setMaterial(RareEarth).asDust();
-        event.setMaterial(RawRubber).asDust().mats(of(Carbon, 5, Hydrogen, 8));
-        event.setMaterial(RawStyreneButadieneRubber).asDust().mats(of(Styrene, 1, Butadiene, 3));
-        event.setMaterial(SodaAsh).asDust().mats(of(Sodium, 2, Carbon, 1, Oxygen, 3));
-        event.setMaterial(Wood).asDust(GEAR).mats(of(Carbon, 1, Oxygen, 1, Hydrogen, 1));
+        event.setMaterial(RawRubber).asDust();
+        event.setMaterial(RawStyreneButadieneRubber).asDust();
+        event.setMaterial(SodaAsh).asDust();
+        event.setMaterial(Wood).asDust(GEAR);
         /**
          *  Inorganic
          **/
-        event.setMaterial(AluminiumTrichloride).asDust().mats(of(Aluminium,1,Chlorine,3));
-        event.setMaterial(Aluminosilicate).asDust().mats(of(Aluminium, 2, Silicon, 1, Oxygen, 5));
-        event.setMaterial(AmmoniumChloride).asDust().mats(of(Nitrogen,1, Hydrogen,4,Chlorine,1));
-        event.setMaterial(ArsenicTrioxide).asDust().mats(of(Arsenic, 2, Oxygen, 3));
-        event.setMaterial(Biotite).asDust().mats(b -> b.put(Potassium, 1).put(Magnesium, 3).put(Aluminium, 3).put(Fluorine, 2).put(Silicon, 3).put(Oxygen, 10));
-        event.setMaterial(BlackGranite).asDust(ROCK).mats(of(SiliconDioxide, 4, Biotite, 1));
+        event.setMaterial(AluminiumTrichloride).asDust();
+        event.setMaterial(Aluminosilicate).asDust();
+        event.setMaterial(AmmoniumChloride).asDust();
+        event.setMaterial(ArsenicTrioxide).asDust();
+        event.setMaterial(Biotite).asDust();
+        event.setMaterial(BlackGranite).asDust(ROCK);
         event.setMaterial(BlueSchist).asDust(ROCK);
-        event.setMaterial(BorosilicateGlass).asDust().mats(of(Boron, 1, Silicon, 7, Oxygen,14));
-        event.setMaterial(Brick).asDust().mats(of(Aluminium, 4, Silicon, 3, Oxygen, 12));
-        event.setMaterial(CobaltOxide).asDust().mats(of(Cobalt, 1, Oxygen, 1));
-        event.setMaterial(Concrete).asDust(300).mats(of(Stone, 1)).asFluid();
-        event.setMaterial(DialuminiumTrioxide).asDust().mats(of(Aluminium,2,Oxygen,3));
-        event.setMaterial(Energium).asDust().mats(of(Redstone,5,Ruby,4));
-        event.setMaterial(FerriteMixture).asDust().mats(of(Nickel, 1, Zinc, 1, Iron, 4));
-        event.setMaterial(Ferrosilite).asDust().mats(of(Iron, 1, Silicon, 1, Oxygen, 3));
-        event.setMaterial(Fireclay).asDust().mats(of(Brick, 1));
+        event.setMaterial(BorosilicateGlass).asDust();
+        event.setMaterial(Brick).asDust();
+        event.setMaterial(CobaltOxide).asDust();
+        event.setMaterial(Concrete).asDust(300);
+        event.setMaterial(DialuminiumTrioxide).asDust();
+        event.setMaterial(Energium).asDust();
+        event.setMaterial(FerriteMixture).asDust();
+        event.setMaterial(Ferrosilite).asDust();
+        event.setMaterial(Fireclay).asDust();
         event.setMaterial(GreenSchist).asDust(ROCK);
-        event.setMaterial(IndiumGalliumPhosphide).asDust().mats(of(Indium, 1, Gallium, 1, Phosphor, 1));
-        event.setMaterial(IridiumSodiumOxide).asDust().mats(of(Iridium,1,Sodium,1,Oxygen,2));
+        event.setMaterial(IndiumGalliumPhosphide).asDust();
+        event.setMaterial(IridiumSodiumOxide).asDust();
         event.setMaterial(Kimberlite).asDust(ROCK);
-        event.setMaterial(Komatiite).asDust(ROCK).mats(of(Olivine, 1, /* MgCO3, 2, */Flint, 6, DarkAsh, 3));
-        event.setMaterial(Limestone).asDust(ROCK).mats(of(Calcite, 1));
-        event.setMaterial(Magnesia).asDust().mats(of(Magnesium, 1, Oxygen, 1));
-        event.setMaterial(MagnesiumChloride).asDust().mats(of(Magnesium, 1, Chlorine, 2));
-        event.setMaterial(Marble).asDust(ROCK).mats(of(Magnesium, 1, Calcite, 7));
-        event.setMaterial(Massicot).asDust().mats(of(Lead, 1, Oxygen, 1));
-        event.setMaterial(Obsidian).asDust().mats(of(Magnesium, 1, Iron, 1, Silicon, 2, Oxygen, 8));
+        event.setMaterial(Komatiite).asDust(ROCK);
+        event.setMaterial(Limestone).asDust(ROCK);
+        event.setMaterial(Magnesia).asDust();
+        event.setMaterial(MagnesiumChloride).asDust();
+        event.setMaterial(Marble).asDust(ROCK);
+        event.setMaterial(Massicot).asDust();
+        event.setMaterial(Obsidian).asDust();
         event.setMaterial(PlatinumGroupSludge).asDust();
-        event.setMaterial(PhosphorousPentoxide).asDust().mats(of(Phosphor, 4, Oxygen, 10));
-        event.setMaterial(Potash).asDust().mats(of(Potassium, 2, Oxygen, 1));
-        event.setMaterial(PotassiumFeldspar).asDust().mats(of(Potassium, 1, Aluminium, 1, Silicon, 3, Oxygen, 8));
-        event.setMaterial(Powellite).asOre(1, 5, true).harvestLevel(2).mats(of(Calcium, 1, Molybdenum, 1, Oxygen, 4));
+        event.setMaterial(PhosphorousPentoxide).asDust();
+        event.setMaterial(Potash).asDust();
+        event.setMaterial(PotassiumFeldspar).asDust();
+        event.setMaterial(Powellite).asOre(1, 5, true).harvestLevel(2);
         //event.setMaterial(Pyrochlore).asDust(ORE).addComposition(of(Calcium, 2, Niobium, 2, Oxygen, 7));
-        event.setMaterial(Quicklime).asDust().mats(of(Calcium, 1, Oxygen, 1));
-        event.setMaterial(ReactionCatalyst).asDust().mats(of(Copper,1,Zinc,1,Aluminium,2,Oxygen,4));
-        event.setMaterial(RedGranite).asDust(ROCK).mats(of(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3));
-        event.setMaterial(SiliconDioxide).asDust().mats(of(Silicon, 1, Oxygen, 2));
-        event.setMaterial(SodiumBisulfate).asDust().mats(of(Sodium, 1, Hydrogen, 1, Sulfur, 1, Oxygen, 4));
-        event.setMaterial(SodiumHydroxide).asDust().mats(of(Sodium, 1, Oxygen, 1, Hydrogen, 1));
-        event.setMaterial(SodiumSulfate).asDust().mats(of(Sodium, 2, Sulfur, 1, Oxygen, 4));
-        event.setMaterial(SodiumSulfide).asDust().mats(of(Sodium, 2, Sulfur, 1));
+        event.setMaterial(Quicklime).asDust();
+        event.setMaterial(ReactionCatalyst).asDust();
+        event.setMaterial(RedGranite).asDust(ROCK);
+        event.setMaterial(SiliconDioxide).asDust();
+        event.setMaterial(SodiumBisulfate).asDust();
+        event.setMaterial(SodiumHydroxide).asDust();
+        event.setMaterial(SodiumSulfate).asDust();
+        event.setMaterial(SodiumSulfide).asDust();
         //Nuclear
 
         /**
          **  Ores
          **/
-        event.setMaterial(Almandine).asOre().harvestLevel(1).mats(of(Aluminium, 2, Iron, 3, Silicon, 3, Oxygen, 12));
-        event.setMaterial(Andradite).asOre().mats(of(Calcium, 3, Iron, 2, Silicon, 3, Oxygen, 12));
-        event.setMaterial(BandedIron).asOre().harvestLevel(2).mats(of(Iron, 2, Oxygen, 3));
-        event.setMaterial(Bastnasite).asOre().harvestLevel(2).mats(of(Cerium, 1, Carbon, 1, Fluorine, 1, Oxygen, 3));
-        event.setMaterial(Barite).asOre().harvestLevel(2).mats(of(Barium, 1, Sulfur, 1, Oxygen, 4));
-        event.setMaterial(Bentonite).asOre().mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)); // TODO: Ore Gen
-        event.setMaterial(BrownLimonite).asOre().harvestLevel(1).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
-        event.setMaterial(Calcite).asOre().harvestLevel(1).mats(of(Calcium, 1, Carbon, 1, Oxygen, 3));
-        event.setMaterial(Cassiterite).asOre().harvestLevel(1).mats(of(Tin, 1, Oxygen, 2), 1);
-        event.setMaterial(Chalcopyrite).asOre().harvestLevel(1).mats(of(Copper, 1, Iron, 1, Sulfur, 2));
-        event.setMaterial(Cinnabar).asOre().harvestLevel(1).mats(of(Mercury, 1, Sulfur, 1));
-        event.setMaterial(Cobaltite).asOre().harvestLevel(2).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
-        event.setMaterial(Cooperite).asOre().harvestLevel(1).mats(of(Platinum, 3, Nickel, 1, Sulfur, 1, Palladium, 1));
-        event.setMaterial(Galena).asOre().harvestLevel(3).mats(of(Lead, 3, Silver, 3, Sulfur, 2));
-        event.setMaterial(Garnierite).asOre().harvestLevel(3).mats(of(Nickel, 1, Oxygen, 1), 1);
-        event.setMaterial(Glauconite).asOre().harvestLevel(2).mats(of(Potassium, 1, Magnesium, 2, Aluminium, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Gen;
+        event.setMaterial(Almandine).asOre().harvestLevel(1);
+        event.setMaterial(Andradite).asOre();
+        event.setMaterial(BandedIron).asOre().harvestLevel(2);
+        event.setMaterial(Bastnasite).asOre().harvestLevel(2);
+        event.setMaterial(Barite).asOre().harvestLevel(2);
+        event.setMaterial(Bentonite).asOre(); // TODO: Ore Gen
+        event.setMaterial(BrownLimonite).asOre().harvestLevel(1);
+        event.setMaterial(Calcite).asOre().harvestLevel(1);
+        event.setMaterial(Cassiterite).asOre().harvestLevel(1);
+        event.setMaterial(Chalcopyrite).asOre().harvestLevel(1);
+        event.setMaterial(Cinnabar).asOre().harvestLevel(1);
+        event.setMaterial(Cobaltite).asOre().harvestLevel(2);
+        event.setMaterial(Cooperite).asOre().harvestLevel(1);
+        event.setMaterial(Galena).asOre().harvestLevel(3);
+        event.setMaterial(Garnierite).asOre().harvestLevel(3);
+        event.setMaterial(Glauconite).asOre().harvestLevel(2); // TODO: Ore Gen;
         event.setMaterial(Graphite).asDust().asOre().harvestLevel(2);
-        event.setMaterial(Grossular).asOre().harvestLevel(1).mats(of(Calcium, 3, Aluminium, 2, Silicon, 3, Oxygen, 12));
-        event.setMaterial(Ilmenite).asOre().harvestLevel(3).mats(of(Iron, 1, Titanium, 1, Oxygen, 3));
-        event.setMaterial(Lepidolite).asOre().harvestLevel(2).mats(of(Potassium, 1, Lithium, 3, Aluminium, 4, Fluorine, 2, Oxygen, 10)); // TODO: Ore Gen;
-        event.setMaterial(Rutile).asOre().mats(of(Titanium, 1, Oxygen, 2)); event.setMaterial(Cobaltite).asOre().mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
-        event.setMaterial(Magnesite).asOre().harvestLevel(2).mats(of(Magnesium, 1, Carbon, 1, Oxygen, 3));
-        event.setMaterial(Magnetite).asOre().harvestLevel(2).mats(of(Iron, 3, Oxygen, 4));
-        event.setMaterial(Malachite).asOre().harvestLevel(2).mats(of(Copper, 2, Carbon, 1, Hydrogen, 2, Oxygen, 5));
-        event.setMaterial(Molybdenite).asOre().harvestLevel(2).mats(of(Molybdenum, 1, Sulfur, 2));
-        event.setMaterial(Pentlandite).asOre().harvestLevel(2).mats(of(Nickel, 9, Sulfur, 8));
-        event.setMaterial(Phosphate).asOre().harvestLevel(1).mats(of(Phosphor, 1, Oxygen, 4));
-        event.setMaterial(Pitchblende).asOre().mats(of(Uraninite, 3, Thorium, 1, Lead, 1));
-        event.setMaterial(Pyrite).asOre().harvestLevel(1).mats(of(Iron, 1, Sulfur, 2));
-        event.setMaterial(Pyrolusite).asOre().harvestLevel(2).mats(of(Manganese, 1, Oxygen, 2));
-        event.setMaterial(Pyrope).asOre().harvestLevel(2).mats(of(Aluminium, 2, Magnesium, 3, Silicon, 3, Oxygen, 12));
-        event.setMaterial(Saltpeter).asOre().mats(of(Potassium, 1, Nitrogen, 1, Oxygen, 3));
-        event.setMaterial(Scheelite).asDust(2500).asOre().harvestLevel(3).mats(of(Tungsten, 1, Calcium, 2, Oxygen, 4));
-        event.setMaterial(Soapstone).asOre().harvestLevel(1).mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Gen;
-        event.setMaterial(Spodumene).asOre().harvestLevel(2).mats(of(Lithium, 1, Aluminium, 1, Silicon, 2, Oxygen, 6));
-        event.setMaterial(Spessartine).asOre().harvestLevel(2).mats(of(Aluminium, 2, Manganese, 3, Silicon, 3, Oxygen, 12));
-        event.setMaterial(Sphalerite).asOre().harvestLevel(1).mats(of(Zinc, 1, Sulfur, 1));
-        event.setMaterial(Stibnite).asOre().harvestLevel(2).mats(of(Antimony, 2, Sulfur, 3));
-        event.setMaterial(Tantalite).asOre().harvestLevel(3).mats(of(Manganese, 1, Tantalum, 2, Oxygen, 6));
-        event.setMaterial(Talc).asOre().mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12));
-        event.setMaterial(Tetrahedrite).asOre().harvestLevel(2).mats(of(Copper, 3, Antimony, 1, Sulfur, 3, Iron, 1));
-        event.setMaterial(Tungstate).asOre().harvestLevel(3).mats(of(Tungsten, 1, Lithium, 2, Oxygen, 4));
-        event.setMaterial(Uraninite).asOre().harvestLevel(2).mats(of(Uranium, 1, Oxygen, 2));
-        event.setMaterial(Uvarovite).asOre().mats(of(Calcium, 3, Chrome, 2, Silicon, 3, Oxygen, 12));
-        event.setMaterial(VanadiumMagnetite).asOre().harvestLevel(2).mats(of(Magnetite, 1, Vanadium, 1));
-        event.setMaterial(Wulfenite).asOre().harvestLevel(3).mats(of(Lead, 1, Molybdenum, 1, Oxygen, 4));
-        event.setMaterial(YellowLimonite).asOre().harvestLevel(2).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
+        event.setMaterial(Grossular).asOre().harvestLevel(1);
+        event.setMaterial(Ilmenite).asOre().harvestLevel(3);
+        event.setMaterial(Lepidolite).asOre().harvestLevel(2); // TODO: Ore Gen;
+        event.setMaterial(Rutile).asOre();
+        event.setMaterial(Magnesite).asOre().harvestLevel(2);
+        event.setMaterial(Magnetite).asOre().harvestLevel(2);
+        event.setMaterial(Malachite).asOre().harvestLevel(2);
+        event.setMaterial(Molybdenite).asOre().harvestLevel(2);
+        event.setMaterial(Pentlandite).asOre().harvestLevel(2);
+        event.setMaterial(Phosphate).asOre().harvestLevel(1);
+        event.setMaterial(Pitchblende).asOre();
+        event.setMaterial(Pyrite).asOre().harvestLevel(1);
+        event.setMaterial(Pyrolusite).asOre().harvestLevel(2);
+        event.setMaterial(Pyrope).asOre().harvestLevel(2);
+        event.setMaterial(Saltpeter).asOre();
+        event.setMaterial(Scheelite).asDust(2500).asOre().harvestLevel(3);
+        event.setMaterial(Soapstone).asOre().harvestLevel(1); // TODO: Ore Gen;
+        event.setMaterial(Spodumene).asOre().harvestLevel(2);
+        event.setMaterial(Spessartine).asOre().harvestLevel(2);
+        event.setMaterial(Sphalerite).asOre().harvestLevel(1);
+        event.setMaterial(Stibnite).asOre().harvestLevel(2);
+        event.setMaterial(Tantalite).asOre().harvestLevel(3);
+        event.setMaterial(Talc).asOre();
+        event.setMaterial(Tetrahedrite).asOre().harvestLevel(2);
+        event.setMaterial(Tungstate).asOre().harvestLevel(3);
+        event.setMaterial(Uraninite).asOre().harvestLevel(2);
+        event.setMaterial(Uvarovite).asOre();
+        event.setMaterial(VanadiumMagnetite).asOre().harvestLevel(2);
+        event.setMaterial(Wulfenite).asOre().harvestLevel(3);
+        event.setMaterial(YellowLimonite).asOre().harvestLevel(2);
         /**
          **  Ore Stones
          **/
-        event.setMaterial(Bauxite).asOreStone(ORE_SMALL).harvestLevel(1).mats(of(Rutile, 2, Aluminium, 16, Hydrogen, 10, Oxygen, 11));
-        event.setMaterial(Lignite).asGemBasic(false).asOreStone(0, 2, ORE_SMALL).mats(of(Carbon, 3, Water, 1));
+        event.setMaterial(Bauxite).asOreStone(ORE_SMALL).harvestLevel(1);
+        event.setMaterial(Lignite).asGemBasic(false).asOreStone(0, 2, ORE_SMALL);
         event.setMaterial(OilShale).asOreStone(ORE_SMALL).harvestLevel(1);
-        event.setMaterial(RockSalt).asOreStone(ORE_SMALL).harvestLevel(1).mats(of(Potassium, 1, Chlorine, 1));
-        event.setMaterial(Salt).asOreStone(ORE_SMALL).harvestLevel(1).mats(of(Sodium, 1, Chlorine, 1));
+        event.setMaterial(RockSalt).asOreStone(ORE_SMALL).harvestLevel(1);
+        event.setMaterial(Salt).asOreStone(ORE_SMALL).harvestLevel(1);
         /**
          **  Gems
          **/
@@ -316,53 +317,53 @@ public class GregTechMaterialEvents {
          *  Regular
          **/
         event.setMaterial(Amber).asGem(false).asOre(3, 7, true);
-        event.setMaterial(Amethyst).asGem(false).replaceItem(GEM_FLAWED, Items.AMETHYST_SHARD).asOre(3, 7, true).mats(of(SiliconDioxide, 4, Iron, 1));
-        event.setMaterial(Sapphire).asGem(true).asOre(3, 7, true).mats(of(Aluminium, 2, Oxygen, 3));
-        event.setMaterial(BlueTopaz).asGem(true).asOre(3, 7, true).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
-        event.setMaterial(Glass).asDust(PLATE, LENS).mats(of(SiliconDioxide, 1));
-        event.setMaterial(GreenSapphire).asGem(true).asOre(3, 7, true).mats(of(Aluminium, 2, Oxygen, 3));
+        event.setMaterial(Amethyst).asGem(false).replaceItem(GEM_FLAWED, Items.AMETHYST_SHARD).asOre(3, 7, true);
+        event.setMaterial(Sapphire).asGem(true).asOre(3, 7, true);
+        event.setMaterial(BlueTopaz).asGem(true).asOre(3, 7, true);
+        event.setMaterial(Glass).asDust(PLATE, LENS);
+        event.setMaterial(GreenSapphire).asGem(true).asOre(3, 7, true);
         event.setMaterial(Jade).asGem(false).asOre(3, 7, true);
-        event.setMaterial(Lazurite).asGemBasic(false, PLATE).asOre(2, 5, true).harvestLevel(1).mats(of(Aluminium, 6, Silicon, 6, Calcium, 8, Sodium, 8));
+        event.setMaterial(Lazurite).asGemBasic(false, PLATE).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(LigniteCoke).asGemBasic(false);
-        event.setMaterial(Olivine).asGem(false, PLATE).asOre(3, 7, true).mats(of(Magnesium, 2, Iron, 1, SiliconDioxide, 2));
-        event.setMaterial(Opal).asGem(true).asOre(3, 7, true).mats(of(SiliconDioxide, 1));
-        event.setMaterial(Phosphorus).asGemBasic(false).asOre(3, 7, true).harvestLevel(2).mats(of(Calcium, 3, Phosphate, 2));
-        event.setMaterial(Quartzite).asGemBasic(false, ROCK, ROD, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1).mats(of(Silicon, 1, Oxygen, 2));
-        event.setMaterial(RedGarnet).asGem(true).asOre(3, 7, true).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
-        event.setMaterial(Ruby).asGem(true).asOre(3, 7, true).mats(of(Chrome, 1, Aluminium, 2, Oxygen, 3));
-        event.setMaterial(Sodalite).asGemBasic(false).asOre(2, 5, true).harvestLevel(1).mats(of(Aluminium, 3, Silicon, 3, Sodium, 4, Chlorine, 1));
-        event.setMaterial(Tanzanite).asGem(false).asOre(3, 7, true).mats(of(Calcium, 2, Aluminium, 3, Silicon, 3, Hydrogen, 1, Oxygen, 13));
-        event.setMaterial(Topaz).asGem(false).asOre(3, 7, true).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
-        event.setMaterial(YellowGarnet).asGem(true).asOre(3, 7, true).mats(of(Andradite, 5, Grossular, 8, Uvarovite, 3));
+        event.setMaterial(Olivine).asGem(false, PLATE).asOre(3, 7, true);
+        event.setMaterial(Opal).asGem(true).asOre(3, 7, true);
+        event.setMaterial(Phosphorus).asGemBasic(false).asOre(3, 7, true).harvestLevel(2);
+        event.setMaterial(Quartzite).asGemBasic(false, ROCK, ROD, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1);
+        event.setMaterial(RedGarnet).asGem(true).asOre(3, 7, true);
+        event.setMaterial(Ruby).asGem(true).asOre(3, 7, true);
+        event.setMaterial(Sodalite).asGemBasic(false).asOre(2, 5, true).harvestLevel(1);
+        event.setMaterial(Tanzanite).asGem(false).asOre(3, 7, true);
+        event.setMaterial(Topaz).asGem(false).asOre(3, 7, true);
+        event.setMaterial(YellowGarnet).asGem(true).asOre(3, 7, true);
         /**
          *  Basic
          **/
         event.setMaterial(CertusQuartz).asGemBasic(false,PLATE, QUARTZ_LIKE_BLOCKS).asOre(1, 5, true);
         event.setMaterial(Fluix).asGemBasic(false, QUARTZ_LIKE_BLOCKS);
-        event.setMaterial(Charcoal).asGemBasic(false).mats(of(Carbon, 1));
+        event.setMaterial(Charcoal).asGemBasic(false);
         event.setMaterial(CoalCoke).asGemBasic(false);
         event.setMaterial(Dilithium).asGemBasic(true);
-        event.setMaterial(Apatite).asGemBasic(false, PLATE).asOre(2, 5, true).harvestLevel(1).mats(of(Calcium, 5, Phosphate, 3, Chlorine, 1));
-        event.setMaterial(Monazite).asGemBasic(false, PLATE).asOre(3, 7, true).harvestLevel(1).mats(of(RareEarth, 1, Phosphate, 1));
+        event.setMaterial(Apatite).asGemBasic(false, PLATE).asOre(2, 5, true).harvestLevel(1);
+        event.setMaterial(Monazite).asGemBasic(false, PLATE).asOre(3, 7, true).harvestLevel(1);
         event.setMaterial(NetherStar).replaceItem(GEM, Items.NETHER_STAR).asGemBasic(false);
         /**
          **  Plastic Related
          **/
-        event.setMaterial(EpoxyResin).asSolid(400, 0, PLATE).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
-        event.setMaterial(FiberReinforcedEpoxyResin).asSolid(400, 0, PLATE).mats(of(EpoxyResin, 1));
-        event.setMaterial(Polycaprolactam).asSolid(500, 0).mats(of(Carbon, 6, Hydrogen, 11, Nitrogen, 1, Oxygen, 1));
-        event.setMaterial(Polyethylene).asSolid(295, 0, PLATE, RUBBERTOOLS).asFluid().mats(of(Carbon, 1, Hydrogen, 2));
-        event.setMaterial(PolyphenyleneSulfide).asSolid(295, 0, PLATE, FOIL).mats(of(Carbon, 6, Hydrogen, 4, Sulfur, 1));
-        event.setMaterial(Polystyrene).asSolid(295, 0).mats(of(Carbon, 8, Hydrogen, 8));
-        event.setMaterial(Polytetrafluoroethylene).asSolid(1400, 0, PLATE, FRAME, ROD).mats(of(Carbon, 2, Fluorine, 4));
-        event.setMaterial(PolyvinylChloride).asSolid(295, 0, PLATE, FOIL).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
-        event.setMaterial(Rubber).asSolid(295, 0, PLATE, RING, MOLTEN).mats(of(Carbon, 5, Hydrogen, 8));
-        event.setMaterial(Silicone).asSolid(900, 0, PLATE, FOIL).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
-        event.setMaterial(StyreneButadieneRubber).asSolid(295, 0, PLATE, RING).mats(of(Styrene, 1, Butadiene, 3));
+        event.setMaterial(EpoxyResin).asSolid(400, 0, PLATE);
+        event.setMaterial(FiberReinforcedEpoxyResin).asSolid(400, 0, PLATE);
+        event.setMaterial(Polycaprolactam).asSolid(500, 0);
+        event.setMaterial(Polyethylene).asSolid(295, 0, PLATE, RUBBERTOOLS).asFluid();
+        event.setMaterial(PolyphenyleneSulfide).asSolid(295, 0, PLATE, FOIL);
+        event.setMaterial(Polystyrene).asSolid(295, 0);
+        event.setMaterial(Polytetrafluoroethylene).asSolid(1400, 0, PLATE, FRAME, ROD);
+        event.setMaterial(PolyvinylChloride).asSolid(295, 0, PLATE, FOIL);
+        event.setMaterial(Rubber).asSolid(295, 0, PLATE, RING, MOLTEN);
+        event.setMaterial(Silicone).asSolid(900, 0, PLATE, FOIL);
+        event.setMaterial(StyreneButadieneRubber).asSolid(295, 0, PLATE, RING);
         /**
          **  Misc
          **/
-        event.setMaterial(GalliumArsenide).asSolid(295, 1200).mats(of(Arsenic, 1, Gallium, 1));
+        event.setMaterial(GalliumArsenide).asSolid(295, 1200);
         event.setMaterial(Superconductor).asSolid(PLATE);
         /**
          ***  Fluids
@@ -370,102 +371,102 @@ public class GregTechMaterialEvents {
         /**
          *  Organic
          **/
-        event.setMaterial(Acetone).asFluid().mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 1));
-        event.setMaterial(CharcoalByproducts).asFluid().mats(of(WoodTar,1,WoodGas,1,WoodVinegar,2));
+        event.setMaterial(Acetone).asFluid();
+        event.setMaterial(CharcoalByproducts).asFluid();
         event.setMaterial(EthylTertButylEther).asFluid();
         event.setMaterial(FermentedBiomass).asFluid(16);
         event.setMaterial(SeedOil).asFluid(2);
-        event.setMaterial(WoodTar).asFluid().mats(of(Creosote,4,Phenol,1,Benzene,2,Toluene,1));
+        event.setMaterial(WoodTar).asFluid();
         event.setMaterial(WoodVinegar).asFluid();
         //Alkanoles
-        event.setMaterial(Methanol).asFluid(84).mats(of(Carbon, 1, Hydrogen, 4, Oxygen, 1));
-        event.setMaterial(Ethanol).asFluid(148).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1));
-        event.setMaterial(Propanol).asFluid(196).mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 1));
-        event.setMaterial(Butanol).asFluid(166).mats(of(Carbon, 4, Hydrogen, 10, Oxygen, 1));
-        event.setMaterial(Heptanol).asFluid(226).mats(of(Carbon, 7, Hydrogen, 16, Oxygen, 1));
+        event.setMaterial(Methanol).asFluid(84);
+        event.setMaterial(Ethanol).asFluid(148);
+        event.setMaterial(Propanol).asFluid(196);
+        event.setMaterial(Butanol).asFluid(166);
+        event.setMaterial(Heptanol).asFluid(226);
         //Alkenoles
-        event.setMaterial(Ethenol).asFluid(120).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
-        event.setMaterial(Propenol).asFluid(196).mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 1));
-        event.setMaterial(Butenol).asFluid(186).mats(of(Carbon, 4, Hydrogen, 8, Oxygen, 1));
+        event.setMaterial(Ethenol).asFluid(120);
+        event.setMaterial(Propenol).asFluid(196);
+        event.setMaterial(Butenol).asFluid(186);
         //Alkanedioles
-        event.setMaterial(Ethanediol).asFluid(216).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 2));
-        event.setMaterial(Propanediol).asFluid(256).mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 2));
-        event.setMaterial(Butanediol).asFluid(286).mats(of(Carbon, 4, Hydrogen, 10, Oxygen, 2));
+        event.setMaterial(Ethanediol).asFluid(216);
+        event.setMaterial(Propanediol).asFluid(256);
+        event.setMaterial(Butanediol).asFluid(286);
         //Plastic Related
-        event.setMaterial(SiliconeRubber).asFluid().mats(of(Sulfur, 1, Polydimethylsiloxane, 9));
+        event.setMaterial(SiliconeRubber).asFluid();
         //Misc
-        event.setMaterial(AceticAcid).asFluid().mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 2));
-        event.setMaterial(AllylChloride).asFluid().mats(of(Carbon, 3, Hydrogen, 5, Chlorine, 1));
-        event.setMaterial(Benzaldehyde).asFluid().mats(of(Carbon,7,Hydrogen,6,Oxygen,1));
-        event.setMaterial(Benzene).asFluid(288).mats(of(Carbon, 6, Hydrogen, 6));
-        event.setMaterial(BenzoylChloride).asFluid().mats(of(Carbon,7,Hydrogen,5,Chlorine,1,Oxygen,1));
+        event.setMaterial(AceticAcid).asFluid();
+        event.setMaterial(AllylChloride).asFluid();
+        event.setMaterial(Benzaldehyde).asFluid();
+        event.setMaterial(Benzene).asFluid(288);
+        event.setMaterial(BenzoylChloride).asFluid();
         event.setMaterial(Biomass).asFluid(8);
-        event.setMaterial(BisphenolA).asFluid().mats(of(Carbon, 15, Hydrogen, 16, Oxygen, 2));
-        event.setMaterial(Chloramine).asFluid().mats(of(Nitrogen, 1, Hydrogen, 2, Chlorine, 1));
-        event.setMaterial(Chloroform).asFluid().mats(of(Carbon, 1, Hydrogen, 1, Chlorine, 3));
-        event.setMaterial(Cumene).asFluid().mats(of(Carbon, 9, Hydrogen, 12));
-        event.setMaterial(Dichlorobenzene).asFluid().mats(of(Carbon, 6, Hydrogen, 4, Chlorine, 2));
-        event.setMaterial(Dichloroethane).asFluid().mats(of(Carbon,2,Hydrogen,4,Chlorine,2));
-        event.setMaterial(Dimethyldichlorosilane).asFluid().mats(of(Carbon, 2, Hydrogen, 6, Chlorine, 2, Silicon, 1));
-        event.setMaterial(Dimethylhydrazine).asFluid().mats(of(Carbon, 2, Hydrogen, 8, Nitrogen, 2));
-        event.setMaterial(Epichlorohydrin).asFluid().mats(of(Carbon, 3, Hydrogen, 5, Chlorine, 1, Oxygen, 1));
+        event.setMaterial(BisphenolA).asFluid();
+        event.setMaterial(Chloramine).asFluid();
+        event.setMaterial(Chloroform).asFluid();
+        event.setMaterial(Cumene).asFluid();
+        event.setMaterial(Dichlorobenzene).asFluid();
+        event.setMaterial(Dichloroethane).asFluid();
+        event.setMaterial(Dimethyldichlorosilane).asFluid();
+        event.setMaterial(Dimethylhydrazine).asFluid();
+        event.setMaterial(Epichlorohydrin).asFluid();
         event.setMaterial(Glue).asFluid();
-        event.setMaterial(Glyceryl).asFluid(164).mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 3));
-        event.setMaterial(GlycerylTrinitrate).asFluid().mats(of(Carbon, 3, Hydrogen, 5, Nitrogen, 3, Oxygen, 9));
+        event.setMaterial(Glyceryl).asFluid(164);
+        event.setMaterial(GlycerylTrinitrate).asFluid();
         event.setMaterial(Honey).asFluid(); // TODO: Only when Forestry's present;
-        event.setMaterial(Isoprene).asFluid().mats(of(Carbon, 8, Hydrogen, 8));
-        event.setMaterial(MethylAcetate).asFluid().mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 2));
-        event.setMaterial(Naphtha).asFluid(256).mats(of(Carbon,8,Hydrogen,16));
-        event.setMaterial(Phenol).asFluid(288).mats(of(Carbon, 6, Hydrogen, 6, Oxygen, 1));
-        event.setMaterial(PolyvinylAcetate).asFluid().mats(of(Carbon, 4, Hydrogen, 6, Oxygen, 2));
-        event.setMaterial(Styrene).asFluid().mats(of(Carbon, 8, Hydrogen, 8));
-        event.setMaterial(SulfuricNaphtha).asFluid(32).mats(of(Naphtha, 1, HydrogenSulfide,1));
-        event.setMaterial(Tetranitromethane).asFluid().mats(of(Carbon, 1, Nitrogen, 4, Oxygen, 8));
-        event.setMaterial(Toluene).asFluid(328).mats(of(Carbon, 7, Hydrogen, 8));
-        event.setMaterial(VinylAcetate).asFluid().mats(of(Carbon, 4, Hydrogen, 6, Oxygen, 2));
+        event.setMaterial(Isoprene).asFluid();
+        event.setMaterial(MethylAcetate).asFluid();
+        event.setMaterial(Naphtha).asFluid(256);
+        event.setMaterial(Phenol).asFluid(288);
+        event.setMaterial(PolyvinylAcetate).asFluid();
+        event.setMaterial(Styrene).asFluid();
+        event.setMaterial(SulfuricNaphtha).asFluid(32);
+        event.setMaterial(Tetranitromethane).asFluid();
+        event.setMaterial(Toluene).asFluid(328);
+        event.setMaterial(VinylAcetate).asFluid();
         /**
          *  Inorganic
          **/
         event.setMaterial(Antimatter).asFluid();
-        event.setMaterial(BlueVitriol).asFluid().mats(of(Copper,1,Sulfur,1,Oxygen,4,Water,5));
-        event.setMaterial(CalciumAcetateSolution).asFluid().mats(of(Calcium, 1, Carbon, 2, Oxygen, 4, Hydrogen, 6));
+        event.setMaterial(BlueVitriol).asFluid();
+        event.setMaterial(CalciumAcetateSolution).asFluid();
         event.setMaterial(Coolant).asFluid();
-        event.setMaterial(DistilledWater).asFluid().mats(of(Water,1));
-        event.setMaterial(DilutedHydrochloricAcid).asFluid().mats(of(Hydrogen, 1, Chlorine, 1));
-        event.setMaterial(DilutedSulfuricAcid).asFluid().mats(of(Hydrogen,2,Sulfur,1,Oxygen,4));
+        event.setMaterial(DistilledWater).asFluid();
+        event.setMaterial(DilutedHydrochloricAcid).asFluid();
+        event.setMaterial(DilutedSulfuricAcid).asFluid();
         event.setMaterial(DrillingFluid).asFluid(); // TODO: Perhaps for a bedrock drill;
         event.setMaterial(HotCoolant).asFluid(0,500);
-        event.setMaterial(HydrochloricAcid).asFluid().mats(of(Hydrogen, 1, Chlorine, 1));
-        event.setMaterial(HydrofluoricAcid).asFluid().mats(of(Hydrogen, 1, Fluorine, 1));
-        event.setMaterial(HydrogenPeroxide).asFluid().mats(of(Hydrogen,2,Oxygen,2));
-        event.setMaterial(HypochlorousAcid).asFluid().mats(of(Hydrogen, 1, Chlorine, 1, Oxygen, 1));
+        event.setMaterial(HydrochloricAcid).asFluid();
+        event.setMaterial(HydrofluoricAcid).asFluid();
+        event.setMaterial(HydrogenPeroxide).asFluid();
+        event.setMaterial(HypochlorousAcid).asFluid();
         event.setMaterial(IndiumConcentrate).asFluid();
 
         event.setMaterial(LeadZincSolution).asFluid();
-        event.setMaterial(LiquidAir).asFluid(0, 79).mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1, NobleGases, 1 ));
+        event.setMaterial(LiquidAir).asFluid(0, 79);
         event.setMaterial(Lubricant).asFluid();
-        event.setMaterial(NickelSulfate).asFluid().mats(of(Nickel,1,Sulfur,1,Oxygen,4));
-        event.setMaterial(NitrationMixture).asFluid().mats(of(SulfuricAcid,1,NitricAcid,1));
-        event.setMaterial(NitricAcid).asFluid().mats(of(Hydrogen, 1, Nitrogen, 1, Oxygen, 3));
-        event.setMaterial(PeroxydisulfuricAcid).asFluid().mats(of(Sulfur,2,Hydrogen,2,Oxygen,8));
-        event.setMaterial(PhosphoricAcid).asFluid().mats(of(Hydrogen, 3, Phosphor, 1, Oxygen, 4));
-        event.setMaterial(SaltWater).asFluid().mats(of(Water,1,Sodium,1,Chlorine,1));
-        event.setMaterial(SodiumPersulfate).asFluid().mats(of(Sodium, 2, Sulfur, 2, Oxygen, 8));
-        event.setMaterial(SodiumBicarbonateSolution).asFluid().mats(of(Sodium, 1, Hydrogen,1 ,Carbon, 1, Oxygen, 3, Water, 1));
-        event.setMaterial(SodiumCarbonateSolution).asFluid().mats(of(Sodium, 2, Carbon, 1, Oxygen, 3, Water, 1));
-        event.setMaterial(Steam).asGas(1, 395).mats(of(Water,1));
-        event.setMaterial(SulfuricAcid).asFluid().mats(of(Hydrogen, 2, Sulfur, 1, Oxygen, 4));
-        event.setMaterial(SulfurTrioxide).asGas().mats(of(Sulfur, 1, Oxygen, 3));
-        event.setMaterial(SulfurDioxide).asGas().mats(of(Sulfur, 1, Oxygen, 2));
-        event.setMaterial(Titaniumtetrachloride).asFluid().mats(of(Titanium, 1, Chlorine, 4));
+        event.setMaterial(NickelSulfate).asFluid();
+        event.setMaterial(NitrationMixture).asFluid();
+        event.setMaterial(NitricAcid).asFluid();
+        event.setMaterial(PeroxydisulfuricAcid).asFluid();
+        event.setMaterial(PhosphoricAcid).asFluid();
+        event.setMaterial(SaltWater).asFluid();
+        event.setMaterial(SodiumPersulfate).asFluid();
+        event.setMaterial(SodiumBicarbonateSolution).asFluid();
+        event.setMaterial(SodiumCarbonateSolution).asFluid();
+        event.setMaterial(Steam).asGas(1, 395);
+        event.setMaterial(SulfuricAcid).asFluid();
+        event.setMaterial(SulfurTrioxide).asGas();
+        event.setMaterial(SulfurDioxide).asGas();
+        event.setMaterial(Titaniumtetrachloride).asFluid();
         event.setMaterial(UUAmplifier).asFluid();
         event.setMaterial(UUMatter).asFluid();
         //Nuclear
-        event.setMaterial(LeachingSolution).asFluid().mats(of(SodiumBicarbonateSolution,1,SodiumCarbonateSolution,1));
-        event.setMaterial(LeachedThorium).asFluid().mats(of(LeachingSolution,1,Thorium,1));
-        event.setMaterial(LeachedUranium).asFluid().mats(of(LeachingSolution,1,Uranium,1));
-        event.setMaterial(Thoriumdioxidedinitrate).asFluid().mats(of(ThoriumDioxide,1,Nitrogen,2,Oxygen,6));
-        event.setMaterial(Uraniumdioxidedinitrate).asFluid().mats(of(UraniumDioxide,1,Nitrogen,2,Oxygen,6));
+        event.setMaterial(LeachingSolution).asFluid();
+        event.setMaterial(LeachedThorium).asFluid();
+        event.setMaterial(LeachedUranium).asFluid();
+        event.setMaterial(Thoriumdioxidedinitrate).asFluid();
+        event.setMaterial(Uraniumdioxidedinitrate).asFluid();
         /**
          ***  Gases/Plasmas
          **/
@@ -473,42 +474,42 @@ public class GregTechMaterialEvents {
          *  Organic
          **/
         //Alkanes
-        event.setMaterial(Methane).asGas(104).mats(of(Carbon, 1, Hydrogen, 4));
-        event.setMaterial(Ethane).asGas(168).mats(of(Carbon, 2, Hydrogen, 6));
-        event.setMaterial(Propane).asGas(232).mats(of(Carbon, 2, Hydrogen, 6));
-        event.setMaterial(Butane).asGas(296).mats(of(Carbon, 4, Hydrogen, 10));
+        event.setMaterial(Methane).asGas(104);
+        event.setMaterial(Ethane).asGas(168);
+        event.setMaterial(Propane).asGas(232);
+        event.setMaterial(Butane).asGas(296);
         //Alkenes
-        event.setMaterial(Ethylene).asGas(128).mats(of(Carbon, 2, Hydrogen, 4));
-        event.setMaterial(Propene).asGas(192).mats(of(Carbon, 3, Hydrogen, 6));
-        event.setMaterial(Butene).asGas(256).mats(of(Carbon, 4, Hydrogen, 8));
-        event.setMaterial(Butadiene).asGas(206).mats(of(Carbon, 4, Hydrogen, 6));
+        event.setMaterial(Ethylene).asGas(128);
+        event.setMaterial(Propene).asGas(192);
+        event.setMaterial(Butene).asGas(256);
+        event.setMaterial(Butadiene).asGas(206);
         //Ketones
-        event.setMaterial(Ethenone).asGas().mats(of(Carbon, 2, Hydrogen, 2, Oxygen, 1));
+        event.setMaterial(Ethenone).asGas();
         //Misc
-        event.setMaterial(CarbonDioxide).asGas().mats(of(Carbon, 1, Oxygen, 2));
-        event.setMaterial(CarbonMonoxide).asGas(24).mats(of(Carbon, 1, Oxygen, 1));
-        event.setMaterial(Chloromethane).asGas().mats(of(Carbon, 1, Hydrogen, 3, Chlorine, 1));
-        event.setMaterial(Dimethylamine).asGas().mats(of(Carbon, 2, Hydrogen, 7, Nitrogen, 1));
+        event.setMaterial(CarbonDioxide).asGas();
+        event.setMaterial(CarbonMonoxide).asGas(24);
+        event.setMaterial(Chloromethane).asGas();
+        event.setMaterial(Dimethylamine).asGas();
         event.setMaterial(LPG).asGas(256);
-        event.setMaterial(NaturalGas).asGas(15).mats(of(Methane,4,Ethane,2,Propane,2,Butane,1));
+        event.setMaterial(NaturalGas).asGas(15);
         event.setMaterial(RefineryGas).asGas(128);
-        event.setMaterial(SulfuricGas).asGas(20).mats(of(NaturalGas,1,Sulfur,1));
-        event.setMaterial(Tetrafluoroethylene).asGas().mats(of(Carbon, 2, Fluorine, 4));
-        event.setMaterial(VinylChloride).asGas().mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
-        event.setMaterial(WoodGas).asGas(24).mats(of(CarbonDioxide,8,CarbonMonoxide,4,Methane,2,Ethylene,1,Hydrogen,1));
+        event.setMaterial(SulfuricGas).asGas(20);
+        event.setMaterial(Tetrafluoroethylene).asGas();
+        event.setMaterial(VinylChloride).asGas();
+        event.setMaterial(WoodGas).asGas(24);
         /**
          *  Inorganic
          **/
-        event.setMaterial(Air).asGas().mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1, NobleGases, 1 ));
-        event.setMaterial(Ammonia).asGas().mats(of(Nitrogen, 1, Hydrogen, 3));
-        event.setMaterial(DinitrogenTetroxide).asGas().mats(of(Nitrogen, 2, Oxygen, 4));
-        event.setMaterial(HydrogenSulfide).asGas().mats(of(Hydrogen, 2, Sulfur, 1));
-        event.setMaterial(NitricOxide).asGas().mats(of(Nitrogen, 1, Oxygen, 1));
-        event.setMaterial(NitrousOxide).asGas().mats(of(Nitrogen, 2, Oxygen, 1));
-        event.setMaterial(NitrogenDioxide).asGas().mats(of(Nitrogen, 1, Oxygen, 2));
-        event.setMaterial(NobleGases).asGas(0,790).mats(of(Helium, 10, Neon, 10, Argon, 10, Xenon, 10));
-        event.setMaterial(SulfurDioxide).asGas().mats(of(Sulfur, 1, Oxygen, 2));
-        event.setMaterial(SulfurTrioxide).asGas(0,344).mats(of(Sulfur, 1, Oxygen, 3));
+        event.setMaterial(Air).asGas();
+        event.setMaterial(Ammonia).asGas();
+        event.setMaterial(DinitrogenTetroxide).asGas();
+        event.setMaterial(HydrogenSulfide).asGas();
+        event.setMaterial(NitricOxide).asGas();
+        event.setMaterial(NitrousOxide).asGas();
+        event.setMaterial(NitrogenDioxide).asGas();
+        event.setMaterial(NobleGases).asGas(0,790);
+        event.setMaterial(SulfurDioxide).asGas();
+        event.setMaterial(SulfurTrioxide).asGas(0,344);
         /**
          ** Fuels
          **/
@@ -526,33 +527,393 @@ public class GregTechMaterialEvents {
         event.setMaterial(RocketFuel).asFluid();
         event.setMaterial(Gasoline).asFluid(384);
         event.setMaterial(HighOctaneGasoline).asFluid(768);
-        event.setMaterial(SulfuricLightFuel).asFluid(32).mats(of(LightFuel,1,HydrogenSulfide,1));
-        event.setMaterial(SulfuricHeavyFuel).asFluid(32).mats(of(HeavyFuel,1,HydrogenSulfide,1));
+        event.setMaterial(SulfuricLightFuel).asFluid(32);
+        event.setMaterial(SulfuricHeavyFuel).asFluid(32);
         /**
          ** Cracked Stuff
          */
-        event.setMaterial(SteamCrackedEthane).asGas().mats(of(Ethane,1,Steam,1));
-        event.setMaterial(SteamCrackedPropane).asGas().mats(of(Propane,1,Steam,1));
-        event.setMaterial(SteamCrackedButane).asGas().mats(of(Butane,1,Steam,1));
-        event.setMaterial(SteamCrackedLightFuel).asFluid().mats(of(LightFuel,1,Steam,1));
-        event.setMaterial(SteamCrackedHeavyFuel).asFluid().mats(of(HeavyFuel,1,Steam,1));
-        event.setMaterial(SteamCrackedNaphtha).asFluid().mats(of(Naphtha,1,Steam,1));
-        event.setMaterial(SteamCrackedRefineryGas).asGas().mats(of(RefineryGas,1,Steam,1));
-        event.setMaterial(HydroCrackedEthane).asGas().mats(of(Ethane,1,Hydrogen,1));
-        event.setMaterial(HydroCrackedPropane).asGas().mats(of(Propane,1,Hydrogen,1));
-        event.setMaterial(HydroCrackedButane).asGas().mats(of(Butane,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedLightFuel).asFluid().mats(of(LightFuel,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedHeavyFuel).asFluid().mats(of(HeavyFuel,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedNaphtha).asFluid().mats(of(Naphtha,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedRefineryGas).asGas().mats(of(RefineryGas,1,Hydrogen,2));
+        event.setMaterial(SteamCrackedEthane).asGas();
+        event.setMaterial(SteamCrackedPropane).asGas();
+        event.setMaterial(SteamCrackedButane).asGas();
+        event.setMaterial(SteamCrackedLightFuel).asFluid();
+        event.setMaterial(SteamCrackedHeavyFuel).asFluid();
+        event.setMaterial(SteamCrackedNaphtha).asFluid();
+        event.setMaterial(SteamCrackedRefineryGas).asGas();
+        event.setMaterial(HydroCrackedEthane).asGas();
+        event.setMaterial(HydroCrackedPropane).asGas();
+        event.setMaterial(HydroCrackedButane).asGas();
+        event.setMaterial(HydroCrackedLightFuel).asFluid();
+        event.setMaterial(HydroCrackedHeavyFuel).asFluid();
+        event.setMaterial(HydroCrackedNaphtha).asFluid();
+        event.setMaterial(HydroCrackedRefineryGas).asGas();
         /**
          ** Nuclear Processing
          */
-        event.setMaterial(Ammoniumdithoranate).asDust().mats(of(Nitrogen,2,Hydrogen,8,Thorium,2,Oxygen,7));
-        event.setMaterial(Ammoniumdiuranate).asDust().mats(of(Nitrogen,2,Hydrogen,8,Uranium,2,Oxygen,7));
+        event.setMaterial(Ammoniumdithoranate).asDust();
+        event.setMaterial(Ammoniumdiuranate).asDust();
+        processInto(event);
         nuclearIsotopes(event);
         toolsAndArmor(event);
         workbenches(event);
+    }
+
+    private static void processInto(MaterialEvent<?> event){
+        /**
+         ***  Solids
+         **/
+        /**
+         **  Metals
+         **/
+        event.setMaterial(AnnealedCopper).mats(of(Copper, 1));
+        event.setMaterial(BatteryAlloy).mats(of(Lead, 4, Antimony, 1));
+        event.setMaterial(BismuthBronze).mats(of(Bismuth, 1, Zinc, 1, Copper, 3));
+        event.setMaterial(BlackBronze).mats(of(Gold, 1, Silver, 1, Copper, 3));
+        event.setMaterial(BlackSteel).mats(of(Nickel, 1, BlackBronze, 1, Steel, 3));
+        event.setMaterial(BlueSteel).mats(of(RoseGold, 1, Brass, 1, Steel, 2, BlackSteel, 4));
+        event.setMaterial(Brass).mats(of(Zinc, 1, Copper, 3));
+        event.setMaterial(Bronze).mats(of(Tin, 1, Copper, 3));
+        event.setMaterial(CobaltBrass).mats(of(Brass, 7, Aluminium, 1, Cobalt, 1));
+        event.setMaterial(Cupronickel).mats(of(Copper, 1, Nickel, 1));
+        event.setMaterial(Electrum).mats(of(Silver, 1, Gold, 1));
+        event.setMaterial(HSSE).mats(of(HSSG, 6, Cobalt, 1, Manganese, 1, Silicon, 1));
+        event.setMaterial(HSSG).mats(of(TungstenSteel, 5, Chrome, 1, Molybdenum, 2, Vanadium, 1));
+        event.setMaterial(HSSS).mats(of(HSSG, 6, Iridium, 2, Osmium, 1));
+        event.setMaterial(Invar).mats(of(Iron, 2, Nickel, 1));
+        event.setMaterial(IronMagnetic).mats(of(Iron, 1));
+        event.setMaterial(Kanthal).mats(of(Iron, 1, Aluminium, 1, Chrome, 1));
+        event.setMaterial(Magnalium).mats(of(Magnesium, 1, Aluminium, 2));
+        event.setMaterial(NeodymiumMagnetic).mats(of(Neodymium, 1));
+        event.setMaterial(Nichrome).mats(of(Nickel, 4, Chrome, 1));
+        event.setMaterial(NickelZincFerrite).mats(of(Nickel, 1, Zinc, 1, Iron, 4, Oxygen, 8));
+        event.setMaterial(NiobiumTitanium).mats(of(Nickel, 4, Chrome, 1));
+        event.setMaterial(Osmiridium).mats(of(Iridium, 3, Osmium, 1));
+        event.setMaterial(RedAlloy).mats(of(Copper, 1, Redstone, 4));
+        event.setMaterial(RedSteel).mats(of(SterlingSilver, 1, BismuthBronze, 1, Steel, 2, BlackSteel, 4));
+        event.setMaterial(RoseGold).mats(of(Copper, 1, Gold, 4));
+        event.setMaterial(SolderingAlloy).mats(of(Tin, 9, Antimony, 1));
+        event.setMaterial(Steel).mats(of(Iron, 50, Carbon, 1), 50);
+        event.setMaterial(SteelMagnetic).mats(of(Steel, 1));
+        event.setMaterial(SterlingSilver).mats(of(Copper, 1, Silver, 4));
+        event.setMaterial(StainlessSteel).mats(of(Iron, 6, Chrome, 1, Manganese, 1, Nickel, 1));
+        event.setMaterial(TinAlloy).mats(of(Tin, 1, Iron, 1));
+        event.setMaterial(TungstenCarbide).mats(of(Tungsten, 1, Carbon, 1));
+        event.setMaterial(TungstenSteel).mats(of(Steel, 1, Tungsten, 1));
+        event.setMaterial(Ultimet).mats(of(Cobalt, 5, Chrome, 2, Nickel, 1, Molybdenum, 1));
+        event.setMaterial(VanadiumGallium).mats(of(Vanadium, 3, Gallium, 1));
+        event.setMaterial(VanadiumSteel).mats(of(Vanadium, 1, Chrome, 1, Steel, 7));
+        event.setMaterial(WroughtIron).mats(of(Iron, 1));
+        event.setMaterial(YttriumBariumCuprate).mats(of(Yttrium, 1, Barium, 2, Copper, 3, Oxygen, 7));
+        /**
+         **  Dusts
+         **/
+        /**
+         *  Organic
+         **/
+        event.setMaterial(AntimonyTrioxide).mats(of(Antimony, 2, Oxygen, 3));
+        event.setMaterial(Clay).mats(of(Sodium, 2, Lithium, 1, Aluminium, 2, Silicon, 2, Water, 6));
+        event.setMaterial(CupricOxide).mats(of(Copper, 1, Oxygen, 1));
+        event.setMaterial(DarkAsh).mats(of(Carbon, 1, Ash, 1), 1);
+        event.setMaterial(Dibenzene).mats(of(Carbon,12,Hydrogen,10));
+        event.setMaterial(DibenzoylPeroxide).mats(of(Carbon,14,Hydrogen,10,Oxygen,4));
+        event.setMaterial(Polydimethylsiloxane).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
+        event.setMaterial(RawRubber).mats(of(Carbon, 5, Hydrogen, 8));
+        event.setMaterial(RawStyreneButadieneRubber).mats(of(Styrene, 1, Butadiene, 3));
+        event.setMaterial(SodaAsh).mats(of(Sodium, 2, Carbon, 1, Oxygen, 3));
+        event.setMaterial(Wood).mats(of(Carbon, 1, Oxygen, 1, Hydrogen, 1));
+        /**
+         *  Inorganic
+         **/
+        event.setMaterial(AluminiumTrichloride).mats(of(Aluminium,1,Chlorine,3));
+        event.setMaterial(Aluminosilicate).mats(of(Aluminium, 2, Silicon, 1, Oxygen, 5));
+        event.setMaterial(AmmoniumChloride).mats(of(Nitrogen,1, Hydrogen,4,Chlorine,1));
+        event.setMaterial(ArsenicTrioxide).mats(of(Arsenic, 2, Oxygen, 3));
+        event.setMaterial(Biotite).mats(b -> b.put(Potassium, 1).put(Magnesium, 3).put(Aluminium, 3).put(Fluorine, 2).put(Silicon, 3).put(Oxygen, 10));
+        event.setMaterial(BlackGranite).mats(of(SiliconDioxide, 4, Biotite, 1));
+        event.setMaterial(BorosilicateGlass).mats(of(Boron, 1, Silicon, 7, Oxygen,14));
+        event.setMaterial(Brick).mats(of(Aluminium, 4, Silicon, 3, Oxygen, 12));
+        event.setMaterial(CobaltOxide).mats(of(Cobalt, 1, Oxygen, 1));
+        event.setMaterial(Concrete).mats(of(Stone, 1)).asFluid();
+        event.setMaterial(DialuminiumTrioxide).mats(of(Aluminium,2,Oxygen,3));
+        event.setMaterial(Energium).mats(of(Redstone,5,Ruby,4));
+        event.setMaterial(FerriteMixture).mats(of(Nickel, 1, Zinc, 1, Iron, 4));
+        event.setMaterial(Ferrosilite).mats(of(Iron, 1, Silicon, 1, Oxygen, 3));
+        event.setMaterial(Fireclay).mats(of(Brick, 1));
+        event.setMaterial(IndiumGalliumPhosphide).mats(of(Indium, 1, Gallium, 1, Phosphor, 1));
+        event.setMaterial(IridiumSodiumOxide).mats(of(Iridium,1,Sodium,1,Oxygen,2));
+        event.setMaterial(Komatiite).mats(of(Olivine, 1, /* MgCO3, 2, */Flint, 6, DarkAsh, 3));
+        event.setMaterial(Limestone).mats(of(Calcite, 1));
+        event.setMaterial(Magnesia).mats(of(Magnesium, 1, Oxygen, 1));
+        event.setMaterial(MagnesiumChloride).mats(of(Magnesium, 1, Chlorine, 2));
+        event.setMaterial(Marble).mats(of(Magnesium, 1, Calcite, 7));
+        event.setMaterial(Massicot).mats(of(Lead, 1, Oxygen, 1));
+        event.setMaterial(Obsidian).mats(of(Magnesium, 1, Iron, 1, Silicon, 2, Oxygen, 8));
+        event.setMaterial(PhosphorousPentoxide).mats(of(Phosphor, 4, Oxygen, 10));
+        event.setMaterial(Potash).mats(of(Potassium, 2, Oxygen, 1));
+        event.setMaterial(PotassiumFeldspar).mats(of(Potassium, 1, Aluminium, 1, Silicon, 3, Oxygen, 8));
+        event.setMaterial(Powellite).mats(of(Calcium, 1, Molybdenum, 1, Oxygen, 4));
+        //event.setMaterial(Pyrochlore).asDust(ORE).addComposition(of(Calcium, 2, Niobium, 2, Oxygen, 7));
+        event.setMaterial(Quicklime).mats(of(Calcium, 1, Oxygen, 1));
+        event.setMaterial(ReactionCatalyst).mats(of(Copper,1,Zinc,1,Aluminium,2,Oxygen,4));
+        event.setMaterial(RedGranite).mats(of(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3));
+        event.setMaterial(SiliconDioxide).mats(of(Silicon, 1, Oxygen, 2));
+        event.setMaterial(SodiumBisulfate).mats(of(Sodium, 1, Hydrogen, 1, Sulfur, 1, Oxygen, 4));
+        event.setMaterial(SodiumHydroxide).mats(of(Sodium, 1, Oxygen, 1, Hydrogen, 1));
+        event.setMaterial(SodiumSulfate).mats(of(Sodium, 2, Sulfur, 1, Oxygen, 4));
+        event.setMaterial(SodiumSulfide).mats(of(Sodium, 2, Sulfur, 1));
+        //Nuclear
+
+        /**
+         **  Ores
+         **/
+        event.setMaterial(Almandine).mats(of(Aluminium, 2, Iron, 3, Silicon, 3, Oxygen, 12));
+        event.setMaterial(Andradite).mats(of(Calcium, 3, Iron, 2, Silicon, 3, Oxygen, 12));
+        event.setMaterial(BandedIron).mats(of(Iron, 2, Oxygen, 3));
+        event.setMaterial(Bastnasite).mats(of(Cerium, 1, Carbon, 1, Fluorine, 1, Oxygen, 3));
+        event.setMaterial(Barite).mats(of(Barium, 1, Sulfur, 1, Oxygen, 4));
+        event.setMaterial(Bentonite).mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)); // TODO: Ore Gen
+        event.setMaterial(BrownLimonite).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
+        event.setMaterial(Calcite).mats(of(Calcium, 1, Carbon, 1, Oxygen, 3));
+        event.setMaterial(Cassiterite).mats(of(Tin, 1, Oxygen, 2), 1);
+        event.setMaterial(Chalcopyrite).mats(of(Copper, 1, Iron, 1, Sulfur, 2));
+        event.setMaterial(Cinnabar).mats(of(Mercury, 1, Sulfur, 1));
+        event.setMaterial(Cobaltite).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
+        event.setMaterial(Cooperite).mats(of(Platinum, 3, Nickel, 1, Sulfur, 1, Palladium, 1));
+        event.setMaterial(Galena).mats(of(Lead, 3, Silver, 3, Sulfur, 2));
+        event.setMaterial(Garnierite).mats(of(Nickel, 1, Oxygen, 1), 1);
+        event.setMaterial(Glauconite).mats(of(Potassium, 1, Magnesium, 2, Aluminium, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Gen;
+        event.setMaterial(Grossular).mats(of(Calcium, 3, Aluminium, 2, Silicon, 3, Oxygen, 12));
+        event.setMaterial(Ilmenite).mats(of(Iron, 1, Titanium, 1, Oxygen, 3));
+        event.setMaterial(Lepidolite).mats(of(Potassium, 1, Lithium, 3, Aluminium, 4, Fluorine, 2, Oxygen, 10)); // TODO: Ore Gen;
+        event.setMaterial(Rutile).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));
+        event.setMaterial(Magnesite).mats(of(Magnesium, 1, Carbon, 1, Oxygen, 3));
+        event.setMaterial(Magnetite).mats(of(Iron, 3, Oxygen, 4));
+        event.setMaterial(Malachite).mats(of(Copper, 2, Carbon, 1, Hydrogen, 2, Oxygen, 5));
+        event.setMaterial(Molybdenite).mats(of(Molybdenum, 1, Sulfur, 2));
+        event.setMaterial(Pentlandite).mats(of(Nickel, 9, Sulfur, 8));
+        event.setMaterial(Phosphate).mats(of(Phosphor, 1, Oxygen, 4));
+        event.setMaterial(Pitchblende).mats(of(Uraninite, 3, Thorium, 1, Lead, 1));
+        event.setMaterial(Pyrite).mats(of(Iron, 1, Sulfur, 2));
+        event.setMaterial(Pyrolusite).mats(of(Manganese, 1, Oxygen, 2));
+        event.setMaterial(Pyrope).mats(of(Aluminium, 2, Magnesium, 3, Silicon, 3, Oxygen, 12));
+        event.setMaterial(Saltpeter).mats(of(Potassium, 1, Nitrogen, 1, Oxygen, 3));
+        event.setMaterial(Scheelite).mats(of(Tungsten, 1, Calcium, 2, Oxygen, 4));
+        event.setMaterial(Soapstone).mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Gen;
+        event.setMaterial(Spodumene).mats(of(Lithium, 1, Aluminium, 1, Silicon, 2, Oxygen, 6));
+        event.setMaterial(Spessartine).mats(of(Aluminium, 2, Manganese, 3, Silicon, 3, Oxygen, 12));
+        event.setMaterial(Sphalerite).mats(of(Zinc, 1, Sulfur, 1));
+        event.setMaterial(Stibnite).mats(of(Antimony, 2, Sulfur, 3));
+        event.setMaterial(Tantalite).mats(of(Manganese, 1, Tantalum, 2, Oxygen, 6));
+        event.setMaterial(Talc).mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12));
+        event.setMaterial(Tetrahedrite).mats(of(Copper, 3, Antimony, 1, Sulfur, 3, Iron, 1));
+        event.setMaterial(Tungstate).mats(of(Tungsten, 1, Lithium, 2, Oxygen, 4));
+        event.setMaterial(Uraninite).mats(of(Uranium, 1, Oxygen, 2));
+        event.setMaterial(Uvarovite).mats(of(Calcium, 3, Chrome, 2, Silicon, 3, Oxygen, 12));
+        event.setMaterial(VanadiumMagnetite).mats(of(Magnetite, 1, Vanadium, 1));
+        event.setMaterial(Wulfenite).mats(of(Lead, 1, Molybdenum, 1, Oxygen, 4));
+        event.setMaterial(YellowLimonite).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
+        /**
+         **  Ore Stones
+         **/
+        event.setMaterial(Bauxite).mats(of(Rutile, 2, Aluminium, 16, Hydrogen, 10, Oxygen, 11));
+        event.setMaterial(Lignite).mats(of(Carbon, 3, Water, 1));
+        event.setMaterial(RockSalt).mats(of(Potassium, 1, Chlorine, 1));
+        event.setMaterial(Salt).mats(of(Sodium, 1, Chlorine, 1));
+        /**
+         **  Gems
+         **/
+        /**
+         *  Regular
+         **/
+        event.setMaterial(Amethyst).mats(of(SiliconDioxide, 4, Iron, 1));
+        event.setMaterial(Sapphire).mats(of(Aluminium, 2, Oxygen, 3));
+        event.setMaterial(BlueTopaz).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
+        event.setMaterial(Glass).mats(of(SiliconDioxide, 1));
+        event.setMaterial(GreenSapphire).mats(of(Aluminium, 2, Oxygen, 3));
+        event.setMaterial(Lazurite).mats(of(Aluminium, 6, Silicon, 6, Calcium, 8, Sodium, 8));
+        event.setMaterial(Olivine).mats(of(Magnesium, 2, Iron, 1, SiliconDioxide, 2));
+        event.setMaterial(Opal).mats(of(SiliconDioxide, 1));
+        event.setMaterial(Phosphorus).mats(of(Calcium, 3, Phosphate, 2));
+        event.setMaterial(Quartzite).mats(of(Silicon, 1, Oxygen, 2));
+        event.setMaterial(RedGarnet).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
+        event.setMaterial(Ruby).mats(of(Chrome, 1, Aluminium, 2, Oxygen, 3));
+        event.setMaterial(Sodalite).mats(of(Aluminium, 3, Silicon, 3, Sodium, 4, Chlorine, 1));
+        event.setMaterial(Tanzanite).mats(of(Calcium, 2, Aluminium, 3, Silicon, 3, Hydrogen, 1, Oxygen, 13));
+        event.setMaterial(Topaz).mats(of(Aluminium, 2, Silicon, 1, Fluorine, 2, Hydrogen, 2, Oxygen, 6));
+        event.setMaterial(YellowGarnet).mats(of(Andradite, 5, Grossular, 8, Uvarovite, 3));
+        /**
+         *  Basic
+         **/
+        event.setMaterial(Charcoal).mats(of(Carbon, 1));
+        event.setMaterial(Apatite).mats(of(Calcium, 5, Phosphate, 3, Chlorine, 1));
+        event.setMaterial(Monazite).mats(of(RareEarth, 1, Phosphate, 1));
+        /**
+         **  Plastic Related
+         **/
+        event.setMaterial(EpoxyResin).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
+        event.setMaterial(FiberReinforcedEpoxyResin).mats(of(EpoxyResin, 1));
+        event.setMaterial(Polycaprolactam).mats(of(Carbon, 6, Hydrogen, 11, Nitrogen, 1, Oxygen, 1));
+        event.setMaterial(Polyethylene).mats(of(Carbon, 1, Hydrogen, 2));
+        event.setMaterial(PolyphenyleneSulfide).mats(of(Carbon, 6, Hydrogen, 4, Sulfur, 1));
+        event.setMaterial(Polystyrene).mats(of(Carbon, 8, Hydrogen, 8));
+        event.setMaterial(Polytetrafluoroethylene).mats(of(Carbon, 2, Fluorine, 4));
+        event.setMaterial(PolyvinylChloride).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
+        event.setMaterial(Rubber).mats(of(Carbon, 5, Hydrogen, 8));
+        event.setMaterial(Silicone).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
+        event.setMaterial(StyreneButadieneRubber).mats(of(Styrene, 1, Butadiene, 3));
+        /**
+         **  Misc
+         **/
+        event.setMaterial(GalliumArsenide).mats(of(Arsenic, 1, Gallium, 1));
+        /**
+         ***  Fluids
+         **/
+        /**
+         *  Organic
+         **/
+        event.setMaterial(Acetone).mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 1));
+        event.setMaterial(CharcoalByproducts).mats(of(WoodTar,1,WoodGas,1,WoodVinegar,2));
+        event.setMaterial(WoodTar).mats(of(Creosote,4,Phenol,1,Benzene,2,Toluene,1));
+        //Alkanoles
+        event.setMaterial(Methanol).mats(of(Carbon, 1, Hydrogen, 4, Oxygen, 1));
+        event.setMaterial(Ethanol).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1));
+        event.setMaterial(Propanol).mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 1));
+        event.setMaterial(Butanol).mats(of(Carbon, 4, Hydrogen, 10, Oxygen, 1));
+        event.setMaterial(Heptanol).mats(of(Carbon, 7, Hydrogen, 16, Oxygen, 1));
+        //Alkenoles
+        event.setMaterial(Ethenol).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
+        event.setMaterial(Propenol).mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 1));
+        event.setMaterial(Butenol).mats(of(Carbon, 4, Hydrogen, 8, Oxygen, 1));
+        //Alkanedioles
+        event.setMaterial(Ethanediol).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 2));
+        event.setMaterial(Propanediol).mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 2));
+        event.setMaterial(Butanediol).mats(of(Carbon, 4, Hydrogen, 10, Oxygen, 2));
+        //Plastic Related
+        event.setMaterial(SiliconeRubber).mats(of(Sulfur, 1, Polydimethylsiloxane, 9));
+        //Misc
+        event.setMaterial(AceticAcid).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 2));
+        event.setMaterial(AllylChloride).mats(of(Carbon, 3, Hydrogen, 5, Chlorine, 1));
+        event.setMaterial(Benzaldehyde).mats(of(Carbon,7,Hydrogen,6,Oxygen,1));
+        event.setMaterial(Benzene).mats(of(Carbon, 6, Hydrogen, 6));
+        event.setMaterial(BenzoylChloride).mats(of(Carbon,7,Hydrogen,5,Chlorine,1,Oxygen,1));
+        event.setMaterial(BisphenolA).mats(of(Carbon, 15, Hydrogen, 16, Oxygen, 2));
+        event.setMaterial(Chloramine).mats(of(Nitrogen, 1, Hydrogen, 2, Chlorine, 1));
+        event.setMaterial(Chloroform).mats(of(Carbon, 1, Hydrogen, 1, Chlorine, 3));
+        event.setMaterial(Cumene).mats(of(Carbon, 9, Hydrogen, 12));
+        event.setMaterial(Dichlorobenzene).mats(of(Carbon, 6, Hydrogen, 4, Chlorine, 2));
+        event.setMaterial(Dichloroethane).mats(of(Carbon,2,Hydrogen,4,Chlorine,2));
+        event.setMaterial(Dimethyldichlorosilane).mats(of(Carbon, 2, Hydrogen, 6, Chlorine, 2, Silicon, 1));
+        event.setMaterial(Dimethylhydrazine).mats(of(Carbon, 2, Hydrogen, 8, Nitrogen, 2));
+        event.setMaterial(Epichlorohydrin).mats(of(Carbon, 3, Hydrogen, 5, Chlorine, 1, Oxygen, 1));
+        event.setMaterial(Glyceryl).mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 3));
+        event.setMaterial(GlycerylTrinitrate).mats(of(Carbon, 3, Hydrogen, 5, Nitrogen, 3, Oxygen, 9));
+        event.setMaterial(Isoprene).mats(of(Carbon, 8, Hydrogen, 8));
+        event.setMaterial(MethylAcetate).mats(of(Carbon, 3, Hydrogen, 6, Oxygen, 2));
+        event.setMaterial(Naphtha).mats(of(Carbon,8,Hydrogen,16));
+        event.setMaterial(Phenol).mats(of(Carbon, 6, Hydrogen, 6, Oxygen, 1));
+        event.setMaterial(PolyvinylAcetate).mats(of(Carbon, 4, Hydrogen, 6, Oxygen, 2));
+        event.setMaterial(Styrene).mats(of(Carbon, 8, Hydrogen, 8));
+        event.setMaterial(SulfuricNaphtha).mats(of(Naphtha, 1, HydrogenSulfide,1));
+        event.setMaterial(Tetranitromethane).mats(of(Carbon, 1, Nitrogen, 4, Oxygen, 8));
+        event.setMaterial(Toluene).mats(of(Carbon, 7, Hydrogen, 8));
+        event.setMaterial(VinylAcetate).mats(of(Carbon, 4, Hydrogen, 6, Oxygen, 2));
+        /**
+         *  Inorganic
+         **/
+        event.setMaterial(BlueVitriol).mats(of(Copper,1,Sulfur,1,Oxygen,4,Water,5));
+        event.setMaterial(CalciumAcetateSolution).mats(of(Calcium, 1, Carbon, 2, Oxygen, 4, Hydrogen, 6));
+        event.setMaterial(DistilledWater).mats(of(Water,1));
+        event.setMaterial(DilutedHydrochloricAcid).mats(of(Hydrogen, 1, Chlorine, 1));
+        event.setMaterial(DilutedSulfuricAcid).mats(of(Hydrogen,2,Sulfur,1,Oxygen,4));
+        event.setMaterial(HydrochloricAcid).mats(of(Hydrogen, 1, Chlorine, 1));
+        event.setMaterial(HydrofluoricAcid).mats(of(Hydrogen, 1, Fluorine, 1));
+        event.setMaterial(HydrogenPeroxide).mats(of(Hydrogen,2,Oxygen,2));
+        event.setMaterial(HypochlorousAcid).mats(of(Hydrogen, 1, Chlorine, 1, Oxygen, 1));
+
+        event.setMaterial(LiquidAir).mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1, NobleGases, 1 ));
+        event.setMaterial(NickelSulfate).mats(of(Nickel,1,Sulfur,1,Oxygen,4));
+        event.setMaterial(NitrationMixture).mats(of(SulfuricAcid,1,NitricAcid,1));
+        event.setMaterial(NitricAcid).mats(of(Hydrogen, 1, Nitrogen, 1, Oxygen, 3));
+        event.setMaterial(PeroxydisulfuricAcid).mats(of(Sulfur,2,Hydrogen,2,Oxygen,8));
+        event.setMaterial(PhosphoricAcid).mats(of(Hydrogen, 3, Phosphor, 1, Oxygen, 4));
+        event.setMaterial(SaltWater).mats(of(Water,1,Sodium,1,Chlorine,1));
+        event.setMaterial(SodiumPersulfate).mats(of(Sodium, 2, Sulfur, 2, Oxygen, 8));
+        event.setMaterial(SodiumBicarbonateSolution).mats(of(Sodium, 1, Hydrogen,1 ,Carbon, 1, Oxygen, 3, Water, 1));
+        event.setMaterial(SodiumCarbonateSolution).mats(of(Sodium, 2, Carbon, 1, Oxygen, 3, Water, 1));
+        event.setMaterial(Steam).mats(of(Water,1));
+        event.setMaterial(SulfuricAcid).mats(of(Hydrogen, 2, Sulfur, 1, Oxygen, 4));
+        event.setMaterial(SulfurTrioxide).mats(of(Sulfur, 1, Oxygen, 3));
+        event.setMaterial(SulfurDioxide).mats(of(Sulfur, 1, Oxygen, 2));
+        event.setMaterial(Titaniumtetrachloride).mats(of(Titanium, 1, Chlorine, 4));
+        //Nuclear
+        event.setMaterial(LeachingSolution).mats(of(SodiumBicarbonateSolution,1,SodiumCarbonateSolution,1));
+        event.setMaterial(LeachedThorium).mats(of(LeachingSolution,1,Thorium,1));
+        event.setMaterial(LeachedUranium).mats(of(LeachingSolution,1,Uranium,1));
+        event.setMaterial(Thoriumdioxidedinitrate).mats(of(ThoriumDioxide,1,Nitrogen,2,Oxygen,6));
+        event.setMaterial(Uraniumdioxidedinitrate).mats(of(UraniumDioxide,1,Nitrogen,2,Oxygen,6));
+        /**
+         ***  Gases/Plasmas
+         **/
+        /**
+         *  Organic
+         **/
+        //Alkanes
+        event.setMaterial(Methane).mats(of(Carbon, 1, Hydrogen, 4));
+        event.setMaterial(Ethane).mats(of(Carbon, 2, Hydrogen, 6));
+        event.setMaterial(Propane).mats(of(Carbon, 2, Hydrogen, 6));
+        event.setMaterial(Butane).mats(of(Carbon, 4, Hydrogen, 10));
+        //Alkenes
+        event.setMaterial(Ethylene).mats(of(Carbon, 2, Hydrogen, 4));
+        event.setMaterial(Propene).mats(of(Carbon, 3, Hydrogen, 6));
+        event.setMaterial(Butene).mats(of(Carbon, 4, Hydrogen, 8));
+        event.setMaterial(Butadiene).mats(of(Carbon, 4, Hydrogen, 6));
+        //Ketones
+        event.setMaterial(Ethenone).mats(of(Carbon, 2, Hydrogen, 2, Oxygen, 1));
+        //Misc
+        event.setMaterial(CarbonDioxide).mats(of(Carbon, 1, Oxygen, 2));
+        event.setMaterial(CarbonMonoxide).mats(of(Carbon, 1, Oxygen, 1));
+        event.setMaterial(Chloromethane).mats(of(Carbon, 1, Hydrogen, 3, Chlorine, 1));
+        event.setMaterial(Dimethylamine).mats(of(Carbon, 2, Hydrogen, 7, Nitrogen, 1));
+        event.setMaterial(NaturalGas).mats(of(Methane,4,Ethane,2,Propane,2,Butane,1));
+        event.setMaterial(RefineryGas).asGas(128);
+        event.setMaterial(SulfuricGas).mats(of(NaturalGas,1,Sulfur,1));
+        event.setMaterial(Tetrafluoroethylene).mats(of(Carbon, 2, Fluorine, 4));
+        event.setMaterial(VinylChloride).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
+        event.setMaterial(WoodGas).mats(of(CarbonDioxide,8,CarbonMonoxide,4,Methane,2,Ethylene,1,Hydrogen,1));
+        /**
+         *  Inorganic
+         **/
+        event.setMaterial(Air).mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1, NobleGases, 1 ));
+        event.setMaterial(Ammonia).mats(of(Nitrogen, 1, Hydrogen, 3));
+        event.setMaterial(DinitrogenTetroxide).mats(of(Nitrogen, 2, Oxygen, 4));
+        event.setMaterial(HydrogenSulfide).mats(of(Hydrogen, 2, Sulfur, 1));
+        event.setMaterial(NitricOxide).mats(of(Nitrogen, 1, Oxygen, 1));
+        event.setMaterial(NitrousOxide).mats(of(Nitrogen, 2, Oxygen, 1));
+        event.setMaterial(NitrogenDioxide).mats(of(Nitrogen, 1, Oxygen, 2));
+        event.setMaterial(NobleGases).mats(of(Helium, 10, Neon, 10, Argon, 10, Xenon, 10));
+        event.setMaterial(SulfurDioxide).mats(of(Sulfur, 1, Oxygen, 2));
+        event.setMaterial(SulfurTrioxide).mats(of(Sulfur, 1, Oxygen, 3));
+        /**
+         ** Fuels
+         **/
+        event.setMaterial(SulfuricLightFuel).mats(of(LightFuel,1,HydrogenSulfide,1));
+        event.setMaterial(SulfuricHeavyFuel).mats(of(HeavyFuel,1,HydrogenSulfide,1));
+        /**
+         ** Cracked Stuff
+         */
+        event.setMaterial(SteamCrackedEthane).mats(of(Ethane,1,Steam,1));
+        event.setMaterial(SteamCrackedPropane).mats(of(Propane,1,Steam,1));
+        event.setMaterial(SteamCrackedButane).mats(of(Butane,1,Steam,1));
+        event.setMaterial(SteamCrackedLightFuel).mats(of(LightFuel,1,Steam,1));
+        event.setMaterial(SteamCrackedHeavyFuel).mats(of(HeavyFuel,1,Steam,1));
+        event.setMaterial(SteamCrackedNaphtha).mats(of(Naphtha,1,Steam,1));
+        event.setMaterial(SteamCrackedRefineryGas).mats(of(RefineryGas,1,Steam,1));
+        event.setMaterial(HydroCrackedEthane).mats(of(Ethane,1,Hydrogen,1));
+        event.setMaterial(HydroCrackedPropane).mats(of(Propane,1,Hydrogen,1));
+        event.setMaterial(HydroCrackedButane).mats(of(Butane,1,Hydrogen,2));
+        event.setMaterial(HydroCrackedLightFuel).mats(of(LightFuel,1,Hydrogen,2));
+        event.setMaterial(HydroCrackedHeavyFuel).mats(of(HeavyFuel,1,Hydrogen,2));
+        event.setMaterial(HydroCrackedNaphtha).mats(of(Naphtha,1,Hydrogen,2));
+        event.setMaterial(HydroCrackedRefineryGas).mats(of(RefineryGas,1,Hydrogen,2));
     }
 
     private static void toolsAndArmor(GregTechMaterialEvent event){
