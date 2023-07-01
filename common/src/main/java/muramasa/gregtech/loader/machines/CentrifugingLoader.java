@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.machines;
 import io.github.gregtechintergalactical.gtrubber.GTRubberData;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.Item;
@@ -12,8 +13,8 @@ import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
-import static muramasa.gregtech.data.GregTechMaterialTags.CENT;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static muramasa.gregtech.data.GregTechMaterialTags.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.CENTRIFUGING;
 import static net.minecraft.world.item.Items.*;
@@ -32,7 +33,8 @@ public class CentrifugingLoader {
             }
             else CENTRIFUGING.RB().ii(of(DUST_IMPURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1)).chances(1.0, 0.1).add("dust_pure_" + dust.getId(),dust.getMass(), 2);
         });
-        DUST.all().stream().filter(t -> t.has(CENT)).forEach(t -> {
+        CENT.all().forEach(t -> {
+            if (!t.has(DUST) && !t.has(LIQUID) && !t.has(GAS)) return;
             FluidStack[] fluids = t.getProcessInto().stream().filter(mat -> ((mat.m.has(GAS) || mat.m.has(LIQUID)) && !mat.m.has(DUST))).map(mat -> mat.m.has(GAS) ? mat.m.getGas(mat.s*1000) : mat.m.getLiquid(mat.s*1000)).toArray(FluidStack[]::new);
             if (fluids.length > 6) return;
             for (FluidStack fluid : fluids) {
@@ -41,17 +43,23 @@ public class CentrifugingLoader {
             }
             ItemStack[] items = t.getProcessInto().stream().filter(mat -> mat.m.has(DUST)).map(mat -> DUST.get(mat.m, mat.s)).toArray(ItemStack[]::new);
             int inputAmount = MaterialTags.PROCESS_INTO.get(t).getRight() > 0 ? MaterialTags.PROCESS_INTO.get(t).getRight() : t.getProcessInto().stream().mapToInt(mat -> mat.s).sum();
-            RecipeIngredient input = DUST.getMaterialIngredient(t, inputAmount);
-            CENTRIFUGING.RB().ii(input).io(items).fo(fluids).add("dust_" + t.getId(),t.getMass()*10, t.getMass() < 10 ? 30 : 64);
+            RecipeBuilder b = CENTRIFUGING.RB();
+            if (t.has(DUST)){
+                b.ii(DUST.getMaterialIngredient(t, inputAmount));
+            } else {
+                b.fi(t.has(LIQUID) ? t.getLiquid(inputAmount * 1000) : t.getGas(inputAmount * 1000));
+            }
+            int euPerTick = t.has(CENT5) ? 5 : t.has(CENT10) ? 10 : t.has(CENT15) ? 15 : t.has(CENT20) ? 20 : 16;
+            b.io(items).fo(fluids).add("dust_" + t.getId(),t.getMass()*4, euPerTick);
         });
         //some stone dust recipe from gtnh without metal mixture
         //CENTRIFUGING.RB().ii(of(DUST.get(Stone, 32))).io(DUST.get(Quartz, 9), DUST.get(PotassiumFeldspar, 9), DUST.get(Marble, 8), DUST.get(Biotite, 4),
         //        DUST.get(Sodalite, 4)).add("stone_dust",7680, 30);
 
         CENTRIFUGING.RB().ii(of(MAGMA_CREAM, 1)).io(BLAZE_POWDER, SLIME_BALL).add("magma_cream", 500, 5);
-        CENTRIFUGING.RB().fi(Propane.getLiquid(320)).fo(Lubricant.getLiquid(290)).add("propane", 20, 5);
-        CENTRIFUGING.RB().fi(Butane.getLiquid(320)).fo(Lubricant.getLiquid(370)).add("butane", 20, 5);
-        CENTRIFUGING.RB().fi(RefineryGas.getLiquid(800)).fo(LPG.getLiquid(400)).add("refinery_gas", 20, 5);
+        CENTRIFUGING.RB().fi(Propane.getGas(320)).fo(Lubricant.getLiquid(290)).add("propane", 20, 5);
+        CENTRIFUGING.RB().fi(Butane.getGas(320)).fo(Lubricant.getLiquid(370)).add("butane", 20, 5);
+        CENTRIFUGING.RB().fi(RefineryGas.getGas(800)).fo(LPG.getGas(400)).add("refinery_gas", 20, 5);
         //Cake Centrifuging
         CENTRIFUGING.RB().ii(of(DUST.get(ThoriumCake, 5))).io(DUST.get(ThoriumDioxide, 1), DUST.get(TrithoriumOctoxide, 4)).add("thorium_cake_centrifuging",400, 500);
         CENTRIFUGING.RB().ii(of(DUST.get(UraniumCake, 5))).io(DUST.get(UraniumDioxide, 1), DUST.get(TriuraniumOctoxide, 4)).add("uranium_cake_centrifuging",400, 500);
