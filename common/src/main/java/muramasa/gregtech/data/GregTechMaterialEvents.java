@@ -262,7 +262,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Bentonite).asOre().mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)); // TODO: Ore Gen
         event.setMaterial(BrownLimonite).asOre().harvestLevel(1).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
         event.setMaterial(Calcite).asOre().harvestLevel(1).mats(of(Calcium, 1, Carbon, 1, Oxygen, 3));
-        event.setMaterial(Cassiterite).asOre().harvestLevel(1).mats(of(Tin, 1, Oxygen, 2));
+        event.setMaterial(Cassiterite).asOre().harvestLevel(1).mats(of(Tin, 1, Oxygen, 2), 1);
         event.setMaterial(Chalcopyrite).asOre().harvestLevel(1).mats(of(Copper, 1, Iron, 1, Sulfur, 2));
         event.setMaterial(Cinnabar).asOre().harvestLevel(1).mats(of(Mercury, 1, Sulfur, 1));
         event.setMaterial(Cobaltite).asOre().harvestLevel(2).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1));

@@ -78,7 +78,6 @@ public class Blasting {
         addCalciteRecipe(YellowLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
         addCalciteRecipe(BrownLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
         addCalciteRecipe(Magnetite, 11, new ItemStack(Items.IRON_INGOT, 3));
-        addCalciteRecipe(Cassiterite, 5, INGOT.get(Tin, 1));
         addCalciteRecipe(Chalcopyrite, 6, new ItemStack(Items.COPPER_INGOT), new ItemStack(Items.IRON_INGOT));
         addCalciteRecipe(Galena, 4, INGOT.get(Lead, 1), INGOT.get(Silver, 1));
         addCalciteRecipe(Garnierite, 3, INGOT.get(Nickel, 1));
