@@ -74,13 +74,18 @@ public class Blasting {
             }
         });
 
+        BASIC_BLASTING.RB().ii(DUST.getMaterialIngredient(BlackSteel, 1)).io(INGOT.get(BlackSteel)).add("black_steel", 10800);
+        BASIC_BLASTING.RB().ii(DUST.getMaterialIngredient(BlueSteel, 1)).io(INGOT.get(BlueSteel)).add("blue_steel", 14400);
+        BASIC_BLASTING.RB().ii(DUST.getMaterialIngredient(RedSteel, 1)).io(INGOT.get(RedSteel)).add("red_steel", 14400);
+
         addCalciteRecipe(BandedIron, 4, new ItemStack(Items.IRON_INGOT, 1));
         addCalciteRecipe(YellowLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
         addCalciteRecipe(BrownLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
         addCalciteRecipe(Magnetite, 11, new ItemStack(Items.IRON_INGOT, 3));
         addCalciteRecipe(Chalcopyrite, 6, new ItemStack(Items.COPPER_INGOT), new ItemStack(Items.IRON_INGOT));
         addCalciteRecipe(Galena, 4, INGOT.get(Lead, 1), INGOT.get(Silver, 1));
-        addCalciteRecipe(Garnierite, 3, INGOT.get(Nickel, 1));
+        addCalciteRecipe(Garnierite, 1, INGOT.get(Nickel, 1));
+        addCalciteRecipe(Cassiterite, 1, INGOT.get(Tin, 1));
         addCalciteRecipe(Cobaltite, 5, INGOT.get(Cobalt, 1));
         addCalciteRecipe(Pyrite, 4, new ItemStack(Items.IRON_INGOT));
         addCalciteRecipe(Stibnite, 4, INGOT.get(Antimony, 1));
@@ -110,7 +115,7 @@ public class Blasting {
                 .add("aluminium_ingot_from_ruby", 400, 100);
         BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Sapphire, 1))
                 .io(NUGGET.get(Aluminium, 3))
-                .add("aluminium_ingot_from_blud_sapphire", 400, 100);
+                .add("aluminium_ingot_from_blue_sapphire", 400, 100);
         BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(GreenSapphire, 1))
                 .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
                 .add("aluminium_ingot_from_green_sapphire", 400, 100);
