@@ -166,6 +166,8 @@ public class RecipeMaps {
 
     public static void clientMaps() {
         BLASTING.setInfoRenderer(InfoRenderers.BLASTING_RENDERER);
+        BASIC_BLASTING.setInfoRenderer(InfoRenderers.BASIC_RENDERER);
+        COKING.setInfoRenderer(InfoRenderers.BASIC_RENDERER);
         COMBUSTION_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
         GAS_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
         NAQUADAH_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
