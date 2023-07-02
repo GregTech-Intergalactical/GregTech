@@ -67,11 +67,11 @@ public class GregTechData {
     public static ItemFluidCell CellTungstensteel = new ItemFluidCell(GTIRef.ID, TungstenSteel, 64000);
 
     public static ItemBasic<?> Biochaff = new ItemBasic<>(GTIRef.ID, "biochaff");
-    public static ItemBasic<?> CarbonFibre = new ItemBasic<>(Ref.ID, "raw_carbon_fibre");
-    public static ItemBasic<?> CarbonMesh = new ItemBasic<>(Ref.ID, "carbon_mesh");
-    public static ItemBasic<?> CoalBall = new ItemBasic<>(Ref.ID, "coal_ball");
-    public static ItemBasic<?> CompressedCoalBall = new ItemBasic<>(Ref.ID, "compressed_coal_ball");
-    public static ItemBasic<?> CoalChunk = new ItemBasic<>(Ref.ID, "coal_chunk");
+    public static ItemBasic<?> CarbonFibre = new ItemBasic<>(GTIRef.ID, "raw_carbon_fibre");
+    public static ItemBasic<?> CarbonMesh = new ItemBasic<>(GTIRef.ID, "carbon_mesh");
+    public static ItemBasic<?> CoalBall = new ItemBasic<>(GTIRef.ID, "coal_ball");
+    public static ItemBasic<?> CompressedCoalBall = new ItemBasic<>(GTIRef.ID, "compressed_coal_ball");
+    public static ItemBasic<?> CoalChunk = new ItemBasic<>(GTIRef.ID, "coal_chunk");
 
     public static ItemBasic<?> ItemFilter = new ItemBasic<>(GTIRef.ID, "item_filter");
     public static ItemBasic<?> DiamondSawBlade = new ItemBasic<>(GTIRef.ID, "diamond_saw_blade");
