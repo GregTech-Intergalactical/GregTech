@@ -942,12 +942,16 @@ public class GregTechMaterialEvents {
         /**
          **  Metals
          **/
-        event.setMaterial(BismuthBronze).addTools(2.0F, 8.0F, 512, 2, of(Enchantments.BANE_OF_ARTHROPODS, 4));
-        event.setMaterial(BlackBronze).addTools(2.0F, 12.0F, 512, 2, of(Enchantments.SMITE, 2));
-        event.setMaterial(BlackSteel).addTools(2.0F, 6.5F, 768, 2, of(Enchantments.SHARPNESS, 3));
-        event.setMaterial(BlueSteel).addTools(2.0F, 7.0F, 896, 2, of(Enchantments.SHARPNESS, 3));
-        event.setMaterial(Bronze).addArmor(new int[]{2, 6, 5, 2}, 0.0F, 0.0F, 12)
-                .addTools(2.0F, 6.0F, 448, 2, of(Enchantments.UNBREAKING, 1));
+        event.setMaterial(BismuthBronze).addTools(2.0F, 8.0F, 512, 2, of(Enchantments.BANE_OF_ARTHROPODS, 4))
+                .addArmor(new int[]{2, 6, 5, 2}, 0.0f, 0.0f, 16);
+        event.setMaterial(BlackBronze).addTools(2.0F, 12.0F, 512, 2, of(Enchantments.SMITE, 2))
+                .addArmor(new int[]{2, 6, 5, 2}, 0.0f, 0.0f, 16);
+        event.setMaterial(BlackSteel).addTools(2.0F, 6.5F, 768, 2, of(Enchantments.SHARPNESS, 3))
+                .addArmor(new int[]{2, 7, 6, 2}, 1.0F, 0.0F, 32, of(Enchantments.ALL_DAMAGE_PROTECTION, 2));
+        event.setMaterial(BlueSteel).addTools(2.0F, 7.0F, 896, 2, of(Enchantments.SHARPNESS, 3))
+                .addArmor(new int[]{2, 7, 6, 2}, 1.0F, 0.0F, 37, of(Enchantments.ALL_DAMAGE_PROTECTION, 3));
+        event.setMaterial(Bronze).addTools(2.0F, 6.0F, 448, 2, of(Enchantments.UNBREAKING, 1))
+                .addArmor(new int[]{2, 6, 5, 2}, 0.0F, 0.0F, 12);
         event.setMaterial(CobaltBrass).addTools(2.0F, 8.0F, 256, 2, of(Enchantments.SHARPNESS, 2));
         //event.setMaterial(Duranium).addHandleStat(620, -1.0F, of(Enchantments.SILK_TOUCH, 1))
                 //.addTools(6.5F, 16.0F, 5120, 5);
@@ -956,8 +960,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(HSSE).addTools(4.0F, 10.0F, 5120, 4);
         event.setMaterial(HSSG).addTools(3.0F, 10.0F, 4000, 3);
         event.setMaterial(HSSS).addTools(4.0F, 14.0F, 3000, 4);
-        event.setMaterial(Invar).addArmor(new int[]{2, 6, 5, 2}, 0.0F, 0.0F, 15, of(Enchantments.FIRE_PROTECTION, 1))
-                .addTools(2.0F, 6.0F, 256, 2, of(Enchantments.BANE_OF_ARTHROPODS, 3));
+        event.setMaterial(Invar).addTools(2.0F, 6.0F, 256, 2, of(Enchantments.BANE_OF_ARTHROPODS, 3))
+                .addArmor(new int[]{2, 6, 5, 2}, 0.0F, 0.0F, 15, of(Enchantments.FIRE_PROTECTION, 1));
         event.setMaterial(IronMagnetic).addTools(Iron);
         event.setMaterial(Kanthal).addTools(2.0F, 6.0F, 64, 2);
         event.setMaterial(Neutronium).addTools(9.0F, 24.0F, 655360, 6);
@@ -967,7 +971,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Nichrome).addTools(2.0F, 6.0F, 64, 2, of(Enchantments.BANE_OF_ARTHROPODS, 2));
         event.setMaterial(NickelZincFerrite).addTools(0.0F, 3.0F, 32, 1);
         event.setMaterial(Osmiridium).addTools(4.0F, 11.0F, 3840, 4);
-        event.setMaterial(RedSteel).addTools(2.0F, 7.5F, 1024, 2, of(Enchantments.SMITE, 3));
+        event.setMaterial(RedSteel).addTools(2.0F, 7.5F, 1024, 2, of(Enchantments.SMITE, 3))
+                .addArmor(new int[]{2, 7, 6, 2}, 1.0F, 0.0F, 42, of(Enchantments.ALL_DAMAGE_PROTECTION, 3));
         event.setMaterial(RoseGold).addTools(2.0F, 14.0F, 128, 2, of(Enchantments.SMITE, 4));
         event.setMaterial(Steel).addTools(IRON.getAttackDamageBonus(), IRON.getSpeed(), 512, IRON.getLevel(), of(Enchantments.SHARPNESS, 2))
                 .addArmor(new int[]{2, 7, 6, 2}, 1.0F, 0.0F, 21, of(Enchantments.ALL_DAMAGE_PROTECTION, 1));
@@ -979,8 +984,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(TungstenSteel).addTools(TungstenCarbide, of(Enchantments.SHARPNESS, 4));
         event.setMaterial(VanadiumSteel).addTools(3.0F, 7.0F, 512, 3, of(Enchantments.SHARPNESS, 3));
         event.setMaterial(Vibranium).addTools(15.0F, 1000.0F, 512, 15, of(Enchantments.BLOCK_FORTUNE, 5, Enchantments.MOB_LOOTING, 10));
-        event.setMaterial(WroughtIron).addArmor(new int[]{2, 6, 5, 2}, 1.0F, 0.0F, 17, of(Enchantments.ALL_DAMAGE_PROTECTION, 1))
-                .addTools(IRON.getAttackDamageBonus(), IRON.getSpeed(), 384, IRON.getLevel());
+        event.setMaterial(WroughtIron).addTools(IRON.getAttackDamageBonus(), IRON.getSpeed(), 384, IRON.getLevel())
+                .addArmor(new int[]{2, 6, 5, 2}, 1.0F, 0.0F, 17, of(Enchantments.ALL_DAMAGE_PROTECTION, 1));
 
         event.setMaterial(BlackGranite).addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1));
         event.setMaterial(RedGranite).addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1));
@@ -997,8 +1002,9 @@ public class GregTechMaterialEvents {
         event.setMaterial(Sapphire).addArmor(new int[]{3, 7, 7, 3}, 1.0F, 0.0F, 30)
                 .addTools(3.0F, 7.0F, 512, 3).harvestLevel(2);
         event.setMaterial(BlueTopaz).addTools(3.0F, 7.0F, 256, 3);
-        event.setMaterial(GreenSapphire).addArmor(new int[]{3, 7, 7, 3}, 1.0F, 0.0F, 30)
-                .addTools(Sapphire).harvestLevel(2);
+        event.setMaterial(GreenSapphire).addTools(Sapphire)
+                .addArmor(new int[]{3, 7, 7, 3}, 1.0F, 0.0F, 30)
+                .harvestLevel(2);
         event.setMaterial(Jade).addTools(2.0f, 8.0f, 512, 2, of(Enchantments.BLOCK_FORTUNE, 3, Enchantments.MOB_LOOTING, 6));
         event.setMaterial(Olivine).addTools(2.0F, 7.0F, 256, 2).harvestLevel(2);
         event.setMaterial(Opal).addTools(Olivine);
