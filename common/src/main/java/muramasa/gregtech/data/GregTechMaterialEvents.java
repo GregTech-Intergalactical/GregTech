@@ -56,7 +56,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Manganese).asMetal(1519, FOIL).asOre();
         //Iron, added by vanilla
         event.setMaterial(Cobalt).asMetal(1768, 0).asOre();
-        event.setMaterial(Nickel).asMetal(1728, 0, PLATE).asOre().harvestLevel(2).asPlasma();
+        event.setMaterial(Nickel).asMetal(1728, 0, PLATE).asOre().asPlasma();
         //Copper, by vanilla
         event.setMaterial(Zinc).asMetal(692, 0, PLATE, FOIL).asOre();
         event.setMaterial(Gallium).asMetal(302);
@@ -920,18 +920,24 @@ public class GregTechMaterialEvents {
         /**
          ** Periodic Elements
          */
-        event.setMaterial(Beryllium).addTools(2.0F, 14.0F, 64, 3);
-        event.setMaterial(Titanium).addTools(2.5F, 7.0F, 1600, 3);
+        event.setMaterial(Beryllium).addTools(1.5F, 14.0F, 64, 2);
+        event.setMaterial(Titanium).addTools(2.5F, 8.0F, 2560, 3);
         event.setMaterial(Chrome).addTools(2.5F, 11.0F, 256, 3);
-        event.setMaterial(Cobalt).addTools(3.0F, 8.0F, 512, 3);
-        event.setMaterial(Molybdenum).addTools(2.0F, 7.0F, 512, 2).harvestLevel(2);
-        event.setMaterial(Palladium).addTools(3.0F, 10.0F, 420, 2).harvestLevel(2);
-        event.setMaterial(Tungsten).addTools(2.0F, 6.0F, 512, 3); // Tungstensteel would be the one with tool;
-        event.setMaterial(Osmium).addTools(4.0F, 16.0F, 1080, 4);
-        event.setMaterial(Iridium).addTools(5.0F, 8.0F, 2560, 4);
-        event.setMaterial(Platinum).addTools(4.5F, 18.0F, 48, 2).harvestLevel(2);
+        event.setMaterial(Manganese).addTools(1.5F, 7.0F, 256, 2);
+        event.setMaterial(Cobalt).addTools(2.5F, 5.0F, 256, 3);
+        event.setMaterial(Nickel).addTools(1.5F, 6.0F, 64, 2, of(Enchantments.BANE_OF_ARTHROPODS, 2)).harvestLevel(2);
+        event.setMaterial(Zirconium).addTools(2.5F, 6.0F, 512, 3);
+        event.setMaterial(Molybdenum).addTools(1.5F, 7.0F, 512, 2).harvestLevel(2);
+        event.setMaterial(Technetium).addTools(0.5F, 10.0F, 1280, 1);
+        event.setMaterial(Palladium).addTools(1.5F, 8.0F, 512, 2).harvestLevel(2);
+        event.setMaterial(Neodymium).addTools(2.5F, 6.0F, 512, 3);
+        event.setMaterial(Tungsten).addTools(2.5F, 8.0F, 5120, 3); // Tungstensteel would be the one with tool;
+        event.setMaterial(Osmium).addTools(3.5F, 16.0F, 1280, 4);
+        event.setMaterial(Iridium).addTools(3.5F, 6.0F, 5120, 4);
+        event.setMaterial(Platinum).addTools(1.5F, 15.0F, 64, 2, of(Enchantments.SMITE, 5)).harvestLevel(2);
         event.setMaterial(Thorium).addTools(1.5F, 6.0F, 512, 2).harvestLevel(2);
-        event.setMaterial(Plutonium).addTools(2.5F, 6.0F, 280, 3, of(Enchantments.FIRE_ASPECT, 2)); // TODO: Enchantment: Radioactivit;
+        event.setMaterial(Uranium).addTools(2.5F, 6.0F, 512, 3);
+        event.setMaterial(Plutonium).addTools(2.5F, 6.0F, 512, 3); // TODO: Enchantment: Radioactivity;
 
         /**
          **  Metals
