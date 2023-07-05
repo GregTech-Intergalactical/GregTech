@@ -304,9 +304,9 @@ public class Materials {
     public static Material Duranium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "duranium", 0xffffff, METALLIC));
     public static Material Electrum = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "electrum", 0xffff64, SHINY));
     public static Material EnrichedNaquadah = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "enriched_naquadah", 0x323232, SHINY));
-    public static Material HSSE = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hsse", 0x336600, METALLIC));
-    public static Material HSSG = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hssg", 0x999900, METALLIC));
-    public static Material HSSS = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hsss", 0x660033, METALLIC));
+    public static Material HSSE = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hsse", 0x336600, METALLIC)).setDisplayName("HSS-E");
+    public static Material HSSG = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hssg", 0x999900, METALLIC)).setDisplayName("HSS-G");
+    public static Material HSSS = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hsss", 0x660033, METALLIC)).setDisplayName("HSS-S");
     public static Material Invar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "invar", 0xb4b478, METALLIC));
     public static Material IronMagnetic = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnetic_iron", 0xc8c8c8, MAGNETIC)).setMassMultiplierAndDivider(51, 50);
     public static Material Kanthal = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "kanthal", 0xc2d2df, METALLIC));
