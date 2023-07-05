@@ -1,6 +1,7 @@
 package muramasa.gregtech.data;
 
 import io.github.gregtechintergalactical.gtutility.GTUtilityData;
+import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.material.Material;
@@ -11,6 +12,8 @@ import muramasa.gregtech.material.GregTechMaterialEvent;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.enchantment.Enchantments;
+
+import java.util.List;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -352,7 +355,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(EpoxyResin).asSolid(400, 0, PLATE);
         event.setMaterial(FiberReinforcedEpoxyResin).asSolid(400, 0, PLATE);
         event.setMaterial(Polycaprolactam).asSolid(500, 0);
-        event.setMaterial(Polyethylene).asSolid(295, 0, PLATE, RUBBERTOOLS).asFluid();
+        event.setMaterial(Polyethylene).asSolid(295, 0, PLATE).asFluid();
         event.setMaterial(PolyphenyleneSulfide).asSolid(295, 0, PLATE, FOIL);
         event.setMaterial(Polystyrene).asSolid(295, 0);
         event.setMaterial(Polytetrafluoroethylene).asSolid(1400, 0, PLATE, FRAME, ROD);
@@ -1021,13 +1024,14 @@ public class GregTechMaterialEvents {
         /**
          **  Plastic Related
          **/
-        event.setMaterial(EpoxyResin).addHandleStat(70, 1.5F);
-        event.setMaterial(Polyethylene).addHandleStat(66, 0.5F);;
-        event.setMaterial(Polystyrene).addHandleStat(3, 1.0F);
-        event.setMaterial(PolyvinylChloride).addHandleStat(210, 0.5F);
-        event.setMaterial(Rubber).addHandleStat(11, 0.4F);
-        event.setMaterial(Silicone).addHandleStat(-40, 2.0F);
-        event.setMaterial(StyreneButadieneRubber).addHandleStat(66, 1.2F);
+        event.setMaterial(Rubber).addHandleStat(11, 0.4F).addTools(-1.0f, 0.15f, 256, 0, of(Enchantments.KNOCKBACK, 2), AntimatterDefaultTools.SOFT_HAMMER);
+        event.setMaterial(EpoxyResin).addHandleStat(70, 1.5F).addTools(0.0f, 2.25f, 32, 1, of(), AntimatterDefaultTools.SOFT_HAMMER);
+        event.setMaterial(FiberReinforcedEpoxyResin).addHandleStat(70, 1.5F).addTools(0.0f, 2.25f, 32, 1, of(), AntimatterDefaultTools.SOFT_HAMMER);
+        event.setMaterial(Polyethylene).addHandleStat(66, 0.5F).addTools(0.0f, 0.3f, 256, 1, of(Enchantments.KNOCKBACK, 1), AntimatterDefaultTools.SOFT_HAMMER);
+        event.setMaterial(Polystyrene).addHandleStat(3, 1.0F).addTools(0.0f, 0.3f, 256, 1, of(Enchantments.KNOCKBACK, 1), AntimatterDefaultTools.SOFT_HAMMER);
+        event.setMaterial(PolyvinylChloride).addHandleStat(210, 0.5F).addTools(0.0f, 0.3f, 256, 1, of(Enchantments.KNOCKBACK, 1), AntimatterDefaultTools.SOFT_HAMMER);
+        event.setMaterial(Silicone).addHandleStat(-40, 2.0F).addTools(0.0f, 0.3f, 1024, 1, of(Enchantments.KNOCKBACK, 2), AntimatterDefaultTools.SOFT_HAMMER);
+        event.setMaterial(StyreneButadieneRubber).addHandleStat(66, 1.2F).addTools(0.0f, 0.3f, 1024, 1, of(Enchantments.KNOCKBACK, 2), AntimatterDefaultTools.SOFT_HAMMER);
     }
 
 
@@ -1512,7 +1516,7 @@ public class GregTechMaterialEvents {
                 CetaneBoostedDiesel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ Sapphire, Ruby, Opal, Olivine,
                 Lapis, Sodalite, Lazurite, Monazite , Quartzite, Quartz, Phosphorus, Phosphate, NetherStar,
                 EnderPearl, EnderEye, Blaze);
-        RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone);
+        RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone, EpoxyResin, FiberReinforcedEpoxyResin);
         SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);
         SOLDER.add(Lead, Tin, SolderingAlloy);
         SOLDER.subTag(SubTag.BAD_SOLDER, Lead, Tin);
