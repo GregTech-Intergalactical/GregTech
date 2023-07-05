@@ -683,6 +683,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Cooperite).mats(of(Platinum, 3, Nickel, 1, Sulfur, 1, Palladium, 1));
         event.setMaterial(Galena).mats(of(Lead, 3, Silver, 3, Sulfur, 2));
         event.setMaterial(Garnierite).mats(of(Nickel, 1, Oxygen, 1), 1);
+        event.setMaterial(Graphite).mats(of(Carbon, 4), 1);
         event.setMaterial(Glauconite).mats(of(Potassium, 1, Magnesium, 2, Aluminium, 4, Hydrogen, 2, Oxygen, 12)); // TODO: Ore Gen;
         event.setMaterial(Grossular).mats(of(Calcium, 3, Aluminium, 2, Silicon, 3, Oxygen, 12));
         event.setMaterial(Ilmenite).mats(of(Iron, 1, Titanium, 1, Oxygen, 3));
