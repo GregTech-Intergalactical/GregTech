@@ -20,9 +20,9 @@ import static muramasa.gregtech.data.Materials.Bronze;
 
 public class SteamMachines {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        Object bronzePlate = AntimatterMaterialTypes.PLATE.get(Bronze);
-        Object steelPlate = AntimatterMaterialTypes.PLATE.get(Materials.Steel);
-        Object silverPlate = AntimatterMaterialTypes.PLATE.get(Materials.Silver);
+        Object bronzePlate = AntimatterMaterialTypes.PLATE.getMaterialTag(Bronze);
+        Object steelPlate = AntimatterMaterialTypes.PLATE.getMaterialTag(Materials.Steel);
+        Object silverPlate = AntimatterMaterialTypes.PLATE.getMaterialTag(Materials.Silver);
         Object wrench = WRENCH.getTag();
         Object bricks = Items.BRICKS;
         Object furnace = Items.FURNACE;
