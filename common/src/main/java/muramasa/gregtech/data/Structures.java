@@ -3,7 +3,6 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.BlockStateElement;
-import muramasa.antimatter.structure.FakeTileElement;
 import muramasa.antimatter.structure.Structure;
 import muramasa.antimatter.structure.StructureBuilder;
 import muramasa.gregtech.block.BlockCoil;
@@ -25,7 +24,6 @@ public class Structures {
     public static BlockStateElement AIR_OR_LAVA = new BlockStateElement("air_or_lava", (w, p, s) -> s.isAir() || s.getBlock() == Blocks.LAVA || s.getBlock() == LAVA);
     public static BlockStateElement GLASS_BLOCK = new BlockStateElement("glass_block", (w, p, s) -> s.getBlock() == Blocks.GLASS);
     public static BlockStateElement LITHIUM_BLOCK = new BlockStateElement("lithium_block", (w, p, s) -> s.getBlock() == BLOCK.get().get(Lithium).asBlock());
-    public static final FakeTileElement FAKE_CASING = new FakeTileElement(CASING_FIRE_BRICK);
     public static void init() {
 
         BLAST_FURNACE.setStructure(b -> b
@@ -37,7 +35,7 @@ public class Structures {
 
         COKE_OVEN.setStructure(b -> b
             .of("CCC", "CCC", "CCC").of("CCC", "CAM", "CCC").of(0)
-            .at("C", FAKE_CASING).at("M", COKE_OVEN)
+            .at("C", CASING_FIRE_BRICK).at("M", COKE_OVEN)
             .build().offset(2, -1)
         );
 

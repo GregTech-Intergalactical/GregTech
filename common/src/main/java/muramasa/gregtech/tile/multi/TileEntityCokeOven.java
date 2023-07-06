@@ -10,4 +10,9 @@ public class TileEntityCokeOven extends TileEntityBasicMultiMachine<TileEntityCo
     public TileEntityCokeOven(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
+
+    @Override
+    public boolean allowsFakeTiles() {
+        return true;
+    }
 }
