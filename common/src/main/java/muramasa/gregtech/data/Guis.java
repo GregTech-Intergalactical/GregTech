@@ -96,10 +96,10 @@ public class Guis {
         EXTRUDER.add(ALLOY_SMELTER);
         LATHE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY, 80, 63);
         MACERATOR.add(COMPRESSOR);
-        MACERATOR.add(HV, MACERATOR).add(HV, IT_OUT, 125, 25);
-        MACERATOR.add(EV, MACERATOR).add(EV, IT_OUT, 125, 25).add(EV, IT_OUT, 143, 25);
-        MACERATOR.add(IV, IT_IN, 53, 25).add(IV, IT_OUT, 107, 16).add(IV, IT_OUT, 125, 16).add(IV, IT_OUT, 107, 34)
-                .add(IV, IT_OUT, 125, 34);
+        MACERATOR.add(MV, MACERATOR).add(MV, IT_OUT, 125, 25);
+        MACERATOR.add(HV, MACERATOR).add(HV, IT_OUT, 125, 25).add(HV, IT_OUT, 143, 25);
+        MACERATOR.add(EV, IT_IN, 53, 25).add(EV, IT_OUT, 107, 16).add(EV, IT_OUT, 125, 16).add(EV, IT_OUT, 107, 34)
+                .add(EV, IT_OUT, 125, 34);
         RECYCLER.add(COMPRESSOR);
         SCANNER.add(COMPRESSOR);
         WIRE_MILL.add(COMPRESSOR);

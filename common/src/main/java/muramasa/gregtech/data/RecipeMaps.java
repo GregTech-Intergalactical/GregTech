@@ -111,7 +111,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> LATHING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "lathing", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MACERATING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "macerating", new SteamBuilder(STEAM_MACERATING)).setGuiTier(Tier.IV));
+            new RecipeMap<>(GTIRef.ID, "macerating", new SteamBuilder(STEAM_MACERATING)).setGuiTier(Tier.EV));
     public static RecipeMap<RecipeBuilder> MASS_FABRICATING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "mass_fabricating", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MIXING = AntimatterAPI.register(RecipeMap.class,

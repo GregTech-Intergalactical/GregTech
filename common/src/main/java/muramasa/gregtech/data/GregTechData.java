@@ -3,6 +3,7 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.block.BlockFakeTile;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -29,6 +30,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.MaterialColor;
 
 import static muramasa.gregtech.data.Materials.*;
 
@@ -289,7 +291,7 @@ public class GregTechData {
     public static final BlockCasing HULL_UV = new BlockCasing(GTIRef.ID, "hull_uv");
     public static final BlockCasing HULL_MAX = new BlockCasing(GTIRef.ID, "hull_max");
 
-    public static final BlockCasing CASING_FIRE_BRICK = new BlockCasing(GTIRef.ID, "fire_bricks");
+    public static final BlockFakeCasing CASING_FIRE_BRICK = new BlockFakeCasing(GTIRef.ID, "fire_bricks", BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.STONE, MaterialColor.DIRT).strength(1.0f, 10.0f).sound(SoundType.STONE));
     public static final BlockCasing CASING_BRONZE = new BlockCasing(GTIRef.ID, "casing_bronze");
     public static final BlockCasing CASING_BRICKED_BRONZE = new BlockSidedCasing(GTIRef.ID, "casing_bricked_bronze", "brick", "bronze");
     public static final BlockCasing CASING_BRONZE_PLATED_BRICK = new BlockCasing(GTIRef.ID, "casing_bronze_plated_brick");
