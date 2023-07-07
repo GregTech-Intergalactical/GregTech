@@ -18,6 +18,7 @@ dependencies{
     modImplementation("io.github.gregtechintergalactical:gtutility-common:${rootProject.gt_utility_version}-${rootProject.minecraft_version}"){
         transitive = false
     }
+    modImplementation("com.gtnewhorizon.structurelib:structurelib-common:${project.structurelib_version}-${project.minecraft_version}")
     modImplementation("io.github.feltmc:fabricated-forge-caps:${rootProject.fabricated_forge_hash}")
     modImplementation("io.github.feltmc:fabricated-forge-tag-extensions:${rootProject.fabricated_forge_hash}")
     modImplementation("earth.terrarium:botarium-forge-1.18.2:${project.botarium_version}")
