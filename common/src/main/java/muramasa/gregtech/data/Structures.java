@@ -43,13 +43,13 @@ public class Structures {
                 .of("CCC", "CFC", "CCC").of("BBB", "BAB", "BBB").of(1).of("C~C", "CCC", "CCC").build()
                 .at("F",HATCH_MUFFLER)
                 .at("B", ofCoil(TileEntityElectricBlastFurnace::setHeatingCapacity, TileEntityElectricBlastFurnace::getHeatingCapacity)).at("C", CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
-                .build().offset(2, 0).min(12, CASING_HEAT_PROOF).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
+                .min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).offset(1, 0, 0).build()
         );
 
         COKE_OVEN.setStructure(TileEntityCokeOven.class, b -> b.part("main")
             .of("CCC", "CCC", "CCC").of("C~C", "C-C", "CCC").of(0).build()
-            .at("C", FAKE_CASING)
-            .build().offset(2, -1)
+            .at("C", FAKE_CASING).offset(1, 1, 0)
+            .build()
         );
 
         /*COMBUSTION_ENGINE.setStructure(b -> b.part("main")
@@ -123,7 +123,7 @@ public class Structures {
         PRIMITIVE_BLAST_FURNACE.setStructure(TileEntityPrimitiveBlastFurnace.class, b -> b.part("main")
             .of("CCC", "CCC", "CCC").of("CCC", "CBM", "CCC").of("CCC", "CBC", "CCC").of("CCC", "CAC", "CCC").build()
             .at("C", CASING_FIRE_BRICK).at("B", AIR_OR_LAVA).at("M", PRIMITIVE_BLAST_FURNACE)
-            .build().offset(2, -1).min(32, CASING_FIRE_BRICK)
+                .offset(1, 1, 0).build()
         );
 
         /*PYROLYSIS_OVEN.setStructure(b -> b.part("main")
