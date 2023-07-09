@@ -36,19 +36,19 @@ public class Structures {
     public static IStructureElement<?> AIR_OR_LAVA = StructureUtility.ofChain(StructureUtility.isAir(), StructureUtility.ofBlockAdder((w, b) -> b == Blocks.LAVA || b == LAVA, Blocks.LAVA));//new BlockStateElement("air_or_lava", (w, p, s) -> s.isAir() || s.getBlock() == Blocks.LAVA || s.getBlock() == LAVA);
     public static IStructureElement<?> GLASS_BLOCK = StructureUtility.ofBlock(Blocks.GLASS);
     public static IStructureElement<?> LITHIUM_BLOCK = StructureUtility.ofBlock(BLOCK.get().get(Lithium).asBlock());
-    public static final FakeTileElement FAKE_CASING = new FakeTileElement(CASING_FIRE_BRICK);
+    public static final FakeTileElement<TileEntityCokeOven> FAKE_CASING = new FakeTileElement<>(CASING_FIRE_BRICK);
     public static void init() {
 
         BLAST_FURNACE.setStructure(TileEntityElectricBlastFurnace.class, b -> b.part("main")
-                .of("CCC", "CFC", "CCC").of("BBB", "BAB", "BBB").of(1).of("C~C", "CCC", "CCC").build()
-                .at("F",HATCH_MUFFLER)
-                .at("B", ofCoil(TileEntityElectricBlastFurnace::setHeatingCapacity, TileEntityElectricBlastFurnace::getHeatingCapacity)).at("C", CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
+                .of("CCC", "CFC", "CCC").of("BBB", "B-B", "BBB").of(1).of("C~C", "CCC", "CCC").build()
+                .at('F',HATCH_MUFFLER)
+                .at('B', ofCoil(TileEntityElectricBlastFurnace::setHeatingCapacity, TileEntityElectricBlastFurnace::getHeatingCapacity)).at('C', CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
                 .min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).offset(1, 0, 0).build()
         );
 
         COKE_OVEN.setStructure(TileEntityCokeOven.class, b -> b.part("main")
             .of("CCC", "CCC", "CCC").of("C~C", "C-C", "CCC").of(0).build()
-            .at("C", FAKE_CASING).offset(1, 1, 0)
+            .atElement('C', FAKE_CASING).offset(1, 1, 0)
             .build()
         );
 
@@ -121,8 +121,8 @@ public class Structures {
         );*/
 
         PRIMITIVE_BLAST_FURNACE.setStructure(TileEntityPrimitiveBlastFurnace.class, b -> b.part("main")
-            .of("CCC", "CCC", "CCC").of("CCC", "CBM", "CCC").of("CCC", "CBC", "CCC").of("CCC", "CAC", "CCC").build()
-            .at("C", CASING_FIRE_BRICK).at("B", AIR_OR_LAVA).at("M", PRIMITIVE_BLAST_FURNACE)
+            .of("CCC", "C-C", "CCC").of("CCC", "CBC", "CCC").of("C~C", "CBC", "CCC").of("CCC", "CCC", "CCC").build()
+            .at('C', CASING_FIRE_BRICK).atElement('B', (IStructureElement<TileEntityPrimitiveBlastFurnace>) AIR_OR_LAVA)
                 .offset(1, 1, 0).build()
         );
 

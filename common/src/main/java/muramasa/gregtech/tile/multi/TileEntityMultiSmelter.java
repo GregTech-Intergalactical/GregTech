@@ -26,7 +26,7 @@ public class TileEntityMultiSmelter extends TileEntityMultiMachine<TileEntityMul
 //        maxProgress = Math.max(1, 512 / (1 << tier - 1));
 //    }
 
-    @Override
+    /*@Override
     public boolean onStructureFormed() {
         super.onStructureFormed();
         List<BlockState> coils = getStates("coil");
@@ -38,7 +38,7 @@ public class TileEntityMultiSmelter extends TileEntityMultiMachine<TileEntityMul
             this.result.withError("all coils do not match");
             return false;
         }
-    }
+    }*/
 
     public void setCoilValues(BlockCoil coil) {
         switch (coil.getId()) {
