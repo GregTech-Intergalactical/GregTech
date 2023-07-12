@@ -129,6 +129,7 @@ public class Materials {
     public static Material Bismuth213 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "bismuth_213", 0x64a0a0, METALLIC, Bi213));
     public static Material Bismuth214 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "bismuth_214", 0x64a0a0, METALLIC, Bi214));
     public static Material Bismuth215 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "bismuth_215", 0x64a0a0, METALLIC, Bi215));
+    public static Material Cobalt60 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cobalt_60", 0x5050fa, METALLIC, Co60));
     public static Material Polonium211 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polonium_211", 0x707646, METALLIC, Po211));
     public static Material Polonium213 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polonium_213", 0x707646, METALLIC, Po213));
     public static Material Polonium214 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polonium_214", 0x707646, METALLIC, Po214));
