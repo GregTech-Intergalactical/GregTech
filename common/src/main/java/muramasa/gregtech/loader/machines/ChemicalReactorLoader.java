@@ -18,7 +18,7 @@ public class ChemicalReactorLoader {
     public static void init() {
         addChemicalRecipesSimple();
         //addChemicalRecipesComplicated();
-        nuclear_processing();
+        //nuclearProcessing();
     }
 
 
@@ -218,7 +218,7 @@ public class ChemicalReactorLoader {
 
 
     }
-    private static void nuclear_processing() {
+    private static void nuclearProcessing() {
 
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Thorium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedThorium.getLiquid(1000)).add("thorium_leaching",120,1000);
         CHEMICAL_REACTING.RB().ii(of(DUST.get(Uranium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedUranium.getLiquid(1000)).add("uranium_leaching",120,1000);

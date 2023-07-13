@@ -101,7 +101,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("packaging", PackagerLoader::init);
         loader.accept("chem_reacting", ChemicalReactorLoader::init);
         loader.accept("canning", CanningLoader::init);
-        loader.accept("nuclear", NuclearLoader::init);
+        //loader.accept("nuclear", NuclearLoader::init);
         loader.accept("fuels", Fuels::init);
         loader.accept("coal_boiler", CoalBoilerHandler::init);
         loader.accept("fluid_extracting", FluidExtractor::init);
@@ -131,7 +131,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("distilling", DistilleryLoader::init);
         loader.accept("electromagnetic_separating", ElectromagneticSeparatorLoader::init);
         loader.accept("decaying", DecayChamber::init);
-        loader.accept("dehydrating", ChemicalDehydrator::init);
+        //loader.accept("dehydrating", ChemicalDehydrator::init);
         loader.accept("autoclaving", Autoclave::init);
         if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
             loader.accept("ae2", AppliedEnergisticsRegistrar::machineRecipes);

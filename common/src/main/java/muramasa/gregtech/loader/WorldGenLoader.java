@@ -199,7 +199,7 @@ public class WorldGenLoader {
               Level.END).buildVein());
       ev.vein(new WorldGenVeinLayerBuilder("pitchblend").asOreVein(-54, -9, 40, 3, 16, Pitchblende, Pitchblende, Uraninite, Uraninite,
         OVERWORLD).buildVein());
-      ev.vein(new WorldGenVeinLayerBuilder("uranium").asOreVein(-44, -29, 20, 3, 16, Uraninite, Uraninite, Uranium, Uranium,
+      ev.vein(new WorldGenVeinLayerBuilder("uranium").asOreVein(-44, -29, 20, 3, 16, Uraninite, Uraninite, Uraninite, Uraninite,
         OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinLayerBuilder("monazite").asOreVein(-44, -14, 30, 3, 16, Bastnasite, Bastnasite, Monazite,
         Neodymium, OVERWORLD).buildVein());

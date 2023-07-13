@@ -104,7 +104,7 @@ public class Materials {
     public static Material Actinium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "actinium", 0xb8c5f1, SHINY, Ac));
     public static Material Thorium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium", 0x001e00, SHINY, Th));
     public static Material Protactinium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "protactinium", 0x8a735a, SHINY, Pa));
-    public static Material Uranium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium", 0x32f032, METALLIC, U));
+    public static Material Uranium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium", 0x32f032, METALLIC, U)).setDisplayName("Uranium 238");
     public static Material Neptunium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "neptunium", 0x203f64, SHINY, Np));
     public static Material Plutonium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "plutonium", 0xc32929, SHINY, Pu));
     public static Material Americium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "americium", 0xa2a2a2, SHINY, Am));
@@ -168,15 +168,9 @@ public class Materials {
     public static Material Protactinium232 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "protactinium_232", 0x8A735A, METALLIC, Pa232));
     public static Material Protactinium233 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "protactinium_233", 0x8A735A, METALLIC, Pa233));
     public static Material Protactinium234 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "protactinium_234", 0x8A735A, METALLIC, Pa234));
-    public static Material Uranium232 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_232", 0x32f032, METALLIC, U232));
     public static Material Uranium233 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_233", 0x32f032, METALLIC, U233));
-    public static Material Uranium234 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_234", 0x32f032, METALLIC, U234));
     public static Material Uranium235 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_235", 0x32f032, METALLIC, U235));
-    public static Material Uranium236 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_236", 0x32f032, METALLIC, U236));
-    public static Material Uranium237 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_237", 0x32f032, METALLIC, U237));
     public static Material Uranium238 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_238", 0x32f032, METALLIC, U238));
-    public static Material Uranium239 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_239", 0x32f032, METALLIC, U239));
-    public static Material Uranium240 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_240", 0x32f032, METALLIC, U240));
     public static Material Neptunium236 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "neptunium_236", 0x203F64, METALLIC, Np236));
     public static Material Neptunium237 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "neptunium_237", 0x203F64, METALLIC, Np237));
     public static Material Neptunium238 = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "neptunium_238", 0x203F64, METALLIC, Np238));

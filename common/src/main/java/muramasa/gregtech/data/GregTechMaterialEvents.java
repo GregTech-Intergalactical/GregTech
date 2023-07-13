@@ -123,7 +123,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Actinium).asMetal(1323, 0);
         event.setMaterial(Thorium).asMetal(2115, PLATE_DENSE).asOre();
         event.setMaterial(Protactinium).asMetal(1841, 0);
-        event.setMaterial(Uranium).asMetal(1405).asOre().harvestLevel(2);
+        event.setMaterial(Uranium).asMetal(1405).harvestLevel(2);
         event.setMaterial(Neptunium).asMetal(912, 0);
         event.setMaterial(Plutonium).asMetal(912, 0);
         event.setMaterial(Americium).asMetal(1149, 0);
@@ -849,11 +849,11 @@ public class GregTechMaterialEvents {
         event.setMaterial(SulfurDioxide).mats(of(Sulfur, 1, Oxygen, 2));
         event.setMaterial(Titaniumtetrachloride).mats(of(Titanium, 1, Chlorine, 4));
         //Nuclear
-        event.setMaterial(LeachingSolution).mats(of(SodiumBicarbonateSolution,1,SodiumCarbonateSolution,1));
-        event.setMaterial(LeachedThorium).mats(of(LeachingSolution,1,Thorium,1));
-        event.setMaterial(LeachedUranium).mats(of(LeachingSolution,1,Uranium,1));
-        event.setMaterial(Thoriumdioxidedinitrate).mats(of(ThoriumDioxide,1,Nitrogen,2,Oxygen,6));
-        event.setMaterial(Uraniumdioxidedinitrate).mats(of(UraniumDioxide,1,Nitrogen,2,Oxygen,6));
+        //event.setMaterial(LeachingSolution).mats(of(SodiumBicarbonateSolution,1,SodiumCarbonateSolution,1));
+        //event.setMaterial(LeachedThorium).mats(of(LeachingSolution,1,Thorium,1));
+        //event.setMaterial(LeachedUranium).mats(of(LeachingSolution,1,Uranium,1));
+        //event.setMaterial(Thoriumdioxidedinitrate).mats(of(ThoriumDioxide,1,Nitrogen,2,Oxygen,6));
+        //event.setMaterial(Uraniumdioxidedinitrate).mats(of(UraniumDioxide,1,Nitrogen,2,Oxygen,6));
         /**
          ***  Gases/Plasmas
          **/
@@ -1040,7 +1040,7 @@ public class GregTechMaterialEvents {
         /**
          *** Isotopes (Solids)
          **/
-        event.setMaterial(Thallium207).asMetal(577).mats(of(Thallium, 1));
+        /*event.setMaterial(Thallium207).asMetal(577).mats(of(Thallium, 1));
         event.setMaterial(Thallium209).asMetal(577).mats(of(Thallium, 1));
         event.setMaterial(Thallium210).asMetal(577).mats(of(Thallium, 1));
         event.setMaterial(Bismuth211).asMetal(544).mats(of(Bismuth, 1));
@@ -1067,7 +1067,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Radium228).asMetal(973).mats(of(Radium, 1));
         event.setMaterial(Actinium225).asMetal(1323, 1323).mats(of(Actinium, 1));
         event.setMaterial(Actinium227).asMetal(1323, 1323).mats(of(Actinium, 1));
-        event.setMaterial(Actinium228).asMetal(1323, 1323).mats(of(Actinium, 1));
+        event.setMaterial(Actinium228).asMetal(1323, 1323).mats(of(Actinium, 1));*/
         event.setMaterial(Thorium227).asMetal(2028, 3000).mats(of(Thorium, 1));
         event.setMaterial(Thorium228).asMetal(2028, 3000).mats(of(Thorium, 1));
         event.setMaterial(Thorium229).asMetal(2028, 3000).mats(of(Thorium, 1));
@@ -1080,15 +1080,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Protactinium232).asMetal(1841).mats(of(Protactinium, 1));
         event.setMaterial(Protactinium233).asMetal(1841).mats(of(Protactinium, 1));
         event.setMaterial(Protactinium234).asMetal(1841).mats(of(Protactinium, 1));
-        event.setMaterial(Uranium232).asMetal(1406, 3000).mats(of(Uranium, 1));
         event.setMaterial(Uranium233).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium234).asMetal(1406, 3000).mats(of(Uranium, 1));
         event.setMaterial(Uranium235).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium236).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium237).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium238).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium239).asMetal(1406, 3000).mats(of(Uranium, 1));
-        event.setMaterial(Uranium240).asMetal(1406, 3000).mats(of(Uranium, 1));
         event.setMaterial(Neptunium236).asMetal(912).mats(of(Neptunium, 1));
         event.setMaterial(Neptunium237).asMetal(912).mats(of(Neptunium, 1));
         event.setMaterial(Neptunium238).asMetal(912).mats(of(Neptunium, 1));
@@ -1168,15 +1161,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Thorium233Dioxide).asDust().mats(of(Thorium233,1,Oxygen,2));
         event.setMaterial(Thorium234Dioxide).asDust().mats(of(Thorium234,1,Oxygen,2));
         event.setMaterial(UraniumDioxide).asDust().mats(of(Uranium,1,Oxygen,2));
-        event.setMaterial(Uranium232Dioxide).asDust().mats(of(Uranium232,1,Oxygen,2));
         event.setMaterial(Uranium233Dioxide).asDust().mats(of(Uranium233,1,Oxygen,2));
-        event.setMaterial(Uranium234Dioxide).asDust().mats(of(Uranium234,1,Oxygen,2));
         event.setMaterial(Uranium235Dioxide).asDust().mats(of(Uranium235,1,Oxygen,2));
-        event.setMaterial(Uranium236Dioxide).asDust().mats(of(Uranium236,1,Oxygen,2));
-        event.setMaterial(Uranium237Dioxide).asDust().mats(of(Uranium237,1,Oxygen,2));
-        event.setMaterial(Uranium238Dioxide).asDust().mats(of(Uranium238,1,Oxygen,2));
-        event.setMaterial(Uranium239Dioxide).asDust().mats(of(Uranium239,1,Oxygen,2));
-        event.setMaterial(Uranium240Dioxide).asDust().mats(of(Uranium240,1,Oxygen,2));
         event.setMaterial(TrithoriumOctoxide).asDust().mats(of(Thorium,3,Oxygen,8));
         event.setMaterial(TriuraniumOctoxide).asDust().mats(of(Uranium,3,Oxygen,8));
         /**
@@ -1196,15 +1182,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Thorium233Hexafluoride).asGas().mats(of(Thorium233,1,Fluorine,6));
         event.setMaterial(Thorium234Hexafluoride).asGas().mats(of(Thorium234,1,Fluorine,6));
         event.setMaterial(UraniumHexafluoride).asGas().mats(of(Uranium,1,Fluorine,6));
-        event.setMaterial(Uranium232Hexafluoride).asGas().mats(of(Uranium232,1,Fluorine,6));
         event.setMaterial(Uranium233Hexafluoride).asGas().mats(of(Uranium233,1,Fluorine,6));
-        event.setMaterial(Uranium234Hexafluoride).asGas().mats(of(Uranium234,1,Fluorine,6));
         event.setMaterial(Uranium235Hexafluoride).asGas().mats(of(Uranium235,1,Fluorine,6));
-        event.setMaterial(Uranium236Hexafluoride).asGas().mats(of(Uranium236,1,Fluorine,6));
-        event.setMaterial(Uranium237Hexafluoride).asGas().mats(of(Uranium237,1,Fluorine,6));
-        event.setMaterial(Uranium238Hexafluoride).asGas().mats(of(Uranium238,1,Fluorine,6));
-        event.setMaterial(Uranium239Hexafluoride).asGas().mats(of(Uranium239,1,Fluorine,6));
-        event.setMaterial(Uranium240Hexafluoride).asGas().mats(of(Uranium240,1,Fluorine,6));
         /**
          * Fissile Fuels
          */
@@ -1216,15 +1195,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Thorium232).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Thorium233).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Thorium234).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Uranium232).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Uranium233).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Uranium234).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Uranium235).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Uranium236).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Uranium237).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Uranium238).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Uranium239).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Uranium240).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Neptunium236).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Neptunium237).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Neptunium238).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
@@ -1396,7 +1368,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Tungstate).addByProduct(Manganese, Silver, Lithium);
         event.setMaterial(Tungsten).addByProduct(Manganese, Molybdenum);
         event.setMaterial(Uraninite).addByProduct(Uranium, Thorium, Plutonium);
-        event.setMaterial(Uranium).addByProduct(Lead, Thorium, Plutonium);
+        //event.setMaterial(Uranium).addByProduct(Lead, Thorium, Plutonium);
         event.setMaterial(Uvarovite).addByProduct(YellowGarnet, Chrome);
         event.setMaterial(VanadiumMagnetite).addByProduct(Magnetite, Vanadium);
         event.setMaterial(YellowGarnet).addByProduct(Andradite, Grossular, Uvarovite);
@@ -1468,7 +1440,7 @@ public class GregTechMaterialEvents {
         DECAYABLE.add(Thallium209,Thallium210,Bismuth213,Bismuth214,Polonium213,Polonium214,Polonium215,Polonium216,Polonium218,Astatine217,Astatine218,
                 Radon219,Radon220,Radon222,Francium221,Francium223,Radium223,Radium224,Radium225,Radium226,Radium228,Actinium225,Actinium227,Actinium228,
                 Thorium227,Thorium228,Thorium229,Thorium230,Thorium231,Thorium233,Thorium234,Protactinium231,Protactinium232,Protactinium233,Protactinium234,
-                Uranium232,Uranium233,Uranium234,Uranium235,Uranium237,Uranium238,Uranium239,Uranium240,Neptunium236,Neptunium237,Neptunium238,Neptunium239,
+                Uranium233,Uranium235,Uranium238,Neptunium236,Neptunium237,Neptunium238,Neptunium239,
                 Neptunium240,Plutonium236,Plutonium238,Plutonium239,Plutonium240,Plutonium241,Plutonium242,Plutonium243,Plutonium244,Plutonium246,
                 Americium241,Americium242,Americium244,Americium246,Curium242,Curium244,Curium245,Curium246,Curium247,Curium248,Curium249,Curium250,
                 Berkelium248,Berkelium249,Berkelium250,Berkelium251,Californium248,Californium249,Californium250,Californium251,Californium252,Californium253,
