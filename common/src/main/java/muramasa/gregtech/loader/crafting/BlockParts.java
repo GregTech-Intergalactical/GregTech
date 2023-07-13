@@ -34,7 +34,7 @@ public class BlockParts {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
         AntimatterMaterialTypes.FRAME.all().forEach(frame -> {
             if (!frame.has(AntimatterMaterialTypes.ROD)) return;
-            provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), AntimatterMaterialTypes.FRAME.get().get(frame).asItem(),
+            provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), AntimatterMaterialTypes.FRAME.get().get(frame).asStack(2),
                     of('R', AntimatterMaterialTypes.ROD.get(frame), 'W', WRENCH.getTag())
             , "RRR","RWR", "RRR");
         });
