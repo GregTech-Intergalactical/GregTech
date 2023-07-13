@@ -1440,7 +1440,7 @@ public class GregTechMaterialEvents {
         DECAYABLE.add(Thallium209,Thallium210,Bismuth213,Bismuth214,Polonium213,Polonium214,Polonium215,Polonium216,Polonium218,Astatine217,Astatine218,
                 Radon219,Radon220,Radon222,Francium221,Francium223,Radium223,Radium224,Radium225,Radium226,Radium228,Actinium225,Actinium227,Actinium228,
                 Thorium227,Thorium228,Thorium229,Thorium230,Thorium231,Thorium233,Thorium234,Protactinium231,Protactinium232,Protactinium233,Protactinium234,
-                Uranium233,Uranium235,Uranium238,Neptunium236,Neptunium237,Neptunium238,Neptunium239,
+                Uranium233,Uranium235,Uranium,Neptunium236,Neptunium237,Neptunium238,Neptunium239,
                 Neptunium240,Plutonium236,Plutonium238,Plutonium239,Plutonium240,Plutonium241,Plutonium242,Plutonium243,Plutonium244,Plutonium246,
                 Americium241,Americium242,Americium244,Americium246,Curium242,Curium244,Curium245,Curium246,Curium247,Curium248,Curium249,Curium250,
                 Berkelium248,Berkelium249,Berkelium250,Berkelium251,Californium248,Californium249,Californium250,Californium251,Californium252,Californium253,

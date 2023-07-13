@@ -178,8 +178,8 @@ public class ChemicalReactorLoader {
         //POLYCAPROLACTAM
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Saltpeter), 1)).fi(Naphtha.getLiquid(576)).fo(Polycaprolactam.getLiquid(1296)).add("polycaprolactam",640,30);
         //URANIUM 238 DUST
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Uraninite), 1), of(DUST.getMaterialTag(Magnesium), 1)).io(DUST.get(Uranium238, 1)).add("uranium238",1000,30);
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Uraninite), 1), of(DUST.getMaterialTag(Aluminium), 1)).io(DUST.get(Uranium238, 1)).add("uranium238_1",1000,30);
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Uraninite), 1), of(DUST.getMaterialTag(Magnesium), 1)).io(DUST.get(Uranium, 1)).add("uranium238",1000,30);
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Uraninite), 1), of(DUST.getMaterialTag(Aluminium), 1)).io(DUST.get(Uranium, 1)).add("uranium238_1",1000,30);
         //CHEMICAL DYES
         // CHEMICAL_REACTING.RB().ii(of(DUST.get(Salt, 2)), RecipeIngredient.of(Items.GRAY_DYE)).fi(SulfuricAcid.getLiquid(432)).fo(ChemicalGrayDye.getLiquid(288)).add("chemical_gray_dye",600,48);
         //BUTADIENE
