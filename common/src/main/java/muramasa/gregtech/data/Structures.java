@@ -10,9 +10,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.BlockStateElement;
 import muramasa.antimatter.structure.FakeTileElement;
 import muramasa.gregtech.block.BlockCoil;
-import muramasa.gregtech.tile.multi.TileEntityCokeOven;
-import muramasa.gregtech.tile.multi.TileEntityElectricBlastFurnace;
-import muramasa.gregtech.tile.multi.TileEntityPrimitiveBlastFurnace;
+import muramasa.gregtech.tile.multi.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -35,15 +33,17 @@ public class Structures {
     /** Special Case Elements **/
     public static IStructureElement<?> AIR_OR_LAVA = StructureUtility.ofChain(StructureUtility.isAir(), StructureUtility.ofBlockAdder((w, b) -> b == Blocks.LAVA || b == LAVA, Blocks.LAVA));//new BlockStateElement("air_or_lava", (w, p, s) -> s.isAir() || s.getBlock() == Blocks.LAVA || s.getBlock() == LAVA);
     public static IStructureElement<?> GLASS_BLOCK = StructureUtility.ofBlock(Blocks.GLASS);
-    public static IStructureElement<?> LITHIUM_BLOCK = StructureUtility.ofBlock(BLOCK.get().get(Lithium).asBlock());
+    public static IStructureElement<?> LITHIUM_BLOCK = StructureUtility.ofBlock(BLOCK.getBlockMaterialTag(Lithium));
     public static final FakeTileElement<TileEntityCokeOven> FAKE_CASING = new FakeTileElement<>(CASING_FIRE_BRICK);
     public static void init() {
 
         BLAST_FURNACE.setStructure(TileEntityElectricBlastFurnace.class, b -> b.part("main")
-                .of("CCC", "CFC", "CCC").of("BBB", "B-B", "BBB").of(1).of("C~C", "CCC", "CCC").build()
+                .of("CCC", "CFC", "CCC").of("BBB", "B-B", "BBB").of(1).of("H~H", "HCH", "HHH").build()
                 .at('F',HATCH_MUFFLER)
-                .at('B', ofCoil(TileEntityElectricBlastFurnace::setHeatingCapacity, TileEntityElectricBlastFurnace::getHeatingCapacity)).at('C', CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
-                .min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).offset(1, 0, 0).build()
+                .at('B', ofCoil(TileEntityElectricBlastFurnace::setHeatingCapacity, TileEntityElectricBlastFurnace::getHeatingCapacity))
+                .at('C', CASING_HEAT_PROOF)
+                .at('H', CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
+                .min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).offset(1, 3, 0).build()
         );
 
         COKE_OVEN.setStructure(TileEntityCokeOven.class, b -> b.part("main")
@@ -52,19 +52,20 @@ public class Structures {
             .build()
         );
 
-        /*COMBUSTION_ENGINE.setStructure(b -> b.part("main")
-                .of("CCCV", "CCCV", "CCCV").of("CHHV", "EAAM", "CHHV").of(0).build()
-                .at("M", COMBUSTION_ENGINE).at("C", CASING_TITANIUM).at("V", CASING_ENGINE_INTAKE).at("H", CASING_TITANIUM, HATCH_FLUID_I, HATCH_FLUID_O).at("E", HATCH_DYNAMO)
-                .build().offset(3, -1).min(19, CASING_TITANIUM).min(1, HATCH_FLUID_I, HATCH_FLUID_O)
+        COMBUSTION_ENGINE.setStructure(TileEntityCombustionEngine.class, b -> b.part("main")
+                .of("VVV", "CCC", "CCC", "CCC").of("V~V", "H-H", "H-H", "CEC").of(0).build()
+                .at('C', CASING_TITANIUM).at('V', CASING_ENGINE_INTAKE).at('H', CASING_TITANIUM, HATCH_FLUID_I, HATCH_FLUID_O).at('E', HATCH_DYNAMO)
+                .offset(1, 1, 0).min(1, HATCH_FLUID_I, HATCH_FLUID_O).build()
         );
 
-        CRACKING_UNIT.setStructure(b -> b.part("main")
-                .of("CCC", "BBB", "CCC", "BBB", "CCC").of("HHH","BAB", "HAM","BAB", "HHH").of("CCC", "BBB", "CCC", "BBB", "CCC").build()
-                .at("C", CASING_STAINLESS_STEEL).at("M", CRACKING_UNIT)
-                .at("B", "coil", AntimatterAPI.all(BlockCoil.class))
-                .at("H", CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
-                .build().offset(2, -1)
-        );*/
+        CRACKING_UNIT.setStructure(TileEntityOilCrackingUnit.class, b -> b.part("main")
+                .of("CBCBC", "CBCBC", "CBCBC").of( "HB~BH", "H---H", "HBHBH").of(0).build()
+                .at('C', CASING_STAINLESS_STEEL)
+                //.at("B", "coil", AntimatterAPI.all(BlockCoil.class))
+                .at('B', COIL_CUPRONICKEL)
+                .at('H', CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
+                .offset(2, 1, 0).build()
+        );
         /*List<Structure> structures = new ArrayList<>();
         for (int i = 0; i < 11; i++){
             StructureBuilder builder = new StructureBuilder().of("ccc", "ccM", "ccc").of("CCC","CAC", "CCC");
