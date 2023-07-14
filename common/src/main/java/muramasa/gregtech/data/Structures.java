@@ -59,12 +59,13 @@ public class Structures {
         );
 
         CRACKING_UNIT.setStructure(TileEntityOilCrackingUnit.class, b -> b.part("main")
-                .of("CBCBC", "CBCBC", "CBCBC").of( "HB~BH", "H---H", "HBHBH").of(0).build()
+                .of("CBMBC", "CBMBC", "CBMBC").of( "CB~BC", "H---H", "CBMBC").of(0).build()
                 .at('C', CASING_STAINLESS_STEEL)
                 //.at("B", "coil", AntimatterAPI.all(BlockCoil.class))
                 .at('B', COIL_CUPRONICKEL)
-                .at('H', CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
-                .offset(2, 1, 0).build()
+                .at('H', HATCH_FLUID_I, HATCH_FLUID_O)
+                .at('M', CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_ENERGY)
+                .offset(2, 1, 0).exact(1, HATCH_FLUID_O).min(2, HATCH_FLUID_I).min(1, HATCH_ENERGY).build()
         );
         /*List<Structure> structures = new ArrayList<>();
         for (int i = 0; i < 11; i++){
