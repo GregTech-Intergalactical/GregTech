@@ -123,7 +123,7 @@ public class Structures {
         PRIMITIVE_BLAST_FURNACE.setStructure(TileEntityPrimitiveBlastFurnace.class, b -> b.part("main")
             .of("CCC", "C-C", "CCC").of("CCC", "CBC", "CCC").of("C~C", "CBC", "CCC").of("CCC", "CCC", "CCC").build()
             .at('C', CASING_FIRE_BRICK).atElement('B', (IStructureElement<TileEntityPrimitiveBlastFurnace>) AIR_OR_LAVA)
-                .offset(1, 1, 0).build()
+                .offset(1, 2, 0).build()
         );
 
         /*PYROLYSIS_OVEN.setStructure(b -> b.part("main")
