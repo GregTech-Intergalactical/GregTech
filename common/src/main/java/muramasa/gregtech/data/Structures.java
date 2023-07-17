@@ -6,9 +6,12 @@ import com.gtnewhorizon.structurelib.structure.IItemSource;
 import com.gtnewhorizon.structurelib.structure.IStructureElement;
 import com.gtnewhorizon.structurelib.structure.StructureUtility;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.capability.IComponentHandler;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.structure.AntimatterStructureUtility;
 import muramasa.antimatter.structure.BlockStateElement;
 import muramasa.antimatter.structure.FakeTileElement;
+import muramasa.antimatter.util.int3;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.tile.multi.*;
 import net.minecraft.core.BlockPos;
@@ -17,13 +20,17 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
 import static com.gtnewhorizon.structurelib.structure.IStructureElement.PlaceResult.SKIP;
+import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofBlock;
+import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofChain;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.BLOCK;
+import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatch;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.Lithium;
@@ -31,9 +38,9 @@ import static muramasa.gregtech.data.Materials.Lithium;
 public class Structures {
 
     /** Special Case Elements **/
-    public static IStructureElement<?> AIR_OR_LAVA = StructureUtility.ofChain(StructureUtility.isAir(), StructureUtility.ofBlockAdder((w, b) -> b == Blocks.LAVA || b == LAVA, Blocks.LAVA));//new BlockStateElement("air_or_lava", (w, p, s) -> s.isAir() || s.getBlock() == Blocks.LAVA || s.getBlock() == LAVA);
-    public static IStructureElement<?> GLASS_BLOCK = StructureUtility.ofBlock(Blocks.GLASS);
-    public static IStructureElement<?> LITHIUM_BLOCK = StructureUtility.ofBlock(BLOCK.getBlockMaterialTag(Lithium));
+    public static IStructureElement<?> AIR_OR_LAVA = ofChain(StructureUtility.isAir(), StructureUtility.ofBlockAdder((w, b) -> b == Blocks.LAVA || b == LAVA, Blocks.LAVA));//new BlockStateElement("air_or_lava", (w, p, s) -> s.isAir() || s.getBlock() == Blocks.LAVA || s.getBlock() == LAVA);
+    public static IStructureElement<?> GLASS_BLOCK = ofBlock(Blocks.GLASS);
+    public static IStructureElement<?> LITHIUM_BLOCK = ofBlock(BLOCK.getBlockMaterialTag(Lithium));
     public static final FakeTileElement<TileEntityCokeOven> FAKE_CASING = new FakeTileElement<>(CASING_FIRE_BRICK);
     public static void init() {
 
@@ -83,6 +90,31 @@ public class Structures {
             structures.add(structure);
         }
         DISTLLATION_TOWER.setStructures(structures);*/
+        DISTLLATION_TOWER.setStructure(TileEntityDistillationTower.class, b -> b.part("bottom")
+                .of("H~H", "HHH", "HHH").build()
+                .part("layer").of("CCC", "C-C", "CCC").offsetFunction((i, int3) -> new int3(int3.getX(), int3.getY() + i, int3.getZ())).max(11).build()
+                .part("top").of("CCC", "CCC", "CCC").offsetFunction((i, int3) -> new int3(int3.getX(), int3.getY() + i, int3.getZ())).build()
+                .atElement('C', ofChain(StructureUtility.<TileEntityDistillationTower>ofBlock(CASING_STAINLESS_STEEL), ofHatch(HATCH_FLUID_O, (distillationTower, world, pos, machine, handler) -> {
+                    int currentY = pos.getY() - distillationTower.getBlockPos().getY();
+                    if (distillationTower.HATCH_LAYER_MAP.contains(currentY)) return false;
+                    distillationTower.HATCH_LAYER_MAP.add(currentY);
+                    distillationTower.FO_HATCHES.add(handler);
+                    return true;
+                })))
+                .at('H', CASING_STAINLESS_STEEL, HATCH_FLUID_I, HATCH_ENERGY)
+                .offset(1, 0, 0).min(1, HATCH_ENERGY, HATCH_FLUID_O).exact(1, HATCH_FLUID_I)
+                .setStructurePartCheckCallback((structureDefinition, tile, part, i, newOffset) -> {
+                    tile.FO_HATCHES.clear();
+                    boolean check = structureDefinition.check(tile, part, tile.getLevel(), tile.getExtendedFacing(), tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ(), newOffset.getX(), newOffset.getY(), newOffset.getZ(), !tile.isStructureValid());
+                    if (!part.equals("bottom")){
+                        if (check){
+                            tile.FO_HATCHES.forEach(h -> tile.addComponent(HATCH_FLUID_O.getComponentId(), h));
+                        } else {
+                            tile.HATCH_LAYER_MAP.remove(i);
+                        }
+                    }
+                    return check;
+                }).build());
         /*DISTLLATION_TOWER.setStructure(b -> b.part("main")
                 .of("CCC", "CCM", "CCC").of("CCC","CAC", "CCC").of(1).of(1).of(1).of(1).of(1).of(1).of(1).of(1).of("CCC", "CCC", "CCC").build()
                 .at("M", DISTLLATION_TOWER)
