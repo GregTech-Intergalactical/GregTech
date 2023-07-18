@@ -168,7 +168,7 @@ public class AssemblyLoader {
 
     private static void rotors(){
         ROTOR.all().forEach(r -> {
-            ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(r,4),SCREW.getMaterialIngredient(r,1),of(RING.get(Rubber,1))).fi(SolderingAlloy.getLiquid(144)).io(new ItemStack(ROTOR.get(r),1)).add(r.getId() + "_rotor",240,24);
+            ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(r,4),RING.getMaterialIngredient(r,1)).fi(SolderingAlloy.getLiquid(144)).io(new ItemStack(ROTOR.get(r),1)).add(r.getId() + "_rotor",240,24);
         });
     }
 
@@ -180,14 +180,6 @@ public class AssemblyLoader {
 
     private static void addTierCasing (Tier tier) {
         ASSEMBLING.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 8), INT_CIRCUITS.get(8)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID))).add("casing_" + tier.getId(),5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
-    }
-
-    private static void addTierHull (Material mat, Wire w, TagKey<Item> circ, Block casing, Block hull, int tier) {
-        ASSEMBLING.RB().ii(of(SCREW.get(mat), 2), of(casing, 1), of(Items.REDSTONE, 1), of(w.getBlockItem(PipeSize.VTINY), 1), of(TIER_CIRCUITS.getOrDefault(tier, circ), 1)).io(new ItemStack(hull)).add(AntimatterPlatformUtils.getIdFromBlock(hull).getPath(),5 * 20, (long) Math.pow(2, 2 * tier + 1));
-    }
-
-    private static void addTierHull (Material mat, Wire w, TagKey<Item> circ, Block casing, Block hull, int tier, int idOffset) {
-        ASSEMBLING.RB().ii(of(SCREW.get(mat), 2), of(casing, 1), of(Items.REDSTONE, 1), of(w.getBlockItem(PipeSize.VTINY), 1), of(TIER_CIRCUITS.getOrDefault(tier, circ), 1)).io(new ItemStack(hull)).add(AntimatterPlatformUtils.getIdFromBlock(hull).getPath() + "_" + idOffset,5 * 20, (long) Math.pow(2, 2 * tier + 1));
     }
 
     private static void addTierHull(Material mat, Tier tier) {
