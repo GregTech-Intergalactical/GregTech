@@ -95,14 +95,14 @@ public class AssemblyLoader {
         addTierHull(Polytetrafluoroethylene,Tier.UV);
         addTierHull(Polytetrafluoroethylene,Tier.MAX);
 
-        addCasing(Bronze, GregTech.get(BlockCasing.class,"casing_bronze"));
-        addCasing(Steel, GregTech.get(BlockCasing.class,"casing_solid_steel"));
-        addCasing(StainlessSteel, GregTech.get(BlockCasing.class,"casing_stainless_steel"));
-        addCasing(Titanium, GregTech.get(BlockCasing.class,"casing_titanium"));
-        addCasing(TungstenSteel, GregTech.get(BlockCasing.class,"casing_tungstensteel"));
-        addCasing(Invar, GregTech.get(BlockCasing.class,"casing_heat_proof"));
-        addCasing(Aluminium, GregTech.get(BlockCasing.class,"casing_frost_proof"));
-        addCasing(Lead, GregTech.get(BlockCasing.class,"casing_radiation_proof"));
+        addCasing(Bronze, CASING_BRONZE);
+        addCasing(Steel, CASING_SOLID_STEEL);
+        addCasing(StainlessSteel, CASING_STAINLESS_STEEL);
+        addCasing(Titanium, CASING_TITANIUM);
+        addCasing(TungstenSteel, CASING_TUNGSTENSTEEL);
+        addCasing(Invar, CASING_HEAT_PROOF);
+        addCasing(Aluminium, CASING_FROST_PROOF);
+        addCasing(Lead, CASING_RADIATION_PROOF);
     }
 
     private static void cables(){
@@ -113,22 +113,30 @@ public class AssemblyLoader {
             sizes.forEach(size -> {
                 Item wireItem = t.getBlockItem(size);
                 Item cableItem = cable.getBlockItem(size);
-                long multiplier = AntimatterPlatformUtils.isFabric() ? 1000L : 16L;
-                ASSEMBLING.RB().ii(of(wireItem,1), INT_CIRCUITS.get(size.getCableThickness())).fi(Rubber.getLiquid(size.getCableThickness()*multiplier)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId(),size.getCableThickness()* 20L,8);
+                int ct = size.getCableThickness();
+                int multiplier = ct == 16 ?  5 : ct == 12 ? 4 : ct == 8 ? 3 : ct == 4 ? 2 : 1;
+                long amount = L * multiplier;
+                ASSEMBLING.RB().ii(of(wireItem,1), INT_CIRCUITS.get(size.getCableThickness())).fi(Rubber.getLiquid(amount)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_rubber",size.getCableThickness()* 20L,8);
+                ASSEMBLING.RB().ii(of(wireItem,1), INT_CIRCUITS.get(size.getCableThickness())).fi(StyreneButadieneRubber.getLiquid((amount * 3) / 4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_styrene_butadiene_rubber",100,8);
+                ASSEMBLING.RB().ii(of(wireItem,1), DUST_SMALL.getMaterialIngredient(PolyvinylChloride, multiplier)).fi(StyreneButadieneRubber.getLiquid(amount / 4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_styrene_butadiene_rubber_2",100,8);
+                ASSEMBLING.RB().ii(of(wireItem,1), DUST_SMALL.getMaterialIngredient(Polydimethylsiloxane, multiplier)).fi(StyreneButadieneRubber.getLiquid(amount / 4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_styrene_butadiene_rubber_3",100,8);
+                ASSEMBLING.RB().ii(of(wireItem,1), INT_CIRCUITS.get(size.getCableThickness())).fi(SiliconeRubber.getLiquid(amount /2)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_silicone_rubber",100,8);
+                ASSEMBLING.RB().ii(of(wireItem,1), DUST_SMALL.getMaterialIngredient(PolyvinylChloride, multiplier)).fi(SiliconeRubber.getLiquid(amount /4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_silicone_rubber_2",100,8);
+                ASSEMBLING.RB().ii(of(wireItem,1), DUST_SMALL.getMaterialIngredient(Polydimethylsiloxane, multiplier)).fi(SiliconeRubber.getLiquid(amount /4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_silicone_rubber_3",100,8);
             });
         });
     }
 
 
     private static void coils(){
-        addCoil(GregTech.get(BlockCoil.class, "coil_cupronickel"), WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL), 1);
-        addCoil(GregTech.get(BlockCoil.class, "coil_kanthal"), WIRE_KANTHAL.getBlockItem(PipeSize.SMALL), 2);
-        addCoil(GregTech.get(BlockCoil.class, "coil_nichrome"), WIRE_NICHROME.getBlockItem(PipeSize.SMALL), 3);
-        addCoil(GregTech.get(BlockCoil.class, "coil_tungstensteel"), WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.SMALL), 4);
-        addCoil(GregTech.get(BlockCoil.class, "coil_hssg"), WIRE_HSSG.getBlockItem(PipeSize.SMALL), 5);
-        addCoil(GregTech.get(BlockCoil.class, "coil_naquadah"), WIRE_NAQUADAH.getBlockItem(PipeSize.SMALL), 6);
-        addCoil(GregTech.get(BlockCoil.class, "coil_naquadah_alloy"), WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL), 7);
-        addCoil(GregTech.get(BlockCoil.class, "coil_superconductor"), WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.SMALL), 8);
+        addCoil(COIL_CUPRONICKEL, WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL), 1);
+        addCoil(COIL_KANTHAL, WIRE_KANTHAL.getBlockItem(PipeSize.SMALL), 2);
+        addCoil(COIL_NICHROME, WIRE_NICHROME.getBlockItem(PipeSize.SMALL), 3);
+        addCoil(COIL_TUNGSTENSTEEL, WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.SMALL), 4);
+        addCoil(COIL_HSSG, WIRE_HSSG.getBlockItem(PipeSize.SMALL), 5);
+        addCoil(COIL_NAQUADAH, WIRE_NAQUADAH.getBlockItem(PipeSize.SMALL), 6);
+        addCoil(COIL_NAQUADAH_ALLOY, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL), 7);
+        addCoil(COIL_SUPERCONDUCTOR, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.SMALL), 8);
     }
 
     private static void frames(){
