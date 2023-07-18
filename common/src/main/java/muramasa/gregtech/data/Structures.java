@@ -110,7 +110,7 @@ public class Structures {
         PRIMITIVE_BLAST_FURNACE.setStructure(b -> b
             .of("CCC", "CCC", "CCC").of("CCC", "CBM", "CCC").of("CCC", "CBC", "CCC").of("CCC", "CAC", "CCC")
             .at("C", CASING_FIRE_BRICK).at("B", AIR_OR_LAVA).at("M", PRIMITIVE_BLAST_FURNACE)
-            .build().offset(2, -1).min(32, CASING_FIRE_BRICK)
+            .build().offset(2, -1)
         );
 
         PYROLYSIS_OVEN.setStructure(b -> b
