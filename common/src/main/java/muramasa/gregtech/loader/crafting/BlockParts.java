@@ -9,9 +9,12 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
+import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -61,6 +64,15 @@ public class BlockParts {
         addCasing(output, provider, Titanium, GregTechData.CASING_TITANIUM);
         addCasing(output, provider, Lead, GregTechData.CASING_RADIATION_PROOF);
         addCasing(output, provider, TungstenSteel, GregTechData.CASING_TUNGSTENSTEEL);
+
+        addCoil(output, provider, WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL), COIL_CUPRONICKEL);
+        addCoil(output, provider, WIRE_KANTHAL.getBlockItem(PipeSize.SMALL), COIL_KANTHAL);
+        addCoil(output, provider, WIRE_NICHROME.getBlockItem(PipeSize.SMALL), COIL_NICHROME);
+        addCoil(output, provider, WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.SMALL), COIL_TUNGSTENSTEEL);
+        addCoil(output, provider, WIRE_HSSG.getBlockItem(PipeSize.SMALL), COIL_HSSG);
+        addCoil(output, provider, WIRE_NAQUADAH.getBlockItem(PipeSize.SMALL), COIL_NAQUADAH);
+        addCoil(output, provider, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL), COIL_NAQUADAH_ALLOY);
+        addCoil(output, provider, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.SMALL), COIL_SUPERCONDUCTOR);
 
         addTierCasing(output, provider, Tier.ULV);
         addTierCasing(output, provider, Tier.LV);
@@ -126,6 +138,12 @@ public class BlockParts {
         provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), casing,
                 of('P', PLATE.getMaterialTag(mat), 'R', AntimatterMaterialTypes.ROD.getMaterialTag(mat), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem())
                 , "PRP", "PFP", "PRP");
+    }
+
+    private static void addCoil(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, PipeItemBlock wire, BlockCoil coil) {
+        provider.addItemRecipe(output, "casings", "has_casing", provider.hasSafeItem(WRENCH.getTag()), coil,
+                of('P', wire, 'W', WRENCH.getTag())
+                , "PPP", "PWP", "PPP");
     }
 
     private static void addTierCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Tier tier) {

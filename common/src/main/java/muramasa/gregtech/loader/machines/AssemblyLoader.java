@@ -121,14 +121,14 @@ public class AssemblyLoader {
 
 
     private static void coils(){
-        addCoil(GregTech.get(BlockCoil.class, "coil_cupronickel"), WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL), Tin, 1);
-        addCoil(GregTech.get(BlockCoil.class, "coil_kanthal"), WIRE_KANTHAL.getBlockItem(PipeSize.SMALL), AnnealedCopper, 2);
-        addCoil(GregTech.get(BlockCoil.class, "coil_nichrome"), WIRE_NICHROME.getBlockItem(PipeSize.SMALL), Kanthal, 3);
-        addCoil(GregTech.get(BlockCoil.class, "coil_tungstensteel"), WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.SMALL), Nichrome, 4);
-        addCoil(GregTech.get(BlockCoil.class, "coil_hssg"), WIRE_HSSG.getBlockItem(PipeSize.SMALL), TungstenSteel, 5);
-        addCoil(GregTech.get(BlockCoil.class, "coil_naquadah"), WIRE_NAQUADAH.getBlockItem(PipeSize.SMALL), HSSG, 6);
-        addCoil(GregTech.get(BlockCoil.class, "coil_naquadah_alloy"), WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL), Naquadah, 7);
-        addCoil(GregTech.get(BlockCoil.class, "coil_superconductor"), WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.SMALL), NaquadahAlloy, 8);
+        addCoil(GregTech.get(BlockCoil.class, "coil_cupronickel"), WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL), 1);
+        addCoil(GregTech.get(BlockCoil.class, "coil_kanthal"), WIRE_KANTHAL.getBlockItem(PipeSize.SMALL), 2);
+        addCoil(GregTech.get(BlockCoil.class, "coil_nichrome"), WIRE_NICHROME.getBlockItem(PipeSize.SMALL), 3);
+        addCoil(GregTech.get(BlockCoil.class, "coil_tungstensteel"), WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.SMALL), 4);
+        addCoil(GregTech.get(BlockCoil.class, "coil_hssg"), WIRE_HSSG.getBlockItem(PipeSize.SMALL), 5);
+        addCoil(GregTech.get(BlockCoil.class, "coil_naquadah"), WIRE_NAQUADAH.getBlockItem(PipeSize.SMALL), 6);
+        addCoil(GregTech.get(BlockCoil.class, "coil_naquadah_alloy"), WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL), 7);
+        addCoil(GregTech.get(BlockCoil.class, "coil_superconductor"), WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.SMALL), 8);
     }
 
     private static void frames(){
@@ -200,7 +200,7 @@ public class AssemblyLoader {
         ASSEMBLING.RB().ii(of(FRAME.get().get(mat).asItem(), 1), of(PLATE.get(mat), 4)).io(new ItemStack(casing,2)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
     }
 
-    private static void addCoil (BlockCoil coil, PipeItemBlock wire, Material fluidmat, int tier) {
-        ASSEMBLING.RB().ii(of(wire,8), of(DUST.get(Aluminosilicate), 4)).fi(fluidmat.getLiquid(L * 2)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.getIdFromBlock(coil).getPath(), 100*tier, (long) (30*Math.pow(4,tier-1)));
+    private static void addCoil (BlockCoil coil, PipeItemBlock wire, int tier) {
+        ASSEMBLING.RB().ii(of(wire,8), INT_CIRCUITS.get(8)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.getIdFromBlock(coil).getPath(), 100*tier, (long) (30*Math.pow(4,tier-1)));
     }
 }
