@@ -134,7 +134,7 @@ public class AssemblyLoader {
     private static void frames(){
         FRAME.all().forEach(m -> {
             MaterialTypeBlock.Container f = FRAME.get().get(m);
-            ASSEMBLING.RB().ii(of(ROD.get(m),6)).io(new ItemStack(f.asItem(),2)).add(AntimatterPlatformUtils.getIdFromBlock(f.asBlock()).getPath(),40,24);
+            ASSEMBLING.RB().ii(of(ROD.get(m),4)).io(new ItemStack(f.asItem(),2)).add(AntimatterPlatformUtils.getIdFromBlock(f.asBlock()).getPath(),40,24);
         });
     }
 
@@ -197,7 +197,7 @@ public class AssemblyLoader {
     }
 
     private static void addCasing (Material mat, BlockCasing casing) {
-        ASSEMBLING.RB().ii(of(FRAME.get().get(mat).asItem(), 1), of(PLATE.get(mat), 4)).io(new ItemStack(casing,2)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
+        ASSEMBLING.RB().ii(of(FRAME.get().get(mat).asItem(), 1), of(PLATE.get(mat), 6)).io(new ItemStack(casing,2)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
     }
 
     private static void addCoil (BlockCoil coil, PipeItemBlock wire, int tier) {
