@@ -134,7 +134,7 @@ public class AssemblyLoader {
     private static void frames(){
         FRAME.all().forEach(m -> {
             MaterialTypeBlock.Container f = FRAME.get().get(m);
-            ASSEMBLING.RB().ii(of(ROD.get(m),4)).io(new ItemStack(f.asItem(),2)).add(AntimatterPlatformUtils.getIdFromBlock(f.asBlock()).getPath(),40,24);
+            ASSEMBLING.RB().ii(of(ROD.get(m),4), INT_CIRCUITS.get(4)).io(new ItemStack(f.asItem(),2)).add(AntimatterPlatformUtils.getIdFromBlock(f.asBlock()).getPath(),40,24);
         });
     }
 
