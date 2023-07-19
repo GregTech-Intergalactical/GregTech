@@ -28,6 +28,7 @@ public class GregTechLocalizations {
             add(GTIRef.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
             add(GTIRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
             add(GTIRef.ID + ".rei.tooltip.material_tree", "Material Tree");
+            add("machine.transformer.voltage_info", "%s -> %s (Use Soft Hammer to invert)");
         }
 
         @Override
