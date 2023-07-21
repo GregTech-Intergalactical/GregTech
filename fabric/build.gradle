@@ -29,7 +29,10 @@ dependencies{
     common(project(path: ":antimatter-common", configuration: "namedElements")) { transitive false }
     implementation(project(path: ":tesseract-fabric", configuration: "namedElements")) { transitive false }
     implementation(project(path: ":antimatter-fabric", configuration: "namedElements"))
-    modImplementation("io.github.feltmc:fabricated-forge-caps:${rootProject.fabricated_forge_hash}")
+    modImplementation("io.github.fabricators_of_create:Porting-Lib:${rootProject.port_lib_version}-beta+1.18.2-stable"){
+        exclude(group: "net.fabricmc.fabric-api")
+        exclude(group: "com.github.LlamaLad7")
+    }
     modImplementation("io.github.feltmc:fabricated-forge-tag-extensions:${rootProject.fabricated_forge_hash}")
     modImplementation(include("io.github.feltmc:felt-recipe-api:1.0.0")){
         exclude(group: "net.fabricmc.fabric-api")

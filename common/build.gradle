@@ -18,7 +18,10 @@ dependencies{
     modImplementation("io.github.gregtechintergalactical:gtutility-common:${rootProject.gt_utility_version}-${rootProject.minecraft_version}"){
         transitive = false
     }
-    modImplementation("io.github.feltmc:fabricated-forge-caps:${rootProject.fabricated_forge_hash}")
+    modImplementation("io.github.fabricators_of_create:Porting-Lib:${rootProject.port_lib_version}-beta+1.18.2-stable"){
+        exclude(group: "net.fabricmc.fabric-api")
+        exclude(group: "com.github.LlamaLad7")
+    }
     modImplementation("io.github.feltmc:fabricated-forge-tag-extensions:${rootProject.fabricated_forge_hash}")
     modImplementation("earth.terrarium:botarium-forge-1.18.2:${project.botarium_version}")
     compileOnly("com.electronwill.night-config:toml:${rootProject.nightconfig_version}")

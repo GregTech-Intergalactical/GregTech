@@ -1,21 +1,17 @@
 package muramasa.gregtech.cover;
 
 import com.google.common.collect.ImmutableMap;
+import earth.terrarium.botarium.common.fluid.base.FluidContainer;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonBody;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.AntimatterCapUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 import tesseract.TesseractCapUtils;
 
 import javax.annotation.Nullable;
@@ -55,7 +51,7 @@ public class CoverPump extends CoverBasicTransport {
 
     @Override
     public <T> boolean blocksCapability(Class<T> cap, Direction side) {
-        return side == null && cap != IFluidHandler.class;
+        return side == null && cap != FluidContainer.class;
     }
 
     @Override

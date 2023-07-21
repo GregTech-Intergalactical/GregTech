@@ -9,8 +9,6 @@ import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
