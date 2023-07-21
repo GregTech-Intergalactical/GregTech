@@ -2,6 +2,7 @@ package muramasa.gregtech.integration.rei;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.gui.Renderer;
@@ -18,7 +19,6 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Machines;
@@ -31,7 +31,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -248,7 +247,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
 
     private EntryIngredient ofFluid(Material fluid, int amount){
         List<EntryStack<?>> stacks = new ArrayList<>();
-        FluidStack stack;
+        FluidHolder stack;
         if(fluid.has(LIQUID)){
            stack = fluid.getLiquid(amount);
         }else{

@@ -1,5 +1,6 @@
 package muramasa.gregtech.tile.single;
 
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.tile.TileEntityMachine;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -8,8 +9,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
 import static muramasa.gregtech.data.Materials.Steam;
@@ -43,9 +43,9 @@ public interface ISteamBoilerHandler {
         this.exportFluid();
         if (getTile().getLevel().getGameTime() % getProcessDelay() == 0) {
             getTile().fluidHandler.ifPresent(f -> {
-                FluidStack[] inputs = f.getInputs();
+                FluidHolder[] inputs = f.getInputs();
                 if (this.getHeat() > 100) {
-                    if (inputs[0].getRealAmount() == 0) {
+                    if (inputs[0].getFluidAmount() == 0) {
                         setHadNoWater(true);
                     } else {
                         if (hadNoWater()) {
@@ -53,18 +53,18 @@ public interface ISteamBoilerHandler {
                             getTile().getLevel().setBlockAndUpdate(getTile().getBlockPos(), Blocks.AIR.defaultBlockState());
                             return;
                         }
-                        f.drainInput(new FluidStack(Fluids.WATER, 1), IFluidHandler.FluidAction.EXECUTE);
-                        long room = (16000 * TesseractGraphWrappers.dropletMultiplier) - f.getOutputs()[0].getRealAmount();
+                        f.drainInput(FluidPlatformUtils.createFluidStack(Fluids.WATER, TesseractGraphWrappers.dropletMultiplier), false);
+                        long room = (16000 * TesseractGraphWrappers.dropletMultiplier) - f.getOutputs()[0].getFluidAmount();
                         long fill = Math.min(room, (150 * TesseractGraphWrappers.dropletMultiplier));
                         if (room > 0){
-                            f.fillOutput(Steam.getGas(fill), IFluidHandler.FluidAction.EXECUTE);
+                            f.fillOutput(Steam.getGas(fill), false);
                         }
                         if (fill < (150 * TesseractGraphWrappers.dropletMultiplier)) {
                             //TODO:steam sounds
                             getTile().getLevel().playSound(null, getTile().getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
                             if (getTile().getLevel() instanceof ServerLevel)
                                 ((ServerLevel) getTile().getLevel()).sendParticles(ParticleTypes.SMOKE, getTile().getBlockPos().getX(), getTile().getBlockPos().getY(), getTile().getBlockPos().getZ(), getTile().getLevel().getRandom().nextInt(8) + 1, 0.0D, 0.2D, 0.0D, 0.0D);
-                            f.drain(4000, IFluidHandler.FluidAction.EXECUTE);
+                            f.extractFluid(4000 * TesseractGraphWrappers.dropletMultiplier, false);
                         }
                     }
                 } else {

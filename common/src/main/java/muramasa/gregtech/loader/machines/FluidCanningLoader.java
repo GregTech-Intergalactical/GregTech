@@ -9,7 +9,8 @@ import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.fluids.FluidStack;
+import tesseract.FluidPlatformUtils;
+import tesseract.TesseractGraphWrappers;
 
 import static muramasa.gregtech.data.Materials.Mercury;
 import static muramasa.gregtech.data.Materials.SulfuricAcid;
@@ -28,14 +29,14 @@ public class FluidCanningLoader {
             if (bucket == Items.AIR) return;
             //Only the source, so we don't get duplicates.
             if (!fluid.isSource(fluid.defaultFluidState())) return;
-            FLUID_CANNING.RB().ii(RecipeIngredient.of(bucket, 1)).fo(new FluidStack(fluid, 1000)).io(Items.BUCKET.getDefaultInstance()).add(AntimatterPlatformUtils.getIdFromFluid(fluid).getPath() + "_bucket",20, 8);
-            FLUID_CANNING.RB().ii(RecipeIngredient.of(Items.BUCKET, 1)).fi(new FluidStack(fluid, 1000)).io(new ItemStack(bucket, 1)).add("bucket_from_"+AntimatterPlatformUtils.getIdFromFluid(fluid).getPath(),20, 8);
+            FLUID_CANNING.RB().ii(RecipeIngredient.of(bucket, 1)).fo(FluidPlatformUtils.createFluidStack(fluid, 1000 * TesseractGraphWrappers.dropletMultiplier)).io(Items.BUCKET.getDefaultInstance()).add(AntimatterPlatformUtils.getIdFromFluid(fluid).getPath() + "_bucket",20, 8);
+            FLUID_CANNING.RB().ii(RecipeIngredient.of(Items.BUCKET, 1)).fi(FluidPlatformUtils.createFluidStack(fluid, 1000 * TesseractGraphWrappers.dropletMultiplier)).io(new ItemStack(bucket, 1)).add("bucket_from_"+AntimatterPlatformUtils.getIdFromFluid(fluid).getPath(),20, 8);
 
             AntimatterAPI.all(ItemFluidCell.class, emptyCell -> {
                 int size = emptyCell.getCapacity();
                 ItemStack filled = emptyCell.fill(fluid, size);
-                FLUID_CANNING.RB().ii(RecipeIngredient.of(filled)).fo(new FluidStack(fluid, size)).io(emptyCell.getDefaultInstance()).add(emptyCell.getId() + "_from_" + AntimatterPlatformUtils.getIdFromFluid(fluid).getPath(),20, 8);
-                FLUID_CANNING.RB().ii(RecipeIngredient.of(emptyCell, 1)).fi(new FluidStack(fluid, size)).io(filled).add(AntimatterPlatformUtils.getIdFromFluid(fluid).getPath() + "_" + emptyCell.getId(),20, 8);
+                FLUID_CANNING.RB().ii(RecipeIngredient.of(filled)).fo(FluidPlatformUtils.createFluidStack(fluid, size * TesseractGraphWrappers.dropletMultiplier)).io(emptyCell.getDefaultInstance()).add(emptyCell.getId() + "_from_" + AntimatterPlatformUtils.getIdFromFluid(fluid).getPath(),20, 8);
+                FLUID_CANNING.RB().ii(RecipeIngredient.of(emptyCell, 1)).fi(FluidPlatformUtils.createFluidStack(fluid, size * TesseractGraphWrappers.dropletMultiplier)).io(filled).add(AntimatterPlatformUtils.getIdFromFluid(fluid).getPath() + "_" + emptyCell.getId(),20, 8);
             });
         });
     }

@@ -5,6 +5,7 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.common.event.forge.ForgeCommonEvents;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.fluid.AntimatterFluid;
@@ -385,7 +386,7 @@ public class RemappingEvents {
                 @NotNull
                 @Override
                 public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction arg) {
-                    if (capability == TesseractCaps.HEAT_CAPABILITY && heat.heatHandler.isPresent()) return heat.heatHandler.side(arg).cast();
+                    if (capability == TesseractCaps.HEAT_CAPABILITY && heat.heatHandler.isPresent()) return ForgeCommonEvents.fromHolder(heat.heatHandler, arg).cast();
                     return LazyOptional.empty();
                 }
             });

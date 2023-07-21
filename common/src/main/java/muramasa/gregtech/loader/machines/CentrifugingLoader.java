@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.machines;
 
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import io.github.gregtechintergalactical.gtrubber.GTRubberData;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
@@ -35,9 +36,9 @@ public class CentrifugingLoader {
         });
         CENT.all().forEach(t -> {
             if (!t.has(DUST) && !t.has(LIQUID) && !t.has(GAS)) return;
-            FluidStack[] fluids = t.getProcessInto().stream().filter(mat -> ((mat.m.has(GAS) || mat.m.has(LIQUID)) && !mat.m.has(DUST))).map(mat -> mat.m.has(GAS) ? mat.m.getGas(mat.s*1000) : mat.m.getLiquid(mat.s*1000)).toArray(FluidStack[]::new);
+            FluidHolder[] fluids = t.getProcessInto().stream().filter(mat -> ((mat.m.has(GAS) || mat.m.has(LIQUID)) && !mat.m.has(DUST))).map(mat -> mat.m.has(GAS) ? mat.m.getGas(mat.s*1000) : mat.m.getLiquid(mat.s*1000)).toArray(FluidHolder[]::new);
             if (fluids.length > 6) return;
-            for (FluidStack fluid : fluids) {
+            for (FluidHolder fluid : fluids) {
                 if (fluid.isEmpty())
                     return;
             }

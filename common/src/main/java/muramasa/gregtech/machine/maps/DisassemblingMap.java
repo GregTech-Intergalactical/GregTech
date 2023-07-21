@@ -1,5 +1,6 @@
 package muramasa.gregtech.machine.maps;
 
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.BlockMachine;
@@ -13,7 +14,6 @@ import muramasa.antimatter.recipe.map.RecipeMap;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
-import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
 import java.util.*;
@@ -37,7 +37,7 @@ public class DisassemblingMap implements IRecipeMap {
     }
 
     @Override
-    public Recipe find(@Nonnull ItemStack[] items, @Nonnull FluidStack[] fluids, Tier tier, @Nonnull Predicate<IRecipe> canHandle) {
+    public Recipe find(@Nonnull ItemStack[] items, @Nonnull FluidHolder[] fluids, Tier tier, @Nonnull Predicate<IRecipe> canHandle) {
         if (items.length == 0) return null;
 
         Machine<?> machine = ((BlockMachine)((BlockItem)items[0].getItem()).getBlock()).getType();
@@ -115,7 +115,7 @@ public class DisassemblingMap implements IRecipeMap {
     }
 
     @Override
-    public boolean acceptsFluid(FluidStack fluid) {
+    public boolean acceptsFluid(FluidHolder fluid) {
         return false;
     }
 }

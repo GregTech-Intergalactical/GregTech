@@ -32,6 +32,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import tesseract.TesseractCapUtils;
+import tesseract.api.item.PlatformItemHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -126,7 +127,7 @@ public class CoverConveyor extends BaseCover {
         if (adjTile == null) {
             return;
         }
-        Optional<IItemHandler> handler = TesseractCapUtils.getItemHandler(adjTile, side.getOpposite());
+        Optional<PlatformItemHandler> handler = TesseractCapUtils.getItemHandler(adjTile, side.getOpposite());
         if (handler.isEmpty()) return;
         TesseractCapUtils.getItemHandler(this.handler.getTile(), side).ifPresent(ih -> handler.ifPresent(other -> {
             if (extracting) {

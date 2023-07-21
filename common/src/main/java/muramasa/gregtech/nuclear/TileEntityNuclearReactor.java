@@ -1,6 +1,7 @@
 package muramasa.gregtech.nuclear;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.ICanSyncData;
@@ -21,8 +22,6 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 import tesseract.Tesseract;
 import tesseract.TesseractGraphWrappers;
 import tesseract.api.heat.HeatTransaction;
@@ -58,12 +57,12 @@ public class TileEntityNuclearReactor extends TileEntityMultiMachine<TileEntityN
                 if (state == MachineState.ACTIVE){
                     long conversionAmount = activeRecipe.getPower() * TesseractGraphWrappers.dropletMultiplier;
                     fluidHandler.ifPresent(handler -> {
-                        FluidStack coolant = Coolant.getLiquid(conversionAmount);
-                        FluidStack drained = handler.drainInput(coolant, IFluidHandler.FluidAction.SIMULATE);
-                        if (drained.getRealAmount() == coolant.getRealAmount()){
-                            if (handler.canOutputsFit(new FluidStack[]{HotCoolant.getLiquid(conversionAmount)})){
-                                handler.drainInput(coolant, IFluidHandler.FluidAction.EXECUTE);
-                                handler.fillOutput(HotCoolant.getLiquid(conversionAmount), IFluidHandler.FluidAction.EXECUTE);
+                        FluidHolder coolant = Coolant.getLiquid(conversionAmount);
+                        FluidHolder drained = handler.drainInput(coolant, true);
+                        if (drained.getFluidAmount() == coolant.getFluidAmount()){
+                            if (handler.canOutputsFit(new FluidHolder[]{HotCoolant.getLiquid(conversionAmount)})){
+                                handler.drainInput(coolant, false);
+                                handler.fillOutput(HotCoolant.getLiquid(conversionAmount), false);
                                 onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
                             }
                         }

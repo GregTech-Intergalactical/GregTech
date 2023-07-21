@@ -8,6 +8,7 @@ import muramasa.antimatter.gui.ButtonBody;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.AntimatterCapUtils;
 import muramasa.antimatter.util.Utils;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -76,18 +77,18 @@ public class CoverPump extends CoverBasicTransport {
         if (handler.getTile() == null) return;
         BlockEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
         if (adjTile == null) return;
-        BlockEntity from = handler.getTile();
-        BlockEntity to = adjTile;
+        BlockPos from = handler.getTile().getBlockPos();
+        BlockPos to = handler.getTile().getBlockPos().relative(side);
         Direction fromSide = side;
         if (getCoverMode().getName().startsWith("Import")){
-            from = adjTile;
-            to = handler.getTile();
+            from = handler.getTile().getBlockPos().relative(side);
+            to = handler.getTile().getBlockPos();
             fromSide = side.getOpposite();
         }
-        BlockEntity finalTo = to;
+        BlockPos finalTo = to;
         if (canMove(side)) {
             Direction finalFromSide = fromSide;
-            TesseractCapUtils.getFluidHandler(from, fromSide).ifPresent(ih -> TesseractCapUtils.getFluidHandler(finalTo, finalFromSide.getOpposite()).ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
+            TesseractCapUtils.getFluidHandler(handler.getTile().getLevel(), from, fromSide).ifPresent(ih -> TesseractCapUtils.getFluidHandler(handler.getTile().getLevel(), finalTo, finalFromSide.getOpposite()).ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
         }
     }
     protected boolean canMove(Direction side){
