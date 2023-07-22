@@ -10,6 +10,7 @@ import muramasa.antimatter.ore.BlockOre;
 import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
+import muramasa.gregtech.block.BlockFakeCasing;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.integration.AppliedEnergisticsRegistrar;
@@ -36,6 +37,7 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
         super.loot();
         AntimatterAPI.all(BlockCasing.class,providerDomain, this::add);
         AntimatterAPI.all(BlockCoil.class,providerDomain, this::add);
+        AntimatterAPI.all(BlockFakeCasing.class, providerDomain, this::add);
         tables.put(Blocks.LAPIS_ORE, b -> createOreDrop(b, RAW_ORE.get(Lapis)));
         tables.put(Blocks.DEEPSLATE_LAPIS_ORE, b -> createOreDrop(b, RAW_ORE.get(Lapis)));
         tables.put(Blocks.REDSTONE_ORE, b -> createOreDrop(b, RAW_ORE.get(Redstone)));

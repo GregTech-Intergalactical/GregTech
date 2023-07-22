@@ -590,32 +590,32 @@ public class Machines {
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.LV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_LV)
-                        .put('C', CABLE_LEAD.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_TIN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('C', CABLE_TIN.getBlockItem(PipeSize.VTINY))
+                        .put('W', CABLE_COPPER.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(MV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_MV)
-                        .put('C', CABLE_TIN.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_COPPER.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('C', CABLE_COPPER.getBlockItem(PipeSize.VTINY))
+                        .put('W', CABLE_GOLD.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.HV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_HV)
-                        .put('C', CABLE_COPPER.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_GOLD.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('C', CABLE_GOLD.getBlockItem(PipeSize.VTINY))
+                        .put('W', CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.EV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_EV)
-                        .put('C', CABLE_GOLD.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('C', CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY))
+                        .put('W', CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.IV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_IV)
-                        .put('C', CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('C', CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY))
+                        .put('W', CABLE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         AntimatterAPI.all(WorkbenchMachine.class).forEach(m -> {
             if (!m.getId().contains("charging")) {

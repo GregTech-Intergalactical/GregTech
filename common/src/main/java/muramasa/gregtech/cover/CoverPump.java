@@ -1,20 +1,17 @@
 package muramasa.gregtech.cover;
 
 import com.google.common.collect.ImmutableMap;
+import earth.terrarium.botarium.common.fluid.base.FluidContainer;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonBody;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.AntimatterCapUtils;
 import muramasa.antimatter.util.Utils;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 import tesseract.TesseractCapUtils;
 
 import javax.annotation.Nullable;
@@ -54,7 +51,7 @@ public class CoverPump extends CoverBasicTransport {
 
     @Override
     public <T> boolean blocksCapability(Class<T> cap, Direction side) {
-        return side == null && cap != IFluidHandler.class;
+        return side == null && cap != FluidContainer.class;
     }
 
     @Override
@@ -76,18 +73,18 @@ public class CoverPump extends CoverBasicTransport {
         if (handler.getTile() == null) return;
         BlockEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
         if (adjTile == null) return;
-        BlockEntity from = handler.getTile();
-        BlockEntity to = adjTile;
+        BlockPos from = handler.getTile().getBlockPos();
+        BlockPos to = handler.getTile().getBlockPos().relative(side);
         Direction fromSide = side;
         if (getCoverMode().getName().startsWith("Import")){
-            from = adjTile;
-            to = handler.getTile();
+            from = handler.getTile().getBlockPos().relative(side);
+            to = handler.getTile().getBlockPos();
             fromSide = side.getOpposite();
         }
-        BlockEntity finalTo = to;
+        BlockPos finalTo = to;
         if (canMove(side)) {
             Direction finalFromSide = fromSide;
-            TesseractCapUtils.getFluidHandler(from, fromSide).ifPresent(ih -> TesseractCapUtils.getFluidHandler(finalTo, finalFromSide.getOpposite()).ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
+            TesseractCapUtils.getFluidHandler(handler.getTile().getLevel(), from, fromSide).ifPresent(ih -> TesseractCapUtils.getFluidHandler(handler.getTile().getLevel(), finalTo, finalFromSide.getOpposite()).ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
         }
     }
     protected boolean canMove(Direction side){

@@ -8,7 +8,6 @@ import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.material.FluidProduct;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidAttributes;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_SMALL;
 import static muramasa.antimatter.data.AntimatterMaterials.*;

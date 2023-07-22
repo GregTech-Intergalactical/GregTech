@@ -11,7 +11,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.fluids.FluidStack;
+import tesseract.FluidPlatformUtils;
+import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.RecipeMaps.CUTTING;
@@ -43,7 +44,7 @@ public class CuttingLoader {
 
     private static void addCutterRecipe(TagKey<Item> input, ItemStack output, String id, int duration, int euPerTick){
         CUTTING.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(new FluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320))))
+                .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320)) * TesseractGraphWrappers.dropletMultiplier))
                 .io(output).add(id + "_with_water", duration * 2L, euPerTick);
         CUTTING.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(Materials.Lubricant.getLiquid(Math.max(1, Math.min(250, duration * euPerTick / 1280))))

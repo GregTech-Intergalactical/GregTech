@@ -11,6 +11,7 @@ import muramasa.gregtech.tile.single.TileEntityLavaBoiler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.chat.TextComponent;
+import tesseract.TesseractGraphWrappers;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -18,7 +19,8 @@ import javax.annotation.Nullable;
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 
 public class LavaBoilerWidget extends Widget {
-    private int heat = 0, maxHeat = 0, water = 0, steam = 0, lava = 0;
+    private int heat = 0, maxHeat = 0;
+    private long water = 0, steam = 0, lava = 0;
 
     protected LavaBoilerWidget(@Nonnull GuiInstance gui, @Nullable IGuiElement parent) {
         super(gui, parent);
@@ -33,15 +35,15 @@ public class LavaBoilerWidget extends Widget {
         super.init();
         gui.syncInt(() -> ((TileEntityLavaBoiler)((ContainerMachine<?>)gui.container).getTile()).getHeat(), i -> heat = i, SERVER_TO_CLIENT);
         gui.syncInt(() -> ((TileEntityLavaBoiler)((ContainerMachine<?>)gui.container).getTile()).getMaxHeat(), i -> maxHeat = i, SERVER_TO_CLIENT);
-        gui.syncInt(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[0].getAmount()).orElse(0), i -> water = i, SERVER_TO_CLIENT);
-        gui.syncInt(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[1].getAmount()).orElse(0), i -> lava = i, SERVER_TO_CLIENT);
-        gui.syncInt(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getOutputs()[0].getAmount()).orElse(0), i -> steam = i, SERVER_TO_CLIENT);
+        gui.syncLong(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[0].getFluidAmount()).orElse(0L), i -> water = i, SERVER_TO_CLIENT);
+        gui.syncLong(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[1].getFluidAmount()).orElse(0L), i -> lava = i, SERVER_TO_CLIENT);
+        gui.syncLong(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getOutputs()[0].getFluidAmount()).orElse(0L), i -> steam = i, SERVER_TO_CLIENT);
     }
 
     @Override
     public void render(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
-        if (water >= 1) {
-            float per = (float) water / 16000;
+        if (water >= TesseractGraphWrappers.dropletMultiplier) {
+            float per = (float) water / (TesseractGraphWrappers.dropletMultiplier * 16000);
             if (per > 1.0F) {
                 per = 1.0F;
             }
@@ -53,8 +55,8 @@ public class LavaBoilerWidget extends Widget {
             drawTexture(stack, gui.handler.getGuiTexture(), realX() + 13, y, ((AbstractContainerScreenAccessor)gui.screen).getImageWidth() + 28, 54 - lvl, 10, lvl);
 
         }
-        if (steam >= 1) {
-            float per = (float) steam / 16000;
+        if (steam >= TesseractGraphWrappers.dropletMultiplier) {
+            float per = (float) steam / (TesseractGraphWrappers.dropletMultiplier * 16000);
             if (per > 1.0F) {
                 per = 1.0F;
             }
@@ -65,8 +67,8 @@ public class LavaBoilerWidget extends Widget {
             int y = (realY() + 54) - lvl;
             drawTexture(stack, gui.handler.getGuiTexture(), realX(), y, ((AbstractContainerScreenAccessor)gui.screen).getImageWidth() + 18, 54 - lvl, 10, lvl);
         }
-        if (lava >= 1) {
-            float per = (float) lava / 16000;
+        if (lava >= TesseractGraphWrappers.dropletMultiplier) {
+            float per = (float) lava / (TesseractGraphWrappers.dropletMultiplier * 16000);
             if (per > 1.0F) {
                 per = 1.0F;
             }

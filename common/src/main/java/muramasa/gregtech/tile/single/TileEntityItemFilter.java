@@ -22,9 +22,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandlerModifiable;
 import tesseract.TesseractCapUtils;
+import tesseract.api.item.ExtendedItemContainer;
 
 import java.util.List;
 import java.util.Objects;
@@ -52,9 +51,9 @@ public class TileEntityItemFilter extends TileEntityMachine<TileEntityItemFilter
     public boolean accepts(ItemStack stack){
         boolean hasItem = itemHandler.map(h -> {
             List<Item> list = new ObjectArrayList<>();
-            IItemHandlerModifiable outputs = h.getHandler(SlotType.DISPLAY_SETTABLE);
-            for (int i = 0; i < outputs.getSlots(); i++) {
-                ItemStack slot = outputs.getStackInSlot(i);
+            ExtendedItemContainer outputs = h.getHandler(SlotType.DISPLAY_SETTABLE);
+            for (int i = 0; i < outputs.getContainerSize(); i++) {
+                ItemStack slot = outputs.getItem(i);
                 if (!slot.isEmpty()) {
                     if (slot.getItem() == stack.getItem()){
                         if (!nbt || Objects.equals(slot.getTag(), stack.getTag())) {

@@ -1,6 +1,7 @@
 package muramasa.gregtech.tile.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.IGuiElement;
@@ -17,7 +18,6 @@ import muramasa.antimatter.util.Utils;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Collections;
 import java.util.List;
@@ -63,7 +63,7 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
                         long toConsume = calculateGeneratorConsumption(flow, sourceRecipe);
                         TileEntityLargeTurbine.this.recipeConsumption = (int) toConsume;
                         return Utils.getFluidPoweredRecipe(Collections.singletonList(stacks.get(0).copy((int) toConsume)),
-                                new FluidStack[]{new FluidStack(DistilledWater.getLiquid(), stacks.get(0).getAmount())},// Arrays.stream(sourceRecipe.getOutputFluids()).map(tt -> new FluidStack(tt.getFluid(), (int) (tt.getAmount()*toConsume))).toArray(FluidStack[]::new),
+                                new FluidHolder[]{DistilledWater.getLiquid(stacks.get(0).getAmount())},// Arrays.stream(sourceRecipe.getOutputFluids()).map(tt -> new FluidStack(tt.getFluid(), (int) (tt.getAmount()*toConsume))).toArray(FluidStack[]::new),
                                 1, flow, 1);
                     }
 

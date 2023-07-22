@@ -19,6 +19,7 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
+import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_REACTING;
 
 public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
 
@@ -84,6 +85,7 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         RecipeMaps.MACERATING.RB().ii(of(getAe2Item("sky_stone_chest"))).io(new ItemStack(getAe2Item("sky_dust"), 8)).add("sky_dust_from_chest", 400, 2);
         RecipeMaps.MACERATING.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
         RecipeMaps.ELECTROLYZING.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1)).io(new ItemStack(getAe2Item("charged_certus_quartz_crystal"))).add("charged_certus_quartz", 2000, 30);
+        CHEMICAL_REACTING.RB().fi(Water.getLiquid(1000)).ii(of(DUST.getMaterialTag(CertusQuartz), 3), of(DUST.getMaterialTag(Sodium), 1)).io(GEM.get(CertusQuartz, 3)).add("certus_quartz",500,30);
     }
 
     public static Item getAe2Item(String id){

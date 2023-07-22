@@ -27,11 +27,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 import tesseract.TesseractCapUtils;
+import tesseract.api.item.ExtendedItemContainer;
+import tesseract.api.item.PlatformItemHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -41,7 +39,6 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-import static net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
 
 public class CoverConveyor extends BaseCover {
 
@@ -68,7 +65,7 @@ public class CoverConveyor extends BaseCover {
 
     @Override
     public <T> boolean blocksCapability(Class<T> cap, Direction side) {
-        return side == null && cap != IItemHandler.class;
+        return side == null && cap != ExtendedItemContainer.class;
     }
 
     @Override
@@ -126,7 +123,7 @@ public class CoverConveyor extends BaseCover {
         if (adjTile == null) {
             return;
         }
-        Optional<IItemHandler> handler = TesseractCapUtils.getItemHandler(adjTile, side.getOpposite());
+        Optional<PlatformItemHandler> handler = TesseractCapUtils.getItemHandler(adjTile, side.getOpposite());
         if (handler.isEmpty()) return;
         TesseractCapUtils.getItemHandler(this.handler.getTile(), side).ifPresent(ih -> handler.ifPresent(other -> {
             if (extracting) {

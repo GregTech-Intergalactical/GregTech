@@ -1,9 +1,9 @@
 package muramasa.gregtech.loader.machines;
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.material.Material;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
@@ -66,7 +66,7 @@ public class DecayChamber {
                     }
                 }
             }else if(d.has(LIQUID)){
-                FluidStack stack = d.getLiquid(1000);
+                FluidHolder stack = d.getLiquid(1000);
                 if(d.getElement().decayIntoA != null){
                     Material alphaproduct = get(d.getElement().decayIntoA);
                     if(alphaproduct.has(INGOT)){
@@ -98,7 +98,7 @@ public class DecayChamber {
                     }
                 }
             }else{
-                FluidStack stack = d.getGas(1000);
+                FluidHolder stack = d.getGas(1000);
                 if(d.getElement().decayIntoA != null){
                     Material alphaproduct = get(d.getElement().decayIntoA);
                     if(alphaproduct.has(INGOT)){

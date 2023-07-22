@@ -1,5 +1,7 @@
 package muramasa.gregtech.tile.single;
 
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
+import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.cover.CoverOutput;
@@ -11,10 +13,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fluids.capability.templates.FluidTank;
-import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -85,11 +83,11 @@ public class TileEntityInfiniteFluid extends TileEntityMachine<TileEntityInfinit
                 return b;
             }));
             FluidTank tank = tanks.get(FluidDirection.OUTPUT).getTank(0);
-            tank.setFluid(Steam.getGas(Integer.MAX_VALUE-1));
+            tank.setFluid(0, Steam.getGas(Integer.MAX_VALUE-1));
         }
 
         @Override
-        public boolean canInput(FluidStack fluid, Direction direction) {
+        public boolean canInput(FluidHolder fluid, Direction direction) {
             return false;
         }
 
@@ -98,22 +96,14 @@ public class TileEntityInfiniteFluid extends TileEntityMachine<TileEntityInfinit
             return false;
         }
 
-        @Nonnull
         @Override
-        public FluidStack drain(FluidStack stack, IFluidHandler.FluidAction action) {
-            return stack.copy();
+        public FluidHolder extractFluid(FluidHolder fluid, boolean simulate) {
+            return fluid.copyHolder();
         }
 
-        @Nonnull
         @Override
-        public FluidStack drain(int maxDrain, IFluidHandler.FluidAction action) {
-            return Steam.getGas(maxDrain);
-        }
-
-        @NotNull
-        @Override
-        public FluidStack drain(long maxDrain, FluidAction action) {
-            return Steam.getGas(maxDrain);
+        public FluidHolder extractFluid(long toExtract, boolean simulate) {
+            return Steam.getGas(toExtract);
         }
     }
 }

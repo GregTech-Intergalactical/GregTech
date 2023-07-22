@@ -1,5 +1,7 @@
 package muramasa.gregtech.tile.single;
 
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
+import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
@@ -9,30 +11,16 @@ import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 import tesseract.TesseractCapUtils;
 
-import java.util.Arrays;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static muramasa.antimatter.machine.MachineState.ACTIVE;
 import static muramasa.antimatter.machine.MachineState.IDLE;
 import static muramasa.gregtech.data.Materials.DistilledWater;
-import static muramasa.gregtech.data.Materials.Steam;
 
 public class TileEntitySolarBoiler extends TileEntityMachine<TileEntitySolarBoiler> {
 
@@ -144,9 +132,7 @@ public class TileEntitySolarBoiler extends TileEntityMachine<TileEntitySolarBoil
         }
 
         public void exportFluidFromMachineToSide(Direction side){
-            BlockEntity adjTile = tile.getLevel().getBlockEntity(tile.getBlockPos().relative(side));
-            if (adjTile == null) return;
-            Optional<IFluidHandler> cap = TesseractCapUtils.getFluidHandler(adjTile, side.getOpposite());
+            Optional<PlatformFluidHandler> cap = TesseractCapUtils.getFluidHandler(tile.getLevel(), tile.getBlockPos().relative(side), side.getOpposite());
             tile.fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
         }
 
@@ -159,7 +145,7 @@ public class TileEntitySolarBoiler extends TileEntityMachine<TileEntitySolarBoil
         }
 
         @Override
-        public boolean accepts(FluidStack fluid) {
+        public boolean accepts(FluidHolder fluid) {
             return fluid.getFluid() == Fluids.WATER
                     || fluid.getFluid() == DistilledWater.getLiquid();
         }
@@ -170,8 +156,8 @@ public class TileEntitySolarBoiler extends TileEntityMachine<TileEntitySolarBoil
         }
 
         @Override
-        public CompoundTag serializeNBT() {
-            CompoundTag nbt = super.serializeNBT();
+        public CompoundTag serialize() {
+            CompoundTag nbt = super.serialize();
             nbt.putInt("heat", heat);
             nbt.putInt("maxHeat", maxHeat);
             nbt.putInt("lossTimer", lossTimer);
@@ -180,8 +166,8 @@ public class TileEntitySolarBoiler extends TileEntityMachine<TileEntitySolarBoil
         }
 
         @Override
-        public void deserializeNBT(CompoundTag nbt) {
-            super.deserializeNBT(nbt);
+        public void deserialize(CompoundTag nbt) {
+            super.deserialize(nbt);
             this.heat = nbt.getInt("heat");
             this.maxHeat = nbt.getInt("maxHeat");
             this.lossTimer = nbt.getInt("lossTimer");

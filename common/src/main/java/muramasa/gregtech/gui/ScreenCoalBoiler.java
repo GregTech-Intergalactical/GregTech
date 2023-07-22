@@ -1,6 +1,7 @@
 package muramasa.gregtech.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.gui.container.ContainerMachine;
@@ -11,7 +12,7 @@ import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
-import net.minecraftforge.fluids.FluidStack;
+import tesseract.TesseractGraphWrappers;
 
 public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> extends ScreenMachine<TileEntityCoalBoiler, T> {
     public ScreenCoalBoiler(T container, Inventory inv, Component name) {
@@ -27,13 +28,13 @@ public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> 
         if (container.getTile().has(MachineFlag.FLUID)) {
             //TODO
             container.getTile().fluidHandler.ifPresent(t -> {
-                FluidStack[] inputs = t.getInputs();
-                int water = inputs[0].getAmount();
+                FluidHolder[] inputs = t.getInputs();
+                long water = inputs[0].getFluidAmount() / TesseractGraphWrappers.dropletMultiplier;
                 if (water >= 1) {
                     drawTooltipInArea(stack,"Water: " + water + " MB", mouseX, mouseY, 84, 25, 10, 54);
                 }
-                FluidStack[] outputs = t.getOutputs();
-                int steam = outputs[0].getAmount();
+                FluidHolder[] outputs = t.getOutputs();
+                long steam = outputs[0].getFluidAmount() / TesseractGraphWrappers.dropletMultiplier;
                 if (steam >= 1) {
                     drawTooltipInArea(stack,"Steam: " + steam + " MB", mouseX, mouseY, 70, 25, 10, 54);
                 }
@@ -54,8 +55,8 @@ public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> 
         if (container.getTile().has(MachineFlag.FLUID)) {
             //TODO
             container.getTile().fluidHandler.ifPresent(t -> {
-                FluidStack[] inputs = t.getInputs();
-                int water = inputs[0].getAmount();
+                FluidHolder[] inputs = t.getInputs();
+                long water = inputs[0].getFluidAmount() / TesseractGraphWrappers.dropletMultiplier;
                 if (water >= 1) {
                     float per = (float) water / 16000;
                     if (per > 1.0F) {
@@ -69,8 +70,8 @@ public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> 
                     drawTexture(stack, gui, leftPos + 83, y, imageWidth + 28, 54 - lvl, 10, lvl);
 
                 }
-                FluidStack[] outputs = t.getOutputs();
-                int steam = outputs[0].getAmount();
+                FluidHolder[] outputs = t.getOutputs();
+                long steam = outputs[0].getFluidAmount() / TesseractGraphWrappers.dropletMultiplier;
                 if (steam >= 1) {
                     float per = (float) steam / 16000;
                     if (per > 1.0F) {

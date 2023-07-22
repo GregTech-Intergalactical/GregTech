@@ -32,7 +32,7 @@ public class GregTechMaterialEvents {
         /**
          *** Periodic Table of Elements (No Isotopes)
          **/
-        event.setMaterial(Hydrogen).asGas();
+        event.setMaterial(Hydrogen).asGas(20);
         event.setMaterial(Helium).asPlasma();
         event.setMaterial(Lithium).asSolid(454, 0).asOre().harvestLevel(2);
         event.setMaterial(Beryllium).asOre(INGOT);

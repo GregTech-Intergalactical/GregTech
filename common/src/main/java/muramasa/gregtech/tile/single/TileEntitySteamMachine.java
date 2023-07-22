@@ -1,5 +1,6 @@
 package muramasa.gregtech.tile.single;
 
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.event.ContentEvent;
@@ -16,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.fluids.FluidStack;
+import tesseract.TesseractGraphWrappers;
 
 import java.util.Collections;
 import java.util.List;
@@ -47,7 +48,7 @@ public class TileEntitySteamMachine extends TileEntityMachine<TileEntitySteamMac
 
         @Override
         public boolean consumeResourceForRecipe(boolean simulate) {
-            return tile.fluidHandler.map(t -> t.consumeTaggedInput(STEAM, (int) getPower(), simulate).getAmount() > 0)
+            return tile.fluidHandler.map(t -> t.consumeTaggedInput(STEAM, getPower() * TesseractGraphWrappers.dropletMultiplier, simulate).getFluidAmount() > 0)
                     .orElse(false);
         }
         //Allow up to 16 .
@@ -86,7 +87,7 @@ public class TileEntitySteamMachine extends TileEntityMachine<TileEntitySteamMac
         }
 
         @Override
-        public boolean accepts(FluidStack stack) {
+        public boolean accepts(FluidHolder stack) {
             return stack.getFluid().builtInRegistryHolder().is(STEAM);
         }
 
@@ -101,7 +102,7 @@ public class TileEntitySteamMachine extends TileEntityMachine<TileEntitySteamMac
             if (event instanceof ContentEvent) {
                 if (event == ContentEvent.FLUID_INPUT_CHANGED) {
                     if (data != null && data.length > 0) {
-                        if (data[0] instanceof FluidStack && ((FluidStack)data[0]).getFluid().builtInRegistryHolder().is(STEAM)) {
+                        if (data[0] instanceof FluidHolder && ((FluidHolder)data[0]).getFluid().builtInRegistryHolder().is(STEAM)) {
                             checkRecipe();
                         }
                     }
