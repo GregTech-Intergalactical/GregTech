@@ -673,6 +673,7 @@ public class Materials {
     public static Material NitrogenDioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitrogen_dioxide", 0x64afff, NONE));
     public static Material NobleGases = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "noble_gases", 0xc9e3fc, NONE));
     public static Material Steam = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam", 0xa0a0a0, NONE));
+    public static Material SuperheatedSteam = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "superheated_steam", 0xa0a0a0, NONE));
     public static Material SulfurDioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfur_dioxide", 0xc8c819, NONE));
     public static Material SulfurTrioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfur_trioxide", 0xa0a014, NONE));
 

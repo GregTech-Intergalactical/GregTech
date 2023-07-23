@@ -40,7 +40,7 @@ public class FusionButtonWidget extends Widget {
     public void onClick(double mouseX, double mouseY, int button) {
         super.onClick(mouseX, mouseY, button);
         if (isInside(154, 4, 18, 18, mouseX, mouseY)){
-            AntimatterJEIREIPlugin.showCategory(getTile().getMachineType());
+            AntimatterJEIREIPlugin.showCategory(getTile().getMachineType(), getTile().getMachineTier());
         }
     }
 

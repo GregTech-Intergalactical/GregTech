@@ -125,7 +125,7 @@ public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> 
             return false;
         }
         if (isInGui(115, 43, 18, 18, mouseX, mouseY)) {
-            AntimatterJEIREIPlugin.showCategory(container.getTile().getMachineType());
+            AntimatterJEIREIPlugin.showCategory(container.getTile().getMachineType(), container.getTile().getMachineTier());
             return true;
         }
         return super.mouseClicked(mouseX, mouseY, mouseButton);

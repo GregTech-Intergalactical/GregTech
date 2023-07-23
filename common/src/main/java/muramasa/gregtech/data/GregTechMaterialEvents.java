@@ -458,6 +458,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SodiumBicarbonateSolution).asFluid();
         event.setMaterial(SodiumCarbonateSolution).asFluid();
         event.setMaterial(Steam).asGas(1, 395);
+        event.setMaterial(SuperheatedSteam).asGas(2, 600);
         event.setMaterial(SulfuricAcid).asFluid();
         event.setMaterial(SulfurTrioxide).asGas();
         event.setMaterial(SulfurDioxide).asGas();
@@ -844,6 +845,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SodiumBicarbonateSolution).mats(of(Sodium, 1, Hydrogen,1 ,Carbon, 1, Oxygen, 3, Water, 1));
         event.setMaterial(SodiumCarbonateSolution).mats(of(Sodium, 2, Carbon, 1, Oxygen, 3, Water, 1));
         event.setMaterial(Steam).mats(of(Water,1));
+        event.setMaterial(SuperheatedSteam).mats(of(Steam, 1));
         event.setMaterial(SulfuricAcid).mats(of(Hydrogen, 2, Sulfur, 1, Oxygen, 4));
         event.setMaterial(SulfurTrioxide).mats(of(Sulfur, 1, Oxygen, 3));
         event.setMaterial(SulfurDioxide).mats(of(Sulfur, 1, Oxygen, 2));

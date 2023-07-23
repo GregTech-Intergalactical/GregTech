@@ -76,8 +76,8 @@ public class CoalBoilerFuelWidget extends Widget {
     @Override
     public void onClick(double mouseX, double mouseY, int button) {
         super.onClick(mouseX, mouseY, button);
-        if (this.gui.handler instanceof TileEntityMachine) {
-            AntimatterJEIREIPlugin.showCategory(((TileEntityMachine<?>)this.gui.handler).getMachineType());
+        if (this.gui.handler instanceof TileEntityMachine<?> machine) {
+            AntimatterJEIREIPlugin.showCategory(machine.getMachineType(), machine.getMachineTier());
         }
     }
 }
