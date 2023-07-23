@@ -11,7 +11,6 @@ import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
@@ -117,13 +116,13 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
 
     public Block getCasing(){
         if (tier == HV) {
-            return GregTechData.CASING_TURBINE_1;
+            return GregTechData.CASING_TURBINE_STEEL;
         } else if (tier == EV) {
-            return GregTechData.CASING_TURBINE_2;
+            return GregTechData.CASING_TURBINE_STAINLESS;
         } else if (tier == IV) {
-            return GregTechData.CASING_TURBINE_3;
+            return GregTechData.CASING_TURBINE_TITANIUM;
         } else if (tier == UV) {
-            return GregTechData.CASING_TURBINE_4;
+            return GregTechData.CASING_TURBINE_TUNGSTENSTEEL;
         }
         return Blocks.AIR;
     }

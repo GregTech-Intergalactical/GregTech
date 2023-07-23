@@ -56,7 +56,7 @@ public class StructureInfo {
         builder = new PatternBuilder()
                 .of("CCCC", "CCCC", "CCCC").of("CCCC", "EAAM", "CIOC").of(0)
                 .at("M", LARGE_TURBINE, LARGE_TURBINE.getFirstTier(), Direction.SOUTH)
-                .at("C", CASING_TURBINE_4.defaultBlockState())
+                .at("C", CASING_TURBINE_TUNGSTENSTEEL.defaultBlockState())
                 .at("E", HATCH_DYNAMO, HATCH_DYNAMO.getFirstTier(), Direction.NORTH)
                 .at("I", HATCH_FLUID_I, HATCH_FLUID_I.getFirstTier(), Direction.EAST)
                 .at("O", HATCH_FLUID_O, HATCH_FLUID_O.getFirstTier(), Direction.EAST)

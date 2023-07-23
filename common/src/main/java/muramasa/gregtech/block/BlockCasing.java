@@ -22,7 +22,7 @@ public class BlockCasing extends BlockDynamic {
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture(getRegistryName().getNamespace(), "block/casing/" + getRegistryName().getPath().replaceAll("casing_", ""))};
+        return new Texture[]{new Texture(getRegistryName().getNamespace(), "block/casing/" + getRegistryName().getPath().replaceAll("casing_", "").replaceAll("_casing", ""))};
     }
 
     @Override

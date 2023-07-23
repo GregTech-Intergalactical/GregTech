@@ -2,7 +2,6 @@ package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -12,11 +11,9 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.data.GregTechData;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -52,10 +49,10 @@ public class BlockParts {
         addFirebox(output, provider, Titanium, GregTechData.CASING_FIREBOX_TITANIUM);
         addFirebox(output, provider, TungstenSteel, GregTechData.CASING_FIREBOX_TUNGSTENSTEEL);
 
-        addTurbine(output, provider, Steel, GregTechData.CASING_TURBINE_1);
-        addTurbine(output, provider, StainlessSteel, GregTechData.CASING_TURBINE_2);
-        addTurbine(output, provider, Titanium, GregTechData.CASING_TURBINE_3);
-        addTurbine(output, provider, TungstenSteel, GregTechData.CASING_TURBINE_4);
+        addTurbine(output, provider, Steel, GregTechData.CASING_TURBINE_STEEL);
+        addTurbine(output, provider, StainlessSteel, GregTechData.CASING_TURBINE_STAINLESS);
+        addTurbine(output, provider, Titanium, GregTechData.CASING_TURBINE_TITANIUM);
+        addTurbine(output, provider, TungstenSteel, GregTechData.CASING_TURBINE_TUNGSTENSTEEL);
 
         addCasing(output, provider, Invar, GregTechData.CASING_HEAT_PROOF);
         addCasing(output, provider, Aluminium, GregTechData.CASING_FROST_PROOF);

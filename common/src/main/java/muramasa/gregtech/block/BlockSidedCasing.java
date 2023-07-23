@@ -19,7 +19,7 @@ public class BlockSidedCasing extends BlockCasing{
     }
 
     public Texture[] getTextures() {
-        Texture side = new Texture(getDomain(), "block/casing/" + getId().replaceAll("casing_", ""));
+        Texture side = new Texture(getDomain(), "block/casing/" + getId().replaceAll("_casing", ""));
         return new Texture[]{new Texture(getDomain(), "block/casing/" + bottom), new Texture(getDomain(), "block/casing/" + top), side, side, side, side};
     }
 

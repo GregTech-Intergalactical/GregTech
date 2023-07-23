@@ -95,7 +95,35 @@ public class RemappingEvents {
         REMAPPING_MAP.put("coil_naquadah_alloy", "naquadah_alloy_coil");
         REMAPPING_MAP.put("coil_fusion", "fusion_coil");
         REMAPPING_MAP.put("coil_superconductor", "superconductor_coil");
-
+        REMAPPING_MAP.put("casing_bronze", "bronze_casing");
+        REMAPPING_MAP.put("casing_bricked_bronze", "bricked_bronze_casing");
+        REMAPPING_MAP.put("casing_steel", "steel_casing");
+        REMAPPING_MAP.put("casing_bricked_steel", "bricked_steel_casing");
+        REMAPPING_MAP.put("casing_bronze_plated_brick", "bronze_plated_brick_casing");
+        REMAPPING_MAP.put("casing_solid_steel", "solid_steel_casing");
+        REMAPPING_MAP.put("casing_stainless_steel", "stainless_steel_casing");
+        REMAPPING_MAP.put("casing_titanium", "titanium_casing");
+        REMAPPING_MAP.put("casing_tungstensteel", "tungstensteel_casing");
+        REMAPPING_MAP.put("casing_heat_proof", "heat_proof_casing");
+        REMAPPING_MAP.put("casing_frost_proof", "frost_proof_casing");
+        REMAPPING_MAP.put("casing_radiation_proof", "radiation_proof_casing");
+        REMAPPING_MAP.put("casing_firebox_bronze", "bronze_firebox_casing");
+        REMAPPING_MAP.put("casing_firebox_steel", "steel_firebox_casing");
+        REMAPPING_MAP.put("casing_firebox_titanium", "titanium_firebox_casing");
+        REMAPPING_MAP.put("casing_firebox_tungstensteel", "tungstensteel_firebox_casing");
+        REMAPPING_MAP.put("casing_gearbox_bronze", "bronze_gearbox_casing");
+        REMAPPING_MAP.put("casing_gearbox_steel", "steel_gearbox_casing");
+        REMAPPING_MAP.put("casing_gearbox_titanium", "titanium_gearbox_casing");
+        REMAPPING_MAP.put("casing_gearbox_tungstensteel", "tungstensteel_gearbox_casing");
+        REMAPPING_MAP.put("casing_pipe_bronze", "bronze_pipe_casing");
+        REMAPPING_MAP.put("casing_pipe_steel", "steel_pipe_casing");
+        REMAPPING_MAP.put("casing_pipe_titanium", "titanium_pipe_casing");
+        REMAPPING_MAP.put("casing_pipe_tungstensteel", "tungstensteel_pipe_casing");
+        REMAPPING_MAP.put("casing_engine_intake", "engine_intake_casing");
+        REMAPPING_MAP.put("casing_turbine_1", "steel_turbine_casing");
+        REMAPPING_MAP.put("casing_turbine_2", "stainless_steel_turbine_casing");
+        REMAPPING_MAP.put("casing_turbine_3", "titanium_turbine_casing");
+        REMAPPING_MAP.put("casing_turbine_4", "tungstensteel_turbine_casing");
     }
 
     @SubscribeEvent

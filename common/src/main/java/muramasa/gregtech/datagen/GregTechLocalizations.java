@@ -39,14 +39,6 @@ public class GregTechLocalizations {
                     add(i, "Fusion Casing MK " + i.getId().replace("fusion_", ""));
                     return;
                 }
-                if (i.getId().contains("turbine")){
-                    add(i, "Turbine Casing MK " + i.getId().replace("casing_turbine_", ""));
-                    return;
-                }
-                if (i.getId().contains("firebox") || i.getId().contains("gearbox") || i.getId().contains("pipe")){
-                    add(i, lowerUnderscoreToUpperSpacedReversed(i.getId()));
-                    return;
-                }
                 if (i.getId().startsWith("casing_") || i.getId().startsWith("hull_")){
                     add(i, lowerUnderscoreToUpperSpacedRotated(i.getId()));
                     return;
@@ -55,7 +47,7 @@ public class GregTechLocalizations {
             });
 
             AntimatterAPI.all(BlockFakeCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
-            AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpacedRotated(i.getId())));
+            AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Integrated Circuit (" + i.circuitId + ")"));
             AntimatterAPI.all(ItemBasic.class, domain).stream().filter(i -> i.getId().startsWith("circuit")).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpacedRotated(i.getId())));
             AntimatterAPI.all(ItemBattery.class, domain).stream().filter(i -> i.getId().startsWith("battery")).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpacedRotated(i.getId())));
