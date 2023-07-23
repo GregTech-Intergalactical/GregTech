@@ -18,6 +18,7 @@ dependencies{
     modImplementation("io.github.gregtechintergalactical:gtutility-common:${rootProject.gt_utility_version}-${rootProject.minecraft_version}"){
         transitive = false
     }
+    modImplementation("com.gtnewhorizon.structurelib:structurelib-common:${project.structurelib_version}-${project.minecraft_version}")
     modImplementation("io.github.fabricators_of_create:Porting-Lib:${rootProject.port_lib_version}-beta+1.18.2-stable"){
         exclude(group: "net.fabricmc.fabric-api")
         exclude(group: "com.github.LlamaLad7")

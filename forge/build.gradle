@@ -76,6 +76,7 @@ dependencies {
         transitive = false
     }
     include("io.github.gregtechintergalactical:gtutility-forge:${rootProject.gt_utility_version}-${rootProject.minecraft_version}")
+    modRuntimeOnly("com.gtnewhorizon.structurelib:structurelib-forge:${project.structurelib_version}-${project.minecraft_version}")
     modRuntimeOnly("dev.latvian.mods:kubejs-forge:${rootProject.kubejs_version}")
     modRuntimeOnly("curse.maven:the-one-probe-245211:${rootProject.top_forge_file}")
     //modRuntimeOnly("curse.maven:rubidium-574856:4451888")

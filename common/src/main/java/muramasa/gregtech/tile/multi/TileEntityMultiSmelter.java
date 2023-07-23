@@ -11,6 +11,7 @@ import java.util.List;
 public class TileEntityMultiSmelter extends TileEntityMultiMachine<TileEntityMultiSmelter> {
 
     private int level = 1, discount = 1;
+    private BlockCoil.CoilData coilData;
 
     public TileEntityMultiSmelter(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -26,7 +27,7 @@ public class TileEntityMultiSmelter extends TileEntityMultiMachine<TileEntityMul
 //        maxProgress = Math.max(1, 512 / (1 << tier - 1));
 //    }
 
-    @Override
+    /*@Override
     public boolean onStructureFormed() {
         super.onStructureFormed();
         List<BlockState> coils = getStates("coil");
@@ -38,7 +39,7 @@ public class TileEntityMultiSmelter extends TileEntityMultiMachine<TileEntityMul
             this.result.withError("all coils do not match");
             return false;
         }
-    }
+    }*/
 
     public void setCoilValues(BlockCoil coil) {
         switch (coil.getId()) {
@@ -64,5 +65,13 @@ public class TileEntityMultiSmelter extends TileEntityMultiMachine<TileEntityMul
                 discount = 8;
                 break;
         }
+    }
+
+    public void setCoilData(BlockCoil.CoilData coilData) {
+        this.coilData = coilData;
+    }
+
+    public BlockCoil.CoilData getCoilData() {
+        return coilData;
     }
 }

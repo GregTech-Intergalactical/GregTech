@@ -54,6 +54,7 @@ dependencies{
     implementation("io.github.gregtechintergalactical:gtutility-fabric:${rootProject.gt_utility_version}-${rootProject.minecraft_version}:dev-shadow"){
         transitive = false
     }
+    modRuntimeOnly("com.gtnewhorizon.structurelib:structurelib-fabric:${project.structurelib_version}-${project.minecraft_version}")
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
     modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-fabric:${rootProject.jei_version}"){
         exclude(group: "mezz.jei", module: "jei-1.18.2-fabric-api")
