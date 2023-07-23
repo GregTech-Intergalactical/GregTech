@@ -1,6 +1,5 @@
 package muramasa.gregtech.tile.multi;
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import muramasa.antimatter.capability.IComponentHandler;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
@@ -13,7 +12,8 @@ import java.util.List;
 import java.util.Set;
 
 public class TileEntityDistillationTower extends TileEntityMultiMachine<TileEntityDistillationTower> {
-    public Set<Integer> HATCH_LAYER_MAP = new HashSet<>();
+    public Set<Integer> HATCH_LAYERS = new HashSet<>();
+    public Set<Integer> LAYERS = new HashSet<>();
     public List<IComponentHandler> FO_HATCHES = new ArrayList<>();
     public TileEntityDistillationTower(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -21,7 +21,8 @@ public class TileEntityDistillationTower extends TileEntityMultiMachine<TileEnti
 
     @Override
     public boolean checkStructure() {
-        HATCH_LAYER_MAP.clear();
+        HATCH_LAYERS.clear();
+        LAYERS.clear();
         return super.checkStructure();
     }
 }

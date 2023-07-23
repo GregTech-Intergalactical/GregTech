@@ -6,11 +6,16 @@ import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
+import muramasa.gregtech.data.GregTechData;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+
+import static muramasa.antimatter.machine.Tier.LUV;
+import static muramasa.antimatter.machine.Tier.ZPM;
 
 public class TileEntityFusionReactor extends TileEntityMultiMachine<TileEntityFusionReactor> {
 
@@ -28,6 +33,22 @@ public class TileEntityFusionReactor extends TileEntityMultiMachine<TileEntityFu
 
     public Display getDisplay() {
         return display;
+    }
+
+    public Block getCoil(){
+        if (tier == LUV){
+            return GregTechData.COIL_SUPERCONDUCTOR;
+        }
+        return GregTechData.COIL_FUSION;
+    }
+
+    public Block getCasing(){
+        if (tier == LUV){
+            return GregTechData.CASING_LUV;
+        } else if (tier == ZPM){
+            return GregTechData.CASING_FUSION_1;
+        }
+        return GregTechData.CASING_FUSION_2;
     }
 
     @Override

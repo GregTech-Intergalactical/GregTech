@@ -12,8 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileEntityElectricBlastFurnace> {
-
-    private int heatingCapacity;
+    private BlockCoil.CoilData coilData;
 
     public TileEntityElectricBlastFurnace(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -31,8 +30,8 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileE
                     EUt = activeRecipe.getPower();
                     return;
                 }
-                if (heatingCapacity >= activeRecipe.getSpecialValue()) {
-                    int heatDiv = (heatingCapacity - activeRecipe.getSpecialValue()) / 900;
+                if (coilData.heat() >= activeRecipe.getSpecialValue()) {
+                    int heatDiv = (coilData.heat() - activeRecipe.getSpecialValue()) / 900;
                     if (activeRecipe.getPower() <= 16) {
                         EUt = (activeRecipe.getPower() * (1L << tier - 1) * (1L << tier - 1));
                         maxProgress = (activeRecipe.getDuration() / (1 << tier - 1));
@@ -55,7 +54,7 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileE
 
             @Override
             protected boolean validateRecipe(IRecipe r) {
-                return super.validateRecipe(r) && heatingCapacity > r.getSpecialValue();
+                return super.validateRecipe(r) && coilData != null && coilData.heat() > r.getSpecialValue();
             }
         });
     }
@@ -66,11 +65,11 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileE
         return true;
     }
 
-    public void setHeatingCapacity(int heatingCapacity) {
-        this.heatingCapacity = heatingCapacity;
+    public void setCoilData(BlockCoil.CoilData coilData) {
+        this.coilData = coilData;
     }
 
-    public int getHeatingCapacity() {
-        return heatingCapacity;
+    public BlockCoil.CoilData getCoilData() {
+        return coilData;
     }
 }

@@ -11,6 +11,7 @@ import java.util.List;
 public class TileEntityMultiSmelter extends TileEntityMultiMachine<TileEntityMultiSmelter> {
 
     private int level = 1, discount = 1;
+    private BlockCoil.CoilData coilData;
 
     public TileEntityMultiSmelter(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -64,5 +65,13 @@ public class TileEntityMultiSmelter extends TileEntityMultiMachine<TileEntityMul
                 discount = 8;
                 break;
         }
+    }
+
+    public void setCoilData(BlockCoil.CoilData coilData) {
+        this.coilData = coilData;
+    }
+
+    public BlockCoil.CoilData getCoilData() {
+        return coilData;
     }
 }

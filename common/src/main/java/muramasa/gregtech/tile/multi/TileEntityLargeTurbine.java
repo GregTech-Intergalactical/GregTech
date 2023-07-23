@@ -15,14 +15,18 @@ import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
+import muramasa.gregtech.data.GregTechData;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Collections;
 import java.util.List;
 
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
+import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.Materials.DistilledWater;
 
 public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLargeTurbine> {
@@ -109,6 +113,19 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
                         return false;
                     }
                 });
+    }
+
+    public Block getCasing(){
+        if (tier == HV) {
+            return GregTechData.CASING_TURBINE_1;
+        } else if (tier == EV) {
+            return GregTechData.CASING_TURBINE_2;
+        } else if (tier == IV) {
+            return GregTechData.CASING_TURBINE_3;
+        } else if (tier == UV) {
+            return GregTechData.CASING_TURBINE_4;
+        }
+        return Blocks.AIR;
     }
 
     @Override

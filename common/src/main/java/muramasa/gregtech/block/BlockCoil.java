@@ -17,18 +17,24 @@ import java.util.List;
 public class BlockCoil extends BlockBasic {
 
     protected int heatCapacity;
+    protected CoilData coilData;
 
-    public BlockCoil(String domain, String id, int heatCapacity, Block.Properties properties) {
+    public BlockCoil(String domain, String id, CoilData coilData, Block.Properties properties) {
         super(domain, id, properties);
+        this.coilData = coilData;
         this.heatCapacity = heatCapacity;
     }
 
-    public BlockCoil(String domain, String id, int heatCapacity) {
-        this(domain, id, heatCapacity, Block.Properties.of(Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL));
+    public BlockCoil(String domain, String id, CoilData coilData) {
+        this(domain, id, coilData, Block.Properties.of(Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL));
     }
 
     public int getHeatCapacity() {
         return heatCapacity;
+    }
+
+    public CoilData getCoilData() {
+        return coilData;
     }
 
     @Override
@@ -42,4 +48,6 @@ public class BlockCoil extends BlockBasic {
         tooltip.add(new TranslatableComponent("antimatter.tooltip.heat_capacity").append(": ").append("" + this.heatCapacity));
         tooltip.add(new TranslatableComponent("antimatter.tooltip.heat_capacity_total").append(": ").append("" + this.heatCapacity*16));
     }
+
+    public record CoilData(int heat, float percentage){}
 }
