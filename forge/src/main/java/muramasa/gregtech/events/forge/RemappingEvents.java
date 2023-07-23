@@ -86,6 +86,15 @@ public class RemappingEvents {
         REMAPPING_MAP.put("battery_large_cadmium", "large_cadmium_battery");
         REMAPPING_MAP.put("battery_large_lithium", "large_lithium_battery");
         REMAPPING_MAP.put("battery_large_sodium", "large_sodium_battery");
+        REMAPPING_MAP.put("coil_cupronickel", "cupronickel_coil");
+        REMAPPING_MAP.put("coil_kanthal", "kanthal_coil");
+        REMAPPING_MAP.put("coil_nichrome", "nichrome_coil");
+        REMAPPING_MAP.put("coil_tungstensteel", "tungstensteel_coil");
+        REMAPPING_MAP.put("coil_hssg", "hssg_coil");
+        REMAPPING_MAP.put("coil_naquadah", "naquadah_coil");
+        REMAPPING_MAP.put("coil_naquadah_alloy", "naquadah_alloy_coil");
+        REMAPPING_MAP.put("coil_fusion", "fusion_coil");
+        REMAPPING_MAP.put("coil_superconductor", "superconductor_coil");
 
     }
 

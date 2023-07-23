@@ -39,14 +39,13 @@ public class BlockCoil extends BlockBasic {
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture(getRegistryName().getNamespace(), "block/coil/" + getRegistryName().getPath().replaceAll("coil_", ""))};
+        return new Texture[]{new Texture(getRegistryName().getNamespace(), "block/coil/" + getRegistryName().getPath().replaceAll("_coil", ""))};
     }
 
     @Override
     public void appendHoverText(ItemStack p_49816_, @Nullable BlockGetter p_49817_, List<Component> tooltip, TooltipFlag p_49819_) {
         super.appendHoverText(p_49816_, p_49817_, tooltip, p_49819_);
-        tooltip.add(new TranslatableComponent("antimatter.tooltip.heat_capacity").append(": ").append("" + this.heatCapacity));
-        tooltip.add(new TranslatableComponent("antimatter.tooltip.heat_capacity_total").append(": ").append("" + this.heatCapacity*16));
+        tooltip.add(new TranslatableComponent("antimatter.tooltip.heat_capacity").append(": ").append(String.valueOf(this.coilData.heat)));
     }
 
     public record CoilData(int heat, float percentage){}

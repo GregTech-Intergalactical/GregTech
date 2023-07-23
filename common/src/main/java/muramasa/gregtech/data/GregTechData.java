@@ -321,22 +321,21 @@ public class GregTechData {
 
     public static final BlockCasing CASING_FUSION_1 = new BlockCasing(GTIRef.ID, "fusion_1");
     public static final BlockCasing CASING_FUSION_2 = new BlockCasing(GTIRef.ID, "fusion_2");
-    //public static final BlockCasing CASING_FUSION_3 = new BlockCasing(GTIRef.ID, "fusion_3");
 
     public static final BlockCasing CASING_TURBINE_1 = new BlockCasing(GTIRef.ID, "casing_turbine_1");
     public static final BlockCasing CASING_TURBINE_2 = new BlockCasing(GTIRef.ID, "casing_turbine_2");
     public static final BlockCasing CASING_TURBINE_3 = new BlockCasing(GTIRef.ID, "casing_turbine_3");
     public static final BlockCasing CASING_TURBINE_4 = new BlockCasing(GTIRef.ID, "casing_turbine_4");
 
-    public static final BlockCoil COIL_CUPRONICKEL = new BlockCoil(GTIRef.ID, "coil_cupronickel", new CoilData(1800, 0.5f));
-    public static final BlockCoil COIL_KANTHAL = new BlockCoil(GTIRef.ID, "coil_kanthal", new CoilData(2700, 1.0f));
-    public static final BlockCoil COIL_NICHROME = new BlockCoil(GTIRef.ID, "coil_nichrome", new CoilData(3600, 1.5f));
-    public static final BlockCoil COIL_TUNGSTENSTEEL = new BlockCoil(GTIRef.ID, "coil_tungstensteel", new CoilData(4500, 2.0f));
-    public static final BlockCoil COIL_HSSG = new BlockCoil(GTIRef.ID, "coil_hssg", new CoilData(5400, 2.5f));
-    public static final BlockCoil COIL_NAQUADAH = new BlockCoil(GTIRef.ID, "coil_naquadah", new CoilData(7200, 3.0f));
-    public static final BlockCoil COIL_NAQUADAH_ALLOY = new BlockCoil(GTIRef.ID, "coil_naquadah_alloy", new CoilData(9001, 3.5f));
-    public static final BlockCoil COIL_FUSION = new BlockCoil(GTIRef.ID, "coil_fusion", new CoilData(9001, 4.0f));
-    public static final BlockCoil COIL_SUPERCONDUCTOR = new BlockCoil(GTIRef.ID, "coil_superconductor", new CoilData(9001, 4.0f));
+    public static final BlockCoil COIL_CUPRONICKEL = new BlockCoil(GTIRef.ID, "cupronickel_coil", new CoilData(1800, 0.5f));
+    public static final BlockCoil COIL_KANTHAL = new BlockCoil(GTIRef.ID, "kanthal_coil", new CoilData(2700, 1.0f));
+    public static final BlockCoil COIL_NICHROME = new BlockCoil(GTIRef.ID, "nichrome_coil", new CoilData(3600, 1.5f));
+    public static final BlockCoil COIL_TUNGSTENSTEEL = new BlockCoil(GTIRef.ID, "tungstensteel_coil", new CoilData(4500, 2.0f));
+    public static final BlockCoil COIL_HSSG = new BlockCoil(GTIRef.ID, "hssg_coil", new CoilData(5400, 2.5f));
+    public static final BlockCoil COIL_NAQUADAH = new BlockCoil(GTIRef.ID, "naquadah_coil", new CoilData(7200, 3.0f));
+    public static final BlockCoil COIL_NAQUADAH_ALLOY = new BlockCoil(GTIRef.ID, "naquadah_alloy_coil", new CoilData(9001, 3.5f));
+    public static final BlockCoil COIL_FUSION = new BlockCoil(GTIRef.ID, "fusion_coil", new CoilData(9001, 4.0f));
+    public static final BlockCoil COIL_SUPERCONDUCTOR = new BlockCoil(GTIRef.ID, "superconductor_coil", new CoilData(9001, 4.0f));
 
     public static final Cable<?> CABLE_RED_ALLOY = AntimatterAPI.register(Cable.class, new Cable<>(GTIRef.ID, RedAlloy, 0, Tier.ULV).amps(1));
     public static final Cable<?> CABLE_COBALT = AntimatterAPI.register(Cable.class, new Cable<>(GTIRef.ID, Cobalt, 2, Tier.LV).amps(2)); //L);
