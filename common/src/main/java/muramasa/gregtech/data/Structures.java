@@ -6,6 +6,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.AntimatterStructureUtility;
 import muramasa.antimatter.structure.FakeTileElement;
+import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.int3;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.nuclear.TileEntityNuclearReactor;
@@ -125,7 +126,15 @@ public class Structures {
                         StructureUtility.lazy(t -> ofBlock(t.getCasing())),
                         ofHatch(HATCH_FLUID_I),
                         ofHatch(HATCH_FLUID_O)))
-                .at('E', HATCH_DYNAMO)
+                .atElement('E', ofHatch(HATCH_DYNAMO, (t, world, pos, machine, handler) -> {
+                    if (handler.getTile() instanceof TileEntityMachine<?> entityMachine){
+                        if (t.getMachineTier().getVoltage() <= entityMachine.getMachineTier().getVoltage()){
+                            t.addComponent(machine.getComponentId(), handler);
+                            return true;
+                        }
+                    }
+                    return false;
+                }))
                 .min(1, HATCH_FLUID_I, HATCH_FLUID_O).offset(1, 1, 0).build()
         );
 
