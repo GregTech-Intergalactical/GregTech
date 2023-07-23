@@ -22,6 +22,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "steam_extracting", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
     public static RecipeMap<RecipeBuilder> STEAM_FUELS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "steam_fuels", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> HP_STEAM_FUELS = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "hp_steam_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> STEAM_HAMMERING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "steam_hammering", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
     public static RecipeMap<RecipeBuilder> STEAM_MACERATING = AntimatterAPI.register(RecipeMap.class,
@@ -162,6 +164,7 @@ public class RecipeMaps {
         PLASMA_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         // SMELTING.setGuiData(Guis.MULTI_DISPLAY_COMPACT);
         STEAM_FUELS.setGuiData(Guis.MULTI_DISPLAY);
+        HP_STEAM_FUELS.setGuiData(MULTI_DISPLAY);
     }
 
     public static void clientMaps() {
@@ -177,6 +180,7 @@ public class RecipeMaps {
         STEAM_COMPRESSING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         STEAM_EXTRACTING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         STEAM_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
+        HP_STEAM_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
         STEAM_HAMMERING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         STEAM_MACERATING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         STEAM_SMELTING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);

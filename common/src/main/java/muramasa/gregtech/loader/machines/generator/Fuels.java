@@ -24,6 +24,6 @@ public class Fuels {
             }
         });
         STEAM_FUELS.RB().fi(FluidIngredient.ofMB(Steam, 2)).add("steam",1,1);
-        STEAM_FUELS.RB().fi(FluidIngredient.ofMB(SuperheatedSteam, 1)).add("superheated_steam", 1, 1);
+        HP_STEAM_FUELS.RB().fi(FluidIngredient.ofMB(SuperheatedSteam, 1)).add("superheated_steam", 1, 1);
     }
 }
