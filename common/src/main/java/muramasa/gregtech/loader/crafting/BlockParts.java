@@ -10,6 +10,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
+import muramasa.antimatter.pipe.types.PipeType;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
@@ -23,9 +24,9 @@ import net.minecraft.world.level.block.Blocks;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
+import static muramasa.antimatter.data.AntimatterDefaultTools.HAMMER;
 import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
@@ -49,6 +50,16 @@ public class BlockParts {
         addFirebox(output, provider, Titanium, GregTechData.CASING_FIREBOX_TITANIUM);
         addFirebox(output, provider, TungstenSteel, GregTechData.CASING_FIREBOX_TUNGSTENSTEEL);
 
+        addGearbox(output, provider, Bronze, GregTechData.CASING_GEARBOX_BRONZE);
+        addGearbox(output, provider, Steel, GregTechData.CASING_GEARBOX_STEEL);
+        addGearbox(output, provider, Titanium, GregTechData.CASING_GEARBOX_TITANIUM);
+        addGearbox(output, provider, TungstenSteel, GregTechData.CASING_GEARBOX_TUNGSTENSTEEL);
+
+        addPipeCasing(output, provider, Bronze, FLUID_PIPE_BRONZE, GregTechData.CASING_PIPE_BRONZE);
+        addPipeCasing(output, provider, Steel, FLUID_PIPE_STEEL, GregTechData.CASING_PIPE_STEEL);
+        addPipeCasing(output, provider, Titanium, FLUID_PIPE_TITANIUM, GregTechData.CASING_PIPE_TITANIUM);
+        addPipeCasing(output, provider, TungstenSteel, FLUID_PIPE_TUNGSTEN_STEEL, GregTechData.CASING_PIPE_TUNGSTENSTEEL);
+
         addTurbine(output, provider, Steel, GregTechData.CASING_TURBINE_STEEL);
         addTurbine(output, provider, StainlessSteel, GregTechData.CASING_TURBINE_STAINLESS);
         addTurbine(output, provider, Titanium, GregTechData.CASING_TURBINE_TITANIUM);
@@ -62,14 +73,14 @@ public class BlockParts {
         addCasing(output, provider, Lead, GregTechData.CASING_RADIATION_PROOF);
         addCasing(output, provider, TungstenSteel, GregTechData.CASING_TUNGSTENSTEEL);
 
-        addCoil(output, provider, WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL), COIL_CUPRONICKEL);
-        addCoil(output, provider, WIRE_KANTHAL.getBlockItem(PipeSize.SMALL), COIL_KANTHAL);
-        addCoil(output, provider, WIRE_NICHROME.getBlockItem(PipeSize.SMALL), COIL_NICHROME);
-        addCoil(output, provider, WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.SMALL), COIL_TUNGSTENSTEEL);
-        addCoil(output, provider, WIRE_HSSG.getBlockItem(PipeSize.SMALL), COIL_HSSG);
-        addCoil(output, provider, WIRE_NAQUADAH.getBlockItem(PipeSize.SMALL), COIL_NAQUADAH);
-        addCoil(output, provider, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL), COIL_NAQUADAH_ALLOY);
-        addCoil(output, provider, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.SMALL), COIL_SUPERCONDUCTOR);
+        addCoil(output, provider, WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), COIL_CUPRONICKEL);
+        addCoil(output, provider, WIRE_KANTHAL.getBlockItem(PipeSize.TINY), COIL_KANTHAL);
+        addCoil(output, provider, WIRE_NICHROME.getBlockItem(PipeSize.TINY), COIL_NICHROME);
+        addCoil(output, provider, WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY), COIL_TUNGSTENSTEEL);
+        addCoil(output, provider, WIRE_HSSG.getBlockItem(PipeSize.TINY), COIL_HSSG);
+        addCoil(output, provider, WIRE_NAQUADAH.getBlockItem(PipeSize.TINY), COIL_NAQUADAH);
+        addCoil(output, provider, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY), COIL_NAQUADAH_ALLOY);
+        addCoil(output, provider, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY), COIL_SUPERCONDUCTOR);
 
         addTierCasing(output, provider, Tier.ULV);
         addTierCasing(output, provider, Tier.LV);
@@ -93,17 +104,30 @@ public class BlockParts {
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UV);
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.MAX);
 
-        provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CASING_BRONZE_PLATED_BRICK,
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CASING_ENGINE_INTAKE, 2),
+                of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', CASING_TITANIUM, 'G', FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
+                ,
+                "PHP", "GFG", "PWP");
+
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CASING_BRONZE_PLATED_BRICK, 2),
                 ImmutableMap.<Character, Object>builder()
                         .put('P', PLATE.get(Bronze))
                         .put('B', Blocks.BRICKS)
-                        .put('W', WRENCH.getTag()).build(), "BPB", "PWP", "BPB");
+                        .put('W', WRENCH.getTag()).put('H', HAMMER.getTag()).build(), "PHP", "PBP", "PWP");
 
         provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CASING_STEEL,
                 ImmutableMap.<Character, Object>builder()
                         .put('P', PLATE.get(Steel))
-                        .put('B', INGOT.get(Steel))
-                        .put('W', WRENCH.getTag()).build(), "BPB", "PWP", "BPB");
+                        .put('W', HAMMER.getTag()).build(), "PPP", "PWP", "PPP");
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CASING_FUSION_1, 1),
+                of('P', PLATE.getMaterialTag(TungstenSteel), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', CASING_LUV)
+                ,
+                "PHP", "PFP", "PWP");
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CASING_FUSION_2, 1),
+                of('P', PLATE.getMaterialTag(Americium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', CASING_FUSION_1)
+                ,
+                "PHP", "PFP", "PWP");
+
 
         /*provider.addStackRecipe(output, GTIRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
                 of('C', CASING_FIRE_BRICK,
@@ -126,9 +150,22 @@ public class BlockParts {
     }
 
     private static void addFirebox(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
-        provider.addItemRecipe(output, "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), casing,
-                of('P', PLATE.getMaterialTag(mat), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem())
-                , "PHP", "PFP", "PWP");
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(casing, 2),
+                of('P', PLATE.getMaterialTag(mat), 'R', ROD.getMaterialTag(mat), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem())
+                , "PRP", "RFR", "PRP");
+    }
+
+    private static void addGearbox(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(casing, 2),
+                of('P', PLATE.getMaterialTag(mat), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem(), 'G', GEAR.getMaterialTag(mat))
+                ,
+                "PHP", "GFG", "PWP");
+    }
+
+    private static void addPipeCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, PipeType<?> pipe, Block casing) {
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(casing, 2),
+                of('P', PLATE.getMaterialTag(mat), 'R', pipe.getBlockItem(PipeSize.NORMAL), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem())
+                , "PRP", "RFR", "PRP");
     }
 
     private static void addTurbine(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {

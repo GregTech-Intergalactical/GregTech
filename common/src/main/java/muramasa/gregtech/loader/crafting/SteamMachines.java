@@ -14,6 +14,7 @@ import net.minecraft.world.item.Items;
 
 import java.util.function.Consumer;
 
+import static muramasa.antimatter.data.AntimatterDefaultTools.HAMMER;
 import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.Bronze;
@@ -45,7 +46,7 @@ public class SteamMachines {
         provider.addItemRecipe(output, "steam_machines", "has_bronze", provider.hasSafeItem(AntimatterMaterialTypes.INGOT.getMaterialTag(Bronze)), CASING_BRONZE,
                 ImmutableMap.of(
                         'P', bronzePlate,
-                        'W', wrench
+                        'W', HAMMER.getTag()
                 ), "PPP", "PWP", "PPP");
         provider.addItemRecipe(output, "steam_machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Machines.COAL_BOILER.getItem(Tier.STEEL),
                 ImmutableMap.of(
