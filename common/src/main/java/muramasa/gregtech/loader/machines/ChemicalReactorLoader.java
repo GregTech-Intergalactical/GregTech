@@ -165,13 +165,13 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Magnesia), 5), INT_CIRCUITS.get(1).setNoConsume()).fo(CarbonDioxide.getGas(3000)).io(DUST.get(Magnesia, 2)).add("carbon_dioxide_6",240, 30);
         CHEMICAL_REACTING.RB().fi(Water.getLiquid(3000), Methane.getGas(2000)).fo(CarbonDioxide.getGas(1500), Hydrogen.getGas(4000)).add("carbon_dioxide_7",20, 240);
         //GLYCERYL TRINITRATE
-        CHEMICAL_REACTING.RB().fi(Glyceryl.getLiquid(1000),NitrationMixture.getLiquid(3000)).fo(GlycerylTrinitrate.getLiquid(1000),DilutedSulfuricAcid.getLiquid(3000)).add("glyceryl_trinitrate",180,30);
+        CHEMICAL_REACTING.RB().fi(Glycerol.getLiquid(1000),NitrationMixture.getLiquid(3000)).fo(GlycerylTrinitrate.getLiquid(1000),DilutedSulfuricAcid.getLiquid(3000)).add("glyceryl_trinitrate",180,30);
         CHEMICAL_REACTING.RB().fi(Nitrogen.getGas(1000),Water.getLiquid(2000)).ii(of(DUST.getMaterialTag(Carbon), 1)).fo(GlycerylTrinitrate.getLiquid(4000)).add("glyceryl_trinitrate_1",2700,30);
         //BIODIESEL
-        CHEMICAL_REACTING.RB().fi(SeedOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl",600, 30);
-        CHEMICAL_REACTING.RB().fi(FishOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl_1",600, 30);
-        CHEMICAL_REACTING.RB().fi(SeedOil.getLiquid(6000),Ethanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl_2",600, 30);
-        CHEMICAL_REACTING.RB().fi(FishOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl_3",600, 30);
+        CHEMICAL_REACTING.RB().fi(SeedOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000), Glycerol.getLiquid(1000)).add("biodiesel_and_glyceryl",600, 30);
+        CHEMICAL_REACTING.RB().fi(FishOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000), Glycerol.getLiquid(1000)).add("biodiesel_and_glyceryl_1",600, 30);
+        CHEMICAL_REACTING.RB().fi(SeedOil.getLiquid(6000),Ethanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000), Glycerol.getLiquid(1000)).add("biodiesel_and_glyceryl_2",600, 30);
+        CHEMICAL_REACTING.RB().fi(FishOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000), Glycerol.getLiquid(1000)).add("biodiesel_and_glyceryl_3",600, 30);
         //STYRENE
         CHEMICAL_REACTING.RB().fi(Benzene.getLiquid(1000),Ethylene.getGas(500)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Styrene.getLiquid(1500)).add("ethylene_to_styrene",60, 30);
         CHEMICAL_REACTING.RB().fi(Benzene.getLiquid(2000),Ethylene.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Styrene.getLiquid(3000)).add("ethylene_to_styrene_1",120, 30);
@@ -246,7 +246,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().fi(Chlorine.getGas(1000), Water.getLiquid(1500)).ii(INT_CIRCUITS.get(1)).fo(DilutedHydrochloricAcid.getLiquid(1000), HypochlorousAcid.getLiquid(1500)).add("hypochlorous_acid_1", 60, 30);
         //EPICHLOROHYDRIN
         CHEMICAL_REACTING.RB().fi(AllylChloride.getLiquid(3000), HypochlorousAcid.getLiquid(1000)).ii(DUST.getMaterialIngredient(SodiumHydroxide, 1)).fo(Epichlorohydrin.getLiquid(4000),SaltWater.getLiquid(1000)).add("epichlorohydrin", 160, 30);
-        CHEMICAL_REACTING.RB().fi(Glyceryl.getLiquid(7000), HydrochloricAcid.getLiquid(1000)).fo(Water.getLiquid(3000), Epichlorohydrin.getLiquid(5000)).add("epichlorohydrin_1", 240, 30);
+        CHEMICAL_REACTING.RB().fi(Glycerol.getLiquid(7000), HydrochloricAcid.getLiquid(1000)).fo(Water.getLiquid(3000), Epichlorohydrin.getLiquid(5000)).add("epichlorohydrin_1", 240, 30);
         CHEMICAL_REACTING.RB().fi(LPG.getGas(432), Chlorine.getGas(1000)).ii(DUST.getMaterialIngredient(Carbon, 1)).fo(Epichlorohydrin.getLiquid(432)).add("epichlorohydrin_2", 480, 30);
         //PHOSPHORIC ACID
         CHEMICAL_REACTING.RB().fi(Water.getLiquid(9000)).ii(DUST.getMaterialIngredient(PhosphorousPentoxide, 7)).fo(PhosphoricAcid.getLiquid(16000)).add("phosphoric_acid", 120, 30);

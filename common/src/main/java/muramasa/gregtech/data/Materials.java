@@ -629,7 +629,7 @@ public class Materials {
     public static Material SeedOil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "seed_oil", 0xc4ff00, NONE));
     public static Material SulfuricLightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_light_fuel", 0xffff00, NONE));
     public static Material SulfuricHeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_heavy_fuel", 0xffff00, NONE));
-    public static Material Glyceryl = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glyceryl", 0x87de87, NONE));
+    public static Material Glycerol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glycerol", 0x87de87, NONE));
     public static Material GlycerylTrinitrate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glyceryl_trinitrate", 0x87de87, NONE));
 
     /**
