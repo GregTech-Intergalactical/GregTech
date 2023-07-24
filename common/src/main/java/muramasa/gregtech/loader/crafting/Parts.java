@@ -134,26 +134,61 @@ public class Parts {
   private static void molds(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
       provider.addItemRecipe(output, GTIRef.ID, "empty_shape", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), EmptyShape, of(
               'P', PLATE.get(Steel),
-              'H', HAMMER.getTag()
-      ), "PPH", "PP ");
-      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldPlate, of(
-              'P', EmptyShape,
-              'H', HAMMER.getTag()
-      ), "H", "P");
-      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldIngot, of(
-              'P', EmptyShape,
-              'H', HAMMER.getTag()
-      ), "P", "H");
-      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldCasing, of(
-              'P', EmptyShape,
-              'H', HAMMER.getTag()
-      ), " H", "P ");
-      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), MoldGear, of(
-              'P', EmptyShape,
-              'H', HAMMER.getTag()
-      ), "PH");
+              'H', HAMMER.getTag(),
+              'F', FILE.getTag()
+      ), "HF","PP", "PP ");
+      moldRecipe(output, provider, MoldPlate, "H", "P");
+      moldRecipe(output, provider, MoldIngot, "P", "H");
+      moldRecipe(output, provider, MoldCasing, " H", "P ");
+      moldRecipe(output, provider, MoldGear, "PH");
+      moldRecipe(output, provider, MoldCoinage, "H ", " P");
+      moldRecipe(output, provider, MoldBottle, "P ", " H");
+      moldRecipe(output, provider, MoldBall, " P", "H ");
+      moldRecipe(output, provider, MoldBlock, "HP");
+      moldRecipe(output, provider, MoldNugget, "P H");
+      //moldRecipe(output, provider, MoldBuns, "P  ", "  H");
+      //moldRecipe(output, provider, MoldBread, "P  ", "   ", "  H");
+      //moldRecipe(output, provider, MoldBaguettes, "P ", "  ", " H");
+      moldRecipe(output, provider, MoldAnvil, " P", "  ", "H ");
+      moldRecipe(output, provider, MoldGearSmall, "H P");
+
+      shapeRecipe(output, provider, ShapePlate, "HP");
+      shapeRecipe(output, provider, ShapeRod, "P ", " H");
+      shapeRecipe(output, provider, ShapeBolt, "H ", " P");
+      shapeRecipe(output, provider, ShapeRing, "PH");
+      shapeRecipe(output, provider, ShapeCell, "H", "P");
+      shapeRecipe(output, provider, ShapeIngot, " H", "P ");
+      shapeRecipe(output, provider, ShapeWire, "P", "H");
+      shapeRecipe(output, provider, ShapeCasing, " P", "H ");
+      shapeRecipe(output, provider, ShapePipeTiny, " H", "  ", "P ");
+      shapeRecipe(output, provider, ShapePipeSmall, "P  ", "  H");
+      shapeRecipe(output, provider, ShapePipeNormal, "P ", "  ", " H");
+      shapeRecipe(output, provider, ShapePipeLarge, "P  ", "   ", "  H");
+      shapeRecipe(output, provider, ShapePipeHuge, "  H", "   ", "P  ");
+      shapeRecipe(output, provider, ShapeBlock, "P H");
+      shapeRecipe(output, provider, ShapeHeadSword, "P", " ", "H");
+      shapeRecipe(output, provider, ShapeHeadPickaxe, " P", "  ", "H ");
+      shapeRecipe(output, provider, ShapeHeadShovel, "  P", "   ", "H  ");
+      shapeRecipe(output, provider, ShapeHeadAxe, "  P", "H  ");
+      shapeRecipe(output, provider, ShapeHeadHoe, "H P");
+      shapeRecipe(output, provider, ShapeHeadHammer, "H  ", "  P");
+      shapeRecipe(output, provider, ShapeHeadFile, "H  ", "   ", "  P");
+      shapeRecipe(output, provider, ShapeHeadSaw, "H ", "  ", " P");
+      shapeRecipe(output, provider, ShapeGear, "H", " ", "P");
+      //shapeRecipe(output, provider, ShapeBottle, "  H", "P  ");
+      shapeRecipe(output, provider, ShapeGearSmall, "H", "P");
 
   }
+
+  private static void moldRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Item mold, String... shapes){
+      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), mold,
+              of('P', EmptyShape, 'H', HAMMER.getTag()), shapes);
+  }
+
+    private static void shapeRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Item mold, String... shapes){
+        provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), mold,
+                of('P', EmptyShape, 'H', WIRE_CUTTER.getTag()), shapes);
+    }
 
   private static void bloodyCircuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
       // MANUAL TIER 0 CIRCUIT CRAFTING
