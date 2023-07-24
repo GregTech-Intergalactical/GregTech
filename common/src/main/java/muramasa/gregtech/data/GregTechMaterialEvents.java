@@ -374,7 +374,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(CharcoalByproducts).asFluid();
         event.setMaterial(EthylTertButylEther).asFluid();
         event.setMaterial(FermentedBiomass).asFluid(16);
-        event.setMaterial(SeedOil).asFluid(2);
+        event.setMaterial(SeedOil).asFluid(2).flags(SEMIFUELS);
         event.setMaterial(WoodTar).asFluid();
         event.setMaterial(WoodVinegar).asFluid();
         //Alkanoles
@@ -399,7 +399,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Benzaldehyde).asFluid();
         event.setMaterial(Benzene).asFluid(288);
         event.setMaterial(BenzoylChloride).asFluid();
-        event.setMaterial(Biomass).asFluid(8);
+        event.setMaterial(Biomass).asFluid(8).flags(SEMIFUELS);
         event.setMaterial(BisphenolA).asFluid();
         event.setMaterial(Chloramine).asFluid();
         event.setMaterial(Chloroform).asFluid();
@@ -514,22 +514,22 @@ public class GregTechMaterialEvents {
         /**
          ** Fuels
          **/
-        event.setMaterial(Creosote).asFluid(8);
-        event.setMaterial(Oil).asFluid(16);
-        event.setMaterial(OilHeavy).asFluid(32);
-        event.setMaterial(OilLight).asFluid(16);
+        event.setMaterial(Creosote).asFluid(8).flags(SEMIFUELS);
+        event.setMaterial(Oil).asFluid(16).flags(SEMIFUELS);
+        event.setMaterial(OilHeavy).asFluid(32).flags(SEMIFUELS);
+        event.setMaterial(OilLight).asFluid(16).flags(SEMIFUELS);
         event.setMaterial(BioDiesel).asFluid(192);
         event.setMaterial(Diesel).asFluid(128);
-        event.setMaterial(FishOil).asFluid(2);
+        event.setMaterial(FishOil).asFluid(2).flags(SEMIFUELS);
         event.setMaterial(HeavyFuel).asFluid(48);
         event.setMaterial(LightFuel).asFluid(48);
         event.setMaterial(CetaneBoostedDiesel).asFluid(512);
-        event.setMaterial(OilMedium).asFluid(24);
+        event.setMaterial(OilMedium).asFluid(24).flags(SEMIFUELS);
         event.setMaterial(RocketFuel).asFluid();
         event.setMaterial(Gasoline).asFluid(384);
         event.setMaterial(HighOctaneGasoline).asFluid(768);
         event.setMaterial(SulfuricLightFuel).asFluid(32);
-        event.setMaterial(SulfuricHeavyFuel).asFluid(32);
+        event.setMaterial(SulfuricHeavyFuel).asFluid(32).flags(SEMIFUELS);
         /**
          ** Cracked Stuff
          */

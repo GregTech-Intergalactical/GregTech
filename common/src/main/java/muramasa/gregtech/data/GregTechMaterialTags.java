@@ -24,6 +24,8 @@ public class GregTechMaterialTags {
     public static final MaterialTag CRACK = new MaterialTag("crack"); //Add Cracking Recipes
     public static final MaterialTag SMELTG = new MaterialTag("smelt_g"); //Add Smelting to Gem Recipes
     public static final MaterialTag SMELTF = new MaterialTag("smelt_f"); //Add Smelting to Fluid Recipes
+
+    public static final MaterialTag SEMIFUELS = new MaterialTag("semi_fuels");
     public static final MaterialTag GRINDABLE = new MaterialTag("grindable"); //Is Grindable with the Mortar
     public static final MaterialTag CRYSTALLIZE = new MaterialTag("crystallize"); //Allows Dust > Gem Recipes
     public static final MaterialTag CALCITE2X = new MaterialTag("calcite_2x"); //Blast Furnace Calcite 2x Multiplier

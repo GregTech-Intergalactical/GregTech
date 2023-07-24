@@ -1,14 +1,22 @@
 package muramasa.gregtech.tile.multi;
 
+import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.SlotType;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.recipe.IRecipe;
+import muramasa.antimatter.recipe.IRecipeValidator;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.RecipeMaps;
 import muramasa.gregtech.items.ItemIntCircuit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.Collections;
+import java.util.List;
 
 import static muramasa.antimatter.machine.Tier.*;
 
@@ -19,6 +27,7 @@ public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLarg
     private int integratedCircuitConfig = 0; //Steam output is reduced by 1000L per config
     private int excessFuel = 0; //Eliminate rounding errors for fuels that burn half items
     private int excessProjectedEU = 0; //Eliminate rounding errors from throttling the boiler
+    private int maxProgress = 0;
 
     public TileEntityLargeBoiler(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -33,6 +42,34 @@ public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLarg
             return GregTechData.CASING_TITANIUM;
         }
         return GregTechData.CASING_TUNGSTENSTEEL;
+    }
+
+    public int getEUt(){
+        if (tier == LV){
+            return 400;
+        } else if (tier == MV){
+            return 600;
+        } else if (tier == HV){
+            return 800;
+        }
+        return 1000;
+    }
+
+    public int getEfficiencyIncrease(){
+        if (tier == LV){
+            return 16;
+        } else if (tier == MV){
+            return 12;
+        } else if (tier == HV){
+            return 8;
+        }
+        return 4;
+    }
+
+    int runtimeBoost(int time) {
+        if (tier == LV) return time * 2;
+        int dividend = tier == MV ? 150 : tier == HV ? 130 : 120;
+        return time * dividend / 100;
     }
 
     public Block getFireboxCasing(){
@@ -70,6 +107,50 @@ public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLarg
                 }
             }
         });
+        this.mSuperEfficencyIncrease = 0;
+        IRecipe recipe = RecipeMaps.COMBUSTION_FUELS.find(itemHandler, fluidHandler, HV, this::validateRecipe);
+        if (recipe != null){
+
+        }
+        /*for (GT_Recipe tRecipe : GT_Recipe.GT_Recipe_Map.sDieselFuels.mRecipeList) {
+            FluidStack tFluid = GT_Utility.getFluidForFilledItem(tRecipe.getRepresentativeInput(0), true);
+            if (tFluid != null && tRecipe.mSpecialValue > 1) {
+                tFluid.amount = 1000;
+                if (depleteInput(tFluid)) {
+                    this.mMaxProgresstime = adjustBurnTimeForConfig(runtimeBoost(tRecipe.mSpecialValue / 2));
+                    this.mEUt = adjustEUtForConfig(getEUt());
+                    this.mEfficiencyIncrease = this.mMaxProgresstime * getEfficiencyIncrease() * 4;
+                    return true;
+                }
+            }
+        }*/
         return true;
+    }
+
+    protected boolean validateRecipe(IRecipe r) {
+        List<ItemStack> consumed = this.itemHandler.map(t -> t.consumeInputs(r, true)).orElse(Collections.emptyList());
+        for (IRecipeValidator validator : r.getValidators()) {
+            if (!validator.validate(r, this)) {
+                return false;
+            }
+        }
+        return (consumed.size() > 0 || !r.hasInputItems());
+    }
+
+    private int adjustEUtForConfig(int rawEUt) {
+        int adjustedSteamOutput = rawEUt - 25 * integratedCircuitConfig;
+        return Math.max(adjustedSteamOutput, 25);
+    }
+
+    private int adjustBurnTimeForConfig(int rawBurnTime) {
+        /*if (mEfficiency < getMaxEfficiency(mInventory[1]) - ((getIdealStatus() - getRepairStatus()) * 1000)) {
+            return rawBurnTime;
+        }*/
+        int adjustedEUt = Math.max(25, getEUt() - 25 * integratedCircuitConfig);
+        int adjustedBurnTime = rawBurnTime * getEUt() / adjustedEUt;
+        this.excessProjectedEU += getEUt() * rawBurnTime - adjustedEUt * adjustedBurnTime;
+        adjustedBurnTime += this.excessProjectedEU / adjustedEUt;
+        this.excessProjectedEU %= adjustedEUt;
+        return adjustedBurnTime;
     }
 }

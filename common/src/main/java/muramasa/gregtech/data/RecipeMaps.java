@@ -142,6 +142,9 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "replicating", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SCANNING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "scanning", new RecipeBuilder()));
+
+    public static RecipeMap<RecipeBuilder> SEMI_FUELS = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "semi_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SIFTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "sifting", new SteamBuilder(STEAM_SIFTING)));
     public static RecipeMap<RecipeBuilder> SMALL_BOILERS = AntimatterAPI.register(RecipeMap.class,
@@ -159,6 +162,7 @@ public class RecipeMaps {
     static {
         COMBUSTION_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         GAS_FUELS.setGuiData(Guis.MULTI_DISPLAY);
+        SEMI_FUELS.setGuiData(MULTI_DISPLAY);
         NAQUADAH_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         ORE_BYPRODUCTS.setGuiData(Guis.ORE_BYPRODUCTS);
         PLASMA_FUELS.setGuiData(Guis.MULTI_DISPLAY);
@@ -174,6 +178,7 @@ public class RecipeMaps {
         COMBUSTION_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
         GAS_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
         NAQUADAH_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
+        SEMI_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
         ORE_BYPRODUCTS.setInfoRenderer(InfoRenderers.EMPTY_RENDERER);
         PLASMA_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
         STEAM_ALLOY_SMELTING.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
