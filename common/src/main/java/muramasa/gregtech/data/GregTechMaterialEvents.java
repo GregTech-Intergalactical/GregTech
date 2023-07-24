@@ -824,6 +824,7 @@ public class GregTechMaterialEvents {
         /**
          *  Inorganic
          **/
+        event.setMaterial(LeadZincSolution).mats(of(Water, 2, Lead, 1, Silver, 1, Zinc, 1, Sulfur, 3)).elecTicks(300);//TODO 192 eu/tick
         event.setMaterial(BlueVitriol).mats(of(Copper,1,Sulfur,1,Oxygen,4,Water,5)).elecTicks(900);
         event.setMaterial(CalciumAcetateSolution).mats(of(Calcium, 1, Carbon, 2, Oxygen, 4, Hydrogen, 6));
         event.setMaterial(DistilledWater).mats(of(Hydrogen,2, Oxygen, 1)).elecTicks(2000);

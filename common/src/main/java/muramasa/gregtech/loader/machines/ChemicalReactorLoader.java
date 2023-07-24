@@ -1,11 +1,13 @@
 package muramasa.gregtech.loader.machines;
 
 
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.GregTechConfig;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
+import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
@@ -16,14 +18,19 @@ import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 public class ChemicalReactorLoader {
 
     public static void init() {
-        addChemicalRecipesSimple();
+        addShared();
+        if (GregTechConfig.GAMEPLAY.MORE_COMPLICATED_CHEMICAL_RECIPES) {
+            addComplicated();
+        } else {
+            addSimple();
+        }
         //addChemicalRecipesComplicated();
         //nuclearProcessing();
     }
 
 
 
-    private static void addChemicalRecipesSimple() {
+    private static void addSimple() {
         //TITANIUM
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Rutile), 1),of(DUST.getMaterialTag(Carbon), 2)).fi(Chlorine.getGas(4000)).fo(Titaniumtetrachloride.getLiquid(1000),CarbonMonoxide.getGas(2000)).add("titanium_tetrachloride",500, 480);
         //SULFURIC ACID
@@ -32,17 +39,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().fi(Water.getLiquid(1000), HydrogenSulfide.getGas(1000)).fo(SulfuricAcid.getLiquid(1500)).add("sulfuric_acid_3",320, 30);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(4000), HydrogenSulfide.getGas(3000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(SulfuricAcid.getLiquid(7000)).add("sulfuric_acid_4",240, 30);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000), HydrogenSulfide.getGas(750)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(SulfuricAcid.getLiquid(1750)).add("sulfuric_acid_5",60, 30);
-        //HYDROGEN SULFIDE
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Sulfur),1)).fi(Hydrogen.getGas(2000)).fo(HydrogenSulfide.getGas(3000)).add("hydrogen_sulfide",60, 8);
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(125), NaturalGas.getGas(2000)).fo(HydrogenSulfide.getGas(125), RefineryGas.getGas(2000)).add("hydrogen_sulfide_2",20, 30);
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(125), SulfuricHeavyFuel.getLiquid(1000)).fo(HydrogenSulfide.getGas(125), HeavyFuel.getLiquid(1000)).add("hydrogen_sulfide_3",20, 30);
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(125), SulfuricGas.getGas(1000)).fo(HydrogenSulfide.getGas(125), RefineryGas.getGas(1000)).add("hydrogen_sulfide_4",20, 30);
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(250), SulfuricLightFuel.getLiquid(3000)).fo(HydrogenSulfide.getGas(250), LightFuel.getLiquid(3000)).add("hydrogen_sulfide_5",40, 30);
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(250), SulfuricNaphtha.getLiquid(3000)).fo(HydrogenSulfide.getGas(250), Naphtha.getLiquid(3000)).add("hydrogen_sulfide_6",40, 30);
-        //RUBBER
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Sulfur), 1), of(DUST.get(RawRubber), 9)).fo(Rubber.getLiquid(AntimatterPlatformUtils.isFabric() ? 1000 : 1296)).add("rubber",200, 8);
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(14000),Isoprene.getLiquid(2000)).ii(INT_CIRCUITS.get(2).setNoConsume()).io(new ItemStack(DUST.get(RawRubber),21)).add("raw_rubber_dust",2240, 30);
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000),Isoprene.getLiquid(288)).ii(INT_CIRCUITS.get(1).setNoConsume()).io(new ItemStack(DUST.get(RawRubber),3)).add("raw_rubber_dust_2",320, 30);
         //POLYETHYLENE
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000),Naphtha.getLiquid(144)).fo(Polyethylene.getLiquid(72)).add("ethylene_to_polyethylene",320, 30);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000),Ethylene.getGas(144)).fo(Polyethylene.getLiquid(216)).add("ethylene_to_polyethylene_1",160, 30);
@@ -59,65 +55,20 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000),Tetrafluoroethylene.getGas(144)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Polytetrafluoroethylene.getLiquid(216)).add("tetrafluoroethylene_to_polytetrafluoroethylene",160, 30);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(7000),Tetrafluoroethylene.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Polytetrafluoroethylene.getLiquid(1500)).add("tetrafluoroethylene_to_polytetrafluoroethylene_1",1120, 30);
         CHEMICAL_REACTING.RB().fi(Naphtha.getLiquid(3000),Fluorine.getGas(1000),Epichlorohydrin.getLiquid(432)).fo(Polytetrafluoroethylene.getLiquid(432)).add("tetrafluoroethylene_to_polytetrafluoroethylene_2",240, 256);
-        //STYRENE
-        CHEMICAL_REACTING.RB().fi(Benzene.getLiquid(1000),Ethylene.getGas(500)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Styrene.getLiquid(1500)).add("ethylene_to_styrene",60, 30);
-        CHEMICAL_REACTING.RB().fi(Benzene.getLiquid(2000),Ethylene.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Styrene.getLiquid(3000)).add("ethylene_to_styrene_1",120, 30);
         //POLYSTYRENE
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000),Styrene.getLiquid(144)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Polystyrene.getLiquid(216)).add("styrene_to_polystyrene",160, 30);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(7000),Styrene.getLiquid(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Polystyrene.getLiquid(1500)).add("styrene_to_polystyrene_1",1120, 30);
         //METHANE
         CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Carbon, 1)).fi(Hydrogen.getGas(4000)).fo(Methane.getGas(5000)).add("methane",14000, 30);
-        //ISOPROPENE
-        CHEMICAL_REACTING.RB().fi(Propene.getGas(1500),Ethylene.getGas(1000)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Isoprene.getLiquid(1500)).add("isopropene",60, 30);
-        CHEMICAL_REACTING.RB().fi(Propene.getGas(3000),Ethylene.getGas(2000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Isoprene.getLiquid(5000)).add("isopropene_1",120, 30);
         //POLYPHENYLENESULFIDE
         CHEMICAL_REACTING.RB().fi(Benzene.getLiquid(1000)).ii(of(DUST.getMaterialTag(Sulfur),1)).fo(PolyphenyleneSulfide.getLiquid(2000)).add("polyphenylene_sulfide",320, 30);
         //EPICHLOROHYDRIN
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Carbon),1)).fi(LPG.getGas(432),Chlorine.getGas(1000)).fo(Epichlorohydrin.getLiquid(432)).add("epichlorohydrin",480, 30);
-        //METHANOL
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(1000),CarbonDioxide.getGas(500)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Methanol.getLiquid(1000)).add("methanol",100, 120);
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(2000),CarbonDioxide.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Methanol.getLiquid(2000),Water.getLiquid(1000)).add("methanol_1",200, 120);
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(2000),CarbonDioxide.getGas(1000)).ii(INT_CIRCUITS.get(3).setNoConsume()).fo(Methanol.getLiquid(2000)).add("methanol_2",200, 120);
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(1000),CarbonMonoxide.getGas(500)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Methanol.getLiquid(1500)).add("methanol_3",150, 120);
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(2000),CarbonMonoxide.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Methanol.getLiquid(3000)).add("methanol_4",150, 120);
-        //CARBON DIOXIDE
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Charcoal), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide",40, 8);
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Carbon), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).add("carbon_dioxide_1",40, 8);
-        CHEMICAL_REACTING.RB().ii(of(GEM.getMaterialTag(Charcoal), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide_2",40, 8);
-        CHEMICAL_REACTING.RB().ii(of(GEM.getMaterialTag(Coal), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide_3",40, 8);
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Coal), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide_4",40, 8);
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Calcite), 5), INT_CIRCUITS.get(1).setNoConsume()).fo(CarbonDioxide.getGas(3000)).io(DUST.get(Quicklime, 2)).add("carbon_dioxide_5",240, 30);
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Magnesia), 5), INT_CIRCUITS.get(1).setNoConsume()).fo(CarbonDioxide.getGas(3000)).io(DUST.get(Magnesia, 2)).add("carbon_dioxide_6",240, 30);
-        CHEMICAL_REACTING.RB().fi(Water.getLiquid(3000), Methane.getGas(2000)).fo(CarbonDioxide.getGas(1500), Hydrogen.getGas(4000)).add("carbon_dioxide_7",20, 240);
-        //ETHYLENE
-        CHEMICAL_REACTING.RB().fi(Butene.getGas(1000)).ii(INT_CIRCUITS.get(12).setNoConsume()).fo(Ethylene.getGas(1000)).add("ethylene",720, 120);
-        CHEMICAL_REACTING.RB().fi(Propene.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Ethylene.getGas(1000)).add("ethylene_1",720, 120);
-        CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(2000), Ethanol.getLiquid(3000)).fo(Ethylene.getGas(2000), DilutedSulfuricAcid.getLiquid(3000)).add("ethylene_2",400, 120);
-        CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(2000), Ethanol.getLiquid(3000)).ii(INT_CIRCUITS.get(11).setNoConsume()).fo(Ethylene.getGas(2000), DilutedSulfuricAcid.getLiquid(3000)).add("ethylene_3",400, 120);
-        CHEMICAL_REACTING.RB().fi(Ethane.getGas(4000)).ii(INT_CIRCUITS.get(8).setNoConsume()).fo(Ethylene.getGas(3000), Hydrogen.getGas(1000)).add("ethylene_4",320, 120);
-        //ACETIC ACID
-        CHEMICAL_REACTING.RB().ii(INT_CIRCUITS.get(9).setNoConsume()).fi(Oxygen.getGas(1000), Ethylene.getGas(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid",50, 30);
-        CHEMICAL_REACTING.RB().ii(INT_CIRCUITS.get(1).setNoConsume()).fi(CarbonMonoxide.getGas(1000), Methanol.getLiquid(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid_1",150, 30);
-        //BIODIESEL
-        CHEMICAL_REACTING.RB().fi(SeedOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl",600, 30);
-        CHEMICAL_REACTING.RB().fi(FishOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl_1",600, 30);
-        CHEMICAL_REACTING.RB().fi(SeedOil.getLiquid(6000),Ethanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl_2",600, 30);
-        CHEMICAL_REACTING.RB().fi(FishOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl_3",600, 30);
         //GELLED TOLUENE
         CHEMICAL_REACTING.RB().ii(of(Items.SUGAR),of(DUST_TINY.get(Polyethylene,1))).fi(Toluene.getLiquid(133)).io(DUST.get(GelledToluene,2)).add("gelled_toluene",140, 192);
         //NITROGEN DIOXIDE
         CHEMICAL_REACTING.RB().fi(Nitrogen.getGas(500),Oxygen.getGas(1000)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(NitrogenDioxide.getGas(1500)).add("nitrogen_dioxide",625, 30);
         CHEMICAL_REACTING.RB().fi(Nitrogen.getGas(1000),Oxygen.getGas(2000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(NitrogenDioxide.getGas(3000)).add("nitrogen_dioxide_2",1250, 30);
-        //CARBON MONOXIDE
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Charcoal), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).io(DUST_TINY.get(Ash, 1)).add("carbon_monoxide",40, 8);
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Carbon), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).add("carbon_monoxide_1",40, 8);
-        CHEMICAL_REACTING.RB().ii(of(GEM.getMaterialTag(Charcoal), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).io(DUST_TINY.get(Ash, 1)).add("carbon_monoxide_2",40, 8);
-        CHEMICAL_REACTING.RB().ii(of(GEM.getMaterialTag(Coal), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).io(DUST_TINY.get(Ash, 1)).add("carbon_monoxide_3",40, 8);
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Coal), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).io(DUST_TINY.get(Ash, 1)).add("carbon_monoxide_4",40, 8);
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Carbon), 1)).fi(CarbonDioxide.getGas(3000)).fo(CarbonMonoxide.getGas(4000)).add("carbon_monoxide_5",800, 30);
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Rutile), 1), of(DUST.getMaterialTag(Carbon), 2), INT_CIRCUITS.get(1).setNoConsume()).fi(Chlorine.getGas(4000)).fo(CarbonMonoxide.getGas(2000), Titaniumtetrachloride.getLiquid(1000)).add("carbon_monoxide_6",500, 480);
-        //AMMONIA
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(3000),Nitrogen.getGas(1000)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Ammonia.getGas(1000)).add("ammonia",320, 384);
         //NITRIC ACID
         CHEMICAL_REACTING.RB().ii(INT_CIRCUITS.get(11).setNoConsume()).fi(Oxygen.getGas(1000),Ammonia.getGas(1000)).fo(NitricAcid.getLiquid(1000), Water.getLiquid(1000)).add("nitric_acid",160, 30);
         CHEMICAL_REACTING.RB().ii(INT_CIRCUITS.get(12).setNoConsume()).fi(Oxygen.getGas(1000),Ammonia.getGas(1000)).fo(NitricAcid.getLiquid(1000)).add("nitric_acid_2",160, 30);
@@ -126,11 +77,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Quicklime),2)).fi(CarbonDioxide.getGas(3000)).io(DUST.get(Calcite,5)).add("calcite_1",80, 30);
         //MAGNESITE
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Magnesia),2)).fi(CarbonDioxide.getGas(3000)).io(DUST.get(Magnesite,5)).add("magnesite",80, 30);
-        //GLYCERYL TRINITRATE
-        CHEMICAL_REACTING.RB().fi(Glyceryl.getLiquid(1000),NitrationMixture.getLiquid(3000)).fo(GlycerylTrinitrate.getLiquid(1000),DilutedSulfuricAcid.getLiquid(3000)).add("glyceryl_trinitrate",180,30);
-        CHEMICAL_REACTING.RB().fi(Nitrogen.getGas(1000),Water.getLiquid(2000)).ii(of(DUST.getMaterialTag(Carbon), 1)).fo(GlycerylTrinitrate.getLiquid(4000)).add("glyceryl_trinitrate_1",2700,30);
-        //SALTPETER
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Potassium),1)).fi(Nitrogen.getGas(1000), Oxygen.getGas(3000)).io(DUST.get(Saltpeter,5)).add("saltpeter",180,30);
         //SODIUM PERSULFATE
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Sodium),1), of(DUST.get(Sulfur, 1))).fi(Oxygen.getGas(4000)).fo(SodiumPersulfate.getLiquid(6000)).add("sodium_persulfate",8000, 30);
         //CETANE-BOOSTED DIESEL
@@ -158,7 +104,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(of(CRUSHED_PURIFIED.getMaterialTag(Chalcopyrite), 1)).fi(NitricAcid.getLiquid(1000)).io(DUST_TINY.get(PlatinumGroupSludge, 1)).fo(BlueVitriol.getLiquid(9000)).add("tiny_pile_of_platinum_group_sludge",50,30);
         CHEMICAL_REACTING.RB().ii(of(CRUSHED_PURIFIED.getMaterialTag(Pentlandite), 1)).fi(NitricAcid.getLiquid(1000)).io(DUST_TINY.get(PlatinumGroupSludge, 1)).fo(NickelSulfate.getLiquid(9000)).add("tiny_pile_of_platinum_group_sludge_1",50,30);
         //NITROUS OXIDE
-        // CHEMICAL_REACTING.RB().fi(Nitrogen.getGas(1000),Oxygen.getGas(500)).ii(INT_CIRCUITS.get(3).setNoConsume()).fo(NitrousOxide.getGas(1500)).add("nitrous_oxide",100, 30);
+        CHEMICAL_REACTING.RB().fi(Nitrogen.getGas(1000),Oxygen.getGas(500)).ii(INT_CIRCUITS.get(3).setNoConsume()).fo(NitrousOxide.getGas(1500)).add("nitrous_oxide",100, 30);
         //MOLTEN EPOXY RESIN
         CHEMICAL_REACTING.RB().fi(Naphtha.getLiquid(3000), NitrogenDioxide.getGas(1000), Epichlorohydrin.getLiquid(144)).fo(EpoxyResin.getLiquid(288)).add("epoxy_resin",240,30);
         CHEMICAL_REACTING.RB().fi(Propene.getGas(1000), Benzene.getLiquid(1000), Chlorine.getGas(500)).fo(EpoxyResin.getLiquid(288)).add("epoxy_resin_1",120,240);
@@ -171,8 +117,6 @@ public class ChemicalReactorLoader {
         //SILICONE RUBBER
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Polydimethylsiloxane), 9), of(DUST.getMaterialTag(Sulfur), 1)).fo(SiliconeRubber.getLiquid(1296)).add("silcone_rubber",600,30);
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Silicon), 1)).fi(Epichlorohydrin.getLiquid(144)).fo(SiliconeRubber.getLiquid(144)).add("silcone_rubber_1",240,96);
-        //STYRENE-BUTADIENE RUBBER
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(RawStyreneButadieneRubber), 9), of(DUST.get(Sulfur), 1)).fo(StyreneButadieneRubber.getLiquid(1296)).add("styrenebutadiene_rubber",600,30);
         //POLYCAPROLACTAM
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Saltpeter), 1)).fi(Naphtha.getLiquid(576)).fo(Polycaprolactam.getLiquid(1296)).add("polycaprolactam",640,30);
         //URANIUM 238 DUST
@@ -207,14 +151,106 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().fi(Chlorine.getGas(1000), Ammonia.getGas(3000), Methanol.getLiquid(4000)).fo(RocketFuel.getLiquid(7000)).add("rocketfuel_1",3600,480);
         //CHLORINE
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Sodium), 1), of(DUST.getMaterialTag(MagnesiumChloride), 2)).fo(Chlorine.getGas(3000)).io(DUST_SMALL.get(Magnesium, 6)).add("chlorine",300,240);
+
+    }
+
+    private static void addShared(){
+        //CARBON DIOXIDE
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Charcoal), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide",40, 8);
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Carbon), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).add("carbon_dioxide_1",40, 8);
+        CHEMICAL_REACTING.RB().ii(of(GEM.getMaterialTag(Charcoal), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide_2",40, 8);
+        CHEMICAL_REACTING.RB().ii(of(GEM.getMaterialTag(Coal), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide_3",40, 8);
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Coal), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide_4",40, 8);
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Calcite), 5), INT_CIRCUITS.get(1).setNoConsume()).fo(CarbonDioxide.getGas(3000)).io(DUST.get(Quicklime, 2)).add("carbon_dioxide_5",240, 30);
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Magnesia), 5), INT_CIRCUITS.get(1).setNoConsume()).fo(CarbonDioxide.getGas(3000)).io(DUST.get(Magnesia, 2)).add("carbon_dioxide_6",240, 30);
+        CHEMICAL_REACTING.RB().fi(Water.getLiquid(3000), Methane.getGas(2000)).fo(CarbonDioxide.getGas(1500), Hydrogen.getGas(4000)).add("carbon_dioxide_7",20, 240);
+        //GLYCERYL TRINITRATE
+        CHEMICAL_REACTING.RB().fi(Glyceryl.getLiquid(1000),NitrationMixture.getLiquid(3000)).fo(GlycerylTrinitrate.getLiquid(1000),DilutedSulfuricAcid.getLiquid(3000)).add("glyceryl_trinitrate",180,30);
+        CHEMICAL_REACTING.RB().fi(Nitrogen.getGas(1000),Water.getLiquid(2000)).ii(of(DUST.getMaterialTag(Carbon), 1)).fo(GlycerylTrinitrate.getLiquid(4000)).add("glyceryl_trinitrate_1",2700,30);
+        //BIODIESEL
+        CHEMICAL_REACTING.RB().fi(SeedOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl",600, 30);
+        CHEMICAL_REACTING.RB().fi(FishOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl_1",600, 30);
+        CHEMICAL_REACTING.RB().fi(SeedOil.getLiquid(6000),Ethanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl_2",600, 30);
+        CHEMICAL_REACTING.RB().fi(FishOil.getLiquid(6000),Methanol.getLiquid(1000)).ii(of(DUST_TINY.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(6000),Glyceryl.getLiquid(1000)).add("biodiesel_and_glyceryl_3",600, 30);
+        //STYRENE
+        CHEMICAL_REACTING.RB().fi(Benzene.getLiquid(1000),Ethylene.getGas(500)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Styrene.getLiquid(1500)).add("ethylene_to_styrene",60, 30);
+        CHEMICAL_REACTING.RB().fi(Benzene.getLiquid(2000),Ethylene.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Styrene.getLiquid(3000)).add("ethylene_to_styrene_1",120, 30);
+        //RUBBER
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Sulfur), 1), of(DUST.get(RawRubber), 9)).fo(Rubber.getLiquid(L * 9)).add("rubber",200, 8);
+        CHEMICAL_REACTING.RB().fi(Air.getGas(14000),Isoprene.getLiquid(2000)).ii(INT_CIRCUITS.get(2).setNoConsume()).io(new ItemStack(DUST.get(RawRubber),21)).add("raw_rubber_dust",2240, 30);
+        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000),Isoprene.getLiquid(288)).ii(INT_CIRCUITS.get(1).setNoConsume()).io(new ItemStack(DUST.get(RawRubber),3)).add("raw_rubber_dust_2",320, 30);
         //RAW STYRENE-BUDADIENE RUBBER PULP
-        CHEMICAL_REACTING.RB().fi(Butadiene.getGas(3000), Oxygen.getGas(4000), Styrene.getLiquid(1000)).io(DUST.get(RawStyreneButadieneRubber, 6)).add("raw_styrenebutadiene_rubber_pulp",160,240);
+        CHEMICAL_REACTING.RB().fi(Butadiene.getGas(3000), Oxygen.getGas(4000), Styrene.getLiquid(1000)).io(DUST.get(RawStyreneButadieneRubber, 6)).add("raw_styrene_butadiene_rubber_pulp",160,240);
+        //STYRENE-BUTADIENE RUBBER
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(RawStyreneButadieneRubber), 9), of(DUST.get(Sulfur), 1)).fo(StyreneButadieneRubber.getLiquid(L * 9)).add("styrenebutadiene_rubber",600,30);
+        //ISOPROPENE
+        CHEMICAL_REACTING.RB().fi(Propene.getGas(3000),Ethylene.getGas(2000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Isoprene.getLiquid(5000)).add("isopropene",120, 30);
+        //HYDROGEN SULFIDE
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Sulfur),1)).fi(Hydrogen.getGas(2000)).fo(HydrogenSulfide.getGas(3000)).add("hydrogen_sulfide",60, 8);
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(125), NaturalGas.getGas(2000)).fo(HydrogenSulfide.getGas(125), RefineryGas.getGas(2000)).add("hydrogen_sulfide_2",20, 30);
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(125), SulfuricHeavyFuel.getLiquid(1000)).fo(HydrogenSulfide.getGas(125), HeavyFuel.getLiquid(1000)).add("hydrogen_sulfide_3",20, 30);
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(125), SulfuricGas.getGas(1000)).fo(HydrogenSulfide.getGas(125), RefineryGas.getGas(1000)).add("hydrogen_sulfide_4",20, 30);
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(250), SulfuricLightFuel.getLiquid(3000)).fo(HydrogenSulfide.getGas(250), LightFuel.getLiquid(3000)).add("hydrogen_sulfide_5",40, 30);
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(250), SulfuricNaphtha.getLiquid(3000)).fo(HydrogenSulfide.getGas(250), Naphtha.getLiquid(3000)).add("hydrogen_sulfide_6",40, 30);
+        //AMMONIA
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(3000),Nitrogen.getGas(1000)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Ammonia.getGas(1000)).add("ammonia",320, 384);
+        //ETHYLENE
+        CHEMICAL_REACTING.RB().fi(Butene.getGas(1000)).ii(INT_CIRCUITS.get(12).setNoConsume()).fo(Ethylene.getGas(1000)).add("ethylene",720, 120);
+        CHEMICAL_REACTING.RB().fi(Propene.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Ethylene.getGas(1000)).add("ethylene_1",720, 120);
+        CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(2000), Ethanol.getLiquid(3000)).fo(Ethylene.getGas(2000), DilutedSulfuricAcid.getLiquid(3000)).add("ethylene_2",400, 120);
+        CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(2000), Ethanol.getLiquid(3000)).ii(INT_CIRCUITS.get(11).setNoConsume()).fo(Ethylene.getGas(2000), DilutedSulfuricAcid.getLiquid(3000)).add("ethylene_3",400, 120);
+        CHEMICAL_REACTING.RB().fi(Ethane.getGas(4000)).ii(INT_CIRCUITS.get(8).setNoConsume()).fo(Ethylene.getGas(3000), Hydrogen.getGas(1000)).add("ethylene_4",320, 120);
+        //ACETIC ACID
+        CHEMICAL_REACTING.RB().ii(INT_CIRCUITS.get(9).setNoConsume()).fi(Oxygen.getGas(1000), Ethylene.getGas(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid",50, 30);
+        CHEMICAL_REACTING.RB().ii(INT_CIRCUITS.get(1).setNoConsume()).fi(CarbonMonoxide.getGas(1000), Methanol.getLiquid(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid_1",150, 30);
+        CHEMICAL_REACTING.RB().ii(INT_CIRCUITS.get(24).setNoConsume()).fi(CarbonMonoxide.getGas(1000), Hydrogen.getGas(1000)).fo(AceticAcid.getLiquid(2000)).add("acetic_acid_2",80, 30);
+        //METHANOL
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(1000),CarbonDioxide.getGas(500)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Methanol.getLiquid(1000)).add("methanol",100, 120);
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(2000),CarbonDioxide.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Methanol.getLiquid(2000),Water.getLiquid(1000)).add("methanol_1",200, 120);
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(2000),CarbonDioxide.getGas(1000)).ii(INT_CIRCUITS.get(3).setNoConsume()).fo(Methanol.getLiquid(2000)).add("methanol_2",200, 120);
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(1000),CarbonMonoxide.getGas(500)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Methanol.getLiquid(1500)).add("methanol_3",150, 120);
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(2000),CarbonMonoxide.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Methanol.getLiquid(3000)).add("methanol_4",150, 120);
+        //CARBON MONOXIDE
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Charcoal), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).io(DUST_TINY.get(Ash, 1)).add("carbon_monoxide",40, 8);
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Carbon), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).add("carbon_monoxide_1",40, 8);
+        CHEMICAL_REACTING.RB().ii(of(GEM.getMaterialTag(Charcoal), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).io(DUST_TINY.get(Ash, 1)).add("carbon_monoxide_2",40, 8);
+        CHEMICAL_REACTING.RB().ii(of(GEM.getMaterialTag(Coal), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).io(DUST_TINY.get(Ash, 1)).add("carbon_monoxide_3",40, 8);
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Coal), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).io(DUST_TINY.get(Ash, 1)).add("carbon_monoxide_4",40, 8);
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Carbon), 1)).fi(CarbonDioxide.getGas(3000)).fo(CarbonMonoxide.getGas(4000)).add("carbon_monoxide_5",800, 30);
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Rutile), 1), of(DUST.getMaterialTag(Carbon), 2), INT_CIRCUITS.get(1).setNoConsume()).fi(Chlorine.getGas(4000)).fo(CarbonMonoxide.getGas(2000), Titaniumtetrachloride.getLiquid(1000)).add("carbon_monoxide_6",500, 480);
+        //SALTPETER
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Potassium),1)).fi(Nitrogen.getGas(1000), Oxygen.getGas(3000)).io(DUST.get(Saltpeter,5)).add("saltpeter",180,30);
+    }
 
+    private static void addComplicated(){
+        //ACETONE
+        CHEMICAL_REACTING.RB().ii(DUST_SMALL.getMaterialIngredient(Calcite, 5)).fi(AceticAcid.getLiquid(8000)).fo(Acetone.getLiquid(5000), CarbonDioxide.getLiquid(3000)).add("acetone", 400, 480);
+        CHEMICAL_REACTING.RB().ii(DUST_SMALL.getMaterialIngredient(Quicklime, 5)).fi(AceticAcid.getLiquid(8000)).fo(Acetone.getLiquid(5000), CarbonDioxide.getLiquid(3000)).add("acetone_1", 400, 480);
+        CHEMICAL_REACTING.RB().fi(Cumene.getLiquid(11000), Oxygen.getGas(2000)).fo(Phenol.getLiquid(6000), Acetone.getLiquid(6000)).add("acetone_2", 160, 30);
+        //METHYL ACETATE
+        CHEMICAL_REACTING.RB().fi(Methanol.getLiquid(6000), AceticAcid.getLiquid(8000)).fo(MethylAcetate.getLiquid(11000), Water.getLiquid(3000)).add("methyl_acetate", 240, 30);
+        //VINYL ACETATE
+        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(500), Ethylene.getGas(3000), AceticAcid.getLiquid(4000)).fo(VinylAcetate.getLiquid(6000)).add("vinyl_acetate", 90, 30);
+        addPolymerRecipe(VinylAcetate, PolyvinylAcetate);
+        //HYDROCHLORIC ACID
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(1000), Chlorine.getGas(1000)).fo(HydrochloricAcid.getLiquid(2000)).add("hydrochloric_acid", 60, 8);
+        CHEMICAL_REACTING.RB().fi(Methane.getGas(1000), Chlorine.getGas(1200)).ii(INT_CIRCUITS.get(13)).fo(HydrochloricAcid.getLiquid(1200), Chloroform.getLiquid(1000)).add("hydrochloric_acid_1", 16, 30);
+        CHEMICAL_REACTING.RB().fi(Methane.getGas(1000), Chlorine.getGas(400)).ii(INT_CIRCUITS.get(11)).fo(HydrochloricAcid.getLiquid(400), Chloromethane.getLiquid(1000)).add("hydrochloric_acid_2", 16, 30);
+        CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(7000)).ii(DUST.getMaterialIngredient(Salt, 2)).io(DUST.get(SodiumBisulfate, 7)).fo(HydrochloricAcid.getLiquid(2000)).add("hydrochloric_acid_3", 60, 30);
+        CHEMICAL_REACTING.RB().fi(Chlorine.getGas(1000), Ethylene.getGas(3000)).fo(HydrochloricAcid.getLiquid(1000), VinylChloride.getLiquid(3000)).add("hydrochloric_acid_4", 80, 30);
+        CHEMICAL_REACTING.RB().fi(Propene.getGas(4500), Chlorine.getGas(1000)).fo(AllylChloride.getLiquid(4500), HydrochloricAcid.getLiquid(1000)).add("hydrochloric_acid_5");
+        CHEMICAL_REACTING.RB().fi(Chlorine.getGas(1000), Benzene.getLiquid(3000)).fo(HydrochloricAcid.getLiquid(500), Dichlorobenzene.getLiquid(3000)).add("hydrochloric_acid_6", 60, 30);
+        //HYPOCHLOROUS ACID
+        CHEMICAL_REACTING.RB().fi(Mercury.getLiquid(200), Chlorine.getGas(1000), Water.getLiquid(3000)).fo(HypochlorousAcid.getLiquid(3000)).add("hypochlorous_acid", 120, 8);
+        CHEMICAL_REACTING.RB().fi(Chlorine.getGas(1000), Water.getLiquid(1500)).ii(INT_CIRCUITS.get(1)).fo(DilutedHydrochloricAcid.getLiquid(1000), HypochlorousAcid.getLiquid(1500)).add("hypochlorous_acid_1", 60, 30);
+        //EPICHLOROHYDRIN
+        CHEMICAL_REACTING.RB().fi(AllylChloride.getLiquid(3000), HypochlorousAcid.getLiquid(1000)).ii(DUST.getMaterialIngredient(SodiumHydroxide, 1)).fo(Epichlorohydrin.getLiquid(4000),SaltWater.getLiquid(1000)).add("epichlorohydrin", 160, 30);
+        CHEMICAL_REACTING.RB().fi(Glyceryl.getLiquid(7000), HydrochloricAcid.getLiquid(1000)).fo(Water.getLiquid(3000), Epichlorohydrin.getLiquid(5000)).add("epichlorohydrin_1", 240, 30);
+        CHEMICAL_REACTING.RB().fi(LPG.getGas(432), Chlorine.getGas(1000)).ii(DUST.getMaterialIngredient(Carbon, 1)).fo(Epichlorohydrin.getLiquid(432)).add("epichlorohydrin_2", 480, 30);
+    }
 
-
-
-
-
+    private static void addPolymerRecipe(Material in, Material out){
+        CHEMICAL_REACTING.RB().fi(in.getLiquid(144), Oxygen.getGas(1000)).fo(out.getLiquid(216)).add(in.getId() + "_polymer_to_" + out.getId(), 160, 30);
     }
     private static void nuclearProcessing() {
 

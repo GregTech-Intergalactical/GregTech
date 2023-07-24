@@ -38,7 +38,7 @@ public class ElectrolyzerLoader {
             long duration = t.has(ELEC_TICKS) ? ELEC_TICKS.getInt(t) : t.getMass() * 20;
             b.io(items).fo(fluids).add("dust_" + t.getId(),duration, euPerTick);
         });
-        ELECTROLYZING.RB().ii(RecipeIngredient.of(ItemTags.SAND, 8)).io(DUST.get(Materials.SiliconDioxide)).add("sand_toSilicon_dioxide", 500, 25);
+        ELECTROLYZING.RB().ii(RecipeIngredient.of(ItemTags.SAND, 8)).io(DUST.get(Materials.SiliconDioxide)).add("sand_to_silicon_dioxide", 500, 25);
         ELECTROLYZING.RB().ii(RecipeIngredient.of(Items.BONE_MEAL, 3)).io(DUST.get(Materials.Calcium)).add("bone_meal", 98, 26);
     }
 

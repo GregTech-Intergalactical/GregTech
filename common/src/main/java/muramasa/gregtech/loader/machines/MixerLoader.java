@@ -5,6 +5,7 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
@@ -85,9 +86,11 @@ public class MixerLoader {
     }
 
     private static void recipes() {
+        if (GregTechConfig.GAMEPLAY.MORE_COMPLICATED_CHEMICAL_RECIPES){
+            MIXING.RB().fi(PolyvinylAcetate.getLiquid(1000),Acetone.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue",25 * 2, 8);
+            MIXING.RB().fi(PolyvinylAcetate.getLiquid(1000),MethylAcetate.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue_1",25 * 2, 8);
+        }
         MIXING.RB().fi(NitricAcid.getLiquid(1000),SulfuricAcid.getLiquid(1000)).fo(NitrationMixture.getLiquid(2000)).add("nitration_mixture",25 * 20, 2);
-        MIXING.RB().fi(PolyvinylAcetate.getLiquid(1000),Acetone.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue",25 * 2, 8);
-        MIXING.RB().fi(PolyvinylAcetate.getLiquid(1000),MethylAcetate.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue_1",25 * 2, 8);
         MIXING.RB().fi(BioDiesel.getLiquid(1000),Tetranitromethane.getLiquid(40)).fo(CetaneBoostedDiesel.getLiquid(750)).add("nitro_fuel", 20, 480);
         MIXING.RB().fi(Diesel.getLiquid(1000),Tetranitromethane.getLiquid(20)).fo(CetaneBoostedDiesel.getLiquid(1000)).add("nitro_fuel_1", 20, 480);
         MIXING.RB().fi(Oxygen.getGas(1000),Dimethylhydrazine.getLiquid(1000)).fo(RocketFuel.getLiquid(3000)).add("rocket_fuel",3 * 20, 16);
