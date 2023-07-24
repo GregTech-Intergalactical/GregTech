@@ -218,6 +218,15 @@ public class Machines {
                             .put('C', circuit)
                             .put('P',  piston)
                             .build(), "PCP", "MHM", "GLG"));
+            add(SEMIFLUID_GENERATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('M', motor)
+                            .put('L', cable)
+                            .put('H', hull)
+                            .put('G', Blocks.MAGMA_BLOCK)
+                            .put('C', circuit)
+                            .put('P',  PLATE.getMaterialTag(Invar))
+                            .build(), "PCP", "MHM", "GLG"));
             add(GAS_GENERATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('M', motor)
