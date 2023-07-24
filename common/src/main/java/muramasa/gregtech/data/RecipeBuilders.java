@@ -51,37 +51,4 @@ public class RecipeBuilders {
         }
         return recipe;
     }
-
-    public static class BasicBlastingBuilder extends RecipeBuilder {
-
-        public static ItemStack[] FUELS = new ItemStack[0];
-
-        static {
-            AntimatterAPI.runOnEvent(RegistrationEvent.DATA_READY, () -> FUELS = new ItemStack[]{
-                    GEM.get(AntimatterMaterials.Coal, 1),
-                    DUST.get(AntimatterMaterials.Coal, 1),
-                    GEM.get(AntimatterMaterials.Charcoal, 1),
-                    DUST.get(AntimatterMaterials.Charcoal, 1),
-                    GEM.get(Materials.CoalCoke, 1),
-                    GEM.get(Materials.LigniteCoke, 1),
-            });
-        }
-
-        @Override
-        public IRecipe add(String domain, String id) {
-          /*  Recipe r = null;
-            List<RecipeIngredient> ings = this.ingredientInput;
-            for (ItemStack fuel : FUELS) {
-                int burn = 1000;//fuel.getBurnTime();
-                int amount = (int) (((double)duration / (double)burn) * 10);
-                List<RecipeIngredient> newList = new ObjectArrayList<>(ings);
-                newList.add(RecipeIngredient.of(fuel.getItem(), amount));
-                this.ingredientInput = newList;
-                r = build(duration, power, special, amps);
-                addToMap(r);
-            }
-            return r;*/
-            return super.add(domain, id);
-        }
-    }
 }
