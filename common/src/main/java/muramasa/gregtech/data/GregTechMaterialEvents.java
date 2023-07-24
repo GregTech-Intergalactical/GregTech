@@ -408,6 +408,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Chloramine).asFluid();
         event.setMaterial(Chloroform).asFluid();
         event.setMaterial(Cumene).asFluid();
+        event.setMaterial(Chlorobenzene).asFluid();
         event.setMaterial(Dichlorobenzene).asFluid();
         event.setMaterial(Dichloroethane).asFluid();
         event.setMaterial(Dimethyldichlorosilane).asFluid();
@@ -804,6 +805,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Chloramine).mats(of(Nitrogen, 1, Hydrogen, 2, Chlorine, 1)).elecTicks(192);
         event.setMaterial(Chloroform).mats(of(Carbon, 1, Hydrogen, 1, Chlorine, 3));
         event.setMaterial(Cumene).mats(of(Carbon, 9, Hydrogen, 12));
+        event.setMaterial(Chlorobenzene).mats(of(Carbon, 6, Hydrogen, 5, Chlorine, 1)).elecTicks(384);
         event.setMaterial(Dichlorobenzene).mats(of(Carbon, 6, Hydrogen, 4, Chlorine, 2));
         event.setMaterial(Dichloroethane).mats(of(Carbon,2,Hydrogen,4,Chlorine,2));
         event.setMaterial(Dimethyldichlorosilane).mats(of(Carbon, 2, Hydrogen, 6, Chlorine, 2, Silicon, 1));
@@ -1467,7 +1469,7 @@ public class GregTechMaterialEvents {
                 /*Dymethylamine,*/ Chalcopyrite, /*Mirabilite,*/ Spodumene, /*Dolomite,*/ HypochlorousAcid, Chloramine, Bastnasite,
                 Chloromethane, Malachite, /*Borax, */ /*Kaolinite,*/ Obsidian, NitricAcid, VinylChloride, Acetone, /*Asbestos,*/ PotassiumFeldspar,
                 MethylAcetate, Sodalite, AllylChloride, Dichlorobenzene, Phenol, /*Glycerol,*/ Talc, Soapstone, PhosphoricAcid,
-                /*Chlorobenzene,*/ SulfuricAcid, Pyrope, SodiumPersulfate, Chloroform, Grossular, Spessartine, Almandine, Uvarovite, Andradite,
+                Chlorobenzene, SulfuricAcid, Pyrope, SodiumPersulfate, Chloroform, Grossular, Spessartine, Almandine, Uvarovite, Andradite,
                 Emerald, Bauxite, Tetranitromethane, Galena);
         ELEC120.add(Clay, /*Trona,*/ BlueTopaz, Topaz, /*Pollucite,*/ CarbonDioxide, SulfurDioxide, Epichlorohydrin, Lepidolite, /*FullersEarth, Alunite,*/ Glauconite,
                 /*Mica,*/ Lazurite, Tanzanite, Biotite, StainlessSteel, Bentonite, Ultimet, CalciumAcetateSolution, Dimethyldichlorosilane, /*Vermiculate, Zeolite,*/ GlycerylTrinitrate,
