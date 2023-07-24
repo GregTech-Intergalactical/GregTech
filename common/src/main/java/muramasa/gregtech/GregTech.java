@@ -28,7 +28,10 @@ import muramasa.gregtech.proxy.ServerHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
 import java.util.function.BiConsumer;
+
+import static muramasa.gregtech.data.GregTechData.*;
 
 public class GregTech extends AntimatterMod {
 
@@ -160,7 +163,12 @@ public class GregTech extends AntimatterMod {
             }
             case DATA_READY -> {
                 Structures.init();
-                AntimatterJEIREIPlugin.addItemsToHide(GregTechData.LAVA);
+                AntimatterJEIREIPlugin.addItemsToHide(LAVA);
+                AntimatterJEIREIPlugin.addItemsToHide(l -> {
+                    if (!GregTechConfig.GAMEPLAY.HARDER_CIRCUITS){
+                        l.addAll(Arrays.asList(CircuitBasicIntegrated, CircuitGoodIntegrated, MicroProcessor, IntegratedProcessor, NanoProcessor, QuantumProcessor));
+                    }
+                });
               //  if (side == Dist.CLIENT) StructureInfo.init();
                 TierMaps.providerInit();
             }

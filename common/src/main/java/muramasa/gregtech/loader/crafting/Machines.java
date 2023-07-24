@@ -2,11 +2,9 @@ package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtutility.GTUtility;
-import io.github.gregtechintergalactical.gtutility.machine.DrumMachine;
 import io.github.gregtechintergalactical.gtutility.machine.WorkbenchMachine;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
@@ -16,7 +14,6 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
@@ -538,7 +535,7 @@ public class Machines {
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), PYROLYSIS_OVEN.getItem(PYROLYSIS_OVEN.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_MV)
-                        .put('C', CircuitGood)
+                        .put('C', CircuitGoodElectronic)
                         .put('P', COVER_PUMP.getItem(MV).getItem())
                         .put('M', MotorMV)
                         .put('W', WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL))
@@ -562,7 +559,7 @@ public class Machines {
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(MV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_MV)
-                        .put('C', CircuitGood)
+                        .put('C', CircuitGoodElectronic)
                         .put('F', FieldGenMV)
                         .put('P', PLATE.get(Aluminium)).build(), "CFC", "PHP", "CPC");
 
@@ -576,14 +573,14 @@ public class Machines {
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.EV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_EV)
-                        .put('C', CircuitNanoProcessor)
+                        .put('C', NanoProcessor)
                         .put('F', FieldGenEV)
                         .put('P', PLATE.get(Titanium)).build(), "CFC", "PHP", "CPC");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.IV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_IV)
-                        .put('C', CircuitQuantumProcessor)
+                        .put('C', QuantumProcessor)
                         .put('F', FieldGenIV)
                         .put('P', PLATE.get(TungstenSteel)).build(), "CFC", "PHP", "CPC");
 

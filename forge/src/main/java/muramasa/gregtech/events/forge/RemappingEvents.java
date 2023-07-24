@@ -59,12 +59,12 @@ public class RemappingEvents {
         REMAPPING_MAP.put("gas_generator_lv", "gas_turbine_lv");
         REMAPPING_MAP.put("gas_generator_mv", "gas_turbine_mv");
         REMAPPING_MAP.put("gas_generator_hv", "gas_turbine_hv");
-        REMAPPING_MAP.put("circuit_basic", "basic_circuit");
+        REMAPPING_MAP.put("circuit_basic", "basic_integrated_circuit");
         REMAPPING_MAP.put("circuit_basic_electronic", "basic_electronic_circuit");
-        REMAPPING_MAP.put("circuit_good", "good_circuit");
+        REMAPPING_MAP.put("circuit_good", "good_electronic_circuit");
         REMAPPING_MAP.put("circuit_adv", "advanced_circuit");
-        REMAPPING_MAP.put("circuit_nanoprocessor", "nanoprocessor_circuit");
-        REMAPPING_MAP.put("circuit_quantumprocessor", "quantumprocessor_circuit");
+        REMAPPING_MAP.put("circuit_nanoprocessor", "nanoprocessor");
+        REMAPPING_MAP.put("circuit_quantumprocessor", "quantumprocessor");
         REMAPPING_MAP.put("circuit_energy_flow", "energy_flow_circuit");
         REMAPPING_MAP.put("circuit_wetware", "wetware_circuit");
         REMAPPING_MAP.put("adv_circuit_parts", "advanced_circuit_parts");

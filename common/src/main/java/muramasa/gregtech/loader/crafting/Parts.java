@@ -15,9 +15,7 @@ import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
-import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechTags;
-import muramasa.gregtech.loader.machines.CompressorLoader;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -192,7 +190,7 @@ public class Parts {
 
   private static void bloodyCircuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
       // MANUAL TIER 0 CIRCUIT CRAFTING
-      provider.addItemRecipe(output, "circuit_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBasic,
+      provider.addItemRecipe(output, "circuit_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBasicIntegrated,
               ImmutableMap.<Character, Object>builder()
                       .put('V', VacuumTube).put('B', CircuitBoardCoated)
                       .put('W',

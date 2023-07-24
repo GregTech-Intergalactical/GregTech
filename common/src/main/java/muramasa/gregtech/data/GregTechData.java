@@ -148,14 +148,17 @@ public class GregTechData {
     public static ItemBasic<?> CircuitBoardMultiFiber = new ItemBasic<>(GTIRef.ID, "board_multilayer_fiber_reinforced").tip("6th Tier Board");
     public static ItemBasic<?> CircuitBoardWetware = new ItemBasic<>(GTIRef.ID, "board_wetware").tip("7th Tier Board");
 
-    public static ItemBasic<?> CircuitBasic = new ItemBasic<>(GTIRef.ID, "basic_circuit").tip("The breakthrough to the electrical age");
+    public static ItemBasic<?> CircuitBasicIntegrated = new ItemBasic<>(GTIRef.ID, "basic_integrated_circuit").tip("The breakthrough to the electrical age");
     public static ItemBasic<?> CircuitBasicElectronic = new ItemBasic<>(GTIRef.ID, "basic_electronic_circuit").tip("A basic Circuit");
-    public static ItemBasic<?> CircuitGood = new ItemBasic<>(GTIRef.ID, "good_circuit").tip("A good Circuit");
+    public static ItemBasic<?> CircuitGoodElectronic = new ItemBasic<>(GTIRef.ID, "good_electronic_circuit").tip("A good Circuit");
+    public static ItemBasic<?> CircuitGoodIntegrated = new ItemBasic<>(GTIRef.ID, "good_integrated_circuit").tip("Good Circuit");
     public static ItemBasic<?> CircuitAdv = new ItemBasic<>(GTIRef.ID, "advanced_circuit").tip("An advanced Circuit");
     public static ItemBasic<?> CircuitDataStorage = new ItemBasic<>(GTIRef.ID, "data_storage_circuit");
     public static ItemBasic<?> CircuitDataControl = new ItemBasic<>(GTIRef.ID, "data_control_circuit");
-    public static ItemBasic<?> CircuitNanoProcessor = new ItemBasic<>(GTIRef.ID, "nanoprocessor_circuit").tip("A Nanoprocessor");
-    public static ItemBasic<?> CircuitQuantumProcessor = new ItemBasic<>(GTIRef.ID, "quantumprocessor_circuit").tip("A Quantumprocessor");
+    public static ItemBasic<?> MicroProcessor = new ItemBasic<>(GTIRef.ID, "microprocessor").tip("A Basic Circuit");
+    public static ItemBasic<?> IntegratedProcessor = new ItemBasic<>(GTIRef.ID, "integrated_processor").tip("A Good Circuit");
+    public static ItemBasic<?> NanoProcessor = new ItemBasic<>(GTIRef.ID, "nanoprocessor").tip("A Nanoprocessor");
+    public static ItemBasic<?> QuantumProcessor = new ItemBasic<>(GTIRef.ID, "quantumprocessor").tip("A Quantumprocessor");
     public static ItemBasic<?> CircuitEnergyFlow = new ItemBasic<>(GTIRef.ID, "energy_flow_circuit").tip("A High Voltage Processor");
     public static ItemBasic<?> CircuitWetware = new ItemBasic<>(GTIRef.ID, "wetware_circuit").tip("You feel like it's watching you");
     public static ItemBasic<?> DataOrb = new ItemBasic<>(GTIRef.ID, "data_orb");

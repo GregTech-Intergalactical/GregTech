@@ -30,13 +30,13 @@ public class GregTechConfig {
 
         /** @see CommonConfig **/
 
-        public boolean HARDER_WOOD, MORE_COMPLICATED_CHEMICAL_RECIPES;
+        public boolean HARDER_WOOD, MORE_COMPLICATED_CHEMICAL_RECIPES, HARDER_CIRCUITS;
 
     }
 
     public static class CommonConfig {
 
-        public ForgeConfigSpec.BooleanValue HARDER_WOOD, MORE_COMPLICATED_CHEMICAL_RECIPES;
+        public ForgeConfigSpec.BooleanValue HARDER_WOOD, MORE_COMPLICATED_CHEMICAL_RECIPES, HARDER_CIRCUITS;
 
         public ForgeConfigSpec.BooleanValue REPLACEMENT_VANILLA_ORE_GEN;
 
@@ -51,6 +51,9 @@ public class GregTechConfig {
             HARDER_WOOD = builder.comment("If true logs to planks and planks to sticks give half of vanilla amounts - Default: false")
                     .translation(GTIRef.ID + ".config.harder_wood")
                     .define("HARDER_WOOD", false);
+            HARDER_CIRCUITS = builder.comment("Enables more complicated circuit recipes added in versions of gt5u after 509.25 - Default: false")
+                    .translation(GTIRef.ID + ".config.harder_circuits")
+                    .define("HARDER_CIRCUITS", false);
             builder.pop();
 
         }
@@ -60,6 +63,7 @@ public class GregTechConfig {
     private static void bakeCommonConfig() {
         GAMEPLAY.HARDER_WOOD = COMMON_CONFIG.HARDER_WOOD.get();
         GAMEPLAY.MORE_COMPLICATED_CHEMICAL_RECIPES = COMMON_CONFIG.MORE_COMPLICATED_CHEMICAL_RECIPES.get();
+        GAMEPLAY.HARDER_CIRCUITS = COMMON_CONFIG.HARDER_CIRCUITS.get();
 
     }
 }

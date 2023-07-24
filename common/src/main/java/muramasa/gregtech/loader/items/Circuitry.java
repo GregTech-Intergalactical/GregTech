@@ -8,7 +8,6 @@ import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechTags;
-import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.world.item.ItemStack;
 
 import static muramasa.antimatter.Ref.L;
@@ -46,9 +45,9 @@ public class Circuitry {
         ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_tin", 32, 16);
         ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_soldering_alloy", 32, 16);
         ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_lead", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitGood)).add("good_circuit_tin", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitGood)).add("good_circuit_soldering_alloy", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitGood)).add("good_circuit_lead", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitGoodElectronic)).add("good_circuit_tin", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitGoodElectronic)).add("good_circuit_soldering_alloy", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitGoodElectronic)).add("good_circuit_lead", 32, 16);
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(Tin.getLiquid(L)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_tin", 32, 64);
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_soldering_alloy", 32, 64);
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(NandChip, 2)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitDataStorage)).add("data_storage__circuit_lead", 32, 64);
@@ -123,7 +122,7 @@ public class Circuitry {
             //Good
             ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardPhenolic, 1), of(GregTechData.Resistor, 2),of(GregTechData.Transistor, 2),
                             of(GregTechData.Capacitor, 2),of(AntimatterMaterialTypes.WIRE_FINE.get(Electrum), 2))
-                    .io(new ItemStack(GregTechData.CircuitGood,1))
+                    .io(new ItemStack(GregTechData.CircuitGoodElectronic,1))
                     .fi(material.getLiquid(base * 4)).add("good_circuit_using_" + material.getId(),20*20, 32);
             //Advanced
             ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardPlastic, 1), of(GregTechData.Resistor, 4),of(GregTechData.Transistor, 4),
@@ -133,12 +132,12 @@ public class Circuitry {
             //Nano
             ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardEpoxy, 1), of(GregTechData.Resistor, 4),of(GregTechData.Transistor, 4),
                             of(GregTechData.Capacitor, 4),of(AntimatterMaterialTypes.WIRE_FINE.get(RoseGold), 2))
-                    .io(new ItemStack(GregTechData.CircuitNanoProcessor,1))
+                    .io(new ItemStack(GregTechData.NanoProcessor,1))
                     .fi(material.getLiquid(base * 4)).add("nano_processor_circuit_using_" + material.getId(),20*20, 512);
             //Quantum
             ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardFiber, 1), of(GregTechData.Resistor, 4),of(GregTechData.Transistor, 4),
                             of(GregTechData.Capacitor, 4),of(AntimatterMaterialTypes.WIRE_FINE.get(Platinum), 2))
-                    .io(new ItemStack(GregTechData.CircuitQuantumProcessor,1))
+                    .io(new ItemStack(GregTechData.QuantumProcessor,1))
                     .fi(material.getLiquid(base * 4)).add("quantum_processor_circuit_using_" + material.getId(),20*20, 2048);
             //Energy Flow
             ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardMultiFiber, 1), of(GregTechData.Resistor, 8),of(GregTechData.Transistor, 8),
