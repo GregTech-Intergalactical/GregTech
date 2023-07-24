@@ -134,7 +134,7 @@ public class Parts {
               'P', PLATE.get(Steel),
               'H', HAMMER.getTag(),
               'F', FILE.getTag()
-      ), "HF","PP", "PP ");
+      ), "HF","PP", "PP");
       moldRecipe(output, provider, MoldPlate, "H", "P");
       moldRecipe(output, provider, MoldIngot, "P", "H");
       moldRecipe(output, provider, MoldCasing, " H", "P ");
