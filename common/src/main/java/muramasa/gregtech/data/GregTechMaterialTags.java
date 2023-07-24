@@ -14,6 +14,8 @@ public class GregTechMaterialTags {
     public static final MaterialTag ELEC60 = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec60", true));
     public static final MaterialTag ELEC90 = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec90", true));
     public static final MaterialTag ELEC120 = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec120", true));
+
+    public static final NumberMaterialTag ELEC_TICKS = (NumberMaterialTag) AntimatterAPI.register(MaterialTag.class, new NumberMaterialTag("elec_ticks", true));
     public static final MaterialTag CENT = new MaterialTag("cent"); //Add Centrifuging Recipes - SHOULD NOT SHARE MATS WITH ELEC
     public static final MaterialTag CENT5 = new MaterialTag("cent5"); //Centrifuging recipes that use 5 eu/tick
     public static final MaterialTag CENT10 = new MaterialTag("cent10"); //Centrifuging recipes that use 10 eu/tick

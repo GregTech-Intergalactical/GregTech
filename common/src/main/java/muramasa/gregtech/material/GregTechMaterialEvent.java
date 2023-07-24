@@ -36,4 +36,9 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
         flags(AntimatterMaterialTypes.ROD_LONG);
         return super.addTools(toolDamage, toolSpeed, toolDurability, toolQuality, toolEnchantment, toolTypes);
     }
+
+    public GregTechMaterialEvent elecTicks(int ticks){
+        GregTechMaterialTags.ELEC_TICKS.add(material, ticks);
+        return this;
+    }
 }
