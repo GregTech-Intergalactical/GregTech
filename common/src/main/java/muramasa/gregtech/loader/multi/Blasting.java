@@ -25,7 +25,7 @@ public class Blasting {
 
     public static void init() {
         final int multiplier = 1;
-        CRUSHED.all().forEach(m -> {
+        /*CRUSHED.all().forEach(m -> {
             boolean needsBF = m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE) || DIRECT_SMELT_INTO.getMapping(m).has(GregTechMaterialTags.NEEDS_BLAST_FURNACE);
             if (!m.has(ORE) || !m.has(INGOT)) return;
             Item crushed = CRUSHED.get(m);
@@ -46,7 +46,7 @@ public class Blasting {
             }
 
 
-        });
+        });*/
 
         /*CRUSHED.all().forEach(m -> {
             if (!m.has(ORE)) return;
