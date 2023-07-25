@@ -166,7 +166,8 @@ public class GregTechData {
     public static ItemBasic<?> Transistor = new ItemBasic<>(GTIRef.ID, "transistor").tip("An integral part to Circuitry");
     public static ItemBasic<?> Resistor = new ItemBasic<>(GTIRef.ID, "resistor").tip("An integral part to Circuitry");
     public static ItemBasic<?> Capacitor = new ItemBasic<>(GTIRef.ID, "capacitor").tip("An integral part to Circuitry");
-    public static ItemBasic<?> VacuumTube = new ItemBasic<>(GTIRef.ID, "vacuumtube").tip("A part for the Basic Circuit");
+    public static ItemBasic<?> VacuumTube = new ItemBasic<>(GTIRef.ID, "vacuum_tube").tip("A part for the Basic Circuit");
+    public static ItemBasic<?> GlassTube = new ItemBasic<>(GTIRef.ID, "glass_tube").tip("A part for circuits");
 
     public static ItemBasic<?> BatteryTantalum = new ItemBattery(GTIRef.ID, "tantalum_capacitor", Tier.ULV, 10000, true).tip("Reusable");
     public static ItemBasic<?> BatteryHullSmall = new ItemBasic<>(GTIRef.ID, "small_battery_hull").tip("An empty LV Battery Hull");
