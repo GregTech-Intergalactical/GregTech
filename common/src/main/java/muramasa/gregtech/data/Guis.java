@@ -135,6 +135,7 @@ public class Guis {
         CHEMICAL_BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63);
         AUTOCLAVE.add(COMPRESSOR).add(FL_IN, 53, 63);
         PACKAGER.add(COMPRESSOR);
+        POLARIZER.add(COMPRESSOR);
         MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(FL_IN, 35, 63)
                 .add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY, 80, 63);
         LASER_ENGRAVER.add(ALLOY_SMELTER);

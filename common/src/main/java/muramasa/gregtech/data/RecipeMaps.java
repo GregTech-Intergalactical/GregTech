@@ -128,6 +128,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "ore_washing", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PACKAGING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "packaging", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> POLARIZING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "polarizing", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PLASMA_ARC_SMELTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "plasma_arc_smelting", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PLASMA_FUELS = AntimatterAPI.register(RecipeMap.class,

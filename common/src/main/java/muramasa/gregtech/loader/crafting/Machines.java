@@ -448,6 +448,14 @@ public class Machines {
                             .put('H', hull)
                             .put('L', cable)
                             .put('S', ForgeCTags.CHESTS).build(), "SCS", "RHc", "LCL"));
+            Item wire = tier == LV ? CABLE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? CABLE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? CABLE_COPPER.getBlockItem(PipeSize.SMALL) : CABLE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
+            Material rodMaterial = tier == LV ? Iron : tier == MV || tier == HV ? Steel : tier == EV ? Neodymium : VanadiumGallium;
+            add(POLARIZER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('R', ROD.getMaterialTag(rodMaterial))
+                            .put('W', wire)
+                            .put('H', hull)
+                            .put('L', cable).build(), "WRW", "LHL", "WRW"));
             add(BATTERY_BUFFER_ONE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', ForgeCTags.CHESTS)

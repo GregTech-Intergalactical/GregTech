@@ -89,6 +89,7 @@ public class Machines {
     public static BasicMachine MIXER = new BasicMachine(GTIRef.ID, "mixer").setMap(MIXING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine ORE_WASHER = new BasicMachine(GTIRef.ID, "ore_washer").setMap(ORE_WASHING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine PACKAGER = new BasicMachine(GTIRef.ID, "packager").setMap(PACKAGING).addFlags(GUI, ITEM);
+    public static BasicMachine POLARIZER = new BasicMachine(GTIRef.ID, "polarizer").setMap(POLARIZING).addFlags(GUI, ITEM);
     public static BasicMachine PLASMA_ARC_FURNACE = new BasicMachine(GTIRef.ID, "plasma_arc_furnace").setMap(PLASMA_ARC_SMELTING).addFlags(GUI, ITEM, FLUID).amps(3);
     public static BasicMachine RECYCLER = new BasicMachine(GTIRef.ID, "recycler").setMap(RECYCLING).addFlags(GUI, ITEM);
     public static BasicMachine REPLICATOR = new BasicMachine(GTIRef.ID, "replicator").setMap(REPLICATING).addFlags(GUI, ITEM, FLUID);

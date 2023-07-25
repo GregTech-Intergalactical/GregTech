@@ -133,6 +133,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("extruding", ExtruderLoader::init);
         loader.accept("distilling", DistilleryLoader::init);
         loader.accept("electromagnetic_separating", ElectromagneticSeparatorLoader::init);
+        loader.accept("polarizing", PolarizerLoader::init);
         loader.accept("decaying", DecayChamber::init);
         //loader.accept("dehydrating", ChemicalDehydrator::init);
         loader.accept("autoclaving", Autoclave::init);
