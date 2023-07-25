@@ -97,6 +97,7 @@ public class TileEntitySolarBoiler extends TileEntityMachine<TileEntitySolarBoil
 
         @Override
         public void exportFluid() {
+            if (tile.fluidHandler.map(f -> f.getOutputTanks().isEmpty()).orElse(false)) return;
             exportFluidFromMachineToSide(this.tile.getFacing());
         }
 

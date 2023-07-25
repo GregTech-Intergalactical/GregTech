@@ -157,6 +157,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
 
         @Override
         public void exportFluid() {
+            if (tile.fluidHandler.map(f -> f.getOutputTanks().isEmpty()).orElse(false)) return;
             Arrays.stream(Direction.values()).filter(f -> f != Direction.DOWN).collect(Collectors.toList()).forEach(this::exportFluidFromMachineToSide);
         }
 
