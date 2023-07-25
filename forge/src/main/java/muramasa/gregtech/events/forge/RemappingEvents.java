@@ -168,6 +168,13 @@ public class RemappingEvents {
                     return;
                 }
             }
+            if (id.contains("aluminium")){
+                Block block = AntimatterAPI.get(Block.class, id.replace("aluminium", "alumina").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                if (block != null){
+                    map.remap(block);
+                    return;
+                }
+            }
             if (id.contains("uranium") && !id.contains("uranium_2")){
                 Block block = AntimatterAPI.get(Block.class, id.replace("uranium", "uraninite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
@@ -325,6 +332,13 @@ public class RemappingEvents {
             }
             if (id.contains("blue_sapphire")){
                 Item block = AntimatterAPI.get(Item.class, id.replace("blue_sapphire", "sapphire").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                if (block != null){
+                    map.remap(block);
+                    return;
+                }
+            }
+            if (id.contains("aluminium")){
+                Item block = AntimatterAPI.get(Item.class, id.replace("aluminium", "alumina").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;

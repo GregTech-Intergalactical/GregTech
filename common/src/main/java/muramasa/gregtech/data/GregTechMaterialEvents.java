@@ -40,7 +40,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Neon).asPlasma();
         event.setMaterial(Sodium).asDust(370);
         event.setMaterial(Magnesium).asMetal(1383, 0/*1383*/);
-        event.setMaterial(Aluminium).asMetal(933, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL).asOre();
+        event.setMaterial(Aluminium).asMetal(933, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL);
         event.setMaterial(Silicon).asMetal(1683, 1683, PLATE, FOIL);
         event.setMaterial(Phosphor).asDust(933);
         event.setMaterial(Sulfur).asDust(388).asOre().harvestLevel(2).asPlasma();
@@ -255,6 +255,7 @@ public class GregTechMaterialEvents {
          **  Ores
          **/
         event.setMaterial(Almandine).asOre().harvestLevel(1);
+        event.setMaterial(Alumina).asOre();
         event.setMaterial(Andradite).asOre();
         event.setMaterial(BandedIron).asOre().harvestLevel(2);
         event.setMaterial(Bastnasite).asOre().harvestLevel(2);
@@ -667,6 +668,7 @@ public class GregTechMaterialEvents {
          **  Ores
          **/
         event.setMaterial(Almandine).mats(of(Aluminium, 2, Iron, 3, Silicon, 3, Oxygen, 12)).elecTicks(480);
+        event.setMaterial(Alumina).mats(of(Aluminium, 2, Oxygen, 3)).elecTicks(480);
         event.setMaterial(Andradite).mats(of(Calcium, 3, Iron, 2, Silicon, 3, Oxygen, 12)).elecTicks(480);
         event.setMaterial(BandedIron).mats(of(Iron, 2, Oxygen, 3)).elecTicks(150);
         event.setMaterial(Bastnasite).mats(of(Cerium, 1, Carbon, 1, Fluorine, 1, Oxygen, 3)).elecTicks(192);
@@ -1266,7 +1268,7 @@ public class GregTechMaterialEvents {
 
     public static void byproducts(GregTechMaterialEvent event){
         event.setMaterial(Almandine).addByProduct(RedGarnet, Aluminium);
-        event.setMaterial(Aluminium).addByProduct(Bauxite);
+        event.setMaterial(Alumina).addByProduct(Bauxite);
         //event.setMaterial(Amber).addByProduct(Amber); TODO: Add Amber
         event.setMaterial(Amethyst).addByProduct(Amethyst);
         event.setMaterial(Monazite).addByProduct(Thorium, Neodymium, RareEarth);
@@ -1460,7 +1462,7 @@ public class GregTechMaterialEvents {
                 /*Wollastonite,*/ NitricOxide, Butane, CarbonMonoxide, Pyrite, RedGranite, Ferrosilite, Butadiene, Amethyst,
                 Molybdenite, Ruby, /*Kyanite,*/ NitrogenDioxide, NitrousOxide, DinitrogenTetroxide, Propane, Barite, Isoprene,
                 /*Chromite,*/ EnderPearl, SiliconDioxide, Apatite, SulfurTrioxide, /*Pyrochlore, */ Toluene, Phosphate,
-                Tantalite, PhosphorousPentoxide, Osmiridium, Pentlandite, Steel, Graphite);
+                Tantalite, PhosphorousPentoxide, Osmiridium, Pentlandite, Steel, Graphite, Alumina);
         ELEC90.add(Polydimethylsiloxane, AceticAcid, Olivine, Ethanol, Methanol, VinylAcetate, /*Gypsum,*/ Cobaltite, Ethenone,
                 /*Dymethylamine,*/ Chalcopyrite, /*Mirabilite,*/ Spodumene, /*Dolomite,*/ HypochlorousAcid, Chloramine, Bastnasite,
                 Chloromethane, Malachite, /*Borax, */ /*Kaolinite,*/ Obsidian, NitricAcid, VinylChloride, Acetone, /*Asbestos,*/ PotassiumFeldspar,

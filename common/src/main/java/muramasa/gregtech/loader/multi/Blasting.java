@@ -91,6 +91,9 @@ public class Blasting {
         addCalciteRecipe(Stibnite, 4, INGOT.get(Antimony, 1));
         addCalciteRecipe(Tetrahedrite, 12, INGOT.get(Copper, 3), INGOT.get(Antimony, 1), INGOT.get(Iron, 1));
         addCalciteRecipe(Malachite, 15, INGOT.get(Copper, 2));
+        BLASTING.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Calcite, 1)).io(INGOT.get(Aluminium)).add("alumina_calcite", 4 * 100, 120);
+        BLASTING.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Limestone, 1)).io(INGOT.get(Aluminium)).add("alumina_limestone", 4 * 100, 120);
+        BLASTING.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Marble, 1)).io(INGOT.get(Aluminium)).add("alumina_marble", 4 * 100, 120);
         /* Annealed Copper*/
         BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Copper, 1))
                 .fi(Oxygen.getGas(1000))

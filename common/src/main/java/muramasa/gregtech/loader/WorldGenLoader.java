@@ -183,7 +183,7 @@ public class WorldGenLoader {
       ev.vein(new WorldGenVeinLayerBuilder("sulfur").asOreVein(5, 20, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite, Level.NETHER).buildVein());
       ev.vein(new WorldGenVeinLayerBuilder("copper").asOreVein(36, 66, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper, OVERWORLD,
         Level.NETHER).buildVein());
-      ev.vein(new WorldGenVeinLayerBuilder("bauxite").asOreVein(-14, 46, 80, 4, 24, Bauxite, Bauxite, Aluminium, Ilmenite, OVERWORLD).buildVein());
+      ev.vein(new WorldGenVeinLayerBuilder("bauxite").asOreVein(-14, 46, 80, 4, 24, Bauxite, Bauxite, Alumina, Ilmenite, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinLayerBuilder("salts").asOreVein(51, 66, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene, OVERWORLD).buildVein());
       ev.vein(new WorldGenVeinLayerBuilder("redstone").asOreVein(-54, -9, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar,
               OVERWORLD).buildVein());
