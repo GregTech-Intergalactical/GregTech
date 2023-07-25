@@ -130,6 +130,7 @@ public class Guis {
         REPLICATOR.add(FLUID_CANNER);
         FERMENTER.add(FLUID_CANNER);
         FLUID_EXTRACTOR.add(COMPRESSOR).add(FL_OUT, 107, 63);
+        FLUID_HEATER.add(ENERGY, 80, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
         DISTILLERY.add(FLUID_CANNER);
         CHEMICAL_BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63);

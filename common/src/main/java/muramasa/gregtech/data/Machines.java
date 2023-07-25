@@ -78,6 +78,7 @@ public class Machines {
     public static BasicMachine FERMENTER = new BasicMachine(GTIRef.ID, "fermenter").setMap(FERMENTING).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids();
     public static BasicMachine FLUID_CANNER = new BasicMachine(GTIRef.ID, "fluid_canner").setMap(FLUID_CANNING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static BasicMachine FLUID_EXTRACTOR = new BasicMachine(GTIRef.ID, "fluid_extractor").setMap(FLUID_EXTRACTING).addFlags(GUI, ITEM, FLUID);
+    public static BasicMachine FLUID_HEATER = new BasicMachine(GTIRef.ID, "fluid_heater").setMap(FLUID_HEATING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine FLUID_SOLIDIFIER = new BasicMachine(GTIRef.ID, "fluid_solidifier").setMap(FLUID_SOLIDIFYING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static BasicMachine FORGE_HAMMER = new BasicMachine(GTIRef.ID, "forge_hammer").setMap(HAMMERING).addFlags(GUI, ITEM).setSound(SoundEvents.ANVIL_PLACE, 0.6f);
     public static BasicMachine FORMING_PRESS = new BasicMachine(GTIRef.ID, "forming_press").setMap(PRESSING).addFlags(GUI, ITEM);

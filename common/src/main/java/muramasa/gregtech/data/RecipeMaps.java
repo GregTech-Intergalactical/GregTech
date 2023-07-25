@@ -96,6 +96,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "fluid_canning", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FLUID_EXTRACTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "fluid_extracting", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> FLUID_HEATING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "fluid_heating", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FLUID_SOLIDIFYING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "fluid_solidifying", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FUSION = AntimatterAPI.register(RecipeMap.class,
