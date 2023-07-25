@@ -410,6 +410,14 @@ public class Machines {
                             .put('H', hull)
                             .put('T', piston)
                             .put('L', cable).build(), "GCG", "PHT", "LCL"));
+            add(FLUID_HEATER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('P', pump)
+                            .put('C', circuit)
+                            .put('G', glass)
+                            .put('H', hull)
+                            .put('W', WIRE_GETTER.apply(PipeSize.SMALL, tier))
+                            .put('L', cable).build(), "WGW", "PHP", "LCL"));
             add(FLUID_SOLIDIFIER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('P', pump)
@@ -448,7 +456,7 @@ public class Machines {
                             .put('H', hull)
                             .put('L', cable)
                             .put('S', ForgeCTags.CHESTS).build(), "SCS", "RHc", "LCL"));
-            Item wire = tier == LV ? CABLE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? CABLE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? CABLE_COPPER.getBlockItem(PipeSize.SMALL) : CABLE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
+            Item wire = tier == LV ? WIRE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? WIRE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? WIRE_COPPER.getBlockItem(PipeSize.SMALL) : WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
             Material rodMaterial = tier == LV ? Iron : tier == MV || tier == HV ? Steel : tier == EV ? Neodymium : VanadiumGallium;
             add(POLARIZER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
