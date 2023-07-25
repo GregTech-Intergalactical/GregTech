@@ -319,7 +319,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Amethyst).asGem(false).replaceItem(GEM_FLAWED, Items.AMETHYST_SHARD).asOre(3, 7, true);
         event.setMaterial(Sapphire).asGem(true).asOre(3, 7, true);
         event.setMaterial(BlueTopaz).asGem(true).asOre(3, 7, true);
-        event.setMaterial(Glass).asDust(PLATE, LENS);
+        event.setMaterial(Glass).asFluid(0, 1500).asDust(PLATE, LENS, MOLTEN);
         event.setMaterial(GreenSapphire).asGem(true).asOre(3, 7, true);
         event.setMaterial(Jade).asGem(false).asOre(3, 7, true);
         event.setMaterial(Lazurite).asGemBasic(false, PLATE).asOre(2, 5, true).harvestLevel(1);
@@ -1626,5 +1626,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Redstone).mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).asFluid(0, MaterialTags.MELTING_POINT.getInt(Redstone));//.setOreMulti(4);
         event.setMaterial(Water).mats(of(Hydrogen, 2, Oxygen, 1)).elecTicks(2000);
         event.setMaterial(Sugar).mats(of(Water, 11, Carbon, 12)).elecTicks(184);
+        event.setMaterial(Glowstone).asFluid(0, 1000).flags(MOLTEN);
     }
 }

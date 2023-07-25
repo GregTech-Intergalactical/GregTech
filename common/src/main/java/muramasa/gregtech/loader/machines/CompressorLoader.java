@@ -60,5 +60,8 @@ public class CompressorLoader {
         COMPRESSING.RB().ii(RecipeIngredient.of(Items.SUGAR_CANE, 8)).io(new ItemStack(PlantBall)).add("plantball_21",300, 2);
         COMPRESSING.RB().ii(RecipeIngredient.of(CoalBall)).io(CompressedCoalBall).add("compressed_coal_ball", 300, 2);
         COMPRESSING.RB().ii(RecipeIngredient.of(CoalChunk)).io(GEM.get(Diamond)).add("diamond_from_coal", 300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.SNOW_BLOCK)).io(Items.ICE).add("ice", 300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.ICE, 1)).io(Items.PACKED_ICE).add("packed_ice", 300, 2);
+        COMPRESSING.RB().ii(RecipeIngredient.of(Items.PACKED_ICE, 2)).io(Items.BLUE_ICE).add("blue_ice", 300, 2);
     }
 }
