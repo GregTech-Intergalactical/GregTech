@@ -67,6 +67,7 @@ public class RemappingEvents {
         REMAPPING_MAP.put("circuit_quantumprocessor", "quantumprocessor");
         REMAPPING_MAP.put("circuit_energy_flow", "energy_flow_circuit");
         REMAPPING_MAP.put("circuit_wetware", "wetware_circuit");
+        REMAPPING_MAP.put("vacuumtube", "vacuum_tube");
         REMAPPING_MAP.put("adv_circuit_parts", "advanced_circuit_parts");
         REMAPPING_MAP.put("battery_hull_small", "small_battery_hull");
         REMAPPING_MAP.put("battery_hull_medium", "medium_battery_hull");
