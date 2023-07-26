@@ -139,7 +139,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> PRESSING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "pressing", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PYROLYSISING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "pyrolysising", new RecipeBuilder()));
+            new RecipeMap<>(GTIRef.ID, "pyrolysising", new RecipeBuilder())).setGuiData(MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> RECYCLING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "recycling", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> REPLICATING = AntimatterAPI.register(RecipeMap.class,
