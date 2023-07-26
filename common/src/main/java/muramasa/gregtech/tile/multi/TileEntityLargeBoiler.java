@@ -24,10 +24,12 @@ public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLarg
 
     private boolean firstRun = true;
     private int mSuperEfficencyIncrease = 0;
+    private int mEfficiencyIncrease;
     private int integratedCircuitConfig = 0; //Steam output is reduced by 1000L per config
     private int excessFuel = 0; //Eliminate rounding errors for fuels that burn half items
     private int excessProjectedEU = 0; //Eliminate rounding errors from throttling the boiler
     private int maxProgress = 0;
+    private int euPerTick = 0;
 
     public TileEntityLargeBoiler(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -110,7 +112,17 @@ public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLarg
         this.mSuperEfficencyIncrease = 0;
         IRecipe recipe = RecipeMaps.COMBUSTION_FUELS.find(itemHandler, fluidHandler, HV, this::validateRecipe);
         if (recipe != null){
-
+            this.maxProgress = adjustBurnTimeForConfig(runtimeBoost((int) (recipe.getPower() / 2)));
+            this.euPerTick = adjustEUtForConfig(getEUt());
+            this.mEfficiencyIncrease = this.maxProgress * getEfficiencyIncrease() * 4;
+            return true;
+        }
+        recipe = RecipeMaps.SEMI_FUELS.find(itemHandler, fluidHandler, HV, this::validateRecipe);
+        if (recipe != null){
+            this.maxProgress = adjustBurnTimeForConfig(runtimeBoost((int) (recipe.getPower() / 2)));
+            this.euPerTick = adjustEUtForConfig(getEUt());
+            this.mEfficiencyIncrease = this.maxProgress * getEfficiencyIncrease() * 4;
+            return true;
         }
         /*for (GT_Recipe tRecipe : GT_Recipe.GT_Recipe_Map.sDieselFuels.mRecipeList) {
             FluidStack tFluid = GT_Utility.getFluidForFilledItem(tRecipe.getRepresentativeInput(0), true);
