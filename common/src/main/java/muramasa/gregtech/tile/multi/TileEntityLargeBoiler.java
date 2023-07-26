@@ -1,34 +1,51 @@
 package muramasa.gregtech.tile.multi;
 
+import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
+import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.IRecipeValidator;
+import muramasa.antimatter.recipe.ingredient.FluidIngredient;
+import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.Utils;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.RecipeMaps;
 import muramasa.gregtech.items.ItemIntCircuit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import static muramasa.antimatter.machine.Tier.*;
+import static muramasa.gregtech.data.Materials.DistilledWater;
+import static muramasa.gregtech.data.Materials.Steam;
 
 public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLargeBoiler> {
 
     private boolean firstRun = true;
     private int mSuperEfficencyIncrease = 0;
+    private int mEfficiency = 0;
     private int mEfficiencyIncrease;
     private int integratedCircuitConfig = 0; //Steam output is reduced by 1000L per config
     private int excessFuel = 0; //Eliminate rounding errors for fuels that burn half items
     private int excessProjectedEU = 0; //Eliminate rounding errors from throttling the boiler
     private int maxProgress = 0;
+    private int progress = 0;
     private int euPerTick = 0;
 
     public TileEntityLargeBoiler(Machine<?> type, BlockPos pos, BlockState state) {
@@ -96,6 +113,23 @@ public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLarg
         return GregTechData.CASING_PIPE_TUNGSTENSTEEL;
     }
 
+    public Texture getTextureForHatches(Direction dir, BlockPos hatchPos){
+        if (hatchPos.getY() != this.getBlockPos().getY()) return super.getTextureForHatches(dir, hatchPos);
+        String prefix = tier == LV ? "bronze" : tier == MV ? "steel" : tier == HV ? "titanium" : "tungstensteel";
+        return new Texture(GTIRef.ID, "block/casing/" + prefix + "_firebox");
+    }
+
+    @Override
+    public void serverTick(Level level, BlockPos pos, BlockState state) {
+        super.serverTick(level, pos, state);
+        if (isStructureValid()){
+            if (maxProgress > 0)
+                if (++progress >= maxProgress) {
+
+                }
+        }
+    }
+
     public boolean checkRecipe(ItemStack stack){
         itemHandler.ifPresent(i -> {
             ItemStack circuit = i.getHandler(SlotType.STORAGE).getItem(0);
@@ -110,32 +144,75 @@ public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLarg
             }
         });
         this.mSuperEfficencyIncrease = 0;
-        IRecipe recipe = RecipeMaps.COMBUSTION_FUELS.find(itemHandler, fluidHandler, HV, this::validateRecipe);
+        IRecipe recipe = RecipeMaps.COMBUSTION_FUELS.find(itemHandler, fluidHandler, null, this::validateRecipe);
         if (recipe != null){
-            this.maxProgress = adjustBurnTimeForConfig(runtimeBoost((int) (recipe.getPower() / 2)));
-            this.euPerTick = adjustEUtForConfig(getEUt());
-            this.mEfficiencyIncrease = this.maxProgress * getEfficiencyIncrease() * 4;
-            return true;
+            FluidIngredient ing = recipe.getInputFluids().get(0).copyMB(1000);
+            if (fluidHandler.map(f -> !f.consumeAndReturnInputs(List.of(ing), true).isEmpty()).orElse(false)){
+                this.maxProgress = adjustBurnTimeForConfig(runtimeBoost((int) (recipe.getPower() / 2)));
+                this.euPerTick = adjustEUtForConfig(getEUt());
+                this.mEfficiencyIncrease = this.maxProgress * getEfficiencyIncrease() * 4;
+                fluidHandler.ifPresent(f -> f.consumeAndReturnInputs(List.of(ing), false));
+                return true;
+            }
         }
-        recipe = RecipeMaps.SEMI_FUELS.find(itemHandler, fluidHandler, HV, this::validateRecipe);
+        recipe = RecipeMaps.SEMI_FUELS.find(itemHandler, fluidHandler, null, this::validateRecipe);
         if (recipe != null){
-            this.maxProgress = adjustBurnTimeForConfig(runtimeBoost((int) (recipe.getPower() / 2)));
-            this.euPerTick = adjustEUtForConfig(getEUt());
-            this.mEfficiencyIncrease = this.maxProgress * getEfficiencyIncrease() * 4;
-            return true;
+            FluidIngredient ing = recipe.getInputFluids().get(0).copyMB(1000);
+            if (fluidHandler.map(f -> !f.consumeAndReturnInputs(List.of(ing), true).isEmpty()).orElse(false)){
+                this.maxProgress = adjustBurnTimeForConfig(runtimeBoost((int) (recipe.getPower() * 2)));
+                this.euPerTick = adjustEUtForConfig(getEUt());
+                this.mEfficiencyIncrease = this.maxProgress * getEfficiencyIncrease();
+                fluidHandler.ifPresent(f -> f.consumeAndReturnInputs(List.of(ing), false));
+                return true;
+            }
         }
-        /*for (GT_Recipe tRecipe : GT_Recipe.GT_Recipe_Map.sDieselFuels.mRecipeList) {
-            FluidStack tFluid = GT_Utility.getFluidForFilledItem(tRecipe.getRepresentativeInput(0), true);
-            if (tFluid != null && tRecipe.mSpecialValue > 1) {
-                tFluid.amount = 1000;
-                if (depleteInput(tFluid)) {
-                    this.mMaxProgresstime = adjustBurnTimeForConfig(runtimeBoost(tRecipe.mSpecialValue / 2));
-                    this.mEUt = adjustEUtForConfig(getEUt());
-                    this.mEfficiencyIncrease = this.mMaxProgresstime * getEfficiencyIncrease() * 4;
-                    return true;
+        List<ItemStack> tInputList = itemHandler.map(MachineItemHandler::getInputList).orElse(Collections.emptyList());
+        if (!tInputList.isEmpty()) {
+            for (ItemStack tInput : tInputList) {
+                if (tInput.getItem() != Items.LAVA_BUCKET){
+                    if (!FluidHooks.isFluidContainingItem(tInput)) {
+                        int burnTime = AntimatterPlatformUtils.getBurnTime(tInput, RecipeType.SMELTING);
+                        if ((this.maxProgress = burnTime / 80) > 0) {
+                            this.excessFuel += burnTime % 80;
+                            this.maxProgress += this.excessFuel / 80;
+                            this.excessFuel %= 80;
+                            this.maxProgress = adjustBurnTimeForConfig(runtimeBoost(this.maxProgress));
+                            this.euPerTick = adjustEUtForConfig(getEUt());
+                            this.mEfficiencyIncrease = this.maxProgress * getEfficiencyIncrease();
+                            //this.mOutputItems = new ItemStack[]{GT_Utility.getContainerItem(tInput, true)};
+                            itemHandler.ifPresent(i -> i.consumeAndReturnInputs(Utils.ca(1, tInput)));
+                            if (this.mEfficiencyIncrease > 5000) {
+                                this.mEfficiencyIncrease = 0;
+                                this.mSuperEfficencyIncrease = 20;
+                            }
+                            return true;
+                        }
+                    }
                 }
             }
-        }*/
+        }
+        this.maxProgress = 0;
+        this.euPerTick = 0;
+        return false;
+    }
+    public boolean onRunningTick() {
+        if (this.euPerTick > 0) {
+            if (this.mSuperEfficencyIncrease > 0)
+                mEfficiency = Math.max(0, Math.min(mEfficiency + mSuperEfficencyIncrease, 10000));
+            int tGeneratedEU = (int) (this.euPerTick * 2L * this.mEfficiency / 10000L);
+            if (tGeneratedEU > 0) {
+                int amount = (tGeneratedEU + 160) / 160;
+                fluidHandler.ifPresent(f -> {
+                    if (f.drainInput(AntimatterMaterials.Water.getLiquid(amount), false).getFluidAmount() == amount || f.drainInput(DistilledWater.getLiquid(amount), false).getFluidAmount() == amount) {
+                        f.addOutputs(Steam.getGas(tGeneratedEU));
+                    } else {
+                        explodeMultiblock();
+                    }
+                });
+
+            }
+            return true;
+        }
         return true;
     }
 
@@ -146,7 +223,7 @@ public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLarg
                 return false;
             }
         }
-        return (consumed.size() > 0 || !r.hasInputItems());
+        return (consumed.size() > 0 || (!r.hasInputItems())) && r.getSpecialValue() > 0 && r.getSpecialValue() < 4;
     }
 
     private int adjustEUtForConfig(int rawEUt) {
@@ -155,9 +232,9 @@ public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLarg
     }
 
     private int adjustBurnTimeForConfig(int rawBurnTime) {
-        /*if (mEfficiency < getMaxEfficiency(mInventory[1]) - ((getIdealStatus() - getRepairStatus()) * 1000)) {
+        if (mEfficiency < 10000) {
             return rawBurnTime;
-        }*/
+        }
         int adjustedEUt = Math.max(25, getEUt() - 25 * integratedCircuitConfig);
         int adjustedBurnTime = rawBurnTime * getEUt() / adjustedEUt;
         this.excessProjectedEU += getEUt() * rawBurnTime - adjustedEUt * adjustedBurnTime;

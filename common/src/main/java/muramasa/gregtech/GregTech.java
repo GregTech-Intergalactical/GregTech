@@ -1,7 +1,6 @@
 package muramasa.gregtech;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.AntimatterDynamics;
@@ -23,6 +22,7 @@ import muramasa.gregtech.loader.items.Circuitry;
 import muramasa.gregtech.loader.machines.*;
 import muramasa.gregtech.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gregtech.loader.machines.generator.Fuels;
+import muramasa.gregtech.loader.machines.generator.LargeBoilerLoader;
 import muramasa.gregtech.loader.multi.*;
 import muramasa.gregtech.proxy.ServerHandler;
 import org.apache.logging.log4j.LogManager;
@@ -136,6 +136,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("electromagnetic_separating", ElectromagneticSeparatorLoader::init);
         loader.accept("polarizing", PolarizerLoader::init);
         loader.accept("decaying", DecayChamber::init);
+        loader.accept("large_boiler", LargeBoilerLoader::init);
         //loader.accept("dehydrating", ChemicalDehydrator::init);
         loader.accept("autoclaving", Autoclave::init);
         if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
