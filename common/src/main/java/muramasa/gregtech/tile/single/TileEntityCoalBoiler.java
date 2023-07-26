@@ -176,6 +176,7 @@ public class TileEntityCoalBoiler extends TileEntityMachine<TileEntityCoalBoiler
         }
 
         public void exportFluidFromMachineToSide(Direction side){
+            if (tile.fluidHandler.map(f -> f.getOutputTanks().isEmpty()).orElse(false)) return;
             Optional<PlatformFluidHandler> cap = TesseractCapUtils.getFluidHandler(tile.getLevel(), tile.getBlockPos().relative(side), side.getOpposite());
             tile.fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
         }
