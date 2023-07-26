@@ -562,9 +562,8 @@ public class Machines {
                         .put('H', HULL_MV)
                         .put('C', CircuitGoodElectronic)
                         .put('P', COVER_PUMP.getItem(MV).getItem())
-                        .put('M', MotorMV)
                         .put('W', WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL))
-                        .put('B', Blocks.PISTON).build(), "BMW", "CHC", "MPW");
+                        .put('B', PistonMV).build(), "BCW", "CHC", "BPW");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), NUCLEAR_REACTOR.getItem(NUCLEAR_REACTOR.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
