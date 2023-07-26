@@ -26,7 +26,7 @@ public class Miscellaneous {
         provider.addItemRecipe(output, GTIRef.ID, "plantball2", "misc", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), PlantBall, of(
                 'S', ForgeCTags.SEEDS
         ), "SSS", "S S", "SSS");
-        provider.addItemRecipe(output, GTIRef.ID, "plantball3", "misc", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), PlantBall, of(
+        provider.addStackRecipe(output, GTIRef.ID, "plantball3", "misc", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(PlantBall, 2), of(
                 'S', TagUtils.getItemTag(new ResourceLocation("saplings"))
         ), "SSS", "S S", "SSS");
     }
