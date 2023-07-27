@@ -1,15 +1,20 @@
 package muramasa.gregtech.tile.multi;
 
+import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import muramasa.antimatter.tool.AntimatterToolType;
+import muramasa.antimatter.util.Utils;
+import muramasa.antimatter.util.int3;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Machines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -39,12 +44,17 @@ public class TileEntityCharcoalPit extends TileEntityMachine<TileEntityCharcoalP
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
         if (maxProgress > 0 && !blockLists.isEmpty() & this.level != null){
-            if (++progress == maxProgress){
+            if (this.getMachineState() == MachineState.IDLE) setMachineState(MachineState.ACTIVE);
+            if (++progress >= maxProgress){
                 blockLists.forEach(b -> {
                     this.getLevel().setBlock(b, GregTechData.BRITTLE_CHARCOAL.defaultBlockState(), 3);
                 });
+                setMachineState(MachineState.IDLE);
                 maxProgress = 0;
+                progress = 0;
             }
+        } else if (maxProgress == 0 && this.getMachineState() == MachineState.ACTIVE){
+            setMachineState(MachineState.IDLE);
         }
     }
 
@@ -52,6 +62,10 @@ public class TileEntityCharcoalPit extends TileEntityMachine<TileEntityCharcoalP
     public InteractionResult onInteractBoth(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
         if (player.getItemInHand(hand).getItem() == Items.FLINT_AND_STEEL){
             if (maxProgress == 0 && checkRecursiveBlocks()){
+                Utils.damageStack(player.getItemInHand(hand), hand, player);
+                if (level.isClientSide) {
+                    level.playSound(player, this.getBlockPos(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                }
                 return InteractionResult.SUCCESS;
             }
         }
@@ -60,17 +74,17 @@ public class TileEntityCharcoalPit extends TileEntityMachine<TileEntityCharcoalP
 
     private boolean checkRecursiveBlocks() {
         blockLists.clear();;
-        List<BlockPos> toCheck = new ArrayList<>();
+        List<int3> toCheck = new ArrayList<>();
 
         BlockPos.MutableBlockPos mutableBlockPos = this.getBlockPos().mutable();
         Block tBlock = this.getLevel().getBlockState(mutableBlockPos.move(0, -1, 0)).getBlock();
         if (!isWoodLog(tBlock)) {
             return false;
         } else {
-            toCheck.add(mutableBlockPos.immutable());
+            toCheck.add(new int3(0, -1, 0));
         }
         while (!toCheck.isEmpty()) {
-            BlockPos tPos = toCheck.get(0);
+            int3 tPos = toCheck.get(0);
             toCheck.remove(0);
             if (!checkAllBlockSides(tPos.getX(), tPos.getY(), tPos.getZ(), blockLists, toCheck)) {
                 return false;
@@ -80,72 +94,77 @@ public class TileEntityCharcoalPit extends TileEntityMachine<TileEntityCharcoalP
         return true;
     }
 
-    private boolean checkAllBlockSides(int aX, int aY, int aZ, List<BlockPos> toAdd, List<BlockPos> toCheck) {
-        int x = this.getBlockPos().getX();
-        int y = this.getBlockPos().getY();
-        int z = this.getBlockPos().getZ();
+    private boolean checkAllBlockSides(int aX, int aY, int aZ, List<BlockPos> toAdd, List<int3> toCheck) {
         boolean p1 = false;
         boolean p2 = false;
         boolean p3 = false;
         boolean p4 = false;
         boolean p5 = false;
         boolean p6 = false;
-        Block tBlock = this.getLevel().getBlockState(new BlockPos(aX + 1, aY, aZ)).getBlock();
-        if (aX + 1 < x + 6 && (isWoodLog(tBlock))) {
-            if (!toAdd.contains(new BlockPos(aX + 1, aY, aZ)) && (!toCheck.contains(new BlockPos(aX + 1, aY, aZ))))
+        Block tBlock = this.getBlock(aX + 1, aY, aZ);
+        if (aX + 1 <  6 && (isWoodLog(tBlock))) {
+            if (!toAdd.contains(getRelativePos(aX + 1, aY, aZ)) && (!toCheck.contains(new int3(aX + 1, aY, aZ))))
                 p1 = true;
         } else if (!(tBlock.defaultBlockState().is(BlockTags.DIRT))) {
             return false;
         }
 
-        tBlock = this.getLevel().getBlockState(new BlockPos(aX - 1, aY, aZ)).getBlock();
-        if (aX - 1 > x - 6 && (isWoodLog(tBlock))) {
-            if (!toAdd.contains(new BlockPos(aX - 1, aY, aZ)) && (!toCheck.contains(new BlockPos(aX - 1, aY, aZ))))
+        tBlock = this.getBlock(aX - 1, aY, aZ);
+        if (aX - 1 > -6 && (isWoodLog(tBlock))) {
+            if (!toAdd.contains(getRelativePos(aX - 1, aY, aZ)) && (!toCheck.contains(new int3(aX - 1, aY, aZ))))
                 p2 = true;
         } else if (!(tBlock.defaultBlockState().is(BlockTags.DIRT))) {
             return false;
         }
 
-        tBlock = this.getLevel().getBlockState(new BlockPos(aX, aY + 1, aZ)).getBlock();
-        if (aY + 1 < y + 1 && (isWoodLog(tBlock))) {
-            if (!toAdd.contains(new BlockPos(aX, aY + 1, aZ)) && (!toCheck.contains(new BlockPos(aX, aY + 1, aZ))))
+        tBlock = this.getBlock(aX, aY + 1, aZ);
+        if (aY + 1 < 1 && (isWoodLog(tBlock))) {
+            if (!toAdd.contains(getRelativePos(aX, aY + 1, aZ)) && (!toCheck.contains(new int3(aX, aY + 1, aZ))))
                 p3 = true;
         }else if (!(tBlock.defaultBlockState().is(BlockTags.DIRT) ||
-                (aX == this.getBlockPos().getX() && aY == this.getBlockPos().getY() - 1 && aZ == this.getBlockPos().getZ() && tBlock == Machines.CHARCOAL_PIT.getBlockState(Tier.NONE)))) {
+                (aX == 0 && aY == -1 && aZ == 0 && tBlock == Machines.CHARCOAL_PIT.getBlockState(Tier.NONE)))) {
             return false;
         }
 
-        tBlock = this.getLevel().getBlockState(new BlockPos(aX, aY - 1, aZ)).getBlock();
-        if (aY - 1 > y - 6 && (isWoodLog(tBlock))) {
-            if (!toAdd.contains(new BlockPos(aX, aY - 1, aZ)) && (!toCheck.contains(new BlockPos(aX, aY - 1, aZ))))
+        tBlock = this.getBlock(aX, aY - 1, aZ);
+        if (aY - 1 > -6 && (isWoodLog(tBlock))) {
+            if (!toAdd.contains(getRelativePos(aX, aY - 1, aZ)) && (!toCheck.contains(new int3(aX, aY - 1, aZ))))
                 p4 = true;
         } else if (tBlock != Blocks.BRICKS) {
             return false;
         }
 
-        tBlock = this.getLevel().getBlockState(new BlockPos(aX, aY, aZ + 1)).getBlock();
-        if (aZ + 1 < z + 6 && (isWoodLog(tBlock))) {
-            if (!toAdd.contains(new BlockPos(aX, aY, aZ + 1)) && (!toCheck.contains(new BlockPos(aX, aY, aZ + 1))))
+        tBlock = this.getBlock(aX, aY, aZ + 1);
+        if (aZ + 1 < 6 && (isWoodLog(tBlock))) {
+            if (!toAdd.contains(getRelativePos(aX, aY, aZ + 1)) && (!toCheck.contains(new int3(aX, aY, aZ + 1))))
                 p5 = true;
         } else if (!(tBlock.defaultBlockState().is(BlockTags.DIRT))) {
             return false;
         }
 
-        tBlock = this.getLevel().getBlockState(new BlockPos(aX, aY, aZ + 1)).getBlock();
-        if (aZ - 1 > z - 6 && (isWoodLog(tBlock))) {
-            if (!toAdd.contains(new BlockPos(aX, aY, aZ - 1)) && (!toCheck.contains(new BlockPos(aX, aY, aZ - 1))))
+        tBlock = this.getBlock(aX, aY, aZ - 1);
+        if (aZ - 1 > -6 && (isWoodLog(tBlock))) {
+            if (!toAdd.contains(getRelativePos(aX, aY, aZ - 1)) && (!toCheck.contains(new int3(aX, aY, aZ - 1))))
                 p6 = true;
         } else if (!(tBlock.defaultBlockState().is(BlockTags.DIRT))) {
             return false;
         }
-        toAdd.add(new BlockPos(aX, aY, aZ));
-        if (p1) toCheck.add(new BlockPos(aX + 1, aY, aZ));
-        if (p2) toCheck.add(new BlockPos(aX - 1, aY, aZ));
-        if (p3) toCheck.add(new BlockPos(aX, aY + 1, aZ));
-        if (p4) toCheck.add(new BlockPos(aX, aY - 1, aZ));
-        if (p5) toCheck.add(new BlockPos(aX, aY, aZ + 1));
-        if (p6) toCheck.add(new BlockPos(aX, aY, aZ - 1));
+        toAdd.add(getRelativePos(aX, aY, aZ));
+        if (p1) toCheck.add(new int3(aX + 1, aY, aZ));
+        if (p2) toCheck.add(new int3(aX - 1, aY, aZ));
+        if (p3) toCheck.add(new int3(aX, aY + 1, aZ));
+        if (p4) toCheck.add(new int3(aX, aY - 1, aZ));
+        if (p5) toCheck.add(new int3(aX, aY, aZ + 1));
+        if (p6) toCheck.add(new int3(aX, aY, aZ - 1));
         return true;
+    }
+
+    private Block getBlock(int rX, int rY, int rZ){
+        return this.getLevel().getBlockState(this.getBlockPos().offset(rX, rY, rZ)).getBlock();
+    }
+
+    private BlockPos getRelativePos(int rX, int rY, int rZ){
+        return this.getBlockPos().offset(rX, rY, rZ);
     }
 
     public boolean isWoodLog(Block log){
