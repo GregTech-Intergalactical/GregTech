@@ -3,6 +3,7 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -25,6 +26,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -273,6 +275,13 @@ public class GregTechData {
 
     //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(GTIRef.ID, "anthracite_coal", new Texture(GTIRef.ID, "block/basic/anthracite_coal");
     //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(GTIRef.ID, "anthracite_coal", new Texture(GTIRef.ID, "block/basic/anthracite_coal");
+
+    public static final BlockBasic BRITTLE_CHARCOAL = new BlockBasic(GTIRef.ID, "brittle_charcoal", BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.WOOD, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F, 6.0F)){
+        @Override
+        public Texture[] getTextures() {
+            return new Texture[]{new Texture("minecraft:block/coal_block")};
+        }
+    };
     public static final BlockCasing CASING_ULV = new BlockCasing(GTIRef.ID, "casing_ulv");
     public static final BlockCasing CASING_LV = new BlockCasing(GTIRef.ID, "casing_lv");
     public static final BlockCasing CASING_MV = new BlockCasing(GTIRef.ID, "casing_mv");

@@ -9,6 +9,7 @@ import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockFakeCasing;
+import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.items.ItemIntCircuit;
 
 import static muramasa.antimatter.util.Utils.*;
@@ -46,6 +47,7 @@ public class GregTechLocalizations {
                 add(i, lowerUnderscoreToUpperSpaced(i.getId()));
             });
 
+            add(GregTechData.BRITTLE_CHARCOAL, "Brittle Charcoal");
             AntimatterAPI.all(BlockFakeCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Integrated Circuit (" + i.circuitId + ")"));

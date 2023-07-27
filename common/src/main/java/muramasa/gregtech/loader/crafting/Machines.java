@@ -553,9 +553,9 @@ public class Machines {
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CHARCOAL_PIT.getItem(CHARCOAL_PIT.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', CASING_BRONZE_PLATED_BRICK)
-                        .put('G', GEAR.get(Steel))
-                        .put('B', Blocks.COAL_BLOCK).build(), "GHG", "HBH", "GHG");
+                        .put('H', CASING_BRICKED_BRONZE)
+                        .put('W', NUGGET.getMaterialTag(WroughtIron))
+                        .put('F', Items.FLINT).build(), "WHW", "FFF");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), PYROLYSIS_OVEN.getItem(PYROLYSIS_OVEN.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()

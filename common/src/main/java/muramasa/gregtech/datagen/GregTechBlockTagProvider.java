@@ -7,6 +7,7 @@ import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockFakeCasing;
+import muramasa.gregtech.data.GregTechData;
 
 public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
 
@@ -26,5 +27,6 @@ public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
         AntimatterAPI.all(BlockCoil.class, GTIRef.ID, cas -> {
             this.tag(AntimatterDefaultTools.WRENCH.getToolType()).add(cas);
         });
+        this.tag(AntimatterDefaultTools.AXE.getToolType()).add(GregTechData.BRITTLE_CHARCOAL);
     }
 }

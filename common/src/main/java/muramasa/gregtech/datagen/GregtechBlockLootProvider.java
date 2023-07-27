@@ -15,6 +15,7 @@ import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.integration.AppliedEnergisticsRegistrar;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Blocks;
@@ -50,6 +51,7 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
         tables.put(Blocks.DEEPSLATE_COPPER_ORE, b -> createOreDrop(b, RAW_ORE.get(Copper)));
         tables.put(Blocks.COAL_ORE, b -> createOreDrop(b, RAW_ORE.get(Coal)));
         tables.put(Blocks.DEEPSLATE_COAL_ORE, b -> createOreDrop(b, RAW_ORE.get(Coal)));
+        tables.put(GregTechData.BRITTLE_CHARCOAL, b -> createSingleItemTable(Items.CHARCOAL, UniformGenerator.between(1.0f, 2.0f)));
         tables.put(Blocks.ANCIENT_DEBRIS, b -> createOreDrop(b, RAW_ORE.get(NetheriteScrap)));
         tables.put(Blocks.ANDESITE, b -> createSingleItemTableWithSilkTouch(Blocks.ANDESITE, ((CobbleStoneType)AntimatterStoneTypes.ANDESITE).getBlock("cobble")));
         tables.put(Blocks.DIORITE, b -> createSingleItemTableWithSilkTouch(Blocks.DIORITE, ((CobbleStoneType)AntimatterStoneTypes.DIORITE).getBlock("cobble")));
