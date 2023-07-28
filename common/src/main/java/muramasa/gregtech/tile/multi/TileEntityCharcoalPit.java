@@ -11,8 +11,10 @@ import muramasa.antimatter.util.int3;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Machines;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
@@ -23,12 +25,15 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FurnaceBlock;
+import net.minecraft.world.level.block.entity.FurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class TileEntityCharcoalPit extends TileEntityMachine<TileEntityCharcoalPit> {
     List<BlockPos> blockLists = new ArrayList<>();
@@ -72,6 +77,7 @@ public class TileEntityCharcoalPit extends TileEntityMachine<TileEntityCharcoalP
         return super.onInteractBoth(state, world, pos, player, hand, hit, type);
     }
 
+    //TODO use structure cache, and make sure the process stops if people try opening the pit while it's running
     private boolean checkRecursiveBlocks() {
         blockLists.clear();;
         List<int3> toCheck = new ArrayList<>();
@@ -157,6 +163,24 @@ public class TileEntityCharcoalPit extends TileEntityMachine<TileEntityCharcoalP
         if (p5) toCheck.add(new int3(aX, aY, aZ + 1));
         if (p6) toCheck.add(new int3(aX, aY, aZ - 1));
         return true;
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
+        if (this.getMachineState() == MachineState.ACTIVE){
+            double x = (double)pos.getX() + 0.5;
+            double y = pos.getY();
+            double z = (double)pos.getZ() + 0.5;
+            if (random.nextInt(16) == 0){
+                level.playLocalSound(x, y, z, SoundEvents.FIRE_AMBIENT, SoundSource.BLOCKS, 1.0f + random.nextFloat(), random.nextFloat() * 0.7f + 0.3f, false);
+            }
+            for (int i = 0; i < 3; ++i) {
+                double d0 = (double) pos.getX() + random.nextDouble();
+                double d1 = (double) pos.getY() + random.nextDouble() * 0.5D + 0.5D;
+                double d2 = (double) pos.getZ() + random.nextDouble();
+                level.addParticle(ParticleTypes.LARGE_SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            }
+        }
     }
 
     private Block getBlock(int rX, int rY, int rZ){
