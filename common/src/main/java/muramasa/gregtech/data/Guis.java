@@ -100,6 +100,8 @@ public class Guis {
         MACERATOR.add(HV, MACERATOR).add(HV, IT_OUT, 125, 25).add(HV, IT_OUT, 143, 25);
         MACERATOR.add(EV, IT_IN, 53, 25).add(EV, IT_OUT, 107, 16).add(EV, IT_OUT, 125, 16).add(EV, IT_OUT, 107, 34)
                 .add(EV, IT_OUT, 125, 34);
+        ROASTER.add(IT_IN, 53, 25).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 107, 34)
+                .add(IT_OUT, 125, 34).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         RECYCLER.add(COMPRESSOR);
         SCANNER.add(COMPRESSOR);
         WIRE_MILL.add(COMPRESSOR);
