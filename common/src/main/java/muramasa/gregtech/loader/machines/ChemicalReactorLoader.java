@@ -33,12 +33,6 @@ public class ChemicalReactorLoader {
     private static void addSimple() {
         //TITANIUM
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Rutile), 1),of(DUST.getMaterialTag(Carbon), 2)).fi(Chlorine.getGas(4000)).fo(Titaniumtetrachloride.getLiquid(1000),CarbonMonoxide.getGas(2000)).add("titanium_tetrachloride",500, 480);
-        //SULFURIC ACID
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Sulfur),1), INT_CIRCUITS.get(1).setNoConsume()).fi(Water.getLiquid(2000)).fo(SulfuricAcid.getLiquid(3000)).add("sulfuric_acid",1150, 30);
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Sulfur),1), INT_CIRCUITS.get(2).setNoConsume()).fi(Water.getLiquid(3000), Oxygen.getGas(3000)).fo(SulfuricAcid.getLiquid(7000)).add("sulfuric_acid_2",480, 30);
-        CHEMICAL_REACTING.RB().fi(Water.getLiquid(1000), HydrogenSulfide.getGas(1000)).fo(SulfuricAcid.getLiquid(1500)).add("sulfuric_acid_3",320, 30);
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(4000), HydrogenSulfide.getGas(3000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(SulfuricAcid.getLiquid(7000)).add("sulfuric_acid_4",240, 30);
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000), HydrogenSulfide.getGas(750)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(SulfuricAcid.getLiquid(1750)).add("sulfuric_acid_5",60, 30);
         //POLYETHYLENE
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000),Naphtha.getLiquid(144)).fo(Polyethylene.getLiquid(72)).add("ethylene_to_polyethylene",320, 30);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000),Ethylene.getGas(144)).fo(Polyethylene.getLiquid(216)).add("ethylene_to_polyethylene_1",160, 30);
@@ -220,6 +214,13 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Rutile), 1), of(DUST.getMaterialTag(Carbon), 2), INT_CIRCUITS.get(1).setNoConsume()).fi(Chlorine.getGas(4000)).fo(CarbonMonoxide.getGas(2000), Titaniumtetrachloride.getLiquid(1000)).add("carbon_monoxide_6",500, 480);
         //SALTPETER
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Potassium),1)).fi(Nitrogen.getGas(1000), Oxygen.getGas(3000)).io(DUST.get(Saltpeter,5)).add("saltpeter",180,30);
+        //SULFURIC ACID chain
+        CHEMICAL_REACTING.RB().fi(Water.getLiquid(3000), SulfurTrioxide.getGas(4000)).fo(SulfuricAcid.getLiquid(7000)).add("sulfuric_acid_",320, 8);
+        CHEMICAL_REACTING.RB().fi(Water.getLiquid(1000), HydrogenSulfide.getGas(1000)).fo(SulfuricAcid.getLiquid(1500)).add("sulfuric_acid_1",320, 30);
+        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000), SulfurDioxide.getGas(3000)).fo(SulfurTrioxide.getGas(4000)).add("sulfur_trioxide", 200, 30);
+        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000)).ii(DUST.getMaterialIngredient(Sulfur, 1)).fo(SulfurDioxide.getGas(3000)).add("sulfur_dioxide", 60, 8);
+        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000), HydrogenSulfide.getGas(1000)).fo(SulfurDioxide.getGas(1000), Water.getLiquid(1000)).add("sulfur_dioxide_1", 40, 30);
+
     }
 
     private static void addComplicated(){
@@ -274,6 +275,17 @@ public class ChemicalReactorLoader {
         //TETRAFLUORETHYLENE
         CHEMICAL_REACTING.RB().fi(Chloroform.getLiquid(5000), HydrofluoricAcid.getLiquid(4000)).fo(Tetrafluoroethylene.getGas(3000), DilutedHydrochloricAcid.getLiquid(6000)).add("tetrafluoroethylene", 480, 240);
         CHEMICAL_REACTING.RB().fi(Chlorine.getGas(6000), Methane.getGas(5000), HydrofluoricAcid.getLiquid(4000)).fo(Tetrafluoroethylene.getGas(6000), HydrochloricAcid.getLiquid(6000), DilutedHydrochloricAcid.getLiquid(6000)).add("tetrafluoroethylene_1", 540, 240);
+        CHEMICAL_REACTING.RB().fi(Chloromethane.getGas(10000)).ii(DUST.getMaterialIngredient(Silicon, 1)).fo(Dimethyldichlorosilane.getLiquid(11000)).add("dimethyldichlorosilane", 240, 96);
+        CHEMICAL_REACTING.RB().fi(Dimethyldichlorosilane.getLiquid(11000), Water.getLiquid(3000)).fo(DilutedHydrochloricAcid.getLiquid(4000)).io(DUST.get(Polydimethylsiloxane, 10)).add("polydimethylsiloxane", 240, 96);
+        CHEMICAL_REACTING.RB().fi(HydrochloricAcid.getLiquid(4000), Methanol.getLiquid(12000)).ii(DUST.getMaterialIngredient(Silicon, 1)).io(DUST.get(Polydimethylsiloxane, 10)).fo(DilutedHydrochloricAcid.getLiquid(4000)).add("polydimethylsiloxane_2", 480, 96);
+        CHEMICAL_REACTING.RB().fi(Ammonia.getGas(2000), Methanol.getLiquid(6000)).fo(Dimethylamine.getGas(5000), Water.getLiquid(3000)).add("dimethylamine", 240, 120);
+        CHEMICAL_REACTING.RB().fi(Ammonia.getGas(4000), HypochlorousAcid.getLiquid(3000)).fo(Chloramine.getLiquid(4000), Water.getLiquid(3000)).add("chloramine", 160, 30);
+        CHEMICAL_REACTING.RB().fi(Dimethylamine.getGas(5000), Chloramine.getLiquid(2000)).fo(Dimethylhydrazine.getLiquid(6000), DilutedHydrochloricAcid.getLiquid(1000)).add("dimethylhydrazine", 960, 480);
+        CHEMICAL_REACTING.RB().fi(Methanol.getGas(12000), Ammonia.getGas(8000), HypochlorousAcid.getLiquid(3000)).fo(Dimethylhydrazine.getLiquid(12000), DilutedHydrochloricAcid.getLiquid(2000), Water.getLiquid(9000)).add("dimethylhydrazine_2", 1040, 480);
+        CHEMICAL_REACTING.RB().fi(NitrogenDioxide.getGas(1000)).ii(INT_CIRCUITS.get(2)).fo(DinitrogenTetroxide.getGas(1000)).add("dinitrogen_tetroxide", 640, 30);
+        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(7000), Ammonia.getGas(8000)).fo(DinitrogenTetroxide.getGas(6000), Water.getLiquid(9000)).add("dinitrogen_tetroxide_1", 480, 30);
+        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(7000), Hydrogen.getGas(6000), Nitrogen.getGas(2000)).fo(DinitrogenTetroxide.getGas(6000), Water.getLiquid(9000)).add("dinitrogen_tetroxide_2", 1100, 480);
+
     }
 
     private static void addPolymerRecipe(Material in, Material out){
