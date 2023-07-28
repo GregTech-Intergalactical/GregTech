@@ -137,6 +137,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("polarizing", PolarizerLoader::init);
         loader.accept("decaying", DecayChamber::init);
         loader.accept("large_boiler", LargeBoilerLoader::init);
+        loader.accept("roaster", RoastingLoader::init);
         //loader.accept("dehydrating", ChemicalDehydrator::init);
         loader.accept("autoclaving", Autoclave::init);
         if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
