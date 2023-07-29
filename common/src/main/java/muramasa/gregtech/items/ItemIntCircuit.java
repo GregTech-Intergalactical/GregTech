@@ -15,12 +15,12 @@ public class ItemIntCircuit extends ItemBasic<ItemIntCircuit> {
     public final int circuitId;
 
     public ItemIntCircuit(String domain, String id, int circuitId, Properties properties) {
-        super(domain, id, properties);
+        super(domain, id, "int_circuits/", properties);
         this.circuitId = circuitId;
     }
 
     public ItemIntCircuit(String domain, String id,int circuitId) {
-        super(domain, id);
+        super(domain, id, "int_circuits/");
         this.circuitId = circuitId;
     }
 

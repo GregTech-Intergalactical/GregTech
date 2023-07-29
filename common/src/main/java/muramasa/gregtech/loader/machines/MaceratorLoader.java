@@ -35,7 +35,7 @@ import static muramasa.gregtech.data.RecipeMaps.HAMMERING;
 public class MaceratorLoader {
     public static void initAuto() {
         ORE.all().forEach(m -> {
-            AntimatterAPI.all(StoneType.class).stream().filter(s -> s.generateOre).forEach(s -> {
+            AntimatterAPI.all(StoneType.class).stream().filter(StoneType::doesGenerateOre).forEach(s -> {
                 Material sm = s.getMaterial();
                 if (!m.has(AntimatterMaterialTypes.DUST) || !m.has(AntimatterMaterialTypes.CRUSHED)) return;
                 ItemStack stoneDust = sm.has(AntimatterMaterialTypes.DUST) ? AntimatterMaterialTypes.DUST.get(sm, 1) : ItemStack.EMPTY;
