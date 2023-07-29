@@ -290,6 +290,8 @@ public class GregTechData {
             return new Texture[]{new Texture("minecraft:block/coal_block")};
         }
     };
+
+    public static final BlockBasic MINING_PIPE = new BlockBasic(GTIRef.ID, "mining_pipe", BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.STONE, MaterialColor.COLOR_GRAY));
     public static final BlockCasing CASING_ULV = new BlockCasing(GTIRef.ID, "casing_ulv");
     public static final BlockCasing CASING_LV = new BlockCasing(GTIRef.ID, "casing_lv");
     public static final BlockCasing CASING_MV = new BlockCasing(GTIRef.ID, "casing_mv");
