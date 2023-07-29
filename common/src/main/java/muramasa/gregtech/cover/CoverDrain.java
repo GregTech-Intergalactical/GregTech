@@ -74,7 +74,7 @@ public class CoverDrain extends BaseCover {
         }
         BlockState blockState = world.getBlockState(offset);
         FluidState state = world.getFluidState(offset);
-        if (state.getType() == Fluids.EMPTY) return;
+        if (state.getType() == Fluids.EMPTY || !state.getType().isSource(state)) return;
         Fluid fluid = state.getType();
         cap.ifPresent(f -> {
             for (int i = 0; i < f.getTankAmount(); i++) {
