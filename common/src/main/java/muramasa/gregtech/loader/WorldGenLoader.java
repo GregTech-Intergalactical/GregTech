@@ -9,6 +9,8 @@ import muramasa.antimatter.worldgen.object.WorldGenStoneLayerBuilder;
 import muramasa.antimatter.worldgen.smallore.WorldGenSmallOreBuilder;
 import muramasa.antimatter.worldgen.vein.WorldGenVeinLayerBuilder;
 import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.worldgen.OilSpoutFluid;
+import muramasa.gregtech.worldgen.OilSpoutSavedData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 
@@ -34,6 +36,13 @@ public class WorldGenLoader {
       if (AntimatterConfig.WORLD.SMALL_ORES){
           initSmallOres(ev);
       }
+      OilSpoutSavedData.clearFluidMap();
+      OilSpoutFluid.resetTotalWeight();
+      new OilSpoutFluid("oil", Oil.getLiquid(), 20, 625, 4, 4);
+      new OilSpoutFluid("light_oil", OilLight.getLiquid(), 20, 625, 3, 6);
+      new OilSpoutFluid("medium_oil", OilMedium.getLiquid(), 20, 625, 4, 5);
+      new OilSpoutFluid("heavy_oil", OilHeavy.getLiquid(), 20, 625, 5, 4);
+      new OilSpoutFluid("natural_gas", NaturalGas.getGas(), 20, 625, 4, 7);
   }
 
   private static void initSmallOres(WorldGenEvent event){
