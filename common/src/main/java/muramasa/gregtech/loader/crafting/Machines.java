@@ -94,7 +94,7 @@ public class Machines {
                     ImmutableMap.<Character, Object>builder().put('P', piston).put('M', pump).put('G', glass).put('C', circuit).put('L', cable).put('H', hull).build(), "GCG", "PHM", "LCL"));
 
             add(EXTRUDER, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
-                    ImmutableMap.<Character, Object>builder().put('P', piston).put('I', TIER_PIPES.get(tier)).put('W', WIRE_GETTER.apply(PipeSize.SMALL, tier)).put('C', circuit).put('H', hull).build(), "WWC", "PHI", "WWC"));
+                    ImmutableMap.<Character, Object>builder().put('P', piston).put('I', TIER_PIPES.get(tier).apply(PipeSize.NORMAL)).put('W', WIRE_GETTER.apply(PipeSize.SMALL, tier)).put('C', circuit).put('H', hull).build(), "WWC", "PHI", "WWC"));
 
             add(LATHE, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder().put('P', piston).put('M', motor).put('C', circuit).put('L', cable).put('H', hull).put('D', diamond).build(), "LCL", "MHD", "CLP"));
@@ -207,7 +207,7 @@ public class Machines {
                             .put('H', hull)
                             .put('R', rotor)
                             .put('C', circuit)
-                            .put('P',  TIER_PIPES.get(tier))
+                            .put('P',  TIER_PIPES.get(tier).apply(PipeSize.NORMAL))
                             .build(), "PCP", "RHR", "MLM"));
             add(COMBUSTION_GENERATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
@@ -464,6 +464,21 @@ public class Machines {
                             .put('W', wire)
                             .put('H', hull)
                             .put('L', cable).build(), "WRW", "LHL", "WRW"));
+
+            add(PUMP, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('R', rotor)
+                            .put('H', hull)
+                            .put('M', motor)
+                            .put('P', TIER_PIPES.get(tier).apply(PipeSize.LARGE))
+                            .put('C', circuit).build(), "MCM", "PHP", "RPR"));
+            add(ROASTER, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('S', CABLE_GETTER.apply(PipeSize.SMALL, tier, true))
+                            .put('V', CABLE_GETTER.apply(PipeSize.VTINY, tier, true))
+                            .put('C', circuit)
+                            .put('H', hull)
+                            .put('W', WIRE_GETTER.apply(PipeSize.TINY, tier)).build(), "SVS", "CHC", "WWW"));
             add(BATTERY_BUFFER_ONE, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C', ForgeCTags.CHESTS)

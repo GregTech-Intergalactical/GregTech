@@ -18,6 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.apache.commons.lang3.function.TriFunction;
 
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
@@ -40,7 +41,7 @@ public class TierMaps {
     public static ImmutableMap<Tier, Object> EMITTER_GEMS;
 
     public static ImmutableMap<Tier, Item> TIER_ROTORS;
-    public static ImmutableMap<Tier, Item> TIER_PIPES;
+    public static ImmutableMap<Tier, Function<PipeSize, Item>> TIER_PIPES;
 
     public static final BiFunction<PipeSize, Tier, Object> WIRE_GETTER;
 
@@ -179,13 +180,13 @@ public class TierMaps {
             EMITTER_GEMS = builder.build();
         }
         {
-            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, FLUID_PIPE_COPPER.getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.LV, FLUID_PIPE_BRONZE.getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.MV, FLUID_PIPE_STEEL.getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.HV, FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.EV, FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL));
-            builder.put(Tier.IV, FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(PipeSize.NORMAL));
+            ImmutableMap.Builder<Tier, Function<PipeSize, Item>> builder = ImmutableMap.builder();
+            builder.put(Tier.ULV, FLUID_PIPE_COPPER::getBlockItem);
+            builder.put(Tier.LV, FLUID_PIPE_BRONZE::getBlockItem);
+            builder.put(Tier.MV, FLUID_PIPE_STEEL::getBlockItem);
+            builder.put(Tier.HV, FLUID_PIPE_STAINLESS_STEEL::getBlockItem);
+            builder.put(Tier.EV, FLUID_PIPE_TITANIUM::getBlockItem);
+            builder.put(Tier.IV, FLUID_PIPE_TUNGSTEN_STEEL::getBlockItem);
             TIER_PIPES = builder.build();
         }
         {

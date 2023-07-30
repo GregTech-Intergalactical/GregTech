@@ -123,7 +123,7 @@ public class Parts {
           provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), pump,
                   ImmutableMap.<Character, Object>builder().put('M', motor).put('C', cable).put('W', WRENCH.getTag())
                           .put('S', SCREWDRIVER.getTag()).put('R', SCREW.get(rotorMat)).put('T', TIER_ROTORS.get(t))
-                          .put('O', RING.get(Rubber)).put('P', TIER_PIPES.get(t))
+                          .put('O', RING.get(Rubber)).put('P', TIER_PIPES.get(t).apply(PipeSize.NORMAL))
                           .build(),
                   "RTO", "SPW", "OMC");
       });
