@@ -11,11 +11,13 @@ import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -51,6 +53,7 @@ public class TileEntityPump extends TileEntityMachine<TileEntityPump> {
         if (getMachineState() == MachineState.IDLE) {
             setMachineState(MachineState.ACTIVE);
         }
+        exportFluid();
         if (mCheckList.isEmpty()) {
             if (nextCheck < 0) {
                 // Reset everything and add the Fluid Block in front of the Pump to the Lists.
@@ -65,7 +68,6 @@ public class TileEntityPump extends TileEntityMachine<TileEntityPump> {
                     if (level.getGameTime() % ((6 - this.getMachineTier().getIntegerId()) * 20L) != 0){
                         return;
                     }
-                    exportFluid();
                     Boolean bool = drainFluid(mPumpList.removeLast()); // boxed boolean so I can have 3 values instead of 2
                     if (bool == null){
                         if (getMachineState() == MachineState.ACTIVE) setMachineState(MachineState.IDLE);
@@ -103,6 +105,10 @@ public class TileEntityPump extends TileEntityMachine<TileEntityPump> {
         }
 
         if (!level.setBlock(aCoords, newState, 11)) return false;
+
+        if (this.level instanceof ServerLevel serverLevel) {
+            serverLevel.getFluidTicks().clearArea(BoundingBox.fromCorners(aCoords.offset(-2, -2, -2), aCoords.offset(2, 2, 2)));
+        }
 
         // Consume Energy based on Fluid Amount absorbed.
         energyHandler.ifPresent(e -> {
