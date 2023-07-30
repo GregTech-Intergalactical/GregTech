@@ -181,6 +181,8 @@ public class Machines {
      ** Tanks
      **/
     public static TankMachine QUANTUM_TANK = new TankMachine(GTIRef.ID, "quantum_tank", t -> (int) (1602000 * Math.pow(6,  (t.getIntegerId() - 1)))).addFlags(BASIC, GUI, CELL).frontCovers();
+
+    public static BasicMachine PUMP = new BasicMachine(GTIRef.ID, "electric_pump").addFlags(FLUID).setAllowVerticalFacing(true).setTile(TileEntityPump::new).noCovers();
     /**
      ** Creative Machines
      **/
