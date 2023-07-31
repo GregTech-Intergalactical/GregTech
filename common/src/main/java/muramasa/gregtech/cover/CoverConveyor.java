@@ -39,8 +39,11 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
+import static muramasa.gregtech.gui.ButtonOverlays.*;
+import static muramasa.gregtech.gui.ButtonOverlays.EXPORT_IMPORT_INVERT_CONDITIONAL;
 
-public class CoverConveyor extends BaseCover {
+
+public class CoverConveyor extends CoverBasicTransport {
 
     static {
         CoverGuiEvent.init();
@@ -60,6 +63,14 @@ public class CoverConveyor extends BaseCover {
     public CoverConveyor(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         Objects.requireNonNull(tier);
+        ButtonBody[][] overlays = new ButtonBody[][]{{IMPORT, IMPORT_CONDITIONAL, IMPORT_INVERT_CONDITIONAL, EXPORT, EXPORT_CONDITIONAL, EXPORT_INVERT_CONDITIONAL}, {IMPORT_EXPORT, IMPORT_EXPORT_CONDITIONAL, IMPORT_EXPORT_INVERT_CONDITIONAL, EXPORT_IMPORT, EXPORT_IMPORT_CONDITIONAL, EXPORT_IMPORT_INVERT_CONDITIONAL}};
+        addGuiCallback(t -> {
+            for (int x = 0; x < 6; x++){
+                for (int y = 0; y < 2; y++){
+                    t.addButton(35 + (x * 18), 25 + (y * 18), 16, 16, overlays[y][x], "tooltip.gti." + overlays[y][x].getId());
+                }
+            }
+        });
     }
 
 
@@ -69,19 +80,15 @@ public class CoverConveyor extends BaseCover {
     }
 
     @Override
-    public List<Consumer<GuiInstance>> getCallbacks() {
-        var list = super.getCallbacks();
-        list.add(g -> {
-            g.addWidget(new WidgetSupplier((a,b) -> new ButtonWidget(a,b,new ResourceLocation(getDomain(), "textures/gui/button/gui_buttons.png"), ButtonBody.GREY, ButtonOverlay.TORCH_ON, ButtonOverlay.TORCH_OFF, but -> but.gui.sendPacket(but.gui.handler.createGuiPacket(new CoverGuiEvent(CoverGuiEvent.ConveyorEvent.INPUT_OUTPUT)))) {
-                @Override
-                public void init() {
-                    super.init();
-                    gui.syncBoolean(() -> CoverConveyor.this.extracting, e -> CoverConveyor.this.extracting = e, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
-                }
-            }.setStateHandler(sh -> ((CoverConveyor) sh.gui.handler).extracting)).setSize(10, 15, 16, 16));
-           g.addWidget(TextWidget.build("Extract:", 4210752).setPos(10+16+2,15));
-        });
-        return list;
+    public <T> boolean blocksInput(Class<T> cap, @Nullable Direction side) {
+        int mode = coverMode.ordinal();
+        return mode == 0 || mode == 2 || mode == 4;
+    }
+
+    @Override
+    public <T> boolean blocksOutput(Class<T> cap, @Nullable Direction side) {
+        int mode = coverMode.ordinal();
+        return mode == 1 || mode == 3 || mode == 5;
     }
 
     //Useful for using the same model for multiple tiers where id is dependent on tier.
@@ -93,25 +100,12 @@ public class CoverConveyor extends BaseCover {
     }
 
     @Override
-    public void deserialize(CompoundTag nbt) {
-        super.deserialize(nbt);
-        this.extracting = nbt.getBoolean("e");
-    }
-
-    @Override
-    public CompoundTag serialize() {
-        CompoundTag tag = super.serialize();
-        tag.putBoolean("e", extracting);
-        return tag;
-    }
-
-    @Override
     public void onUpdate() {
         if (handler.getTile().getLevel().isClientSide || handler.getTile().getLevel().getGameTime() % (speeds.get(tier)) != 0)
             return;
         BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
         //Drop into world.
-        if (state == Blocks.AIR.defaultBlockState() && extracting) {
+        if (state == Blocks.AIR.defaultBlockState() && coverMode.name.contains("output")) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
             ItemStack stack = TesseractCapUtils.getItemHandler(handler.getTile(), side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
@@ -123,15 +117,46 @@ public class CoverConveyor extends BaseCover {
         if (adjTile == null) {
             return;
         }
-        Optional<PlatformItemHandler> handler = TesseractCapUtils.getItemHandler(adjTile, side.getOpposite());
-        if (handler.isEmpty()) return;
-        TesseractCapUtils.getItemHandler(this.handler.getTile(), side).ifPresent(ih -> handler.ifPresent(other -> {
-            if (extracting) {
-                Utils.transferItems(ih, other, true);
-            } else {
-                Utils.transferItems(other, ih, true);
-            }
-        }));
+        BlockEntity from = handler.getTile();
+        BlockEntity to = adjTile;
+        Direction fromSide = side;
+        if (getCoverMode().getName().startsWith("Import")){
+            from = adjTile;
+            to = handler.getTile();
+            fromSide = side.getOpposite();
+        }
+        BlockEntity finalTo = to;
+        if (canMove(side)){
+            Direction finalFromSide = fromSide;
+            TesseractCapUtils.getItemHandler(from, fromSide).ifPresent(ih -> TesseractCapUtils.getItemHandler(finalTo, finalFromSide.getOpposite()).ifPresent(oh -> {
+                Utils.transferItems(ih, oh, true);
+            }));
+        }
+    }
+
+    protected boolean canMove(Direction side){
+        String name = getCoverMode().getName();
+        /*if (name.contains("Conditional")){
+            boolean powered = AntimatterCapUtils.getCoverHandler(handler.getTile(), side).map(h -> {
+                List<CoverRedstoneMachineController> list = new ArrayList<>();
+                for (Direction dir : Direction.values()){
+                    if (h.get(dir) instanceof CoverRedstoneMachineController){
+                        list.add((CoverRedstoneMachineController) h.get(dir));
+                    }
+                }
+                int i = 0;
+                int j = 0;
+                for (CoverRedstoneMachineController coverStack : list){
+                    j++;
+                    if (coverStack.isPowered()){
+                        i++;
+                    }
+                }
+                return i > 0 && i == j;
+            }).orElse(false);
+            return name.contains("Invert") != powered;
+        }*/
+        return true;
     }
 
 
