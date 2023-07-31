@@ -149,6 +149,9 @@ public class AssemblyLoader {
     private static void misc(){
         ASSEMBLING.RB().ii(of(ItemTags.PLANKS,8), INT_CIRCUITS.get(8)).io(new ItemStack(Items.CHEST,1)).add("chest",100,4);
         ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_DRAIN.getId()))).add("drain",800, 16);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_REDSTONE_MACHINE_CONTROLLER.getId()))).add("redstone_machine_controller_soldering_alloy", 800, 16);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_REDSTONE_MACHINE_CONTROLLER.getId()))).add("redstone_machine_controller_lead", 800, 16);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Tin.getLiquid(L)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_REDSTONE_MACHINE_CONTROLLER.getId()))).add("redstone_machine_controller_tin", 800, 16);
         ASSEMBLING.RB().ii(of(CarbonFibre, 2), INT_CIRCUITS.get(2)).io(CarbonMesh).add("carbon_mesh", 800, 2);
         ASSEMBLING.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16)).io(ItemFilter).add("item_filter", 1600, 32);
     }
