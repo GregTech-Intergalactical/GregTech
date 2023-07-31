@@ -22,6 +22,7 @@ import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.*;
 import muramasa.gregtech.block.BlockCoil.CoilData;
 import muramasa.gregtech.cover.*;
+import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
@@ -62,8 +63,12 @@ public class GregTechData {
     public static final CoverFactory COVER_DRAIN = CoverFactory.builder(CoverDrain::new).item((a, b) ->
             new ItemCover(GTIRef.ID, "drain").tip("Can be placed on machines as a cover")).addTextures(new Texture(GTIRef.ID, "block/cover/drain")).build(GTIRef.ID, "drain");
 
+    public static final CoverFactory COVER_REDSTONE_MACHINE_CONTROLLER = CoverFactory.builder(CoverRedstoneMachineController::new).gui().item((a, b) -> {
+        return new ItemCover(GTIRef.ID, "redstone_machine_controller");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/redstone_machine_controller")).build(GTIRef.ID, "redstone_machine_controller");
+
     public static final CoverFactory COVER_STEAM_VENT = CoverFactory.builder(CoverSteamVent::new)
-            .addTextures(new Texture(GTIRef.ID, "block/cover/output")).build(Ref.ID, "steam_vent");;
+            .addTextures(new Texture(GTIRef.ID, "block/cover/output")).build(Ref.ID, "steam_vent");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(GTIRef.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 
     public static ItemFluidCell CellTin = new ItemFluidCell(GTIRef.ID, Tin, 1000);

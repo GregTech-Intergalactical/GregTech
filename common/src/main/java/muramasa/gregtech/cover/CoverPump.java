@@ -7,7 +7,9 @@ import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonBody;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.util.AntimatterCapUtils;
 import muramasa.antimatter.util.Utils;
+import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.core.Direction;
@@ -89,12 +91,12 @@ public class CoverPump extends CoverBasicTransport {
     }
     protected boolean canMove(Direction side){
         String name = getCoverMode().getName();
-        /*if (name.contains("Conditional")){
+        if (name.contains("Conditional")){
             boolean powered = AntimatterCapUtils.getCoverHandler(handler.getTile(), side).map(h -> {
                 List<CoverRedstoneMachineController> list = new ArrayList<>();
                 for (Direction dir : Direction.values()){
-                    if (h.get(dir) instanceof CoverRedstoneMachineController){
-                        list.add((CoverRedstoneMachineController) h.get(dir));
+                    if (h.get(dir) instanceof CoverRedstoneMachineController machineController){
+                        list.add(machineController);
                     }
                 }
                 int i = 0;
@@ -108,7 +110,7 @@ public class CoverPump extends CoverBasicTransport {
                 return i > 0 && i == j;
             }).orElse(false);
             return name.contains("Invert") != powered;
-        }*/
+        }
         return true;
     }
 }

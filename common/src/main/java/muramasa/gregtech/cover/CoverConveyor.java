@@ -12,7 +12,9 @@ import muramasa.antimatter.gui.widget.ButtonWidget;
 import muramasa.antimatter.gui.widget.TextWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.util.AntimatterCapUtils;
 import muramasa.antimatter.util.Utils;
+import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
 import muramasa.gregtech.gui.widgets.ChangingButtonWidget;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
@@ -32,10 +34,7 @@ import tesseract.api.item.ExtendedItemContainer;
 import tesseract.api.item.PlatformItemHandler;
 
 import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
@@ -136,12 +135,12 @@ public class CoverConveyor extends CoverBasicTransport {
 
     protected boolean canMove(Direction side){
         String name = getCoverMode().getName();
-        /*if (name.contains("Conditional")){
+        if (name.contains("Conditional")){
             boolean powered = AntimatterCapUtils.getCoverHandler(handler.getTile(), side).map(h -> {
                 List<CoverRedstoneMachineController> list = new ArrayList<>();
                 for (Direction dir : Direction.values()){
-                    if (h.get(dir) instanceof CoverRedstoneMachineController){
-                        list.add((CoverRedstoneMachineController) h.get(dir));
+                    if (h.get(dir) instanceof CoverRedstoneMachineController machineController){
+                        list.add(machineController);
                     }
                 }
                 int i = 0;
@@ -155,7 +154,7 @@ public class CoverConveyor extends CoverBasicTransport {
                 return i > 0 && i == j;
             }).orElse(false);
             return name.contains("Invert") != powered;
-        }*/
+        }
         return true;
     }
 
