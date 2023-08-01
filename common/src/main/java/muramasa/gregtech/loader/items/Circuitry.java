@@ -28,7 +28,7 @@ import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 public class Circuitry {
     public static void init() {
-        BLASTING.RB().temperature(1784).ii(DUST.getMaterialIngredient(Silicon, 16), INT_CIRCUITS.get(16)).io(SiliconBoule).add("silicon_boule", 9000, 120);
+        BLASTING.RB().temperature(1784).ii(DUST.getMaterialIngredient(Silicon, 16), INT_CIRCUITS.get(16)).fi(Helium.getGas(1000)).io(SiliconBoule).add("silicon_boule", 9000, 120);
         CUTTING.RB().ii(RecipeIngredient.of(SiliconBoule, 1))
                 .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, 960 * TesseractGraphWrappers.dropletMultiplier))
                 .io(new ItemStack(Wafer, 16)).add("wafer_with_water", 1600, 384);
@@ -38,6 +38,11 @@ public class Circuitry {
         CUTTING.RB().ii(RecipeIngredient.of(SiliconBoule, 1))
                 .fi(DistilledWater.getLiquid(240))
                 .io(new ItemStack(Wafer, 16)).add("wafer_with_lubricant", 800, 384);
+        //Coated
+        ASSEMBLING.RB().ii(of(GTRubberData.StickyResin,1), of(PLATE.get(AntimatterMaterials.Wood),8))
+                .fi(Glue.getLiquid(100))
+                .io(new ItemStack(GregTechData.CircuitBoardCoated,8))
+                .add("coated_circuit_board",8*20, 8);
         boards();
         circuits();
         //bloodyBoards();
@@ -85,11 +90,6 @@ public class Circuitry {
     private static void bloodyBoards() {
         BLASTING.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Glowstone, 1)).fi(Nitrogen.getGas(1000)).io(GlowstoneDopedSiliconBoule).add("glowstone_doped_silicon_boule", 12000, 480);
         BLASTING.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Naquadah, 1)).fi(Argon.getGas(1000)).io(NaquadahDopedSiliconBoule).add("naquadah_doped_silicon_boule", 15000, 1920);
-        //Coated
-        ASSEMBLING.RB().ii(of(GTRubberData.StickyResin,2), of(PLATE.get(AntimatterMaterials.Wood),8))
-                .fi(Glue.getLiquid(100))
-                .io(new ItemStack(GregTechData.CircuitBoardCoated,8))
-                .add("coated_circuit_board",8*20, 8);
         //Phenolic
         ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardCoated,1), of(PLATE.get(AntimatterMaterials.Wood),1))
                 .fi(Phenol.getLiquid(100))

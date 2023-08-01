@@ -78,7 +78,7 @@ public class Parts {
               'D', DUST_SMALL.get(Diamond)
       ), " D ", "DGD", " D ");
       // MANUAL COATED BOARD CRAFTING
-      provider.addItemRecipe(output, "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBoardCoated,
+      provider.addStackRecipe(output, GTIRef.ID, "", "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CircuitBoardCoated, 3),
               ImmutableMap.<Character, Object>builder()
                       .put('R', GTRubberData.StickyResin)
                       .put('P', PLATE.get(Wood))
