@@ -128,7 +128,7 @@ public class CoverConveyor extends CoverBasicTransport {
         if (canMove(side)){
             Direction finalFromSide = fromSide;
             TesseractCapUtils.getItemHandler(from, fromSide).ifPresent(ih -> TesseractCapUtils.getItemHandler(finalTo, finalFromSide.getOpposite()).ifPresent(oh -> {
-                Utils.transferItems(ih, oh, true);
+                Utils.transferItems(ih, oh, false);
             }));
         }
     }
