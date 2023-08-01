@@ -435,13 +435,13 @@ public class Machines {
                 add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
                         ImmutableMap.<Character, Object>builder()
                                 .put('H', hull)
-                                .put('C', CircuitAdv)
+                                .put('C', TIER_CIRCUITS.get(HV))
                                 .put('F', ItemFilter)
                                 .put('E', ForgeCTags.CHESTS).build(), " H ", "ECE", " F "));
                 add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                         ImmutableMap.<Character, Object>builder()
                                 .put('H', hull)
-                                .put('C', GregTechTags.CIRCUITS_BASIC)
+                                .put('C', TIER_CIRCUITS.get(LV))
                                 .put('F', ItemFilter)
                                 .put('E', ForgeCTags.CHESTS).build(), " H ", "ECE", " F "));
             }
@@ -660,6 +660,12 @@ public class Machines {
                         .put('G', GEAR.get(NiobiumTitanium))
                         .put('P', PLATE.get(Iridium))
                         .put('T', PLATE_DENSE.get(Thorium)).build(), "GTG", "AHA", "PTP"));
+        add(OIL_DRILLING_RIG, MV, (m, item) -> provider.addItemRecipe(output, "machines", "has_mortor", provider.hasSafeItem(MotorMV), item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('M', MotorMV)
+                        .put('C', TIER_CIRCUITS.get(MV))
+                        .put('H', HULL_MV)
+                        .put('F', FRAME.getMaterialTag(Steel)).build(), "FFF", "CHC", "MMM"));
         provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(FireBrick), PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', FireBrick)
