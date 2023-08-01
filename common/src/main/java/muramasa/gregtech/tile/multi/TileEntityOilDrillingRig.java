@@ -53,32 +53,6 @@ public class TileEntityOilDrillingRig extends TileEntityMultiMachine<TileEntityO
         }
     }
 
-    public Material getMaterial(){
-        if (this.tier == EV){
-            return Materials.Steel;
-        }
-        if (this.tier == IV){
-            return Materials.StainlessSteel;
-        }
-        if (tier == LUV){
-            return Materials.Titanium;
-        }
-        return Materials.TungstenSteel;
-    }
-
-    public Block getCasing(){
-        if (this.tier == EV){
-            return GregTechData.CASING_SOLID_STEEL;
-        }
-        if (this.tier == IV){
-            return GregTechData.CASING_STAINLESS_STEEL;
-        }
-        if (tier == LUV){
-            return GregTechData.CASING_TITANIUM;
-        }
-        return GregTechData.CASING_TUNGSTENSTEEL;
-    }
-
     public boolean destroyBlock(Level level, BlockPos pos, boolean dropBlock, @Nullable Entity entity, ItemStack item) {
         BlockState blockstate = level.getBlockState(pos);
         if (blockstate.isAir()) {

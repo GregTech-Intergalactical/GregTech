@@ -171,8 +171,8 @@ public class Structures {
 
         OIL_DRILLING_RIG.setStructure(TileEntityOilDrillingRig.class, b -> b.part("main")
                 .of("   ", " F ", "   ").of(0).of(0).of(" F ", "FCF", " F ").of(3).of(3).of("H~H", "HCH", "HHH").build()
-                .atElement('F', lazy(t -> ofBlock(FRAME.get().get(t.getMaterial()).asBlock()))).atElement('C', lazy(t -> ofBlock(t.getCasing())))
-                .atElement('H', lazy(t -> StructureUtility.<TileEntityOilDrillingRig>ofChain(ofBlock(t.getCasing()), ofHatchMinTier(HATCH_ENERGY, t.getMachineTier()), ofHatch(HATCH_FLUID_O))))
+                .at('F', FRAME.get().get(Steel)).at('C', GregTechData.CASING_SOLID_STEEL)
+                .at('H', GregTechData.CASING_SOLID_STEEL, HATCH_ENERGY, HATCH_FLUID_O)
                 .offset(1, 6, 0).min(1, HATCH_FLUID_O, HATCH_ENERGY).build());
 
         VACUUM_FREEZER.setStructure(TileEntityVacuumFreezer.class, b -> b.part("main")
