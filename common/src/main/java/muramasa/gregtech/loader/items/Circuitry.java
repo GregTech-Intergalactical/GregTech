@@ -6,21 +6,38 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.pipe.PipeSize;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechTags;
+import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.material.Fluids;
+import tesseract.FluidPlatformUtils;
+import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.Glowstone;
 import static muramasa.antimatter.data.AntimatterMaterials.Lapis;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.SOLDER;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.RecipeMaps.*;
+import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 public class Circuitry {
     public static void init() {
+        BLASTING.RB().temperature(1784).ii(DUST.getMaterialIngredient(Silicon, 16), INT_CIRCUITS.get(16)).io(SiliconBoule).add("silicon_boule", 9000, 120);
+        CUTTING.RB().ii(RecipeIngredient.of(SiliconBoule, 1))
+                .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, 960 * TesseractGraphWrappers.dropletMultiplier))
+                .io(new ItemStack(Wafer, 16)).add("wafer_with_water", 1600, 384);
+        CUTTING.RB().ii(RecipeIngredient.of(SiliconBoule, 1))
+                .fi(DistilledWater.getLiquid(721))
+                .io(new ItemStack(Wafer, 16)).add("wafer_with_distilled_water", 1600, 384);
+        CUTTING.RB().ii(RecipeIngredient.of(SiliconBoule, 1))
+                .fi(DistilledWater.getLiquid(240))
+                .io(new ItemStack(Wafer, 16)).add("wafer_with_lubricant", 800, 384);
         boards();
         circuits();
         //bloodyBoards();
@@ -28,12 +45,12 @@ public class Circuitry {
     }
 
     private static void boards(){
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Silicon, 1), PLATE.getMaterialIngredient(Polyethylene, 1)).io(new ItemStack(CircuitBoardEmpty)).add("empty_circuit_board", 32, 16);
+        ASSEMBLING.RB().ii(of(Wafer), PLATE.getMaterialIngredient(Polyethylene, 1)).io(new ItemStack(CircuitBoardEmpty)).add("empty_circuit_board", 32, 16);
         ASSEMBLING.RB().ii(of(CircuitBoardCoated), PLATE.getMaterialIngredient(Polyethylene, 1)).io(new ItemStack(CircuitBoardEmpty)).add("empty_circuit_board_1", 32, 16);
         PRESSING.RB().ii(of(CircuitBoardEmpty), of(EtchedWiringMV, 4)).io(new ItemStack(CircuitBoardBasic)).add("basic_circuit_board", 32, 16);
         PRESSING.RB().ii(of(CircuitBoardEmpty), of(EtchedWiringHV, 4)).io(new ItemStack(CircuitBoardAdvanced)).add("advanced_circuit_board", 32, 16);
         PRESSING.RB().ii(of(CircuitBoardProcessorEmpty), of(EtchedWiringEV, 4)).io(new ItemStack(CircuitBoardProcessor)).add("processor_circuit_board", 32, 256);
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Silicon, 2), PLATE.getMaterialIngredient(Polytetrafluoroethylene, 1)).io(new ItemStack(CircuitBoardProcessorEmpty)).add("empty_processor_circuit_board", 32, 256);
+        ASSEMBLING.RB().ii(of(Wafer, 2), PLATE.getMaterialIngredient(Polytetrafluoroethylene, 1)).io(new ItemStack(CircuitBoardProcessorEmpty)).add("empty_processor_circuit_board", 32, 256);
         ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Lazurite, 1), DUST.getMaterialIngredient(AntimatterMaterials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts", 32, 64);
         ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Lapis, 1), DUST.getMaterialIngredient(AntimatterMaterials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts", 32, 64);
         ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Polyethylene, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_poly", 32, 16);
@@ -66,6 +83,8 @@ public class Circuitry {
     }
 
     private static void bloodyBoards() {
+        BLASTING.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Glowstone, 1)).fi(Nitrogen.getGas(1000)).io(GlowstoneDopedSiliconBoule).add("glowstone_doped_silicon_boule", 12000, 480);
+        BLASTING.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Naquadah, 1)).fi(Argon.getGas(1000)).io(NaquadahDopedSiliconBoule).add("naquadah_doped_silicon_boule", 15000, 1920);
         //Coated
         ASSEMBLING.RB().ii(of(GTRubberData.StickyResin,2), of(PLATE.get(AntimatterMaterials.Wood),8))
                 .fi(Glue.getLiquid(100))
