@@ -18,7 +18,7 @@ public class RoastingLoader {
         RecipeMaps.ROASTING.RB().fi(Oxygen.getGas(5000)).ii(DUST.getMaterialIngredient(Stibnite, 1)).io(DUST_SMALL.get(Antimony)).fo(SulfurDioxide.getGas(1000)).add("stibnite", 512, 5, 0, 3);
         RecipeMaps.ROASTING.RB().fi(Oxygen.getGas(4000)).ii(DUST.getMaterialIngredient(Sphalerite, 1)).io(DUST_SMALL.get(Zinc, 2)).fo(SulfurDioxide.getGas(1000)).add("sphalerite", 512, 5, 0, 3);
         RecipeMaps.ROASTING.RB().fi(Oxygen.getGas(3000)).ii(DUST.getMaterialIngredient(Cobaltite, 1)).io(DUST_SMALL.get(Cobalt), DUST_SMALL.get(Arsenic)).fo(SulfurDioxide.getGas(1000)).add("cobaltite", 512, 5, 0, 3);
-        RecipeMaps.ROASTING.RB().fi(Oxygen.getGas(8000)).ii(DUST.getMaterialIngredient(Sulfur, 1)).io(DUST_TINY.get(Sulfur)).fo(SulfurDioxide.getGas(3000)).add("pyrite", 512, 5, 0, 3);
+        RecipeMaps.ROASTING.RB().fi(Oxygen.getGas(8000)).ii(DUST.getMaterialIngredient(Sulfur, 1)).io(DUST_TINY.get(Sulfur)).fo(SulfurDioxide.getGas(3000)).add("sulfur", 512, 5, 0, 3);
 
 
 

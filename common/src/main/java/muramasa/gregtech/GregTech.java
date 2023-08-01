@@ -136,6 +136,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("electromagnetic_separating", ElectromagneticSeparatorLoader::init);
         loader.accept("polarizing", PolarizerLoader::init);
         loader.accept("decaying", DecayChamber::init);
+        loader.accept("uu_matter", UUMatter::init);
         loader.accept("large_boiler", LargeBoilerLoader::init);
         loader.accept("roaster", RoastingLoader::init);
         //loader.accept("dehydrating", ChemicalDehydrator::init);

@@ -102,7 +102,7 @@ public class Guis {
                 .add(EV, IT_OUT, 125, 34);
         ROASTER.add(IT_IN, 53, 25).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 107, 34)
                 .add(IT_OUT, 125, 34).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
-        RECYCLER.add(COMPRESSOR);
+        RECYCLER.add(COMPRESSOR).add(FL_IN, 53, 63);
         SCANNER.add(COMPRESSOR);
         WIRE_MILL.add(COMPRESSOR);
         CENTRIFUGE.add(IT_IN, 35, 25)

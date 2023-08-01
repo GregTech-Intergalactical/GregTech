@@ -81,6 +81,7 @@ public class GregTechData {
     public static ItemBasic<?> CoalBall = new ItemBasic<>(GTIRef.ID, "coal_ball");
     public static ItemBasic<?> CompressedCoalBall = new ItemBasic<>(GTIRef.ID, "compressed_coal_ball");
     public static ItemBasic<?> CoalChunk = new ItemBasic<>(GTIRef.ID, "coal_chunk");
+    public static ItemBasic<?> Scrap = new ItemBasic<>(GTIRef.ID, "scrap");
 
     public static ItemBasic<?> ItemFilter = new ItemBasic<>(GTIRef.ID, "item_filter");
     public static ItemBasic<?> DiamondSawBlade = new ItemBasic<>(GTIRef.ID, "diamond_saw_blade");
