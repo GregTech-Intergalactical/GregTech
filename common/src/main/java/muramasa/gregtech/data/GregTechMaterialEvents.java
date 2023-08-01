@@ -1623,7 +1623,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Gold).flags(FOIL, ROD, WIRE_FINE, GEAR);
         event.setMaterial(Iron).flags(RING, GEAR, FRAME);
         event.setMaterial(AntimatterMaterials.Netherite).asMetal(2246, 1300);
-        event.setMaterial(Lapis).asGemBasic(false).mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));
+        event.setMaterial(Lapis).asGemBasic(false, PLATE).mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));
         event.setMaterial(Prismarine).mats(of(Potassium, 2, Oxygen, 8, Manganese, 1, Silicon, 5));
         event.setMaterial(Redstone).mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).asFluid(0, MaterialTags.MELTING_POINT.getInt(Redstone));//.setOreMulti(4);
         event.setMaterial(Water).mats(of(Hydrogen, 2, Oxygen, 1)).elecTicks(2000);
