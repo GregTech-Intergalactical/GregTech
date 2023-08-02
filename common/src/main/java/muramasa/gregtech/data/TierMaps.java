@@ -196,8 +196,8 @@ public class TierMaps {
             builder.put(Tier.HV, GregTechTags.CIRCUITS_ADVANCED);
             builder.put(Tier.EV, GregTechTags.CIRCUITS_ELITE);
             builder.put(Tier.IV, GregTechTags.CIRCUITS_MASTER);
-            builder.put(Tier.LUV, GregTechTags.CIRCUITS_MASTER);
-            builder.put(Tier.ZPM, GregTechTags.CIRCUITS_MASTER);
+            builder.put(Tier.LUV, GregTechTags.CIRCUITS_DATA_ORB);
+            builder.put(Tier.ZPM, GregTechTags.CIRCUITS_DATA_ORB);
             TIER_CIRCUITS = builder.build();
         }
         {

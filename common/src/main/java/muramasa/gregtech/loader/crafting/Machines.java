@@ -315,6 +315,15 @@ public class Machines {
                             .put('B', CABLE_GETTER.apply(PipeSize.SMALL, tier, true))
                             .put('C', circuit)
                             .put('H', hull).build(), "CFC", "BHB", "CFC"));
+
+
+            Tier tier2 = tier == LV ? tier : Tier.getTier(tier.getVoltage() * 4);
+            add(AMP_FABRICATOR, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('C', TIER_CIRCUITS.get(tier2))
+                            .put('W', CABLE_GETTER.apply(PipeSize.SMALL, tier, true))
+                            .put('H', hull)
+                            .put('P', pump).build(), "WPW", "PHP", "CPC"));
             add(REPLICATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('F', field)
@@ -599,21 +608,21 @@ public class Machines {
                         .build(), "PCP", "MHM", "GLG"));
         add(CRACKING_UNIT, HV, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
                 ImmutableMap.<Character, Object>builder()
-                        .put('P', COVER_PUMP.getItem(HV))
+                        .put('P', COVER_PUMP.getItem(HV).getItem())
                         .put('O', COIL_CUPRONICKEL)
                         .put('H', HULL_HV)
                         .put('C', TIER_CIRCUITS.get(HV))
                         .build(), "OPO", "CHC", "OPO"));
         add(DISTLLATION_TOWER, HV, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
                 ImmutableMap.<Character, Object>builder()
-                        .put('P', COVER_PUMP.getItem(HV))
+                        .put('P', COVER_PUMP.getItem(HV).getItem())
                         .put('I', FLUID_PIPE_STAINLESS_STEEL.getBlock(PipeSize.LARGE))
                         .put('H', HULL_HV)
                         .put('C', TIER_CIRCUITS.get(HV))
                         .build(), "CIC", "PHP", "CIC"));
         add(HEAT_EXCHANGER, EV, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorEV), item,
                 ImmutableMap.<Character, Object>builder()
-                        .put('P', COVER_PUMP.getItem(EV))
+                        .put('P', COVER_PUMP.getItem(EV).getItem())
                         .put('I', FLUID_PIPE_TITANIUM.getBlock(PipeSize.NORMAL))
                         .put('H', CASING_PIPE_TITANIUM)
                         .build(), "PIP", "IHI", "PIP"));
@@ -635,7 +644,7 @@ public class Machines {
                             .build(), "LCL", "CHC", "LCL"));
         });
 
-        Arrays.stream(new Tier[]{HV, EV, IV, UV}).forEach(tier -> {
+        Arrays.stream(new Tier[]{HV, EV, IV}).forEach(tier -> {
             Material gear = tier == HV ? Steel : tier == EV ? StainlessSteel : tier == IV ? Titanium : TungstenSteel;
             Tier pipe = tier == UV ? IV : Tier.getTier(tier.getVoltage() / 4);
             add(LARGE_TURBINE, tier, (m, item) -> {
@@ -682,7 +691,7 @@ public class Machines {
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, HV, true))
                         .put('F', CASING_FROST_PROOF)
                         .put('C', TIER_CIRCUITS.get(HV))
-                        .put('P', COVER_PUMP.getItem(HV))
+                        .put('P', COVER_PUMP.getItem(HV).getItem())
                         .build(), "PPP", "CFC", "LCL"));
     }
 

@@ -21,6 +21,7 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         //this.tag(GregTechTags.CIRCUITS_EXTREME).add(GregTechData.CircuitDataStorage);
         this.tag(GregTechTags.CIRCUITS_ELITE).add(CircuitDataControl, NanoProcessor);
         this.tag(GregTechTags.CIRCUITS_MASTER).add(CircuitEnergyFlow, QuantumProcessor);
+        this.tag(GregTechTags.CIRCUITS_DATA_ORB).add(DataOrb);
         this.tag(GregTechTags.PLATES_IRON_ALUMINIUM).addTag(TagUtils.getForgelikeItemTag("plates/iron")).addTag(TagUtils.getForgelikeItemTag("plates/wrought_iron")).addTag(TagUtils.getForgelikeItemTag("plates/aluminium"));
         this.tag(GregTechTags.DUST_LAPIS_LAZURITE).addTag(TagUtils.getForgelikeItemTag("dusts/lapis")).addTag(TagUtils.getForgelikeItemTag("dusts/lazurite"));
     }

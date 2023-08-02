@@ -12,6 +12,7 @@ public class GregTechTags {
     public static TagKey<Item> CIRCUITS_EXTREME = getTag("circuits/extreme");
     public static TagKey<Item> CIRCUITS_ELITE = getTag("circuits/elite");
     public static TagKey<Item> CIRCUITS_MASTER = getTag("circuits/master");
+    public static TagKey<Item> CIRCUITS_DATA_ORB = getTag("circuits/data_orb");
     public static TagKey<Item> DUST_LAPIS_LAZURITE = getTag("dusts/lapislazurite");
 
     public static TagKey<Item> getTag(String id){

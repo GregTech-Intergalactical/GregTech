@@ -55,7 +55,7 @@ public class TileEntityOilDrillingRig extends TileEntityMultiMachine<TileEntityO
 
     public boolean destroyBlock(Level level, BlockPos pos, boolean dropBlock, @Nullable Entity entity, ItemStack item) {
         BlockState blockstate = level.getBlockState(pos);
-        if (blockstate.isAir()) {
+        if (blockstate.isAir() || blockstate.getDestroySpeed(level, pos) < 0) {
             return false;
         } else {
             FluidState fluidstate = level.getFluidState(pos);
@@ -72,9 +72,7 @@ public class TileEntityOilDrillingRig extends TileEntityMultiMachine<TileEntityO
             }*/
             if (dropBlock) {
                 if (level instanceof ServerLevel) {
-                    blockstate.getBlock().getDrops(blockstate, (ServerLevel)level, pos, blockentity, entity, item).forEach((itemStack) -> {
-                        itemHandler.ifPresent(i -> i.addOutputs(itemStack));
-                    });
+                    Block.dropResources(blockstate, level, pos);
                 }
             }
 
