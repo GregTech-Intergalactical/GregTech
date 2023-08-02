@@ -36,7 +36,7 @@ public class Circuitry {
                 .fi(DistilledWater.getLiquid(721))
                 .io(new ItemStack(Wafer, 16)).add("wafer_with_distilled_water", 1600, 384);
         CUTTING.RB().ii(RecipeIngredient.of(SiliconBoule, 1))
-                .fi(DistilledWater.getLiquid(240))
+                .fi(Lubricant.getLiquid(240))
                 .io(new ItemStack(Wafer, 16)).add("wafer_with_lubricant", 800, 384);
         //Coated
         ASSEMBLING.RB().ii(of(GTRubberData.StickyResin,1), of(PLATE.get(AntimatterMaterials.Wood),8))
@@ -50,6 +50,15 @@ public class Circuitry {
     }
 
     private static void boards(){
+        CUTTING.RB().ii(RecipeIngredient.of(Wafer, 1))
+                .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, 960 * TesseractGraphWrappers.dropletMultiplier))
+                .io(new ItemStack(SiliconChip, 8)).add("silicon_chip_with_water", 1600, 384);
+        CUTTING.RB().ii(RecipeIngredient.of(Wafer, 1))
+                .fi(DistilledWater.getLiquid(721))
+                .io(new ItemStack(SiliconChip, 8)).add("silicon_chip_with_distilled_water", 1600, 384);
+        CUTTING.RB().ii(RecipeIngredient.of(Wafer, 1))
+                .fi(Lubricant.getLiquid(240))
+                .io(new ItemStack(SiliconChip, 8)).add("silicon_chip_with_lubricant", 800, 384);
         ASSEMBLING.RB().ii(of(Wafer), PLATE.getMaterialIngredient(Polyethylene, 1)).io(new ItemStack(CircuitBoardEmpty)).add("empty_circuit_board", 32, 16);
         ASSEMBLING.RB().ii(of(CircuitBoardCoated), PLATE.getMaterialIngredient(Polyethylene, 1)).io(new ItemStack(CircuitBoardEmpty)).add("empty_circuit_board_1", 32, 16);
         PRESSING.RB().ii(of(CircuitBoardEmpty), of(EtchedWiringMV, 4)).io(new ItemStack(CircuitBoardBasic)).add("basic_circuit_board", 32, 16);
@@ -78,7 +87,7 @@ public class Circuitry {
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(AdvCircuitParts, 2)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitAdv)).add("adv_storage_circuit_lead", 32, 64);
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(Tin.getLiquid(L)).io(new ItemStack(CircuitDataStorage)).add("data_storage_circuit_tin", 32, 64);
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(CircuitDataStorage)).add("data_storage__circuit_soldering_alloy", 32, 64);
-        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitAdv)).add("data_storage_circuit_lead", 32, 64);
+        ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(EngravedCrystalChip)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitDataStorage)).add("data_storage_circuit_lead", 32, 64);
         ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(Tin.getLiquid(L * 2)).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_tin", 32, 256);
         ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(SolderingAlloy.getLiquid(L)).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_soldering_alloy", 32, 256);
         ASSEMBLING.RB().ii(of(CircuitBoardProcessor), of(CircuitDataStorage, 3)).fi(Lead.getLiquid(L * 4)).io(new ItemStack(CircuitDataControl)).add("data_control_circuit_lead", 32, 256);
