@@ -127,8 +127,8 @@ public class Guis {
                 .add(IT_OUT, 107, 25).add(IT_OUT, 107 + 18, 25).add(IT_OUT, 107 + 18 * 2, 25)
                 .add(IT_OUT, 107, 43).add(IT_OUT, 107 + 18, 43).add(IT_OUT, 107 + 18 * 2, 43)
                 .add(ENERGY, 80, 63);
-        MASS_FABRICATOR.add(COMPRESSOR);
-        AMP_FABRICATOR.add(COMPRESSOR);
+        MASS_FABRICATOR.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
+        AMP_FABRICATOR.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         REPLICATOR.add(FLUID_CANNER);
         FERMENTER.add(FLUID_CANNER);
         FLUID_EXTRACTOR.add(COMPRESSOR).add(FL_OUT, 107, 63);
