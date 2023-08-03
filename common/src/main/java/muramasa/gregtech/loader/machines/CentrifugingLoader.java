@@ -66,6 +66,7 @@ public class CentrifugingLoader {
         CENTRIFUGING.RB().ii(of(DUST.get(UraniumCake, 5))).io(DUST.get(UraniumDioxide, 1), DUST.get(TriuraniumOctoxide, 4)).add("uranium_cake_centrifuging",400, 500);
         CENTRIFUGING.RB().ii(of(GTRubberData.RUBBER_LOGS)).io(new ItemStack(GTRubberData.StickyResin), new ItemStack(GregTechData.PlantBall), DUST.get(Carbon, 1), DUST.get(Wood, 1)).fo(Methane.getGas(60)).chances(0.5, 0.375, 0.25, 0.25).add("rubber_logs", 200, 20);
 
+        CENTRIFUGING.RB().ii(of(GTRubberData.StickyResin, 1)).io(DUST.get(RawRubber, 3), new ItemStack(GregTechData.PlantBall)).fo(Glue.getLiquid(100)).chances(10000, 1000).add("sticky_resin", 300, 5);
         //Methane
         addMethaneRecipe(MELON, 9, 72);
         addMethaneRecipe(BREAD, 9, 72);
