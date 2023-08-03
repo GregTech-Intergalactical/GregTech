@@ -84,16 +84,16 @@ public class AssemblyLoader {
         addTierCasing(MAX);
 
 
-        addTierHull(AntimatterMaterials.Wood,Tier.ULV);
-        addTierHull(WroughtIron,Tier.LV);
-        addTierHull(WroughtIron,Tier.MV);
-        addTierHull(Polyethylene,Tier.HV);
-        addTierHull(Polyethylene,Tier.EV);
-        addTierHull(Polyethylene,Tier.IV);
-        addTierHull(Polyethylene,Tier.LUV);
-        addTierHull(Polytetrafluoroethylene,Tier.ZPM);
-        addTierHull(Polytetrafluoroethylene,Tier.UV);
-        addTierHull(Polytetrafluoroethylene,Tier.MAX);
+        addTierHull(Tier.ULV);
+        addTierHull(Tier.LV);
+        addTierHull(Tier.MV);
+        addTierHull(Tier.HV);
+        addTierHull(Tier.EV);
+        addTierHull(Tier.IV);
+        addTierHull(Tier.LUV);
+        addTierHull(Tier.ZPM);
+        addTierHull(Tier.UV);
+        addTierHull(Tier.MAX);
 
         addCasing(Bronze, CASING_BRONZE);
         addCasing(Steel, CASING_SOLID_STEEL);
@@ -194,9 +194,9 @@ public class AssemblyLoader {
         ASSEMBLING.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 8), INT_CIRCUITS.get(8)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID))).add("casing_" + tier.getId(),5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
     }
 
-    private static void addTierHull(Material mat, Tier tier) {
+    private static void addTierHull(Tier tier) {
         Material liquid = tier == ZPM || tier == UV || tier == MAX ? Polytetrafluoroethylene : Polyethylene;
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(mat, 1), ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), PLATE.getMaterialIngredient(TIER_MATERIALS.get(tier), 1), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID)))
+        ASSEMBLING.RB().ii(ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID)))
                 .fi(liquid.getLiquid(L * 2)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID))).add("hull_" + tier.getId(), 5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
     }
 
