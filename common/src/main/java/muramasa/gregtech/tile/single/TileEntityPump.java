@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -171,8 +172,9 @@ public class TileEntityPump extends TileEntityMachine<TileEntityPump> {
 
         mPumpedFluids.clear();
         FluidState aBlock = this.level.getFluidState(offset);
-        if (!aBlock.isEmpty()) {
-            mPumpedFluids.add(aBlock.getType());
+        if (!aBlock.isEmpty() && aBlock.getType() instanceof FlowingFluid fluid) {
+            mPumpedFluids.add(fluid.getSource());
+            mPumpedFluids.add(fluid.getFlowing());
             mDir = (byte)(FluidPlatformUtils.isFluidGaseous(aBlock.getType()) ? -1 : +1);
         } else {
             energyHandler.ifPresent(e -> {
