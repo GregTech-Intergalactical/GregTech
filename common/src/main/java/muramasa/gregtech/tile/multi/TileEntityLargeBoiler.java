@@ -6,6 +6,7 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.machine.MachineState;
+import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.texture.Texture;
@@ -50,6 +51,7 @@ public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLarg
                     fluidHandler.ifPresent(f -> {
                         if (f.drainInput(AntimatterMaterials.Water.getLiquid(amount), false).getFluidAmount() == amount || f.drainInput(DistilledWater.getLiquid(amount), false).getFluidAmount() == amount) {
                             f.addOutputs(Steam.getGas(tGeneratedEU));
+                            onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
                         } else {
                             explode = true;
                         }
