@@ -34,10 +34,7 @@ public class VanillaExtensions {
         provider.addConditionalRecipe(consumer, provider.getStackRecipe("", "has_sulfur_dust", provider.hasSafeItem(TagUtils.getForgelikeItemTag("dusts/sulfur")),
                 new ItemStack(Blocks.TORCH, 2), of('D', TagUtils.getForgelikeItemTag("dusts/sulfur"), 'R', ForgeCTags.RODS_WOODEN), "D", "R"), GTIRef.class, "sulfurTorch", GTIRef.ID, "sulfur_torch");
 
-        provider.addItemRecipe(consumer, GTIRef.ID,"filter", "", "has_iron_plate", provider.hasSafeItem(WRENCH.getTag()),
-                ItemFilter, of('Z', TagUtils.getForgelikeItemTag("foils/zinc"), 'I', TagUtils.getForgelikeItemTag("plates/iron")), "ZZZ", "ZIZ", "ZZZ");
-
-        provider.addItemRecipe(consumer, GTIRef.ID,AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood).getRegistryName().getPath() , "gears", "has_wooden_rod", provider.hasSafeItem(ForgeCTags.RODS_WOODEN),
+       provider.addItemRecipe(consumer, GTIRef.ID,AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood).getRegistryName().getPath() , "gears", "has_wooden_rod", provider.hasSafeItem(ForgeCTags.RODS_WOODEN),
                 AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood), of('P', ItemTags.PLANKS, 'W', WRENCH.getTag(), 'R', ForgeCTags.RODS_WOODEN), "RPR", "PWP", "RPR");
 
         provider.addItemRecipe(consumer, GTIRef.ID, AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood).getRegistryName().getPath() + "_alt", "gears", "has_wooden_rod", provider.hasSafeItem(ForgeCTags.RODS_WOODEN),

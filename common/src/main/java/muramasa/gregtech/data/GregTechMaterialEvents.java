@@ -170,7 +170,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(RedSteel).asMetal(1300, 1300);
         event.setMaterial(RoseGold).asMetal(1600, WIRE_FINE);
         event.setMaterial(SolderingAlloy).asMetal(400, 400, PLATE, FOIL, ROD, WIRE_FINE);
-        event.setMaterial(Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING);
+        event.setMaterial(Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING, WIRE_FINE);
         event.setMaterial(SteelMagnetic).asMetal(1000, 1000, ROD);
         event.setMaterial(SterlingSilver).asMetal(1700);
         event.setMaterial(StainlessSteel).asMetal(1700, 1700, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL);
