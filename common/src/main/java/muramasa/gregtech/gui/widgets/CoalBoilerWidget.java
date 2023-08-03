@@ -88,7 +88,7 @@ public class CoalBoilerWidget extends Widget {
         if (steam >= 1) {
             renderTooltip(stack,"Steam: " + steam + " MB", mouseX, mouseY, 0, 0, 10, 54);
         }
-        renderTooltip(stack,"Heat: " + heat + "K out of " + maxHeat, mouseX, mouseY, 26, 0, 10, 54);
+        renderTooltip(stack,"Heat: " + heat + "C° out of " + maxHeat, mouseX, mouseY, 26, 0, 10, 54);
     }
 
     @Environment(EnvType.CLIENT)

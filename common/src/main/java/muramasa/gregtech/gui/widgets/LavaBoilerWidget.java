@@ -105,7 +105,7 @@ public class LavaBoilerWidget extends Widget {
         if (lava >= 1) {
             renderTooltip(stack,"Lava: " + lava + " MB", mouseX, mouseY, 52, 0, 10, 54);
         }
-        renderTooltip(stack,"Heat: " + heat + "K out of " + maxHeat, mouseX, mouseY, 26, 0, 10, 54);
+        renderTooltip(stack,"Heat: " + heat + "C° out of " + maxHeat, mouseX, mouseY, 26, 0, 10, 54);
     }
 
     @Environment(EnvType.CLIENT)
