@@ -373,6 +373,7 @@ public class Guis {
         PYROLYSIS_OVEN.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         COMBUSTION_ENGINE.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         DISTLLATION_TOWER.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
+        CRYO_DISTLLATION_TOWER.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         CRACKING_UNIT.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         NUCLEAR_REACTOR.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         FUSION_REACTOR.setGUI(MenuHandlers.FUSION_MENU_HANDLER);

@@ -620,6 +620,13 @@ public class Machines {
                         .put('H', HULL_HV)
                         .put('C', TIER_CIRCUITS.get(HV))
                         .build(), "CIC", "PHP", "CIC"));
+        add(CRYO_DISTLLATION_TOWER, HV, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('P', COVER_PUMP.getItem(HV).getItem())
+                        .put('I', FLUID_PIPE_COPPER.getBlock(PipeSize.LARGE))
+                        .put('H', HULL_HV)
+                        .put('C', TIER_CIRCUITS.get(HV))
+                        .build(), "CIC", "PHP", "CIC"));
         add(HEAT_EXCHANGER, EV, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorEV), item,
                 ImmutableMap.<Character, Object>builder()
                         .put('P', COVER_PUMP.getItem(EV).getItem())

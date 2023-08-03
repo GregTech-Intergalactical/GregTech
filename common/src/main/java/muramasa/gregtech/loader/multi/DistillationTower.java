@@ -12,8 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_SMALL;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.RecipeMaps.DISTILLATION;
-import static muramasa.gregtech.data.RecipeMaps.DISTILLING;
+import static muramasa.gregtech.data.RecipeMaps.*;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 public class DistillationTower {
@@ -141,6 +140,8 @@ public class DistillationTower {
         addDistillationRecipe(SteamCrackedPropane, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
                 new FluidProduct(Propene,500), new FluidProduct(Ethylene,1000),
                 new FluidProduct(Methane,500));
+
+        CRYO_DISTILLATION.RB().fi(Air.getGas(200)).fo(Helium.getGas(1), Neon.getGas(1), Argon.getGas(1), Nitrogen.getGas(143), Oxygen.getGas(50), CarbonDioxide.getGas(10)).add("air_distillation", 64, 64);
     }
 
     private static void initSimple(){

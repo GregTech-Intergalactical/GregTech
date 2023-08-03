@@ -84,6 +84,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "disassembling", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> DISTILLATION = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "distillation", new RecipeBuilder())).setGuiData(MULTI_DISPLAY_FLUID);
+    public static RecipeMap<RecipeBuilder> CRYO_DISTILLATION = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "cryo_distillation", new RecipeBuilder())).setGuiData(MULTI_DISPLAY_FLUID);
     public static RecipeMap<RecipeBuilder> DISTILLING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "distilling", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ELECTROLYZING = AntimatterAPI.register(RecipeMap.class,

@@ -98,6 +98,32 @@ public class Structures {
                     }
                     return check && tile.LAYERS.size() == tile.HATCH_LAYERS.size();
                 }).build());
+        CRYO_DISTLLATION_TOWER.setStructure(TileEntityDistillationTower.class, b -> b.part("bottom")
+                .of("H~H", "HHH", "HHH").build()
+                .part("layer").of("CCC", "C-C", "CCC").offsetFunction((i, int3) -> new int3(int3.getX(), int3.getY() + i, int3.getZ())).max(11).build()
+                .part("top").of("CCC", "CCC", "CCC").offsetFunction((i, int3) -> new int3(int3.getX(), int3.getY() + i, int3.getZ())).build()
+                .atElement('C', ofChain(StructureUtility.<TileEntityDistillationTower>ofBlock(CASING_FROST_PROOF), ofHatch(HATCH_FLUID_O, (distillationTower, world, pos, machine, handler) -> {
+                    int currentY = pos.getY() - distillationTower.getBlockPos().getY();
+                    if (distillationTower.HATCH_LAYERS.contains(currentY)) return false;
+                    distillationTower.HATCH_LAYERS.add(currentY);
+                    distillationTower.FO_HATCHES.add(handler);
+                    return true;
+                })))
+                .at('H', CASING_FROST_PROOF, HATCH_FLUID_I, HATCH_ENERGY)
+                .offset(1, 0, 0).min(1, HATCH_ENERGY, HATCH_FLUID_O).exact(1, HATCH_FLUID_I)
+                .setStructurePartCheckCallback((structureDefinition, tile, part, i, newOffset) -> {
+                    tile.FO_HATCHES.clear();
+                    boolean check = structureDefinition.check(tile, part, tile.getLevel(), tile.getExtendedFacing(), tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ(), newOffset.getX(), newOffset.getY(), newOffset.getZ(), !tile.isStructureValid());
+                    if (!part.equals("bottom")){
+                        if (check){
+                            tile.FO_HATCHES.forEach(h -> tile.addComponent(HATCH_FLUID_O.getComponentId(), h));
+                            tile.LAYERS.add(i);
+                        } else {
+                            tile.HATCH_LAYERS.remove(i);
+                        }
+                    }
+                    return check && tile.LAYERS.size() == tile.HATCH_LAYERS.size();
+                }).build());
         HEAT_EXCHANGER.setStructure(TileEntityHeatExchanger.class, b -> b.part("main")
                 .of("DDD", "DOD", "DDD").of("CCC", "CPC", "CCC").of(1).of("D~D", "DID", "DDD").build()
                 .at('D', CASING_TITANIUM, HATCH_ITEM_I, HATCH_ITEM_O)

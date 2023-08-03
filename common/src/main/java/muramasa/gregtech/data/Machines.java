@@ -147,6 +147,7 @@ public class Machines {
     public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(GTIRef.ID, "combustion_engine").setTiers(EV).setMap(COMBUSTION_FUELS).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityCombustionEngine::new).custom();
     public static MultiMachine CRACKING_UNIT = new MultiMachine(GTIRef.ID, "cracking_unit").setTiers(HV).setMap(CRACKING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityOilCrackingUnit::new).custom();
     public static MultiMachine DISTLLATION_TOWER = new MultiMachine(GTIRef.ID, "distillation_tower").setTiers(HV).setMap(DISTILLATION).addFlags(GUI, ITEM, FLUID,ENERGY).setTile(TileEntityDistillationTower::new).custom();
+    public static MultiMachine CRYO_DISTLLATION_TOWER = new MultiMachine(GTIRef.ID, "cryo_distillation_tower").setTiers(HV).setMap(CRYO_DISTILLATION).addFlags(GUI, ITEM, FLUID,ENERGY).setTile(TileEntityDistillationTower::new).custom();
     public static MultiMachine FUSION_REACTOR = new MultiMachine(GTIRef.ID, "fusion_control_computer").setTiers(LUV, ZPM, UV).setMap(FUSION).addFlags(GUI, FLUID,ENERGY).setTile(TileEntityFusionReactor::new);
     public static MultiMachine HEAT_EXCHANGER = new MultiMachine(GTIRef.ID, "heat_exchanger").setTiers(EV).setMap(HEAT_EXCHANGING).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityHeatExchanger::new).custom();
     public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(GTIRef.ID, "implosion_compressor").setTiers(HV).setMap(IMPLOSION_COMPRESSING).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityImplosionCompressor::new);
