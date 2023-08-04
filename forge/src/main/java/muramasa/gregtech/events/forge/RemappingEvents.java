@@ -433,7 +433,7 @@ public class RemappingEvents {
 
     @SubscribeEvent
     public static void onAttachCapabilitiesEvent(AttachCapabilitiesEvent<BlockEntity> event){
-        if (event.getObject() instanceof BlockEntityHatchHeat<?> heat){
+        /*if (event.getObject() instanceof BlockEntityHatchHeat<?> heat){
             event.addCapability(new ResourceLocation(GTIRef.ID, "heat_hatch"), new ICapabilityProvider() {
                 @NotNull
                 @Override
@@ -442,6 +442,6 @@ public class RemappingEvents {
                     return LazyOptional.empty();
                 }
             });
-        }
+        }*/
     }
 }
