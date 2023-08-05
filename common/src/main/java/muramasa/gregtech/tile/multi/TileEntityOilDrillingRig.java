@@ -85,7 +85,6 @@ public class TileEntityOilDrillingRig extends TileEntityMultiMachine<TileEntityO
                 stack.shrink(1);
             } else {
                 if (oilEntry == null){
-                    OilSpoutSavedData.getOrCreate(serverLevel).setDirty();
                     oilEntry = OilSpoutSavedData.getOrCreate(serverLevel).getFluidVeinWorldEntry(SectionPos.blockToSectionCoord(this.getBlockPos().getX()), SectionPos.blockToSectionCoord(this.getBlockPos().getZ()));
                 }
                 if (oilEntry.getFluid() == null) return;

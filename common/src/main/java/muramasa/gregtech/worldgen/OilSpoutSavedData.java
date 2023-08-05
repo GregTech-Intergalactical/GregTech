@@ -86,8 +86,8 @@ public class OilSpoutSavedData extends SavedData {
                 maximumYield = Math.min(maximumYield, fluid.getMaxYield());
             }
             veinFluids.put(new ChunkPos(chunkX, chunkZ), new OilSpoutEntry(fluid, maximumYield));
-            setDirty();
         }
+        setDirty();
         return veinFluids.get(new ChunkPos(chunkX, chunkZ));
     }
 
