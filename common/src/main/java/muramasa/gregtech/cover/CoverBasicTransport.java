@@ -45,6 +45,13 @@ public abstract class CoverBasicTransport extends BaseCover implements ICoverMod
     }
 
     @Override
+    public void onPlace() {
+        if (handler.getTile() instanceof TileEntityPipe<?> pipe){
+            pipe.setConnection(this.side);
+        }
+    }
+
+    @Override
     public void onGuiEvent(IGuiEvent event, Player playerEntity) {
         if (event.getFactory() == GuiEvents.EXTRA_BUTTON){
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
