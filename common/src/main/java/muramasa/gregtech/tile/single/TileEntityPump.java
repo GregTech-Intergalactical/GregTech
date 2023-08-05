@@ -112,11 +112,7 @@ public class TileEntityPump extends TileEntityMachine<TileEntityPump> {
         }
 
         // Consume Energy based on Fluid Amount absorbed.
-        energyHandler.ifPresent(e -> {
-            GTTransaction transaction = e.extract(GTTransaction.Mode.INTERNAL);
-            transaction.addData(getMachineTier().getVoltage() / 2, Utils.sink());
-            transaction.commit();
-        });
+        energyHandler.ifPresent(e -> e.extractInternal(getMachineTier().getVoltage() / 2, false));
         // If there is a Fluid Block above this one, clearly the Y-Level is off due to a recent Blockchange! Scan again!
         if (mPumpedFluids.contains(level.getFluidState(aCoords).getType())) return false;
         // Somehow this Block is completely surrounded by pumpable Fluid, this should not be possible unless it is the literal Cornercase! Scan again!
