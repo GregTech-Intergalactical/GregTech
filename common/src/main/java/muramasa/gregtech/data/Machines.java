@@ -140,6 +140,15 @@ public class Machines {
     //public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(GTIRef.ID, "transformer_hiamp").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new TileEntityTransformer<>(v, pos, state, 4)).noCovers().allowFrontIO();
     //public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(GTIRef.ID, "transformer_ultra").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new TileEntityTransformer<>(v, pos, state, 16)).noCovers().allowFrontIO();
     /**
+     ** Generators
+     **/
+    public static GeneratorMachine COMBUSTION_GENERATOR = new GeneratorMachine(GTIRef.ID, "combustion_generator").setTiers(LV, MV, HV).setMap(COMBUSTION_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO().custom();
+    public static GeneratorMachine SEMIFLUID_GENERATOR = new GeneratorMachine(GTIRef.ID, "semifluid_generator").setTiers(LV, MV, HV).setMap(SEMI_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO().custom();
+    public static GeneratorMachine GAS_GENERATOR = new GeneratorMachine(GTIRef.ID, "gas_turbine").setTiers(LV, MV, HV).setMap(GAS_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO().custom();
+    public static GeneratorMachine NAQUADAH_GENERATOR = new GeneratorMachine(GTIRef.ID, "naquadah_generator").setTiers(EV, IV, LUV).setMap(NAQUADAH_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
+    public static GeneratorMachine PLASMA_GENERATOR = new GeneratorMachine(GTIRef.ID, "plasma_generator").setTiers(IV, LUV, ZPM).setMap(PLASMA_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
+    public static GeneratorMachine STEAM_GENERATOR = new GeneratorMachine(GTIRef.ID, "steam_turbine").setTiers(LV, MV, HV).setMap(STEAM_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO().custom();
+    /**
      ** Multiblock Hatch Machines (Electrical Age)
      **/
     public static MultiMachine ADVANCED_MINER = new MultiMachine(GTIRef.ID, "advanced_miner").setTiers(LV).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityAdvancedMiner::new);
@@ -158,15 +167,6 @@ public class Machines {
     public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(GTIRef.ID, "oil_drilling_rig").setTiers(MV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityOilDrillingRig::new).custom();
     public static MultiMachine PYROLYSIS_OVEN = new MultiMachine(GTIRef.ID, "pyrolysis_oven").setTiers(MV).setMap(PYROLYSISING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityPyrolysisOven::new).custom();
     public static MultiMachine VACUUM_FREEZER = new MultiMachine(GTIRef.ID, "vacuum_freezer").setTiers(HV).setMap(VACUUM_FREEZING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityVacuumFreezer::new);
-    /**
-     ** Generators
-     **/
-    public static GeneratorMachine COMBUSTION_GENERATOR = new GeneratorMachine(GTIRef.ID, "combustion_generator").setTiers(LV, MV, HV).setMap(COMBUSTION_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO().custom();
-    public static GeneratorMachine SEMIFLUID_GENERATOR = new GeneratorMachine(GTIRef.ID, "semifluid_generator").setTiers(LV, MV, HV).setMap(SEMI_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO().custom();
-    public static GeneratorMachine GAS_GENERATOR = new GeneratorMachine(GTIRef.ID, "gas_turbine").setTiers(LV, MV, HV).setMap(GAS_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO().custom();
-    public static GeneratorMachine NAQUADAH_GENERATOR = new GeneratorMachine(GTIRef.ID, "naquadah_generator").setTiers(EV, IV, LUV).setMap(NAQUADAH_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
-    public static GeneratorMachine PLASMA_GENERATOR = new GeneratorMachine(GTIRef.ID, "plasma_generator").setTiers(IV, LUV, ZPM).setMap(PLASMA_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
-    public static GeneratorMachine STEAM_GENERATOR = new GeneratorMachine(GTIRef.ID, "steam_turbine").setTiers(LV, MV, HV).setMap(STEAM_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO().custom();
     /**
      ** Hatches
      **/
