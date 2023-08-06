@@ -45,10 +45,10 @@ public class Guis {
             .add(FL_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61));
     public static GuiData MULTI_DISPLAY_COMPACT = new GuiData(GTIRef.ID, "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots()));
-    public static GuiData BASIC_TANK = new GuiData(GTIRef.ID, "basic_tank")
+    public static GuiData BASIC_TANK = new GuiData(GTIRef.ID, "basic_tank").setBackgroundTexture("basic_tank")
             .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43));
 
-    public static GuiData MULTIBLOCK = new GuiData(GTIRef.ID, "multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
+    public static GuiData MULTIBLOCK = new GuiData(GTIRef.ID, "multiblock").setBackgroundTexture("multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
     public static GuiData ORE_BYPRODUCTS = new GuiData("antimatter", "ore_byproducts") {
         @Override
@@ -86,16 +86,21 @@ public class Guis {
         ASSEMBLER.add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34)
                 .add(IT_IN, 53, 34).add(IT_OUT, 107, 25)
                 .add(FL_IN, 53, 63)
-                .add(ENERGY, 80, 63);
+                .add(ENERGY, 80, 63)
+                .getGui().getMachineData().setProgressLocation("assembler");
         BENDER.add(ALLOY_SMELTER);
-        CANNER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
-        COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
-        CUTTER.add(IT_IN, 53, 25).add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY, 80, 63);
+        CANNER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63)
+                .getGui().getMachineData().setProgressLocation("canner");
+        COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63)
+                .getGui().getMachineData().setProgressLocation("compressor");
+        CUTTER.add(IT_IN, 53, 25).add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY, 80, 63)
+                .getGui().getMachineData().setProgressLocation("cutter");
         FURNACE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
-        EXTRACTOR.add(COMPRESSOR);
-        EXTRUDER.add(ALLOY_SMELTER);
-        LATHE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY, 80, 63);
-        MACERATOR.add(COMPRESSOR);
+        EXTRACTOR.add(COMPRESSOR).getGui().getMachineData().setProgressLocation("extractor");
+        EXTRUDER.add(ALLOY_SMELTER).getGui().getMachineData().setProgressLocation("extruder");
+        LATHE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY, 80, 63)
+                .getGui().getMachineData().setProgressLocation("lathe");
+        MACERATOR.add(COMPRESSOR).getGui().setBackgroundTexture("machine_macerator").getMachineData().setProgressLocation("macerator");
         MACERATOR.add(MV, MACERATOR).add(MV, IT_OUT, 125, 25);
         MACERATOR.add(HV, MACERATOR).add(HV, IT_OUT, 125, 25).add(HV, IT_OUT, 143, 25);
         MACERATOR.add(EV, IT_IN, 53, 25).add(EV, IT_OUT, 107, 16).add(EV, IT_OUT, 125, 16).add(EV, IT_OUT, 107, 34)
@@ -104,52 +109,57 @@ public class Guis {
                 .add(IT_OUT, 125, 34).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         RECYCLER.add(COMPRESSOR).add(FL_IN, 53, 63);
         SCANNER.add(COMPRESSOR);
-        WIRE_MILL.add(COMPRESSOR);
+        WIRE_MILL.add(COMPRESSOR).getGui().getMachineData().setProgressLocation("wiremill");
         CENTRIFUGE.add(IT_IN, 35, 25)
                 .add(FL_IN, 53, 25)
                 .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16)
                 .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34)
                 .add(FL_OUT, 35, 63).add(FL_OUT, 53, 63).add(FL_OUT, 71, 63)
                 .add(FL_OUT, 89, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63)
-                .add(ENERGY, 17, 25);
-        ELECTROLYZER.add(CENTRIFUGE);
+                .add(ENERGY, 17, 25).getGui().getMachineData().setProgressLocation("extractor");
+        ELECTROLYZER.add(CENTRIFUGE).getGui().getMachineData().setProgressLocation("extractor");
         THERMAL_CENTRIFUGE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(ENERGY,
                 80, 63);
-        ORE_WASHER.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
+        ORE_WASHER.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63)
+                .getGui().getMachineData().setProgressLocation("ore_washer");
         CHEMICAL_REACTOR.add(IT_IN, 26, 16).add(IT_IN, 44, 16)
                 .add(FL_IN, 17, 34).add(FL_IN, 35, 34).add(FL_IN, 53, 34)
                 .add(IT_OUT, 116, 16).add(IT_OUT, 134, 16)
                 .add(FL_OUT, 107, 34).add(FL_OUT, 125, 34).add(FL_OUT, 143, 34)
-                .add(ENERGY, 80, 63);
-        FLUID_CANNER.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
+                .add(ENERGY, 80, 63).getGui().getMachineData().setProgressLocation("chemical_reactor");
+        FLUID_CANNER.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63)
+                .getGui().getMachineData().setProgressLocation("canner");
         DISASSEMBLER.add(IT_IN, 53, 25)
                 .add(IT_OUT, 107, 7).add(IT_OUT, 107 + 18, 7).add(IT_OUT, 107 + 18 * 2, 7)
                 .add(IT_OUT, 107, 25).add(IT_OUT, 107 + 18, 25).add(IT_OUT, 107 + 18 * 2, 25)
                 .add(IT_OUT, 107, 43).add(IT_OUT, 107 + 18, 43).add(IT_OUT, 107 + 18 * 2, 43)
                 .add(ENERGY, 80, 63);
         MASS_FABRICATOR.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
-        AMP_FABRICATOR.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
+        AMP_FABRICATOR.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).getGui().getMachineData().setProgressLocation("extractor");
         REPLICATOR.add(FLUID_CANNER);
-        FERMENTER.add(FLUID_CANNER);
-        FLUID_EXTRACTOR.add(COMPRESSOR).add(FL_OUT, 107, 63);
+        FERMENTER.add(FLUID_CANNER).getGui().getMachineData().setProgressLocation("chemical_reactor");
+        FLUID_EXTRACTOR.add(COMPRESSOR).add(FL_OUT, 107, 63).getGui().getMachineData().setProgressLocation("extractor");
         FLUID_HEATER.add(ENERGY, 80, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
-        DISTILLERY.add(FLUID_CANNER);
-        CHEMICAL_BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63);
+        DISTILLERY.add(FLUID_CANNER).getGui().getMachineData().setProgressLocation("chemical_reactor");
+        CHEMICAL_BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).getGui().getMachineData().setProgressLocation("ore_washer");
         AUTOCLAVE.add(COMPRESSOR).add(FL_IN, 53, 63);
         PACKAGER.add(COMPRESSOR);
-        POLARIZER.add(COMPRESSOR);
+        POLARIZER.add(COMPRESSOR).getGui().getMachineData().setProgressLocation("electromagnetic_separator");
         MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(FL_IN, 35, 63)
-                .add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY, 80, 63);
+                .add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY, 80, 63)
+                .getGui().getMachineData().setProgressLocation("mixer");
         LASER_ENGRAVER.add(ALLOY_SMELTER);
-        FORMING_PRESS.add(ALLOY_SMELTER);
-        FORGE_HAMMER.add(FURNACE);
+        FORMING_PRESS.add(ALLOY_SMELTER).getGui().getMachineData().setProgressLocation("compressor");
+        FORGE_HAMMER.add(FURNACE).getGui().setBackgroundTexture("machine_forge_hammer").getMachineData().setProgressLocation("forge_hammer");
         SIFTER.add(IT_IN, 53, 25)
                 .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16)
                 .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34)
-                .add(ENERGY, 80, 63);
+                .add(ENERGY, 80, 63)
+                .getGui().getMachineData().setProgressLocation("sifter");
         PLASMA_ARC_FURNACE.add(ARC_FURNACE);
-        ELECTROMAGNETIC_SEPARATOR.add(COMPRESSOR).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25);
+        ELECTROMAGNETIC_SEPARATOR.add(COMPRESSOR).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
+                .getGui().getMachineData().setProgressLocation("electromagnetic_separator");
         DECAY_CHAMBER.add(IT_IN, 17, 25).add(IT_IN, 35, 25)
                 .add(IT_OUT, 107, 25).add(FL_IN,53,25).add(FL_OUT,125,25).add(ENERGY,80,63);
         CHEMICAL_DEHYDRATOR.add(IT_IN, 35, 25).add(IT_IN, 53, 25)
@@ -160,7 +170,7 @@ public class Guis {
                 .add(FL_OUT,107,63).add(FL_OUT,125,63).add(FL_OUT,143,63)
                 .add(ENERGY,80,63);
 
-        COKE_OVEN.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25);
+        COKE_OVEN.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25).getGui().setBackgroundTexture("coke_oven");
         BATTERY_BUFFER_FOUR.add(ENERGY, 71, 27).add(ENERGY, 89, 27).add(ENERGY, 71, 45).add(ENERGY, 89, 45);
         BATTERY_BUFFER_ONE.add(ENERGY, 80, 40);
         BATTERY_BUFFER_EIGHT
@@ -172,27 +182,19 @@ public class Guis {
                 .add(ENERGY,53,45).add(ENERGY,71,45).add(ENERGY,89,45).add(ENERGY,107,45)
                 .add(ENERGY,53,63).add(ENERGY,71,63).add(ENERGY,89,63).add(ENERGY,107,63);
 
-        COAL_BOILER.add(BRONZE, CELL_IN, 44, 26).add(BRONZE, CELL_OUT, 44, 62).add(BRONZE, IT_OUT, 116, 26).add(BRONZE,
+        COAL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(IT_IN, 116, 62);
+        COAL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(STEEL,
                 IT_IN, 116, 62);
-        COAL_BOILER.add(STEEL, CELL_IN, 44, 26).add(STEEL, CELL_OUT, 44, 62).add(STEEL, IT_OUT, 116, 26).add(STEEL,
-                IT_IN, 116, 62);
-        LAVA_BOILER.add(STEEL, CELL_IN, 44, 26).add(STEEL, CELL_OUT, 44, 62);
-        SOLAR_BOILER.add(BRONZE, CELL_IN, 44, 26).add(BRONZE, CELL_OUT, 44, 62);
+        LAVA_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
+        SOLAR_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
 
-        STEAM_ALLOY_SMELTER.add(BRONZE, ALLOY_SMELTER).add(BRONZE, FL_IN, 53, 63);
-        STEAM_ALLOY_SMELTER.add(STEEL, ALLOY_SMELTER).add(STEEL, FL_IN, 53, 63);
-        STEAM_COMPRESSOR.add(BRONZE, COMPRESSOR).add(BRONZE, FL_IN, 53, 63);
-        STEAM_COMPRESSOR.add(STEEL, COMPRESSOR).add(STEEL, FL_IN, 53, 63);
-        STEAM_FURNACE.add(BRONZE, FURNACE).add(BRONZE, FL_IN, 53, 63);
-        STEAM_FURNACE.add(STEEL, FURNACE).add(STEEL, FL_IN, 53, 63);
-        STEAM_EXTRACTOR.add(BRONZE, EXTRACTOR).add(BRONZE, FL_IN, 53, 63);
-        STEAM_EXTRACTOR.add(STEEL, EXTRACTOR).add(STEEL, FL_IN, 53, 63);
-        STEAM_MACERATOR.add(BRONZE, MACERATOR).add(BRONZE, FL_IN, 53, 63);
-        STEAM_MACERATOR.add(STEEL, MACERATOR).add(STEEL, FL_IN, 53, 63);
-        STEAM_FORGE_HAMMER.add(BRONZE, FORGE_HAMMER).add(BRONZE, FL_IN, 53, 63);
-        STEAM_FORGE_HAMMER.add(STEEL, FORGE_HAMMER).add(STEEL, FL_IN, 53, 63);
-        STEAM_SIFTER.add(BRONZE, SIFTER).add(BRONZE, FL_IN, 53, 63);
-        STEAM_SIFTER.add(STEEL, SIFTER).add(STEEL, FL_IN, 53, 63);
+        STEAM_ALLOY_SMELTER.add(ALLOY_SMELTER).add(FL_IN, 53, 63);
+        STEAM_COMPRESSOR.add(COMPRESSOR).add(FL_IN, 53, 63);
+        STEAM_FURNACE.add(FURNACE).add(FL_IN, 53, 63);
+        STEAM_EXTRACTOR.add(EXTRACTOR).add(FL_IN, 53, 63);
+        STEAM_MACERATOR.add(MACERATOR).add(FL_IN, 53, 63);
+        STEAM_FORGE_HAMMER.add(FORGE_HAMMER).add(FL_IN, 53, 63);
+        STEAM_SIFTER.add(SIFTER).add(FL_IN, 53, 63);
 
         STEAM_GENERATOR.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
         GAS_GENERATOR.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
@@ -206,7 +208,7 @@ public class Guis {
         QUANTUM_TANK.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
 
         PRIMITIVE_BLAST_FURNACE.add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_IN, 53, 52).add(IT_OUT, 107, 25)
-                .add(IT_OUT, 125, 25).add(IT_OUT, 143, 25);
+                .add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).getGui().setBackgroundTexture("primitive_blast_furnace");
 
         HATCH_MUFFLER.add(IT_IN, 79, 34);
 
@@ -268,20 +270,9 @@ public class Guis {
                 .add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.add(MAX, HATCH_FLUID_O, ULV);
 
-        FORGE_HAMMER.getCallbacks().remove(1);
-        FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).addGuiCallback(t -> {
-            t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a,b)).setPos(9, 5).clientSide())
-                    .addWidget(ProgressWidget.build(BarDir.BOTTOM, false))
-                    .addWidget(MachineStateWidget.build().setPos(84,46).setWH(8,8))
-                    .addWidget(IOWidget.build(9,63,16,16));
-        });
+        FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGui().getMachineData().setMachineStatePos(84, 46);
+        STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGui().getMachineData().setMachineStatePos(80, 50);
 
-        STEAM_FORGE_HAMMER.getCallbacks().remove(1);
-        STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).addGuiCallback(t -> {
-            t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a,b)).setPos(9, 5).clientSide())
-                    .addWidget(ProgressWidget.build(BarDir.BOTTOM, false))
-                    .addWidget(MachineStateWidget.build().setPos(84,46).setWH(8,8));
-        });
 
         COAL_BOILER.addGuiCallback(t -> {
             t.addWidget(WidgetSupplier
@@ -318,7 +309,7 @@ public class Guis {
                     .add(SlotTypes.FILTERABLE, 98, 23).add(SlotTypes.FILTERABLE, 98 + 18, 23)
                     .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 23)
                     .add(SlotTypes.FILTERABLE, 98, 41).add(SlotTypes.FILTERABLE, 98 + 18, 41)
-                    .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 41);
+                    .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 41).getGui().setBackgroundTexture("electric_item_filter");
 
             ELECTRIC_TYPE_FILTER
                     .add(DISPLAY_SETTABLE, 35, 23)
@@ -327,7 +318,7 @@ public class Guis {
                     .add(SlotTypes.FILTERABLE, 98, 23).add(SlotTypes.FILTERABLE, 98 + 18, 23)
                     .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 23)
                     .add(SlotTypes.FILTERABLE, 98, 41).add(SlotTypes.FILTERABLE, 98 + 18, 41)
-                    .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 41);
+                    .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 41).getGui().setBackgroundTexture("electric_type_filter");
         }
 
         // if (side.isClient()) {
@@ -377,14 +368,15 @@ public class Guis {
         CRACKING_UNIT.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         NUCLEAR_REACTOR.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         FUSION_REACTOR.setGUI(MenuHandlers.FUSION_MENU_HANDLER);
-        FUSION_REACTOR.getGui().setEnablePlayerSlots(false);
+        FUSION_REACTOR.getGui().setBackgroundTexture("fusion_control_computer").setEnablePlayerSlots(false)
+                .getMachineData().setProgressLocation("fusion_reactor").setProgressPos(163, 4).setProgressSize(149, 16);
         FUSION_REACTOR.addGuiCallback(t -> {
             t.addButton(155, 23, 16, 16, ButtonBody.NO_OVERLAY).addButton(155, 41, 16, 16, NO_OVERLAY).addButton(155, 59, 16, 16, NO_OVERLAY).addWidget(makeProgress(BarDir.LEFT, true, new int4(0, 235, 149, 16)).setSize(4,162, 149, 16)).addWidget(FusionButtonWidget.build());
         });
     }
 
     public static WidgetSupplier makeProgress(BarDir dir, boolean barFill, int4 loc){
-        return builder((screen, handler) -> new ProgressWidget(screen, handler, loc, dir, dir.getPos().x + 6, dir.getPos().y + 6, dir.getUV().z, dir.getUV().w, barFill));
+        return builder(ProgressWidget::new);
     }
     // }
 }

@@ -16,8 +16,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class FusionButtonWidget extends Widget {
-    ResourceLocation middle = new ResourceLocation(GTIRef.ID, "textures/gui/machine/fusion_computer_middle_overlay.png");
-    ResourceLocation top_bottom = new ResourceLocation(GTIRef.ID, "textures/gui/machine/fusion_computer_top_bottom_overlay.png");
+    ResourceLocation middle = new ResourceLocation(GTIRef.ID, "textures/gui/background/fusion_computer_middle_overlay.png");
+    ResourceLocation top_bottom = new ResourceLocation(GTIRef.ID, "textures/gui/background/fusion_computer_top_bottom_overlay.png");
 
     TileEntityFusionReactor.Display display = TileEntityFusionReactor.Display.REGULAR;
 
