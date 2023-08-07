@@ -14,6 +14,14 @@ public class GregTechTags {
     public static TagKey<Item> CIRCUITS_MASTER = getTag("circuits/master");
     public static TagKey<Item> CIRCUITS_DATA_ORB = getTag("circuits/data_orb");
     public static TagKey<Item> DUST_LAPIS_LAZURITE = getTag("dusts/lapislazurite");
+    public static TagKey<Item> BATTERIES_RE = getTag("batteries/re");
+    public static TagKey<Item> BATTERIES_SMALL = getTag("batteries/small");
+    public static TagKey<Item> BATTERIES_MEDIUM = getTag("batteries/medium");
+    public static TagKey<Item> BATTERIES_LARGE = getTag("batteries/large");
+    public static TagKey<Item> POWER_UNIT_LV = getTag("power_units/lv");
+    public static TagKey<Item> POWER_UNIT_MV = getTag("power_units/mv");
+    public static TagKey<Item> POWER_UNIT_HV = getTag("power_units/hv");
+    public static TagKey<Item> POWER_UNIT_SMALL = getTag("power_units/small");
 
     public static TagKey<Item> getTag(String id){
         return TagUtils.getForgelikeItemTag(id);

@@ -23,6 +23,7 @@ import muramasa.gregtech.block.*;
 import muramasa.gregtech.block.BlockCoil.CoilData;
 import muramasa.gregtech.cover.*;
 import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
+import muramasa.gregtech.items.ItemPowerUnit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -105,6 +106,11 @@ public class GregTechData {
     public static ItemBasic<?> GraviStar = new ItemBasic<>(GTIRef.ID, "gravi_star").tip("Ultimate Nether Star");
     public static ItemBasic<?> CompressedFireClay = new ItemBasic<>(GTIRef.ID, "compressed_fire_clay").tip("Brick Shaped");
     public static ItemBasic<?> FireBrick = new ItemBasic<>(GTIRef.ID, "fire_brick").tip("Heat Resistant");
+
+    public static ItemPowerUnit PowerUnitLV = new ItemPowerUnit(GTIRef.ID, "power_unit_lv", Aluminium);
+    public static ItemPowerUnit PowerUnitMV = new ItemPowerUnit(GTIRef.ID, "power_unit_mv", StainlessSteel);
+    public static ItemPowerUnit PowerUnitHV = new ItemPowerUnit(GTIRef.ID, "power_unit_hv", Titanium);
+    public static ItemPowerUnit SmallPowerUnit = new ItemPowerUnit(GTIRef.ID, "small_power_unit", Aluminium);
 
     public static ItemBasic<?> MotorLV = new ItemBasic<>(GTIRef.ID, "motor_lv");
     public static ItemBasic<?> MotorMV = new ItemBasic<>(GTIRef.ID, "motor_mv");
@@ -200,6 +206,7 @@ public class GregTechData {
     public static ItemBasic<?> BatteryHullSmall = new ItemBasic<>(GTIRef.ID, "small_battery_hull").tip("An empty LV Battery Hull");
     public static ItemBasic<?> BatteryHullMedium = new ItemBasic<>(GTIRef.ID, "medium_battery_hull").tip("An empty MV Battery Hull");
     public static ItemBasic<?> BatteryHullLarge = new ItemBasic<>(GTIRef.ID, "large_battery_hull").tip("An empty HV Battery Hull");
+    public static ItemBasic<?> BatteryRE = new ItemMultiTextureBattery(GTIRef.ID, "re_battery", Tier.LV, 10000, true).tip("Reusable Battery");
     public static ItemBasic<?> BatterySmallAcid = new ItemMultiTextureBattery(GTIRef.ID, "small_acid_battery", Tier.LV, 18000, false).tip("Single Use");
     public static ItemBasic<?> BatterySmallMercury = new ItemMultiTextureBattery(GTIRef.ID, "small_mercury_battery", Tier.LV, 32000, false).tip("Single Use");
     public static ItemBasic<?> BatterySmallCadmium = new ItemMultiTextureBattery(GTIRef.ID, "small_cadmium_battery", Tier.LV,75000, true).tip("Reusable");

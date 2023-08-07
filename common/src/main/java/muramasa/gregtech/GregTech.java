@@ -84,6 +84,7 @@ public class GregTech extends AntimatterMod {
         event.addLoader(SteamMachines::loadRecipes);
         event.addLoader(BlockParts::loadRecipes);
         event.addLoader(Parts::loadRecipes);
+        event.addLoader(ElectricToolRecipes::loadRecipes);
         event.addLoader(MaterialCrafting::loadRecipes);
         event.addLoader(FurnaceLoader::loadRecipes);
         event.addLoader(WoodCrafting::loadRecipes);
@@ -155,6 +156,7 @@ public class GregTech extends AntimatterMod {
     public void onRegistrationEvent(RegistrationEvent event, Side side) {
         switch (event) {
             case DATA_INIT -> {
+                ToolTypes.init();
                 Materials.init();
                 TierMaps.init();
                 GregTechData.init(side);
