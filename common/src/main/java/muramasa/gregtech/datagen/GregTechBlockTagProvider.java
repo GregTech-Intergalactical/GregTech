@@ -28,5 +28,6 @@ public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
             this.tag(AntimatterDefaultTools.WRENCH.getToolType()).add(cas);
         });
         this.tag(AntimatterDefaultTools.AXE.getToolType()).add(GregTechData.BRITTLE_CHARCOAL);
+        this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(GregTechData.MINING_PIPE, GregTechData.MINING_PIPE_THIN);
     }
 }
