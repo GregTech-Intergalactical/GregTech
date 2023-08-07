@@ -85,6 +85,8 @@ public class Parts {
                       .put('P', PLATE.get(Wood))
                       .build(),
               " R ", "PPP", " R ");
+      provider.addItemRecipe(output, "mining_pipes", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), MINING_PIPE_THIN,
+              of('H', HAMMER.getTag(), 'P', FLUID_PIPE_STEEL.getBlockItem(PipeSize.SMALL), 'F', FILE.getTag()), "HPF");
   }
 
   private static void tieredItems(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
