@@ -1,6 +1,7 @@
 package muramasa.gregtech.block;
 
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.block.AntimatterItemBlock;
 import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.registration.IColorHandler;
@@ -10,7 +11,9 @@ import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -63,5 +66,15 @@ public class BlockMiningPipe extends BlockBasic implements IItemBlockProvider, I
     @Override
     public int getItemColor(ItemStack stack, @Nullable Block block, int i) {
         return Materials.Steel.getRGB();
+    }
+
+    @Override
+    public BlockItem getItemBlock() {
+        return new AntimatterItemBlock(this){
+            @Override
+            protected boolean placeBlock(BlockPlaceContext context, BlockState state) {
+                return false;
+            }
+        };
     }
 }
