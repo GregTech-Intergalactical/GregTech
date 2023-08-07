@@ -47,6 +47,8 @@ public class GregTechLocalizations {
                 add(i, lowerUnderscoreToUpperSpaced(i.getId()));
             });
 
+            add(GregTechData.MINING_PIPE, "Mining Pipe");
+            add(GregTechData.MINING_PIPE_THIN, "Mining Pipe");
             add(GregTechData.BRITTLE_CHARCOAL, "Brittle Charcoal");
             AntimatterAPI.all(BlockFakeCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));

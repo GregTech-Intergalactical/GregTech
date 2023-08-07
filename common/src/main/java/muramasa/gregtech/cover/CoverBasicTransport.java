@@ -46,6 +46,7 @@ public abstract class CoverBasicTransport extends BaseCover implements ICoverMod
 
     @Override
     public void onPlace() {
+        super.onPlace();
         if (handler.getTile() instanceof TileEntityPipe<?> pipe){
             pipe.setConnection(this.side);
         }
