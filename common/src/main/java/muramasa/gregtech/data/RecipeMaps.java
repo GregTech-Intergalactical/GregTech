@@ -81,7 +81,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> DEHYDRATING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "dehydrating", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> DISASSEMBLING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "disassembling", new RecipeBuilder()));
+            new RecipeMap<>(GTIRef.ID, "disassembling", new RecipeBuilder())).setProxy(RecipeProxies.REVERSE_CRAFTING_PROXY.apply(8, 200));
     public static RecipeMap<RecipeBuilder> DISTILLATION = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "distillation", new RecipeBuilder())).setGuiData(MULTI_DISPLAY_FLUID);
     public static RecipeMap<RecipeBuilder> CRYO_DISTILLATION = AntimatterAPI.register(RecipeMap.class,

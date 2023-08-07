@@ -70,7 +70,7 @@ public class Machines {
     public static BasicMachine COMPRESSOR = new BasicMachine(GTIRef.ID, "compressor").setMap(COMPRESSING).addFlags(GUI, ITEM);
     public static BasicMachine CUTTER = new BasicMachine(GTIRef.ID, "cutter").setMap(CUTTING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine DECAY_CHAMBER = new BasicMachine(GTIRef.ID, "decay_chamber").setMap(DECAYING).addFlags(GUI, ITEM, FLUID);
-    public static BasicMachine DISASSEMBLER = new BasicMachine(GTIRef.ID, "disassembler").setMap(new DisassemblingMap()).addFlags(GUI, ITEM).custom();
+    public static BasicMachine DISASSEMBLER = new BasicMachine(GTIRef.ID, "disassembler").setMap(DISASSEMBLING).addFlags(GUI, ITEM).custom();
     public static BasicMachine DISTILLERY = new BasicMachine(GTIRef.ID, "distillery").setMap(DISTILLING).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids().setAllowVerticalFacing(true).setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static BasicMachine ELECTROLYZER = new BasicMachine(GTIRef.ID, "electrolyzer").setMap(ELECTROLYZING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.MAGNETIZER, 0.6f);
     public static BasicMachine ELECTROMAGNETIC_SEPARATOR = new BasicMachine(GTIRef.ID, "electromagnetic_separator").setMap(ELECTROMAGNETIC_SEPARATING).addFlags(GUI, ITEM);
