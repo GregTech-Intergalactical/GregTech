@@ -26,9 +26,9 @@ public class ChemicalBath {
                 .add("paper_1",100,4);
         CHEMICAL_BATHING.RB()
                 .ii(RecipeIngredient.of(Items.NETHER_STAR,1))
-                .fi(Plutonium.getLiquid(L * 8))
-                .io(new ItemStack(GregTechData.QuantumStat))
-                .add("quantum_stat",96*20,384);
+                .fi(Radon.getGas(1250))
+                .io(new ItemStack(GregTechData.QuantumStar))
+                .add("quantum_star",96*20,384);
         mercurybathing();
         persulfatebathing();
     }

@@ -92,7 +92,7 @@ public class GregTechData {
     public static ItemBasic<?> IridiumReinforcedPlate = new ItemBasic<>(GTIRef.ID, "iridium_reinforced_plate").tip("GT2s Most Expensive Component");
     public static ItemBasic<?> IridiumNeutronReflector = new ItemBasic<>(GTIRef.ID, "iridium_neutron_reflector").tip("Indestructible");
     public static ItemBasic<?> QuantumEye = new ItemBasic<>(GTIRef.ID, "quantum_eye").tip("Improved Ender Eye");
-    public static ItemBasic<?> QuantumStat = new ItemBasic<>(GTIRef.ID, "quantum_star").tip("Improved Nether Star");
+    public static ItemBasic<?> QuantumStar = new ItemBasic<>(GTIRef.ID, "quantum_star").tip("Improved Nether Star");
     public static ItemBasic<?> GraviStar = new ItemBasic<>(GTIRef.ID, "gravi_star").tip("Ultimate Nether Star");
     public static ItemBasic<?> CompressedFireClay = new ItemBasic<>(GTIRef.ID, "compressed_fire_clay").tip("Brick Shaped");
     public static ItemBasic<?> FireBrick = new ItemBasic<>(GTIRef.ID, "fire_brick").tip("Heat Resistant");

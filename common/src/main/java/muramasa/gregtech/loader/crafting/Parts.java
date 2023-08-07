@@ -15,6 +15,7 @@ import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
+import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
@@ -105,6 +106,7 @@ public class Parts {
           Item sensor = GregTech.get(ItemBasic.class, "sensor_" + t.getId());
           Item pump = GregTech.get(ItemCover.class, "pump_" + t.getId());
           Item conveyor = GregTech.get(ItemCover.class, "conveyor_" + t.getId());
+          Item fieldGen = GregTech.get(ItemBasic.class, "field_gen_" + t.getId());
           Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
           Object emitterGem = EMITTER_GEMS.get(t);
           provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), motor,
@@ -119,6 +121,10 @@ public class Parts {
                   of('R', emitterRod, 'G', emitterGem, 'L', cable, 'C', circuit), "RRC", "LGR", "CLR");
           provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(circuit), sensor,
                   of('R', emitterRod, 'G', emitterGem, 'C', circuit, 'P', plate), "P G", "PR ", "CPP");
+          PipeSize osmium = t == IV ? PipeSize.HUGE : PipeSize.values()[t.getIntegerId() - 1];
+          Item center = t == LV ? Items.ENDER_PEARL : t == MV ? Items.ENDER_EYE : t == HV ? QuantumEye : t == EV ? Items.NETHER_STAR : QuantumStar;
+          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), fieldGen,
+                  of('O', WIRE_OSMIUM.getBlockItem(osmium), 'C', circuit, 'G', center), "OCO", "CGC", "OCO");
           Material rotorMat = ((MaterialItem) TIER_ROTORS.get(t)).getMaterial();
           provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), pump,
                   ImmutableMap.<Character, Object>builder().put('M', motor).put('C', cable).put('W', WRENCH.getTag())

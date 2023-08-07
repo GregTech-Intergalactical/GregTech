@@ -4,14 +4,15 @@ import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
+import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.GregTechData.EnergyCrystal;
-import static muramasa.gregtech.data.Materials.DistilledWater;
-import static muramasa.gregtech.data.Materials.Energium;
+import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.AUTOCLAVING;
 import static muramasa.gregtech.data.RecipeMaps.COMPRESSING;
 
@@ -34,5 +35,6 @@ public class Autoclave {
         AUTOCLAVING.RB().ii(DUST.getMaterialIngredient(Materials.Carbon, 4)).fi(Materials.Palladium.getLiquid(1)).io(new ItemStack(GregTechData.CarbonFibre, 2)).add("carbon_fibre_2", 150, 5);
         AUTOCLAVING.RB().ii(DUST.getMaterialIngredient(Energium, 9)).fi(DistilledWater.getLiquid(1000)).io(EnergyCrystal).add("energy_crystal_distilled_water", 250, 256);
         AUTOCLAVING.RB().ii(DUST.getMaterialIngredient(Energium, 9)).fi(Water.getLiquid(1000)).io(EnergyCrystal).add("energy_crystal", 500, 256);
+        AUTOCLAVING.RB().ii(of(Items.NETHER_STAR)).fi(Neutronium.getLiquid(L * 2)).io(GregTechData.GraviStar).add("gravistar", 480, 7680);
     }
 }
