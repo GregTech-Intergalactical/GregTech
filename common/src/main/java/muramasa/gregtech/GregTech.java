@@ -24,6 +24,7 @@ import muramasa.gregtech.loader.machines.generator.CoalBoilerHandler;
 import muramasa.gregtech.loader.machines.generator.Fuels;
 import muramasa.gregtech.loader.machines.generator.LargeBoilerLoader;
 import muramasa.gregtech.loader.multi.*;
+import muramasa.gregtech.proxy.CommonHandler;
 import muramasa.gregtech.proxy.ServerHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -174,6 +175,7 @@ public class GregTech extends AntimatterMod {
                         l.addAll(Arrays.asList(CircuitBasicIntegrated, CircuitGoodIntegrated, CircuitWetware, MicroProcessor, IntegratedProcessor, NanoProcessor, QuantumProcessor));
                     }
                 });
+                AntimatterAPI.runLaterCommon(CommonHandler::setup);
               //  if (side == Dist.CLIENT) StructureInfo.init();
                 TierMaps.providerInit();
             }

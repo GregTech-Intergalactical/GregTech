@@ -24,6 +24,7 @@ import muramasa.gregtech.block.BlockCoil.CoilData;
 import muramasa.gregtech.cover.*;
 import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -34,11 +35,19 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MaterialColor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static muramasa.gregtech.data.Materials.*;
 
 public class GregTechData {
 
     private static final boolean HC = AntimatterConfig.GAMEPLAY.HARDCORE_CABLES;
+
+    private static final String CAPE_PATH = "textures/capes/";
+    public static final ResourceLocation[] CAPE_LOCATIONS = new ResourceLocation[] {new ResourceLocation(GTIRef.ID,  CAPE_PATH + "braintech.png"), new ResourceLocation(GTIRef.ID, CAPE_PATH + "silver.png"), new ResourceLocation(GTIRef.ID, CAPE_PATH + "mrbrain.png"), new ResourceLocation(GTIRef.ID, CAPE_PATH + "dev.png"), new ResourceLocation(GTIRef.ID, CAPE_PATH + "gold.png"), new ResourceLocation(GTIRef.ID, CAPE_PATH + "crazy.png"), new ResourceLocation(GTIRef.ID, CAPE_PATH + "fake.png")};
+
+    public static final Set<String> SupporterListSilver = new HashSet<>(), SupporterListGold = new HashSet<>();
 
     public static void init(Side side) {
         if (side == Side.CLIENT)

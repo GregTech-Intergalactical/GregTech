@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "muramasa.gregtech.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "AbstractClientPlayerEntityMixin"
+  ],
+  "minVersion": "0.8"
+}
