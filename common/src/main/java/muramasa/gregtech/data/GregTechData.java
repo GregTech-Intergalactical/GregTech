@@ -180,13 +180,16 @@ public class GregTechData {
     public static ItemBasic<?> IntegratedProcessor = new ItemBasic<>(GTIRef.ID, "integrated_processor", "circuits/").tip("A Good Circuit");
     public static ItemBasic<?> CircuitAdv = new ItemBasic<>(GTIRef.ID, "advanced_circuit", "circuits/").tip("An advanced Circuit");
     public static ItemBasic<?> ProcessorAssembly = new ItemBasic<>(GTIRef.ID, "processor_assembly", "circuits/").tip("An advanced Circuit");
-    public static ItemBasic<?> NanoProcessor = new ItemBasic<>(GTIRef.ID, "nanoprocessor", "circuits/").tip("A Nanoprocessor");
+    public static ItemBasic<?> NanoProcessor = new ItemBasic<>(GTIRef.ID, "nanoprocessor", "circuits/").tip("An advanced Circuit");
+    public static ItemBasic<?> Workstation = new ItemBasic<>(GTIRef.ID, "workstation", "circuits/").tip("An extreme Circuit");
+    public static ItemBasic<?> QuantumProcessor = new ItemBasic<>(GTIRef.ID, "quantumprocessor", "circuits/").tip("An extreme Circuit");
+    public static ItemBasic<?> NanoprocessorAssembly = new ItemBasic<>(GTIRef.ID, "nanoprocessor_assembly", "circuits/").tip("An extreme Circuit");
+    public static ItemBasic<?> Mainframe = new ItemBasic<>(GTIRef.ID, "mainframe", "circuits/").tip("An elite circuit");
+    public static ItemBasic<?> QuantumProcessorAssembly = new ItemBasic<>(GTIRef.ID, "quantumprocessor_assembly", "circuits/").tip("An elite circuit");
+    public static ItemBasic<?> CrystalProcessor = new ItemBasic<>(GTIRef.ID, "crystal_processor", "circuits/").tip("An elite Circuit");
     public static ItemBasic<?> CircuitDataStorage = new ItemBasic<>(GTIRef.ID, "data_storage_circuit", "circuits/");
     public static ItemBasic<?> CircuitDataControl = new ItemBasic<>(GTIRef.ID, "data_control_circuit", "circuits/");
 
-
-
-    public static ItemBasic<?> QuantumProcessor = new ItemBasic<>(GTIRef.ID, "quantumprocessor", "circuits/").tip("A Quantumprocessor");
     public static ItemBasic<?> CircuitEnergyFlow = new ItemBasic<>(GTIRef.ID, "energy_flow_circuit", "circuits/").tip("A High Voltage Processor");
     public static ItemBasic<?> CircuitWetware = new ItemBasic<>(GTIRef.ID, "wetware_circuit", "circuits/").tip("You feel like it's watching you");
     public static ItemBasic<?> DataOrb = new ItemBasic<>(GTIRef.ID, "data_orb", "circuits/");

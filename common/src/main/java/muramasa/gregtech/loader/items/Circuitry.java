@@ -122,6 +122,10 @@ public class Circuitry {
                         .put('T', WIRE_FINE.getMaterialTag(Tin))
                         .put('W', DUST_TINY.getMaterialTag(Gallium))
                         .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
+        provider.addStackRecipe(output, GTIRef.ID, "", "small_coils", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(SmallCoil, 2),
+                ImmutableMap.of('W', WIRE_FINE.getMaterialTag(Copper), 'B', BOLT.getMaterialTag(Steel)), "WWW", "WBW", "WWW");
+        provider.addStackRecipe(output, GTIRef.ID, "small_coil_1", "small_coils", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(SmallCoil, 4),
+                ImmutableMap.of('W', WIRE_FINE.getMaterialTag(Copper), 'B', BOLT.getMaterialTag(NickelZincFerrite)), "WWW", "WBW", "WWW");
     }
 
     private static void circuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
@@ -328,6 +332,10 @@ public class Circuitry {
         ASSEMBLING.RB().ii(FOIL.getMaterialIngredient(SiliconeRubber, 4), FOIL.getMaterialIngredient(Tantalum, 1)).fi(Polyethylene.getLiquid(L / 4)).io(new ItemStack(SMDCapacitor,32)).add("smd_capacitor_tantalum_rubber",60, 120);
         ASSEMBLING.RB().ii(FOIL.getMaterialIngredient(SiliconeRubber, 4), FOIL.getMaterialIngredient(Aluminium, 1)).fi(Polyethylene.getLiquid(L / 4)).io(new ItemStack(SMDCapacitor,16)).add("smd_capacitor_aluminium_rubber",60, 120);
         ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(AnnealedCopper, 4), DUST_SMALL.getMaterialIngredient(Gallium, 1)).fi(Polyethylene.getLiquid(L * 2)).io(new ItemStack(Diode, 16)).add("diode", 400, 48);
+        ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(Copper, 8), BOLT.getMaterialIngredient(Steel, 1)).io(new ItemStack(SmallCoil, 2)).add("small_coil_1", 80, 8);
+        ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(Copper, 8), BOLT.getMaterialIngredient(NickelZincFerrite, 1)).io(new ItemStack(SmallCoil, 4)).add("small_coil_2", 80, 8);
+        ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(AnnealedCopper, 8), BOLT.getMaterialIngredient(Steel, 1)).io(new ItemStack(SmallCoil, 2)).add("small_coil_3", 80, 8);
+        ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(AnnealedCopper, 8), BOLT.getMaterialIngredient(NickelZincFerrite, 1)).io(new ItemStack(SmallCoil, 4)).add("small_coil_4", 80, 8);
     }
 
     private static void bloodyCircuits() {
@@ -380,11 +388,22 @@ public class Circuitry {
                     .io(new ItemStack(NanoProcessor))
                     .fi(material.getLiquid(base * 4)).add("nano_processor_soc_using_" + material.getId(), 300, 8192);
 
-            //Quantum
-            ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardFiber, 1), of(GregTechData.Resistor, 4),of(GregTechData.Transistor, 4),
-                            of(GregTechData.Capacitor, 4),of(AntimatterMaterialTypes.WIRE_FINE.get(Platinum), 2))
-                    .io(new ItemStack(GregTechData.QuantumProcessor,1))
-                    .fi(material.getLiquid(base * 4)).add("quantum_processor_circuit_using_" + material.getId(),20*20, 2048);
+            //Extreme
+            CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPlastic, 2), of(ProcessorAssembly, 3), of(DIODES, 4),
+                            of(RandomAccessMemoryChip, 4), WIRE_FINE.getMaterialIngredient(Electrum, 6))
+                    .io(new ItemStack(Workstation))
+                    .fi(material.getLiquid(base * 8)).add("workstation_using_" + material.getId(), 400, 90);
+            CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardEpoxy), of(NanoProcessor, 2), of(SmallCoil, 4), of(SMDCapacitor, 4),
+                            of(RandomAccessMemoryChip, 4), WIRE_FINE.getMaterialIngredient(Electrum, 6))
+                    .io(new ItemStack(NanoprocessorAssembly))
+                    .fi(material.getLiquid(base * 8)).add("nanoprocessor_assembly_using_" + material.getId(), 400, 600);
+            CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardFiber), of(QBitProcessingUnit), of(NanoCpu), of(SMDCapacitor, 2),
+                            of(SMDTransistor, 2), WIRE_FINE.getMaterialIngredient(Platinum, 2))
+                    .io(new ItemStack(QuantumProcessor))
+                    .fi(material.getLiquid(base * 8)).add("quantum_processor_using_" + material.getId(), 200, 2400);
+            CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardEpoxy), of(ASoC, 1), WIRE_FINE.getMaterialIngredient(Platinum, 2))
+                    .io(new ItemStack(QuantumProcessor))
+                    .fi(material.getLiquid(base * 4)).add("nano_processor_soc_using_" + material.getId(), 50, 8192);
             //Energy Flow
             ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardMultiFiber, 1), of(GregTechData.Resistor, 8),of(GregTechData.Transistor, 8),
                             of(GregTechData.Capacitor, 8),of(AntimatterMaterialTypes.WIRE_FINE.get(NiobiumTitanium), 4))

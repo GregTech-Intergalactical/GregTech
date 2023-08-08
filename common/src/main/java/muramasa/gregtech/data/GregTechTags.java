@@ -28,6 +28,7 @@ public class GregTechTags {
     public static TagKey<Item> RESISTORS = TagUtils.getItemTag(new ResourceLocation(GTIRef.ID, "resistors"));
     public static TagKey<Item> CAPACITORS = TagUtils.getItemTag(new ResourceLocation(GTIRef.ID, "capacitors"));
     public static TagKey<Item> TRANSISTORS = TagUtils.getItemTag(new ResourceLocation(GTIRef.ID, "transistors"));
+    public static TagKey<Item> DIODES = TagUtils.getItemTag(new ResourceLocation(GTIRef.ID, "diodes"));
 
     public static TagKey<Item> getTag(String id){
         return TagUtils.getForgelikeItemTag(id);
