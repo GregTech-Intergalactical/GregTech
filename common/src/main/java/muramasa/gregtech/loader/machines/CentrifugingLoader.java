@@ -24,14 +24,14 @@ public class CentrifugingLoader {
     public static void init() {
         DUST_IMPURE.all().forEach(dust -> {
             if (dust.hasByProducts()) CENTRIFUGING.RB().ii(of(DUST_IMPURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), DUST_TINY.get(dust.getByProducts().get(0), 1)).add("dust_impure_" + dust.getId(), 400, 2);
-            else CENTRIFUGING.RB().ii(of(DUST_IMPURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1)).chances(1.0, 0.1).add("dust_impure_" + dust.getId(),dust.getMass(), 2);
+            else CENTRIFUGING.RB().ii(of(DUST_IMPURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1)).add("dust_impure_" + dust.getId(),dust.getMass(), 2);
         });
         DUST_PURE.all().forEach(dust -> {
             if (dust.hasByProducts())  {
                 int index = dust.getByProducts().size() > 1 ? 1 : 0;
                 CENTRIFUGING.RB().ii(of(DUST_PURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), DUST_TINY.get(dust.getByProducts().get(index), 1)).add("dust_pure_" + dust.getId(),dust.getMass(), 2);
             }
-            else CENTRIFUGING.RB().ii(of(DUST_IMPURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1)).chances(1.0, 0.1).add("dust_pure_" + dust.getId(),dust.getMass(), 2);
+            else CENTRIFUGING.RB().ii(of(DUST_PURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1)).add("dust_pure_" + dust.getId(),dust.getMass(), 2);
         });
         CENT.all().forEach(t -> {
             if (!t.has(DUST) && !t.has(LIQUID) && !t.has(GAS)) return;
