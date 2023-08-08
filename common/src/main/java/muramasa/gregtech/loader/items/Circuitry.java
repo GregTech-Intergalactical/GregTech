@@ -17,8 +17,7 @@ import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Glowstone;
-import static muramasa.antimatter.data.AntimatterMaterials.Lapis;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.SOLDER;
 import static muramasa.gregtech.data.Materials.*;
@@ -38,11 +37,11 @@ public class Circuitry {
         CUTTING.RB().ii(RecipeIngredient.of(SiliconBoule, 1))
                 .fi(Lubricant.getLiquid(240))
                 .io(new ItemStack(Wafer, 16)).add("wafer_with_lubricant", 800, 384);
-        //Coated
-        ASSEMBLING.RB().ii(of(GTRubberData.StickyResin,1), of(PLATE.get(AntimatterMaterials.Wood),8))
+        //phenolic
+        ASSEMBLING.RB().ii(DUST.getMaterialIngredient(Wood, 1), RecipeIngredient.of(MoldPlate, 1).setNoConsume())
                 .fi(Glue.getLiquid(100))
-                .io(new ItemStack(GregTechData.CircuitBoardCoated,8))
-                .add("coated_circuit_board",8*20, 8);
+                .io(new ItemStack(CircuitBoardPhenolic,8))
+                .add("phenolic_circuit_board",30, 8);
         boards();
         circuits();
         //bloodyBoards();
@@ -60,7 +59,7 @@ public class Circuitry {
                 .fi(Lubricant.getLiquid(240))
                 .io(new ItemStack(SiliconChip, 8)).add("silicon_chip_with_lubricant", 800, 384);
         ASSEMBLING.RB().ii(of(Wafer), PLATE.getMaterialIngredient(Polyethylene, 1)).io(new ItemStack(CircuitBoardEmpty)).add("empty_circuit_board", 32, 16);
-        ASSEMBLING.RB().ii(of(CircuitBoardCoated), PLATE.getMaterialIngredient(Polyethylene, 1)).io(new ItemStack(CircuitBoardEmpty)).add("empty_circuit_board_1", 32, 16);
+        ASSEMBLING.RB().ii(of(CircuitBoardPhenolic), PLATE.getMaterialIngredient(Polyethylene, 1)).io(new ItemStack(CircuitBoardEmpty)).add("empty_circuit_board_1", 32, 16);
         PRESSING.RB().ii(of(CircuitBoardEmpty), of(EtchedWiringMV, 4)).io(new ItemStack(CircuitBoardBasic)).add("basic_circuit_board", 32, 16);
         PRESSING.RB().ii(of(CircuitBoardEmpty), of(EtchedWiringHV, 4)).io(new ItemStack(CircuitBoardAdvanced)).add("advanced_circuit_board", 32, 16);
         PRESSING.RB().ii(of(CircuitBoardProcessorEmpty), of(EtchedWiringEV, 4)).io(new ItemStack(CircuitBoardProcessor)).add("processor_circuit_board", 32, 256);
