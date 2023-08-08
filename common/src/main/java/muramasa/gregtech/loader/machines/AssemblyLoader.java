@@ -59,7 +59,6 @@ public class AssemblyLoader {
         motors();
         pistons();
         rotors();
-        smdComponents();
     }
 
     //TODO proper type check for the cables
@@ -183,12 +182,6 @@ public class AssemblyLoader {
         ROTOR.all().forEach(r -> {
             ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(r,4),RING.getMaterialIngredient(r,1)).fi(SolderingAlloy.getLiquid(144)).io(new ItemStack(ROTOR.get(r),1)).add(r.getId() + "_rotor",240,24);
         });
-    }
-
-    private static void smdComponents () {
-        ASSEMBLING.RB().ii(of(PLATE.get(Silicon), 1), of(WIRE_FINE.get(AnnealedCopper), 8)).fi(Polyethylene.getLiquid(288)).io(new ItemStack(Transistor,32)).add("transistor",80, 96);
-        ASSEMBLING.RB().ii(of(DUST.get(Carbon), 1), of(WIRE_FINE.get(Electrum), 4)).fi(Polyethylene.getLiquid(288)).io(new ItemStack(Resistor,24)).add("resistor",80, 96);
-        ASSEMBLING.RB().ii(of(FOIL.get(PolyvinylChloride), 4), of(FOIL.get(Aluminium), 2)).fi(Polyethylene.getLiquid(288)).io(new ItemStack(Capacitor,16)).add("capacitor",80, 96);
     }
 
     private static void addTierCasing (Tier tier) {

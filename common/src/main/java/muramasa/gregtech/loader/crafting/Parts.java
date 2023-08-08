@@ -15,6 +15,7 @@ import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
+import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -39,7 +40,6 @@ import static muramasa.gregtech.data.TierMaps.*;
 public class Parts {
   public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
       tieredItems(output, provider);
-      circuits(output, provider);
       molds(output, provider);
       provider.shapeless(output, "fire_clay_dust", "parts", "has_clay_dust", provider.hasSafeItem(AntimatterMaterialTypes.DUST.getMaterialTag(Clay)), AntimatterMaterialTypes.DUST.get(Fireclay, 2),
               AntimatterMaterialTypes.DUST.getMaterialTag(Brick), AntimatterMaterialTypes.DUST.getMaterialTag(Clay));
@@ -78,13 +78,7 @@ public class Parts {
               'G', GEAR.get(CobaltBrass),
               'D', DUST_SMALL.get(Diamond)
       ), " D ", "DGD", " D ");
-      // MANUAL COATED BOARD CRAFTING
-      provider.addStackRecipe(output, GTIRef.ID, "", "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CircuitBoardCoated, 3),
-              ImmutableMap.<Character, Object>builder()
-                      .put('R', GTRubberData.StickyResin)
-                      .put('P', PLATE.get(Wood))
-                      .build(),
-              " R ", "PPP", " R ");
+
       provider.addItemRecipe(output, "mining_pipes", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), MINING_PIPE_THIN,
               of('H', HAMMER.getTag(), 'P', FLUID_PIPE_STEEL.getBlockItem(PipeSize.SMALL), 'F', FILE.getTag()), "HPF");
   }
@@ -195,77 +189,6 @@ public class Parts {
         provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), mold,
                 of('P', EmptyShape, 'H', WIRE_CUTTER.getTag()), shapes);
     }
-
-  private static void bloodyCircuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
-      // MANUAL TIER 0 CIRCUIT CRAFTING
-      provider.addItemRecipe(output, "circuit_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBasicIntegrated,
-              ImmutableMap.<Character, Object>builder()
-                      .put('V', VacuumTube).put('B', CircuitBoardCoated)
-                      .put('W',
-                              AntimatterAPI.getOrThrow(Cable.class, "cable_" + RedAlloy.getId(),
-                                      () -> new RuntimeException("Missing red alloy cable")).getBlockItem(PipeSize.VTINY))
-                      .put('C',
-                              AntimatterAPI.getOrThrow(Cable.class, "cable_" + Tin.getId(),
-                                      () -> new RuntimeException("Missing tin cable")).getBlockItem(PipeSize.VTINY))
-                      .put('R',Resistor).put('P', PLATE.get(Steel))
-                      .build(),
-              "RPR", "VBV", "CWC");
-
-      // MANUAL VAC TUBE CRAFTING
-      provider.addItemRecipe(output, "vac_tube", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), VacuumTube,
-              ImmutableMap.<Character, Object>builder()
-                      .put('G', Items.GLASS)
-                      .put('P', Items.PAPER)
-                      .put('W',
-                              AntimatterAPI.getOrThrow(Wire.class, "wire_" + Copper.getId(),
-                                      () -> new RuntimeException("Missing copper wire")).getBlockItem(PipeSize.VTINY))
-                      .build(),
-              "   ", "PGP", "WWW");
-
-      // MANUAL RESISTOR CRAFTING
-      provider.addItemRecipe(output, "resistor", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Resistor,
-              ImmutableMap.<Character, Object>builder()
-                      .put('C', DUST.get(Coal))
-                      .put('P', Items.PAPER)
-                      .put('W',
-                              AntimatterAPI.getOrThrow(Wire.class, "wire_" + Copper.getId(),
-                                      () -> new RuntimeException("Missing copper wire")).getBlockItem(PipeSize.VTINY))
-                      .build(),
-              " P ", "WCW", " P ");
-  }
-
-  private static void circuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
-      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_h", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasicElectronic,
-              ImmutableMap.<Character, Object>builder()
-                      .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
-                      .put('N', NandChip)
-                      .put('S', CircuitBoardCoated)
-                      .build(), "CCC", "NSN", "CCC");
-      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_v", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasicElectronic,
-              ImmutableMap.<Character, Object>builder()
-                      .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
-                      .put('N', NandChip)
-                      .put('S', CircuitBoardCoated)
-                      .build(), "CNC", "CSC", "CNC");
-      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_h", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
-              ImmutableMap.<Character, Object>builder()
-                      .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
-                      .put('N', NandChip)
-                      .put('S', CircuitBoardCoated)
-                      .build(), "CCC", "NSN", "CCC");
-      provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_v", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
-              ImmutableMap.<Character, Object>builder()
-                      .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
-                      .put('N', NandChip)
-                      .put('S', CircuitBoardCoated)
-                      .build(), "CNC", "CSC", "CNC");
-      provider.addItemRecipe(output, GTIRef.ID, "", "circuits", "has_item_casing", provider.hasSafeItem(ITEM_CASING.getMaterialTag(Steel)), NandChip,
-              of('C', ITEM_CASING.getMaterialTag(Steel), 'R', WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', WIRE_GETTER.apply(PipeSize.VTINY, LV)), "CR", "RT");
-      provider.addItemRecipe(output, GTIRef.ID, "lapotron_crystal_upgrade", "energy_orbs", "has_circuit", provider.hasSafeItem(CIRCUITS_ADVANCED), LapotronCrystal,
-              of('C', CIRCUITS_ADVANCED, 'L', GregTechTags.DUST_LAPIS_LAZURITE, 'E', EnergyCrystal), "LCL", "LEL", "LCL");
-      provider.addItemRecipe(output, GTIRef.ID, "", "energy_orbs", "has_circuit", provider.hasSafeItem(CIRCUITS_ADVANCED), LapotronCrystal,
-              of('C', CIRCUITS_ADVANCED, 'L', GregTechTags.DUST_LAPIS_LAZURITE, 'S', GEM.getMaterialTag(Sapphire)), "LCL", "LSL", "LCL");
-  }
 
   static PipeSize fromTier(Tier tier){
       if (tier == LV) return PipeSize.VTINY;

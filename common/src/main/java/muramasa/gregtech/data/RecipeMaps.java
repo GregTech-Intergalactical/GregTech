@@ -62,6 +62,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "chemical_bathing", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CHEMICAL_REACTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "chemical_reacting", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> CIRCUIT_ASSEMBLING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "circuit_assembling", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> COAL_BOILERS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "coal_boilers", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> COKING = AntimatterAPI.register(RecipeMap.class,

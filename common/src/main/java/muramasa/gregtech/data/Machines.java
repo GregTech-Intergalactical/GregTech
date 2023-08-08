@@ -67,6 +67,7 @@ public class Machines {
     public static BasicMachine CHEMICAL_BATH = new BasicMachine(GTIRef.ID, "chemical_bath").setMap(CHEMICAL_BATHING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR, 0.6f);
     public static BasicMachine CHEMICAL_DEHYDRATOR = new BasicMachine(GTIRef.ID, "chemical_dehydrator").setMap(DEHYDRATING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine CHEMICAL_REACTOR = new BasicMachine(GTIRef.ID, "chemical_reactor").setMap(CHEMICAL_REACTING).addFlags(GUI, ITEM, FLUID).renderContainedLiquids().custom();
+    public static BasicMachine CIRCUIT_ASSEMBLER = new BasicMachine(GTIRef.ID, "circuit_assembler").setMap(CIRCUIT_ASSEMBLING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine COMPRESSOR = new BasicMachine(GTIRef.ID, "compressor").setMap(COMPRESSING).addFlags(GUI, ITEM);
     public static BasicMachine CUTTER = new BasicMachine(GTIRef.ID, "cutter").setMap(CUTTING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine DECAY_CHAMBER = new BasicMachine(GTIRef.ID, "decay_chamber").setMap(DECAYING).addFlags(GUI, ITEM, FLUID);

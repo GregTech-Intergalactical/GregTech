@@ -91,6 +91,8 @@ public class Guis {
         BENDER.add(ALLOY_SMELTER);
         CANNER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63)
                 .getGui().getMachineData().setProgressLocation("canner");
+        CIRCUIT_ASSEMBLER.add(ASSEMBLER)
+                .getGui().getMachineData().setProgressLocation("assembler");
         COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63)
                 .getGui().getMachineData().setProgressLocation("compressor");
         CUTTER.add(IT_IN, 53, 25).add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY, 80, 63)

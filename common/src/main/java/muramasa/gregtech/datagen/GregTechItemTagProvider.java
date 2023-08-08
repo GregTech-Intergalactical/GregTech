@@ -5,8 +5,12 @@ import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.data.GregTechTags;
 
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechTags.*;
+import static muramasa.gregtech.data.Materials.*;
 
 public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
     public GregTechItemTagProvider(String providerDomain, String providerName, boolean replace, AntimatterBlockTagProvider p) {
@@ -31,7 +35,9 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         this.tag(POWER_UNIT_MV).add(PowerUnitMV);
         this.tag(POWER_UNIT_HV).add(PowerUnitHV);
         this.tag(POWER_UNIT_SMALL).add(SmallPowerUnit);
-        this.tag(PLATES_IRON_ALUMINIUM).addTag(TagUtils.getForgelikeItemTag("plates/iron")).addTag(TagUtils.getForgelikeItemTag("plates/wrought_iron")).addTag(TagUtils.getForgelikeItemTag("plates/aluminium"));
-        this.tag(DUST_LAPIS_LAZURITE).addTag(TagUtils.getForgelikeItemTag("dusts/lapis")).addTag(TagUtils.getForgelikeItemTag("dusts/lazurite"));
+        this.tag(RESISTORS).add(Resistor, SMDResistor);
+        this.tag(PLATES_IRON_ALUMINIUM).addTag(PLATE.getMaterialTag(Iron)).addTag(PLATE.getMaterialTag(WroughtIron)).addTag(PLATE.getMaterialTag(Aluminium));
+        this.tag(DUST_LAPIS_LAZURITE).addTag(DUST.getMaterialTag(Lapis)).addTag(DUST.getMaterialTag(Lazurite));
+        this.tag(DUST_COALS).addTag(DUST.getMaterialTag(Coal)).addTag(DUST.getMaterialTag(Charcoal)).addTag(DUST.getMaterialTag(Carbon));
     }
 }

@@ -188,8 +188,12 @@ public class GregTechData {
     public static ItemBasic<?> DataOrb = new ItemBasic<>(GTIRef.ID, "data_orb");
 
     public static ItemBasic<?> Transistor = new ItemBasic<>(GTIRef.ID, "transistor").tip("An integral part to Circuitry");
+    public static ItemBasic<?> SMDTransistor = new ItemBasic<>(GTIRef.ID, "smd_transistor").tip("An integral part to Circuitry");
     public static ItemBasic<?> Resistor = new ItemBasic<>(GTIRef.ID, "resistor").tip("An integral part to Circuitry");
+    public static ItemBasic<?> SMDResistor = new ItemBasic<>(GTIRef.ID, "smd_resistor").tip("An integral part to Circuitry");
+    public static ItemBasic<?> Diode = new ItemBasic<>(GTIRef.ID, "diode").tip("An integral part to Circuitry");
     public static ItemBasic<?> Capacitor = new ItemBasic<>(GTIRef.ID, "capacitor").tip("An integral part to Circuitry");
+    public static ItemBasic<?> SMDCapacitor = new ItemBasic<>(GTIRef.ID, "smd_capacitor").tip("An integral part to Circuitry");
     public static ItemBasic<?> VacuumTube = new ItemBasic<>(GTIRef.ID, "vacuum_tube").tip("A part for the Basic Circuit");
     public static ItemBasic<?> GlassTube = new ItemBasic<>(GTIRef.ID, "glass_tube").tip("A part for circuits");
 
@@ -201,6 +205,8 @@ public class GregTechData {
     public static ItemBasic<?> SiliconChip = new ItemBasic<>(GTIRef.ID, "silicon_chip", "silicon/");
     public static ItemBasic<?> GlowstoneDopedWafer = new ItemBasic<>(GTIRef.ID, "glowstone_doped_wafer", "silicon/");
     public static ItemBasic<?> NaquadahDopedWafer = new ItemBasic<>(GTIRef.ID, "naquadah_doped_wafer", "silicon/");
+    public static ItemBasic<?> IntegratedLogicCircuitWafer = new ItemBasic<>(GTIRef.ID, "integrated_logic_circuit_wafer", "silicon/");
+    public static ItemBasic<?> IntegratedLogicCircuit = new ItemBasic<>(GTIRef.ID, "integrated_logic_circuit", "silicon/");
 
     public static ItemBasic<?> BatteryTantalum = new ItemBattery(GTIRef.ID, "tantalum_capacitor", Tier.ULV, 10000, true).tip("Reusable");
     public static ItemBasic<?> BatteryHullSmall = new ItemBasic<>(GTIRef.ID, "small_battery_hull").tip("An empty LV Battery Hull");
