@@ -21,7 +21,7 @@ public class GregTechConfig {
     }
 
     public static void onModConfigEvent(final ModConfig config) {
-        if (config.getModId().equals(Ref.ID)){
+        if (config.getModId().equals(GTIRef.ID)){
             if (config.getSpec() == COMMON_SPEC) bakeCommonConfig();
         }
     }
