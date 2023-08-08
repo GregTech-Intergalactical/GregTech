@@ -4,9 +4,9 @@ import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.data.GregTechTags;
+import net.minecraft.world.item.Items;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechTags.*;
@@ -36,6 +36,9 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         this.tag(POWER_UNIT_HV).add(PowerUnitHV);
         this.tag(POWER_UNIT_SMALL).add(SmallPowerUnit);
         this.tag(RESISTORS).add(Resistor, SMDResistor);
+        this.tag(CAPACITORS).add(Capacitor, SMDCapacitor);
+        this.tag(TRANSISTORS).add(Transistor, SMDTransistor);
+        this.tag(GEM.getMaterialTag(Amethyst)).remove(Items.AMETHYST_SHARD);
         this.tag(PLATES_IRON_ALUMINIUM).addTag(PLATE.getMaterialTag(Iron)).addTag(PLATE.getMaterialTag(WroughtIron)).addTag(PLATE.getMaterialTag(Aluminium));
         this.tag(DUST_LAPIS_LAZURITE).addTag(DUST.getMaterialTag(Lapis)).addTag(DUST.getMaterialTag(Lazurite));
         this.tag(DUST_COALS).addTag(DUST.getMaterialTag(Coal)).addTag(DUST.getMaterialTag(Charcoal)).addTag(DUST.getMaterialTag(Carbon));

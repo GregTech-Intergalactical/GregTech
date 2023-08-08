@@ -158,44 +158,51 @@ public class GregTechData {
     public static ItemBasic<?> EngravedCrystalChip = new ItemBasic<>(GTIRef.ID, "engraved_crystal_chip").tip("Needed for Circuits");
     public static ItemBasic<?> EngravedLapotronChip = new ItemBasic<>(GTIRef.ID, "engraved_lapotron_chip").tip("Needed for Circuits");
 
-    public static ItemBasic<?> CircuitBoardBasic = new ItemBasic<>(GTIRef.ID, "basic_circuit_board");
-    public static ItemBasic<?> CircuitBoardAdvanced = new ItemBasic<>(GTIRef.ID, "advanced_circuit_board");
-    public static ItemBasic<?> CircuitBoardEmpty = new ItemBasic<>(GTIRef.ID, "empty_circuit_board");
-    public static ItemBasic<?> CircuitBoardProcessor = new ItemBasic<>(GTIRef.ID, "processor_circuit_board");
-    public static ItemBasic<?> CircuitBoardProcessorEmpty = new ItemBasic<>(GTIRef.ID, "empty_processor_circuit_board");
+    public static ItemBasic<?> CircuitBoardBasic = new ItemBasic<>(GTIRef.ID, "basic_circuit_board", "circuits/");
+    public static ItemBasic<?> CircuitBoardAdvanced = new ItemBasic<>(GTIRef.ID, "advanced_circuit_board", "circuits/");
+    public static ItemBasic<?> CircuitBoardEmpty = new ItemBasic<>(GTIRef.ID, "empty_circuit_board", "circuits/");
+    public static ItemBasic<?> CircuitBoardProcessor = new ItemBasic<>(GTIRef.ID, "processor_circuit_board", "circuits/");
+    public static ItemBasic<?> CircuitBoardProcessorEmpty = new ItemBasic<>(GTIRef.ID, "empty_processor_circuit_board", "circuits/");
 
-    public static ItemBasic<?> CircuitBoardCoated = new ItemBasic<>(GTIRef.ID, "board_coated").tip("The most basic Board");
-    public static ItemBasic<?> CircuitBoardPhenolic = new ItemBasic<>(GTIRef.ID, "board_phenolic").tip("A basic Board");
-    public static ItemBasic<?> CircuitBoardPlastic = new ItemBasic<>(GTIRef.ID, "board_plastic").tip("An advanced Board");
-    public static ItemBasic<?> CircuitBoardEpoxy = new ItemBasic<>(GTIRef.ID, "board_epoxy").tip("4th Tier Board");
-    public static ItemBasic<?> CircuitBoardFiber = new ItemBasic<>(GTIRef.ID, "board_fiber_reinforced").tip("5th Tier Board");
-    public static ItemBasic<?> CircuitBoardMultiFiber = new ItemBasic<>(GTIRef.ID, "board_multilayer_fiber_reinforced").tip("6th Tier Board");
-    public static ItemBasic<?> CircuitBoardWetware = new ItemBasic<>(GTIRef.ID, "board_wetware").tip("7th Tier Board");
+    public static ItemBasic<?> CircuitBoardCoated = new ItemBasic<>(GTIRef.ID, "board_coated", "circuits/").tip("The most basic Board");
+    public static ItemBasic<?> CircuitBoardPhenolic = new ItemBasic<>(GTIRef.ID, "board_phenolic", "circuits/").tip("A basic Board");
+    public static ItemBasic<?> CircuitBoardPlastic = new ItemBasic<>(GTIRef.ID, "board_plastic", "circuits/").tip("An advanced Board");
+    public static ItemBasic<?> CircuitBoardEpoxy = new ItemBasic<>(GTIRef.ID, "board_epoxy", "circuits/").tip("4th Tier Board");
+    public static ItemBasic<?> CircuitBoardFiber = new ItemBasic<>(GTIRef.ID, "board_fiber_reinforced", "circuits/").tip("5th Tier Board");
+    public static ItemBasic<?> CircuitBoardMultiFiber = new ItemBasic<>(GTIRef.ID, "board_multilayer_fiber_reinforced", "circuits/").tip("6th Tier Board");
+    public static ItemBasic<?> CircuitBoardWetware = new ItemBasic<>(GTIRef.ID, "board_wetware", "circuits/").tip("7th Tier Board");
 
-    public static ItemBasic<?> CircuitBasicIntegrated = new ItemBasic<>(GTIRef.ID, "basic_integrated_circuit").tip("The breakthrough to the electrical age");
-    public static ItemBasic<?> CircuitBasicElectronic = new ItemBasic<>(GTIRef.ID, "basic_electronic_circuit").tip("A basic Circuit");
-    public static ItemBasic<?> CircuitGoodElectronic = new ItemBasic<>(GTIRef.ID, "good_electronic_circuit").tip("A good Circuit");
-    public static ItemBasic<?> CircuitGoodIntegrated = new ItemBasic<>(GTIRef.ID, "good_integrated_circuit").tip("Good Circuit");
-    public static ItemBasic<?> CircuitAdv = new ItemBasic<>(GTIRef.ID, "advanced_circuit").tip("An advanced Circuit");
-    public static ItemBasic<?> CircuitDataStorage = new ItemBasic<>(GTIRef.ID, "data_storage_circuit");
-    public static ItemBasic<?> CircuitDataControl = new ItemBasic<>(GTIRef.ID, "data_control_circuit");
-    public static ItemBasic<?> MicroProcessor = new ItemBasic<>(GTIRef.ID, "microprocessor").tip("A Basic Circuit");
-    public static ItemBasic<?> IntegratedProcessor = new ItemBasic<>(GTIRef.ID, "integrated_processor").tip("A Good Circuit");
-    public static ItemBasic<?> NanoProcessor = new ItemBasic<>(GTIRef.ID, "nanoprocessor").tip("A Nanoprocessor");
-    public static ItemBasic<?> QuantumProcessor = new ItemBasic<>(GTIRef.ID, "quantumprocessor").tip("A Quantumprocessor");
-    public static ItemBasic<?> CircuitEnergyFlow = new ItemBasic<>(GTIRef.ID, "energy_flow_circuit").tip("A High Voltage Processor");
-    public static ItemBasic<?> CircuitWetware = new ItemBasic<>(GTIRef.ID, "wetware_circuit").tip("You feel like it's watching you");
-    public static ItemBasic<?> DataOrb = new ItemBasic<>(GTIRef.ID, "data_orb");
+    public static ItemBasic<?> CircuitBasicElectronic = new ItemBasic<>(GTIRef.ID, "basic_electronic_circuit", "circuits/").tip("A basic Circuit");
+    public static ItemBasic<?> CircuitBasicIntegrated = new ItemBasic<>(GTIRef.ID, "basic_integrated_circuit", "circuits/").tip("The breakthrough to the electrical age");
+    public static ItemBasic<?> MicroProcessor = new ItemBasic<>(GTIRef.ID, "microprocessor", "circuits/").tip("A Basic Circuit");
+    public static ItemBasic<?> CircuitGoodElectronic = new ItemBasic<>(GTIRef.ID, "good_electronic_circuit", "circuits/").tip("A good Circuit");
+    public static ItemBasic<?> CircuitGoodIntegrated = new ItemBasic<>(GTIRef.ID, "good_integrated_circuit", "circuits/").tip("Good Circuit");
+    public static ItemBasic<?> IntegratedProcessor = new ItemBasic<>(GTIRef.ID, "integrated_processor", "circuits/").tip("A Good Circuit");
+    public static ItemBasic<?> CircuitAdv = new ItemBasic<>(GTIRef.ID, "advanced_circuit", "circuits/").tip("An advanced Circuit");
+    public static ItemBasic<?> ProcessorAssembly = new ItemBasic<>(GTIRef.ID, "processor_assembly", "circuits/").tip("An advanced Circuit");
+    public static ItemBasic<?> NanoProcessor = new ItemBasic<>(GTIRef.ID, "nanoprocessor", "circuits/").tip("A Nanoprocessor");
+    public static ItemBasic<?> CircuitDataStorage = new ItemBasic<>(GTIRef.ID, "data_storage_circuit", "circuits/");
+    public static ItemBasic<?> CircuitDataControl = new ItemBasic<>(GTIRef.ID, "data_control_circuit", "circuits/");
+
+
+
+    public static ItemBasic<?> QuantumProcessor = new ItemBasic<>(GTIRef.ID, "quantumprocessor", "circuits/").tip("A Quantumprocessor");
+    public static ItemBasic<?> CircuitEnergyFlow = new ItemBasic<>(GTIRef.ID, "energy_flow_circuit", "circuits/").tip("A High Voltage Processor");
+    public static ItemBasic<?> CircuitWetware = new ItemBasic<>(GTIRef.ID, "wetware_circuit", "circuits/").tip("You feel like it's watching you");
+    public static ItemBasic<?> DataOrb = new ItemBasic<>(GTIRef.ID, "data_orb", "circuits/");
 
     public static ItemBasic<?> Transistor = new ItemBasic<>(GTIRef.ID, "transistor").tip("An integral part to Circuitry");
     public static ItemBasic<?> SMDTransistor = new ItemBasic<>(GTIRef.ID, "smd_transistor").tip("An integral part to Circuitry");
     public static ItemBasic<?> Resistor = new ItemBasic<>(GTIRef.ID, "resistor").tip("An integral part to Circuitry");
     public static ItemBasic<?> SMDResistor = new ItemBasic<>(GTIRef.ID, "smd_resistor").tip("An integral part to Circuitry");
     public static ItemBasic<?> Diode = new ItemBasic<>(GTIRef.ID, "diode").tip("An integral part to Circuitry");
+    public static ItemBasic<?> SMDDiode = new ItemBasic<>(GTIRef.ID, "smd_diode").tip("An integral part to Circuitry");
     public static ItemBasic<?> Capacitor = new ItemBasic<>(GTIRef.ID, "capacitor").tip("An integral part to Circuitry");
     public static ItemBasic<?> SMDCapacitor = new ItemBasic<>(GTIRef.ID, "smd_capacitor").tip("An integral part to Circuitry");
     public static ItemBasic<?> VacuumTube = new ItemBasic<>(GTIRef.ID, "vacuum_tube").tip("A part for the Basic Circuit");
     public static ItemBasic<?> GlassTube = new ItemBasic<>(GTIRef.ID, "glass_tube").tip("A part for circuits");
+    public static ItemBasic<?> SmallCoil = new ItemBasic<>(GTIRef.ID, "small_coil").tip("A part for circuits");
+    public static ItemBasic<?> PetriDish = new ItemBasic<>(GTIRef.ID, "petri_dish");
 
     public static ItemBasic<?> SiliconBoule = new ItemBasic<>(GTIRef.ID, "monocrystalline_silicon_boule", "silicon/");
     public static ItemBasic<?> GlowstoneDopedSiliconBoule = new ItemBasic<>(GTIRef.ID, "glowstone_doped_monocrystalline_silicon_boule", "silicon/");
@@ -205,8 +212,28 @@ public class GregTechData {
     public static ItemBasic<?> SiliconChip = new ItemBasic<>(GTIRef.ID, "silicon_chip", "silicon/");
     public static ItemBasic<?> GlowstoneDopedWafer = new ItemBasic<>(GTIRef.ID, "glowstone_doped_wafer", "silicon/");
     public static ItemBasic<?> NaquadahDopedWafer = new ItemBasic<>(GTIRef.ID, "naquadah_doped_wafer", "silicon/");
+    public static ItemBasic<?> ASoCWafer = new ItemBasic<>(GTIRef.ID, "asoc_wafer", "silicon/");
+    public static ItemBasic<?> ASoC = new ItemBasic<>(GTIRef.ID, "asoc", "silicon/");
+    public static ItemBasic<?> CentralProcessingUnitWafer = new ItemBasic<>(GTIRef.ID, "central_processing_unit_wafer", "silicon/");
+    public static ItemBasic<?> CentralProcessingUnit = new ItemBasic<>(GTIRef.ID, "central_processing_unit", "silicon/");
+    public static ItemBasic<?> HPICWafer = new ItemBasic<>(GTIRef.ID, "hpic_wafer", "silicon/");
+    public static ItemBasic<?> HighPowerIC = new ItemBasic<>(GTIRef.ID, "high_power_ic", "silicon/");
     public static ItemBasic<?> IntegratedLogicCircuitWafer = new ItemBasic<>(GTIRef.ID, "integrated_logic_circuit_wafer", "silicon/");
     public static ItemBasic<?> IntegratedLogicCircuit = new ItemBasic<>(GTIRef.ID, "integrated_logic_circuit", "silicon/");
+    public static ItemBasic<?> NANDMemoryChipWafer = new ItemBasic<>(GTIRef.ID, "nand_memory_chip_wafer", "silicon/");
+    public static ItemBasic<?> NANDMemoryChip = new ItemBasic<>(GTIRef.ID, "nand_memory_chip", "silicon/");
+    public static ItemBasic<?> NanoCpuWafer = new ItemBasic<>(GTIRef.ID, "nano_cpu_wafer", "silicon/");
+    public static ItemBasic<?> NanoCpu = new ItemBasic<>(GTIRef.ID, "nanocomponent_central_processing_unit", "silicon/");
+    public static ItemBasic<?> NorMemoryChipWafer = new ItemBasic<>(GTIRef.ID, "nor_memory_chip_wafer", "silicon/");
+    public static ItemBasic<?> NorMemoryChip = new ItemBasic<>(GTIRef.ID, "nor_memory_chip", "silicon/");
+    public static ItemBasic<?> PICWafer = new ItemBasic<>(GTIRef.ID, "pic_wafer", "silicon/");
+    public static ItemBasic<?> PowerIC = new ItemBasic<>(GTIRef.ID, "power_ic", "silicon/");
+    public static ItemBasic<?> QBitWafer = new ItemBasic<>(GTIRef.ID, "qbit_wafer", "silicon/");
+    public static ItemBasic<?> QBitProcessingUnit = new ItemBasic<>(GTIRef.ID, "qbit_processing_unit", "silicon/");
+    public static ItemBasic<?> RandomAccessMemoryChipWafer = new ItemBasic<>(GTIRef.ID, "random_access_memory_chip_wafer", "silicon/");
+    public static ItemBasic<?> RandomAccessMemoryChip = new ItemBasic<>(GTIRef.ID, "random_access_memory_chip", "silicon/");
+    public static ItemBasic<?> SOCWafer = new ItemBasic<>(GTIRef.ID, "soc_wafer", "silicon/");
+    public static ItemBasic<?> SOC = new ItemBasic<>(GTIRef.ID, "soc", "silicon/");
 
     public static ItemBasic<?> BatteryTantalum = new ItemBattery(GTIRef.ID, "tantalum_capacitor", Tier.ULV, 10000, true).tip("Reusable");
     public static ItemBasic<?> BatteryHullSmall = new ItemBasic<>(GTIRef.ID, "small_battery_hull").tip("An empty LV Battery Hull");
