@@ -110,7 +110,7 @@ public class Circuitry {
                         .put('T', WIRE_FINE.getMaterialTag(Tin))
                         .put('W', Wafer)
                         .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
-        provider.addStackRecipe(output, GTIRef.ID, "diode_#", "diodes", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(Diode),
+        provider.addStackRecipe(output, GTIRef.ID, "diode_3", "diodes", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(Diode),
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeCTags.DYES_BLACK)
                         .put('T', WIRE_TIN.getBlockItem(PipeSize.VTINY))
