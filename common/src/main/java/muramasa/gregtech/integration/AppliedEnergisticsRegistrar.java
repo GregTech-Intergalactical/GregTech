@@ -3,11 +3,13 @@ package muramasa.gregtech.integration;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterStoneTypes;
+import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
@@ -86,6 +88,12 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         RecipeMaps.MACERATING.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
         RecipeMaps.ELECTROLYZING.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1)).io(new ItemStack(getAe2Item("charged_certus_quartz_crystal"))).add("charged_certus_quartz", 2000, 30);
         CHEMICAL_REACTING.RB().fi(Water.getLiquid(1000)).ii(of(DUST.getMaterialTag(CertusQuartz), 3), of(DUST.getMaterialTag(Sodium), 1)).io(GEM.get(CertusQuartz, 3)).add("certus_quartz",500,30);
+    }
+
+    @Override
+    public void onMaterialEvent(MaterialEvent event) {
+        event.setMaterial(Quartzite).addByProduct(CertusQuartz, Barite);
+        event.setMaterial(CertusQuartz).addByProduct(Quartzite, Barite);
     }
 
     public static Item getAe2Item(String id){
