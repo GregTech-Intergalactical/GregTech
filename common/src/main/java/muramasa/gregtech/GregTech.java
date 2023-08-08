@@ -177,7 +177,7 @@ public class GregTech extends AntimatterMod {
                         l.addAll(Arrays.asList(CircuitBasicIntegrated, CircuitGoodIntegrated, CircuitWetware, MicroProcessor, IntegratedProcessor, NanoProcessor, QuantumProcessor));
                     }
                 });
-                AntimatterAPI.runLaterCommon(CommonHandler::setup);
+                CommonHandler.setup();
               //  if (side == Dist.CLIENT) StructureInfo.init();
                 TierMaps.providerInit();
             }
