@@ -138,8 +138,6 @@ public class Machines {
         tooltip.add(new TranslatableComponent("machine.power.capacity").append(": ").append(new TextComponent(String.valueOf(512L + machine.getTier().getVoltage() * 8L))).withStyle(ChatFormatting.BLUE));
     });
     public static BasicMachine ADJUSTABLE_TRANSFORMER = new BasicMachine(GTIRef.ID, "adjustable_transformer").setTiers(EV, IV).addFlags(GUI, ENERGY).setTile(TileEntityDigitalTransformer::new).noCovers().allowFrontIO();
-    //public static BasicMachine TRANSFORMER_HIAMP = new BasicMachine(GTIRef.ID, "transformer_hiamp").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new TileEntityTransformer<>(v, pos, state, 4)).noCovers().allowFrontIO();
-    //public static BasicMachine TRANSFORMER_ULTRA = new BasicMachine(GTIRef.ID, "transformer_ultra").addFlags(ENERGY).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new TileEntityTransformer<>(v, pos, state, 16)).noCovers().allowFrontIO();
     /**
      ** Generators
      **/
@@ -189,7 +187,6 @@ public class Machines {
      ** Creative Machines
      **/
     public static TankMachine INFINITE_STEAM = new TankMachine(GTIRef.ID, "infinite_steam").addFlags(FLUID, CELL, GUI).setTile(TileEntityInfiniteFluid::new).setTiers(LV);
-    //public static BasicMachine INFINITE_STORAGE = new BasicMachine(GTIRef.ID, "infinite_storage").setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV, MAX).addFlags(ENERGY).setTile(TileEntityInfiniteStorage::new).noCovers().setAllowVerticalFacing(true).allowFrontIO();
 
     public static void init() {
         if (!AntimatterAPI.isModLoaded("gt4r")) {
