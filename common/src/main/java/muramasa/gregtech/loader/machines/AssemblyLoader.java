@@ -152,8 +152,8 @@ public class AssemblyLoader {
         ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_REDSTONE_MACHINE_CONTROLLER.getId()))).add("redstone_machine_controller_lead", 800, 16);
         ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Tin.getLiquid(L)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_REDSTONE_MACHINE_CONTROLLER.getId()))).add("redstone_machine_controller_tin", 800, 16);
         ASSEMBLING.RB().ii(of(CarbonFibre, 2), INT_CIRCUITS.get(2)).io(CarbonMesh).add("carbon_mesh", 800, 2);
-        ASSEMBLING.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16)).io(ItemFilter).add("item_filter", 1600, 32);
-        ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16)).io(ItemFilter).add("item_filter_cheap", 1600, 32);
+        ASSEMBLING.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
+        ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
     }
 
     private static void motors(){

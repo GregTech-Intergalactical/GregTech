@@ -69,9 +69,14 @@ public class GregTechData {
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/s (as Cover)", CoverPump.speeds.get(b))))
             .addTextures(new Texture(GTIRef.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(GTIRef.ID, "pump");
     public static final CoverFactory COVER_DRAIN = CoverFactory.builder(CoverDrain::new).item((a, b) ->
-            new ItemCover(GTIRef.ID, "drain").tip("Can be placed on machines as a cover")).addTextures(new Texture(GTIRef.ID, "block/cover/drain")).build(GTIRef.ID, "drain");
+            new ItemCover(GTIRef.ID, "drain").tip("Can be placed on machines/pipes as a cover")).addTextures(new Texture(GTIRef.ID, "block/cover/drain")).build(GTIRef.ID, "drain");
     public static final CoverFactory COVER_AIR_VENT = CoverFactory.builder(CoverAirVent::new).item((a, b) ->
-            new ItemCover(GTIRef.ID, "air_vent").tip("Can be placed on machines as a cover")).addTextures(new Texture(GTIRef.ID, "block/cover/air_vent")).build(GTIRef.ID, "air_vent");
+            new ItemCover(GTIRef.ID, "air_vent").tip("Can be placed on machines/pipes as a cover")).addTextures(new Texture(GTIRef.ID, "block/cover/air_vent")).build(GTIRef.ID, "air_vent");
+
+    public static final CoverFactory COVER_ITEM_FILTER = CoverFactory.builder(CoverItemFilter::new).item((a, b) ->
+            new ItemCover(GTIRef.ID, "item_filter").tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/item_filter")).gui().build(GTIRef.ID, "item_filter");
+    public static final CoverFactory COVER_FLUID_FILTER = CoverFactory.builder(CoverFluidFilter::new).item((a, b) ->
+            new ItemCover(GTIRef.ID, "fluid_filter").tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/item_filter")).gui().build(GTIRef.ID, "fluid_filter");
 
     public static final CoverFactory COVER_REDSTONE_MACHINE_CONTROLLER = CoverFactory.builder(CoverRedstoneMachineController::new).gui().item((a, b) -> {
         return new ItemCover(GTIRef.ID, "redstone_machine_controller");
@@ -92,8 +97,6 @@ public class GregTechData {
     public static ItemBasic<?> CompressedCoalBall = new ItemBasic<>(GTIRef.ID, "compressed_coal_ball");
     public static ItemBasic<?> CoalChunk = new ItemBasic<>(GTIRef.ID, "coal_chunk");
     public static ItemBasic<?> Scrap = new ItemBasic<>(GTIRef.ID, "scrap");
-
-    public static ItemBasic<?> ItemFilter = new ItemBasic<>(GTIRef.ID, "item_filter");
     public static ItemBasic<?> DiamondSawBlade = new ItemBasic<>(GTIRef.ID, "diamond_saw_blade");
     public static ItemBasic<?> DiamondGrindHead = new ItemBasic<>(GTIRef.ID, "diamond_grind_head");
     public static ItemBasic<?> TungstenGrindHead = new ItemBasic<>(GTIRef.ID, "tungsten_grind_head");

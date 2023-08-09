@@ -26,7 +26,6 @@ import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Coal;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
-import static muramasa.gregtech.data.GregTechData.ItemFilter;
 import static muramasa.gregtech.data.Materials.*;
 
 public class VanillaExtensions {

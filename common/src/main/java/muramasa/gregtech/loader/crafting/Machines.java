@@ -144,7 +144,7 @@ public class Machines {
                             .put('P', piston)
                             .put('L', cable)
                             .put('H', hull)
-                            .put('F', ItemFilter)
+                            .put('F', COVER_ITEM_FILTER.getItem())
                             .build(), "LFL", "PHP", "CFC"));
 
             Item esWire = tier == LV ? WIRE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? WIRE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? WIRE_COPPER.getBlockItem(PipeSize.SMALL) : WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
@@ -445,13 +445,13 @@ public class Machines {
                         ImmutableMap.<Character, Object>builder()
                                 .put('H', hull)
                                 .put('C', TIER_CIRCUITS.get(HV))
-                                .put('F', ItemFilter)
+                                .put('F', COVER_ITEM_FILTER.getItem())
                                 .put('E', ForgeCTags.CHESTS).build(), " H ", "ECE", " F "));
                 add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                         ImmutableMap.<Character, Object>builder()
                                 .put('H', hull)
                                 .put('C', TIER_CIRCUITS.get(LV))
-                                .put('F', ItemFilter)
+                                .put('F', COVER_ITEM_FILTER.getItem())
                                 .put('E', ForgeCTags.CHESTS).build(), " H ", "ECE", " F "));
             }
         });
