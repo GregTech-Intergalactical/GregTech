@@ -78,6 +78,8 @@ public class GregTechData {
     public static final CoverFactory COVER_FLUID_FILTER = CoverFactory.builder(CoverFluidFilter::new).item((a, b) ->
             new ItemCover(GTIRef.ID, "fluid_filter").tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/item_filter")).gui().build(GTIRef.ID, "fluid_filter");
 
+    public static CoverFactory COVER_SHUTTER = CoverFactory.builder(CoverShutter::new).item((a, b) ->
+            new ItemCover(GTIRef.ID, "shutter").tip("can be placed as a pipe cover")).addTextures(new Texture(GTIRef.ID, "block/cover/shutter")).build(GTIRef.ID, "shutter");
     public static final CoverFactory COVER_REDSTONE_MACHINE_CONTROLLER = CoverFactory.builder(CoverRedstoneMachineController::new).gui().item((a, b) -> {
         return new ItemCover(GTIRef.ID, "redstone_machine_controller");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/redstone_machine_controller")).build(GTIRef.ID, "redstone_machine_controller");

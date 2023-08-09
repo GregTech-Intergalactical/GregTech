@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 import static muramasa.gregtech.cover.ImportExportMode.EXPORT;
 import static muramasa.gregtech.cover.ImportExportMode.IMPORT;
 
-public abstract class CoverBasicTransport extends BaseCover implements ICoverModeHandler {
+public abstract class CoverBasicTransport extends CoverRedstoneSensitive implements ICoverModeHandler {
 
     protected ImportExportMode coverMode;
     int coverModeInt;

@@ -11,6 +11,7 @@ import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tile.TileEntityMachine;
+import muramasa.antimatter.tile.pipe.TileEntityPipe;
 import muramasa.gregtech.cover.RedstoneMode;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -104,6 +105,8 @@ public class CoverRedstoneMachineController extends BaseCover implements ICoverM
         if (event.getFactory() == GuiEvents.EXTRA_BUTTON){
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             coverMode = RedstoneMode.values()[Math.min(ev.data[0], 2)];
+            if (handler.getTile() instanceof TileEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
+            if (handler.getTile() instanceof TileEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
         }
     }
 
