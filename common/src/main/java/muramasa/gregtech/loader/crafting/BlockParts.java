@@ -91,7 +91,7 @@ public class BlockParts {
         addTierCasing(output, provider, Tier.LUV);
         addTierCasing(output, provider, Tier.ZPM);
         addTierCasing(output, provider, Tier.UV);
-        addTierCasing(output, provider, Tier.MAX);
+        addTierCasing(output, provider, Tier.UHV);
 
         addTierHull(output, provider, AntimatterMaterials.Wood,Tier.ULV);
         addTierHull(output, provider, WroughtIron,Tier.LV);
@@ -102,7 +102,7 @@ public class BlockParts {
         addTierHull(output, provider, Polyethylene,Tier.LUV);
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.ZPM);
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UV);
-        addTierHull(output, provider, Polytetrafluoroethylene,Tier.MAX);
+        addTierHull(output, provider, Polytetrafluoroethylene,Tier.UHV);
 
         provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CASING_ENGINE_INTAKE, 2),
                 of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', CASING_TITANIUM, 'G', FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))

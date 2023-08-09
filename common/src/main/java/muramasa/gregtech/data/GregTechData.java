@@ -361,7 +361,7 @@ public class GregTechData {
     public static final BlockCasing CASING_LUV = new BlockCasing(GTIRef.ID, "casing_luv");
     public static final BlockCasing CASING_ZPM = new BlockCasing(GTIRef.ID, "casing_zpm");
     public static final BlockCasing CASING_UV = new BlockCasing(GTIRef.ID, "casing_uv");
-    public static final BlockCasing CASING_MAX = new BlockCasing(GTIRef.ID, "casing_max");
+    public static final BlockCasing CASING_UHV = new BlockCasing(GTIRef.ID, "casing_uhv");
 
     public static final BlockCasing HULL_ULV = new BlockCasing(GTIRef.ID, "hull_ulv");
     public static final BlockCasing HULL_LV = new BlockCasing(GTIRef.ID, "hull_lv");
@@ -372,7 +372,7 @@ public class GregTechData {
     public static final BlockCasing HULL_LUV = new BlockCasing(GTIRef.ID, "hull_luv");
     public static final BlockCasing HULL_ZPM = new BlockCasing(GTIRef.ID, "hull_zpm");
     public static final BlockCasing HULL_UV = new BlockCasing(GTIRef.ID, "hull_uv");
-    public static final BlockCasing HULL_MAX = new BlockCasing(GTIRef.ID, "hull_max");
+    public static final BlockCasing HULL_UHV = new BlockCasing(GTIRef.ID, "hull_uhv");
 
     public static final BlockFakeCasing CASING_FIRE_BRICK = new BlockFakeCasing(GTIRef.ID, "fire_bricks", BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.STONE, MaterialColor.DIRT).strength(1.0f, 10.0f).sound(SoundType.STONE));
     public static final BlockCasing CASING_BRONZE = new BlockCasing(GTIRef.ID, "bronze_casing");
@@ -450,7 +450,7 @@ public class GregTechData {
     public static final Cable<?> CABLE_NAQUADAH = AntimatterAPI.register(Cable.class, new Cable<>(GTIRef.ID, Naquadah, 2, Tier.ZPM).amps(2)); //ZP);
     public static final Cable<?> CABLE_NAQUADAH_ALLOY = AntimatterAPI.register(Cable.class, new Cable<>(GTIRef.ID, NaquadahAlloy, 4, Tier.ZPM).amps(2));
     public static final Cable<?> CABLE_DURANIUM = AntimatterAPI.register(Cable.class, new Cable<>(GTIRef.ID, Duranium, 8, Tier.ZPM).amps(1));
-    public static final Cable<?> CABLE_SUPERCONDUCTOR = AntimatterAPI.register(Cable.class, new Cable<>(GTIRef.ID, Superconductor, 0, Tier.MAX).amps(4)); //MA);
+    public static final Cable<?> CABLE_SUPERCONDUCTOR = AntimatterAPI.register(Cable.class, new Cable<>(GTIRef.ID, Superconductor, 0, Tier.UHV).amps(4)); //MA);
 
 
     public static final Wire<?> WIRE_RED_ALLOY = AntimatterAPI.register(Wire.class, new Wire<>(GTIRef.ID, RedAlloy, 1, Tier.ULV).amps(1));
@@ -484,7 +484,7 @@ public class GregTechData {
     public static final Wire<?> WIRE_NAQUADAH = AntimatterAPI.register(Wire.class,new Wire<>(GTIRef.ID, Naquadah, 4, Tier.ZPM).amps(2)); //ZP);
     public static final Wire<?> WIRE_NAQUADAH_ALLOY = AntimatterAPI.register(Wire.class,new Wire<>(GTIRef.ID, NaquadahAlloy, 8, Tier.ZPM).amps(2));
     public static final Wire<?> WIRE_DURANIUM = AntimatterAPI.register(Wire.class,new Wire<>(GTIRef.ID, Duranium, 16, Tier.ZPM).amps(1));
-    public static final Wire<?> WIRE_SUPERCONDUCTOR = AntimatterAPI.register(Wire.class,new Wire<>(GTIRef.ID, Superconductor, 1, Tier.MAX).amps(4)); //MA);
+    public static final Wire<?> WIRE_SUPERCONDUCTOR = AntimatterAPI.register(Wire.class,new Wire<>(GTIRef.ID, Superconductor, 1, Tier.UHV).amps(4)); //MA);
 
     public static final FluidPipe<?> FLUID_PIPE_WOOD = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GTIRef.ID, AntimatterMaterials.Wood, 350, false).caps(1).pressures(getPressures(150)));
     public static final FluidPipe<?> FLUID_PIPE_COPPER = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GTIRef.ID, AntimatterMaterials.Copper, 1696, true).caps(1).pressures(getPressures(300)));

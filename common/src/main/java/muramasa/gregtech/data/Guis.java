@@ -228,7 +228,7 @@ public class Guis {
         HATCH_ITEM_I.add(LUV, HATCH_ITEM_I, HV);
         HATCH_ITEM_I.add(ZPM, HATCH_ITEM_I, HV);
         HATCH_ITEM_I.add(UV, HATCH_ITEM_I, HV);
-        HATCH_ITEM_I.add(MAX, HATCH_ITEM_I, HV);
+        HATCH_ITEM_I.add(UHV, HATCH_ITEM_I, HV);
 
         HATCH_ITEM_O.add(ULV, IT_OUT, 79, 34);
         HATCH_ITEM_O.add(LV, IT_OUT, 70, 25).add(LV, IT_OUT, 88, 25).add(LV, IT_OUT, 70, 43).add(LV, IT_OUT, 88, 43);
@@ -244,7 +244,7 @@ public class Guis {
         HATCH_ITEM_O.add(LUV, HATCH_ITEM_O, HV);
         HATCH_ITEM_O.add(ZPM, HATCH_ITEM_O, HV);
         HATCH_ITEM_O.add(UV, HATCH_ITEM_O, HV);
-        HATCH_ITEM_O.add(MAX, HATCH_ITEM_O, HV);
+        HATCH_ITEM_O.add(UHV, HATCH_ITEM_O, HV);
 
         HATCH_FLUID_I.add(FL_IN, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
         HATCH_FLUID_I.add(LV, HATCH_FLUID_I, ULV);
@@ -257,7 +257,7 @@ public class Guis {
         HATCH_FLUID_I.add(LUV, HATCH_FLUID_I, ULV);
         HATCH_FLUID_I.add(ZPM, HATCH_FLUID_I, ULV);
         HATCH_FLUID_I.add(UV, HATCH_FLUID_I, ULV);
-        HATCH_FLUID_I.add(MAX, HATCH_FLUID_I, ULV);
+        HATCH_FLUID_I.add(UHV, HATCH_FLUID_I, ULV);
 
         HATCH_FLUID_O.add(FL_OUT, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
         HATCH_FLUID_O.add(LV, HATCH_FLUID_O, ULV);
@@ -270,7 +270,7 @@ public class Guis {
         HATCH_FLUID_O.add(UV, FL_OUT, 61, 16).add(UV, FL_OUT, 79, 16).add(UV, FL_OUT, 97, 16).add(UV, FL_OUT, 61, 34)
                 .add(UV, FL_OUT, 79, 34).add(UV, FL_OUT, 97, 34).add(UV, FL_OUT, 61, 52).add(UV, FL_OUT, 79, 52)
                 .add(UV, FL_OUT, 97, 52);
-        HATCH_FLUID_O.add(MAX, HATCH_FLUID_O, ULV);
+        HATCH_FLUID_O.add(UHV, HATCH_FLUID_O, ULV);
 
         FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGui().getMachineData().setMachineStatePos(84, 46);
         STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGui().getMachineData().setMachineStatePos(80, 50);

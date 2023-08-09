@@ -80,7 +80,7 @@ public class AssemblyLoader {
         addTierCasing(LUV);
         addTierCasing(ZPM);
         addTierCasing(UV);
-        addTierCasing(MAX);
+        addTierCasing(UHV);
 
 
         addTierHull(Tier.ULV);
@@ -92,7 +92,7 @@ public class AssemblyLoader {
         addTierHull(Tier.LUV);
         addTierHull(Tier.ZPM);
         addTierHull(Tier.UV);
-        addTierHull(Tier.MAX);
+        addTierHull(Tier.UHV);
 
         addCasing(Bronze, CASING_BRONZE);
         addCasing(Steel, CASING_SOLID_STEEL);
@@ -189,7 +189,7 @@ public class AssemblyLoader {
     }
 
     private static void addTierHull(Tier tier) {
-        Material liquid = tier == ZPM || tier == UV || tier == MAX ? Polytetrafluoroethylene : Polyethylene;
+        Material liquid = tier == ZPM || tier == UV || tier == UHV ? Polytetrafluoroethylene : Polyethylene;
         ASSEMBLING.RB().ii(ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID)))
                 .fi(liquid.getLiquid(L * 2)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID))).add("hull_" + tier.getId(), 5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
     }

@@ -66,7 +66,7 @@ public class TierMaps {
             builder.put(LUV, Chrome);
             builder.put(ZPM, Iridium);
             builder.put(UV, Osmium);
-            builder.put(MAX, Neutronium);
+            builder.put(UHV, Neutronium);
             TIER_MATERIALS = builder.build();
         }
 
@@ -111,7 +111,7 @@ public class TierMaps {
             if(tier == LUV) return CABLE_VANADIUM_GALLIUM.getBlockItem(size);
             if(tier == ZPM) return CABLE_NAQUADAH.getBlockItem(size);
             if(tier == UV) return CABLE_NAQUADAH_ALLOY.getBlockItem(size);
-            if(tier == MAX) return WIRE_SUPERCONDUCTOR.getBlockItem(size);
+            if(tier == UHV) return WIRE_SUPERCONDUCTOR.getBlockItem(size);
             throw new IllegalArgumentException("Invalid tier in CABLE_GETTER");
         };
     }
