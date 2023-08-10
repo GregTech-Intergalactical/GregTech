@@ -36,6 +36,7 @@ public class CoverShutter extends CoverRedstoneSensitive {
 
     @Override
     public <T> boolean blocksCapability(Class<T> cap, @Nullable Direction side) {
+        if (side == null) return false;
         return (mode == Mode.OPEN_NO_REDSTONE && isPowered) || (mode == Mode.OPEN_REDSTONE && !isPowered);
     }
 
@@ -88,6 +89,7 @@ public class CoverShutter extends CoverRedstoneSensitive {
                     player.sendMessage(new TextComponent("Open if work enabled"), player.getUUID());
                 }
             }
+            return true;
         }
         return super.onInteract(player, hand, side, type);
     }

@@ -43,6 +43,7 @@ import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.ofObject;
 import static muramasa.gregtech.data.GregTechData.*;
+import static muramasa.gregtech.data.GregTechTags.CIRCUITS_ADVANCED;
 import static muramasa.gregtech.data.GregTechTags.PLATES_IRON_ALUMINIUM;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ASSEMBLING;
@@ -147,13 +148,15 @@ public class AssemblyLoader {
 
     private static void misc(){
         ASSEMBLING.RB().ii(of(ItemTags.PLANKS,8), INT_CIRCUITS.get(8)).io(new ItemStack(Items.CHEST,1)).add("chest",100,4);
-        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_DRAIN.getId()))).add("drain",800, 16);
-        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_REDSTONE_MACHINE_CONTROLLER.getId()))).add("redstone_machine_controller_soldering_alloy", 800, 16);
-        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_REDSTONE_MACHINE_CONTROLLER.getId()))).add("redstone_machine_controller_lead", 800, 16);
-        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Tin.getLiquid(L)).io(new ItemStack(GregTech.get(ItemCover.class, COVER_REDSTONE_MACHINE_CONTROLLER.getId()))).add("redstone_machine_controller_tin", 800, 16);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(COVER_DRAIN.getItem()).add("drain",800, 16);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(SolderingAlloy.getLiquid(L / 2)).io(COVER_REDSTONE_MACHINE_CONTROLLER.getItem()).add("redstone_machine_controller_soldering_alloy", 800, 16);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Lead.getLiquid(L * 2)).io(COVER_REDSTONE_MACHINE_CONTROLLER.getItem()).add("redstone_machine_controller_lead", 800, 16);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Tin.getLiquid(L)).io(COVER_REDSTONE_MACHINE_CONTROLLER.getItem()).add("redstone_machine_controller_tin", 800, 16);
         ASSEMBLING.RB().ii(of(CarbonFibre, 2), INT_CIRCUITS.get(2)).io(CarbonMesh).add("carbon_mesh", 800, 2);
         ASSEMBLING.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
         ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
+        ASSEMBLING.RB().ii(of(COVER_SHUTTER.getItem()), of(CIRCUITS_ADVANCED, 2)).io(COVER_FLUID_FILTER.getItem()).add("fluid_filter", 800, 4);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_DOOR)).io(new ItemStack(COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
     }
 
     private static void motors(){
