@@ -124,6 +124,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("extracting", ExtractorLoader::init);
         loader.accept("compressing", CompressorLoader::init);
         loader.accept("vac_freezing", VacFreezer::init);
+        loader.accept("implosion_compressing", ImplosionCompressing::init);
         loader.accept("ore_byproducts", OreByproducts::init);
         loader.accept("macerating_auto", MaceratorLoader::initAuto);
         loader.accept("macerating", MaceratorLoader::init);

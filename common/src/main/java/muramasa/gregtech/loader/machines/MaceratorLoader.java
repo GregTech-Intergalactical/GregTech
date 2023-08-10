@@ -98,13 +98,9 @@ public class MaceratorLoader {
             MACERATING.RB().ii(GEM_FLAWED.getMaterialIngredient(m, 1)).io(DUST_SMALL.get(m, 2)).add(m.getId() + "_flawed", m.getMass(), 4);
             MACERATING.RB().ii(GEM_CHIPPED.getMaterialIngredient(m, 1)).io(DUST_SMALL.get(m, 1)).add(m.getId() + "_chipped", m.getMass(), 4);
         });
-        AntimatterMaterialTypes.GEM_BRITTLE.all().forEach(m -> {
+        AntimatterMaterialTypes.GEM.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.DUST)) return;
-            MACERATING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.GEM_BRITTLE.get(m),1)).io(AntimatterMaterialTypes.DUST_SMALL.get(m,2)).add("gem_brittle_" + m.getId(),40,8);
-        });
-        AntimatterMaterialTypes.GEM_POLISHED.all().forEach(m -> {
-            if (!m.has(AntimatterMaterialTypes.DUST)) return;
-            MACERATING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.GEM_POLISHED.get(m),1)).io(AntimatterMaterialTypes.DUST.get(m,2)).add("gem_polished_" + m.getId(),60,16);
+            MACERATING.RB().ii(GEM.getMaterialIngredient(m, 1)).io(AntimatterMaterialTypes.DUST.get(m,1)).add("gem_" + m.getId(),m.getMass(),4);
         });
 
         //INGOT -> DUST

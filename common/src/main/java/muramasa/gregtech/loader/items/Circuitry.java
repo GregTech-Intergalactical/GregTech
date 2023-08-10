@@ -386,7 +386,7 @@ public class Circuitry {
                     .fi(material.getLiquid(base * 4)).add("nano_processor_using_" + material.getId(), 200, 600);
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPlastic), of(ASoC, 1), WIRE_FINE.getMaterialIngredient(Electrum, 2))
                     .io(new ItemStack(NanoProcessor))
-                    .fi(material.getLiquid(base * 4)).add("nano_processor_soc_using_" + material.getId(), 300, 8192);
+                    .fi(material.getLiquid(base * 4)).add("nano_processor_asoc_using_" + material.getId(), 300, 8192);
 
             //Extreme
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPlastic, 2), of(ProcessorAssembly, 3), of(DIODES, 4),
@@ -403,7 +403,7 @@ public class Circuitry {
                     .fi(material.getLiquid(base * 8)).add("quantum_processor_using_" + material.getId(), 200, 2400);
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardEpoxy), of(ASoC, 1), WIRE_FINE.getMaterialIngredient(Platinum, 2))
                     .io(new ItemStack(QuantumProcessor))
-                    .fi(material.getLiquid(base * 4)).add("nano_processor_soc_using_" + material.getId(), 50, 8192);
+                    .fi(material.getLiquid(base * 4)).add("quantum_processor_asoc_using_" + material.getId(), 50, 8192);
             //Energy Flow
             ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardMultiFiber, 1), of(GregTechData.Resistor, 8),of(GregTechData.Transistor, 8),
                             of(GregTechData.Capacitor, 8),of(AntimatterMaterialTypes.WIRE_FINE.get(NiobiumTitanium), 4))
