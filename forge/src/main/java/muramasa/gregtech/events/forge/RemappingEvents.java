@@ -162,6 +162,13 @@ public class RemappingEvents {
                     return;
                 }
             }
+            if (id.contains("quartzite") && !id.contains("__")){
+                Block block = AntimatterAPI.get(Block.class, id.replace("quartzite", "milky_quartz").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                if (block != null){
+                    map.remap(block);
+                    return;
+                }
+            }
             if (id.contains("blue_sapphire")){
                 Block block = AntimatterAPI.get(Block.class, id.replace("blue_sapphire", "sapphire").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){

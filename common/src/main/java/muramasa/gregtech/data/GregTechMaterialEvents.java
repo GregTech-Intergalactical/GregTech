@@ -654,6 +654,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(PotassiumFeldspar).mats(of(Potassium, 1, Aluminium, 1, Silicon, 3, Oxygen, 8)).elecTicks(260);
         event.setMaterial(Powellite).mats(of(Calcium, 1, Molybdenum, 1, Oxygen, 4));
         //event.setMaterial(Pyrochlore).asDust(ORE).addComposition(of(Calcium, 2, Niobium, 2, Oxygen, 7));
+        event.setMaterial(Quartzite).mats(of(Silicon, 1, Oxygen, 2)).elecTicks(60);
         event.setMaterial(Quicklime).mats(of(Calcium, 1, Oxygen, 1)).elecTicks(56);
         event.setMaterial(ReactionCatalyst).mats(of(Copper,1,Zinc,1,Aluminium,2,Oxygen,4));
         event.setMaterial(RedGranite).mats(of(Aluminium, 2, PotassiumFeldspar, 1, Oxygen, 3)).elecTicks(120);
@@ -737,7 +738,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Olivine).mats(of(Magnesium, 2, Iron, 1, SiliconDioxide, 2)).elecTicks(140);
         event.setMaterial(Opal).mats(of(SiliconDioxide, 1)).elecTicks(20);
         event.setMaterial(Phosphorus).mats(of(Calcium, 3, Phosphate, 2));
-        event.setMaterial(Quartzite).mats(of(Silicon, 1, Oxygen, 2)).elecTicks(60);
+        event.setMaterial(MilkyQuartz).mats(of(Silicon, 1, Oxygen, 2)).elecTicks(60);
         event.setMaterial(RedGarnet).mats(of(Pyrope, 3, Almandine, 5, Spessartine, 8));
         event.setMaterial(Ruby).mats(of(Chrome, 1, Aluminium, 2, Oxygen, 3)).elecTicks(144);
         event.setMaterial(Sodalite).mats(of(Aluminium, 3, Silicon, 3, Sodium, 4, Chlorine, 1)).elecTicks(264);
@@ -1456,7 +1457,7 @@ public class GregTechMaterialEvents {
                 Phosphate, Potash, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
                 PhosphorousPentoxide, BandedIron, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
                 Salt, SodiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond, BlueVitriol,
-                NickelSulfate, Water, DistilledWater);
+                NickelSulfate, Water, DistilledWater, MilkyQuartz);
         ELEC60.add(SodiumHydroxide, Propene, Ethylene, Butene, Benzene, Styrene, Ethane, Ammonia, SodiumSulfide, Methane,
                 Magnesite, HydrofluoricAcid, Sphalerite, /*NitroCarbon,*/ SodaAsh, Calcite, Saltpeter, Monazite,
                 /*Wollastonite,*/ NitricOxide, Butane, CarbonMonoxide, Pyrite, RedGranite, Ferrosilite, Butadiene, Amethyst,

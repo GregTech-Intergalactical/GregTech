@@ -40,6 +40,7 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         this.tag(TRANSISTORS).add(Transistor, SMDTransistor);
         this.tag(DIODES).add(Diode, SMDDiode);
         this.tag(GEM.getMaterialTag(Amethyst)).remove(Items.AMETHYST_SHARD);
+        this.tag(GEM.getMaterialTag(Quartz)).add(GEM.get(MilkyQuartz));
         this.tag(PLATES_IRON_ALUMINIUM).addTag(PLATE.getMaterialTag(Iron)).addTag(PLATE.getMaterialTag(WroughtIron)).addTag(PLATE.getMaterialTag(Aluminium));
         this.tag(DUST_LAPIS_LAZURITE).addTag(DUST.getMaterialTag(Lapis)).addTag(DUST.getMaterialTag(Lazurite));
         this.tag(DUST_COALS).addTag(DUST.getMaterialTag(Coal)).addTag(DUST.getMaterialTag(Charcoal)).addTag(DUST.getMaterialTag(Carbon));
