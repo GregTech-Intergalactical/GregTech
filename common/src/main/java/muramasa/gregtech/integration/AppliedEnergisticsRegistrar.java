@@ -92,8 +92,8 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
 
     @Override
     public void onMaterialEvent(MaterialEvent event) {
-        event.setMaterial(Quartzite).addByProduct(CertusQuartz, Barite);
-        event.setMaterial(CertusQuartz).addByProduct(Quartzite, Barite);
+        event.setMaterial(MilkyQuartz).addByProduct(CertusQuartz, Barite);
+        event.setMaterial(CertusQuartz).addByProduct(MilkyQuartz, Barite);
     }
 
     public static Item getAe2Item(String id){

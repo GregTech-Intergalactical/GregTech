@@ -458,6 +458,7 @@ public class Materials {
     public static Material Amethyst = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "amethyst", 0xd232d2, RUBY));
     public static Material Sapphire = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sapphire", 0x6464c8, GEM_V));
     public static Material BlueTopaz = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_topaz", 0x0000ff, GEM_H));
+    public static Material MilkyQuartz = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "milky_quartz", 0xd2d2d2, QUARTZ));
     public static Material CertusQuartz = AntimatterAPI.register(Material.class,new Material(GTIRef.ID, "certus_quartz", 0xd2d2e6, QUARTZ, Ref.MOD_AE));
     public static Material ChargedCertusQuartz = AntimatterAPI.register(Material.class,new Material(GTIRef.ID, "charged_certus_quartz", 0xd2d2e6, QUARTZ, Ref.MOD_AE));
     public static Material Fluix = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fluix", 0x78468C, QUARTZ, Ref.MOD_AE));

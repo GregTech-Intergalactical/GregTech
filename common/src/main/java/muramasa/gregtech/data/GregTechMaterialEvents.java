@@ -328,7 +328,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Olivine).asGem(false, PLATE).asOre(3, 7, true);
         event.setMaterial(Opal).asGem(true).asOre(3, 7, true);
         event.setMaterial(Phosphorus).asGemBasic(false).asOre(3, 7, true).harvestLevel(2);
-        event.setMaterial(Quartzite).asGemBasic(false, ROCK, ROD, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1);
+        event.setMaterial(MilkyQuartz).asGemBasic(false, ROCK, ROD, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(RedGarnet).asGem(true).asOre(3, 7, true);
         event.setMaterial(Ruby).asGem(true).asOre(3, 7, true);
         event.setMaterial(Sodalite).asGemBasic(false).asOre(2, 5, true).harvestLevel(1);
@@ -1346,7 +1346,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Pyrolusite).addByProduct(Manganese);
         event.setMaterial(Pyrope).addByProduct(RedGarnet, Magnesium);
         event.setMaterial(Quartz).addByProduct(Netherrack);
-        event.setMaterial(Quartzite).addByProduct(Barite);
+        event.setMaterial(MilkyQuartz).addByProduct(Barite);
         event.setMaterial(RedGarnet).addByProduct(Spessartine, Pyrope, Almandine);
         event.setMaterial(Redstone).addByProduct(Cinnabar, RareEarth, Glowstone);
         event.setMaterial(RedGranite).addByProduct(PotassiumFeldspar);
@@ -1440,7 +1440,7 @@ public class GregTechMaterialEvents {
         FURNACE_FUELS.add(OilShale, DUST_PURE, 400);
         FURNACE_FUELS.add(OilShale, CRUSHED_REFINED, 550);
         CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene, LightFuel, HeavyFuel);
-        CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, Quartzite, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Dilithium, Monazite);
+        CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Dilithium, Monazite);
         /*DECAYABLE.add(Thallium209,Thallium210,Bismuth213,Bismuth214,Polonium213,Polonium214,Polonium215,Polonium216,Polonium218,Astatine217,Astatine218,
                 Radon219,Radon220,Radon222,Francium221,Francium223,Radium223,Radium224,Radium225,Radium226,Radium228,Actinium225,Actinium227,Actinium228,
                 Thorium227,Thorium228,Thorium229,Thorium230,Thorium231,Thorium233,Thorium234,Protactinium231,Protactinium232,Protactinium233,Protactinium234,
@@ -1487,11 +1487,11 @@ public class GregTechMaterialEvents {
                 StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone, CetaneBoostedDiesel,
                 Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
                 RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
-                /* Amber, */ Sapphire, Ruby, Opal, Olivine, Lapis, Quartzite, Quartz, Phosphorus, Phosphate,
+                /* Amber, */ Sapphire, Ruby, Opal, Olivine, Lapis, MilkyQuartz, Quartz, Phosphorus, Phosphate,
                 NetherStar, EnderPearl, EnderEye, Silicon);
         NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite,
                 CetaneBoostedDiesel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ Sapphire, Ruby, Opal, Olivine,
-                Lapis, Sodalite, Lazurite, Monazite , Quartzite, Quartz, Phosphorus, Phosphate, NetherStar,
+                Lapis, Sodalite, Lazurite, Monazite , MilkyQuartz, Quartz, Phosphorus, Phosphate, NetherStar,
                 EnderPearl, EnderEye, Blaze);
         RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Polyethylene, PolyvinylChloride, Polystyrene, Silicone, EpoxyResin, FiberReinforcedEpoxyResin);
         SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);

@@ -172,7 +172,7 @@ public class TierMaps {
         }
         {
             ImmutableMap.Builder<Tier, Object> builder = ImmutableMap.builder();
-            builder.put(Tier.LV, GEM.getMaterialTag(Quartzite));
+            builder.put(Tier.LV, GEM.getMaterialTag(MilkyQuartz));
             builder.put(Tier.MV, Items.QUARTZ);
             builder.put(Tier.HV, Items.EMERALD);
             builder.put(Tier.EV, Items.ENDER_PEARL);
