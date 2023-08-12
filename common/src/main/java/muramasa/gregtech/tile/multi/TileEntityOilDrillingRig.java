@@ -66,7 +66,7 @@ public class TileEntityOilDrillingRig extends TileEntityMultiMachine<TileEntityO
             if (!foundBottom){
 
                 if (getMachineState() == MachineState.IDLE) setMachineState(MachineState.ACTIVE);
-                energyHandler.ifPresent(e -> e.extractInternal(euPerTick, false));
+                energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
 
                 if (level.getGameTime() % 40 != 0) return;
                 miningPos.below();

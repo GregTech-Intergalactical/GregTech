@@ -63,7 +63,7 @@ public class TileEntityLargeTurbine extends TileEntityMultiMachine<TileEntityLar
                         // ItemTurbine turbine = (ItemTurbine) t.getItem();
                         int flow = 120;//turbine.optimalEUT;
                         efficiency = 1.15;//turbine.efficency;
-                        long toConsume = calculateGeneratorConsumption(flow, sourceRecipe);
+                        long toConsume = calculateGeneratorConsumption(sourceRecipe);
                         TileEntityLargeTurbine.this.recipeConsumption = (int) toConsume;
                         return Utils.getFluidPoweredRecipe(Collections.singletonList(stacks.get(0).copy((int) toConsume)),
                                 new FluidHolder[]{DistilledWater.getLiquid(stacks.get(0).getAmount())},// Arrays.stream(sourceRecipe.getOutputFluids()).map(tt -> new FluidStack(tt.getFluid(), (int) (tt.getAmount()*toConsume))).toArray(FluidStack[]::new),
