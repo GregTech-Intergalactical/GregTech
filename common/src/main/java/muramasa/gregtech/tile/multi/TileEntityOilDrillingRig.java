@@ -88,7 +88,7 @@ public class TileEntityOilDrillingRig extends TileEntityMultiMachine<TileEntityO
                     oilEntry = OilSpoutSavedData.getOrCreate(serverLevel).getFluidVeinWorldEntry(SectionPos.blockToSectionCoord(this.getBlockPos().getX()), SectionPos.blockToSectionCoord(this.getBlockPos().getZ()));
                 }
                 if (oilEntry.getFluid() == null) return;
-                energyHandler.ifPresent(e -> e.extractInternal(euPerTick, false));
+                energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
                 if (++progress == cycle){
                     progress = 0;
                     FluidHolder fluidHolder = FluidPlatformUtils.createFluidStack(oilEntry.getFluid().fluid(), oilEntry.getCurrentYield() * TesseractGraphWrappers.dropletMultiplier);
