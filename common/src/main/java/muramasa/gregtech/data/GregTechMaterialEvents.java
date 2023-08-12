@@ -241,6 +241,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(PotassiumFeldspar).asDust();
         event.setMaterial(Powellite).asOre(1, 5, true).harvestLevel(2);
         //event.setMaterial(Pyrochlore).asDust(ORE).addComposition(of(Calcium, 2, Niobium, 2, Oxygen, 7));
+        event.setMaterial(Quartzite).asDust(ROCK);
         event.setMaterial(Quicklime).asDust();
         event.setMaterial(ReactionCatalyst).asDust();
         event.setMaterial(RedGranite).asDust(ROCK);
