@@ -46,7 +46,7 @@ public class Guis {
     public static GuiData MULTI_DISPLAY_COMPACT = new GuiData(GTIRef.ID, "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots()));
     public static GuiData BASIC_TANK = new GuiData(GTIRef.ID, "basic_tank").setBackgroundTexture("basic_tank")
-            .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43));
+            .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43, new ResourceLocation(GTIRef.ID, "blank")));
 
     public static GuiData MULTIBLOCK = new GuiData(GTIRef.ID, "multiblock").setBackgroundTexture("multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
