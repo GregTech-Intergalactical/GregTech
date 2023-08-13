@@ -201,8 +201,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Graphene).asDust(PLATE);
         event.setMaterial(Polydimethylsiloxane).asDust();
         event.setMaterial(RareEarth).asDust();
-        event.setMaterial(RawRubber).asDust();
-        event.setMaterial(RawStyreneButadieneRubber).asDust();
+        event.setMaterial(RawRubber).asDust(RUBBERTOOLS);
+        event.setMaterial(RawStyreneButadieneRubber).asDust(RUBBERTOOLS);
         event.setMaterial(SodaAsh).asDust();
         event.setMaterial(Wood).asDust(GEAR);
         /**
