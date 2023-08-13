@@ -65,9 +65,9 @@ dependencies {
     modImplementation("com.teamresourceful.resourcefullib:resourcefullib-forge-1.18.2:${project.resourcefullib_version}")
     //JEI
     //modRuntimeOnly("mezz.jei:jei-${rootProject.minecraft_version}-forge:${rootProject.jei_version}")
-    modCompileOnly "me.shedaniel:RoughlyEnoughItems-forge:${rootProject.rei_version}"
-    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-forge:${rootProject.rei_version}"
-    //modRuntimeOnly("mezz.jei:jei-1.18.2:9.7.2.281")
+    //modCompileOnly "me.shedaniel:RoughlyEnoughItems-forge:${rootProject.rei_version}"
+    //modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-forge:${rootProject.rei_version}"
+    modRuntimeOnly("mezz.jei:jei-1.18.2:9.7.2.281")
     modImplementation("com.github.Reforged-Mods:ARRP-forge:0.6.7-1.18.2")
     modRuntimeOnly("io.github.feltmc:fluidhandler-extras:1.0.1")
     implementation("io.github.gregtechintergalactical:gtrubber-forge:${rootProject.gt_rubber_version}-${rootProject.minecraft_version}:dev-shadow"){
