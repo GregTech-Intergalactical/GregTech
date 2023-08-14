@@ -3,10 +3,7 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.capability.IGuiHandler;
-import muramasa.antimatter.gui.BarDir;
-import muramasa.antimatter.gui.ButtonBody;
-import muramasa.antimatter.gui.GuiData;
-import muramasa.antimatter.gui.MenuHandlerMachine;
+import muramasa.antimatter.gui.*;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
 import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
@@ -21,6 +18,8 @@ import muramasa.gregtech.gui.widgets.*;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
+
+import java.util.function.BiFunction;
 
 import static muramasa.antimatter.gui.ButtonBody.*;
 import static muramasa.antimatter.gui.SlotType.*;
@@ -172,17 +171,20 @@ public class Guis {
                 .add(FL_OUT,107,63).add(FL_OUT,125,63).add(FL_OUT,143,63)
                 .add(ENERGY,80,63);
 
-        COKE_OVEN.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25).getGui().setBackgroundTexture("coke_oven");
-        BATTERY_BUFFER_FOUR.add(ENERGY, 71, 27).add(ENERGY, 89, 27).add(ENERGY, 71, 45).add(ENERGY, 89, 45);
-        BATTERY_BUFFER_ONE.add(ENERGY, 80, 40);
+        COKE_OVEN.add(IT_IN, 53, 25, new ResourceLocation(GTIRef.ID, "primitive_ingot"))
+                .add(IT_OUT, 107, 25, new ResourceLocation(GTIRef.ID, "primitive_ingot"))
+                .add(FL_OUT, 125, 25, new ResourceLocation(GTIRef.ID, "primitive_cell")).getGui().setBackgroundTexture("coke_oven").getMachineData().setProgressLocation("coke_oven");
+        ResourceLocation bat = new ResourceLocation(GTIRef.ID, "battery");
+        BATTERY_BUFFER_FOUR.add(ENERGY, 71, 27, bat).add(ENERGY, 89, 27, bat).add(ENERGY, 71, 45, bat).add(ENERGY, 89, 45, bat);
+        BATTERY_BUFFER_ONE.add(ENERGY, 80, 40, bat);
         BATTERY_BUFFER_EIGHT
-                .add(ENERGY,53,27).add(ENERGY,71,27).add(ENERGY,89,27).add(ENERGY,107,27)
-                .add(ENERGY,53,45).add(ENERGY,71,45).add(ENERGY,89,45).add(ENERGY,107,45);
+                .add(ENERGY,53,27, bat).add(ENERGY,71,27, bat).add(ENERGY,89,27, bat).add(ENERGY,107,27, bat)
+                .add(ENERGY,53,45, bat).add(ENERGY,71,45, bat).add(ENERGY,89,45, bat).add(ENERGY,107,45, bat);
         BATTERY_BUFFER_SIXTEEN
-                .add(ENERGY,53,9).add(ENERGY,71,9).add(ENERGY,89,9).add(ENERGY,107,9)
-                .add(ENERGY,53,27).add(ENERGY,71,27).add(ENERGY,89,27).add(ENERGY,107,27)
-                .add(ENERGY,53,45).add(ENERGY,71,45).add(ENERGY,89,45).add(ENERGY,107,45)
-                .add(ENERGY,53,63).add(ENERGY,71,63).add(ENERGY,89,63).add(ENERGY,107,63);
+                .add(ENERGY,53,9, bat).add(ENERGY,71,9, bat).add(ENERGY,89,9, bat).add(ENERGY,107,9, bat)
+                .add(ENERGY,53,27, bat).add(ENERGY,71,27, bat).add(ENERGY,89,27, bat).add(ENERGY,107,27, bat)
+                .add(ENERGY,53,45, bat).add(ENERGY,71,45, bat).add(ENERGY,89,45, bat).add(ENERGY,107,45, bat)
+                .add(ENERGY,53,63, bat).add(ENERGY,71,63, bat).add(ENERGY,89,63, bat).add(ENERGY,107,63, bat);
 
         COAL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(IT_IN, 116, 62);
         COAL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(STEEL,
@@ -209,8 +211,12 @@ public class Guis {
 
         QUANTUM_TANK.add(BASIC_TANK.getSlots()).getGui().setOverrideLocation(BASIC_TANK.getTexture(LV, "machine"));
 
-        PRIMITIVE_BLAST_FURNACE.add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_IN, 53, 52).add(IT_OUT, 107, 25)
-                .add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).getGui().setBackgroundTexture("primitive_blast_furnace");
+        PRIMITIVE_BLAST_FURNACE.add(IT_IN, 53, 16, new ResourceLocation(GTIRef.ID, "primitive_ingot"))
+                .add(IT_IN, 53, 34, new ResourceLocation(GTIRef.ID, "primitive_fire"))
+                .add(IT_IN, 53, 52, new ResourceLocation(GTIRef.ID, "primitive_fire"))
+                .add(IT_OUT, 107, 25, new ResourceLocation(GTIRef.ID, "primitive_ingot"))
+                .add(IT_OUT, 125, 25, new ResourceLocation(GTIRef.ID, "primitive_dust"))
+                .add(IT_OUT, 143, 25, new ResourceLocation(GTIRef.ID, "primitive_dust")).getGui().setBackgroundTexture("primitive_blast_furnace").getMachineData().setProgressLocation("coke_oven");
 
         HATCH_MUFFLER.add(IT_IN, 79, 34);
 
