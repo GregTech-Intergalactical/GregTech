@@ -400,6 +400,7 @@ public class Materials {
     public static Material BrownLimonite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "brown_limonite", 0xc86400, METALLIC));
     public static Material Cassiterite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cassiterite", 0xdcdcdc, METALLIC)).setMassMultiplierAndDivider(3, 1);
     public static Material Chalcopyrite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chalcopyrite", 0xa07828, DULL));
+    public static Material Chromite = AntimatterAPI.register(Material.class, new Material(Ref.ID, "chromite", 0x23140F, DULL));
     public static Material Cobaltite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cobaltite", 0x5050fa, METALLIC));
     public static Material Cooperite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cooperite", 0xffffc8, METALLIC));
     public static Material Galena = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "galena", 0x643c64, DULL));

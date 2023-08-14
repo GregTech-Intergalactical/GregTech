@@ -267,6 +267,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Cassiterite).asOre().harvestLevel(1);
         event.setMaterial(Chalcopyrite).asOre().harvestLevel(1);
         event.setMaterial(Cinnabar).asOre().harvestLevel(1);
+        event.setMaterial(Chromite).asOre().harvestLevel(2);
         event.setMaterial(Cobaltite).asOre().harvestLevel(2);
         event.setMaterial(Cooperite).asOre().harvestLevel(1);
         event.setMaterial(Galena).asOre().harvestLevel(3);
@@ -681,6 +682,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Cassiterite).mats(of(Tin, 1, Oxygen, 2), 1).elecTicks(132);
         event.setMaterial(Chalcopyrite).mats(of(Copper, 1, Iron, 1, Sulfur, 2)).elecTicks(168);
         event.setMaterial(Cinnabar).mats(of(Mercury, 1, Sulfur, 1));
+        event.setMaterial(Chromite).mats(of(Iron, 1, Chrome, 2, Oxygen, 4)).elecTicks(210);
         event.setMaterial(Cobaltite).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1)).elecTicks(150);
         event.setMaterial(Cooperite).mats(of(Platinum, 3, Nickel, 1, Sulfur, 1, Palladium, 1));
         event.setMaterial(Galena).mats(of(Lead, 3, Silver, 3, Sulfur, 2)).elecTicks(832);
@@ -1292,6 +1294,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Cassiterite).addByProduct(Tin);
         event.setMaterial(Chalcopyrite).addByProduct(Pyrite, Cobalt, Cadmium, Gold);
         event.setMaterial(Chrome).addByProduct(Iron, Magnesium);
+        event.setMaterial(Chromite).addByProduct(Iron, Magnesium);
         event.setMaterial(Cinnabar).addByProduct(Redstone, Sulfur, Glowstone);
         event.setMaterial(Clay).addByProduct(Clay);
         event.setMaterial(Coal).addByProduct(Lignite, Thorium);
@@ -1463,7 +1466,7 @@ public class GregTechMaterialEvents {
                 Magnesite, HydrofluoricAcid, Sphalerite, /*NitroCarbon,*/ SodaAsh, Calcite, Saltpeter, Monazite,
                 /*Wollastonite,*/ NitricOxide, Butane, CarbonMonoxide, Pyrite, RedGranite, Ferrosilite, Butadiene, Amethyst,
                 Molybdenite, Ruby, /*Kyanite,*/ NitrogenDioxide, NitrousOxide, DinitrogenTetroxide, Propane, Barite, Isoprene,
-                /*Chromite,*/ EnderPearl, SiliconDioxide, Apatite, SulfurTrioxide, /*Pyrochlore, */ Toluene, Phosphate,
+                Chromite, EnderPearl, SiliconDioxide, Apatite, SulfurTrioxide, /*Pyrochlore, */ Toluene, Phosphate,
                 Tantalite, PhosphorousPentoxide, Osmiridium, Pentlandite, Steel, Graphite, Alumina);
         ELEC90.add(Polydimethylsiloxane, AceticAcid, Olivine, Ethanol, Methanol, VinylAcetate, /*Gypsum,*/ Cobaltite, Ethenone,
                 /*Dymethylamine,*/ Chalcopyrite, /*Mirabilite,*/ Spodumene, /*Dolomite,*/ HypochlorousAcid, Chloramine, Bastnasite,
@@ -1479,7 +1482,7 @@ public class GregTechMaterialEvents {
         ELEC.add(ELEC90.all().toArray(new Material[0]));
         ELEC.add(ELEC120.all().toArray(new Material[0]));
         ELECSEPG.add(VanadiumMagnetite, Magnetite);
-        ELECSEPI.add(YellowLimonite, BrownLimonite, Tin, Chrome, Ilmenite, BandedIron, Pyrite, Glauconite, Nickel, /*Chromite, */Pentlandite, Manganese);
+        ELECSEPI.add(YellowLimonite, BrownLimonite, Tin, Chrome, Ilmenite, BandedIron, Pyrite, Glauconite, Nickel, Chromite, Pentlandite, Manganese);
         ELECSEPN.add(Monazite, Bastnasite);
         GRINDABLE.add(/* Paper, */Coal, Charcoal, Lignite, Lead, Tin, SolderingAlloy, Flint, Gold, Silver, Iron,
                 IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar,
