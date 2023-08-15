@@ -97,10 +97,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().fi(Propene.getGas(1000), Benzene.getLiquid(1000), Chlorine.getGas(500)).fo(EpoxyResin.getLiquid(L *2)).add("epoxy_resin_1",120,240);
         //GLUE
         CHEMICAL_REACTING.RB().fi(Ethylene.getGas(1000), AceticAcid.getLiquid(2000), Methanol.getLiquid(1000)).fo(Glue.getLiquid(4000)).add("glue",240,30);
-        //NETHER QUARTZ
-        CHEMICAL_REACTING.RB().fi(Water.getLiquid(1000)).ii(of(DUST.getMaterialTag(Quartz), 3), of(DUST.getMaterialTag(Sodium), 1)).io(GEM.get(Quartz, 3)).add("quartz",500,30);
-        //QUARTZITE
-        //CHEMICAL_REACTING.RB().fi(Water.getLiquid(1000)).ii(of(DUST.get(Quartzite, 3), DUST.get(Sodium, 1))).io(GEM.get(Quartzite, 3)).add("quartzite",500,30);
         //SILICONE RUBBER
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Polydimethylsiloxane), 9), of(DUST.getMaterialTag(Sulfur), 1)).fo(SiliconeRubber.getLiquid(L * 9)).add("silcone_rubber",600,30);
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Silicon), 1)).fi(Epichlorohydrin.getLiquid(144)).fo(SiliconeRubber.getLiquid(L)).add("silcone_rubber_1",240,96);
