@@ -122,7 +122,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Uranium).asMetal(1405).harvestLevel(2);
         event.setMaterial(Neptunium).asMetal(912, 0);
         event.setMaterial(Plutonium).asMetal(912, 0);
-        event.setMaterial(Americium).asMetal(1149, 0);
+        event.setMaterial(Americium).asMetal(1149, 0, ROD_LONG);
         event.setMaterial(Curium).asMetal(1613, 0);
         event.setMaterial(Berkelium).asMetal(1259, 0);
         event.setMaterial(Californium).asMetal(1173, 0);
@@ -156,7 +156,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Invar).asMetal(1700, FRAME);
         event.setMaterial(IronMagnetic).asMetal(1811, ROD);
         event.setMaterial(Kanthal).asMetal(1800, 1800);
-        event.setMaterial(Magnalium).asMetal(870, 0, PLATE);
+        event.setMaterial(Magnalium).asMetal(870, 0, PLATE, ROD_LONG);
         event.setMaterial(NeodymiumMagnetic).asMetal(1297, 1297, ROD);
         event.setMaterial(Neutronium).asMetal(10000, 10000, SCREW, BOLT, RING, GEAR, FRAME);
         event.setMaterial(Naquadah).asMetal(5400, 5400).asOre();

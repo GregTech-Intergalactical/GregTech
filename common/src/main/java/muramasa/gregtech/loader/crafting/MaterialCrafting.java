@@ -8,6 +8,7 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.data.ToolTypes;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
@@ -90,6 +91,14 @@ public class MaterialCrafting {
                             .put('R', AntimatterMaterialTypes.RING.getMaterialTag(m))
                             .build(),
                     "PHP", "WRF", "PSP");
+        });
+        ToolTypes.TURBINE_BLADE.all().forEach(m -> {
+            provider.addStackRecipe(consumer, GTIRef.ID, "", "antimatter_materials", "has_screwdriver", provider.hasSafeItem(SCREWDRIVER.getTag()),
+                    ToolTypes.TURBINE_BLADE.get(m, 1), ImmutableMap.<Character, Object>builder()
+                            .put('S', SCREWDRIVER.getTag())
+                            .put('F', FILE.getTag())
+                            .put('P', PLATE.getMaterialTag(m))
+                            .put('s', SCREW.getMaterialTag(m)).build(), "FPS", "sPs", " P ");
         });
         AntimatterMaterialTypes.PLATE.all().forEach(m -> {
             if (!m.has(NOSMASH)){

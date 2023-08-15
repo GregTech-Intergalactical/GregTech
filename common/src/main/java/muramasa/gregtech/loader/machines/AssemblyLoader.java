@@ -9,6 +9,7 @@ import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.MaterialTypeBlock;
 import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
@@ -23,6 +24,7 @@ import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.TierMaps;
+import muramasa.gregtech.data.ToolTypes;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.ItemLike;
@@ -60,6 +62,7 @@ public class AssemblyLoader {
         motors();
         pistons();
         rotors();
+        turbines();
     }
 
     //TODO proper type check for the cables
@@ -184,6 +187,23 @@ public class AssemblyLoader {
     private static void rotors(){
         ROTOR.all().forEach(r -> {
             ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(r,4),RING.getMaterialIngredient(r,1)).fi(SolderingAlloy.getLiquid(144)).io(new ItemStack(ROTOR.get(r),1)).add(r.getId() + "_rotor",240,24);
+        });
+    }
+
+    private static void turbines(){
+        MaterialTags.TOOLS.getAll().forEach((m,t) -> {
+            if (t.toolTypes().contains(ToolTypes.SMALL_TURBINE_ROTOR)){
+                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), ROD_LONG.getMaterialIngredient(Magnalium, 1)).io(ToolTypes.SMALL_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_small_turbine_rotor", 160, 100);
+            }
+            if (t.toolTypes().contains(ToolTypes.TURBINE_ROTOR)){
+                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), ROD_LONG.getMaterialIngredient(Titanium, 1)).io(ToolTypes.TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_turbine_rotor", 320, 400);
+            }
+            if (t.toolTypes().contains(ToolTypes.LARGE_TURBINE_ROTOR)){
+                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 12), ROD_LONG.getMaterialIngredient(TungstenSteel, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor", 640, 1600);
+            }
+            if (t.toolTypes().contains(ToolTypes.HUGE_TURBINE_ROTOR)){
+                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 16), ROD_LONG.getMaterialIngredient(Americium, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor", 1280, 6400);
+            }
         });
     }
 
