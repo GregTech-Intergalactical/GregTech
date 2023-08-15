@@ -6,6 +6,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.tool.AntimatterItemTier;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.tool.MaterialTool;
+import muramasa.gregtech.data.ToolTypes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -24,14 +25,27 @@ public class ItemTurbineRotor extends MaterialTool {
         super(domain, type, tier, properties);
     }
 
-    public int getEfficiency(){
-        return (int) (50.0F + (10.0F * (type.getBaseAttackDamage() + itemTier.getAttackDamageBonus())));
+    public float getEfficiency(){
+        return 60.0F + (10.0F * (type.getBaseAttackDamage() + itemTier.getAttackDamageBonus()));
+    }
+
+    public int speedMultiplier(){
+        if (type == ToolTypes.TURBINE_ROTOR) return 2;
+        if (type == ToolTypes.LARGE_TURBINE_ROTOR) return 3;
+        if (type == ToolTypes.HUGE_TURBINE_ROTOR) return 4;
+        return 1;
+    }
+
+    public float getSpeed(){
+        return itemTier.getSpeed() * speedMultiplier();
     }
 
     @Override
     public void onGenericAddInformation(ItemStack stack, List<Component> tooltip, TooltipFlag flag) {
         super.onGenericAddInformation(stack, tooltip, flag);
         tooltip.add(new TranslatableComponent("gti.rotor.tooltip.efficiency", new TextComponent("" + getEfficiency()).withStyle(ChatFormatting.BLUE)));
+        tooltip.add(new TranslatableComponent("gti.rotor.tooltip.steam_flow", new TextComponent("" + Math.max(Float.MIN_NORMAL, getSpeed() * 1000)).withStyle(ChatFormatting.LIGHT_PURPLE)));
+        tooltip.add(new TranslatableComponent("gti.rotor.tooltip.gas_flow", new TextComponent("" + Math.max(Float.MIN_NORMAL, getSpeed() * 50)).withStyle(ChatFormatting.LIGHT_PURPLE)));
     }
 
     @Override

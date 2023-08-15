@@ -31,6 +31,8 @@ public class GregTechLocalizations {
             add(GTIRef.ID + ".rei.tooltip.material_tree", "Material Tree");
             add("machine.transformer.voltage_info", "%s -> %s (Use Soft Hammer to invert)");
             add(GTIRef.ID + ".rotor.tooltip.efficiency", "Turbine Efficiency: %s");
+            add(GTIRef.ID + ".rotor.tooltip.steam_flow", "Optimal Steam flow: %sL/sec");
+            add(GTIRef.ID + ".rotor.tooltip.gas_flow", "Optimal Gas flow(EU burnvalue per tick): %sEU/t");
         }
 
         @Override
@@ -56,6 +58,9 @@ public class GregTechLocalizations {
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> add(i, "Integrated Circuit (" + i.circuitId + ")"));
             AntimatterAPI.all(ItemBasic.class, domain).stream().filter(i -> i.getId().startsWith("circuit")).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpacedRotated(i.getId())));
             AntimatterAPI.all(ItemBattery.class, domain).stream().filter(i -> i.getId().startsWith("battery")).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpacedRotated(i.getId())));
+            override("machine.large_turbine.hv", "Large Steam Turbine");
+            override("machine.large_turbine.ev", "Large Gas Turbine");
+            override("machine.large_turbine.iv", "Large HP Steam Turbine");
         }
     }
 
