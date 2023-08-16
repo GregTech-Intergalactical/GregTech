@@ -33,7 +33,7 @@ public class ElectrolyzerLoader {
             if (t.has(DUST)){
                 b.ii(DUST.getMaterialIngredient(t, inputAmount));
             } else {
-                b.fi(t.has(LIQUID) ? t.getLiquid(inputAmount * 1000) : t.getGas(inputAmount * 1000));
+                b.fi(t.getFluidTag(inputAmount * 1000));
             }
             long duration = t.has(ELEC_TICKS) ? ELEC_TICKS.getInt(t) : t.getMass() * 20;
             b.io(items).fo(fluids).add("dust_" + t.getId(),duration, euPerTick);
