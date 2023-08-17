@@ -10,6 +10,7 @@ import muramasa.antimatter.ore.BlockOre;
 import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
+import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.block.BlockFakeCasing;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Materials;
@@ -37,6 +38,7 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
     protected void loot() {
         super.loot();
         AntimatterAPI.all(BlockCasing.class,providerDomain, this::add);
+        AntimatterAPI.all(BlockColoredWall.class,providerDomain, this::add);
         AntimatterAPI.all(BlockCoil.class,providerDomain, this::add);
         AntimatterAPI.all(BlockFakeCasing.class, providerDomain, this::add);
         this.add(GregTechData.MINING_PIPE_THIN);

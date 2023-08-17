@@ -117,7 +117,8 @@ public class Machines {
      * Drums
      */
     public static DrumMachine BRONZE_DRUM = GTUtilityData.createDrum(Materials.Bronze, 16000);
-    public static DrumMachine INVAR_DRUM = GTUtilityData.createDrum(Materials.Invar, 32000);
+    public static DrumMachine STEEL_DRUM = GTUtilityData.createDrum(Materials.Steel, 32000);
+    public static DrumMachine INVAR_DRUM = GTUtilityData.createDrum(Materials.Invar, 48000);
     public static DrumMachine STAINLESS_DRUM = GTUtilityData.createDrum(Materials.StainlessSteel, 64000);
     public static DrumMachine TITANIUM_DRUM = GTUtilityData.createDrum(Materials.Titanium, 128000);
     public static DrumMachine NETHERRITE_DRUM = GTUtilityData.createDrum(AntimatterMaterials.Netherite, 128000);

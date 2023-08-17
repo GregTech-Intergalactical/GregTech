@@ -6,8 +6,11 @@ import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
+import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.block.BlockFakeCasing;
 import muramasa.gregtech.data.GregTechData;
+
+import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 
 public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
 
@@ -20,6 +23,13 @@ public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
         super.processTags(domain);
         AntimatterAPI.all(BlockCasing.class, GTIRef.ID, cas -> {
             this.tag(AntimatterDefaultTools.WRENCH.getToolType()).add(cas);
+        });
+        AntimatterAPI.all(BlockColoredWall.class, GTIRef.ID, cas -> {
+            if (cas.getMaterial() == Wood){
+                this.tag(AntimatterDefaultTools.AXE.getToolType()).add(cas);
+            } else {
+                this.tag(AntimatterDefaultTools.WRENCH.getToolType()).add(cas);
+            }
         });
         AntimatterAPI.all(BlockFakeCasing.class, GTIRef.ID, cas -> {
             this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(cas);

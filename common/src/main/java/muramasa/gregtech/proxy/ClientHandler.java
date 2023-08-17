@@ -6,6 +6,7 @@ import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
+import muramasa.gregtech.block.BlockColoredWall;
 import net.minecraft.client.renderer.RenderType;
 
 import java.io.File;
@@ -17,6 +18,7 @@ public class ClientHandler {
 
     public static void setup() {
         AntimatterAPI.all(BlockCasing.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
+        AntimatterAPI.all(BlockColoredWall.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
         copyProgrammerArtIfMissing();
     }
 
