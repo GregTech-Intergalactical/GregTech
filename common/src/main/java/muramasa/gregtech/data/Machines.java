@@ -8,11 +8,13 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
 import muramasa.antimatter.tile.single.TileEntityDigitalTransformer;
 import muramasa.antimatter.tile.single.TileEntityTransformer;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.machine.MultiblockTankMachine;
 import muramasa.gregtech.machine.SteamMachine;
 import muramasa.gregtech.machine.maps.DisassemblingMap;
 import muramasa.gregtech.nuclear.TileEntityNuclearReactor;
@@ -25,9 +27,12 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 
 import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.data.AntimatterMaterials.Netherite;
+import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.machine.MachineFlag.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechData.COVER_STEAM_VENT;
+import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.*;
 
 public class Machines {
@@ -117,13 +122,22 @@ public class Machines {
      * Drums
      */
     public static DrumMachine BRONZE_DRUM = GTUtilityData.createDrum(Materials.Bronze, 16000);
-    public static DrumMachine STEEL_DRUM = GTUtilityData.createDrum(Materials.Steel, 32000);
+    public static DrumMachine STEEL_DRUM = GTUtilityData.createDrum(Steel, 32000);
     public static DrumMachine INVAR_DRUM = GTUtilityData.createDrum(Materials.Invar, 48000);
     public static DrumMachine STAINLESS_DRUM = GTUtilityData.createDrum(Materials.StainlessSteel, 64000);
     public static DrumMachine TITANIUM_DRUM = GTUtilityData.createDrum(Materials.Titanium, 128000);
     public static DrumMachine NETHERRITE_DRUM = GTUtilityData.createDrum(AntimatterMaterials.Netherite, 128000);
     public static DrumMachine TUNGSTENSTEEL_DRUM = GTUtilityData.createDrum(Materials.TungstenSteel, 256000);
     public static DrumMachine TUNGSTEN_DRUM = GTUtilityData.createDrum(Materials.Tungsten, 256000);
+
+    public static MultiblockTankMachine WOOD_TANK = new MultiblockTankMachine(GTIRef.ID, Wood, true, 432000);
+    public static MultiblockTankMachine[] STEEL_TANKS = createTankMachine(Steel, 2);
+    public static MultiblockTankMachine[] INVAR_TANKS = createTankMachine(Invar, 3);
+    public static MultiblockTankMachine[] STAINLESS_STEEL_TANKS = createTankMachine(StainlessSteel, 4);
+    public static MultiblockTankMachine[] TITANIUM_TANKS = createTankMachine(Titanium, 8);
+    public static MultiblockTankMachine[] NETHERITE_TANKS = createTankMachine(Netherite, 8);
+    public static MultiblockTankMachine[] TUNGSTENSTEEL_TANKS = createTankMachine(TungstenSteel, 16);
+    public static MultiblockTankMachine[] TUNGSTEN_TANKS = createTankMachine(Tungsten, 16);
 
     /**
      * Transformers
@@ -190,6 +204,13 @@ public class Machines {
      ** Creative Machines
      **/
     public static TankMachine INFINITE_STEAM = new TankMachine(GTIRef.ID, "infinite_steam").addFlags(FLUID, CELL, GUI).setTile(TileEntityInfiniteFluid::new).setTiers(LV);
+
+    private static MultiblockTankMachine[] createTankMachine(Material material, int multiplier){
+        return new MultiblockTankMachine[]{
+                new MultiblockTankMachine(GTIRef.ID, material, true, 432 * multiplier * 1000),
+                new MultiblockTankMachine(GTIRef.ID, material, false, 2000 * multiplier * 1000)
+        };
+    }
 
     public static void init() {
         if (!AntimatterAPI.isModLoaded("gt4r")) {

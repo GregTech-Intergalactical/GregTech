@@ -61,6 +61,7 @@ dependencies {
     modRuntimeOnly("com.github.Reforged-Mods:ARRP-forge:0.5.7.2")
     modRuntimeOnly("io.github.feltmc:fluidhandler-extras:1.0.1")
     modImplementation("earth.terrarium:botarium-forge-1.18.2:${project.botarium_version}")
+    modImplementation("com.github.Reforged-Mods.Terraform-Reforged:terraform-utils-v1:${project.terraform_version}")
     modRuntimeOnly("io.github.trinsdar:networkapi-forge:${project.networkapi_version}")
     modImplementation("com.teamresourceful.resourcefullib:resourcefullib-forge-1.18.2:${project.resourcefullib_version}")
     //JEI

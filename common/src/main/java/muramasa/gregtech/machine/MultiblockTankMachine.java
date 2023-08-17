@@ -1,32 +1,49 @@
 package muramasa.gregtech.machine;
 
 import com.gtnewhorizon.structurelib.structure.StructureUtility;
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
+import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import io.github.gregtechintergalactical.gtutility.machine.MaterialBasicMultiMachine;
+import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.machine.MachineFlag;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.structure.FakeTileElement;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.tile.multi.TileEntityLargeTank;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.level.block.Block;
+import tesseract.FluidPlatformUtils;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofBlock;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 
 public class MultiblockTankMachine extends MaterialBasicMultiMachine {
     final int capacity;
+    final boolean small;
     public MultiblockTankMachine(String domain, Material material, boolean small, int capacity) {
         super(domain, (small ? "small" : "large") + "_" + material.getId() + "_tank_main_valve", material);
+        setTiers(Tier.NONE);
         if (small){
             this.setStructure(TileEntityLargeTank.class, b -> b.part("main")
                     .of("CCC", "CCC", "CCC").of("C~C", "C-C", "CCC").of(0).build()
-                    .atElement('C', StructureUtility.lazy(t -> ofBlock(t.getCasing()))).offset(1, 1, 0)
+                    .atElement('C', StructureUtility.lazy(t -> new FakeTileElement<>(t.getCasing()))).offset(1, 1, 0)
                     .build());
         } else {
             this.setStructure(TileEntityLargeTank.class, b -> b.part("main")
                     .of("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").of("CC~CC", "C---C", "C---C", "C---C", "CCCCC").of(0).build()
-                    .atElement('C', StructureUtility.lazy(t -> ofBlock(t.getCasing()))).offset(1, 1, 0)
+                    .atElement('C', StructureUtility.lazy(t -> new FakeTileElement<>(t.getCasing()))).offset(2, 2, 0)
                     .build());
         }
+        setTooltipInfo((machine, stack, world, tooltip, flag) -> {
+            tooltip.add(new TranslatableComponent("machine.drum.capacity", capacity));
+        });
+        addFlags(MachineFlag.FLUID);
+        setTile((type1, pos, state1) -> new TileEntityLargeTank(this, pos, state1));
         this.capacity = capacity;
+        this.small = small;
         String prefix = material == Wood ? "wood" : "metal";
         baseTexture(new Texture(GTIRef.ID, "block/casing/wall/" + prefix));
         overlayTexture((type, state, tier) -> {
@@ -34,9 +51,14 @@ public class MultiblockTankMachine extends MaterialBasicMultiMachine {
             return new Texture[]{blank, blank, blank, new Texture(GTIRef.ID, "block/casing/wall/" + prefix + "_tank_side_overlay"), blank, blank};
         });
         setAllowVerticalFacing(true);
+        AntimatterAPI.register(MultiblockTankMachine.class, this);
     }
 
     public int getCapacity() {
         return capacity;
+    }
+
+    public boolean isSmall() {
+        return small;
     }
 }

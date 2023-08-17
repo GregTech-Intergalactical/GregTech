@@ -8,10 +8,12 @@ import muramasa.antimatter.datagen.providers.*;
 import muramasa.antimatter.event.CraftingEvent;
 import muramasa.antimatter.event.ProvidersEvent;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.datagen.*;
@@ -26,6 +28,7 @@ import muramasa.gregtech.loader.machines.generator.LargeBoilerLoader;
 import muramasa.gregtech.loader.multi.*;
 import muramasa.gregtech.proxy.CommonHandler;
 import muramasa.gregtech.proxy.ServerHandler;
+import net.minecraft.world.level.block.Blocks;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -179,6 +182,8 @@ public class GregTech extends AntimatterMod {
                         l.addAll(Arrays.asList(CircuitBasicIntegrated, CircuitGoodIntegrated, CircuitWetware, MicroProcessor, IntegratedProcessor, NanoProcessor, QuantumProcessor));
                     }
                 });
+                AntimatterPlatformUtils.setFlammability(WOOD_WALL, 5, 20);
+                AntimatterPlatformUtils.setFlammability(Machines.WOOD_TANK.getBlockState(Tier.NONE), 5, 20);
                 CommonHandler.setup();
               //  if (side == Dist.CLIENT) StructureInfo.init();
                 TierMaps.providerInit();

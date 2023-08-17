@@ -13,12 +13,17 @@ import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.machine.MultiblockTankMachine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractCapUtils;
+import tesseract.TesseractGraphWrappers;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -39,9 +44,9 @@ public class TileEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<Ti
     }
 
     public Block getCasing(){
-        Block block = AntimatterAPI.get(Block.class, GTIRef.ID, material.getId() + "_wall");
+        Block block = AntimatterAPI.get(Block.class, material.getId() + "_wall", GTIRef.ID);
         if (block != null) return block;
-        return Blocks.BEDROCK;
+        return Blocks.AIR;
     }
 
     public static class LargeTankFluidHandler extends MachineFluidHandler<TileEntityLargeTank> {
@@ -84,9 +89,38 @@ public class TileEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<Ti
         @Override
         public long insertFluid(FluidHolder fluid, boolean simulate) {
             if (tile.getMaterial() == Wood){
-
+                if (FluidPlatformUtils.isFluidGaseous(fluid.getFluid())) {
+                    long inserted = super.insertFluid(fluid, true);
+                    if (inserted > 0) {
+                        if (!simulate) tile.getLevel().playSound(null, tile.getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
+                        return inserted;
+                    }
+                    return 0;
+                }
+                if (FluidPlatformUtils.getFluidTemperature(fluid.getFluid()) > 350){
+                    long inserted = super.insertFluid(fluid, simulate);
+                    if (inserted > 0 && !simulate){
+                        meltdown();
+                    }
+                    return inserted;
+                }
             }
             return super.insertFluid(fluid, simulate);
+        }
+
+        public boolean meltdown() {
+            BlockPos offset = tile.getBlockPos().relative(tile.getFacing().getOpposite());
+            int tX = offset.getX(), tY = offset.getY(), tZ = offset.getZ();
+            for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) for (int k = -1; k <= 1; k++) {
+                //WD.burn(worldObj, tX+i, tY+j, tZ+k, F, F);
+                if (tile.getLevel().random.nextInt(4) == 0) tile.getLevel().setBlock(new BlockPos(tX+i, tY+j, tZ+k), Blocks.FIRE.defaultBlockState(), 3);
+            }
+            FluidHolder fluidHolder = getInputTanks().getTank(0).getStoredFluid();
+            if (fluidHolder.getFluidAmount() >= 1000 * TesseractGraphWrappers.dropletMultiplier && fluidHolder.getFluid() == Fluids.LAVA){
+                tile.getLevel().setBlock(offset, Blocks.LAVA.defaultBlockState(), 3);
+            }
+
+            return true;
         }
     }
 }

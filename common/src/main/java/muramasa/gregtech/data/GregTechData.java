@@ -383,6 +383,10 @@ public class GregTechData {
     public static final BlockColoredWall STEEL_WALL = new BlockColoredWall(GTIRef.ID, Steel);
     public static final BlockColoredWall INVAR_WALL = new BlockColoredWall(GTIRef.ID, Invar);
     public static final BlockColoredWall STAINLESS_STEEL_WALL = new BlockColoredWall(GTIRef.ID, StainlessSteel);
+    public static final BlockColoredWall TITANIUM_WALL = new BlockColoredWall(GTIRef.ID, Titanium);
+    public static final BlockColoredWall NETHERITE_WALL = new BlockColoredWall(GTIRef.ID, AntimatterMaterials.Netherite);
+    public static final BlockColoredWall TUNGSTENSTEEL_WALL = new BlockColoredWall(GTIRef.ID, TungstenSteel);
+    public static final BlockColoredWall TUNGSTEN_WALL = new BlockColoredWall(GTIRef.ID, Tungsten);
     public static final BlockFakeCasing CASING_FIRE_BRICK = new BlockFakeCasing(GTIRef.ID, "fire_bricks", BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.STONE, MaterialColor.DIRT).strength(1.0f, 10.0f).sound(SoundType.STONE));
     public static final BlockCasing CASING_BRONZE = new BlockCasing(GTIRef.ID, "bronze_casing");
     public static final BlockCasing CASING_BRICKED_BRONZE = new BlockSidedCasing(GTIRef.ID, "bricked_bronze_casing", "brick", "bronze");
