@@ -30,7 +30,7 @@ public class TileEntityElectricBlastFurnace extends TileEntityMultiMachine<TileE
                     EUt = activeRecipe.getPower();
                     return;
                 }
-                if (coilData.heat() >= activeRecipe.getSpecialValue()) {
+                if (coilData != null && coilData.heat() >= activeRecipe.getSpecialValue()) {
                     int heatDiv = (coilData.heat() - activeRecipe.getSpecialValue()) / 900;
                     if (activeRecipe.getPower() <= 16) {
                         EUt = (activeRecipe.getPower() * (1L << tier - 1) * (1L << tier - 1));

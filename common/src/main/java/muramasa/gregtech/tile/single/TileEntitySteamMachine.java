@@ -7,27 +7,16 @@ import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.tile.TileEntityMachine;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
 import tesseract.TesseractGraphWrappers;
-
-import java.util.Collections;
-import java.util.List;
 
 import static muramasa.antimatter.machine.Tier.BRONZE;
 import static muramasa.gregtech.data.Machines.STEAM_FORGE_HAMMER;
 
 public class TileEntitySteamMachine extends TileEntityMachine<TileEntitySteamMachine> {
-
-    public static final TagKey<Fluid> STEAM =  TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation((AntimatterPlatformUtils.isForge() ? "forge" : "c"), "steam"));
 
     public TileEntitySteamMachine(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -48,7 +37,7 @@ public class TileEntitySteamMachine extends TileEntityMachine<TileEntitySteamMac
 
         @Override
         public boolean consumeResourceForRecipe(boolean simulate) {
-            return tile.fluidHandler.map(t -> t.consumeTaggedInput(STEAM, getPower() * TesseractGraphWrappers.dropletMultiplier, simulate).getFluidAmount() > 0)
+            return tile.fluidHandler.map(t -> t.consumeTaggedInput(GregTechTags.STEAM, getPower() * TesseractGraphWrappers.dropletMultiplier, simulate).getFluidAmount() > 0)
                     .orElse(false);
         }
         //Allow up to 16 .
@@ -88,7 +77,7 @@ public class TileEntitySteamMachine extends TileEntityMachine<TileEntitySteamMac
 
         @Override
         public boolean accepts(FluidHolder stack) {
-            return stack.getFluid().builtInRegistryHolder().is(STEAM);
+            return stack.getFluid().builtInRegistryHolder().is(GregTechTags.STEAM);
         }
 
         @Override
@@ -102,7 +91,7 @@ public class TileEntitySteamMachine extends TileEntityMachine<TileEntitySteamMac
             if (event instanceof ContentEvent) {
                 if (event == ContentEvent.FLUID_INPUT_CHANGED) {
                     if (data != null && data.length > 0) {
-                        if (data[0] instanceof FluidHolder && ((FluidHolder)data[0]).getFluid().builtInRegistryHolder().is(STEAM)) {
+                        if (data[0] instanceof FluidHolder && ((FluidHolder)data[0]).getFluid().builtInRegistryHolder().is(GregTechTags.STEAM)) {
                             checkRecipe();
                         }
                     }

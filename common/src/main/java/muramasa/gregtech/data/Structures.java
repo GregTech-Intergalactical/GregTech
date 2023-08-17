@@ -155,15 +155,7 @@ public class Structures {
                         StructureUtility.lazy(t -> ofBlock(t.getCasing())),
                         ofHatch(HATCH_FLUID_I),
                         ofHatch(HATCH_FLUID_O)))
-                .atElement('E', ofHatch(HATCH_DYNAMO, (t, world, pos, machine, handler) -> {
-                    if (handler.getTile() instanceof TileEntityMachine<?> entityMachine){
-                        if (t.getMachineTier().getVoltage() <= entityMachine.getMachineTier().getVoltage()){
-                            t.addComponent(machine.getComponentId(), handler);
-                            return true;
-                        }
-                    }
-                    return false;
-                }))
+                .atElement('E', ofHatch(HATCH_DYNAMO))
                 .min(1, HATCH_FLUID_I, HATCH_FLUID_O).offset(1, 1, 0).build()
         );
 

@@ -20,6 +20,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import static muramasa.gregtech.data.Materials.*;
+
 public class ItemTurbineRotor extends MaterialTool {
     public ItemTurbineRotor(String domain, AntimatterToolType type, AntimatterItemTier tier, Properties properties) {
         super(domain, type, tier, properties);
@@ -38,6 +40,13 @@ public class ItemTurbineRotor extends MaterialTool {
 
     public float getSpeed(){
         return itemTier.getSpeed() * speedMultiplier();
+    }
+
+    public Material getRodMaterial(){
+        if (type == ToolTypes.TURBINE_ROTOR) return Titanium;
+        if (type == ToolTypes.LARGE_TURBINE_ROTOR) return TungstenSteel;
+        if (type == ToolTypes.HUGE_TURBINE_ROTOR) return Americium;
+        return Magnalium;
     }
 
     @Override
