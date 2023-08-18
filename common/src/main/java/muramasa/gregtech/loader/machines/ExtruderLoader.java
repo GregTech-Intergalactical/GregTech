@@ -9,6 +9,7 @@ import muramasa.antimatter.pipe.types.*;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 
@@ -98,6 +99,7 @@ public class ExtruderLoader {
             case NORMAL -> GregTechData.ShapePipeNormal;
             case SMALL -> GregTechData.ShapePipeSmall;
             case TINY, VTINY -> GregTechData.ShapePipeTiny;
+            default -> Items.AIR;
         };
     }
 }

@@ -33,7 +33,7 @@ public class WireCablesPlates {
             Cable<?> cable = AntimatterAPI.get(Cable.class, "cable" + "_" + wire.getMaterial().getId());
             ImmutableSet<PipeSize> sizes = wire.getSizes();
             Map<PipeSize, Item> wires = sizes.stream().map(s -> new Pair<>(s, wire.getBlockItem(s))).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
-            PipeSize[] val = values();
+            PipeSize[] val = VALUES;
             for (int i = 1; i < val.length; i += 1) {
                 oneToTwo(wires, val[i], val[i-1], output, provider);
                 twoToOne(wires, val[i-1], val[i], output,provider);
