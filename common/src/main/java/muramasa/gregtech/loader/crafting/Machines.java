@@ -22,6 +22,7 @@ import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechTags;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.TierMaps;
+import muramasa.gregtech.machine.MultiblockTankMachine;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -37,6 +38,7 @@ import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
+import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechTags.CIRCUITS_ADVANCED;
@@ -531,6 +533,22 @@ public class Machines {
             } else {
                 provider.addItemRecipe(output, Ref.ID, "", "machines", "has_chest", provider.hasSafeItem(ForgeCTags.CHESTS_WOODEN), m.getItem(HV),
                         of('S', SCREWDRIVER.getTag(), 'w', WIRE_CUTTER.getTag(), 'W', Machine.get(m.getId().replace("charging_", ""), GTUtility.ID).map(mch -> mch.getItem(NONE)).orElse(Items.AIR), 'c', CABLE_GETTER.apply(PipeSize.SMALL, HV, false), 'C', CIRCUITS_ADVANCED, 'R', ROD.getMaterialTag(m.getMaterial())), "RCR", "SWw", "ccc");
+            }
+        });
+
+        AntimatterAPI.all(MultiblockTankMachine.class).forEach(m -> {
+            if (m.isSmall()){
+                Block block = AntimatterAPI.get(Block.class, m.getMaterial().getId() + "_wall", GTIRef.ID);
+                if (block == null) return;
+                Material ringMaterial = m.getMaterial() == Wood ? Lead : m.getMaterial();
+                TagKey<Item> hammer = m.getMaterial() == Wood ? SOFT_HAMMER.getTag() : HAMMER.getTag();
+                provider.addItemRecipe(output, "multiblock_tanks", "has_saw", provider.hasSafeItem(SAW.getTag()), m.getItem(NONE),
+                        of('R', RING.getMaterialTag(ringMaterial), 'S', SAW.getTag(), 'H', hammer, 'W', block.asItem()), " R ", "HWS", " R ");
+            } else {
+                Block block = AntimatterAPI.get(Block.class, m.getId().replace("large", "small"), GTIRef.ID);
+                if (block == null) return;
+                provider.addItemRecipe(output, "multiblock_tanks", "has_saw", provider.hasSafeItem(SAW.getTag()), m.getItem(NONE),
+                        of('P', PLATE.getMaterialTag(m.getMaterial()), 'S', SAW.getTag(), 'H', HAMMER.getTag(), 'W', block.asItem()), "PPP", "HWS", "PPP");
             }
         });
     }

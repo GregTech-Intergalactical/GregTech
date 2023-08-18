@@ -14,7 +14,9 @@ import muramasa.antimatter.pipe.types.PipeType;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
+import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.data.GregTechData;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -24,9 +26,9 @@ import net.minecraft.world.level.block.Blocks;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.antimatter.data.AntimatterDefaultTools.HAMMER;
-import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
+import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
@@ -38,6 +40,16 @@ public class BlockParts {
             provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), AntimatterMaterialTypes.FRAME.get().get(frame).asStack(2),
                     of('R', AntimatterMaterialTypes.ROD.get(frame), 'W', WRENCH.getTag())
             , "RRR","RWR", "RRR");
+        });
+
+        AntimatterAPI.all(BlockColoredWall.class, b -> {
+            if (b.getMaterial() == Wood){
+                provider.addItemRecipe(output, "walls", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), b.asItem(),
+                        of('P', PLATE.getMaterialTag(Lead), 'H', HAMMER.getTag(), 'S', SAW.getTag(), 'W', ItemTags.PLANKS), "W W", "SPH", "W W");
+            } else {
+                provider.addItemRecipe(output, "walls", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), b.asItem(),
+                        of('P', PLATE.getMaterialTag(b.getMaterial()), 'H', HAMMER.getTag(), 'W', WRENCH.getTag()), "WPP", "HPP");
+            }
         });
 
         addBrickedCasing(output, provider, Bronze, GregTechData.CASING_BRICKED_BRONZE);
@@ -93,7 +105,7 @@ public class BlockParts {
         addTierCasing(output, provider, Tier.UV);
         addTierCasing(output, provider, Tier.UHV);
 
-        addTierHull(output, provider, AntimatterMaterials.Wood,Tier.ULV);
+        addTierHull(output, provider, Wood,Tier.ULV);
         addTierHull(output, provider, WroughtIron,Tier.LV);
         addTierHull(output, provider, WroughtIron,Tier.MV);
         addTierHull(output, provider, Polyethylene,Tier.HV);

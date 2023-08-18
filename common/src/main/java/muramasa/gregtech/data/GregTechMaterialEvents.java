@@ -101,7 +101,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Lutetium).asMetal(1925, 1925);
         event.setMaterial(Hafnium).asMetal(2506);
         event.setMaterial(Tantalum).asSolid(3290, 0);
-        event.setMaterial(Tungsten).asMetal(3695, 3000, FOIL);
+        event.setMaterial(Tungsten).asMetal(3695, 3000, FOIL, RING);
         event.setMaterial(Rhenium).asMetal(3459,3459);
         event.setMaterial(Osmium).asOre().asMetal(3306, 3306, SCREW, BOLT, RING, PLATE, FOIL, ROD, WIRE_FINE);
         event.setMaterial(Iridium).asMetal(2719, 2719, FRAME, PLATE).asOre();
@@ -109,7 +109,7 @@ public class GregTechMaterialEvents {
         //Gold, added by vanilla
         event.setMaterial(Mercury).asFluid();
         event.setMaterial(Thallium).asMetal(577, 0);
-        event.setMaterial(Lead).asMetal(600, 0, PLATE, PLATE_DENSE, FOIL, ROD, FRAME, BOLT).asOre().harvestLevel(1);
+        event.setMaterial(Lead).asMetal(600, 0, PLATE, PLATE_DENSE, FOIL, ROD, FRAME, BOLT, RING).asOre().harvestLevel(1);
         event.setMaterial(Bismuth).asOre();
         event.setMaterial(Polonium).asMetal(527, 0);
         event.setMaterial(Astatine).asMetal(575, 0);
@@ -153,7 +153,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(HSSE).asMetal(5400, 5400, GEAR, FRAME);
         event.setMaterial(HSSG).asMetal(4500, 4500, GEAR, FRAME);
         event.setMaterial(HSSS).asMetal(5400, 5400);
-        event.setMaterial(Invar).asMetal(1700, FRAME);
+        event.setMaterial(Invar).asMetal(1700, FRAME, RING);
         event.setMaterial(IronMagnetic).asMetal(1811, ROD);
         event.setMaterial(Kanthal).asMetal(1800, 1800);
         event.setMaterial(Magnalium).asMetal(870, 0, PLATE, ROD_LONG);
@@ -1627,7 +1627,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Flint).flags(ROCK);
         event.setMaterial(Gold).flags(FOIL, ROD, WIRE_FINE, GEAR);
         event.setMaterial(Iron).flags(RING, GEAR, FRAME);
-        event.setMaterial(AntimatterMaterials.Netherite).asMetal(2246, 1300);
+        event.setMaterial(AntimatterMaterials.Netherite).asMetal(2246, 1300, RING);
         event.setMaterial(Lapis).asGemBasic(false, PLATE).mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));
         event.setMaterial(Prismarine).mats(of(Potassium, 2, Oxygen, 8, Manganese, 1, Silicon, 5));
         event.setMaterial(Redstone).mats(of(Silicon, 1, Pyrite, 5, Ruby, 1, Mercury, 3)).asFluid(0, MaterialTags.MELTING_POINT.getInt(Redstone));//.setOreMulti(4);
