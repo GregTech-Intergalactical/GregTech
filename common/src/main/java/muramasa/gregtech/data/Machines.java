@@ -184,6 +184,12 @@ public class Machines {
     public static MultiMachine PYROLYSIS_OVEN = new MultiMachine(GTIRef.ID, "pyrolysis_oven").setTiers(MV).setMap(PYROLYSISING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityPyrolysisOven::new).custom();
     public static MultiMachine VACUUM_FREEZER = new MultiMachine(GTIRef.ID, "vacuum_freezer").setTiers(HV).setMap(VACUUM_FREEZING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityVacuumFreezer::new);
     /**
+     * Long distance pipelines
+     */
+    public static BasicMultiMachine<?> LONG_DISTANCE_FLUID_ENDPOINT = new BasicMultiMachine<>(GTIRef.ID,"long_distance_fluid_endpoint").allowFrontIO().setTiers(NONE).addFlags(FLUID).setTile(TileEntityLongDistancePipeEndpoint::new);
+    public static BasicMultiMachine<?> LONG_DISTANCE_ITEM_ENDPOINT = new BasicMultiMachine<>(GTIRef.ID,"long_distance_item_endpoint").allowFrontIO().setTiers(NONE).addFlags(ITEM).setTile(TileEntityLongDistancePipeEndpoint::new);
+
+    /**
      ** Hatches
      **/
     public static HatchMachine HATCH_DYNAMO = new HatchMachine(GTIRef.ID, "hatch_dynamo", COVERDYNAMO).addFlags(ENERGY);
