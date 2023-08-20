@@ -45,7 +45,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Phosphor).asDust(933);
         event.setMaterial(Sulfur).asDust(388).asOre().harvestLevel(2).asPlasma();
         event.setMaterial(Chlorine).asGas();
-        event.setMaterial(Argon).asGas();
+        event.setMaterial(Argon).asPlasma();
         event.setMaterial(Potassium).asSolid(336, 0);
         event.setMaterial(Calcium).asDust(1115);
         //Scandium, not added

@@ -158,7 +158,7 @@ public class Guis {
                 .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34)
                 .add(ENERGY, 80, 63)
                 .getGui().getMachineData().setProgressLocation("sifter");
-        PLASMA_ARC_FURNACE.add(ARC_FURNACE);
+        PLASMA_ARC_FURNACE.add(ARC_FURNACE).add(FL_OUT, 107, 63);
         ELECTROMAGNETIC_SEPARATOR.add(COMPRESSOR).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
                 .getGui().getMachineData().setProgressLocation("electromagnetic_separator");
         DECAY_CHAMBER.add(IT_IN, 17, 25).add(IT_IN, 35, 25)
