@@ -387,6 +387,13 @@ public class GregTechData {
     public static final BlockColoredWall NETHERITE_WALL = new BlockColoredWall(GTIRef.ID, AntimatterMaterials.Netherite);
     public static final BlockColoredWall TUNGSTENSTEEL_WALL = new BlockColoredWall(GTIRef.ID, TungstenSteel);
     public static final BlockColoredWall TUNGSTEN_WALL = new BlockColoredWall(GTIRef.ID, Tungsten);
+    public static final BlockCasing LONG_DIST_ITEM_PIPE = new BlockCasing(GTIRef.ID, "long_distance_item_pipe");
+    public static final BlockCasing LONG_DIST_FLUID_PIPE = new BlockCasing(GTIRef.ID, "long_distance_fluid_pipe");
+    public static final BlockCasing LONG_DIST_WIRE_EV = new BlockCasing(GTIRef.ID, "long_distance_wire_ev", Block.Properties.of(net.minecraft.world.level.material.Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
+    public static final BlockCasing LONG_DIST_WIRE_IV = new BlockCasing(GTIRef.ID, "long_distance_wire_iv", Block.Properties.of(net.minecraft.world.level.material.Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
+    public static final BlockCasing LONG_DIST_WIRE_LUV = new BlockCasing(GTIRef.ID, "long_distance_wire_luv", Block.Properties.of(net.minecraft.world.level.material.Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
+    public static final BlockCasing LONG_DIST_WIRE_ZPM = new BlockCasing(GTIRef.ID, "long_distance_wire_zpm", Block.Properties.of(net.minecraft.world.level.material.Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
+    public static final BlockCasing LONG_DIST_WIRE_UV = new BlockCasing(GTIRef.ID, "long_distance_wire_uv", Block.Properties.of(net.minecraft.world.level.material.Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
     public static final BlockFakeCasing CASING_FIRE_BRICK = new BlockFakeCasing(GTIRef.ID, "fire_bricks", BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.STONE, MaterialColor.DIRT).strength(1.0f, 10.0f).sound(SoundType.STONE));
     public static final BlockCasing CASING_BRONZE = new BlockCasing(GTIRef.ID, "bronze_casing");
     public static final BlockCasing CASING_BRICKED_BRONZE = new BlockSidedCasing(GTIRef.ID, "bricked_bronze_casing", "brick", "bronze");

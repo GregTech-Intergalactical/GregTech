@@ -22,6 +22,10 @@ public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
     public void processTags(String domain){
         super.processTags(domain);
         AntimatterAPI.all(BlockCasing.class, GTIRef.ID, cas -> {
+            if (cas.getId().contains("long_distance_wire")){
+                this.tag(AntimatterDefaultTools.WIRE_CUTTER.getToolType()).add(cas);
+                return;
+            }
             this.tag(AntimatterDefaultTools.WRENCH.getToolType()).add(cas);
         });
         AntimatterAPI.all(BlockColoredWall.class, GTIRef.ID, cas -> {

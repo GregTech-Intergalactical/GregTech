@@ -48,6 +48,10 @@ public class GregTechLocalizations {
                     add(i, lowerUnderscoreToUpperSpacedRotated(i.getId()));
                     return;
                 }
+                if (i.getId().contains("long_distance_cable")){
+                    String tier = i.getId().replace("long_distance_cable_", "");
+                    add(i, "Long Distance Cable (" + tier.toUpperCase() + ")");
+                }
                 add(i, lowerUnderscoreToUpperSpaced(i.getId()));
             });
 

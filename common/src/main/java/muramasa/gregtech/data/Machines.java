@@ -188,6 +188,7 @@ public class Machines {
      */
     public static BasicMultiMachine<?> LONG_DISTANCE_FLUID_ENDPOINT = new BasicMultiMachine<>(GTIRef.ID,"long_distance_fluid_endpoint").allowFrontIO().setTiers(NONE).addFlags(FLUID).setTile(TileEntityLongDistancePipeEndpoint::new);
     public static BasicMultiMachine<?> LONG_DISTANCE_ITEM_ENDPOINT = new BasicMultiMachine<>(GTIRef.ID,"long_distance_item_endpoint").allowFrontIO().setTiers(NONE).addFlags(ITEM).setTile(TileEntityLongDistancePipeEndpoint::new);
+    public static BasicMultiMachine<?> LONG_DISTANCE_TRANSFORMER_ENDPOINT = new BasicMultiMachine<>(GTIRef.ID,"long_distance_transformer_endpoint").allowFrontIO().setTiers(EV, IV, LUV, ZPM, UV).addFlags(ENERGY).setTile(TileEntityLongDistancePipeEndpoint::new);
 
     /**
      ** Hatches

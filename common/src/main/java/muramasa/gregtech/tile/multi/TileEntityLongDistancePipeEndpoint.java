@@ -5,6 +5,7 @@ import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongList;
+import muramasa.antimatter.capability.machine.MachineEnergyHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.client.scene.TrackedDummyWorld;
@@ -13,14 +14,21 @@ import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.structure.StructureCache;
 import muramasa.antimatter.tile.multi.TileEntityBasicMultiMachine;
+import muramasa.gregtech.GregTech;
+import muramasa.gregtech.block.BlockCasing;
+import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.Machines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import tesseract.TesseractCapUtils;
+import tesseract.api.gt.IEnergyHandler;
 import tesseract.api.item.ExtendedItemContainer;
 import tesseract.api.item.PlatformItemHandler;
 
@@ -116,6 +124,52 @@ public class TileEntityLongDistancePipeEndpoint extends TileEntityBasicMultiMach
                 }
             });
         }
+        if (type.has(MachineFlag.ENERGY)){
+            energyHandler.set(() -> new MachineEnergyHandler<>(this, false){
+                @Override
+                public long insertAmps(long voltage, long amps, boolean simulate) {
+                    if (tile.target == null) return 0;
+                    if (!checkVoltage(voltage)) return 0;
+                    BlockEntity entity = tile.target.getLevel().getBlockEntity(tile.target.getBlockPos().relative(tile.target.getFacing().getOpposite()));
+                    if (entity == null) return 0;
+                    IEnergyHandler handler = TesseractCapUtils.getEnergyHandler(entity, tile.target.getFacing()).orElse(null);
+                    if (handler == null) return 0;
+                    int loss = Math.round(tile.successfulPositions.size() * 0.125f);
+                    return handler.insertAmps(Math.max(0, voltage - loss), amps, simulate);
+                }
+
+                @Override
+                public long availableAmpsInput(long voltage) {
+                    if (tile.target == null) return 0;
+                    BlockEntity entity = tile.target.getLevel().getBlockEntity(tile.target.getBlockPos().relative(tile.target.getFacing().getOpposite()));
+                    if (entity == null) return 0;
+                    IEnergyHandler handler = TesseractCapUtils.getEnergyHandler(entity, tile.target.getFacing()).orElse(null);
+                    if (handler == null) return 0;
+                    int loss = Math.round(tile.successfulPositions.size() * 0.125f);
+                    return handler.availableAmpsInput(Math.max(0, voltage - loss));
+                }
+
+                @Override
+                public long getCapacity() {
+                    return 0;
+                }
+
+                @Override
+                protected boolean checkVoltage(long voltage) {
+                    return voltage <= this.getInputVoltage();
+                }
+            });
+        }
+    }
+
+    protected Block getPipeline(){
+        if (type == Machines.LONG_DISTANCE_FLUID_ENDPOINT) return GregTechData.LONG_DIST_FLUID_PIPE;
+        if (type == Machines.LONG_DISTANCE_ITEM_ENDPOINT) return GregTechData.LONG_DIST_ITEM_PIPE;
+        if (type == Machines.LONG_DISTANCE_TRANSFORMER_ENDPOINT){
+            Block block = GregTech.get(BlockCasing.class, "long_distance_cable_" + this.tier.getId());
+            if (block != null) return block;
+        }
+        return Blocks.DIAMOND_BLOCK;
     }
 
     LongList successfulPositions;
@@ -141,24 +195,24 @@ public class TileEntityLongDistancePipeEndpoint extends TileEntityBasicMultiMach
                 }
                 break;
             }
-            if (state.getBlock() == Blocks.DIAMOND_BLOCK){
+            if (state.getBlock() == getPipeline()){
                 successfulPositions.add(mut.asLong());
                 continue;
             }
             mut.move(to.getOpposite());
             int failed = 0;
             int succeeded = 0;
-            for (Direction dir : Direction.Plane.HORIZONTAL){
+            for (Direction dir : Direction.values()){
                 if (dir == to || dir == to.getOpposite()) continue;
                 BlockState state2 =  this.getLevel().getBlockState(mut.immutable().relative(dir));
-                if (state2.getBlock() == Blocks.DIAMOND_BLOCK){
+                if (state2.getBlock() == getPipeline()){
                     if (succeeded == 0) to = dir;
                     succeeded++;
                 } else {
                     failed++;
                 }
             }
-            if (failed == 2 || succeeded > 1){
+            if (failed == 4 || succeeded > 1){
                 break;
             }
         }
@@ -193,7 +247,7 @@ public class TileEntityLongDistancePipeEndpoint extends TileEntityBasicMultiMach
             return;
         if (validStructure) {
             BlockState state = this.getLevel().getBlockState(pos);
-            if (successfulPositions.contains(pos.asLong()) && state.getBlock() != Blocks.DIAMOND_BLOCK){
+            if (successfulPositions.contains(pos.asLong()) && state.getBlock() != getPipeline()){
                 invalidateStructure();
             }
         } else {
@@ -204,6 +258,7 @@ public class TileEntityLongDistancePipeEndpoint extends TileEntityBasicMultiMach
     @Override
     protected void invalidateStructure() {
         super.invalidateStructure();
+        successfulPositions.clear();
         if (target != null){
             target.validStructure = false;
             target.sender = null;
