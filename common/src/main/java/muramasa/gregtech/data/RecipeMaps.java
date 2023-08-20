@@ -76,8 +76,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "cutting", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CRACKING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "cracking", new RecipeBuilder())).setGuiData(MULTI_DISPLAY);
-    public static RecipeMap<RecipeBuilder> COMPLEX_ASSEMBLING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "complex_assembling", new RecipeBuilder())).setGuiData(MULTI_DISPLAY);
+    public static RecipeMap<RecipeBuilder> ASSEMBLY_LINE = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "assembly_line", new RecipeBuilder())).setGuiData(MULTI_DISPLAY_FLUID);
     public static RecipeMap<RecipeBuilder> DECAYING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "decaying", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> DEHYDRATING = AntimatterAPI.register(RecipeMap.class,
