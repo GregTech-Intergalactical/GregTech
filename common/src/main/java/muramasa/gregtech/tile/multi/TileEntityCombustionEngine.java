@@ -1,6 +1,11 @@
 package muramasa.gregtech.tile.multi;
 
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
+import muramasa.antimatter.gui.GuiInstance;
+import muramasa.antimatter.gui.IGuiElement;
+import muramasa.antimatter.gui.widget.InfoRenderWidget;
+import muramasa.antimatter.gui.widget.WidgetSupplier;
+import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import net.minecraft.core.BlockPos;
@@ -10,6 +15,7 @@ import tesseract.TesseractGraphWrappers;
 
 import java.util.List;
 
+import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static muramasa.gregtech.data.Materials.Lubricant;
 import static muramasa.gregtech.data.Materials.Oxygen;
 
@@ -70,5 +76,32 @@ public class TileEntityCombustionEngine extends TileEntityMultiMachine<TileEntit
                 lubeTicker = nbt.getInt("lubeTicker");
             }
         });
+    }
+
+    public static class CombustionEngineWidget extends InfoRenderWidget.MultiRenderWidget {
+
+        public long currentConsumption = 0;
+        public long lastEU = 0;
+        public long recommendedConsumption = 0;
+
+        protected CombustionEngineWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
+            super(gui, parent, renderer);
+        }
+
+        @Override
+        public void init() {
+            super.init();
+            TileEntityCombustionEngine turbine = (TileEntityCombustionEngine) gui.handler;
+            gui.syncLong(() -> turbine.lastEu, i -> this.lastEU = i, SERVER_TO_CLIENT);
+        }
+
+        public static WidgetSupplier build() {
+            return builder((a, b) -> new CombustionEngineWidget(a, b, (IInfoRenderer<MultiRenderWidget>) a.handler));
+        }
+
+        @Override
+        public boolean drawActiveInfo() {
+            return false;
+        }
     }
 }
