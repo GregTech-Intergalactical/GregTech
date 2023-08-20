@@ -58,12 +58,14 @@ public class CentrifugingLoader {
 
         CENTRIFUGING.RB().ii(of(GLOWSTONE_DUST, 10)).io(DUST.get(Gold, 5), DUST.get(Redstone, 5)).fo(Helium.getGas(1000)).add("glowstone_to_helium", 2920, 16);
         CENTRIFUGING.RB().ii(of(MAGMA_CREAM, 1)).io(BLAZE_POWDER, SLIME_BALL).add("magma_cream", 500, 5);
+        CENTRIFUGING.RB().ii(SOUL_SAND).io(DUST_SMALL.get(Saltpeter), DUST_TINY.get(Coal), SAND).chances(.8, .2, .9).fo(Oil.getLiquid(80)).add("oil_from_soulsand", 200, 80);
+        CENTRIFUGING.RB().ii(SOUL_SOIL).io(DUST_SMALL.get(Saltpeter), DUST_TINY.get(Coal), DIRT).chances(.8, .2, .9).fo(Oil.getLiquid(80)).add("oil_from_soulsoil", 200, 80);
         CENTRIFUGING.RB().fi(Propane.getGas(320)).fo(Lubricant.getLiquid(290)).add("propane", 20, 5);
         CENTRIFUGING.RB().fi(Butane.getGas(320)).fo(Lubricant.getLiquid(370)).add("butane", 20, 5);
         CENTRIFUGING.RB().fi(RefineryGas.getGas(800)).fo(LPG.getGas(400)).add("refinery_gas", 20, 5);
         //Cake Centrifuging
-        CENTRIFUGING.RB().ii(of(DUST.get(ThoriumCake, 5))).io(DUST.get(ThoriumDioxide, 1), DUST.get(TrithoriumOctoxide, 4)).add("thorium_cake_centrifuging",400, 500);
-        CENTRIFUGING.RB().ii(of(DUST.get(UraniumCake, 5))).io(DUST.get(UraniumDioxide, 1), DUST.get(TriuraniumOctoxide, 4)).add("uranium_cake_centrifuging",400, 500);
+        /*CENTRIFUGING.RB().ii(of(DUST.get(ThoriumCake, 5))).io(DUST.get(ThoriumDioxide, 1), DUST.get(TrithoriumOctoxide, 4)).add("thorium_cake_centrifuging",400, 500);
+        CENTRIFUGING.RB().ii(of(DUST.get(UraniumCake, 5))).io(DUST.get(UraniumDioxide, 1), DUST.get(TriuraniumOctoxide, 4)).add("uranium_cake_centrifuging",400, 500);*/
         CENTRIFUGING.RB().ii(of(GTRubberData.RUBBER_LOGS)).io(new ItemStack(GTRubberData.StickyResin), new ItemStack(GregTechData.PlantBall), DUST.get(Carbon, 1), DUST.get(Wood, 1)).fo(Methane.getGas(60)).chances(0.5, 0.375, 0.25, 0.25).add("rubber_logs", 200, 20);
 
         CENTRIFUGING.RB().ii(of(GTRubberData.StickyResin, 1)).io(DUST.get(RawRubber, 3), new ItemStack(GregTechData.PlantBall)).fo(Glue.getLiquid(100)).chances(10000, 1000).add("sticky_resin", 300, 5);
