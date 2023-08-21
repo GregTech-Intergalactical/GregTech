@@ -207,6 +207,8 @@ public class Machines {
     public static TankMachine QUANTUM_TANK = new TankMachine(GTIRef.ID, "quantum_tank", t -> (int) (1602000 * Math.pow(6,  (t.getIntegerId() - 1)))).addFlags(BASIC, GUI, CELL).frontCovers();
 
     public static BasicMachine PUMP = new BasicMachine(GTIRef.ID, "electric_pump").addFlags(FLUID).setAllowVerticalFacing(true).setTile(TileEntityPump::new).noCovers();
+    public static BasicMachine CROP_HARVESTER = new BasicMachine(GTIRef.ID, "crop_harvester").setTiers(LV).addFlags(GUI, ITEM).setTile(TileEntityCropHarvester::new);
+
     /**
      ** Creative Machines
      **/
