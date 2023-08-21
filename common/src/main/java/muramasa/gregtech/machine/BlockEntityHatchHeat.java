@@ -4,6 +4,7 @@ import muramasa.antimatter.capability.Holder;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.event.MachineEvent;
+import muramasa.antimatter.machine.types.HatchMachine;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
@@ -21,7 +22,7 @@ public class BlockEntityHatchHeat<T extends BlockEntityHatchHeat<T>> extends Til
     public final Material material;
     public Holder<IHeatHandler, DefaultHeatHandler> heatHandler = new Holder<>(IHeatHandler.class, dispatch);
 
-    public BlockEntityHatchHeat(Machine<?> type, BlockPos pos, BlockState state) {
+    public BlockEntityHatchHeat(HatchMachine type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         HeatHatch hath = (HeatHatch)type;
         this.material = hath.mat;

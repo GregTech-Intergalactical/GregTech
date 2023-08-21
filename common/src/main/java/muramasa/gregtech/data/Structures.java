@@ -90,7 +90,7 @@ public class Structures {
                     boolean check = structureDefinition.check(tile, part, tile.getLevel(), tile.getExtendedFacing(), tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ(), newOffset.getX(), newOffset.getY(), newOffset.getZ(), !tile.isStructureValid());
                      if (!part.equals("bottom")){
                         if (check){
-                            tile.FO_HATCHES.forEach(h -> tile.addComponent(HATCH_FLUID_O.getComponentId(), h));
+                            tile.FO_HATCHES.forEach(h -> tile.addComponent(HATCH_FLUID_O.getId(), h));
                             tile.LAYERS.add(i);
                         } else {
                             tile.HATCH_LAYERS.remove(i);
@@ -116,7 +116,7 @@ public class Structures {
                     boolean check = structureDefinition.check(tile, part, tile.getLevel(), tile.getExtendedFacing(), tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ(), newOffset.getX(), newOffset.getY(), newOffset.getZ(), !tile.isStructureValid());
                     if (!part.equals("bottom")){
                         if (check){
-                            tile.FO_HATCHES.forEach(h -> tile.addComponent(HATCH_FLUID_O.getComponentId(), h));
+                            tile.FO_HATCHES.forEach(h -> tile.addComponent(HATCH_FLUID_O.getId(), h));
                             tile.LAYERS.add(i);
                         } else {
                             tile.HATCH_LAYERS.remove(i);
