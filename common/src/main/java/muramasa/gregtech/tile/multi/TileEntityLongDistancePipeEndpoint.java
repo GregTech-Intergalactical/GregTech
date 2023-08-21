@@ -182,6 +182,7 @@ public class TileEntityLongDistancePipeEndpoint extends TileEntityBasicMultiMach
         Direction to = this.getFacing().getOpposite();
         BlockPos.MutableBlockPos mut = this.getBlockPos().mutable();
         successfulPositions = new LongArrayList();
+        int pipelinesFound = 0;
         while (true){
             mut.move(to);
             BlockState state =  this.getLevel().getBlockState(mut);
@@ -197,6 +198,7 @@ public class TileEntityLongDistancePipeEndpoint extends TileEntityBasicMultiMach
             }
             if (state.getBlock() == getPipeline()){
                 successfulPositions.add(mut.asLong());
+                pipelinesFound++;
                 continue;
             }
             mut.move(to.getOpposite());
@@ -217,7 +219,7 @@ public class TileEntityLongDistancePipeEndpoint extends TileEntityBasicMultiMach
             }
         }
         checkingStructure--;
-        validStructure = succeed;
+        validStructure = succeed && pipelinesFound > 0;
         if (validStructure){
             if (level instanceof TrackedDummyWorld) {
                 StructureCache.add(level, worldPosition, successfulPositions);
