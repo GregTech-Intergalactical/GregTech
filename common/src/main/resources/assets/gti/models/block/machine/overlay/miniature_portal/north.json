@@ -1,0 +1,99 @@
+{
+	"credit": "Made with Blockbench",
+	"elements": [
+		{
+			"name": "left",
+			"from": [14, 0, 0],
+			"to": [16, 16, 0],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 2, 16], "texture": "#base"}
+			}
+		},
+		{
+			"name": "right",
+			"from": [0, 0, 0],
+			"to": [2, 16, 0],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [14, 0, 16, 16], "texture": "#base"}
+			}
+		},
+		{
+			"name": "top",
+			"from": [2, 14, 0],
+			"to": [14, 16, 0],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [2, 0, 14, 2], "texture": "#base"}
+			}
+		},
+		{
+			"name": "bottom",
+			"from": [2, 0, 0],
+			"to": [14, 2, 0],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [2, 14, 14, 16], "texture": "#base"}
+			}
+		},
+		{
+			"name": "overlay",
+			"from": [2, 2, 1],
+			"to": [14, 14, 1],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [2, 2, 14, 14], "texture": "#overlay"}
+			}
+		},
+		{
+			"name": "left-in",
+			"from": [14, 2, 0],
+			"to": [14, 14, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"west": {"uv": [0, 2, 2, 14], "rotation": 90, "texture": "#base"}
+			}
+		},
+		{
+			"name": "right-in",
+			"from": [2, 2, 0],
+			"to": [2, 14, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"east": {"uv": [14, 2, 16, 14], "rotation": 270, "texture": "#base"}
+			}
+		},
+		{
+			"name": "bottom-in",
+			"from": [2, 2, 0],
+			"to": [14, 2, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"up": {"uv": [2, 14, 14, 16], "rotation": 180, "texture": "#base"}
+			}
+		},
+		{
+			"name": "top-in",
+			"from": [2, 14, 0],
+			"to": [14, 14, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"down": {"uv": [2, 0, 14, 2], "texture": "#base"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "front",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		},
+		4,
+		5,
+		6,
+		7,
+		8
+	]
+}

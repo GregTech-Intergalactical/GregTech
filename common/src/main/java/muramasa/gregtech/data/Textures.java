@@ -34,6 +34,28 @@ public class Textures {
         };
     };
 
+    public static final IOverlayTexturer MINI_NETHER_PORTAL = (type, state, tier) -> {
+        if (state != MachineState.ACTIVE) state = MachineState.IDLE;
+        if (state == MachineState.ACTIVE){
+            return new Texture[] {
+                    new Texture("block/nether_portal"),
+                    new Texture("block/nether_portal"),
+                    new Texture("block/nether_portal"),
+                    new Texture("block/nether_portal"),
+                    new Texture("block/nether_portal"),
+                    new Texture("block/nether_portal"),
+            };
+        }
+        return new Texture[] {
+                new Texture(GTIRef.ID, "block/machine/empty"),
+                new Texture(GTIRef.ID, "block/machine/empty"),
+                new Texture(GTIRef.ID, "block/machine/empty"),
+                new Texture(GTIRef.ID, "block/machine/empty"),
+                new Texture(GTIRef.ID, "block/machine/empty"),
+                new Texture(GTIRef.ID, "block/machine/empty"),
+        };
+    };
+
     public static final IOverlayTexturer TIER_SPECIFIC_OVERLAY_HANDLER = (type, state, tier) -> {
         if (state != MachineState.ACTIVE && state != MachineState.INVALID_STRUCTURE) state = MachineState.IDLE;
         String stateDir = state == MachineState.IDLE ? "" : state.getId() + "/";
@@ -56,51 +78,5 @@ public class Textures {
         return new ResourceLocation(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + side.getSerializedName() + suffix);
     };
 
-    public static final Texture[] FUSION_1_CT = new Texture[] {
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_0"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_1"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_2"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_3"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_4"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_5"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_6"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_7"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_8"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_9"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_10"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_11"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_1_12")
-    };
-
-    public static final Texture[] FUSION_2_CT = new Texture[] {
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_0"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_1"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_2"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_3"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_4"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_5"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_6"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_7"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_8"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_9"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_10"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_11"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_2_12")
-    };
-
-    public static final Texture[] FUSION_3_CT = new Texture[] {
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_0"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_1"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_2"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_3"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_4"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_5"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_6"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_7"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_8"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_9"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_10"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_11"),
-        new Texture(GTIRef.ID, "block/ct/fusion/fusion_3_12")
-    };
+    public static IOverlayModeler MINI_PORTAL = (a,s,d) -> new ResourceLocation(a.getDomain(), "block/machine/overlay/miniature_portal/" + d.getSerializedName());
 }
