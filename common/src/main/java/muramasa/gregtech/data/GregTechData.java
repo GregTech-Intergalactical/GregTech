@@ -156,9 +156,9 @@ public class GregTechData {
 
     public static ItemBasic<?> NandChip = new ItemBasic<>(GTIRef.ID, "nand_chip").tip("A very simple circuit");
     public static ItemBasic<?> AdvCircuitParts = new ItemBasic<>(GTIRef.ID, "advanced_circuit_parts").tip("Used for making Advanced Circuits");
-    public static ItemBasic<?> EtchedWiringMV = new ItemBasic<>(GTIRef.ID, "etched_wiring_mv").tip("Circuit board parts");
-    public static ItemBasic<?> EtchedWiringHV = new ItemBasic<>(GTIRef.ID, "etched_wiring_hv").tip("Circuit board parts");
-    public static ItemBasic<?> EtchedWiringEV = new ItemBasic<>(GTIRef.ID, "etched_wiring_ev").tip("Circuit board parts");
+    public static ItemBasic<?> EtchedWiringMV = new ItemBasic<>(GTIRef.ID, "copper_etched_wiring").tip("Circuit board parts");
+    public static ItemBasic<?> EtchedWiringHV = new ItemBasic<>(GTIRef.ID, "gold_etched_wiring").tip("Circuit board parts");
+    public static ItemBasic<?> EtchedWiringEV = new ItemBasic<>(GTIRef.ID, "platinum_etched_wiring").tip("Circuit board parts");
     public static ItemBasic<?> EngravedCrystalChip = new ItemBasic<>(GTIRef.ID, "engraved_crystal_chip").tip("Needed for Circuits");
     public static ItemBasic<?> EngravedLapotronChip = new ItemBasic<>(GTIRef.ID, "engraved_lapotron_chip").tip("Needed for Circuits");
 
