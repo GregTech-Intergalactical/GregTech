@@ -32,11 +32,10 @@ public class ChemicalReactorLoader {
 
     private static void addSimple() {
         //POLYETHYLENE
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000),Naphtha.getLiquid(144)).fo(Polyethylene.getLiquid(72)).add("ethylene_to_polyethylene",320, 30);
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000),Ethylene.getGas(144)).fo(Polyethylene.getLiquid(216)).add("ethylene_to_polyethylene_1",160, 30);
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000),Ethylene.getGas(288)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Polyethylene.getLiquid(288)).add("polyethylene_2",320, 30);
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(16000),Naphtha.getLiquid(1296)).ii(of(DUST_TINY.getMaterialTag(Titanium),1)).fo(Polyethylene.getLiquid(1296)).add("ethylene_to_polyethylene_3",640, 30);
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(7000),Ethylene.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Polyethylene.getLiquid(1500)).add("ethylene_to_polyethylene_4",1120, 30);
+        CHEMICAL_REACTING.RB().fi(Air.getGas(4),Naphtha.getLiquid(L)).fo(Polyethylene.getLiquid(L / 2)).add("naphtha_to_polyethylene",320, 30);
+        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1),Ethylene.getGas(L)).fo(Polyethylene.getLiquid((long) (L * 1.5))).add("ethylene_to_polyethylene",160, 30);
+        CHEMICAL_REACTING.RB().fi(Air.getGas(2),Ethylene.getGas(L * 2)).fo(Polyethylene.getLiquid(L * 2)).add("ethylene_to_polyethylene_2",320, 30);
+        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(16),Naphtha.getLiquid(L * 9)).ii(DUST_TINY.getMaterialIngredient(Titanium, 1).setNoConsume()).fo(Polyethylene.getLiquid(L * 9)).add("naphtha_to_polyethylene_2",640, 30);
         //POLYVINYLCHLORIDE
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000),VinylChloride.getGas(144)).fo(PolyvinylChloride.getLiquid(216)).add("vinylchloride_to_polyvinylchloride",160, 30);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(7000),VinylChloride.getGas(1000)).fo(PolyvinylChloride.getLiquid(1500)).add("vinylchloride_to_polyvinylchloride_1",1120, 30);
