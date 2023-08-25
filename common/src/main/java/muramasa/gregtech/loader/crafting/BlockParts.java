@@ -28,7 +28,10 @@ import java.util.function.Consumer;
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
+import static muramasa.antimatter.machine.Tier.LV;
+import static muramasa.antimatter.machine.Tier.MV;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
@@ -95,8 +98,8 @@ public class BlockParts {
         addCoil(output, provider, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY), COIL_SUPERCONDUCTOR);
 
         addTierCasing(output, provider, Tier.ULV);
-        addTierCasing(output, provider, Tier.LV);
-        addTierCasing(output, provider, Tier.MV);
+        addTierCasing(output, provider, LV);
+        addTierCasing(output, provider, MV);
         addTierCasing(output, provider, Tier.HV);
         addTierCasing(output, provider, Tier.EV);
         addTierCasing(output, provider, Tier.IV);
@@ -106,8 +109,8 @@ public class BlockParts {
         addTierCasing(output, provider, Tier.UHV);
 
         addTierHull(output, provider, Wood,Tier.ULV);
-        addTierHull(output, provider, WroughtIron,Tier.LV);
-        addTierHull(output, provider, WroughtIron,Tier.MV);
+        addTierHull(output, provider, WroughtIron, LV);
+        addTierHull(output, provider, WroughtIron, MV);
         addTierHull(output, provider, Polyethylene,Tier.HV);
         addTierHull(output, provider, Polyethylene,Tier.EV);
         addTierHull(output, provider, Polyethylene,Tier.IV);
@@ -140,6 +143,21 @@ public class BlockParts {
                 ,
                 "PHP", "PFP", "PWP");
 
+        //TODO make these also use annealed copper
+        provider.addItemRecipe(output, "long_distance_cables", "has_tin_cable", provider.hasSafeItem(CABLE_TIN.getBlockItem(PipeSize.HUGE)), LONG_DIST_WIRE_EV,
+                of('C', WIRE_TIN.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
+        provider.addItemRecipe(output, "long_distance_cables", "has_tin_cable", provider.hasSafeItem(CABLE_TIN.getBlockItem(PipeSize.HUGE)), LONG_DIST_WIRE_IV,
+                of('C', WIRE_GETTER.apply(PipeSize.HUGE, LV), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
+        provider.addItemRecipe(output, "long_distance_cables", "has_tin_cable", provider.hasSafeItem(CABLE_TIN.getBlockItem(PipeSize.HUGE)), LONG_DIST_WIRE_LUV,
+                of('C', WIRE_ELECTRUM.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
+        provider.addItemRecipe(output, "long_distance_cables", "has_tin_cable", provider.hasSafeItem(CABLE_TIN.getBlockItem(PipeSize.HUGE)), LONG_DIST_WIRE_ZPM,
+                of('C', WIRE_ALUMINIUM.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
+        provider.addItemRecipe(output, "long_distance_cables", "has_tin_cable", provider.hasSafeItem(CABLE_TIN.getBlockItem(PipeSize.HUGE)), LONG_DIST_WIRE_UV,
+                of('C', WIRE_PLATINUM.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
+        provider.addItemRecipe(output, "long_distance_pipes", "has_electrum_pipe", provider.hasSafeItem(ITEM_PIPE_ELECTRUM.getBlockItem(PipeSize.NORMAL)), LONG_DIST_ITEM_PIPE,
+                of('E', ITEM_PIPE_ELECTRUM.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Polyethylene)), "PEP", "EWE", "PEP");
+        provider.addItemRecipe(output, "long_distance_pipes", "has_stainless_pipe", provider.hasSafeItem(FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL)), LONG_DIST_FLUID_PIPE,
+                of('E', FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Polyethylene)), "PEP", "EWE", "PEP");
 
         /*provider.addStackRecipe(output, GTIRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
                 of('C', CASING_FIRE_BRICK,

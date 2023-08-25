@@ -441,6 +441,16 @@ public class Machines {
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.HUGE)).build(), "LCL", "LHL"));
 
+            add(CROP_HARVESTER, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_mortor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('R', arm)
+                            .put('C', circuit)
+                            .put('P', piston)
+                            .put('H', hull)
+                            .put('S', sensor)
+                            .put('B', SWORD_HEAD.getMaterialTag(material))
+                            .put('c', conveyor)
+                            .build(), "RCR", "PHS", "BcB"));
 
             if (!AntimatterAPI.isModLoaded("gt4r")){
                 add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
