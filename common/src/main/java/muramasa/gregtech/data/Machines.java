@@ -218,7 +218,7 @@ public class Machines {
     /**
      ** Creative Machines
      **/
-    public static TankMachine INFINITE_STEAM = new TankMachine(GTIRef.ID, "inefinite_steam").addFlags(FLUID, CELL, GUI).setTile(TileEntityInfiniteFluid::new).setTiers(LV);
+    public static TankMachine INFINITE_STEAM = new TankMachine(GTIRef.ID, "infinite_steam").addFlags(FLUID, CELL, GUI).setTile(TileEntityInfiniteFluid::new).setTiers(LV);
 
     private static MultiblockTankMachine[] createTankMachine(Material material, int multiplier){
         return new MultiblockTankMachine[]{
