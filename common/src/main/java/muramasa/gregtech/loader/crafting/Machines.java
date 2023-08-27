@@ -532,6 +532,31 @@ public class Machines {
                         .put('H', HULL_IV)
                         .put('C', CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY))
                         .put('W', CABLE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.LUV),
+                ImmutableMap.<Character, Object>builder()
+                        .put('H', HULL_LUV)
+                        .put('C', CABLE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY))
+                        .put('W', CABLE_NAQUADAH.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(ZPM),
+                ImmutableMap.<Character, Object>builder()
+                        .put('H', HULL_ZPM)
+                        .put('C', CABLE_NAQUADAH.getBlockItem(PipeSize.VTINY))
+                        .put('W', WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL)).build(), " CC", "WH ", " CC");
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(UV),
+                ImmutableMap.<Character, Object>builder()
+                        .put('H', HULL_UV)
+                        .put('C', WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL))
+                        .put('W', WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), LONG_DISTANCE_TRANSFORMER_ENDPOINT.getItem(EV),
+                of('T', TRANSFORMER.getItem(EV), 'C', CABLE_GETTER.apply(PipeSize.SMALL, MV, false), 'W', WIRE_CUTTER.getTag()), "CTC", "TWT", "CTC");
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), LONG_DISTANCE_TRANSFORMER_ENDPOINT.getItem(IV),
+                of('T', TRANSFORMER.getItem(IV), 'C', CABLE_GETTER.apply(PipeSize.SMALL, MV, false), 'W', WIRE_CUTTER.getTag()), "CTC", "TWT", "CTC");
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), LONG_DISTANCE_TRANSFORMER_ENDPOINT.getItem(LUV),
+                of('T', TRANSFORMER.getItem(LUV), 'C', CABLE_GETTER.apply(PipeSize.SMALL, MV, false), 'W', WIRE_CUTTER.getTag()), "CTC", "TWT", "CTC");
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), LONG_DISTANCE_TRANSFORMER_ENDPOINT.getItem(ZPM),
+                of('T', TRANSFORMER.getItem(ZPM), 'C', CABLE_GETTER.apply(PipeSize.SMALL, MV, false), 'W', WIRE_CUTTER.getTag()), "CTC", "TWT", "CTC");
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), LONG_DISTANCE_TRANSFORMER_ENDPOINT.getItem(UV),
+                of('T', TRANSFORMER.getItem(UV), 'C', CABLE_GETTER.apply(PipeSize.SMALL, MV, false), 'W', WIRE_CUTTER.getTag()), "CTC", "TWT", "CTC");
 
         addHatchRecipes(output, provider);
         addMultiblockRecipes(output, provider);

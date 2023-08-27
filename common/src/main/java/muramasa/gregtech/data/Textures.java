@@ -70,6 +70,17 @@ public class Textures {
         };
     };
 
+    public static final IOverlayTexturer STATE_IGNORANT_TIER_SPECIFIC_OVERLAY_HANDLER = (type, state, tier) -> {
+        return new Texture[] {
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + "bottom"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + "top"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + "back"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + "front"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + "side"),
+        };
+    };
+
     public static IOverlayModeler TURBINE = (type, state, side) -> {
         String suffix = "";
         if (side == Direction.SOUTH && state != MachineState.INVALID_STRUCTURE){
