@@ -91,7 +91,7 @@ public class Materials {
     public static Material Rhenium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rhenium", 0x61615f, SHINY, Re));
     public static Material Osmium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "osmium", 0x3232ff, METALLIC, Os));
     public static Material Iridium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "iridium", 0xf0f0f5, DULL, Ir));
-    public static Material Platinum = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "platinum", 0xffffc8, SHINY, Pt));
+    public static Material Platinum = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "platinum", 0x64b4fa, SHINY, Pt));
     public static Material Mercury = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "mercury", 0xffdcdc, SHINY, Hg));
     public static Material Thallium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thallium", 0xB6B6D2, SHINY, Tl));
     public static Material Lead = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lead", 0x8c648c, DULL, Pb));

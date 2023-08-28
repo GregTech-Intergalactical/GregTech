@@ -87,6 +87,8 @@ public class BlockParts {
         addCasing(output, provider, Titanium, GregTechData.CASING_TITANIUM);
         addCasing(output, provider, Lead, GregTechData.CASING_RADIATION_PROOF);
         addCasing(output, provider, TungstenSteel, GregTechData.CASING_TUNGSTENSTEEL);
+        addCasing(output, provider, Tungsten, GregTechData.CASING_TUNGSTEN);
+        addCasing(output, provider, Platinum, CASING_PLATINUM);
 
         addCoil(output, provider, WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), COIL_CUPRONICKEL);
         addCoil(output, provider, WIRE_KANTHAL.getBlockItem(PipeSize.TINY), COIL_KANTHAL);

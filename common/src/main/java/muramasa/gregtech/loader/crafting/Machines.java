@@ -557,7 +557,10 @@ public class Machines {
                 of('T', TRANSFORMER.getItem(ZPM), 'C', CABLE_GETTER.apply(PipeSize.SMALL, MV, false), 'W', WIRE_CUTTER.getTag()), "CTC", "TWT", "CTC");
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), LONG_DISTANCE_TRANSFORMER_ENDPOINT.getItem(UV),
                 of('T', TRANSFORMER.getItem(UV), 'C', CABLE_GETTER.apply(PipeSize.SMALL, MV, false), 'W', WIRE_CUTTER.getTag()), "CTC", "TWT", "CTC");
-
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), LONG_DISTANCE_FLUID_ENDPOINT.getItem(NONE),
+                of('T', FLUID_PIPE_TUNGSTEN.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Polyethylene), 'W', CASING_TUNGSTEN), "CTC", "TWT", "CTC");
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), LONG_DISTANCE_ITEM_ENDPOINT.getItem(NONE),
+                of('T', ITEM_PIPE_PLATINUM.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Polyethylene), 'W', CASING_PLATINUM), "CTC", "TWT", "CTC");
         addHatchRecipes(output, provider);
         addMultiblockRecipes(output, provider);
 
