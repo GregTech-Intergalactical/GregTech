@@ -101,11 +101,11 @@ public class GregTechMaterialEvents {
         event.setMaterial(Lutetium).asMetal(1925, 1925);
         event.setMaterial(Hafnium).asMetal(2506);
         event.setMaterial(Tantalum).asSolid(3290, 0);
-        event.setMaterial(Tungsten).asMetal(3695, 3000, FOIL, RING);
+        event.setMaterial(Tungsten).asMetal(3695, 3000, FOIL, RING, FRAME);
         event.setMaterial(Rhenium).asMetal(3459,3459);
         event.setMaterial(Osmium).asOre().asMetal(3306, 3306, SCREW, BOLT, RING, PLATE, FOIL, ROD, WIRE_FINE);
         event.setMaterial(Iridium).asMetal(2719, 2719, FRAME, PLATE).asOre();
-        event.setMaterial(Platinum).asMetal(2041, 0, PLATE, FOIL, ROD, WIRE_FINE).asOre();
+        event.setMaterial(Platinum).asMetal(2041, 0, PLATE, FOIL, ROD, WIRE_FINE, FRAME).asOre();
         //Gold, added by vanilla
         event.setMaterial(Mercury).asFluid();
         event.setMaterial(Thallium).asMetal(577, 0);
