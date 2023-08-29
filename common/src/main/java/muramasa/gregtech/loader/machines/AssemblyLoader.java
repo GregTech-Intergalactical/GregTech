@@ -214,7 +214,7 @@ public class AssemblyLoader {
     private static void addTierHull(Tier tier) {
         Material liquid = tier == ZPM || tier == UV || tier == UHV ? Polytetrafluoroethylene : Polyethylene;
         ASSEMBLING.RB().ii(ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID)))
-                .fi(liquid.getLiquid(L * 2)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID))).add("hull_" + tier.getId(), 5 * 20, (long) Math.pow(2, 2 * tier.getIntegerId() + 1));
+                .fi(liquid.getLiquid(L * 2)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID))).add("hull_" + tier.getId(), 50, 16);
     }
 
     private static void addCasing (Material mat, BlockCasing casing) {
