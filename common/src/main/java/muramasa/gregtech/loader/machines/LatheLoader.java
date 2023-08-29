@@ -6,13 +6,13 @@ import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 
 public class LatheLoader {
     public static void init() {
-        ROD.all().forEach(t -> {
+        ROD_LONG.all().forEach(t -> {
             if (t.has(INGOT)) {
                 RecipeMaps.LATHING.RB().ii(of(INGOT.getMaterialTag(t), 1))
-                .io(ROD.get(t, 2)).add(t.getId() + "_rod",t.getMass() * 5, 16);
+                .io(ROD_LONG.get(t, 1)).add(t.getId() + "_long_rod",t.getMass() * 5, 16);
             } else if (t.has(GEM)) {
                 RecipeMaps.LATHING.RB().ii(of(GEM.getMaterialTag(t), 1))
-                .io(ROD.get(t, 2)).add(t.getId() + "_rod",t.getMass() * 5, 16);
+                .io(ROD_LONG.get(t, 1)).add(t.getId() + "_long_rod",t.getMass() * 5, 16);
             }
         });
         SCREW.all().forEach(t -> {
