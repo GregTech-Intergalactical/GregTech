@@ -146,6 +146,10 @@ public class Blasting {
         BLASTING.RB().temperature(4500).ii(DUST.getMaterialIngredient(Vanadium, 3), DUST.getMaterialIngredient(Gallium, 1))
                 .io(INGOT_HOT.get(VanadiumGallium, 4))
                 .add("vanadium_gallium_ingot", 225 * 20, 480);
+        /* Vanadium Steel*/
+        BLASTING.RB().temperature(4500).ii(DUST.getMaterialIngredient(Vanadium, 1), DUST.getMaterialIngredient(Chrome, 1), DUST.getMaterialIngredient(Steel, 7))
+                .io(INGOT.get(VanadiumSteel, 9))
+                .add("vanadium_steel_ingot", 225 * 20, 120);
         /* Kanthal*/
         BLASTING.RB().temperature(1800).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 1), DUST.getMaterialIngredient(Aluminium, 1), DUST.getMaterialIngredient(Chrome, 1))
                 .io(INGOT_HOT.get(Kanthal, 3), DUST_SMALL.get(DarkAsh, 1))
