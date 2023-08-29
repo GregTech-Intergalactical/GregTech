@@ -21,6 +21,7 @@ import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
+import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.TierMaps;
@@ -96,6 +97,14 @@ public class AssemblyLoader {
         addTierHull(Tier.ZPM);
         addTierHull(Tier.UV);
         addTierHull(Tier.UHV);
+
+        addWall(Steel, STEEL_WALL);
+        addWall(Invar, INVAR_WALL);
+        addWall(StainlessSteel, STAINLESS_STEEL_WALL);
+        addWall(Tungsten, TUNGSTEN_WALL);
+        addWall(Titanium, TITANIUM_WALL);
+        addWall(TungstenSteel, TUNGSTENSTEEL_WALL);
+        addWall(Netherite, NETHERITE_WALL);
 
         addCasing(Bronze, CASING_BRONZE);
         addCasing(Steel, CASING_SOLID_STEEL);
@@ -219,6 +228,10 @@ public class AssemblyLoader {
 
     private static void addCasing (Material mat, BlockCasing casing) {
         ASSEMBLING.RB().ii(of(FRAME.get().get(mat).asItem(), 1), of(PLATE.get(mat), 6)).io(new ItemStack(casing,2)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
+    }
+
+    private static void addWall(Material mat, BlockColoredWall casing) {
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(mat, 4), INT_CIRCUITS.get(4)).io(new ItemStack(casing,1)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
     }
 
     private static void addCoil (BlockCoil coil, PipeItemBlock wire, int tier) {
