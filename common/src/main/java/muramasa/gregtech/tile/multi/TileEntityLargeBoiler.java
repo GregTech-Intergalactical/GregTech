@@ -51,7 +51,7 @@ public class TileEntityLargeBoiler extends TileEntityMultiMachine<TileEntityLarg
                     fluidHandler.ifPresent(f -> {
                         if (f.drainInput(AntimatterMaterials.Water.getLiquid(amount), false).getFluidAmount() == amount || f.drainInput(DistilledWater.getLiquid(amount), false).getFluidAmount() == amount) {
                             f.addOutputs(Steam.getGas(tGeneratedEU));
-                            onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
+                            tile.onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
                         } else {
                             explode = true;
                         }
