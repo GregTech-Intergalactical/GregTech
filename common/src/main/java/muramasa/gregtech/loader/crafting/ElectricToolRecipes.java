@@ -33,7 +33,6 @@ public class ElectricToolRecipes {
 
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
         PLATE.all().forEach(m -> {
-            if (m.has(GEM)) return;
             if (m.has(DRILLBIT)){
                 provider.addItemRecipe(output, "bits", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), DRILLBIT.get(m),
                         ImmutableMap.of('P', PLATE.getMaterialTag(m), 'S', PLATE.getMaterialTag(Steel), 'H', HAMMER.getTag()), "PSP", "PSP", "SHS");
