@@ -127,8 +127,8 @@ public class Machines {
      * Drums
      */
     public static DrumMachine BRONZE_DRUM = GTUtilityData.createDrum(Materials.Bronze, 16000);
-    public static DrumMachine STEEL_DRUM = GTUtilityData.createDrum(Steel, 32000);
-    public static DrumMachine INVAR_DRUM = GTUtilityData.createDrum(Materials.Invar, 48000);
+    public static DrumMachine STEEL_DRUM = GTUtilityData.createDrum(Steel, 48000);
+    public static DrumMachine INVAR_DRUM = GTUtilityData.createDrum(Materials.Invar, 32000);
     public static DrumMachine STAINLESS_DRUM = GTUtilityData.createDrum(Materials.StainlessSteel, 64000);
     public static DrumMachine TITANIUM_DRUM = GTUtilityData.createDrum(Materials.Titanium, 128000);
     public static DrumMachine NETHERRITE_DRUM = GTUtilityData.createDrum(AntimatterMaterials.Netherite, 128000);
@@ -136,8 +136,8 @@ public class Machines {
     public static DrumMachine TUNGSTEN_DRUM = GTUtilityData.createDrum(Materials.Tungsten, 256000);
 
     public static MultiblockTankMachine WOOD_TANK = new MultiblockTankMachine(GTIRef.ID, Wood, true, 432000);
-    public static MultiblockTankMachine[] STEEL_TANKS = createTankMachine(Steel, 2);
-    public static MultiblockTankMachine[] INVAR_TANKS = createTankMachine(Invar, 3);
+    public static MultiblockTankMachine[] STEEL_TANKS = createTankMachine(Steel, 3);
+    public static MultiblockTankMachine[] INVAR_TANKS = createTankMachine(Invar, 2);
     public static MultiblockTankMachine[] STAINLESS_STEEL_TANKS = createTankMachine(StainlessSteel, 4);
     public static MultiblockTankMachine[] TITANIUM_TANKS = createTankMachine(Titanium, 8);
     public static MultiblockTankMachine[] NETHERITE_TANKS = createTankMachine(Netherite, 8);
