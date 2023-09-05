@@ -337,7 +337,7 @@ public class Materials {
 
     public static Material AluminiumTrichloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "aluminium_trichloride", 0xf0d77d, FINE));
     public static Material Aluminosilicate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "aluminosilicate", 0xbfbdb0, FINE));
-    public static Material AmmoniumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "aammonium_chloride", 0xffffff, DULL));
+    public static Material AmmoniumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ammonium_chloride", 0xffffff, DULL));
     public static Material AntimonyTrioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "antimony_trioxide", 0xe6e6f0, DULL));
     public static Material ArsenicTrioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "arsenic_trioxide", 0xffffff, SHINY));
     public static Material Ash = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ash", 0x969696, DULL));
@@ -581,7 +581,7 @@ public class Materials {
      **/
 
     public static Material Antimatter = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "anti_matter", 0x8000c4, NONE));
-    public static Material BlueVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_vitriol_water_solution", 0xffffff, NONE));
+    public static Material BlueVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_vitriol_water_solution", 0x4242DE, NONE));
 
     public static Material CalciumAcetateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "calcium_acetate_solution", 0xDCC8B4, NONE));
     public static Material Coolant = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "coolant", 0x0506be, NONE));

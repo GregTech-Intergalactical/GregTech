@@ -5,8 +5,10 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-
 import static muramasa.antimatter.Ref.L;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
+import static muramasa.antimatter.data.AntimatterMaterials.Netherite;
+import static muramasa.antimatter.data.AntimatterMaterials.NetherizedDiamond;
 import static muramasa.gregtech.data.GregTechMaterialTags.CHEMBATH_MERCURY;
 import static muramasa.gregtech.data.GregTechMaterialTags.CHEMBATH_PERSULFATE;
 import static muramasa.gregtech.data.Materials.*;
@@ -29,6 +31,11 @@ public class ChemicalBath {
                 .fi(Radon.getGas(1250))
                 .io(new ItemStack(GregTechData.QuantumStar))
                 .add("quantum_star",96*20,384);
+        CHEMICAL_BATHING.RB()
+                .ii(RecipeIngredient.of(Items.DIAMOND,1))
+                .fi(Netherite.getLiquid(L/4))
+                .io(GEM.get(NetherizedDiamond))
+                .add("netherized_diamond_recipe",144,384);
         mercurybathing();
         persulfatebathing();
     }
