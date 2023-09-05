@@ -6,8 +6,6 @@ import io.github.gregtechintergalactical.gtutility.GTUtilityData;
 import io.github.gregtechintergalactical.gtutility.machine.DrumMachine;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.machine.BlockMachine;
-import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.material.Material;
@@ -18,18 +16,13 @@ import muramasa.antimatter.tile.single.TileEntityTransformer;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.machine.MultiblockTankMachine;
 import muramasa.gregtech.machine.SteamMachine;
-import muramasa.gregtech.machine.maps.DisassemblingMap;
 import muramasa.gregtech.nuclear.TileEntityNuclearReactor;
 import muramasa.gregtech.tile.multi.*;
 import muramasa.gregtech.tile.single.*;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Netherite;
@@ -123,6 +116,7 @@ public class Machines {
      **/
     public static BasicMachine ELECTRIC_ITEM_FILTER = null;
     public static BasicMachine ELECTRIC_TYPE_FILTER = null;
+    public static BasicMachine SUPER_BUFFER =new BasicMachine(GTIRef.ID, "super_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntitySuperBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
     /**
      * Drums
      */

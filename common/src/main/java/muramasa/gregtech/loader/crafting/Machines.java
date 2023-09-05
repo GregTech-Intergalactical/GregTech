@@ -23,6 +23,7 @@ import muramasa.gregtech.data.GregTechTags;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.TierMaps;
 import muramasa.gregtech.machine.MultiblockTankMachine;
+import net.minecraft.data.DataProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -452,6 +453,11 @@ public class Machines {
                             .put('c', conveyor)
                             .build(), "RCR", "PHS", "BcB"));
 
+            add(SUPER_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('D', DataOrb)
+                            .put('M', hull)
+                            .put('C', conveyor).build(), "DMC"));
             if (!AntimatterAPI.isModLoaded("gt4r")){
                 add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
                         ImmutableMap.<Character, Object>builder()
