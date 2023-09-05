@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtutility.GTUtilityData;
 import io.github.gregtechintergalactical.gtutility.machine.DrumMachine;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
@@ -116,7 +117,8 @@ public class Machines {
      **/
     public static BasicMachine ELECTRIC_ITEM_FILTER = null;
     public static BasicMachine ELECTRIC_TYPE_FILTER = null;
-    public static BasicMachine SUPER_BUFFER =new BasicMachine(GTIRef.ID, "super_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntitySuperBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
+    public static BasicMachine SUPER_BUFFER =new BasicMachine(GTIRef.ID, "super_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().setOutputCover(ICover.emptyFactory);
+    public static BasicMachine CHEST_BUFFER =new BasicMachine(GTIRef.ID, "chest_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().setOutputCover(ICover.emptyFactory);
     /**
      * Drums
      */

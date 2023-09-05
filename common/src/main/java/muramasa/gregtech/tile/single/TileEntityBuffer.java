@@ -16,7 +16,7 @@ import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.data.SlotTypes;
+import muramasa.gregtech.data.Machines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -33,18 +33,16 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
-import tesseract.api.item.ExtendedItemContainer;
-import tesseract.util.ItemHandlerUtils;
 
 import static muramasa.antimatter.machine.MachineFlag.ENERGY;
 
-public class TileEntitySuperBuffer extends TileEntityMachine<TileEntitySuperBuffer> {
+public class TileEntityBuffer extends TileEntityMachine<TileEntityBuffer> {
     protected int stackLimit = 64;
     boolean emitEnergy = false;
 
-    public TileEntitySuperBuffer(Machine<?> type, BlockPos pos, BlockState state) {
+    public TileEntityBuffer(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        itemHandler.set(() -> new SuperBufferItemHandler(this));
+        itemHandler.set(() -> new BufferItemHandler(this));
         if (type.has(ENERGY)) {
             energyHandler.set(() -> new MachineEnergyHandler<>(this, 0L, this.getMachineTier().getVoltage() * 66L, this.getMachineTier().getVoltage(), this.getMachineTier().getVoltage(), 1, 1){
                 @Override
@@ -134,11 +132,12 @@ public class TileEntitySuperBuffer extends TileEntityMachine<TileEntitySuperBuff
         instance.addButton(8, 63, 16, 16, ButtonBody.NO_OVERLAY);
     }
 
-    public static class SuperBufferItemHandler extends MachineItemHandler<TileEntitySuperBuffer> {
+    public static class BufferItemHandler extends MachineItemHandler<TileEntityBuffer> {
 
-        public SuperBufferItemHandler(TileEntitySuperBuffer tile) {
+        public BufferItemHandler(TileEntityBuffer tile) {
             super(tile);
-            this.inventories.put(SlotType.STORAGE, new TrackedItemHandler<>(tile, 256, true, true, (t, s) -> true, ContentEvent.ITEM_INPUT_CHANGED){
+            int count = tile.getMachineType() == Machines.SUPER_BUFFER ? 256 : tile.getMachineType().getCount(tile.getMachineTier(), SlotType.STORAGE);
+            this.inventories.put(SlotType.STORAGE, new TrackedItemHandler<>(tile, count, true, true, (t, s) -> true, ContentEvent.ITEM_INPUT_CHANGED){
                 @NotNull
                 @Override
                 public ItemStack extractItem(int slot, int amount, boolean simulate) {
