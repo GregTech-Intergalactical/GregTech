@@ -23,7 +23,7 @@ public class BendingLoader {
             BENDING.RB().ii(ROD_LONG.getMaterialIngredient(spring, 1), INT_CIRCUITS.get(1)).io(SPRING.get(spring)).add(spring.getId() + "_spring", 200, 16);
         });
         RING.all().forEach(ring -> {
-            BENDING.RB().ii(ROD.getMaterialIngredient(ring, 1), INT_CIRCUITS.get(1)).io(RING.get(ring)).add(ring.getId() + "_ring", 200, 16);
+            BENDING.RB().ii(ROD.getMaterialIngredient(ring, 1), INT_CIRCUITS.get(1)).io(RING.get(ring, 2)).add(ring.getId() + "_ring", 200, 16);
         });
         BENDING.RB().ii(PLATE.getMaterialIngredient(Materials.Tin,2), INT_CIRCUITS.get(4)).io(GregTechData.CellTin.getDefaultInstance()).add("tin_cell",80,24);
         BENDING.RB().ii(PLATE.getMaterialIngredient(Materials.Steel,2), INT_CIRCUITS.get(4)).io(GregTechData.CellSteel.getDefaultInstance()).add("steel_cell",80,96);
