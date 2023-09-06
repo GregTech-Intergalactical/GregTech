@@ -458,6 +458,11 @@ public class Machines {
                             .put('D', DataOrb)
                             .put('M', hull)
                             .put('C', conveyor).build(), "DMC"));
+            add(SUPER_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('D', CircuitDataStorage)
+                            .put('M', hull)
+                            .put('C', conveyor).build(), "DMC", "DDD"));
             add(CHEST_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('D', ForgeCTags.CHESTS_WOODEN)
