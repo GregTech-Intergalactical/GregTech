@@ -9,6 +9,7 @@ import muramasa.gregtech.GregTech;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.GregTechPostRegistrar;
 import muramasa.gregtech.events.forge.RemappingEvents;
+import muramasa.gregtech.integration.forge.tfc.TFCRegistrar;
 import muramasa.gregtech.loader.WorldGenLoader;
 import muramasa.gregtech.proxy.ClientHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,6 +35,7 @@ public class GregTechForge {
         MinecraftForge.EVENT_BUS.addListener(GregTechForge::onWorldGen);
         new GregTechPostRegistrar();
         new GregTech();
+        new TFCRegistrar();
         RemappingEvents.init();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GregTechConfig.COMMON_SPEC);
     }
