@@ -462,21 +462,23 @@ public class Machines {
                     ImmutableMap.<Character, Object>builder()
                             .put('D', ForgeCTags.CHESTS_WOODEN)
                             .put('M', hull)
-                            .put('C', conveyor).put('c', circuit).build(), "DMC", " c "));
-            if (!AntimatterAPI.isModLoaded("gt4r")){
-                add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
-                        ImmutableMap.<Character, Object>builder()
-                                .put('H', hull)
-                                .put('C', TIER_CIRCUITS.get(HV))
-                                .put('F', COVER_ITEM_FILTER.getItem())
-                                .put('E', ForgeCTags.CHESTS).build(), " H ", "ECE", " F "));
-                add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
-                        ImmutableMap.<Character, Object>builder()
-                                .put('H', hull)
-                                .put('C', TIER_CIRCUITS.get(LV))
-                                .put('F', COVER_ITEM_FILTER.getItem())
-                                .put('E', ForgeCTags.CHESTS).build(), " H ", "ECE", " F "));
-            }
+                            .put('C', conveyor)
+                            .put('c', TIER_CIRCUITS.get(LV)).build(), "DMC", " c "));
+
+            add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', hull)
+                            .put('C', TIER_CIRCUITS.get(HV))
+                            .put('F', COVER_ITEM_FILTER.getItem())
+                            .put('E', ForgeCTags.CHESTS)
+                            .put('c', conveyor).build(), " F ", "EHc", " C "));
+            add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', hull)
+                            .put('C', TIER_CIRCUITS.get(LV))
+                            .put('F', COVER_ITEM_FILTER.getItem())
+                            .put('E', ForgeCTags.CHESTS)
+                            .put('c', conveyor).build(), " F ", "EHc", " C "));
         });
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.LV),
