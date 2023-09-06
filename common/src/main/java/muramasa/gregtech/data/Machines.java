@@ -115,10 +115,10 @@ public class Machines {
     /**
      * Filters
      **/
-    public static BasicMachine ELECTRIC_ITEM_FILTER = null;
-    public static BasicMachine ELECTRIC_TYPE_FILTER = null;
-    public static BasicMachine SUPER_BUFFER =new BasicMachine(GTIRef.ID, "super_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().setOutputCover(ICover.emptyFactory);
-    public static BasicMachine CHEST_BUFFER =new BasicMachine(GTIRef.ID, "chest_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().setOutputCover(ICover.emptyFactory);
+    public static BasicMachine ELECTRIC_ITEM_FILTER = new BasicMachine(GTIRef.ID, "electric_item_filter").addFlags(GUI, ITEM).setTile(TileEntityItemFilter::new).setOutputCover(ICover.emptyFactory).allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine ELECTRIC_TYPE_FILTER = new BasicMachine(GTIRef.ID, "electric_type_filter").addFlags(GUI, ITEM).setTile(TileEntityTypeFilter::new).setOutputCover(ICover.emptyFactory).allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine SUPER_BUFFER =new BasicMachine(GTIRef.ID, "super_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().setOutputCover(ICover.emptyFactory).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine CHEST_BUFFER =new BasicMachine(GTIRef.ID, "chest_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().setOutputCover(ICover.emptyFactory).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
     /**
      * Drums
      */
@@ -224,9 +224,5 @@ public class Machines {
     }
 
     public static void init() {
-        if (!AntimatterAPI.isModLoaded("gt4r")) {
-            ELECTRIC_ITEM_FILTER = new BasicMachine(GTIRef.ID, "electric_item_filter").setTiers(LV).addFlags(GUI, ITEM).setTile(TileEntityItemFilter::new).noCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-            ELECTRIC_TYPE_FILTER = new BasicMachine(GTIRef.ID, "electric_type_filter").setTiers(LV).addFlags(GUI, ITEM).setTile(TileEntityTypeFilter::new).noCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-        }
     }
 }
