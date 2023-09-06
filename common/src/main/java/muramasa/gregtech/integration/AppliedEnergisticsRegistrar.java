@@ -65,10 +65,10 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
     }
 
     public static void machineRecipes(){
-        RecipeMaps.PRESSING.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1), of(getAe2Item("calculation_processor_press"))).io(new ItemStack(getAe2Item("printed_calculation_processor"))).add("printed_calculation_processor", 200, 16);
-        RecipeMaps.PRESSING.RB().ii(GEM.getMaterialIngredient(Diamond, 1), of(getAe2Item("engineering_processor_press"))).io(new ItemStack(getAe2Item("printed_engineering_processor"))).add("printed_engineering_processor", 200, 16);
-        RecipeMaps.PRESSING.RB().ii(PLATE.getMaterialIngredient(Gold, 1), of(getAe2Item("logic_processor_press"))).io(new ItemStack(getAe2Item("printed_logic_processor"))).add("printed_logic_processor", 200, 16);
-        RecipeMaps.PRESSING.RB().ii(PLATE.getMaterialIngredient(Silicon, 1), of(getAe2Item("silicon_press"))).io(new ItemStack(getAe2Item("printed_silicon"))).add("printed_silicon", 200, 16);
+        RecipeMaps.PRESSING.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1), of(getAe2Item("calculation_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_calculation_processor"))).add("printed_calculation_processor", 200, 16);
+        RecipeMaps.PRESSING.RB().ii(GEM.getMaterialIngredient(Diamond, 1), of(getAe2Item("engineering_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_engineering_processor"))).add("printed_engineering_processor", 200, 16);
+        RecipeMaps.PRESSING.RB().ii(PLATE.getMaterialIngredient(Gold, 1), of(getAe2Item("logic_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_logic_processor"))).add("printed_logic_processor", 200, 16);
+        RecipeMaps.PRESSING.RB().ii(PLATE.getMaterialIngredient(Silicon, 1), of(getAe2Item("silicon_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_silicon"))).add("printed_silicon", 200, 16);
         RecipeMaps.CENTRIFUGING.RB().ii(of(getAe2Item("sky_dust")))
                 .io(/*DUST_SMALL.get(BasalticMineralSand, 1), */DUST_SMALL.get(Olivine, 1), DUST_SMALL.get(Obsidian, 1), DUST_SMALL.get(Basalt, 1), DUST_SMALL.get(Flint, 1),DUST_SMALL.get(RareEarth, 1))
                 .chances(0.2,0.2,0.2,0.2,0.2)
