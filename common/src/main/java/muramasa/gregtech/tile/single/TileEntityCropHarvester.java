@@ -32,6 +32,11 @@ public class TileEntityCropHarvester extends TileEntityMachine<TileEntityCropHar
     }
 
     @Override
+    protected boolean allowExplosionsInRain() {
+        return false;
+    }
+
+    @Override
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
         if (isServerSide() && level.getGameTime() % 100 == 0) {

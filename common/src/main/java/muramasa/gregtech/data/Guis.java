@@ -19,8 +19,6 @@ import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 
-import java.util.function.BiFunction;
-
 import static muramasa.antimatter.gui.ButtonBody.*;
 import static muramasa.antimatter.gui.SlotType.*;
 import static muramasa.antimatter.gui.Widget.builder;
@@ -153,6 +151,13 @@ public class Guis {
         LASER_ENGRAVER.add(ALLOY_SMELTER);
         FORMING_PRESS.add(ALLOY_SMELTER).getGui().getMachineData().setProgressLocation("compressor");
         FORGE_HAMMER.add(FURNACE).getGui().setBackgroundTexture("machine_forge_hammer").getMachineData().setProgressLocation("forge_hammer");
+        SUPER_BUFFER.getGui().setBackgroundTexture("super_buffer");
+        CHEST_BUFFER.getGui().setBackgroundTexture("chest_buffer");
+        for (int y = 0; y < 3; y++){
+            for (int x = 0; x < 9; x++){
+                CHEST_BUFFER.add(STORAGE, 8 + (x * 18), 5 + (y * 18));
+            }
+        }
         SIFTER.add(IT_IN, 53, 25)
                 .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16)
                 .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34)

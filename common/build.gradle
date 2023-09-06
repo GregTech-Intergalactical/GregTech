@@ -31,7 +31,6 @@ dependencies{
     implementation("com.github.FeltMC:forgeconfigapiport-fabric:c1486f80f7"){
         transitive = false
     }
-    modCompileOnly("curse.maven:terrafirmacraft-302973:4723717")
 }
 
 architectury {
