@@ -141,6 +141,7 @@ public class TileEntityBuffer extends TileEntityMachine<TileEntityBuffer> {
                 @NotNull
                 @Override
                 public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                    if (amount < tile.stackLimit) return ItemStack.EMPTY;
                     amount = Math.min(amount, tile.stackLimit);
                     return super.extractItem(slot, amount, simulate);
                 }

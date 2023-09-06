@@ -458,6 +458,11 @@ public class Machines {
                             .put('D', DataOrb)
                             .put('M', hull)
                             .put('C', conveyor).build(), "DMC"));
+            add(CHEST_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('D', ForgeCTags.CHESTS_WOODEN)
+                            .put('M', hull)
+                            .put('C', conveyor).put('c', circuit).build(), "DMC", " c "));
             if (!AntimatterAPI.isModLoaded("gt4r")){
                 add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
                         ImmutableMap.<Character, Object>builder()
