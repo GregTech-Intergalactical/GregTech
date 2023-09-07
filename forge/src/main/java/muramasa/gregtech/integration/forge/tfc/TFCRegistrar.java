@@ -5,17 +5,23 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterFluidTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
+import muramasa.antimatter.event.forge.AntimatterLoaderEvent;
 import muramasa.antimatter.event.forge.AntimatterProvidersEvent;
+import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.util.TagUtils;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.util.Metal;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import java.util.function.BiConsumer;
 
 import static muramasa.antimatter.data.AntimatterDefaultTools.SAW;
 
@@ -39,6 +45,12 @@ public class TFCRegistrar implements IAntimatterRegistrar {
         if (isEnabled()) {
             FMLJavaModLoadingContext.get().getModEventBus().register(this);
         }
+        MinecraftForge.EVENT_BUS.addListener(this::registerRecipeLoaders);
+    }
+
+    public void registerRecipeLoaders(AntimatterLoaderEvent event){
+        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(GTIRef.ID, a, b);
+        loader.accept("tfc_machine_recipes", MachineRecipes::init);
     }
 
     @SubscribeEvent

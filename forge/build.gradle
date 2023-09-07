@@ -90,6 +90,7 @@ dependencies {
     modCompileOnly("curse.maven:terrafirmacraft-302973:4723717")
     modRuntimeOnly("curse.maven:terrafirmacraft-302973:4723717")
     modRuntimeOnly("curse.maven:patchouli-306770:3846086")
+    //modRuntimeOnly("curse.maven:tfcm-819850:4449385")
 }
 
 jar {
