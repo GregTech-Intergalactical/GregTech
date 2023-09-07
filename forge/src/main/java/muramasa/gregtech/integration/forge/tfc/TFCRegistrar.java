@@ -44,8 +44,8 @@ public class TFCRegistrar implements IAntimatterRegistrar {
         AntimatterAPI.addRegistrar(this);
         if (isEnabled()) {
             FMLJavaModLoadingContext.get().getModEventBus().register(this);
+            MinecraftForge.EVENT_BUS.addListener(this::registerRecipeLoaders);
         }
-        MinecraftForge.EVENT_BUS.addListener(this::registerRecipeLoaders);
     }
 
     public void registerRecipeLoaders(AntimatterLoaderEvent event){
