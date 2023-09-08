@@ -1,21 +1,29 @@
 package muramasa.gregtech.integration.forge.tfc;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
+import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterFluidTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.event.forge.AntimatterLoaderEvent;
 import muramasa.antimatter.event.forge.AntimatterProvidersEvent;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.GregTech;
+import muramasa.gregtech.data.Materials;
+import muramasa.gregtech.integration.forge.tfc.datagen.TFCBlockTagProvider;
+import muramasa.gregtech.integration.forge.tfc.datagen.TFCItemTagProvider;
+import muramasa.gregtech.integration.forge.tfc.datagen.TFCLangProvider;
+import muramasa.gregtech.integration.forge.tfc.ore.GTTFCOreBlock;
+import muramasa.gregtech.integration.forge.tfc.ore.GTTFCOreItem;
+import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.fluids.TFCFluids;
-import net.dries007.tfc.util.Metal;
+import net.dries007.tfc.util.Helpers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,6 +34,8 @@ import java.util.function.BiConsumer;
 import static muramasa.antimatter.data.AntimatterDefaultTools.SAW;
 
 public class TFCRegistrar implements IAntimatterRegistrar {
+
+    public static Material[] array;
     public TFCRegistrar(){
         onRegistrarInit();
     }
@@ -36,7 +46,24 @@ public class TFCRegistrar implements IAntimatterRegistrar {
 
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Side side) {
+        if (event == RegistrationEvent.DATA_INIT){
+            array = new Material[]{Materials.Bauxite, Materials.Cobaltite, Materials.Galena, Materials.Uraninite};
+            for (Material material : array) {
+                Helpers.mapOfKeys(Ore.Grade.class, (grade) -> {
+                    new GTTFCOreItem(GTIRef.ID, grade.name().toLowerCase() + "_" + material.getId());
+                    return Helpers.mapOfKeys(Rock.class, (rock) -> {
+                        new GTTFCOreBlock(GTIRef.ID, material, rock, grade);
+                        return true;
+                    });
+                });
+            }
 
+        }
+    }
+
+    @Override
+    public int getPriority() {
+        return 0;
     }
 
     @Override
@@ -44,8 +71,9 @@ public class TFCRegistrar implements IAntimatterRegistrar {
         AntimatterAPI.addRegistrar(this);
         if (isEnabled()) {
             FMLJavaModLoadingContext.get().getModEventBus().register(this);
+            MinecraftForge.EVENT_BUS.addListener(this::registerRecipeLoaders);
+            AntimatterDynamics.clientProvider(GTIRef.ID, () -> new TFCLangProvider(GTIRef.ID, "TFC en_us Lang", "en_us"));
         }
-        MinecraftForge.EVENT_BUS.addListener(this::registerRecipeLoaders);
     }
 
     public void registerRecipeLoaders(AntimatterLoaderEvent event){
@@ -63,14 +91,9 @@ public class TFCRegistrar implements IAntimatterRegistrar {
             }
         });
         AntimatterBlockTagProvider[] blockTagProviders = new AntimatterBlockTagProvider[1];
-        blockTagProviders[0] = new AntimatterBlockTagProvider("tfc", "TFC Block Tags", false);
-        ev.event.addProvider("tfc", () -> new AntimatterItemTagProvider("tfc", "TFC Item Tags", false,  blockTagProviders[0]){
-            @Override
-            protected void processTags(String domain) {
-                super.processTags(domain);
-                this.tag(TagUtils.getItemTag(new ResourceLocation("tfc", "saws"))).addTag(SAW.getTag());
-            }
-        });
+        blockTagProviders[0] = new TFCBlockTagProvider( "tfc", "TFC Block Tags", false);
+        ev.event.addProvider("tfc", () -> new TFCItemTagProvider("tfc", "TFC Item Tags", false,  blockTagProviders[0]));
+        ev.event.addProvider("tfc", () -> blockTagProviders[0]);
 
     }
 

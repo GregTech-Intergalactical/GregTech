@@ -6,6 +6,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.RecipeMaps;
+import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.TFCMaterials;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.items.TFCItems;
