@@ -32,6 +32,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import java.util.function.BiConsumer;
 
 import static muramasa.antimatter.data.AntimatterDefaultTools.SAW;
+import static muramasa.gregtech.data.Materials.*;
 
 public class TFCRegistrar implements IAntimatterRegistrar {
 
@@ -47,7 +48,7 @@ public class TFCRegistrar implements IAntimatterRegistrar {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Side side) {
         if (event == RegistrationEvent.DATA_INIT){
-            array = new Material[]{Materials.Bauxite, Materials.Cobaltite, Materials.Galena, Materials.Uraninite};
+            array = new Material[]{Bauxite, Cobaltite, Galena, Uraninite, VanadiumMagnetite, BrownLimonite, BandedIron, Cooperite, Palladium};
             for (Material material : array) {
                 Helpers.mapOfKeys(Ore.Grade.class, (grade) -> {
                     new GTTFCOreItem(GTIRef.ID, grade.name().toLowerCase() + "_" + material.getId());

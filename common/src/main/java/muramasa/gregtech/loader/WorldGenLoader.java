@@ -205,7 +205,7 @@ public class WorldGenLoader {
         OVERWORLD, Level.NETHER, Level.END).buildVein());
       ev.vein(new WorldGenVeinLayerBuilder("platinum").asOreVein(-24, -9, 5, 3, 16, Cooperite, Palladium, Platinum, Iridium,
               OVERWORLD).buildVein());
-      ev.vein(new WorldGenVeinLayerBuilder("platinum_end").asOreVein(40, 50, 5, 3, 16, Cooperite, Palladium, Platinum, Iridium, OVERWORLD,
+      ev.vein(new WorldGenVeinLayerBuilder("platinum_end").asOreVein(40, 50, 5, 3, 16, Cooperite, Palladium, Platinum, Iridium,
               Level.END).buildVein());
       ev.vein(new WorldGenVeinLayerBuilder("pitchblend").asOreVein(-54, -9, 40, 3, 16, Pitchblende, Pitchblende, Uraninite, Uraninite,
         OVERWORLD).buildVein());
