@@ -18,6 +18,7 @@ import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.datagen.*;
 import muramasa.gregtech.integration.AppliedEnergisticsRegistrar;
+import muramasa.gregtech.integration.SpaceModRegistrar;
 import muramasa.gregtech.integration.rei.*;
 import muramasa.gregtech.loader.crafting.*;
 import muramasa.gregtech.loader.items.Circuitry;
@@ -50,6 +51,7 @@ public class GregTech extends AntimatterMod {
     public void onRegistrarInit() {
         super.onRegistrarInit();
         new AppliedEnergisticsRegistrar();
+        new SpaceModRegistrar();
         LOGGER.info("Loading GregTech");
         INSTANCE = this;
         ServerHandler.setup();
