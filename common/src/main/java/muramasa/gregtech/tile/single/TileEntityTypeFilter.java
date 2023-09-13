@@ -32,7 +32,7 @@ public class TileEntityTypeFilter extends TileEntityItemFilter {
             if (compare.isEmpty()) return false;
             compare = compare.substring(0, compare.lastIndexOf("/"));
 
-            boolean hasTag = tags.contains(TagUtils.getItemTag(new ResourceLocation(compare)));
+            boolean hasTag = stack.is(TagUtils.getItemTag(new ResourceLocation(compare)));
             return blacklist != hasTag;
         }).orElse(false);
     }
