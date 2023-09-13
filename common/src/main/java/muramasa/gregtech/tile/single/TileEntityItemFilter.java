@@ -104,12 +104,7 @@ public class TileEntityItemFilter extends TileEntityMachine<TileEntityItemFilter
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
         if (getCover(this.getFacing().getOpposite()).isEmpty()){
-            if (this.energyHandler.map(e -> e.getEnergy() > 0).orElse(false)){
-                if(processItemOutput()){
-                    this.energyHandler.ifPresent(e -> e.extractEu(1, false));
-                }
-            }
-
+            this.processItemOutput();
         }
     }
     @Override
