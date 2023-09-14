@@ -22,8 +22,8 @@ public class TFCItemTagProvider extends AntimatterItemTagProvider {
     protected void processTags(String domain) {
         super.processTags(domain);
         this.tag(TagUtils.getItemTag(new ResourceLocation("tfc", "saws"))).addTag(SAW.getTag());
-        for (Material material : TFCRegistrar.array) {
+        /*for (Material material : TFCRegistrar.array) {
             this.tag(TagUtils.getItemTag(new ResourceLocation("tfc", "ore_pieces"))).add(GregTech.get(Item.class, "poor_" + material.getId()), GregTech.get(Item.class, "normal_" + material.getId()), GregTech.get(Item.class, "rich_" + material.getId()));
-        }
+        }*/
     }
 }

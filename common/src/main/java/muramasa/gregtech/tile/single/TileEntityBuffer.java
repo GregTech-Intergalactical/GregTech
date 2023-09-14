@@ -109,7 +109,7 @@ public class TileEntityBuffer extends TileEntityMachine<TileEntityBuffer> {
     public void onGuiEvent(IGuiEvent event, Player playerEntity) {
         if (event.getFactory() == GuiEvents.EXTRA_BUTTON) {
             int[] data = ((GuiEvents.GuiEvent)event).data;
-            switch (data[0]) {
+            switch (data[1]) {
                 case 0 -> {
                     emitEnergy = !emitEnergy;
                     playerEntity.sendMessage(new TextComponent((emitEnergy ? "Emit energy to output side" : "Don't emit energy")), playerEntity.getUUID());
@@ -140,7 +140,7 @@ public class TileEntityBuffer extends TileEntityMachine<TileEntityBuffer> {
                 @Override
                 public ItemStack extractItem(int slot, int amount, boolean simulate) {
                     if (amount < tile.stackLimit) return ItemStack.EMPTY;
-                    amount = Math.min(amount, tile.stackLimit);
+                    amount = tile.stackLimit;
                     return super.extractItem(slot, amount, simulate);
                 }
             });
