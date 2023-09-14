@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.event.WorldGenEvent;
@@ -48,7 +49,7 @@ public class WorldGenLoader {
             initOreVeins(ev);
             initStoneOreVeins(ev);
         }
-        if (AntimatterConfig.WORLD.SMALL_ORES){
+        if (AntimatterConfig.WORLD.SMALL_ORES && !AntimatterAPI.isModLoaded("tfc")){
             initSmallOres(ev);
         }
         OilSpoutSavedData.clearFluidMap();
