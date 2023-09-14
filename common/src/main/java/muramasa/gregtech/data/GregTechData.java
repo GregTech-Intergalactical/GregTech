@@ -85,7 +85,7 @@ public class GregTechData {
     }).addTextures(new Texture(GTIRef.ID, "block/cover/redstone_machine_controller")).build(GTIRef.ID, "redstone_machine_controller");
 
     public static final CoverFactory COVER_STEAM_VENT = CoverFactory.builder(CoverSteamVent::new)
-            .addTextures(new Texture(GTIRef.ID, "block/cover/output")).build(Ref.ID, "steam_vent");
+            .addTextures(new Texture(GTIRef.ID, "block/cover/output")).build(GTIRef.ID, "steam_vent");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(GTIRef.ID, "computer_monitor").tip("Can be placed on machines as a cover");
 
     public static ItemFluidCell CellTin = new ItemFluidCell(GTIRef.ID, Tin, 1000);

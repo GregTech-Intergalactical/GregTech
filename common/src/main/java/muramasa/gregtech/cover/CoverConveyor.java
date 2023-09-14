@@ -3,21 +3,14 @@ package muramasa.gregtech.cover;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.capability.ICoverHandler;
-import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.*;
-import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
-import muramasa.antimatter.gui.widget.ButtonWidget;
-import muramasa.antimatter.gui.widget.TextWidget;
-import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.AntimatterCapUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
-import muramasa.gregtech.gui.widgets.ChangingButtonWidget;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.nbt.CompoundTag;
+import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.SlotTypes;
+import muramasa.gregtech.tile.single.IFilterable;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,18 +24,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import tesseract.TesseractCapUtils;
 import tesseract.api.item.ExtendedItemContainer;
-import tesseract.api.item.PlatformItemHandler;
 
 import javax.annotation.Nullable;
 import java.util.*;
 import java.util.function.BiFunction;
-import java.util.function.Consumer;
 
-import static muramasa.gregtech.gui.ButtonOverlays.*;
-import static muramasa.gregtech.gui.ButtonOverlays.EXPORT_IMPORT_INVERT_CONDITIONAL;
+import static muramasa.antimatter.gui.ButtonOverlay.*;
 
 
-public class CoverConveyor extends CoverBasicTransport {
+public class CoverConveyor extends CoverBasicTransport implements IFilterable {
 
     static {
         CoverGuiEvent.init();
@@ -62,14 +52,7 @@ public class CoverConveyor extends CoverBasicTransport {
     public CoverConveyor(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         Objects.requireNonNull(tier);
-        ButtonBody[][] overlays = new ButtonBody[][]{{IMPORT, IMPORT_CONDITIONAL, IMPORT_INVERT_CONDITIONAL, EXPORT, EXPORT_CONDITIONAL, EXPORT_INVERT_CONDITIONAL}, {IMPORT_EXPORT, IMPORT_EXPORT_CONDITIONAL, IMPORT_EXPORT_INVERT_CONDITIONAL, EXPORT_IMPORT, EXPORT_IMPORT_CONDITIONAL, EXPORT_IMPORT_INVERT_CONDITIONAL}};
-        addGuiCallback(t -> {
-            for (int x = 0; x < 6; x++){
-                for (int y = 0; y < 2; y++){
-                    t.addButton(35 + (x * 18), 25 + (y * 18), 16, 16, overlays[y][x], "tooltip.gti." + overlays[y][x].getId());
-                }
-            }
-        });
+        this.gui.getSlots().add(SlotTypes.FILTERABLE, 79, 53);
     }
 
 
@@ -80,14 +63,12 @@ public class CoverConveyor extends CoverBasicTransport {
 
     @Override
     public <T> boolean blocksInput(Class<T> cap, @Nullable Direction side) {
-        int mode = coverMode.ordinal();
-        return mode == 0 || mode == 2 || mode == 4;
+        return exportMode == ImportExportMode.EXPORT;
     }
 
     @Override
     public <T> boolean blocksOutput(Class<T> cap, @Nullable Direction side) {
-        int mode = coverMode.ordinal();
-        return mode == 1 || mode == 3 || mode == 5;
+        return exportMode == ImportExportMode.IMPORT;
     }
 
     //Useful for using the same model for multiple tiers where id is dependent on tier.
@@ -104,7 +85,7 @@ public class CoverConveyor extends CoverBasicTransport {
             return;
         BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
         //Drop into world.
-        if (state == Blocks.AIR.defaultBlockState() && coverMode.name.contains("output")) {
+        if (state == Blocks.AIR.defaultBlockState() && exportMode.name.contains("output")) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
             ItemStack stack = TesseractCapUtils.getItemHandler(handler.getTile(), side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
@@ -119,7 +100,7 @@ public class CoverConveyor extends CoverBasicTransport {
         BlockEntity from = handler.getTile();
         BlockEntity to = adjTile;
         Direction fromSide = side;
-        if (getCoverMode().getName().startsWith("Import")){
+        if (exportMode == ImportExportMode.IMPORT || exportMode == ImportExportMode.IMPORT_EXPORT){
             from = adjTile;
             to = handler.getTile();
             fromSide = side.getOpposite();
@@ -134,12 +115,16 @@ public class CoverConveyor extends CoverBasicTransport {
     }
 
     protected boolean canMove(Direction side){
-        String name = getCoverMode().getName();
-        if (name.contains("Conditional")){
+        if (redstoneMode != RedstoneMode.NO_WORK){
             boolean powered = isPowered(side);
-            return name.contains("Invert") != powered;
+            return (redstoneMode == RedstoneMode.INVERTED) != powered;
         }
         return true;
+    }
+
+    @Override
+    public boolean accepts(ItemStack stack) {
+        return stack.getItem() == GregTechData.COVER_ITEM_FILTER.getItem().getItem();
     }
 
 

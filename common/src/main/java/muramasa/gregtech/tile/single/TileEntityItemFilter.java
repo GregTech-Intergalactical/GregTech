@@ -71,7 +71,7 @@ public class TileEntityItemFilter extends TileEntityMachine<TileEntityItemFilter
     public void onGuiEvent(IGuiEvent event, Player playerEntity) {
         if (event.getFactory() == GuiEvents.EXTRA_BUTTON) {
             int[] data = ((GuiEvents.GuiEvent)event).data;
-            switch (data[0]) {
+            switch (data[1]) {
                 case 0:
                     emitEnergy = !emitEnergy;
                     playerEntity.sendMessage(new TextComponent( (emitEnergy ? "Emit energy to output side" : "Don't emit energy")), playerEntity.getUUID());

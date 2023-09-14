@@ -4,10 +4,7 @@ import muramasa.antimatter.capability.item.TrackedItemHandler;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.data.AntimatterDefaultTools;
-import muramasa.antimatter.gui.ButtonBody;
-import muramasa.antimatter.gui.GuiInstance;
-import muramasa.antimatter.gui.IGuiElement;
-import muramasa.antimatter.gui.SlotType;
+import muramasa.antimatter.gui.*;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.event.ContentEvent;
@@ -17,6 +14,7 @@ import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.Machines;
+import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -37,7 +35,7 @@ import tesseract.TesseractCapUtils;
 import static muramasa.antimatter.machine.MachineFlag.ENERGY;
 
 public class TileEntityBuffer extends TileEntityMachine<TileEntityBuffer> {
-    protected int stackLimit = 64;
+    protected int stackLimit = 1;
     boolean emitEnergy = false;
 
     public TileEntityBuffer(Machine<?> type, BlockPos pos, BlockState state) {
@@ -129,7 +127,7 @@ public class TileEntityBuffer extends TileEntityMachine<TileEntityBuffer> {
     @Override
     public void addWidgets(GuiInstance instance, IGuiElement parent) {
         super.addWidgets(instance, parent);
-        instance.addButton(8, 63, 16, 16, ButtonBody.NO_OVERLAY);
+        instance.addSwitchButton(8, 63, 16, 16, ButtonOverlays.ENERGY_OFF, ButtonOverlays.ENERGY_ON, h -> ((TileEntityBuffer)h).emitEnergy);
     }
 
     public static class BufferItemHandler extends MachineItemHandler<TileEntityBuffer> {
