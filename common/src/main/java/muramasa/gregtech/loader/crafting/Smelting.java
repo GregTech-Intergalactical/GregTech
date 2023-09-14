@@ -21,5 +21,6 @@ public class Smelting {
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.IRON_NUGGET), NUGGET.get(Materials.WroughtIron), 0.5f, 100).unlockedBy("has_nugget_iron", provider.hasSafeItem(Items.IRON_NUGGET)).save(output, "blasting_nugget_wrought_iron");
         MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED, NUGGET, 7, Cassiterite, Tin);
         MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED, NUGGET, 7, Garnierite, Nickel);
+        MaterialRecipes.addSmeltingRecipe(output, provider, DUST, DUST, 1, AluminiumHydroxide, Alumina);
     }
 }

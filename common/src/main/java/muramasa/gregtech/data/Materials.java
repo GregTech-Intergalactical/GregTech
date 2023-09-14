@@ -335,6 +335,7 @@ public class Materials {
      ** Dusts
      **/
 
+    public static Material AluminiumHydroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID,"aluminium_hydroxide", 0xbebec8, DULL));
     public static Material AluminiumTrichloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "aluminium_trichloride", 0xf0d77d, FINE));
     public static Material Aluminosilicate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "aluminosilicate", 0xbfbdb0, FINE));
     public static Material AmmoniumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ammonium_chloride", 0xffffff, DULL));
@@ -381,6 +382,7 @@ public class Materials {
     public static Material Rubber = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rubber", 0x000000, SHINY));
     public static Material SiliconDioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "silicon_dioxide", 0xc8c8c8, QUARTZ));
     public static Material SodaAsh = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "soda_ash", 0xdcdcff, DULL));
+    public static Material SodiumAluminate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_aluminate", 0xE6E6FA, NONE));
     public static Material SodiumBisulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_bisulfate", 0x004455, NONE));
     public static Material SodiumHydroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_hydroxide", 0x003380, DULL));
     public static Material SodiumSulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_sulfate", 0x004455, NONE));
