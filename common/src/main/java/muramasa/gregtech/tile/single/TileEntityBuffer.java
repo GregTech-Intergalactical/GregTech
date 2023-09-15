@@ -31,6 +31,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
+import tesseract.api.item.PlatformItemHandler;
+
+import java.util.function.Predicate;
 
 import static muramasa.antimatter.machine.MachineFlag.ENERGY;
 
@@ -88,9 +91,27 @@ public class TileEntityBuffer extends TileEntityMachine<TileEntityBuffer> {
         boolean[] booleans = new boolean[1];
         booleans[0] = false;
         TesseractCapUtils.getItemHandler(adjTile, outputDir.getOpposite()).ifPresent(adjHandler -> {
-            booleans[0] = this.itemHandler.map(h -> Utils.transferItems(h.getHandler(SlotType.STORAGE), adjHandler,true)).orElse(false);
+            booleans[0] = this.itemHandler.map(h -> transferItems(h.getHandler(SlotType.STORAGE), adjHandler,true)).orElse(false);
         });
         return booleans[0];
+    }
+
+    public static boolean transferItems(PlatformItemHandler from, PlatformItemHandler to, boolean once) {
+        boolean successful = false;
+        for (int i = 0; i < from.getSlots(); i++) {
+            ItemStack toInsert = from.extractItem(i, from.getStackInSlot(i).getCount(), true);
+            if (toInsert.isEmpty()) {
+                continue;
+            }
+            ItemStack inserted = Utils.insertItem(to, toInsert, true);
+            if (inserted.isEmpty()){
+                Utils.insertItem(to, toInsert, false);
+                from.extractItem(i, toInsert.getCount(), false);
+                if (!successful) successful = true;
+                if (once) break;
+            }
+        }
+        return successful;
     }
 
     @Override
