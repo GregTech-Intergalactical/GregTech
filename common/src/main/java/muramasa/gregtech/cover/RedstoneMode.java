@@ -29,4 +29,19 @@ public enum RedstoneMode implements ICoverMode {
     public String getName() {
         return name;
     }
+
+    public RedstoneMode next(){
+        return switch (this){
+            case NORMAL -> INVERTED;
+            case INVERTED -> NO_WORK;
+            case NO_WORK -> NORMAL;
+        };
+    }
+    public RedstoneMode previous(){
+        return switch (this){
+            case NORMAL -> NO_WORK;
+            case NO_WORK -> INVERTED;
+            case INVERTED -> NORMAL;
+        };
+    }
 }

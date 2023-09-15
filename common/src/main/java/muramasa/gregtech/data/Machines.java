@@ -4,9 +4,8 @@ import com.google.common.collect.ImmutableMap;
 
 import io.github.gregtechintergalactical.gtutility.GTUtilityData;
 import io.github.gregtechintergalactical.gtutility.machine.DrumMachine;
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.material.Material;
@@ -68,7 +67,7 @@ public class Machines {
     public static BasicMachine BENDER = new BasicMachine(GTIRef.ID, "bender").setMap(BENDING).addFlags(GUI, ITEM);
     public static BasicMachine CANNER = new BasicMachine(GTIRef.ID, "canner").setMap(CANNING).addFlags(GUI, ITEM);
     public static BasicMachine CENTRIFUGE = new BasicMachine(GTIRef.ID, "centrifuge").setMap(CENTRIFUGING).addFlags(GUI, ITEM, FLUID);
-    public static BasicMachine CHEMICAL_BATH = new BasicMachine(GTIRef.ID, "chemical_bath").setMap(CHEMICAL_BATHING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR, 0.6f);
+    public static BasicMachine BATH = new BasicMachine(GTIRef.ID, "bath").setMap(BATHING).addFlags(GUI, ITEM, FLUID).setTiers(LV);
     public static BasicMachine CHEMICAL_DEHYDRATOR = new BasicMachine(GTIRef.ID, "chemical_dehydrator").setMap(DEHYDRATING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine CHEMICAL_REACTOR = new BasicMachine(GTIRef.ID, "chemical_reactor").setMap(CHEMICAL_REACTING).addFlags(GUI, ITEM, FLUID).renderContainedLiquids().custom();
     public static BasicMachine CIRCUIT_ASSEMBLER = new BasicMachine(GTIRef.ID, "circuit_assembler").setMap(CIRCUIT_ASSEMBLING).addFlags(GUI, ITEM, FLUID);
@@ -115,10 +114,10 @@ public class Machines {
     /**
      * Filters
      **/
-    public static BasicMachine ELECTRIC_ITEM_FILTER = new BasicMachine(GTIRef.ID, "electric_item_filter").addFlags(GUI, ITEM).setTile(TileEntityItemFilter::new).setOutputCover(ICover.emptyFactory).allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine ELECTRIC_TYPE_FILTER = new BasicMachine(GTIRef.ID, "electric_type_filter").addFlags(GUI, ITEM).setTile(TileEntityTypeFilter::new).setOutputCover(ICover.emptyFactory).allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine SUPER_BUFFER =new BasicMachine(GTIRef.ID, "super_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().setOutputCover(ICover.emptyFactory).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine CHEST_BUFFER =new BasicMachine(GTIRef.ID, "chest_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().setOutputCover(ICover.emptyFactory).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine ELECTRIC_ITEM_FILTER = new BasicMachine(GTIRef.ID, "electric_item_filter").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityItemFilter::new).noCovers().frontCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine ELECTRIC_TYPE_FILTER = new BasicMachine(GTIRef.ID, "electric_type_filter").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityTypeFilter::new).noCovers().frontCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine SUPER_BUFFER =new BasicMachine(GTIRef.ID, "super_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine CHEST_BUFFER =new BasicMachine(GTIRef.ID, "chest_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
     /**
      * Drums
      */
@@ -224,5 +223,6 @@ public class Machines {
     }
 
     public static void init() {
+        ENERGY.remove(BATH);
     }
 }

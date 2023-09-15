@@ -18,6 +18,7 @@ import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.datagen.*;
 import muramasa.gregtech.integration.AppliedEnergisticsRegistrar;
+import muramasa.gregtech.integration.SpaceModRegistrar;
 import muramasa.gregtech.integration.rei.*;
 import muramasa.gregtech.loader.crafting.*;
 import muramasa.gregtech.loader.items.Circuitry;
@@ -28,7 +29,6 @@ import muramasa.gregtech.loader.machines.generator.LargeBoilerLoader;
 import muramasa.gregtech.loader.multi.*;
 import muramasa.gregtech.proxy.CommonHandler;
 import muramasa.gregtech.proxy.ServerHandler;
-import net.minecraft.world.level.block.Blocks;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -50,6 +50,7 @@ public class GregTech extends AntimatterMod {
     public void onRegistrarInit() {
         super.onRegistrarInit();
         new AppliedEnergisticsRegistrar();
+        new SpaceModRegistrar();
         LOGGER.info("Loading GregTech");
         INSTANCE = this;
         ServerHandler.setup();
@@ -136,7 +137,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("cutting", CuttingLoader::init);
         loader.accept("fermenting", Fermenter::init);
         loader.accept("pressing", FormingPress::init);
-        loader.accept("chemical_bathing", ChemicalBath::init);
+        loader.accept("bathing", Bath::init);
         loader.accept("heat_exchanging", HeatExchangerLoader::init);
         loader.accept("extruding", ExtruderLoader::init);
         loader.accept("distilling", DistilleryLoader::init);

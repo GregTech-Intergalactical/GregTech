@@ -179,7 +179,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
 
     private List<Widget> setupChemMachineSlots(OreProcessingDisplay display, Rectangle bounds){
         List<Widget> widgets = new ArrayList<>();
-        widgets.add(Widgets.createSlot(xy(29, 48, bounds)).entries(ofMachine(Machines.CHEMICAL_BATH)).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(29, 48, bounds)).entries(ofMachine(Machines.BATH)).markInput().disableBackground());
         if(display.bathingMode == OreProcessingDisplay.BathingMode.MERCURY){
             widgets.add(Widgets.createSlot(xy(50, 48, bounds)).entries(ofFluid(Materials.Mercury,1000)).markInput().disableBackground());
             widgets.add(Widgets.createSlot(xy(90, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(GregTechMaterialTags.CHEMBATH_MERCURY.getMapping(display.ore)),1)))).markOutput().disableBackground());

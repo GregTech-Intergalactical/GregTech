@@ -88,7 +88,7 @@ public class MachineRecipeLoader {
         //Material Gen Recipes
         FUSION.RB().fi(Beryllium.getLiquid(16), Tungsten.getLiquid(16)).fo(Platinum.getLiquid(16)).add("beryllium",32, 32768, 150000000);
         FUSION.RB().fi(Neodymium.getLiquid(16), Hydrogen.getGas(16)).fo(Europium.getLiquid(16)).add("europium",64, 24576, 150000000);
-        FUSION.RB().fi(Lutetium.getLiquid(16), Chrome.getLiquid(16)).fo(Americium.getLiquid(16)).add("americium",96, 49152, 200000000);
+        FUSION.RB().fi(Lutetium.getLiquid(16), Chromium.getLiquid(16)).fo(Americium.getLiquid(16)).add("americium",96, 49152, 200000000);
         FUSION.RB().fi(Plutonium.getLiquid(16), Thorium.getLiquid(16)).fo(Naquadah.getLiquid(16)).add("naquadah",64, 32768, 300000000);
         FUSION.RB().fi(Americium.getLiquid(16), Naquadria.getLiquid(16)).fo(Neutronium.getLiquid(1)).add("neutronium",1200, 98304, 600000000);
         FUSION.RB().fi(Lithium.getLiquid(16), Tungsten.getLiquid(16), Iridium.getLiquid(16)).add("iridium",32, 32768, 300000000);
@@ -97,7 +97,7 @@ public class MachineRecipeLoader {
         FUSION.RB().fi(Mercury.getLiquid(16), Magnesium.getLiquid(16)).fo(Uranium.getLiquid(16)).add("uranium",64, 49152, 240000000);
         FUSION.RB().fi(Gold.getLiquid(16), Aluminium.getLiquid(16)).fo(Uranium.getLiquid(16)).add("uranium_2",64, 49152, 240000000);
         FUSION.RB().fi(Uranium.getLiquid(16), Helium.getGas(16)).fo(Plutonium.getLiquid(16)).add("plutonium",128, 49152, 480000000);
-        FUSION.RB().fi(Vanadium.getLiquid(16), Hydrogen.getGas(125)).fo(Chrome.getLiquid(16)).add("chrome",64, 24576, 140000000);
+        FUSION.RB().fi(Vanadium.getLiquid(16), Hydrogen.getGas(125)).fo(Chromium.getLiquid(16)).add("chrome",64, 24576, 140000000);
         FUSION.RB().fi(Gallium.getLiquid(16), Radon.getGas(125)).fo(Duranium.getLiquid(16)).add("duranium",64, 16384, 140000000);
         FUSION.RB().fi(Titanium.getLiquid(16), Duranium.getLiquid(125)).fo(Tritanium.getLiquid(16)).add("tritanium",64, 32768, 200000000);
         FUSION.RB().fi(Gold.getLiquid(16), Mercury.getLiquid(16)).fo(Radon.getGas(125)).add("radon",64, 32768, 200000000);

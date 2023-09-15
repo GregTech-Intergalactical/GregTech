@@ -1,25 +1,21 @@
 package muramasa.gregtech.data;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.gui.*;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
 import muramasa.antimatter.gui.container.ContainerMachine;
-import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
 import muramasa.antimatter.gui.slot.ISlotProvider;
 import muramasa.antimatter.gui.widget.*;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tile.TileEntityMachine;
-import muramasa.antimatter.util.int4;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.gui.widgets.*;
 import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 
-import static muramasa.antimatter.gui.ButtonBody.*;
 import static muramasa.antimatter.gui.SlotType.*;
 import static muramasa.antimatter.gui.Widget.builder;
 import static muramasa.antimatter.machine.Tier.*;
@@ -116,7 +112,7 @@ public class Guis {
                 .add(FL_OUT, 44, 63).add(FL_OUT, 62, 63).add(FL_OUT, 80, 63)
                 .add(FL_OUT, 98, 63).add(FL_OUT, 116, 63).add(FL_OUT, 134, 63)
                 .add(ENERGY, 17, 25).getGui().getMachineData().setProgressLocation("extractor");
-        ELECTROLYZER.add(CENTRIFUGE).getGui().getMachineData().setProgressLocation("extractor");
+        ELECTROLYZER.add(CENTRIFUGE).add(IT_IN, 35, 43).add(FL_IN,53, 43).getGui().getMachineData().setProgressLocation("extractor");
         THERMAL_CENTRIFUGE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(ENERGY,
                 80, 63);
         ORE_WASHER.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63)
@@ -141,8 +137,8 @@ public class Guis {
         FLUID_HEATER.add(ENERGY, 80, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
         DISTILLERY.add(FLUID_CANNER).getGui().getMachineData().setProgressLocation("chemical_reactor");
-        CHEMICAL_BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).getGui().getMachineData().setProgressLocation("ore_washer");
-        AUTOCLAVE.add(COMPRESSOR).add(FL_IN, 53, 63);
+        BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).getGui().getMachineData().setProgressLocation("ore_washer");
+        AUTOCLAVE.add(ALLOY_SMELTER).add(FL_IN, 53, 63);
         PACKAGER.add(COMPRESSOR);
         POLARIZER.add(COMPRESSOR).getGui().getMachineData().setProgressLocation("electromagnetic_separator");
         MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(FL_IN, 44, 63)
@@ -291,82 +287,66 @@ public class Guis {
 
 
         COAL_BOILER.addGuiCallback(t -> {
-            t.addWidget(WidgetSupplier
-                    .build((a, b) -> TextWidget
-                            .build(((AntimatterContainerScreen<?>) b).getTitle().getString(), 4210752).build(a, b))
-                    .setPos(9, 5).clientSide());
             t.addWidget(CoalBoilerWidget.build().setSize(70, 25, 36, 54))
                     .addWidget(CoalBoilerFuelWidget.build().setSize(115, 43, 18, 18));
         });
 
         LAVA_BOILER.addGuiCallback(t -> {
-            t.addWidget(WidgetSupplier
-                    .build((a, b) -> TextWidget
-                            .build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a, b))
-                    .setPos(9, 5).clientSide());
             t.addWidget(LavaBoilerWidget.build().setSize(70, 25, 62, 54));
         });
 
         SOLAR_BOILER.addGuiCallback(t -> {
-            t.addWidget(WidgetSupplier
-                    .build((a, b) -> TextWidget
-                            .build(((AntimatterContainerScreen<?>)b).getTitle().getString(), 4210752).build(a, b))
-                    .setPos(9, 5).clientSide());
             t.addWidget(SolarBoilerWidget.build().setSize(70, 25, 62, 54));
         });
- 
-        if (!AntimatterAPI.isModLoaded("gt4r")) {
-            ELECTRIC_ITEM_FILTER
-                    .add(DISPLAY_SETTABLE, 18, 6).add(DISPLAY_SETTABLE, 35, 6).add(DISPLAY_SETTABLE, 52, 6)
-                    .add(DISPLAY_SETTABLE, 18, 23).add(DISPLAY_SETTABLE, 35, 23).add(DISPLAY_SETTABLE, 52, 23)
-                    .add(DISPLAY_SETTABLE, 18, 40).add(DISPLAY_SETTABLE, 35, 40).add(DISPLAY_SETTABLE, 52, 40)
-                    .add(SlotTypes.FILTERABLE, 98, 5).add(SlotTypes.FILTERABLE, 98 + 18, 5)
-                    .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 5)
-                    .add(SlotTypes.FILTERABLE, 98, 23).add(SlotTypes.FILTERABLE, 98 + 18, 23)
-                    .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 23)
-                    .add(SlotTypes.FILTERABLE, 98, 41).add(SlotTypes.FILTERABLE, 98 + 18, 41)
-                    .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 41).getGui().setBackgroundTexture("electric_item_filter");
+        ELECTRIC_ITEM_FILTER
+                .add(DISPLAY_SETTABLE, 18, 6, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 6, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 6, new ResourceLocation(GTIRef.ID, "blank"))
+                .add(DISPLAY_SETTABLE, 18, 23, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 23, new ResourceLocation(GTIRef.ID, "blank"))
+                .add(DISPLAY_SETTABLE, 18, 40, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 40, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 40, new ResourceLocation(GTIRef.ID, "blank"))
+                .add(SlotTypes.FILTERABLE, 98, 5).add(SlotTypes.FILTERABLE, 98 + 18, 5)
+                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 5)
+                .add(SlotTypes.FILTERABLE, 98, 23).add(SlotTypes.FILTERABLE, 98 + 18, 23)
+                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 23)
+                .add(SlotTypes.FILTERABLE, 98, 41).add(SlotTypes.FILTERABLE, 98 + 18, 41)
+                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 41).getGui().setBackgroundTexture("electric_item_filter");
 
-            ELECTRIC_TYPE_FILTER
-                    .add(DISPLAY_SETTABLE, 35, 23)
-                    .add(SlotTypes.FILTERABLE, 98, 5).add(SlotTypes.FILTERABLE, 98 + 18, 5)
-                    .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 5)
-                    .add(SlotTypes.FILTERABLE, 98, 23).add(SlotTypes.FILTERABLE, 98 + 18, 23)
-                    .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 23)
-                    .add(SlotTypes.FILTERABLE, 98, 41).add(SlotTypes.FILTERABLE, 98 + 18, 41)
-                    .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 41).getGui().setBackgroundTexture("electric_type_filter");
-        }
+        ELECTRIC_TYPE_FILTER
+                .add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GTIRef.ID, "blank"))
+                .add(SlotTypes.FILTERABLE, 98, 5).add(SlotTypes.FILTERABLE, 98 + 18, 5)
+                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 5)
+                .add(SlotTypes.FILTERABLE, 98, 23).add(SlotTypes.FILTERABLE, 98 + 18, 23)
+                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 23)
+                .add(SlotTypes.FILTERABLE, 98, 41).add(SlotTypes.FILTERABLE, 98 + 18, 41)
+                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 41).getGui().setBackgroundTexture("electric_type_filter");
 
         // if (side.isClient()) {
         ADJUSTABLE_TRANSFORMER.addGuiCallback(t -> {
-            t.addButton(10, 18, 14, 14, APAD_LEFT)
-                    .addButton(25, 18, 14, 14, PAD_LEFT)
-                    .addButton(10, 33, 14, 14, APAD_LEFT)
-                    .addButton(25, 33, 14, 14, PAD_LEFT)
-                    .addButton(10, 48, 14, 14, APAD_LEFT)
-                    .addButton(25, 48, 14, 14, PAD_LEFT)
-                    .addButton(10, 63, 14, 14, APAD_LEFT)
-                    .addButton(25, 63, 14, 14, PAD_LEFT)
-                    .addButton(137, 18, 14, 14, PAD_RIGHT)
-                    .addButton(152, 18, 14, 14, APAD_RIGHT)
-                    .addButton(137, 33, 14, 14, PAD_RIGHT)
-                    .addButton(152, 33, 14, 14, APAD_RIGHT)
-                    .addButton(137, 48, 14, 14, PAD_RIGHT)
-                    .addButton(152, 48, 14, 14, APAD_RIGHT)
-                    .addButton(137, 63, 14, 14, PAD_RIGHT)
-                    .addButton(152, 63, 14, 14, APAD_RIGHT);
+            t.addButton(10, 18, ButtonOverlay.APAD_LEFT)
+                    .addButton(25, 18, ButtonOverlay.PAD_LEFT)
+                    .addButton(10, 33, ButtonOverlay.APAD_LEFT)
+                    .addButton(25, 33, ButtonOverlay.PAD_LEFT)
+                    .addButton(10, 48, ButtonOverlay.APAD_LEFT)
+                    .addButton(25, 48, ButtonOverlay.PAD_LEFT)
+                    .addButton(10, 63, ButtonOverlay.APAD_LEFT)
+                    .addButton(25, 63, ButtonOverlay.PAD_LEFT)
+                    .addButton(137, 18, ButtonOverlay.PAD_RIGHT)
+                    .addButton(152, 18, ButtonOverlay.APAD_RIGHT)
+                    .addButton(137, 33, ButtonOverlay.PAD_RIGHT)
+                    .addButton(152, 33, ButtonOverlay.APAD_RIGHT)
+                    .addButton(137, 48, ButtonOverlay.PAD_RIGHT)
+                    .addButton(152, 48, ButtonOverlay.APAD_RIGHT)
+                    .addButton(137, 63, ButtonOverlay.PAD_RIGHT)
+                    .addButton(152, 63, ButtonOverlay.APAD_RIGHT);
         });
 
-        if (!AntimatterAPI.isModLoaded("gt4r")){
-            ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
-            ELECTRIC_ITEM_FILTER.addGuiCallback(t -> {
-                t.addWidget(FilterButtonArrayWidget.build());
-            });
-            ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
-            ELECTRIC_TYPE_FILTER.addGuiCallback(t -> {
-                t.addWidget(FilterButtonArrayWidget.build());
-            });
-        }
+        ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
+        ELECTRIC_ITEM_FILTER.addGuiCallback(t -> {
+            t.addWidget(FilterButtonArrayWidget.build());
+        });
+        ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
+        ELECTRIC_TYPE_FILTER.addGuiCallback(t -> {
+            t.addWidget(FilterButtonArrayWidget.build());
+        });
+        CHEST_BUFFER.getCallbacks().remove(1);
 
         BLAST_FURNACE.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
         IMPLOSION_COMPRESSOR.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
@@ -387,11 +367,11 @@ public class Guis {
         FUSION_REACTOR.getGui().setBackgroundTexture("fusion_control_computer").setEnablePlayerSlots(false)
                 .getMachineData().setProgressLocation("fusion_reactor").setProgressPos(163, 4).setProgressSize(149, 16);
         FUSION_REACTOR.addGuiCallback(t -> {
-            t.addButton(155, 23, 16, 16, ButtonBody.NO_OVERLAY).addButton(155, 41, 16, 16, NO_OVERLAY).addButton(155, 59, 16, 16, NO_OVERLAY).addWidget(makeProgress(BarDir.LEFT, true, new int4(0, 235, 149, 16)).setSize(4,162, 149, 16)).addWidget(FusionButtonWidget.build());
+            t.addButton(155, 23, ButtonOverlay.NO_OVERLAY).addButton(155, 41, ButtonOverlay.NO_OVERLAY).addButton(155, 59, ButtonOverlay.NO_OVERLAY).addWidget(makeProgress()).addWidget(FusionButtonWidget.build());
         });
     }
 
-    public static WidgetSupplier makeProgress(BarDir dir, boolean barFill, int4 loc){
+    public static WidgetSupplier makeProgress(){
         return builder(ProgressWidget::new);
     }
     // }

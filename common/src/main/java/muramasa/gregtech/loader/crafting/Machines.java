@@ -18,12 +18,10 @@ import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechTags;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.TierMaps;
 import muramasa.gregtech.machine.MultiblockTankMachine;
-import net.minecraft.data.DataProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -131,15 +129,13 @@ public class Machines {
                             'P', pump
                     ), "LWL", "CMC", "PHP"));
 
-            add(CHEMICAL_BATH, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+            add(BATH, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', circuit)
-                            .put('W', conveyor)
-                            .put('P', pump)
-                            .put('L', cable)
+                            .put('W', WRENCH.getTag())
                             .put('H', hull)
-                            .put('G', glass)
-                    .build(), "WGL", "PGW", "CHC"));
+                            .put('C', ITEM_CASING.getMaterialTag(material))
+                            .put('S', PLATE.getMaterialTag(material))
+                            .build(), "CWC", "SHS", "SSS"));
 
             add(SIFTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
@@ -458,7 +454,7 @@ public class Machines {
                             .put('D', DataOrb)
                             .put('M', hull)
                             .put('C', conveyor).build(), "DMC"));
-            add(SUPER_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
+            add(SUPER_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, GTIRef.ID, "super_buffer_" + tier.getId() +"_1", "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('D', CircuitDataStorage)
                             .put('M', hull)

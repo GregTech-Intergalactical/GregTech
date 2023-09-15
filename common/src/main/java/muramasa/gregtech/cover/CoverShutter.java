@@ -16,7 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class CoverShutter extends CoverRedstoneSensitive {
+public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     Mode mode = Mode.OPEN_REDSTONE;
     boolean isPowered = false;
     public CoverShutter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {

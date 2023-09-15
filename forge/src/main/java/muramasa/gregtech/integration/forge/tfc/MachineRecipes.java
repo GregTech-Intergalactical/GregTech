@@ -59,9 +59,9 @@ public class MachineRecipes {
         addMaceratorRecipe(TOPAZ, Topaz);
         addMaceratorRecipe(OPAL, Opal);
         addMaceratorRecipe(AMETHYST, Amethyst);
-        for (Material material : TFCRegistrar.array) {
+        /*for (Material material : TFCRegistrar.array) {
             addMaceratorRecipe(material);
-        }
+        }*/
     }
 
     private static void addMaceratorRecipe(Ore input, Material material){

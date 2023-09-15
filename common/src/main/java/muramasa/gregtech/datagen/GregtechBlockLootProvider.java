@@ -3,6 +3,7 @@ package muramasa.gregtech.datagen;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.datagen.providers.AntimatterBlockLootProvider;
 import muramasa.antimatter.material.Material;
@@ -15,6 +16,7 @@ import muramasa.gregtech.block.BlockFakeCasing;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.integration.AppliedEnergisticsRegistrar;
+import muramasa.gregtech.integration.SpaceModRegistrar;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -64,6 +66,9 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
         if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
             tables.put(AppliedEnergisticsRegistrar.getAe2Block("quartz_ore"), b -> createOreDrop(b, RAW_ORE.get(Materials.CertusQuartz)));
             tables.put(AppliedEnergisticsRegistrar.getAe2Block("deepslate_quartz_ore"), b -> createOreDrop(b, RAW_ORE.get(Materials.CertusQuartz)));
+        }
+        if (AntimatterAPI.isModLoaded("ad_astra")){
+            tables.put(SpaceModRegistrar.getSpaceBlock("mars_diamond_ore"), b -> createOreDrop(b, RAW_ORE.get(Diamond)));
         }
     }
 }

@@ -1,8 +1,10 @@
 package muramasa.gregtech.integration.forge.tfc.datagen;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
+import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
@@ -18,6 +20,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
+import static muramasa.antimatter.data.AntimatterMaterialTypes.ORE;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.ORE_SMALL;
+
 public class TFCBlockTagProvider extends AntimatterBlockTagProvider {
     public TFCBlockTagProvider(String providerDomain, String providerName, boolean replace) {
         super(providerDomain, providerName, replace);
@@ -26,7 +31,18 @@ public class TFCBlockTagProvider extends AntimatterBlockTagProvider {
     @Override
     protected void processTags(String domain) {
         super.processTags(domain);
-        for (Material material : TFCRegistrar.array) {
+        ORE.all().forEach(m -> {
+            AntimatterAPI.all(StoneType.class).forEach(s -> {
+                Block ore = ORE.get().get(m, s).asBlock();
+                Block smallOre = ORE_SMALL.get().get(m, s).asBlock();
+                this.tag(TFCTags.Blocks.CAN_COLLAPSE).add(ore, smallOre);
+                this.tag(TFCTags.Blocks.CAN_TRIGGER_COLLAPSE).add(ore, smallOre);
+                this.tag(TFCTags.Blocks.MONSTER_SPAWNS_ON).add(ore, smallOre);
+                this.tag(TFCTags.Blocks.PROSPECTABLE).add(ore, smallOre);
+                this.tag(TFCTags.Blocks.CAN_START_COLLAPSE).add(ore, smallOre);
+            });
+        });
+        /*for (Material material : TFCRegistrar.array) {
             Helpers.mapOfKeys(Ore.Grade.class, (grade) -> {
                 return Helpers.mapOfKeys(Rock.class, (rock) -> {
                     Block ore = GregTech.get(Block.class, grade.name().toLowerCase() + "_" + rock.name().toLowerCase() + "_" + material.getId());
@@ -43,6 +59,6 @@ public class TFCBlockTagProvider extends AntimatterBlockTagProvider {
                     return true;
                 });
             });
-        }
+        }*/
     }
 }
