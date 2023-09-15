@@ -1,13 +1,16 @@
 package muramasa.gregtech.integration.forge.tfc;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterFluidTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.event.forge.AntimatterLoaderEvent;
 import muramasa.antimatter.event.forge.AntimatterProvidersEvent;
+import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialTypeFluid;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
@@ -30,9 +33,11 @@ import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.util.Helpers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import tesseract.FluidPlatformUtils;
 
 import java.util.function.BiConsumer;
 
@@ -72,6 +77,15 @@ public class TFCRegistrar implements IAntimatterRegistrar {
                 AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, sand.name().toLowerCase() + "_sand", Material.NULL, new Texture("tfc","block/sand/" + sand.name().toLowerCase()), SoundType.SAND, false).setSandLike(true).setRequiresTool(true).setFallingDustColor(sand.getDustColor()).setStateSupplier(() -> AntimatterPlatformUtils.getBlockFromId("tfc", "sand/" + sand.name().toLowerCase()).defaultBlockState()));
                 AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, sand.name().toLowerCase() + "_raw_sandstone", Material.NULL, new Texture("tfc", "block/sandstone/bottom/" + sand.name().toLowerCase()), SoundType.SAND, false).setStateSupplier(() -> AntimatterPlatformUtils.getBlockFromId("tfc", "raw_sandstone/" + sand.name().toLowerCase()).defaultBlockState()));
                 return true;
+            });
+            AntimatterMaterialTypes.LIQUID.set((m, i) -> {
+                if (m == null || !AntimatterMaterialTypes.LIQUID.allowGen(m)) return MaterialTypeFluid.getEmptyFluidAndLog(AntimatterMaterialTypes.LIQUID, m);
+                if (m.getId().equals("water")) return FluidPlatformUtils.createFluidStack(Fluids.WATER, i);
+                else if (m.getId().equals("lava")) return FluidPlatformUtils.createFluidStack(Fluids.LAVA, i);
+                else if (m == SaltWater) return FluidPlatformUtils.createFluidStack(TFCFluids.SALT_WATER.getSource(), i);
+                AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, AntimatterMaterialTypes.LIQUID.getId() + "_" + m.getId());
+                if (fluid == null) throw new IllegalStateException("Tried to get null fluid");
+                return FluidPlatformUtils.createFluidStack(fluid.getFluid(), i);
             });
         }
     }
