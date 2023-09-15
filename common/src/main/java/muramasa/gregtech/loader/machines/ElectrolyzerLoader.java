@@ -46,13 +46,19 @@ public class ElectrolyzerLoader {
         ELECTROLYZING.RB().ii(RecipeIngredient.of(Items.BONE_MEAL, 3)).io(DUST.get(Materials.Calcium)).add("bone_meal", 98, 26);
         ELECTROLYZING.RB().ii(DUST.getMaterialIngredient(Carbon, 3), DUST.getMaterialIngredient(Alumina, 10))
                 .fi(AluminiumFluoride.getLiquid(L / 36), Cryolite.getLiquid(L / 72)).io(DUST.get(Aluminium, 4))
-                .fo(CarbonDioxide.getGas(2000), Fluorine.getGas(1000)).add("alumina_carbon", 2040, 16);
+                .fo(CarbonDioxide.getGas(9000), Fluorine.getGas(29)).add("alumina_carbon", 2040, 16);
         ELECTROLYZING.RB().ii(DUST.getMaterialIngredient(Charcoal, 3), DUST.getMaterialIngredient(Alumina, 10))
                 .fi(AluminiumFluoride.getLiquid(L / 36), Cryolite.getLiquid(L / 72)).io(DUST.get(Aluminium, 4))
-                .fo(CarbonDioxide.getGas(2000), Fluorine.getGas(1000)).add("alumina_charcoal", 2040, 16);
+                .fo(CarbonDioxide.getGas(9000), Fluorine.getGas(29)).add("alumina_charcoal", 2040, 16);
         ELECTROLYZING.RB().ii(DUST.getMaterialIngredient(Coal, 3), DUST.getMaterialIngredient(Alumina, 10))
                 .fi(AluminiumFluoride.getLiquid(L / 36), Cryolite.getLiquid(L / 72)).io(DUST.get(Aluminium, 4))
-                .fo(CarbonDioxide.getGas(2000), Fluorine.getGas(1000)).add("alumina_coal", 2040, 16);
+                .fo(CarbonDioxide.getGas(9000), Fluorine.getGas(29)).add("alumina_coal", 2040, 16);
+        ELECTROLYZING.RB().ii(DUST.getMaterialIngredient(CoalCoke, 3), DUST.getMaterialIngredient(Alumina, 10))
+                .fi(AluminiumFluoride.getLiquid(L / 36), Cryolite.getLiquid(L / 72)).io(DUST.get(Aluminium, 4))
+                .fo(CarbonDioxide.getGas(9000), Fluorine.getGas(29)).add("alumina_coke", 2040, 16);
+        ELECTROLYZING.RB().ii(DUST.getMaterialIngredient(Graphite, 3), DUST.getMaterialIngredient(Alumina, 10))
+                .fi(AluminiumFluoride.getLiquid(L / 36), Cryolite.getLiquid(L / 72)).io(DUST.get(Aluminium, 4))
+                .fo(CarbonDioxide.getGas(9000), Fluorine.getGas(29)).add("alumina_graphite", 2040, 16);
     }
 
 }

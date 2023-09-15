@@ -19,7 +19,7 @@ public class REIRegistrar {
             r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.ORE_WASHER.getItem(Tier.LV))));
             r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.CENTRIFUGE.getItem(Tier.LV))));
             r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.THERMAL_CENTRIFUGE.getItem(Tier.LV))));
-            r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.CHEMICAL_BATH.getItem(Tier.LV))));
+            r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.BATH.getItem(Tier.LV))));
             r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.ELECTROMAGNETIC_SEPARATOR.getItem(Tier.LV))));
             r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.SIFTER.getItem(Tier.LV))));
             MaterialTreeCategory cat2 = new MaterialTreeCategory();

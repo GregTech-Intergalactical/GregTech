@@ -137,7 +137,7 @@ public class Guis {
         FLUID_HEATER.add(ENERGY, 80, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
         DISTILLERY.add(FLUID_CANNER).getGui().getMachineData().setProgressLocation("chemical_reactor");
-        CHEMICAL_BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).getGui().getMachineData().setProgressLocation("ore_washer");
+        BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).getGui().getMachineData().setProgressLocation("ore_washer");
         AUTOCLAVE.add(ALLOY_SMELTER).add(FL_IN, 53, 63);
         PACKAGER.add(COMPRESSOR);
         POLARIZER.add(COMPRESSOR).getGui().getMachineData().setProgressLocation("electromagnetic_separator");
