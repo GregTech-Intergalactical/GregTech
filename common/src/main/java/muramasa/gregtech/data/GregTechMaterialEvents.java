@@ -41,7 +41,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Neon).asPlasma();
         event.setMaterial(Sodium).asDust(370);
         event.setMaterial(Magnesium).asMetal(1383, 0/*1383*/);
-        event.setMaterial(Aluminium).asMetal(933, 1700, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL);
+        event.setMaterial(Aluminium).asMetal(933, 0, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL);
         event.setMaterial(Silicon).asMetal(1683, 1683, PLATE, FOIL);
         event.setMaterial(Phosphor).asDust(933);
         event.setMaterial(Sulfur).asDust(388).asOre().harvestLevel(2).asPlasma();
@@ -219,6 +219,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(BlueSchist).asDust(ROCK);
         event.setMaterial(BorosilicateGlass).asDust();
         event.setMaterial(Brick).asDust();
+        event.setMaterial(CalciumSulfate).asDust();
         event.setMaterial(CobaltOxide).asDust();
         event.setMaterial(Concrete).asDust(300);
         event.setMaterial(DialuminiumTrioxide).asDust();
@@ -226,6 +227,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(FerriteMixture).asDust();
         event.setMaterial(Ferrosilite).asDust();
         event.setMaterial(Fireclay).asDust();
+        event.setMaterial(Fluorite).asDust();
         event.setMaterial(GreenSchist).asDust(ROCK);
         event.setMaterial(IndiumGalliumPhosphide).asDust();
         event.setMaterial(IridiumSodiumOxide).asDust();
@@ -433,19 +435,23 @@ public class GregTechMaterialEvents {
         /**
          *  Inorganic
          **/
+        event.setMaterial(AluminiumFluoride).asFluid(0,1560).flags(MOLTEN, ACID);
         event.setMaterial(Antimatter).asFluid();
         event.setMaterial(BlueVitriol).asFluid();
         event.setMaterial(CalciumAcetateSolution).asFluid();
         event.setMaterial(Coolant).asFluid();
+        event.setMaterial(Cryolite).asFluid(0, 1285).flags(MOLTEN, ACID);
         event.setMaterial(DistilledWater).asFluid();
-        event.setMaterial(DilutedHydrochloricAcid).asFluid();
-        event.setMaterial(DilutedSulfuricAcid).asFluid();
+        event.setMaterial(DilutedHydrochloricAcid).asFluid().flags(ACID);
+        event.setMaterial(DilutedSulfuricAcid).asFluid().flags(ACID);
         event.setMaterial(DrillingFluid).asFluid(); // TODO: Perhaps for a bedrock drill;
+        event.setMaterial(HexafluorosilicicAcid).asFluid().flags(ACID);
         event.setMaterial(HotCoolant).asFluid(0,500);
-        event.setMaterial(HydrochloricAcid).asFluid();
-        event.setMaterial(HydrofluoricAcid).asFluid();
+        event.setMaterial(HydrochloricAcid).asFluid().flags(ACID);
+        event.setMaterial(HydrofluoricAcid).asFluid().flags(ACID);
+        event.setMaterial(HydrogenFluoride).asGas().flags(ACID);
         event.setMaterial(HydrogenPeroxide).asFluid();
-        event.setMaterial(HypochlorousAcid).asFluid();
+        event.setMaterial(HypochlorousAcid).asFluid().flags(ACID);
         event.setMaterial(IndiumConcentrate).asFluid();
 
         event.setMaterial(LeadZincSolution).asFluid();
@@ -453,16 +459,16 @@ public class GregTechMaterialEvents {
         event.setMaterial(Lubricant).asFluid();
         event.setMaterial(NickelSulfate).asFluid();
         event.setMaterial(NitrationMixture).asFluid();
-        event.setMaterial(NitricAcid).asFluid();
-        event.setMaterial(PeroxydisulfuricAcid).asFluid();
-        event.setMaterial(PhosphoricAcid).asFluid();
+        event.setMaterial(NitricAcid).asFluid().flags(ACID);
+        event.setMaterial(PeroxydisulfuricAcid).asFluid().flags(ACID);
+        event.setMaterial(PhosphoricAcid).asFluid().flags(ACID);
         event.setMaterial(SaltWater).asFluid();
         event.setMaterial(SodiumPersulfate).asFluid();
         event.setMaterial(SodiumBicarbonateSolution).asFluid();
         event.setMaterial(SodiumCarbonateSolution).asFluid();
         event.setMaterial(Steam).asGas(1, 395);
         event.setMaterial(SuperheatedSteam).asGas(2, 600);
-        event.setMaterial(SulfuricAcid).asFluid();
+        event.setMaterial(SulfuricAcid).asFluid().flags(ACID);
         event.setMaterial(SulfurTrioxide).asGas();
         event.setMaterial(SulfurDioxide).asGas();
         event.setMaterial(Titaniumtetrachloride).asFluid();
@@ -508,7 +514,7 @@ public class GregTechMaterialEvents {
          *  Inorganic
          **/
         event.setMaterial(Air).asGas();
-        event.setMaterial(Ammonia).asGas();
+        event.setMaterial(Ammonia).asGas().flags(ACID);
         event.setMaterial(DinitrogenTetroxide).asGas();
         event.setMaterial(HydrogenSulfide).asGas();
         event.setMaterial(NitricOxide).asGas();
@@ -639,6 +645,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(BlackGranite).mats(of(SiliconDioxide, 4, Biotite, 1));
         event.setMaterial(BorosilicateGlass).mats(of(Boron, 1, Silicon, 7, Oxygen,14));
         event.setMaterial(Brick).mats(of(Aluminium, 4, Silicon, 3, Oxygen, 12));
+        event.setMaterial(CalciumSulfate).mats(of(Calcium, 1, SiliconDioxide, 1, Oxygen, 2)).elecTicks(1460);
         event.setMaterial(CobaltOxide).mats(of(Cobalt, 1, Oxygen, 1)).elecTicks(68);
         event.setMaterial(Concrete).mats(of(Stone, 1)).asFluid();
         event.setMaterial(DialuminiumTrioxide).mats(of(Aluminium,2,Oxygen,3));
@@ -646,6 +653,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(FerriteMixture).mats(of(Nickel, 1, Zinc, 1, Iron, 4));
         event.setMaterial(Ferrosilite).mats(of(Iron, 1, Silicon, 1, Oxygen, 3)).elecTicks(120);
         event.setMaterial(Fireclay).mats(of(Brick, 1));
+        event.setMaterial(Fluorite).mats(of(Calcium, 1, Fluorine, 2));
         event.setMaterial(IndiumGalliumPhosphide).mats(of(Indium, 1, Gallium, 1, Phosphor, 1));
         event.setMaterial(IridiumSodiumOxide).mats(of(Iridium,1,Sodium,1,Oxygen,2));
         event.setMaterial(Komatiite).mats(of(Olivine, 1, /* MgCO3, 2, */Flint, 6, DarkAsh, 3));
@@ -841,6 +849,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(DilutedSulfuricAcid).mats(of(Hydrogen,2,Sulfur,1,Oxygen,4));
         event.setMaterial(HydrochloricAcid).mats(of(Hydrogen, 1, Chlorine, 1)).elecTicks(720);
         event.setMaterial(HydrofluoricAcid).mats(of(Hydrogen, 1, Fluorine, 1)).elecTicks(80);
+        event.setMaterial(HydrogenFluoride).mats(of(Hydrogen, 1, Fluorine, 1)).elecTicks(80);
         event.setMaterial(HydrogenPeroxide).mats(of(Hydrogen,2,Oxygen,2));
         event.setMaterial(HypochlorousAcid).mats(of(Hydrogen, 1, Chlorine, 1, Oxygen, 1)).elecTicks(192);
 
@@ -1462,17 +1471,17 @@ public class GregTechMaterialEvents {
                 Fermium260,Mendelevium259,Mendelevium260
         );*/
         ELEC30.add(Charcoal, Opal, Coal, Lignite, Magnesia, SteelMagnetic, IronMagnetic, Quicklime, Quartzite,
-                SiliconDioxide, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/
+                SiliconDioxide, CalciumSulfate, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/
                 Phosphate, Potash, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
                 PhosphorousPentoxide, BandedIron, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
                 Salt, SodiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond, BlueVitriol,
                 NickelSulfate, Water, DistilledWater, MilkyQuartz);
         ELEC60.add(SodiumHydroxide, Propene, Ethylene, Butene, Benzene, Styrene, Ethane, Ammonia, SodiumSulfide, Methane,
-                Magnesite, HydrofluoricAcid, Sphalerite, /*NitroCarbon,*/ SodaAsh, Calcite, Saltpeter, Monazite,
+                Magnesite, HydrofluoricAcid, HydrogenFluoride, Sphalerite, /*NitroCarbon,*/ SodaAsh, Calcite, Saltpeter, Monazite,
                 /*Wollastonite,*/ NitricOxide, Butane, CarbonMonoxide, Pyrite, RedGranite, Ferrosilite, Butadiene, Amethyst,
                 Molybdenite, Ruby, /*Kyanite,*/ NitrogenDioxide, NitrousOxide, DinitrogenTetroxide, Propane, Barite, Isoprene,
                 Chromite, EnderPearl, SiliconDioxide, Apatite, SulfurTrioxide, /*Pyrochlore, */ Toluene, Phosphate,
-                Tantalite, PhosphorousPentoxide, Osmiridium, Pentlandite, Steel, Graphite, Alumina);
+                Tantalite, PhosphorousPentoxide, Osmiridium, Pentlandite, Steel, Graphite);
         ELEC90.add(Polydimethylsiloxane, AceticAcid, Olivine, Ethanol, Methanol, VinylAcetate, /*Gypsum,*/ Cobaltite, Ethenone,
                 /*Dymethylamine,*/ Chalcopyrite, /*Mirabilite,*/ Spodumene, /*Dolomite,*/ HypochlorousAcid, Chloramine, Bastnasite,
                 Chloromethane, Malachite, /*Borax, */ /*Kaolinite,*/ Obsidian, NitricAcid, VinylChloride, Acetone, /*Asbestos,*/ PotassiumFeldspar,
