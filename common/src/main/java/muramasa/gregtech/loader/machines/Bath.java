@@ -18,21 +18,21 @@ public class Bath {
     public static void init() {
         BATHING.RB()
                 .ii(RecipeIngredient.of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Wood),1))
-                .fi(AntimatterMaterials.Water.getLiquid(100))
+                .fi(AntimatterMaterials.Water.getLiquid(125))
                 .io(new ItemStack(Items.PAPER))
-                .add("paper",200);
+                .add("paper",16);
         BATHING.RB()
                 .ii(RecipeIngredient.of(Items.SUGAR_CANE,1))
-                .fi(AntimatterMaterials.Water.getLiquid(100))
+                .fi(AntimatterMaterials.Water.getLiquid(125))
                 .io(new ItemStack(Items.PAPER))
-                .add("paper_1",100);
+                .add("paper_1",16);
         BATHING.RB()
                 .ii(RecipeIngredient.of(Items.NETHER_STAR,1))
                 .fi(Radon.getGas(1250))
                 .io(new ItemStack(GregTechData.QuantumStar))
                 .add("quantum_star",96*20);
         BATHING.RB()
-                .ii(RecipeIngredient.of(Items.DIAMOND,1))
+                .ii(GEM.getMaterialIngredient(Diamond, 1))
                 .fi(Netherite.getLiquid(L/4))
                 .io(GEM.get(NetherizedDiamond))
                 .add("netherized_diamond_recipe",144);
