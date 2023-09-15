@@ -40,7 +40,7 @@ public class Materials {
     public static Material Calcium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "calcium", 0xfff5f5, METALLIC, Ca));
     public static Material Titanium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "titanium", 0xdca0f0, METALLIC, Ti));
     public static Material Vanadium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "vanadium", 0x323232, METALLIC, V));
-    public static Material Chrome = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chrome", 0xffe6e6, SHINY, Cr));
+    public static Material Chromium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chromium", 0xffe6e6, SHINY, Cr));
     public static Material Manganese = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "manganese", 0xfafafa, DULL, Mn));
     public static Material Cobalt = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cobalt", 0x5050fa, METALLIC, Co));
     public static Material Nickel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nickel", 0xc8c8fa, METALLIC, Ni));

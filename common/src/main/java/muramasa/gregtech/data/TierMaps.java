@@ -63,7 +63,7 @@ public class TierMaps {
             builder.put(Tier.HV, StainlessSteel);
             builder.put(Tier.EV, Titanium);
             builder.put(Tier.IV, TungstenSteel);
-            builder.put(LUV, Chrome);
+            builder.put(LUV, Chromium);
             builder.put(ZPM, Iridium);
             builder.put(UV, Osmium);
             builder.put(UHV, Neutronium);
@@ -165,7 +165,7 @@ public class TierMaps {
             ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
             builder.put(Tier.LV, Brass);
             builder.put(Tier.MV, Electrum);
-            builder.put(Tier.HV, Chrome);
+            builder.put(Tier.HV, Chromium);
             builder.put(Tier.EV, Platinum);
             builder.put(Tier.IV, Osmium);
             EMITTER_RODS = builder.build();

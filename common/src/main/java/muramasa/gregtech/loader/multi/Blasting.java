@@ -2,11 +2,9 @@ package muramasa.gregtech.loader.multi;
 
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.GregTechMaterialTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -123,7 +121,7 @@ public class Blasting {
                 .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
                 .add("aluminium_ingot_from_green_sapphire", 400, 100);
         /* Stainless Steel*/
-        BLASTING.RB().temperature(1700).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 6), DUST.getMaterialIngredient(Nickel, 1), DUST.getMaterialIngredient(Manganese, 1), DUST.getMaterialIngredient(Chrome, 1))
+        BLASTING.RB().temperature(1700).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 6), DUST.getMaterialIngredient(Nickel, 1), DUST.getMaterialIngredient(Manganese, 1), DUST.getMaterialIngredient(Chromium, 1))
                 .io(INGOT.get(StainlessSteel, 9), DUST_SMALL.get(DarkAsh, 1))
                 .add("stainless_steel_ingot", 1000, 120);
         /* TITANIUM */
@@ -147,15 +145,15 @@ public class Blasting {
                 .io(INGOT_HOT.get(VanadiumGallium, 4))
                 .add("vanadium_gallium_ingot", 225 * 20, 480);
         /* Vanadium Steel*/
-        BLASTING.RB().temperature(1453).ii(DUST.getMaterialIngredient(Vanadium, 1), DUST.getMaterialIngredient(Chrome, 1), DUST.getMaterialIngredient(Steel, 7))
+        BLASTING.RB().temperature(1453).ii(DUST.getMaterialIngredient(Vanadium, 1), DUST.getMaterialIngredient(Chromium, 1), DUST.getMaterialIngredient(Steel, 7))
                 .io(INGOT.get(VanadiumSteel, 9))
                 .add("vanadium_steel_ingot", 225 * 20, 120);
         /* Kanthal*/
-        BLASTING.RB().temperature(1800).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 1), DUST.getMaterialIngredient(Aluminium, 1), DUST.getMaterialIngredient(Chrome, 1))
+        BLASTING.RB().temperature(1800).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 1), DUST.getMaterialIngredient(Aluminium, 1), DUST.getMaterialIngredient(Chromium, 1))
                 .io(INGOT_HOT.get(Kanthal, 3), DUST_SMALL.get(DarkAsh, 1))
                 .add("kanthal_ingot", 90 * 20, 120);
         /* Nichrome*/
-        BLASTING.RB().temperature(2700).ii(DUST.getMaterialIngredient(Nickel, 4), DUST.getMaterialIngredient(Chrome, 1))
+        BLASTING.RB().temperature(2700).ii(DUST.getMaterialIngredient(Nickel, 4), DUST.getMaterialIngredient(Chromium, 1))
                 .io(INGOT_HOT.get(Nichrome, 5), DUST_SMALL.get(DarkAsh, 2))
                 .add("nichrome_ingot", 135 * 20, 480);
         /* Osmiridium*/
@@ -178,7 +176,7 @@ public class Blasting {
         BLASTING.RB().temperature(1300).ii(DUST.getMaterialIngredient(RoseGold, 1), DUST.getMaterialIngredient(Brass, 1), DUST.getMaterialIngredient(Steel, 2), DUST.getMaterialIngredient(BlackSteel, 4))
                 .io(INGOT.get(RedSteel, 8))
                 .add("red_steel_ingot", 65 * 20, 120);
-        BLASTING.RB().temperature(4500).ii(DUST.getMaterialIngredient(TungstenSteel, 5), DUST.getMaterialIngredient(Chrome, 1), DUST.getMaterialIngredient(Molybdenum, 2), DUST.getMaterialIngredient(Vanadium, 1))
+        BLASTING.RB().temperature(4500).ii(DUST.getMaterialIngredient(TungstenSteel, 5), DUST.getMaterialIngredient(Chromium, 1), DUST.getMaterialIngredient(Molybdenum, 2), DUST.getMaterialIngredient(Vanadium, 1))
                 .io(INGOT_HOT.get(HSSG, 9))
                 .add("hssg_ingot", 450 * 20, 120);
         BLASTING.RB().temperature(5400).ii(DUST.getMaterialIngredient(HSSG, 6), DUST.getMaterialIngredient(Cobalt, 1), DUST.getMaterialIngredient(Manganese, 1), DUST.getMaterialIngredient(Silicon, 1))
