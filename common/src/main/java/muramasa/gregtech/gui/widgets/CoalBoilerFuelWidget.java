@@ -1,6 +1,7 @@
 package muramasa.gregtech.gui.widgets;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.Widget;
@@ -8,8 +9,7 @@ import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.mixin.client.AbstractContainerScreenAccessor;
-import muramasa.antimatter.tile.TileEntityMachine;
-import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
+import muramasa.gregtech.blockentity.single.BlockEntityCoalBoiler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.chat.TextComponent;
@@ -32,8 +32,8 @@ public class CoalBoilerFuelWidget extends Widget {
     @Override
     public void init() {
         super.init();
-        gui.syncInt(() -> ((TileEntityCoalBoiler)((ContainerMachine<?>)gui.container).getTile()).getFuel(), i -> fuel = i, SERVER_TO_CLIENT);
-        gui.syncInt(() -> ((TileEntityCoalBoiler)((ContainerMachine<?>)gui.container).getTile()).getMaxFuel(), i -> maxFuel = i, SERVER_TO_CLIENT);
+        gui.syncInt(() -> ((BlockEntityCoalBoiler)((ContainerMachine<?>)gui.container).getTile()).getFuel(), i -> fuel = i, SERVER_TO_CLIENT);
+        gui.syncInt(() -> ((BlockEntityCoalBoiler)((ContainerMachine<?>)gui.container).getTile()).getMaxFuel(), i -> maxFuel = i, SERVER_TO_CLIENT);
     }
 
     @Override
@@ -76,7 +76,7 @@ public class CoalBoilerFuelWidget extends Widget {
     @Override
     public void onClick(double mouseX, double mouseY, int button) {
         super.onClick(mouseX, mouseY, button);
-        if (this.gui.handler instanceof TileEntityMachine<?> machine) {
+        if (this.gui.handler instanceof BlockEntityMachine<?> machine) {
             AntimatterJEIREIPlugin.showCategory(machine.getMachineType(), machine.getMachineTier());
         }
     }

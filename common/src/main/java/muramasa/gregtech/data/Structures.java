@@ -2,15 +2,11 @@ package muramasa.gregtech.data;
 
 import com.gtnewhorizon.structurelib.structure.IStructureElement;
 import com.gtnewhorizon.structurelib.structure.StructureUtility;
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.structure.AntimatterStructureUtility;
 import muramasa.antimatter.structure.FakeTileElement;
-import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.util.int3;
 import muramasa.gregtech.block.BlockCoil;
-import muramasa.gregtech.nuclear.TileEntityNuclearReactor;
-import muramasa.gregtech.tile.multi.*;
+import muramasa.gregtech.nuclear.BlockEntityNuclearReactor;
+import muramasa.gregtech.blockentity.multi.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -26,7 +22,6 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.BLOCK;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.FRAME;
 import static muramasa.antimatter.machine.Tier.EV;
 import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatch;
-import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatchMinTier;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.Lithium;
@@ -38,31 +33,31 @@ public class Structures {
     public static IStructureElement<?> AIR_OR_LAVA = ofChain(StructureUtility.isAir(), StructureUtility.ofBlockAdder((w, b) -> b == Blocks.LAVA || b == LAVA, Blocks.LAVA));
     public static IStructureElement<?> GLASS_BLOCK = ofBlock(Blocks.GLASS);
     public static IStructureElement<?> LITHIUM_BLOCK = ofBlock(BLOCK.getBlockMaterialTag(Lithium));
-    public static final FakeTileElement<TileEntityCokeOven> FAKE_CASING = new FakeTileElement<>(CASING_FIRE_BRICK);
+    public static final FakeTileElement<BlockEntityCokeOven> FAKE_CASING = new FakeTileElement<>(CASING_FIRE_BRICK);
     public static void init() {
 
-        BLAST_FURNACE.setStructure(TileEntityElectricBlastFurnace.class, b -> b.part("main")
+        BLAST_FURNACE.setStructure(BlockEntityElectricBlastFurnace.class, b -> b.part("main")
                 .of("CCC", "CFC", "CCC").of("BBB", "B-B", "BBB").of(1).of("H~H", "HCH", "HHH").build()
                 .at('F',HATCH_MUFFLER)
-                .at('B', ofCoil(TileEntityElectricBlastFurnace::setCoilData, TileEntityElectricBlastFurnace::getCoilData))
+                .at('B', ofCoil(BlockEntityElectricBlastFurnace::setCoilData, BlockEntityElectricBlastFurnace::getCoilData))
                 .at('C', CASING_HEAT_PROOF)
                 .at('H', CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
                 .min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).offset(1, 3, 0).build()
         );
 
-        COKE_OVEN.setStructure(TileEntityCokeOven.class, b -> b.part("main")
+        COKE_OVEN.setStructure(BlockEntityCokeOven.class, b -> b.part("main")
             .of("CCC", "CCC", "CCC").of("C~C", "C-C", "CCC").of(0).build()
             .atElement('C', FAKE_CASING).offset(1, 1, 0)
             .build()
         );
 
-        COMBUSTION_ENGINE.setStructure(TileEntityCombustionEngine.class, b -> b.part("main")
+        COMBUSTION_ENGINE.setStructure(BlockEntityCombustionEngine.class, b -> b.part("main")
                 .of("VVV", "CCC", "CCC", "CCC").of("V~V", "H-H", "H-H", "CEC").of(0).build()
                 .at('C', CASING_TITANIUM).at('V', CASING_ENGINE_INTAKE).at('H', CASING_TITANIUM, HATCH_FLUID_I, HATCH_FLUID_O).at('E', HATCH_DYNAMO)
                 .offset(1, 1, 0).min(1, HATCH_FLUID_I, HATCH_FLUID_O).build()
         );
 
-        CRACKING_UNIT.setStructure(TileEntityOilCrackingUnit.class, b -> b.part("main")
+        CRACKING_UNIT.setStructure(BlockEntityOilCrackingUnit.class, b -> b.part("main")
                 .of("CBMBC", "CBMBC", "CBMBC").of( "CB~BC", "H---H", "CBMBC").of(0).build()
                 .at('C', CASING_STAINLESS_STEEL)
                 //.at("B", "coil", AntimatterAPI.all(BlockCoil.class))
@@ -72,11 +67,11 @@ public class Structures {
                 .offset(2, 1, 0).exact(1, HATCH_FLUID_O).min(2, HATCH_FLUID_I).min(1, HATCH_ENERGY).build()
         );
 
-        DISTLLATION_TOWER.setStructure(TileEntityDistillationTower.class, b -> b.part("bottom")
+        DISTLLATION_TOWER.setStructure(BlockEntityDistillationTower.class, b -> b.part("bottom")
                 .of("H~H", "HHH", "HHH").build()
                 .part("layer").of("CCC", "C-C", "CCC").offsetFunction((i, int3) -> new int3(int3.getX(), int3.getY() + i, int3.getZ())).max(11).build()
                 .part("top").of("CCC", "CCC", "CCC").offsetFunction((i, int3) -> new int3(int3.getX(), int3.getY() + i, int3.getZ())).build()
-                .atElement('C', ofChain(StructureUtility.<TileEntityDistillationTower>ofBlock(CASING_STAINLESS_STEEL), ofHatch(HATCH_FLUID_O, (distillationTower, world, pos, machine, handler) -> {
+                .atElement('C', ofChain(StructureUtility.<BlockEntityDistillationTower>ofBlock(CASING_STAINLESS_STEEL), ofHatch(HATCH_FLUID_O, (distillationTower, world, pos, machine, handler) -> {
                     int currentY = pos.getY() - distillationTower.getBlockPos().getY();
                     if (distillationTower.HATCH_LAYERS.contains(currentY)) return false;
                     distillationTower.HATCH_LAYERS.add(currentY);
@@ -98,11 +93,11 @@ public class Structures {
                     }
                     return check && tile.LAYERS.size() == tile.HATCH_LAYERS.size();
                 }).build());
-        CRYO_DISTLLATION_TOWER.setStructure(TileEntityDistillationTower.class, b -> b.part("bottom")
+        CRYO_DISTLLATION_TOWER.setStructure(BlockEntityDistillationTower.class, b -> b.part("bottom")
                 .of("H~H", "HHH", "HHH").build()
                 .part("layer").of("CCC", "C-C", "CCC").offsetFunction((i, int3) -> new int3(int3.getX(), int3.getY() + i, int3.getZ())).max(11).build()
                 .part("top").of("CCC", "CCC", "CCC").offsetFunction((i, int3) -> new int3(int3.getX(), int3.getY() + i, int3.getZ())).build()
-                .atElement('C', ofChain(StructureUtility.<TileEntityDistillationTower>ofBlock(CASING_FROST_PROOF), ofHatch(HATCH_FLUID_O, (distillationTower, world, pos, machine, handler) -> {
+                .atElement('C', ofChain(StructureUtility.<BlockEntityDistillationTower>ofBlock(CASING_FROST_PROOF), ofHatch(HATCH_FLUID_O, (distillationTower, world, pos, machine, handler) -> {
                     int currentY = pos.getY() - distillationTower.getBlockPos().getY();
                     if (distillationTower.HATCH_LAYERS.contains(currentY)) return false;
                     distillationTower.HATCH_LAYERS.add(currentY);
@@ -124,34 +119,34 @@ public class Structures {
                     }
                     return check && tile.LAYERS.size() == tile.HATCH_LAYERS.size();
                 }).build());
-        HEAT_EXCHANGER.setStructure(TileEntityHeatExchanger.class, b -> b.part("main")
+        HEAT_EXCHANGER.setStructure(BlockEntityHeatExchanger.class, b -> b.part("main")
                 .of("DDD", "DOD", "DDD").of("CCC", "CPC", "CCC").of(1).of("D~D", "DID", "DDD").build()
                 .at('D', CASING_TITANIUM, HATCH_ITEM_I, HATCH_ITEM_O)
                 .at('C', CASING_TITANIUM, HATCH_FLUID_O, HATCH_FLUID_I).at('P', CASING_PIPE_TITANIUM)
                 .at('I', HATCH_FLUID_I).at('O', HATCH_FLUID_O)
                 .offset(1, 3, 0).min(2, HATCH_FLUID_O, HATCH_FLUID_I).build());
-        IMPLOSION_COMPRESSOR.setStructure(TileEntityImplosionCompressor.class, b -> b.part("main")
+        IMPLOSION_COMPRESSOR.setStructure(BlockEntityImplosionCompressor.class, b -> b.part("main")
                 .of("CCC", "CCC", "CCC").of("C~C", "C-C", "CCC").of("CCC", "CCC", "CCC").build()
                 .at('C', CASING_SOLID_STEEL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY, HATCH_MUFFLER)
                 .min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).exact(1, HATCH_MUFFLER).offset(1, 1, 0).build()
         );
-        LARGE_BOILER.setStructure(TileEntityLargeBoiler.class, b -> b.part("main")
+        LARGE_BOILER.setStructure(BlockEntityLargeBoiler.class, b -> b.part("main")
                 .of("BBB", "BBB", "BBB").of("BBB", "BPB", "BBB").of(1).of(1).of("F~F", "FFF", "FFF").build()
-                .atElement('F', StructureUtility.<TileEntityLargeBoiler>ofChain(
+                .atElement('F', StructureUtility.<BlockEntityLargeBoiler>ofChain(
                         lazy(t -> ofBlock(t.getFireboxCasing())),
                         ofHatch(HATCH_FLUID_I),
                         ofHatch(HATCH_ITEM_I),
                         ofHatch(HATCH_MUFFLER)))
-                .atElement('B', StructureUtility.<TileEntityLargeBoiler>ofChain(
+                .atElement('B', StructureUtility.<BlockEntityLargeBoiler>ofChain(
                         lazy(t -> ofBlock(t.getCasing())),
                         ofHatch(HATCH_FLUID_O)))
                 .atElement('P', lazy(t -> ofBlock(t.getPipeCasing())))
                 .max(1, HATCH_ITEM_I).minMax(1, 2, HATCH_FLUID_I).exact(1, HATCH_MUFFLER).offset(1, 4, 0).build());
 
-        LARGE_TURBINE.setStructure(TileEntityLargeTurbine.class, b -> b.part("main")
+        LARGE_TURBINE.setStructure(BlockEntityLargeTurbine.class, b -> b.part("main")
                 .of("CCC", "CCC", "CCC", "CCC").of("C~C", "H-H", "H-H", "CEC").of(0).build()
                 .atElement('C', StructureUtility.lazy(t -> ofBlock(t.getCasing())))
-                .atElement('H', StructureUtility.<TileEntityLargeTurbine>ofChain(
+                .atElement('H', StructureUtility.<BlockEntityLargeTurbine>ofChain(
                         StructureUtility.lazy(t -> ofBlock(t.getCasing())),
                         ofHatch(HATCH_FLUID_I),
                         ofHatch(HATCH_FLUID_O)))
@@ -159,47 +154,47 @@ public class Structures {
                 .min(1, HATCH_FLUID_I, HATCH_FLUID_O).offset(1, 1, 0).build()
         );
 
-        MULTI_SMELTER.setStructure(TileEntityMultiSmelter.class, b -> b.part("main")
+        MULTI_SMELTER.setStructure(BlockEntityMultiSmelter.class, b -> b.part("main")
                 .of("CCC", "CMC", "CCC").of("BBB", "B-B", "BBB").of("H~H", "HHH", "HHH").build()
-                .atElement('B', ofCoil(TileEntityMultiSmelter::setCoilData, TileEntityMultiSmelter::getCoilData)).at('H', CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
+                .atElement('B', ofCoil(BlockEntityMultiSmelter::setCoilData, BlockEntityMultiSmelter::getCoilData)).at('H', CASING_HEAT_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
                 .at('C', CASING_HEAT_PROOF).at('M', HATCH_MUFFLER)
                 .offset(1, 2, 0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).build()
         );
 
-        NUCLEAR_REACTOR.setStructure(TileEntityNuclearReactor.class, b -> b.part("main")
+        NUCLEAR_REACTOR.setStructure(BlockEntityNuclearReactor.class, b -> b.part("main")
                 .of("CCC", "CCC", "CCC").of("CGC", "GLG", "CGC").of(1).of(1).of("C~C", "NCN", "CNC").build()
                 .at('C', CASING_RADIATION_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O)
                 .at('N', CASING_RADIATION_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, ofBlock(NUCLEAR_REACTOR.getBlockState(EV)))
                 .at('G', GLASS_BLOCK).at('L', LITHIUM_BLOCK)
                 .offset(1,4, 0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O).build());
 
-        PRIMITIVE_BLAST_FURNACE.setStructure(TileEntityPrimitiveBlastFurnace.class, b -> b.part("main")
+        PRIMITIVE_BLAST_FURNACE.setStructure(BlockEntityPrimitiveBlastFurnace.class, b -> b.part("main")
             .of("CCC", "C-C", "CCC").of("CCC", "CBC", "CCC").of("C~C", "CBC", "CCC").of("CCC", "CCC", "CCC").build()
-            .at('C', CASING_FIRE_BRICK).atElement('B', (IStructureElement<TileEntityPrimitiveBlastFurnace>) AIR_OR_LAVA)
+            .at('C', CASING_FIRE_BRICK).atElement('B', (IStructureElement<BlockEntityPrimitiveBlastFurnace>) AIR_OR_LAVA)
                 .offset(1, 2, 0).build()
         );
 
-        PYROLYSIS_OVEN.setStructure(TileEntityPyrolysisOven.class, b -> b.part("main")
+        PYROLYSIS_OVEN.setStructure(BlockEntityPyrolysisOven.class, b -> b.part("main")
                 .of("UUUUU", "UHHHU", "UHHHU", "UHHHU", "UUUUU").of("UUUUU", "U---U", "U---U", "U---U", "UUUUU").of(1)
                 .of("BB~BB", "BCCCB", "BCCCB", "BCCCB", "BBBBB").build()
-                .atElement('C', ofCoil(TileEntityPyrolysisOven::setCoilData, TileEntityPyrolysisOven::getCoilData)).at('B', CASING_ULV, HATCH_ITEM_O, HATCH_ENERGY)
+                .atElement('C', ofCoil(BlockEntityPyrolysisOven::setCoilData, BlockEntityPyrolysisOven::getCoilData)).at('B', CASING_ULV, HATCH_ITEM_O, HATCH_ENERGY)
                 .at('U', CASING_ULV).at('H', CASING_ULV, HATCH_ITEM_I, HATCH_MUFFLER)
                 .offset(2, 3, 0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).exact(1, HATCH_MUFFLER).build()
         );
 
-        OIL_DRILLING_RIG.setStructure(TileEntityOilDrillingRig.class, b -> b.part("main")
+        OIL_DRILLING_RIG.setStructure(BlockEntityOilDrillingRig.class, b -> b.part("main")
                 .of("   ", " F ", "   ").of(0).of(0).of(" F ", "FCF", " F ").of(3).of(3).of("H~H", "HCH", "HHH").build()
                 .at('F', FRAME.get().get(Steel).asBlock()).at('C', GregTechData.CASING_SOLID_STEEL)
                 .at('H', GregTechData.CASING_SOLID_STEEL, HATCH_ENERGY, HATCH_FLUID_O)
                 .offset(1, 6, 0).min(1, HATCH_FLUID_O, HATCH_ENERGY).build());
 
-        VACUUM_FREEZER.setStructure(TileEntityVacuumFreezer.class, b -> b.part("main")
+        VACUUM_FREEZER.setStructure(BlockEntityVacuumFreezer.class, b -> b.part("main")
             .of("CCC", "CCC", "CCC").of("C~C", "C-C", "CCC").of(0).build()
             .at('C', CASING_FROST_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
             .offset(1, 1, 0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).build()
         );
 
-        FUSION_REACTOR.setStructure(TileEntityFusionReactor.class, b -> b.part("main")
+        FUSION_REACTOR.setStructure(BlockEntityFusionReactor.class, b -> b.part("main")
             .of(
                 "               ",
                 "      BOB      ",
@@ -232,15 +227,15 @@ public class Structures {
                  "    OOCCCOO    ",
                  "      XOX      ").of(0).build()
                 .atElement('O', lazy(t -> ofBlock(t.getCasing()))).atElement('C', lazy(t -> ofBlock(t.getCoil())))
-                .atElement('B', StructureUtility.<TileEntityFusionReactor>ofChain(
+                .atElement('B', StructureUtility.<BlockEntityFusionReactor>ofChain(
                         lazy(t -> ofBlock(t.getCasing())),
                         ofHatch(HATCH_FLUID_I),
                         ofHatch(HATCH_ITEM_I)))
-                .atElement('X', StructureUtility.<TileEntityFusionReactor>ofChain(
+                .atElement('X', StructureUtility.<BlockEntityFusionReactor>ofChain(
                         lazy(t -> ofBlock(t.getCasing())),
                         ofHatch(HATCH_FLUID_O),
                         ofHatch(HATCH_ITEM_O)))
-                .atElement('E', StructureUtility.<TileEntityFusionReactor>ofChain(lazy(t -> ofBlock(t.getCasing())), ofHatch(HATCH_ENERGY)))
+                .atElement('E', StructureUtility.<BlockEntityFusionReactor>ofChain(lazy(t -> ofBlock(t.getCasing())), ofHatch(HATCH_ENERGY)))
             .offset(7, 1, 12).min(2, HATCH_FLUID_I).min(1, HATCH_FLUID_O).min(4, HATCH_ENERGY).build());
     }
 

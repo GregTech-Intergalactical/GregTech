@@ -10,7 +10,7 @@ import muramasa.antimatter.gui.widget.SwitchButtonWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.gui.ButtonOverlays;
-import muramasa.gregtech.tile.single.TileEntityItemFilter;
+import muramasa.gregtech.blockentity.single.BlockEntityItemFilter;
 import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nonnull;
@@ -46,8 +46,8 @@ public class FilterButtonArrayWidget extends Widget {
         this.nbtWidget.setDepth(depth() + 1);
     }
 
-    private TileEntityItemFilter cast(IGuiHandler h){
-        return (TileEntityItemFilter) h;
+    private BlockEntityItemFilter cast(IGuiHandler h){
+        return (BlockEntityItemFilter) h;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class FilterButtonArrayWidget extends Widget {
     public void init() {
         super.init();
         /*ContainerMachine<?> m = (ContainerMachine<?>) gui.container;
-        TileEntityItemFilter filter = (TileEntityItemFilter) m.getTile();
+        BlockEntityItemFilter filter = (BlockEntityItemFilter) m.getTile();
         gui.syncBoolean(filter::isBlacklist, b -> blacklist = b, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
         gui.syncBoolean(filter::isNbt, b -> nbt = b, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
         gui.syncBoolean(filter::isOutputRedstone, b -> outputRedstone = b, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);

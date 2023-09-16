@@ -1,6 +1,7 @@
 package muramasa.gregtech.data;
 
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.gui.*;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
@@ -9,10 +10,9 @@ import muramasa.antimatter.gui.slot.ISlotProvider;
 import muramasa.antimatter.gui.widget.*;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
-import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.gui.widgets.*;
-import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
+import muramasa.gregtech.blockentity.single.BlockEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 
@@ -52,12 +52,12 @@ public class Guis {
                     .add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16)
                     .add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34));
 
-    public static MenuHandlerMachine<TileEntityCoalBoiler, ? extends ContainerMachine> COAL_BOILER_MENU_HANDLER = new MenuHandlerMachine(
+    public static MenuHandlerMachine<BlockEntityCoalBoiler, ? extends ContainerMachine> COAL_BOILER_MENU_HANDLER = new MenuHandlerMachine(
             Ref.ID, "container_coal_boiler") {
         @Override
         public ContainerBasicMachine getMenu(IGuiHandler tile, Inventory playerInv, int windowId) {
-            return tile instanceof TileEntityMachine
-                    ? new ContainerBasicMachine((TileEntityMachine<?>) tile, playerInv, this, windowId)
+            return tile instanceof BlockEntityMachine
+                    ? new ContainerBasicMachine((BlockEntityMachine<?>) tile, playerInv, this, windowId)
                     : null;
         }
 

@@ -1,12 +1,12 @@
 package muramasa.gregtech.cover;
 
+import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.tile.TileEntityMachine;
-import muramasa.gregtech.tile.single.TileEntitySteamMachine;
+import muramasa.gregtech.blockentity.single.BlockEntitySteamMachine;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -47,9 +47,9 @@ public class CoverSteamVent extends BaseCover {
 
     @Override
     public void onBlockUpdate() {
-        if (handler.getTile() instanceof TileEntityMachine){
-            ((TileEntityMachine<?>)handler.getTile()).recipeHandler.ifPresent(h -> {
-                if (h instanceof TileEntitySteamMachine.SteamMachineRecipeHandler steamMachineRecipeHandler){
+        if (handler.getTile() instanceof BlockEntityMachine){
+            ((BlockEntityMachine<?>)handler.getTile()).recipeHandler.ifPresent(h -> {
+                if (h instanceof BlockEntitySteamMachine.SteamMachineRecipeHandler steamMachineRecipeHandler){
                     steamMachineRecipeHandler.setSteamClear(handler.getTile().getLevel().isEmptyBlock(handler.getTile().getBlockPos().relative(side)));
                 }
             });
@@ -61,7 +61,7 @@ public class CoverSteamVent extends BaseCover {
         BlockPos offset = this.handler.getTile().getBlockPos().relative(this.side);
         Level level = handler.getTile().getLevel();
         if (level == null) return;
-        if (!(handler.getTile() instanceof TileEntityMachine<?> machine) || machine.getMachineState() != MachineState.ACTIVE) return;
+        if (!(handler.getTile() instanceof BlockEntityMachine<?> machine) || machine.getMachineState() != MachineState.ACTIVE) return;
         level.getEntitiesOfClass(Player.class, new AABB(offset)).forEach(p -> {
             p.hurt(DamageSource.HOT_FLOOR, 1.0f);
         });

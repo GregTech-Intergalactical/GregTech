@@ -27,7 +27,7 @@ public class CoverItemFilter extends BaseCover {
     }
 
     @Override
-    public void onTransfer(Object object, boolean inputSide, boolean execute) {
+    public boolean onTransfer(Object object, boolean inputSide, boolean execute) {
         super.onTransfer(object, inputSide, execute);
         if (object instanceof ItemStack item) {
             boolean stop = false;
@@ -35,15 +35,15 @@ public class CoverItemFilter extends BaseCover {
             boolean empty = filter.isEmpty();
             if (empty) {
                 if (!blacklist) {
-                    item.setCount(0);
+                    return true;
                 }
-                return;
             }
             boolean matches = ignoreNBt ? item.is(filter.getItem()) : ItemHandlerUtils.canItemStacksStack(item, filter);
             if (blacklist == matches){
-                item.setCount(0);
+                return true;
             }
         }
+        return false;
     }
 
     @Override

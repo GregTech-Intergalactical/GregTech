@@ -4,21 +4,20 @@ import com.google.common.collect.ImmutableMap;
 
 import io.github.gregtechintergalactical.gtutility.GTUtilityData;
 import io.github.gregtechintergalactical.gtutility.machine.DrumMachine;
+import muramasa.antimatter.blockentity.single.BlockEntityBatteryBuffer;
+import muramasa.antimatter.blockentity.single.BlockEntityDigitalTransformer;
 import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
-import muramasa.antimatter.tile.single.TileEntityBatteryBuffer;
-import muramasa.antimatter.tile.single.TileEntityDigitalTransformer;
-import muramasa.antimatter.tile.single.TileEntityTransformer;
+import muramasa.antimatter.blockentity.single.BlockEntityTransformer;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.machine.MultiblockTankMachine;
 import muramasa.gregtech.machine.SteamMachine;
-import muramasa.gregtech.nuclear.TileEntityNuclearReactor;
-import muramasa.gregtech.tile.multi.*;
-import muramasa.gregtech.tile.single.*;
+import muramasa.gregtech.nuclear.BlockEntityNuclearReactor;
+import muramasa.gregtech.blockentity.multi.*;
+import muramasa.gregtech.blockentity.single.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -37,9 +36,9 @@ public class Machines {
     /**
      ** Steam Singleblock Machines
      **/
-    public static SteamMachine COAL_BOILER = new SteamMachine(GTIRef.ID, "coal_boiler").setTiers(BRONZE, STEEL).setMap(COAL_BOILERS).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(TileEntityCoalBoiler::new).noCovers();
-    public static SteamMachine LAVA_BOILER = new SteamMachine(GTIRef.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntityLavaBoiler::new).noCovers();
-    public static SteamMachine SOLAR_BOILER = new SteamMachine(GTIRef.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).setTile(TileEntitySolarBoiler::new).allowFrontIO().noCovers();
+    public static SteamMachine COAL_BOILER = new SteamMachine(GTIRef.ID, "coal_boiler").setTiers(BRONZE, STEEL).setMap(COAL_BOILERS).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(BlockEntityCoalBoiler::new).noCovers();
+    public static SteamMachine LAVA_BOILER = new SteamMachine(GTIRef.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(BlockEntityLavaBoiler::new).noCovers();
+    public static SteamMachine SOLAR_BOILER = new SteamMachine(GTIRef.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).setTile(BlockEntitySolarBoiler::new).allowFrontIO().noCovers();
     public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(GTIRef.ID, "steam_alloy_smelter").setTiers(BRONZE, STEEL).setMap(STEAM_ALLOY_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f).covers(COVER_STEAM_VENT);
     public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(GTIRef.ID, "steam_compressor").setTiers(BRONZE, STEEL).setMap(STEAM_COMPRESSING).addFlags(GUI, ITEM, FLUID).covers(COVER_STEAM_VENT);
     public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(GTIRef.ID, "steam_extractor").setTiers(BRONZE, STEEL).setMap(STEAM_EXTRACTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f).covers(COVER_STEAM_VENT);
@@ -50,9 +49,9 @@ public class Machines {
     /**
      ** Hatchless Multiblock Machines (Steam Age)
      **/
-    public static BasicMachine CHARCOAL_PIT = new BasicMachine(GTIRef.ID, "charcoal_pit").setTiers(NONE).baseTexture(new Texture(GTIRef.ID, "block/machine/base/charcoal_pit")).setTile(TileEntityCharcoalPit::new).noCovers().setAmbientTicking();
-    public static BasicMultiMachine<?> COKE_OVEN = new BasicMultiMachine<>(GTIRef.ID, "coke_oven").setTiers(NONE).setMap(COKING).addFlags(GUI, ITEM, FLUID).setTile(TileEntityCokeOven::new);
-    public static BasicMultiMachine<?> PRIMITIVE_BLAST_FURNACE = new BasicMultiMachine<>(GTIRef.ID, "primitive_blast_furnace").setTiers(NONE).setMap(BASIC_BLASTING).addFlags(GUI, ITEM).setTile(TileEntityPrimitiveBlastFurnace::new);
+    public static BasicMachine CHARCOAL_PIT = new BasicMachine(GTIRef.ID, "charcoal_pit").setTiers(NONE).baseTexture(new Texture(GTIRef.ID, "block/machine/base/charcoal_pit")).setTile(BlockEntityCharcoalPit::new).noCovers().setAmbientTicking();
+    public static BasicMultiMachine<?> COKE_OVEN = new BasicMultiMachine<>(GTIRef.ID, "coke_oven").setTiers(NONE).setMap(COKING).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityCokeOven::new);
+    public static BasicMultiMachine<?> PRIMITIVE_BLAST_FURNACE = new BasicMultiMachine<>(GTIRef.ID, "primitive_blast_furnace").setTiers(NONE).setMap(BASIC_BLASTING).addFlags(GUI, ITEM).setTile(BlockEntityPrimitiveBlastFurnace::new);
     /**
      ** Electric Singleblock Machines
      **/
@@ -107,17 +106,17 @@ public class Machines {
     /**
      * Battery Buffers
      **/
-    public static BasicMachine BATTERY_BUFFER_SIXTEEN = new BasicMachine(GTIRef.ID, "16x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(TileEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
-    public static BasicMachine BATTERY_BUFFER_EIGHT = new BasicMachine(GTIRef.ID, "8x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(TileEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
-    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(GTIRef.ID, "4x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(TileEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
-    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(GTIRef.ID, "1x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(TileEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_SIXTEEN = new BasicMachine(GTIRef.ID, "16x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_EIGHT = new BasicMachine(GTIRef.ID, "8x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(GTIRef.ID, "4x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(GTIRef.ID, "1x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
     /**
      * Filters
      **/
-    public static BasicMachine ELECTRIC_ITEM_FILTER = new BasicMachine(GTIRef.ID, "electric_item_filter").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityItemFilter::new).noCovers().frontCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine ELECTRIC_TYPE_FILTER = new BasicMachine(GTIRef.ID, "electric_type_filter").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityTypeFilter::new).noCovers().frontCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine SUPER_BUFFER =new BasicMachine(GTIRef.ID, "super_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine CHEST_BUFFER =new BasicMachine(GTIRef.ID, "chest_buffer").addFlags(GUI, ENERGY, ITEM).setTile(TileEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine ELECTRIC_ITEM_FILTER = new BasicMachine(GTIRef.ID, "electric_item_filter").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityItemFilter::new).noCovers().frontCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine ELECTRIC_TYPE_FILTER = new BasicMachine(GTIRef.ID, "electric_type_filter").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityTypeFilter::new).noCovers().frontCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine SUPER_BUFFER =new BasicMachine(GTIRef.ID, "super_buffer").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine CHEST_BUFFER =new BasicMachine(GTIRef.ID, "chest_buffer").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
     /**
      * Drums
      */
@@ -142,7 +141,7 @@ public class Machines {
     /**
      * Transformers
      **/
-    public static BasicMachine TRANSFORMER = new BasicMachine(GTIRef.ID, "transformer").addFlags(ENERGY).setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new TileEntityTransformer<>(v, pos, state, 1)).noCovers().allowFrontIO().setAllowVerticalFacing(true).setTooltipInfo((machine, stack, world, tooltip, flag) -> {
+    public static BasicMachine TRANSFORMER = new BasicMachine(GTIRef.ID, "transformer").addFlags(ENERGY).setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new BlockEntityTransformer<>(v, pos, state, 1)).noCovers().allowFrontIO().setAllowVerticalFacing(true).setTooltipInfo((machine, stack, world, tooltip, flag) -> {
         tooltip.remove(tooltip.size() - 1);
         tooltip.remove(tooltip.size() - 1);
         Tier upper = Tier.getTier(machine.getTier().getVoltage() * 4);
@@ -152,7 +151,7 @@ public class Machines {
         tooltip.add(new TranslatableComponent("generic.amp").append(": ").append(new TextComponent(String.valueOf(4)).withStyle(ChatFormatting.YELLOW)));
         tooltip.add(new TranslatableComponent("machine.power.capacity").append(": ").append(new TextComponent(String.valueOf(512L + machine.getTier().getVoltage() * 8L))).withStyle(ChatFormatting.BLUE));
     });
-    public static BasicMachine ADJUSTABLE_TRANSFORMER = new BasicMachine(GTIRef.ID, "adjustable_transformer").setTiers(EV, IV).addFlags(GUI, ENERGY).setTile(TileEntityDigitalTransformer::new).noCovers().allowFrontIO();
+    public static BasicMachine ADJUSTABLE_TRANSFORMER = new BasicMachine(GTIRef.ID, "adjustable_transformer").setTiers(EV, IV).addFlags(GUI, ENERGY).setTile(BlockEntityDigitalTransformer::new).noCovers().allowFrontIO();
     /**
      ** Generators
      **/
@@ -161,34 +160,34 @@ public class Machines {
     public static GeneratorMachine GAS_GENERATOR = new GeneratorMachine(GTIRef.ID, "gas_turbine").setTiers(LV, MV, HV).setMap(GAS_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO().custom();
     public static GeneratorMachine NAQUADAH_GENERATOR = new GeneratorMachine(GTIRef.ID, "naquadah_reactor").setTiers(EV, IV, LUV).setMap(NAQUADAH_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
     public static GeneratorMachine PLASMA_GENERATOR = new GeneratorMachine(GTIRef.ID, "plasma_generator").setTiers(IV, LUV, ZPM).setMap(PLASMA_FUELS).addFlags(GUI, ITEM, FLUID, CELL).allowFrontIO();
-    public static GeneratorMachine STEAM_GENERATOR = new GeneratorMachine(GTIRef.ID, "steam_turbine").setTiers(LV, MV, HV).setMap(STEAM_FUELS).addFlags(GUI, ITEM, FLUID, CELL).setTile(TileEntitySteamTurbine::new).efficiency(t -> {
+    public static GeneratorMachine STEAM_GENERATOR = new GeneratorMachine(GTIRef.ID, "steam_turbine").setTiers(LV, MV, HV).setMap(STEAM_FUELS).addFlags(GUI, ITEM, FLUID, CELL).setTile(BlockEntitySteamTurbine::new).efficiency(t -> {
         return t.getIntegerId() + 6;
     }).allowFrontIO().custom();
     /**
      ** Multiblock Hatch Machines (Electrical Age)
      **/
-    public static MultiMachine ADVANCED_MINER = new MultiMachine(GTIRef.ID, "advanced_miner").setTiers(LV).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityAdvancedMiner::new);
-    public static MultiMachine BLAST_FURNACE = new MultiMachine(GTIRef.ID, "electric_blast_furnace").setTiers(LV).setMap(BLASTING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityElectricBlastFurnace::new).custom();
-    public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(GTIRef.ID, "combustion_engine").setTiers(EV).setMap(COMBUSTION_FUELS).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityCombustionEngine::new).custom();
-    public static MultiMachine CRACKING_UNIT = new MultiMachine(GTIRef.ID, "cracking_unit").setTiers(HV).setMap(CRACKING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityOilCrackingUnit::new).custom();
-    public static MultiMachine DISTLLATION_TOWER = new MultiMachine(GTIRef.ID, "distillation_tower").setTiers(HV).setMap(DISTILLATION).addFlags(GUI, ITEM, FLUID,ENERGY).setTile(TileEntityDistillationTower::new).custom();
-    public static MultiMachine CRYO_DISTLLATION_TOWER = new MultiMachine(GTIRef.ID, "cryo_distillation_tower").setTiers(HV).setMap(CRYO_DISTILLATION).addFlags(GUI, ITEM, FLUID,ENERGY).setTile(TileEntityDistillationTower::new).custom();
-    public static MultiMachine FUSION_REACTOR = new MultiMachine(GTIRef.ID, "fusion_control_computer").setTiers(LUV, ZPM, UV).setMap(FUSION).addFlags(GUI, FLUID,ENERGY).setTile(TileEntityFusionReactor::new);
-    public static MultiMachine HEAT_EXCHANGER = new MultiMachine(GTIRef.ID, "heat_exchanger").setTiers(EV).setMap(HEAT_EXCHANGING).addFlags(GUI, FLUID, ENERGY).setTile(TileEntityHeatExchanger::new).custom();
-    public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(GTIRef.ID, "implosion_compressor").setTiers(HV).setMap(IMPLOSION_COMPRESSING).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityImplosionCompressor::new);
-    public static MultiMachine LARGE_BOILER = new MultiMachine(GTIRef.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setMap(LARGE_BOILERS).setTile(TileEntityLargeBoiler::new).custom();
-    public static MultiMachine LARGE_TURBINE = new MultiMachine(GTIRef.ID, "large_turbine").setTiers(HV, EV, IV).setMap(STEAM_FUELS, HV).setMap(HP_STEAM_FUELS, IV).setMap(GAS_FUELS, EV).addFlags(GUI, ITEM, FLUID, ENERGY, GENERATOR).setTile(TileEntityLargeTurbine::new).custom(Textures.TURBINE).setTierSpecificLang();
-    public static MultiMachine MULTI_SMELTER = new MultiMachine(GTIRef.ID, "multi_smelter").setTiers(HV).setMap(SMELTING).addFlags(GUI, ITEM, ENERGY).setTile(TileEntityMultiSmelter::new).custom();
-    public static MultiMachine NUCLEAR_REACTOR = new MultiMachine(GTIRef.ID, "nuclear_reactor").setTiers(EV).setMap(NUCLEAR).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityNuclearReactor::new).custom();
-    public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(GTIRef.ID, "oil_drilling_rig").setTiers(MV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityOilDrillingRig::new).custom();
-    public static MultiMachine PYROLYSIS_OVEN = new MultiMachine(GTIRef.ID, "pyrolysis_oven").setTiers(MV).setMap(PYROLYSISING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityPyrolysisOven::new).custom();
-    public static MultiMachine VACUUM_FREEZER = new MultiMachine(GTIRef.ID, "vacuum_freezer").setTiers(HV).setMap(VACUUM_FREEZING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(TileEntityVacuumFreezer::new);
+    public static MultiMachine ADVANCED_MINER = new MultiMachine(GTIRef.ID, "advanced_miner").setTiers(LV).addFlags(GUI, ITEM, ENERGY).setTile(BlockEntityAdvancedMiner::new);
+    public static MultiMachine BLAST_FURNACE = new MultiMachine(GTIRef.ID, "electric_blast_furnace").setTiers(LV).setMap(BLASTING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(BlockEntityElectricBlastFurnace::new).custom();
+    public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(GTIRef.ID, "combustion_engine").setTiers(EV).setMap(COMBUSTION_FUELS).addFlags(GUI, FLUID, ENERGY).setTile(BlockEntityCombustionEngine::new).custom();
+    public static MultiMachine CRACKING_UNIT = new MultiMachine(GTIRef.ID, "cracking_unit").setTiers(HV).setMap(CRACKING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(BlockEntityOilCrackingUnit::new).custom();
+    public static MultiMachine DISTLLATION_TOWER = new MultiMachine(GTIRef.ID, "distillation_tower").setTiers(HV).setMap(DISTILLATION).addFlags(GUI, ITEM, FLUID,ENERGY).setTile(BlockEntityDistillationTower::new).custom();
+    public static MultiMachine CRYO_DISTLLATION_TOWER = new MultiMachine(GTIRef.ID, "cryo_distillation_tower").setTiers(HV).setMap(CRYO_DISTILLATION).addFlags(GUI, ITEM, FLUID,ENERGY).setTile(BlockEntityDistillationTower::new).custom();
+    public static MultiMachine FUSION_REACTOR = new MultiMachine(GTIRef.ID, "fusion_control_computer").setTiers(LUV, ZPM, UV).setMap(FUSION).addFlags(GUI, FLUID,ENERGY).setTile(BlockEntityFusionReactor::new);
+    public static MultiMachine HEAT_EXCHANGER = new MultiMachine(GTIRef.ID, "heat_exchanger").setTiers(EV).setMap(HEAT_EXCHANGING).addFlags(GUI, FLUID, ENERGY).setTile(BlockEntityHeatExchanger::new).custom();
+    public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(GTIRef.ID, "implosion_compressor").setTiers(HV).setMap(IMPLOSION_COMPRESSING).addFlags(GUI, ITEM, ENERGY).setTile(BlockEntityImplosionCompressor::new);
+    public static MultiMachine LARGE_BOILER = new MultiMachine(GTIRef.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setMap(LARGE_BOILERS).setTile(BlockEntityLargeBoiler::new).custom();
+    public static MultiMachine LARGE_TURBINE = new MultiMachine(GTIRef.ID, "large_turbine").setTiers(HV, EV, IV).setMap(STEAM_FUELS, HV).setMap(HP_STEAM_FUELS, IV).setMap(GAS_FUELS, EV).addFlags(GUI, ITEM, FLUID, ENERGY, GENERATOR).setTile(BlockEntityLargeTurbine::new).custom(Textures.TURBINE).setTierSpecificLang();
+    public static MultiMachine MULTI_SMELTER = new MultiMachine(GTIRef.ID, "multi_smelter").setTiers(HV).setMap(SMELTING).addFlags(GUI, ITEM, ENERGY).setTile(BlockEntityMultiSmelter::new).custom();
+    public static MultiMachine NUCLEAR_REACTOR = new MultiMachine(GTIRef.ID, "nuclear_reactor").setTiers(EV).setMap(NUCLEAR).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(BlockEntityNuclearReactor::new).custom();
+    public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(GTIRef.ID, "oil_drilling_rig").setTiers(MV).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(BlockEntityOilDrillingRig::new).custom();
+    public static MultiMachine PYROLYSIS_OVEN = new MultiMachine(GTIRef.ID, "pyrolysis_oven").setTiers(MV).setMap(PYROLYSISING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(BlockEntityPyrolysisOven::new).custom();
+    public static MultiMachine VACUUM_FREEZER = new MultiMachine(GTIRef.ID, "vacuum_freezer").setTiers(HV).setMap(VACUUM_FREEZING).addFlags(GUI, ITEM, FLUID, ENERGY).setTile(BlockEntityVacuumFreezer::new);
     /**
      * Long distance pipelines
      */
-    public static BasicMultiMachine<?> LONG_DISTANCE_FLUID_ENDPOINT = new BasicMultiMachine<>(GTIRef.ID,"long_distance_fluid_endpoint").allowFrontIO().setTiers(NONE).addFlags(FLUID).setTile(TileEntityLongDistancePipeEndpoint::new);
-    public static BasicMultiMachine<?> LONG_DISTANCE_ITEM_ENDPOINT = new BasicMultiMachine<>(GTIRef.ID,"long_distance_item_endpoint").allowFrontIO().setTiers(NONE).addFlags(ITEM).setTile(TileEntityLongDistancePipeEndpoint::new);
-    public static BasicMultiMachine<?> LONG_DISTANCE_TRANSFORMER_ENDPOINT = new BasicMultiMachine<>(GTIRef.ID,"long_distance_transformer_endpoint").allowFrontIO().setTiers(EV, IV, LUV, ZPM, UV).addFlags(ENERGY).setTile(TileEntityLongDistancePipeEndpoint::new).overlayTexture(Textures.STATE_IGNORANT_TIER_SPECIFIC_OVERLAY_HANDLER).baseTexture((m, tier) -> new Texture[]{tier.getBaseTexture(m.getDomain())});
+    public static BasicMultiMachine<?> LONG_DISTANCE_FLUID_ENDPOINT = new BasicMultiMachine<>(GTIRef.ID,"long_distance_fluid_endpoint").allowFrontIO().setTiers(NONE).addFlags(FLUID).setTile(BlockEntityLongDistancePipeEndpoint::new);
+    public static BasicMultiMachine<?> LONG_DISTANCE_ITEM_ENDPOINT = new BasicMultiMachine<>(GTIRef.ID,"long_distance_item_endpoint").allowFrontIO().setTiers(NONE).addFlags(ITEM).setTile(BlockEntityLongDistancePipeEndpoint::new);
+    public static BasicMultiMachine<?> LONG_DISTANCE_TRANSFORMER_ENDPOINT = new BasicMultiMachine<>(GTIRef.ID,"long_distance_transformer_endpoint").allowFrontIO().setTiers(EV, IV, LUV, ZPM, UV).addFlags(ENERGY).setTile(BlockEntityLongDistancePipeEndpoint::new).overlayTexture(Textures.STATE_IGNORANT_TIER_SPECIFIC_OVERLAY_HANDLER).baseTexture((m, tier) -> new Texture[]{tier.getBaseTexture(m.getDomain())});
 
     /**
      ** Hatches
@@ -206,14 +205,14 @@ public class Machines {
      **/
     public static TankMachine QUANTUM_TANK = new TankMachine(GTIRef.ID, "quantum_tank", t -> (int) (1602000 * Math.pow(6,  (t.getIntegerId() - 1)))).addFlags(BASIC, GUI, CELL).frontCovers();
 
-    public static BasicMachine PUMP = new BasicMachine(GTIRef.ID, "electric_pump").addFlags(FLUID).setAllowVerticalFacing(true).setTile(TileEntityPump::new).noCovers();
-    public static BasicMachine CROP_HARVESTER = new BasicMachine(GTIRef.ID, "crop_harvester").setTiers(LV).addFlags(GUI, ITEM).setTile(TileEntityCropHarvester::new);
+    public static BasicMachine PUMP = new BasicMachine(GTIRef.ID, "electric_pump").addFlags(FLUID).setAllowVerticalFacing(true).setTile(BlockEntityPump::new).noCovers();
+    public static BasicMachine CROP_HARVESTER = new BasicMachine(GTIRef.ID, "crop_harvester").setTiers(LV).addFlags(GUI, ITEM).setTile(BlockEntityCropHarvester::new);
     //public static BasicMachine MINIATURE_NETHER_PORTAL = new BasicMachine(GTIRef.ID, "miniature_nether_portal").setTiers(NONE).noCovers().allowFrontIO().baseTexture(new Texture("block/obsidian")).overlayTexture(Textures.MINI_NETHER_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.METAL).requiresCorrectToolForDrops().noOcclusion())).custom(Textures.MINI_PORTAL);
 
     /**
      ** Creative Machines
      **/
-    public static TankMachine INFINITE_STEAM = new TankMachine(GTIRef.ID, "infinite_steam").addFlags(FLUID, CELL, GUI).setTile(TileEntityInfiniteFluid::new).setTiers(LV);
+    public static TankMachine INFINITE_STEAM = new TankMachine(GTIRef.ID, "infinite_steam").addFlags(FLUID, CELL, GUI).setTile(BlockEntityInfiniteFluid::new).setTiers(LV);
 
     private static MultiblockTankMachine[] createTankMachine(Material material, int multiplier){
         return new MultiblockTankMachine[]{

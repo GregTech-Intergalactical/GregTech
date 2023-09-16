@@ -1,8 +1,6 @@
 package muramasa.gregtech.machine;
 
 import com.gtnewhorizon.structurelib.structure.StructureUtility;
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import io.github.gregtechintergalactical.gtutility.machine.MaterialBasicMultiMachine;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.MachineFlag;
@@ -11,11 +9,8 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.structure.FakeTileElement;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.tile.multi.TileEntityLargeTank;
-import net.minecraft.nbt.CompoundTag;
+import muramasa.gregtech.blockentity.multi.TileEntityLargeTank;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.world.level.block.Block;
-import tesseract.FluidPlatformUtils;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofBlock;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;

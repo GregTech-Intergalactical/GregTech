@@ -6,8 +6,8 @@ import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.tile.TileEntityMachine;
-import muramasa.antimatter.tile.pipe.TileEntityPipe;
+import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
@@ -27,8 +27,8 @@ public class CoverBasicRedstone extends BaseCover {
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 0){
                 redstoneMode = ev.data[0] == 0 ? redstoneMode.next() : redstoneMode.previous();
-                if (handler.getTile() instanceof TileEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
-                if (handler.getTile() instanceof TileEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
+                if (handler.getTile() instanceof BlockEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
+                if (handler.getTile() instanceof BlockEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
             }
         }
     }

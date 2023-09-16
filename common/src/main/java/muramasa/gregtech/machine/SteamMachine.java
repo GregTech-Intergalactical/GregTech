@@ -1,17 +1,14 @@
 package muramasa.gregtech.machine;
 
-import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.Data;
-import muramasa.antimatter.gui.BarDir;
 import muramasa.antimatter.gui.SlotData;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
 import muramasa.antimatter.gui.slot.ISlotProvider;
 import muramasa.antimatter.gui.widget.*;
-import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.tile.single.TileEntitySteamMachine;
+import muramasa.gregtech.blockentity.single.BlockEntitySteamMachine;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.List;
@@ -23,7 +20,7 @@ public class SteamMachine extends Machine<SteamMachine> {
 
     public SteamMachine(String domain, String id) {
         super(domain, id);
-        setTile(TileEntitySteamMachine::new);
+        setTile(BlockEntitySteamMachine::new);
         addFlags(BASIC, STEAM, COVERABLE);
         setGUI(Data.BASIC_MENU_HANDLER);
         setClientTick();

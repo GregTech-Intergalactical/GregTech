@@ -10,7 +10,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.SlotTypes;
-import muramasa.gregtech.tile.single.IFilterable;
+import muramasa.gregtech.blockentity.single.IFilterable;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,8 +28,6 @@ import tesseract.api.item.ExtendedItemContainer;
 import javax.annotation.Nullable;
 import java.util.*;
 import java.util.function.BiFunction;
-
-import static muramasa.antimatter.gui.ButtonOverlay.*;
 
 
 public class CoverConveyor extends CoverBasicTransport implements IFilterable {

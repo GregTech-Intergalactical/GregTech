@@ -6,8 +6,8 @@ import muramasa.antimatter.gui.ButtonOverlay;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.tile.TileEntityMachine;
-import muramasa.antimatter.tile.pipe.TileEntityPipe;
+import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.gregtech.GTIRef;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -26,7 +26,7 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
 
     public CoverBasicTransport(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        this.exportMode = source.getTile() instanceof TileEntityPipe<?> ? IMPORT : EXPORT;
+        this.exportMode = source.getTile() instanceof BlockEntityPipe<?> ? IMPORT : EXPORT;
         coverModeInt = exportMode.ordinal();
         addGuiCallback(t -> {
             t.addCycleButton(70, 34, 16, 16, h -> ((CoverBasicRedstone)h).redstoneMode.ordinal(), i -> "tooltip.gti.redstone_mode." + i, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, ButtonOverlay.REDSTONE);
@@ -42,7 +42,7 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
     @Override
     public void onPlace() {
         super.onPlace();
-        if (handler.getTile() instanceof TileEntityPipe<?> pipe){
+        if (handler.getTile() instanceof BlockEntityPipe<?> pipe){
             pipe.setConnection(this.side);
         }
     }
@@ -55,8 +55,8 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 1){
                 exportMode = ev.data[0] == 0 ? exportMode.next() : exportMode.previous();
-                if (handler.getTile() instanceof TileEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
-                if (handler.getTile() instanceof TileEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
+                if (handler.getTile() instanceof BlockEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
+                if (handler.getTile() instanceof BlockEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
             }
         }
     }

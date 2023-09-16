@@ -1,12 +1,11 @@
 package muramasa.gregtech.cover.redstone;
 
+import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonOverlay;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.tile.TileEntityMachine;
-import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.cover.CoverBasicRedstone;
 import muramasa.gregtech.cover.RedstoneMode;
 import net.minecraft.core.Direction;
@@ -31,7 +30,7 @@ public class CoverRedstoneMachineController extends CoverBasicRedstone {
 
     @Override
     public void onRemove() {
-        if (handler.getTile() instanceof TileEntityMachine<?> machine){
+        if (handler.getTile() instanceof BlockEntityMachine<?> machine){
             if (machine.getLevel().isLoaded(machine.getBlockPos())) {
                 if (machine.getMachineState() == MachineState.DISABLED){
                     machine.toggleMachine();
@@ -52,7 +51,7 @@ public class CoverRedstoneMachineController extends CoverBasicRedstone {
 
     @Override
     public void onUpdate() {
-        if (handler.getTile() instanceof TileEntityMachine<?> machine){
+        if (handler.getTile() instanceof BlockEntityMachine<?> machine){
             if (machine.getMachineState() != MachineState.DISABLED){
                 if (redstoneMode == RedstoneMode.NO_WORK){
                     machine.toggleMachine();

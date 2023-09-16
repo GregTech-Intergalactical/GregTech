@@ -3,13 +3,11 @@ package muramasa.gregtech.cover;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
-import muramasa.antimatter.capability.FluidHandler;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.tile.pipe.TileEntityFluidPipe;
-import muramasa.antimatter.tile.pipe.TileEntityPipe;
+import muramasa.antimatter.blockentity.pipe.BlockEntityFluidPipe;
 import muramasa.gregtech.GTIRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -26,7 +24,6 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import tesseract.FluidPlatformUtils;
-import tesseract.TesseractCapUtils;
 import tesseract.TesseractGraphWrappers;
 
 import javax.annotation.Nullable;
@@ -54,7 +51,7 @@ public class CoverDrain extends BaseCover {
         if (tile.getLevel().isClientSide) return;
         Level world = tile.getLevel();
         Optional<PlatformFluidHandler> cap = FluidHooks.safeGetBlockFluidManager(tile, side);
-        if (tile instanceof TileEntityFluidPipe pipe){
+        if (tile instanceof BlockEntityFluidPipe pipe){
             cap = pipe.getPipeCapHolder().side(side);
         }
         BlockPos offset = tile.getBlockPos().relative(side);

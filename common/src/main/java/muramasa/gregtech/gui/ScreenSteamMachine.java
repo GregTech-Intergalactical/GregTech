@@ -3,11 +3,11 @@ package muramasa.gregtech.gui;
 import com.mojang.blaze3d.vertex.PoseStack;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
 import muramasa.antimatter.gui.screen.ScreenMachine;
-import muramasa.gregtech.tile.single.TileEntitySteamMachine;
+import muramasa.gregtech.blockentity.single.BlockEntitySteamMachine;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class ScreenSteamMachine<T extends TileEntitySteamMachine, U extends ContainerBasicMachine<TileEntitySteamMachine>> extends ScreenMachine<TileEntitySteamMachine, U> {
+public class ScreenSteamMachine<T extends BlockEntitySteamMachine, U extends ContainerBasicMachine<BlockEntitySteamMachine>> extends ScreenMachine<BlockEntitySteamMachine, U> {
 
     public ScreenSteamMachine(U container, Inventory inv, Component name) {
         super(container, inv, name);

@@ -31,14 +31,15 @@ public class CoverTypeFilter extends BaseCover {
         return getBasicModel();
     }
     @Override
-    public void onTransfer(Object object, boolean inputSide, boolean execute) {
+    public boolean onTransfer(Object object, boolean inputSide, boolean execute) {
         super.onTransfer(object, inputSide, execute);
         if (object instanceof ItemStack) {
             ItemStack item = ((ItemStack)object);
             if (type.getMaterialFromStack(item) == null) {
-                item.setCount(0);
+                return true;
             }
         }
+        return false;
     }
 
     

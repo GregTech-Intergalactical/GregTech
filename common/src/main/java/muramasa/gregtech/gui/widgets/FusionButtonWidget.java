@@ -8,7 +8,7 @@ import muramasa.antimatter.gui.Widget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.tile.multi.TileEntityFusionReactor;
+import muramasa.gregtech.blockentity.multi.BlockEntityFusionReactor;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 
@@ -19,7 +19,7 @@ public class FusionButtonWidget extends Widget {
     ResourceLocation middle = new ResourceLocation(GTIRef.ID, "textures/gui/background/fusion_computer_middle_overlay.png");
     ResourceLocation top_bottom = new ResourceLocation(GTIRef.ID, "textures/gui/background/fusion_computer_top_bottom_overlay.png");
 
-    TileEntityFusionReactor.Display display = TileEntityFusionReactor.Display.REGULAR;
+    BlockEntityFusionReactor.Display display = BlockEntityFusionReactor.Display.REGULAR;
 
     protected FusionButtonWidget(@Nonnull GuiInstance gui, @Nullable IGuiElement parent) {
         super(gui, parent);
@@ -29,11 +29,11 @@ public class FusionButtonWidget extends Widget {
 
     @Override
     public void init() {
-        gui.syncInt(() -> getTile().getDisplay().ordinal(), i -> this.display = TileEntityFusionReactor.Display.values()[i], ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
+        gui.syncInt(() -> getTile().getDisplay().ordinal(), i -> this.display = BlockEntityFusionReactor.Display.values()[i], ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
     }
 
-    private TileEntityFusionReactor getTile() {
-        return (TileEntityFusionReactor) gui.handler;
+    private BlockEntityFusionReactor getTile() {
+        return (BlockEntityFusionReactor) gui.handler;
     }
 
     @Override
@@ -69,10 +69,10 @@ public class FusionButtonWidget extends Widget {
 
     @Override
     public void render(PoseStack matrixStack, double mouseX, double mouseY, float partialTicks) {
-        TileEntityFusionReactor tile = getTile();
-        if (display == TileEntityFusionReactor.Display.REGULAR){
+        BlockEntityFusionReactor tile = getTile();
+        if (display == BlockEntityFusionReactor.Display.REGULAR){
             drawTexture(matrixStack, gui.handler.getGuiTexture(), realX() + 154, realY() + 22, 176, 0, 18, 18);
-        } else if (display == TileEntityFusionReactor.Display.MIDDLE){
+        } else if (display == BlockEntityFusionReactor.Display.MIDDLE){
             drawTexture(matrixStack, gui.handler.getGuiTexture(), realX() + 154, realY() + 40, 176, 18, 18, 18);
             drawTexture(matrixStack, middle, realX() + 6, realY() + 6, 0, 0, 145, 145);
         } else {

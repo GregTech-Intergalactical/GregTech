@@ -7,8 +7,7 @@ import muramasa.antimatter.gui.Widget;
 import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.mixin.client.AbstractContainerScreenAccessor;
-import muramasa.gregtech.tile.single.TileEntityLavaBoiler;
-import muramasa.gregtech.tile.single.TileEntitySolarBoiler;
+import muramasa.gregtech.blockentity.single.BlockEntitySolarBoiler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.chat.TextComponent;
@@ -35,9 +34,9 @@ public class SolarBoilerWidget extends Widget {
     @Override
     public void init() {
         super.init();
-        gui.syncInt(() -> ((TileEntitySolarBoiler)((ContainerMachine<?>)gui.container).getTile()).getHeat(), i -> heat = i, SERVER_TO_CLIENT);
-        gui.syncInt(() -> ((TileEntitySolarBoiler)((ContainerMachine<?>)gui.container).getTile()).getMaxHeat(), i -> maxHeat = i, SERVER_TO_CLIENT);
-        gui.syncBoolean(() -> ((TileEntitySolarBoiler)((ContainerMachine<?>)gui.container).getTile()).isAllowedToWork(), b -> isAllowedToWork = b, SERVER_TO_CLIENT);
+        gui.syncInt(() -> ((BlockEntitySolarBoiler)((ContainerMachine<?>)gui.container).getTile()).getHeat(), i -> heat = i, SERVER_TO_CLIENT);
+        gui.syncInt(() -> ((BlockEntitySolarBoiler)((ContainerMachine<?>)gui.container).getTile()).getMaxHeat(), i -> maxHeat = i, SERVER_TO_CLIENT);
+        gui.syncBoolean(() -> ((BlockEntitySolarBoiler)((ContainerMachine<?>)gui.container).getTile()).isAllowedToWork(), b -> isAllowedToWork = b, SERVER_TO_CLIENT);
         gui.syncLong(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[0].getFluidAmount()).orElse(0L), i -> water = i, SERVER_TO_CLIENT);
         gui.syncLong(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getOutputs()[0].getFluidAmount()).orElse(0L), i -> steam = i, SERVER_TO_CLIENT);
     }

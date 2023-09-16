@@ -8,7 +8,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.SlotTypes;
-import muramasa.gregtech.tile.single.IFilterable;
+import muramasa.gregtech.blockentity.single.IFilterable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;

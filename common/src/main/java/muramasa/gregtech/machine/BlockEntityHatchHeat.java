@@ -1,23 +1,18 @@
 package muramasa.gregtech.machine;
 
+import muramasa.antimatter.blockentity.multi.BlockEntityHatch;
 import muramasa.antimatter.capability.Holder;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
-import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.HatchMachine;
-import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.structure.StructureCache;
-import muramasa.antimatter.tile.multi.TileEntityHatch;
-import muramasa.antimatter.tile.multi.TileEntityMultiMachine;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import tesseract.api.heat.IHeatHandler;
 
-public class BlockEntityHatchHeat<T extends BlockEntityHatchHeat<T>> extends TileEntityHatch<T> {
+public class BlockEntityHatchHeat<T extends BlockEntityHatchHeat<T>> extends BlockEntityHatch<T> {
 
     public final Material material;
     public Holder<IHeatHandler, DefaultHeatHandler> heatHandler = new Holder<>(IHeatHandler.class, dispatch);

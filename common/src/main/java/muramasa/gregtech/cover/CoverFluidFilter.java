@@ -28,7 +28,7 @@ public class CoverFluidFilter extends BaseCover {
     }
 
     @Override
-    public void onTransfer(Object object, boolean inputSide, boolean execute) {
+    public boolean onTransfer(Object object, boolean inputSide, boolean execute) {
         super.onTransfer(object, inputSide, execute);
         if (object instanceof FluidHolder fluidHolder) {
             ItemStack filter = getInventory(SlotType.DISPLAY_SETTABLE).getItem(0);
@@ -42,9 +42,8 @@ public class CoverFluidFilter extends BaseCover {
             }).orElse(true);
             if (empty) {
                 if (!blacklist) {
-                    fluidHolder.setAmount(0);
+                    return true;
                 }
-                return;
             }
             boolean matches = FluidHooks.safeGetItemFluidManager(filter).map(f -> {
                 for (int i = 0; i < f.getTankAmount(); i++){
@@ -56,9 +55,10 @@ public class CoverFluidFilter extends BaseCover {
                 return false;
             }).orElse(false);
             if (blacklist == matches){
-                fluidHolder.setAmount(0);
+                return true;
             }
         }
+        return false;
     }
 
     @Override

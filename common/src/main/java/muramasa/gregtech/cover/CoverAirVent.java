@@ -6,7 +6,7 @@ import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.tile.pipe.TileEntityFluidPipe;
+import muramasa.antimatter.blockentity.pipe.BlockEntityFluidPipe;
 import muramasa.gregtech.GTIRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -41,7 +41,7 @@ public class CoverAirVent extends BaseCover {
         if (tile.getLevel().isClientSide) return;
         Level level = tile.getLevel();
         Optional<PlatformFluidHandler> cap = FluidHooks.safeGetBlockFluidManager(tile, side);
-        if (tile instanceof TileEntityFluidPipe pipe){
+        if (tile instanceof BlockEntityFluidPipe pipe){
             cap = pipe.getPipeCapHolder().side(side);
         }
         BlockPos offset = tile.getBlockPos().relative(side);

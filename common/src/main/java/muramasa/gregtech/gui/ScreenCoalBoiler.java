@@ -8,13 +8,13 @@ import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.screen.ScreenMachine;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.machine.MachineFlag;
-import muramasa.gregtech.tile.single.TileEntityCoalBoiler;
+import muramasa.gregtech.blockentity.single.BlockEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import tesseract.TesseractGraphWrappers;
 
-public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> extends ScreenMachine<TileEntityCoalBoiler, T> {
+public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>> extends ScreenMachine<BlockEntityCoalBoiler, T> {
     public ScreenCoalBoiler(T container, Inventory inv, Component name) {
         super(container, inv, name);
     }
@@ -40,7 +40,7 @@ public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> 
                 }
             });
             if (container.getTile() != null){
-                TileEntityCoalBoiler tile = container.getTile();
+                BlockEntityCoalBoiler tile = container.getTile();
                 drawTooltipInArea(stack,"Heat: " + tile.getHeat() + "K out of " + tile.getMaxHeat(), mouseX, mouseY, 96, 25, 10, 54);
                 drawTooltipInArea(stack,"Fuel: " + tile.getFuel(), mouseX, mouseY + 10, 115, 53, 18, 18);
             }
@@ -85,8 +85,8 @@ public class ScreenCoalBoiler<T extends ContainerMachine<TileEntityCoalBoiler>> 
                     drawTexture(stack, gui, leftPos + 70, y, imageWidth + 18, 54 - lvl, 10, lvl);
                 }
             });
-            if (container.getTile() instanceof TileEntityCoalBoiler){
-                TileEntityCoalBoiler tile = (TileEntityCoalBoiler)container.getTile();
+            if (container.getTile() instanceof BlockEntityCoalBoiler){
+                BlockEntityCoalBoiler tile = (BlockEntityCoalBoiler)container.getTile();
                 int heat = tile.getHeat();
                 if (heat >= 1) {
                     float per = (float) heat / tile.getMaxHeat();
