@@ -1,26 +1,24 @@
 package muramasa.gregtech.data;
 
 import com.google.common.collect.ImmutableMap;
-
 import io.github.gregtechintergalactical.gtutility.GTUtilityData;
 import io.github.gregtechintergalactical.gtutility.machine.DrumMachine;
 import muramasa.antimatter.blockentity.single.BlockEntityBatteryBuffer;
 import muramasa.antimatter.blockentity.single.BlockEntityDigitalTransformer;
+import muramasa.antimatter.blockentity.single.BlockEntityTransformer;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
-import muramasa.antimatter.blockentity.single.BlockEntityTransformer;
+import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.blockentity.multi.*;
+import muramasa.gregtech.blockentity.single.*;
 import muramasa.gregtech.machine.MultiblockTankMachine;
 import muramasa.gregtech.machine.SteamMachine;
 import muramasa.gregtech.nuclear.BlockEntityNuclearReactor;
-import muramasa.gregtech.blockentity.multi.*;
-import muramasa.gregtech.blockentity.single.*;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 
 import static muramasa.antimatter.Data.*;
@@ -145,11 +143,11 @@ public class Machines {
         tooltip.remove(tooltip.size() - 1);
         tooltip.remove(tooltip.size() - 1);
         Tier upper = Tier.getTier(machine.getTier().getVoltage() * 4);
-        tooltip.add(new TranslatableComponent("machine.transformer.voltage_info", new TextComponent(upper.getId().toUpperCase()), new TextComponent(machine.getTier().getId().toUpperCase())));
-        tooltip.add(new TranslatableComponent("machine.voltage.in").append(": ").append(new TextComponent(upper.getVoltage() + " (" + upper.getId().toUpperCase() + ")")).withStyle(ChatFormatting.GREEN));
-        tooltip.add(new TranslatableComponent("machine.voltage.out").append(": ").append(new TextComponent(machine.getTier().getVoltage() + " (" + machine.getTier().getId().toUpperCase() + ")")).withStyle(ChatFormatting.GREEN));
-        tooltip.add(new TranslatableComponent("generic.amp").append(": ").append(new TextComponent(String.valueOf(4)).withStyle(ChatFormatting.YELLOW)));
-        tooltip.add(new TranslatableComponent("machine.power.capacity").append(": ").append(new TextComponent(String.valueOf(512L + machine.getTier().getVoltage() * 8L))).withStyle(ChatFormatting.BLUE));
+        tooltip.add(Utils.translatable("machine.transformer.voltage_info", Utils.literal(upper.getId().toUpperCase()), Utils.literal(machine.getTier().getId().toUpperCase())));
+        tooltip.add(Utils.translatable("machine.voltage.in").append(": ").append(Utils.literal(upper.getVoltage() + " (" + upper.getId().toUpperCase() + ")")).withStyle(ChatFormatting.GREEN));
+        tooltip.add(Utils.translatable("machine.voltage.out").append(": ").append(Utils.literal(machine.getTier().getVoltage() + " (" + machine.getTier().getId().toUpperCase() + ")")).withStyle(ChatFormatting.GREEN));
+        tooltip.add(Utils.translatable("generic.amp").append(": ").append(Utils.literal(String.valueOf(4)).withStyle(ChatFormatting.YELLOW)));
+        tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal(String.valueOf(512L + machine.getTier().getVoltage() * 8L))).withStyle(ChatFormatting.BLUE));
     });
     public static BasicMachine ADJUSTABLE_TRANSFORMER = new BasicMachine(GTIRef.ID, "adjustable_transformer").setTiers(EV, IV).addFlags(GUI, ENERGY).setTile(BlockEntityDigitalTransformer::new).noCovers().allowFrontIO();
     /**

@@ -1,15 +1,17 @@
 package muramasa.gregtech.blockentity.single;
 
+import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.item.TrackedItemHandler;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.data.AntimatterDefaultTools;
-import muramasa.antimatter.gui.*;
+import muramasa.antimatter.gui.GuiInstance;
+import muramasa.antimatter.gui.IGuiElement;
+import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
@@ -18,7 +20,6 @@ import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -60,7 +61,7 @@ public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
             if (hit.getDirection() == getFacing().getOpposite()){
                 stackLimit++;
                 if (stackLimit == 65) stackLimit = 1;
-                player.sendMessage(new TextComponent("Item Output Limit: " +stackLimit), player.getUUID());
+                player.sendMessage(Utils.literal("Item Output Limit: " +stackLimit), player.getUUID());
                 stack.hurt(1, world.random, (ServerPlayer) player);
                 return InteractionResult.SUCCESS;
             }
@@ -131,12 +132,12 @@ public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
             switch (data[1]) {
                 case 0 -> {
                     emitEnergy = !emitEnergy;
-                    playerEntity.sendMessage(new TextComponent((emitEnergy ? "Emit energy to output side" : "Don't emit energy")), playerEntity.getUUID());
+                    playerEntity.sendMessage(Utils.literal((emitEnergy ? "Emit energy to output side" : "Don't emit energy")), playerEntity.getUUID());
                     AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                 }
                 case 1 -> {
                     /*outputRedstone = !outputRedstone;
-                    playerEntity.sendMessage(new TextComponent((outputRedstone ? "Emit redstone if slots contain something" : "Don't emit redstone")), playerEntity.getUUID());
+                    playerEntity.sendMessage(Utils.literal((outputRedstone ? "Emit redstone if slots contain something" : "Don't emit redstone")), playerEntity.getUUID());
                     AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);*/
                 }
             }

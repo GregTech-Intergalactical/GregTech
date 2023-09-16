@@ -9,10 +9,10 @@ import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.mixin.client.AbstractContainerScreenAccessor;
+import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.blockentity.single.BlockEntityCoalBoiler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.network.chat.TextComponent;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -62,7 +62,7 @@ public class CoalBoilerFuelWidget extends Widget {
     @Environment(EnvType.CLIENT)
     protected void renderTooltip(PoseStack matrixStack, String text, double mouseX, double mouseY, int x, int y, int w, int h) {
         if (isInside(x, y, w, h, mouseX, mouseY)){
-            renderTooltip(matrixStack, new TextComponent(text), mouseX, mouseY);
+            renderTooltip(matrixStack, Utils.literal(text), mouseX, mouseY);
         }
 
     }

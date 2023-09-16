@@ -6,17 +6,15 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.tool.AntimatterItemTier;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.tool.MaterialTool;
+import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.ToolTypes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -52,9 +50,9 @@ public class ItemTurbineRotor extends MaterialTool {
     @Override
     public void onGenericAddInformation(ItemStack stack, List<Component> tooltip, TooltipFlag flag) {
         super.onGenericAddInformation(stack, tooltip, flag);
-        tooltip.add(new TranslatableComponent("gti.rotor.tooltip.efficiency", new TextComponent("" + getEfficiency()).withStyle(ChatFormatting.BLUE)));
-        tooltip.add(new TranslatableComponent("gti.rotor.tooltip.steam_flow", new TextComponent("" + Math.max(Float.MIN_NORMAL, getSpeed() * 1000)).withStyle(ChatFormatting.LIGHT_PURPLE)));
-        tooltip.add(new TranslatableComponent("gti.rotor.tooltip.gas_flow", new TextComponent("" + Math.max(Float.MIN_NORMAL, getSpeed() * 50)).withStyle(ChatFormatting.LIGHT_PURPLE)));
+        tooltip.add(Utils.translatable("gti.rotor.tooltip.efficiency", Utils.literal("" + getEfficiency()).withStyle(ChatFormatting.BLUE)));
+        tooltip.add(Utils.translatable("gti.rotor.tooltip.steam_flow", Utils.literal("" + Math.max(Float.MIN_NORMAL, getSpeed() * 1000)).withStyle(ChatFormatting.LIGHT_PURPLE)));
+        tooltip.add(Utils.translatable("gti.rotor.tooltip.gas_flow", Utils.literal("" + Math.max(Float.MIN_NORMAL, getSpeed() * 50)).withStyle(ChatFormatting.LIGHT_PURPLE)));
     }
 
     @Override

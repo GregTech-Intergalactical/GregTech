@@ -8,11 +8,10 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.structure.FakeTileElement;
 import muramasa.antimatter.texture.Texture;
+import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.blockentity.multi.TileEntityLargeTank;
-import net.minecraft.network.chat.TranslatableComponent;
 
-import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofBlock;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 
 public class MultiblockTankMachine extends MaterialBasicMultiMachine {
@@ -33,7 +32,7 @@ public class MultiblockTankMachine extends MaterialBasicMultiMachine {
                     .build());
         }
         setTooltipInfo((machine, stack, world, tooltip, flag) -> {
-            tooltip.add(new TranslatableComponent("machine.drum.capacity", capacity));
+            tooltip.add(Utils.translatable("machine.drum.capacity", capacity));
         });
         addFlags(MachineFlag.FLUID);
         setTile((type1, pos, state1) -> new TileEntityLargeTank(this, pos, state1));

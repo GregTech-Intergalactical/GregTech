@@ -6,9 +6,9 @@ import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.registration.IColorHandler;
 import muramasa.antimatter.texture.Texture;
+import muramasa.antimatter.util.Utils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -54,7 +54,7 @@ public class ItemPowerUnit extends ItemBasic<ItemPowerUnit> implements IColorHan
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
-        if (flagIn.isAdvanced()) tooltip.add(new TextComponent("Energy: " + getCurrentEnergy(stack) + " / " + getMaxEnergy(stack)));
+        if (flagIn.isAdvanced()) tooltip.add(Utils.literal("Energy: " + getCurrentEnergy(stack) + " / " + getMaxEnergy(stack)));
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 

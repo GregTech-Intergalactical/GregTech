@@ -7,9 +7,9 @@ import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tool.AntimatterToolType;
+import muramasa.antimatter.util.Utils;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -63,19 +63,19 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
                             pipe.setConnection(this.side);
                         }
                     }
-                    player.sendMessage(new TextComponent("Open if work disabled"), player.getUUID());
+                    player.sendMessage(Utils.literal("Open if work disabled"), player.getUUID());
                 }
                 case OUTPUT_ONLY -> {
                     if (handler.getTile() instanceof BlockEntityPipe<?> pipe){
                         pipe.setConnection(this.side);
                     }
-                    player.sendMessage(new TextComponent("Output only"), player.getUUID());
+                    player.sendMessage(Utils.literal("Output only"), player.getUUID());
                 }
                 case INPUT_ONLY -> {
                     if (handler.getTile() instanceof BlockEntityPipe<?> pipe){
                         pipe.setConnection(this.side);
                     }
-                    player.sendMessage(new TextComponent("Input only"), player.getUUID());
+                    player.sendMessage(Utils.literal("Input only"), player.getUUID());
                 }
                 case OPEN_REDSTONE -> {
                     if (handler.getTile() instanceof BlockEntityPipe<?> pipe){
@@ -86,7 +86,7 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
 
                         }
                     }
-                    player.sendMessage(new TextComponent("Open if work enabled"), player.getUUID());
+                    player.sendMessage(Utils.literal("Open if work enabled"), player.getUUID());
                 }
             }
             return true;

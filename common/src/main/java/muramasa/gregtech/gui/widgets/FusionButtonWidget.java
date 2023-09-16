@@ -7,9 +7,9 @@ import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.Widget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
+import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.blockentity.multi.BlockEntityFusionReactor;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nonnull;
@@ -53,7 +53,7 @@ public class FusionButtonWidget extends Widget {
     public void mouseOver(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
         super.mouseOver(stack, mouseX, mouseY, partialTicks);
         if (isInside(154, 4, 18, 18, mouseX, mouseY)){
-            renderTooltip(stack, new TranslatableComponent("antimatter.gui.show_recipes"), mouseX, mouseY);
+            renderTooltip(stack, Utils.translatable("antimatter.gui.show_recipes"), mouseX, mouseY);
         }
     }
 

@@ -15,7 +15,6 @@ import muramasa.gregtech.data.SlotTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -74,26 +73,26 @@ public class BlockEntityItemFilter extends BlockEntityMachine<BlockEntityItemFil
             switch (data[1]) {
                 case 0:
                     emitEnergy = !emitEnergy;
-                    playerEntity.sendMessage(new TextComponent( (emitEnergy ? "Emit energy to output side" : "Don't emit energy")), playerEntity.getUUID());
+                    playerEntity.sendMessage(Utils.literal( (emitEnergy ? "Emit energy to output side" : "Don't emit energy")), playerEntity.getUUID());
                     AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                     break;
                 case 1:
                     outputRedstone = !outputRedstone;
-                    playerEntity.sendMessage(new TextComponent( (outputRedstone ? "Emit redstone if slots contain something" : "Don't emit redstone")), playerEntity.getUUID());
+                    playerEntity.sendMessage(Utils.literal( (outputRedstone ? "Emit redstone if slots contain something" : "Don't emit redstone")), playerEntity.getUUID());
                     AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                     break;
                 case 2:
                     invertRedstone = !invertRedstone;
-                    playerEntity.sendMessage(new TextComponent( (invertRedstone ? "I" : "Don't i") + "nvert redstone"), playerEntity.getUUID());
+                    playerEntity.sendMessage(Utils.literal( (invertRedstone ? "I" : "Don't i") + "nvert redstone"), playerEntity.getUUID());
                     AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                     break;
                 case 3:
                     blacklist = !blacklist;
-                    playerEntity.sendMessage(new TextComponent( (blacklist ? "I" : "Don't i") + "nvert filter"), playerEntity.getUUID());
+                    playerEntity.sendMessage(Utils.literal( (blacklist ? "I" : "Don't i") + "nvert filter"), playerEntity.getUUID());
                     break;
                 case 4:
                     nbt = !nbt;
-                    playerEntity.sendMessage(new TextComponent( (nbt ? "NBT has to match" : "Ignore NBT")), playerEntity.getUUID());
+                    playerEntity.sendMessage(Utils.literal( (nbt ? "NBT has to match" : "Ignore NBT")), playerEntity.getUUID());
                     break;
             }
         }

@@ -23,13 +23,13 @@ import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.antimatter.pipe.types.Wire;
+import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -43,7 +43,7 @@ import static muramasa.antimatter.material.MaterialTags.*;
 
 public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay> {
     protected static Renderer icon = EntryStacks.of(DUST.get(AntimatterMaterials.Iron));
-    private static final Component title = new TranslatableComponent(GTIRef.ID + ".rei.tooltip.material_tree");
+    private static final Component title = Utils.translatable(GTIRef.ID + ".rei.tooltip.material_tree");
     static CategoryIdentifier<? extends MaterialTreeDisplay> id = CategoryIdentifier.of(GTIRef.ID, "material_tree");
 
     @Override

@@ -19,6 +19,7 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Machines;
@@ -26,7 +27,6 @@ import muramasa.gregtech.data.Materials;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -41,7 +41,7 @@ import static muramasa.antimatter.material.MaterialTags.*;
 
 public class OreProcessingCategory implements DisplayCategory<OreProcessingDisplay> {
     protected static Renderer icon = EntryStacks.of(Items.IRON_ORE);
-    private static final Component title = new TranslatableComponent(GTIRef.ID + ".rei.tooltip.ore.byproducts");
+    private static final Component title = Utils.translatable(GTIRef.ID + ".rei.tooltip.ore.byproducts");
     static CategoryIdentifier<? extends OreProcessingDisplay> id = CategoryIdentifier.of(GTIRef.ID, "ore_byproducts");
 
     @Override
