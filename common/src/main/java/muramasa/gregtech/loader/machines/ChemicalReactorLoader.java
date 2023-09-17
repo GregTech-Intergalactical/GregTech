@@ -27,8 +27,7 @@ public class ChemicalReactorLoader {
         } else {
             addSimple();
         }
-        //addChemicalRecipesComplicated();
-        //nuclearProcessing();
+        nuclearProcessing();
     }
 
 
@@ -307,41 +306,12 @@ public class ChemicalReactorLoader {
     }
     private static void nuclearProcessing() {
 
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Thorium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedThorium.getLiquid(1000)).add("thorium_leaching",120,1000);
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Uranium,1))).fi(LeachingSolution.getLiquid(1000)).fo(LeachedUranium.getLiquid(1000)).add("uranium_leaching",120,1000);
-
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(TrithoriumOctoxide,11))).fi(NitricAcid.getLiquid(3000)).fo(Thoriumdioxidedinitrate.getLiquid(3000),Water.getLiquid(4000),NitrogenDioxide.getGas(2000)).add("thoriumdioxidedinatrate",120,1000);
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(TriuraniumOctoxide,11))).fi(NitricAcid.getLiquid(3000)).fo(Uraniumdioxidedinitrate.getLiquid(3000),Water.getLiquid(4000),NitrogenDioxide.getGas(2000)).add("uraniumdioxidedinatrate",120,1000);
-
-        CHEMICAL_REACTING.RB().fi(Thoriumdioxidedinitrate.getLiquid(10000),Ammonia.getGas(22000)).io(DUST.get(Ammoniumdithoranate,5)).fo(Water.getLiquid(13000),NitricOxide.getGas(32000)).add("ammoniumdithoranate",120,1000);
-        CHEMICAL_REACTING.RB().fi(Uraniumdioxidedinitrate.getLiquid(10000),Ammonia.getGas(22000)).io(DUST.get(Ammoniumdiuranate,5)).fo(Water.getLiquid(13000),NitricOxide.getGas(32000)).add("ammoniumdiuranate",120,1000);
-
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Ammoniumdithoranate))).fi(Hydrogen.getGas(4000)).io(DUST.get(ThoriumDioxide,2)).fo(Ammonia.getGas(2000),Water.getLiquid(3000)).add("secondary_thorium_dioxide",120,1000);
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(Ammoniumdiuranate))).fi(Hydrogen.getGas(4000)).io(DUST.get(UraniumDioxide,2)).fo(Ammonia.getGas(2000),Water.getLiquid(3000)).add("secondary_uranium_dioxide",120,1000);
-
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(ThoriumDioxide))).fi(HydrofluoricAcid.getLiquid(4000)).fo(ThoriumTetrafluoride.getGas(1000),Water.getLiquid(2000)).add("thoriumtetrafluoride",120,1000);
-        CHEMICAL_REACTING.RB().ii(of(DUST.get(UraniumDioxide))).fi(HydrofluoricAcid.getLiquid(4000)).fo(UraniumTetrafluoride.getGas(1000),Water.getLiquid(2000)).add("uraniumtetrafluoride",120,1000);
-
-        CHEMICAL_REACTING.RB().fi(ThoriumTetrafluoride.getGas(1000),Fluorine.getGas(2000)).fo(ThoriumHexafluoride.getGas(1000)).add("thoriumhexafluoride",120,1000);
-        CHEMICAL_REACTING.RB().fi(UraniumTetrafluoride.getGas(1000),Fluorine.getGas(2000)).fo(UraniumHexafluoride.getGas(1000)).add("uraniumhexafluoride",120,1000);
-
-        CHEMICAL_REACTING.RB().fi(Thorium227Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Thorium227Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("thorium227_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Thorium228Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Thorium228Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("thorium228_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Thorium229Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Thorium229Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("thorium229_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Thorium230Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Thorium230Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("thorium230_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Thorium231Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Thorium231Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("thorium231_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Thorium233Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Thorium233Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("thorium233_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Thorium234Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Thorium234Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("thorium234_hexafluoride_reduction",120,1000);
-
-        CHEMICAL_REACTING.RB().fi(Uranium232Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Uranium232Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("uranium232_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Uranium233Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Uranium233Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("uranium233_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Uranium234Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Uranium234Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("uranium234_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Uranium235Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Uranium235Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("uranium235_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Uranium236Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Uranium236Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("uranium236_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Uranium237Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Uranium237Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("uranium237_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Uranium238Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Uranium238Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("uranium238_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Uranium239Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Uranium239Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("uranium239_hexafluoride_reduction",120,1000);
-        CHEMICAL_REACTING.RB().fi(Uranium240Hexafluoride.getGas(1000),Water.getLiquid(2000),Hydrogen.getGas(2000)).io(DUST.get(Uranium240Dioxide)).fo(HydrofluoricAcid.getLiquid(6000)).add("uranium240_hexafluoride_reduction",120,1000);
+        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Uraninite, 1)).fi(HydrogenFluoride.getGas(8000)).io(DUST.get(UraniumTetrafluoride, 5)).fo(Water.getLiquid(6000)).add("uranium_tetrafluoride", 186, 16);
+        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(UraniumTetrafluoride, 1)).fi(Fluorine.getGas(400)).fo(UraniumHexafluoride.getGas(1400)).add("uranium_hexafluoride", 22, 16);
+        CHEMICAL_REACTING.RB().fi(Uranium238Hexafluoride.getGas(1400), Hydrogen.getGas(400)).io(DUST.get(Uranium238Tetrafluoride)).fo(HydrogenFluoride.getGas(800)).add("uranium_238_tetrafluoride", 28, 16);
+        CHEMICAL_REACTING.RB().fi(Uranium235Hexafluoride.getGas(1400), Hydrogen.getGas(400)).io(DUST.get(Uranium235Tetrafluoride)).fo(HydrogenFluoride.getGas(800)).add("uranium_235_tetrafluoride", 28, 16);
+        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Uranium235Tetrafluoride, 5), DUST.getMaterialIngredient(Calcium, 2)).io(DUST.get(Uranium235, 1), DUST.get(Fluorite, 6)).add("uranium_235_tetrafluoride_to_uranium_235", 108, 16);
+        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(Uranium238Tetrafluoride, 5), DUST.getMaterialIngredient(Calcium, 2)).io(DUST.get(Uranium, 1), DUST.get(Fluorite, 6)).add("uranium_238_tetrafluoride_to_uranium_238", 108, 16);
 
     }
 

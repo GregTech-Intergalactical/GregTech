@@ -11,8 +11,6 @@ import static muramasa.gregtech.data.RecipeMaps.DEHYDRATING;
 
 public class ChemicalDehydrator {
     public static void init() {
-        DEHYDRATING.RB().fi(LeachedThorium.getLiquid(1000)).io(DUST.get(ThoriumCake)).add("thorium_cake_dehydrating",1000,8);
-        DEHYDRATING.RB().fi(LeachedUranium.getLiquid(1000)).io(DUST.get(UraniumCake)).add("uranium_cake_dehydrating",1000,8);
         //Waste Processing
         DEHYDRATING.RB().ii(of(ThoriumWaste)).fi(SulfuricAcid.getLiquid(100)).io(new ItemStack(NuclearWaste),DUST_SMALL.get(Rhodium,4)).add("thorium_waste_reprocessing",500,8);
         DEHYDRATING.RB().ii(of(ProtactiniumWaste)).fi(SulfuricAcid.getLiquid(100)).io(new ItemStack(NuclearWaste),DUST_SMALL.get(Rhodium,2),DUST_SMALL.get(Palladium,2)).add("protactinium_waste_reprocessing",500,8);

@@ -63,6 +63,7 @@ public class CentrifugingLoader {
         CENTRIFUGING.RB().fi(Propane.getGas(320)).fo(Lubricant.getLiquid(290)).add("propane", 20, 5);
         CENTRIFUGING.RB().fi(Butane.getGas(320)).fo(Lubricant.getLiquid(370)).add("butane", 20, 5);
         CENTRIFUGING.RB().fi(RefineryGas.getGas(800)).fo(LPG.getGas(400)).add("refinery_gas", 20, 5);
+        CENTRIFUGING.RB().fi(UraniumHexafluoride.getGas(1400)).fo(Uranium238Hexafluoride.getGas(1000), Uranium235Hexafluoride.getGas(400)).add("uranium_hexafluoride", 24, 512);
         //Cake Centrifuging
         /*CENTRIFUGING.RB().ii(of(DUST.get(ThoriumCake, 5))).io(DUST.get(ThoriumDioxide, 1), DUST.get(TrithoriumOctoxide, 4)).add("thorium_cake_centrifuging",400, 500);
         CENTRIFUGING.RB().ii(of(DUST.get(UraniumCake, 5))).io(DUST.get(UraniumDioxide, 1), DUST.get(TriuraniumOctoxide, 4)).add("uranium_cake_centrifuging",400, 500);*/

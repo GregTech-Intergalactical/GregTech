@@ -475,11 +475,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(UUAmplifier).asFluid();
         event.setMaterial(UUMatter).asFluid();
         //Nuclear
-        event.setMaterial(LeachingSolution).asFluid();
-        event.setMaterial(LeachedThorium).asFluid();
-        event.setMaterial(LeachedUranium).asFluid();
-        event.setMaterial(Thoriumdioxidedinitrate).asFluid();
-        event.setMaterial(Uraniumdioxidedinitrate).asFluid();
         /**
          ***  Gases/Plasmas
          **/
@@ -559,11 +554,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(HydroCrackedHeavyFuel).asFluid();
         event.setMaterial(HydroCrackedNaphtha).asFluid();
         event.setMaterial(HydroCrackedRefineryGas).asGas();
-        /**
-         ** Nuclear Processing
-         */
-        event.setMaterial(Ammoniumdithoranate).asDust();
-        event.setMaterial(Ammoniumdiuranate).asDust();
         processInto(event);
         nuclearIsotopes(event);
         toolsAndArmor(event);
@@ -1170,41 +1160,16 @@ public class GregTechMaterialEvents {
         //event.setMaterial(Radon220).asGas().mats(of(Radon, 1));
         //event.setMaterial(Radon222).asGas().mats(of(Radon, 1));
         /**
-         * Cakes and dioxides
-         */
-        event.setMaterial(ThoriumCake).asDust().mats(of(ThoriumDioxide,1,TrithoriumOctoxide,4));
-        event.setMaterial(UraniumCake).asDust().mats(of(UraniumDioxide,1,TriuraniumOctoxide,4));
-        event.setMaterial(ThoriumDioxide).asDust().mats(of(Thorium,1,Oxygen,2));
-        //event.setMaterial(Thorium227Dioxide).asDust().mats(of(Thorium227,1,Oxygen,2));
-        //event.setMaterial(Thorium228Dioxide).asDust().mats(of(Thorium228,1,Oxygen,2));
-        //event.setMaterial(Thorium229Dioxide).asDust().mats(of(Thorium229,1,Oxygen,2));
-        event.setMaterial(Thorium230Dioxide).asDust().mats(of(Thorium230,1,Oxygen,2));
-        //event.setMaterial(Thorium231Dioxide).asDust().mats(of(Thorium231,1,Oxygen,2));
-        //event.setMaterial(Thorium233Dioxide).asDust().mats(of(Thorium233,1,Oxygen,2));
-        //event.setMaterial(Thorium234Dioxide).asDust().mats(of(Thorium234,1,Oxygen,2));
-        event.setMaterial(UraniumDioxide).asDust().mats(of(Uranium,1,Oxygen,2));
-        event.setMaterial(Uranium233Dioxide).asDust().mats(of(Uranium233,1,Oxygen,2));
-        event.setMaterial(Uranium235Dioxide).asDust().mats(of(Uranium235,1,Oxygen,2));
-        event.setMaterial(TrithoriumOctoxide).asDust().mats(of(Thorium,3,Oxygen,8));
-        event.setMaterial(TriuraniumOctoxide).asDust().mats(of(Uranium,3,Oxygen,8));
-        /**
          * Tetrafluorides
          */
-        event.setMaterial(ThoriumTetrafluoride).asGas().mats(of(Thorium,1,Fluorine,4));
-        event.setMaterial(UraniumTetrafluoride).asGas().mats(of(Uranium,1,Fluorine,4));
+        event.setMaterial(UraniumTetrafluoride).asDust().mats(of(Uranium,1,Fluorine,4));
+        event.setMaterial(Uranium235Tetrafluoride).asDust().mats(of(Uranium235, 1, Fluorine, 4));
+        event.setMaterial(Uranium238Tetrafluoride).asDust().mats(of(Uranium, 1, Fluorine, 4));
         /**
          * Hexafluorides
          */
-        event.setMaterial(ThoriumHexafluoride).asGas().mats(of(Thorium,1,Fluorine,6));
-        //event.setMaterial(Thorium227Hexafluoride).asGas().mats(of(Thorium227,1,Fluorine,6));
-        //event.setMaterial(Thorium228Hexafluoride).asGas().mats(of(Thorium228,1,Fluorine,6));
-        //event.setMaterial(Thorium229Hexafluoride).asGas().mats(of(Thorium229,1,Fluorine,6));
-        event.setMaterial(Thorium230Hexafluoride).asGas().mats(of(Thorium230,1,Fluorine,6));
-        //event.setMaterial(Thorium231Hexafluoride).asGas().mats(of(Thorium231,1,Fluorine,6));
-        //event.setMaterial(Thorium233Hexafluoride).asGas().mats(of(Thorium233,1,Fluorine,6));
-        //event.setMaterial(Thorium234Hexafluoride).asGas().mats(of(Thorium234,1,Fluorine,6));
-        event.setMaterial(UraniumHexafluoride).asGas().mats(of(Uranium,1,Fluorine,6));
-        event.setMaterial(Uranium233Hexafluoride).asGas().mats(of(Uranium233,1,Fluorine,6));
+        event.setMaterial(UraniumHexafluoride).asGas();
+        event.setMaterial(Uranium238Hexafluoride).asGas().mats(of(Uranium,1,Fluorine,6));
         event.setMaterial(Uranium235Hexafluoride).asGas().mats(of(Uranium235,1,Fluorine,6));
         /**
          * Fissile Fuels
@@ -1404,7 +1369,7 @@ public class GregTechMaterialEvents {
         CALCITE2X.add(Pyrite, YellowLimonite);
         CALCITE3X.add(Iron, BrownLimonite);
         CENT5.add(FiberReinforcedEpoxyResin, /*Chrysolite*/ Flint, /*Niter*/ Glass, /*Perlite*/ WroughtIron, DarkAsh, AnnealedCopper, NobleGases,
-                Cinnabar, Uraninite);
+                Cinnabar);
         CENT10.add(Magnalium, VanadiumMagnetite, BrownLimonite, YellowLimonite, BlackGranite, Cupronickel, NiobiumTitanium, BorosilicateGlass,
                 GalliumArsenide, Marble, Limestone, Invar, TinAlloy, TungstenCarbide, EnderEye, Powellite, VanadiumGallium, Blaze,
                 TungstenSteel, Brass, Nichrome, Electrum, Bronze, Stibnite, Wulfenite, RedAlloy, SterlingSilver, RoseGold, BatteryAlloy, SolderingAlloy);

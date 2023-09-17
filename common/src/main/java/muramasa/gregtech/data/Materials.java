@@ -225,61 +225,6 @@ public class Materials {
      **/
 
     /**
-     ** Nuclear Fuel Processing
-     **/
-
-    /**
-     * Cakes
-     **/
-
-    public static Material ThoriumCake = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_cake", 0x112f11, DULL));
-    public static Material UraniumCake = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_cake", 0x43f243, DULL));
-
-    /**
-     * Dioxides
-     **/
-
-    public static Material ThoriumDioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_dioxide", 0x114011, DULL));
-    public static Material Thorium227Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium227_dioxide", 0x114011, DULL));
-    public static Material Thorium228Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium228_dioxide", 0x114011, DULL));
-    public static Material Thorium229Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium229_dioxide", 0x114011, DULL));
-    public static Material Thorium230Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium230_dioxide", 0x114011, DULL));
-    public static Material Thorium231Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium231_dioxide", 0x114011, DULL));
-    public static Material Thorium233Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium233_dioxide", 0x114011, DULL));
-    public static Material Thorium234Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium234_dioxide", 0x114011, DULL));
-    public static Material UraniumDioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_dioxide", 0x43f443, DULL));
-    public static Material Uranium232Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium232_dioxide", 0x43f443, DULL));
-    public static Material Uranium233Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium233_dioxide", 0x43f443, DULL));
-    public static Material Uranium234Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium234_dioxide", 0x43f443, DULL));
-    public static Material Uranium235Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium235_dioxide", 0x43f443, DULL));
-    public static Material Uranium236Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium236_dioxide", 0x43f443, DULL));
-    public static Material Uranium237Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium237_dioxide", 0x43f443, DULL));
-    public static Material Uranium238Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium238_dioxide", 0x43f443, DULL));
-    public static Material Uranium239Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium239_dioxide", 0x43f443, DULL));
-    public static Material Uranium240Dioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium240_dioxide", 0x43f443, DULL));
-
-    /**
-     * Octoxides
-     **/
-
-    public static Material TrithoriumOctoxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "trithorium_octoxide", 0x115111, DULL));
-    public static Material TriuraniumOctoxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "triuranium_octoxide", 0x43f643, DULL));
-
-    /**
-     * Dioxiddinitrates
-     **/
-
-    public static Material Thoriumdioxidedinitrate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_dioxide_dinitrate", 0x222f22, SHINY));
-    public static Material Uraniumdioxidedinitrate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_dioxide_dinitrate", 0x43f043, SHINY));
-
-    /**
-     * Ammoniumdianates
-     **/
-
-    public static Material Ammoniumdithoranate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ammonium_dithoranate", 0x332f33, SHINY));
-    public static Material Ammoniumdiuranate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ammonium_diuranate", 0x54f054, SHINY));
-
-    /**
      ** Metals
      **/
 
@@ -716,46 +661,18 @@ public class Materials {
     public static Material SteamCrackedRefineryGas = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "steam_cracked_refinery_gas", 0xffffff, NONE));
 
     /**
-     ** Nuclear Processing
-     **/
-
-    /**
-     *  Leached Stuff
-     **/
-
-    public static Material LeachingSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "leaching_solution", 0xffffff, NONE));
-    public static Material LeachedThorium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "leached_thorium", 0xeeeeee, NONE));
-    public static Material LeachedUranium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "leached_uranium", 0xeeffee, NONE));
-
-    /**
      *  Tetrafluorides
      **/
-
-    public static Material ThoriumTetrafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_tetrafluoride", 0x001c00, NONE));
     public static Material UraniumTetrafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_tetrafluoride", 0x21d921, NONE));
+    public static Material Uranium238Tetrafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_238_tetrafluoride", 0x21d921, NONE));
+    public static Material Uranium235Tetrafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_235_tetrafluoride", 0x21d921, NONE));
 
     /**
      *  Hexafluorides
      **/
-
-    public static Material ThoriumHexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_hexafluoride", 0x001a00, NONE));
-    public static Material Thorium227Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_227_hexafluoride", 0x001a00, NONE));
-    public static Material Thorium228Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_228_hexafluoride", 0x001a00, NONE));
-    public static Material Thorium229Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_229_hexafluoride", 0x001a00, NONE));
-    public static Material Thorium230Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_230_hexafluoride", 0x001a00, NONE));
-    public static Material Thorium231Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_231_hexafluoride", 0x001a00, NONE));
-    public static Material Thorium233Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_233_hexafluoride", 0x001a00, NONE));
-    public static Material Thorium234Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_234_hexafluoride", 0x001a00, NONE));
     public static Material UraniumHexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_hexafluoride", 0x10c810, NONE));
-    public static Material Uranium232Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_232_hexafluoride", 0x10c810, NONE));
-    public static Material Uranium233Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_233_hexafluoride", 0x10c810, NONE));
-    public static Material Uranium234Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_234_hexafluoride", 0x10c810, NONE));
     public static Material Uranium235Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_235_hexafluoride", 0x10c810, NONE));
-    public static Material Uranium236Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_236_hexafluoride", 0x10c810, NONE));
-    public static Material Uranium237Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_237_hexafluoride", 0x10c810, NONE));
     public static Material Uranium238Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_238_hexafluoride", 0x10c810, NONE));
-    public static Material Uranium239Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_239_hexafluoride", 0x10c810, NONE));
-    public static Material Uranium240Hexafluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uranium_240_hexafluoride", 0x10c810, NONE));
 
     // TODO go through the GT_Loader_Item_Block_And_Fluid and make sure all explicitly added fluids have the LIQUID tag
     public static void init() {

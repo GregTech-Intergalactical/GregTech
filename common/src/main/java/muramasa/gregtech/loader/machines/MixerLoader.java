@@ -114,7 +114,6 @@ public class MixerLoader {
         MIXING.RB().ii(of(DUST.get(Saltpeter,2)),of(DUST.get(Sulfur,1)),of(DUST.get(AntimatterMaterials.Charcoal,1))).io(new ItemStack(Items.GUNPOWDER,2)).add("gunpowder_1",15*20, 8);
         MIXING.RB().ii(of(DUST.get(AntimatterMaterials.Stone,1))).fi(Lubricant.getLiquid(20), AntimatterMaterials.Water.getLiquid(4980)).fo(DrillingFluid.getLiquid(5000)).add("drilling_fluid",32*2, 16);
         MIXING.RB().ii(of(DUST.get(AntimatterMaterials.Stone,3)),of(DUST.get(Clay,1))).fi(AntimatterMaterials.Water.getLiquid(500)).fo(Concrete.getLiquid(576)).add("concrete", 20, 16);
-        MIXING.RB().fi(SodiumCarbonateSolution.getLiquid(1000),SodiumBicarbonateSolution.getLiquid(1000)).fo(LeachingSolution.getLiquid(2000)).add("leaching_solution", 60, 32);
         MIXING.RB().ii(RecipeIngredient.of(GregTechData.Biochaff)).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(Biomass.getLiquid(1000)).add("biomass", 400, 8);
         MIXING.RB().ii(DUST.getMaterialIngredient(Lapis, 1)).fi(Water.getLiquid(125)).fo(Coolant.getLiquid(125)).add("cold_coolant", 256, 48);
     }
