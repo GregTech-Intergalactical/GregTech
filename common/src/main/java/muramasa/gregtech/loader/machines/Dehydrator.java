@@ -9,8 +9,11 @@ import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.DEHYDRATING;
 
-public class ChemicalDehydrator {
+public class Dehydrator {
     public static void init() {
+        DEHYDRATING.RB().ii(DUST.getMaterialIngredient(TungsticAcid, 7)).io(DUST.get(TungstenTrioxide, 4)).fo(DistilledWater.getLiquid(3000)).add("tungsten_trioxide", 300 * 20, 16);
+        DEHYDRATING.RB().fi(SaltWater.getFluidTag(1000)).io(DUST_SMALL.get(Salt, 1)).fo(DistilledWater.getLiquid(750)).add("salt_water_drying", 8 * 20, 16);
+        DEHYDRATING.RB().ii(DUST.getMaterialIngredient(AluminiumHydroxide, 14)).io(DUST.get(Alumina, 5)).fo(DistilledWater.getLiquid(9000)).add("alumina", 900 * 20, 16);
         //Waste Processing
         DEHYDRATING.RB().ii(of(ThoriumWaste)).fi(SulfuricAcid.getLiquid(100)).io(new ItemStack(NuclearWaste),DUST_SMALL.get(Rhodium,4)).add("thorium_waste_reprocessing",500,8);
         DEHYDRATING.RB().ii(of(ProtactiniumWaste)).fi(SulfuricAcid.getLiquid(100)).io(new ItemStack(NuclearWaste),DUST_SMALL.get(Rhodium,2),DUST_SMALL.get(Palladium,2)).add("protactinium_waste_reprocessing",500,8);

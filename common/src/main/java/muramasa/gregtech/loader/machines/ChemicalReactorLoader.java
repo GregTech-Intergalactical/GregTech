@@ -207,6 +207,8 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000), SulfurDioxide.getGas(3000)).fo(SulfurTrioxide.getGas(4000)).add("sulfur_trioxide", 200, 30);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000)).ii(DUST.getMaterialIngredient(Sulfur, 1)).fo(SulfurDioxide.getGas(3000)).add("sulfur_dioxide", 60, 8);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000), HydrogenSulfide.getGas(1000)).fo(SulfurDioxide.getGas(1000), Water.getLiquid(1000)).add("sulfur_dioxide_1", 40, 30);
+        //HYDROCHLORIC ACID
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(1000), Chlorine.getGas(1000)).fo(HydrochloricAcid.getLiquid(2000)).add("hydrochloric_acid", 60, 8);
         //Alumina chain
         CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(7000)).ii(DUST.getMaterialIngredient(Fluorite, 3)).fo(HydrogenFluoride.getGas(4000)).io(DUST.get(CalciumSulfate, 6)).add("hydrogen_fluoride", 160, 16);
         CHEMICAL_REACTING.RB().fi(Fluorine.getGas(1000), Hydrogen.getGas(1000)).fo(HydrogenFluoride.getGas(2000)).add("hydrogen_fluoride_1", 16, 16);
@@ -223,6 +225,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().fi(HexafluorosilicicAcid.getLiquid(9000)).ii(DUST.getMaterialIngredient(Alumina, 5)).io(DUST.get(SiliconDioxide, 3)).fo(AluminiumFluoride.getLiquid(L * 8), Water.getLiquid(3000)).add("aluminium_fluoride", 224, 16);
         CHEMICAL_REACTING.RB().fi(Fluorine.getGas(3000)).ii(DUST.getMaterialIngredient(Aluminium, 1)).fo(AluminiumFluoride.getLiquid(L * 4)).add("aluminium_fluoride_pure", 64, 16);
         CHEMICAL_REACTING.RB().fi(HydrogenFluoride.getGas(24000)).ii(DUST.getMaterialIngredient(SodiumHydroxide, 18), DUST.getMaterialIngredient(Alumina, 5)).fo(Cryolite.getLiquid(L * 20), Water.getLiquid(27000)).add("cryolite", 752, 16);
+        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(6000)).ii(DUST.getMaterialIngredient(TungstenTrioxide, 4)).io(DUST.get(Tungsten)).fo(Water.getLiquid(9000)).add("tungsten", 160, 16);
 
     }
 
@@ -236,7 +239,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(500), Ethylene.getGas(3000), AceticAcid.getLiquid(4000)).fo(VinylAcetate.getLiquid(6000)).add("vinyl_acetate", 90, 30);
         addPolymerRecipe(VinylAcetate, PolyvinylAcetate);
         //HYDROCHLORIC ACID
-        CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(1000), Chlorine.getGas(1000)).fo(HydrochloricAcid.getLiquid(2000)).add("hydrochloric_acid", 60, 8);
         CHEMICAL_REACTING.RB().fi(Methane.getGas(6000), Chlorine.getGas(5000)).ii(INT_CIRCUITS.get(13)).fo(HydrochloricAcid.getLiquid(6000), Chloroform.getLiquid(5000)).add("hydrochloric_acid_1", 16, 30);
         //SODIUM BISULFATE
         CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(7000)).ii(DUST.getMaterialIngredient(Salt, 2)).io(DUST.get(SodiumBisulfate, 7)).fo(HydrochloricAcid.getLiquid(2000)).add("sodium_bisulfate", 60, 30);

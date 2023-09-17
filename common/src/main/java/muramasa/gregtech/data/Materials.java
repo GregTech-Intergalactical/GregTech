@@ -292,6 +292,7 @@ public class Materials {
     public static Material BorosilicateGlass = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "borosilicate_glass", 0xfafafa, NONE));
     public static Material Brick = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "brick", 0x9b5643, ROUGH));
     public static Material Calcite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "calcite", 0xfae6dc, DULL));
+    public static Material CalciumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "calcium_chloride", 0xebebfa, DULL));
     public static Material CalciumSulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "calcium_sulfate", 0xf0dcd2, DULL));
     public static Material Clay = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "clay", 0xc8c8dc, ROUGH));
     public static Material CobaltOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cobalt_oxide", 0x668000, DULL));
@@ -311,6 +312,7 @@ public class Materials {
     public static Material Graphene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "graphene", 0x808080, DULL));
     public static Material IndiumGalliumPhosphide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "indium_gallium_phosphide", 0x570b79, NONE));
     public static Material IridiumSodiumOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "iridium_sodium_oxide", 0xffffff, NONE));
+    public static Material LithiumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lithium_chloride", 0xdedefa, DULL));
     public static Material Magnesia = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesia", 0xffffff, DULL));
     public static Material MagnesiumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesium_chloride", 0xd40d5c, DULL));
     public static Material Massicot = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "massicot", 0xffdd55, DULL));
@@ -333,6 +335,8 @@ public class Materials {
     public static Material SodiumHydroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_hydroxide", 0x003380, DULL));
     public static Material SodiumSulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_sulfate", 0x004455, NONE));
     public static Material SodiumSulfide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_sulfide", 0xffe680, NONE));
+    public static Material TungsticAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tungstic_acid", 0xb4c800, SHINY));
+    public static Material TungstenTrioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tungsten_trioxide", 0xc7d300, DULL));
 
     /**
      ** Ores

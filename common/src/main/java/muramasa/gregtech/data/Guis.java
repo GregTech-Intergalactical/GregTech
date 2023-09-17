@@ -164,7 +164,7 @@ public class Guis {
                 .getGui().getMachineData().setProgressLocation("electromagnetic_separator");
         DECAY_CHAMBER.add(IT_IN, 17, 25).add(IT_IN, 35, 25)
                 .add(IT_OUT, 107, 25).add(FL_IN,53,25).add(FL_OUT,125,25).add(ENERGY,80,63);
-        CHEMICAL_DEHYDRATOR.add(IT_IN, 35, 25).add(IT_IN, 53, 25)
+        DEHYDRATOR.add(IT_IN, 35, 25).add(IT_IN, 53, 25)
                 .add(FL_IN,35,63).add(FL_IN,53,63)
                 .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
                 .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)

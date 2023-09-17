@@ -401,6 +401,15 @@ public class Machines {
                             .put('H', hull)
                             .put('L', cable).build(), "WRW", "LHL", "WRW"));
 
+            add(DEHYDRATOR, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_robot_arm", provider.hasSafeItem(arm), item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('W', WIRE_GETTER.apply(PipeSize.SMALL, tier))
+                            .put('C', CABLE_GETTER.apply(PipeSize.SMALL, tier, true))
+                            .put('H', hull)
+                            .put('c', circuit)
+                            .put('P', PLATE.getMaterialTag(material))
+                            .put('R', arm).build(), "WcW", "CHC", "PRP"));
+
             add(PUMP, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('R', rotor)

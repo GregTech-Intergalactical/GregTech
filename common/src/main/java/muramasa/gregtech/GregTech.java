@@ -91,7 +91,6 @@ public class GregTech extends AntimatterMod {
         event.addLoader(Circuitry::loadCraftingRecipes);
         event.addLoader(ElectricToolRecipes::loadRecipes);
         event.addLoader(MaterialCrafting::loadRecipes);
-        event.addLoader(FurnaceLoader::loadRecipes);
         event.addLoader(WoodCrafting::loadRecipes);
     }
 
@@ -147,7 +146,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("uu_matter", UUMatter::init);
         loader.accept("large_boiler", LargeBoilerLoader::init);
         loader.accept("roaster", RoastingLoader::init);
-        //loader.accept("dehydrating", ChemicalDehydrator::init);
+        loader.accept("dehydrating", Dehydrator::init);
         loader.accept("autoclaving", Autoclave::init);
         if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
             loader.accept("ae2", AppliedEnergisticsRegistrar::machineRecipes);
