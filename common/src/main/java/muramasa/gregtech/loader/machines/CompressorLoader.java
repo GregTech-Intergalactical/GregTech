@@ -33,16 +33,16 @@ public class CompressorLoader {
             if (ingot.has(AntimatterMaterialTypes.BLOCK)) {
                 int count = ingot.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
                 COMPRESSING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.GEM.get(ingot), count)).io(AntimatterMaterialTypes.BLOCK.get().get(ingot).asStack(1))
-                        .add("gem_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
+                        .add("block_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
             }
         });
-            AntimatterMaterialTypes.RAW_ORE.all().forEach(raw_ore -> {
-                if (raw_ore.has(AntimatterMaterialTypes.BLOCK)) {
-                    int count = 9;
-                    COMPRESSING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.RAW_ORE.get(raw_ore), count)).io(AntimatterMaterialTypes.RAW_ORE_BLOCK.get().get(raw_ore).asStack(1))
-                            .add("block_" + raw_ore.getId(),Math.max(80, raw_ore.getMass() * 2), 16);
-                }
-            });
+        AntimatterMaterialTypes.RAW_ORE.all().forEach(raw_ore -> {
+            if (raw_ore.has(AntimatterMaterialTypes.BLOCK)) {
+                int count = 9;
+                COMPRESSING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.RAW_ORE.get(raw_ore), count)).io(AntimatterMaterialTypes.RAW_ORE_BLOCK.get().get(raw_ore).asStack(1))
+                        .add("block_raw_" + raw_ore.getId(),Math.max(80, raw_ore.getMass() * 2), 16);
+            }
+        });
         COMPRESSING.RB().ii(DUST.getMaterialIngredient(Wood, 1)).io(AntimatterMaterialTypes.PLATE.get(Wood, 1)).add("wood_plate",60, 4);
         COMPRESSING.RB().ii(DUST.getMaterialIngredient(Fireclay, 1)).io(new ItemStack(CompressedFireClay)).add("compressed_fireclay",200, 2);
         COMPRESSING.RB().ii(RecipeIngredient.of(ItemTags.SAPLINGS, 4)).io(new ItemStack(PlantBall)).add("plantball",300, 2);
