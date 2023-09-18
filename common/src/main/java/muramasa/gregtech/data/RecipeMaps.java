@@ -1,16 +1,30 @@
 package muramasa.gregtech.data;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.integration.jeirei.renderer.IRecipeInfoRenderer;
 import muramasa.antimatter.integration.jeirei.renderer.InfoRenderers;
+import muramasa.antimatter.machine.BlockMachine;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.RecipeProxies;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.recipe.map.Proxy;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.recipe.map.RecipeMap;
+import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.gregtech.GTIRef;
 import net.minecraft.client.gui.Font;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.ShapedRecipe;
+
+import java.util.List;
+import java.util.function.BiFunction;
 
 import static muramasa.gregtech.data.Guis.MULTI_DISPLAY;
 import static muramasa.gregtech.data.Guis.MULTI_DISPLAY_FLUID;
@@ -18,6 +32,8 @@ import static muramasa.gregtech.data.RecipeBuilders.*;
 
 @SuppressWarnings("unchecked")
 public class RecipeMaps {
+
+    public static BiFunction<Integer, Integer, Proxy> DISSASSEMBLER_PROXY = (power, duration) -> new Proxy(RecipeType.CRAFTING, getDefaultCrafting(power, duration));
     public static RecipeMap<RecipeBuilder> STEAM_ALLOY_SMELTING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "steam_alloy_smelting", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
     public static RecipeMap<RecipeBuilder> STEAM_COMPRESSING = AntimatterAPI.register(RecipeMap.class,
@@ -83,7 +99,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> DEHYDRATING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "dehydrating", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> DISASSEMBLING = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "disassembling", new RecipeBuilder())).setProxy(RecipeProxies.REVERSE_CRAFTING_PROXY.apply(8, 200));
+            new RecipeMap<>(GTIRef.ID, "disassembling", new RecipeBuilder())).setProxy(DISSASSEMBLER_PROXY.apply(8, 200));
     public static RecipeMap<RecipeBuilder> DISTILLATION = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "distillation", new RecipeBuilder())).setGuiData(MULTI_DISPLAY_FLUID);
     public static RecipeMap<RecipeBuilder> CRYO_DISTILLATION = AntimatterAPI.register(RecipeMap.class,
@@ -175,6 +191,30 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "vacuum_freezing", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
     public static RecipeMap<RecipeBuilder> WIRE_MILLING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "wire_milling", new RecipeBuilder()));
+
+    private static BiFunction<Recipe<?>, RecipeBuilder, IRecipe> getDefaultCrafting(int power, int duration) {
+        return (t, b) -> {
+            if (!(t instanceof ShapedRecipe shapedRecipe)) return null;
+            List<Ingredient> ingredients = t.getIngredients();
+            if (!(t.getResultItem().getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof BlockMachine)) return null;
+            List<ItemStack> list = new ObjectArrayList<>();
+            for (Ingredient i : ingredients){
+                for (ItemStack stack : i.getItems()){
+                    if (!stack.isEmpty() && !stack.isDamageableItem()){
+                        list.add(stack);
+                        break;
+                    }
+                }
+            }
+            ItemStack craftingOut = shapedRecipe.getResultItem();
+            if (list.isEmpty()) return null;
+            RecipeIngredient ing = RecipeIngredient.of(craftingOut);
+            IRecipe recipe = b.recipeMapOnly().ii(ing)
+                    .io(list.toArray(new ItemStack[0])).hide().add(t.getId().getPath(), duration, power, 0, 1);
+            recipe.setMapId(b.getMap().getId());
+            return recipe;
+        };
+    }
 
     public static final IRecipeInfoRenderer LARGE_BOILER_RENDERER = new IRecipeInfoRenderer() {
         @Override
