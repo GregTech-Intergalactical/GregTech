@@ -1,25 +1,32 @@
 package muramasa.gregtech.cover.redstone;
 
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
+import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonOverlay;
+import muramasa.antimatter.gui.event.GuiEvents;
+import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
 import muramasa.gregtech.cover.CoverBasicRedstone;
 import muramasa.gregtech.cover.RedstoneMode;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 
 import javax.annotation.Nullable;
 
-public class CoverRedstoneMachineController extends CoverBasicRedstone {
+public class CoverRedstoneMachineController extends BaseCover {
     protected int redstonePower;
+    boolean inverted = false;
 
     public CoverRedstoneMachineController(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         addGuiCallback(t -> {
-            t.addCycleButton(79, 34, 16, 16, h -> ((CoverBasicRedstone)h).redstoneMode.ordinal(), i -> "tooltip.gti.redstone_mode." + i, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, ButtonOverlay.REDSTONE);
+            t.addSwitchButton(79, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, b -> "tooltip.gti.redstone_mode." + (b ? "inverted" : "normal"));
         });
     }
 
@@ -40,39 +47,19 @@ public class CoverRedstoneMachineController extends CoverBasicRedstone {
     }
 
     public boolean isPowered(){
-        if (redstoneMode == RedstoneMode.NORMAL){
-            return redstonePower > 0;
-        }
-        if (redstoneMode == RedstoneMode.INVERTED){
-            return redstonePower == 0;
-        }
-        return false;
+        return inverted ? redstonePower == 0 : redstonePower > 0;
     }
 
     @Override
     public void onUpdate() {
         if (handler.getTile() instanceof BlockEntityMachine<?> machine){
             if (machine.getMachineState() != MachineState.DISABLED){
-                if (redstoneMode == RedstoneMode.NO_WORK){
+                if (!isPowered()){
                     machine.toggleMachine();
-                } else if (redstoneMode == RedstoneMode.NORMAL){
-                    if (redstonePower == 0){
-                        machine.toggleMachine();
-                    }
-                } else {
-                    if (redstonePower > 0){
-                        machine.toggleMachine();
-                    }
                 }
             } else {
-                if (redstoneMode == RedstoneMode.NORMAL){
-                    if (redstonePower > 0){
-                        machine.toggleMachine();
-                    }
-                } else if (redstoneMode == RedstoneMode.INVERTED){
-                    if (redstonePower == 0){
-                        machine.toggleMachine();
-                    }
+                if (isPowered()){
+                    machine.toggleMachine();
                 }
             }
 
@@ -93,5 +80,30 @@ public class CoverRedstoneMachineController extends CoverBasicRedstone {
     @Override
     public boolean hasGui() {
         return true;
+    }
+
+    @Override
+    public CompoundTag serialize() {
+        CompoundTag nbt =  super.serialize();
+        nbt.putBoolean("inverted", inverted);
+        return nbt;
+    }
+
+    @Override
+    public void onGuiEvent(IGuiEvent event, Player playerEntity) {
+        if (event.getFactory() == GuiEvents.EXTRA_BUTTON){
+            GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
+            if (ev.data[1] == 0){
+                inverted = !inverted;
+                if (handler.getTile() instanceof BlockEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
+                if (handler.getTile() instanceof BlockEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
+            }
+        }
+    }
+
+    @Override
+    public void deserialize(CompoundTag nbt) {
+        super.deserialize(nbt);
+        inverted = nbt.getBoolean("inverted");
     }
 }
