@@ -20,6 +20,12 @@ public class CrackingUnit {
         CRACKING.RB().ii(INT_CIRCUITS.get(3).setNoConsume()).fi(Butene.getGas(1000),Hydrogen.getGas(2000)).fo(Ethane.getGas(2000)).add("ethane_3",200, 500);
         CRACKING.RB().ii(INT_CIRCUITS.get(1).setNoConsume()).fi(Butadiene.getGas(1000),Hydrogen.getGas(2000)).fo(Ethylene.getGas(2000)).add("ethylene",100, 500);
         CRACKING.RB().ii(INT_CIRCUITS.get(1).setNoConsume()).fi(Butadiene.getGas(1000),Hydrogen.getGas(4000)).fo(Butane.getGas(1000)).add("butane_2",200, 500);
+        CRACKING.RB().fi(Hydrogen.getGas(1000), LightFuel.getLiquid(1000)).fo(HydroCrackedLightFuel.getLiquid(2000)).add("light_fuel", 20, 120);
+        CRACKING.RB().fi(Steam.getGas(1000), LightFuel.getLiquid(1000)).fo(SteamCrackedLightFuel.getLiquid(2000)).add("light_fuel_1", 20, 120);
+        CRACKING.RB().fi(Hydrogen.getGas(1000), HeavyFuel.getLiquid(1000)).fo(HydroCrackedHeavyFuel.getLiquid(2000)).add("heavy_fuel", 20, 120);
+        CRACKING.RB().fi(Steam.getGas(1000), HeavyFuel.getLiquid(1000)).fo(SteamCrackedHeavyFuel.getLiquid(2000)).add("heavy_fuel_1", 20, 120);
+        CRACKING.RB().fi(Hydrogen.getGas(1000), Naphtha.getLiquid(1000)).fo(SteamCrackedNaphtha.getLiquid(2000)).add("naptha", 20, 120);
+        CRACKING.RB().fi(Steam.getGas(1000), Naphtha.getLiquid(1000)).fo(SteamCrackedNaphtha.getLiquid(2000)).add("naptha_1", 20, 120);
         //STEAM
         CRACKING.RB().ii(INT_CIRCUITS.get(1).setNoConsume()).fi(Ethane.getGas(1000),Steam.getGas(1000)).fo(Methane.getGas(1000),Methanol.getLiquid(1000)).add("methane_methanol",100, 172);
         CRACKING.RB().ii(INT_CIRCUITS.get(2).setNoConsume()).fi(Ethane.getGas(1000),Steam.getGas(1000)).fo(Methane.getGas(1000),Methanol.getLiquid(1000)).add("methane_methanol_2",100, 172);

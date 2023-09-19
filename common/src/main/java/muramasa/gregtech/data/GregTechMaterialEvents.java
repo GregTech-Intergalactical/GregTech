@@ -174,7 +174,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Steel).asMetal(1811, 1000, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING, WIRE_FINE);
         event.setMaterial(SteelMagnetic).asMetal(1000, 1000, ROD_LONG);
         event.setMaterial(SterlingSilver).asMetal(1700);
-        event.setMaterial(StainlessSteel).asMetal(1700, 1700, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL);
+        event.setMaterial(StainlessSteel).asMetal(1700, 1700, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING);
         event.setMaterial(TinAlloy).asMetal(1158);
         event.setMaterial(Tritanium).asMetal(295, FRAME);
         event.setMaterial(TungstenCarbide).asMetal(2460, 2460);
@@ -1258,7 +1258,7 @@ public class GregTechMaterialEvents {
     }
 
     public static void byproducts(GregTechMaterialEvent event){
-        event.setMaterial(Almandine).addByProduct(RedGarnet, Aluminium);
+        event.setMaterial(Almandine).addByProduct(RedGarnet, Alumina);
         event.setMaterial(Alumina).addByProduct(Bauxite);
         //event.setMaterial(Amber).addByProduct(Amber); TODO: Add Amber
         event.setMaterial(Amethyst).addByProduct(Amethyst);
@@ -1270,10 +1270,10 @@ public class GregTechMaterialEvents {
         event.setMaterial(Basalt).addByProduct(Olivine, DarkAsh);
         event.setMaterial(Bastnasite).addByProduct(Neodymium, RareEarth);
         event.setMaterial(Bauxite).addByProduct(Grossular, Rutile, Gallium);
-        event.setMaterial(Bentonite).addByProduct(Aluminium, Calcium, Magnesium).elecTicks(480);
+        event.setMaterial(Bentonite).addByProduct(Alumina, Calcium, Magnesium).elecTicks(480);
         event.setMaterial(Beryllium).addByProduct(Emerald);
         event.setMaterial(BlackGranite).addByProduct(Biotite);
-        event.setMaterial(Sapphire).addByProduct(Aluminium);
+        event.setMaterial(Sapphire).addByProduct(Alumina);
         event.setMaterial(Brass).addByProduct(Copper, Tin);
         event.setMaterial(Bronze).addByProduct(Copper, Zinc);
         event.setMaterial(BrownLimonite).addByProduct(Malachite, YellowLimonite);
@@ -1292,13 +1292,13 @@ public class GregTechMaterialEvents {
         event.setMaterial(DarkAsh).addByProduct(Carbon);
         event.setMaterial(Diamond).addByProduct(Graphite);
         event.setMaterial(Electrum).addByProduct(Gold, Silver);
-        event.setMaterial(Emerald).addByProduct(Beryllium, Aluminium);
+        event.setMaterial(Emerald).addByProduct(Beryllium, Alumina);
         event.setMaterial(Endstone).addByProduct(Helium3);
         event.setMaterial(EnrichedNaquadah).addByProduct(Naquadah, Naquadria);
         event.setMaterial(Flint).addByProduct(Obsidian);
         event.setMaterial(Galena).addByProduct(Sulfur, Silver, Lead);
         event.setMaterial(Garnierite).addByProduct(Nickel);
-        event.setMaterial(Glauconite).addByProduct(Sodium, Aluminium, Iron);
+        event.setMaterial(Glauconite).addByProduct(Sodium, Alumina, Iron);
         event.setMaterial(Glowstone).addByProduct(Redstone, Gold);
         event.setMaterial(Gold).addByProduct(Copper, Nickel);
         event.setMaterial(Graphite).addByProduct(Carbon);
@@ -1351,7 +1351,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Silver).addByProduct(Lead, Sulfur);
         event.setMaterial(Spessartine).addByProduct(RedGarnet, Manganese);
         event.setMaterial(Sphalerite).addByProduct(YellowGarnet, Cadmium, Gallium, Zinc);
-        event.setMaterial(Spodumene).addByProduct(Aluminium, Lithium);
+        event.setMaterial(Spodumene).addByProduct(Alumina, Lithium);
         event.setMaterial(Steel).addByProduct(Iron);
         event.setMaterial(Stibnite).addByProduct(Antimony);
         event.setMaterial(Sulfur).addByProduct(Sulfur);

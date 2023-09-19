@@ -30,7 +30,7 @@ public class GregTechConfig {
 
         /** @see CommonConfig **/
 
-        public boolean HARDER_WOOD, MORE_COMPLICATED_CHEMICAL_RECIPES, HARDER_CIRCUITS;
+        public boolean HARDER_WOOD, MORE_COMPLICATED_CHEMICAL_RECIPES, HARDER_CIRCUITS, HARDER_ALUMINIUM_PROCESSING;
 
     }
 
