@@ -28,6 +28,7 @@ public class CoverFilter extends BaseCover {
     @Override
     public void addInfoFromStack(ItemStack stack) {
         super.addInfoFromStack(stack);
+        if (stack.getTag() == null) return;
         CompoundTag tag = stack.getTag();
         blacklist = tag.getBoolean("blacklist");
         ignoreNBT = tag.getBoolean("ignoreNBT");
