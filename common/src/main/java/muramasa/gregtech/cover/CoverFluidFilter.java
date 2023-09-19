@@ -7,16 +7,14 @@ import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.Tier;
+import muramasa.gregtech.cover.base.CoverFilter;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tesseract.util.ItemHandlerUtils;
 
-public class CoverFluidFilter extends BaseCover {
-    boolean blacklist = false;
-    boolean ignoreNBt = false;
+public class CoverFluidFilter extends CoverFilter {
     public CoverFluidFilter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         getGui().getSlots().add(SlotType.DISPLAY_SETTABLE, 80, 25);
@@ -47,7 +45,7 @@ public class CoverFluidFilter extends BaseCover {
             }
             boolean matches = FluidHooks.safeGetItemFluidManager(filter).map(f -> {
                 for (int i = 0; i < f.getTankAmount(); i++){
-                    boolean match = ignoreNBt ? fluidHolder.getFluid() == f.getFluidInTank(i).getFluid() : f.getFluidInTank(i).matches(fluidHolder);
+                    boolean match = ignoreNBT ? fluidHolder.getFluid() == f.getFluidInTank(i).getFluid() : f.getFluidInTank(i).matches(fluidHolder);
                     if (match){
                         return true;
                     }
@@ -63,12 +61,12 @@ public class CoverFluidFilter extends BaseCover {
 
     @Override
     protected String getRenderId() {
-        return "item_filter";
+        return "fluid_filter";
     }
 
     @Override
     public String getId() {
-        return "item_filter";
+        return "fluid_filter";
     }
 
     @Override

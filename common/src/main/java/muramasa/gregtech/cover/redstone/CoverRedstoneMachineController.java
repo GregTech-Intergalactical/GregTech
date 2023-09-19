@@ -10,8 +10,6 @@ import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
-import muramasa.gregtech.cover.CoverBasicRedstone;
-import muramasa.gregtech.cover.RedstoneMode;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;

@@ -6,6 +6,7 @@ import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
+import muramasa.gregtech.cover.base.CoverBasicTransport;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.SlotTypes;
 import muramasa.gregtech.blockentity.single.IFilterable;

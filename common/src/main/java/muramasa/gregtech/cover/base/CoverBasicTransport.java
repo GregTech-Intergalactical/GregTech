@@ -1,4 +1,4 @@
-package muramasa.gregtech.cover;
+package muramasa.gregtech.cover.base;
 
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.CoverFactory;
@@ -9,6 +9,9 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.cover.ICoverRedstoneSensitive;
+import muramasa.gregtech.cover.ImportExportMode;
+import muramasa.gregtech.cover.RedstoneMode;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
@@ -27,6 +30,7 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
     public CoverBasicTransport(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         this.exportMode = source.getTile() instanceof BlockEntityPipe<?> ? IMPORT : EXPORT;
+        redstoneMode = RedstoneMode.NO_WORK;
         coverModeInt = exportMode.ordinal();
         addGuiCallback(t -> {
             t.addCycleButton(70, 34, 16, 16, h -> ((CoverBasicRedstone)h).redstoneMode.ordinal(), i -> "tooltip.gti.redstone_mode." + i, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, ButtonOverlay.REDSTONE);

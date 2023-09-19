@@ -8,9 +8,11 @@ import muramasa.antimatter.gui.*;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
+import muramasa.gregtech.cover.base.CoverBasicTransport;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.SlotTypes;
 import muramasa.gregtech.blockentity.single.IFilterable;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,10 +34,6 @@ import java.util.function.BiFunction;
 
 public class CoverConveyor extends CoverBasicTransport implements IFilterable {
 
-    static {
-        CoverGuiEvent.init();
-    }
-
     public static String ID = "conveyor";
 
     private boolean extracting = true;
@@ -53,6 +51,19 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterable {
         this.gui.getSlots().add(SlotTypes.FILTERABLE, 79, 53);
     }
 
+
+    @Override
+    public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
+        if (object instanceof ItemStack stack){
+            ItemStack compare = getInventory(SlotTypes.FILTERABLE).getItem(0);
+            if (compare.hasTag()){
+                CompoundTag nbt = compare.getTag();
+                boolean blacklist = nbt.getBoolean("blacklist");
+
+            }
+        }
+        return super.onTransfer(object, inputSide, simulate);
+    }
 
     @Override
     public <T> boolean blocksCapability(Class<T> cap, Direction side) {
@@ -123,58 +134,5 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterable {
     @Override
     public boolean accepts(ItemStack stack) {
         return stack.getItem() == GregTechData.COVER_ITEM_FILTER.getItem().getItem();
-    }
-
-
-    static class CoverGuiEvent implements IGuiEvent {
-
-        public static void init() {
-
-        }
-        enum ConveyorEvent {
-            INPUT_OUTPUT,
-        }
-        public final ConveyorEvent event;
-        public CoverGuiEvent(IGuiEventFactory fac, FriendlyByteBuf buffer) {
-            this.event = ConveyorEvent.values()[buffer.readVarInt()];
-        }
-
-        public CoverGuiEvent(ConveyorEvent ev) {
-            this.event = ev;
-        }
-
-        @Override
-        public boolean forward() {
-            return false;
-        }
-
-        @Override
-        public void write(FriendlyByteBuf buffer) {
-            buffer.writeVarInt(event.ordinal());
-        }
-
-        @Override
-        public void handle(Player player, GuiInstance instance) {
-            CoverConveyor source = (CoverConveyor) instance.handler;
-            switch (event) {
-                case INPUT_OUTPUT -> source.extracting = !source.extracting;
-            }
-        }
-        public static final IGuiEvent.IGuiEventFactory INSTANCE = AntimatterAPI.register(IGuiEventFactory.class, new IGuiEventFactory() {
-            @Override
-            public BiFunction<IGuiEventFactory, FriendlyByteBuf, IGuiEvent> factory() {
-                return CoverGuiEvent::new;
-            }
-
-            @Override
-            public String getId() {
-                return "cover_gui_factory";
-            }
-        });
-
-        @Override
-        public IGuiEventFactory getFactory() {
-            return INSTANCE;
-        }
     }
 }

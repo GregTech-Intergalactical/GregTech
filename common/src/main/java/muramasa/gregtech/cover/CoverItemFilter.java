@@ -6,6 +6,7 @@ import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.cover.base.CoverFilter;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -13,9 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.util.ItemHandlerUtils;
 
-public class CoverItemFilter extends BaseCover {
-    boolean blacklist = false;
-    boolean ignoreNBt = false;
+public class CoverItemFilter extends CoverFilter {
     public CoverItemFilter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         getGui().getSlots().add(SlotType.DISPLAY_SETTABLE, 80, 25);
@@ -30,7 +29,6 @@ public class CoverItemFilter extends BaseCover {
     public boolean onTransfer(Object object, boolean inputSide, boolean execute) {
         super.onTransfer(object, inputSide, execute);
         if (object instanceof ItemStack item) {
-            boolean stop = false;
             ItemStack filter = getInventory(SlotType.DISPLAY_SETTABLE).getItem(0);
             boolean empty = filter.isEmpty();
             if (empty) {
@@ -38,7 +36,7 @@ public class CoverItemFilter extends BaseCover {
                     return true;
                 }
             }
-            boolean matches = ignoreNBt ? item.is(filter.getItem()) : ItemHandlerUtils.canItemStacksStack(item, filter);
+            boolean matches = ignoreNBT ? item.is(filter.getItem()) : ItemHandlerUtils.canItemStacksStack(item, filter);
             if (blacklist == matches){
                 return true;
             }
