@@ -34,6 +34,15 @@ public class GregTechLocalizations {
             add(GTIRef.ID + ".rotor.tooltip.efficiency", "Turbine Efficiency: %s");
             add(GTIRef.ID + ".rotor.tooltip.steam_flow", "Optimal Steam flow: %sL/sec");
             add(GTIRef.ID + ".rotor.tooltip.gas_flow", "Optimal Gas flow(EU burnvalue per tick): %sEU/t");
+            add("tooltip.gti.redstone_mode.2", "Ignore Redstone");
+            add("tooltip.gti.redstone_mode.1", "Invert Conditional");
+            add("tooltip.gti.redstone_mode.0", "Conditional");
+            add("tooltip.gti.redstone_mode.normal", "Normal");
+            add("tooltip.gti.redstone_mode.inverted", "Inverted");
+            add("tooltip.gti.export_mode.0", "Export");
+            add("tooltip.gti.export_mode.1", "Import");
+            add("tooltip.gti.export_mode.2", "Export allow Import");
+            add("tooltip.gti.export_mode.3", "Import allow Export");
         }
 
         @Override
