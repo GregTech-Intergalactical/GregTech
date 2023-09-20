@@ -16,6 +16,7 @@ import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.Machines;
+import muramasa.gregtech.data.SlotTypes;
 import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -69,6 +70,24 @@ public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
             }
         }
         return super.onInteractServer(state, world, pos, player, hand, hit, type);
+    }
+
+    @Override
+    public int getWeakRedstonePower(Direction facing) {
+        if (outputRedstone){
+            int[] redstone = new int[1];
+            redstone[0] = this.itemHandler.map(i -> {
+                for (int slot = 0; slot < i.getHandler(SlotType.STORAGE).getSlots(); slot++){
+                    ItemStack stack = i.getHandler(SlotType.STORAGE).getStackInSlot(slot);
+                    if (!stack.isEmpty()) return invertRedstone ? 0 : 15;
+                }
+                return invertRedstone ? 15 : 0;
+            }).orElse(0);
+            if (redstone[0] > 0){
+                return redstone[0];
+            }
+        }
+        return super.getWeakRedstonePower(facing);
     }
 
     @Override
