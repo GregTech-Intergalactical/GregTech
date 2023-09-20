@@ -140,14 +140,14 @@ public class AssemblyLoader {
 
 
     private static void coils(){
-        addCoil(COIL_CUPRONICKEL, WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL), 1);
-        addCoil(COIL_KANTHAL, WIRE_KANTHAL.getBlockItem(PipeSize.SMALL), 2);
-        addCoil(COIL_NICHROME, WIRE_NICHROME.getBlockItem(PipeSize.SMALL), 3);
-        addCoil(COIL_TUNGSTENSTEEL, WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.SMALL), 4);
-        addCoil(COIL_HSSG, WIRE_HSSG.getBlockItem(PipeSize.SMALL), 5);
-        addCoil(COIL_NAQUADAH, WIRE_NAQUADAH.getBlockItem(PipeSize.SMALL), 6);
-        addCoil(COIL_NAQUADAH_ALLOY, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL), 7);
-        addCoil(COIL_SUPERCONDUCTOR, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.SMALL), 8);
+        addCoil(COIL_CUPRONICKEL, WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), 1);
+        addCoil(COIL_KANTHAL, WIRE_KANTHAL.getBlockItem(PipeSize.TINY), 2);
+        addCoil(COIL_NICHROME, WIRE_NICHROME.getBlockItem(PipeSize.TINY), 3);
+        addCoil(COIL_TUNGSTENSTEEL, WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY), 4);
+        addCoil(COIL_HSSG, WIRE_HSSG.getBlockItem(PipeSize.TINY), 5);
+        addCoil(COIL_NAQUADAH, WIRE_NAQUADAH.getBlockItem(PipeSize.TINY), 6);
+        addCoil(COIL_NAQUADAH_ALLOY, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY), 7);
+        addCoil(COIL_SUPERCONDUCTOR, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY), 8);
     }
 
     private static void frames(){
