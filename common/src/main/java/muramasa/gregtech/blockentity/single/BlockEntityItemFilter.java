@@ -152,7 +152,7 @@ public class BlockEntityItemFilter extends BlockEntityMachine<BlockEntityItemFil
         nbt = tag.getBoolean("nbt");
         outputRedstone = tag.getBoolean("outputRedstone");
         invertRedstone = tag.getBoolean("invertRedstone");
-        emitEnergy = tag.getBoolean("emitsEnergy");
+        emitEnergy = tag.getBoolean("emitEnergy");
     }
 
     @Override

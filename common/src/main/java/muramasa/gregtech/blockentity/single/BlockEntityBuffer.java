@@ -39,6 +39,8 @@ import static muramasa.antimatter.machine.MachineFlag.ENERGY;
 public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
     protected int stackLimit = 1;
     boolean emitEnergy = false;
+    boolean outputRedstone = false;
+    boolean invertRedstone = false;
 
     public BlockEntityBuffer(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -117,12 +119,18 @@ public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
     public void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         tag.putInt("stackLimit", stackLimit);
+        outputRedstone = tag.getBoolean("outputRedstone");
+        invertRedstone = tag.getBoolean("invertRedstone");
+        emitEnergy = tag.getBoolean("emitEnergy");
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
         stackLimit = tag.getInt("stackLimit");
+        tag.putBoolean("outputRedstone", outputRedstone);
+        tag.putBoolean("invertRedstone", invertRedstone);
+        tag.putBoolean("emitEnergy", emitEnergy);
     }
 
     @Override
@@ -136,9 +144,14 @@ public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
                     AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                 }
                 case 1 -> {
-                    /*outputRedstone = !outputRedstone;
-                    playerEntity.sendMessage(Utils.literal((outputRedstone ? "Emit redstone if slots contain something" : "Don't emit redstone")), playerEntity.getUUID());
-                    AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);*/
+                    outputRedstone = !outputRedstone;
+                    playerEntity.sendMessage(Utils.literal( (outputRedstone ? "Emit redstone if slots contain something" : "Don't emit redstone")), playerEntity.getUUID());
+                    AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
+                }
+                case 2 -> {
+                    invertRedstone = !invertRedstone;
+                    playerEntity.sendMessage(Utils.literal( (invertRedstone ? "I" : "Don't i") + "nvert redstone"), playerEntity.getUUID());
+                    AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                 }
             }
         }
@@ -148,6 +161,8 @@ public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
     public void addWidgets(GuiInstance instance, IGuiElement parent) {
         super.addWidgets(instance, parent);
         instance.addSwitchButton(8, 63, 16, 16, ButtonOverlays.ENERGY_OFF, ButtonOverlays.ENERGY_ON, h -> ((BlockEntityBuffer)h).emitEnergy);
+        instance.addSwitchButton(26, 63, 16, 16, ButtonOverlays.REDSTONE_CONTROL_OFF, ButtonOverlays.REDSTONE_CONTROL_ON, h -> ((BlockEntityBuffer)h).outputRedstone);
+        instance.addSwitchButton(44, 63, 16, 16, ButtonOverlays.INVERT_REDSTONE_OFF, ButtonOverlays.INVERT_REDSTONE_ON, h -> ((BlockEntityBuffer)h).invertRedstone);
     }
 
     public static class BufferItemHandler extends MachineItemHandler<BlockEntityBuffer> {
