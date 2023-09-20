@@ -177,7 +177,7 @@ public class Structures {
         PYROLYSIS_OVEN.setStructure(BlockEntityPyrolysisOven.class, b -> b.part("main")
                 .of("UUUUU", "UHHHU", "UHHHU", "UHHHU", "UUUUU").of("UUUUU", "U---U", "U---U", "U---U", "UUUUU").of(1)
                 .of("BB~BB", "BCCCB", "BCCCB", "BCCCB", "BBBBB").build()
-                .atElement('C', ofCoil(BlockEntityPyrolysisOven::setCoilData, BlockEntityPyrolysisOven::getCoilData)).at('B', CASING_ULV, HATCH_ITEM_O, HATCH_ENERGY)
+                .atElement('C', ofCoil(BlockEntityPyrolysisOven::setCoilData, BlockEntityPyrolysisOven::getCoilData)).at('B', CASING_ULV, HATCH_ITEM_O, HATCH_ENERGY, HATCH_FLUID_O)
                 .at('U', CASING_ULV).at('H', CASING_ULV, HATCH_ITEM_I, HATCH_MUFFLER)
                 .offset(2, 3, 0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).exact(1, HATCH_MUFFLER).build()
         );
