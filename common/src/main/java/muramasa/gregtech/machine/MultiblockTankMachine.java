@@ -17,6 +17,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 public class MultiblockTankMachine extends MaterialBasicMultiMachine {
     final int capacity;
     final boolean small;
+    boolean acidProof;
     public MultiblockTankMachine(String domain, Material material, boolean small, int capacity) {
         super(domain, (small ? "small" : "large") + "_" + material.getId() + "_tank_main_valve", material);
         setTiers(Tier.NONE);
@@ -54,5 +55,14 @@ public class MultiblockTankMachine extends MaterialBasicMultiMachine {
 
     public boolean isSmall() {
         return small;
+    }
+
+    public MultiblockTankMachine acidProof(){
+        acidProof = true;
+        return this;
+    }
+
+    public boolean isAcidProof() {
+        return acidProof;
     }
 }

@@ -121,7 +121,7 @@ public class Machines {
     public static DrumMachine BRONZE_DRUM = GTUtilityData.createDrum(Materials.Bronze, 16000);
     public static DrumMachine STEEL_DRUM = GTUtilityData.createDrum(Steel, 48000);
     public static DrumMachine INVAR_DRUM = GTUtilityData.createDrum(Materials.Invar, 32000);
-    public static DrumMachine STAINLESS_DRUM = GTUtilityData.createDrum(Materials.StainlessSteel, 64000);
+    public static DrumMachine STAINLESS_DRUM = GTUtilityData.createDrum(Materials.StainlessSteel, 64000).acidProof();
     public static DrumMachine TITANIUM_DRUM = GTUtilityData.createDrum(Materials.Titanium, 128000);
     public static DrumMachine NETHERRITE_DRUM = GTUtilityData.createDrum(AntimatterMaterials.Netherite, 128000);
     public static DrumMachine TUNGSTENSTEEL_DRUM = GTUtilityData.createDrum(Materials.TungstenSteel, 256000);
@@ -213,10 +213,15 @@ public class Machines {
     public static TankMachine INFINITE_STEAM = new TankMachine(GTIRef.ID, "infinite_steam").addFlags(FLUID, CELL, GUI).setTile(BlockEntityInfiniteFluid::new).setTiers(LV);
 
     private static MultiblockTankMachine[] createTankMachine(Material material, int multiplier){
-        return new MultiblockTankMachine[]{
+        MultiblockTankMachine[] multiblockTankMachines = {
                 new MultiblockTankMachine(GTIRef.ID, material, true, 432 * multiplier * 1000),
                 new MultiblockTankMachine(GTIRef.ID, material, false, 2000 * multiplier * 1000)
         };
+        if (material == StainlessSteel){
+            multiblockTankMachines[0].acidProof();
+            multiblockTankMachines[1].acidProof();
+        }
+        return multiblockTankMachines;
     }
 
     public static void init() {

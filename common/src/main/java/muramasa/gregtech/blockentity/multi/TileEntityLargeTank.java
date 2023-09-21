@@ -7,6 +7,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
+import muramasa.antimatter.data.AntimatterTags;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
@@ -33,9 +34,11 @@ import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static net.minecraft.core.Direction.UP;
 
 public class TileEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<TileEntityLargeTank> {
+    MultiblockTankMachine tankMachine;
     public TileEntityLargeTank(MultiblockTankMachine type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         this.fluidHandler.set(() -> new LargeTankFluidHandler(this, type.getCapacity(), 10000, 1, 0));
+        this.tankMachine = type;
     }
 
     @Override
@@ -87,6 +90,11 @@ public class TileEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<Ti
         }
 
         @Override
+        public boolean canInput(Direction direction) {
+            return direction != tile.getFacing();
+        }
+
+        @Override
         public long insertFluid(FluidHolder fluid, boolean simulate) {
             if (tile.getMaterial() == Wood){
                 if (FluidPlatformUtils.isFluidGaseous(fluid.getFluid())) {
@@ -104,6 +112,10 @@ public class TileEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<Ti
                     }
                     return inserted;
                 }
+            }
+            if (!tile.tankMachine.isAcidProof() && fluid.getFluid().is(AntimatterTags.ACID)){
+                tile.getLevel().setBlock(tile.getBlockPos(), Blocks.AIR.defaultBlockState(), 3);
+                return 16;
             }
             return super.insertFluid(fluid, simulate);
         }
