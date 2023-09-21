@@ -138,18 +138,18 @@ public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
     public void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         tag.putInt("stackLimit", stackLimit);
-        outputRedstone = tag.getBoolean("outputRedstone");
-        invertRedstone = tag.getBoolean("invertRedstone");
-        emitEnergy = tag.getBoolean("emitEnergy");
+        tag.putBoolean("outputRedstone", outputRedstone);
+        tag.putBoolean("invertRedstone", invertRedstone);
+        tag.putBoolean("emitEnergy", emitEnergy);
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
         stackLimit = tag.getInt("stackLimit");
-        tag.putBoolean("outputRedstone", outputRedstone);
-        tag.putBoolean("invertRedstone", invertRedstone);
-        tag.putBoolean("emitEnergy", emitEnergy);
+        outputRedstone = tag.getBoolean("outputRedstone");
+        invertRedstone = tag.getBoolean("invertRedstone");
+        emitEnergy = tag.getBoolean("emitEnergy");
     }
 
     @Override
