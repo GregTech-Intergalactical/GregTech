@@ -33,9 +33,9 @@ import java.util.Optional;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static net.minecraft.core.Direction.UP;
 
-public class TileEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<TileEntityLargeTank> {
+public class BlockEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<BlockEntityLargeTank> {
     MultiblockTankMachine tankMachine;
-    public TileEntityLargeTank(MultiblockTankMachine type, BlockPos pos, BlockState state) {
+    public BlockEntityLargeTank(MultiblockTankMachine type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         this.fluidHandler.set(() -> new LargeTankFluidHandler(this, type.getCapacity(), 10000, 1, 0));
         this.tankMachine = type;
@@ -52,9 +52,9 @@ public class TileEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<Ti
         return Blocks.AIR;
     }
 
-    public static class LargeTankFluidHandler extends MachineFluidHandler<TileEntityLargeTank> {
+    public static class LargeTankFluidHandler extends MachineFluidHandler<BlockEntityLargeTank> {
 
-        public LargeTankFluidHandler(TileEntityLargeTank tile, int capacity, int pressure, int inputCount, int outputCount) {
+        public LargeTankFluidHandler(BlockEntityLargeTank tile, int capacity, int pressure, int inputCount, int outputCount) {
             super(tile, capacity, pressure, inputCount, outputCount);
         }
 
