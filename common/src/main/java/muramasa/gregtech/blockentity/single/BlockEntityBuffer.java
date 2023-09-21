@@ -189,7 +189,7 @@ public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
         public BufferItemHandler(BlockEntityBuffer tile) {
             super(tile);
             int count = tile.getMachineType() == Machines.SUPER_BUFFER ? 256 : tile.getMachineType().getCount(tile.getMachineTier(), SlotType.STORAGE);
-            this.inventories.put(SlotType.STORAGE, new TrackedItemHandler<>(tile, count, true, true, (t, s) -> true, ContentEvent.ITEM_INPUT_CHANGED){
+            this.inventories.put(SlotType.STORAGE, new TrackedItemHandler<>(tile, SlotType.STORAGE, count, true, true, (t, s) -> true, ContentEvent.ITEM_INPUT_CHANGED){
                 @NotNull
                 @Override
                 public ItemStack extractItem(int slot, int amount, boolean simulate) {
