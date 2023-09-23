@@ -1,5 +1,6 @@
 package muramasa.gregtech.blockentity.multi;
 
+import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.gregtech.block.BlockCoil;
@@ -11,6 +12,13 @@ public class BlockEntityPyrolysisOven extends BlockEntityMultiMachine<BlockEntit
 
     public BlockEntityPyrolysisOven(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+        this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
+            @Override
+            protected void calculateDurations() {
+                super.calculateDurations();
+                maxProgress = (int) (maxProgress / tile.coilData.percentage());
+            }
+        });
     }
 
     public BlockCoil.CoilData getCoilData() {
