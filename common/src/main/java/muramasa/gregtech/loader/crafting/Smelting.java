@@ -6,6 +6,7 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
@@ -25,6 +26,9 @@ public class Smelting {
         SimpleCookingRecipeBuilder.smelting(RecipeIngredient.of(GregTechData.CompressedFireClay, 1), GregTechData.FireBrick, 0.5F, 200).unlockedBy("has_compressed_fire_clay", provider.hasSafeItem(GregTechData.CompressedFireClay)).save(output, GTIRef.ID + ":firebrick");
         MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED, NUGGET, 7, Cassiterite, Tin);
         MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED, NUGGET, 7, Garnierite, Nickel);
-        MaterialRecipes.addSmeltingRecipe(output, provider, DUST, DUST_TINY, 3, AluminiumHydroxide, Alumina);
+        if (GregTechConfig.GAMEPLAY.HARDER_ALUMINIUM_PROCESSING) {
+            MaterialRecipes.addSmeltingRecipe(output, provider, DUST, DUST_TINY, 3, AluminiumHydroxide, Alumina);
+            MaterialRecipes.addSmeltingRecipe(output, provider, DUST, INGOT, 1, Aluminium);
+        }
     }
 }

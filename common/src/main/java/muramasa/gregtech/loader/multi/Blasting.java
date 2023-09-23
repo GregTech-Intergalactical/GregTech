@@ -4,6 +4,7 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -107,16 +108,24 @@ public class Blasting {
                 .fi(Oxygen.getGas(1000))
                 .io(INGOT.get(Steel), DUST_SMALL.get(DarkAsh))
                 .add("steel_ingot_2", 100, 120);
-        /* Aluminium*/
-        BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Ruby, 1))
-                .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
-                .add("aluminium_ingot_from_ruby", 400, 100);
-        BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Sapphire, 1))
-                .io(NUGGET.get(Aluminium, 3))
-                .add("aluminium_ingot_from_blue_sapphire", 400, 100);
-        BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(GreenSapphire, 1))
-                .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
-                .add("aluminium_ingot_from_green_sapphire", 400, 100);
+        if (!GregTechConfig.GAMEPLAY.HARDER_ALUMINIUM_PROCESSING){
+            /* Aluminium*/
+            BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Ruby, 1))
+                    .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
+                    .add("aluminium_ingot_from_ruby", 400, 100);
+            BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Sapphire, 1))
+                    .io(NUGGET.get(Aluminium, 3))
+                    .add("aluminium_ingot_from_blue_sapphire", 400, 100);
+            BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(GreenSapphire, 1))
+                    .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
+                    .add("aluminium_ingot_from_green_sapphire", 400, 100);
+            int heat = GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(Aluminium);
+            BLASTING.RB().temperature(1700).ii(DUST.getMaterialIngredient(Aluminium, 1), INT_CIRCUITS.get(1)).io(INGOT.get(Aluminium)).add( "aluminium_ingot_from_aluminium_dust", Math.max(Aluminium.getMass() / 40L, 1L) * heat, 120);
+            BLASTING.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Calcite, 1)).io(INGOT.get(Aluminium)).add("alumina_calcite", 4 * 100, 120);
+            BLASTING.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Limestone, 1)).io(INGOT.get(Aluminium)).add("alumina_limestone", 4 * 100, 120);
+            BLASTING.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Marble, 1)).io(INGOT.get(Aluminium)).add("alumina_marble", 4 * 100, 120);
+        }
+
         /* Stainless Steel*/
         BLASTING.RB().temperature(1700).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 6), DUST.getMaterialIngredient(Nickel, 1), DUST.getMaterialIngredient(Manganese, 1), DUST.getMaterialIngredient(Chromium, 1))
                 .io(INGOT.get(StainlessSteel, 9), DUST_SMALL.get(DarkAsh, 1))

@@ -36,7 +36,7 @@ public class GregTechConfig {
 
     public static class CommonConfig {
 
-        public ForgeConfigSpec.BooleanValue HARDER_WOOD, MORE_COMPLICATED_CHEMICAL_RECIPES, HARDER_CIRCUITS;
+        public ForgeConfigSpec.BooleanValue HARDER_WOOD, MORE_COMPLICATED_CHEMICAL_RECIPES, HARDER_CIRCUITS, HARDER_ALUMINIUM_PROCESSING;
 
         public ForgeConfigSpec.BooleanValue REPLACEMENT_VANILLA_ORE_GEN;
 
@@ -54,6 +54,9 @@ public class GregTechConfig {
             HARDER_CIRCUITS = builder.comment("Enables more complicated circuit recipes added in versions of gt5u after 509.25 - Default: false")
                     .translation(GTIRef.ID + ".config.harder_circuits")
                     .define("HARDER_CIRCUITS", false);
+            HARDER_ALUMINIUM_PROCESSING = builder.comment("Enables gt6's alumina processing, if disabled alumina reverts back to just being in the blast furnace - Default: true")
+                    .translation(GTIRef.ID + ".config.harder_aluminium_processing")
+                    .define("HARDER_ALUMINIUM_PROCESSING", true);
             builder.pop();
 
         }
@@ -64,6 +67,7 @@ public class GregTechConfig {
         GAMEPLAY.HARDER_WOOD = COMMON_CONFIG.HARDER_WOOD.get();
         GAMEPLAY.MORE_COMPLICATED_CHEMICAL_RECIPES = COMMON_CONFIG.MORE_COMPLICATED_CHEMICAL_RECIPES.get();
         GAMEPLAY.HARDER_CIRCUITS = COMMON_CONFIG.HARDER_CIRCUITS.get();
+        GAMEPLAY.HARDER_ALUMINIUM_PROCESSING = COMMON_CONFIG.HARDER_ALUMINIUM_PROCESSING.get();
 
     }
 }

@@ -41,7 +41,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Neon).asPlasma();
         event.setMaterial(Sodium).asDust(370);
         event.setMaterial(Magnesium).asMetal(1383, 0/*1383*/);
-        event.setMaterial(Aluminium).asMetal(933, 0, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL);
+        event.setMaterial(Aluminium).asMetal(933, 0, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL, HAS_CUSTOM_SMELTING);
         event.setMaterial(Silicon).asMetal(1683, 1683, PLATE, FOIL);
         event.setMaterial(Phosphor).asDust(933);
         event.setMaterial(Sulfur).asDust(388).asOre().harvestLevel(2).asPlasma();
