@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.data.AntimatterMaterialTypes;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.MaterialTypeItem;
@@ -20,6 +21,7 @@ public class FluidExtractor {
                 add(m, item, item.getUnitValue());
             });
         }
+        add(AntimatterMaterials.Redstone, DUST, DUST.getUnitValue());
     }
 
     private static void add(Material m, MaterialTypeItem<?> i, long materialAmount) {
