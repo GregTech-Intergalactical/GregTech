@@ -50,7 +50,7 @@ public class CoverRedstoneMachineController extends BaseCover {
 
     @Override
     public void onUpdate() {
-        if (handler.getTile() instanceof BlockEntityMachine<?> machine){
+        if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.isServerSide()){
             if (machine.getMachineState() != MachineState.DISABLED){
                 if (!isPowered()){
                     machine.toggleMachine();
