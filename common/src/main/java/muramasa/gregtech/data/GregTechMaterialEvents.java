@@ -1432,7 +1432,7 @@ public class GregTechMaterialEvents {
         FURNACE_FUELS.add(OilShale, DUST_PURE, 400);
         FURNACE_FUELS.add(OilShale, CRUSHED_REFINED, 550);
         CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene, LightFuel, HeavyFuel);
-        CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Dilithium, Monazite);
+        CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Dilithium, Monazite, Coal, CoalCoke, Charcoal, Lignite, LigniteCoke);
         /*DECAYABLE.add(Thallium209,Thallium210,Bismuth213,Bismuth214,Polonium213,Polonium214,Polonium215,Polonium216,Polonium218,Astatine217,Astatine218,
                 Radon219,Radon220,Radon222,Francium221,Francium223,Radium223,Radium224,Radium225,Radium226,Radium228,Actinium225,Actinium227,Actinium228,
                 Thorium227,Thorium228,Thorium229,Thorium230,Thorium231,Thorium233,Thorium234,Protactinium231,Protactinium232,Protactinium233,Protactinium234,
