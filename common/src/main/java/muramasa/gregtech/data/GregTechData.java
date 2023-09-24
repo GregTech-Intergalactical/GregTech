@@ -3,13 +3,9 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.cover.CoverFactory;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.item.*;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialType;
-import muramasa.antimatter.material.MaterialTypeFluid;
 import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.pipe.PipeSize;
@@ -50,14 +46,14 @@ public class GregTechData {
     public static void init(Side side) {
         if (side == Side.CLIENT)
             RecipeMaps.clientMaps();
-        AntimatterAPI.all(MaterialType.class, t -> {
+        /*AntimatterAPI.all(MaterialType.class, t -> {
             if (t instanceof MaterialTypeFluid) return;
             if (t.getClass() == MaterialType.class) return;
             //TODO: add better check
             if (t == AntimatterMaterialTypes.ORE_STONE) return;
             CoverFactory.builder((a,b,c,d) -> new CoverTypeFilter(a,b,c,d,t)).addTextures(Material.NULL.getSet().getTextures(t)).item((a, b) -> {
             return new ItemCover(a.getDomain(), a.getId()).tip("Filters for " + t.getId()).texture(Material.NULL.getSet().getTextures(t));}).build(GTIRef.ID, "cover_type_" + t.getId());
-        });
+        });*/
     }
 
     public static final CoverFactory COVER_CONVEYOR = CoverFactory.builder(CoverConveyor::new).gui().item((a,b) ->
@@ -81,6 +77,10 @@ public class GregTechData {
     public static final CoverFactory COVER_REDSTONE_MACHINE_CONTROLLER = CoverFactory.builder(CoverRedstoneMachineController::new).gui().item((a, b) -> {
         return new ItemCover(GTIRef.ID, "redstone_machine_controller");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/redstone_machine_controller")).build(GTIRef.ID, "redstone_machine_controller");
+
+    public static final CoverFactory COVER_ENERGY_DETECTOR = CoverFactory.builder(CoverEnergyDetector::new).gui().item((a, b) -> {
+        return new ItemCover(GTIRef.ID, "energy_detector");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/energy_detector")).build(GTIRef.ID, "energy_detector");
 
     public static final CoverFactory COVER_STEAM_VENT = CoverFactory.builder(CoverSteamVent::new)
             .addTextures(new Texture(GTIRef.ID, "block/cover/output")).build(GTIRef.ID, "steam_vent");

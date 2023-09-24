@@ -1,12 +1,8 @@
 package muramasa.gregtech.loader.machines;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
@@ -15,31 +11,21 @@ import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockColoredWall;
-import muramasa.gregtech.data.GregTechData;
-import muramasa.gregtech.data.Machines;
-import muramasa.gregtech.data.TierMaps;
 import muramasa.gregtech.data.ToolTypes;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.tags.ItemTags;
 
 import java.util.Arrays;
-import java.util.function.Consumer;
 
 import static muramasa.antimatter.Ref.L;
-import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.machine.Tier.*;
@@ -164,6 +150,9 @@ public class AssemblyLoader {
         ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(SolderingAlloy.getLiquid(L / 2)).io(COVER_REDSTONE_MACHINE_CONTROLLER.getItem()).add("redstone_machine_controller_soldering_alloy", 800, 16);
         ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Lead.getLiquid(L * 2)).io(COVER_REDSTONE_MACHINE_CONTROLLER.getItem()).add("redstone_machine_controller_lead", 800, 16);
         ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Tin.getLiquid(L)).io(COVER_REDSTONE_MACHINE_CONTROLLER.getItem()).add("redstone_machine_controller_tin", 800, 16);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1)).fi(SolderingAlloy.getLiquid(L / 2)).io(COVER_ENERGY_DETECTOR.getItem()).add("energy_detector_soldering_alloy", 800, 16);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1)).fi(Lead.getLiquid(L * 2)).io(COVER_ENERGY_DETECTOR.getItem()).add("energy_detector_lead", 800, 16);
+        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1)).fi(Tin.getLiquid(L)).io(COVER_ENERGY_DETECTOR.getItem()).add("energy_detector_tin", 800, 16);
         ASSEMBLING.RB().ii(of(CarbonFibre, 2), INT_CIRCUITS.get(2)).io(CarbonMesh).add("carbon_mesh", 800, 2);
         ASSEMBLING.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
         ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
