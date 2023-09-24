@@ -107,12 +107,12 @@ public class Guis {
         WIRE_MILL.add(COMPRESSOR).getGui().getMachineData().setProgressLocation("wiremill");
         CENTRIFUGE.add(IT_IN, 35, 25)
                 .add(FL_IN, 53, 25)
-                .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16)
-                .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34)
-                .add(FL_OUT, 44, 63).add(FL_OUT, 62, 63).add(FL_OUT, 80, 63)
-                .add(FL_OUT, 98, 63).add(FL_OUT, 116, 63).add(FL_OUT, 134, 63)
-                .add(ENERGY, 17, 25).getGui().getMachineData().setProgressLocation("extractor");
-        ELECTROLYZER.add(CENTRIFUGE).add(IT_IN, 35, 43).add(FL_IN,53, 43).getGui().getMachineData().setProgressLocation("extractor");
+                .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
+                .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
+                .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
+                .add(FL_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61)
+                .add(ENERGY, 17, 25).getGui().setBackgroundTexture("centrifuge").getMachineData().setProgressLocation("extractor");
+        ELECTROLYZER.add(CENTRIFUGE).add(IT_IN, 35, 43).add(FL_IN,53, 43).getGui().setBackgroundTexture("centrifuge").getMachineData().setProgressLocation("extractor");
         THERMAL_CENTRIFUGE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(ENERGY,
                 80, 63);
         ORE_WASHER.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63)
