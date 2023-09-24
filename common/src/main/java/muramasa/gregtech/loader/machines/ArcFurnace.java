@@ -43,6 +43,7 @@ import static muramasa.gregtech.data.TierMaps.*;
 public class ArcFurnace {
     public static void init() {
         ARC_SMELTING.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron, 1)).fi(Materials.Oxygen.getGas(56)).io(INGOT.get(Materials.WroughtIron, 1)).add("wrought_iron_ingot",56, 30, 0, 3);
+        ARC_SMELTING.RB().ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 1)).fi(Materials.Oxygen.getGas(56)).io(INGOT.get(Materials.WroughtIron, 1)).add("wrought_iron_ingot_2",56, 30, 0, 3);
         addRecyclingRecipe(MotorLV, of(Copper, 2f, Tin, 1f, Steel, 1f, Iron, 0.5f), 328, 377, 1, 20);
         addRecyclingRecipe(MotorMV, of(Copper, 5f, Aluminium, 1f, Steel, 0.5f), 369, 418, 1, 23);
         addRecyclingRecipe(MotorHV, of(Copper, 8f, Gold, 1f, StainlessSteel, 1f, Steel, 0.5f), 783, 832, 1, 48);
