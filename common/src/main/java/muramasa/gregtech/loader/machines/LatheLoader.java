@@ -1,6 +1,11 @@
 package muramasa.gregtech.loader.machines;
 
+import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.RecipeMaps;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 
@@ -29,5 +34,6 @@ public class LatheLoader {
                 RecipeMaps.LATHING.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(LENS.get(m, 1), DUST.get(m, 2)).add(m.getId() + "_lens_exquisite", Math.max(m.getMass(), 1), 24);
             }
         });
+        RecipeMaps.LATHING.RB().ii(of(ItemTags.PLANKS)).io(new ItemStack(Items.STICK, 2)).add("stick", 25, 4);
     }
 }
