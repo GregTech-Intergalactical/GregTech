@@ -138,7 +138,7 @@ public class Guis {
         FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
         DISTILLERY.add(FLUID_CANNER).getGui().getMachineData().setProgressLocation("chemical_reactor");
         BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).getGui().getMachineData().setProgressLocation("ore_washer");
-        AUTOCLAVE.add(ALLOY_SMELTER).add(FL_IN, 53, 63);
+        AUTOCLAVE.add(ALLOY_SMELTER).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(FL_IN, 53, 63);
         PACKAGER.add(COMPRESSOR);
         POLARIZER.add(COMPRESSOR).getGui().getMachineData().setProgressLocation("electromagnetic_separator");
         MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(FL_IN, 44, 63)
@@ -165,7 +165,7 @@ public class Guis {
         DECAY_CHAMBER.add(IT_IN, 17, 25).add(IT_IN, 35, 25)
                 .add(IT_OUT, 107, 25).add(FL_IN,53,25).add(FL_OUT,125,25).add(ENERGY,80,63);
         DEHYDRATOR.add(IT_IN, 35, 25).add(IT_IN, 53, 25)
-                .add(FL_IN,35,63).add(FL_IN,53,63)
+                .add(FL_IN,35,43).add(FL_IN,53,43)
                 .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
                 .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
                 .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
