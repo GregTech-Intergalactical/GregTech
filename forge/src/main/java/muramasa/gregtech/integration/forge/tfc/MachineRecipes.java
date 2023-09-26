@@ -1,17 +1,26 @@
 package muramasa.gregtech.integration.forge.tfc;
 
+import io.github.gregtechintergalactical.gtrubber.GTRubberData;
+import io.github.gregtechintergalactical.gtrubber.forge.GTRubberDataImpl;
+import io.github.gregtechintergalactical.gtrubber.tfc.TFCRubberData;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.RecipeMaps;
+import muramasa.gregtech.loader.machines.CuttingLoader;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.TFCMaterials;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.common.items.TFCItems;
+import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.Metal;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -62,6 +71,11 @@ public class MachineRecipes {
         /*for (Material material : TFCRegistrar.array) {
             addMaceratorRecipe(material);
         }*/
+        Helpers.mapOfKeys(net.dries007.tfc.common.blocks.wood.Wood.class, w -> {
+            CuttingLoader.addWoodRecipe(TagUtils.getItemTag(new ResourceLocation("tfc", w.name().toLowerCase() + "_logs")), AntimatterPlatformUtils.getItemFromID("tfc", "wood/lumber/" + w.name().toLowerCase()), 2, w.name().toLowerCase() + "_lumber", 200, 8);
+            return true;
+        });
+        CuttingLoader.addWoodRecipe(GTRubberData.RUBBER_LOGS, TFCRubberData.RUBBER_LUMBER, 2, "rubber_lumber", 200, 8);
     }
 
     private static void addMaceratorRecipe(Ore input, Material material){
