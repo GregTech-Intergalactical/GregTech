@@ -46,6 +46,7 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
     @Override
     public void onPlace() {
         super.onPlace();
+        if (handler.getTile().getLevel() == null) return;
         if (handler.getTile() instanceof BlockEntityPipe<?> pipe){
             pipe.setConnection(this.side);
         }
