@@ -33,15 +33,15 @@ dependencies{
         exclude(group: "net.fabricmc.fabric-api")
         exclude(group: "com.github.LlamaLad7")
     }
-    modImplementation(include("io.github.feltmc:felt-recipe-api:1.0.0")){
+    modImplementation("net.feltmc:felt-recipe-api:1.0.0-${project.minecraft_version}"){
         exclude(group: "net.fabricmc.fabric-api")
         exclude(group: "com.terraformersmc")
     }
-    modImplementation(include("io.github.feltmc:felt-player-item-api:1.0.0")){
+    modImplementation("net.feltmc:felt-player-item-api:1.0.0-${project.minecraft_version}"){
         exclude(group: "net.fabricmc.fabric-api")
         exclude(group: "com.terraformersmc")
     }
-    modImplementation("com.github.Trinsdar.Felt-API:felt-enchanting-api:c372f99be1") { transitive false }
+    modImplementation("net.feltmc:felt-enchanting-api:1.0.0-${project.minecraft_version}") { transitive false }
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
     modImplementation("com.github.Trinsdar:ARRP:0.6.7-hotfix")
