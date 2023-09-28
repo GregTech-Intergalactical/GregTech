@@ -67,7 +67,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterable {
 
     @Override
     public <T> boolean blocksCapability(Class<T> cap, Direction side) {
-        return side == null && cap != ExtendedItemContainer.class;
+        return cap != ExtendedItemContainer.class;
     }
 
     @Override
@@ -94,7 +94,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterable {
             return;
         BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
         //Drop into world.
-        if (state == Blocks.AIR.defaultBlockState() && exportMode.name.contains("output")) {
+        if (state == Blocks.AIR.defaultBlockState() && exportMode.isExport()) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
             ItemStack stack = TesseractCapUtils.getItemHandler(handler.getTile(), side).map(Utils::extractAny).orElse(ItemStack.EMPTY);

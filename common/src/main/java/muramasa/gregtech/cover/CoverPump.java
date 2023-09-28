@@ -46,7 +46,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterable {
 
     @Override
     public <T> boolean blocksCapability(Class<T> cap, Direction side) {
-        return side == null && cap != FluidContainer.class;
+        return cap != FluidContainer.class;
     }
 
     @Override

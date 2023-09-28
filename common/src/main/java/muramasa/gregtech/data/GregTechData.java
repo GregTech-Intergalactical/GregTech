@@ -62,6 +62,9 @@ public class GregTechData {
     public static final CoverFactory COVER_PUMP = CoverFactory.builder(CoverPump::new).gui().item((a,b) ->
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/s (as Cover)", CoverPump.speeds.get(b))))
             .addTextures(new Texture(GTIRef.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(GTIRef.ID, "pump");
+    public static final CoverFactory COVER_ROBOT_ARM = CoverFactory.builder(CoverRobotArm::new).gui().item((a,b) ->
+                    new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("1 Stack every %ds (as Cover)", CoverConveyor.speeds.get(b))))
+            .addTextures(new Texture(GTIRef.ID, "block/cover/conveyor")).setTiers(Tier.getStandard()).build(GTIRef.ID, "robot_arm");
     public static final CoverFactory COVER_DRAIN = CoverFactory.builder(CoverDrain::new).item((a, b) ->
             new ItemCover(GTIRef.ID, "drain").tip("Can be placed on machines/pipes as a cover")).addTextures(new Texture(GTIRef.ID, "block/cover/drain")).build(GTIRef.ID, "drain");
     public static final CoverFactory COVER_AIR_VENT = CoverFactory.builder(CoverAirVent::new).item((a, b) ->
@@ -129,11 +132,6 @@ public class GregTechData {
     public static ItemBasic<?> PistonHV = new ItemBasic<>(GTIRef.ID, "piston_hv");
     public static ItemBasic<?> PistonEV = new ItemBasic<>(GTIRef.ID, "piston_ev");
     public static ItemBasic<?> PistonIV = new ItemBasic<>(GTIRef.ID, "piston_iv");
-    public static ItemBasic<?> RobotArmLV = new ItemBasic<>(GTIRef.ID, "robot_arm_lv").tip("Insets into specific Slots (as Cover)");
-    public static ItemBasic<?> RobotArmMV = new ItemBasic<>(GTIRef.ID, "robot_arm_mv").tip("Insets into specific Slots (as Cover)");
-    public static ItemBasic<?> RobotArmHV = new ItemBasic<>(GTIRef.ID, "robot_arm_hv").tip("Insets into specific Slots (as Cover)");
-    public static ItemBasic<?> RobotArmEV = new ItemBasic<>(GTIRef.ID, "robot_arm_ev").tip("Insets into specific Slots (as Cover)");
-    public static ItemBasic<?> RobotArmIV = new ItemBasic<>(GTIRef.ID, "robot_arm_iv").tip("Insets into specific Slots (as Cover)");
     public static ItemBasic<?> FieldGenLV = new ItemBasic<>(GTIRef.ID, "field_gen_lv");
     public static ItemBasic<?> FieldGenMV = new ItemBasic<>(GTIRef.ID, "field_gen_mv");
     public static ItemBasic<?> FieldGenHV = new ItemBasic<>(GTIRef.ID, "field_gen_hv");

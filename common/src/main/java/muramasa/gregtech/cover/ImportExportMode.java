@@ -2,34 +2,20 @@ package muramasa.gregtech.cover;
 
 import muramasa.antimatter.cover.ICoverMode;
 
-public enum ImportExportMode implements ICoverMode {
-    EXPORT("Export",88, 24),
-    IMPORT("Import",34, 24),
-    EXPORT_IMPORT("Export Import",88, 42),
-    IMPORT_EXPORT("Import Export",34, 42);
+public enum ImportExportMode {
+    EXPORT(true),
+    IMPORT(false),
+    EXPORT_IMPORT(true),
+    IMPORT_EXPORT(false);
 
-    int x, y;
-    String name;
+    boolean export;
 
-    ImportExportMode(String name, int x, int y){
-        this.name = name;
-        this.x = x;
-        this.y = y;
+    ImportExportMode(boolean export){
+        this.export = export;
     }
 
-    @Override
-    public int getX() {
-        return x;
-    }
-
-    @Override
-    public int getY() {
-        return y;
-    }
-
-    @Override
-    public String getName() {
-        return name;
+    public boolean isExport() {
+        return export;
     }
 
     public ImportExportMode next(){

@@ -97,7 +97,7 @@ public class Parts {
 
           Item motor = GregTech.get(ItemBasic.class, "motor_" + t.getId());
           Item piston = GregTech.get(ItemBasic.class, "piston_" + t.getId());
-          Item robotArm = GregTech.get(ItemBasic.class, "robot_arm_" + t.getId());
+          Item robotArm = GregTech.get(ItemCover.class, "robot_arm_" + t.getId());
           Item emitter = GregTech.get(ItemBasic.class, "emitter_" + t.getId());
           Item sensor = GregTech.get(ItemBasic.class, "sensor_" + t.getId());
           Item pump = GregTech.get(ItemCover.class, "pump_" + t.getId());

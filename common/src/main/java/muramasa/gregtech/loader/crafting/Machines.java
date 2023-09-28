@@ -52,7 +52,7 @@ public class Machines {
             if (motor == null) return;
             Item piston = GregTech.get(ItemBasic.class, "piston_"+tier.getId());
             if (piston == null) return;
-            Item arm = GregTech.get(ItemBasic.class, "robot_arm_"+tier.getId());
+            Item arm = GregTech.get(ItemCover.class, "robot_arm_"+tier.getId());
             if (arm == null) return;
             Item conveyor = GregTech.get(ItemCover.class, "conveyor_"+tier.getId());
             if (conveyor == null) return;
@@ -751,7 +751,7 @@ public class Machines {
         add(NUCLEAR_REACTOR, EV, (m, item) -> provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), item,
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_EV)
-                        .put('A', RobotArmEV)
+                        .put('A', COVER_ROBOT_ARM.getItem(EV))
                         .put('G', GEAR.get(NiobiumTitanium))
                         .put('P', PLATE.get(Iridium))
                         .put('T', PLATE_DENSE.get(Thorium)).build(), "GTG", "AHA", "PTP"));
