@@ -179,9 +179,9 @@ public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
     @Override
     public void addWidgets(GuiInstance instance, IGuiElement parent) {
         super.addWidgets(instance, parent);
-        instance.addSwitchButton(8, 63, 16, 16, ButtonOverlays.ENERGY_OFF, ButtonOverlays.ENERGY_ON, h -> ((BlockEntityBuffer)h).emitEnergy);
-        instance.addSwitchButton(26, 63, 16, 16, ButtonOverlays.REDSTONE_CONTROL_OFF, ButtonOverlays.REDSTONE_CONTROL_ON, h -> ((BlockEntityBuffer)h).outputRedstone);
-        instance.addSwitchButton(44, 63, 16, 16, ButtonOverlays.INVERT_REDSTONE_OFF, ButtonOverlays.INVERT_REDSTONE_ON, h -> ((BlockEntityBuffer)h).invertRedstone);
+        instance.addSwitchButton(8, 63, 16, 16, ButtonOverlays.ENERGY_OFF, ButtonOverlays.ENERGY_ON, h -> ((BlockEntityBuffer)h).emitEnergy, true);
+        instance.addSwitchButton(26, 63, 16, 16, ButtonOverlays.REDSTONE_CONTROL_OFF, ButtonOverlays.REDSTONE_CONTROL_ON, h -> ((BlockEntityBuffer)h).outputRedstone, true);
+        instance.addSwitchButton(44, 63, 16, 16, ButtonOverlays.INVERT_REDSTONE_OFF, ButtonOverlays.INVERT_REDSTONE_ON, h -> ((BlockEntityBuffer)h).invertRedstone, true);
     }
 
     public static class BufferItemHandler extends MachineItemHandler<BlockEntityBuffer> {

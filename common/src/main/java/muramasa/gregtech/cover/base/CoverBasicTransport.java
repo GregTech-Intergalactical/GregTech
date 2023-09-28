@@ -33,8 +33,8 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
         redstoneMode = RedstoneMode.NO_WORK;
         coverModeInt = exportMode.ordinal();
         addGuiCallback(t -> {
-            t.addCycleButton(70, 34, 16, 16, h -> ((CoverBasicRedstone)h).redstoneMode.ordinal(), i -> "tooltip.gti.redstone_mode." + i, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, ButtonOverlay.REDSTONE);
-            t.addCycleButton(88, 34, 16, 16, h -> ((CoverBasicTransport)h).exportMode.ordinal(), i -> "tooltip.gti.export_mode." + i, ButtonOverlay.EXPORT, ButtonOverlay.IMPORT, ButtonOverlay.EXPORT_IMPORT, ButtonOverlay.IMPORT_EXPORT);
+            t.addCycleButton(70, 34, 16, 16, h -> ((CoverBasicRedstone)h).redstoneMode.ordinal(), true, i -> "tooltip.gti.redstone_mode." + i, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, ButtonOverlay.REDSTONE);
+            t.addCycleButton(88, 34, 16, 16, h -> ((CoverBasicTransport)h).exportMode.ordinal(), true, i -> "tooltip.gti.export_mode." + i, ButtonOverlay.EXPORT, ButtonOverlay.IMPORT, ButtonOverlay.EXPORT_IMPORT, ButtonOverlay.IMPORT_EXPORT);
         });
     }
 

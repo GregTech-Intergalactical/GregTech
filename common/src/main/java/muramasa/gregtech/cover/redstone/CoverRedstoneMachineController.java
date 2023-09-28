@@ -24,7 +24,7 @@ public class CoverRedstoneMachineController extends BaseCover {
     public CoverRedstoneMachineController(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         addGuiCallback(t -> {
-            t.addSwitchButton(79, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, b -> "tooltip.gti.redstone_mode." + (b ? "inverted" : "normal"));
+            t.addSwitchButton(79, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, true, b -> "tooltip.gti.redstone_mode." + (b ? "inverted" : "normal"));
         });
     }
 

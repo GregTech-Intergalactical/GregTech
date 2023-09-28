@@ -320,32 +320,26 @@ public class Guis {
 
         // if (side.isClient()) {
         ADJUSTABLE_TRANSFORMER.addGuiCallback(t -> {
-            t.addButton(10, 18, ButtonOverlay.APAD_LEFT)
-                    .addButton(25, 18, ButtonOverlay.PAD_LEFT)
-                    .addButton(10, 33, ButtonOverlay.APAD_LEFT)
-                    .addButton(25, 33, ButtonOverlay.PAD_LEFT)
-                    .addButton(10, 48, ButtonOverlay.APAD_LEFT)
-                    .addButton(25, 48, ButtonOverlay.PAD_LEFT)
-                    .addButton(10, 63, ButtonOverlay.APAD_LEFT)
-                    .addButton(25, 63, ButtonOverlay.PAD_LEFT)
-                    .addButton(137, 18, ButtonOverlay.PAD_RIGHT)
-                    .addButton(152, 18, ButtonOverlay.APAD_RIGHT)
-                    .addButton(137, 33, ButtonOverlay.PAD_RIGHT)
-                    .addButton(152, 33, ButtonOverlay.APAD_RIGHT)
-                    .addButton(137, 48, ButtonOverlay.PAD_RIGHT)
-                    .addButton(152, 48, ButtonOverlay.APAD_RIGHT)
-                    .addButton(137, 63, ButtonOverlay.PAD_RIGHT)
-                    .addButton(152, 63, ButtonOverlay.APAD_RIGHT);
+            t.addButton(10, 18, ButtonOverlay.APAD_LEFT, false)
+                    .addButton(25, 18, ButtonOverlay.PAD_LEFT, false)
+                    .addButton(10, 33, ButtonOverlay.APAD_LEFT, false)
+                    .addButton(25, 33, ButtonOverlay.PAD_LEFT, false)
+                    .addButton(10, 48, ButtonOverlay.APAD_LEFT, false)
+                    .addButton(25, 48, ButtonOverlay.PAD_LEFT, false)
+                    .addButton(10, 63, ButtonOverlay.APAD_LEFT, false)
+                    .addButton(25, 63, ButtonOverlay.PAD_LEFT, false)
+                    .addButton(137, 18, ButtonOverlay.PAD_RIGHT, false)
+                    .addButton(152, 18, ButtonOverlay.APAD_RIGHT, false)
+                    .addButton(137, 33, ButtonOverlay.PAD_RIGHT, false)
+                    .addButton(152, 33, ButtonOverlay.APAD_RIGHT, false)
+                    .addButton(137, 48, ButtonOverlay.PAD_RIGHT, false)
+                    .addButton(152, 48, ButtonOverlay.APAD_RIGHT, false)
+                    .addButton(137, 63, ButtonOverlay.PAD_RIGHT, false)
+                    .addButton(152, 63, ButtonOverlay.APAD_RIGHT, false);
         });
 
         ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
-        ELECTRIC_ITEM_FILTER.addGuiCallback(t -> {
-            t.addWidget(FilterButtonArrayWidget.build());
-        });
         ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
-        ELECTRIC_TYPE_FILTER.addGuiCallback(t -> {
-            t.addWidget(FilterButtonArrayWidget.build());
-        });
         CHEST_BUFFER.getCallbacks().remove(1);
 
         BLAST_FURNACE.add(MULTIBLOCK.getSlots()).getGui().setOverrideLocation(MULTIBLOCK.getTexture(LV, "machine"));
@@ -367,7 +361,7 @@ public class Guis {
         FUSION_REACTOR.getGui().setBackgroundTexture("fusion_control_computer").setEnablePlayerSlots(false)
                 .getMachineData().setProgressLocation("fusion_reactor").setProgressPos(163, 4).setProgressSize(149, 16);
         FUSION_REACTOR.addGuiCallback(t -> {
-            t.addButton(155, 23, ButtonOverlay.NO_OVERLAY).addButton(155, 41, ButtonOverlay.NO_OVERLAY).addButton(155, 59, ButtonOverlay.NO_OVERLAY).addWidget(makeProgress()).addWidget(FusionButtonWidget.build());
+            t.addButton(155, 23, ButtonOverlay.NO_OVERLAY, false).addButton(155, 41, ButtonOverlay.NO_OVERLAY, false).addButton(155, 59, ButtonOverlay.NO_OVERLAY, false).addWidget(makeProgress()).addWidget(FusionButtonWidget.build());
         });
     }
 
