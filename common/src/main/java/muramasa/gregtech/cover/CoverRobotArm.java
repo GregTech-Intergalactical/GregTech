@@ -3,6 +3,7 @@ package muramasa.gregtech.cover;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
+import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.event.GuiEvents;
@@ -16,6 +17,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
+import tesseract.api.item.PlatformItemHandler;
+
+import java.util.function.Predicate;
 
 public class CoverRobotArm extends CoverBasicTransport {
     int slot = 0;
@@ -40,10 +44,37 @@ public class CoverRobotArm extends CoverBasicTransport {
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (object instanceof ItemStack stack && !exportMode.isExport() && handler.getTile() instanceof BlockEntityMachine<?> machine && inputSide) {
-            if (machine.itemHandler.map(h -> h.getInputCount() > 0).orElse(false)){
-                machine.itemHandler.ifPresent(h -> {
-
-                });
+            if (machine.itemHandler.isPresent()){
+                if (stack.isEmpty()) return true;
+                MachineItemHandler<?> itemHandler = machine.itemHandler.get();
+                if (itemHandler.getInputCount() > 0){
+                    ItemStack inserted = itemHandler.getInputHandler().insertItem(slot, stack.copy(), true);
+                    if (inserted.isEmpty()){
+                        if (!simulate) {
+                            itemHandler.getInputHandler().insertItem(slot, stack.copy(), false);
+                        }
+                        stack.setCount(0);
+                    } else if (inserted.getCount() < stack.getCount()) {
+                        if (!simulate) {
+                            itemHandler.getInputHandler().insertItem(slot, stack.copy(), false);
+                        }
+                        stack.setCount(stack.getCount() - inserted.getCount());
+                    }
+                } else if (itemHandler.getHandler(SlotType.STORAGE).getContainerSize() > 0){
+                    ItemStack inserted = itemHandler.getHandler(SlotType.STORAGE).insertItem(slot, stack.copy(), true);
+                    if (inserted.isEmpty()){
+                        if (!simulate) {
+                            itemHandler.getHandler(SlotType.STORAGE).insertItem(slot, stack, false);
+                        }
+                        stack.setCount(0);
+                    } else if (inserted.getCount() < stack.getCount()) {
+                        if (!simulate) {
+                            itemHandler.getHandler(SlotType.STORAGE).insertItem(slot, stack, false);
+                        }
+                        stack.setCount(stack.getCount() - inserted.getCount());
+                    }
+                }
+                return true;
             }
         }
         return false;
