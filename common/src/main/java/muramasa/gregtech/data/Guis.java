@@ -311,7 +311,7 @@ public class Guis {
 
     public static void backgroundTextures(){
         MACERATOR.getGui().setBackgroundTexture("machine_macerator");
-        FORGE_HAMMER.getGui().setBackgroundTexture("machine_forge_hammer");
+        //FORGE_HAMMER.getGui().setBackgroundTexture("machine_forge_hammer");
         CENTRIFUGE.getGui().setBackgroundTexture("centrifuge");
         ELECTROLYZER.getGui().setBackgroundTexture("centrifuge");
         COKE_OVEN.getGui().setBackgroundTexture("coke_oven");
@@ -383,6 +383,9 @@ public class Guis {
     }
 
     public static void widgets(){
+        FORGE_HAMMER.addGuiCallback(t -> {
+            t.addWidget(IconWidget.build(new ResourceLocation(GTIRef.ID, "textures/gui/button/forge_hammer_overlay.png"), 78, 42, 20, 6));
+        });
         COAL_BOILER.addGuiCallback(t -> {
             t.addWidget(CoalBoilerWidget.build().setSize(70, 25, 36, 54))
                     .addWidget(CoalBoilerFuelWidget.build().setSize(115, 43, 18, 18));
