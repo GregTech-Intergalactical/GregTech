@@ -108,6 +108,14 @@ public class MaceratorLoader {
         AntimatterMaterialTypes.INGOT.all().forEach(t -> {
             if (!t.has(AntimatterMaterialTypes.DUST)) return;
             MACERATING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.INGOT.getMaterialTag(t),1)).io(AntimatterMaterialTypes.DUST.get(t,1)).add("dust_" + t.getId(),40,2);
+            if (t.has(NUGGET)){
+                MACERATING.RB().ii(RecipeIngredient.of(NUGGET.getMaterialTag(t),1)).io(DUST_TINY.get(t,1)).add("dust_tiny_" + t.getId(),10,2);
+            }
+        });
+        ROCK.all().forEach(r -> {
+            if (r.has(DUST)){
+                MACERATING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(r,1)).add("dust_small_" + r.getId(),20,2);
+            }
         });
         AntimatterAPI.all(StoneType.class, s -> {
             if (s.getMaterial() == NULL || !s.getMaterial().has(DUST) || s.isSandLike()) return;
