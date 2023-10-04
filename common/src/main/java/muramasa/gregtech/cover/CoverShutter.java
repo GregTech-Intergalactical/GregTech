@@ -12,6 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -51,7 +52,7 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     }
 
     @Override
-    public boolean onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
         if (type != null && type.getTag() == AntimatterDefaultTools.SCREWDRIVER.getTag()){
             mode = player.isShiftKeyDown() ? mode.cycleBackward() : mode.cycleForward();
             switch (mode){
@@ -89,7 +90,7 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
                     player.sendMessage(Utils.literal("Open if work enabled"), player.getUUID());
                 }
             }
-            return true;
+            return InteractionResult.SUCCESS;
         }
         return super.onInteract(player, hand, side, type);
     }

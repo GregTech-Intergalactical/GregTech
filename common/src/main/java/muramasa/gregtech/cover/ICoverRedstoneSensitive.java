@@ -1,7 +1,7 @@
 package muramasa.gregtech.cover;
 
+import muramasa.antimatter.capability.ICoverHandlerProvider;
 import muramasa.antimatter.cover.ICover;
-import muramasa.antimatter.util.AntimatterCapUtils;
 import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
 import net.minecraft.core.Direction;
 
@@ -10,7 +10,8 @@ import java.util.List;
 
 public interface ICoverRedstoneSensitive extends ICover {
     default boolean isPowered(Direction side){
-        return AntimatterCapUtils.getCoverHandler(source().getTile(), side).map(h -> {
+        if (!(source().getTile() instanceof ICoverHandlerProvider<?> provider)) return false;
+        return provider.getCoverHandler().map(h -> {
             List<CoverRedstoneMachineController> list = new ArrayList<>();
             for (Direction dir : Direction.values()){
                 if (h.get(dir) instanceof CoverRedstoneMachineController machineController){
