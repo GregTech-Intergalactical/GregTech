@@ -43,8 +43,14 @@ import static muramasa.gregtech.data.TierMaps.*;
 
 public class ArcFurnace {
     public static void init() {
-        ARC_SMELTING.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron, 1)).fi(Materials.Oxygen.getGas(56)).io(INGOT.get(Materials.WroughtIron, 1)).add("wrought_iron_ingot",56, 30, 0, 3);
-        ARC_SMELTING.RB().ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 1)).fi(Materials.Oxygen.getGas(56)).io(INGOT.get(Materials.WroughtIron, 1)).add("wrought_iron_ingot_2",56, 30, 0, 3);
+        DUST.all().forEach(m -> {
+            if (!m.has(INGOT) || m.has(MaterialTags.HAS_CUSTOM_SMELTING)) return;
+            Material output = m == Iron ? WroughtIron : m == Copper ? AnnealedCopper : m;
+            ARC_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1)).fi(Oxygen.getGas((int)m.getMass())).io(INGOT.get(output)).add(m.getId() + "_dust_to_" + output.getId() + "_ingot", m.getMass(), 30, 0, 3);
+            if (m == Iron || m == Copper){
+                ARC_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 1)).fi(Oxygen.getGas((int)m.getMass())).io(INGOT.get(output)).add(m.getId() + "_ingot_to_" + output.getId() + "_ingot", m.getMass(), 30, 0, 3);
+            }
+        });
         addRecyclingRecipe(MotorLV, of(Copper, 2f, Tin, 1f, Steel, 1f, Iron, 0.5f), 1, 1);
         addRecyclingRecipe(MotorMV, of(Copper, 5f, Aluminium, 1f, Steel, 0.5f), 1, 1);
         addRecyclingRecipe(MotorHV, of(Copper, 8f, Gold, 1f, StainlessSteel, 1f, Steel, 0.5f), 1, 3);
