@@ -179,6 +179,7 @@ public class GregTech extends AntimatterMod {
                 AntimatterJEIREIPlugin.addItemsToHide(LAVA);
                 AntimatterJEIREIPlugin.addItemsToHide(l -> {
                     if (!GregTechConfig.GAMEPLAY.HARDER_CIRCUITS){
+                        l.addAll(Arrays.asList(CircuitBoardPhenolic));
                         l.addAll(Arrays.asList(CircuitBasicIntegrated, CircuitGoodIntegrated, CircuitWetware, MicroProcessor, IntegratedProcessor, NanoProcessor, QuantumProcessor));
                     }
                 });
