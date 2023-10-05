@@ -1,12 +1,16 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
+import muramasa.antimatter.material.Material;
+import muramasa.antimatter.pipe.PipeSize;
+import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.ToolTypes;
 import net.minecraft.advancements.CriterionTriggerInstance;
@@ -137,6 +141,17 @@ public class MaterialCrafting {
                     provider.addStackRecipe(consumer, GTIRef.ID, m.getId() + "_ring", "antimatter_material", "has_wire_cutter", provider.hasSafeItem(AntimatterDefaultTools.WIRE_CUTTER.getTag()),
                             AntimatterMaterialTypes.RING.get(m, craftingMultiplier), ImmutableMap.of('H', AntimatterDefaultTools.WIRE_CUTTER.getTag(), 'W', AntimatterMaterialTypes.PLATE.getMaterialTag(m)), "H ", " W");
                 }
+            }
+        });
+        AntimatterAPI.all(ItemPipe.class, i -> {
+            if (i.getSizes().contains(PipeSize.NORMAL)){
+                provider.addStackRecipe(consumer, GTIRef.ID, "", "antimatter_pipes", "has_wrench", in, new ItemStack(i.getRestrictedBlock(PipeSize.NORMAL), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.NORMAL)), " H ", "RPR", " R ");
+            }
+            if (i.getSizes().contains(PipeSize.LARGE)){
+                provider.addStackRecipe(consumer, GTIRef.ID, "", "antimatter_pipes", "has_wrench", in, new ItemStack(i.getRestrictedBlock(PipeSize.LARGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.LARGE)), "HR ", "RPR", " R ");
+            }
+            if (i.getSizes().contains(PipeSize.HUGE)) {
+                provider.addStackRecipe(consumer, GTIRef.ID, "", "antimatter_pipes", "has_wrench", in, new ItemStack(i.getRestrictedBlock(PipeSize.HUGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.HUGE)), " H ", "RPR", "RRR");
             }
         });
     }
