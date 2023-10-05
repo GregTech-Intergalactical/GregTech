@@ -25,6 +25,7 @@ import java.util.List;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.data.AntimatterMaterials.Stone;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.material.Material.NULL;
 import static muramasa.antimatter.material.MaterialTags.*;
@@ -129,6 +130,7 @@ public class MaceratorLoader {
     public static void init(){
         MACERATING.RB().ii(RecipeIngredient.of(Items.STONE,1)).io(new ItemStack(Items.GRAVEL,1)).add("gravel",100,2);
         MACERATING.RB().ii(RecipeIngredient.of(Items.COBBLESTONE,1)).io(new ItemStack(Items.SAND,1)).add("sand",100,2);
+        MACERATING.RB().ii(RecipeIngredient.of(Items.GRAVEL,1)).io(DUST.get(Stone,1)).add("stone_dust_from_gravel",100,2);
         MACERATING.RB().ii(RecipeIngredient.of(Items.BRICK,1)).io(DUST_SMALL.get(Materials.Brick, 2)).add("brick_dust",50,4);
         MACERATING.RB().ii(RecipeIngredient.of(Items.COAL,1)).io(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Coal, 1)).add("coal_dust",50,4);
         MACERATING.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(AntimatterMaterialTypes.DUST.get(Wood, 2)).add("wood_dust",40, 2);
