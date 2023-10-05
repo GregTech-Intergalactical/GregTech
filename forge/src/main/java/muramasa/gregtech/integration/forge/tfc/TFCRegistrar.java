@@ -11,6 +11,7 @@ import muramasa.antimatter.event.forge.AntimatterProvidersEvent;
 import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTypeFluid;
+import muramasa.antimatter.material.TextureSet;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
@@ -42,6 +43,7 @@ import tesseract.FluidPlatformUtils;
 import java.util.function.BiConsumer;
 
 import static muramasa.antimatter.data.AntimatterDefaultTools.SAW;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.gregtech.data.Materials.*;
 
 public class TFCRegistrar implements IAntimatterRegistrar {
@@ -69,13 +71,23 @@ public class TFCRegistrar implements IAntimatterRegistrar {
                 });
             }*/
             Helpers.mapOfKeys(Rock.class, (rock) -> {
-                AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "raw_" + rock.name().toLowerCase(), Material.NULL, new Texture("tfc", "block/rock/raw/" + rock.name().toLowerCase()), SoundType.STONE, false).setStateSupplier(() -> rock.getBlock(Rock.BlockType.RAW).get().defaultBlockState()).setHardnessAndResistance(rock.category().hardness(6.5F), 10.0F).setHarvestLevel(1));
-                AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, rock.name().toLowerCase() + "_gravel", Material.NULL, new Texture("tfc", "block/rock/gravel/" + rock.name().toLowerCase()), SoundType.GRAVEL, false).setSandLike(true).setHardnessAndResistance(rock.category().hardness(2.0F)).setStateSupplier(() -> rock.getBlock(Rock.BlockType.GRAVEL).get().defaultBlockState()).setHarvestLevel(1).setRequiresTool(true));
+                Material material = Material.get(rock.name().toLowerCase());
+                if (material == Material.NULL){
+                    material = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, rock.name().toLowerCase(), rock.color().col, TextureSet.NONE));
+                    material.flags(DUST);
+                }
+                AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "raw_" + rock.name().toLowerCase(), material, new Texture("tfc", "block/rock/raw/" + rock.name().toLowerCase()), SoundType.STONE, false).setStateSupplier(() -> rock.getBlock(Rock.BlockType.RAW).get().defaultBlockState()).setHardnessAndResistance(rock.category().hardness(6.5F), 10.0F).setHarvestLevel(1));
+                AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, rock.name().toLowerCase() + "_gravel", material, new Texture("tfc", "block/rock/gravel/" + rock.name().toLowerCase()), SoundType.GRAVEL, false).setSandLike(true).setHardnessAndResistance(rock.category().hardness(2.0F)).setStateSupplier(() -> rock.getBlock(Rock.BlockType.GRAVEL).get().defaultBlockState()).setHarvestLevel(1).setRequiresTool(true));
                 return true;
             });
             Helpers.mapOfKeys(SandBlockType.class, (sand) -> {
-                AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, sand.name().toLowerCase() + "_sand", Material.NULL, new Texture("tfc","block/sand/" + sand.name().toLowerCase()), SoundType.SAND, false).setSandLike(true).setRequiresTool(true).setFallingDustColor(sand.getDustColor()).setStateSupplier(() -> AntimatterPlatformUtils.getBlockFromId("tfc", "sand/" + sand.name().toLowerCase()).defaultBlockState()));
-                AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, sand.name().toLowerCase() + "_raw_sandstone", Material.NULL, new Texture("tfc", "block/sandstone/bottom/" + sand.name().toLowerCase()), SoundType.SAND, false).setStateSupplier(() -> AntimatterPlatformUtils.getBlockFromId("tfc", "raw_sandstone/" + sand.name().toLowerCase()).defaultBlockState()));
+                Material material = Material.get(sand.name().toLowerCase() + "_sand");
+                if (material == Material.NULL){
+                    material = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, sand.name().toLowerCase() + "_sand", sand.getDustColor(), TextureSet.NONE));
+                    material.flags(DUST);
+                }
+                AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, sand.name().toLowerCase() + "_sand", material, new Texture("tfc","block/sand/" + sand.name().toLowerCase()), SoundType.SAND, false)).setSandLike(true).setRequiresTool(true).setFallingDustColor(sand.getDustColor()).setStateSupplier(() -> AntimatterPlatformUtils.getBlockFromId("tfc", "sand/" + sand.name().toLowerCase()).defaultBlockState());
+                AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, sand.name().toLowerCase() + "_raw_sandstone", material, new Texture("tfc", "block/sandstone/bottom/" + sand.name().toLowerCase()), SoundType.SAND, false).setStateSupplier(() -> AntimatterPlatformUtils.getBlockFromId("tfc", "raw_sandstone/" + sand.name().toLowerCase()).defaultBlockState()));
                 return true;
             });
             AntimatterMaterialTypes.LIQUID.set((m, i) -> {
