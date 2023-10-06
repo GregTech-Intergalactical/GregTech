@@ -67,6 +67,7 @@ public class GregTechLocalizations {
             add(GregTechData.MINING_PIPE, "Mining Pipe");
             add(GregTechData.MINING_PIPE_THIN, "Mining Pipe");
             add(GregTechData.BRITTLE_CHARCOAL, "Brittle Charcoal");
+            add(GregTechData.SOLID_SUPER_FUEL, "Solid Super Fuel");
             AntimatterAPI.all(BlockFakeCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockColoredWall.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));

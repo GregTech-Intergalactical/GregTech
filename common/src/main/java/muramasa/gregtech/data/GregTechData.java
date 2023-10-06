@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
 import java.util.HashSet;
@@ -111,6 +112,7 @@ public class GregTechData {
     public static ItemBasic<?> GraviStar = new ItemBasic<>(GTIRef.ID, "gravi_star").tip("Ultimate Nether Star");
     public static ItemBasic<?> CompressedFireClay = new ItemBasic<>(GTIRef.ID, "compressed_fire_clay").tip("Brick Shaped");
     public static ItemBasic<?> FireBrick = new ItemBasic<>(GTIRef.ID, "fire_brick").tip("Heat Resistant");
+    public static ItemBasic<?> SuperFuelBinder = new ItemBasic<>(GTIRef.ID, "super_fuel_binder");
 
     public static ItemPowerUnit PowerUnitLV = new ItemPowerUnit(GTIRef.ID, "power_unit_lv", Aluminium);
     public static ItemPowerUnit PowerUnitMV = new ItemPowerUnit(GTIRef.ID, "power_unit_mv", StainlessSteel);
@@ -345,6 +347,13 @@ public class GregTechData {
     //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(GTIRef.ID, "anthracite_coal", new Texture(GTIRef.ID, "block/basic/anthracite_coal");
 
     public static final BlockBasic BRITTLE_CHARCOAL = new BlockBasic(GTIRef.ID, "brittle_charcoal", BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.WOOD, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F, 6.0F)){
+        @Override
+        public Texture[] getTextures() {
+            return new Texture[]{new Texture("minecraft:block/coal_block")};
+        }
+    };
+
+    public static final BlockBasic SOLID_SUPER_FUEL = new BlockBasic(GTIRef.ID, "solid_super_fuel", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F, 6.0F)){
         @Override
         public Texture[] getTextures() {
             return new Texture[]{new Texture("minecraft:block/coal_block")};

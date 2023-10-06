@@ -5,6 +5,7 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.Materials;
@@ -15,10 +16,13 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static muramasa.antimatter.data.AntimatterMaterialTypes.BLOCK;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.*;
 
+import static muramasa.gregtech.data.GregTechData.SOLID_SUPER_FUEL;
+import static muramasa.gregtech.data.GregTechData.SuperFuelBinder;
 import static muramasa.gregtech.data.RecipeMaps.FLUID_CANNING;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 import static muramasa.gregtech.data.Materials.*;
@@ -116,6 +120,25 @@ public class MixerLoader {
         MIXING.RB().ii(of(DUST.get(AntimatterMaterials.Stone,3)),of(DUST.get(Clay,1))).fi(AntimatterMaterials.Water.getLiquid(500)).fo(Concrete.getLiquid(576)).add("concrete", 20, 16);
         MIXING.RB().ii(RecipeIngredient.of(GregTechData.Biochaff)).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(Biomass.getLiquid(1000)).add("biomass", 400, 8);
         MIXING.RB().ii(DUST.getMaterialIngredient(Lapis, 1)).fi(Water.getLiquid(125)).fo(Coolant.getLiquid(125)).add("cold_coolant", 256, 48);
+        long oneThird = AntimatterPlatformUtils.isFabric() ? 27000 : 333;
+        MIXING.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Lithium, 1)).fi(Glue.getLiquid(oneThird)).io(new ItemStack(SuperFuelBinder, 8)).add("super_fuel_binder", 40 * 20, 16);
+        MIXING.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Sodium, 1)).fi(Glue.getLiquid(oneThird)).io(new ItemStack(SuperFuelBinder, 8)).add("super_fuel_binder_1", 40 * 20, 16);
+        MIXING.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Caesium, 1)).fi(Glue.getLiquid(oneThird)).io(new ItemStack(SuperFuelBinder, 12)).add("super_fuel_binder_2", 40 * 20, 16);
+        MIXING.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Lithium, 1)).fi(Lubricant.getLiquid(300)).io(new ItemStack(SuperFuelBinder, 8)).add("super_fuel_binder_3", 60 * 20, 16);
+        MIXING.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Sodium, 1)).fi(Lubricant.getLiquid(300)).io(new ItemStack(SuperFuelBinder, 8)).add("super_fuel_binder_4", 60 * 20, 16);
+        MIXING.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Caesium, 1)).fi(Lubricant.getLiquid(300)).io(new ItemStack(SuperFuelBinder, 12)).add("super_fuel_binder_5", 60 * 20, 16);
+        MIXING.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Lithium, 1)).fi(Creosote.getLiquid(1000)).io(new ItemStack(SuperFuelBinder, 8)).add("super_fuel_binder_6", 80 * 20, 16);
+        MIXING.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Sodium, 1)).fi(Creosote.getLiquid(1000)).io(new ItemStack(SuperFuelBinder, 8)).add("super_fuel_binder_7", 80 * 20, 16);
+        MIXING.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Caesium, 1)).fi(Creosote.getLiquid(1000)).io(new ItemStack(SuperFuelBinder, 12)).add("super_fuel_binder_8", 80 * 20, 16);
+        MIXING.RB().ii(BLOCK.getMaterialIngredient(Lignite, 1), of(SuperFuelBinder, 6)).fi(HeavyFuel.getLiquid(1500)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_lignite", 120, 96);
+        MIXING.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(SuperFuelBinder, 4)).fi(HeavyFuel.getLiquid(1200)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal", 120, 96);
+        MIXING.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(SuperFuelBinder, 2)).fi(HeavyFuel.getLiquid(750)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal", 120, 96);
+        MIXING.RB().ii(BLOCK.getMaterialIngredient(Lignite, 1), of(SuperFuelBinder, 6)).fi(LPG.getGas(1500)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_lignite_lpg", 120, 96);
+        MIXING.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(SuperFuelBinder, 4)).fi(LPG.getGas(1200)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal_lpg", 120, 96);
+        MIXING.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(SuperFuelBinder, 2)).fi(LPG.getGas(750)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal_lpg", 120, 96);
+        MIXING.RB().ii(BLOCK.getMaterialIngredient(Lignite, 1), of(SuperFuelBinder, 6)).fi(CetaneBoostedDiesel.getLiquid(1000)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_lignite_nitro", 120, 96);
+        MIXING.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(SuperFuelBinder, 4)).fi(CetaneBoostedDiesel.getLiquid(800)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal_nitro", 120, 96);
+        MIXING.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(SuperFuelBinder, 2)).fi(CetaneBoostedDiesel.getLiquid(500)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal_nitro", 120, 96);
     }
 
 }
