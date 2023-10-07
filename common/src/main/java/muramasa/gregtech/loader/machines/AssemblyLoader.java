@@ -22,6 +22,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.Arrays;
 
@@ -145,19 +146,23 @@ public class AssemblyLoader {
 
     private static void misc(){
         ASSEMBLING.RB().ii(of(ItemTags.PLANKS,8), INT_CIRCUITS.get(8)).io(new ItemStack(Items.CHEST,1)).add("chest",100,4);
+
         ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(COVER_DRAIN.getItem()).add("drain",800, 16);
         ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(COVER_PUMP.getItem(LV))).io(COVER_AIR_VENT .getItem()).add("air_vent",800, 16);
-        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(SolderingAlloy.getLiquid(L / 2)).io(COVER_REDSTONE_MACHINE_CONTROLLER.getItem()).add("redstone_machine_controller_soldering_alloy", 800, 16);
-        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Lead.getLiquid(L * 2)).io(COVER_REDSTONE_MACHINE_CONTROLLER.getItem()).add("redstone_machine_controller_lead", 800, 16);
-        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1)).fi(Tin.getLiquid(L)).io(COVER_REDSTONE_MACHINE_CONTROLLER.getItem()).add("redstone_machine_controller_tin", 800, 16);
-        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1)).fi(SolderingAlloy.getLiquid(L / 2)).io(COVER_ENERGY_DETECTOR.getItem()).add("energy_detector_soldering_alloy", 800, 16);
-        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1)).fi(Lead.getLiquid(L * 2)).io(COVER_ENERGY_DETECTOR.getItem()).add("energy_detector_lead", 800, 16);
-        ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1)).fi(Tin.getLiquid(L)).io(COVER_ENERGY_DETECTOR.getItem()).add("energy_detector_tin", 800, 16);
+        addCoverRecipe(COVER_REDSTONE_MACHINE_CONTROLLER.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1));
+        addCoverRecipe(COVER_ENERGY_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1));
+        addCoverRecipe(COVER_FLUID_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.HEAVY_WEIGHTED_PRESSURE_PLATE, 1));
         ASSEMBLING.RB().ii(of(CarbonFibre, 2), INT_CIRCUITS.get(2)).io(CarbonMesh).add("carbon_mesh", 800, 2);
         ASSEMBLING.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
         ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
         ASSEMBLING.RB().ii(of(COVER_SHUTTER.getItem()), of(CIRCUITS_GOOD, 2)).io(COVER_FLUID_FILTER.getItem()).add("fluid_filter", 800, 4);
         ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_TRAPDOOR)).io(new ItemStack(COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
+    }
+
+    private static void addCoverRecipe(ItemStack cover, Ingredient... inputs){
+        ASSEMBLING.RB().ii(inputs).fi(SolderingAlloy.getLiquid(L / 2)).io(cover).add(AntimatterPlatformUtils.getIdFromItem(cover.getItem()).getPath() + "_soldering_alloy", 800, 16);
+        ASSEMBLING.RB().ii(inputs).fi(Lead.getLiquid(L * 2)).io(cover).add(AntimatterPlatformUtils.getIdFromItem(cover.getItem()).getPath() + "_lead", 800, 16);
+        ASSEMBLING.RB().ii(inputs).fi(Tin.getLiquid(L)).io(cover).add(AntimatterPlatformUtils.getIdFromItem(cover.getItem()).getPath() + "_tin", 800, 16);
     }
 
     private static void motors(){

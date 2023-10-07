@@ -39,8 +39,9 @@ public class CoverFluidDetector extends BaseCover {
         this.filter = new CoverFluidFilter(source, null, side, GregTechData.COVER_FLUID_FILTER);
         filter.onCreate();
         addGuiCallback(t -> {
-            t.addSwitchButton(79, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, true, b -> "tooltip.gti.redstone_mode." + (b ? "inverted" : "normal"));
+            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, true, b -> "tooltip.gti.redstone_mode." + (b ? "inverted" : "normal"));
         });
+        this.gui.getSlots().add(SlotTypes.FILTERABLE, 88, 34);
     }
 
     @Override
