@@ -10,13 +10,11 @@ import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
-import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.Machines;
-import muramasa.gregtech.data.SlotTypes;
 import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -189,7 +187,7 @@ public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
         public BufferItemHandler(BlockEntityBuffer tile) {
             super(tile);
             int count = tile.getMachineType() == Machines.SUPER_BUFFER ? 256 : tile.getMachineType().getCount(tile.getMachineTier(), SlotType.STORAGE);
-            this.inventories.put(SlotType.STORAGE, new TrackedItemHandler<>(tile, SlotType.STORAGE, count, true, true, (t, s) -> true, ContentEvent.ITEM_INPUT_CHANGED){
+            this.inventories.put(SlotType.STORAGE, new TrackedItemHandler<>(tile, SlotType.STORAGE, count, true, true, (t, s) -> true){
                 @NotNull
                 @Override
                 public ItemStack extractItem(int slot, int amount, boolean simulate) {

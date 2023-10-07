@@ -7,7 +7,7 @@ import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.cover.CoverOutput;
 import muramasa.antimatter.cover.ICover;
-import muramasa.antimatter.machine.event.ContentEvent;
+import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.types.Machine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -77,7 +77,7 @@ public class BlockEntityInfiniteFluid extends BlockEntityMachine<BlockEntityInfi
 
         public InfiniteFluidHandler(BlockEntityInfiniteFluid tile) {
             super(tile);
-            tanks.put(FluidDirection.OUTPUT, FluidTanks.create(tile, ContentEvent.FLUID_OUTPUT_CHANGED, b -> {
+            tanks.put(FluidDirection.OUTPUT, FluidTanks.create(tile, SlotType.FL_OUT, b -> {
                 b.tank(Integer.MAX_VALUE);
                 return b;
             }));

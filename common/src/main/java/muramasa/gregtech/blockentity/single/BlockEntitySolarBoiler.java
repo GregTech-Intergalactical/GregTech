@@ -5,7 +5,7 @@ import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
-import muramasa.antimatter.machine.event.ContentEvent;
+import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.util.Utils;
@@ -179,11 +179,11 @@ public class BlockEntitySolarBoiler extends BlockEntityMachine<BlockEntitySolarB
     public static class LavaBoilerFluidHandler extends MachineFluidHandler<BlockEntitySolarBoiler> {
         public LavaBoilerFluidHandler(BlockEntitySolarBoiler tile) {
             super(tile, 16000, 1000 * (250 + tile.getMachineTier().getIntegerId()));
-            tanks.put(FluidDirection.INPUT, FluidTanks.create(tile, ContentEvent.FLUID_INPUT_CHANGED, b -> {
+            tanks.put(FluidDirection.INPUT, FluidTanks.create(tile, SlotType.FL_IN, b -> {
                 b.tank(p -> p.getFluid() == Fluids.WATER || p.getFluid() == DistilledWater.getLiquid(), 16000);
                 return b;
             }));
-            tanks.put(FluidDirection.OUTPUT, FluidTanks.create(tile, ContentEvent.FLUID_OUTPUT_CHANGED, b -> {
+            tanks.put(FluidDirection.OUTPUT, FluidTanks.create(tile, SlotType.FL_OUT, b -> {
                 b.tank(16000);
                 return b;
             }));

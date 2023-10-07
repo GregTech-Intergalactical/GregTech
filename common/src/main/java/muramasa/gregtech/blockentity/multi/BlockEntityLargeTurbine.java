@@ -11,7 +11,6 @@ import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
@@ -72,7 +71,7 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                     @Override
                     public void onMachineEvent(IMachineEvent event, Object... data) {
                         super.onMachineEvent(event, data);
-                        if (event == ContentEvent.ITEM_INPUT_CHANGED){
+                        if (event == SlotType.IT_IN){
                             ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
                             ItemTurbineRotor rotor = stack.getItem() instanceof ItemTurbineRotor rotor1 ? rotor1 : null;
                             if (rotor == null) {

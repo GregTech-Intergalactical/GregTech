@@ -17,6 +17,11 @@ public class CoverFilter extends BaseCover {
         super(source, tier, side, factory);
     }
 
+    public void clearFilter(){
+        blacklist = false;
+        ignoreNBT = false;
+    }
+
     @Override
     public ItemStack getDroppedStack() {
         ItemStack stack =  super.getDroppedStack();

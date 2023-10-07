@@ -114,8 +114,10 @@ public class BlockEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<B
                 }
             }
             if (!tile.tankMachine.isAcidProof() && fluid.getFluid().is(AntimatterTags.ACID)){
-                tile.getLevel().setBlock(tile.getBlockPos(), Blocks.AIR.defaultBlockState(), 3);
-                return 16;
+                if (!simulate) {
+                    tile.getLevel().setBlock(tile.getBlockPos(), Blocks.AIR.defaultBlockState(), 3);
+                }
+                return Math.min(16L, fluid.getFluidAmount());
             }
             return super.insertFluid(fluid, simulate);
         }

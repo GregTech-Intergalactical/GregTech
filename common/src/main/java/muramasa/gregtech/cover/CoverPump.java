@@ -2,9 +2,12 @@ package muramasa.gregtech.cover;
 
 import com.google.common.collect.ImmutableMap;
 import earth.terrarium.botarium.common.fluid.base.FluidContainer;
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.capability.ICoverHandler;
+import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.cover.base.CoverBasicTransport;
 import muramasa.gregtech.data.GregTechData;
@@ -12,6 +15,7 @@ import muramasa.gregtech.data.SlotTypes;
 import muramasa.gregtech.blockentity.single.IFilterable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -24,6 +28,7 @@ import java.util.Objects;
 public class CoverPump extends CoverBasicTransport implements IFilterable {
 
     public static String ID = "pump";
+    private final CoverFluidFilter filter;
 
     public static final Map<Tier, Integer> speeds = ImmutableMap.<Tier, Integer>builder().
             put(Tier.LV, 640 / 20)
@@ -35,6 +40,8 @@ public class CoverPump extends CoverBasicTransport implements IFilterable {
     public CoverPump(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         Objects.requireNonNull(tier);
+        this.filter = new CoverFluidFilter(source, null, side, GregTechData.COVER_FLUID_FILTER);
+        filter.onCreate();
         this.gui.getSlots().add(SlotTypes.FILTERABLE, 79, 53);
     }
 
@@ -42,6 +49,14 @@ public class CoverPump extends CoverBasicTransport implements IFilterable {
     public ResourceLocation getModel(String type, Direction dir) {
         if (type.equals("pipe")) return PIPE_COVER_MODEL;
         return getBasicDepthModel();
+    }
+
+    @Override
+    public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
+        if (object instanceof FluidHolder stack){
+            return filter.onTransfer(stack, inputSide, simulate);
+        }
+        return super.onTransfer(object, inputSide, simulate);
     }
 
     @Override
@@ -91,5 +106,39 @@ public class CoverPump extends CoverBasicTransport implements IFilterable {
     @Override
     public boolean accepts(ItemStack stack) {
         return stack.getItem() == GregTechData.COVER_FLUID_FILTER.getItem().getItem();
+    }
+
+    @Override
+    public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
+        if (tile == this && event == SlotTypes.FILTERABLE){
+            ItemStack slotStack = getInventory(SlotTypes.FILTERABLE).getItem(data[0]);
+            if (slotStack.isEmpty()){
+                filter.clearFilter();
+            } else {
+                filter.addInfoFromStack(slotStack);
+            }
+        }
+        super.onMachineEvent(tile, event, data);
+    }
+
+    @Override
+    public void addInfoFromStack(ItemStack stack) {
+        super.addInfoFromStack(stack);
+        onMachineEvent(this, SlotTypes.FILTERABLE, 0);
+    }
+
+    @Override
+    public void deserialize(CompoundTag nbt) {
+        super.deserialize(nbt);
+        if (nbt.contains("filter")) {
+            filter.deserialize(nbt.getCompound("filter"));
+        }
+    }
+
+    @Override
+    public CompoundTag serialize() {
+        CompoundTag nbt =  super.serialize();
+        nbt.put("filter", filter.serialize());
+        return nbt;
     }
 }

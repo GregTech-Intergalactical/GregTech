@@ -3,7 +3,6 @@ package muramasa.gregtech.data;
 import muramasa.antimatter.capability.item.EmptyContainer;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.slot.AbstractSlot;
-import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.gregtech.blockentity.single.IFilterable;
 
 public class SlotTypes {
@@ -12,5 +11,5 @@ public class SlotTypes {
             return ((IFilterable)t).accepts(i);
         }
         return true;
-    },ContentEvent.ITEM_INPUT_CHANGED, true, true);
+    }, true, true);
 }

@@ -2,11 +2,14 @@ package muramasa.gregtech.cover;
 
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.ICoverHandler;
+import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.*;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.cover.base.CoverBasicTransport;
 import muramasa.gregtech.data.GregTechData;
@@ -37,6 +40,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterable {
     public static String ID = "conveyor";
 
     private boolean extracting = true;
+    private final CoverItemFilter filter;
 
     public static final Map<Tier, Integer> speeds = ImmutableMap.<Tier, Integer>builder().
             put(Tier.LV, 400)
@@ -47,6 +51,8 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterable {
 
     public CoverConveyor(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
+        this.filter = new CoverItemFilter(source, null, side, GregTechData.COVER_ITEM_FILTER);
+        filter.onCreate();
         Objects.requireNonNull(tier);
         this.gui.getSlots().add(SlotTypes.FILTERABLE, 79, 53);
     }
@@ -55,12 +61,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterable {
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (object instanceof ItemStack stack){
-            ItemStack compare = getInventory(SlotTypes.FILTERABLE).getItem(0);
-            if (compare.hasTag()){
-                CompoundTag nbt = compare.getTag();
-                boolean blacklist = nbt.getBoolean("blacklist");
-
-            }
+            return filter.onTransfer(stack, inputSide, simulate);
         }
         return super.onTransfer(object, inputSide, simulate);
     }
@@ -134,5 +135,39 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterable {
     @Override
     public boolean accepts(ItemStack stack) {
         return stack.getItem() == GregTechData.COVER_ITEM_FILTER.getItem().getItem();
+    }
+
+    @Override
+    public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
+        if (tile == this && event == SlotTypes.FILTERABLE){
+            ItemStack slotStack = getInventory(SlotTypes.FILTERABLE).getItem(data[0]);
+            if (slotStack.isEmpty()){
+                filter.clearFilter();
+            } else {
+                filter.addInfoFromStack(slotStack);
+            }
+        }
+        super.onMachineEvent(tile, event, data);
+    }
+
+    @Override
+    public void addInfoFromStack(ItemStack stack) {
+        super.addInfoFromStack(stack);
+        onMachineEvent(this, SlotTypes.FILTERABLE, 0);
+    }
+
+    @Override
+    public void deserialize(CompoundTag nbt) {
+        super.deserialize(nbt);
+        if (nbt.contains("filter")) {
+            filter.deserialize(nbt.getCompound("filter"));
+        }
+    }
+
+    @Override
+    public CompoundTag serialize() {
+        CompoundTag nbt =  super.serialize();
+        nbt.put("filter", filter.serialize());
+        return nbt;
     }
 }

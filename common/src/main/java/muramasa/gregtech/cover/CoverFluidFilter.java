@@ -19,6 +19,11 @@ public class CoverFluidFilter extends CoverFilter {
         super(source, tier, side, factory);
         getGui().getSlots().add(SlotType.DISPLAY_SETTABLE, 80, 25);
     }
+    @Override
+    public void clearFilter(){
+        super.clearFilter();
+        getInventory(SlotType.DISPLAY_SETTABLE).clearContent();
+    }
 
     @Override
     public <T> boolean blocksCapability(Class<T> cap, @Nullable Direction side) {
@@ -26,8 +31,8 @@ public class CoverFluidFilter extends CoverFilter {
     }
 
     @Override
-    public boolean onTransfer(Object object, boolean inputSide, boolean execute) {
-        super.onTransfer(object, inputSide, execute);
+    public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
+        super.onTransfer(object, inputSide, simulate);
         if (object instanceof FluidHolder fluidHolder) {
             ItemStack filter = getInventory(SlotType.DISPLAY_SETTABLE).getItem(0);
             boolean empty = filter.isEmpty() || FluidHooks.safeGetItemFluidManager(filter).map(f -> {

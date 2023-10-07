@@ -3,8 +3,8 @@ package muramasa.gregtech.blockentity.single;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
+import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.machine.event.ContentEvent;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
@@ -88,12 +88,10 @@ public class BlockEntitySteamMachine extends BlockEntityMachine<BlockEntitySteam
         @Override
         public void onMachineEvent(IMachineEvent event, Object... data) {
             super.onMachineEvent(event, data);
-            if (event instanceof ContentEvent) {
-                if (event == ContentEvent.FLUID_INPUT_CHANGED) {
-                    if (data != null && data.length > 0) {
-                        if (data[0] instanceof FluidHolder && ((FluidHolder)data[0]).getFluid().builtInRegistryHolder().is(GregTechTags.STEAM)) {
-                            checkRecipe();
-                        }
+            if (event == SlotType.FL_IN) {
+                if (data != null && data.length > 0) {
+                    if (data[0] instanceof FluidHolder && ((FluidHolder) data[0]).getFluid().builtInRegistryHolder().is(GregTechTags.STEAM)) {
+                        checkRecipe();
                     }
                 }
             }

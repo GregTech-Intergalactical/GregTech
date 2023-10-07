@@ -21,13 +21,19 @@ public class CoverItemFilter extends CoverFilter {
     }
 
     @Override
+    public void clearFilter(){
+        super.clearFilter();
+        getInventory(SlotType.DISPLAY_SETTABLE).clearContent();
+    }
+
+    @Override
     public <T> boolean blocksCapability(Class<T> cap, @Nullable Direction side) {
         return false;
     }
 
     @Override
-    public boolean onTransfer(Object object, boolean inputSide, boolean execute) {
-        super.onTransfer(object, inputSide, execute);
+    public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
+        super.onTransfer(object, inputSide, simulate);
         if (object instanceof ItemStack item) {
             ItemStack filter = getInventory(SlotType.DISPLAY_SETTABLE).getItem(0);
             boolean empty = filter.isEmpty();
