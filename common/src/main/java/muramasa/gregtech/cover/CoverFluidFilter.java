@@ -17,12 +17,12 @@ import org.jetbrains.annotations.Nullable;
 public class CoverFluidFilter extends CoverFilter {
     public CoverFluidFilter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        getGui().getSlots().add(SlotType.DISPLAY_SETTABLE, 80, 25);
+        getGui().getSlots().add(SlotType.FLUID_DISPLAY_SETTABLE, 80, 25);
     }
     @Override
     public void clearFilter(){
         super.clearFilter();
-        getInventory(SlotType.DISPLAY_SETTABLE).clearContent();
+        getInventory(SlotType.FLUID_DISPLAY_SETTABLE).clearContent();
     }
 
     @Override
@@ -34,7 +34,7 @@ public class CoverFluidFilter extends CoverFilter {
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         super.onTransfer(object, inputSide, simulate);
         if (object instanceof FluidHolder fluidHolder) {
-            ItemStack filter = getInventory(SlotType.DISPLAY_SETTABLE).getItem(0);
+            ItemStack filter = getInventory(SlotType.FLUID_DISPLAY_SETTABLE).getItem(0);
             boolean empty = filter.isEmpty() || FluidHooks.safeGetItemFluidManager(filter).map(f -> {
                 for (int i = 0; i < f.getTankAmount(); i++){
                     if (!f.getFluidInTank(i).isEmpty()){
