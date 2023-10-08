@@ -3,10 +3,12 @@ package muramasa.gregtech.cover;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.*;
+import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.event.IMachineEvent;
@@ -55,6 +57,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterable {
         filter.onCreate();
         Objects.requireNonNull(tier);
         this.gui.getSlots().add(SlotTypes.FILTERABLE, 79, 53);
+        //addGuiCallback(t -> t.addButton(106, 53, ButtonOverlay.ARROW_LEFT, true));
     }
 
 
@@ -148,6 +151,20 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterable {
             }
         }
         super.onMachineEvent(tile, event, data);
+    }
+
+    @Override
+    public void onGuiEvent(IGuiEvent event, Player playerEntity) {
+        super.onGuiEvent(event, playerEntity);
+        if (event.getFactory() == GuiEvents.EXTRA_BUTTON){
+
+            GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
+            if (ev.data[1] == 2){
+                filter.openGui(playerEntity, side);
+                if (handler.getTile() instanceof BlockEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
+                if (handler.getTile() instanceof BlockEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
+            }
+        }
     }
 
     @Override

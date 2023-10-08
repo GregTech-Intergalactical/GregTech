@@ -2,14 +2,21 @@ package muramasa.gregtech.cover;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
+import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
+import muramasa.antimatter.gui.ButtonOverlay;
 import muramasa.antimatter.gui.SlotType;
+import muramasa.antimatter.gui.event.GuiEvents;
+import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
 import muramasa.gregtech.cover.base.CoverFilter;
+import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -17,7 +24,10 @@ import org.jetbrains.annotations.Nullable;
 public class CoverFluidFilter extends CoverFilter {
     public CoverFluidFilter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        getGui().getSlots().add(SlotType.FLUID_DISPLAY_SETTABLE, 80, 25);
+        getGui().getSlots().add(SlotType.FLUID_DISPLAY_SETTABLE, 88, 34);
+        addGuiCallback(t -> {
+            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.WHITELIST, ButtonOverlay.BLACKLIST,h -> blacklist, true, b -> "tooltip.gti." + (b ? "blacklist" : "whitelist"));
+        });
     }
     @Override
     public void clearFilter(){
@@ -28,6 +38,18 @@ public class CoverFluidFilter extends CoverFilter {
     @Override
     public <T> boolean blocksCapability(Class<T> cap, @Nullable Direction side) {
         return false;
+    }
+
+    @Override
+    public void onGuiEvent(IGuiEvent event, Player playerEntity) {
+        if (event.getFactory() == GuiEvents.EXTRA_BUTTON){
+            GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
+            if (ev.data[1] == 0){
+                blacklist = !blacklist;
+                if (handler.getTile() instanceof BlockEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
+                if (handler.getTile() instanceof BlockEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
+            }
+        }
     }
 
     @Override

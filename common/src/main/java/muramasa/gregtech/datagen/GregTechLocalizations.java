@@ -43,6 +43,10 @@ public class GregTechLocalizations {
             add("tooltip.gti.export_mode.1", "Import");
             add("tooltip.gti.export_mode.2", "Export allow Import");
             add("tooltip.gti.export_mode.3", "Import allow Export");
+            add("tooltip.gti.whitelist", "Whitelist");
+            add("tooltip.gti.blacklist", "Blacklist");
+            add("tooltip.gti.nbt.on", "Don't ignore nbt");
+            add("tooltip.gti.nbt.off", "Ignore nbt");
         }
 
         @Override
