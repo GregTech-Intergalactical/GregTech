@@ -44,7 +44,6 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
         super(type, pos, state);
         recipeHandler.set(() ->
                 new MachineRecipeHandler<BlockEntityLargeTurbine>(this) {
-
                     @Override
                     protected boolean validateRecipe(IRecipe r) {
                         boolean hasRotor = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0).getItem() instanceof ItemTurbineRotor).orElse(false);
@@ -71,12 +70,14 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                     @Override
                     public void onMachineEvent(IMachineEvent event, Object... data) {
                         super.onMachineEvent(event, data);
-                        if (event == SlotType.IT_IN){
+                        if (event == SlotType.STORAGE){
                             ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
                             ItemTurbineRotor rotor = stack.getItem() instanceof ItemTurbineRotor rotor1 ? rotor1 : null;
                             if (rotor == null) {
                                 resetRecipe();
                                 setMachineState(MachineState.IDLE);
+                            } else {
+                                checkRecipe();
                             }
                         }
                     }

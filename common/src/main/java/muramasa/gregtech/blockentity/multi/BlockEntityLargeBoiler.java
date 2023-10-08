@@ -7,6 +7,7 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.machine.MachineState;
+import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
@@ -128,6 +129,14 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
                 adjustedBurnTime += this.excessProjectedEU / adjustedEUt;
                 this.excessProjectedEU %= adjustedEUt;
                 return adjustedBurnTime;
+            }
+
+            @Override
+            public void onMachineEvent(IMachineEvent event, Object... data) {
+                super.onMachineEvent(event, data);
+                if (event == SlotType.STORAGE){
+                    checkRecipe();
+                }
             }
 
             @Override

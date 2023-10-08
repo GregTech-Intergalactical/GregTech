@@ -1,6 +1,7 @@
 package muramasa.gregtech.blockentity.single;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
+import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.fluid.FluidTanks;
@@ -9,10 +10,12 @@ import muramasa.antimatter.cover.CoverOutput;
 import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -77,12 +80,28 @@ public class BlockEntityInfiniteFluid extends BlockEntityMachine<BlockEntityInfi
 
         public InfiniteFluidHandler(BlockEntityInfiniteFluid tile) {
             super(tile);
-            tanks.put(FluidDirection.OUTPUT, FluidTanks.create(tile, SlotType.FL_OUT, b -> {
+            tanks.put(FluidDirection.INPUT, FluidTanks.create(tile, SlotType.FL_IN, b -> {
                 b.tank(Integer.MAX_VALUE);
                 return b;
             }));
-            FluidTank tank = tanks.get(FluidDirection.OUTPUT).getTank(0);
+            FluidTank tank = tanks.get(FluidDirection.INPUT).getTank(0);
             tank.setFluid(0, Steam.getGas(Integer.MAX_VALUE-1));
+        }
+
+        @Nullable
+        @Override
+        public FluidTanks getOutputTanks() {
+            return super.getInputTanks();
+        }
+
+        @Override
+        protected FluidTank getTank(int tank) {
+            return getInputTanks().getTank(tank);
+        }
+
+        @Override
+        public FluidTanks getTanks(int tank) {
+            return getInputTanks();
         }
 
         @Override
@@ -97,6 +116,7 @@ public class BlockEntityInfiniteFluid extends BlockEntityMachine<BlockEntityInfi
 
         @Override
         public FluidHolder extractFluid(FluidHolder fluid, boolean simulate) {
+            if (!fluid.getFluid().is(GregTechTags.STEAM)) return FluidHooks.emptyFluid();
             return fluid.copyHolder();
         }
 
