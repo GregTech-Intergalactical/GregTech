@@ -12,6 +12,7 @@ import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.ore.BlockOre;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.blockentity.single.BlockEntityMiniPortal;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.machine.BlockEntityHatchHeat;
 import net.minecraft.core.Direction;
@@ -149,6 +150,24 @@ public class RemappingEvents {
         if (handStack.is(AntimatterDefaultTools.HAMMER.getTag())){
             event.getPlayer().setSwimming(true);
         }*/
+    }
+
+    @SubscribeEvent
+    public static void onAttackCapabilitiesEvent(AttachCapabilitiesEvent<BlockEntity> event){
+        if (event.getObject() instanceof BlockEntityMiniPortal miniPortal){
+            event.addCapability(new ResourceLocation(GTIRef.ID, "mini_portal"), new ICapabilityProvider() {
+                @NotNull
+                @Override
+                public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction arg) {
+                    if (arg == null || miniPortal.getOtherSide() == null) return LazyOptional.empty();
+                    BlockEntity offset = miniPortal.getOtherSide().getLevel().getBlockEntity(miniPortal.getOtherSide().getBlockPos().relative(arg.getOpposite()));
+                    if (offset != null){
+                        return offset.getCapability(capability, arg);
+                    }
+                    return LazyOptional.empty();
+                }
+            });
+        }
     }
 
     @SubscribeEvent

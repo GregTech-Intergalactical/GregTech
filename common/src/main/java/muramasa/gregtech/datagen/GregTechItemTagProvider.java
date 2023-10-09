@@ -39,6 +39,7 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         this.tag(CAPACITORS).add(Capacitor, SMDCapacitor);
         this.tag(TRANSISTORS).add(Transistor, SMDTransistor);
         this.tag(DIODES).add(Diode, SMDDiode);
+        this.tag(FIRESTARTER).add(Items.FLINT_AND_STEEL);
         this.tag(GEM.getMaterialTag(Amethyst)).remove(Items.AMETHYST_SHARD);
         this.tag(GEM.getTag()).remove(Items.AMETHYST_SHARD);
         this.tag(BLOCK.getMaterialTag(Amethyst)).remove(Items.AMETHYST_BLOCK);

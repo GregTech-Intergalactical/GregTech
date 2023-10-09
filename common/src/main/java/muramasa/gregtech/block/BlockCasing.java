@@ -12,7 +12,7 @@ import net.minecraft.world.level.material.Material;
 public class BlockCasing extends BlockDynamic {
 
     public BlockCasing(String domain, String id, Block.Properties properties) {
-        super(domain, id, properties);
+        super(domain, id, properties.isValidSpawn((blockState, blockGetter, blockPos, object) -> false));
         if (this.getClass() != BlockCasing.class) AntimatterAPI.register(BlockCasing.class, this);
     }
 

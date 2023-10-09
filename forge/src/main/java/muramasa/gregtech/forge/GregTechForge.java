@@ -13,6 +13,7 @@ import muramasa.gregtech.integration.forge.tfc.TFCRegistrar;
 import muramasa.gregtech.loader.WorldGenLoader;
 import muramasa.gregtech.proxy.ClientHandler;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -38,6 +39,7 @@ public class GregTechForge {
         new TFCRegistrar();
         RemappingEvents.init();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GregTechConfig.COMMON_SPEC);
+
     }
 
     private static void onProviders(AntimatterProvidersEvent ev) {

@@ -8,6 +8,7 @@ import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
 import muramasa.antimatter.util.int3;
 import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechTags;
 import muramasa.gregtech.data.Machines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -61,7 +62,7 @@ public class BlockEntityCharcoalPit extends BlockEntityMachine<BlockEntityCharco
 
     @Override
     public InteractionResult onInteractBoth(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
-        if (player.getItemInHand(hand).getItem() == Items.FLINT_AND_STEEL){
+        if (player.getItemInHand(hand).is(GregTechTags.FIRESTARTER)){
             if (maxProgress == 0 && checkRecursiveBlocks()){
                 Utils.damageStack(player.getItemInHand(hand), hand, player);
                 if (level.isClientSide) {
