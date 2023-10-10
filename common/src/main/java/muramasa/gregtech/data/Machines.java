@@ -208,7 +208,6 @@ public class Machines {
 
     public static BasicMachine PUMP = new BasicMachine(GTIRef.ID, "electric_pump").addFlags(FLUID).setAllowVerticalFacing(true).setTile(BlockEntityPump::new).noCovers();
     public static BasicMachine CROP_HARVESTER = new BasicMachine(GTIRef.ID, "crop_harvester").setTiers(LV).addFlags(GUI, ITEM).setTile(BlockEntityCropHarvester::new);
-    public static BasicMachine MINIATURE_NETHER_PORTAL = new BasicMachine(GTIRef.ID, "miniature_nether_portal").setTiers(NONE).noCovers().allowFrontIO().baseTexture(new Texture("block/obsidian")).overlayTexture(Textures.MINI_NETHER_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.METAL).requiresCorrectToolForDrops().noOcclusion())).custom(Textures.MINI_PORTAL).setTile(BlockEntityMiniPortal::new);
 
     /**
      ** Creative Machines
