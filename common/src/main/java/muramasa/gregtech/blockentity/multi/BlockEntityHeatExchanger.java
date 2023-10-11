@@ -33,21 +33,5 @@ public class BlockEntityHeatExchanger extends BlockEntityMultiMachine<BlockEntit
 
     public BlockEntityHeatExchanger(Machine type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        recipeHandler.set(() -> new MachineRecipeHandler<>(this) {
-            @Override
-            public boolean consumeResourceForRecipe(boolean simulate) {
-                IRecipe r = activeRecipe;
-                if (simulate) return BlockEntityHeatExchanger.this.HEAT_HANDLERS.stream().mapToInt(IHeatHandler::getHeat).sum() >= r.getPower();
-                int[] count = new int[1];
-                count[0] = (int) r.getPower();
-                for (IHeatHandler heat_handler : BlockEntityHeatExchanger.this.HEAT_HANDLERS) {
-                    var txn = heat_handler.extract();
-                    txn.addData(count[0], -1, a -> count[0] -= a);
-                    txn.commit();
-                    if (count[0] == 0) break;
-                }
-                return true;
-            }
-        });
     }
 }

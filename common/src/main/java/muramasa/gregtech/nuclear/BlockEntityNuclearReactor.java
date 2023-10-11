@@ -86,7 +86,7 @@ public class BlockEntityNuclearReactor extends BlockEntityMultiMachine<BlockEnti
     @Override
     public void onRecipePostTick() {
         super.onRecipePostTick();
-        //Insert heat
+        /*//Insert heat
         IRecipe r = this.recipeHandler.map(MachineRecipeHandler::getActiveRecipe).orElse(null);
         long power = r.getPower();
         int in = (int)((float)power*efficiencyBonus);
@@ -94,7 +94,7 @@ public class BlockEntityNuclearReactor extends BlockEntityMultiMachine<BlockEnti
         for (IHeatHandler handler : heatHandlers) {
             handler.insert(tx);
         }
-        tx.commit();
+        tx.commit();*/
     }
 
     private void onRemoveReactor(BlockEntityNuclearReactor reactor) {
@@ -112,9 +112,9 @@ public class BlockEntityNuclearReactor extends BlockEntityMultiMachine<BlockEnti
     @Override
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
-        for (IHeatHandler handler : heatHandlers) {
+        /*for (IHeatHandler handler : heatHandlers) {
             handler.update(getMachineState() == MachineState.ACTIVE);
-        }
+        }*/
     }
 
     @Override
