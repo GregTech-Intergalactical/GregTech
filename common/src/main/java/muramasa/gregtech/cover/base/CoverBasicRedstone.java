@@ -28,8 +28,6 @@ public class CoverBasicRedstone extends BaseCover {
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 0){
                 redstoneMode = ev.data[0] == 0 ? redstoneMode.next() : redstoneMode.previous();
-                if (handler.getTile() instanceof BlockEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
-                if (handler.getTile() instanceof BlockEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
             }
         }
     }

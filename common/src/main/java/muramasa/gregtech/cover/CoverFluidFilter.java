@@ -46,8 +46,6 @@ public class CoverFluidFilter extends CoverFilter {
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 0){
                 blacklist = !blacklist;
-                if (handler.getTile() instanceof BlockEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
-                if (handler.getTile() instanceof BlockEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
             }
         }
     }

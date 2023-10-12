@@ -60,8 +60,6 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 1){
                 exportMode = ev.data[0] == 0 ? exportMode.next() : exportMode.previous();
-                if (handler.getTile() instanceof BlockEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
-                if (handler.getTile() instanceof BlockEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
             }
         }
     }

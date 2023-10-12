@@ -6,10 +6,12 @@ import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
+import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonOverlay;
+import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
@@ -29,7 +31,7 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-public class CoverFluidDetector extends BaseCover {
+public class CoverFluidDetector extends BaseCover implements IFilterableHandler {
     boolean inverted = false;
     int outputRedstone = 0;
 
@@ -41,7 +43,7 @@ public class CoverFluidDetector extends BaseCover {
         addGuiCallback(t -> {
             t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, true, b -> "tooltip.gti.redstone_mode." + (b ? "inverted" : "normal"));
         });
-        this.gui.getSlots().add(SlotTypes.FILTERABLE, 88, 34);
+        this.gui.getSlots().add(SlotType.STORAGE, 88, 34);
     }
 
     @Override
@@ -111,8 +113,8 @@ public class CoverFluidDetector extends BaseCover {
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 0){
                 inverted = !inverted;
-                if (handler.getTile() instanceof BlockEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos());
-                if (handler.getTile() instanceof BlockEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos());
+                if (handler.getTile() instanceof BlockEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos().relative(side));
+                if (handler.getTile() instanceof BlockEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos().relative(side));
             }
         }
     }
@@ -127,8 +129,8 @@ public class CoverFluidDetector extends BaseCover {
     }
     @Override
     public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
-        if (tile == this && event == SlotTypes.FILTERABLE){
-            ItemStack slotStack = getInventory(SlotTypes.FILTERABLE).getItem(data[0]);
+        if (tile == this && event == SlotType.STORAGE){
+            ItemStack slotStack = getInventory(SlotType.STORAGE).getItem(data[0]);
             if (slotStack.isEmpty()){
                 filter.clearFilter();
             } else {
@@ -141,6 +143,11 @@ public class CoverFluidDetector extends BaseCover {
     @Override
     public void addInfoFromStack(ItemStack stack) {
         super.addInfoFromStack(stack);
-        onMachineEvent(this, SlotTypes.FILTERABLE, 0);
+        onMachineEvent(this, SlotType.STORAGE, 0);
+    }
+
+    @Override
+    public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
+        return stack.getItem() == GregTechData.COVER_FLUID_FILTER.getItem().getItem();
     }
 }

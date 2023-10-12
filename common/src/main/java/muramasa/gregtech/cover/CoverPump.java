@@ -4,8 +4,10 @@ import com.google.common.collect.ImmutableMap;
 import earth.terrarium.botarium.common.fluid.base.FluidContainer;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.capability.ICoverHandler;
+import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.cover.CoverFactory;
+import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.util.Utils;
@@ -25,7 +27,7 @@ import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Objects;
 
-public class CoverPump extends CoverBasicTransport implements IFilterable {
+public class CoverPump extends CoverBasicTransport implements IFilterableHandler {
 
     public static String ID = "pump";
     private final CoverFluidFilter filter;
@@ -42,7 +44,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterable {
         Objects.requireNonNull(tier);
         this.filter = new CoverFluidFilter(source, null, side, GregTechData.COVER_FLUID_FILTER);
         filter.onCreate();
-        this.gui.getSlots().add(SlotTypes.FILTERABLE, 79, 53);
+        this.gui.getSlots().add(SlotType.STORAGE, 79, 53);
     }
 
     @Override
@@ -54,6 +56,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterable {
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (object instanceof FluidHolder stack){
+            if (getInventory(SlotType.STORAGE).getItem(0).isEmpty()) return false;
             return filter.onTransfer(stack, inputSide, simulate);
         }
         return super.onTransfer(object, inputSide, simulate);
@@ -104,14 +107,14 @@ public class CoverPump extends CoverBasicTransport implements IFilterable {
     }
 
     @Override
-    public boolean accepts(ItemStack stack) {
+    public boolean test(SlotType<?> type, int slot, ItemStack stack) {
         return stack.getItem() == GregTechData.COVER_FLUID_FILTER.getItem().getItem();
     }
 
     @Override
     public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
-        if (tile == this && event == SlotTypes.FILTERABLE){
-            ItemStack slotStack = getInventory(SlotTypes.FILTERABLE).getItem(data[0]);
+        if (tile == this && event == SlotType.STORAGE){
+            ItemStack slotStack = getInventory(SlotType.STORAGE).getItem(data[0]);
             if (slotStack.isEmpty()){
                 filter.clearFilter();
             } else {
@@ -124,7 +127,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterable {
     @Override
     public void addInfoFromStack(ItemStack stack) {
         super.addInfoFromStack(stack);
-        onMachineEvent(this, SlotTypes.FILTERABLE, 0);
+        onMachineEvent(this, SlotType.STORAGE, 0);
     }
 
     @Override
