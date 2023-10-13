@@ -10,6 +10,7 @@ dependencies{
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     compileOnly("com.blamejared.crafttweaker:CraftTweaker-common-1.18.2:${rootProject.crafttweaker_version}")
     modCompileOnly("dev.latvian.mods:kubejs-fabric:${rootProject.kubejs_version}")
+    implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:0.2.0-beta.11"))
     implementation(project(path: ":tesseract-common", configuration: "namedElements"))
     implementation(project(path: ":antimatter-common", configuration: "namedElements"))
     modImplementation("io.github.gregtechintergalactical:gtrubber-common:${rootProject.gt_rubber_version}-${rootProject.minecraft_version}"){

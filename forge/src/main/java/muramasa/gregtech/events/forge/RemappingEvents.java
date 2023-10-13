@@ -9,9 +9,11 @@ import muramasa.antimatter.common.event.forge.ForgeCommonEvents;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.fluid.AntimatterFluid;
+import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.ore.BlockOre;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GTRemapping;
 import muramasa.gregtech.blockentity.single.BlockEntityMiniPortal;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.machine.BlockEntityHatchHeat;
@@ -40,93 +42,10 @@ import java.util.Random;
 import java.util.UUID;
 
 import static muramasa.antimatter.material.Material.NULL;
+import static muramasa.gregtech.data.Machines.*;
 
 public class RemappingEvents {
     UUID bearUUID = UUID.fromString("1964e3d1-6500-40e7-9ff2-e6161d41a8c2");
-
-    private static final Map<String, String> REMAPPING_MAP = new Object2ObjectArrayMap<>();
-
-    public static void init(){
-        REMAPPING_MAP.put("coke_oven_bronze", "coke_oven");
-        REMAPPING_MAP.put("primitive_blast_furnace_bronze", "primitive_blast_furnace");
-        REMAPPING_MAP.put("pulverizer_lv", "macerator_lv");
-        REMAPPING_MAP.put("pulverizer_mv", "macerator_mv");
-        REMAPPING_MAP.put("pulverizer_hv", "macerator_hv");
-        REMAPPING_MAP.put("pulverizer_ev", "macerator_ev");
-        REMAPPING_MAP.put("pulverizer_iv", "macerator_iv");
-        REMAPPING_MAP.put("steam_generator_lv", "steam_turbine_lv");
-        REMAPPING_MAP.put("steam_generator_mv", "steam_turbine_mv");
-        REMAPPING_MAP.put("steam_generator_hv", "steam_turbine_hv");
-        REMAPPING_MAP.put("gas_generator_lv", "gas_turbine_lv");
-        REMAPPING_MAP.put("gas_generator_mv", "gas_turbine_mv");
-        REMAPPING_MAP.put("gas_generator_hv", "gas_turbine_hv");
-        REMAPPING_MAP.put("circuit_basic", "basic_integrated_circuit");
-        REMAPPING_MAP.put("circuit_basic_electronic", "basic_electronic_circuit");
-        REMAPPING_MAP.put("circuit_good", "good_electronic_circuit");
-        REMAPPING_MAP.put("circuit_adv", "advanced_circuit");
-        REMAPPING_MAP.put("circuit_nanoprocessor", "nanoprocessor");
-        REMAPPING_MAP.put("circuit_quantumprocessor", "quantumprocessor");
-        REMAPPING_MAP.put("circuit_energy_flow", "energy_flow_circuit");
-        REMAPPING_MAP.put("circuit_wetware", "wetware_circuit");
-        REMAPPING_MAP.put("vacuumtube", "vacuum_tube");
-        REMAPPING_MAP.put("adv_circuit_parts", "advanced_circuit_parts");
-        REMAPPING_MAP.put("battery_hull_small", "small_battery_hull");
-        REMAPPING_MAP.put("battery_hull_medium", "medium_battery_hull");
-        REMAPPING_MAP.put("battery_hull_large", "large_battery_hull");
-        REMAPPING_MAP.put("battery_small_mercury", "small_mercury_battery");
-        REMAPPING_MAP.put("battery_small_acid", "small_acid_battery");
-        REMAPPING_MAP.put("battery_small_cadmium", "small_cadmium_battery");
-        REMAPPING_MAP.put("battery_small_lithium", "small_lithium_battery");
-        REMAPPING_MAP.put("battery_small_sodium", "small_sodium_battery");
-        REMAPPING_MAP.put("battery_medium_mercury", "medium_mercury_battery");
-        REMAPPING_MAP.put("battery_medium_acid", "medium_acid_battery");
-        REMAPPING_MAP.put("battery_medium_cadmium", "medium_cadmium_battery");
-        REMAPPING_MAP.put("battery_medium_lithium", "medium_lithium_battery");
-        REMAPPING_MAP.put("battery_medium_sodium", "medium_sodium_battery");
-        REMAPPING_MAP.put("battery_large_mercury", "large_mercury_battery");
-        REMAPPING_MAP.put("battery_large_acid", "large_acid_battery");
-        REMAPPING_MAP.put("battery_large_cadmium", "large_cadmium_battery");
-        REMAPPING_MAP.put("battery_large_lithium", "large_lithium_battery");
-        REMAPPING_MAP.put("battery_large_sodium", "large_sodium_battery");
-        REMAPPING_MAP.put("coil_cupronickel", "cupronickel_coil");
-        REMAPPING_MAP.put("coil_kanthal", "kanthal_coil");
-        REMAPPING_MAP.put("coil_nichrome", "nichrome_coil");
-        REMAPPING_MAP.put("coil_tungstensteel", "tungstensteel_coil");
-        REMAPPING_MAP.put("coil_hssg", "hssg_coil");
-        REMAPPING_MAP.put("coil_naquadah", "naquadah_coil");
-        REMAPPING_MAP.put("coil_naquadah_alloy", "naquadah_alloy_coil");
-        REMAPPING_MAP.put("coil_fusion", "fusion_coil");
-        REMAPPING_MAP.put("coil_superconductor", "superconductor_coil");
-        REMAPPING_MAP.put("casing_bronze", "bronze_casing");
-        REMAPPING_MAP.put("casing_bricked_bronze", "bricked_bronze_casing");
-        REMAPPING_MAP.put("casing_steel", "steel_casing");
-        REMAPPING_MAP.put("casing_bricked_steel", "bricked_steel_casing");
-        REMAPPING_MAP.put("casing_bronze_plated_brick", "bronze_plated_brick_casing");
-        REMAPPING_MAP.put("casing_solid_steel", "solid_steel_casing");
-        REMAPPING_MAP.put("casing_stainless_steel", "stainless_steel_casing");
-        REMAPPING_MAP.put("casing_titanium", "titanium_casing");
-        REMAPPING_MAP.put("casing_tungstensteel", "tungstensteel_casing");
-        REMAPPING_MAP.put("casing_heat_proof", "heat_proof_casing");
-        REMAPPING_MAP.put("casing_frost_proof", "frost_proof_casing");
-        REMAPPING_MAP.put("casing_radiation_proof", "radiation_proof_casing");
-        REMAPPING_MAP.put("casing_firebox_bronze", "bronze_firebox_casing");
-        REMAPPING_MAP.put("casing_firebox_steel", "steel_firebox_casing");
-        REMAPPING_MAP.put("casing_firebox_titanium", "titanium_firebox_casing");
-        REMAPPING_MAP.put("casing_firebox_tungstensteel", "tungstensteel_firebox_casing");
-        REMAPPING_MAP.put("casing_gearbox_bronze", "bronze_gearbox_casing");
-        REMAPPING_MAP.put("casing_gearbox_steel", "steel_gearbox_casing");
-        REMAPPING_MAP.put("casing_gearbox_titanium", "titanium_gearbox_casing");
-        REMAPPING_MAP.put("casing_gearbox_tungstensteel", "tungstensteel_gearbox_casing");
-        REMAPPING_MAP.put("casing_pipe_bronze", "bronze_pipe_casing");
-        REMAPPING_MAP.put("casing_pipe_steel", "steel_pipe_casing");
-        REMAPPING_MAP.put("casing_pipe_titanium", "titanium_pipe_casing");
-        REMAPPING_MAP.put("casing_pipe_tungstensteel", "tungstensteel_pipe_casing");
-        REMAPPING_MAP.put("casing_engine_intake", "engine_intake_casing");
-        REMAPPING_MAP.put("casing_turbine_1", "steel_turbine_casing");
-        REMAPPING_MAP.put("casing_turbine_2", "stainless_steel_turbine_casing");
-        REMAPPING_MAP.put("casing_turbine_3", "titanium_turbine_casing");
-        REMAPPING_MAP.put("casing_turbine_4", "tungstensteel_turbine_casing");
-    }
 
     @SubscribeEvent
     public static void rightClickEntity(PlayerInteractEvent.EntityInteract event){
@@ -268,17 +187,8 @@ public class RemappingEvents {
             if (id.equals("rubber_sapling")){
                 map.remap(GTRubberData.RUBBER_SAPLING);
             }
-
-            if (id.contains("battery_buffer")){
-                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
-                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
-                if (block != null){
-                    map.remap(block);
-                }
-            }
-            if (REMAPPING_MAP.containsKey(id)){
-                Block block = AntimatterAPI.get(Block.class, REMAPPING_MAP.get(id), GTIRef.ID);
+            if (GTRemapping.getRemappingMap().containsKey(id)){
+                Block block = AntimatterAPI.get(Block.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
@@ -287,17 +197,8 @@ public class RemappingEvents {
         }
         for (RegistryEvent.MissingMappings.Mapping<Block> map : event.getMappings(GTIRef.ID)) {
             String id = map.key.getPath();
-
-            if (id.contains("battery_buffer")){
-                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
-                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
-                if (block != null){
-                    map.remap(block);
-                }
-            }
-            if (REMAPPING_MAP.containsKey(id)){
-                Block block = AntimatterAPI.get(Block.class, REMAPPING_MAP.get(id), GTIRef.ID);
+            if (GTRemapping.getRemappingMap().containsKey(id)){
+                Block block = AntimatterAPI.get(Block.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
@@ -316,16 +217,8 @@ public class RemappingEvents {
                 continue;
             }
 
-            if (id.contains("battery_buffer")){
-                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
-                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
-                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
-                if (block != null){
-                    map.remap(block);
-                }
-            }
-            if (REMAPPING_MAP.containsKey(id)){
-                block = AntimatterAPI.get(BlockEntityType.class, REMAPPING_MAP.get(id), GTIRef.ID);
+            if (GTRemapping.getRemappingMap().containsKey(id)){
+                block = AntimatterAPI.get(BlockEntityType.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
@@ -335,17 +228,8 @@ public class RemappingEvents {
             String id = map.key.getPath();
             BlockEntityType<?> block;
 
-
-            if (id.contains("battery_buffer")){
-                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
-                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
-                block = AntimatterAPI.get(BlockEntityType.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
-                if (block != null){
-                    map.remap(block);
-                }
-            }
-            if (REMAPPING_MAP.containsKey(id)){
-                block = AntimatterAPI.get(BlockEntityType.class, REMAPPING_MAP.get(id), GTIRef.ID);
+            if (GTRemapping.getRemappingMap().containsKey(id)){
+                block = AntimatterAPI.get(BlockEntityType.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
@@ -424,16 +308,8 @@ public class RemappingEvents {
                 map.remap(GTRubberData.StickyResin);
             }
 
-            if (id.contains("battery_buffer")){
-                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
-                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
-                if (block != null){
-                    map.remap(block.asItem());
-                }
-            }
-            if (REMAPPING_MAP.containsKey(id)){
-                Item block = AntimatterAPI.get(Item.class, REMAPPING_MAP.get(id), GTIRef.ID);
+            if (GTRemapping.getRemappingMap().containsKey(id)){
+                Item block = AntimatterAPI.get(Item.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }
@@ -441,17 +317,8 @@ public class RemappingEvents {
         }
         for (RegistryEvent.MissingMappings.Mapping<Item> map : event.getMappings(GTIRef.ID)) {
             String id = map.key.getPath();
-
-            if (id.contains("battery_buffer")){
-                String suffix = id.contains("one") ? "one" : id.contains("four") ? "four" : "nine";
-                String prefix = id.contains("one") ? "1x" : id.contains("four") ? "4x" : "8x";
-                Block block = AntimatterAPI.get(Block.class, id.replaceAll("battery_buffer_" + suffix, prefix + "_battery_buffer"), GTIRef.ID);
-                if (block != null){
-                    map.remap(block.asItem());
-                }
-            }
-            if (REMAPPING_MAP.containsKey(id)){
-                Item block = AntimatterAPI.get(Item.class, REMAPPING_MAP.get(id), GTIRef.ID);
+            if (GTRemapping.getRemappingMap().containsKey(id)){
+                Item block = AntimatterAPI.get(Item.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
                 if (block != null){
                     map.remap(block);
                 }

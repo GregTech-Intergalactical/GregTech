@@ -37,7 +37,6 @@ public class GregTechForge {
         new GregTechPostRegistrar();
         new GregTech();
         new TFCRegistrar();
-        RemappingEvents.init();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GregTechConfig.COMMON_SPEC);
 
     }

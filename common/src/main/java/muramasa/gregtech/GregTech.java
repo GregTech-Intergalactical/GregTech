@@ -176,6 +176,7 @@ public class GregTech extends AntimatterMod {
             }
             case DATA_READY -> {
                 Structures.init();
+                GTRemapping.init();
                 AntimatterJEIREIPlugin.addItemsToHide(LAVA);
                 AntimatterJEIREIPlugin.addItemsToHide(l -> {
                     if (!GregTechConfig.GAMEPLAY.HARDER_CIRCUITS){

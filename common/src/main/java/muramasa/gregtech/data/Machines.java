@@ -198,7 +198,7 @@ public class Machines {
     public static HatchMachine HATCH_FLUID_I = new HatchMachine(GTIRef.ID, "hatch_fluid_input", COVERINPUT).addFlags(GUI, FLUID, CELL);
     public static HatchMachine HATCH_FLUID_O = new HatchMachine(GTIRef.ID, "hatch_fluid_output", COVEROUTPUT).addFlags(GUI, FLUID, CELL);
     //public static final HeatHatch HATCH_HEAT_COPPER = new HeatHatch(GTIRef.ID, "copper_heat", Copper, 386);
-    public static HatchMachine HATCH_ITEM_I = new HatchMachine(GTIRef.ID, "hatch_item_input", COVERINPUT).addFlags(GUI, ITEM);
+    public static HatchMachine HATCH_ITEM_I = new HatchMachine(GTIRef.ID, "item_input_hatch", COVERINPUT).addFlags(GUI, ITEM);
     public static HatchMachine HATCH_MUFFLER = new HatchMachine(GTIRef.ID, "hatch_muffler", COVERMUFFLER).addFlags(GUI, ITEM).setClientTick();
     public static HatchMachine HATCH_ITEM_O = new HatchMachine(GTIRef.ID, "hatch_item_output", COVEROUTPUT).addFlags(GUI, ITEM);
     /**
