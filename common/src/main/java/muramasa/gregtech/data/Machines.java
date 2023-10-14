@@ -193,14 +193,14 @@ public class Machines {
     /**
      ** Hatches
      **/
-    public static HatchMachine HATCH_DYNAMO = new HatchMachine(GTIRef.ID, "hatch_dynamo", COVERDYNAMO).addFlags(ENERGY);
-    public static HatchMachine HATCH_ENERGY = new HatchMachine(GTIRef.ID, "hatch_energy", COVERENERGY).addFlags(ENERGY);
-    public static HatchMachine HATCH_FLUID_I = new HatchMachine(GTIRef.ID, "hatch_fluid_input", COVERINPUT).addFlags(GUI, FLUID, CELL);
-    public static HatchMachine HATCH_FLUID_O = new HatchMachine(GTIRef.ID, "hatch_fluid_output", COVEROUTPUT).addFlags(GUI, FLUID, CELL);
+    public static HatchMachine HATCH_DYNAMO = new HatchMachine(GTIRef.ID, "dynamo_hatch", COVERDYNAMO).addFlags(ENERGY);
+    public static HatchMachine HATCH_ENERGY = new HatchMachine(GTIRef.ID, "energy_hatch", COVERENERGY).addFlags(ENERGY);
+    public static HatchMachine HATCH_FLUID_I = new HatchMachine(GTIRef.ID, "fluid_input_hatch", COVERINPUT).addFlags(GUI, FLUID, CELL);
+    public static HatchMachine HATCH_FLUID_O = new HatchMachine(GTIRef.ID, "fluid_output_hatch", COVEROUTPUT).addFlags(GUI, FLUID, CELL);
     //public static final HeatHatch HATCH_HEAT_COPPER = new HeatHatch(GTIRef.ID, "copper_heat", Copper, 386);
     public static HatchMachine HATCH_ITEM_I = new HatchMachine(GTIRef.ID, "item_input_hatch", COVERINPUT).addFlags(GUI, ITEM);
-    public static HatchMachine HATCH_MUFFLER = new HatchMachine(GTIRef.ID, "hatch_muffler", COVERMUFFLER).addFlags(GUI, ITEM).setClientTick();
-    public static HatchMachine HATCH_ITEM_O = new HatchMachine(GTIRef.ID, "hatch_item_output", COVEROUTPUT).addFlags(GUI, ITEM);
+    public static HatchMachine HATCH_MUFFLER = new HatchMachine(GTIRef.ID, "muffler_hatch", COVERMUFFLER).addFlags(GUI, ITEM).setClientTick();
+    public static HatchMachine HATCH_ITEM_O = new HatchMachine(GTIRef.ID, "item_output_hatch", COVEROUTPUT).addFlags(GUI, ITEM);
     /**
      ** Tanks
      **/

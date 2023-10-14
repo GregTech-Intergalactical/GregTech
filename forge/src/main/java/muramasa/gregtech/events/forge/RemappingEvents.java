@@ -4,6 +4,7 @@ import io.github.gregtechintergalactical.gtrubber.GTRubberData;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.AntimatterRemapping;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.common.event.forge.ForgeCommonEvents;
 import muramasa.antimatter.data.AntimatterDefaultTools;
@@ -143,7 +144,7 @@ public class RemappingEvents {
             }
 
         });
-        for (RegistryEvent.MissingMappings.Mapping<Block> map : event.getMappings("gregtech")) {
+        for (var map : event.getMappings("gregtech")) {
 
             String id = map.key.getPath();
             if (id.startsWith("block_")){
@@ -187,53 +188,13 @@ public class RemappingEvents {
             if (id.equals("rubber_sapling")){
                 map.remap(GTRubberData.RUBBER_SAPLING);
             }
-            if (GTRemapping.getRemappingMap().containsKey(id)){
-                Block block = AntimatterAPI.get(Block.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
+            if (AntimatterRemapping.getRemappingMap().get(GTIRef.ID).containsKey(id)){
+                Block block = AntimatterAPI.get(Block.class, AntimatterRemapping.getRemappingMap().get(GTIRef.ID).get(id));
                 if (block != null){
                     map.remap(block);
                 }
             }
 
-        }
-        for (RegistryEvent.MissingMappings.Mapping<Block> map : event.getMappings(GTIRef.ID)) {
-            String id = map.key.getPath();
-            if (GTRemapping.getRemappingMap().containsKey(id)){
-                Block block = AntimatterAPI.get(Block.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
-                if (block != null){
-                    map.remap(block);
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void remapMissingBlockEntities(final RegistryEvent.MissingMappings<BlockEntityType<?>> event){
-        for (RegistryEvent.MissingMappings.Mapping<BlockEntityType<?>> map : event.getMappings("gregtech")) {
-            String domain = map.key.getNamespace();
-            String id = map.key.getPath();
-            BlockEntityType<?> block = AntimatterAPI.get(BlockEntityType.class, id, GTIRef.ID);
-            if (block != null){
-                map.remap(block);
-                continue;
-            }
-
-            if (GTRemapping.getRemappingMap().containsKey(id)){
-                block = AntimatterAPI.get(BlockEntityType.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
-                if (block != null){
-                    map.remap(block);
-                }
-            }
-        }
-        for (RegistryEvent.MissingMappings.Mapping<BlockEntityType<?>> map : event.getMappings(GTIRef.ID)) {
-            String id = map.key.getPath();
-            BlockEntityType<?> block;
-
-            if (GTRemapping.getRemappingMap().containsKey(id)){
-                block = AntimatterAPI.get(BlockEntityType.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
-                if (block != null){
-                    map.remap(block);
-                }
-            }
         }
     }
 
@@ -283,7 +244,7 @@ public class RemappingEvents {
                 }
             }
         });
-        for (RegistryEvent.MissingMappings.Mapping<Item> map : event.getMappings("gregtech")) {
+        for (var map : event.getMappings("gregtech")) {
             String id = map.key.getPath();
             Item replacement = AntimatterAPI.get(Item.class, id, GTIRef.ANTIMATTER_SHARED);
             if (replacement != null){
@@ -308,17 +269,8 @@ public class RemappingEvents {
                 map.remap(GTRubberData.StickyResin);
             }
 
-            if (GTRemapping.getRemappingMap().containsKey(id)){
-                Item block = AntimatterAPI.get(Item.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
-                if (block != null){
-                    map.remap(block);
-                }
-            }
-        }
-        for (RegistryEvent.MissingMappings.Mapping<Item> map : event.getMappings(GTIRef.ID)) {
-            String id = map.key.getPath();
-            if (GTRemapping.getRemappingMap().containsKey(id)){
-                Item block = AntimatterAPI.get(Item.class, GTRemapping.getRemappingMap().get(id), GTIRef.ID);
+            if (AntimatterRemapping.getRemappingMap().get(GTIRef.ID).containsKey(id)){
+                Item block = AntimatterAPI.get(Item.class, AntimatterRemapping.getRemappingMap().get(GTIRef.ID).get(id));
                 if (block != null){
                     map.remap(block);
                 }
@@ -328,7 +280,7 @@ public class RemappingEvents {
 
     @SubscribeEvent
     public static void remapMissingFluids(final RegistryEvent.MissingMappings<Fluid> event){
-        for (RegistryEvent.MissingMappings.Mapping<Fluid> map : event.getMappings(GTIRef.ID)) {
+        for (var map : event.getMappings(GTIRef.ID)) {
             String id = map.key.getPath();
             String liquid = id.startsWith("flowing_") ? id.replace("flowing_", "") : id;
             AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, liquid);
