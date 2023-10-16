@@ -23,11 +23,11 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
+import org.jetbrains.annotations.Nullable;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractCapUtils;
 import tesseract.TesseractGraphWrappers;
 
-import javax.annotation.Nullable;
 import java.util.Optional;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;

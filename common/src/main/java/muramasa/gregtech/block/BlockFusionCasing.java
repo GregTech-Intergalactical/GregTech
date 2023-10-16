@@ -1,16 +1,10 @@
 package muramasa.gregtech.block;
 
-import muramasa.antimatter.datagen.builder.AntimatterBlockModelBuilder;
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
-
-import javax.annotation.Nullable;
-
-import static muramasa.antimatter.client.AntimatterModelManager.LOADER_DYNAMIC;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
 public class BlockFusionCasing extends BlockCasingMachine {
 

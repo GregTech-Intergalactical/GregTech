@@ -1,13 +1,8 @@
 package muramasa.gregtech.worldgen;
 
-import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.antimatter.worldgen.AntimatterWorldGenerator;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 
 public class OilSpoutEntry {
     final OilSpoutFluid fluid;
@@ -44,8 +39,8 @@ public class OilSpoutEntry {
         return tag;
     }
 
-    @Nonnull
-    public static OilSpoutEntry readFromNBT(@Nonnull CompoundTag tag) {
+    @NotNull
+    public static OilSpoutEntry readFromNBT(@NotNull CompoundTag tag) {
         OilSpoutEntry info = new OilSpoutEntry(tag.contains("fluid") ? OilSpoutSavedData.getOilSpoutFluid(tag.getString("fluid")) : null, tag.getInt("currentYield"));
         info.level = tag.getInt("level");
         return info;

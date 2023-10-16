@@ -1,13 +1,12 @@
 package muramasa.gregtech.cover.base;
 
+import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonOverlay;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.cover.ICoverRedstoneSensitive;
 import muramasa.gregtech.cover.ImportExportMode;
@@ -15,9 +14,7 @@ import muramasa.gregtech.cover.RedstoneMode;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
-
-
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import static muramasa.gregtech.cover.ImportExportMode.EXPORT;
 import static muramasa.gregtech.cover.ImportExportMode.IMPORT;

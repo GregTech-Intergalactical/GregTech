@@ -14,12 +14,12 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
 import tesseract.api.context.TesseractItemContext;
 import tesseract.api.gt.IEnergyHandlerItem;
 import tesseract.api.gt.IEnergyItem;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 

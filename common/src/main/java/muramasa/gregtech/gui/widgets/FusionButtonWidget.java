@@ -11,9 +11,9 @@ import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.blockentity.multi.BlockEntityFusionReactor;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class FusionButtonWidget extends Widget {
     ResourceLocation middle = new ResourceLocation(GTIRef.ID, "textures/gui/background/fusion_computer_middle_overlay.png");
@@ -21,7 +21,7 @@ public class FusionButtonWidget extends Widget {
 
     BlockEntityFusionReactor.Display display = BlockEntityFusionReactor.Display.REGULAR;
 
-    protected FusionButtonWidget(@Nonnull GuiInstance gui, @Nullable IGuiElement parent) {
+    protected FusionButtonWidget(@NotNull GuiInstance gui, @Nullable IGuiElement parent) {
         super(gui, parent);
         setW(176);
         setH(182);

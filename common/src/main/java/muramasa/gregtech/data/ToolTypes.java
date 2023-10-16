@@ -20,11 +20,11 @@ import net.minecraft.util.Tuple;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
+import org.jetbrains.annotations.NotNull;
 import tesseract.TesseractCapUtils;
 import tesseract.api.gt.IEnergyHandlerItem;
 import tesseract.api.gt.IGTNode;
 
-import javax.annotation.Nonnull;
 import java.util.Map;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
@@ -51,7 +51,7 @@ public class ToolTypes {
         }
 
         @Override
-        public Map<String, Object> getFromResult(@Nonnull ItemStack stack) {
+        public Map<String, Object> getFromResult(@NotNull ItemStack stack) {
             CompoundTag nbt = stack.getOrCreateTagElement(muramasa.antimatter.Ref.TAG_TOOL_DATA);
             Material primary = AntimatterAPI.get(Material.class, nbt.getString(muramasa.antimatter.Ref.KEY_TOOL_DATA_PRIMARY_MATERIAL));
             Material secondary = AntimatterAPI.get(Material.class, nbt.getString(muramasa.antimatter.Ref.KEY_TOOL_DATA_SECONDARY_MATERIAL));
@@ -70,7 +70,7 @@ public class ToolTypes {
         }
 
         @Override
-        public Map<String, Object> getFromResult(@Nonnull ItemStack stack) {
+        public Map<String, Object> getFromResult(@NotNull ItemStack stack) {
             return ImmutableMap.of();
         }
     });

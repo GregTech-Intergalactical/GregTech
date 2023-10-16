@@ -23,15 +23,6 @@ architectury {
 loom{
     accessWidenerPath = project(":antimatter-common").file("src/main/resources/antimatter.accesswidener")
     forge {
-        dataGen {
-            mod project.modid
-        }
-
-        launches {
-            data {
-                arg "--existing", file("src/main/resources").absolutePath
-            }
-        }
         mixinConfigs("gregtech.mixins.json")
     }
 }

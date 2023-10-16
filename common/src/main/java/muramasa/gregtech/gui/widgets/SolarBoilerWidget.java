@@ -11,10 +11,9 @@ import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.blockentity.single.BlockEntitySolarBoiler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractGraphWrappers;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 
@@ -23,7 +22,7 @@ public class SolarBoilerWidget extends Widget {
     private long water = 0, steam = 0;
     private boolean isAllowedToWork = false;
 
-    protected SolarBoilerWidget(@Nonnull GuiInstance gui, @Nullable IGuiElement parent) {
+    protected SolarBoilerWidget(@NotNull GuiInstance gui, @Nullable IGuiElement parent) {
         super(gui, parent);
     }
 

@@ -3,11 +3,11 @@ package muramasa.gregtech.cover;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
+import muramasa.antimatter.blockentity.pipe.BlockEntityFluidPipe;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.blockentity.pipe.BlockEntityFluidPipe;
 import muramasa.gregtech.GTIRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,10 +23,9 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import org.jetbrains.annotations.Nullable;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
-
-import javax.annotation.Nullable;
 
 import java.util.Optional;
 

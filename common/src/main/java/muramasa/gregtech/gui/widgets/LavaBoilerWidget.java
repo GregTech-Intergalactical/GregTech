@@ -11,10 +11,9 @@ import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.blockentity.single.BlockEntityLavaBoiler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractGraphWrappers;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 
@@ -22,7 +21,7 @@ public class LavaBoilerWidget extends Widget {
     private int heat = 0, maxHeat = 0;
     private long water = 0, steam = 0, lava = 0;
 
-    protected LavaBoilerWidget(@Nonnull GuiInstance gui, @Nullable IGuiElement parent) {
+    protected LavaBoilerWidget(@NotNull GuiInstance gui, @Nullable IGuiElement parent) {
         super(gui, parent);
     }
 

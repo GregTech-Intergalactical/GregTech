@@ -2,6 +2,7 @@ package muramasa.gregtech.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
+import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.machine.MultiMachineEnergyHandler;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.IGuiElement;
@@ -12,7 +13,6 @@ import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.util.int3;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.worldgen.OilSpoutEntry;
@@ -32,10 +32,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
+import org.jetbrains.annotations.Nullable;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
-
-import javax.annotation.Nullable;
 
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static muramasa.gregtech.data.GregTechData.MINING_PIPE;

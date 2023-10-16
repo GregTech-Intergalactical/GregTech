@@ -13,15 +13,14 @@ import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.blockentity.single.BlockEntityCoalBoiler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 
 public class CoalBoilerFuelWidget extends Widget {
     private int fuel = 0, maxFuel = 0;
-    protected CoalBoilerFuelWidget(@Nonnull GuiInstance gui, @Nullable IGuiElement parent) {
+    protected CoalBoilerFuelWidget(@NotNull GuiInstance gui, @Nullable IGuiElement parent) {
         super(gui, parent);
     }
 

@@ -13,17 +13,15 @@ import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.cover.base.CoverBasicTransport;
 import muramasa.gregtech.data.GregTechData;
-import muramasa.gregtech.data.SlotTypes;
-import muramasa.gregtech.blockentity.single.IFilterable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
 
-import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Objects;
 

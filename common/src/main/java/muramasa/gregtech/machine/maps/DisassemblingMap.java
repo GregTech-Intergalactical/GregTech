@@ -14,8 +14,8 @@ import muramasa.antimatter.recipe.map.RecipeMap;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -37,7 +37,7 @@ public class DisassemblingMap implements IRecipeMap {
     }
 
     @Override
-    public Recipe find(@Nonnull ItemStack[] items, @Nonnull FluidHolder[] fluids, Tier tier, @Nonnull Predicate<IRecipe> canHandle) {
+    public Recipe find(@NotNull ItemStack[] items, @NotNull FluidHolder[] fluids, Tier tier, @NotNull Predicate<IRecipe> canHandle) {
         if (items.length == 0) return null;
 
         Machine<?> machine = ((BlockMachine)((BlockItem)items[0].getItem()).getBlock()).getType();
