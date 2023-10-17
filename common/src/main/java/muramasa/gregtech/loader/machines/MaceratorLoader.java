@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtrubber.GTRubberData;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -139,6 +140,6 @@ public class MaceratorLoader {
         MACERATING.RB().ii(RecipeIngredient.of(Items.TERRACOTTA, 1)).io(DUST.get(Clay, 1)).add("clay_dust_1",16, 4);
         MACERATING.RB().ii(RecipeIngredient.of(GregTechData.PlantBall, 1)).io(new ItemStack(Biochaff, 1)).add("biochaff",32, 2);
         MACERATING.RB().ii(RecipeIngredient.of(Biochaff, 1)).io(new ItemStack(Items.DIRT, 1)).add("dirt",32, 2);
-        MACERATING.RB().ii(RecipeIngredient.of(GTRubberData.RUBBER_LOGS)).io(DUST.get(Wood, 6), new ItemStack(GTRubberData.StickyResin, 1)).chances(1.0, 0.33).add("rubber_log", 400, 2);
+        MACERATING.RB().ii(RecipeIngredient.of(GTCoreTags.RUBBER_LOGS)).io(DUST.get(Wood, 6), new ItemStack(GTCoreItems.StickyResin, 1)).chances(1.0, 0.33).add("rubber_log", 400, 2);
     }
 }

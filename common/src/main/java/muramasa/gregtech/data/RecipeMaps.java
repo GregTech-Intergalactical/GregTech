@@ -1,6 +1,9 @@
 package muramasa.gregtech.data;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import io.github.gregtechintergalactical.gtcore.data.RecipeBuilders;
+import io.github.gregtechintergalactical.gtcore.data.RecipeBuilders.BlastingBuilder;
+import io.github.gregtechintergalactical.gtcore.data.RecipeBuilders.SteamBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.integration.jeirei.renderer.IRecipeInfoRenderer;
@@ -28,7 +31,6 @@ import java.util.function.BiFunction;
 
 import static muramasa.gregtech.data.Guis.MULTI_DISPLAY;
 import static muramasa.gregtech.data.Guis.MULTI_DISPLAY_FLUID;
-import static muramasa.gregtech.data.RecipeBuilders.*;
 
 @SuppressWarnings("unchecked")
 public class RecipeMaps {

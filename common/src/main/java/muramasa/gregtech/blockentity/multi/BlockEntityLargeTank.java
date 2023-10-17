@@ -2,7 +2,7 @@ package muramasa.gregtech.blockentity.multi;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
-import io.github.gregtechintergalactical.gtutility.blockentity.BlockEntityMaterialBasicMultiMachine;
+import io.github.gregtechintergalactical.gtcore.blockentity.BlockEntityMaterialBasicMultiMachine;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.fluid.FluidTanks;

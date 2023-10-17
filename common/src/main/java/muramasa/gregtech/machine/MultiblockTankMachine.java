@@ -1,7 +1,7 @@
 package muramasa.gregtech.machine;
 
 import com.gtnewhorizon.structurelib.structure.StructureUtility;
-import io.github.gregtechintergalactical.gtutility.machine.MaterialBasicMultiMachine;
+import io.github.gregtechintergalactical.gtcore.machine.MaterialBasicMultiMachine;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.Tier;

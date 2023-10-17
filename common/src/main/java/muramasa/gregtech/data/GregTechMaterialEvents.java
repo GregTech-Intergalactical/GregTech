@@ -1,6 +1,6 @@
 package muramasa.gregtech.data;
 
-import io.github.gregtechintergalactical.gtutility.GTUtilityData;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -1251,8 +1251,8 @@ public class GregTechMaterialEvents {
     private static void workbenches(GregTechMaterialEvent event){
         METAL.all().forEach(m -> {
             if ((m.getElement() == null || !m.getElement().isIsotope) && m.has(PLATE) && m.has(ROD)){
-                GTUtilityData.createWorkbench(m, false);
-                GTUtilityData.createWorkbench(m, true);
+                GTCoreBlocks.createWorkbench(m, false);
+                GTCoreBlocks.createWorkbench(m, true);
             }
         });
     }

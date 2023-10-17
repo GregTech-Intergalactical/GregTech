@@ -1,8 +1,8 @@
 package muramasa.gregtech.integration.forge.tfc;
 
-import io.github.gregtechintergalactical.gtrubber.GTRubberData;
-import io.github.gregtechintergalactical.gtrubber.forge.GTRubberDataImpl;
-import io.github.gregtechintergalactical.gtrubber.tfc.TFCRubberData;
+
+import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
+import io.github.gregtechintergalactical.gtcore.integration.tfc.TFCRubberData;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
@@ -75,7 +75,7 @@ public class MachineRecipes {
             CuttingLoader.addWoodRecipe(TagUtils.getItemTag(new ResourceLocation("tfc", w.name().toLowerCase() + "_logs")), AntimatterPlatformUtils.getItemFromID("tfc", "wood/lumber/" + w.name().toLowerCase()), 2, w.name().toLowerCase() + "_lumber", 200, 8);
             return true;
         });
-        CuttingLoader.addWoodRecipe(GTRubberData.RUBBER_LOGS, TFCRubberData.RUBBER_LUMBER, 2, "rubber_lumber", 200, 8);
+        CuttingLoader.addWoodRecipe(GTCoreTags.RUBBER_LOGS, TFCRubberData.RUBBER_LUMBER, 2, "rubber_lumber", 200, 8);
     }
 
     private static void addMaceratorRecipe(Ore input, Material material){

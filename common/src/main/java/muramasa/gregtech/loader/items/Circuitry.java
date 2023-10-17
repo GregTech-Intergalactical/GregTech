@@ -1,7 +1,7 @@
 package muramasa.gregtech.loader.items;
 
 import com.google.common.collect.ImmutableMap;
-import io.github.gregtechintergalactical.gtrubber.GTRubberData;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.data.ForgeCTags;
@@ -46,7 +46,7 @@ public class Circuitry {
         // MANUAL COATED BOARD CRAFTING
         provider.addStackRecipe(output, GTIRef.ID, "", "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CircuitBoardCoated, 3),
                 ImmutableMap.<Character, Object>builder()
-                        .put('R', GTRubberData.StickyResin)
+                        .put('R', GTCoreItems.StickyResin)
                         .put('P', PLATE.get(Wood))
                         .build(),
                 " R ", "PPP", " R ");

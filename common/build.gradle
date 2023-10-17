@@ -13,10 +13,7 @@ dependencies{
     implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:0.2.0-beta.11"))
     implementation(project(path: ":tesseract-common", configuration: "namedElements"))
     implementation(project(path: ":antimatter-common", configuration: "namedElements"))
-    modImplementation("io.github.gregtechintergalactical:gtrubber-common:${rootProject.gt_rubber_version}-${rootProject.minecraft_version}"){
-        transitive = false
-    }
-    modImplementation("io.github.gregtechintergalactical:gtutility-common:${rootProject.gt_utility_version}-${rootProject.minecraft_version}"){
+    modImplementation("io.github.gregtechintergalactical:gtcore-common:${rootProject.gt_core_version}-${rootProject.minecraft_version}"){
         transitive = false
     }
     modImplementation("com.gtnewhorizon.structurelib:structurelib-common:${project.structurelib_version}-${project.minecraft_version}")

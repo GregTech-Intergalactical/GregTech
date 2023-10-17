@@ -45,13 +45,9 @@ dependencies{
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
     modImplementation("com.github.Trinsdar:ARRP:0.6.7-hotfix")
-    include("io.github.gregtechintergalactical:gtrubber-fabric:${rootProject.gt_rubber_version}-${rootProject.minecraft_version}")
-    implementation("io.github.gregtechintergalactical:gtrubber-fabric:${rootProject.gt_rubber_version}-${rootProject.minecraft_version}:dev-shadow"){
-        transitive = false
-    }
-    include("io.github.gregtechintergalactical:gtutility-fabric:${rootProject.gt_utility_version}-${rootProject.minecraft_version}")
-    implementation("io.github.gregtechintergalactical:gtutility-fabric:${rootProject.gt_utility_version}-${rootProject.minecraft_version}:dev-shadow"){
-        transitive = false
+    include("io.github.gregtechintergalactical:gtcore-fabric:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
+    implementation("io.github.gregtechintergalactical:gtcore-fabric:${rootProject.gt_core_version}-${rootProject.minecraft_version}:dev-shadow"){
+        exclude(group: 'io.github.gregtechintergalactical')
     }
     modRuntimeOnly("com.gtnewhorizon.structurelib:structurelib-fabric:${project.structurelib_version}-${project.minecraft_version}")
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
@@ -69,7 +65,10 @@ dependencies{
     modImplementation("com.github.FeltMC:forgeconfigapiport-fabric:c1486f80f7"){
         transitive = false
     }
-    modImplementation("earth.terrarium:botarium-fabric-1.18.2:${project.botarium_version}")
+    modImplementation("earth.terrarium:botarium-fabric-1.18.2:${project.botarium_version}"){
+        transitive = false
+    }
+    modRuntimeOnly("curse.maven:energizedpower-782147:4567261")
     modImplementation("com.teamresourceful.resourcefullib:resourcefullib-fabric-1.18.2:${project.resourcefullib_version}")
     modRuntimeOnly("dev.latvian.mods:kubejs-fabric:${rootProject.kubejs_version}")
     //modImplementation("curse.maven:ctm-refabricated-633997:3834064")

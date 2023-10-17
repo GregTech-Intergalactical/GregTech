@@ -1,7 +1,6 @@
 package muramasa.gregtech.loader.crafting;
 
 import muramasa.antimatter.data.AntimatterDefaultTools;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.util.TagUtils;
@@ -12,10 +11,8 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Consumer;
 
-import static io.github.gregtechintergalactical.gtrubber.GTRubberData.StickyResin;
 import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.gregtech.data.GregTechData.*;
-import static muramasa.gregtech.data.Materials.*;
+import static muramasa.gregtech.data.GregTechData.PlantBall;
 
 public class Miscellaneous {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {

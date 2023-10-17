@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtrubber.GTRubberData;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -54,7 +55,7 @@ public class CuttingLoader {
             addWoodRecipe(ItemTags.JUNGLE_LOGS, Items.JUNGLE_PLANKS, 1, "jungle_planks", 200, 8);
             addWoodRecipe(ItemTags.CRIMSON_STEMS, Items.CRIMSON_PLANKS, 1, "crimson_planks", 200, 8);
             addWoodRecipe(ItemTags.WARPED_STEMS, Items.WARPED_PLANKS, 1, "warped_planks", 200, 8);
-            addWoodRecipe(GTRubberData.RUBBER_LOGS, GTRubberData.RUBBER_PLANKS.asItem(), 1, "rubber_planks", 200, 8);
+            addWoodRecipe(GTCoreTags.RUBBER_LOGS, GTCoreBlocks.RUBBER_PLANKS.asItem(), 1, "rubber_planks", 200, 8);
         }
     }
 

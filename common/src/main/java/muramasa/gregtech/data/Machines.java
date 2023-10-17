@@ -1,8 +1,8 @@
 package muramasa.gregtech.data;
 
 import com.google.common.collect.ImmutableMap;
-import io.github.gregtechintergalactical.gtutility.GTUtilityData;
-import io.github.gregtechintergalactical.gtutility.machine.DrumMachine;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
+import io.github.gregtechintergalactical.gtcore.machine.DrumMachine;
 import muramasa.antimatter.blockentity.single.BlockEntityBatteryBuffer;
 import muramasa.antimatter.blockentity.single.BlockEntityDigitalTransformer;
 import muramasa.antimatter.blockentity.single.BlockEntityTransformer;
@@ -121,14 +121,14 @@ public class Machines {
     /**
      * Drums
      */
-    public static DrumMachine BRONZE_DRUM = GTUtilityData.createDrum(Materials.Bronze, 16000);
-    public static DrumMachine STEEL_DRUM = GTUtilityData.createDrum(Steel, 48000);
-    public static DrumMachine INVAR_DRUM = GTUtilityData.createDrum(Materials.Invar, 32000);
-    public static DrumMachine STAINLESS_DRUM = GTUtilityData.createDrum(Materials.StainlessSteel, 64000).acidProof();
-    public static DrumMachine TITANIUM_DRUM = GTUtilityData.createDrum(Materials.Titanium, 128000);
-    public static DrumMachine NETHERRITE_DRUM = GTUtilityData.createDrum(AntimatterMaterials.Netherite, 128000).acidProof();
-    public static DrumMachine TUNGSTENSTEEL_DRUM = GTUtilityData.createDrum(Materials.TungstenSteel, 256000);
-    public static DrumMachine TUNGSTEN_DRUM = GTUtilityData.createDrum(Materials.Tungsten, 256000);
+    public static DrumMachine BRONZE_DRUM = GTCoreBlocks.createDrum(Materials.Bronze, 16000);
+    public static DrumMachine STEEL_DRUM = GTCoreBlocks.createDrum(Steel, 48000);
+    public static DrumMachine INVAR_DRUM = GTCoreBlocks.createDrum(Materials.Invar, 32000);
+    public static DrumMachine STAINLESS_DRUM = GTCoreBlocks.createDrum(Materials.StainlessSteel, 64000).acidProof();
+    public static DrumMachine TITANIUM_DRUM = GTCoreBlocks.createDrum(Materials.Titanium, 128000);
+    public static DrumMachine NETHERRITE_DRUM = GTCoreBlocks.createDrum(AntimatterMaterials.Netherite, 128000).acidProof();
+    public static DrumMachine TUNGSTENSTEEL_DRUM = GTCoreBlocks.createDrum(Materials.TungstenSteel, 256000);
+    public static DrumMachine TUNGSTEN_DRUM = GTCoreBlocks.createDrum(Materials.Tungsten, 256000);
 
     public static MultiblockTankMachine WOOD_TANK = new MultiblockTankMachine(GTIRef.ID, Wood, true, 432000);
     public static MultiblockTankMachine[] STEEL_TANKS = createTankMachine(Steel, 3);

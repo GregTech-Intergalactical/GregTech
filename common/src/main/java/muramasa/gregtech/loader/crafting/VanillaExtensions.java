@@ -1,7 +1,7 @@
 package muramasa.gregtech.loader.crafting;
 
-import io.github.gregtechintergalactical.gtrubber.GTRubberData;
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
@@ -55,11 +55,11 @@ public class VanillaExtensions {
                 Items.CHAINMAIL_BOOTS, of('R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "R R", "RHR");
         provider.addItemRecipe(consumer, GTIRef.ID, "saddle", "", "has_leather", provider.hasSafeItem(Items.LEATHER), Items.SADDLE,
                 of('L', Items.LEATHER, 'R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'S', AntimatterMaterialTypes.SCREW.getMaterialTag(Steel)), "LLL", "LSL", "R R");
-        provider.addStackRecipe(consumer, GTIRef.ID, "lead_from_resin", "", "has_resin", provider.hasSafeItem(GTRubberData.StickyResin), new ItemStack(Items.LEAD, 2), of('S', Items.STRING, 'R', GTRubberData.StickyResin), "SS ", "SR ", "  S");
+        provider.addStackRecipe(consumer, GTIRef.ID, "lead_from_resin", "", "has_resin", provider.hasSafeItem(GTCoreItems.StickyResin), new ItemStack(Items.LEAD, 2), of('S', Items.STRING, 'R', GTCoreItems.StickyResin), "SS ", "SR ", "  S");
         provider.shapeless(consumer, "gravel_to_flint", "mortar_recipes", "has_mortar", provider.hasSafeItem(AntimatterDefaultTools.MORTAR.getTag()), new ItemStack(Items.FLINT), AntimatterDefaultTools.MORTAR.getTag(), Items.GRAVEL);
 
         provider.addStackRecipe(consumer, "minecraft", "", "misc", "has_iron_rod", provider.hasSafeItem(ROD.getMaterialTag(Iron)), new ItemStack(Items.IRON_BARS, 8), of('R', ROD.getMaterialTag(Iron)), "RRR", "RRR");
-        provider.addItemRecipe(consumer, GTIRef.ID, "piston_sticky","gears", "has_stone", provider.hasSafeItem(Blocks.PISTON), Blocks.STICKY_PISTON, of('S', GTRubberData.StickyResin, 'P', Blocks.PISTON), "S", "P");
+        provider.addItemRecipe(consumer, GTIRef.ID, "piston_sticky","gears", "has_stone", provider.hasSafeItem(Blocks.PISTON), Blocks.STICKY_PISTON, of('S', GTCoreItems.StickyResin, 'P', Blocks.PISTON), "S", "P");
 
         provider.addItemRecipe(consumer, "magnetic_rods_iron", "has_redstone", provider.hasSafeItem(ForgeCTags.DUSTS_REDSTONE), ROD.get(IronMagnetic),
                 of('R', ForgeCTags.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/iron")), " R ", "RSR", " R ");

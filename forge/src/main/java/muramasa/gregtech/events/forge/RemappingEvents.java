@@ -1,6 +1,7 @@
 package muramasa.gregtech.events.forge;
 
-import io.github.gregtechintergalactical.gtrubber.GTRubberData;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.AntimatterAPI;
@@ -180,13 +181,13 @@ public class RemappingEvents {
                 continue;
             }
             if (id.equals("rubber_log")){
-                map.remap(GTRubberData.RUBBER_LOG);
+                map.remap(GTCoreBlocks.RUBBER_LOG);
             }
             if (id.equals("rubber_leaves")){
-                map.remap(GTRubberData.RUBBER_LEAVES);
+                map.remap(GTCoreBlocks.RUBBER_LEAVES);
             }
             if (id.equals("rubber_sapling")){
-                map.remap(GTRubberData.RUBBER_SAPLING);
+                map.remap(GTCoreBlocks.RUBBER_SAPLING);
             }
             if (AntimatterRemapping.getRemappingMap().get(GTIRef.ID).containsKey(id)){
                 Block block = AntimatterAPI.get(Block.class, AntimatterRemapping.getRemappingMap().get(GTIRef.ID).get(id));
@@ -257,16 +258,13 @@ public class RemappingEvents {
                 continue;
             }
             if (id.equals("rubber_log")){
-                map.remap(GTRubberData.RUBBER_LOG.asItem());
+                map.remap(GTCoreBlocks.RUBBER_LOG.asItem());
             }
             if (id.equals("rubber_leaves")){
-                map.remap(GTRubberData.RUBBER_LEAVES.asItem());
+                map.remap(GTCoreBlocks.RUBBER_LEAVES.asItem());
             }
             if (id.equals("rubber_sapling")){
-                map.remap(GTRubberData.RUBBER_SAPLING.asItem());
-            }
-            if (id.equals("sticky_resin")){
-                map.remap(GTRubberData.StickyResin);
+                map.remap(GTCoreBlocks.RUBBER_SAPLING.asItem());
             }
 
             if (AntimatterRemapping.getRemappingMap().get(GTIRef.ID).containsKey(id)){
