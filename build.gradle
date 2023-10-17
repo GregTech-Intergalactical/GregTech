@@ -1,7 +1,7 @@
 plugins {
     id "maven-publish"
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.3-SNAPSHOT" apply(false)
+    id "dev.architectury.loom" version "0.12.0-SNAPSHOT" apply(false)
     id "com.github.johnrengelman.shadow" version "7.0.0" apply(false)
 }
 
@@ -86,54 +86,22 @@ subprojects{
 
         shadowJar {
             configurations = [project.configurations.shadowCommon]
-            archiveClassifier.set "dev-shadow"
+            classifier "dev-shadow"
         }
 
         remapJar {
             input.set shadowJar.archiveFile
             dependsOn shadowJar
-            archiveClassifier.set null
+            classifier null
         }
 
         jar {
-            archiveClassifier.set "dev"
+            classifier "dev"
         }
 
         components.java {
             withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
                 skip()
-            }
-        }
-
-        publishing {
-            publications {
-                mavenJava(org.gradle.api.publish.maven.MavenPublication) {
-                    artifactId = "gti-" + project.name
-                    artifact(sourcesJar) {
-                        builtBy remapSourcesJar
-                    }
-
-                    afterEvaluate {
-                        artifact remapJar
-                        if (project.name != "common"){
-                            artifact shadowJar
-                        }
-                    }
-                }
-            }
-
-            repositories {
-                if (isCI && isRELEASE) {
-                    maven {
-                        url = "https://repo.repsy.io/mvn/trinsdar/gregtech-intergalactical/"
-                        credentials {
-                            username = System.getenv("MAVEN_USERNAME")
-                            password = System.getenv("MAVEN_PASSWORD")
-                        }
-                    }
-                } else {
-                    maven { url "file:///${project.projectDir}/mcmodsrepo"}
-                }
             }
         }
     }
