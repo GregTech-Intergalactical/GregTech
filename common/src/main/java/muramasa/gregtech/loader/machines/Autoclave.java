@@ -6,11 +6,11 @@ import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.EnergyCrystal;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
-import static muramasa.gregtech.data.GregTechData.EnergyCrystal;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.AUTOCLAVING;
 import static muramasa.gregtech.data.RecipeMaps.COMPRESSING;

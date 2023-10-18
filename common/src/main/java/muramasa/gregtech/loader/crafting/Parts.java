@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
@@ -60,12 +61,12 @@ public class Parts {
               of('F', Items.FLINT, 'C', DUST.getMaterialTag(Coal)), "CCC", "CFC", "CCC");
       provider.addItemRecipe(output, GTIRef.ID, "", "carbon", "has_coal", provider.hasSafeItem(DUST.getMaterialTag(Coal)), CoalChunk,
               of('F', Items.OBSIDIAN, 'C', CompressedCoalBall), "CCC", "CFC", "CCC");
-      provider.addItemRecipe(output, GTIRef.ID, "","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullSmall, of(
+      provider.addItemRecipe(output, GTIRef.ID, "","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), GTCoreItems.BatteryHullSmall, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, LV, false)
       ), "C", "P", "P");
 
-      provider.addItemRecipe(output,  GTIRef.ID, "","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), BatteryHullMedium, of(
+      provider.addItemRecipe(output,  GTIRef.ID, "","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), GTCoreItems.BatteryHullMedium, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false)
       ), "C C", "PPP", "PPP");

@@ -245,29 +245,6 @@ public class GregTechData {
     public static ItemBasic<?> SOC = new ItemBasic<>(GTIRef.ID, "soc", "silicon/");
 
     public static ItemBasic<?> BatteryTantalum = new ItemBattery(GTIRef.ID, "tantalum_capacitor", Tier.ULV, 10000, true).tip("Reusable");
-    public static ItemBasic<?> BatteryHullSmall = new ItemBasic<>(GTIRef.ID, "small_battery_hull").tip("An empty LV Battery Hull");
-    public static ItemBasic<?> BatteryHullMedium = new ItemBasic<>(GTIRef.ID, "medium_battery_hull").tip("An empty MV Battery Hull");
-    public static ItemBasic<?> BatteryHullLarge = new ItemBasic<>(GTIRef.ID, "large_battery_hull").tip("An empty HV Battery Hull");
-    public static ItemBasic<?> BatteryRE = new ItemMultiTextureBattery(GTIRef.ID, "re_battery", Tier.LV, 10000, true).tip("Reusable Battery");
-    public static ItemBasic<?> BatterySmallAcid = new ItemMultiTextureBattery(GTIRef.ID, "small_acid_battery", Tier.LV, 18000, false).tip("Single Use");
-    public static ItemBasic<?> BatterySmallMercury = new ItemMultiTextureBattery(GTIRef.ID, "small_mercury_battery", Tier.LV, 32000, false).tip("Single Use");
-    public static ItemBasic<?> BatterySmallCadmium = new ItemMultiTextureBattery(GTIRef.ID, "small_cadmium_battery", Tier.LV,75000, 2, true).tip("Reusable");
-    public static ItemBasic<?> BatterySmallLithium = new ItemMultiTextureBattery(GTIRef.ID, "small_lithium_battery", Tier.LV, 100000, true).tip("Reusable");
-    public static ItemBasic<?> BatterySmallSodium = new ItemMultiTextureBattery(GTIRef.ID, "small_sodium_battery", Tier.LV, 50000, true).tip("Reusable");
-    public static ItemBasic<?> BatteryMediumAcid = new ItemMultiTextureBattery(GTIRef.ID, "medium_acid_battery", Tier.MV, 72000, false).tip("Single Use");
-    public static ItemBasic<?> BatteryMediumMercury = new ItemMultiTextureBattery(GTIRef.ID, "medium_mercury_battery", Tier.MV, 128000, false).tip("Single Use");
-    public static ItemBasic<?> BatteryMediumCadmium = new ItemMultiTextureBattery(GTIRef.ID, "medium_cadmium_battery", Tier.MV, 300000, 2, true).tip("Reusable");
-    public static ItemBasic<?> BatteryMediumLithium = new ItemMultiTextureBattery(GTIRef.ID, "medium_lithium_battery", Tier.MV, 400000, true).tip("Reusable");
-    public static ItemBasic<?> BatteryMediumSodium = new ItemMultiTextureBattery(GTIRef.ID, "medium_sodium_battery", Tier.MV,200000, true).tip("Reusable");
-    public static ItemBasic<?> BatteryLargeAcid = new ItemMultiTextureBattery(GTIRef.ID, "large_acid_battery", Tier.HV, 288000, false).tip("Single Use");
-    public static ItemBasic<?> BatteryLargeMercury = new ItemMultiTextureBattery(GTIRef.ID, "large_mercury_battery", Tier.HV, 512000, false).tip("Single Use");
-    public static ItemBasic<?> BatteryLargeCadmium = new ItemMultiTextureBattery(GTIRef.ID, "large_cadmium_battery", Tier.HV, 1200000, 2, true).tip("Reusable");
-    public static ItemBasic<?> BatteryLargeLithium = new ItemMultiTextureBattery(GTIRef.ID, "large_lithium_battery", Tier.HV, 1600000, true).tip("Reusable");
-    public static ItemBasic<?> BatteryLargeSodium = new ItemMultiTextureBattery(GTIRef.ID, "large_sodium_battery", Tier.HV, 800000, true).tip("Reusable");
-    public static ItemBasic<?> LapotronCrystal = new ItemMultiTextureBattery(GTIRef.ID, "lapotron_crystal", Tier.EV, 10000000, true);
-    public static ItemBasic<?> EnergyCrystal = new ItemMultiTextureBattery(GTIRef.ID, "energy_crystal", Tier.HV, 1000000, true);
-    public static ItemBasic<?> BatteryEnergyOrb = new ItemBasic<>(GTIRef.ID, "battery_energy_orb");
-    public static ItemBasic<?> BatteryEnergyOrbCluster = new ItemBasic<>(GTIRef.ID, "battery_energy_orb_cluster");
 
     public static ItemBasic<?> EmptyShape = new ItemBasic<>(GTIRef.ID, "empty_shape_plate", "molds/").tip("Raw plate to make Molds and Extruder Shapes");
     public static ItemBasic<?> MoldPlate = new ItemBasic<>(GTIRef.ID, "mold_plate", "molds/").tip("Mold for making Plates");

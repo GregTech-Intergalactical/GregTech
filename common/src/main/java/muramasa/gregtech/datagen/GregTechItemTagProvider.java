@@ -1,5 +1,6 @@
 package muramasa.gregtech.datagen;
 
+import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.util.TagUtils;
@@ -27,10 +28,6 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         this.tag(CIRCUITS_ELITE).add(CircuitDataControl, NanoProcessor);
         this.tag(GregTechTags.CIRCUITS_MASTER).add(CircuitEnergyFlow, QuantumProcessor);
         this.tag(CIRCUITS_DATA_ORB).add(DataOrb);
-        this.tag(BATTERIES_RE).add(BatteryRE);
-        this.tag(BATTERIES_SMALL).add(BatterySmallSodium, BatterySmallCadmium, BatterySmallLithium);
-        this.tag(BATTERIES_MEDIUM).add(BatteryMediumSodium, BatteryMediumCadmium, BatteryMediumLithium);
-        this.tag(BATTERIES_LARGE).add(BatteryLargeSodium, BatteryLargeCadmium, BatteryLargeLithium, EnergyCrystal);
         this.tag(POWER_UNIT_LV).add(PowerUnitLV);
         this.tag(POWER_UNIT_MV).add(PowerUnitMV);
         this.tag(POWER_UNIT_HV).add(PowerUnitHV);

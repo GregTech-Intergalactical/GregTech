@@ -1,5 +1,6 @@
 package muramasa.gregtech;
 
+import io.github.gregtechintergalactical.gtcore.GTCore;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import muramasa.antimatter.AntimatterRemapping;
 import net.minecraft.resources.ResourceLocation;
@@ -46,24 +47,24 @@ public class GTRemapping {
         remap("circuit_wetware", "wetware_circuit");
         remap("vacuumtube", "vacuum_tube");
         remap("adv_circuit_parts", "advanced_circuit_parts");
-        remap("battery_hull_small", "small_battery_hull");
-        remap("battery_hull_medium", "medium_battery_hull");
-        remap("battery_hull_large", "large_battery_hull");
-        remap("battery_small_mercury", "small_mercury_battery");
-        remap("battery_small_acid", "small_acid_battery");
-        remap("battery_small_cadmium", "small_cadmium_battery");
-        remap("battery_small_lithium", "small_lithium_battery");
-        remap("battery_small_sodium", "small_sodium_battery");
-        remap("battery_medium_mercury", "medium_mercury_battery");
-        remap("battery_medium_acid", "medium_acid_battery");
-        remap("battery_medium_cadmium", "medium_cadmium_battery");
-        remap("battery_medium_lithium", "medium_lithium_battery");
-        remap("battery_medium_sodium", "medium_sodium_battery");
-        remap("battery_large_mercury", "large_mercury_battery");
-        remap("battery_large_acid", "large_acid_battery");
-        remap("battery_large_cadmium", "large_cadmium_battery");
-        remap("battery_large_lithium", "large_lithium_battery");
-        remap("battery_large_sodium", "large_sodium_battery");
+        remapGTCore("battery_hull_small", "small_battery_hull");
+        remapGTCore("battery_hull_medium", "medium_battery_hull");
+        remapGTCore("battery_hull_large", "large_battery_hull");
+        remapGTCore("battery_small_mercury", "small_mercury_battery");
+        remapGTCore("battery_small_acid", "small_acid_battery");
+        remapGTCore("battery_small_cadmium", "small_cadmium_battery");
+        remapGTCore("battery_small_lithium", "small_lithium_battery");
+        remapGTCore("battery_small_sodium", "small_sodium_battery");
+        remapGTCore("battery_medium_mercury", "medium_mercury_battery");
+        remapGTCore("battery_medium_acid", "medium_acid_battery");
+        remapGTCore("battery_medium_cadmium", "medium_cadmium_battery");
+        remapGTCore("battery_medium_lithium", "medium_lithium_battery");
+        remapGTCore("battery_medium_sodium", "medium_sodium_battery");
+        remapGTCore("battery_large_mercury", "large_mercury_battery");
+        remapGTCore("battery_large_acid", "large_acid_battery");
+        remapGTCore("battery_large_cadmium", "large_cadmium_battery");
+        remapGTCore("battery_large_lithium", "large_lithium_battery");
+        remapGTCore("battery_large_sodium", "large_sodium_battery");
         remap("coil_cupronickel", "cupronickel_coil");
         remap("coil_kanthal", "kanthal_coil");
         remap("coil_nichrome", "nichrome_coil");
@@ -106,6 +107,10 @@ public class GTRemapping {
 
     private static void remap(String oldId, String newId){
         AntimatterRemapping.remap(GTIRef.ID, oldId, newId);
+    }
+
+    private static void remapGTCore(String oldId, String newId){
+        AntimatterRemapping.remap(new ResourceLocation(GTIRef.ID, oldId), new ResourceLocation(GTCore.ID, newId));
     }
 
     public static Map<String, String> getRemappingMap() {

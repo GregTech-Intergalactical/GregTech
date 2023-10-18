@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
 import com.google.common.collect.ImmutableSet;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
@@ -54,9 +55,9 @@ public class AssemblyLoader {
 
     //TODO proper type check for the cables
     private static void batteries() {
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,1), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, LV, false) ,1)).fi(Polyethylene.getLiquid(L)).io(BatteryHullSmall.getDefaultInstance()).add("battery_hull_small",800, 1);
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,3), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, MV, false) ,2)).fi(Polyethylene.getLiquid(L * 3)).io(BatteryHullMedium.getDefaultInstance()).add("battery_hull_medium",1600, 2);
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,9), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, HV, false) ,4)).fi(Polyethylene.getLiquid(L * 9)).io(BatteryHullLarge.getDefaultInstance()).add("battery_hull_large",3200, 4);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,1), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, LV, false) ,1)).fi(Polyethylene.getLiquid(L)).io(GTCoreItems.BatteryHullSmall.getDefaultInstance()).add("battery_hull_small",800, 1);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,3), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, MV, false) ,2)).fi(Polyethylene.getLiquid(L * 3)).io(GTCoreItems.BatteryHullMedium.getDefaultInstance()).add("battery_hull_medium",1600, 2);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,9), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, HV, false) ,4)).fi(Polyethylene.getLiquid(L * 9)).io(GTCoreItems.BatteryHullLarge.getDefaultInstance()).add("battery_hull_large",3200, 4);
         ASSEMBLING.RB().ii(DUST.getMaterialIngredient(Tantalum, 1), FOIL.getMaterialIngredient(Manganese, 1)).fi(Polyethylene.getLiquid(L)).io(new ItemStack(BatteryTantalum, 8)).add("tantalum_capacitor", 100, 4);
 
     }
