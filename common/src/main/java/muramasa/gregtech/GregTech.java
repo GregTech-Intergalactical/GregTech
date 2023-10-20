@@ -181,7 +181,7 @@ public class GregTech extends AntimatterMod {
                 AntimatterJEIREIPlugin.addItemsToHide(l -> {
                     if (!GregTechConfig.GAMEPLAY.HARDER_CIRCUITS){
                         l.addAll(Arrays.asList(CircuitBoardPhenolic));
-                        l.addAll(Arrays.asList(CircuitBasicIntegrated, CircuitGoodIntegrated, CircuitWetware, MicroProcessor, IntegratedProcessor, NanoProcessor, QuantumProcessor));
+                        l.addAll(Arrays.asList(CircuitWetware, MicroProcessor, IntegratedProcessor, NanoProcessor, QuantumProcessor));
                     }
                 });
                 AntimatterPlatformUtils.setBurnTime(SOLID_SUPER_FUEL.asItem(), 100000);

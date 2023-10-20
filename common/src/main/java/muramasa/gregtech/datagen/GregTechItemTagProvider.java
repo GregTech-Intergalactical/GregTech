@@ -1,16 +1,13 @@
 package muramasa.gregtech.datagen;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
-import muramasa.antimatter.util.TagUtils;
-import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.world.item.Items;
 
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.GregTechData.*;
-import static muramasa.gregtech.data.GregTechTags.*;
 import static muramasa.gregtech.data.Materials.*;
 
 public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
@@ -21,13 +18,9 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
     @Override
     protected void processTags(String domain) {
         super.processTags(domain);
-        this.tag(CIRCUITS_BASIC).add(CircuitBasicIntegrated, CircuitBasicElectronic);
-        this.tag(CIRCUITS_GOOD).add(CircuitGoodElectronic, CircuitGoodIntegrated);
-        this.tag(CIRCUITS_ADVANCED).add(CircuitAdv);
         //this.tag(GregTechTags.CIRCUITS_EXTREME).add(GregTechData.CircuitDataStorage);
-        this.tag(CIRCUITS_ELITE).add(CircuitDataControl, NanoProcessor);
-        this.tag(GregTechTags.CIRCUITS_MASTER).add(CircuitEnergyFlow, QuantumProcessor);
-        this.tag(CIRCUITS_DATA_ORB).add(DataOrb);
+        this.tag(CIRCUITS_ELITE).add(NanoProcessor);
+        this.tag(CIRCUITS_MASTER).add(QuantumProcessor);
         this.tag(POWER_UNIT_LV).add(PowerUnitLV);
         this.tag(POWER_UNIT_MV).add(PowerUnitMV);
         this.tag(POWER_UNIT_HV).add(PowerUnitHV);

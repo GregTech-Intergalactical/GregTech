@@ -27,6 +27,7 @@ import tesseract.TesseractGraphWrappers;
 
 import java.util.function.Consumer;
 
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -59,14 +60,14 @@ public class Circuitry {
 
     private static void bloodyCircuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
         // MANUAL TIER 0 CIRCUIT CRAFTING
-        provider.addItemRecipe(output, "circuit_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBasicElectronic,
+        provider.addItemRecipe(output, "circuit_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('V', VacuumTube).put('B', CircuitBoardCoated)
                         .put('W', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('R',Resistor).put('P', ITEM_CASING.get(Steel))
                         .build(),
                 "RPR", "VBV", "WWW");
-        provider.addItemRecipe(output, "circuits", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitGoodElectronic,
+        provider.addItemRecipe(output, "circuits", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitGood,
                 ImmutableMap.<Character, Object>builder()
                         .put('S', ITEM_CASING.getMaterialTag(Steel))
                         .put('C', CIRCUITS_BASIC)
@@ -129,25 +130,25 @@ public class Circuitry {
     }
 
     private static void circuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_h", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasicElectronic,
+        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_h", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                         .put('N', NandChip)
                         .put('S', CircuitBoardCoated)
                         .build(), "CCC", "NSN", "CCC");
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_v", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasicElectronic,
+        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_v", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                         .put('N', NandChip)
                         .put('S', CircuitBoardCoated)
                         .build(), "CNC", "CSC", "CNC");
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_h", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
+        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_h", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('N', NandChip)
                         .put('S', CircuitBoardCoated)
                         .build(), "CCC", "NSN", "CCC");
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_v", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasicElectronic,
+        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_v", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('N', NandChip)
@@ -265,12 +266,12 @@ public class Circuitry {
     }
 
     private static void circuits(){
-        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_tin", 32, 16);
-        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_soldering_alloy", 32, 16);
-        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitBasicElectronic)).add("basic_circuit_lead", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitGoodElectronic)).add("good_circuit_tin", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitGoodElectronic)).add("good_circuit_soldering_alloy", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitGoodElectronic)).add("good_circuit_lead", 32, 16);
+        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitBasic)).add("basic_circuit_tin", 32, 16);
+        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitBasic)).add("basic_circuit_soldering_alloy", 32, 16);
+        ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitBasic)).add("basic_circuit_lead", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitGood)).add("good_circuit_tin", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitGood)).add("good_circuit_soldering_alloy", 32, 16);
+        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitGood)).add("good_circuit_lead", 32, 16);
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(AdvCircuitParts, 2)).fi(Tin.getLiquid(L)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_tin", 32, 64);
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(AdvCircuitParts, 2)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_soldering_alloy", 32, 64);
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(AdvCircuitParts, 2)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitAdv)).add("adv_storage_circuit_lead", 32, 64);
@@ -346,7 +347,7 @@ public class Circuitry {
             //Basic
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPhenolic, 1), of(GregTechTags.RESISTORS, 2),
                             WIRE_FINE.getMaterialIngredient(Copper, 4), of(IntegratedLogicCircuit, 1))
-                    .io(new ItemStack(CircuitBasicIntegrated,1))
+                    .io(new ItemStack(CircuitBasic,1))
                     .fi(material.getLiquid(base * 4)).add("basic_circuit_using_" + material.getId(),200, 8);
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPlastic), of(IntegratedLogicCircuit, 4),
                             of(GregTechTags.RESISTORS, 4), of(GregTechTags.CAPACITORS, 4),
@@ -357,9 +358,9 @@ public class Circuitry {
                     .io(new ItemStack(MicroProcessor, 4))
                     .fi(material.getLiquid(base * 4)).add("microprocessor_soc_using_" + material.getId(), 200, 60);
             //Good
-            CIRCUIT_ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardPhenolic, 1), of(RESISTORS, 4),of(CircuitBasicIntegrated, 3),
+            CIRCUIT_ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardPhenolic, 1), of(RESISTORS, 4),of(CircuitBasic, 3),
                             WIRE_FINE.getMaterialIngredient(Electrum, 8))
-                    .io(new ItemStack(CircuitGoodIntegrated,1))
+                    .io(new ItemStack(CircuitGood,1))
                     .fi(material.getLiquid(base * 4)).add("good_circuit_using_" + material.getId(),20*20, 16);
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPlastic), of(CentralProcessingUnit, 1),
                             of(GregTechTags.RESISTORS, 2), of(GregTechTags.CAPACITORS, 2),
@@ -370,9 +371,9 @@ public class Circuitry {
                     .io(new ItemStack(IntegratedProcessor, 1))
                     .fi(material.getLiquid(base * 4)).add("integrated_processor_soc_using_" + material.getId(), 200, 60);
             //Advanced
-            CIRCUIT_ASSEMBLING.RB().ii(of(CircuitGoodIntegrated, 2), of(IntegratedLogicCircuit, 3),of(RandomAccessMemoryChip, 1),
+            CIRCUIT_ASSEMBLING.RB().ii(of(CircuitGood, 2), of(IntegratedLogicCircuit, 3),of(RandomAccessMemoryChip, 1),
                             of(TRANSISTORS, 4), WIRE_FINE.getMaterialIngredient(Electrum, 16))
-                    .io(new ItemStack(GregTechData.CircuitAdv,1))
+                    .io(new ItemStack(CircuitAdv,1))
                     .fi(material.getLiquid(base * 4)).add("advanced_circuit_using_" + material.getId(),800, 28);
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPlastic), of(IntegratedProcessor, 2), of(SmallCoil, 4),
                     of(CAPACITORS, 4), of(RandomAccessMemoryChip, 4), WIRE_FINE.getMaterialIngredient(RedAlloy, 12))
@@ -406,7 +407,7 @@ public class Circuitry {
             //Energy Flow
             ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardMultiFiber, 1), of(GregTechData.Resistor, 8),of(GregTechData.Transistor, 8),
                             of(GregTechData.Capacitor, 8),of(AntimatterMaterialTypes.WIRE_FINE.get(NiobiumTitanium), 4))
-                    .io(new ItemStack(GregTechData.CircuitEnergyFlow,1))
+                    .io(new ItemStack(CircuitEnergyFlow,1))
                     .fi(material.getLiquid(base * 4)).add("energy_flow_circuit_using_" + material.getId(),20*20, 8192);
             //Wetware
             ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardWetware, 1), of(GregTechData.Resistor, 8),of(GregTechData.Transistor, 8),

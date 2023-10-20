@@ -28,6 +28,7 @@ import java.util.Arrays;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.CircuitBasic;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
@@ -52,7 +53,7 @@ public class Parts {
     // INT_CIRCUITS.forEach((k, v) -> {
     Ingredient ing = INT_CIRCUITS.get(0);
     provider.shapeless(output, "int_circuit_to_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
-        CircuitBasicElectronic.getDefaultInstance(), ing);
+        CircuitBasic.getDefaultInstance(), ing);
     // });
 
       provider.shapeless(output, GTIRef.ID, "", "carbon", "has_carbon_fibre", provider.hasSafeItem(CarbonFibre), DUST.get(FiberReinforcedEpoxyResin, 1), CarbonFibre, DUST.getMaterialTag(EpoxyResin));

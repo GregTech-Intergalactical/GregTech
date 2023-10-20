@@ -271,15 +271,6 @@ public class RemappingEvents {
                 map.remap(replacement);
                 continue;
             }
-            if (id.equals("rubber_log")){
-                map.remap(GTCoreBlocks.RUBBER_LOG.asItem());
-            }
-            if (id.equals("rubber_leaves")){
-                map.remap(GTCoreBlocks.RUBBER_LEAVES.asItem());
-            }
-            if (id.equals("rubber_sapling")){
-                map.remap(GTCoreBlocks.RUBBER_SAPLING.asItem());
-            }
 
             if (AntimatterRemapping.getRemappingMap().get(GTIRef.ID).containsKey(id)){
                 Item block = AntimatterAPI.get(Item.class, AntimatterRemapping.getRemappingMap().get(GTIRef.ID).get(id));

@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.GTCore;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import io.github.gregtechintergalactical.gtcore.machine.WorkbenchMachine;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
@@ -40,7 +41,9 @@ import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechData.*;
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
 import static muramasa.gregtech.data.GregTechTags.CIRCUITS_ADVANCED;
+import static muramasa.gregtech.data.GregTechTags.CIRCUITS_GOOD;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
@@ -494,21 +497,21 @@ public class Machines {
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.LV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_LV)
-                        .put('C', CircuitBasicElectronic)
+                        .put('C', GTCoreTags.CIRCUITS_BASIC)
                         .put('F', FieldGenLV)
                         .put('P', PLATE.get(Steel)).build(), "CFC", "PHP", "CPC");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(MV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_MV)
-                        .put('C', CircuitGoodElectronic)
+                        .put('C', GTCoreTags.CIRCUITS_GOOD)
                         .put('F', FieldGenMV)
                         .put('P', PLATE.get(Aluminium)).build(), "CFC", "PHP", "CPC");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.HV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_HV)
-                        .put('C', CircuitAdv)
+                        .put('C', GTCoreTags.CIRCUITS_ADVANCED)
                         .put('F', FieldGenHV)
                         .put('P', PLATE.get(StainlessSteel)).build(), "CFC", "PHP", "CPC");
 
@@ -768,7 +771,7 @@ public class Machines {
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), PYROLYSIS_OVEN.getItem(PYROLYSIS_OVEN.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_MV)
-                        .put('C', CircuitGoodElectronic)
+                        .put('C', CIRCUITS_GOOD)
                         .put('P', COVER_PUMP.getItem(MV).getItem())
                         .put('W', WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL))
                         .put('B', PistonMV).build(), "BCW", "CHC", "BPW");
