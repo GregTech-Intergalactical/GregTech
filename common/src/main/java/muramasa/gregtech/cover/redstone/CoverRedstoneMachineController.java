@@ -70,6 +70,11 @@ public class CoverRedstoneMachineController extends BaseCover {
     }
 
     @Override
+    public void onFirstTick() {
+        onBlockUpdate();
+    }
+
+    @Override
     public ResourceLocation getModel(String type, Direction dir) {
         if (type.equals("pipe")) return PIPE_COVER_MODEL;
         return getBasicModel();
