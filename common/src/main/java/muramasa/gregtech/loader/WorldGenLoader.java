@@ -199,7 +199,7 @@ public class WorldGenLoader {
                 OVERWORLD, NETHER, TWILIGHT_FOREST, BE_MARS, AA_MARS).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("gold").asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, AntimatterMaterials.Gold,
                 OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
-        ev.vein(new WorldGenVeinLayerBuilder("iron").asOreVein(-14, 51, 120, 4, 24, BrownLimonite, YellowLimonite, BandedIron, Malachite,
+        ev.vein(new WorldGenVeinLayerBuilder("iron").asOreVein(-14, 51, 120, 4, 24, BrownLimonite, YellowLimonite, Hematite, Malachite,
                 OVERWORLD, NETHER, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("cassiterite").asOreVein(6, 126, 50, 5, 24, Tin, Tin, Cassiterite, Tin,
                 OVERWORLD, END, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());

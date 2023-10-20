@@ -345,7 +345,7 @@ public class Materials {
     public static Material Almandine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "almandine", 0xff0000, ROUGH));
     public static Material Alumina = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "alumina", 0x78C3EB, METALLIC));
     public static Material Andradite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "andradite", 0x967800, ROUGH));
-    public static Material BandedIron = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "banded_iron", 0x915a5a, DULL));
+    public static Material Hematite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hematite", 0x915a5a, DULL));
     public static Material Barite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "barite", 0xe6ebff, DULL));
     public static Material Bastnasite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "bastnasite", 0xc86e2d, FINE));
     public static Material Bentonite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "bentonite", 0xf5d7d2, ROUGH)); // TODO: Ore Gen

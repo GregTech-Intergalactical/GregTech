@@ -5,7 +5,6 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterFluidTagProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.event.forge.AntimatterLoaderEvent;
 import muramasa.antimatter.event.forge.AntimatterProvidersEvent;
 import muramasa.antimatter.fluid.AntimatterFluid;
@@ -21,18 +20,13 @@ import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.integration.forge.tfc.datagen.TFCBlockTagProvider;
 import muramasa.gregtech.integration.forge.tfc.datagen.TFCItemTagProvider;
 import muramasa.gregtech.integration.forge.tfc.datagen.TFCLangProvider;
-import muramasa.gregtech.integration.forge.tfc.ore.GTTFCOreBlock;
-import muramasa.gregtech.integration.forge.tfc.ore.GTTFCOreItem;
-import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.soil.SandBlockType;
 import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.util.Helpers;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.MinecraftForge;
@@ -42,7 +36,6 @@ import tesseract.FluidPlatformUtils;
 
 import java.util.function.BiConsumer;
 
-import static muramasa.antimatter.data.AntimatterDefaultTools.SAW;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.gregtech.data.Materials.*;
 
@@ -60,7 +53,7 @@ public class TFCRegistrar implements IAntimatterRegistrar {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Side side) {
         if (event == RegistrationEvent.DATA_INIT){
-            array = new Material[]{Bauxite, Cobaltite, Galena, Uraninite, VanadiumMagnetite, BrownLimonite, BandedIron, Cooperite, Palladium};
+            array = new Material[]{Bauxite, Cobaltite, Galena, Uraninite, VanadiumMagnetite, BrownLimonite, Hematite, Cooperite, Palladium};
             /*for (Material material : array) {
                 Helpers.mapOfKeys(Ore.Grade.class, (grade) -> {
                     new GTTFCOreItem(GTIRef.ID, grade.name().toLowerCase() + "_" + material.getId());

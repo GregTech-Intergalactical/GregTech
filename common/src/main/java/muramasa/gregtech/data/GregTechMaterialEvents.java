@@ -267,7 +267,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Almandine).asOre().harvestLevel(1);
         event.setMaterial(Alumina).asOre();
         event.setMaterial(Andradite).asOre();
-        event.setMaterial(BandedIron).asOre().harvestLevel(2);
+        event.setMaterial(Hematite).asOre().harvestLevel(2);
         event.setMaterial(Bastnasite).asOre().harvestLevel(2);
         event.setMaterial(Barite).asOre().harvestLevel(2);
         event.setMaterial(Bentonite).asOre(); // TODO: Ore Gen
@@ -684,7 +684,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Almandine).mats(of(Alumina, 5, Iron, 3, SiliconDioxide, 9, Oxygen, 3)).elecTicks(480);
         event.setMaterial(Alumina).mats(of(Aluminium, 2, Oxygen, 3)).elecTicks(480);
         event.setMaterial(Andradite).mats(of(Calcium, 3, Iron, 2, Silicon, 3, Oxygen, 12)).elecTicks(480);
-        event.setMaterial(BandedIron).mats(of(Iron, 2, Oxygen, 3)).elecTicks(150);
+        event.setMaterial(Hematite).mats(of(Iron, 2, Oxygen, 3)).elecTicks(150);
         event.setMaterial(Bastnasite).mats(of(Cerium, 1, Carbon, 1, Fluorine, 1, Oxygen, 3)).elecTicks(192);
         event.setMaterial(Barite).mats(of(Barium, 1, Sulfur, 1, Oxygen, 4)).elecTicks(204);
         event.setMaterial(Bentonite).mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)).elecTicks(480); // TODO: Ore Gen
@@ -1446,7 +1446,7 @@ public class GregTechMaterialEvents {
         ELEC30.add(Charcoal, Opal, Coal, Lignite, Magnesia, SteelMagnetic, IronMagnetic, Quicklime, Quartzite,
                 SiliconDioxide, CalciumSulfate, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/
                 Phosphate, Potash, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
-                PhosphorousPentoxide, BandedIron, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
+                PhosphorousPentoxide, Hematite, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
                 Salt, SodiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond, BlueVitriol,
                 NickelSulfate, Water, DistilledWater, MilkyQuartz);
         ELEC60.add(CalciumChloride, SodiumHydroxide, Propene, Ethylene, Butene, Benzene, Styrene, Ethane, Ammonia, SodiumSulfide, Methane,
@@ -1469,7 +1469,7 @@ public class GregTechMaterialEvents {
         ELEC.add(ELEC90.all().toArray(new Material[0]));
         ELEC.add(ELEC120.all().toArray(new Material[0]));
         ELECSEPG.add(VanadiumMagnetite, Magnetite);
-        ELECSEPI.add(YellowLimonite, BrownLimonite, Tin, Chromium, Ilmenite, BandedIron, Pyrite, Glauconite, Nickel, Chromite, Pentlandite, Manganese);
+        ELECSEPI.add(YellowLimonite, BrownLimonite, Tin, Chromium, Ilmenite, Hematite, Pyrite, Glauconite, Nickel, Chromite, Pentlandite, Manganese);
         ELECSEPN.add(Monazite, Bastnasite);
         GRINDABLE.add(/* Paper, */Coal, Charcoal, Lignite, Lead, Tin, SolderingAlloy, Flint, Gold, Silver, Iron,
                 IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar,

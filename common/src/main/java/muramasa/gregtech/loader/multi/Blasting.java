@@ -77,7 +77,7 @@ public class Blasting {
         BASIC_BLASTING.RB().ii(DUST.getMaterialIngredient(BlueSteel, 1)).io(INGOT.get(BlueSteel)).add("blue_steel", 14400);
         BASIC_BLASTING.RB().ii(DUST.getMaterialIngredient(RedSteel, 1)).io(INGOT.get(RedSteel)).add("red_steel", 14400);
 
-        addCalciteRecipe(BandedIron, 4, new ItemStack(Items.IRON_INGOT, 1));
+        addCalciteRecipe(Hematite, 4, new ItemStack(Items.IRON_INGOT, 1));
         addCalciteRecipe(YellowLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
         addCalciteRecipe(BrownLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
         addCalciteRecipe(Magnetite, 11, new ItemStack(Items.IRON_INGOT, 3));
