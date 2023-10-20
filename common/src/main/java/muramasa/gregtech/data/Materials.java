@@ -327,7 +327,7 @@ public class Materials {
     public static Material RawRubber = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "raw_rubber", 0xccc789, DULL));
     public static Material RawStyreneButadieneRubber = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "raw_styrene_butadiene_rubber", 0x54403d, SHINY));
     public static Material ReactionCatalyst = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "reaction_catalyst", 0x43ab43, NONE));
-    public static Material Rubber = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rubber", 0x000000, SHINY));
+    public static Material Rubber = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rubber", 0x141414, SHINY));
     public static Material SiliconDioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "silicon_dioxide", 0xc8c8c8, QUARTZ));
     public static Material SodaAsh = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "soda_ash", 0xdcdcff, DULL));
     public static Material SodiumAluminate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_aluminate", 0xE6E6FA, NONE));
