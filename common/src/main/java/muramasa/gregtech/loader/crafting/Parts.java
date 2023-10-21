@@ -29,7 +29,7 @@ import java.util.Arrays;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.CircuitBasic;
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.PLATES_IRON_ALUMINIUM;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;

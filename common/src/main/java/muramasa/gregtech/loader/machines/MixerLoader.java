@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.machines;
 
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
@@ -118,7 +119,7 @@ public class MixerLoader {
         MIXING.RB().ii(of(DUST.get(Saltpeter,2)),of(DUST.get(Sulfur,1)),of(DUST.get(AntimatterMaterials.Charcoal,1))).io(new ItemStack(Items.GUNPOWDER,2)).add("gunpowder_1",15*20, 8);
         MIXING.RB().ii(of(DUST.get(AntimatterMaterials.Stone,1))).fi(Lubricant.getLiquid(20), AntimatterMaterials.Water.getLiquid(4980)).fo(DrillingFluid.getLiquid(5000)).add("drilling_fluid",32*2, 16);
         MIXING.RB().ii(of(DUST.get(AntimatterMaterials.Stone,3)),of(DUST.get(Clay,1))).fi(AntimatterMaterials.Water.getLiquid(500)).fo(Concrete.getLiquid(576)).add("concrete", 20, 16);
-        MIXING.RB().ii(RecipeIngredient.of(GregTechData.Biochaff)).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(Biomass.getLiquid(1000)).add("biomass", 400, 8);
+        MIXING.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff)).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(Biomass.getLiquid(1000)).add("biomass", 400, 8);
         MIXING.RB().ii(DUST.getMaterialIngredient(Lapis, 1)).fi(Water.getLiquid(125)).fo(Coolant.getLiquid(125)).add("cold_coolant", 256, 48);
         long oneThird = AntimatterPlatformUtils.isFabric() ? 27000 : 333;
         MIXING.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Lithium, 1)).fi(Glue.getLiquid(oneThird)).io(new ItemStack(SuperFuelBinder, 8)).add("super_fuel_binder", 40 * 20, 16);

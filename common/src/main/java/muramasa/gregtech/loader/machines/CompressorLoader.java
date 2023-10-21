@@ -12,6 +12,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
 import static muramasa.antimatter.data.AntimatterMaterials.Diamond;

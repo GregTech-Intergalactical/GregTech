@@ -27,6 +27,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.Arrays;
 
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.CarbonFibre;
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.CarbonMesh;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
