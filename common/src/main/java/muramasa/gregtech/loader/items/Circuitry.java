@@ -28,6 +28,7 @@ import tesseract.TesseractGraphWrappers;
 import java.util.function.Consumer;
 
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -36,7 +37,6 @@ import static muramasa.antimatter.machine.Tier.LV;
 import static muramasa.antimatter.machine.Tier.MV;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.SOLDER;
-import static muramasa.gregtech.data.GregTechTags.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.RecipeMaps.*;
@@ -157,9 +157,9 @@ public class Circuitry {
         provider.addItemRecipe(output, GTIRef.ID, "", "circuits", "has_item_casing", provider.hasSafeItem(ITEM_CASING.getMaterialTag(Steel)), NandChip,
                 ImmutableMap.of('C', ITEM_CASING.getMaterialTag(Steel), 'R', WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', WIRE_GETTER.apply(PipeSize.VTINY, LV)), "CR", "RT");
         provider.addItemRecipe(output, GTIRef.ID, "lapotron_crystal_upgrade", "energy_orbs", "has_circuit", provider.hasSafeItem(CIRCUITS_ADVANCED), GTCoreItems.LapotronCrystal,
-                ImmutableMap.of('C', CIRCUITS_ADVANCED, 'L', GregTechTags.DUST_LAPIS_LAZURITE, 'E', GTCoreItems.EnergyCrystal), "LCL", "LEL", "LCL");
+                ImmutableMap.of('C', CIRCUITS_ADVANCED, 'L', DUST_LAPIS_LAZURITE, 'E', GTCoreItems.EnergyCrystal), "LCL", "LEL", "LCL");
         provider.addItemRecipe(output, GTIRef.ID, "", "energy_orbs", "has_circuit", provider.hasSafeItem(CIRCUITS_ADVANCED), GTCoreItems.LapotronCrystal,
-                ImmutableMap.of('C', CIRCUITS_ADVANCED, 'L', GregTechTags.DUST_LAPIS_LAZURITE, 'S', GEM.getMaterialTag(Sapphire)), "LCL", "LSL", "LCL");
+                ImmutableMap.of('C', CIRCUITS_ADVANCED, 'L', DUST_LAPIS_LAZURITE, 'S', GEM.getMaterialTag(Sapphire)), "LCL", "LSL", "LCL");
     }
 
     public static void init() {
@@ -269,9 +269,9 @@ public class Circuitry {
         ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitBasic)).add("basic_circuit_tin", 32, 16);
         ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitBasic)).add("basic_circuit_soldering_alloy", 32, 16);
         ASSEMBLING.RB().ii(of(CircuitBoardBasic), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitBasic)).add("basic_circuit_lead", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitGood)).add("good_circuit_tin", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitGood)).add("good_circuit_soldering_alloy", 32, 16);
-        ASSEMBLING.RB().ii(of(GregTechTags.CIRCUITS_BASIC), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitGood)).add("good_circuit_lead", 32, 16);
+        ASSEMBLING.RB().ii(of(CIRCUITS_BASIC), of(NandChip, 2)).fi(Tin.getLiquid(L / 2)).io(new ItemStack(CircuitGood)).add("good_circuit_tin", 32, 16);
+        ASSEMBLING.RB().ii(of(CIRCUITS_BASIC), of(NandChip, 2)).fi(SolderingAlloy.getLiquid(L / 4)).io(new ItemStack(CircuitGood)).add("good_circuit_soldering_alloy", 32, 16);
+        ASSEMBLING.RB().ii(of(CIRCUITS_BASIC), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitGood)).add("good_circuit_lead", 32, 16);
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(AdvCircuitParts, 2)).fi(Tin.getLiquid(L)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_tin", 32, 64);
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(AdvCircuitParts, 2)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_soldering_alloy", 32, 64);
         ASSEMBLING.RB().ii(of(CircuitBoardAdvanced), of(AdvCircuitParts, 2)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitAdv)).add("adv_storage_circuit_lead", 32, 64);
@@ -316,7 +316,7 @@ public class Circuitry {
                 .io(new ItemStack(GregTechData.CircuitBoardMultiFiber,1))
                 .add("multi_fiber_circuit_board",5*20, 480);
         //Wetware
-        ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardMultiFiber,1), of(GregTechTags.CIRCUITS_GOOD,1), of(PetriDish), of(SensorLV), of(COVER_PUMP.getItem(LV)))
+        ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardMultiFiber,1), of(CIRCUITS_GOOD,1), of(PetriDish), of(SensorLV), of(COVER_PUMP.getItem(LV)))
                 .fi(Polystyrene.getLiquid(144))
                 .io(new ItemStack(GregTechData.CircuitBoardWetware,1))
                 .add("wetware_circuit_board",8*20, 32768);
@@ -345,13 +345,13 @@ public class Circuitry {
             boolean hasBad = SOLDER.has(SubTag.BAD_SOLDER, material);
             base *= hasBad ? (hasGood ? 2 : 4) : 1;
             //Basic
-            CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPhenolic, 1), of(GregTechTags.RESISTORS, 2),
+            CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPhenolic, 1), of(RESISTORS, 2),
                             WIRE_FINE.getMaterialIngredient(Copper, 4), of(IntegratedLogicCircuit, 1))
                     .io(new ItemStack(CircuitBasic,1))
                     .fi(material.getLiquid(base * 4)).add("basic_circuit_using_" + material.getId(),200, 8);
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPlastic), of(IntegratedLogicCircuit, 4),
-                            of(GregTechTags.RESISTORS, 4), of(GregTechTags.CAPACITORS, 4),
-                            of(GregTechTags.TRANSISTORS, 4), WIRE_FINE.getMaterialIngredient(Copper, 2))
+                            of(RESISTORS, 4), of(CAPACITORS, 4),
+                            of(TRANSISTORS, 4), WIRE_FINE.getMaterialIngredient(Copper, 2))
                     .io(new ItemStack(MicroProcessor, 4))
                     .fi(material.getLiquid(base * 4)).add("microprocessor_using_" + material.getId(), 200, 60);
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPlastic), of(SOC, 4), WIRE_FINE.getMaterialIngredient(Copper, 2))
@@ -363,8 +363,8 @@ public class Circuitry {
                     .io(new ItemStack(CircuitGood,1))
                     .fi(material.getLiquid(base * 4)).add("good_circuit_using_" + material.getId(),20*20, 16);
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPlastic), of(CentralProcessingUnit, 1),
-                            of(GregTechTags.RESISTORS, 2), of(GregTechTags.CAPACITORS, 2),
-                            of(GregTechTags.TRANSISTORS, 2), WIRE_FINE.getMaterialIngredient(RedAlloy, 2))
+                            of(RESISTORS, 2), of(CAPACITORS, 2),
+                            of(TRANSISTORS, 2), WIRE_FINE.getMaterialIngredient(RedAlloy, 2))
                     .io(new ItemStack(IntegratedProcessor, 4))
                     .fi(material.getLiquid(base * 4)).add("integrated_processor_using_" + material.getId(), 200, 60);
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPlastic), of(SOC, 1), WIRE_FINE.getMaterialIngredient(RedAlloy, 2))
@@ -380,8 +380,8 @@ public class Circuitry {
                     .io(ProcessorAssembly)
                     .fi(material.getLiquid(base * 4)).add("processor_assembly_using_" + material.getId(), 200, 600);
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardEpoxy), of(NanoCpu, 1),
-                            of(GregTechTags.RESISTORS, 2), of(GregTechTags.CAPACITORS, 2),
-                            of(GregTechTags.TRANSISTORS, 2), WIRE_FINE.getMaterialIngredient(Electrum, 2))
+                            of(RESISTORS, 2), of(CAPACITORS, 2),
+                            of(TRANSISTORS, 2), WIRE_FINE.getMaterialIngredient(Electrum, 2))
                     .io(new ItemStack(NanoProcessor))
                     .fi(material.getLiquid(base * 4)).add("nano_processor_using_" + material.getId(), 200, 600);
             CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPlastic), of(ASoC, 1), WIRE_FINE.getMaterialIngredient(Electrum, 2))

@@ -1,5 +1,6 @@
 package muramasa.gregtech.blockentity.multi;
 
+import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
@@ -62,7 +63,7 @@ public class BlockEntityCharcoalPit extends BlockEntityMachine<BlockEntityCharco
 
     @Override
     public InteractionResult onInteractBoth(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
-        if (player.getItemInHand(hand).is(GregTechTags.FIRESTARTER)){
+        if (player.getItemInHand(hand).is(GTCoreTags.FIRESTARTER)){
             if (maxProgress == 0 && checkRecursiveBlocks()){
                 Utils.damageStack(player.getItemInHand(hand), hand, player);
                 if (level.isClientSide) {

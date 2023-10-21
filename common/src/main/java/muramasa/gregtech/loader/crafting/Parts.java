@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
@@ -29,12 +30,12 @@ import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.CircuitBasic;
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.PLATES_IRON_ALUMINIUM;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechData.*;
-import static muramasa.gregtech.data.GregTechTags.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
 
@@ -49,7 +50,7 @@ public class Parts {
               new ItemStack(GregTech.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");
 
     provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
-            INT_CIRCUITS.get(0).getItems()[0], GregTechTags.CIRCUITS_BASIC);
+            INT_CIRCUITS.get(0).getItems()[0], GTCoreTags.CIRCUITS_BASIC);
     // INT_CIRCUITS.forEach((k, v) -> {
     Ingredient ing = INT_CIRCUITS.get(0);
     provider.shapeless(output, "int_circuit_to_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
@@ -94,7 +95,7 @@ public class Parts {
           Item smallGear = GEAR.get(mat);
           TagKey<Item> plate = PLATE.getMaterialTag(mat);
           TagKey<Item> rod = ROD.getMaterialTag(mat);
-          TagKey<Item> circuit = TIER_CIRCUITS.getOrDefault(t, GregTechTags.CIRCUITS_BASIC);
+          TagKey<Item> circuit = TIER_CIRCUITS.getOrDefault(t, GTCoreTags.CIRCUITS_BASIC);
 
           Item motor = GregTech.get(ItemBasic.class, "motor_" + t.getId());
           Item piston = GregTech.get(ItemBasic.class, "piston_" + t.getId());

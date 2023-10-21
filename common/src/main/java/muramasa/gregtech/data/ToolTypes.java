@@ -1,6 +1,7 @@
 package muramasa.gregtech.data;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
@@ -75,14 +76,14 @@ public class ToolTypes {
         }
     });
     static {
-        PropertyIngredient.addGetter(GregTechTags.BATTERIES_RE.location(), ToolTypes::getEnergy);
-        PropertyIngredient.addGetter(GregTechTags.BATTERIES_SMALL.location(), ToolTypes::getEnergy);
-        PropertyIngredient.addGetter(GregTechTags.BATTERIES_MEDIUM.location(), ToolTypes::getEnergy);
-        PropertyIngredient.addGetter(GregTechTags.BATTERIES_LARGE.location(), ToolTypes::getEnergy);
-        PropertyIngredient.addGetter(GregTechTags.POWER_UNIT_LV.location(), ToolTypes::getEnergyAndMat);
-        PropertyIngredient.addGetter(GregTechTags.POWER_UNIT_MV.location(), ToolTypes::getEnergyAndMat);
-        PropertyIngredient.addGetter(GregTechTags.POWER_UNIT_HV.location(), ToolTypes::getEnergyAndMat);
-        PropertyIngredient.addGetter(GregTechTags.POWER_UNIT_SMALL.location(), ToolTypes::getEnergyAndMat);
+        PropertyIngredient.addGetter(GTCoreTags.BATTERIES_RE.location(), ToolTypes::getEnergy);
+        PropertyIngredient.addGetter(GTCoreTags.BATTERIES_SMALL.location(), ToolTypes::getEnergy);
+        PropertyIngredient.addGetter(GTCoreTags.BATTERIES_MEDIUM.location(), ToolTypes::getEnergy);
+        PropertyIngredient.addGetter(GTCoreTags.BATTERIES_LARGE.location(), ToolTypes::getEnergy);
+        PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_LV.location(), ToolTypes::getEnergyAndMat);
+        PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_MV.location(), ToolTypes::getEnergyAndMat);
+        PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_HV.location(), ToolTypes::getEnergyAndMat);
+        PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_SMALL.location(), ToolTypes::getEnergyAndMat);
     }
 
     public static void init(){

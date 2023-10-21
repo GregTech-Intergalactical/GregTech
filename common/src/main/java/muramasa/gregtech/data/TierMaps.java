@@ -1,6 +1,7 @@
 package muramasa.gregtech.data;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
@@ -191,13 +192,13 @@ public class TierMaps {
         }
         {
             ImmutableMap.Builder<Tier, TagKey<Item>> builder = ImmutableMap.builder();
-            builder.put(Tier.LV, GregTechTags.CIRCUITS_BASIC);
-            builder.put(Tier.MV, GregTechTags.CIRCUITS_GOOD);
-            builder.put(Tier.HV, GregTechTags.CIRCUITS_ADVANCED);
-            builder.put(Tier.EV, GregTechTags.CIRCUITS_ELITE);
-            builder.put(Tier.IV, GregTechTags.CIRCUITS_MASTER);
-            builder.put(Tier.LUV, GregTechTags.CIRCUITS_DATA_ORB);
-            builder.put(Tier.ZPM, GregTechTags.CIRCUITS_DATA_ORB);
+            builder.put(Tier.LV, GTCoreTags.CIRCUITS_BASIC);
+            builder.put(Tier.MV, GTCoreTags.CIRCUITS_GOOD);
+            builder.put(Tier.HV, GTCoreTags.CIRCUITS_ADVANCED);
+            builder.put(Tier.EV, GTCoreTags.CIRCUITS_ELITE);
+            builder.put(Tier.IV, GTCoreTags.CIRCUITS_MASTER);
+            builder.put(Tier.LUV, GTCoreTags.CIRCUITS_DATA_ORB);
+            builder.put(Tier.ZPM, GTCoreTags.CIRCUITS_DATA_ORB);
             TIER_CIRCUITS = builder.build();
         }
         {

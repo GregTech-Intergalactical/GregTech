@@ -35,6 +35,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
@@ -42,8 +43,6 @@ import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
-import static muramasa.gregtech.data.GregTechTags.CIRCUITS_ADVANCED;
-import static muramasa.gregtech.data.GregTechTags.CIRCUITS_GOOD;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
@@ -69,7 +68,7 @@ public class Machines {
             if (emitter == null) return;
             Item field = GregTech.get(ItemBasic.class, "field_gen_"+tier.getId());
             if (field == null) return;
-            TagKey<Item> circuit = TIER_CIRCUITS.getOrDefault(tier, GregTechTags.CIRCUITS_BASIC);
+            TagKey<Item> circuit = TIER_CIRCUITS.getOrDefault(tier, GTCoreTags.CIRCUITS_BASIC);
             if (circuit == null) return;
             Object cable = CABLE_GETTER.apply(PipeSize.VTINY, tier, true);
             if (cable == null) return;
@@ -511,7 +510,7 @@ public class Machines {
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.HV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_HV)
-                        .put('C', GTCoreTags.CIRCUITS_ADVANCED)
+                        .put('C', CIRCUITS_ADVANCED)
                         .put('F', FieldGenHV)
                         .put('P', PLATE.get(StainlessSteel)).build(), "CFC", "PHP", "CPC");
 
@@ -724,7 +723,7 @@ public class Machines {
                         .build(), "OOO", "CSC", "LCL"));
         Arrays.stream(getStandard()).filter(t -> t !=IV).forEach(tier -> {
             Block firebox = tier == LV ? CASING_FIREBOX_BRONZE : tier == MV ? CASING_FIREBOX_STEEL : tier == HV ? CASING_FIREBOX_TITANIUM : CASING_FIREBOX_TUNGSTENSTEEL;
-            TagKey<Item> circuit2 = tier == LV ? TIER_CIRCUITS.get(tier) : tier == MV ? CIRCUITS_ADVANCED : tier == HV ? GregTechTags.CIRCUITS_ELITE : GregTechTags.CIRCUITS_MASTER;
+            TagKey<Item> circuit2 = tier == LV ? TIER_CIRCUITS.get(tier) : tier == MV ? CIRCUITS_ADVANCED : tier == HV ? CIRCUITS_ELITE : CIRCUITS_MASTER;
             add(LARGE_BOILER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_circuit", provider.hasSafeItem(TIER_CIRCUITS.get(tier)), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('L', CABLE_GETTER.apply(PipeSize.VTINY, tier, true))
