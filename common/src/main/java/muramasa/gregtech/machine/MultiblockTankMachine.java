@@ -45,7 +45,7 @@ public class MultiblockTankMachine extends MaterialBasicMultiMachine {
             Texture blank = new Texture(GTIRef.ID, "block/machine/empty");
             return new Texture[]{blank, blank, blank, new Texture(GTIRef.ID, "block/casing/wall/" + prefix + "_tank_side_overlay"), blank, blank};
         });
-        setAllowVerticalFacing(true);
+        setVerticalFacingAllowed(true);
         AntimatterAPI.register(MultiblockTankMachine.class, this);
     }
 

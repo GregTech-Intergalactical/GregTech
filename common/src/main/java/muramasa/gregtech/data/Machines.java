@@ -7,7 +7,6 @@ import muramasa.antimatter.blockentity.single.BlockEntityBatteryBuffer;
 import muramasa.antimatter.blockentity.single.BlockEntityDigitalTransformer;
 import muramasa.antimatter.blockentity.single.BlockEntityTransformer;
 import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.machine.BlockMachine;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.material.Material;
@@ -21,8 +20,6 @@ import muramasa.gregtech.machine.SteamMachine;
 import muramasa.gregtech.nuclear.BlockEntityNuclearReactor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Netherite;
@@ -62,7 +59,7 @@ public class Machines {
     public static BasicMachine ALLOY_SMELTER = new BasicMachine(GTIRef.ID, "alloy_smelter").setMap(ALLOY_SMELTING).addFlags(GUI, ITEM).setSound(GregTechSounds.FURNACE,  0.6f);
     public static BasicMachine AMP_FABRICATOR = new BasicMachine(GTIRef.ID, "amp_fabricator").setMap(AMP_FABRICATING).addFlags(GUI, ITEM);
     public static BasicMachine ARC_FURNACE = new BasicMachine(GTIRef.ID, "arc_furnace").setMap(ARC_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f).amps(3);
-    public static BasicMachine ASSEMBLER = new BasicMachine(GTIRef.ID, "assembler").setMap(ASSEMBLING).addFlags(GUI, ITEM, FLUID).setAllowVerticalFacing(true).custom();
+    public static BasicMachine ASSEMBLER = new BasicMachine(GTIRef.ID, "assembler").setMap(ASSEMBLING).addFlags(GUI, ITEM, FLUID).setVerticalFacingAllowed(true).custom();
     public static BasicMachine AUTOCLAVE = new BasicMachine(GTIRef.ID, "autoclave").setMap(AUTOCLAVING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine BENDER = new BasicMachine(GTIRef.ID, "bender").setMap(BENDING).addFlags(GUI, ITEM);
     public static BasicMachine CANNER = new BasicMachine(GTIRef.ID, "canner").setMap(CANNING).addFlags(GUI, ITEM);
@@ -75,7 +72,7 @@ public class Machines {
     public static BasicMachine CUTTER = new BasicMachine(GTIRef.ID, "cutter").setMap(CUTTING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine DECAY_CHAMBER = new BasicMachine(GTIRef.ID, "decay_chamber").setMap(DECAYING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine DISASSEMBLER = new BasicMachine(GTIRef.ID, "disassembler").setMap(DISASSEMBLING).addFlags(GUI, ITEM).custom();
-    public static BasicMachine DISTILLERY = new BasicMachine(GTIRef.ID, "distillery").setMap(DISTILLING).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids().setAllowVerticalFacing(true).setSound(GregTechSounds.EXTRACTOR,  0.6f);
+    public static BasicMachine DISTILLERY = new BasicMachine(GTIRef.ID, "distillery").setMap(DISTILLING).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids().setVerticalFacingAllowed(true).setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static BasicMachine ELECTROLYZER = new BasicMachine(GTIRef.ID, "electrolyzer").setMap(ELECTROLYZING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.MAGNETIZER, 0.6f);
     public static BasicMachine ELECTROMAGNETIC_SEPARATOR = new BasicMachine(GTIRef.ID, "electromagnetic_separator").setMap(ELECTROMAGNETIC_SEPARATING).addFlags(GUI, ITEM);
     public static BasicMachine EXTRACTOR = new BasicMachine(GTIRef.ID, "extractor").setMap(EXTRACTING).addFlags(GUI, ITEM).setSound(GregTechSounds.EXTRACTOR,  0.6f);
@@ -107,17 +104,17 @@ public class Machines {
     /**
      * Battery Buffers
      **/
-    public static BasicMachine BATTERY_BUFFER_SIXTEEN = new BasicMachine(GTIRef.ID, "16x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
-    public static BasicMachine BATTERY_BUFFER_EIGHT = new BasicMachine(GTIRef.ID, "8x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
-    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(GTIRef.ID, "4x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
-    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(GTIRef.ID, "1x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setAllowVerticalFacing(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_SIXTEEN = new BasicMachine(GTIRef.ID, "16x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_EIGHT = new BasicMachine(GTIRef.ID, "8x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(GTIRef.ID, "4x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(GTIRef.ID, "1x_battery_buffer").addFlags(GUI, ENERGY, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
     /**
      * Filters
      **/
-    public static BasicMachine ELECTRIC_ITEM_FILTER = new BasicMachine(GTIRef.ID, "electric_item_filter").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityItemFilter::new).noCovers().frontCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine ELECTRIC_TYPE_FILTER = new BasicMachine(GTIRef.ID, "electric_type_filter").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityTypeFilter::new).noCovers().frontCovers().allowFrontIO().setAllowVerticalFacing(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine SUPER_BUFFER =new BasicMachine(GTIRef.ID, "super_buffer").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine CHEST_BUFFER =new BasicMachine(GTIRef.ID, "chest_buffer").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityBuffer::new).setAllowVerticalFacing(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine ELECTRIC_ITEM_FILTER = new BasicMachine(GTIRef.ID, "electric_item_filter").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityItemFilter::new).noCovers().frontCovers().allowFrontIO().setVerticalFacingAllowed(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine ELECTRIC_TYPE_FILTER = new BasicMachine(GTIRef.ID, "electric_type_filter").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityTypeFilter::new).noCovers().frontCovers().allowFrontIO().setVerticalFacingAllowed(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine SUPER_BUFFER =new BasicMachine(GTIRef.ID, "super_buffer").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityBuffer::new).setVerticalFacingAllowed(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine CHEST_BUFFER =new BasicMachine(GTIRef.ID, "chest_buffer").addFlags(GUI, ENERGY, ITEM).setTile(BlockEntityBuffer::new).setVerticalFacingAllowed(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
     /**
      * Drums
      */
@@ -142,7 +139,7 @@ public class Machines {
     /**
      * Transformers
      **/
-    public static BasicMachine TRANSFORMER = new BasicMachine(GTIRef.ID, "transformer").addFlags(ENERGY).setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new BlockEntityTransformer<>(v, pos, state, 1)).noCovers().allowFrontIO().setAllowVerticalFacing(true).setTooltipInfo((machine, stack, world, tooltip, flag) -> {
+    public static BasicMachine TRANSFORMER = new BasicMachine(GTIRef.ID, "transformer").addFlags(ENERGY).setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new BlockEntityTransformer<>(v, pos, state, 1)).noCovers().allowFrontIO().setVerticalFacingAllowed(true).setTooltipInfo((machine, stack, world, tooltip, flag) -> {
         tooltip.remove(tooltip.size() - 1);
         tooltip.remove(tooltip.size() - 1);
         Tier upper = Tier.getTier(machine.getTier().getVoltage() * 4);
@@ -199,14 +196,14 @@ public class Machines {
     public static HatchMachine HATCH_FLUID_O = new HatchMachine(GTIRef.ID, "fluid_output_hatch", COVEROUTPUT).addFlags(GUI, FLUID, CELL);
     //public static final HeatHatch HATCH_HEAT_COPPER = new HeatHatch(GTIRef.ID, "copper_heat", Copper, 386);
     public static HatchMachine HATCH_ITEM_I = new HatchMachine(GTIRef.ID, "item_input_hatch", COVERINPUT).addFlags(GUI, ITEM);
-    public static HatchMachine HATCH_MUFFLER = new HatchMachine(GTIRef.ID, "muffler_hatch", COVERMUFFLER).addFlags(GUI, ITEM).setClientTick();
+    public static HatchMachine HATCH_MUFFLER = new HatchMachine(GTIRef.ID, "muffler_hatch", COVERMUFFLER).addFlags(GUI, ITEM).setClientTicking();
     public static HatchMachine HATCH_ITEM_O = new HatchMachine(GTIRef.ID, "item_output_hatch", COVEROUTPUT).addFlags(GUI, ITEM);
     /**
      ** Tanks
      **/
     public static TankMachine QUANTUM_TANK = new TankMachine(GTIRef.ID, "quantum_tank", t -> (int) (1602000 * Math.pow(6,  (t.getIntegerId() - 1)))).addFlags(BASIC, GUI, CELL).frontCovers();
 
-    public static BasicMachine PUMP = new BasicMachine(GTIRef.ID, "electric_pump").addFlags(FLUID).setAllowVerticalFacing(true).setTile(BlockEntityPump::new).noCovers();
+    public static BasicMachine PUMP = new BasicMachine(GTIRef.ID, "electric_pump").addFlags(FLUID).setVerticalFacingAllowed(true).setTile(BlockEntityPump::new).noCovers();
     public static BasicMachine CROP_HARVESTER = new BasicMachine(GTIRef.ID, "crop_harvester").setTiers(LV).addFlags(GUI, ITEM).setTile(BlockEntityCropHarvester::new);
 
     /**

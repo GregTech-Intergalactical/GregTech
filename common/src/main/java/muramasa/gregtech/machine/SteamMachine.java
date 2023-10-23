@@ -23,7 +23,7 @@ public class SteamMachine extends Machine<SteamMachine> {
         setTile(BlockEntitySteamMachine::new);
         addFlags(BASIC, STEAM, COVERABLE);
         setGUI(Data.BASIC_MENU_HANDLER);
-        setClientTick();
+        setClientTicking();
         getGui().getMachineData().setMachineStateLocation(BRONZE, "bronze_machine_state").setMachineStateLocation(STEEL, "steel_machine_state");
         String suffix = id.contains("furnace") || id.contains("smelter") || id.contains("boiler") ? "default" : id.replace("steam_", "");
         getGui().getMachineData().setProgressLocation(BRONZE, "bronze_" + suffix).setProgressLocation(STEEL, "steel_" + suffix);
