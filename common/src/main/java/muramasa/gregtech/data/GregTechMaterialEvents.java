@@ -144,7 +144,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(BlackBronze).asMetal(2000);
         event.setMaterial(BlackSteel).asMetal(1200, 1200, FRAME, PLATE);
         event.setMaterial(BlueSteel).asMetal(1400, 1400, FRAME);
-        event.setMaterial(Brass).asMetal(1170, FRAME, ROD, PLATE);
+        event.setMaterial(Brass).asMetal(1170, FRAME, ROD_LONG, PLATE);
         event.setMaterial(Bronze).asMetal(1125, GEAR, FRAME, ROTOR);
         event.setMaterial(CobaltBrass).asMetal(1500, GEAR);
         event.setMaterial(Cupronickel).asMetal(1728, PLATE);
@@ -158,7 +158,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(IronMagnetic).asMetal(1811, ROD_LONG);
         event.setMaterial(Kanthal).asMetal(1800, 1800);
         event.setMaterial(Magnalium).asMetal(870, 0, PLATE, ROD_LONG);
-        event.setMaterial(NeodymiumMagnetic).asMetal(1297, 1297, ROD);
+        event.setMaterial(NeodymiumMagnetic).asMetal(1297, 1297, ROD_LONG);
         event.setMaterial(Neutronium).asMetal(10000, 10000, SCREW, BOLT, RING, GEAR, FRAME);
         event.setMaterial(Naquadah).asMetal(5400, 5400).asOre();
         event.setMaterial(NaquadahAlloy).asMetal(7200, 7200);
@@ -1606,14 +1606,14 @@ public class GregTechMaterialEvents {
         event.setMaterial(Basalt).mats(of(Olivine, 1, Calcite, 3, Flint, 8, DarkAsh, 4));
         event.setMaterial(Blaze).mats(of(Sulfur, 1, DarkAsh, 1));
         event.setMaterial(Coal).asGemBasic(false).flags(ORE_STONE).mats(of(Carbon, 2));
-        event.setMaterial(Copper).flags(PLATE, ROD, FOIL, WIRE_FINE, GEAR, BOLT);
+        event.setMaterial(Copper).flags(PLATE, ROD_LONG, FOIL, WIRE_FINE, GEAR, BOLT);
         event.setMaterial(Diamond).asGem(true).mats(of(Carbon, 64), 1).elecTicks(768);
         event.setMaterial(Emerald).asGem(true).mats(of(Alumina, 5, Beryllium, 3, SiliconDioxide, 18, Oxygen, 3)).elecTicks(540).addTools(3.0F, 9.0F, 590, 3, of(Data.IMPLOSION, 5));
-        event.setMaterial(EnderEye).asGemBasic(false, ROD, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
+        event.setMaterial(EnderEye).asGemBasic(false, ROD_LONG, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
         event.setMaterial(EnderPearl).mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5, Chlorine, 6)).elecTicks(220);
         event.setMaterial(Flint).flags(ROCK);
-        event.setMaterial(Gold).flags(FOIL, ROD, WIRE_FINE, GEAR);
-        event.setMaterial(Iron).flags(RING, GEAR, FRAME);
+        event.setMaterial(Gold).flags(FOIL, ROD_LONG, WIRE_FINE, GEAR);
+        event.setMaterial(Iron).flags(RING, ROD_LONG, GEAR, FRAME);
         event.setMaterial(Wood).flags(FRAME);
         event.setMaterial(AntimatterMaterials.Netherite).asMetal(2246, 1300, RING);
         event.setMaterial(Lapis).asGemBasic(false, PLATE).mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));
