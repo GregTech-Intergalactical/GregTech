@@ -43,13 +43,15 @@ public class ElectrolyzerLoader {
             ItemStack[] items = t.getProcessInto().stream().filter(mat -> mat.m.has(AntimatterMaterialTypes.DUST)).map(mat -> AntimatterMaterialTypes.DUST.get(mat.m, mat.s)).toArray(ItemStack[]::new);
             int inputAmount = MaterialTags.PROCESS_INTO.get(t).getRight() > 0 ? MaterialTags.PROCESS_INTO.get(t).getRight() : t.getProcessInto().stream().mapToInt(mat -> mat.s).sum();
             RecipeBuilder b = ELECTROLYZING.RB();
+            String prefix = "dust";
             if (t.has(DUST)){
                 b.ii(DUST.getMaterialIngredient(t, inputAmount));
             } else {
+                prefix = "fluid";
                 b.fi(t.getFluidTag(inputAmount * 1000));
             }
             long duration = t.has(ELEC_TICKS) ? ELEC_TICKS.getInt(t) : t.getMass() * 20;
-            b.io(items).fo(fluids).add("dust_" + t.getId(),duration, euPerTick);
+            b.io(items).fo(fluids).add(prefix + "_" + t.getId(),duration, euPerTick);
         });
         ELECTROLYZING.RB().ii(RecipeIngredient.of(ItemTags.SAND, 8)).io(DUST.get(Materials.SiliconDioxide)).add("sand_to_silicon_dioxide", 500, 25);
         ELECTROLYZING.RB().ii(RecipeIngredient.of(Items.BONE_MEAL, 3)).io(DUST.get(Materials.Calcium)).add("bone_meal", 98, 26);
