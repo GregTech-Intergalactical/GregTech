@@ -62,8 +62,8 @@ public class ItemPowerUnit extends ItemBasic<ItemPowerUnit> implements IColorHan
     public int getBarWidth(@NotNull ItemStack stack) {
         long currentEnergy = getCurrentEnergy(stack);
         if (currentEnergy > 0) {
-            double maxAmount = getMaxEnergy(stack), difference = maxAmount - currentEnergy;
-            return (int)( 13*(difference / maxAmount));
+            double maxAmount = getMaxEnergy(stack);
+            return (int)(13.0f* (currentEnergy / (double) maxAmount));
         }
         return super.getBarWidth(stack);
     }
