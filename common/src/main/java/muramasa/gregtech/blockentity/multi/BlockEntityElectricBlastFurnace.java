@@ -53,7 +53,7 @@ public class BlockEntityElectricBlastFurnace extends BlockEntityMultiMachine<Blo
 
             @Override
             protected boolean validateRecipe(IRecipe r) {
-                return super.validateRecipe(r) && coilData != null && coilData.heat() > r.getSpecialValue();
+                return super.validateRecipe(r) && coilData != null && coilData.heat() >= r.getSpecialValue();
             }
         });
     }
