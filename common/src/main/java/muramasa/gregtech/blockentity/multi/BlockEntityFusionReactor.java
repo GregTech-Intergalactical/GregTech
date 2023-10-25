@@ -6,16 +6,18 @@ import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.texture.Texture;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-import static muramasa.antimatter.machine.Tier.LUV;
-import static muramasa.antimatter.machine.Tier.ZPM;
+import static muramasa.antimatter.machine.Tier.*;
 
 public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntityFusionReactor> {
 
@@ -77,6 +79,10 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
                 this.display = Display.TOP_BOTTOM;
             }
         }
+    }
+
+    public Texture getTextureForHatches(Direction dir, BlockPos hatchPos){
+        return new Texture(GTIRef.ID, "block/casing/fusion_1");
     }
 
     @Override
