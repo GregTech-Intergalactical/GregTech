@@ -3,6 +3,7 @@ package muramasa.gregtech.data;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTools;
+import io.github.gregtechintergalactical.gtcore.item.ItemPowerUnit;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
@@ -14,7 +15,6 @@ import muramasa.antimatter.recipe.material.MaterialRecipe;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.items.ItemPowerUnit;
 import muramasa.gregtech.items.ItemTurbineRotor;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -90,31 +90,6 @@ public class ToolTypes {
     public static void init(){
         TURBINE_BLADE.unSplitName().setIgnoreTextureSets();
         TURBINE_BLADE.dependents(SCREW, PLATE);
-        GTCoreTools.DRILL.setBrokenItems(ImmutableMap.of("drill_lv", i -> getBrokenItem(i, PowerUnitLV), "drill_mv", i -> getBrokenItem(i, PowerUnitMV), "drill_hv", i -> getBrokenItem(i, PowerUnitHV)));
-        GTCoreTools.CHAINSAW.setBrokenItems(ImmutableMap.of("chainsaw_lv", i -> getBrokenItem(i, PowerUnitLV), "chainsaw_mv", i -> getBrokenItem(i, PowerUnitMV), "chainsaw_hv", i -> getBrokenItem(i, PowerUnitHV)));
-        GTCoreTools.ELECTRIC_WRENCH.setBrokenItems(ImmutableMap.of("electric_wrench_lv", i -> getBrokenItem(i, PowerUnitLV), "electric_wrench_mv", i -> getBrokenItem(i, PowerUnitMV), "electric_wrench_hv", i -> getBrokenItem(i, PowerUnitHV)));
-        GTCoreTools.BUZZSAW.setBrokenItems(ImmutableMap.of("buzzsaw_lv", i -> getBrokenItem(i, PowerUnitLV), "buzzsaw_mv", i -> getBrokenItem(i, PowerUnitMV), "buzzsaw_hv", i -> getBrokenItem(i, PowerUnitHV)));
-        GTCoreTools.ELECTRIC_SCREWDRIVER.setBrokenItems(ImmutableMap.of("electric_screwdriver_lv", i -> getBrokenItem(i, SmallPowerUnit)));
-        GTCoreTools.JACKHAMMER.setBrokenItems(ImmutableMap.of("jackhammer_hv", i -> getBrokenItem(i, PowerUnitHV)));
-    }
-
-    private static ItemStack getBrokenItem(ItemStack tool, ItemLike broken){
-        ItemStack powerUnit = new ItemStack(broken);
-        Tuple<Long, Long> tuple = getEnergy(tool);
-        CompoundTag dataTag = powerUnit.getOrCreateTagElement(muramasa.antimatter.Ref.TAG_ITEM_ENERGY_DATA);
-        IEnergyHandlerItem handler = TesseractCapUtils.getEnergyHandlerItem(powerUnit).orElse(null);
-        if (handler != null){
-            handler.setEnergy(tuple.getA());
-            handler.setCapacity(tuple.getB());
-            powerUnit = handler.getContainer().getItemStack();
-        } else {
-            dataTag.putLong(muramasa.antimatter.Ref.KEY_ITEM_ENERGY, tuple.getA());
-            dataTag.putLong(muramasa.antimatter.Ref.KEY_ITEM_MAX_ENERGY, tuple.getB());
-        }
-        if (broken.asItem() == PowerUnitHV || broken.asItem() == SmallPowerUnit){
-            PowerUnitHV.setMaterial(((IAntimatterTool)tool.getItem()).getSecondaryMaterial(tool), powerUnit);
-        }
-        return powerUnit;
     }
 
     public static Tuple<Long, Long> getEnergy(ItemStack stack){

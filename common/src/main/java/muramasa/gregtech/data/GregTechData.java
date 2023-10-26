@@ -105,11 +105,6 @@ public class GregTechData {
     public static ItemBasic<?> FireBrick = new ItemBasic<>(GTIRef.ID, "fire_brick").tip("Heat Resistant");
     public static ItemBasic<?> SuperFuelBinder = new ItemBasic<>(GTIRef.ID, "super_fuel_binder");
 
-    public static ItemPowerUnit PowerUnitLV = new ItemPowerUnit(GTIRef.ID, "power_unit_lv", Aluminium);
-    public static ItemPowerUnit PowerUnitMV = new ItemPowerUnit(GTIRef.ID, "power_unit_mv", StainlessSteel);
-    public static ItemPowerUnit PowerUnitHV = new ItemPowerUnit(GTIRef.ID, "power_unit_hv", Titanium);
-    public static ItemPowerUnit SmallPowerUnit = new ItemPowerUnit(GTIRef.ID, "small_power_unit", Aluminium);
-
     public static ItemBasic<?> MotorLV = new ItemBasic<>(GTIRef.ID, "motor_lv");
     public static ItemBasic<?> MotorMV = new ItemBasic<>(GTIRef.ID, "motor_mv");
     public static ItemBasic<?> MotorHV = new ItemBasic<>(GTIRef.ID, "motor_hv");

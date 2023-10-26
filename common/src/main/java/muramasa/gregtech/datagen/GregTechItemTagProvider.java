@@ -21,10 +21,6 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         //this.tag(GregTechTags.CIRCUITS_EXTREME).add(GregTechData.CircuitDataStorage);
         this.tag(CIRCUITS_ELITE).add(NanoProcessor);
         this.tag(CIRCUITS_MASTER).add(QuantumProcessor);
-        this.tag(POWER_UNIT_LV).add(PowerUnitLV);
-        this.tag(POWER_UNIT_MV).add(PowerUnitMV);
-        this.tag(POWER_UNIT_HV).add(PowerUnitHV);
-        this.tag(POWER_UNIT_SMALL).add(SmallPowerUnit);
         this.tag(RESISTORS).add(Resistor, SMDResistor);
         this.tag(CAPACITORS).add(Capacitor, SMDCapacitor);
         this.tag(TRANSISTORS).add(Transistor, SMDTransistor);
