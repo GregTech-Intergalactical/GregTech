@@ -20,7 +20,9 @@ import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
+import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.block.BlockCasing;
+import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.data.GregTechTags;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.TierMaps;
@@ -496,38 +498,41 @@ public class Machines {
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
         });
 
+        var circuit = GregTechConfig.GAMEPLAY.HARDER_CIRCUITS ? CIRCUITS_ADVANCED : EngravedCrystalChip;
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.LV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_LV)
-                        .put('C', GTCoreTags.CIRCUITS_BASIC)
+                        .put('C', circuit)
                         .put('F', FieldGenLV)
                         .put('P', PLATE.get(Steel)).build(), "CFC", "PHP", "CPC");
 
+        circuit = GregTechConfig.GAMEPLAY.HARDER_CIRCUITS ? CIRCUITS_COMPLEX : CIRCUITS_DATA;
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(MV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_MV)
-                        .put('C', GTCoreTags.CIRCUITS_GOOD)
+                        .put('C', circuit)
                         .put('F', FieldGenMV)
                         .put('P', PLATE.get(Aluminium)).build(), "CFC", "PHP", "CPC");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.HV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_HV)
-                        .put('C', CIRCUITS_ADVANCED)
+                        .put('C', CIRCUITS_ELITE)
                         .put('F', FieldGenHV)
                         .put('P', PLATE.get(StainlessSteel)).build(), "CFC", "PHP", "CPC");
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.EV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_EV)
-                        .put('C', NanoProcessor)
+                        .put('C', CIRCUITS_MASTER)
                         .put('F', FieldGenEV)
                         .put('P', PLATE.get(Titanium)).build(), "CFC", "PHP", "CPC");
 
+        circuit = GregTechConfig.GAMEPLAY.HARDER_CIRCUITS ? CIRCUITS_DATA_ORB : CIRCUITS_DATA_ORB;
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.IV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_IV)
-                        .put('C', QuantumProcessor)
+                        .put('C', circuit)
                         .put('F', FieldGenIV)
                         .put('P', PLATE.get(TungstenSteel)).build(), "CFC", "PHP", "CPC");
 
