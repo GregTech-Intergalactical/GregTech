@@ -91,7 +91,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Neodymium).asMetal(1297, 1297, PLATE, ROD_LONG).asOre().harvestLevel(2); // TODO: Bastnasite or Monazite for Ore For;
         event.setMaterial(Promethium).asMetal(1353,1353);
         event.setMaterial(Samarium).asMetal(1345,1345);
-        event.setMaterial(Europium).asMetal(1099, 1099);
+        event.setMaterial(Europium).asMetal(1099, 1099, PLATE);
         event.setMaterial(Gadolinium).asMetal(1585,1585);
         event.setMaterial(Terbium).asMetal(1696,1696);
         event.setMaterial(Dysprosium).asMetal(1680, 1680);
