@@ -16,14 +16,14 @@ import static muramasa.gregtech.data.GregTechData.PlantBall;
 
 public class Miscellaneous {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        provider.addItemRecipe(output, GTIRef.ID, "plantball", "misc", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), PlantBall, of(
+        provider.addItemRecipe(output, GTIRef.ID, "plantball", "misc", PlantBall, of(
                 'C', ForgeCTags.CROPS
         ), "CCC", "C C", "CCC");
 
-        provider.addItemRecipe(output, GTIRef.ID, "plantball2", "misc", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), PlantBall, of(
+        provider.addItemRecipe(output, GTIRef.ID, "plantball2", "misc", PlantBall, of(
                 'S', ForgeCTags.SEEDS
         ), "SSS", "S S", "SSS");
-        provider.addStackRecipe(output, GTIRef.ID, "plantball3", "misc", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(PlantBall, 2), of(
+        provider.addStackRecipe(output, GTIRef.ID, "plantball3", "misc", new ItemStack(PlantBall, 2), of(
                 'S', TagUtils.getItemTag(new ResourceLocation("saplings"))
         ), "SSS", "S S", "SSS");
     }

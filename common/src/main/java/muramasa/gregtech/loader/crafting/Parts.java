@@ -43,45 +43,45 @@ public class Parts {
   public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
       tieredItems(output, provider);
       molds(output, provider);
-      provider.shapeless(output, "fire_clay_dust", "parts", "has_clay_dust", provider.hasSafeItem(AntimatterMaterialTypes.DUST.getMaterialTag(Clay)), AntimatterMaterialTypes.DUST.get(Fireclay, 2),
+      provider.shapeless(output, "fire_clay_dust", "parts", AntimatterMaterialTypes.DUST.get(Fireclay, 2),
               AntimatterMaterialTypes.DUST.getMaterialTag(Brick), AntimatterMaterialTypes.DUST.getMaterialTag(Clay));
 
-      provider.addStackRecipe(output, GTIRef.ID, "drain_expensive", "parts", "has_battery", provider.hasSafeItem(Items.IRON_BARS),
+      provider.addStackRecipe(output, GTIRef.ID, "drain_expensive", "parts",
               new ItemStack(GregTech.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");
 
-    provider.shapeless(output, "int_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
+    provider.shapeless(output, "int_circuit", "gtparts",
             INT_CIRCUITS.get(0).getItems()[0], GTCoreTags.CIRCUITS_BASIC);
     // INT_CIRCUITS.forEach((k, v) -> {
     Ingredient ing = INT_CIRCUITS.get(0);
-    provider.shapeless(output, "int_circuit_to_circuit", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()),
+    provider.shapeless(output, "int_circuit_to_circuit", "gtparts",
         CircuitBasic.getDefaultInstance(), ing);
     // });
 
-      provider.shapeless(output, GTIRef.ID, "", "carbon", "has_carbon_fibre", provider.hasSafeItem(CarbonFibre), DUST.get(FiberReinforcedEpoxyResin, 1), CarbonFibre, DUST.getMaterialTag(EpoxyResin));
-      provider.shapeless(output, GTIRef.ID, "", "carbon", "has_carbon_fibre", provider.hasSafeItem(CarbonFibre), new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
-      provider.addItemRecipe(output, GTIRef.ID, "", "carbon", "has_coal", provider.hasSafeItem(DUST.getMaterialTag(Coal)), CoalBall,
+      provider.shapeless(output, GTIRef.ID, "", "carbon", DUST.get(FiberReinforcedEpoxyResin, 1), CarbonFibre, DUST.getMaterialTag(EpoxyResin));
+      provider.shapeless(output, GTIRef.ID, "", "carbon", new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
+      provider.addItemRecipe(output, GTIRef.ID, "", "carbon", CoalBall,
               of('F', Items.FLINT, 'C', DUST.getMaterialTag(Coal)), "CCC", "CFC", "CCC");
-      provider.addItemRecipe(output, GTIRef.ID, "", "carbon", "has_coal", provider.hasSafeItem(DUST.getMaterialTag(Coal)), CoalChunk,
+      provider.addItemRecipe(output, GTIRef.ID, "", "carbon", CoalChunk,
               of('F', Items.OBSIDIAN, 'C', CompressedCoalBall), "CCC", "CFC", "CCC");
-      provider.addItemRecipe(output, GTIRef.ID, "","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), GTCoreItems.BatteryHullSmall, of(
+      provider.addItemRecipe(output, GTIRef.ID, "","batteries", GTCoreItems.BatteryHullSmall, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, LV, false)
       ), "C", "P", "P");
 
-      provider.addItemRecipe(output,  GTIRef.ID, "","batteries", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), GTCoreItems.BatteryHullMedium, of(
+      provider.addItemRecipe(output,  GTIRef.ID, "","batteries", GTCoreItems.BatteryHullMedium, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false)
       ), "C C", "PPP", "PPP");
-      provider.addStackRecipe(output, GTIRef.ID, "", "batteries", "has_ruby_dust", provider.hasSafeItem(DUST.getMaterialTag(Ruby)), DUST.get(Energium, 9),
+      provider.addStackRecipe(output, GTIRef.ID, "", "batteries", DUST.get(Energium, 9),
               of('R', DUST.getMaterialTag(Redstone), 'r', DUST.getMaterialTag(Ruby)), "RrR", "rRr", "RrR");
 
 
-      provider.addItemRecipe(output, GTIRef.ID, "diamondsaw_blade", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), DiamondSawBlade, of(
+      provider.addItemRecipe(output, GTIRef.ID, "diamondsaw_blade", "gtparts", DiamondSawBlade, of(
               'G', GEAR.get(CobaltBrass),
               'D', DUST_SMALL.get(Diamond)
       ), " D ", "DGD", " D ");
 
-      provider.addItemRecipe(output, "mining_pipes", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), MINING_PIPE_THIN,
+      provider.addItemRecipe(output, "mining_pipes", MINING_PIPE_THIN,
               of('H', HAMMER.getTag(), 'P', FLUID_PIPE_STEEL.getBlockItem(PipeSize.SMALL), 'F', FILE.getTag()), "HPF");
   }
 
@@ -107,24 +107,24 @@ public class Parts {
           Item fieldGen = GregTech.get(ItemBasic.class, "field_gen_" + t.getId());
           Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
           Object emitterGem = EMITTER_GEMS.get(t);
-          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), motor,
+          provider.addItemRecipe(output, "gtparts", motor,
                   of('M', ROD.get(magnet), 'C', cable, 'W', WIRE_COPPER.getBlockItem(fromTier(t)), 'R', rod), "CWR", "WMW", "RWC");
-          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), piston,
+          provider.addItemRecipe(output, "gtparts", piston,
                   of('M', motor, 'C', cable, 'G', smallGear, 'P', plate, 'R', rod), "PPP", "CRR", "CMG");
-          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), conveyor,
+          provider.addItemRecipe(output, "gtparts", conveyor,
                   of('M', motor, 'C', cable, 'P', PLATE.get(Rubber)), "PPP", "MCM", "PPP");
-          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), robotArm,
+          provider.addItemRecipe(output, "gtparts", robotArm,
                   of('M', motor, 'C', cable, 'P', piston, 'I', circuit, 'R', rod), "CCC", "MRM", "PIR");
-          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(circuit), emitter,
+          provider.addItemRecipe(output, "gtparts", emitter,
                   of('R', emitterRod, 'G', emitterGem, 'L', cable, 'C', circuit), "RRC", "LGR", "CLR");
-          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(circuit), sensor,
+          provider.addItemRecipe(output, "gtparts", sensor,
                   of('R', emitterRod, 'G', emitterGem, 'C', circuit, 'P', plate), "P G", "PR ", "CPP");
           PipeSize osmium = t == IV ? PipeSize.HUGE : PipeSize.values()[t.getIntegerId() - 1];
           Item center = t == LV ? Items.ENDER_PEARL : t == MV ? Items.ENDER_EYE : t == HV ? QuantumEye : t == EV ? Items.NETHER_STAR : QuantumStar;
-          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), fieldGen,
+          provider.addItemRecipe(output, "gtparts", fieldGen,
                   of('O', WIRE_OSMIUM.getBlockItem(osmium), 'C', circuit, 'G', center), "OCO", "CGC", "OCO");
           Material rotorMat = ((MaterialItem) TIER_ROTORS.get(t)).getMaterial();
-          provider.addItemRecipe(output, "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), pump,
+          provider.addItemRecipe(output, "gtparts", pump,
                   ImmutableMap.<Character, Object>builder().put('M', motor).put('C', cable).put('W', WRENCH.getTag())
                           .put('S', SCREWDRIVER.getTag()).put('R', SCREW.get(rotorMat)).put('T', TIER_ROTORS.get(t))
                           .put('O', RING.get(Rubber)).put('P', TIER_PIPES.get(t).apply(PipeSize.NORMAL))
@@ -134,7 +134,7 @@ public class Parts {
   }
 
   private static void molds(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
-      provider.addItemRecipe(output, GTIRef.ID, "empty_shape", "gtparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), EmptyShape, of(
+      provider.addItemRecipe(output, GTIRef.ID, "empty_shape", "gtparts", EmptyShape, of(
               'P', PLATE.get(Steel),
               'H', HAMMER.getTag(),
               'F', FILE.getTag()
@@ -183,12 +183,12 @@ public class Parts {
   }
 
   private static void moldRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Item mold, String... shapes){
-      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), mold,
+      provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", mold,
               of('P', EmptyShape, 'H', HAMMER.getTag()), shapes);
   }
 
     private static void shapeRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Item mold, String... shapes){
-        provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", "has_hammer", provider.hasSafeItem(HAMMER.getTag()), mold,
+        provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", mold,
                 of('P', EmptyShape, 'H', WIRE_CUTTER.getTag()), shapes);
     }
 

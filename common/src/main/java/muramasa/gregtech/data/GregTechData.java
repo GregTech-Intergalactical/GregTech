@@ -175,8 +175,6 @@ public class GregTechData {
     public static ItemBasic<?> SMDDiode = new ItemBasic<>(GTIRef.ID, "smd_diode").tip("An integral part to Circuitry");
     public static ItemBasic<?> Capacitor = new ItemBasic<>(GTIRef.ID, "capacitor").tip("An integral part to Circuitry");
     public static ItemBasic<?> SMDCapacitor = new ItemBasic<>(GTIRef.ID, "smd_capacitor").tip("An integral part to Circuitry");
-    public static ItemBasic<?> VacuumTube = new ItemBasic<>(GTIRef.ID, "vacuum_tube").tip("A part for the Basic Circuit");
-    public static ItemBasic<?> GlassTube = new ItemBasic<>(GTIRef.ID, "glass_tube").tip("A part for circuits");
     public static ItemBasic<?> SmallCoil = new ItemBasic<>(GTIRef.ID, "small_coil").tip("A part for circuits");
     public static ItemBasic<?> PetriDish = new ItemBasic<>(GTIRef.ID, "petri_dish");
 
