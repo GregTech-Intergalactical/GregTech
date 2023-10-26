@@ -71,7 +71,7 @@ public class Machines {
             if (emitter == null) return;
             Item field = GregTech.get(ItemBasic.class, "field_gen_"+tier.getId());
             if (field == null) return;
-            TagKey<Item> circuit = TIER_CIRCUITS.getOrDefault(tier, GTCoreTags.CIRCUITS_BASIC);
+            TagKey<Item> circuit = TIER_CIRCUITS.apply(tier);
             if (circuit == null) return;
             Object cable = CABLE_GETTER.apply(PipeSize.VTINY, tier, true);
             if (cable == null) return;
@@ -324,7 +324,7 @@ public class Machines {
             Tier tier2 = tier == LV ? tier : Tier.getTier(tier.getVoltage() * 4);
             add(AMP_FABRICATOR, tier, (m, item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorLV), item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', TIER_CIRCUITS.get(tier2))
+                            .put('C', TIER_CIRCUITS.apply(tier2))
                             .put('W', CABLE_GETTER.apply(PipeSize.SMALL, tier, true))
                             .put('H', hull)
                             .put('P', pump).build(), "WPW", "PHP", "CPC"));
@@ -478,19 +478,19 @@ public class Machines {
                             .put('D', ForgeCTags.CHESTS_WOODEN)
                             .put('M', hull)
                             .put('C', conveyor)
-                            .put('c', TIER_CIRCUITS.get(LV)).build(), "DMC", " c "));
+                            .put('c', TIER_CIRCUITS.apply(LV)).build(), "DMC", " c "));
 
             add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('H', hull)
-                            .put('C', TIER_CIRCUITS.get(HV))
+                            .put('C', TIER_CIRCUITS.apply(HV))
                             .put('F', COVER_ITEM_FILTER.getItem())
                             .put('E', ForgeCTags.CHESTS)
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
             add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(motor), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('H', hull)
-                            .put('C', TIER_CIRCUITS.get(LV))
+                            .put('C', TIER_CIRCUITS.apply(LV))
                             .put('F', COVER_ITEM_FILTER.getItem())
                             .put('E', ForgeCTags.CHESTS)
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
@@ -671,7 +671,7 @@ public class Machines {
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, LV, true))
                         .put('H', CASING_HEAT_PROOF)
-                        .put('C', TIER_CIRCUITS.get(LV))
+                        .put('C', TIER_CIRCUITS.apply(LV))
                         .put('F', Items.FURNACE)
                         .build(), "FFF", "CHC", "LCL"));
         /*provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CHARCOAL_PIT.getItem(CHARCOAL_PIT.getFirstTier()),
@@ -686,7 +686,7 @@ public class Machines {
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_TUNGSTEN_STEEL.getBlockItem(PipeSize.VTINY))
                         .put('H', HULL_EV)
-                        .put('C', TIER_CIRCUITS.get(EV))
+                        .put('C', TIER_CIRCUITS.apply(EV))
                         .put('P', PistonEV)
                         .put('G', GEAR.getMaterialTag(Titanium))
                         .put('M', MotorEV)
@@ -696,21 +696,21 @@ public class Machines {
                         .put('P', COVER_PUMP.getItem(HV).getItem())
                         .put('O', COIL_CUPRONICKEL)
                         .put('H', HULL_HV)
-                        .put('C', TIER_CIRCUITS.get(HV))
+                        .put('C', TIER_CIRCUITS.apply(HV))
                         .build(), "OPO", "CHC", "OPO"));
         add(DISTLLATION_TOWER, HV, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
                 ImmutableMap.<Character, Object>builder()
                         .put('P', COVER_PUMP.getItem(HV).getItem())
                         .put('I', FLUID_PIPE_STAINLESS_STEEL.getBlock(PipeSize.LARGE))
                         .put('H', HULL_HV)
-                        .put('C', TIER_CIRCUITS.get(HV))
+                        .put('C', TIER_CIRCUITS.apply(HV))
                         .build(), "CIC", "PHP", "CIC"));
         add(CRYO_DISTLLATION_TOWER, HV, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorHV), item,
                 ImmutableMap.<Character, Object>builder()
                         .put('P', COVER_PUMP.getItem(HV).getItem())
                         .put('I', FLUID_PIPE_COPPER.getBlock(PipeSize.LARGE))
                         .put('H', HULL_HV)
-                        .put('C', TIER_CIRCUITS.get(HV))
+                        .put('C', TIER_CIRCUITS.apply(HV))
                         .build(), "CIC", "PHP", "CIC"));
         add(HEAT_EXCHANGER, EV, (m,item) -> provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(MotorEV), item,
                 ImmutableMap.<Character, Object>builder()
@@ -722,13 +722,13 @@ public class Machines {
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, HV, true))
                         .put('O', Items.OBSIDIAN)
-                        .put('C', TIER_CIRCUITS.get(HV))
+                        .put('C', TIER_CIRCUITS.apply(HV))
                         .put('S', CASING_SOLID_STEEL)
                         .build(), "OOO", "CSC", "LCL"));
         Arrays.stream(getStandard()).filter(t -> t !=IV).forEach(tier -> {
             Block firebox = tier == LV ? CASING_FIREBOX_BRONZE : tier == MV ? CASING_FIREBOX_STEEL : tier == HV ? CASING_FIREBOX_TITANIUM : CASING_FIREBOX_TUNGSTENSTEEL;
-            TagKey<Item> circuit2 = tier == LV ? TIER_CIRCUITS.get(tier) : tier == MV ? CIRCUITS_ADVANCED : tier == HV ? CIRCUITS_ELITE : CIRCUITS_MASTER;
-            add(LARGE_BOILER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_circuit", provider.hasSafeItem(TIER_CIRCUITS.get(tier)), item,
+            TagKey<Item> circuit2 = tier == LV ? TIER_CIRCUITS.apply(tier) : tier == MV ? CIRCUITS_ADVANCED : tier == HV ? CIRCUITS_ELITE : CIRCUITS_MASTER;
+            add(LARGE_BOILER, tier, (m,item) -> provider.addItemRecipe(output, "machines", "has_circuit", provider.hasSafeItem(TIER_CIRCUITS.apply(tier)), item,
                     ImmutableMap.<Character, Object>builder()
                             .put('L', CABLE_GETTER.apply(PipeSize.VTINY, tier, true))
                             .put('H', firebox)
@@ -743,7 +743,7 @@ public class Machines {
                 provider.addItemRecipe(output, "machines", "has_gear", provider.hasSafeItem(GEAR.getMaterialTag(gear)), item,
                         ImmutableMap.of('G', GEAR.getMaterialTag(gear),
                                 'H', GregTech.get(BlockCasing.class, "hull_" + tier.getId()),
-                                'C', TIER_CIRCUITS.get(tier),
+                                'C', TIER_CIRCUITS.apply(tier),
                                 'P', TIER_PIPES.get(pipe).apply(PipeSize.LARGE)), "CGC", "GHG", "PGP");
             });
         });
@@ -751,7 +751,7 @@ public class Machines {
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, HV, false))
                         .put('F', Items.FURNACE)
-                        .put('C', TIER_CIRCUITS.get(HV))
+                        .put('C', TIER_CIRCUITS.apply(HV))
                         .put('H', CASING_HEAT_PROOF)
                         .build(), "FFF", "CHC", "LCL"));
         add(NUCLEAR_REACTOR, EV, (m, item) -> provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), item,
@@ -764,7 +764,7 @@ public class Machines {
         add(OIL_DRILLING_RIG, MV, (m, item) -> provider.addItemRecipe(output, "machines", "has_mortor", provider.hasSafeItem(MotorMV), item,
                 ImmutableMap.<Character, Object>builder()
                         .put('M', MotorMV)
-                        .put('C', TIER_CIRCUITS.get(MV))
+                        .put('C', TIER_CIRCUITS.apply(MV))
                         .put('H', HULL_MV)
                         .put('F', FRAME.getMaterialTag(Steel)).build(), "FFF", "CHC", "MMM"));
         provider.addItemRecipe(output, "machines", "has_motor", provider.hasSafeItem(FireBrick), PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()),
@@ -782,7 +782,7 @@ public class Machines {
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, HV, true))
                         .put('F', CASING_FROST_PROOF)
-                        .put('C', TIER_CIRCUITS.get(HV))
+                        .put('C', TIER_CIRCUITS.apply(HV))
                         .put('P', COVER_PUMP.getItem(HV).getItem())
                         .build(), "PPP", "CFC", "LCL"));
     }

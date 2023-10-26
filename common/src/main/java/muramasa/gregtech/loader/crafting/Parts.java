@@ -95,7 +95,7 @@ public class Parts {
           Item smallGear = GEAR.get(mat);
           TagKey<Item> plate = PLATE.getMaterialTag(mat);
           TagKey<Item> rod = ROD.getMaterialTag(mat);
-          TagKey<Item> circuit = TIER_CIRCUITS.getOrDefault(t, GTCoreTags.CIRCUITS_BASIC);
+          TagKey<Item> circuit = TIER_CIRCUITS.apply(t);
 
           Item motor = GregTech.get(ItemBasic.class, "motor_" + t.getId());
           Item piston = GregTech.get(ItemBasic.class, "piston_" + t.getId());

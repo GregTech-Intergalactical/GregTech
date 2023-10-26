@@ -11,6 +11,7 @@ import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.items.ItemIntCircuit;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -35,7 +36,7 @@ public class TierMaps {
     public static final ImmutableMap<Tier, Material> TIER_PIPE_MATERIAL;
     public static ImmutableMap<Tier, PipeItemBlock> TIER_WIRES;
     //public static ImmutableMap<Tier, Item> TIER_CABLES;
-    public static ImmutableMap<Tier, TagKey<Item>> TIER_CIRCUITS;
+    public static Function<Tier, TagKey<Item>> TIER_CIRCUITS;
     public static ImmutableMap<Tier, ItemBasic<?>> TIER_BOARDS;
 
     public static ImmutableMap<Tier, Material> EMITTER_RODS;
@@ -199,7 +200,37 @@ public class TierMaps {
             builder.put(Tier.IV, GTCoreTags.CIRCUITS_MASTER);
             builder.put(Tier.LUV, GTCoreTags.CIRCUITS_DATA_ORB);
             builder.put(Tier.ZPM, GTCoreTags.CIRCUITS_DATA_ORB);
-            TIER_CIRCUITS = builder.build();
+            TIER_CIRCUITS = t ->{
+                boolean hardMode = GregTechConfig.GAMEPLAY.HARDER_CIRCUITS;
+                if (t == LV){
+                    return GTCoreTags.CIRCUITS_BASIC;
+                }
+                if (t == MV){
+                    return GTCoreTags.CIRCUITS_GOOD;
+                }
+                if (t == HV){
+                    return GTCoreTags.CIRCUITS_ADVANCED;
+                }
+                if (t == EV){
+                    return hardMode ? GTCoreTags.CIRCUITS_ELITE : GTCoreTags.CIRCUITS_ELITE;
+                }
+                if (t == IV){
+                    return hardMode ? GTCoreTags.CIRCUITS_ELITE : GTCoreTags.CIRCUITS_MASTER;
+                }
+                if (t == LUV){
+                    return hardMode ? GTCoreTags.CIRCUITS_DATA_ORB : GTCoreTags.CIRCUITS_DATA_ORB;
+                }
+                if (t == ZPM){
+                    return hardMode ? GTCoreTags.CIRCUITS_DATA_ORB : GTCoreTags.CIRCUITS_DATA_ORB;
+                }
+                if (t == UV){
+                    return hardMode ? GTCoreTags.CIRCUITS_DATA_ORB : GTCoreTags.CIRCUITS_DATA_ORB;
+                }
+                if (t == UHV){
+                    return hardMode ? GTCoreTags.CIRCUITS_DATA_ORB : GTCoreTags.CIRCUITS_DATA_ORB;
+                }
+                return GTCoreTags.CIRCUITS_BASIC;
+            };
         }
         {
             ImmutableMap.Builder<Tier, ItemBasic<?>> builder = ImmutableMap.builder();

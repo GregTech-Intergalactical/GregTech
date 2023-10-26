@@ -174,7 +174,7 @@ public class AssemblyLoader {
             ASSEMBLING.RB().ii(of(TIER_WIRES.get(t),4), of(ROD.get(TIER_MATERIALS.get(t)),2),
                     of(ROD.get(magnet),1)
                     , ofObject(CABLE_GETTER.apply(PipeSize.VTINY, t, false), 2)).io(new ItemStack(GregTech.get(ItemBasic.class,"motor_"+t.getId()))).add("motor_"+t.getId(),150,16);
-            ASSEMBLING.RB().ii(of(COVER_PUMP.getItem(t)), of(TIER_CIRCUITS.get(t), 2)).io(new ItemStack(GregTech.get(ItemBasic.class, "fluid_regulator_" + t.getId()))).add("fluid_regulator_" + t.getId(), 800, 8);
+            ASSEMBLING.RB().ii(of(COVER_PUMP.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(new ItemStack(GregTech.get(ItemBasic.class, "fluid_regulator_" + t.getId()))).add("fluid_regulator_" + t.getId(), 800, 8);
         });
     }
 
