@@ -133,27 +133,15 @@ public class Circuitry {
     }
 
     private static void circuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_h", "circuits", CircuitBasic,
+        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_h", "circuits", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                         .put('N', NandChip)
                         .put('S', CircuitBoardCoated)
                         .build(), "CCC", "NSN", "CCC");
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_v", "circuits", CircuitBasic,
+        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_v", "circuits", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
-                        .put('N', NandChip)
-                        .put('S', CircuitBoardCoated)
-                        .build(), "CNC", "CSC", "CNC");
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_h", "circuits", CircuitBasic,
-                ImmutableMap.<Character, Object>builder()
-                        .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
-                        .put('N', NandChip)
-                        .put('S', CircuitBoardCoated)
-                        .build(), "CCC", "NSN", "CCC");
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_v", "circuits", CircuitBasic,
-                ImmutableMap.<Character, Object>builder()
-                        .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('N', NandChip)
                         .put('S', CircuitBoardCoated)
                         .build(), "CNC", "CSC", "CNC");
