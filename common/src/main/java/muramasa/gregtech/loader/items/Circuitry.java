@@ -157,9 +157,8 @@ public class Circuitry {
                         .put('N', NandChip)
                         .put('S', CircuitBoardCoated)
                         .build(), "CNC", "CSC", "CNC");
-        var wire = TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ PipeSize.VTINY.getId()));
         provider.addItemRecipe(output, GTIRef.ID, "", "circuits", NandChip,
-                ImmutableMap.of('C', ITEM_CASING.getMaterialTag(Steel), 'R', WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', wire), "CR", "RT");
+                ImmutableMap.of('C', ITEM_CASING.getMaterialTag(Steel), 'R', WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', WIRE_TIN.getBlockItem(PipeSize.VTINY)), "CR", "RT");
         provider.addItemRecipe(output, GTIRef.ID, "lapotron_crystal_upgrade", "energy_orbs", GTCoreItems.LapotronCrystal,
                 ImmutableMap.of('C', CIRCUITS_ADVANCED, 'L', DUST_LAPIS_LAZURITE, 'E', GTCoreItems.EnergyCrystal), "LCL", "LEL", "LCL");
         provider.addItemRecipe(output, GTIRef.ID, "", "energy_orbs", GTCoreItems.LapotronCrystal,
