@@ -13,12 +13,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
-import static muramasa.antimatter.data.AntimatterMaterials.Diamond;
-import static muramasa.antimatter.data.AntimatterMaterials.Wood;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.Fireclay;
+import static muramasa.gregtech.data.Materials.Lazurite;
 import static muramasa.gregtech.data.RecipeMaps.COMPRESSING;
 
 public class CompressorLoader {
@@ -46,6 +45,8 @@ public class CompressorLoader {
         });
         COMPRESSING.RB().ii(DUST.getMaterialIngredient(Wood, 1)).io(AntimatterMaterialTypes.PLATE.get(Wood, 1)).add("wood_plate",60, 4);
         COMPRESSING.RB().ii(DUST.getMaterialIngredient(Fireclay, 1)).io(new ItemStack(CompressedFireClay)).add("compressed_fireclay",200, 2);
+        COMPRESSING.RB().ii(DUST.getMaterialIngredient(Lapis, 1)).io(PLATE.get(Lapis)).add("lapis_plate", 300, 2);
+        COMPRESSING.RB().ii(DUST.getMaterialIngredient(Lazurite, 1)).io(PLATE.get(Lazurite)).add("lazurite", 300, 2);
         COMPRESSING.RB().ii(RecipeIngredient.of(ItemTags.SAPLINGS, 4)).io(new ItemStack(PlantBall)).add("plantball",300, 2);
         COMPRESSING.RB().ii(RecipeIngredient.of(ItemTags.SMALL_FLOWERS, 8)).io(new ItemStack(PlantBall)).add("plantball_1",300, 2);
         COMPRESSING.RB().ii(RecipeIngredient.of(ForgeCTags.CROPS, 8)).io(new ItemStack(PlantBall)).add("plantball_2",300, 2);
