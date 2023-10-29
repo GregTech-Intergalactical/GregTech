@@ -47,7 +47,7 @@ import static muramasa.gregtech.data.TierMaps.*;
 public class Circuitry {
     public static void loadCraftingRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
         // MANUAL COATED BOARD CRAFTING
-        provider.addStackRecipe(output, GTIRef.ID, "", "board_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CircuitBoardCoated, 3),
+        provider.addStackRecipe(output, GTIRef.ID, "", "board_basic", new ItemStack(CircuitBoardCoated, 3),
                 ImmutableMap.<Character, Object>builder()
                         .put('R', GTCoreItems.StickyResin)
                         .put('P', PLATE.get(Wood))
@@ -62,14 +62,14 @@ public class Circuitry {
 
     private static void bloodyCircuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
         // MANUAL TIER 0 CIRCUIT CRAFTING
-        provider.addItemRecipe(output, "circuit_basic", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitBasic,
+        provider.addItemRecipe(output, "circuit_basic", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('V', VacuumTube).put('B', CircuitBoardCoated)
                         .put('W', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('R',Resistor).put('P', ITEM_CASING.get(Steel))
                         .build(),
                 "RPR", "VBV", "WWW");
-        provider.addItemRecipe(output, "circuits", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), CircuitGood,
+        provider.addItemRecipe(output, "circuits", CircuitGood,
                 ImmutableMap.<Character, Object>builder()
                         .put('S', ITEM_CASING.getMaterialTag(Steel))
                         .put('C', CIRCUITS_BASIC)
@@ -78,7 +78,7 @@ public class Circuitry {
 
         var wire = TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ PipeSize.VTINY.getId()));
         // MANUAL VAC TUBE CRAFTING
-        provider.addItemRecipe(output, "vac_tube", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), VacuumTube,
+        provider.addItemRecipe(output, "vac_tube", VacuumTube,
                 ImmutableMap.<Character, Object>builder()
                         .put('G', GlassTube)
                         .put('P', Items.PAPER)
@@ -86,7 +86,7 @@ public class Circuitry {
                         .build(),
                 "PGP", "WWW");
 
-        provider.addItemRecipe(output, GTIRef.ID, "vacuum_tube_1", "vac_tube", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), VacuumTube,
+        provider.addItemRecipe(output, GTIRef.ID, "vacuum_tube_1", "vac_tube", VacuumTube,
                 ImmutableMap.<Character, Object>builder()
                         .put('G', GlassTube)
                         .put('P', Items.PAPER)
@@ -95,63 +95,63 @@ public class Circuitry {
                 "PGP", "WWW");
 
         // MANUAL RESISTOR CRAFTING
-        provider.addItemRecipe(output, "resistor", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Resistor,
+        provider.addItemRecipe(output, "resistor", Resistor,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', DUST_COALS)
                         .put('P', Items.PAPER)
                         .put('W', WIRE_FINE.getMaterialTag(Copper))
                         .build(),
                 " P ", "WCW", " P ");
-        provider.addItemRecipe(output, GTIRef.ID, "", "diodes", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Diode,
+        provider.addItemRecipe(output, GTIRef.ID, "", "diodes", Diode,
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeCTags.DYES_BLACK)
                         .put('T', WIRE_TIN.getBlockItem(PipeSize.VTINY))
                         .put('W', Wafer)
                         .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
-        provider.addItemRecipe(output, GTIRef.ID, "diode_2", "diodes", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), Diode,
+        provider.addItemRecipe(output, GTIRef.ID, "diode_2", "diodes", Diode,
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeCTags.DYES_BLACK)
                         .put('T', WIRE_FINE.getMaterialTag(Tin))
                         .put('W', Wafer)
                         .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
-        provider.addStackRecipe(output, GTIRef.ID, "diode_3", "diodes", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(Diode),
+        provider.addStackRecipe(output, GTIRef.ID, "diode_3", "diodes", new ItemStack(Diode),
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeCTags.DYES_BLACK)
                         .put('T', WIRE_TIN.getBlockItem(PipeSize.VTINY))
                         .put('W', DUST_TINY.getMaterialTag(Gallium))
                         .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
-        provider.addStackRecipe(output, GTIRef.ID, "diode_4", "diodes", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(Diode),
+        provider.addStackRecipe(output, GTIRef.ID, "diode_4", "diodes", new ItemStack(Diode),
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeCTags.DYES_BLACK)
                         .put('T', WIRE_FINE.getMaterialTag(Tin))
                         .put('W', DUST_TINY.getMaterialTag(Gallium))
                         .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
-        provider.addStackRecipe(output, GTIRef.ID, "", "small_coils", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(SmallCoil, 2),
+        provider.addStackRecipe(output, GTIRef.ID, "", "small_coils", new ItemStack(SmallCoil, 2),
                 ImmutableMap.of('W', WIRE_FINE.getMaterialTag(Copper), 'B', BOLT.getMaterialTag(Steel)), "WWW", "WBW", "WWW");
-        provider.addStackRecipe(output, GTIRef.ID, "small_coil_1", "small_coils", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(SmallCoil, 4),
+        provider.addStackRecipe(output, GTIRef.ID, "small_coil_1", "small_coils", new ItemStack(SmallCoil, 4),
                 ImmutableMap.of('W', WIRE_FINE.getMaterialTag(Copper), 'B', BOLT.getMaterialTag(NickelZincFerrite)), "WWW", "WBW", "WWW");
     }
 
     private static void circuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_h", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasic,
+        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_h", "circuits", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                         .put('N', NandChip)
                         .put('S', CircuitBoardCoated)
                         .build(), "CCC", "NSN", "CCC");
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_v", "circuits", "has_copper_cable", provider.hasSafeItem((TagKey<Item>) CABLE_GETTER.apply(PipeSize.VTINY, MV, false)), CircuitBasic,
+        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_copper_v", "circuits", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                         .put('N', NandChip)
                         .put('S', CircuitBoardCoated)
                         .build(), "CNC", "CSC", "CNC");
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_h", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasic,
+        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_h", "circuits", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('N', NandChip)
                         .put('S', CircuitBoardCoated)
                         .build(), "CCC", "NSN", "CCC");
-        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_v", "circuits", "has_red_alloy_cable", provider.hasSafeItem(CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY)), CircuitBasic,
+        provider.addItemRecipe(output, GTIRef.ID, "circuit_basic_red_alloy_v", "circuits", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('N', NandChip)
