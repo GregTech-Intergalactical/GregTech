@@ -3,7 +3,7 @@
 		"ctm_version": 1,
 		"type": "ctm",
 		"textures": [
-			"gti:block/ct/fusion_2_ctm"
+			"gti:block/ct/fusion_ctm"
 		]
 	}
 }

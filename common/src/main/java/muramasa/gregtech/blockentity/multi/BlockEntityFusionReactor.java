@@ -37,22 +37,6 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
         return display;
     }
 
-    public Block getCoil(){
-        if (tier == LUV){
-            return GregTechData.COIL_SUPERCONDUCTOR;
-        }
-        return GregTechData.COIL_FUSION;
-    }
-
-    public Block getCasing(){
-        if (tier == LUV){
-            return GregTechData.CASING_LUV;
-        } else if (tier == ZPM){
-            return GregTechData.CASING_FUSION_1;
-        }
-        return GregTechData.CASING_FUSION_2;
-    }
-
     @Override
     public void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);

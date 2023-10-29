@@ -226,16 +226,16 @@ public class Structures {
                  "   ECCX~XCCE   ",
                  "    OOCCCOO    ",
                  "      XOX      ").of(0).build()
-                .atElement('O', lazy(t -> ofBlock(t.getCasing()))).atElement('C', lazy(t -> ofBlock(t.getCoil())))
+                .at('O', CASING_FUSION).at('C', COIL_FUSION)
                 .atElement('B', StructureUtility.<BlockEntityFusionReactor>ofChain(
-                        lazy(t -> ofBlock(t.getCasing())),
+                        ofBlock(CASING_FUSION),
                         ofHatch(HATCH_FLUID_I),
                         ofHatch(HATCH_ITEM_I)))
                 .atElement('X', StructureUtility.<BlockEntityFusionReactor>ofChain(
-                        lazy(t -> ofBlock(t.getCasing())),
+                        ofBlock(CASING_FUSION),
                         ofHatch(HATCH_FLUID_O),
                         ofHatch(HATCH_ITEM_O)))
-                .atElement('E', StructureUtility.<BlockEntityFusionReactor>ofChain(lazy(t -> ofBlock(t.getCasing())), ofHatch(HATCH_ENERGY)))
+                .atElement('E', StructureUtility.<BlockEntityFusionReactor>ofChain(ofBlock(CASING_FUSION), ofHatch(HATCH_ENERGY)))
             .offset(7, 1, 12).min(2, HATCH_FLUID_I).min(1, HATCH_FLUID_O).min(4, HATCH_ENERGY).build());
     }
 

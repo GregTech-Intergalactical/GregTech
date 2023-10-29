@@ -53,10 +53,6 @@ public class GregTechLocalizations {
         protected void english(String domain, String locale) {
             super.english(domain, locale);
             AntimatterAPI.all(BlockCasing.class, domain).forEach(i -> {
-                if (i.getId().contains("fusion")){
-                    add(i, "Fusion Casing MK " + i.getId().replace("fusion_", ""));
-                    return;
-                }
                 if (i.getId().startsWith("casing_") || i.getId().startsWith("hull_")){
                     add(i, lowerUnderscoreToUpperSpacedRotated(i.getId()));
                     return;

@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
@@ -136,14 +135,14 @@ public class BlockParts {
                 ImmutableMap.<Character, Object>builder()
                         .put('P', PLATE.get(Steel))
                         .put('W', HAMMER.getTag()).build(), "PPP", "PWP", "PPP");
-        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CASING_FUSION_1, 1),
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CASING_FUSION, 1),
                 of('P', PLATE.getMaterialTag(TungstenSteel), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', CASING_LUV)
                 ,
                 "PHP", "PFP", "PWP");
-        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CASING_FUSION_2, 1),
+        /*provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CASING_FUSION_2, 1),
                 of('P', PLATE.getMaterialTag(Americium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', CASING_FUSION_1)
                 ,
-                "PHP", "PFP", "PWP");
+                "PHP", "PFP", "PWP");*/
 
         //TODO make these also use annealed copper
         provider.addItemRecipe(output, "long_distance_cables", "has_tin_cable", provider.hasSafeItem(CABLE_TIN.getBlockItem(PipeSize.HUGE)), LONG_DIST_WIRE_EV,
