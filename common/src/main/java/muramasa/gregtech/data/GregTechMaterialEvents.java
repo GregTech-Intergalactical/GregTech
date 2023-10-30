@@ -1030,8 +1030,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Opal).tool(Olivine).toolEnchantments(of(Data.IMPLOSION, 4)).build();
         event.setMaterial(Ruby).tool(Sapphire).toolEnchantments(of(Data.IMPLOSION, 3)).build()
                 .addArmor(new int[]{3, 7, 7, 3}, 1.0F, 0.0F, 30);
-        event.setMaterial(Tanzanite).tool(Olivine).toolEnchantments(of(Data.IMPLOSION, 4));
-        event.setMaterial(Topaz).tool(BlueTopaz).toolEnchantments(of(Data.IMPLOSION, 5));
+        event.setMaterial(Tanzanite).tool(Olivine).toolEnchantments(of(Data.IMPLOSION, 4)).build();
+        event.setMaterial(Topaz).tool(BlueTopaz).toolEnchantments(of(Data.IMPLOSION, 5)).build();
         /**
          *  Basic
          **/
