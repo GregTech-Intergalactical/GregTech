@@ -15,7 +15,6 @@ public class TFCLangProvider extends AntimatterLanguageProvider {
 
     @Override
     protected void english(String domain, String locale) {
-        super.english(domain, locale);
         AntimatterAPI.all(GTTFCOreItem.class, domain).forEach(i -> {
             add(i, lowerUnderscoreToUpperSpaced(i.getId()));
         });
