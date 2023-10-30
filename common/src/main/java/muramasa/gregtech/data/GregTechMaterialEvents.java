@@ -12,6 +12,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.enchantment.Enchantments;
 
+import java.util.List;
+
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -943,115 +945,109 @@ public class GregTechMaterialEvents {
         /**
          ** Periodic Elements
          */
-        event.setMaterial(Beryllium).addTools(2.0F, 14.0F, 64, 2);
-        event.setMaterial(Titanium).addTools(3.0F, 8.0F, 2560, 3, of(Enchantments.SHARPNESS, 3));
-        event.setMaterial(Chromium).addTools(3.0F, 11.0F, 256, 3);
-        event.setMaterial(Manganese).addTools(2.0F, 7.0F, 256, 2);
-        event.setMaterial(Cobalt).addTools(3.0F, 5.0F, 256, 3);
-        event.setMaterial(Nickel).addTools(2.0F, 6.0F, 64, 2, of(Enchantments.BANE_OF_ARTHROPODS, 2)).harvestLevel(2);
-        event.setMaterial(Zirconium).addTools(3.0F, 6.0F, 512, 3);
-        event.setMaterial(Molybdenum).addTools(2.0F, 7.0F, 512, 2).harvestLevel(2);
-        event.setMaterial(Technetium).addTools(1.0F, 10.0F, 1280, 1);
-        event.setMaterial(Palladium).addTools(2.0F, 8.0F, 512, 2).harvestLevel(2);
-        event.setMaterial(Neodymium).addTools(3.0F, 6.0F, 512, 3);
-        event.setMaterial(Tungsten).addTools(3.0F, 8.0F, 5120, 3); // TODO: stats like non burnable
-        event.setMaterial(Osmium).addTools(4.0F, 16.0F, 1280, 4);
-        event.setMaterial(Iridium).addTools(4.0F, 6.0F, 5120, 4);
-        event.setMaterial(Platinum).addTools(2.0F, 15.0F, 64, 2, of(Enchantments.SMITE, 5)).harvestLevel(2);
-        event.setMaterial(Thorium).addTools(2.0F, 6.0F, 512, 2).harvestLevel(2);
-        event.setMaterial(Uranium).addTools(3.0F, 6.0F, 512, 3);
-        event.setMaterial(Plutonium).addTools(3.0F, 6.0F, 512, 3); // TODO: Enchantment: Radioactivity;
+        event.setMaterial(Beryllium).tool().toolDamage(2).toolSpeed(14).toolDurability(64).toolQuality(2).build();
+        event.setMaterial(Titanium).tool().toolDamage(3).toolSpeed(8).toolDurability(2560).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();
+        event.setMaterial(Chromium).tool().toolDamage(3).toolSpeed(11).toolDurability(256).toolQuality(3).build();
+        event.setMaterial(Manganese).tool().toolDamage(2).toolSpeed(7).toolDurability(256).toolQuality(2).build();
+        event.setMaterial(Cobalt).tool().toolDamage(3).toolSpeed(5).toolDurability(256).toolQuality(3).build();
+        event.setMaterial(Nickel).tool().toolDamage(2).toolSpeed(6).toolDurability(64).toolQuality(2).toolEnchantments(of(Enchantments.BANE_OF_ARTHROPODS, 2)).build().harvestLevel(2);
+        event.setMaterial(Zirconium).tool().toolDamage(3).toolSpeed(6).toolDurability(512).toolQuality(3).build();
+        event.setMaterial(Molybdenum).tool().toolDamage(2).toolSpeed(7).toolDurability(512).toolQuality(2).build().harvestLevel(2);
+        event.setMaterial(Technetium).tool().toolDamage(1).toolSpeed(10).toolDurability(1280).toolQuality(1).build();
+        event.setMaterial(Palladium).tool().toolDamage(2).toolSpeed(8).toolDurability(512).toolQuality(2).build().harvestLevel(2);
+        event.setMaterial(Neodymium).tool().toolDamage(3).toolSpeed(6).toolDurability(512).toolQuality(3).build();
+        event.setMaterial(Tungsten).tool().toolDamage(3).toolSpeed(8).toolDurability(5120).toolQuality(3).build(); // TODO: stats like non burnable
+        event.setMaterial(Osmium).tool().toolDamage(4).toolSpeed(16).toolDurability(1280).toolQuality(4).build();
+        event.setMaterial(Iridium).tool().toolDamage(4).toolSpeed(6).toolDurability(5120).toolQuality(4).build();
+        event.setMaterial(Platinum).tool().toolDamage(2).toolSpeed(15).toolDurability(64).toolQuality(2).toolEnchantments(of(Enchantments.SMITE, 5)).build().harvestLevel(2);
+        event.setMaterial(Thorium).tool().toolDamage(2).toolSpeed(6).toolDurability(512).toolQuality(2).build().harvestLevel(2);
+        event.setMaterial(Uranium).tool().toolDamage(3).toolSpeed(6).toolDurability(512).toolQuality(3).build();
+        event.setMaterial(Plutonium).tool().toolDamage(3).toolSpeed(6).toolDurability(512).toolQuality(3).build(); // TODO: Enchantment: Radioactivity;
 
         /**
          **  Metals
          **/
-        event.setMaterial(BismuthBronze).addTools(2.0F, 8.0F, 512, 2, of(Enchantments.BANE_OF_ARTHROPODS, 4))
+        event.setMaterial(BismuthBronze).tool().toolDamage(2).toolSpeed(8).toolDurability(512).toolQuality(2).toolEnchantments(of(Enchantments.BANE_OF_ARTHROPODS, 4)).build()
                 .addArmor(new int[]{2, 6, 5, 2}, 0.0f, 0.0f, 16);
-        event.setMaterial(BlackBronze).addTools(2.0F, 12.0F, 512, 2, of(Enchantments.SMITE, 2))
+        event.setMaterial(BlackBronze).tool().toolDamage(2).toolSpeed(12).toolDurability(512).toolQuality(2).toolEnchantments(of(Enchantments.SMITE, 2)).build()
                 .addArmor(new int[]{2, 6, 5, 2}, 0.0f, 0.0f, 16);
-        event.setMaterial(BlackSteel).addTools(2.0F, 6.5F, 768, 2, of(Enchantments.SHARPNESS, 3))
+        event.setMaterial(BlackSteel).tool().toolDamage(2).toolSpeed(6.5f).toolDurability(768).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build()
                 .addArmor(new int[]{2, 7, 6, 2}, 1.0F, 0.0F, 32, of(Enchantments.ALL_DAMAGE_PROTECTION, 2));
-        event.setMaterial(BlueSteel).addTools(2.0F, 7.0F, 896, 2, of(Enchantments.SHARPNESS, 3))
+        event.setMaterial(BlueSteel).tool().toolDamage(2).toolSpeed(7).toolDurability(896).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build()
                 .addArmor(new int[]{2, 7, 6, 2}, 1.0F, 0.0F, 37, of(Enchantments.ALL_DAMAGE_PROTECTION, 3));
-        event.setMaterial(Bronze).addTools(2.0F, 6.0F, 448, 2, of(Enchantments.SHARPNESS, 1))
+        event.setMaterial(Bronze).tool().toolDamage(2).toolSpeed(6).toolDurability(448).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 1)).build()
                 .addArmor(new int[]{2, 6, 5, 2}, 0.0F, 0.0F, 12);
-        event.setMaterial(CobaltBrass).addTools(2.0F, 8.0F, 256, 2, of(Enchantments.SHARPNESS, 2));
+        event.setMaterial(CobaltBrass).tool().toolDamage(2).toolSpeed(8).toolDurability(256).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 2)).build();
         //event.setMaterial(Duranium).addHandleStat(620, -1.0F, of(Enchantments.SILK_TOUCH, 1))
                 //.addTools(6.5F, 16.0F, 5120, 5);
-        event.setMaterial(Electrum).addTools(2.0F, 12.0F, 64, 2, of(Enchantments.SMITE, 3));
-        event.setMaterial(EnrichedNaquadah).addTools(4.0F, 6.0F, 1280, 4);
-        event.setMaterial(HSSE).addTools(4.0F, 10.0F, 5120, 4, of(Enchantments.SHARPNESS, 4));
-        event.setMaterial(HSSG).addTools(3.0F, 10.0F, 4000, 3, of(Enchantments.SHARPNESS, 4));
-        event.setMaterial(HSSS).addTools(4.0F, 14.0F, 3000, 4, of(Enchantments.SHARPNESS, 4));
-        event.setMaterial(Invar).addTools(2.0F, 6.0F, 256, 2, of(Enchantments.BANE_OF_ARTHROPODS, 3))
+        event.setMaterial(Electrum).tool().toolDamage(2).toolSpeed(12).toolDurability(64).toolQuality(2).toolEnchantments(of(Enchantments.SMITE, 3)).build();
+        event.setMaterial(EnrichedNaquadah).tool().toolDamage(4).toolSpeed(6).toolDurability(1280).toolQuality(4).build();
+        event.setMaterial(HSSE).tool().toolDamage(4).toolSpeed(10).toolDurability(5120).toolQuality(4).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
+        event.setMaterial(HSSG).tool().toolDamage(3).toolSpeed(10).toolDurability(4000).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
+        event.setMaterial(HSSS).tool().toolDamage(4).toolSpeed(14).toolDurability(3000).toolQuality(4).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
+        event.setMaterial(Invar).tool().toolDamage(2).toolSpeed(6).toolDurability(256).toolQuality(3).toolEnchantments(of(Enchantments.BANE_OF_ARTHROPODS, 3)).build()
                 .addArmor(new int[]{2, 6, 5, 2}, 0.0F, 0.0F, 15, of(Enchantments.FIRE_PROTECTION, 1));
-        event.setMaterial(IronMagnetic).addTools(Iron, of(Enchantments.SHARPNESS, 1));
-        event.setMaterial(Kanthal).addTools(2.0F, 6.0F, 64, 2);
-        event.setMaterial(Neutronium).addTools(9.0F, 24.0F, 655360, 6);
-        event.setMaterial(Naquadah)//.addHandleStat(102, 0.5F, of(Enchantments.BLOCK_EFFICIENCY, 2))
-                .addTools(4.0F, 6.0F, 1280, 4);
-        event.setMaterial(NaquadahAlloy).addTools(4.5F, 8.0F, 5120, 4);
-        event.setMaterial(Nichrome).addTools(2.0F, 6.0F, 64, 2, of(Enchantments.BANE_OF_ARTHROPODS, 2));
-        event.setMaterial(NickelZincFerrite).addTools(0.0F, 3.0F, 32, 1);
-        event.setMaterial(Osmiridium).addTools(4.0F, 11.0F, 3840, 4);
-        event.setMaterial(RedSteel).addTools(2.0F, 7.5F, 1024, 2, of(Enchantments.SHARPNESS, 3))
+        event.setMaterial(IronMagnetic).tool(Iron).toolEnchantments(of(Enchantments.SHARPNESS, 1)).build();
+        event.setMaterial(Kanthal).tool().toolDamage(2).toolSpeed(6).toolDurability(64).toolQuality(2).build();
+        event.setMaterial(Neutronium).tool().toolDamage(9).toolSpeed(24).toolDurability(655360).toolQuality(6).build();
+        event.setMaterial(Naquadah).tool().toolDamage(4).toolSpeed(6).toolDurability(1280).toolQuality(4).build();
+        event.setMaterial(NaquadahAlloy).tool().toolDamage(4.5f).toolSpeed(8).toolDurability(5120).toolQuality(4).build();
+        event.setMaterial(Nichrome).tool().toolDamage(2).toolSpeed(6).toolDurability(64).toolQuality(2).toolEnchantments(of(Enchantments.BANE_OF_ARTHROPODS, 2)).build();
+        event.setMaterial(NickelZincFerrite).tool().toolDamage(0).toolSpeed(3).toolDurability(32).toolQuality(1).build();
+        event.setMaterial(Osmiridium).tool().toolDamage(4).toolSpeed(11).toolDurability(3840).toolQuality(4).build();
+        event.setMaterial(RedSteel).tool().toolDamage(2).toolSpeed(7.5f).toolDurability(1024).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build()
                 .addArmor(new int[]{2, 7, 6, 2}, 1.0F, 0.0F, 42, of(Enchantments.ALL_DAMAGE_PROTECTION, 3));
-        event.setMaterial(RoseGold).addTools(2.0F, 14.0F, 128, 2, of(Enchantments.SMITE, 4));
-        event.setMaterial(Steel).addTools(IRON.getAttackDamageBonus(), IRON.getSpeed(), 512, IRON.getLevel(), of(Enchantments.SHARPNESS, 2))
+        event.setMaterial(RoseGold).tool().toolDamage(2).toolSpeed(14).toolDurability(128).toolQuality(2).toolEnchantments(of(Enchantments.SMITE, 4)).build();
+        event.setMaterial(Steel).tool(Iron).toolDurability(512).toolEnchantments(of(Enchantments.SHARPNESS, 2)).build()
                 .addArmor(new int[]{2, 7, 6, 2}, 1.0F, 0.0F, 21, of(Enchantments.ALL_DAMAGE_PROTECTION, 1));
-        event.setMaterial(SteelMagnetic).addTools(Steel, of(Enchantments.SHARPNESS, 2));
-        event.setMaterial(SterlingSilver).addTools(2.0F, 13.0F, 128, 2);
-        event.setMaterial(StainlessSteel).addTools(2.0F, 7.0F, 480, 2, of(Enchantments.SHARPNESS, 3));
-        event.setMaterial(Tritanium).addTools(9.0F, 15.0F, 9400, 6);
-        event.setMaterial(TungstenCarbide).addTools(4.0F, 10.0F, 5120, 4);
-        event.setMaterial(TungstenSteel).addTools(TungstenCarbide, of(Enchantments.SHARPNESS, 4));
-        event.setMaterial(VanadiumSteel).addTools(3.0F, 7.0F, 512, 3, of(Enchantments.SHARPNESS, 3));
-        event.setMaterial(Vibranium).addTools(15.0F, 1000.0F, 512, 15, of(Enchantments.BLOCK_FORTUNE, 5, Enchantments.MOB_LOOTING, 10));
-        event.setMaterial(WroughtIron).addTools(IRON.getAttackDamageBonus(), IRON.getSpeed(), 384, IRON.getLevel())
+        event.setMaterial(SteelMagnetic).tool(Steel).toolEnchantments(of(Enchantments.SHARPNESS, 2)).build();
+        event.setMaterial(SterlingSilver).tool().toolDamage(2).toolSpeed(13).toolDurability(128).toolQuality(2).build();
+        event.setMaterial(StainlessSteel).tool().toolDamage(2).toolSpeed(7).toolDurability(480).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();
+        event.setMaterial(Tritanium).tool().toolDamage(9).toolSpeed(15).toolDurability(9400).toolQuality(6).build();
+        event.setMaterial(TungstenCarbide).tool().toolDamage(4).toolSpeed(10).toolDurability(5120).toolQuality(4).build();
+        event.setMaterial(TungstenSteel).tool(TungstenCarbide).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
+        event.setMaterial(VanadiumSteel).tool().toolDamage(3).toolSpeed(7).toolDurability(512).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();
+        event.setMaterial(Vibranium).tool().toolDamage(15).toolSpeed(1000).toolDurability(512).toolQuality(15).toolEnchantments(of(Enchantments.BLOCK_FORTUNE, 5, Enchantments.MOB_LOOTING, 10)).build();
+        event.setMaterial(WroughtIron).tool(Iron).toolDurability(384).build()
                 .addArmor(new int[]{2, 6, 5, 2}, 1.0F, 0.0F, 17, of(Enchantments.ALL_DAMAGE_PROTECTION, 1));
-
-        event.setMaterial(BlackGranite).addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1));
-        event.setMaterial(RedGranite).addHandleStat(74, 1.0F, of(Enchantments.UNBREAKING, 1));
-        event.setMaterial(Obsidian).addHandleStat(222, -0.5F, of(Enchantments.UNBREAKING, 2));
         /**
          **  Gems
          **/
         /**
          *  Regular
          **/
-        event.setMaterial(Amber).addTools(3.0f, 4.0f, 256, 3, of(Enchantments.SILK_TOUCH, 1));
-        event.setMaterial(Amethyst).addArmor(new int[]{3, 7, 7, 3}, 1.0F, 0.0F, 30)
-                .addTools(3.0F, 7.0F, 256, 3, of(Data.IMPLOSION, 3));
-        event.setMaterial(Sapphire).addArmor(new int[]{3, 7, 7, 3}, 1.0F, 0.0F, 30)
-                .addTools(3.0F, 7.0F, 512, 3, of(Data.IMPLOSION, 3)).harvestLevel(2);
-        event.setMaterial(BlueTopaz).addTools(3.0F, 7.0F, 256, 3, of(Data.IMPLOSION, 5));
-        event.setMaterial(GreenSapphire).addTools(Sapphire, of(Data.IMPLOSION, 3))
+        event.setMaterial(Amber).tool().toolDamage(3).toolSpeed(4).toolDurability(256).toolQuality(3).toolEnchantments(of(Enchantments.SILK_TOUCH, 1)).build();
+        event.setMaterial(Amethyst).tool().toolDamage(3).toolSpeed(7).toolDurability(256).toolQuality(3).toolEnchantments(of(Data.IMPLOSION, 3)).build()
+                .addArmor(new int[]{3, 7, 7, 3}, 1.0F, 0.0F, 30);
+        event.setMaterial(Sapphire).tool().toolDamage(3).toolSpeed(7).toolDurability(512).toolQuality(3).toolEnchantments(of(Data.IMPLOSION, 3)).build()
+                .addArmor(new int[]{3, 7, 7, 3}, 1.0F, 0.0F, 30).harvestLevel(2);
+        event.setMaterial(BlueTopaz).tool().toolDamage(3).toolSpeed(7).toolDurability(256).toolQuality(3).toolEnchantments(of(Data.IMPLOSION, 5)).build();
+        event.setMaterial(GreenSapphire).tool(Sapphire).toolEnchantments(of(Data.IMPLOSION, 3)).build()
                 .addArmor(new int[]{3, 7, 7, 3}, 1.0F, 0.0F, 30)
                 .harvestLevel(2);
-        event.setMaterial(Jade).addTools(2.0f, 8.0f, 512, 2, of(Enchantments.BLOCK_FORTUNE, 3, Enchantments.MOB_LOOTING, 6, Data.IMPLOSION, 3));
-        event.setMaterial(Olivine).addTools(2.0F, 7.0F, 256, 2, of(Data.IMPLOSION, 2)).harvestLevel(2);
-        event.setMaterial(Opal).addTools(Olivine, of(Data.IMPLOSION, 4));
-        event.setMaterial(Ruby).addTools(Sapphire, of(Data.IMPLOSION, 3))
+        event.setMaterial(Jade).tool().toolDamage(2).toolSpeed(8).toolDurability(512).toolQuality(2).toolEnchantments(of(Enchantments.BLOCK_FORTUNE, 3, Enchantments.MOB_LOOTING, 6, Data.IMPLOSION, 3)).build();
+        event.setMaterial(Olivine).tool().toolDamage(2).toolSpeed(7).toolDurability(256).toolQuality(2).toolEnchantments(of(Data.IMPLOSION, 2)).build().harvestLevel(2);
+        event.setMaterial(Opal).tool(Olivine).toolEnchantments(of(Data.IMPLOSION, 4)).build();
+        event.setMaterial(Ruby).tool(Sapphire).toolEnchantments(of(Data.IMPLOSION, 3)).build()
                 .addArmor(new int[]{3, 7, 7, 3}, 1.0F, 0.0F, 30);
-        event.setMaterial(Tanzanite).addTools(Olivine, of(Data.IMPLOSION, 4));
-        event.setMaterial(Topaz).addTools(BlueTopaz, of(Data.IMPLOSION, 5));
+        event.setMaterial(Tanzanite).tool(Olivine).toolEnchantments(of(Data.IMPLOSION, 4));
+        event.setMaterial(Topaz).tool(BlueTopaz).toolEnchantments(of(Data.IMPLOSION, 5));
         /**
          *  Basic
          **/
-        event.setMaterial(CertusQuartz).addTools(Tiers.IRON.getAttackDamageBonus(), Tiers.IRON.getSpeed(), 256, Tiers.IRON.getLevel());
-        event.setMaterial(Fluix).addTools(2.4f, Tiers.IRON.getSpeed(), 768, Tiers.IRON.getLevel(), of(Enchantments.MOB_LOOTING, 1, Enchantments.BLOCK_FORTUNE, 1));
-        event.setMaterial(NetherStar).addTools(3.5F, 6.0F, 3620, 4, of(Enchantments.SILK_TOUCH, 1));
+        event.setMaterial(CertusQuartz).tool(Iron).toolDurability(256).build();
+        event.setMaterial(Fluix).tool(Iron).toolDamage(2.4f).toolDurability(768).toolEnchantments(of(Enchantments.MOB_LOOTING, 1, Enchantments.BLOCK_FORTUNE, 1)).build();
         /**
          **  Plastic Related
          **/
-        event.setMaterial(Rubber).addHandleStat(11, 0.4F).addTools(-1.0f, 0.15f, 256, 0, of(Enchantments.KNOCKBACK, 2), AntimatterDefaultTools.SOFT_HAMMER);
-        event.setMaterial(EpoxyResin).addHandleStat(70, 1.5F).addTools(0.0f, 2.25f, 32, 1, of(), AntimatterDefaultTools.SOFT_HAMMER);
-        event.setMaterial(FiberReinforcedEpoxyResin).addHandleStat(70, 1.5F).addTools(0.0f, 2.25f, 32, 1, of(), AntimatterDefaultTools.SOFT_HAMMER);
-        event.setMaterial(Polyethylene).addHandleStat(66, 0.5F).addTools(0.0f, 0.3f, 256, 1, of(Enchantments.KNOCKBACK, 1), AntimatterDefaultTools.SOFT_HAMMER);
-        event.setMaterial(Polystyrene).addHandleStat(3, 1.0F).addTools(0.0f, 0.3f, 256, 1, of(Enchantments.KNOCKBACK, 1), AntimatterDefaultTools.SOFT_HAMMER);
-        event.setMaterial(PolyvinylChloride).addHandleStat(210, 0.5F).addTools(0.0f, 0.3f, 256, 1, of(Enchantments.KNOCKBACK, 1), AntimatterDefaultTools.SOFT_HAMMER);
-        event.setMaterial(Silicone).addHandleStat(-40, 2.0F).addTools(0.0f, 0.3f, 1024, 1, of(Enchantments.KNOCKBACK, 2), AntimatterDefaultTools.SOFT_HAMMER);
-        event.setMaterial(StyreneButadieneRubber).addHandleStat(66, 1.2F).addTools(0.0f, 0.3f, 1024, 1, of(Enchantments.KNOCKBACK, 2), AntimatterDefaultTools.SOFT_HAMMER);
+        event.setMaterial(Rubber).tool().toolDamage(-1).toolSpeed(0.15f).toolDurability(256).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
+        event.setMaterial(EpoxyResin).tool().toolSpeed(2.25f).toolDurability(32).toolQuality(1).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
+        event.setMaterial(FiberReinforcedEpoxyResin).tool().toolSpeed(2.25f).toolDurability(32).toolQuality(1).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
+        event.setMaterial(Polyethylene).tool().toolSpeed(0.3f).toolDurability(256).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
+        event.setMaterial(Polystyrene).tool().toolSpeed(0.3f).toolDurability(256).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
+        event.setMaterial(PolyvinylChloride).tool().toolSpeed(0.3f).toolDurability(256).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
+        event.setMaterial(Silicone).tool().toolSpeed(0.3f).toolDurability(1024).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
+        event.setMaterial(StyreneButadieneRubber).tool().toolSpeed(0.3f).toolDurability(1024).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
     }
 
 
@@ -1608,7 +1604,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Coal).asGemBasic(false).flags(ORE_STONE).mats(of(Carbon, 2));
         event.setMaterial(Copper).flags(PLATE, ROD_LONG, FOIL, WIRE_FINE, GEAR, BOLT);
         event.setMaterial(Diamond).asGem(true).mats(of(Carbon, 64), 1).elecTicks(768);
-        event.setMaterial(Emerald).asGem(true).mats(of(Alumina, 5, Beryllium, 3, SiliconDioxide, 18, Oxygen, 3)).elecTicks(540).addTools(3.0F, 9.0F, 590, 3, of(Data.IMPLOSION, 5));
+        event.setMaterial(Emerald).asGem(true).mats(of(Alumina, 5, Beryllium, 3, SiliconDioxide, 18, Oxygen, 3)).elecTicks(540);
+                //.tool().toolDamage(3).toolSpeed(9).toolDurability(590).toolQuality(3).toolEnchantments(of(Data.IMPLOSION, 5)).build();
         event.setMaterial(EnderEye).asGemBasic(false, ROD_LONG, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
         event.setMaterial(EnderPearl).mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5, Chlorine, 6)).elecTicks(220);
         event.setMaterial(Flint).flags(ROCK);

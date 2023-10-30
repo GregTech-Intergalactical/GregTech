@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.material.IMaterialTag;
+import muramasa.antimatter.material.data.ToolData;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -31,14 +32,14 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
         return this;
     }
 
-    @Override
-    public GregTechMaterialEvent addTools(float toolDamage, float toolSpeed, int toolDurability, int toolQuality, ImmutableMap<Enchantment, Integer> toolEnchantment, AntimatterToolType... toolTypes) {
-        flags(AntimatterMaterialTypes.ROD_LONG);
-        return super.addTools(toolDamage, toolSpeed, toolDurability, toolQuality, toolEnchantment, toolTypes);
-    }
-
     public GregTechMaterialEvent elecTicks(int ticks){
         GregTechMaterialTags.ELEC_TICKS.add(material, ticks);
         return this;
+    }
+
+    @Override
+    protected GregTechMaterialEvent buildTool(ToolData builder) {
+        flags(AntimatterMaterialTypes.ROD_LONG);
+        return super.buildTool(builder);
     }
 }
