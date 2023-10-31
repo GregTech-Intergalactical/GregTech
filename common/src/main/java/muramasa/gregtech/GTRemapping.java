@@ -55,7 +55,12 @@ public class GTRemapping {
         remap("vacuumtube", "vacuum_tube");
         remap("adv_circuit_parts", "advanced_circuit_parts");
         remapGTCore("board_coated", "coated_circuit_board");
-        remapGTCore("board_phelonic", "phelonic_circuit_board");
+        remapGTCore("board_phenolic", "phenolic_circuit_board");
+        remapGTCore("board_plastic", "plastic_circuit_board");
+        remapGTCore("board_epoxy", "epoxy_circuit_board");
+        remapGTCore("board_fiber_reinforced", "fiber_reinforced_circuit_board");
+        remapGTCore("board_multilayer_fiber_reinforced", "multilayer_fiber_reinforced_circuit_board");
+        remapGTCore("board_wetware", "wetware_circuit_board");
         remapGTCore("mold_plate", "plate_mold");
         remapGTCore("mold_casing", "casing_mold");
         remapGTCore("mold_gear", "gear_mold");
