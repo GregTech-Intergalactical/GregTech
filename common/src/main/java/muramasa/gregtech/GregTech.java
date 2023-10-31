@@ -93,6 +93,9 @@ public class GregTech extends AntimatterMod {
         event.addLoader(ElectricToolRecipes::loadRecipes);
         event.addLoader(MaterialCrafting::loadRecipes);
         event.addLoader(WoodCrafting::loadRecipes);
+        if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
+            event.addLoader(AppliedEnergisticsRegistrar::craftingRecipes);
+        }
     }
 
     public static void registerRecipeLoaders(IAntimatterRegistrar registrar, IRecipeRegistrate reg) {

@@ -1,26 +1,36 @@
 package muramasa.gregtech.integration;
 
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterStoneTypes;
+import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.TagUtils;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.RecipeMaps;
+import muramasa.gregtech.data.TierMaps;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
+import java.util.function.Consumer;
+
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
+import static muramasa.gregtech.data.RecipeMaps.BLASTING;
 import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_REACTING;
 
 public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
@@ -68,7 +78,7 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         RecipeMaps.PRESSING.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1), of(getAe2Item("calculation_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_calculation_processor"))).add("printed_calculation_processor", 200, 16);
         RecipeMaps.PRESSING.RB().ii(GEM.getMaterialIngredient(Diamond, 1), of(getAe2Item("engineering_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_engineering_processor"))).add("printed_engineering_processor", 200, 16);
         RecipeMaps.PRESSING.RB().ii(PLATE.getMaterialIngredient(Gold, 1), of(getAe2Item("logic_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_logic_processor"))).add("printed_logic_processor", 200, 16);
-        RecipeMaps.PRESSING.RB().ii(PLATE.getMaterialIngredient(Silicon, 1), of(getAe2Item("silicon_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_silicon"))).add("printed_silicon", 200, 16);
+        RecipeMaps.PRESSING.RB().ii(of(TagUtils.getForgelikeItemTag("silicon")), of(getAe2Item("silicon_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_silicon"))).add("printed_silicon", 200, 16);
         RecipeMaps.CENTRIFUGING.RB().ii(of(getAe2Item("sky_dust")))
                 .io(/*DUST_SMALL.get(BasalticMineralSand, 1), */DUST_SMALL.get(Olivine, 1), DUST_SMALL.get(Obsidian, 1), DUST_SMALL.get(Basalt, 1), DUST_SMALL.get(Flint, 1),DUST_SMALL.get(RareEarth, 1))
                 .chances(0.2,0.2,0.2,0.2,0.2)
@@ -88,6 +98,12 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         RecipeMaps.MACERATING.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
         RecipeMaps.ELECTROLYZING.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1)).io(new ItemStack(getAe2Item("charged_certus_quartz_crystal"))).add("charged_certus_quartz", 2000, 30);
         CHEMICAL_REACTING.RB().fi(Water.getLiquid(1000)).ii(of(DUST.getMaterialTag(CertusQuartz), 3), of(DUST.getMaterialTag(Sodium), 1)).io(GEM.get(CertusQuartz, 3)).add("certus_quartz",500,30);
+        BLASTING.RB().ii(RecipeIngredient.of(TagUtils.getForgelikeItemTag("silicon")), TierMaps.INT_CIRCUITS.get(1)).io(INGOT.get(Silicon)).add("silicon_ingot_from_silicon", 1683, 120, 1683);
+    }
+    
+    public static void craftingRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+        SimpleCookingRecipeBuilder.smelting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GTIRef.ID + ":silicon");
+        SimpleCookingRecipeBuilder.blasting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GTIRef.ID + ":silicon_blasting");
     }
 
     @Override
