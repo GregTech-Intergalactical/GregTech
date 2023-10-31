@@ -128,7 +128,7 @@ public class Blasting {
 
         /* Stainless Steel*/
         BLASTING.RB().temperature(1700).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 6), DUST.getMaterialIngredient(Nickel, 1), DUST.getMaterialIngredient(Manganese, 1), DUST.getMaterialIngredient(Chromium, 1))
-                .io(INGOT.get(StainlessSteel, 9), DUST_SMALL.get(DarkAsh, 1))
+                .io(INGOT.get(StainlessSteel, 9))
                 .add("stainless_steel_ingot", 1000, 120);
         /* TITANIUM */
         BLASTING.RB().temperature(2140).ii(RecipeIngredient.of(DUST.getMaterialTag(Magnesium), 2))
@@ -137,14 +137,14 @@ public class Blasting {
                 .add("titanium_ingot",40*20, 480);
         /* Tungsten Steel/Carbide*/
         BLASTING.RB().temperature(3000).ii(DUST.getMaterialIngredient(Tungsten, 1), DUST.getMaterialIngredient(Steel, 1))
-                .io(INGOT_HOT.get(TungstenSteel, 2), DUST_SMALL.get(DarkAsh, 1))
+                .io(INGOT_HOT.get(TungstenSteel, 2))
                 .add("tungsten_steel_ingot", 150 * 20, 480);
         BLASTING.RB().temperature(3000).ii(DUST.getMaterialIngredient(Tungsten, 1), DUST.getMaterialIngredient(Carbon, 1))
-                .io(INGOT_HOT.get(TungstenCarbide, 1), DUST_SMALL.get(DarkAsh, 2))
+                .io(INGOT_HOT.get(TungstenCarbide, 1))
                 .add("tungsten_carbide_ingot", 246 * 20, 480);
         /* Niobium Titanium*/
         BLASTING.RB().temperature(4500).ii(DUST.getMaterialIngredient(Niobium, 1), DUST.getMaterialIngredient(Titanium, 1))
-                .io(INGOT_HOT.get(NiobiumTitanium, 2), DUST_SMALL.get(DarkAsh, 1))
+                .io(INGOT_HOT.get(NiobiumTitanium, 2))
                 .add("niobium_titanium_ingot",225 * 20, 480);
         /* Vanadium Gallium*/
         BLASTING.RB().temperature(4500).ii(DUST.getMaterialIngredient(Vanadium, 3), DUST.getMaterialIngredient(Gallium, 1))
@@ -156,11 +156,11 @@ public class Blasting {
                 .add("vanadium_steel_ingot", 225 * 20, 120);
         /* Kanthal*/
         BLASTING.RB().temperature(1800).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 1), DUST.getMaterialIngredient(Aluminium, 1), DUST.getMaterialIngredient(Chromium, 1))
-                .io(INGOT_HOT.get(Kanthal, 3), DUST_SMALL.get(DarkAsh, 1))
+                .io(INGOT_HOT.get(Kanthal, 3))
                 .add("kanthal_ingot", 90 * 20, 120);
         /* Nichrome*/
         BLASTING.RB().temperature(2700).ii(DUST.getMaterialIngredient(Nickel, 4), DUST.getMaterialIngredient(Chromium, 1))
-                .io(INGOT_HOT.get(Nichrome, 5), DUST_SMALL.get(DarkAsh, 2))
+                .io(INGOT_HOT.get(Nichrome, 5))
                 .add("nichrome_ingot", 135 * 20, 480);
         /* Osmiridium*/
         BLASTING.RB().temperature(2900).ii(DUST.getMaterialIngredient(Iridium, 3), DUST.getMaterialIngredient(Osmium, 1))
