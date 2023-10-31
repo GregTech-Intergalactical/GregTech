@@ -15,17 +15,8 @@ public class VacFreezer {
     public static void init() {
         INGOT_HOT.all().forEach(hi -> {
             Item ingot = INGOT.get(hi);
-            int temp = BLAST_FURNACE_TEMP.getInt(hi);
-            int voltage;
-            if (temp < 1800) {
-                voltage = 120;
-            } else if (temp < 3000) {
-                voltage = 480;
-            } else {
-                voltage = 1920;
-            }
-            VACUUM_FREEZING.RB().ii(RecipeIngredient.of(INGOT_HOT.get(hi),1))
-                    .io(new ItemStack(ingot,1)).add("ingot_hot_" + hi.getId(),hi.getMass(), voltage);
+            VACUUM_FREEZING.RB().ii(RecipeIngredient.of(INGOT_HOT.getMaterialTag(hi),1))
+                    .io(new ItemStack(ingot,1)).add("ingot_hot_" + hi.getId(),hi.getMass(), 120);
         });
     }
 }
