@@ -1,5 +1,6 @@
 package muramasa.gregtech.datagen;
 
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import net.minecraft.world.item.Items;
@@ -21,10 +22,10 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         //this.tag(GregTechTags.CIRCUITS_EXTREME).add(GregTechData.CircuitDataStorage);
         this.tag(CIRCUITS_ELITE).add(NanoProcessor);
         this.tag(CIRCUITS_MASTER).add(QuantumProcessor);
-        this.tag(RESISTORS).add(Resistor, SMDResistor);
-        this.tag(CAPACITORS).add(Capacitor, SMDCapacitor);
-        this.tag(TRANSISTORS).add(Transistor, SMDTransistor);
-        this.tag(DIODES).add(Diode, SMDDiode);
+        this.tag(RESISTORS).add(GTCoreItems.Resistor, GTCoreItems.SMDResistor);
+        this.tag(CAPACITORS).add(GTCoreItems.Capacitor, GTCoreItems.SMDCapacitor);
+        this.tag(TRANSISTORS).add(GTCoreItems.Transistor, GTCoreItems.SMDTransistor);
+        this.tag(DIODES).add(GTCoreItems.Diode, GTCoreItems.SMDDiode);
         this.tag(FIRESTARTER).add(Items.FLINT_AND_STEEL);
         this.tag(GEM.getMaterialTag(Amethyst)).remove(Items.AMETHYST_SHARD);
         this.tag(GEM.getTag()).remove(Items.AMETHYST_SHARD);

@@ -283,20 +283,20 @@ public class Circuitry {
         //Plastic
         CHEMICAL_REACTING.RB().ii(PLATE.getMaterialIngredient(Polyethylene, 1), FOIL.getMaterialIngredient(Copper, 1))
                 .fi(SulfuricAcid.getLiquid(125))
-                .io(new ItemStack(GregTechData.CircuitBoardPlastic,1))
+                .io(new ItemStack(CircuitBoardPlastic,1))
                 .add("plastic_circuit_board",25*20, 10);
         CHEMICAL_REACTING.RB().ii(PLATE.getMaterialIngredient(PolyvinylChloride, 1), FOIL.getMaterialIngredient(Copper, 1))
                 .fi(SulfuricAcid.getLiquid(125))
-                .io(new ItemStack(GregTechData.CircuitBoardPlastic,2))
+                .io(new ItemStack(CircuitBoardPlastic,2))
                 .add("plastic_circuit_board_2",25*20, 10);
         CHEMICAL_REACTING.RB().ii(PLATE.getMaterialIngredient(Polytetrafluoroethylene, 1), FOIL.getMaterialIngredient(Copper, 1))
                 .fi(SulfuricAcid.getLiquid(125))
-                .io(new ItemStack(GregTechData.CircuitBoardPlastic,4))
+                .io(new ItemStack(CircuitBoardPlastic,4))
                 .add("plastic_circuit_board_4",25*20, 10);
         //Epoxy
         CHEMICAL_REACTING.RB().ii(PLATE.getMaterialIngredient(EpoxyResin, 1), FOIL.getMaterialIngredient(Copper, 1))
                 .fi(SulfuricAcid.getLiquid(125))
-                .io(new ItemStack(GregTechData.CircuitBoardEpoxy,1))
+                .io(new ItemStack(CircuitBoardEpoxy,1))
                 .add("epoxy_circuit_board",25*20, 10);
         //Fiber
         CHEMICAL_REACTING.RB().ii(PLATE.getMaterialIngredient(FiberReinforcedEpoxyResin, 1), FOIL.getMaterialIngredient(Copper, 1))
@@ -304,14 +304,14 @@ public class Circuitry {
                 .io(new ItemStack(CircuitBoardFiber,1))
                 .add("fiber_circuit_board",25*20, 10);
         //MultiFiber
-        CHEMICAL_REACTING.RB().ii(of(GregTechData.CircuitBoardFiber,1), FOIL.getMaterialIngredient(Electrum, 16))
+        CHEMICAL_REACTING.RB().ii(of(CircuitBoardFiber,1), FOIL.getMaterialIngredient(Electrum, 16))
                 .fi(SulfuricAcid.getLiquid(250))
-                .io(new ItemStack(GregTechData.CircuitBoardMultiFiber,1))
+                .io(new ItemStack(CircuitBoardMultiFiber,1))
                 .add("multi_fiber_circuit_board",5*20, 480);
         //Wetware
-        ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardMultiFiber,1), of(CIRCUITS_GOOD,1), of(PetriDish), of(SensorLV), of(COVER_PUMP.getItem(LV)))
+        ASSEMBLING.RB().ii(of(CircuitBoardMultiFiber,1), of(CIRCUITS_GOOD,1), of(PetriDish), of(SensorLV), of(COVER_PUMP.getItem(LV)))
                 .fi(Polystyrene.getLiquid(144))
-                .io(new ItemStack(GregTechData.CircuitBoardWetware,1))
+                .io(new ItemStack(CircuitBoardWetware,1))
                 .add("wetware_circuit_board",8*20, 32768);
     }
 
@@ -351,7 +351,7 @@ public class Circuitry {
                     .io(new ItemStack(MicroProcessor, 4))
                     .fi(material.getLiquid(base * 4)).add("microprocessor_soc_using_" + material.getId(), 200, 60);
             //Good
-            CIRCUIT_ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardPhenolic, 1), of(RESISTORS, 4),of(CircuitBasic, 3),
+            CIRCUIT_ASSEMBLING.RB().ii(of(CircuitBoardPhenolic, 1), of(RESISTORS, 4),of(CircuitBasic, 3),
                             WIRE_FINE.getMaterialIngredient(Electrum, 8))
                     .io(new ItemStack(CircuitGood,1))
                     .fi(material.getLiquid(base * 4)).add("good_circuit_using_" + material.getId(),20*20, 16);
@@ -398,13 +398,13 @@ public class Circuitry {
                     .io(new ItemStack(QuantumProcessor))
                     .fi(material.getLiquid(base * 4)).add("quantum_processor_asoc_using_" + material.getId(), 50, 8192);
             //Energy Flow
-            ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardMultiFiber, 1), of(GregTechData.Resistor, 8),of(GregTechData.Transistor, 8),
-                            of(GregTechData.Capacitor, 8),of(AntimatterMaterialTypes.WIRE_FINE.get(NiobiumTitanium), 4))
+            ASSEMBLING.RB().ii(of(CircuitBoardMultiFiber, 1), of(Resistor, 8),of(Transistor, 8),
+                            of(Capacitor, 8),of(AntimatterMaterialTypes.WIRE_FINE.get(NiobiumTitanium), 4))
                     .io(new ItemStack(CircuitEnergyFlow,1))
                     .fi(material.getLiquid(base * 4)).add("energy_flow_circuit_using_" + material.getId(),20*20, 8192);
             //Wetware
-            ASSEMBLING.RB().ii(of(GregTechData.CircuitBoardWetware, 1), of(GregTechData.Resistor, 8),of(GregTechData.Transistor, 8),
-                            of(GregTechData.Capacitor, 8),of(AntimatterMaterialTypes.WIRE_FINE.get(YttriumBariumCuprate), 4))
+            ASSEMBLING.RB().ii(of(CircuitBoardWetware, 1), of(Resistor, 8),of(Transistor, 8),
+                            of(Capacitor, 8),of(AntimatterMaterialTypes.WIRE_FINE.get(YttriumBariumCuprate), 4))
                     .io(new ItemStack(GregTechData.CircuitWetware,1))
                     .fi(material.getLiquid(base * 4)).add("wetware_circuit_using_" + material.getId(),20*20, 32768);
         }

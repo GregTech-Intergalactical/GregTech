@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
@@ -55,8 +56,8 @@ public class BlockParts {
         });
 
         addBrickedCasing(output, provider, Bronze, GregTechData.CASING_BRICKED_BRONZE);
-        provider.addStackRecipe(output, GTIRef.ID, "firebricks", "blocks", "has_fire_brick", provider.hasSafeItem(FireBrick),
-                new ItemStack(CASING_FIRE_BRICK), of('F', FireBrick), "FF", "FF");
+        provider.addStackRecipe(output, GTIRef.ID, "firebricks", "blocks", "has_fire_brick", provider.hasSafeItem(GTCoreItems.FireBrick),
+                new ItemStack(CASING_FIRE_BRICK), of('F', GTCoreItems.FireBrick), "FF", "FF");
         addBrickedCasing(output, provider, Steel, GregTechData.CASING_BRICKED_STEEL);
 
         addFirebox(output, provider, Bronze, GregTechData.CASING_FIREBOX_BRONZE);

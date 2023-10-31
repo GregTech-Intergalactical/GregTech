@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
@@ -51,11 +52,11 @@ public class ArcFurnace {
                 ARC_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 1)).fi(Oxygen.getGas((int)m.getMass())).io(INGOT.get(output)).add(m.getId() + "_ingot_to_" + output.getId() + "_ingot", m.getMass(), 30, 0, 3);
             }
         });
-        addRecyclingRecipe(MotorLV, of(Copper, 2f, Tin, 1f, Steel, 1f, Iron, 0.5f), 1, 1);
-        addRecyclingRecipe(MotorMV, of(Copper, 5f, Aluminium, 1f, Steel, 0.5f), 1, 1);
-        addRecyclingRecipe(MotorHV, of(Copper, 8f, Gold, 1f, StainlessSteel, 1f, Steel, 0.5f), 1, 3);
-        addRecyclingRecipe(MotorEV, of(Copper, 16f, Aluminium,1f, Titanium, 1f, Neodymium, 0.5f), 1, 5);
-        addRecyclingRecipe(MotorIV, of(Copper, 32f, Tungsten,1f, TungstenSteel, 1f, Neodymium, 0.5f), 3, 10);
+        addRecyclingRecipe(GTCoreItems.MotorLV, of(Copper, 2f, Tin, 1f, Steel, 1f, Iron, 0.5f), 1, 1);
+        addRecyclingRecipe(GTCoreItems.MotorMV, of(Copper, 5f, Aluminium, 1f, Steel, 0.5f), 1, 1);
+        addRecyclingRecipe(GTCoreItems.MotorHV, of(Copper, 8f, Gold, 1f, StainlessSteel, 1f, Steel, 0.5f), 1, 3);
+        addRecyclingRecipe(GTCoreItems.MotorEV, of(Copper, 16f, Aluminium,1f, Titanium, 1f, Neodymium, 0.5f), 1, 5);
+        addRecyclingRecipe(GTCoreItems.MotorIV, of(Copper, 32f, Tungsten,1f, TungstenSteel, 1f, Neodymium, 0.5f), 3, 10);
         addRecyclingRecipe(COVER_PUMP.getItem(LV).getItem(), of(Tin, 5.78f, Bronze, 3f, Copper, 2f, Iron, 1.5f), 1, 5);
         addRecyclingRecipe(COVER_PUMP.getItem(MV).getItem(), of(Copper, 5.5f, Bronze, 4.34f, Steel, 3.5f, Aluminium, 1f), 1, 4);
         addRecyclingRecipe(COVER_PUMP.getItem(HV).getItem(), of(Copper, 8f, Steel, 4.78f, StainlessSteel, 4f, Gold, 1.5f), 2, 5);

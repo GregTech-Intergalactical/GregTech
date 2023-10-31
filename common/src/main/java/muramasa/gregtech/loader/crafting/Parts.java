@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.AntimatterAPI;
@@ -97,7 +98,7 @@ public class Parts {
           TagKey<Item> rod = ROD.getMaterialTag(mat);
           TagKey<Item> circuit = TIER_CIRCUITS.apply(t);
 
-          Item motor = GregTech.get(ItemBasic.class, "motor_" + t.getId());
+          Item motor = AntimatterAPI.get(ItemBasic.class, "motor_" + t.getId(), GTCore.ID);
           Item piston = GregTech.get(ItemBasic.class, "piston_" + t.getId());
           Item robotArm = GregTech.get(ItemCover.class, "robot_arm_" + t.getId());
           Item emitter = GregTech.get(ItemBasic.class, "emitter_" + t.getId());

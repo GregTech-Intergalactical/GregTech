@@ -1,6 +1,7 @@
 package muramasa.gregtech.data;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
@@ -234,13 +235,13 @@ public class TierMaps {
         }
         {
             ImmutableMap.Builder<Tier, ItemBasic<?>> builder = ImmutableMap.builder();
-            builder.put(Tier.LV, CircuitBoardCoated);
-            builder.put(Tier.MV, CircuitBoardPhenolic);
-            builder.put(Tier.HV, CircuitBoardPlastic);
-            builder.put(Tier.EV, CircuitBoardEpoxy);
-            builder.put(Tier.IV, CircuitBoardFiber);
-            builder.put(Tier.LUV, CircuitBoardMultiFiber);
-            builder.put(Tier.ZPM, CircuitBoardWetware);
+            builder.put(Tier.LV, GTCoreItems.CircuitBoardCoated);
+            builder.put(Tier.MV, GTCoreItems.CircuitBoardPhenolic);
+            builder.put(Tier.HV, GTCoreItems.CircuitBoardPlastic);
+            builder.put(Tier.EV, GTCoreItems.CircuitBoardEpoxy);
+            builder.put(Tier.IV, GTCoreItems.CircuitBoardFiber);
+            builder.put(Tier.LUV, GTCoreItems.CircuitBoardMultiFiber);
+            builder.put(Tier.ZPM, GTCoreItems.CircuitBoardWetware);
             TIER_BOARDS = builder.build();
         }
     }

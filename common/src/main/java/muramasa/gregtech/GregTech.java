@@ -1,5 +1,6 @@
 package muramasa.gregtech;
 
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.Ref;
@@ -180,7 +181,7 @@ public class GregTech extends AntimatterMod {
                 AntimatterJEIREIPlugin.addItemsToHide(LAVA);
                 AntimatterJEIREIPlugin.addItemsToHide(l -> {
                     if (!GregTechConfig.GAMEPLAY.HARDER_CIRCUITS){
-                        l.addAll(Arrays.asList(CircuitBoardPhenolic));
+                        l.addAll(Arrays.asList(GTCoreItems.CircuitBoardPhenolic));
                         l.addAll(Arrays.asList(CircuitWetware, MicroProcessor, IntegratedProcessor, NanoProcessor, QuantumProcessor));
                     }
                 });
