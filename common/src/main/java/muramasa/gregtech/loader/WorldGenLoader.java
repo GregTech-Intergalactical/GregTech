@@ -268,8 +268,8 @@ public class WorldGenLoader {
                 OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("beryllium_end").asOreVein(5, 30, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
                 END).buildVein());
-        ev.vein(new WorldGenVeinLayerBuilder("oilshale").asOreVein(-14, 31, 80, 6, 32, OilShale, OilShale, OilShale, OilShale,
-                OVERWORLD, TWILIGHT_FOREST).buildVein());
+        /*ev.vein(new WorldGenVeinLayerBuilder("oilshale").asOreVein(-14, 31, 80, 6, 32, OilShale, OilShale, OilShale, OilShale,
+                OVERWORLD, TWILIGHT_FOREST).buildVein());*/
 
     }
 }
