@@ -1313,7 +1313,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Malachite).addByProduct(Copper, BrownLimonite, Calcite);
         event.setMaterial(Manganese).addByProduct(Chromium, Iron);
         event.setMaterial(Marble).addByProduct(Calcite);
-        event.setMaterial(Molybdenite).addByProduct(Molybdenum);
+        event.setMaterial(Molybdenite).addByProduct(Powellite/*, Sheelite*/, Wulfenite, Osmium);
+        event.setMaterial(Molybdenum).addByProduct(Powellite/*, Sheelite*/, Wulfenite, Osmium);
         event.setMaterial(Naquadah).addByProduct(EnrichedNaquadah);
         event.setMaterial(Neodymium).addByProduct(RareEarth);
         event.setMaterial(Netherrack).addByProduct(Sulfur);
@@ -1330,6 +1331,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Pitchblende).addByProduct(Thorium, Uranium, Lead);
         event.setMaterial(Platinum).addByProduct(Nickel, Iridium);
         event.setMaterial(Plutonium).addByProduct(Uranium, Lead);
+        event.setMaterial(Powellite).addByProduct(Molybdenite/*, Sheelite*/);
         event.setMaterial(Pyrite).addByProduct(Sulfur, Phosphorus, Iron);
         event.setMaterial(Pyrolusite).addByProduct(Manganese);
         event.setMaterial(Pyrope).addByProduct(RedGarnet, Magnesium);
@@ -1363,6 +1365,7 @@ public class GregTechMaterialEvents {
         //event.setMaterial(Uranium).addByProduct(Lead, Thorium, Plutonium);
         event.setMaterial(Uvarovite).addByProduct(YellowGarnet, Chromium);
         event.setMaterial(VanadiumMagnetite).addByProduct(Magnetite, Vanadium);
+        event.setMaterial(Wulfenite).addByProduct(Powellite/*, Sheelite*/, Molybdenite, Galena);
         event.setMaterial(YellowGarnet).addByProduct(Andradite, Grossular, Uvarovite);
         event.setMaterial(YellowLimonite).addByProduct(Nickel, BrownLimonite, Cobalt);
         event.setMaterial(Zinc).addByProduct(Tin, Gallium);

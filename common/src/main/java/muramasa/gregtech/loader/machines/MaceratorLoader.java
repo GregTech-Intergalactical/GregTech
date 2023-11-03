@@ -80,12 +80,26 @@ public class MaceratorLoader {
             ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(m,1);
 
             //TODO better way to do this
-            Material aOreByProduct1 = m.getByProducts().size() >= 1 ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
-            Material aOreByProduct2 = m.getByProducts().size() >= 2 ? m.getByProducts().get(1) : aOreByProduct1;
+            Material aOreByProduct1 = !m.getByProducts().isEmpty() ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
+            Material aOreByProduct2 = m.getByProducts().size() > 1 ? m.getByProducts().get(1) : aOreByProduct1;
+            Material aOreByProduct3 = m.getByProducts().size() > 2 ? m.getByProducts().get(2) : aOreByProduct2;
             MACERATING.RB().ii(crushed).io(AntimatterMaterialTypes.DUST_IMPURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1).add("crushed_" + m.getId(),400, 2);
 
             if (m.has(AntimatterMaterialTypes.CRUSHED_REFINED)) {
-                MACERATING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED_REFINED.get(m,1))).io(AntimatterMaterialTypes.DUST.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), AntimatterMaterialTypes.DUST.get(aOreByProduct2, 1)).chances(1.0, 0.1).add("refined_" + m.getId(),400, 2);
+                var rb = MACERATING.RB();
+                rb.ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED_REFINED.get(m,1))).io(AntimatterMaterialTypes.DUST.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), AntimatterMaterialTypes.DUST.get(aOreByProduct3, 1));
+                List<Integer> chances = new ArrayList<>();
+                chances.add(10000);
+                chances.add(1000);
+                if (m.getByProducts().size() > 3){
+                    rb.io(DUST.get(m.getByProducts().get(3)));
+                    chances.add(1000);
+                }
+                if (m.getByProducts().size() > 4){
+                    rb.io(DUST.get(m.getByProducts().get(4)));
+                    chances.add(1000);
+                }
+                rb.chances(chances.stream().mapToInt(i -> i).toArray()).add("refined_" + m.getId(),400, 2);
             }
             if (m.has(AntimatterMaterialTypes.CRUSHED_PURIFIED) && m.has(AntimatterMaterialTypes.DUST_PURE)) {
                 MACERATING.RB().ii(AntimatterMaterialTypes.CRUSHED_PURIFIED.getIngredient(m, 1)).io(AntimatterMaterialTypes.DUST_PURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1).add("purified_" + m.getId(),400, 2);
