@@ -9,7 +9,6 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.SubTag;
 import muramasa.gregtech.material.GregTechMaterialEvent;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.enchantment.Enchantments;
 
 import java.util.List;
@@ -21,7 +20,6 @@ import static muramasa.antimatter.data.AntimatterMaterials.Charcoal;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.*;
 import static muramasa.gregtech.data.Materials.*;
-import static net.minecraft.world.item.Tiers.IRON;
 
 public class GregTechMaterialEvents {
     public static void onMaterialEvent(GregTechMaterialEvent event){
@@ -227,6 +225,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Concrete).asDust(300);
         event.setMaterial(DialuminiumTrioxide).asDust();
         event.setMaterial(Energium).asDust();
+        event.setMaterial(FerricChloride).asDust();
         event.setMaterial(FerriteMixture).asDust();
         event.setMaterial(Ferrosilite).asDust();
         event.setMaterial(Fireclay).asDust();
@@ -274,7 +273,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Barite).asOre().harvestLevel(2);
         event.setMaterial(Bentonite).asOre(); // TODO: Ore Gen
         event.setMaterial(BrownLimonite).asOre().harvestLevel(1);
-        event.setMaterial(Calcite).asOre().harvestLevel(1);
+        event.setMaterial(Calcite).asOre(MOLTEN).asFluid(0, 1612).harvestLevel(1);
         event.setMaterial(Cassiterite).asOre().harvestLevel(1);
         event.setMaterial(Chalcopyrite).asOre().harvestLevel(1);
         event.setMaterial(Cinnabar).asOre().harvestLevel(1);
@@ -477,7 +476,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SulfuricAcid).asFluid().flags(ACID);
         event.setMaterial(SulfurTrioxide).asGas();
         event.setMaterial(SulfurDioxide).asGas();
-        event.setMaterial(Titaniumtetrachloride).asFluid();
+        event.setMaterial(TitaniumTetrachloride).asFluid();
         event.setMaterial(UUAmplifier).asFluid();
         event.setMaterial(UUMatter).asFluid();
         //Nuclear
@@ -647,6 +646,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Concrete).mats(of(Stone, 1)).asFluid();
         event.setMaterial(DialuminiumTrioxide).mats(of(Aluminium,2,Oxygen,3));
         event.setMaterial(Energium).mats(of(Redstone,5,Ruby,4));
+        event.setMaterial(FerricChloride).mats(of(Iron, 1, Chlorine, 3)).elecTicks(876);
         event.setMaterial(FerriteMixture).mats(of(Nickel, 1, Zinc, 1, Iron, 4));
         event.setMaterial(Ferrosilite).mats(of(Iron, 1, Silicon, 1, Oxygen, 3)).elecTicks(120);
         event.setMaterial(Fireclay).mats(of(Brick, 1));
@@ -868,7 +868,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SulfuricAcid).mats(of(Hydrogen, 2, Sulfur, 1, Oxygen, 4)).elecTicks(392);
         event.setMaterial(SulfurTrioxide).mats(of(Sulfur, 1, Oxygen, 3)).elecTicks(320);
         event.setMaterial(SulfurDioxide).mats(of(Sulfur, 1, Oxygen, 2)).elecTicks(300);
-        event.setMaterial(Titaniumtetrachloride).mats(of(Titanium, 1, Chlorine, 4));
+        event.setMaterial(TitaniumTetrachloride).mats(of(Titanium, 1, Chlorine, 4));
         //Nuclear
         //event.setMaterial(LeachingSolution).mats(of(SodiumBicarbonateSolution,1,SodiumCarbonateSolution,1));
         //event.setMaterial(LeachedThorium).mats(of(LeachingSolution,1,Thorium,1));
@@ -1447,7 +1447,7 @@ public class GregTechMaterialEvents {
                 Phosphate, Potash, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
                 PhosphorousPentoxide, Hematite, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
                 Salt, SodiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond, BlueVitriol,
-                NickelSulfate, Water, DistilledWater, MilkyQuartz);
+                NickelSulfate, Water, DistilledWater, MilkyQuartz, FerricChloride);
         ELEC60.add(CalciumChloride, SodiumHydroxide, Propene, Ethylene, Butene, Benzene, Styrene, Ethane, Ammonia, SodiumSulfide, Methane,
                 Magnesite, HydrofluoricAcid, HydrogenFluoride, Sphalerite, /*NitroCarbon,*/ SodaAsh, Calcite, Saltpeter, Monazite,
                 /*Wollastonite,*/ NitricOxide, Butane, CarbonMonoxide, Pyrite, RedGranite, Ferrosilite, Butadiene, Amethyst,

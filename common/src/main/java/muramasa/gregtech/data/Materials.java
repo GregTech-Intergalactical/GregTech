@@ -304,6 +304,7 @@ public class Materials {
     public static Material DibenzoylPeroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dibenzoyl_peroxide", 0xf7f5eb, FINE));
     public static Material Dichloroethane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dichloroethane", 0xf8f6fc, NONE));
     public static Material Energium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "energium", 0xe81e21, NONE));
+    public static Material FerricChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ferric_chloride", 0xb4b478, METALLIC));
     public static Material FerriteMixture = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ferrite_mixture", 0xb4b4b4, METALLIC));
     public static Material Ferrosilite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ferrosilite", 0x97632a, DULL));
     public static Material Fireclay = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fireclay", 0xada09b, ROUGH));
@@ -563,7 +564,7 @@ public class Materials {
     public static Material SodiumCarbonateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_carbonate_solution", 0xffffff, NONE));
     public static Material SodiumPersulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_persulfate", 0xffffff, NONE));
     public static Material SulfuricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_acid", 0xff8000, NONE));
-    public static Material Titaniumtetrachloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "titaniumtetrachloride", 0xd40d5c, NONE));
+    public static Material TitaniumTetrachloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "titanium_tetrachloride", 0xd40d5c, NONE));
     public static Material UUAmplifier = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uu_amplifier", 0x600080, NONE));
     public static Material UUMatter = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uu_matter", 0x8000c4, NONE));
 

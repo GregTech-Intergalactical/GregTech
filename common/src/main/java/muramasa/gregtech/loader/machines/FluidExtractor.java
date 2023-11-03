@@ -11,6 +11,7 @@ import net.minecraft.world.item.Item;
 
 import static muramasa.antimatter.Ref.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.gregtech.data.Materials.Calcite;
 import static muramasa.gregtech.data.RecipeMaps.FLUID_EXTRACTING;
 
 public class FluidExtractor {
@@ -22,6 +23,7 @@ public class FluidExtractor {
             });
         }
         add(AntimatterMaterials.Redstone, DUST, DUST.getUnitValue());
+        add(Calcite, DUST, DUST.getUnitValue());
     }
 
     private static void add(Material m, MaterialTypeItem<?> i, long materialAmount) {

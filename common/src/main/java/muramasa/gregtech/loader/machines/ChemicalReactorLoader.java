@@ -15,7 +15,6 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_REACTING;
-import static muramasa.gregtech.data.RecipeMaps.MIXING;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 public class ChemicalReactorLoader {
@@ -126,8 +125,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(INT_CIRCUITS.get(12).setNoConsume()).fi(Methane.getGas(5000), Water.getLiquid(6000)).fo(Hydrogen.getGas(8000)).add("hydrogen",40,240);
         //TINY PILE OF INDIUM DUST
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Aluminium), 4)).fi(IndiumConcentrate.getLiquid(8000)).fo(LeadZincSolution.getLiquid(8000)).io(DUST_TINY.get(Indium, 1)).add("tiny_pile_of_indium_dust",50,600);
-        //TITANIUMTETRACHLORIDE
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Rutile), 1), of(DUST.getMaterialTag(Carbon), 2)).fi(Chlorine.getGas(4000)).fo(Titaniumtetrachloride.getLiquid(1000),CarbonMonoxide.getGas(2000)).add("titanium_tetrachloride",500, 480);
         //ETHYL TERT-BUTYL ETHER
         CHEMICAL_REACTING.RB().fi(Ethanol.getLiquid(1000), Butene.getGas(1000)).fo(EthylTertButylEther.getLiquid(2000)).add("ethyltertbutylether",400, 480);
         //ROCKET FUEL
@@ -198,7 +195,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(of(GEM.getMaterialTag(Coal), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).io(DUST_TINY.get(Ash, 1)).add("carbon_monoxide_3",40, 8);
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Coal), 1), INT_CIRCUITS.get(1).setNoConsume()).fi(Oxygen.getGas(1000)).fo(CarbonMonoxide.getGas(2000)).io(DUST_TINY.get(Ash, 1)).add("carbon_monoxide_4",40, 8);
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Carbon), 1)).fi(CarbonDioxide.getGas(3000)).fo(CarbonMonoxide.getGas(4000)).add("carbon_monoxide_5",800, 30);
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Rutile), 1), of(DUST.getMaterialTag(Carbon), 2), INT_CIRCUITS.get(1).setNoConsume()).fi(Chlorine.getGas(4000)).fo(CarbonMonoxide.getGas(2000), Titaniumtetrachloride.getLiquid(1000)).add("carbon_monoxide_6",500, 480);
         //SALTPETER
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Potassium),1)).fi(Nitrogen.getGas(1000), Oxygen.getGas(3000)).io(DUST.get(Saltpeter,5)).add("saltpeter",180,30);
         //SULFURIC ACID chain
@@ -209,6 +205,9 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000), HydrogenSulfide.getGas(1000)).fo(SulfurDioxide.getGas(1000), Water.getLiquid(1000)).add("sulfur_dioxide_1", 40, 30);
         //HYDROCHLORIC ACID
         CHEMICAL_REACTING.RB().fi(Hydrogen.getGas(1000), Chlorine.getGas(1000)).fo(HydrochloricAcid.getLiquid(2000)).add("hydrochloric_acid", 60, 8);
+        //TITANIUMTETRACHLORIDE
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Rutile), 1), of(DUST.getMaterialTag(Carbon), 1)).fi(Chlorine.getGas(4000), Calcite.getLiquid(L)).fo(TitaniumTetrachloride.getLiquid(5000),CarbonDioxide.getGas(3000)).add("titanium_tetrachloride",500, 480);
+        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Ilmenite), 5), of(DUST.getMaterialTag(Carbon), 3)).fi(Chlorine.getGas(7000), Calcite.getLiquid(L)).io(DUST.get(FerricChloride, 4)).fo(TitaniumTetrachloride.getLiquid(5000),CarbonMonoxide.getGas(6000)).add("titanium_tetrachloride_2",500, 480);
         //Alumina chain
         CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(7000)).ii(DUST.getMaterialIngredient(Fluorite, 3)).fo(HydrogenFluoride.getGas(4000)).io(DUST.get(CalciumSulfate, 6)).add("hydrogen_fluoride", 160, 16);
         CHEMICAL_REACTING.RB().fi(Fluorine.getGas(1000), Hydrogen.getGas(1000)).fo(HydrogenFluoride.getGas(2000)).add("hydrogen_fluoride_1", 16, 16);
