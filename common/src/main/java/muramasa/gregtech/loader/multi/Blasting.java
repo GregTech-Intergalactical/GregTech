@@ -131,10 +131,10 @@ public class Blasting {
                 .io(INGOT.get(StainlessSteel, 9))
                 .add("stainless_steel_ingot", 1000, 120);
         /* TITANIUM */
-        BLASTING.RB().temperature(2140).ii(RecipeIngredient.of(DUST.getMaterialTag(Magnesium), 2))
+        /*BLASTING.RB().temperature(2140).ii(RecipeIngredient.of(DUST.getMaterialTag(Magnesium), 2))
                 .fi(TitaniumTetrachloride.getLiquid(1000))
                 .io(INGOT_HOT.get(Titanium,1), DUST.get(MagnesiumChloride,2))
-                .add("titanium_ingot",40*20, 480);
+                .add("titanium_ingot",40*20, 480);*/
         /* Tungsten Steel/Carbide*/
         BLASTING.RB().temperature(3000).ii(DUST.getMaterialIngredient(Tungsten, 1), DUST.getMaterialIngredient(Steel, 1))
                 .io(INGOT_HOT.get(TungstenSteel, 2))

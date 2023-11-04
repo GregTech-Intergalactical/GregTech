@@ -657,7 +657,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Limestone).mats(of(Calcite, 1));
         event.setMaterial(LithiumChloride).mats(of(Lithium, 1, Chlorine, 1)).elecTicks(64);
         event.setMaterial(Magnesia).mats(of(Magnesium, 1, Oxygen, 1)).elecTicks(40);
-        event.setMaterial(MagnesiumChloride).mats(of(Magnesium, 1, Chlorine, 2));
+        event.setMaterial(MagnesiumChloride).mats(of(Magnesium, 1, Chlorine, 2)).elecTicks(1024);
         event.setMaterial(Marble).mats(of(Magnesium, 1, Calcite, 7));
         event.setMaterial(Massicot).mats(of(Lead, 1, Oxygen, 1)).elecTicks(180);
         event.setMaterial(Obsidian).mats(of(Magnesium, 1, Iron, 1, Silicon, 2, Oxygen, 8)).elecTicks(240);
@@ -1313,8 +1313,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Malachite).addByProduct(Copper, BrownLimonite, Calcite);
         event.setMaterial(Manganese).addByProduct(Chromium, Iron);
         event.setMaterial(Marble).addByProduct(Calcite);
-        event.setMaterial(Molybdenite).addByProduct(Powellite/*, Sheelite*/, Wulfenite, Osmium);
-        event.setMaterial(Molybdenum).addByProduct(Powellite/*, Sheelite*/, Wulfenite, Osmium);
+        event.setMaterial(Molybdenite).addByProduct(Powellite, Scheelite, Wulfenite, Osmium);
+        event.setMaterial(Molybdenum).addByProduct(Powellite, Scheelite, Wulfenite, Osmium);
         event.setMaterial(Naquadah).addByProduct(EnrichedNaquadah);
         event.setMaterial(Neodymium).addByProduct(RareEarth);
         event.setMaterial(Netherrack).addByProduct(Sulfur);
@@ -1331,7 +1331,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Pitchblende).addByProduct(Thorium, Uranium, Lead);
         event.setMaterial(Platinum).addByProduct(Nickel, Iridium);
         event.setMaterial(Plutonium).addByProduct(Uranium, Lead);
-        event.setMaterial(Powellite).addByProduct(Molybdenite/*, Sheelite*/);
+        event.setMaterial(Powellite).addByProduct(Molybdenite, Scheelite);
         event.setMaterial(Pyrite).addByProduct(Sulfur, Phosphorus, Iron);
         event.setMaterial(Pyrolusite).addByProduct(Manganese);
         event.setMaterial(Pyrope).addByProduct(RedGarnet, Magnesium);
@@ -1453,7 +1453,7 @@ public class GregTechMaterialEvents {
                 /*Wollastonite,*/ NitricOxide, Butane, CarbonMonoxide, Pyrite, RedGranite, Ferrosilite, Butadiene, Amethyst,
                 Molybdenite, Ruby, /*Kyanite,*/ NitrogenDioxide, NitrousOxide, DinitrogenTetroxide, Propane, Barite, Isoprene,
                 Chromite, EnderPearl, SiliconDioxide, Apatite, SulfurTrioxide, /*Pyrochlore, */ Toluene, Phosphate,
-                Tantalite, PhosphorousPentoxide, Osmiridium, Pentlandite, Steel, Graphite);
+                Tantalite, PhosphorousPentoxide, Osmiridium, Pentlandite, Steel, Graphite, MagnesiumChloride);
         ELEC90.add(Polydimethylsiloxane, AceticAcid, Olivine, Ethanol, Methanol, VinylAcetate, /*Gypsum,*/ Cobaltite, Ethenone,
                 /*Dymethylamine,*/ Chalcopyrite, /*Mirabilite,*/ Spodumene, /*Dolomite,*/ HypochlorousAcid, Chloramine, Bastnasite,
                 Chloromethane, Malachite, /*Borax, */ /*Kaolinite,*/ Obsidian, NitricAcid, VinylChloride, Acetone, /*Asbestos,*/ PotassiumFeldspar,

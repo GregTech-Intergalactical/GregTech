@@ -130,8 +130,6 @@ public class ChemicalReactorLoader {
         //ROCKET FUEL
         CHEMICAL_REACTING.RB().fi(NitrogenDioxide.getGas(1000), Hydrogen.getGas(3000)).fo(RocketFuel.getLiquid(3000), Water.getLiquid(4000)).add("rocketfuel",1000,388);
         CHEMICAL_REACTING.RB().fi(Chlorine.getGas(1000), Ammonia.getGas(3000), Methanol.getLiquid(4000)).fo(RocketFuel.getLiquid(7000)).add("rocketfuel_1",3600,480);
-        //CHLORINE
-        CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Sodium), 1), of(DUST.getMaterialTag(MagnesiumChloride), 2)).fo(Chlorine.getGas(3000)).io(DUST_SMALL.get(Magnesium, 6)).add("chlorine",300,240);
 
     }
 
