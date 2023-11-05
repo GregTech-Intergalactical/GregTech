@@ -43,13 +43,13 @@ public class WorldGenLoader {
 
 
     public static void init(WorldGenEvent ev) {
-        if (AntimatterConfig.WORLD.STONE_LAYERS) {
+        if (AntimatterConfig.STONE_LAYERS.get()) {
             initStoneVeins(ev);
         }
-        if (AntimatterConfig.WORLD.ORE_VEINS) {
+        if (AntimatterConfig.ORE_VEINS.get()) {
             initOreVeins(ev);
         }
-        if (AntimatterConfig.WORLD.SMALL_ORES && !AntimatterAPI.isModLoaded("tfc")){
+        if (AntimatterConfig.SMALL_ORES.get() && !AntimatterAPI.isModLoaded("tfc")){
             initSmallOres(ev);
         }
         OilSpoutSavedData.clearFluidMap();
@@ -239,7 +239,7 @@ public class WorldGenLoader {
                 OVERWORLD).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("galena").asOreVein(6, 51, 40, 5, 16, Galena, Galena, Silver, Lead,
                 OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
-        Material sporadic = !AntimatterConfig.WORLD.STONE_LAYERS ? Calcite : Alumina;
+        Material sporadic = !AntimatterConfig.STONE_LAYERS.get() ? Calcite : Alumina;
         ev.vein(new WorldGenVeinLayerBuilder("lapis").asOreVein(-44, 1, 40, 5, 16, Lazurite, Sodalite, Lapis, sporadic,
                 OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("lapis_end").asOreVein(20, 50, 40, 5, 16, Lazurite, Sodalite, Lapis, sporadic,
@@ -249,7 +249,7 @@ public class WorldGenLoader {
         ev.vein(new WorldGenVeinLayerBuilder("beryllium_end").asOreVein(5, 30, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
                 END).buildVein());
 
-        if (!AntimatterConfig.WORLD.STONE_LAYERS){
+        if (!AntimatterConfig.STONE_LAYERS.get()){
             ev.vein(new WorldGenVeinLayerBuilder("bauxite").asOreVein(-14, 46, 80, 4, 24, Bauxite, Bauxite, Alumina, Ilmenite,
                     OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("oilshale").asOreVein(-14, 31, 80, 6, 32, OilShale, OilShale, OilShale, OilShale,

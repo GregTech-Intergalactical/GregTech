@@ -65,6 +65,7 @@ dependencies{
     modImplementation("com.github.FeltMC:forgeconfigapiport-fabric:c1486f80f7"){
         transitive = false
     }
+    modImplementation "maven.modrinth:carbon-config:2ngFmmhP"
     modImplementation("earth.terrarium:botarium-fabric-1.18.2:${project.botarium_version}"){
         transitive = false
     }
