@@ -1,5 +1,6 @@
 package muramasa.gregtech.data;
 
+import io.github.gregtechintergalactical.gtcore.GTCore;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.material.Material;
@@ -315,6 +316,7 @@ public class Materials {
     public static Material IridiumSodiumOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "iridium_sodium_oxide", 0xffffff, NONE));
     public static Material LithiumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lithium_chloride", 0xdedefa, DULL));
     public static Material Magnesia = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesia", 0xffffff, DULL));
+    public static Material MagnesiumCarbonate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesium_carbonate", 0xF0E6E6, DULL));
     public static Material MagnesiumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesium_chloride", 0xd40d5c, DULL));
     public static Material Massicot = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "massicot", 0xffdd55, DULL));
     public static Material Obsidian = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "obsidian", 0x503264, DULL));
@@ -464,6 +466,8 @@ public class Materials {
     public static Material Marble = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "marble", 0xc8c8c8, NONE));
     public static Material Quartzite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "quartzite", 0xe6cdcd, QUARTZ));
     public static Material RedGranite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_granite", 0xff0080, ROUGH));
+    public static Material Shale = AntimatterAPI.register(Material.class, new Material(GTCore.ID, "shale", 0x8E8EA8, NONE));
+    public static Material Slate = AntimatterAPI.register(Material.class, new Material(GTCore.ID, "slate", 0x94979C, NONE));
 
     /**
      ** Misc

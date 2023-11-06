@@ -206,6 +206,8 @@ public class ChemicalReactorLoader {
         //TITANIUMTETRACHLORIDE
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Rutile), 1), of(DUST.getMaterialTag(Carbon), 1)).fi(Chlorine.getGas(4000), Calcite.getLiquid(L)).fo(TitaniumTetrachloride.getLiquid(5000),CarbonDioxide.getGas(3000)).add("titanium_tetrachloride",500, 480);
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Ilmenite), 5), of(DUST.getMaterialTag(Carbon), 3)).fi(Chlorine.getGas(7000), Calcite.getLiquid(L)).io(DUST.get(FerricChloride, 4)).fo(TitaniumTetrachloride.getLiquid(5000),CarbonMonoxide.getGas(6000)).add("titanium_tetrachloride_2",500, 480);
+        // Magnesium Chloride
+        CHEMICAL_REACTING.RB().ii(DUST.getMaterialIngredient(MagnesiumCarbonate, 5)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(MagnesiumChloride, 3)).fo(Water.getLiquid(3000), CarbonDioxide.getGas(3000)).add("magnesium_chloride", 144, 16);
         //Alumina chain
         CHEMICAL_REACTING.RB().fi(SulfuricAcid.getLiquid(7000)).ii(DUST.getMaterialIngredient(Fluorite, 3)).fo(HydrogenFluoride.getGas(4000)).io(DUST.get(CalciumSulfate, 6)).add("hydrogen_fluoride", 160, 16);
         CHEMICAL_REACTING.RB().fi(Fluorine.getGas(1000), Hydrogen.getGas(1000)).fo(HydrogenFluoride.getGas(2000)).add("hydrogen_fluoride_1", 16, 16);
