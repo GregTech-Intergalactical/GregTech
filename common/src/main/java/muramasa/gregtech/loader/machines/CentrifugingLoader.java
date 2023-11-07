@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.machines;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
@@ -24,15 +25,14 @@ import static net.minecraft.world.item.Items.GOLD_NUGGET;
 public class CentrifugingLoader {
     public static void init() {
         DUST_IMPURE.all().forEach(dust -> {
-            if (dust.hasByProducts()) CENTRIFUGING.RB().ii(of(DUST_IMPURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), DUST_TINY.get(dust.getByProducts().get(0), 1)).add("dust_impure_" + dust.getId(), 400, 2);
-            else CENTRIFUGING.RB().ii(of(DUST_IMPURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1)).add("dust_impure_" + dust.getId(),dust.getMass(), 2);
+            Material aOreByProduct = !dust.getByProducts().isEmpty() ? dust.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(dust);
+            if (!aOreByProduct.has(DUST)) return;
+            CENTRIFUGING.RB().ii(of(DUST_IMPURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), DUST_TINY.get(aOreByProduct, 1)).add("dust_impure_" + dust.getId(), 400, 2);
         });
         DUST_PURE.all().forEach(dust -> {
-            if (dust.hasByProducts())  {
-                int index = dust.getByProducts().size() > 1 ? 1 : 0;
-                CENTRIFUGING.RB().ii(of(DUST_PURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), DUST_TINY.get(dust.getByProducts().get(index), 1)).add("dust_pure_" + dust.getId(),dust.getMass(), 2);
-            }
-            else CENTRIFUGING.RB().ii(of(DUST_PURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1)).add("dust_pure_" + dust.getId(),dust.getMass(), 2);
+            Material aOreByProduct = dust.getByProducts().size() > 1 ? dust.getByProducts().get(1) : !dust.getByProducts().isEmpty() ? dust.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(dust);
+            if (!aOreByProduct.has(DUST)) return;
+            CENTRIFUGING.RB().ii(of(DUST_PURE.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), DUST_TINY.get(aOreByProduct, 1)).add("dust_pure_" + dust.getId(),dust.getMass(), 2);
         });
         CENT.all().forEach(t -> {
             if (!t.has(DUST) && !t.has(LIQUID) && !t.has(GAS)) return;

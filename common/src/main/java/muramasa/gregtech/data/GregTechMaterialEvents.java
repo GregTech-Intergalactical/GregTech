@@ -1275,12 +1275,13 @@ public class GregTechMaterialEvents {
         event.setMaterial(Beryllium).addByProduct(Emerald);
         event.setMaterial(BlackGranite).addByProduct(Biotite);
         event.setMaterial(Sapphire).addByProduct(Alumina);
+        event.setMaterial(GreenSapphire).addByProduct(Alumina);
         event.setMaterial(Brass).addByProduct(Copper, Tin);
         event.setMaterial(Bronze).addByProduct(Copper, Zinc);
         event.setMaterial(BrownLimonite).addByProduct(Malachite, YellowLimonite);
         event.setMaterial(Calcite).addByProduct(Andradite, Malachite);
         event.setMaterial(Cassiterite).addByProduct(Tin);
-        event.setMaterial(Chalcopyrite).addByProduct(Pyrite, Cobalt, Cadmium, Gold);
+        event.setMaterial(Chalcopyrite).addByProduct(Pyrite, Cobalt, Cadmium);
         event.setMaterial(Chromium).addByProduct(Iron, Magnesium);
         event.setMaterial(Chromite).addByProduct(Iron, Magnesium);
         event.setMaterial(Cinnabar).addByProduct(Redstone, Sulfur, Glowstone);
@@ -1393,6 +1394,7 @@ public class GregTechMaterialEvents {
         CENT.add(CENT15.all().toArray(new Material[0]));
         CENT.add(CENT20.all().toArray(new Material[0]));
         CHEMBATH_MERCURY.add(Chalcopyrite, Gold);
+        CHEMBATH_MERCURY.add(Copper, Gold);
         CHEMBATH_MERCURY.add(Gold,Nickel);
         CHEMBATH_MERCURY.add(Osmium,Iridium);
         CHEMBATH_MERCURY.add(Platinum,Iridium);

@@ -23,7 +23,8 @@ public class ThermalCentrifuge {
             Material aOreByProduct2 = m.getByProducts().size() >= 2 ? m.getByProducts().get(1) : aOreByProduct1;
             ItemStack stoneDust = AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone, 1);
 
-            THERMAL_CENTRIFUGING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(m),1)).io(AntimatterMaterialTypes.CRUSHED_REFINED.get(m, 1), AntimatterMaterialTypes.DUST_TINY.get(aOreByProduct2, 1), stoneDust).add("purified_" + m.getId(),500, 48,0,2);
+            THERMAL_CENTRIFUGING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(m),1)).io(AntimatterMaterialTypes.CRUSHED_REFINED.get(m, 1), AntimatterMaterialTypes.DUST_TINY.get(aOreByProduct2, 1)).add("purified_" + m.getId(),500, 48,0,2);
+            THERMAL_CENTRIFUGING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(m),1)).io(AntimatterMaterialTypes.CRUSHED_REFINED.get(m, 1), AntimatterMaterialTypes.DUST_TINY.get(aOreByProduct2, 1), stoneDust).add("crushed_" + m.getId(),500, 48,0,2);
         });
         fuel_reprocessing();
     }
