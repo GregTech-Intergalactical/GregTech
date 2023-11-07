@@ -18,6 +18,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks.*;
 import static muramasa.antimatter.Ref.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.ORE_STONE;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -103,16 +104,18 @@ public class WorldGenLoader {
 
     private static void initStoneVeins(WorldGenEvent ev) {
         ev.stoneLayer(new WorldGenStoneLayerBuilder("stone").withStone(STONE).withWeight(4).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite").withStone(GTCoreBlocks.GRANITE_BLACK).withWeight(2).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("red_granite").withStone(GTCoreBlocks.GRANITE_RED).withWeight(2).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("komatiite").withStone(GTCoreBlocks.KOMATIITE).withWeight(4).buildVein());
+        ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite").withStone(BLACK_GRANITE).withWeight(2).buildVein());
+        ev.stoneLayer(new WorldGenStoneLayerBuilder("red_granite").withStone(RED_GRANITE).withWeight(2).buildVein());
+        ev.stoneLayer(new WorldGenStoneLayerBuilder("komatiite").withStone(KOMATIITE).withWeight(4).buildVein());
         ev.stoneLayer(new WorldGenStoneLayerBuilder("basalt").withStone(BASALT).withWeight(3).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("marble").withStone(GTCoreBlocks.MARBLE).withWeight(4).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone").withStone(GTCoreBlocks.LIMESTONE).withWeight(3).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("green_schist").withStone(GTCoreBlocks.GREEN_SCHIST).withWeight(1).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("blue_schist").withStone(GTCoreBlocks.BLUE_SCHIST).withWeight(1).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("kimberlite").withStone(GTCoreBlocks.KIMBERLITE).withWeight(3).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("quartzite").withStone(GTCoreBlocks.QUARTZITE).withWeight(4).buildVein());
+        ev.stoneLayer(new WorldGenStoneLayerBuilder("marble").withStone(MARBLE).withWeight(4).buildVein());
+        ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone").withStone(LIMESTONE).withWeight(3).buildVein());
+        ev.stoneLayer(new WorldGenStoneLayerBuilder("green_schist").withStone(GREEN_SCHIST).withWeight(1).buildVein());
+        ev.stoneLayer(new WorldGenStoneLayerBuilder("blue_schist").withStone(BLUE_SCHIST).withWeight(1).buildVein());
+        ev.stoneLayer(new WorldGenStoneLayerBuilder("kimberlite").withStone(KIMBERLITE).withWeight(3).buildVein());
+        ev.stoneLayer(new WorldGenStoneLayerBuilder("quartzite").withStone(QUARTZITE).withWeight(4).buildVein());
+        ev.stoneLayer(new WorldGenStoneLayerBuilder("shale").withStone(SHALE).withWeight(3).buildVein());
+        ev.stoneLayer(new WorldGenStoneLayerBuilder("slate").withStone(SLATE).withWeight(3).buildVein());
         ev.stoneLayer(new WorldGenStoneLayerBuilder("granite").withStone(GRANITE).withWeight(3).buildVein());
         ev.stoneLayer(new WorldGenStoneLayerBuilder("diorite").withStone(DIORITE).withWeight(3).buildVein());
         ev.stoneLayer(new WorldGenStoneLayerBuilder("andesite").withStone(ANDESITE).withWeight(4).buildVein());
@@ -125,16 +128,16 @@ public class WorldGenLoader {
             ev.stoneLayer(new WorldGenStoneLayerBuilder("stone_ores_2").withStone(STONE).withWeight(4).buildVein()); //Ores
             ev.stoneLayer(new WorldGenStoneLayerBuilder("stone_ores_3").withStone(STONE).withWeight(4).buildVein()); //Ores
             ev.stoneLayer(new WorldGenStoneLayerBuilder("stone_ores_4").withStone(STONE).withWeight(4).buildVein()); //Ores
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite_ores").withStone(GTCoreBlocks.GRANITE_BLACK).withWeight(1).addOres(
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite_ores").withStone(BLACK_GRANITE).withWeight(1).addOres(
                     new StoneLayerOre(Cooperite, O32, -64, -32),
                     new StoneLayerOre(Iridium, O64, -64, -46)
             ).buildVein());
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("red_granite_ores").withStone(GTCoreBlocks.GRANITE_RED).withWeight(1).addOres(
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("red_granite_ores").withStone(RED_GRANITE).withWeight(1).addOres(
                     new StoneLayerOre(Pitchblende, O32, -32, 0),
                     new StoneLayerOre(Uraninite, O32, -32, 0),
                     new StoneLayerOre(Tantalite, O16, -32, 0)
             ).buildVein());
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("komatiite_ores").withStone(GTCoreBlocks.KOMATIITE).withWeight(1).addOres(
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("komatiite_ores").withStone(KOMATIITE).withWeight(1).addOres(
                     new StoneLayerOre(Magnesite, O16, -54, -9),
                     new StoneLayerOre(Cinnabar, O12, -64, -19),
                     new StoneLayerOre(Redstone, O8, -54, -9),
@@ -142,13 +145,13 @@ public class WorldGenLoader {
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("basalt_ores").withStone(BASALT).withWeight(1).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("basalt_ores_2").withStone(BASALT).withWeight(1).buildVein());
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("marble_ores").withStone(GTCoreBlocks.MARBLE).withWeight(1).buildVein());
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone_ores").withStone(GTCoreBlocks.LIMESTONE).withWeight(1).buildVein());
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone_ores_2").withStone(GTCoreBlocks.LIMESTONE).withWeight(1).buildVein());
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("green_schist_ores").withStone(GTCoreBlocks.GREEN_SCHIST).withWeight(1).buildVein());
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("blue_schist_ores").withStone(GTCoreBlocks.BLUE_SCHIST).withWeight(1).buildVein());
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("kimberlite_ores").withStone(GTCoreBlocks.KIMBERLITE).withWeight(1).buildVein());
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("quartzite_ores").withStone(GTCoreBlocks.QUARTZITE).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("marble_ores").withStone(MARBLE).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone_ores").withStone(LIMESTONE).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone_ores_2").withStone(LIMESTONE).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("green_schist_ores").withStone(GREEN_SCHIST).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("blue_schist_ores").withStone(BLUE_SCHIST).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("kimberlite_ores").withStone(KIMBERLITE).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("quartzite_ores").withStone(QUARTZITE).withWeight(1).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("granite_ores").withStone(GRANITE).withWeight(1).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("granite_ores").withStone(GRANITE).withWeight(1).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("diorite_ores").withStone(DIORITE).withWeight(1).buildVein());
@@ -165,7 +168,7 @@ public class WorldGenLoader {
         ev.stoneLayer(new WorldGenStoneLayerBuilder("bauxite").withStone(ORE_STONE.get().get(Bauxite).asState()).withWeight(1).buildVein());
         ev.stoneLayer(new WorldGenStoneLayerBuilder("oil_shale").withStone(ORE_STONE.get().get(OilShale).asState()).withWeight(1).buildVein());
 
-        ev.addCollision(BASALT.getState(), GTCoreBlocks.LIMESTONE.getState(),
+        ev.addCollision(BASALT.getState(), LIMESTONE.getState(),
                 new StoneLayerOre(Ilmenite, O8, -64, 0),
                 new StoneLayerOre(Rutile, O12, -64, 0)
         );
