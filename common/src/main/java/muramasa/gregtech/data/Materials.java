@@ -566,7 +566,7 @@ public class Materials {
     public static Material SaltWater = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "salt_water", 0x0760b9, NONE));
     public static Material SodiumBicarbonateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_bicarbonate_solution", 0xffffff, NONE));
     public static Material SodiumCarbonateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_carbonate_solution", 0xffffff, NONE));
-    public static Material SodiumPersulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_persulfate", 0xffffff, NONE));
+    public static Material SodiumPersulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_persulfate", 0x006646, NONE));
     public static Material SulfuricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_acid", 0xff8000, NONE));
     public static Material TitaniumTetrachloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "titanium_tetrachloride", 0xd40d5c, NONE));
     public static Material UUAmplifier = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uu_amplifier", 0x600080, NONE));
