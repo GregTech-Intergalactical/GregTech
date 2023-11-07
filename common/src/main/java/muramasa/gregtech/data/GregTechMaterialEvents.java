@@ -479,7 +479,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SulfuricAcid).asFluid().flags(ACID);
         event.setMaterial(SulfurTrioxide).asGas();
         event.setMaterial(SulfurDioxide).asGas();
-        event.setMaterial(TitaniumTetrachloride).asFluid();
+        event.setMaterial(TitaniumTetrachloride).asFluid().flags(ACID);
         event.setMaterial(UUAmplifier).asFluid();
         event.setMaterial(UUMatter).asFluid();
         //Nuclear
