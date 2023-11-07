@@ -55,7 +55,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Chromium).asMetal(2180, 1700, SCREW, BOLT, RING, PLATE, ROTOR); //aka Chromium
         event.setMaterial(Manganese).asMetal(1519, FOIL).asOre();
         //Iron, added by vanilla
-        event.setMaterial(Cobalt).asMetal(1768, 0).asOre();
+        event.setMaterial(Cobalt).asMetal(1768, 0);
         event.setMaterial(Nickel).asMetal(1728, 0, PLATE).asOre().asPlasma();
         //Copper, by vanilla
         event.setMaterial(Zinc).asMetal(692, 0, PLATE, FOIL).asOre();
@@ -1395,17 +1395,33 @@ public class GregTechMaterialEvents {
         CENT.add(CENT20.all().toArray(new Material[0]));
         CHEMBATH_MERCURY.add(Chalcopyrite, Gold);
         CHEMBATH_MERCURY.add(Copper, Gold);
-        CHEMBATH_MERCURY.add(Gold,Nickel);
-        CHEMBATH_MERCURY.add(Osmium,Iridium);
-        CHEMBATH_MERCURY.add(Platinum,Iridium);
-        CHEMBATH_MERCURY.add(Silver,Sulfur);
-        CHEMBATH_PERSULFATE.add(Cobalt,Cobaltite);
-        CHEMBATH_PERSULFATE.add(Cobaltite,Cobalt);
-        CHEMBATH_PERSULFATE.add(Copper,Nickel);
-        CHEMBATH_PERSULFATE.add(Nickel, Iron);
+        CHEMBATH_MERCURY.add(Gold,Gold);
+        CHEMBATH_MERCURY.add(Cooperite, Cooperite);
+        CHEMBATH_MERCURY.add(Lead, Silver);
+        CHEMBATH_MERCURY.add(Galena, Silver);
+        CHEMBATH_MERCURY.add(Magnetite, Gold);
+        CHEMBATH_MERCURY.add(Nickel, Platinum);
+        CHEMBATH_MERCURY.add(Osmium, Osmium);
+        CHEMBATH_MERCURY.add(Platinum, Platinum);
+        CHEMBATH_MERCURY.add(Iridium, Platinum);
+        CHEMBATH_MERCURY.add(Silver,Silver);
+        CHEMBATH_MERCURY.add(Tungstate, Silver);
+        CHEMBATH_PERSULFATE.add(Cobaltite,Cobaltite);
+        CHEMBATH_PERSULFATE.add(Pentlandite,Cobalt);
+        CHEMBATH_PERSULFATE.add(Copper, Copper);
+        CHEMBATH_PERSULFATE.add(Gold, Copper);
+        CHEMBATH_PERSULFATE.add(Chalcopyrite,Cobalt);
+        CHEMBATH_PERSULFATE.add(Nickel, Nickel);
+        CHEMBATH_PERSULFATE.add(Garnierite, Nickel);
+        CHEMBATH_PERSULFATE.add(YellowLimonite, Nickel);
         CHEMBATH_PERSULFATE.add(Sphalerite,Zinc);
-        CHEMBATH_PERSULFATE.add(Tetrahedrite,Zinc);
-        CHEMBATH_PERSULFATE.add(Zinc,Gallium);
+        CHEMBATH_PERSULFATE.add(Tin,Zinc);
+        CHEMBATH_PERSULFATE.add(Malachite, Copper);
+        CHEMBATH_PERSULFATE.add(Tetrahedrite,Tetrahedrite);
+        CHEMBATH_PERSULFATE.add(Zinc, Zinc);
+        CHEMBATH_PERSULFATE.add(Platinum, Nickel);
+        CHEMBATH_PERSULFATE.add(Iron, Nickel);
+        CHEMBATH_PERSULFATE.add(Cooperite, Nickel);
         FURNACE_FUELS.add(CoalCoke, GEM, 3200);
         FURNACE_FUELS.add(CoalCoke, DUST, 3200);
         FURNACE_FUELS.add(CoalCoke, BLOCK, 32000);
