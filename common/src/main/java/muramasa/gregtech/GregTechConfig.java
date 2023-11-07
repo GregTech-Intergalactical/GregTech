@@ -1,73 +1,31 @@
 package muramasa.gregtech;
 
+import carbonconfiglib.config.Config;
+import carbonconfiglib.config.ConfigEntry;
+import carbonconfiglib.config.ConfigHandler;
+import carbonconfiglib.config.ConfigSection;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.config.ModConfig;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class GregTechConfig {
-    public static final Gameplay GAMEPLAY = new Gameplay();
-    //public static final ModCompatibility MOD_COMPAT = new ModCompatibility();
 
-    public static final CommonConfig COMMON_CONFIG;
-    public static final ForgeConfigSpec COMMON_SPEC;
+    //TODO needed?
+    public static boolean MORE_COMPLICATED_CHEMICAL_RECIPES = false;
+    //TODO change to gt core's config for this
+    public static boolean HARDER_CIRCUITS = false;
+    public static ConfigEntry.BoolValue HARDER_ALUMINIUM_PROCESSING;
+    static ConfigHandler CONFIG;
 
-    static {
-
-        final Pair<CommonConfig, ForgeConfigSpec> COMMON_PAIR = new ForgeConfigSpec.Builder().configure(CommonConfig::new);
-        COMMON_CONFIG = COMMON_PAIR.getLeft();
-        COMMON_SPEC = COMMON_PAIR.getRight();
-
-    }
-
-    public static void onModConfigEvent(final ModConfig config) {
-        if (config.getModId().equals(GTIRef.ID)){
-            if (config.getSpec() == COMMON_SPEC) bakeCommonConfig();
-        }
-    }
-
-    public static class Gameplay {
-
-        /** @see CommonConfig **/
-
-        public boolean HARDER_WOOD, MORE_COMPLICATED_CHEMICAL_RECIPES, HARDER_CIRCUITS, HARDER_ALUMINIUM_PROCESSING;
-
-    }
-
-    public static class CommonConfig {
-
-        public ForgeConfigSpec.BooleanValue HARDER_WOOD, MORE_COMPLICATED_CHEMICAL_RECIPES, HARDER_CIRCUITS, HARDER_ALUMINIUM_PROCESSING;
-
-        public ForgeConfigSpec.BooleanValue REPLACEMENT_VANILLA_ORE_GEN;
-
-        public CommonConfig(ForgeConfigSpec.Builder builder) {
-
-            builder.push("Gameplay");
-
-            MORE_COMPLICATED_CHEMICAL_RECIPES = builder.comment("Enables more complicated chemical recipes. - Default: false")
-                    .translation(GTIRef.ID + ".config.more_complicated_chemical_recipes")
-                    .define("MORE_COMPLICATED_CHEMICAL_RECIPES", false);
-
-            HARDER_WOOD = builder.comment("If true logs to planks and planks to sticks give half of vanilla amounts - Default: false")
-                    .translation(GTIRef.ID + ".config.harder_wood")
-                    .define("HARDER_WOOD", false);
-            HARDER_CIRCUITS = builder.comment("Enables more complicated circuit recipes added in versions of gt5u after 509.25 - Default: false")
-                    .translation(GTIRef.ID + ".config.harder_circuits")
-                    .define("HARDER_CIRCUITS", false);
-            HARDER_ALUMINIUM_PROCESSING = builder.comment("Enables gt6's alumina processing, if disabled alumina reverts back to just being in the blast furnace - Default: true")
-                    .translation(GTIRef.ID + ".config.harder_aluminium_processing")
-                    .define("HARDER_ALUMINIUM_PROCESSING", true);
-            builder.pop();
-
-        }
-
-    }
-
-    private static void bakeCommonConfig() {
-        GAMEPLAY.HARDER_WOOD = COMMON_CONFIG.HARDER_WOOD.get();
-        GAMEPLAY.MORE_COMPLICATED_CHEMICAL_RECIPES = COMMON_CONFIG.MORE_COMPLICATED_CHEMICAL_RECIPES.get();
-        GAMEPLAY.HARDER_CIRCUITS = COMMON_CONFIG.HARDER_CIRCUITS.get();
-        GAMEPLAY.HARDER_ALUMINIUM_PROCESSING = COMMON_CONFIG.HARDER_ALUMINIUM_PROCESSING.get();
-
+    public static void createConfig(){
+        Config config = new Config("gti");
+        ConfigSection section = config.add("general");
+        /*MORE_COMPLICATED_CHEMICAL_RECIPES = section.addBool("more_complicated_chemical_recipes", false, "Enables more complicated chemical recipes. - Default: false");
+        HARDER_CIRCUITS = section.addBool("harder_circuits", false, "Enables more complicated circuit recipes added in versions of gt5u after 509.25 - Default: false");*/
+        HARDER_ALUMINIUM_PROCESSING = section.addBool("harder_aluminium_processing", true, "Enables gt6's alumina processing, if disabled alumina reverts back to just being in the blast furnace - Default: true");
+        CONFIG = AntimatterPlatformUtils.createConfig(GTIRef.ID, config);
+        CONFIG.register();
     }
 }

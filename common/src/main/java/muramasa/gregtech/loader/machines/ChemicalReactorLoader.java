@@ -21,7 +21,7 @@ public class ChemicalReactorLoader {
 
     public static void init() {
         addShared();
-        if (GregTechConfig.GAMEPLAY.MORE_COMPLICATED_CHEMICAL_RECIPES) {
+        if (GregTechConfig.MORE_COMPLICATED_CHEMICAL_RECIPES) {
             addComplicated();
         } else {
             addSimple();
@@ -221,7 +221,7 @@ public class ChemicalReactorLoader {
         if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
             CHEMICAL_REACTING.RB().fi(HydrogenFluoride.getGas(4000)).ii(DUST.getMaterialIngredient(CertusQuartz, 1)).fo(Water.getLiquid(2000), HexafluorosilicicAcid.getLiquid(3000)).add("hexafluorosilicic_acid_6", 80, 16);
         }
-        if (GregTechConfig.GAMEPLAY.HARDER_ALUMINIUM_PROCESSING){
+        if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             CHEMICAL_REACTING.RB().fi(HexafluorosilicicAcid.getLiquid(9000)).ii(DUST.getMaterialIngredient(Alumina, 5)).io(DUST.get(SiliconDioxide, 3)).fo(AluminiumFluoride.getLiquid(L * 8), Water.getLiquid(3000)).add("aluminium_fluoride", 224, 16);
             CHEMICAL_REACTING.RB().fi(Fluorine.getGas(3000)).ii(DUST.getMaterialIngredient(Aluminium, 1)).fo(AluminiumFluoride.getLiquid(L * 4)).add("aluminium_fluoride_pure", 64, 16);
             CHEMICAL_REACTING.RB().fi(HydrogenFluoride.getGas(24000)).ii(DUST.getMaterialIngredient(SodiumHydroxide, 18), DUST.getMaterialIngredient(Alumina, 5)).fo(Cryolite.getLiquid(L * 20), Water.getLiquid(27000)).add("cryolite", 752, 16);

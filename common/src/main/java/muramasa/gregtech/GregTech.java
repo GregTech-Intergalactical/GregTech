@@ -62,6 +62,7 @@ public class GregTech extends AntimatterMod {
         AntimatterDynamics.clientProvider(GTIRef.ID,
                 () -> new AntimatterItemModelProvider(GTIRef.ID, GTIRef.NAME + " Item Models"));
         AntimatterDynamics.clientProvider(GTIRef.ID, GregTechLocalizations.en_US::new);
+        GregTechConfig.createConfig();
     }
 
     public static void onProviders(ProvidersEvent ev) {
@@ -183,7 +184,7 @@ public class GregTech extends AntimatterMod {
                 GTRemapping.init();
                 AntimatterJEIREIPlugin.addItemsToHide(LAVA);
                 AntimatterJEIREIPlugin.addItemsToHide(l -> {
-                    if (!GregTechConfig.GAMEPLAY.HARDER_CIRCUITS){
+                    if (!GregTechConfig.HARDER_CIRCUITS){
                         l.addAll(Arrays.asList(GTCoreItems.CircuitBoardPhenolic));
                         l.addAll(Arrays.asList(CircuitWetware, MicroProcessor, IntegratedProcessor, NanoProcessor, QuantumProcessor));
                     }

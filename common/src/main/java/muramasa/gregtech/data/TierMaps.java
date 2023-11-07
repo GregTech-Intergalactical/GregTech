@@ -202,7 +202,7 @@ public class TierMaps {
             builder.put(Tier.LUV, GTCoreTags.CIRCUITS_DATA_ORB);
             builder.put(Tier.ZPM, GTCoreTags.CIRCUITS_DATA_ORB);
             TIER_CIRCUITS = t ->{
-                boolean hardMode = GregTechConfig.GAMEPLAY.HARDER_CIRCUITS;
+                boolean hardMode = GregTechConfig.HARDER_CIRCUITS;
                 if (t == LV){
                     return GTCoreTags.CIRCUITS_BASIC;
                 }

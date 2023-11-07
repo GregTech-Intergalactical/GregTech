@@ -27,7 +27,7 @@ public class Smelting {
         SimpleCookingRecipeBuilder.smelting(RecipeIngredient.of(GTCoreItems.CompressedFireClay, 1), GTCoreItems.FireBrick, 0.5F, 200).unlockedBy("has_compressed_fire_clay", provider.hasSafeItem(GTCoreItems.CompressedFireClay)).save(output, GTIRef.ID + ":firebrick");
         MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED, NUGGET, 7, Cassiterite, Tin);
         MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED, NUGGET, 7, Garnierite, Nickel);
-        if (GregTechConfig.GAMEPLAY.HARDER_ALUMINIUM_PROCESSING) {
+        if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()) {
             MaterialRecipes.addSmeltingRecipe(output, provider, DUST, DUST_TINY, 3, AluminiumHydroxide, Alumina);
             MaterialRecipes.addSmeltingRecipe(output, provider, DUST, INGOT, 1, Aluminium);
         }

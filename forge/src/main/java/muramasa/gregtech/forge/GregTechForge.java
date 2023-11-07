@@ -32,12 +32,10 @@ public class GregTechForge {
         MinecraftForge.EVENT_BUS.addListener(GregTechForge::registerRecipeLoaders);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(GregTechForge::registerCraftingLoaders);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(GregTechForge::onProviders);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onModConfigEvent);
         MinecraftForge.EVENT_BUS.addListener(GregTechForge::onWorldGen);
         new GregTechPostRegistrar();
         new GregTech();
         new TFCRegistrar();
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GregTechConfig.COMMON_SPEC);
 
     }
 
@@ -62,9 +60,5 @@ public class GregTechForge {
     }
 
     private void setup(final FMLCommonSetupEvent e) {
-    }
-
-    public void onModConfigEvent(final ModConfigEvent e) {
-        GregTechConfig.onModConfigEvent(e.getConfig());
     }
 }

@@ -88,7 +88,7 @@ public class DistillationTower {
                 new FluidProduct(Ethanol, 240),
                 new FluidProduct(Water,240));
 
-        if (GregTechConfig.GAMEPLAY.MORE_COMPLICATED_CHEMICAL_RECIPES){
+        if (GregTechConfig.MORE_COMPLICATED_CHEMICAL_RECIPES){
             initComplicated();
         } else {
             initSimple();

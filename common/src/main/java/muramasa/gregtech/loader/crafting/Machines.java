@@ -499,7 +499,7 @@ public class Machines {
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
         });
 
-        var circuit = GregTechConfig.GAMEPLAY.HARDER_CIRCUITS ? CIRCUITS_ADVANCED : EngravedCrystalChip;
+        var circuit = GregTechConfig.HARDER_CIRCUITS ? CIRCUITS_ADVANCED : EngravedCrystalChip;
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.LV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_LV)
@@ -507,7 +507,7 @@ public class Machines {
                         .put('F', FieldGenLV)
                         .put('P', PLATE.get(Steel)).build(), "CFC", "PHP", "CPC");
 
-        circuit = GregTechConfig.GAMEPLAY.HARDER_CIRCUITS ? CIRCUITS_COMPLEX : CIRCUITS_DATA;
+        circuit = GregTechConfig.HARDER_CIRCUITS ? CIRCUITS_COMPLEX : CIRCUITS_DATA;
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(MV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_MV)
@@ -529,7 +529,7 @@ public class Machines {
                         .put('F', FieldGenEV)
                         .put('P', PLATE.get(Titanium)).build(), "CFC", "PHP", "CPC");
 
-        circuit = GregTechConfig.GAMEPLAY.HARDER_CIRCUITS ? CIRCUITS_DATA_ORB : CIRCUITS_DATA_ORB;
+        circuit = GregTechConfig.HARDER_CIRCUITS ? CIRCUITS_DATA_ORB : CIRCUITS_DATA_ORB;
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), QUANTUM_TANK.getItem(Tier.IV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_IV)

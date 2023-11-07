@@ -28,7 +28,7 @@ import static muramasa.gregtech.data.RecipeMaps.ELECTROLYZING;
 public class ElectrolyzerLoader {
     public static void init() {
         List<Material> elecMaterials = new ArrayList<>(ELEC.all().stream().toList());
-        if (!GregTechConfig.GAMEPLAY.HARDER_ALUMINIUM_PROCESSING){
+        if (!GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             elecMaterials.add(Alumina);
         }
         elecMaterials.forEach(t -> {
@@ -55,7 +55,7 @@ public class ElectrolyzerLoader {
         });
         ELECTROLYZING.RB().ii(RecipeIngredient.of(ItemTags.SAND, 8)).io(DUST.get(Materials.SiliconDioxide)).add("sand_to_silicon_dioxide", 500, 25);
         ELECTROLYZING.RB().ii(RecipeIngredient.of(Items.BONE_MEAL, 3)).io(DUST.get(Materials.Calcium)).add("bone_meal", 98, 26);
-        if (GregTechConfig.GAMEPLAY.HARDER_ALUMINIUM_PROCESSING) {
+        if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()) {
             ELECTROLYZING.RB().ii(DUST.getMaterialIngredient(Carbon, 3), DUST.getMaterialIngredient(Alumina, 10))
                     .fi(AluminiumFluoride.getLiquid(L / 36), Cryolite.getLiquid(L / 72)).io(DUST.get(Aluminium, 4))
                     .fo(CarbonDioxide.getGas(9000), Fluorine.getGas(29)).add("alumina_carbon", 2040, 16);

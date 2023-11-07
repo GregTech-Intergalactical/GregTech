@@ -54,16 +54,11 @@ dependencies{
     modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-fabric:${rootProject.jei_version}"){
         exclude(group: "mezz.jei", module: "jei-1.18.2-fabric-api")
     }
-    implementation("com.electronwill.night-config:toml:${rootProject.nightconfig_version}")
-    implementation("com.electronwill.night-config:core:${rootProject.nightconfig_version}")
     modImplementation("teamreborn:energy:${rootProject.energy_version}") {
         transitive = false
     }
     modRuntimeOnly("com.terraformersmc:modmenu:${rootProject.mod_menu_version}") {
         exclude(group: "net.fabricmc.fabric-api")
-    }
-    modImplementation("com.github.FeltMC:forgeconfigapiport-fabric:c1486f80f7"){
-        transitive = false
     }
     modImplementation "maven.modrinth:carbon-config:2ngFmmhP"
     modImplementation("earth.terrarium:botarium-fabric-1.18.2:${project.botarium_version}"){

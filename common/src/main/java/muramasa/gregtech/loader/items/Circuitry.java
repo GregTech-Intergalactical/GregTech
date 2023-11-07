@@ -53,7 +53,7 @@ public class Circuitry {
                         .put('P', PLATE.get(Wood))
                         .build(),
                 " R ", "PPP", " R ");
-        if (GregTechConfig.GAMEPLAY.HARDER_CIRCUITS){
+        if (GregTechConfig.HARDER_CIRCUITS){
             bloodyCircuits(output, provider);
         } else {
             circuits(output, provider);
@@ -161,7 +161,7 @@ public class Circuitry {
                 .fi(Glue.getLiquid(100))
                 .io(new ItemStack(CircuitBoardPhenolic,8))
                 .add("phenolic_circuit_board",30, 8);
-        if (!GregTechConfig.GAMEPLAY.HARDER_CIRCUITS){
+        if (!GregTechConfig.HARDER_CIRCUITS){
             boards();
             circuitParts();
             circuits();
@@ -176,7 +176,7 @@ public class Circuitry {
         BLASTING.RB().temperature(1784).ii(DUST.getMaterialIngredient(Silicon, 16), INT_CIRCUITS.get(16)).fi(Helium.getGas(1000)).io(SiliconBoule).add("silicon_boule", 9000, 120);
         addCuttingRecipe(SiliconBoule, Wafer, 16, 1600, 384, 1);
         addCuttingRecipe(Wafer, SiliconChip, 8, 600, 48, 22);
-        if (GregTechConfig.GAMEPLAY.HARDER_CIRCUITS){
+        if (GregTechConfig.HARDER_CIRCUITS){
             BLASTING.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Glowstone, 1)).fi(Nitrogen.getGas(1000)).io(GlowstoneDopedSiliconBoule).add("glowstone_doped_silicon_boule", 12000, 480);
             BLASTING.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Naquadah, 1)).fi(Argon.getGas(1000)).io(NaquadahDopedSiliconBoule).add("naquadah_doped_silicon_boule", 15000, 1920);
             addCuttingRecipe(GlowstoneDopedSiliconBoule, GlowstoneDopedWafer, 32, 800, 64, 20);

@@ -91,7 +91,7 @@ public class MixerLoader {
     }
 
     private static void recipes() {
-        if (GregTechConfig.GAMEPLAY.MORE_COMPLICATED_CHEMICAL_RECIPES){
+        if (GregTechConfig.MORE_COMPLICATED_CHEMICAL_RECIPES){
             MIXING.RB().fi(PolyvinylAcetate.getLiquid(1000),Acetone.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue",25 * 2, 8);
             MIXING.RB().fi(PolyvinylAcetate.getLiquid(1000),MethylAcetate.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue_1",25 * 2, 8);
         }

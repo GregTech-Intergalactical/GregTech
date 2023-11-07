@@ -108,7 +108,7 @@ public class Blasting {
                 .fi(Oxygen.getGas(1000))
                 .io(INGOT.get(Steel), DUST_SMALL.get(DarkAsh))
                 .add("steel_ingot_2", 100, 120);
-        if (!GregTechConfig.GAMEPLAY.HARDER_ALUMINIUM_PROCESSING){
+        if (!GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             /* Aluminium*/
             BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Ruby, 1))
                     .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
