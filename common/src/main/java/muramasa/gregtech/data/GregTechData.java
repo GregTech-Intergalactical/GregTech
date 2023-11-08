@@ -95,6 +95,7 @@ public class GregTechData {
     public static ItemFluidCell CellSteel = new ItemFluidCell(GTIRef.ID, Steel, 16000);
     public static ItemFluidCell CellTungstensteel = new ItemFluidCell(GTIRef.ID, TungstenSteel, 64000);
     public static ItemBasic<?> Scrap = new ItemBasic<>(GTIRef.ID, "scrap");
+    public static ItemBasic<?> WoodPellet = new ItemBasic<>(GTIRef.ID, "wood_pellet");
     public static ItemBasic<?> QuantumEye = new ItemBasic<>(GTIRef.ID, "quantum_eye").tip("Improved Ender Eye");
     public static ItemBasic<?> QuantumStar = new ItemBasic<>(GTIRef.ID, "quantum_star").tip("Improved Nether Star");
     public static ItemBasic<?> GraviStar = new ItemBasic<>(GTIRef.ID, "gravi_star").tip("Ultimate Nether Star");
@@ -408,9 +409,6 @@ public class GregTechData {
     public static final ItemPipe<?> ITEM_PIPE_ULTIMET = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GTIRef.ID, Ultimet).stepsize(2048).caps(0, 0, 0, 16, 32, 64));
     //public static final ItemPipe<?> ITEM_PIPE_HC = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GTIRef.ID, HighCapacity).stepsize(4096).caps(64));
     public static final ItemPipe<?> ITEM_PIPE_OSMIRIDIUM = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GTIRef.ID, Osmiridium).stepsize(1024).caps(0, 0, 0, 32, 64, 128));
-
-    //Miscellaneous
-    public static ItemBasic<?> PlantBall = new ItemBasic<>(GTIRef.ID, "plant_ball");
 
     //public static final HeatPipe<?> HEAT_PIPE_COPPER = AntimatterAPI.register(HeatPipe.class, new HeatPipe<>(GTIRef.ID, Copper, 386).sizes(PipeSize.SMALL));
     private static int[] getPressures(int basePressure){

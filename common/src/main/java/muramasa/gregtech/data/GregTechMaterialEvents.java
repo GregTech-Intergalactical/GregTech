@@ -367,7 +367,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(EpoxyResin).asSolid(400, 0, PLATE, MOLTEN);
         event.setMaterial(FiberReinforcedEpoxyResin).asSolid(400, 0, PLATE);
         event.setMaterial(Polycaprolactam).asSolid(500, 0);
-        event.setMaterial(Plastic).asSolid(295, 0, PLATE).asFluid();
+        event.setMaterial(Plastic).asSolid(295, 0, PLATE, FOIL).asFluid();
         event.setMaterial(PolyphenyleneSulfide).asSolid(295, 0, PLATE, FOIL);
         event.setMaterial(Polystyrene).asSolid(295, 0);
         event.setMaterial(Polytetrafluoroethylene).asSolid(1400, 0, PLATE, FRAME, ROD_LONG);

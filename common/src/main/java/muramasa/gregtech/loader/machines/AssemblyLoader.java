@@ -28,8 +28,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.Arrays;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.CarbonFibre;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.CarbonMesh;
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -161,6 +160,8 @@ public class AssemblyLoader {
         ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
         ASSEMBLING.RB().ii(of(COVER_SHUTTER.getItem()), of(CIRCUITS_GOOD, 2)).io(COVER_FLUID_FILTER.getItem()).add("fluid_filter", 800, 4);
         ASSEMBLING.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_TRAPDOOR)).io(new ItemStack(COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Invar, 2), of(Items.FLINT, 1)).io(GTCoreItems.LighterEmpty).add("empty_lighter", 256, 16);
+        ASSEMBLING.RB().ii(of(Match, 64), of(Items.PAPER, 2)).fi(Glue.getLiquid(10)).io(MatchBook).add("matchbook", 100, 16);
     }
 
     private static void addCoverRecipe(ItemStack cover, Ingredient... inputs){

@@ -22,8 +22,7 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.*;
 
-import static muramasa.gregtech.data.GregTechData.SOLID_SUPER_FUEL;
-import static muramasa.gregtech.data.GregTechData.SuperFuelBinder;
+import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.RecipeMaps.FLUID_CANNING;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 import static muramasa.gregtech.data.Materials.*;
@@ -140,6 +139,7 @@ public class MixerLoader {
         MIXING.RB().ii(BLOCK.getMaterialIngredient(Lignite, 1), of(SuperFuelBinder, 6)).fi(CetaneBoostedDiesel.getLiquid(1000)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_lignite_nitro", 120, 96);
         MIXING.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(SuperFuelBinder, 4)).fi(CetaneBoostedDiesel.getLiquid(800)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal_nitro", 120, 96);
         MIXING.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(SuperFuelBinder, 2)).fi(CetaneBoostedDiesel.getLiquid(500)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal_nitro", 120, 96);
+        MIXING.RB().ii(DUST.getMaterialIngredient(Wood, 1)).fi(Glue.getLiquid(25)).io(WoodPellet).add("wood_pellet", 16, 16);
     }
 
 }

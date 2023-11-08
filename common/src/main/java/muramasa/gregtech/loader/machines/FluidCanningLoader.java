@@ -14,8 +14,7 @@ import net.minecraft.world.item.Items;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
-import static muramasa.gregtech.data.Materials.Mercury;
-import static muramasa.gregtech.data.Materials.SulfuricAcid;
+import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.FLUID_CANNING;
 
 public class FluidCanningLoader {
@@ -26,6 +25,7 @@ public class FluidCanningLoader {
         FLUID_CANNING.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullSmall, 1)).fi(SulfuricAcid.getLiquid(1000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatterySmallAcid)).add("battery_small_acid",16, 1);
         FLUID_CANNING.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullMedium, 1)).fi(SulfuricAcid.getLiquid(4000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryMediumAcid)).add("battery_medium_acid",64, 1);
         FLUID_CANNING.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullLarge, 1)).fi(SulfuricAcid.getLiquid(16000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryLargeAcid)).add("battery_large_acid",258, 1);
+        FLUID_CANNING.RB().ii(RecipeIngredient.of(GTCoreItems.LighterEmpty)).fi(Butane.getGas(100)).io(GTCoreItems.Lighter).add("lighter", 1, 1);
         AntimatterPlatformUtils.getAllFluids().forEach(fluid -> {
             Item bucket = fluid.getBucket();
             if (bucket == Items.AIR) return;

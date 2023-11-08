@@ -190,6 +190,7 @@ public class GregTech extends AntimatterMod {
                     }
                 });
                 AntimatterPlatformUtils.setBurnTime(SOLID_SUPER_FUEL.asItem(), 100000);
+                AntimatterPlatformUtils.setBurnTime(WoodPellet, 200);
                 AntimatterPlatformUtils.setFlammability(WOOD_WALL, 5, 20);
                 AntimatterPlatformUtils.setFlammability(Machines.WOOD_TANK.getBlockState(Tier.NONE), 5, 20);
                 CommonHandler.setup();
