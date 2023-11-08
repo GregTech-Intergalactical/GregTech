@@ -116,6 +116,13 @@ public class RemappingEvents {
                     return;
                 }
             }
+            if (id.contains("polyethylene")){
+                Block block = AntimatterAPI.get(Block.class, id.replace("polyethylene", "plastic"), Ref.SHARED_ID);
+                if (block != null){
+                    map.remap(block);
+                    return;
+                }
+            }
             if (id.contains("banded_iron")){
                 Block block = AntimatterAPI.get(Block.class, id.replace("banded_iron", "hematite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
@@ -224,6 +231,13 @@ public class RemappingEvents {
                     return;
                 }
             }
+            if (id.contains("polyethylene")){
+                Item block = AntimatterAPI.get(Item.class, id.replace("polyethylene", "plastic"), Ref.SHARED_ID);
+                if (block != null){
+                    map.remap(block);
+                    return;
+                }
+            }
             if (id.contains("banded_iron")){
                 Item block = AntimatterAPI.get(Item.class, id.replace("banded_iron", "hematite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
@@ -286,6 +300,20 @@ public class RemappingEvents {
         for (var map : event.getMappings(GTIRef.ID)) {
             String id = map.key.getPath();
             String liquid = id.startsWith("flowing_") ? id.replace("flowing_", "") : id;
+            if (id.contains("polethylene")){
+                liquid = liquid.replace("polethylene", "plastic");
+            }
+            AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, liquid);
+            if (fluid != null){
+                map.remap(id.startsWith("flowing_") ? fluid.getFlowingFluid() : fluid.getFluid());
+            }
+        }
+        for (var map : event.getMappings(Ref.SHARED_ID)) {
+            String id = map.key.getPath();
+            String liquid = id.startsWith("flowing_") ? id.replace("flowing_", "") : id;
+            if (id.contains("polethylene")){
+                liquid = liquid.replace("polethylene", "plastic");
+            }
             AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, liquid);
             if (fluid != null){
                 map.remap(id.startsWith("flowing_") ? fluid.getFlowingFluid() : fluid.getFluid());

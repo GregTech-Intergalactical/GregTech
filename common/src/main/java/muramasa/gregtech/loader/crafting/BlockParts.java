@@ -113,10 +113,10 @@ public class BlockParts {
         addTierHull(output, provider, Wood,Tier.ULV);
         addTierHull(output, provider, WroughtIron, LV);
         addTierHull(output, provider, WroughtIron, MV);
-        addTierHull(output, provider, Polyethylene,Tier.HV);
-        addTierHull(output, provider, Polyethylene,Tier.EV);
-        addTierHull(output, provider, Polyethylene,Tier.IV);
-        addTierHull(output, provider, Polyethylene,Tier.LUV);
+        addTierHull(output, provider, Plastic,Tier.HV);
+        addTierHull(output, provider, Plastic,Tier.EV);
+        addTierHull(output, provider, Plastic,Tier.IV);
+        addTierHull(output, provider, Plastic,Tier.LUV);
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.ZPM);
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UV);
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UHV);
@@ -157,9 +157,9 @@ public class BlockParts {
         provider.addItemRecipe(output, "long_distance_cables", "has_tin_cable", provider.hasSafeItem(CABLE_TIN.getBlockItem(PipeSize.HUGE)), LONG_DIST_WIRE_UV,
                 of('C', WIRE_PLATINUM.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
         provider.addItemRecipe(output, "long_distance_pipes", "has_electrum_pipe", provider.hasSafeItem(ITEM_PIPE_ELECTRUM.getBlockItem(PipeSize.NORMAL)), LONG_DIST_ITEM_PIPE,
-                of('E', ITEM_PIPE_ELECTRUM.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Polyethylene)), "PEP", "EWE", "PEP");
+                of('E', ITEM_PIPE_ELECTRUM.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Plastic)), "PEP", "EWE", "PEP");
         provider.addItemRecipe(output, "long_distance_pipes", "has_stainless_pipe", provider.hasSafeItem(FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL)), LONG_DIST_FLUID_PIPE,
-                of('E', FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Polyethylene)), "PEP", "EWE", "PEP");
+                of('E', FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Plastic)), "PEP", "EWE", "PEP");
 
         /*provider.addStackRecipe(output, GTIRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
                 of('C', CASING_FIRE_BRICK,

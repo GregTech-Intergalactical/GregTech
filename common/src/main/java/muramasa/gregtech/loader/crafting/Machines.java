@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import io.github.gregtechintergalactical.gtcore.machine.WorkbenchMachine;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
@@ -13,7 +12,6 @@ import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
-import muramasa.antimatter.item.ItemTag;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
@@ -23,8 +21,6 @@ import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.data.GregTechData;
-import muramasa.gregtech.data.GregTechTags;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.TierMaps;
 import muramasa.gregtech.machine.MultiblockTankMachine;
@@ -592,9 +588,9 @@ public class Machines {
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), LONG_DISTANCE_TRANSFORMER_ENDPOINT.getItem(UV),
                 of('T', TRANSFORMER.getItem(UV), 'C', CABLE_GETTER.apply(PipeSize.SMALL, MV, false), 'W', WIRE_CUTTER.getTag()), "CTC", "TWT", "CTC");
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), LONG_DISTANCE_FLUID_ENDPOINT.getItem(NONE),
-                of('T', FLUID_PIPE_TUNGSTEN.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Polyethylene), 'W', CASING_TUNGSTEN), "CTC", "TWT", "CTC");
+                of('T', FLUID_PIPE_TUNGSTEN.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', CASING_TUNGSTEN), "CTC", "TWT", "CTC");
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), LONG_DISTANCE_ITEM_ENDPOINT.getItem(NONE),
-                of('T', ITEM_PIPE_PLATINUM.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Polyethylene), 'W', CASING_PLATINUM), "CTC", "TWT", "CTC");
+                of('T', ITEM_PIPE_PLATINUM.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', CASING_PLATINUM), "CTC", "TWT", "CTC");
         addHatchRecipes(output, provider);
         addMultiblockRecipes(output, provider);
 

@@ -58,10 +58,10 @@ public class AssemblyLoader {
 
     //TODO proper type check for the cables
     private static void batteries() {
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,1), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, LV, false) ,1)).fi(Polyethylene.getLiquid(L)).io(GTCoreItems.BatteryHullSmall.getDefaultInstance()).add("battery_hull_small",800, 1);
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,3), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, MV, false) ,2)).fi(Polyethylene.getLiquid(L * 3)).io(GTCoreItems.BatteryHullMedium.getDefaultInstance()).add("battery_hull_medium",1600, 2);
-        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,9), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, HV, false) ,4)).fi(Polyethylene.getLiquid(L * 9)).io(GTCoreItems.BatteryHullLarge.getDefaultInstance()).add("battery_hull_large",3200, 4);
-        ASSEMBLING.RB().ii(DUST.getMaterialIngredient(Tantalum, 1), FOIL.getMaterialIngredient(Manganese, 1)).fi(Polyethylene.getLiquid(L)).io(new ItemStack(BatteryTantalum, 8)).add("tantalum_capacitor", 100, 4);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,1), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, LV, false) ,1)).fi(Plastic.getLiquid(L)).io(GTCoreItems.BatteryHullSmall.getDefaultInstance()).add("battery_hull_small",800, 1);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,3), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, MV, false) ,2)).fi(Plastic.getLiquid(L * 3)).io(GTCoreItems.BatteryHullMedium.getDefaultInstance()).add("battery_hull_medium",1600, 2);
+        ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,9), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, HV, false) ,4)).fi(Plastic.getLiquid(L * 9)).io(GTCoreItems.BatteryHullLarge.getDefaultInstance()).add("battery_hull_large",3200, 4);
+        ASSEMBLING.RB().ii(DUST.getMaterialIngredient(Tantalum, 1), FOIL.getMaterialIngredient(Manganese, 1)).fi(Plastic.getLiquid(L)).io(new ItemStack(BatteryTantalum, 8)).add("tantalum_capacitor", 100, 4);
 
     }
 
@@ -219,7 +219,7 @@ public class AssemblyLoader {
     }
 
     private static void addTierHull(Tier tier) {
-        Material liquid = tier == ZPM || tier == UV || tier == UHV ? Polytetrafluoroethylene : Polyethylene;
+        Material liquid = tier == ZPM || tier == UV || tier == UHV ? Polytetrafluoroethylene : Plastic;
         ASSEMBLING.RB().ii(ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID)))
                 .fi(liquid.getLiquid(L * 2)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID))).add("hull_" + tier.getId(), 50, 16);
     }

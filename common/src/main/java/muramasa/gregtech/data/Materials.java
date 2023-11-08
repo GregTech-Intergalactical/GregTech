@@ -444,7 +444,7 @@ public class Materials {
     public static Material EpoxyResin = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "epoxy_resin", 0xc88c14, DULL));
     public static Material FiberReinforcedEpoxyResin = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fiber_reinforced_epoxy_resin", 0xa07010, DULL));
     public static Material Polycaprolactam = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polycaprolactam", 0x323232, DULL));
-    public static Material Polyethylene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polyethylene", 0xc8c8c8, DULL)).setDisplayNameString("Plastic (Polyethylene)");
+    public static Material Plastic = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "plastic", 0xc8c8c8, DULL)).setDisplayNameString("Plastic (Polyethylene)");
     public static Material PolyphenyleneSulfide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polyphenylene_sulfide", 0xaa8800, DULL));
     public static Material Polystyrene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polystyrene", 0xbeb4aa, DULL)).setDisplayNameString("Plastic (Polystyrene)");
     public static Material Polytetrafluoroethylene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polytetrafluoroethylene", 0x646464, DULL));

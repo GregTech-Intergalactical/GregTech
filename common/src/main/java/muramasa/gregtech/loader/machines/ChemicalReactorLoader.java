@@ -33,10 +33,10 @@ public class ChemicalReactorLoader {
 
     private static void addSimple() {
         //POLYETHYLENE
-        CHEMICAL_REACTING.RB().fi(Air.getGas(4),Naphtha.getLiquid(L)).fo(Polyethylene.getLiquid(L / 2)).add("naphtha_to_polyethylene",320, 30);
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1),Ethylene.getGas(L)).fo(Polyethylene.getLiquid((long) (L * 1.5))).add("ethylene_to_polyethylene",160, 30);
-        CHEMICAL_REACTING.RB().fi(Air.getGas(2),Ethylene.getGas(L * 2)).fo(Polyethylene.getLiquid(L * 2)).add("ethylene_to_polyethylene_2",320, 30);
-        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(16),Naphtha.getLiquid(L * 9)).ii(DUST_TINY.getMaterialIngredient(Titanium, 1).setNoConsume()).fo(Polyethylene.getLiquid(L * 9)).add("naphtha_to_polyethylene_2",640, 30);
+        CHEMICAL_REACTING.RB().fi(Air.getGas(4),Naphtha.getLiquid(L)).fo(Plastic.getLiquid(L / 2)).add("naphtha_to_polyethylene",320, 30);
+        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1),Ethylene.getGas(L)).fo(Plastic.getLiquid((long) (L * 1.5))).add("ethylene_to_polyethylene",160, 30);
+        CHEMICAL_REACTING.RB().fi(Air.getGas(2),Ethylene.getGas(L * 2)).fo(Plastic.getLiquid(L * 2)).add("ethylene_to_polyethylene_2",320, 30);
+        CHEMICAL_REACTING.RB().fi(Oxygen.getGas(16),Naphtha.getLiquid(L * 9)).ii(DUST_TINY.getMaterialIngredient(Titanium, 1).setNoConsume()).fo(Plastic.getLiquid(L * 9)).add("naphtha_to_polyethylene_2",640, 30);
         //POLYVINYLCHLORIDE
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(1000),VinylChloride.getGas(144)).fo(PolyvinylChloride.getLiquid(216)).add("vinylchloride_to_polyvinylchloride",160, 30);
         CHEMICAL_REACTING.RB().fi(Oxygen.getGas(7000),VinylChloride.getGas(1000)).fo(PolyvinylChloride.getLiquid(1500)).add("vinylchloride_to_polyvinylchloride_1",1120, 30);
@@ -56,7 +56,7 @@ public class ChemicalReactorLoader {
         //EPICHLOROHYDRIN
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Carbon),1)).fi(LPG.getGas(432),Chlorine.getGas(1000)).fo(Epichlorohydrin.getLiquid(432)).add("epichlorohydrin",480, 30);
         //GELLED TOLUENE
-        CHEMICAL_REACTING.RB().ii(of(Items.SUGAR),of(DUST_TINY.get(Polyethylene,1))).fi(Toluene.getLiquid(133)).io(DUST.get(GelledToluene,2)).add("gelled_toluene",140, 192);
+        CHEMICAL_REACTING.RB().ii(of(Items.SUGAR),of(DUST_TINY.get(Plastic,1))).fi(Toluene.getLiquid(133)).io(DUST.get(GelledToluene,2)).add("gelled_toluene",140, 192);
         //NITROGEN DIOXIDE
         CHEMICAL_REACTING.RB().fi(Nitrogen.getGas(1000),Oxygen.getGas(2000)).fo(NitrogenDioxide.getGas(3000)).add("nitrogen_dioxide",1250, 30);
         //NITRIC ACID
