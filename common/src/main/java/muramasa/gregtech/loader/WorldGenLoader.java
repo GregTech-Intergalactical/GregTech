@@ -9,6 +9,8 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.worldgen.StoneLayerOre;
 import muramasa.antimatter.worldgen.object.WorldGenStoneLayerBuilder;
 import muramasa.antimatter.worldgen.smallore.WorldGenSmallOreBuilder;
+import muramasa.antimatter.worldgen.vanillaore.WorldGenVanillaOre;
+import muramasa.antimatter.worldgen.vanillaore.WorldGenVanillaOreBuilder;
 import muramasa.antimatter.worldgen.vein.WorldGenVeinLayerBuilder;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.worldgen.OilSpoutFluid;
@@ -60,6 +62,16 @@ public class WorldGenLoader {
         new OilSpoutFluid("medium_oil", OilMedium.getLiquid(), 20, 625, 4, 5);
         new OilSpoutFluid("heavy_oil", OilHeavy.getLiquid(), 20, 625, 5, 4);
         new OilSpoutFluid("natural_gas", NaturalGas.getGas(), 20, 625, 4, 7);
+    }
+
+    private static void initTwilightForestOres(WorldGenEvent event){
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Coal).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Lignite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Salt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(RockSalt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Bauxite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(OilShale).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(MilkyQuartz).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
     }
 
     private static void initSmallOres(WorldGenEvent event){

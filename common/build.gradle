@@ -23,6 +23,7 @@ dependencies{
     }
     modImplementation("earth.terrarium:botarium-common-1.18.2:${project.botarium_version}")
     modImplementation "maven.modrinth:carbon-config:2ngFmmhP"
+    modCompileOnly("com.github.Trinsdar:ARRP:0.6.7-hotfix")
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:${rootProject.rei_version}"
     modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}")
 }
