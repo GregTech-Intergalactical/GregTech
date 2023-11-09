@@ -46,11 +46,12 @@ public class GregTechTwilightStalctites {
         medium.add("stalactites", array);
         AntimatterDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation("twilightforest", "stalactites/medium_hollow_hill.json"), medium.toString().getBytes());
         JsonObject large = new JsonObject();
-        medium.addProperty("replace", false);
+        large.addProperty("replace", false);
         JsonArray array2 = new JsonArray();
         hollowHillEntries.get(3).forEach(r -> array2.add(r.toString()));
         large.add("stalactites", array2);
         AntimatterDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation("twilightforest", "stalactites/large_hollow_hill.json"), large.toString().getBytes());
+        hollowHillEntries = null;
     }
 
     private static void addStalctite(String name, int hillSize, int maxLength, Block ore, float sizeVariation, int weight){

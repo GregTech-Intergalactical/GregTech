@@ -50,6 +50,7 @@ public class GTRemapping {
         remapGTCore("good_electronic_circuit", "good_circuit");
         remapGTCore("circuit_good", "good_circuit");
         remapGTCore("circuit_adv", "advanced_circuit");
+        remapGTCore("plant_ball", "plantball");
         remap("circuit_nanoprocessor", "nanoprocessor");
         remap("circuit_quantumprocessor", "quantumprocessor");
         remapGTCore("circuit_energy_flow", "energy_flow_circuit");
