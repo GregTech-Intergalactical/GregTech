@@ -122,7 +122,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                 }
             });
         }
-        if (type.has(MachineFlag.ENERGY)){
+        if (type.has(MachineFlag.EU)){
             energyHandler.set(() -> new MachineEnergyHandler<>(this, false){
                 @Override
                 public long insertAmps(long voltage, long amps, boolean simulate) {

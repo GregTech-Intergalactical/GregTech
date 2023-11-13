@@ -33,7 +33,7 @@ import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
 import tesseract.api.item.PlatformItemHandler;
 
-import static muramasa.antimatter.machine.MachineFlag.ENERGY;
+import static muramasa.antimatter.machine.MachineFlag.EU;
 
 public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
     protected int stackLimit = 1;
@@ -44,7 +44,7 @@ public class BlockEntityBuffer extends BlockEntityMachine<BlockEntityBuffer> {
     public BlockEntityBuffer(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         itemHandler.set(() -> new BufferItemHandler(this));
-        if (type.has(ENERGY)) {
+        if (type.has(EU)) {
             energyHandler.set(() -> new MachineEnergyHandler<>(this, 0L, this.getMachineTier().getVoltage() * 66L, this.getMachineTier().getVoltage(), this.getMachineTier().getVoltage(), 1, 1){
                 @Override
                 public boolean canOutput(Direction direction) {
