@@ -185,7 +185,7 @@ public class AssemblyLoader {
             ASSEMBLING.RB().ii(ofObject(CABLE_GETTER.apply(PipeSize.VTINY, t, false),2),
                             of(ROD.get(TIER_MATERIALS.get(t)),2),
                             of(PLATE.get(TIER_MATERIALS.get(t)),3),
-                            of(GregTech.get(ItemBasic.class,"motor_"+t.getId()),1),
+                            of(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId(), GTCore.ID),1),
                             of(GEAR.get(TIER_MATERIALS.get(t)),1))
                     .io(new ItemStack(GregTech.get(ItemBasic.class,"piston_"+t.getId())))
                     .add("piston_"+t.getId(),150,16);
