@@ -33,7 +33,7 @@ public class Materials {
     public static Material Magnesium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesium", 0xffc8c8, METALLIC, Mg));
     public static Material Aluminium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "aluminium", 0x80c8f0, DULL, Al));
     public static Material Silicon = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "silicon", 0x3c3c50, METALLIC, Si));
-    public static Material Phosphor = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "phosphor", 0xffff00, DULL, P));
+    public static Material Phosphor = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "phosphor", 0xffff00, DULL, P)).setDisplayNameString("Phosphorus");
     public static Material Sulfur = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfur", 0xc8c800, DULL, S));
     public static Material Chlorine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chlorine", 0x00ffff, NONE, Cl));
     public static Material Argon = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "argon", 0xff00f0, NONE, Ar));
@@ -429,7 +429,7 @@ public class Materials {
     public static Material NetherStar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nether_star", 0xffffff, NONE));
     public static Material Olivine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "olivine", 0x96ff96, RUBY));
     public static Material Opal = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "opal", 0x0000ff, RUBY));
-    public static Material Phosphorus = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "phosphorus", 0xffff00, TextureSet.FLINT));
+    public static Material TricalciumPhosphate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tricalcium_phosphate", 0xffff00, TextureSet.FLINT));
     public static Material RedGarnet = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_garnet", 0xc85050, GARNET));
     public static Material Ruby = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ruby", 0xff6464, RUBY));
     public static Material Sodalite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodalite", 0x1414ff, LAPIS));
