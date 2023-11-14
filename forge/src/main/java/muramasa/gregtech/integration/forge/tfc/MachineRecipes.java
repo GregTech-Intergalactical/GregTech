@@ -6,6 +6,7 @@ import io.github.gregtechintergalactical.gtcore.integration.tfc.TFCRubberData;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
@@ -23,12 +24,14 @@ import net.dries007.tfc.util.Metal;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.material.MaterialTags.MACERATE_INTO;
 import static muramasa.antimatter.material.MaterialTags.ORE_MULTI;
 import static muramasa.gregtech.data.Materials.*;
+import static muramasa.gregtech.data.RecipeMaps.FLUID_EXTRACTING;
 import static net.dries007.tfc.common.blocks.rock.Ore.*;
 
 public class MachineRecipes {
@@ -76,6 +79,10 @@ public class MachineRecipes {
             return true;
         });
         CuttingLoader.addWoodRecipe(GTCoreTags.RUBBER_LOGS, TFCRubberData.RUBBER_LUMBER, 2, "rubber_lumber", 200, 8);
+        FLUID_EXTRACTING.RB().ii(RecipeIngredient.of(TagUtils.getItemTag(new ResourceLocation("tfc:seeds")))).fo(SeedOil.getLiquid(10)).add("seed_oil", 32, 2);
+        FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID("tfc", "food/cod")).fo(FishOil.getLiquid(40)).add("fish_oil_cod_tfc", 16, 4);
+        FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID("tfc", "food/salmon")).fo(FishOil.getLiquid(60)).add("fish_oil_salmon_tfc", 16, 4);
+        FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID("tfc", "food/tropical_fish")).fo(FishOil.getLiquid(70)).add("fish_oil_tropical_fish_tfc", 16, 4);
     }
 
     private static void addMaceratorRecipe(Ore input, Material material){
