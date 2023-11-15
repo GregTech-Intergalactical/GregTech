@@ -27,6 +27,7 @@ public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> ext
     protected int stackLimit = 1;
     public BlockEntityLimitedOutput(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+        this.itemHandler.set(() -> new LimitedOutputItemHandler<>((T)this));
     }
 
     public static boolean transferItems(PlatformItemHandler from, PlatformItemHandler to, boolean once) {
