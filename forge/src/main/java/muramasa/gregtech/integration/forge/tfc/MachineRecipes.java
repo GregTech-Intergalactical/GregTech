@@ -79,7 +79,7 @@ public class MachineRecipes {
             return true;
         });
         CuttingLoader.addWoodRecipe(GTCoreTags.RUBBER_LOGS, TFCRubberData.RUBBER_LUMBER, 2, "rubber_lumber", 200, 8);
-        FLUID_EXTRACTING.RB().ii(RecipeIngredient.of(TagUtils.getItemTag(new ResourceLocation("tfc:seeds")))).fo(SeedOil.getLiquid(10)).add("seed_oil", 32, 2);
+        FLUID_EXTRACTING.RB().ii(RecipeIngredient.of(TagUtils.getItemTag(new ResourceLocation("tfc:seeds")))).fo(SeedOil.getLiquid(10)).add("seed_oil_tfc", 32, 2);
         FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID("tfc", "food/cod")).fo(FishOil.getLiquid(40)).add("fish_oil_cod_tfc", 16, 4);
         FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID("tfc", "food/salmon")).fo(FishOil.getLiquid(60)).add("fish_oil_salmon_tfc", 16, 4);
         FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID("tfc", "food/tropical_fish")).fo(FishOil.getLiquid(70)).add("fish_oil_tropical_fish_tfc", 16, 4);
