@@ -277,21 +277,21 @@ public class Guis {
                 .add(DISPLAY_SETTABLE, 18, 6, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 6, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 6, new ResourceLocation(GTIRef.ID, "blank"))
                 .add(DISPLAY_SETTABLE, 18, 23, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 23, new ResourceLocation(GTIRef.ID, "blank"))
                 .add(DISPLAY_SETTABLE, 18, 40, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 40, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 40, new ResourceLocation(GTIRef.ID, "blank"))
-                .add(SlotTypes.FILTERABLE, 98, 5).add(SlotTypes.FILTERABLE, 98 + 18, 5)
-                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 5)
-                .add(SlotTypes.FILTERABLE, 98, 23).add(SlotTypes.FILTERABLE, 98 + 18, 23)
-                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 23)
-                .add(SlotTypes.FILTERABLE, 98, 41).add(SlotTypes.FILTERABLE, 98 + 18, 41)
-                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 41);
+                .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
+                .add(STORAGE, 98 + 18 * 2, 5)
+                .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
+                .add(STORAGE, 98 + 18 * 2, 23)
+                .add(STORAGE, 98, 41).add(STORAGE, 98 + 18, 41)
+                .add(STORAGE, 98 + 18 * 2, 41);
 
         ELECTRIC_TYPE_FILTER
                 .add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GTIRef.ID, "blank"))
-                .add(SlotTypes.FILTERABLE, 98, 5).add(SlotTypes.FILTERABLE, 98 + 18, 5)
-                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 5)
-                .add(SlotTypes.FILTERABLE, 98, 23).add(SlotTypes.FILTERABLE, 98 + 18, 23)
-                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 23)
-                .add(SlotTypes.FILTERABLE, 98, 41).add(SlotTypes.FILTERABLE, 98 + 18, 41)
-                .add(SlotTypes.FILTERABLE, 98 + 18 * 2, 41);
+                .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
+                .add(STORAGE, 98 + 18 * 2, 5)
+                .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
+                .add(STORAGE, 98 + 18 * 2, 23)
+                .add(STORAGE, 98, 41).add(STORAGE, 98 + 18, 41)
+                .add(STORAGE, 98 + 18 * 2, 41);
         BLAST_FURNACE.add(MULTIBLOCK.getSlots());
         IMPLOSION_COMPRESSOR.add(MULTIBLOCK.getSlots());
         VACUUM_FREEZER.add(MULTIBLOCK.getSlots());

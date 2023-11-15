@@ -1,7 +1,9 @@
 package muramasa.gregtech.blockentity.single;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.IGuiElement;
@@ -12,7 +14,6 @@ import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.data.SlotTypes;
 import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -31,7 +32,7 @@ import java.util.Objects;
 
 import static muramasa.antimatter.machine.MachineFlag.EU;
 
-public class BlockEntityItemFilter extends BlockEntityMachine<BlockEntityItemFilter> implements IFilterable {
+public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityItemFilter> implements IFilterableHandler {
     boolean blacklist = false;
     boolean nbt = true;
     boolean outputRedstone = false;
@@ -49,23 +50,27 @@ public class BlockEntityItemFilter extends BlockEntityMachine<BlockEntityItemFil
         }
     }
 
-    public boolean accepts(ItemStack stack){
-        boolean hasItem = itemHandler.map(h -> {
-            List<Item> list = new ObjectArrayList<>();
-            ExtendedItemContainer outputs = h.getHandler(SlotType.DISPLAY_SETTABLE);
-            for (int i = 0; i < outputs.getContainerSize(); i++) {
-                ItemStack slot = outputs.getItem(i);
-                if (!slot.isEmpty()) {
-                    if (slot.getItem() == stack.getItem()){
-                        if (!nbt || Objects.equals(slot.getTag(), stack.getTag())) {
-                            list.add(slot.copy().getItem());
+    @Override
+    public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
+        if (slotType == SlotType.STORAGE){
+            boolean hasItem = itemHandler.map(h -> {
+                List<Item> list = new ObjectArrayList<>();
+                ExtendedItemContainer outputs = h.getHandler(SlotType.DISPLAY_SETTABLE);
+                for (int i = 0; i < outputs.getContainerSize(); i++) {
+                    ItemStack slotStack = outputs.getItem(i);
+                    if (!slotStack.isEmpty()) {
+                        if (slotStack.getItem() == stack.getItem()){
+                            if (!nbt || Objects.equals(slotStack.getTag(), stack.getTag())) {
+                                list.add(slotStack.copy().getItem());
+                            }
                         }
                     }
                 }
-            }
-            return list.isEmpty() == blacklist;
-        }).orElse(false);
-        return hasItem;
+                return list.isEmpty() == blacklist;
+            }).orElse(false);
+            return hasItem;
+        }
+        return true;
     }
 
     @Override
@@ -134,7 +139,7 @@ public class BlockEntityItemFilter extends BlockEntityMachine<BlockEntityItemFil
         boolean[] booleans = new boolean[1];
         booleans[0] = false;
         TesseractCapUtils.getItemHandler(adjTile, outputDir.getOpposite()).ifPresent(adjHandler -> {
-            booleans[0] = this.itemHandler.map(h -> Utils.transferItems(h.getHandler(SlotTypes.FILTERABLE), adjHandler,true)).orElse(false);
+            booleans[0] = this.itemHandler.map(h -> transferItems(h.getHandler(SlotType.STORAGE), adjHandler,true)).orElse(false);
         });
         return booleans[0];
     }
@@ -144,8 +149,8 @@ public class BlockEntityItemFilter extends BlockEntityMachine<BlockEntityItemFil
         if (outputRedstone){
             int[] redstone = new int[1];
             redstone[0] = this.itemHandler.map(i -> {
-                for (int slot = 0; slot < i.getHandler(SlotTypes.FILTERABLE).getSlots(); slot++){
-                    ItemStack stack = i.getHandler(SlotTypes.FILTERABLE).getStackInSlot(slot);
+                for (int slot = 0; slot < i.getHandler(SlotType.STORAGE).getSlots(); slot++){
+                    ItemStack stack = i.getHandler(SlotType.STORAGE).getStackInSlot(slot);
                     if (!stack.isEmpty()) return invertRedstone ? 0 : 15;
                 }
                 return invertRedstone ? 15 : 0;
@@ -159,6 +164,13 @@ public class BlockEntityItemFilter extends BlockEntityMachine<BlockEntityItemFil
 
     @Override
     public void load(CompoundTag tag) {
+        if (tag.contains(Ref.KEY_MACHINE_ITEMS)){
+            CompoundTag tag1 = tag.getCompound(Ref.KEY_MACHINE_ITEMS);
+            if (tag1.contains("filterable")){
+                CompoundTag filterable = tag1.getCompound("filterable");
+                tag1.put(SlotType.STORAGE.getId(), filterable);
+            }
+        }
         super.load(tag);
         blacklist = tag.getBoolean("blacklist");
         nbt = tag.getBoolean("nbt");
