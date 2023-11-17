@@ -42,10 +42,10 @@ public class TFCItemTagProvider extends AntimatterItemTagProvider {
             for (Material tfcTool : tfcTools) {
                 ToolData data = MaterialTags.TOOLS.get(tfcTool);
                 if (data != null && data.toolTypes().contains(t)) {
-                    tag(TagUtils.getItemTag(new ResourceLocation("tfc", "metal_item/" + tfcTool.getId() + "_tools"))).add(t.getToolStack(tfcTool).getItem());
-                    tag(TagUtils.getItemTag(new ResourceLocation("tfc", "metal_item/" + tfcTool.getId()))).add(t.getToolStack(tfcTool).getItem());
+                    tag(TagUtils.getItemTag(new ResourceLocation("tfc", "metal_item/" + tfcTool.getId() + "_tools"))).add(t.getToolItem(tfcTool));
+                    tag(TagUtils.getItemTag(new ResourceLocation("tfc", "metal_item/" + tfcTool.getId()))).add(t.getToolItem(tfcTool));
                     if (t == AXE || t == SWORD){
-                        tag(TagUtils.getItemTag(new ResourceLocation("tfc", "mob_mainhand_weapons"))).add(t.getToolStack(tfcTool).getItem());
+                        tag(TagUtils.getItemTag(new ResourceLocation("tfc", "mob_mainhand_weapons"))).add(t.getToolItem(tfcTool));
                     }
                 }
             }

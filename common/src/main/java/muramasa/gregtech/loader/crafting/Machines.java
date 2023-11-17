@@ -4,6 +4,9 @@ import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
+import io.github.gregtechintergalactical.gtcore.machine.ChestMachine;
+import io.github.gregtechintergalactical.gtcore.machine.LockerMachine;
+import io.github.gregtechintergalactical.gtcore.machine.MassStorageMachine;
 import io.github.gregtechintergalactical.gtcore.machine.WorkbenchMachine;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
@@ -15,6 +18,7 @@ import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GTIRef;
@@ -596,11 +600,40 @@ public class Machines {
 
         AntimatterAPI.all(WorkbenchMachine.class).forEach(m -> {
             if (!m.getId().contains("charging")) {
-                provider.addItemRecipe(output, GTIRef.ID, "", "machines", "has_chest", provider.hasSafeItem(ForgeCTags.CHESTS_WOODEN), m.getItem(NONE),
+                provider.addItemRecipe(output, GTIRef.ID, "", "machines", m.getItem(NONE),
                         of('P', PLATE.getMaterialTag(m.getMaterial()), 'C', ForgeCTags.CHESTS_WOODEN, 'c', Items.CRAFTING_TABLE, 'S', SCREWDRIVER.getTag()), "PSP", "PcP", "PCP");
             } else {
-                provider.addItemRecipe(output, Ref.ID, "", "machines", "has_chest", provider.hasSafeItem(ForgeCTags.CHESTS_WOODEN), m.getItem(HV),
+                provider.addItemRecipe(output, Ref.ID, "", "machines", m.getItem(HV),
                         of('S', SCREWDRIVER.getTag(), 'w', WIRE_CUTTER.getTag(), 'W', Machine.get(m.getId().replace("charging_", ""), GTCore.ID).map(mch -> mch.getItem(NONE)).orElse(Items.AIR), 'c', CABLE_GETTER.apply(PipeSize.SMALL, HV, false), 'C', CIRCUITS_ADVANCED, 'R', ROD.getMaterialTag(m.getMaterial())), "RCR", "SWw", "ccc");
+            }
+        });
+        AntimatterAPI.all(LockerMachine.class).forEach(m -> {
+            Material material = m.getMaterial();
+            ChestMachine chest = AntimatterAPI.get(ChestMachine.class, material.getId() + "_chest", GTCore.ID);
+            if (material.has(SCREW) && chest != null){
+                if (!m.getId().contains("charging")) {
+                    provider.addItemRecipe(output, GTIRef.ID, "", "machines", m.getItem(NONE),
+                            of('s', SCREW.getMaterialTag(m.getMaterial()), 'C', chest.getItem(NONE), 'c', CASING_SOLID_STEEL, 'S', SCREWDRIVER.getTag(), 'R', ROD.getMaterialTag(material), 'L', Items.LEATHER), "RSR", "LCL", "scs");
+                } else {
+                    provider.addItemRecipe(output, Ref.ID, "", "machines", m.getItem(HV),
+                            of('W', Machine.get(m.getId().replace("charging_", ""), GTCore.ID).map(mch -> mch.getItem(NONE)).orElse(Items.AIR), 'c', CABLE_GETTER.apply(PipeSize.VTINY, HV, false), 'C', CIRCUITS_ADVANCED), "cCc", "cWc", "cCc");
+                }
+            }
+
+        });
+        AntimatterAPI.all(ChestMachine.class).forEach(m -> {
+            Material material = m.getMaterial();
+            if (material.has(RING) && material.has(PLATE)){
+                provider.addItemRecipe(output, GTIRef.ID, "", "machines", m.getItem(NONE),
+                        of('P', PLATE.getMaterialTag(material), 'R', ROD.getMaterialTag(material), 'r', RING.getMaterialTag(material), 'S', SAW.getTag(), 'W', WRENCH.getTag()), "SPW", "rRr", "PPP");
+            }
+        });
+        AntimatterAPI.all(MassStorageMachine.class).forEach(m -> {
+            Material material = m.getMaterial();
+            ChestMachine chest = AntimatterAPI.get(ChestMachine.class, material.getId() + "_chest", GTCore.ID);
+            if (material.has(SCREW) && material.has(PLATE) && !material.has(MaterialTags.WOOD) && chest != null){
+                provider.addItemRecipe(output, GTIRef.ID, "", "machines", m.getItem(NONE),
+                        of('C', chest.getItem(NONE), 'S', SCREW.getMaterialTag(material), 'c', CASING_SOLID_STEEL, 's', SCREWDRIVER.getTag(), 'W', WRENCH.getTag()), "SCS", "Wcs", "SCS");
             }
         });
 
