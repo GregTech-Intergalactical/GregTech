@@ -41,7 +41,7 @@ public class MultiblockTankMachine extends MaterialBasicMultiMachine {
         this.small = small;
         String prefix = material == Wood ? "wood" : "metal";
         baseTexture(new Texture(GTIRef.ID, "block/casing/wall/" + prefix));
-        overlayTexture((type, state, tier) -> {
+        overlayTexture((type, state, tier, i) -> {
             Texture blank = new Texture(GTIRef.ID, "block/machine/empty");
             return new Texture[]{blank, blank, blank, new Texture(GTIRef.ID, "block/casing/wall/" + prefix + "_tank_side_overlay"), blank, blank};
         });

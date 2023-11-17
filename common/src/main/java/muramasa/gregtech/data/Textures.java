@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class Textures {
 
-    public static final ITextureHandler BOILER_HANDLER = (m, t) -> new Texture[] {
+    public static final ITextureHandler BOILER_HANDLER = (m, t, s) -> new Texture[] {
         new Texture(GTIRef.ID, "block/machine/base/brick"),
         new Texture(GTIRef.ID, "block/machine/base/" + t.getId()),
         new Texture(GTIRef.ID, "block/machine/base/bricked_" + t.getId()),
@@ -20,7 +20,7 @@ public class Textures {
         new Texture(GTIRef.ID, "block/machine/base/bricked_" + t.getId()),
     };
 
-    public static final IOverlayTexturer LEFT_RIGHT_HANDLER = (type, state, tier) -> {
+    public static final IOverlayTexturer LEFT_RIGHT_HANDLER = (type, state, tier, i) -> {
         if (state != MachineState.ACTIVE && state != MachineState.INVALID_STRUCTURE) state = MachineState.IDLE;
         String stateDir = state == MachineState.IDLE ? "" : state.getId() + "/";
 
@@ -34,7 +34,7 @@ public class Textures {
         };
     };
 
-    public static final IOverlayTexturer MINI_NETHER_PORTAL = (type, state, tier) -> {
+    public static final IOverlayTexturer MINI_NETHER_PORTAL = (type, state, tier, i) -> {
         if (state != MachineState.ACTIVE) state = MachineState.IDLE;
         if (state == MachineState.ACTIVE){
             return new Texture[] {
@@ -56,7 +56,7 @@ public class Textures {
         };
     };
 
-    public static final IOverlayTexturer TIER_SPECIFIC_OVERLAY_HANDLER = (type, state, tier) -> {
+    public static final IOverlayTexturer TIER_SPECIFIC_OVERLAY_HANDLER = (type, state, tier, i) -> {
         if (state != MachineState.ACTIVE && state != MachineState.INVALID_STRUCTURE) state = MachineState.IDLE;
         String stateDir = state == MachineState.IDLE ? "" : state.getId() + "/";
 
@@ -70,7 +70,7 @@ public class Textures {
         };
     };
 
-    public static final IOverlayTexturer STATE_IGNORANT_TIER_SPECIFIC_OVERLAY_HANDLER = (type, state, tier) -> {
+    public static final IOverlayTexturer STATE_IGNORANT_TIER_SPECIFIC_OVERLAY_HANDLER = (type, state, tier, i) -> {
         return new Texture[] {
                 new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + "bottom"),
                 new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + "top"),
