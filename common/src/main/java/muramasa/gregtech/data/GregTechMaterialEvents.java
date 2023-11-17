@@ -1252,8 +1252,14 @@ public class GregTechMaterialEvents {
     private static void workbenches(GregTechMaterialEvent event){
         METAL.all().forEach(m -> {
             if ((m.getElement() == null || !m.getElement().isIsotope) && m.has(PLATE) && m.has(ROD)){
+
                 GTCoreBlocks.createWorkbench(m, false);
                 GTCoreBlocks.createWorkbench(m, true);
+                GTCoreBlocks.createLocker(m, false);
+                GTCoreBlocks.createLocker(m, true);
+                GTCoreBlocks.createMassStorage(m, 1000000);
+                GTCoreBlocks.createChest(m, true);
+                GTCoreBlocks.createBarrel(m, true);
             }
         });
     }
