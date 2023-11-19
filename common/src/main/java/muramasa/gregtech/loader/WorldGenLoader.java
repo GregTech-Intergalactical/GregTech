@@ -53,9 +53,8 @@ public class WorldGenLoader {
         }
         OilSpoutSavedData.clearFluidMap();
         OilSpoutFluid.resetTotalWeight();
-        new OilSpoutFluid("oil", Oil.getLiquid(), 20, 625, 4, 4);
+        new OilSpoutFluid("oil", Oil.getLiquid(), 20, 625, 4, 5);
         new OilSpoutFluid("light_oil", OilLight.getLiquid(), 20, 625, 3, 6);
-        new OilSpoutFluid("medium_oil", OilMedium.getLiquid(), 20, 625, 4, 5);
         new OilSpoutFluid("heavy_oil", OilHeavy.getLiquid(), 20, 625, 5, 4);
         new OilSpoutFluid("natural_gas", NaturalGas.getGas(), 20, 625, 4, 7);
     }

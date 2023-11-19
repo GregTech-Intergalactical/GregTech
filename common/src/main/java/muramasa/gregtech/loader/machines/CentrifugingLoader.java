@@ -59,8 +59,8 @@ public class CentrifugingLoader {
 
         CENTRIFUGING.RB().ii(of(GLOWSTONE_DUST, 10)).io(DUST.get(Gold, 5), DUST.get(Redstone, 5)).fo(Helium.getGas(1000)).add("glowstone_to_helium", 2920, 16);
         CENTRIFUGING.RB().ii(of(MAGMA_CREAM, 1)).io(BLAZE_POWDER, SLIME_BALL).add("magma_cream", 500, 5);
-        CENTRIFUGING.RB().ii(SOUL_SAND).io(DUST_SMALL.get(Saltpeter), DUST_TINY.get(Coal), SAND).chances(.8, .2, .9).fo(Oil.getLiquid(80)).add("oil_from_soulsand", 200, 80);
-        CENTRIFUGING.RB().ii(SOUL_SOIL).io(DUST_SMALL.get(Saltpeter), DUST_TINY.get(Coal), DIRT).chances(.8, .2, .9).fo(Oil.getLiquid(80)).add("oil_from_soulsoil", 200, 80);
+        CENTRIFUGING.RB().ii(SOUL_SAND).io(DUST_SMALL.get(Saltpeter), DUST_TINY.get(Coal), SAND).chances(.8, .2, 1).fo(Oil.getLiquid(40)).add("oil_from_soulsand", 200, 80);
+        CENTRIFUGING.RB().ii(SOUL_SOIL).io(DUST_TINY.get(Coal), DIRT).chances( .2, 1).fo(Oil.getLiquid(40)).add("oil_from_soulsoil", 200, 80);
         CENTRIFUGING.RB().ii(DUST.getMaterialIngredient(RareEarth, 1)).io(DUST_SMALL.get(Neodymium), DUST_SMALL.get(Yttrium), DUST_SMALL.get(Lanthanum), DUST_SMALL.get(Cerium), DUST_SMALL.get(Cadmium), DUST_SMALL.get(Caesium)).chances(0.25, 0.25, 0.25, 0.25, 0.25, 0.25).add("rare_earth", 64, 20);
         CENTRIFUGING.RB().fi(Propane.getGas(320)).fo(Lubricant.getLiquid(290)).add("propane", 20, 5);
         CENTRIFUGING.RB().fi(Butane.getGas(320)).fo(Lubricant.getLiquid(370)).add("butane", 20, 5);

@@ -111,6 +111,7 @@ public class OilSpoutSavedData extends SavedData {
     }
 
     public static OilSpoutFluid getOilSpoutFluid(String fluidId){
+        if (fluidId.equals("medium_oil")) fluidId = "oil";
         return FLUID_MAP.get(fluidId);
     }
 }
