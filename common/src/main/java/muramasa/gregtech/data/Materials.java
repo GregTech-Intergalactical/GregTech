@@ -290,6 +290,7 @@ public class Materials {
     public static Material Ash = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ash", 0x969696, DULL));
     public static Material BenzoylChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "benzoyl_chloride", 0xf7f5eb, NONE));
     public static Material Biotite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "biotite", 0x141e14, METALLIC));
+    public static Material Bitumen = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "bitumen", 0x585863, ROUGH));
     public static Material BorosilicateGlass = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "borosilicate_glass", 0xfafafa, NONE));
     public static Material Brick = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "brick", 0x9b5643, ROUGH));
     public static Material Calcite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "calcite", 0xfae6dc, DULL));
@@ -437,6 +438,8 @@ public class Materials {
     public static Material Topaz = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "topaz", 0xff8000, GEM_H));
     public static Material YellowGarnet = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "yellow_garnet", 0xc8c850, GARNET));
 
+    public static Material PetroleumCoke = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "petroleum_coke", 0x9696b4, LIGNITE));
+
     /**
      ** Plastic
      **/
@@ -568,6 +571,7 @@ public class Materials {
     public static Material SodiumCarbonateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_carbonate_solution", 0xffffff, NONE));
     public static Material SodiumPersulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_persulfate", 0x006646, NONE));
     public static Material SulfuricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_acid", 0xff8000, NONE));
+    public static Material Tar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tar", 0x0a0a0a, NONE));
     public static Material TitaniumTetrachloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "titanium_tetrachloride", 0xd40d5c, NONE));
     public static Material UUAmplifier = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uu_amplifier", 0x600080, NONE));
     public static Material UUMatter = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uu_matter", 0x8000c4, NONE));
@@ -581,7 +585,8 @@ public class Materials {
     public static Material Diesel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "diesel", 0xffff00, NONE));
     public static Material FishOil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fish_oil", 0xffc400, NONE));
     public static Material HeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heavy_fuel", 0xffff00, NONE));
-    public static Material CetaneBoostedDiesel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cetane_boosted_diesel", 0xc8ff00, NONE));
+    public static Material CetaneBoostedDiesel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitro_diesel", 0xc8ff00, NONE));
+    public static Material Kerosene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "kerosene", 0x0000FF, NONE));
     public static Material LightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_fuel", 0xffff00, NONE));
     public static Material RocketFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rocket_fuel", 0xffffff, NONE));
     public static Material Gasoline = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "gasoline", 0xFFA500, NONE));

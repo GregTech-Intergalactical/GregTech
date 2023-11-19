@@ -63,7 +63,7 @@ public class Structures {
                 //.at("B", "coil", AntimatterAPI.all(BlockCoil.class))
                 .at('B', COIL_CUPRONICKEL)
                 .at('H', HATCH_FLUID_I, HATCH_FLUID_O)
-                .at('M', CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_ENERGY)
+                .at('M', CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_ITEM_O, HATCH_ENERGY)
                 .offset(2, 1, 0).exact(1, HATCH_FLUID_O).min(2, HATCH_FLUID_I).min(1, HATCH_ENERGY).build()
         );
 

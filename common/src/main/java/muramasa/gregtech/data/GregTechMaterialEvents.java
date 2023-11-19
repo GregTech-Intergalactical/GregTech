@@ -215,6 +215,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(AmmoniumChloride).asDust();
         event.setMaterial(ArsenicTrioxide).asDust();
         event.setMaterial(Biotite).asDust();
+        event.setMaterial(Bitumen).asDust();
         event.setMaterial(BlackGranite).asDust(ROCK);
         event.setMaterial(BlueSchist).asDust(ROCK);
         event.setMaterial(BorosilicateGlass).asDust();
@@ -340,6 +341,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Jade).asGem(false).asOre(3, 7, true);
         event.setMaterial(Lazurite).asGemBasic(false, PLATE).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(LigniteCoke).asGemBasic(false);
+        event.setMaterial(PetroleumCoke).asGemBasic(false);
         event.setMaterial(Olivine).asGem(false, PLATE).asOre(3, 7, true);
         event.setMaterial(Opal).asGem(true).asOre(3, 7, true);
         event.setMaterial(TricalciumPhosphate).asGemBasic(false).asOre(3, 7, true).harvestLevel(2);
@@ -479,6 +481,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SulfuricAcid).asFluid().flags(ACID);
         event.setMaterial(SulfurTrioxide).asGas();
         event.setMaterial(SulfurDioxide).asGas();
+        event.setMaterial(Tar).asFluid();
         event.setMaterial(TitaniumTetrachloride).asFluid().flags(ACID);
         event.setMaterial(UUAmplifier).asFluid();
         event.setMaterial(UUMatter).asFluid();
@@ -541,6 +544,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(CetaneBoostedDiesel).asFluid(512);
         event.setMaterial(RocketFuel).asFluid();
         event.setMaterial(Gasoline).asFluid(384);
+        event.setMaterial(Kerosene).asFluid(384);
         event.setMaterial(HighOctaneGasoline).asFluid(768);
         event.setMaterial(SulfuricLightFuel).asFluid(32);
         event.setMaterial(SulfuricHeavyFuel).asFluid(32).flags(SEMIFUELS);
@@ -1443,6 +1447,9 @@ public class GregTechMaterialEvents {
         FURNACE_FUELS.add(LigniteCoke, GEM, 1600);
         FURNACE_FUELS.add(LigniteCoke, DUST, 1600);
         FURNACE_FUELS.add(LigniteCoke, BLOCK, 16000);
+        FURNACE_FUELS.add(PetroleumCoke, GEM, 6400);
+        FURNACE_FUELS.add(PetroleumCoke, DUST, 6400);
+        FURNACE_FUELS.add(PetroleumCoke, BLOCK, 64000);
         FURNACE_FUELS.add(Coal, DUST, 1600);
         FURNACE_FUELS.add(Coal, RAW_ORE, 1600);
         FURNACE_FUELS.add(Coal, CRUSHED, 1800);
