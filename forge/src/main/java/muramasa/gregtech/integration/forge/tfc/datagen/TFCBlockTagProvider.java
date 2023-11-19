@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.Block;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.ORE;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.ORE_SMALL;
+import static muramasa.antimatter.data.AntimatterStoneTypes.BEDROCK;
 
 public class TFCBlockTagProvider extends AntimatterBlockTagProvider {
     public TFCBlockTagProvider(String providerDomain, String providerName, boolean replace) {
@@ -32,7 +33,7 @@ public class TFCBlockTagProvider extends AntimatterBlockTagProvider {
     protected void processTags(String domain) {
         super.processTags(domain);
         ORE.all().forEach(m -> {
-            AntimatterAPI.all(StoneType.class).forEach(s -> {
+            AntimatterAPI.all(StoneType.class).stream().filter(s -> s.doesGenerateOre() && s != BEDROCK).forEach(s -> {
                 Block ore = ORE.get().get(m, s).asBlock();
                 Block smallOre = ORE_SMALL.get().get(m, s).asBlock();
                 this.tag(TFCTags.Blocks.CAN_COLLAPSE).add(ore, smallOre);

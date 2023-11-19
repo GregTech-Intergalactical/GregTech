@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.machines;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
@@ -46,7 +47,7 @@ public class CuttingLoader {
         AntimatterMaterialTypes.ROD_LONG.all().forEach(m -> {
             addCutterRecipe(ROD_LONG.getMaterialTag(m), ROD.get(m, 2), "rod_" + m.getId(), (int) (m.getMass() * 2), 4);
         });
-        if (!AntimatterAPI.isModLoaded("tfc")){
+        if (!AntimatterAPI.isModLoaded(Ref.MOD_TFC)){
             addWoodRecipe(ItemTags.OAK_LOGS, Items.OAK_PLANKS, 1, "oak_planks", 200, 8);
             addWoodRecipe(ItemTags.BIRCH_LOGS, Items.BIRCH_PLANKS, 1, "birch_planks", 200, 8);
             addWoodRecipe(ItemTags.SPRUCE_LOGS, Items.SPRUCE_PLANKS, 1, "spruce_planks", 200, 8);

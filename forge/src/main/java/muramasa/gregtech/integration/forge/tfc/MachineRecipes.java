@@ -3,6 +3,7 @@ package muramasa.gregtech.integration.forge.tfc;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import io.github.gregtechintergalactical.gtcore.integration.tfc.TFCRubberData;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
@@ -75,14 +76,14 @@ public class MachineRecipes {
             addMaceratorRecipe(material);
         }*/
         Helpers.mapOfKeys(net.dries007.tfc.common.blocks.wood.Wood.class, w -> {
-            CuttingLoader.addWoodRecipe(TagUtils.getItemTag(new ResourceLocation("tfc", w.name().toLowerCase() + "_logs")), AntimatterPlatformUtils.getItemFromID("tfc", "wood/lumber/" + w.name().toLowerCase()), 2, w.name().toLowerCase() + "_lumber", 200, 8);
+            CuttingLoader.addWoodRecipe(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, w.name().toLowerCase() + "_logs")), AntimatterPlatformUtils.getItemFromID(Ref.MOD_TFC, "wood/lumber/" + w.name().toLowerCase()), 2, w.name().toLowerCase() + "_lumber", 200, 8);
             return true;
         });
         CuttingLoader.addWoodRecipe(GTCoreTags.RUBBER_LOGS, TFCRubberData.RUBBER_LUMBER, 2, "rubber_lumber", 200, 8);
         FLUID_EXTRACTING.RB().ii(RecipeIngredient.of(TagUtils.getItemTag(new ResourceLocation("tfc:seeds")))).fo(SeedOil.getLiquid(10)).add("seed_oil_tfc", 32, 2);
-        FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID("tfc", "food/cod")).fo(FishOil.getLiquid(40)).add("fish_oil_cod_tfc", 16, 4);
-        FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID("tfc", "food/salmon")).fo(FishOil.getLiquid(60)).add("fish_oil_salmon_tfc", 16, 4);
-        FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID("tfc", "food/tropical_fish")).fo(FishOil.getLiquid(70)).add("fish_oil_tropical_fish_tfc", 16, 4);
+        FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID(Ref.MOD_TFC, "food/cod")).fo(FishOil.getLiquid(40)).add("fish_oil_cod_tfc", 16, 4);
+        FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID(Ref.MOD_TFC, "food/salmon")).fo(FishOil.getLiquid(60)).add("fish_oil_salmon_tfc", 16, 4);
+        FLUID_EXTRACTING.RB().ii(AntimatterPlatformUtils.getItemFromID(Ref.MOD_TFC, "food/tropical_fish")).fo(FishOil.getLiquid(70)).add("fish_oil_tropical_fish_tfc", 16, 4);
     }
 
     private static void addMaceratorRecipe(Ore input, Material material){

@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.ore.BlockOre;
 import muramasa.antimatter.registration.IAntimatterObject;
@@ -24,7 +25,7 @@ public class GregTechTwilightStalctites {
     private static Map<Integer, List<ResourceLocation>> hollowHillEntries = new Object2ObjectOpenHashMap<>();
 
     public static void init(){
-        if (!AntimatterAPI.isModLoaded("twilightforest")) return;
+        if (!AntimatterAPI.isModLoaded(Ref.MOD_TWILIGHT)) return;
         addStalctite("ruby", 2, 6, ORE.get().get(Ruby, STONE).asBlock(), 0.6f, 20);
         addStalctite("sapphire", 2, 6, ORE.get().get(Sapphire, STONE).asBlock(), 0.6f, 20);
         addStalctite("green_sapphire", 2, 6, ORE.get().get(GreenSapphire, STONE).asBlock(), 0.6f, 20);
