@@ -1263,7 +1263,7 @@ public class GregTechMaterialEvents {
                 GTCoreBlocks.createMassStorage(m, 1000000);
                 GTCoreBlocks.createChest(m, true);
                 m.flags(RING, SCREW);
-                //GTCoreBlocks.createBarrel(m, true);
+                GTCoreBlocks.createBarrel(m, true);
             }
         });
     }

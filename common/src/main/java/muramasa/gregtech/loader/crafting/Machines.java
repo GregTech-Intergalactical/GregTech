@@ -4,10 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
-import io.github.gregtechintergalactical.gtcore.machine.ChestMachine;
-import io.github.gregtechintergalactical.gtcore.machine.LockerMachine;
-import io.github.gregtechintergalactical.gtcore.machine.MassStorageMachine;
-import io.github.gregtechintergalactical.gtcore.machine.WorkbenchMachine;
+import io.github.gregtechintergalactical.gtcore.machine.*;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
@@ -626,6 +623,13 @@ public class Machines {
             if (material.has(RING) && material.has(PLATE)){
                 provider.addItemRecipe(output, GTIRef.ID, "", "machines", m.getItem(NONE),
                         of('P', PLATE.getMaterialTag(material), 'R', ROD.getMaterialTag(material), 'r', RING.getMaterialTag(material), 'S', SAW.getTag(), 'W', WRENCH.getTag()), "SPW", "rRr", "PPP");
+            }
+        });
+        AntimatterAPI.all(BarrelMachine.class).forEach(m -> {
+            Material material = m.getMaterial();
+            if (material.has(ROD) && material.has(PLATE)){
+                provider.addItemRecipe(output, GTIRef.ID, "", "machines", m.getItem(NONE),
+                        of('P', PLATE.getMaterialTag(material), 'R', ROD.getMaterialTag(material), 'S', SAW.getTag(), 'W', WRENCH.getTag()), "SPW", "PRP", " P ");
             }
         });
         AntimatterAPI.all(MassStorageMachine.class).forEach(m -> {
