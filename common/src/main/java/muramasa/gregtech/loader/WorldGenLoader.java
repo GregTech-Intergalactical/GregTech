@@ -2,6 +2,7 @@ package muramasa.gregtech.loader;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.event.WorldGenEvent;
 import muramasa.antimatter.material.Material;
@@ -48,7 +49,7 @@ public class WorldGenLoader {
         if (AntimatterConfig.ORE_VEINS.get()) {
             initOreVeins(ev);
         }
-        if (AntimatterConfig.SMALL_ORES.get() && !AntimatterAPI.isModLoaded("tfc")){
+        if (AntimatterConfig.SMALL_ORES.get() && !AntimatterAPI.isModLoaded(MOD_TFC)){
             initSmallOres(ev);
         }
         OilSpoutSavedData.clearFluidMap();
@@ -184,18 +185,29 @@ public class WorldGenLoader {
 
     private static void initOreVeins(WorldGenEvent ev) {
         if (GT6_ORES) return;
+        if (AntimatterAPI.isModLoaded(MOD_TFC)){
+            ev.vein(new WorldGenVeinLayerBuilder("gold").asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold,
+                    BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+            ev.vein(new WorldGenVeinLayerBuilder("iron").asOreVein(-14, 51, 120, 4, 24, BrownLimonite, YellowLimonite, Hematite, Malachite,
+                    NETHER, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+            ev.vein(new WorldGenVeinLayerBuilder("cassiterite").asOreVein(6, 126, 50, 5, 24, Tin, Tin, Cassiterite, Tin,
+                    END, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+            ev.vein(new WorldGenVeinLayerBuilder("tetrahedrite").asOreVein(51, 131, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite,
+                    NETHER, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+        } else {
+            ev.vein(new WorldGenVeinLayerBuilder("gold").asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold,
+                    OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+            ev.vein(new WorldGenVeinLayerBuilder("iron").asOreVein(-14, 51, 120, 4, 24, BrownLimonite, YellowLimonite, Hematite, Malachite,
+                    OVERWORLD, NETHER, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+            ev.vein(new WorldGenVeinLayerBuilder("cassiterite").asOreVein(6, 126, 50, 5, 24, Tin, Tin, Cassiterite, Tin,
+                    OVERWORLD, END, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+            ev.vein(new WorldGenVeinLayerBuilder("tetrahedrite").asOreVein(51, 131, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite,
+                    OVERWORLD, NETHER, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+        }
         ev.vein(new WorldGenVeinLayerBuilder("naquadah").asOreVein(10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, Naquadah,
                 END, BE_MARS, AA_MARS).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("magnetite").asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite,
                 OVERWORLD, NETHER, TWILIGHT_FOREST, BE_MARS, AA_MARS).buildVein());
-        ev.vein(new WorldGenVeinLayerBuilder("gold").asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, AntimatterMaterials.Gold,
-                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
-        ev.vein(new WorldGenVeinLayerBuilder("iron").asOreVein(-14, 51, 120, 4, 24, BrownLimonite, YellowLimonite, Hematite, Malachite,
-                OVERWORLD, NETHER, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
-        ev.vein(new WorldGenVeinLayerBuilder("cassiterite").asOreVein(6, 126, 50, 5, 24, Tin, Tin, Cassiterite, Tin,
-                OVERWORLD, END, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
-        ev.vein(new WorldGenVeinLayerBuilder("tetrahedrite").asOreVein(51, 131, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite,
-                OVERWORLD, NETHER, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("nether_quartz").asOreVein(40, 80, 80, 5, 24, Quartz, Quartz, Quartz, Quartz,
                 NETHER).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("sulfur").asOreVein(5, 20, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite,
@@ -258,10 +270,11 @@ public class WorldGenLoader {
                 OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("beryllium_end").asOreVein(5, 30, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
                 END).buildVein());
-
-        if (!AntimatterConfig.STONE_LAYERS.get()){
+        if (AntimatterAPI.isModLoaded(MOD_TFC) || !AntimatterConfig.STONE_LAYERS.get()){
             ev.vein(new WorldGenVeinLayerBuilder("bauxite").asOreVein(-14, 46, 80, 4, 24, Bauxite, Bauxite, Alumina, Ilmenite,
                     OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+        }
+        if (!AntimatterConfig.STONE_LAYERS.get()){
             ev.vein(new WorldGenVeinLayerBuilder("oilshale").asOreVein(-14, 31, 80, 6, 32, OilShale, OilShale, OilShale, OilShale,
                     OVERWORLD, TWILIGHT_FOREST).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("lignite").asOreVein(0, 200, 160, 8, 32, Lignite, Lignite, Lignite, Coal,
