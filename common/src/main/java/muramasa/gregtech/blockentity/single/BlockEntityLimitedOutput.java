@@ -24,7 +24,8 @@ import org.jetbrains.annotations.Nullable;
 import tesseract.api.item.PlatformItemHandler;
 
 public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> extends BlockEntityMachine<T> {
-    protected int stackLimit = 1;
+    protected int stackLimit = 0;
+    boolean observeStackLimit = false;
     public BlockEntityLimitedOutput(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         this.itemHandler.set(() -> new LimitedOutputItemHandler<>((T)this));
@@ -53,14 +54,24 @@ public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> ext
         ItemStack stack = player.getItemInHand(hand);
         if (stack.is(AntimatterDefaultTools.SCREWDRIVER.getTag())){
             if (hit.getDirection() == getFacing().getOpposite()){
+                if (!observeStackLimit){
+                    if (stackLimit > 0 && stackLimit < 65){
+                        observeStackLimit = true;
+                    } else {
+                        stackLimit = player.isCrouching() ? 65 : 0;
+                    }
+                }
                 if (player.isCrouching()){
                     stackLimit--;
                 } else {
                     stackLimit++;
                 }
-                if (stackLimit == 65) stackLimit = 1;
-                if (stackLimit == 0) stackLimit = 64;
-                player.sendMessage(Utils.literal("Item Output Limit: " +stackLimit), player.getUUID());
+                if (stackLimit == 65 || stackLimit == 0){
+                    observeStackLimit = false;
+                    player.sendMessage(Utils.literal("Do not regulate Item Stack size"), player.getUUID());
+                } else {
+                    player.sendMessage(Utils.literal("Item Output Limit: " +stackLimit), player.getUUID());
+                }
                 stack.hurt(1, world.random, (ServerPlayer) player);
                 return InteractionResult.SUCCESS;
             }
@@ -72,12 +83,14 @@ public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> ext
     public void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         tag.putInt("stackLimit", stackLimit);
+        tag.putBoolean("observeStackLimit", observeStackLimit);
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
         stackLimit = tag.getInt("stackLimit");
+        observeStackLimit = tag.getBoolean("observerStackLimit");
     }
 
     public static class LimitedOutputItemHandler<T extends BlockEntityLimitedOutput<T>> extends MachineItemHandler<T> {
@@ -89,6 +102,7 @@ public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> ext
                 @NotNull
                 @Override
                 public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                    if (!tile.observeStackLimit) return super.extractItem(slot, amount, simulate);
                     if (amount < tile.stackLimit) return ItemStack.EMPTY;
                     amount = tile.stackLimit;
                     return super.extractItem(slot, amount, simulate);
