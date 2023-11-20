@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.machines;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
@@ -12,6 +13,7 @@ import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.pipe.PipeSize;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTech;
@@ -22,6 +24,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import tesseract.TesseractGraphWrappers;
 
@@ -29,6 +32,7 @@ import java.util.Arrays;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
+import static muramasa.antimatter.Ref.U;
 import static muramasa.antimatter.data.AntimatterDefaultTools.SCREWDRIVER;
 import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -52,6 +56,14 @@ public class ArcFurnace {
                 ARC_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 1)).fi(Oxygen.getGas((int)m.getMass())).io(INGOT.get(output)).add(m.getId() + "_ingot_to_" + output.getId() + "_ingot", m.getMass(), 30, 0, 3);
             }
         });
+        for (MaterialTypeItem<?> t : AntimatterAPI.all(MaterialTypeItem.class)) {
+            if (t.getUnitValue() <= 0 || t == DUST || t == DUST_TINY || t == DUST_SMALL || t == INGOT || t == NUGGET ||
+                    t == INGOT_HOT || t == GEM || t == GEM_CHIPPED || t == GEM_FLAWED || t == GEM_FLAWLESS || t == GEM_EXQUISITE) continue;
+            double amount = (double) t.getUnitValue() / U;
+            t.all().forEach(m -> {
+                addRecyclingRecipe(t.getMaterialIngredient(m, 1), of(m, (float) amount), 1, 1, m.getId() + "_" + t.getId() + "_recycling");
+            });
+        }
         addRecyclingRecipe(GTCoreItems.MotorLV, of(Copper, 2f, Tin, 1f, Steel, 1f, Iron, 0.5f), 1, 1);
         addRecyclingRecipe(GTCoreItems.MotorMV, of(Copper, 5f, Aluminium, 1f, Steel, 0.5f), 1, 1);
         addRecyclingRecipe(GTCoreItems.MotorHV, of(Copper, 8f, Gold, 1f, StainlessSteel, 1f, Steel, 0.5f), 1, 3);
@@ -93,6 +105,10 @@ public class ArcFurnace {
     }
 
     private static void addRecyclingRecipe(ItemLike input, ImmutableMap<Material, Float> outputs, int argon, int nitrogen){
+        addRecyclingRecipe(RecipeIngredient.of(input), outputs, argon, nitrogen, AntimatterPlatformUtils.getIdFromItem(input.asItem()).getPath());
+    }
+
+    private static void addRecyclingRecipe(Ingredient input, ImmutableMap<Material, Float> outputs, int argon, int nitrogen, String id){
         RecipeBuilder arc = ARC_SMELTING.RB();
         RecipeBuilder mac = MACERATING.RB();
         RecipeBuilder plas = PLASMA_ARC_SMELTING.RB();
@@ -139,10 +155,15 @@ public class ArcFurnace {
             }
 
         });
-        arc.fi(Oxygen.getGas(totalMassArc[0] * TesseractGraphWrappers.dropletMultiplier)).add(AntimatterPlatformUtils.getIdFromItem(input.asItem()).getPath(), totalMassArc[0], 32);
-        mac.add(AntimatterPlatformUtils.getIdFromItem(input.asItem()).getPath(), totalMassMac[0] * 2, 4);
-        plas.fi(Argon.getPlasma(argon)).fo(Argon.getGas(argon)).add(AntimatterPlatformUtils.getIdFromItem(input.asItem()).getPath() + "_argon", Math.max(1, totalMassArc[0] / 8), 32);
-        plas.clearFluidInputs().clearFluidOutputs().fi(Nitrogen.getPlasma(nitrogen)).fo(Nitrogen.getGas(nitrogen)).add(AntimatterPlatformUtils.getIdFromItem(input.asItem()).getPath() + "_nitrogen", Math.max(1, totalMassArc[0] / 8), 32);
+        if (totalMassArc[0] > 0){
+            arc.fi(Oxygen.getGas(totalMassArc[0] * TesseractGraphWrappers.dropletMultiplier)).add(id, totalMassArc[0], 32);
+            plas.fi(Argon.getPlasma(argon)).fo(Argon.getGas(argon)).add(id + "_argon", Math.max(1, totalMassArc[0] / 8), 32);
+            plas.clearFluidInputs().clearFluidOutputs().fi(Nitrogen.getPlasma(nitrogen)).fo(Nitrogen.getGas(nitrogen)).add(id + "_nitrogen", Math.max(1, totalMassArc[0] / 8), 32);
+        }
+        if (totalMassMac[0] > 0) {
+            mac.add(id, totalMassMac[0] * 2, 4);
+        }
+
     }
 
     static int fromTier(Tier tier){

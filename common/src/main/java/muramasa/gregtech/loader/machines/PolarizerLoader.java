@@ -19,6 +19,7 @@ public class PolarizerLoader {
             Material out = materials[i];
             Material in = materials2[i];
             out.getTypes().forEach(t -> {
+                if (t.getUnitValue() <= 0) return;
                 if (!in.has(t)) return;
                 Item output = t instanceof MaterialTypeItem<?> typeItem ? typeItem.get(out) : t instanceof MaterialTypeBlock<?> typeBlock && typeBlock.get() instanceof MaterialTypeBlock.IBlockGetter getter ? getter.get(out).asItem() : null;
                 if (output != null){

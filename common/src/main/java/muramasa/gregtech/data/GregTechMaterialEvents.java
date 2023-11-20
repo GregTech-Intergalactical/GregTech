@@ -1186,66 +1186,14 @@ public class GregTechMaterialEvents {
         /**
          * Fissile Fuels
          */
-        /*event.setMaterial(Thorium227).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Thorium228).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Thorium229).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);*/
-        event.setMaterial(Thorium230).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        /*event.setMaterial(Thorium231).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Thorium232).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Thorium233).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Thorium234).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);*/
+        /*event.setMaterial(Thorium230).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Uranium233).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Uranium235).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        /*event.setMaterial(Neptunium236).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Neptunium237).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Neptunium238).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Neptunium239).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Neptunium240).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);*/
-        /*event.setMaterial(Plutonium236).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Plutonium238).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);*/
         event.setMaterial(Plutonium239).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        //event.setMaterial(Plutonium240).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Plutonium241).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        //event.setMaterial(Plutonium242).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Plutonium243).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        //event.setMaterial(Plutonium244).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        //event.setMaterial(Plutonium246).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
         event.setMaterial(Americium241).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Americium242).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        //event.setMaterial(Americium244).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        //event.setMaterial(Americium245).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        //event.setMaterial(Americium246).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        /*event.setMaterial(Curium242).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Curium244).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Curium245).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Curium246).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Curium247).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Curium248).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Curium249).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Berkelium248).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Berkelium249).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Berkelium250).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Berkelium251).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Californium248).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Californium249).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Californium250).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Californium251).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Californium252).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Californium253).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Californium254).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Californium255).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Einsteinium253).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Einsteinium254).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Einsteinium255).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Einsteinium256).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Fermium255).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Fermium256).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Fermium257).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Fermium258).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Fermium259).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Fermium260).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Mendelevium259).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);
-        event.setMaterial(Mendelevium260).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);*/
+        event.setMaterial(Americium242).flags(FISSILE_FUEL,DEPLETED_FISSILE_FUEL);*/
         /**
          * Breeder Fuels
          */
