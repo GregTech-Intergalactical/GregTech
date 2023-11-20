@@ -29,8 +29,7 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import java.util.List;
 import java.util.function.BiFunction;
 
-import static muramasa.gregtech.data.Guis.MULTI_DISPLAY;
-import static muramasa.gregtech.data.Guis.MULTI_DISPLAY_FLUID;
+import static muramasa.gregtech.data.Guis.*;
 
 @SuppressWarnings("unchecked")
 public class RecipeMaps {
@@ -245,6 +244,7 @@ public class RecipeMaps {
         // SMELTING.setGuiData(Guis.MULTI_DISPLAY_COMPACT);
         STEAM_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         HP_STEAM_FUELS.setGuiData(MULTI_DISPLAY);
+        DISTILLATION.setGuiData(MULTI_DISPLAY_DISTILLATION);
     }
 
     public static void clientMaps() {

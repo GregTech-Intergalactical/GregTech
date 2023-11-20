@@ -36,6 +36,13 @@ public class Guis {
             .add(FL_OUT, 107, 25).add(FL_OUT, 125, 25).add(FL_OUT, 143, 25)
             .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
             .add(FL_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61));
+
+    public static GuiData MULTI_DISPLAY_DISTILLATION = new GuiData(GTIRef.ID, "multi_display_distillation").setSlots(ISlotProvider.DEFAULT()
+            .add(FL_IN, 53, 43)
+            .add(IT_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61)
+            .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
+            .add(FL_OUT, 107, 25).add(FL_OUT, 125, 25).add(FL_OUT, 143, 25)
+            .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7));
     public static GuiData MULTI_DISPLAY_COMPACT = new GuiData(GTIRef.ID, "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots()));
     public static GuiData BASIC_TANK = new GuiData(GTIRef.ID, "basic_tank").setBackgroundTexture("basic_tank")
