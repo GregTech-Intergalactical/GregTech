@@ -447,7 +447,17 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(AluminiumFluoride).asFluid(0,1560).flags(MOLTEN, ACID);
         event.setMaterial(Antimatter).asFluid();
+        event.setMaterial(BlackVitriol).asFluid();
         event.setMaterial(BlueVitriol).asFluid();
+        event.setMaterial(GreenVitriol).asFluid();
+        event.setMaterial(RedVitriol).asFluid();
+        event.setMaterial(PinkVitriol).asFluid();
+        event.setMaterial(CyanVitriol).asFluid();
+        event.setMaterial(WhiteVitriol).asFluid();
+        event.setMaterial(GrayVitriol).asFluid();
+        event.setMaterial(MartianVitriol).asFluid();
+        event.setMaterial(VitriolOfClay).asFluid();
+        event.setMaterial(AquaRegia).asFluid().flags(ACID);
         event.setMaterial(CalciumAcetateSolution).asFluid();
         event.setMaterial(Coolant).asFluid();
         event.setMaterial(Cryolite).asFluid(0, 1285).flags(MOLTEN, ACID);

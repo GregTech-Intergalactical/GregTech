@@ -542,8 +542,19 @@ public class Materials {
 
     public static Material AluminiumFluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "aluminium_fluoride", 0xc8bebe, NONE));
     public static Material Antimatter = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "anti_matter", 0x8000c4, NONE));
-    public static Material BlueVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_vitriol_water_solution", 0x4242DE, NONE));
+    public static Material BlackVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "black_vitriol", 0x424242, NONE));
+    public static Material BlueVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_vitriol", 0x4242DE, NONE));
+    public static Material GreenVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "green_vitriol", 0x42de42, NONE));
+    public static Material RedVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_vitriol", 0xde4242, NONE));
+    public static Material PinkVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pink_vitriol", 0xde6f6f, NONE));
+    public static Material CyanVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cyan_vitriol", 0x6fdede, NONE));
+    public static Material WhiteVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "white_vitriol", 0xdedede, NONE));
+    public static Material GrayVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "gray_vitriol", 0x6f6f6f, NONE));
+    public static Material MartianVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "martian_vitriol", 0xde42de, NONE));
+    public static Material VitriolOfClay = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "vitriol_of_clay", 0x42dede, NONE));
 
+
+    public static Material AquaRegia = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "aqua_regia", 0x40ff40, NONE));
     public static Material CalciumAcetateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "calcium_acetate_solution", 0xDCC8B4, NONE));
     public static Material Coolant = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "coolant", 0x0506be, NONE));
     public static Material Cryolite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cryolite", 0xc8bebe, NONE));
