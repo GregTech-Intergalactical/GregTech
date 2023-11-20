@@ -8,18 +8,17 @@ import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialItem;
-import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.material.MaterialTypeItem;
+import muramasa.antimatter.material.*;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTech;
+import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.data.GregTechTags;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.Materials;
+import muramasa.gregtech.data.TierMaps;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -56,7 +55,7 @@ public class ArcFurnace {
                 ARC_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 1)).fi(Oxygen.getGas((int)m.getMass())).io(INGOT.get(output)).add(m.getId() + "_ingot_to_" + output.getId() + "_ingot", m.getMass(), 30, 0, 3);
             }
         });
-        for (MaterialTypeItem<?> t : AntimatterAPI.all(MaterialTypeItem.class)) {
+        for (MaterialType<?> t : AntimatterAPI.all(MaterialType.class)) {
             if (t.getUnitValue() <= 0 || t == DUST || t == DUST_TINY || t == DUST_SMALL || t == INGOT || t == NUGGET ||
                     t == INGOT_HOT || t == GEM || t == GEM_CHIPPED || t == GEM_FLAWED || t == GEM_FLAWLESS || t == GEM_EXQUISITE) continue;
             double amount = (double) t.getUnitValue() / U;
@@ -102,6 +101,38 @@ public class ArcFurnace {
         addRecyclingRecipe(STEAM_SIFTER.getItem(STEEL), of(Steel, 14f, Stone, 8f, Wood, 6f), 1, 3);
         addRecyclingRecipe(STEAM_MACERATOR.getItem(BRONZE), of(Bronze, 12f, Stone, 8f, Wood, 6f, Diamond, 2f), 1, 4);
         addRecyclingRecipe(STEAM_MACERATOR.getItem(STEEL), of(Steel, 12f, Stone, 8f, Wood, 6f, Diamond, 2f), 1, 3);
+        for (Tier tier : getAllElectric()) {
+            addRecyclingRecipe(GregTech.get(BlockCasing.class,"casing_" + tier.getId()), of(TIER_MATERIALS.get(tier), 8f), 1,2);
+        }
+        addRecyclingRecipe(CASING_BRONZE, of(Bronze, 8f), 1,2);
+        addRecyclingRecipe(CASING_BRICKED_BRONZE, of(Bronze, 5f, Brick, 3f), 1,1);
+        addRecyclingRecipe(CASING_STEEL, of(Steel, 8f), 1,2);
+        addRecyclingRecipe(CASING_BRICKED_STEEL, of(Steel, 5f, Brick, 3f), 1,1);
+        addRecyclingRecipe(CASING_SOLID_STEEL, of(Steel, 8f), 1,1);
+        addRecyclingRecipe(CASING_STAINLESS_STEEL, of(StainlessSteel, 8f), 1,1);
+        addRecyclingRecipe(CASING_TITANIUM, of(Titanium, 8f), 1,1);
+        addRecyclingRecipe(CASING_TUNGSTENSTEEL, of(TungstenSteel, 8f), 1,1);
+        addRecyclingRecipe(CASING_TUNGSTEN, of(Tungsten, 8f), 1,1);
+        addRecyclingRecipe(CASING_PLATINUM, of(Platinum, 8f), 1,1);
+        addRecyclingRecipe(CASING_HEAT_PROOF, of(Invar, 8f), 1,1);
+        addRecyclingRecipe(CASING_FROST_PROOF, of(Aluminium, 8f), 1,1);
+        addRecyclingRecipe(CASING_RADIATION_PROOF, of(Lead, 8f), 1,1);
+        addRecyclingRecipe(CASING_FIREBOX_BRONZE, of(Bronze, 8f), 1,2);
+        addRecyclingRecipe(CASING_FIREBOX_STEEL, of(Steel, 8f), 1,2);
+        addRecyclingRecipe(CASING_FIREBOX_TITANIUM, of(Titanium, 8f), 1,1);
+        addRecyclingRecipe(CASING_FIREBOX_TUNGSTENSTEEL, of(TungstenSteel, 8f), 1,1);
+        addRecyclingRecipe(CASING_GEARBOX_BRONZE, of(Bronze, 14f), 1,2);
+        addRecyclingRecipe(CASING_GEARBOX_STEEL, of(Steel, 14f), 1,2);
+        addRecyclingRecipe(CASING_GEARBOX_TITANIUM, of(Titanium, 14f), 1,1);
+        addRecyclingRecipe(CASING_GEARBOX_TUNGSTENSTEEL, of(TungstenSteel, 14f), 1,1);
+        addRecyclingRecipe(CASING_PIPE_BRONZE, of(Bronze, 18f), 1,2);
+        addRecyclingRecipe(CASING_PIPE_STEEL, of(Steel, 18f), 1,2);
+        addRecyclingRecipe(CASING_PIPE_TITANIUM, of(Titanium, 18f), 1,1);
+        addRecyclingRecipe(CASING_PIPE_TUNGSTENSTEEL, of(TungstenSteel, 18f), 1,1);
+        addRecyclingRecipe(CASING_TURBINE_STEEL, of(Steel, 9f), 1,1);
+        addRecyclingRecipe(CASING_TURBINE_STAINLESS, of(StainlessSteel, 9f), 1,1);
+        addRecyclingRecipe(CASING_TURBINE_TITANIUM, of(Titanium, 9f), 1,1);
+        addRecyclingRecipe(CASING_TURBINE_TUNGSTENSTEEL, of(TungstenSteel, 9f), 1,1);;
     }
 
     private static void addRecyclingRecipe(ItemLike input, ImmutableMap<Material, Float> outputs, int argon, int nitrogen){
