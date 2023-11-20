@@ -127,10 +127,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTING.RB().ii(of(DUST.getMaterialTag(Aluminium), 4)).fi(IndiumConcentrate.getLiquid(8000)).fo(LeadZincSolution.getLiquid(8000)).io(DUST_TINY.get(Indium, 1)).add("tiny_pile_of_indium_dust",50,600);
         //ETHYL TERT-BUTYL ETHER
         CHEMICAL_REACTING.RB().fi(Ethanol.getLiquid(1000), Butene.getGas(1000)).fo(EthylTertButylEther.getLiquid(2000)).add("ethyltertbutylether",400, 480);
-        //ROCKET FUEL
-        CHEMICAL_REACTING.RB().fi(NitrogenDioxide.getGas(1000), Hydrogen.getGas(3000)).fo(RocketFuel.getLiquid(3000), Water.getLiquid(4000)).add("rocketfuel",1000,388);
-        CHEMICAL_REACTING.RB().fi(Chlorine.getGas(1000), Ammonia.getGas(3000), Methanol.getLiquid(4000)).fo(RocketFuel.getLiquid(7000)).add("rocketfuel_1",3600,480);
-
     }
 
     private static void addShared(){

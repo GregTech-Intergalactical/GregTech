@@ -588,7 +588,7 @@ public class Materials {
     public static Material CetaneBoostedDiesel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitro_diesel", 0xc8ff00, NONE));
     public static Material Kerosene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "kerosene", 0x0000FF, NONE));
     public static Material LightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_fuel", 0xffff00, NONE));
-    public static Material RocketFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rocket_fuel", 0xffffff, NONE));
+    public static Material FuelOil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fuel", 0xffff00, NONE)).setDisplayNameString("Fuel Oil");
     public static Material Gasoline = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "gasoline", 0xFFA500, NONE));
     public static Material HighOctaneGasoline = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "high_octane_gasoline", 0xFFA500, NONE));
     public static Material Oil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "oil", 0x0a0a0a, NONE));

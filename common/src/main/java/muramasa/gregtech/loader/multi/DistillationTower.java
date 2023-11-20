@@ -98,7 +98,8 @@ public class DistillationTower {
 
     private static void init6U(){
         addDistillationDistillingRecipe(OilLight, 25, 64, 64,
-                new FluidProduct(Diesel,15),
+                new FluidProduct(FuelOil,15),
+                new FluidProduct(Diesel,10),
                 new FluidProduct(Naphtha, 10),
                 new FluidProduct(Kerosene, 10),
                 new FluidProduct(Gasoline, 10),
@@ -106,7 +107,8 @@ public class DistillationTower {
                 new FluidProduct(Lubricant, 15),
                 new FluidProduct(Tar, 15));
         addDistillationDistillingRecipe(Oil, 25, 64, 64,
-                new FluidProduct(Diesel,25),
+                new FluidProduct(FuelOil,25),
+                new FluidProduct(Diesel,15),
                 new FluidProduct(Naphtha, 15),
                 new FluidProduct(Kerosene, 15),
                 new FluidProduct(Gasoline, 15),
@@ -114,7 +116,8 @@ public class DistillationTower {
                 new FluidProduct(Lubricant, 25),
                 new FluidProduct(Tar, 15));
         addDistillationDistillingRecipe(OilHeavy, 25, 64, 64,
-                new FluidProduct(Diesel,30),
+                new FluidProduct(FuelOil,30),
+                new FluidProduct(Diesel,20),
                 new FluidProduct(Naphtha, 20),
                 new FluidProduct(Kerosene, 20),
                 new FluidProduct(Gasoline, 15),

@@ -542,7 +542,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(HeavyFuel).asFluid(48);
         event.setMaterial(LightFuel).asFluid(48);
         event.setMaterial(CetaneBoostedDiesel).asFluid(512);
-        event.setMaterial(RocketFuel).asFluid();
+        event.setMaterial(FuelOil).asFluid(448);
         event.setMaterial(Gasoline).asFluid(384);
         event.setMaterial(Kerosene).asFluid(384);
         event.setMaterial(HighOctaneGasoline).asFluid(768);
