@@ -1,6 +1,7 @@
 package muramasa.gregtech.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -11,8 +12,11 @@ import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
+import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GregTech;
+import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.items.ItemIntCircuit;
 import net.minecraft.client.gui.Font;
@@ -158,7 +162,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
         });
     }
 
-    public Block getCasing(){
+    public BlockBasic getCasing(){
         if (tier == LV){
             return GregTechData.CASING_BRONZE_PLATED_BRICK;
         } else if (tier == MV){
@@ -223,6 +227,13 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
         if (hatchPos.getY() != this.getBlockPos().getY()) return super.getTextureForHatches(dir, hatchPos);
         String prefix = tier == LV ? "bronze" : tier == MV ? "steel" : tier == HV ? "titanium" : "tungstensteel";
         return new Texture(GTIRef.ID, "block/casing/" + prefix + "_firebox");
+    }
+
+    @Override
+    public ITextureProvider getHatchBlock(BlockPos hatchPos) {
+        if (hatchPos.getY() != this.getBlockPos().getY()) return this.getCasing();
+        String prefix = tier == LV ? "bronze" : tier == MV ? "steel" : tier == HV ? "titanium" : "tungstensteel";
+        return GregTech.get(BlockCasing.class, prefix + "_firebox_casing");
     }
 
     @Override

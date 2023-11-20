@@ -2,6 +2,7 @@ package muramasa.gregtech.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
+import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.GuiInstance;
@@ -15,6 +16,7 @@ import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
+import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.items.ItemTurbineRotor;
 import net.minecraft.client.gui.Font;
@@ -185,15 +187,19 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                 });
     }
 
-    public Block getCasing(){
+    public BlockBasic getCasing(){
         if (tier == HV) {
             return GregTechData.CASING_TURBINE_STEEL;
         } else if (tier == EV) {
             return GregTechData.CASING_TURBINE_STAINLESS;
-        } else if (tier == IV) {
+        } else {
             return GregTechData.CASING_TURBINE_TITANIUM;
         }
-        return Blocks.AIR;
+    }
+
+    @Override
+    public ITextureProvider getHatchBlock(BlockPos pos) {
+        return getCasing();
     }
 
     @Override
