@@ -82,6 +82,9 @@ public class ElectrolyzerLoader {
             addVitriolRecipe(WhiteVitriol, Zinc);
             addVitriolRecipe(GrayVitriol, Manganese);
             ELECTROLYZING.RB().fi(Water.getLiquid(900), VitriolOfClay.getLiquid(1700)).ii(TierMaps.INT_CIRCUITS.get(1)).io(DUST_SMALL.get(Alumina, 2)).fo(SulfuricAcid.getLiquid(2000)).add("vitriol_of_clay_to_alumina", 19, 64);
+            ELECTROLYZING.RB().fi(DistilledWater.getLiquid(900), VitriolOfClay.getLiquid(1700)).ii(TierMaps.INT_CIRCUITS.get(1)).io(DUST_SMALL.get(Alumina, 2)).fo(SulfuricAcid.getLiquid(2000)).add("vitriol_of_clay_to_alumina_distilled", 19, 64);
+            ELECTROLYZING.RB().fi(Water.getLiquid(6000), ChloroplatinicAcid.getLiquid(9000)).ii(TierMaps.INT_CIRCUITS.get(2)).io(DUST.get(Platinum)).fo(HydrochloricAcid.getLiquid(12000), Oxygen.getGas(2000)).add("chloroplatinic_acid", 96, 64);
+            ELECTROLYZING.RB().fi(DistilledWater.getLiquid(6000), ChloroplatinicAcid.getLiquid(9000)).ii(TierMaps.INT_CIRCUITS.get(2)).io(DUST.get(Platinum)).fo(HydrochloricAcid.getLiquid(12000), Oxygen.getGas(2000)).add("chloroplatinic_acid_distilled", 96, 64);
         }
     }
 

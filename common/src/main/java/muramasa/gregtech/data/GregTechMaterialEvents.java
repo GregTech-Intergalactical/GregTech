@@ -459,6 +459,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(VitriolOfClay).asFluid();
         event.setMaterial(AquaRegia).asFluid().flags(ACID);
         event.setMaterial(CalciumAcetateSolution).asFluid();
+        event.setMaterial(ChloroplatinicAcid).asFluid().flags(ACID);
         event.setMaterial(Coolant).asFluid();
         event.setMaterial(Cryolite).asFluid(0, 1285).flags(MOLTEN, ACID);
         event.setMaterial(DistilledWater).asFluid();

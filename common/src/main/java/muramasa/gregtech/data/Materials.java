@@ -556,6 +556,7 @@ public class Materials {
 
     public static Material AquaRegia = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "aqua_regia", 0x40ff40, NONE));
     public static Material CalciumAcetateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "calcium_acetate_solution", 0xDCC8B4, NONE));
+    public static Material ChloroplatinicAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chloroplatinic_acid", 0xff4646, NONE));
     public static Material Coolant = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "coolant", 0x0506be, NONE));
     public static Material Cryolite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cryolite", 0xc8bebe, NONE));
     public static Material DilutedHydrochloricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "diluted_hydrochloric_acid", 0x99a7a3, NONE));
@@ -629,7 +630,7 @@ public class Materials {
     public static Material Ethane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethane", 0xc8c8ff, NONE));
     public static Material Ethenone = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethenone", 0x141446, NONE));
     public static Material Ethylene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethylene", 0xe1e1e1, NONE));
-    public static Material LPG = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lpg", 0xffff00, NONE));
+    public static Material LPG = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lpg", 0xffff00, NONE)).setDisplayNameString("LPG");
     public static Material Methane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "methane", 0xffffff, NONE));
     public static Material NaturalGas = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "natural_gas", 0xffffff, NONE));
     public static Material Propane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "propane", 0xfae250, NONE));

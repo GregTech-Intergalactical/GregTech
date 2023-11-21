@@ -117,7 +117,7 @@ public class Bath {
     private static void addPSGRecipe(Material input){
         BATHING.RB().ii(CRUSHED_PURIFIED.getMaterialIngredient(input, 1))
                 .fi(AquaRegia.getLiquid(9750))
-                //.fo(ChloroplatnicAcid.getLiquid(4500), NitrogenMonoxide.getGas(1500), Water.getLiquid(4125))
+                .fo(ChloroplatinicAcid.getLiquid(4500), NitricOxide.getGas(1500), Water.getLiquid(4125))
                 .io(CRUSHED_REFINED.get(input, 1), DUST_TINY.get(PlatinumGroupSludge, 1)).add( "psg_from_" + input.getId(), 256);
     }
 }
