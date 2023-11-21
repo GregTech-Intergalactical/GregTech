@@ -81,6 +81,12 @@ public class Bath {
         if (SpaceModRegistrar.Desh != null){
             addVitriolRecipe(SpaceModRegistrar.Desh, MartianVitriol);
         }
+        addPSGRecipe(Sheldonite);
+        addPSGRecipe(Iridium);
+        addPSGRecipe(Nickel);
+        addPSGRecipe(Osmium);
+        addPSGRecipe(Palladium);
+        addPSGRecipe(Platinum);
     }
     public static void mercurybathing(){
         CHEMBATH_MERCURY.getAll().forEach((main,side) ->
@@ -106,5 +112,12 @@ public class Bath {
                 .fi(SulfuricAcid.getLiquid(vitriol == VitriolOfClay ? 10500 : 3000))
                 .fo(vitriol.getLiquid(vitriol == VitriolOfClay ? 8500 : 3000), Hydrogen.getGas(vitriol == VitriolOfClay ? 3000 : 1000))
                 .io(CRUSHED_REFINED.get(input, 1), DUST_SMALL.get(input, 2)).add(vitriol.getId() + "_from_" + input.getId(), 256);
+    }
+
+    private static void addPSGRecipe(Material input){
+        BATHING.RB().ii(CRUSHED_PURIFIED.getMaterialIngredient(input, 1))
+                .fi(AquaRegia.getLiquid(9750))
+                //.fo(ChloroplatnicAcid.getLiquid(4500), NitrogenMonoxide.getGas(1500), Water.getLiquid(4125))
+                .io(CRUSHED_REFINED.get(input, 1), DUST_TINY.get(PlatinumGroupSludge, 1)).add( "psg_from_" + input.getId(), 256);
     }
 }
