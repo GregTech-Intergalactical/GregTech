@@ -144,7 +144,7 @@ public class Guis {
         FLUID_HEATER.add(ENERGY, 80, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
         DISTILLERY.add(FLUID_CANNER);
-        BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63);
+        BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63);
         AUTOCLAVE.add(ALLOY_SMELTER).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(FL_IN, 53, 63);
         PACKAGER.add(COMPRESSOR);
         POLARIZER.add(COMPRESSOR);

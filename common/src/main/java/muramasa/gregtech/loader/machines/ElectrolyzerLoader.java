@@ -9,6 +9,7 @@ import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Materials;
+import muramasa.gregtech.data.TierMaps;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -19,8 +20,7 @@ import java.util.List;
 
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Charcoal;
-import static muramasa.antimatter.data.AntimatterMaterials.Coal;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ELECTROLYZING;
@@ -71,7 +71,19 @@ public class ElectrolyzerLoader {
             ELECTROLYZING.RB().ii(DUST.getMaterialIngredient(Graphite, 3), DUST.getMaterialIngredient(Alumina, 10))
                     .fi(AluminiumFluoride.getLiquid(L / 36), Cryolite.getLiquid(L / 72)).io(DUST.get(Aluminium, 4))
                     .fo(CarbonDioxide.getGas(9000), Fluorine.getGas(29)).add("alumina_graphite", 2040, 16);
+            addVitriolRecipe(BlueVitriol, Copper);
+            addVitriolRecipe(GreenVitriol, Iron);
+            addVitriolRecipe(RedVitriol, Cobalt);
+            addVitriolRecipe(PinkVitriol, Magnesium);
+            addVitriolRecipe(CyanVitriol, Nickel);
+            addVitriolRecipe(WhiteVitriol, Zinc);
+            addVitriolRecipe(GrayVitriol, Manganese);
+            ELECTROLYZING.RB().fi(Water.getLiquid(900), VitriolOfClay.getLiquid(1700)).ii(TierMaps.INT_CIRCUITS.get(1)).io(DUST_SMALL.get(Alumina, 2)).fo(SulfuricAcid.getLiquid(2000)).add("vitriol_of_clay_to_alumina", 19, 64);
         }
+    }
+
+    private static void addVitriolRecipe(Material vitriol, Material dust){
+        ELECTROLYZING.RB().fi(vitriol.getLiquid(6000), Water.getLiquid(3000)).ii(TierMaps.INT_CIRCUITS.get(1)).io(DUST.get(dust)).fo(SulfuricAcid.getLiquid(7000), Oxygen.getGas(1000)).add(vitriol.getId() + "_to_" + dust.getId(), 64, 64);
     }
 
 }

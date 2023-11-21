@@ -860,7 +860,14 @@ public class GregTechMaterialEvents {
          *  Inorganic
          **/
         event.setMaterial(LeadZincSolution).mats(of(Water, 2, Lead, 1, Silver, 1, Zinc, 1, Sulfur, 3)).elecTicks(300);//TODO 192 eu/tick
-        event.setMaterial(BlueVitriol).mats(of(Copper,1,Sulfur,1,Oxygen,4,Water,5)).elecTicks(900);
+        event.setMaterial(BlueVitriol).mats(of(Copper,1,Sulfur,1,Oxygen,4));
+        event.setMaterial(GreenVitriol).mats(of(Iron,1,Sulfur,1,Oxygen,4));
+        event.setMaterial(RedVitriol).mats(of(Cobalt,1,Sulfur,1,Oxygen,4));
+        event.setMaterial(PinkVitriol).mats(of(Magnesium,1,Sulfur,1,Oxygen,4));
+        event.setMaterial(CyanVitriol).mats(of(Nickel,1,Sulfur,1,Oxygen,4));
+        event.setMaterial(WhiteVitriol).mats(of(Zinc,1,Sulfur,1,Oxygen,4));
+        event.setMaterial(GrayVitriol).mats(of(Manganese,1,Sulfur,1,Oxygen,4));
+        event.setMaterial(VitriolOfClay).mats(of(Alumina, 1, Sulfur, 3, Oxygen, 8));
         event.setMaterial(CalciumAcetateSolution).mats(of(Calcium, 1, Carbon, 2, Oxygen, 4, Hydrogen, 6)).elecTicks(520);
         event.setMaterial(DistilledWater).mats(of(Hydrogen,2, Oxygen, 1)).elecTicks(2000);
         event.setMaterial(DilutedHydrochloricAcid).mats(of(Hydrogen, 1, Chlorine, 1));
@@ -1440,7 +1447,7 @@ public class GregTechMaterialEvents {
                 SiliconDioxide, CalciumSulfate, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/
                 Phosphate, Potash, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
                 PhosphorousPentoxide, Hematite, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
-                Salt, SodiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond, BlueVitriol,
+                Salt, SodiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond,
                 NickelSulfate, Water, DistilledWater, MilkyQuartz, FerricChloride);
         ELEC60.add(CalciumChloride, SodiumHydroxide, Propene, Ethylene, Butene, Benzene, Styrene, Ethane, Ammonia, SodiumSulfide, Methane,
                 Magnesite, HydrofluoricAcid, HydrogenFluoride, Sphalerite, /*NitroCarbon,*/ SodaAsh, Calcite, Saltpeter, Monazite,

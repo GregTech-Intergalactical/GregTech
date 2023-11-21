@@ -5,6 +5,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.integration.SpaceModRegistrar;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import static muramasa.antimatter.Ref.L;
@@ -46,28 +47,40 @@ public class Bath {
         BATHING.RB().ii(DUST.getMaterialIngredient(Magnesium, 2)).fi(TitaniumTetrachloride.getLiquid(5000)).io(DUST.get(Titanium, 1), DUST.get(MagnesiumChloride, 6)).add("titanium", 512);
         mercurybathing();
         persulfatebathing();
-        addVitriolRecipe(Chalcopyrite, BlueVitriol, 256);
-        addVitriolRecipe(Copper, BlueVitriol, 256);
-        addVitriolRecipe(Gold, BlueVitriol, 256);
-        addVitriolRecipe(Chalcopyrite, BlueVitriol, 256);
-        addVitriolRecipe(Malachite, BlueVitriol, 256);
-        addVitriolRecipe(Tetrahedrite, BlueVitriol, 256);
-        addVitriolRecipe(Andradite, GreenVitriol, 256);
-        addVitriolRecipe(Chromite, GreenVitriol, 256);
-        addVitriolRecipe(Hematite, GreenVitriol, 256);
-        addVitriolRecipe(Ilmenite, GreenVitriol, 256);
-        BATHING.RB().ii(DUST.getMaterialIngredient(Ilmenite, 5)).fi(SulfuricAcid.getLiquid(7000)).io(DUST.get(Rutile)).fo(GreenVitriol.getLiquid(6000), Water.getLiquid(3000)).add("ilmenite_to_rutile");
-        addVitriolRecipe(Magnetite, GreenVitriol, 256);
-        addVitriolRecipe(Pyrite, GreenVitriol, 256);
-        addVitriolRecipe(Cobaltite, RedVitriol, 256);
-        addVitriolRecipe(Magnesite, PinkVitriol, 256);
-        addVitriolRecipe(Olivine, PinkVitriol, 256);
-        addVitriolRecipe(Pyrope, PinkVitriol, 256);
-        addVitriolRecipe(Cooperite, CyanVitriol, 256);
-        addVitriolRecipe(Garnierite, CyanVitriol, 256);
-        addVitriolRecipe(Nickel, CyanVitriol, 256);
-        addVitriolRecipe(Pentlandite, CyanVitriol, 256);
-        addVitriolRecipe(Platinum, CyanVitriol, 256);
+        addVitriolRecipe(Chalcopyrite, BlueVitriol);
+        addVitriolRecipe(Copper, BlueVitriol);
+        addVitriolRecipe(Gold, BlueVitriol);
+        addVitriolRecipe(Malachite, BlueVitriol);
+        addVitriolRecipe(Tetrahedrite, BlueVitriol);
+        addVitriolRecipe(Andradite, GreenVitriol);
+        addVitriolRecipe(Chromite, GreenVitriol);
+        addVitriolRecipe(Hematite, GreenVitriol);
+        addVitriolRecipe(Ilmenite, GreenVitriol);
+        BATHING.RB().ii(DUST.getMaterialIngredient(Ilmenite, 5)).fi(SulfuricAcid.getLiquid(7000)).io(DUST.get(Rutile)).fo(GreenVitriol.getLiquid(6000), Water.getLiquid(3000)).add("ilmenite_to_rutile", 512);
+        addVitriolRecipe(Magnetite, GreenVitriol);
+        addVitriolRecipe(Pyrite, GreenVitriol);
+        addVitriolRecipe(Cobaltite, RedVitriol);
+        addVitriolRecipe(Magnesite, PinkVitriol);
+        addVitriolRecipe(Olivine, PinkVitriol);
+        addVitriolRecipe(Pyrope, PinkVitriol);
+        addVitriolRecipe(Cooperite, CyanVitriol);
+        addVitriolRecipe(Garnierite, CyanVitriol);
+        addVitriolRecipe(Nickel, CyanVitriol);
+        addVitriolRecipe(Pentlandite, CyanVitriol);
+        addVitriolRecipe(Platinum, CyanVitriol);
+        addVitriolRecipe(Sphalerite, WhiteVitriol);
+        addVitriolRecipe(Tin, WhiteVitriol);
+        addVitriolRecipe(Zinc, WhiteVitriol);
+        addVitriolRecipe(Manganese, GrayVitriol);
+        addVitriolRecipe(Pyrolusite, GrayVitriol);
+        addVitriolRecipe(Scheelite, GrayVitriol);
+        addVitriolRecipe(Spessartine, GrayVitriol);
+        addVitriolRecipe(Tungstate, GrayVitriol);
+        addVitriolRecipe(Almandine, VitriolOfClay);
+        addVitriolRecipe(Bauxite, VitriolOfClay);
+        if (SpaceModRegistrar.Desh != null){
+            addVitriolRecipe(SpaceModRegistrar.Desh, MartianVitriol);
+        }
     }
     public static void mercurybathing(){
         CHEMBATH_MERCURY.getAll().forEach((main,side) ->
@@ -88,10 +101,10 @@ public class Bath {
                         .add("persulfate_"+main.getId(),40*20));
     }
 
-    private static void addVitriolRecipe(Material input, Material vitriol, int ticks){
+    private static void addVitriolRecipe(Material input, Material vitriol){
         BATHING.RB().ii(CRUSHED_PURIFIED.getMaterialIngredient(input, 1))
-                .fi(SulfuricAcid.getLiquid(3000))
-                .fo(vitriol.getLiquid(3000), Hydrogen.getGas(1000))
-                .io(CRUSHED_REFINED.get(input), CRUSHED_REFINED.get(input)).chances(1.0, 0.005).add(vitriol.getId() + "_from_" + input.getId(), ticks);
+                .fi(SulfuricAcid.getLiquid(vitriol == VitriolOfClay ? 10500 : 3000))
+                .fo(vitriol.getLiquid(vitriol == VitriolOfClay ? 8500 : 3000), Hydrogen.getGas(vitriol == VitriolOfClay ? 3000 : 1000))
+                .io(CRUSHED_REFINED.get(input), CRUSHED_REFINED.get(input)).chances(1.0, 0.005).add(vitriol.getId() + "_from_" + input.getId(), 256);
     }
 }
