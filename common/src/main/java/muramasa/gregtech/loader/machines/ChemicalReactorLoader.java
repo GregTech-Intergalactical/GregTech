@@ -88,9 +88,9 @@ public class ChemicalReactorLoader {
         //Golden CARROT
         CHEMICAL_REACTING.RB().ii(of(NUGGET.getMaterialTag(Gold), 8), RecipeIngredient.of(Items.CARROT)).io(Items.GOLDEN_CARROT).add("golden_carrot",50,30);
         //TINY PILE OF PLATINUM GROUP SLUDGE DUST
-        CHEMICAL_REACTING.RB().ii(of(CRUSHED_PURIFIED.getMaterialTag(Chalcopyrite), 1)).fi(NitricAcid.getLiquid(1000)).io(DUST_TINY.get(PlatinumGroupSludge, 1)).fo(BlueVitriol.getLiquid(9000)).add("tiny_pile_of_platinum_group_sludge",50,30);
+        /*CHEMICAL_REACTING.RB().ii(of(CRUSHED_PURIFIED.getMaterialTag(Chalcopyrite), 1)).fi(NitricAcid.getLiquid(1000)).io(DUST_TINY.get(PlatinumGroupSludge, 1)).fo(BlueVitriol.getLiquid(9000)).add("tiny_pile_of_platinum_group_sludge",50,30);
         CHEMICAL_REACTING.RB().ii(of(CRUSHED_PURIFIED.getMaterialTag(Pentlandite), 1)).fi(NitricAcid.getLiquid(1000)).io(DUST_TINY.get(PlatinumGroupSludge, 1)).fo(NickelSulfate.getLiquid(9000)).add("tiny_pile_of_platinum_group_sludge_1",50,30);
-        //NITROUS OXIDE
+        *///NITROUS OXIDE
         CHEMICAL_REACTING.RB().fi(Nitrogen.getGas(1000),Oxygen.getGas(500)).ii(INT_CIRCUITS.get(3).setNoConsume()).fo(NitrousOxide.getGas(1500)).add("nitrous_oxide",100, 30);
         //MOLTEN EPOXY RESIN
         CHEMICAL_REACTING.RB().fi(Naphtha.getLiquid(3000), NitrogenDioxide.getGas(1000), Epichlorohydrin.getLiquid(L)).fo(EpoxyResin.getLiquid(L *2)).add("epoxy_resin",240,30);
