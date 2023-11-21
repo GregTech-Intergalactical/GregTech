@@ -536,6 +536,12 @@ public class Machines {
 
         provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.LV),
                 ImmutableMap.<Character, Object>builder()
+                        .put('H', HULL_ULV)
+                        .put('C', CABLE_LEAD.getBlockItem(PipeSize.VTINY))
+                        .put('W', CABLE_TIN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+
+        provider.addItemRecipe(output, "machines", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), TRANSFORMER.getItem(Tier.LV),
+                ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_LV)
                         .put('C', CABLE_TIN.getBlockItem(PipeSize.VTINY))
                         .put('W', CABLE_COPPER.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
