@@ -64,7 +64,7 @@ public class Machines {
     public static BasicMachine BENDER = new BasicMachine(GTIRef.ID, "bender").setMap(BENDING).addFlags(GUI, ITEM);
     public static BasicMachine CANNER = new BasicMachine(GTIRef.ID, "canner").setMap(CANNING).addFlags(GUI, ITEM);
     public static BasicMachine CENTRIFUGE = new BasicMachine(GTIRef.ID, "centrifuge").setMap(CENTRIFUGING).addFlags(GUI, ITEM, FLUID);
-    public static BasicMachine BATH = new BasicMachine(GTIRef.ID, "bath").setMap(BATHING).addFlags(GUI, ITEM, FLUID).setTiers(HV);
+    public static BasicMachine BATH = new BasicMachine(GTIRef.ID, "bath").setTiers(HV).setMap(BATHING).addFlags(GUI, ITEM, FLUID).baseTexture(new Texture(GTIRef.ID, "block/machine/base/hv"));
     public static BasicMachine DEHYDRATOR = new BasicMachine(GTIRef.ID, "dehydrator").setMap(DEHYDRATING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine CHEMICAL_REACTOR = new BasicMachine(GTIRef.ID, "chemical_reactor").setMap(CHEMICAL_REACTING).addFlags(GUI, ITEM, FLUID).renderContainedLiquids().custom();
     public static BasicMachine CIRCUIT_ASSEMBLER = new BasicMachine(GTIRef.ID, "circuit_assembler").setMap(CIRCUIT_ASSEMBLING).addFlags(GUI, ITEM, FLUID);
