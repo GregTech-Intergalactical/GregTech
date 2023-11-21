@@ -87,6 +87,7 @@ public class ElectrolyzerLoader {
 
     private static void addVitriolRecipe(Material vitriol, Material dust){
         ELECTROLYZING.RB().fi(vitriol.getLiquid(6000), Water.getLiquid(3000)).ii(TierMaps.INT_CIRCUITS.get(2)).io(DUST.get(dust)).fo(SulfuricAcid.getLiquid(7000), Oxygen.getGas(1000)).add(vitriol.getId() + "_to_" + dust.getId(), 64, 64);
+        ELECTROLYZING.RB().fi(vitriol.getLiquid(6000), DistilledWater.getLiquid(3000)).ii(TierMaps.INT_CIRCUITS.get(2)).io(DUST.get(dust)).fo(SulfuricAcid.getLiquid(7000), Oxygen.getGas(1000)).add(vitriol.getId() + "_to_" + dust.getId() + "_distilled", 64, 64);
     }
 
 }
