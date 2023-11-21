@@ -50,6 +50,9 @@ public class ElectrolyzerLoader {
                 prefix = "fluid";
                 b.fi(t.getFluidTag(inputAmount * 1000));
             }
+            if (t == Water || t == DistilledWater){
+                b.ii(TierMaps.INT_CIRCUITS.get(1));
+            }
             long duration = t.has(ELEC_TICKS) ? ELEC_TICKS.getInt(t) : t.getMass() * 20;
             b.io(items).fo(fluids).add(prefix + "_" + t.getId(),duration, euPerTick);
         });
@@ -83,7 +86,7 @@ public class ElectrolyzerLoader {
     }
 
     private static void addVitriolRecipe(Material vitriol, Material dust){
-        ELECTROLYZING.RB().fi(vitriol.getLiquid(6000), Water.getLiquid(3000)).ii(TierMaps.INT_CIRCUITS.get(1)).io(DUST.get(dust)).fo(SulfuricAcid.getLiquid(7000), Oxygen.getGas(1000)).add(vitriol.getId() + "_to_" + dust.getId(), 64, 64);
+        ELECTROLYZING.RB().fi(vitriol.getLiquid(6000), Water.getLiquid(3000)).ii(TierMaps.INT_CIRCUITS.get(2)).io(DUST.get(dust)).fo(SulfuricAcid.getLiquid(7000), Oxygen.getGas(1000)).add(vitriol.getId() + "_to_" + dust.getId(), 64, 64);
     }
 
 }
