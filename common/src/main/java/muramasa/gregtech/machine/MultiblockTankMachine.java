@@ -32,7 +32,7 @@ public class MultiblockTankMachine extends MaterialBasicMultiMachine {
                     .atElement('C', StructureUtility.lazy(t -> new FakeTileElement<>(t.getCasing()))).offset(2, 2, 0)
                     .build());
         }
-        setTooltipInfo((machine, stack, world, tooltip, flag) -> {
+        addTooltipInfo((machine, stack, world, tooltip, flag) -> {
             tooltip.add(Utils.translatable("machine.drum.capacity", capacity));
         });
         addFlags(MachineFlag.FLUID);

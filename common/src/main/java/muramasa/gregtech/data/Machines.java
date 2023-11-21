@@ -139,7 +139,7 @@ public class Machines {
     /**
      * Transformers
      **/
-    public static BasicMachine TRANSFORMER = new BasicMachine(GTIRef.ID, "transformer").addFlags(EU).setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new BlockEntityTransformer<>(v, pos, state, 1)).noCovers().allowFrontIO().setVerticalFacingAllowed(true).setTooltipInfo((machine, stack, world, tooltip, flag) -> {
+    public static BasicMachine TRANSFORMER = new BasicMachine(GTIRef.ID, "transformer").addFlags(EU).setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new BlockEntityTransformer<>(v, pos, state, 1)).noCovers().allowFrontIO().setVerticalFacingAllowed(true).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
         tooltip.remove(tooltip.size() - 1);
         tooltip.remove(tooltip.size() - 1);
         Tier upper = Tier.getTier(machine.getTier().getVoltage() * 4);
