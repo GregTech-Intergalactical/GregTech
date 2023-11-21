@@ -105,6 +105,6 @@ public class Bath {
         BATHING.RB().ii(CRUSHED_PURIFIED.getMaterialIngredient(input, 1))
                 .fi(SulfuricAcid.getLiquid(vitriol == VitriolOfClay ? 10500 : 3000))
                 .fo(vitriol.getLiquid(vitriol == VitriolOfClay ? 8500 : 3000), Hydrogen.getGas(vitriol == VitriolOfClay ? 3000 : 1000))
-                .io(CRUSHED_REFINED.get(input), CRUSHED_REFINED.get(input)).chances(1.0, 0.005).add(vitriol.getId() + "_from_" + input.getId(), 256);
+                .io(CRUSHED_REFINED.get(input, 1), DUST_SMALL.get(input, 2)).add(vitriol.getId() + "_from_" + input.getId(), 256);
     }
 }
