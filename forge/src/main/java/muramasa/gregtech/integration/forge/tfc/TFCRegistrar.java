@@ -54,7 +54,7 @@ public class TFCRegistrar implements IAntimatterRegistrar {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Side side) {
         if (event == RegistrationEvent.DATA_INIT){
-            array = new Material[]{Bauxite, Cobaltite, Galena, Uraninite, VanadiumMagnetite, BrownLimonite, Hematite, Cooperite, Palladium};
+            array = new Material[]{Bauxite, Cobaltite, Galena, Uraninite, VanadiumMagnetite, BrownLimonite, Hematite, Sheldonite, Palladium};
             /*for (Material material : array) {
                 Helpers.mapOfKeys(Ore.Grade.class, (grade) -> {
                     new GTTFCOreItem(GTIRef.ID, grade.name().toLowerCase() + "_" + material.getId());

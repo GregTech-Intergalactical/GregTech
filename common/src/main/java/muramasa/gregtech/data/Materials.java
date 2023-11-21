@@ -358,7 +358,6 @@ public class Materials {
     public static Material Chalcopyrite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chalcopyrite", 0xa07828, DULL));
     public static Material Chromite = AntimatterAPI.register(Material.class, new Material(Ref.ID, "chromite", 0x23140F, DULL));
     public static Material Cobaltite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cobaltite", 0x5050fa, METALLIC));
-    public static Material Cooperite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cooperite", 0xffffc8, METALLIC));
     public static Material Galena = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "galena", 0x643c64, DULL));
     public static Material Garnierite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "garnierite", 0x32c846, METALLIC));
     public static Material Glauconite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glauconite", 0x82b43c, DULL)); // TODO: Ore Gen;
@@ -381,6 +380,7 @@ public class Materials {
     public static Material Rutile = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rutile", 0xd40d5c, GEM_H)).setMassMultiplierAndDivider(2, 1);
     public static Material Saltpeter = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "saltpeter", 0xe6e6e6, FINE));
     public static Material Scheelite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "scheelite", 0xc88c14, DULL));
+    public static Material Sheldonite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sheldonite", 0xffffc8, METALLIC));
     public static Material Soapstone = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "soapstone", 0x5f915f, DULL)); // TODO: Ore Gen;
     public static Material Spessartine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "spessartine", 0xff6464, DULL));
     public static Material Sphalerite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sphalerite", 0xffffff, DULL));

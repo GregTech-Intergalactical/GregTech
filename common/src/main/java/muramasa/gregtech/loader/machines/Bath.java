@@ -63,7 +63,7 @@ public class Bath {
         addVitriolRecipe(Magnesite, PinkVitriol);
         addVitriolRecipe(Olivine, PinkVitriol);
         addVitriolRecipe(Pyrope, PinkVitriol);
-        addVitriolRecipe(Cooperite, CyanVitriol);
+        addVitriolRecipe(Sheldonite, CyanVitriol);
         addVitriolRecipe(Garnierite, CyanVitriol);
         addVitriolRecipe(Nickel, CyanVitriol);
         addVitriolRecipe(Pentlandite, CyanVitriol);

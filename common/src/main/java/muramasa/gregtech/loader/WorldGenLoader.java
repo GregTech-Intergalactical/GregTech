@@ -2,8 +2,6 @@ package muramasa.gregtech.loader;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.event.WorldGenEvent;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.worldgen.StoneLayerOre;
@@ -137,7 +135,7 @@ public class WorldGenLoader {
             ev.stoneLayer(new WorldGenStoneLayerBuilder("stone_ores_3").withStone(STONE).withWeight(4).buildVein()); //Ores
             ev.stoneLayer(new WorldGenStoneLayerBuilder("stone_ores_4").withStone(STONE).withWeight(4).buildVein()); //Ores
             ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite_ores").withStone(BLACK_GRANITE).withWeight(1).addOres(
-                    new StoneLayerOre(Cooperite, O32, -64, -32),
+                    new StoneLayerOre(Sheldonite, O32, -64, -32),
                     new StoneLayerOre(Iridium, O64, -64, -46)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("red_granite_ores").withStone(RED_GRANITE).withWeight(1).addOres(
@@ -228,9 +226,9 @@ public class WorldGenLoader {
                 OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("nickel").asOreVein(11, 56, 40, 3, 16, Garnierite, Nickel, Cobaltite, Pentlandite,
                 OVERWORLD, NETHER, END, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
-        ev.vein(new WorldGenVeinLayerBuilder("platinum").asOreVein(-24, -9, 5, 3, 16, Cooperite, Palladium, Platinum, Iridium,
+        ev.vein(new WorldGenVeinLayerBuilder("platinum").asOreVein(-24, -9, 5, 3, 16, Sheldonite, Palladium, Platinum, Iridium,
                 OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS).buildVein());
-        ev.vein(new WorldGenVeinLayerBuilder("platinum_end").asOreVein(40, 50, 5, 3, 16, Cooperite, Palladium, Platinum, Iridium,
+        ev.vein(new WorldGenVeinLayerBuilder("platinum_end").asOreVein(40, 50, 5, 3, 16, Sheldonite, Palladium, Platinum, Iridium,
                 END).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("monazite").asOreVein(-44, -14, 30, 3, 16, Bastnasite, Bastnasite, Monazite, Neodymium,
                 OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());

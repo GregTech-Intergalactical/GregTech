@@ -283,7 +283,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Cinnabar).asOre().harvestLevel(1);
         event.setMaterial(Chromite).asOre().harvestLevel(2);
         event.setMaterial(Cobaltite).asOre().harvestLevel(2);
-        event.setMaterial(Cooperite).asOre().harvestLevel(1);
+        event.setMaterial(Sheldonite).asOre().harvestLevel(1);
         event.setMaterial(Galena).asOre().harvestLevel(3);
         event.setMaterial(Garnierite).asOre().harvestLevel(3);
         event.setMaterial(Glauconite).asOre().harvestLevel(2); // TODO: Ore Gen;
@@ -715,7 +715,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Cinnabar).mats(of(Mercury, 1, Sulfur, 1));
         event.setMaterial(Chromite).mats(of(Iron, 1, Chromium, 2, Oxygen, 4)).elecTicks(210);
         event.setMaterial(Cobaltite).mats(of(Cobalt, 1, Arsenic, 1, Sulfur, 1)).elecTicks(150);
-        event.setMaterial(Cooperite).mats(of(Platinum, 3, Nickel, 1, Sulfur, 1, Palladium, 1));
+        event.setMaterial(Sheldonite).mats(of(Platinum, 3, Nickel, 1, Sulfur, 1, Palladium, 1));
         event.setMaterial(Galena).mats(of(Lead, 3, Silver, 3, Sulfur, 2)).elecTicks(832);
         event.setMaterial(Garnierite).mats(of(Nickel, 1, Oxygen, 1), 1).elecTicks(72);
         event.setMaterial(Graphite).mats(of(Carbon, 4), 1).elecTicks(100);
@@ -1264,7 +1264,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Coal).addByProduct(Lignite, Thorium);
         event.setMaterial(Cobalt).addByProduct(Cobaltite);
         event.setMaterial(Cobaltite).addByProduct(Cobalt);
-        event.setMaterial(Cooperite).addByProduct(Palladium, Nickel, Iridium);
+        event.setMaterial(Sheldonite).addByProduct(Palladium, Nickel, Iridium);
         event.setMaterial(Copper).addByProduct(Cobalt, Gold, Nickel);
         event.setMaterial(DarkAsh).addByProduct(Carbon);
         event.setMaterial(Diamond).addByProduct(Graphite);
@@ -1363,7 +1363,7 @@ public class GregTechMaterialEvents {
                 TungstenSteel, Brass, Nichrome, Electrum, Bronze, Stibnite, Wulfenite, RedAlloy, SterlingSilver, RoseGold, BatteryAlloy, SolderingAlloy, TricalciumPhosphate);
         CENT15.add(Kanthal, IndiumGalliumPhosphide, BlackSteel, RedGarnet, YellowGarnet, BismuthBronze, BlackBronze, VanadiumSteel, CobaltBrass,
                 Pitchblende, Redstone, HSSS);
-        CENT20.add(Lapis, Tetrahedrite, RedSteel, BlueSteel, Basalt, HSSE, Cooperite, HSSG, Komatiite);
+        CENT20.add(Lapis, Tetrahedrite, RedSteel, BlueSteel, Basalt, HSSE, Sheldonite, HSSG, Komatiite);
         CENT.add(CENT5.all().toArray(new Material[0]));
         CENT.add(CENT10.all().toArray(new Material[0]));
         CENT.add(CENT15.all().toArray(new Material[0]));
@@ -1371,7 +1371,7 @@ public class GregTechMaterialEvents {
         CHEMBATH_MERCURY.add(Chalcopyrite, Gold);
         CHEMBATH_MERCURY.add(Copper, Gold);
         CHEMBATH_MERCURY.add(Gold,Gold);
-        CHEMBATH_MERCURY.add(Cooperite, Cooperite);
+        CHEMBATH_MERCURY.add(Sheldonite, Sheldonite);
         CHEMBATH_MERCURY.add(Lead, Silver);
         CHEMBATH_MERCURY.add(Galena, Silver);
         CHEMBATH_MERCURY.add(Magnetite, Gold);
@@ -1396,7 +1396,7 @@ public class GregTechMaterialEvents {
         CHEMBATH_PERSULFATE.add(Zinc, Zinc);
         CHEMBATH_PERSULFATE.add(Platinum, Nickel);
         CHEMBATH_PERSULFATE.add(Iron, Nickel);
-        CHEMBATH_PERSULFATE.add(Cooperite, Nickel);
+        CHEMBATH_PERSULFATE.add(Sheldonite, Nickel);
         FURNACE_FUELS.add(CoalCoke, GEM, 3200);
         FURNACE_FUELS.add(CoalCoke, DUST, 3200);
         FURNACE_FUELS.add(CoalCoke, BLOCK, 32000);
@@ -1474,7 +1474,7 @@ public class GregTechMaterialEvents {
         GRINDABLE.add(/* Paper, */Coal, Charcoal, Lignite, Lead, Tin, SolderingAlloy, Flint, Gold, Silver, Iron,
                 IronMagnetic, Steel, SteelMagnetic, Zinc, Antimony, Copper, AnnealedCopper, Bronze, Nickel, Invar,
                 Brass, WroughtIron, Electrum, Clay, Blaze);
-        NOBBF.add(Tetrahedrite, Chalcopyrite, Cooperite, Pyrolusite, Magnesite, Molybdenite, Galena);
+        NOBBF.add(Tetrahedrite, Chalcopyrite, Sheldonite, Pyrolusite, Magnesite, Molybdenite, Galena);
         NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, Rubber,
                 StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone, CetaneBoostedDiesel,
                 Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
