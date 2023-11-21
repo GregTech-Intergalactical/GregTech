@@ -405,6 +405,7 @@ public class Guis {
         SOLAR_BOILER.addGuiCallback(t -> {
             t.addWidget(SolarBoilerWidget.build().setSize(70, 25, 62, 54));
         });
+        ADJUSTABLE_TRANSFORMER.getGui().setBackgroundTexture(new ResourceLocation(Ref.ID, "creative_generator"));
         // if (side.isClient()) {
         ADJUSTABLE_TRANSFORMER.addGuiCallback(t -> {
             t.addButton(10, 18, ButtonOverlay.APAD_LEFT, false)
