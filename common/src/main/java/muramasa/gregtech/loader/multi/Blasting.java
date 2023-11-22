@@ -159,7 +159,7 @@ public class Blasting {
                 .io(INGOT_HOT.get(Kanthal, 3))
                 .add("kanthal_ingot", 90 * 20, 120);
         /* Nichrome*/
-        BLASTING.RB().temperature(2700).ii(DUST.getMaterialIngredient(Nickel, 4), DUST.getMaterialIngredient(Chromium, 1))
+        BLASTING.RB().temperature(2700).ii(DUST.getMaterialIngredient(Nickel, 4), DUST.getMaterialIngredient(Chromium, 1), INT_CIRCUITS.get(2))
                 .io(INGOT_HOT.get(Nichrome, 5))
                 .add("nichrome_ingot", 135 * 20, 480);
         /* Osmiridium*/
