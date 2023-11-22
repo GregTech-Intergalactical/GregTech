@@ -206,16 +206,16 @@ public class AssemblyLoader {
     private static void turbines(){
         MaterialTags.TOOLS.getAll().forEach((m,t) -> {
             if (t.toolTypes().contains(ToolTypes.SMALL_TURBINE_ROTOR)){
-                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), ROD_LONG.getMaterialIngredient(Magnalium, 1)).io(ToolTypes.SMALL_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_small_turbine_rotor", 160, 100);
+                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), ROD_LONG.getMaterialIngredient(Magnalium, 1)).io(ToolTypes.SMALL_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_small_turbine_rotor", 320, 16);
             }
             if (t.toolTypes().contains(ToolTypes.TURBINE_ROTOR)){
-                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), ROD_LONG.getMaterialIngredient(Titanium, 1)).io(ToolTypes.TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_turbine_rotor", 320, 400);
+                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), ROD_LONG.getMaterialIngredient(Titanium, 1)).io(ToolTypes.TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_turbine_rotor", 640, 64);
             }
             if (t.toolTypes().contains(ToolTypes.LARGE_TURBINE_ROTOR)){
-                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 12), ROD_LONG.getMaterialIngredient(TungstenSteel, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor", 640, 1600);
+                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 12), ROD_LONG.getMaterialIngredient(TungstenSteel, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor", 1280, 64);
             }
             if (t.toolTypes().contains(ToolTypes.HUGE_TURBINE_ROTOR)){
-                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 16), ROD_LONG.getMaterialIngredient(Americium, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor", 1280, 6400);
+                ASSEMBLING.RB().ii(ToolTypes.TURBINE_BLADE.getMaterialIngredient(m, 16), ROD_LONG.getMaterialIngredient(Americium, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor", 2560, 256);
             }
         });
     }
