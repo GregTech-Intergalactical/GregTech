@@ -173,7 +173,12 @@ public class Machines {
     public static MultiMachine FUSION_REACTOR = new MultiMachine(GTIRef.ID, "fusion_control_computer").setTiers(LUV).setMap(FUSION).addFlags(GUI, FLUID, EU).setTile(BlockEntityFusionReactor::new).setTextureBlock(GregTechData.CASING_FUSION);
     public static MultiMachine HEAT_EXCHANGER = new MultiMachine(GTIRef.ID, "heat_exchanger").setTiers(EV).setMap(HEAT_EXCHANGING).addFlags(GUI, FLUID, EU).setTile(BlockEntityHeatExchanger::new).custom().setTextureBlock(GregTechData.CASING_TITANIUM);
     public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(GTIRef.ID, "implosion_compressor").setTiers(HV).setMap(IMPLOSION_COMPRESSING).addFlags(GUI, ITEM, EU).setTile(BlockEntityImplosionCompressor::new).setTextureBlock(GregTechData.CASING_SOLID_STEEL);
-    public static MultiMachine LARGE_BOILER = new MultiMachine(GTIRef.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setMap(LARGE_BOILERS).setTile(BlockEntityLargeBoiler::new).custom();
+    public static MultiMachine LARGE_BOILER = new MultiMachine(GTIRef.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setMap(LARGE_BOILERS).setTile(BlockEntityLargeBoiler::new).custom().setTierSpecificLang().addTooltipInfo((machine, stack, world, tooltip, flag) -> {
+        double total = machine.getTier() == LV ? 32000 : machine.getTier() == MV ? 36000 : machine.getTier() == HV ? 41600 : 48000;
+        double production = machine.getTier() == LV ? 16000 : machine.getTier() == MV ? 24000 : machine.getTier() == HV ? 32000 : 40000;
+        tooltip.add(Utils.translatable("machine.gti.large_boiler.production", total, production));
+        tooltip.add(Utils.translatable("machine.gti.large_boiler.circuit"));
+    });
     public static MultiMachine LARGE_TURBINE = new MultiMachine(GTIRef.ID, "large_turbine").setTiers(HV, EV, IV).setMap(STEAM_FUELS, HV).setMap(HP_STEAM_FUELS, IV).setMap(GAS_FUELS, EV).addFlags(GUI, ITEM, FLUID, EU, GENERATOR).setTile(BlockEntityLargeTurbine::new).custom(Textures.TURBINE).setTierSpecificLang();
     public static MultiMachine MULTI_SMELTER = new MultiMachine(GTIRef.ID, "multi_smelter").setTiers(HV).setMap(SMELTING).addFlags(GUI, ITEM, EU).setTile(BlockEntityMultiSmelter::new).custom().setTextureBlock(GregTechData.CASING_HEAT_PROOF);
     public static MultiMachine NUCLEAR_REACTOR = new MultiMachine(GTIRef.ID, "nuclear_reactor").setTiers(EV).setMap(NUCLEAR).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityNuclearReactor::new).custom().setTextureBlock(GregTechData.CASING_RADIATION_PROOF);

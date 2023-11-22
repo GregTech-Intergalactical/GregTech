@@ -31,6 +31,8 @@ public class GregTechLocalizations {
             add(GTIRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
             add(GTIRef.ID + ".rei.tooltip.material_tree", "Material Tree");
             add("machine.transformer.voltage_info", "%s -> %s (Use Soft Hammer to invert)");
+            add("machine.gti.large_boiler.production", "Produces %sL of Steam with 1 Coal at %sL/s");
+            add("machine.gti.large_boiler.circuit", "A programmed circuit in the main block throttles the boiler (-1000L/s per config)");
             add(GTIRef.ID + ".rotor.tooltip.efficiency", "Turbine Efficiency: %s");
             add(GTIRef.ID + ".rotor.tooltip.steam_flow", "Optimal Steam flow: %sL/sec");
             add(GTIRef.ID + ".rotor.tooltip.gas_flow", "Optimal Gas flow(EU burnvalue per tick): %sEU/t");
@@ -76,6 +78,10 @@ public class GregTechLocalizations {
             override("machine.large_turbine.hv", "Large Steam Turbine");
             override("machine.large_turbine.ev", "Large Gas Turbine");
             override("machine.large_turbine.iv", "Large HP Steam Turbine");
+            override("machine.large_boiler.lv", "Large Bronze Boiler");
+            override("machine.large_boiler.mv", "Large Steel Boiler");
+            override("machine.large_boiler.hv", "Large HP Titanium Boiler");
+            override("machine.large_boiler.ev", "Large HP Tungstensteel Boiler");
         }
     }
 
