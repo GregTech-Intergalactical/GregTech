@@ -2,6 +2,7 @@ package muramasa.gregtech.loader;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.event.WorldGenEvent;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.worldgen.StoneLayerOre;
@@ -56,16 +57,35 @@ public class WorldGenLoader {
         new OilSpoutFluid("light_oil", OilLight.getLiquid(), 20, 625, 3, 6);
         new OilSpoutFluid("heavy_oil", OilHeavy.getLiquid(), 20, 625, 5, 4);
         new OilSpoutFluid("natural_gas", NaturalGas.getGas(), 20, 625, 4, 7);
+        if (AntimatterAPI.isModLoaded(MOD_TWILIGHT)){
+            initTwilightForestOres(ev);
+        }
     }
 
     private static void initTwilightForestOres(WorldGenEvent event){
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Coal).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Lignite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Salt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(RockSalt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Bauxite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(OilShale).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(MilkyQuartz).withSize(50).withWeight(1).atHeight(-16, 0).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Coal).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Lignite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Salt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(RockSalt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Bauxite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(OilShale).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(MilkyQuartz).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Sulfur).withSize(16).withWeight(100).setRare(true).atHeight(-32, -24).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Apatite).withSize(16).withWeight(50).setRare(true).atHeight(-8, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Ruby).withSize(12).withWeight(100).setRare(true).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Amber).withSize(12).withWeight(100).setRare(true).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Amethyst).withSize(12).withWeight(100).setRare(true).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Galena).withSize(24).withWeight(25).setRare(true).atHeight(-24, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Tetrahedrite).withSize(24).withWeight(25).setRare(true).atHeight(-24, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Cassiterite).withSize(24).withWeight(25).setRare(true).atHeight(-24, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Sheldonite).withSize(6).withWeight(100).setRare(true).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Pentlandite).withSize(16).withWeight(25).setRare(true).atHeight(-24, -8).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Scheelite).withSize(12).withWeight(25).setRare(true).atHeight(-24, -8).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Rutile).withSize(6).withWeight(25).setRare(true).atHeight(-24, -8).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Bastnasite).withSize(16).withWeight(100).setRare(true).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Graphite).withSize(6).withWeight(50).setRare(true).atHeight(-32, -24).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Pitchblende).withSize(16).withWeight(100).setRare(true).atHeight(-24, -16).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
     }
 
     private static void initSmallOres(WorldGenEvent event){
@@ -187,7 +207,7 @@ public class WorldGenLoader {
             ev.vein(new WorldGenVeinLayerBuilder("gold").asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold,
                     BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("iron").asOreVein(-14, 51, 120, 4, 24, BrownLimonite, YellowLimonite, Hematite, Malachite,
-                    NETHER, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                    NETHER, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("cassiterite").asOreVein(6, 126, 50, 5, 24, Tin, Tin, Cassiterite, Tin,
                     END, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("tetrahedrite").asOreVein(51, 131, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite,
@@ -196,7 +216,7 @@ public class WorldGenLoader {
             ev.vein(new WorldGenVeinLayerBuilder("gold").asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold,
                     OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("iron").asOreVein(-14, 51, 120, 4, 24, BrownLimonite, YellowLimonite, Hematite, Malachite,
-                    OVERWORLD, NETHER, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                    OVERWORLD, NETHER, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("cassiterite").asOreVein(6, 126, 50, 5, 24, Tin, Tin, Cassiterite, Tin,
                     OVERWORLD, END, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("tetrahedrite").asOreVein(51, 131, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite,
@@ -205,7 +225,7 @@ public class WorldGenLoader {
         ev.vein(new WorldGenVeinLayerBuilder("naquadah").asOreVein(10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, Naquadah,
                 END, BE_MARS, AA_MARS).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("magnetite").asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite,
-                OVERWORLD, NETHER, TWILIGHT_FOREST, BE_MARS, AA_MARS).buildVein());
+                OVERWORLD, NETHER, BE_MARS, AA_MARS).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("nether_quartz").asOreVein(40, 80, 80, 5, 24, Quartz, Quartz, Quartz, Quartz,
                 NETHER).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("sulfur").asOreVein(5, 20, 100, 5, 24, Sulfur, Sulfur, Pyrite, Sphalerite,
@@ -215,44 +235,44 @@ public class WorldGenLoader {
         ev.vein(new WorldGenVeinLayerBuilder("salts").asOreVein(51, 66, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene,
                 OVERWORLD, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("redstone").asOreVein(-54, -9, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("redstone_nether").asOreVein(10, 40, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar,
                 NETHER).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("pitchblend").asOreVein(-54, -9, 20, 3, 20, Pitchblende, Pitchblende, Uraninite, Uraninite,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         /*ev.vein(new WorldGenVeinLayerBuilder("uranium").asOreVein(-44, -29, 20, 3, 16, Uraninite, Uraninite, Uraninite, Uraninite,
                 OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());*/
         ev.vein(new WorldGenVeinLayerBuilder("soapstone").asOreVein(-54, -9, 40, 3, 16, Soapstone, Talc, Glauconite, Pentlandite,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("nickel").asOreVein(11, 56, 40, 3, 16, Garnierite, Nickel, Cobaltite, Pentlandite,
                 OVERWORLD, NETHER, END, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("platinum").asOreVein(-24, -9, 5, 3, 16, Sheldonite, Palladium, Platinum, Iridium,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("platinum_end").asOreVein(40, 50, 5, 3, 16, Sheldonite, Palladium, Platinum, Iridium,
                 END).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("monazite").asOreVein(-44, -14, 30, 3, 16, Bastnasite, Bastnasite, Monazite, Neodymium,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("molybdenum").asOreVein(-44, 1, 5, 3, 16, Wulfenite, Molybdenite, Molybdenum, Powellite,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("molybdenum_end").asOreVein(20, 50, 5, 3, 16, Wulfenite, Molybdenite, Molybdenum,
                 Powellite , END).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("tungstate").asOreVein(-44, 1, 10, 3, 16, Scheelite, Scheelite, Tungstate, Lithium,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("tungstate_end").asOreVein(20, 50, 10, 3, 16, Scheelite, Scheelite, Tungstate, Lithium,
                 END).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("sapphire").asOreVein(-54, -9, 60, 3, 16, Almandine, Pyrope, Sapphire, GreenSapphire,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("manganese").asOreVein(-44, -29, 20, 3, 16, Grossular, Spessartine, Pyrolusite, Tantalite,
-                OVERWORLD, TWILIGHT_FOREST, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("manganese_end").asOreVein(20, 30, 20, 3, 16, Grossular, Spessartine, Pyrolusite, Tantalite,
                 END).buildVein());
         Material third = CertusQuartz.enabled ? CertusQuartz : Barite;
         ev.vein(new WorldGenVeinLayerBuilder("quartz").asOreVein(6, 66, 60, 3, 16, MilkyQuartz, Barite, third, third,
                 OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("diamond").asOreVein(-59, -48, 40, 2, 16, Graphite, Graphite, Diamond, Coal,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("olivine").asOreVein(-54, -9, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("olivine_end").asOreVein(10, 40, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite,
                 END).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("apatite").asOreVein(-4, 41, 60, 3, 16, Apatite, Apatite, TricalciumPhosphate, Phosphate,
@@ -261,20 +281,20 @@ public class WorldGenLoader {
                 OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         Material sporadic = !AntimatterConfig.STONE_LAYERS.get() ? Calcite : Alumina;
         ev.vein(new WorldGenVeinLayerBuilder("lapis").asOreVein(-44, 1, 40, 5, 16, Lazurite, Sodalite, Lapis, sporadic,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("lapis_end").asOreVein(20, 50, 40, 5, 16, Lazurite, Sodalite, Lapis, sporadic,
                 END).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("beryllium").asOreVein(-59, -21, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
-                OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("beryllium_end").asOreVein(5, 30, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
                 END).buildVein());
         if (AntimatterAPI.isModLoaded(MOD_TFC) || !AntimatterConfig.STONE_LAYERS.get()){
             ev.vein(new WorldGenVeinLayerBuilder("bauxite").asOreVein(-14, 46, 80, 4, 24, Bauxite, Bauxite, Alumina, Ilmenite,
-                    OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
+                    OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         }
         if (!AntimatterConfig.STONE_LAYERS.get()){
             ev.vein(new WorldGenVeinLayerBuilder("oilshale").asOreVein(-14, 31, 80, 6, 32, OilShale, OilShale, OilShale, OilShale,
-                    OVERWORLD, TWILIGHT_FOREST).buildVein());
+                    OVERWORLD).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("lignite").asOreVein(0, 200, 160, 8, 32, Lignite, Lignite, Lignite, Coal,
                     OVERWORLD).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("coal").asOreVein(0, 200, 80, 6, 32, Coal, Coal, Coal, Lignite,
