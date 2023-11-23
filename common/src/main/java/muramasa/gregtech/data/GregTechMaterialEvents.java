@@ -318,6 +318,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(VanadiumMagnetite).asOre().harvestLevel(2);
         event.setMaterial(Wulfenite).asOre().harvestLevel(3);
         event.setMaterial(YellowLimonite).asOre().harvestLevel(2);
+        event.setMaterial(Zircon).asDust();
         /**
          **  Ore Stones
          **/
@@ -447,7 +448,6 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(AluminiumFluoride).asFluid(0,1560).flags(MOLTEN, ACID);
         event.setMaterial(Antimatter).asFluid();
-        event.setMaterial(BlackVitriol).asFluid();
         event.setMaterial(BlueVitriol).asFluid();
         event.setMaterial(GreenVitriol).asFluid();
         event.setMaterial(RedVitriol).asFluid();
@@ -751,6 +751,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(VanadiumMagnetite).mats(of(Magnetite, 1, Vanadium, 1));
         event.setMaterial(Wulfenite).mats(of(Lead, 1, Molybdenum, 1, Oxygen, 4));
         event.setMaterial(YellowLimonite).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
+        event.setMaterial(Zircon).mats(of(Zirconium, 1, SiliconDioxide, 3, Oxygen, 2)).elecTicks(1740);
         /**
          **  Ore Stones
          **/
@@ -1317,6 +1318,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Pyrite).addByProduct(Sulfur, TricalciumPhosphate, Iron);
         event.setMaterial(Pyrolusite).addByProduct(Manganese);
         event.setMaterial(Pyrope).addByProduct(RedGarnet, Magnesium);
+        event.setMaterial(Rutile).addByProduct(Hematite, Zircon);
         event.setMaterial(Quartz).addByProduct(Netherrack);
         event.setMaterial(MilkyQuartz).addByProduct(Barite);
         event.setMaterial(RedGarnet).addByProduct(Spessartine, Pyrope, Almandine);
@@ -1461,7 +1463,7 @@ public class GregTechMaterialEvents {
                 Chloromethane, Malachite, /*Borax, */ /*Kaolinite,*/ Obsidian, NitricAcid, VinylChloride, Acetone, /*Asbestos,*/ PotassiumFeldspar,
                 MethylAcetate, Sodalite, AllylChloride, Dichlorobenzene, Phenol, Glycerol, Talc, Soapstone, PhosphoricAcid,
                 Chlorobenzene, SulfuricAcid, Pyrope, SodiumPersulfate, Chloroform, Grossular, Spessartine, Almandine, Uvarovite, Andradite,
-                Emerald, Tetranitromethane, Galena);
+                Emerald, Tetranitromethane, Galena, Zircon);
         ELEC120.add(Clay, /*Trona,*/ BlueTopaz, Topaz, /*Pollucite,*/ CarbonDioxide, SulfurDioxide, Epichlorohydrin, Lepidolite, /*FullersEarth, Alunite,*/ Glauconite,
                 /*Mica,*/ Lazurite, Tanzanite, Biotite, StainlessSteel, Bentonite, Ultimet, CalciumAcetateSolution, Dimethyldichlorosilane, /*Vermiculate, Zeolite,*/ GlycerylTrinitrate,
                 LeadZincSolution);

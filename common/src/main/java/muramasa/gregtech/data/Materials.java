@@ -395,6 +395,7 @@ public class Materials {
     public static Material Uraninite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uraninite", 0x232323, METALLIC));
     public static Material Uvarovite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uvarovite", 0xb4ffb4, DIAMOND));
     public static Material YellowLimonite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "yellow_limonite", 0xc8c800, METALLIC));
+    public static Material Zircon = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "zircon", 0x63181d, DIAMOND));
 
     /**
      ** Ore Stones
@@ -542,7 +543,6 @@ public class Materials {
 
     public static Material AluminiumFluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "aluminium_fluoride", 0xc8bebe, NONE));
     public static Material Antimatter = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "anti_matter", 0x8000c4, NONE));
-    public static Material BlackVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "black_vitriol", 0x424242, NONE));
     public static Material BlueVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_vitriol", 0x4242DE, NONE));
     public static Material GreenVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "green_vitriol", 0x42de42, NONE));
     public static Material RedVitriol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_vitriol", 0xde4242, NONE));
