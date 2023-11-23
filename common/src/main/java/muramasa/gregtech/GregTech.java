@@ -14,6 +14,7 @@ import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
+import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.*;
@@ -185,6 +186,11 @@ public class GregTech extends AntimatterMod {
                 GTRemapping.init();
                 AntimatterJEIREIPlugin.addItemsToHide(LAVA);
                 AntimatterJEIREIPlugin.addItemsToHide(l -> {
+                    IAntimatterTool jackhammer_lv = AntimatterAPI.get(IAntimatterTool.class, "jackhammer_lv");
+                    IAntimatterTool jackhammer_mv = AntimatterAPI.get(IAntimatterTool.class, "jackhammer_mv");
+                    IAntimatterTool screwdriver_mv = AntimatterAPI.get(IAntimatterTool.class, "electric_screwdriver_mv");
+                    IAntimatterTool screwdriver_hv = AntimatterAPI.get(IAntimatterTool.class, "electric_screwdriver_hv");
+                    l.addAll(Arrays.asList(jackhammer_lv.getItem(), jackhammer_mv.getItem(), screwdriver_mv.getItem(), screwdriver_hv.getItem()));
                     if (!GregTechConfig.HARDER_CIRCUITS){
                         l.addAll(Arrays.asList(GTCoreItems.CircuitBoardPhenolic));
                         l.addAll(Arrays.asList(CircuitWetware, MicroProcessor, IntegratedProcessor, NanoProcessor, QuantumProcessor));
