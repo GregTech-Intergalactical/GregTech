@@ -95,10 +95,6 @@ public class Blasting {
                 .fi(Oxygen.getGas(1000))
                 .io(INGOT.get(AnnealedCopper))
                 .add("annealed_copper_ingot", 25 * 20, 120);
-        /* Wrought Iron*/
-        BLASTING.RB().temperature(1700).ii(DUST.getMaterialIngredient(Ilmenite, 1), DUST.getMaterialIngredient(Carbon, 1))
-                .io(NUGGET.get(WroughtIron, 4), DUST_TINY.get(Rutile, 4))
-                .add("wrought_iron_nuggets", 40 * 20, 500);
         /* Steel */
         BLASTING.RB().temperature(1000).ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron, 1))
                 .fi(Oxygen.getGas(1000))
