@@ -75,7 +75,7 @@ dependencies {
     modRuntimeOnly("com.blamejared.crafttweaker:CraftTweaker-forge-1.18.2:${rootProject.crafttweaker_version}")
     modImplementation("curse.maven:ctm-267602:3933537")
     modCompileOnly("curse.maven:terrafirmacraft-302973:4723717")
-    modRuntimeOnly("curse.maven:terrafirmacraft-302973:4723717")
+    //modRuntimeOnly("curse.maven:terrafirmacraft-302973:4723717")
     modRuntimeOnly("curse.maven:patchouli-306770:3846086")
     modRuntimeOnly("curse.maven:the-twilight-forest-227639:4337390")
     modRuntimeOnly("curse.maven:beyond-earth-377448:3807783")
