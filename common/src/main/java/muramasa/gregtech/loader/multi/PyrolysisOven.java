@@ -13,13 +13,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.RAW_ORE;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.PYROLYSISING;
 
 public class PyrolysisOven {
     public static void init(){
-        PYROLYSISING.RB().ii(DUST.getMaterialIngredient(Materials.OilShale, 1)).fo(Materials.Oil.getLiquid(25)).add("oil", 200, 120);
+        PYROLYSISING.RB().ii(DUST.getMaterialIngredient(Materials.OilShale, 1)).fo(Materials.Oil.getLiquid(25)).add("oilshale", 200, 120);
+        PYROLYSISING.RB().ii(RAW_ORE.getMaterialIngredient(Materials.OilShale, 1)).fo(Materials.Oil.getLiquid(25)).add("oilshale_raw", 200, 120);
         PYROLYSISING.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff, 1), TierMaps.INT_CIRCUITS.get(1)).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(Materials.Biomass.getLiquid(1500)).add("biomass", 100, 10);
         PYROLYSISING.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff, 1), TierMaps.INT_CIRCUITS.get(2)).fi(AntimatterMaterials.Water.getLiquid(1500)).fo(Materials.Biomass.getLiquid(1500)).add("fermented_biomass", 200, 10);
         PYROLYSISING.RB().ii(DUST.getMaterialIngredient(Sugar, 23), TierMaps.INT_CIRCUITS.get(1)).io(DUST.get(Charcoal, 12)).fo(Water.getLiquid(11000)).add("sugar_to_charcoal", 320, 64);

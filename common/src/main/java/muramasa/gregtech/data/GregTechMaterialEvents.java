@@ -324,7 +324,7 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Bauxite).asOreStone(ORE_SMALL).harvestLevel(1);
         event.setMaterial(Lignite).asGemBasic(false).asOreStone(0, 2, ORE_SMALL);
-        event.setMaterial(OilShale).asOreStone(ORE_SMALL).harvestLevel(1);
+        event.setMaterial(OilShale).asDust(ORE, ORE_STONE, ORE_SMALL, RAW_ORE, RAW_ORE_BLOCK, ROCK).setExpRange(1,5).harvestLevel(1);
         event.setMaterial(RockSalt).asOreStone(ORE_SMALL).harvestLevel(1);
         event.setMaterial(Salt).asOreStone(ORE_SMALL).harvestLevel(1);
         /**
@@ -1429,11 +1429,6 @@ public class GregTechMaterialEvents {
         FURNACE_FUELS.add(Charcoal, BLOCK, 16000);
         FURNACE_FUELS.add(OilShale, DUST, 400);
         FURNACE_FUELS.add(OilShale, RAW_ORE, 400);
-        FURNACE_FUELS.add(OilShale, CRUSHED, 450);
-        FURNACE_FUELS.add(OilShale, CRUSHED_PURIFIED, 500);
-        FURNACE_FUELS.add(OilShale, DUST_IMPURE, 400);
-        FURNACE_FUELS.add(OilShale, DUST_PURE, 400);
-        FURNACE_FUELS.add(OilShale, CRUSHED_REFINED, 550);
         CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene, LightFuel, HeavyFuel);
         CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Dilithium, Monazite, Coal, CoalCoke, Charcoal, Lignite, LigniteCoke);
         /*DECAYABLE.add(Thallium209,Thallium210,Bismuth213,Bismuth214,Polonium213,Polonium214,Polonium215,Polonium216,Polonium218,Astatine217,Astatine218,
