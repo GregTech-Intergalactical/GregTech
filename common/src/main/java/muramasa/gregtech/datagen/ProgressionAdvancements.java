@@ -20,9 +20,9 @@ public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> 
 
     @Override
     public void accept(Consumer<Advancement> consumer) {
-        progressionRoot = buildRootAdvancement(AntimatterMaterialTypes.ROCK.get(Flint), new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"),
+        /*progressionRoot = buildRootAdvancement(AntimatterMaterialTypes.ROCK.get(Flint), new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"),
                 GTIRef.ID + ".advancements.greg", GTIRef.ID + ".advancements.greg.desc", FrameType.TASK, true, true, false)
-                .addCriterion("has_rocks", hasItem(getForgelikeItemTag("rocks"))).save(consumer, getLoc(GTIRef.ID, "progression/root"));
+                .addCriterion("has_rocks", hasItem(getForgelikeItemTag("rocks"))).save(consumer, getLoc(GTIRef.ID, "progression/root"));*/
     }
 
 }
