@@ -47,8 +47,9 @@ dependencies{
     modImplementation("com.github.Trinsdar:ARRP:0.6.7-hotfix")
     include("io.github.gregtechintergalactical:gtcore-fabric:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
     implementation("io.github.gregtechintergalactical:gtcore-fabric:${rootProject.gt_core_version}-${rootProject.minecraft_version}:dev-shadow"){
-        exclude(group: 'io.github.gregtechintergalactical')
+        transitive = false
     }
+    modImplementation("com.terraformersmc.terraform-api:terraform-wood-api-v1:3.1.0")
     modRuntimeOnly("com.gtnewhorizon.structurelib:structurelib-fabric:${project.structurelib_version}-${project.minecraft_version}")
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
     modCompileOnly("mezz.jei:jei-${rootProject.minecraft_version}-fabric:${rootProject.jei_version}"){
@@ -60,7 +61,7 @@ dependencies{
     modRuntimeOnly("com.terraformersmc:modmenu:${rootProject.mod_menu_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    modImplementation "maven.modrinth:carbon-config:2ngFmmhP"
+    modImplementation "maven.modrinth:carbon-config:pjhTjv8N"
     modImplementation("earth.terrarium:botarium-fabric-1.18.2:${project.botarium_version}"){
         transitive = false
     }
