@@ -42,33 +42,33 @@ public class WireCablesPlates {
                 }
             }
             if (wire.getMaterial().has(PLATE)) {
-                provider.shapeless(output,  wire.getMaterial().getId() + "_plate_to_wire","wire","has_cutter", provider.hasSafeItem(AntimatterDefaultTools.WIRE_CUTTER.getTag()),
+                provider.shapeless(output,  wire.getMaterial().getId() + "_plate_to_wire","wire",
                         new ItemStack(wires.get(VTINY)),
                         AntimatterDefaultTools.WIRE_CUTTER.getTag(), PLATE.get(wire.getMaterial()));
             }
             if (cable != null){ //manual lv cable crafting
-                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_1x", "cables", "has_wire1x", provider.hasSafeItem(wire.getBlockItem(VTINY)), new ItemStack(cable.getBlockItem(VTINY)), wire.getBlockItem(VTINY), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
-                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_2x", "cables", "has_wire2x", provider.hasSafeItem(wire.getBlockItem(TINY)), new ItemStack(cable.getBlockItem(TINY)), wire.getBlockItem(TINY), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
-                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_4x", "cables", "has_wire4x", provider.hasSafeItem(wire.getBlockItem(SMALL)), new ItemStack(cable.getBlockItem(SMALL)), wire.getBlockItem(SMALL), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
-                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_8x", "cables", "has_wire8x", provider.hasSafeItem(wire.getBlockItem(NORMAL)), new ItemStack(cable.getBlockItem(NORMAL)), wire.getBlockItem(NORMAL), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
-                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_12x", "cables", "has_wire12x", provider.hasSafeItem(wire.getBlockItem(LARGE)), new ItemStack(cable.getBlockItem(LARGE)), wire.getBlockItem(LARGE), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
-                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_16x", "cables", "has_wire16x", provider.hasSafeItem(wire.getBlockItem(HUGE)), new ItemStack(cable.getBlockItem(HUGE)), wire.getBlockItem(HUGE), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_1x", "cables", new ItemStack(cable.getBlockItem(VTINY)), wire.getBlockItem(VTINY), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_2x", "cables", new ItemStack(cable.getBlockItem(TINY)), wire.getBlockItem(TINY), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_4x", "cables", new ItemStack(cable.getBlockItem(SMALL)), wire.getBlockItem(SMALL), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_8x", "cables", new ItemStack(cable.getBlockItem(NORMAL)), wire.getBlockItem(NORMAL), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_12x", "cables", new ItemStack(cable.getBlockItem(LARGE)), wire.getBlockItem(LARGE), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GTIRef.ID, wire.getId() + "_cable_16x", "cables", new ItemStack(cable.getBlockItem(HUGE)), wire.getBlockItem(HUGE), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber), AntimatterMaterialTypes.PLATE.getMaterialTag(Rubber));
             }
         });
     }
 
     private static void twoToOne(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        provider.shapeless(output,"two_to_one_" + AntimatterPlatformUtils.getIdFromItem(wires.get(to)).getPath(),"wire","has_cutter",provider.hasSafeItem(AntimatterDefaultTools.WIRE_CUTTER.getTag()),
+        provider.shapeless(output,"two_to_one_" + AntimatterPlatformUtils.getIdFromItem(wires.get(to)).getPath(),"wire",
                 new ItemStack(wires.get(to),1),wires.get(from),wires.get(from));
     }
 
     private static void oneToTwo(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        provider.shapeless(output,"one_to_two_" + AntimatterPlatformUtils.getIdFromItem(wires.get(to)).getPath(),"wire","has_cutter",provider.hasSafeItem(AntimatterDefaultTools.WIRE_CUTTER.getTag()),
+        provider.shapeless(output,"one_to_two_" + AntimatterPlatformUtils.getIdFromItem(wires.get(to)).getPath(),"wire",
                 new ItemStack(wires.get(to),2),wires.get(from));
     }
 
     private static void fourToOne(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        provider.shapeless(output,"four_to_one_" + AntimatterPlatformUtils.getIdFromItem(wires.get(to)).getPath(),"wire","has_cutter",provider.hasSafeItem(AntimatterDefaultTools.WIRE_CUTTER.getTag()),
+        provider.shapeless(output,"four_to_one_" + AntimatterPlatformUtils.getIdFromItem(wires.get(to)).getPath(),"wire",
                 new ItemStack(wires.get(to),1),wires.get(from),wires.get(from),wires.get(from),wires.get(from));
     }
 }
