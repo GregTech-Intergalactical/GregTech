@@ -60,6 +60,7 @@ public class ArcFurnace {
                     t == INGOT_HOT || t == GEM || t == GEM_CHIPPED || t == GEM_FLAWED || t == GEM_FLAWLESS || t == GEM_EXQUISITE) continue;
             double amount = (double) t.getUnitValue() / U;
             t.all().forEach(m -> {
+                if (m.has(MaterialTags.RUBBERTOOLS) || m == Bone) return;
                 addRecyclingRecipe(t.getMaterialIngredient(m, 1), of(m, (float) amount), 1, 1, m.getId() + "_" + t.getId() + "_recycling");
             });
         }
