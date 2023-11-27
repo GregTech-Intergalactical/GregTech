@@ -16,7 +16,7 @@ description='''The Approved Continuation. Rewrite. And Re-envisioning of GregTec
 [[dependencies.gti]]
     modId="antimatter"
     mandatory=true
-    versionRange="[0.2-rc2,)"
+    versionRange="[0.2,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.gti]]
