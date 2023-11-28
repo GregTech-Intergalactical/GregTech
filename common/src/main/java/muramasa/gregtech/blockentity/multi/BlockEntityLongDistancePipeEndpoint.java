@@ -124,8 +124,9 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
         }
         if (type.has(MachineFlag.EU)){
             energyHandler.set(() -> new MachineEnergyHandler<>(this, false){
+
                 @Override
-                public long insertAmps(long voltage, long amps, boolean simulate) {
+                public long insertEu(long voltage, boolean simulate) {
                     if (tile.target == null) return 0;
                     if (!checkVoltage(voltage)) return 0;
                     BlockEntity entity = tile.target.getLevel().getBlockEntity(tile.target.getBlockPos().relative(tile.target.getFacing().getOpposite()));
@@ -133,7 +134,8 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                     IEnergyHandler handler = TesseractCapUtils.getEnergyHandler(entity, tile.target.getFacing()).orElse(null);
                     if (handler == null) return 0;
                     int loss = Math.round(tile.successfulPositions.size() * 0.125f);
-                    return handler.insertAmps(Math.max(0, voltage - loss), amps, simulate);
+                    if (loss >= voltage) return 0;
+                    return handler.insertEu(Math.max(0, voltage - loss), simulate) + loss;
                 }
 
                 @Override
