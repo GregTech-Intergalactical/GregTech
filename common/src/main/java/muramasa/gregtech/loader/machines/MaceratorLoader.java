@@ -40,7 +40,7 @@ public class MaceratorLoader {
         ORE.all().forEach(m -> {
             AntimatterAPI.all(StoneType.class).stream().filter(StoneType::doesGenerateOre).filter(s -> s != AntimatterStoneTypes.BEDROCK).forEach(s -> {
                 Material sm = s.getMaterial();
-                if (!m.has(AntimatterMaterialTypes.DUST) || !m.has(AntimatterMaterialTypes.CRUSHED)) return;
+                if (!m.has(AntimatterMaterialTypes.DUST) && !m.has(AntimatterMaterialTypes.CRUSHED)) return;
                 ItemStack stoneDust = sm.has(AntimatterMaterialTypes.DUST) ? AntimatterMaterialTypes.DUST.get(sm, 1) : ItemStack.EMPTY;
                 TagKey<Item> oreTag = ORE.getMaterialTag(m, s);
                 RecipeIngredient ore = RecipeIngredient.of(oreTag,1);
@@ -75,9 +75,7 @@ public class MaceratorLoader {
         AntimatterMaterialTypes.CRUSHED.all().forEach(m -> {
             if (!m.has(ORE)) return;
             if (!m.has(AntimatterMaterialTypes.CRUSHED)) return;
-            int multiplier = 1;
-            RecipeIngredient ore = RecipeIngredient.of(ORE.getMaterialTag(m),1), crushed = AntimatterMaterialTypes.CRUSHED.getIngredient(m, 1);
-            ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(m,1);
+            RecipeIngredient crushed = AntimatterMaterialTypes.CRUSHED.getIngredient(m, 1);
 
             //TODO better way to do this
             Material aOreByProduct1 = !m.getByProducts().isEmpty() ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
@@ -104,9 +102,12 @@ public class MaceratorLoader {
             if (m.has(AntimatterMaterialTypes.CRUSHED_PURIFIED) && m.has(AntimatterMaterialTypes.DUST_PURE)) {
                 MACERATING.RB().ii(AntimatterMaterialTypes.CRUSHED_PURIFIED.getIngredient(m, 1)).io(AntimatterMaterialTypes.DUST_PURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1).add("purified_" + m.getId(),400, 2);
             }
-            if (m.has(AntimatterMaterialTypes.RAW_ORE)){
-                MACERATING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m) * multiplier) * 2, crushedStack), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1 * multiplier * MaterialTags.BY_PRODUCT_MULTI.getInt(m)).add("raw_" + m.getId(),400, 2);
-            }
+        });
+        RAW_ORE.all().forEach(m -> {
+            if (!m.has(AntimatterMaterialTypes.DUST) && !m.has(AntimatterMaterialTypes.CRUSHED)) return;
+            Material aOreByProduct1 = !m.getByProducts().isEmpty() ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
+            ItemStack crushedStack = (m.has(CRUSHED) ? AntimatterMaterialTypes.CRUSHED : DUST).get(m, ORE_MULTI.getInt(m));
+            MACERATING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m)) * 2, crushedStack), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1 * MaterialTags.BY_PRODUCT_MULTI.getInt(m)).add("raw_" + m.getId(),400, 2);
         });
         GEM_EXQUISITE.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.DUST)) return;
