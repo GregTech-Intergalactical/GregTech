@@ -78,7 +78,7 @@ public class Structures {
                     distillationTower.FO_HATCHES.add(handler);
                     return true;
                 })))
-                .at('H', CASING_STAINLESS_STEEL, HATCH_FLUID_I, HATCH_ENERGY)
+                .at('H', CASING_STAINLESS_STEEL, HATCH_FLUID_I, HATCH_ENERGY, HATCH_ITEM_O)
                 .offset(1, 0, 0).min(1, HATCH_ENERGY, HATCH_FLUID_O).exact(1, HATCH_FLUID_I)
                 .setStructurePartCheckCallback((structureDefinition, tile, part, i, newOffset) -> {
                     tile.FO_HATCHES.clear();
