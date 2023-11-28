@@ -179,7 +179,7 @@ public class Structures {
                 .of("BB~BB", "BCCCB", "BCCCB", "BCCCB", "BBBBB").build()
                 .atElement('C', ofCoil(BlockEntityPyrolysisOven::setCoilData, BlockEntityPyrolysisOven::getCoilData)).at('B', CASING_ULV, HATCH_ITEM_O, HATCH_ENERGY, HATCH_FLUID_O)
                 .at('U', CASING_ULV).at('H', CASING_ULV, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_MUFFLER)
-                .offset(2, 3, 0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).exact(1, HATCH_MUFFLER).build()
+                .offset(2, 3, 0).min(1, HATCH_ITEM_I, HATCH_ENERGY).exact(1, HATCH_MUFFLER).build()
         );
 
         OIL_DRILLING_RIG.setStructure(BlockEntityOilDrillingRig.class, b -> b.part("main")
