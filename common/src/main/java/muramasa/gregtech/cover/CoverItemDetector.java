@@ -23,17 +23,18 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import tesseract.api.item.ExtendedItemContainer;
 
 import java.util.stream.IntStream;
 
-public class CoverFluidDetector extends BaseCover implements IFilterableHandler {
+public class CoverItemDetector extends BaseCover implements IFilterableHandler {
     boolean inverted = false;
     int outputRedstone = 0;
 
-    private final CoverFluidFilter filter;
-    public CoverFluidDetector(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
+    private final CoverItemFilter filter;
+    public CoverItemDetector(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        this.filter = new CoverFluidFilter(source, null, side, GregTechData.COVER_FLUID_FILTER);
+        this.filter = new CoverItemFilter(source, null, side, GregTechData.COVER_ITEM_FILTER);
         filter.onCreate();
         addGuiCallback(t -> {
             t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, true, b -> "tooltip.gti.redstone_mode." + (b ? "inverted" : "normal"));
@@ -43,12 +44,12 @@ public class CoverFluidDetector extends BaseCover implements IFilterableHandler 
 
     @Override
     public boolean canPlace() {
-        return handler.getTile() instanceof BlockEntityMachine<?> machine && machine.fluidHandler.side(side).isPresent();
+        return handler.getTile() instanceof BlockEntityMachine<?> machine && machine.itemHandler.side(side).isPresent();
     }
 
     @Override
     public String getId() {
-        return "fluid_detector";
+        return "item_detector";
     }
 
     @Override
@@ -65,21 +66,26 @@ public class CoverFluidDetector extends BaseCover implements IFilterableHandler 
     @Override
     public void onUpdate() {
         if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
-        if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.fluidHandler.side(side).isPresent()){
-            FluidContainer fluidContainer = machine.fluidHandler.side(side).get();
+        if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.itemHandler.side(side).isPresent()){
+            ExtendedItemContainer itemContainer = machine.itemHandler.side(side).get();
             int oldRedstone = outputRedstone;
-            long scale = IntStream.range(0, fluidContainer.getSize()).mapToLong(tankSlot -> {
-                FluidHolder fluidHolder = fluidContainer.getFluids().get(tankSlot);
-                if (filter.onTransfer(fluidHolder, true, true)) return 0;
-                return fluidContainer.getTankCapacity(tankSlot);
-            }).sum() / 15L;
-            long totalFluid = IntStream.range(0, fluidContainer.getSize()).mapToLong(tankSlot -> {
-                FluidHolder fluidHolder = fluidContainer.getFluids().get(tankSlot);
-                if (filter.onTransfer(fluidHolder, true, true)) return 0;
-                return fluidHolder.getFluidAmount();
-            }).sum();
-            if (scale > 0){
-                outputRedstone = inverted ? (int) (15L - totalFluid / scale) : (int) (totalFluid / scale);
+            int all = 0, full = 0;
+            for (int i = 0; i < itemContainer.getContainerSize(); i++) {
+                int slotLimit = itemContainer.getSlotLimit(i);
+                all += slotLimit;
+                ItemStack stack = itemContainer.getItem(i);
+                if (!stack.isEmpty()){
+                    if (slotLimit > 64){ // mass storage
+                        full += stack.getCount();
+                    } else {
+                        full += stack.getCount() * slotLimit / stack.getMaxStackSize();
+                    }
+
+                }
+            }
+            all /= 14;
+            if (all > 0 && full > 0){
+                outputRedstone = inverted ? 15 - (full / all + 1) : full / all + 1;
             } else {
                 outputRedstone = inverted ? 15 : 0;
             }
@@ -143,6 +149,6 @@ public class CoverFluidDetector extends BaseCover implements IFilterableHandler 
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        return stack.getItem() == GregTechData.COVER_FLUID_FILTER.getItem().getItem();
+        return stack.getItem() == GregTechData.COVER_ITEM_FILTER.getItem().getItem();
     }
 }

@@ -87,6 +87,10 @@ public class GregTechData {
         return new ItemCover(GTIRef.ID, "fluid_detector");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/fluid_detector")).build(GTIRef.ID, "fluid_detector");
 
+    public static final CoverFactory COVER_ITEM_DETECTOR = CoverFactory.builder(CoverItemDetector::new).gui().item((a, b) -> {
+        return new ItemCover(GTIRef.ID, "item_detector");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/item_detector")).build(GTIRef.ID, "item_detector");
+
     public static final CoverFactory COVER_STEAM_VENT = CoverFactory.builder(CoverSteamVent::new)
             .addTextures(new Texture(GTIRef.ID, "block/cover/output")).build(GTIRef.ID, "steam_vent");
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(GTIRef.ID, "computer_monitor").tip("Can be placed on machines as a cover");
