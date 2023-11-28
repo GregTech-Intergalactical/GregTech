@@ -239,6 +239,6 @@ public class AssemblyLoader {
     }
 
     private static void addCoil (BlockCoil coil, PipeItemBlock wire, int tier) {
-        ASSEMBLING.RB().ii(of(wire,8), INT_CIRCUITS.get(8)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.getIdFromBlock(coil).getPath(), 100*tier, (long) (30*Math.pow(4,tier-1)));
+        ASSEMBLING.RB().ii(of(wire,8), INT_CIRCUITS.get(8)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.getIdFromBlock(coil).getPath(), 100, 30);
     }
 }
