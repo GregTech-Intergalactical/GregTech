@@ -132,14 +132,14 @@ public class AssemblyLoader {
 
 
     private static void coils(){
-        addCoil(COIL_CUPRONICKEL, WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), 1);
-        addCoil(COIL_KANTHAL, WIRE_KANTHAL.getBlockItem(PipeSize.TINY), 2);
-        addCoil(COIL_NICHROME, WIRE_NICHROME.getBlockItem(PipeSize.TINY), 3);
-        addCoil(COIL_TUNGSTENSTEEL, WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY), 4);
-        addCoil(COIL_HSSG, WIRE_HSSG.getBlockItem(PipeSize.TINY), 5);
-        addCoil(COIL_NAQUADAH, WIRE_NAQUADAH.getBlockItem(PipeSize.TINY), 6);
-        addCoil(COIL_NAQUADAH_ALLOY, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY), 7);
-        addCoil(COIL_SUPERCONDUCTOR, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY), 8);
+        addCoil(COIL_CUPRONICKEL, WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY));
+        addCoil(COIL_KANTHAL, WIRE_KANTHAL.getBlockItem(PipeSize.TINY));
+        addCoil(COIL_NICHROME, WIRE_NICHROME.getBlockItem(PipeSize.TINY));
+        addCoil(COIL_TUNGSTENSTEEL, WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY));
+        addCoil(COIL_HSSG, WIRE_HSSG.getBlockItem(PipeSize.TINY));
+        addCoil(COIL_NAQUADAH, WIRE_NAQUADAH.getBlockItem(PipeSize.TINY));
+        addCoil(COIL_NAQUADAH_ALLOY, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY));
+        addCoil(COIL_SUPERCONDUCTOR, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY));
     }
 
     private static void frames(){
@@ -160,6 +160,7 @@ public class AssemblyLoader {
         addCoverRecipe(COVER_REDSTONE_MACHINE_CONTROLLER.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1));
         addCoverRecipe(COVER_ENERGY_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1));
         addCoverRecipe(COVER_FLUID_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.HEAVY_WEIGHTED_PRESSURE_PLATE, 1));
+        addCoverRecipe(COVER_ITEM_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LIGHT_WEIGHTED_PRESSURE_PLATE, 1));
         ASSEMBLING.RB().ii(of(CarbonFibre, 2), INT_CIRCUITS.get(2)).io(CarbonMesh).add("carbon_mesh", 800, 2);
         ASSEMBLING.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
         ASSEMBLING.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
@@ -238,7 +239,7 @@ public class AssemblyLoader {
         ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(mat, 4), INT_CIRCUITS.get(4)).io(new ItemStack(casing,1)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
     }
 
-    private static void addCoil (BlockCoil coil, PipeItemBlock wire, int tier) {
+    private static void addCoil (BlockCoil coil, PipeItemBlock wire) {
         ASSEMBLING.RB().ii(of(wire,8), INT_CIRCUITS.get(8)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.getIdFromBlock(coil).getPath(), 100, 30);
     }
 }
