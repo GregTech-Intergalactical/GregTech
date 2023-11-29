@@ -14,7 +14,7 @@ public class CrackingUnit {
         CRACKING.RB().fi(Hydrogen.getGas(1000), Naphtha.getLiquid(1000)).fo(SteamCrackedNaphtha.getLiquid(2000)).add("naptha_hydrogen", 20, 120);
         CRACKING.RB().fi(Steam.getGas(1000), Naphtha.getLiquid(1000)).fo(SteamCrackedNaphtha.getLiquid(2000)).add("naptha_steam", 20, 120);
         CRACKING.RB().fi(Hydrogen.getGas(1000), RefineryGas.getGas(1000)).fo(HydroCrackedRefineryGas.getGas(2000)).add("refinery_gas_hydrogen", 20, 120);
-        CRACKING.RB().fi(Steam.getGas(1000), RefineryGas.getGas(1000)).fo(SteamCrackedRefineryGas.getGas(2000)).add("refinery_gas_steam", 20, 120);
+        /*CRACKING.RB().fi(Steam.getGas(1000), RefineryGas.getGas(1000)).fo(SteamCrackedRefineryGas.getGas(2000)).add("refinery_gas_steam", 20, 120);*/
         CRACKING.RB().fi(Hydrogen.getGas(1000), Propane.getGas(1000)).fo(HydroCrackedPropane.getGas(2000)).add("propane_hydrogen", 20, 120);
         CRACKING.RB().fi(Steam.getGas(1000), Propane.getGas(1000)).fo(SteamCrackedPropane.getGas(2000)).add("propane_steam", 20, 120);
         CRACKING.RB().fi(Hydrogen.getGas(1000), Butane.getGas(1000)).fo(HydroCrackedButane.getGas(2000)).add("butane_hydrogen", 20, 120);

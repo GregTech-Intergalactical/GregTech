@@ -62,14 +62,13 @@ public class DistillationTower {
                 new FluidProduct(Butadiene,500), new FluidProduct(Propene,1000),
                 new FluidProduct(Ethylene,1000),new FluidProduct(Methane,500));
         addDistillationRecipe(SteamCrackedNaphtha, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
-                new FluidProduct(HeavyFuel,100), new FluidProduct(LightFuel,100),
                 new FluidProduct(Toluene,200),new FluidProduct(Benzene,400),
                 new FluidProduct(Butadiene,400),new FluidProduct(Propene,600),
                 new FluidProduct(Ethylene,600), new FluidProduct(Methane,600));
-        addDistillationRecipe(SteamCrackedRefineryGas, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
+        /*addDistillationRecipe(SteamCrackedRefineryGas, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
                 new FluidProduct(Butadiene,60),new FluidProduct(Propene,70),
                 new FluidProduct(Ethylene,100), new FluidProduct(Methane,750),
-                new FluidProduct(Helium, 20));
+                new FluidProduct(Helium, 20));*/
         addDistillationRecipe(SteamCrackedEthane, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
                 new FluidProduct(Ethylene,1000), new FluidProduct(Methane,500));
         addDistillationRecipe(SteamCrackedPropane, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
