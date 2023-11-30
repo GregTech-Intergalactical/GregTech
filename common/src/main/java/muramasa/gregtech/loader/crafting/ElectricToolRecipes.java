@@ -232,7 +232,7 @@ public class ElectricToolRecipes {
 
         IAntimatterTool electric_screwdriver_lv = AntimatterAPI.get(IAntimatterTool.class, "electric_screwdriver_lv");
 
-        provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(ELECTRIC_SCREWDRIVER.getId() + "-lv"), output, GTIRef.ID, "", "antimatter_electric_screwdrivers",
+        provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(ELECTRIC_SCREWDRIVER.getId() + "-lv"), output, GTIRef.ID, "electric_screwdriver_lv", "antimatter_electric_screwdrivers",
                 electric_screwdriver_lv.resolveStack(Material.NULL, Aluminium, 0, 100000),
                 ImmutableMap.<Character, Object>builder()
                         .put('R', PropertyIngredient.builder("primary").types(ROD_LONG).tool(ELECTRIC_SCREWDRIVER, true).build())
@@ -246,7 +246,7 @@ public class ElectricToolRecipes {
                 electric_screwdriver_lv.resolveStack(Material.NULL, Aluminium, 0, 100000), of('R', PropertyIngredient.builder("primary").types(ROD_LONG).tool(ELECTRIC_SCREWDRIVER, true).build(),'S', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_SMALL).build(), 'W', WRENCH.getTag()), "R ", "WS");
 
         IAntimatterTool jackhammer_lv = AntimatterAPI.get(IAntimatterTool.class, "jackhammer_hv");
-        provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(JACKHAMMER.getId() + "-hv"), output, GTIRef.ID, "", "antimatter_jackhammers",
+        provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(JACKHAMMER.getId() + "-hv"), output, GTIRef.ID, "jackhammer_hv", "antimatter_jackhammers",
                 jackhammer_lv.resolveStack(Material.NULL, Titanium, 0, 100000),
                 ImmutableMap.<Character, Object>builder()
                         .put('R', PropertyIngredient.builder("primary").types(ROD_LONG).tool(JACKHAMMER, true).build())
