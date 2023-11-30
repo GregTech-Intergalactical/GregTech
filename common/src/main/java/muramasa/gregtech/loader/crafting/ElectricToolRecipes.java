@@ -78,7 +78,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_SMALL).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Aluminium).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(Aluminium))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(Aluminium))
                         .put('M', GTCoreItems.MotorLV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(DRILL.getId() + "-mv"),output, GTIRef.ID, DRILL.getId() + "_mv_" + "recipe", "antimatter_drills",
@@ -88,7 +88,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_MEDIUM).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(StainlessSteel).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(StainlessSteel))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(StainlessSteel))
                         .put('M', GTCoreItems.MotorMV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(DRILL.getId() + "-hv"),output, GTIRef.ID, DRILL.getId() + "_hv_" + "recipe", "antimatter_drills",
@@ -98,7 +98,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LARGE).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Titanium).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(Titanium))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(Titanium))
                         .put('M', GTCoreItems.MotorHV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(DRILL.getId() + "-lv"),output, GTIRef.ID, DRILL.getId() + "_lv_power_unit_" + "recipe", "antimatter_drills",
@@ -119,7 +119,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_SMALL).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Aluminium).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(Aluminium))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(Aluminium))
                         .put('M', GTCoreItems.MotorLV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(CHAINSAW.getId() + "-mv"),output, GTIRef.ID, CHAINSAW.getId() + "_mv_" + "recipe", "antimatter_chainsaws",
@@ -129,7 +129,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_MEDIUM).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(StainlessSteel).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(StainlessSteel))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(StainlessSteel))
                         .put('M', GTCoreItems.MotorMV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(CHAINSAW.getId() + "-hv"),output, GTIRef.ID, CHAINSAW.getId() + "_hv_" + "recipe", "antimatter_chainsaws",
@@ -139,7 +139,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LARGE).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Titanium).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(Titanium))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(Titanium))
                         .put('M', GTCoreItems.MotorHV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(CHAINSAW.getId() + "-lv"),output, GTIRef.ID, CHAINSAW.getId() + "_lv_power_unit_" + "recipe", "antimatter_chainsaws",
@@ -159,7 +159,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_SMALL).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Aluminium).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(Aluminium))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(Aluminium))
                         .put('M', GTCoreItems.MotorLV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-mv"),output, GTIRef.ID, ELECTRIC_WRENCH.getId() + "_mv_" + "recipe", "antimatter_electric_wrenches",
@@ -169,7 +169,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_MEDIUM).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(StainlessSteel).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(StainlessSteel))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(StainlessSteel))
                         .put('M', GTCoreItems.MotorMV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-hv"),output, GTIRef.ID, ELECTRIC_WRENCH.getId() + "_hv_" + "recipe", "antimatter_electric_wrenches",
@@ -179,7 +179,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LARGE).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Titanium).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(Titanium))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(Titanium))
                         .put('M', GTCoreItems.MotorHV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-lv"),output, GTIRef.ID, ELECTRIC_WRENCH.getId() + "_lv_power_unit_" + "recipe", "electric_wrenches",
@@ -200,7 +200,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_SMALL).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Aluminium).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(Aluminium))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(Aluminium))
                         .put('M', GTCoreItems.MotorLV).build(), "PbM", "SBG", "sGP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(BUZZSAW.getId() + "-mv"),output, GTIRef.ID, "", "antimatter_buzzsaws",
@@ -210,7 +210,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_MEDIUM).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(StainlessSteel).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(StainlessSteel))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(StainlessSteel))
                         .put('M', GTCoreItems.MotorMV).build(), "PbM", "SBG", "sGP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(BUZZSAW.getId() + "-hv"),output, GTIRef.ID, "", "antimatter_buzzsaws",
@@ -220,7 +220,7 @@ public class ElectricToolRecipes {
                         .put('S', AntimatterDefaultTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LARGE).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Titanium).types(PLATE).build())
-                        .put('s', SCREW.getMaterialTag(Titanium))
+                        .put('s', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(Titanium))
                         .put('M', GTCoreItems.MotorHV).build(), "PbM", "SBG", "sGP");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(BUZZSAW.getId() + "-lv"),output, GTIRef.ID, BUZZSAW.getId() + "_lv_power_unit_" + "recipe", "antimatter_buzzsaws",
@@ -239,7 +239,7 @@ public class ElectricToolRecipes {
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_SMALL).build())
                         .put('M', GTCoreItems.MotorLV)
                         .put('P', PropertyIngredient.builder("secondary").mats(Aluminium).types(PLATE).build())
-                        .put('S', SCREW.getMaterialTag(Aluminium))
+                        .put('S', SCREW.getMaterialTag(Steel))
                         .put('G', GEAR_SMALL.getMaterialTag(Aluminium))
                         .put('s', SCREWDRIVER.getTag()).build(), "PsR", "MGS", "GbP");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(ELECTRIC_SCREWDRIVER.getId() + "-lv"), output, GTIRef.ID, ELECTRIC_SCREWDRIVER.getId() + "_power_unit_lv", "antimatter_electric_screwdrivers",
@@ -252,8 +252,8 @@ public class ElectricToolRecipes {
                         .put('R', PropertyIngredient.builder("primary").types(ROD_LONG).tool(JACKHAMMER, true).build())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LARGE).build())
                         .put('E', PistonHV)
-                        .put('S', PropertyIngredient.builder("secondary").mats(Titanium).types(SCREW).build())
-                        .put('P', PLATE.getMaterialTag(Titanium))
+                        .put('S', SCREW.getMaterialTag(Steel))
+                        .put('P', PropertyIngredient.builder("secondary").mats(Titanium).types(PLATE).build())
                         .put('T', SPRING.getMaterialTag(Titanium))
                         .put('s', SCREWDRIVER.getTag()).build(), "SRs", "PTP", "EPb");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(JACKHAMMER.getId() + "-hv"), output, GTIRef.ID, JACKHAMMER.getId() + "_hv_from_pu", "antimatter_jackhammers",
