@@ -55,6 +55,5 @@ public class BlockEntityAssembler extends BlockEntityMachine<BlockEntityAssemble
                 return super.accepts(stack) || stack.getItem() == GregTechData.PrintedPages;
             }
         });
-        //recipeHandler.set(() -> new ParallelRecipeHandler<>(this, true, 5));
     }
 }

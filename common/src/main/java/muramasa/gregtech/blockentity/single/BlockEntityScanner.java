@@ -2,6 +2,7 @@ package muramasa.gregtech.blockentity.single;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
@@ -32,14 +33,20 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
                 if (recipe == null){
                     MachineItemHandler<?> ih = itemHandler.orElse(null);
                     ExtendedItemContainer inputHandler = ih.getInputHandler();
-                    ItemStack dataStick = inputHandler.getItem(0);
-                    ItemStack stored = ih.getHandler(SlotType.STORAGE).getItem(0);
-                    if (!dataStick.isEmpty() && dataStick.getItem() == GregTechData.DataStick){
-                        CompoundTag prospect = dataStick.getTagElement("prospectData");
-                        if (prospect != null){
-                            ItemStack output = dataStick.copy();
-                            output.getTagElement("prospectData").putBoolean("analyzed", true);
-                            return RecipeMaps.SCANNING.RB().recipeMapOnly().ii(RecipeIngredient.of(dataStick.copy())).io(output).add("data_stick_prospection", 1000, 32);
+                    ItemStack input0 = inputHandler.getItem(0);
+                    ItemStack input1 = inputHandler.getItem(1);
+                    if (!input0.isEmpty()) {
+                        if (input0.getItem() == GregTechData.DataStick) {
+                            CompoundTag prospect = input0.getTagElement("prospectData");
+                            if (prospect != null) {
+                                ItemStack output = input0.copy();
+                                output.getTagElement("prospectData").putBoolean("analyzed", true);
+                                return RecipeMaps.SCANNING.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy())).io(output).add("data_stick_prospection", 1000, 32);
+                            }
+                        } else if (input0.getItem() == Items.WRITTEN_BOOK && input0.getTag() != null && input1.getItem() == GregTechData.DataStick && input1.getTag() == null){
+                            ItemStack output = new ItemStack(GregTechData.DataStick);
+                            output.getOrCreateTag().put("bookData", input0.getTag().copy());
+                            return RecipeMaps.SCANNING.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy()), RecipeIngredient.of(input1.copy())).io(output).add("book_copying", 128, 32);
                         }
                     }
                 }
@@ -48,16 +55,15 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
 
             @Override
             public boolean accepts(ItemStack stack) {
-                return super.accepts(stack) || stack.getItem() == GregTechData.DataStick;
+                return super.accepts(stack) || stack.getItem() == GregTechData.DataStick || stack.getItem() == Items.WRITTEN_BOOK;
             }
         });
-        //recipeHandler.set(() -> new ParallelRecipeHandler<>(this, true, 5));
     }
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        if (slotType == SlotType.STORAGE){
-            return stack.getItem() == GregTechData.DataStick;
+        if (slotType == SlotType.IT_IN && slot == 1){
+            return stack.getItem() == GregTechData.DataStick || stack.getItem() == GTCoreItems.DataOrb;
         }
         return true;
     }

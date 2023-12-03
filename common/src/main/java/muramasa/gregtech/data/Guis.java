@@ -47,9 +47,6 @@ public class Guis {
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots()));
     public static GuiData BASIC_TANK = new GuiData(GTIRef.ID, "basic_tank").setBackgroundTexture("basic_tank")
             .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43, new ResourceLocation(GTIRef.ID, "blank")));
-    public static GuiData SCANNER_JEI = new GuiData(GTIRef.ID, "scanner_jei").setSlots(ISlotProvider.DEFAULT()
-            .add(IT_IN, 53, 25).add(IT_IN, 125, 63)
-            .add(FL_IN, 53, 63).add(IT_OUT, 107, 25));
 
     public static GuiData MULTIBLOCK = new GuiData(GTIRef.ID, "multiblock").setBackgroundTexture("multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
@@ -145,7 +142,7 @@ public class Guis {
         FLUID_EXTRACTOR.add(COMPRESSOR).add(FL_OUT, 107, 63);
         FLUID_HEATER.add(ENERGY, 80, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
-        SCANNER.add(FLUID_SOLIDIFIER).add(STORAGE, 125, 63);
+        SCANNER.add(FLUID_SOLIDIFIER).add(IT_IN, 125, 63);
         PRINTER.add(SCANNER);
         DISTILLERY.add(FLUID_CANNER);
         BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63);

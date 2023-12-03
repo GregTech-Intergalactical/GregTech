@@ -248,8 +248,6 @@ public class RecipeMaps {
         HP_STEAM_FUELS.setGuiData(MULTI_DISPLAY);
         DISTILLATION.setGuiData(MULTI_DISPLAY_DISTILLATION);
         CRYO_DISTILLATION.setGuiData(MULTI_DISPLAY_DISTILLATION);
-        SCANNING.setGuiData(SCANNER_JEI);
-        PRINTING.setGuiData(SCANNER_JEI);
     }
 
     public static void clientMaps() {

@@ -48,7 +48,7 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                     MachineItemHandler<?> ih = itemHandler.orElse(null);
                     ExtendedItemContainer inputHandler = ih.getInputHandler();
                     ItemStack paper = inputHandler.getItem(0);
-                    ItemStack stored = ih.getHandler(SlotType.STORAGE).getItem(0);
+                    ItemStack stored = inputHandler.getItem(1);
                     if (paper.getItem() == Items.PAPER && paper.getCount() >= 3 && stored.getItem() == GregTechData.DataStick){
                         CompoundTag prospect = stored.getTagElement("prospectData");
                         CompoundTag bookData = stored.getTagElement("bookData");
@@ -114,25 +114,23 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
 
             @Override
             public boolean accepts(ItemStack stack) {
-                return super.accepts(stack) || stack.getItem() == Items.PAPER;
+                return super.accepts(stack) || stack.getItem() == Items.PAPER || stack.getItem() == GregTechData.DataStick;
             }
 
             @Override
             public void onMachineEvent(IMachineEvent event, Object... data) {
-                if (event == SlotType.STORAGE){
+                if (event == SlotType.IT_IN && data[0] instanceof Integer integer && integer == 1){
                     lastRecipe = null;
-                    checkRecipe();
                 }
                 super.onMachineEvent(event, data);
             }
         });
-        //recipeHandler.set(() -> new ParallelRecipeHandler<>(this, true, 5));
     }
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        if (slotType == SlotType.STORAGE){
-            return stack.getItem() == GregTechData.DataStick;
+        if (slotType == SlotType.IT_IN){
+            return (slot == 0) == (stack.getItem() != GregTechData.DataStick);
         }
         return true;
     }
