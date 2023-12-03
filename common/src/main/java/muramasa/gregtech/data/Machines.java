@@ -59,7 +59,7 @@ public class Machines {
     public static BasicMachine ALLOY_SMELTER = new BasicMachine(GTIRef.ID, "alloy_smelter").setMap(ALLOY_SMELTING).addFlags(GUI, ITEM).setSound(GregTechSounds.FURNACE,  0.6f);
     public static BasicMachine AMP_FABRICATOR = new BasicMachine(GTIRef.ID, "amp_fabricator").setMap(AMP_FABRICATING).addFlags(GUI, ITEM);
     public static BasicMachine ARC_FURNACE = new BasicMachine(GTIRef.ID, "arc_furnace").setMap(ARC_SMELTING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f).amps(3);
-    public static BasicMachine ASSEMBLER = new BasicMachine(GTIRef.ID, "assembler").setMap(ASSEMBLING).addFlags(GUI, ITEM, FLUID).setVerticalFacingAllowed(true).custom();
+    public static BasicMachine ASSEMBLER = new BasicMachine(GTIRef.ID, "assembler").setMap(ASSEMBLING).setTile(BlockEntityAssembler::new).addFlags(GUI, ITEM, FLUID).setVerticalFacingAllowed(true).custom();
     public static BasicMachine AUTOCLAVE = new BasicMachine(GTIRef.ID, "autoclave").setMap(AUTOCLAVING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine BENDER = new BasicMachine(GTIRef.ID, "bender").setMap(BENDING).addFlags(GUI, ITEM);
     public static BasicMachine CANNER = new BasicMachine(GTIRef.ID, "canner").setMap(CANNING).addFlags(GUI, ITEM);

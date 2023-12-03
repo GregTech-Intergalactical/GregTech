@@ -150,6 +150,7 @@ public class AssemblyLoader {
     }
 
     private static void misc(){
+        ASSEMBLING.RB().ii(PrintedPages, Items.LEATHER).fi(Glue.getLiquid(20)).io(Items.WRITTEN_BOOK).fake().add("written_book", 32, 8);
         ASSEMBLING.RB().ii(of(Machines.TRANSFORMER.getItem(ULV), 8), of(Machines.TRANSFORMER.getItem(LV), 4), of(Machines.TRANSFORMER.getItem(MV), 2),
                 of(Machines.TRANSFORMER.getItem(HV), 1), of(ComputerMonitor), of(TIER_CIRCUITS.apply(EV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV)).add("ev_adjustable_transformer", 50, 1920);
         ASSEMBLING.RB().ii(of(Machines.TRANSFORMER.getItem(EV), 1), of(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV), 2), of(ComputerMonitor), of(TIER_CIRCUITS.apply(IV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(IV)).add("iv_adjustable_transformer", 50, 1920);
