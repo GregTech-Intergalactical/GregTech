@@ -31,7 +31,6 @@ import java.util.List;
 public class BlockEntitySeismicProspector extends BlockEntityMachine<BlockEntitySeismicProspector> {
     int progress, maxProgress;
     OilSpoutEntry entry = null;
-    ChunkPos pos;
     List<Material> ores;
     public BlockEntitySeismicProspector(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -47,7 +46,7 @@ public class BlockEntitySeismicProspector extends BlockEntityMachine<BlockEntity
         }
         if (stack.getItem() == GregTechData.DataStick && entry != null){
             CompoundTag prospectData = stack.getOrCreateTagElement("prospectData");
-            prospectData.putLong("chunkPos", pos.asLong());
+            prospectData.putLong("pos", pos.asLong());
             prospectData.putString("dimension", level.dimension().location().toString());
             if (entry.getFluid() != null){
                 CompoundTag fluid = new CompoundTag();
@@ -79,9 +78,9 @@ public class BlockEntitySeismicProspector extends BlockEntityMachine<BlockEntity
             } else {
                 progress = maxProgress = 0;
                 setMachineState(MachineState.IDLE);
-                this.pos = level.getChunk(pos).getPos();
-                this.entry = OilSpoutSavedData.getOrCreate((ServerLevel) level).getFluidVeinWorldEntry(this.pos.x, this.pos.z);
-                this.ores = VeinSavedData.getOrCreate((ServerLevel) level).geOresInChunk(this.pos.x, this.pos.z);
+                ChunkPos pos1 = level.getChunk(pos).getPos();
+                this.entry = OilSpoutSavedData.getOrCreate((ServerLevel) level).getFluidVeinWorldEntry(pos1.x, pos1.z);
+                this.ores = VeinSavedData.getOrCreate((ServerLevel) level).geOresInChunk(pos1.x, pos1.z);
             }
         }
     }

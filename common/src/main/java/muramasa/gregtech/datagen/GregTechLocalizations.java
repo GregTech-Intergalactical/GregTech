@@ -49,6 +49,9 @@ public class GregTechLocalizations {
             add("tooltip.gti.blacklist", "Blacklist");
             add("tooltip.gti.nbt.on", "Don't ignore nbt");
             add("tooltip.gti.nbt.off", "Ignore nbt");
+            add("tooltip.gti.data_stick.raw_prospection_data", "Raw Prospection Data");
+            add("tooltip.gti.data_stick.analyzed_prospection_data", "Analyzed Prospection Data");
+            add("tooltip.gti.data_stick.by", "By X: %s Z: %s Dim: %s");
         }
 
         @Override

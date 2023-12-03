@@ -98,7 +98,7 @@ public class Machines {
     public static BasicMachine ROASTER = new BasicMachine(GTIRef.ID, "roaster").setMap(ROASTING).addFlags(GUI, ITEM, FLUID).amps(3);
     public static BasicMachine RECYCLER = new BasicMachine(GTIRef.ID, "recycler").setMap(RECYCLING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine REPLICATOR = new BasicMachine(GTIRef.ID, "replicator").setMap(REPLICATING).addFlags(GUI, ITEM, FLUID);
-    public static BasicMachine SCANNER = new BasicMachine(GTIRef.ID, "scanner").setMap(SCANNING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.MAGNETIZER,  0.6f);
+    public static BasicMachine SCANNER = new BasicMachine(GTIRef.ID, "scanner").setMap(SCANNING).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityScanner::new).setSound(GregTechSounds.MAGNETIZER,  0.6f);
     public static BasicMachine SEISMIC_PROSPECTOR = new BasicMachine(GTIRef.ID, "seismic_prospector").setTiers(LV, EV).setTile(BlockEntitySeismicProspector::new);
     public static BasicMachine SIFTER = new BasicMachine(GTIRef.ID, "sifter").setMap(SIFTING).addFlags(GUI, ITEM);
     public static BasicMachine THERMAL_CENTRIFUGE = new BasicMachine(GTIRef.ID, "thermal_centrifuge").setMap(THERMAL_CENTRIFUGING).addFlags(GUI,ITEM).amps(2);

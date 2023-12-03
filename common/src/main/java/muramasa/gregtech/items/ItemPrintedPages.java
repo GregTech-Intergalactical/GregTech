@@ -1,6 +1,7 @@
 package muramasa.gregtech.items;
 
 import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -26,11 +27,11 @@ public class ItemPrintedPages extends ItemBasic<ItemPrintedPages> {
             CompoundTag compoundTag = stack.getTag();
             String string = compoundTag.getString("title");
             if (!StringUtil.isNullOrEmpty(string)) {
-                tooltipComponents.add(new TextComponent(string));
+                tooltipComponents.add(Utils.literal(string));
             }
             string = compoundTag.getString("author");
             if (!StringUtil.isNullOrEmpty(string)) {
-                tooltipComponents.add((new TranslatableComponent("book.byAuthor", string)));
+                tooltipComponents.add((Utils.translatable("book.byAuthor", string)));
             }
         }
     }
