@@ -92,6 +92,7 @@ public class Parts {
       provider.addItemRecipe(output, GTIRef.ID, "", "tapes", Tape, of('P', Items.PAPER, 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
       provider.addItemRecipe(output, GTIRef.ID, "", "tapes", DuctTape, of('P', FOIL.getMaterialTag(Plastic), 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
       provider.addItemRecipe(output, GTIRef.ID, "", "tapes", FALDuctTape, of('P', FOIL.getMaterialTag(Tungsten), 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
+      provider.shapeless(output, GTIRef.ID, "data_stick_clearing", "data_sticks", new ItemStack(DataStick), DataStick);
 
   }
 

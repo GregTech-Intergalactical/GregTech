@@ -405,6 +405,12 @@ public class Machines {
                             .put('W', wire)
                             .put('H', hull)
                             .put('L', cable).build(), "WRW", "LHL", "WRW"));
+            add(PRINTER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('M', motor)
+                            .put('C', circuit)
+                            .put('H', hull)
+                            .put('L', cable).build(), "MLM", "CHC", "LML"));
 
             add(DEHYDRATOR, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
@@ -462,6 +468,9 @@ public class Machines {
                             .put('B', SWORD_HEAD.getMaterialTag(material))
                             .put('c', conveyor)
                             .build(), "RCR", "PHS", "BcB"));
+            TagKey<Item> plate = PLATE.getMaterialTag(tier == LV ? Steel : VanadiumSteel);
+            add(SEISMIC_PROSPECTOR, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    of('P', plate, 'C', circuit, 'H', hull, 'S', sensor), "PPP", "CHC", "SSS"));
 
             add(SUPER_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
@@ -470,7 +479,7 @@ public class Machines {
                             .put('C', conveyor).build(), "DMC"));
             add(SUPER_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, GTIRef.ID, "super_buffer_" + tier.getId() +"_1", "machines", item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('D', CircuitDataStorage)
+                            .put('D', DataStick)
                             .put('M', hull)
                             .put('C', conveyor).build(), "DMC", "DDD"));
             add(CHEST_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,

@@ -31,6 +31,7 @@ public class FluidExtractor {
         FLUID_EXTRACTING.RB().ii(Items.COD).fo(FishOil.getLiquid(40)).add("fish_oil_cod", 16, 4);
         FLUID_EXTRACTING.RB().ii(Items.SALMON).fo(FishOil.getLiquid(60)).add("fish_oil_salmon", 16, 4);
         FLUID_EXTRACTING.RB().ii(Items.TROPICAL_FISH).fo(FishOil.getLiquid(70)).add("fish_oil_tropical_fish", 16, 4);
+        FLUID_EXTRACTING.RB().ii(Items.INK_SAC).fo(SquidInk.getLiquid(L)).add("squid_ink", 128, 4);
     }
 
     private static void add(Material m, MaterialTypeItem<?> i, long materialAmount) {

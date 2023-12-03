@@ -3,7 +3,10 @@ package muramasa.gregtech.blockentity.single;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.capability.IFilterableHandler;
+import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
+import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
@@ -19,7 +22,7 @@ import tesseract.api.item.ExtendedItemContainer;
 
 import static muramasa.gregtech.data.Materials.Glue;
 
-public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> {
+public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> implements IFilterableHandler {
     public BlockEntityScanner(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         recipeHandler.set(() -> new MachineRecipeHandler<>(this){
@@ -27,15 +30,11 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> {
             public IRecipe findRecipe() {
                 IRecipe recipe = super.findRecipe();
                 if (recipe == null){
-                    ExtendedItemContainer container = itemHandler.get().getInputHandler();
-                    ItemStack dataStick = ItemStack.EMPTY;
-                    for (int i = 0; i < container.getContainerSize(); i++) {
-                        ItemStack stack = container.getItem(i);
-                        if (stack.getItem() == GregTechData.DataStick && dataStick.isEmpty()){
-                            dataStick = stack.copy();
-                        }
-                    }
-                    if (!dataStick.isEmpty()){
+                    MachineItemHandler<?> ih = itemHandler.orElse(null);
+                    ExtendedItemContainer inputHandler = ih.getInputHandler();
+                    ItemStack dataStick = inputHandler.getItem(0);
+                    ItemStack stored = ih.getHandler(SlotType.STORAGE).getItem(0);
+                    if (!dataStick.isEmpty() && dataStick.getItem() == GregTechData.DataStick){
                         CompoundTag prospect = dataStick.getTagElement("prospectData");
                         if (prospect != null){
                             ItemStack output = dataStick.copy();
@@ -53,5 +52,13 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> {
             }
         });
         //recipeHandler.set(() -> new ParallelRecipeHandler<>(this, true, 5));
+    }
+
+    @Override
+    public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
+        if (slotType == SlotType.STORAGE){
+            return stack.getItem() == GregTechData.DataStick;
+        }
+        return true;
     }
 }

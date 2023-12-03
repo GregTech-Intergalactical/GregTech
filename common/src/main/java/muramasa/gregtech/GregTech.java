@@ -154,6 +154,8 @@ public class GregTech extends AntimatterMod {
         loader.accept("roaster", RoastingLoader::init);
         loader.accept("dehydrating", Dehydrator::init);
         loader.accept("autoclaving", Autoclave::init);
+        loader.accept("scanning", ScannerLoader::init);
+        loader.accept("printing", PrinterLoader::init);
         if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
             loader.accept("ae2", AppliedEnergisticsRegistrar::machineRecipes);
         }

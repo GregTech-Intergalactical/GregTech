@@ -5,6 +5,7 @@ import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.StringUtil;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -30,6 +31,17 @@ public class ItemDataStick extends ItemBasic<ItemDataStick> {
                     BlockPos pos = BlockPos.of(prospect.getLong("pos"));
                     String dimension = prospect.getString("dimension");
                     tooltipComponents.add(Utils.translatable("tooltip.gti.data_stick.by", pos.getX(), pos.getZ(), dimension));
+                }
+            }
+            if (nbt.contains("bookData")){
+                CompoundTag compoundTag = nbt.getCompound("bookData");
+                String string = compoundTag.getString("title");
+                if (!StringUtil.isNullOrEmpty(string)) {
+                    tooltipComponents.add(Utils.literal(string));
+                }
+                string = compoundTag.getString("author");
+                if (!StringUtil.isNullOrEmpty(string)) {
+                    tooltipComponents.add((Utils.translatable("book.byAuthor", string)));
                 }
             }
         }
