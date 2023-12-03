@@ -438,6 +438,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Naphtha).asFluid(256);
         event.setMaterial(Phenol).asFluid(288);
         event.setMaterial(PolyvinylAcetate).asFluid();
+        event.setMaterial(SquidInk).asFluid();
         event.setMaterial(Styrene).asFluid();
         event.setMaterial(SulfuricNaphtha).asFluid(32);
         event.setMaterial(Tetranitromethane).asFluid();

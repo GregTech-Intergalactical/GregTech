@@ -93,11 +93,13 @@ public class Machines {
     public static BasicMachine ORE_WASHER = new BasicMachine(GTIRef.ID, "ore_washer").setMap(ORE_WASHING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine PACKAGER = new BasicMachine(GTIRef.ID, "packager").setMap(PACKAGING).addFlags(GUI, ITEM);
     public static BasicMachine POLARIZER = new BasicMachine(GTIRef.ID, "polarizer").setMap(POLARIZING).addFlags(GUI, ITEM);
+    public static BasicMachine PRINTER = new BasicMachine(GTIRef.ID, "printer").setTiers(Tier.LV).setMap(PRINTING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine PLASMA_ARC_FURNACE = new BasicMachine(GTIRef.ID, "plasma_arc_furnace").setMap(PLASMA_ARC_SMELTING).addFlags(GUI, ITEM, FLUID).amps(3);
     public static BasicMachine ROASTER = new BasicMachine(GTIRef.ID, "roaster").setMap(ROASTING).addFlags(GUI, ITEM, FLUID).amps(3);
     public static BasicMachine RECYCLER = new BasicMachine(GTIRef.ID, "recycler").setMap(RECYCLING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine REPLICATOR = new BasicMachine(GTIRef.ID, "replicator").setMap(REPLICATING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine SCANNER = new BasicMachine(GTIRef.ID, "scanner").setMap(SCANNING).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.MAGNETIZER,  0.6f);
+    public static BasicMachine SEISMIC_PROSPECTOR = new BasicMachine(GTIRef.ID, "seismic_prospector").setTiers(LV, EV).setTile(BlockEntitySeismicProspector::new);
     public static BasicMachine SIFTER = new BasicMachine(GTIRef.ID, "sifter").setMap(SIFTING).addFlags(GUI, ITEM);
     public static BasicMachine THERMAL_CENTRIFUGE = new BasicMachine(GTIRef.ID, "thermal_centrifuge").setMap(THERMAL_CENTRIFUGING).addFlags(GUI,ITEM).amps(2);
     public static BasicMachine WIRE_MILL = new BasicMachine(GTIRef.ID, "wire_mill").setMap(WIRE_MILLING).addFlags(GUI, ITEM).custom();

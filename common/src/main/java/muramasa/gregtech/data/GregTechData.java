@@ -15,6 +15,7 @@ import muramasa.gregtech.block.*;
 import muramasa.gregtech.block.BlockCoil.CoilData;
 import muramasa.gregtech.cover.*;
 import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
+import muramasa.gregtech.items.ItemDataStick;
 import muramasa.gregtech.items.ItemPrintedPages;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -102,6 +103,7 @@ public class GregTechData {
     public static ItemBasic<?> Scrap = new ItemBasic<>(GTIRef.ID, "scrap");
     public static ItemBasic<?> WoodPellet = new ItemBasic<>(GTIRef.ID, "wood_pellet");
     public static ItemBasic<?> PrintedPages = new ItemPrintedPages(GTIRef.ID, "printed_pages").tip("Used to make written Books");
+    public static ItemBasic<?> DataStick = new ItemDataStick(GTIRef.ID, "data_stick");
     public static ItemBasic<?> QuantumEye = new ItemBasic<>(GTIRef.ID, "quantum_eye").tip("Improved Ender Eye");
     public static ItemBasic<?> QuantumStar = new ItemBasic<>(GTIRef.ID, "quantum_star").tip("Improved Nether Star");
     public static ItemBasic<?> GraviStar = new ItemBasic<>(GTIRef.ID, "gravi_star").tip("Ultimate Nether Star");

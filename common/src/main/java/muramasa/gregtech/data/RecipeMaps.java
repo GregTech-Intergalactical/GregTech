@@ -165,6 +165,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "plasma_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PRESSING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "pressing", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> PRINTING = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "printing", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PYROLYSISING = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "pyrolysising", new RecipeBuilder())).setGuiData(MULTI_DISPLAY);
 

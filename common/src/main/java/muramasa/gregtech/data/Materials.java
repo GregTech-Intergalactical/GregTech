@@ -529,6 +529,7 @@ public class Materials {
     public static Material Propanediol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "propanediol", 0xff8000, NONE));
     public static Material Propenol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "propenol", 0xff8000, NONE));
     public static Material Propanol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "propanol", 0xff8000, NONE));
+    public static Material SquidInk = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "squid_ink", 0xffffff, NONE));
     public static Material Styrene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "styrene", 0xd2c8be, NONE));
     public static Material SulfuricNaphtha = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_naphtha", 0xffff00, NONE));
     public static Material Tetranitromethane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tetranitromethane", 0x0f2828, NONE));
