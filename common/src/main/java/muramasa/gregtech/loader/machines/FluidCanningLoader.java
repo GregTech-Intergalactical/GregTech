@@ -35,12 +35,13 @@ public class FluidCanningLoader {
             FLUID_CANNING.RB().ii(RecipeIngredient.of(bucket, 1)).fo(FluidPlatformUtils.createFluidStack(fluid, 1000 * TesseractGraphWrappers.dropletMultiplier)).io(Items.BUCKET.getDefaultInstance()).add(fluidId.getNamespace() + "_" + fluidId.getPath() + "_bucket",20, 8);
             FLUID_CANNING.RB().ii(RecipeIngredient.of(Items.BUCKET, 1)).fi(FluidPlatformUtils.createFluidStack(fluid, 1000 * TesseractGraphWrappers.dropletMultiplier)).io(new ItemStack(bucket, 1)).add("bucket_from_" + fluidId.getNamespace() + "_" + fluidId.getPath(),20, 8);
 
-            /*AntimatterAPI.all(ItemFluidCell.class, emptyCell -> {
+            AntimatterAPI.all(ItemFluidCell.class, emptyCell -> {
+                if (!emptyCell.getFilter().test(0, FluidPlatformUtils.createFluidStack(fluid, 1))) return;
                 int size = emptyCell.getCapacity();
                 ItemStack filled = emptyCell.fill(fluid, size);
                 FLUID_CANNING.RB().ii(RecipeIngredient.of(filled)).fo(FluidPlatformUtils.createFluidStack(fluid, size * TesseractGraphWrappers.dropletMultiplier)).io(emptyCell.getDefaultInstance()).add(emptyCell.getId() + "_from_" + AntimatterPlatformUtils.getIdFromFluid(fluid).getPath(),20, 8);
                 FLUID_CANNING.RB().ii(RecipeIngredient.of(emptyCell, 1)).fi(FluidPlatformUtils.createFluidStack(fluid, size * TesseractGraphWrappers.dropletMultiplier)).io(filled).add(AntimatterPlatformUtils.getIdFromFluid(fluid).getPath() + "_" + emptyCell.getId(),20, 8);
-            });*/
+            });
         });
     }
 }
