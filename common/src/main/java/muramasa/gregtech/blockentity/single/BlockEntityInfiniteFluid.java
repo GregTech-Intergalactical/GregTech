@@ -68,8 +68,8 @@ public class BlockEntityInfiniteFluid extends BlockEntityMachine<BlockEntityInfi
     }
 
     @Override
-    public List<String> getInfo() {
-        List<String> info = super.getInfo();
+    public List<String> getInfo(boolean simple) {
+        List<String> info = super.getInfo(simple);
         energyHandler.ifPresent(h -> {
             info.add("Amperage Out: " + h.getOutputAmperage());
         });
