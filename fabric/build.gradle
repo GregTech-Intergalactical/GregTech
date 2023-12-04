@@ -61,7 +61,7 @@ dependencies{
     modRuntimeOnly("com.terraformersmc:modmenu:${rootProject.mod_menu_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    modImplementation "maven.modrinth:carbon-config:pjhTjv8N"
+    modImplementation "maven.modrinth:carbon-config:${project.carbon_config_fabric_version}"
     modImplementation("earth.terrarium:botarium-fabric-1.18.2:${project.botarium_version}"){
         transitive = false
     }
