@@ -274,8 +274,8 @@ public class Circuitry {
         ASSEMBLING.RB().ii(of(CIRCUITS_MASTER, 2), of(EngravedLapotronChip, 18)).io(BatteryEnergyOrb).add("lapotronic_energy_orb", 25 * 20, 1024);
         ASSEMBLING.RB().ii(PLATE.getMaterialIngredient(Europium, 4), of(BatteryEnergyOrb, 8)).io(BatteryEnergyOrbCluster).add("lapotronic_energy_orb_cluster", 102 * 20, 4096);
         ASSEMBLING.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(Lead.getLiquid(L * 2)).io(DataStick).add("data_stick_lead", 120, 64);
-        ASSEMBLING.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(Tin.getLiquid(L)).io(DataStick).add("data_stick_lead", 120, 64);
-        ASSEMBLING.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(SolderingAlloy.getLiquid(L/2)).io(DataStick).add("data_stick_lead", 120, 64);
+        ASSEMBLING.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(Tin.getLiquid(L)).io(DataStick).add("data_stick_tin", 120, 64);
+        ASSEMBLING.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(SolderingAlloy.getLiquid(L/2)).io(DataStick).add("data_stick_soldering_alloy", 120, 64);
     }
 
     private static void bloodyBoards() {
