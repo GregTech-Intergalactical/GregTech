@@ -11,6 +11,7 @@ import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemTag;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -33,16 +34,16 @@ public class VanillaExtensions {
         provider.addConditionalRecipe(consumer, provider.getStackRecipe("", false,
                 new ItemStack(Blocks.TORCH, 2), of('D', TagUtils.getForgelikeItemTag("dusts/sulfur"), 'R', ForgeCTags.RODS_WOODEN), "D", "R"), GTIRef.class, "sulfurTorch", GTIRef.ID, "sulfur_torch");
 
-       provider.addItemRecipe(consumer, GTIRef.ID,AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood).getRegistryName().getPath() , "gears",
+       provider.addItemRecipe(consumer, GTIRef.ID, "", "gears",
                 AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood), of('P', ItemTags.PLANKS, 'W', WRENCH.getTag(), 'R', ForgeCTags.RODS_WOODEN), "RPR", "PWP", "RPR");
 
-        provider.addItemRecipe(consumer, GTIRef.ID, AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood).getRegistryName().getPath() + "_alt", "gears",
+        provider.addItemRecipe(consumer, GTIRef.ID, "gear_wood_alt", "gears",
                 AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Wood), of('P', ItemTags.PLANKS, 'W', WRENCH.getTag(), 'R', ForgeCTags.RODS_WOODEN), "RPR", "PWP", "RPR");
 
-        provider.addItemRecipe(consumer, GTIRef.ID, AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone).getRegistryName().getPath() , "gears",
+        provider.addItemRecipe(consumer, GTIRef.ID, "" , "gears",
                 AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone), of('S', ForgeCTags.STONE, 'W', WRENCH.getTag(), 'C', ForgeCTags.COBBLESTONE), "SCS", "CWC", "SCS");
 
-        provider.addItemRecipe(consumer, GTIRef.ID, AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone).getRegistryName().getPath() + "_alt", "gears",
+        provider.addItemRecipe(consumer, GTIRef.ID,  "gear_stone_alt", "gears",
                 AntimatterMaterialTypes.GEAR.get(AntimatterMaterials.Stone), of('S', ForgeCTags.STONE, 'W', WRENCH.getTag(), 'C', ForgeCTags.COBBLESTONE), "CSC", "SWS", "CSC");
 
         provider.addItemRecipe(consumer, GTIRef.ID, "chainmail_helmet", "chainmail_armor",
@@ -55,11 +56,6 @@ public class VanillaExtensions {
                 Items.CHAINMAIL_BOOTS, of('R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "R R", "RHR");
         provider.addItemRecipe(consumer, GTIRef.ID, "saddle", "", Items.SADDLE,
                 of('L', Items.LEATHER, 'R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'S', AntimatterMaterialTypes.SCREW.getMaterialTag(Steel)), "LLL", "LSL", "R R");
-        provider.addStackRecipe(consumer, GTIRef.ID, "lead_from_resin", "", new ItemStack(Items.LEAD, 2), of('S', Items.STRING, 'R', GTCoreItems.StickyResin), "SS ", "SR ", "  S");
-        provider.shapeless(consumer, "gravel_to_flint", "mortar_recipes", new ItemStack(Items.FLINT), AntimatterDefaultTools.MORTAR.getTag(), Items.GRAVEL);
-
-        provider.addStackRecipe(consumer, "minecraft", "", "misc", new ItemStack(Items.IRON_BARS, 8), of('R', ROD.getMaterialTag(Iron)), "RRR", "RRR");
-        provider.addItemRecipe(consumer, GTIRef.ID, "piston_sticky","gears", Blocks.STICKY_PISTON, of('S', GTCoreItems.StickyResin, 'P', Blocks.PISTON), "S", "P");
 
         provider.addItemRecipe(consumer, "magnetic_rods_iron", ROD.get(IronMagnetic),
                 of('R', ForgeCTags.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/iron")), " R ", "RSR", " R ");
@@ -72,11 +68,5 @@ public class VanillaExtensions {
                 of('C', Ingredient.of(GEM.get(Lignite), RAW_ORE.get(Lignite), DUST.get(Lignite), DUST_IMPURE.get(Lignite), DUST_PURE.get(Lignite), CRUSHED.get(Lignite),CRUSHED_PURIFIED.get(Lignite), CRUSHED_REFINED.get(Lignite)), 'S', Items.STICK), "C", "S");
         provider.addStackRecipe(consumer, GTIRef.ID, "torch_from_creosote", "torches", new ItemStack(Items.TORCH, 6),
                 of('W', ItemTags.WOOL, 'C', Creosote.getLiquid().getBucket(), 'S', Items.STICK), "C", "W", "S");
-        provider.addItemRecipe(consumer, "minecraft", "", "misc",
-                Items.BUCKET, of('I', PLATE.getMaterialTag(Iron), 'H', HAMMER.getTag()), "IHI", " I ");
-        provider.addItemRecipe(consumer, "minecraft", "", "misc",
-                Items.HOPPER, of('I', PLATE.getMaterialTag(Iron), 'W', WRENCH.getTag(), 'C', ForgeCTags.CHESTS), "IWI", "ICI", " I ");
-        provider.addStackRecipe(consumer, "minecraft", "", "cauldrons", new ItemStack(Items.CAULDRON),
-                of('P', PLATE.getMaterialTag(Iron), 'H', HAMMER.getTag()), "P P", "PHP", "PPP");
     }
 }
