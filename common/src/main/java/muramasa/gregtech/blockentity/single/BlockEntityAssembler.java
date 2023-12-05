@@ -1,6 +1,5 @@
 package muramasa.gregtech.blockentity.single;
 
-import earth.terrarium.botarium.common.fluid.base.FluidContainer;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
@@ -43,7 +42,7 @@ public class BlockEntityAssembler extends BlockEntityMachine<BlockEntityAssemble
                         if (!glue.isEmpty() && glue.matches(Glue.getLiquid(20)) && glue.getFluidAmount() >= 20 * TesseractGraphWrappers.dropletMultiplier){
                             ItemStack output = new ItemStack(Items.WRITTEN_BOOK);
                             output.setTag(printedPages.copy().getTag());
-                            return RecipeMaps.ASSEMBLING.RB().recipeMapOnly().ii(RecipeIngredient.of(printedPages.copy()), RecipeIngredient.of(Items.LEATHER)).fi(Glue.getLiquid(20)).io(output).add("written_book", 32, 8);
+                            return RecipeMaps.ASSEMBLER.RB().recipeMapOnly().ii(RecipeIngredient.of(printedPages.copy()), RecipeIngredient.of(Items.LEATHER)).fi(Glue.getLiquid(20)).io(output).add("written_book", 32, 8);
                         }
                     }
                 }

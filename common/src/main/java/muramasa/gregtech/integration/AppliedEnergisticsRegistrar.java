@@ -1,6 +1,5 @@
 package muramasa.gregtech.integration;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterStoneTypes;
@@ -13,7 +12,6 @@ import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.RecipeMaps;
 import muramasa.gregtech.data.TierMaps;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -21,7 +19,6 @@ import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
 import java.util.function.Consumer;
@@ -30,8 +27,8 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.RecipeMaps.BLASTING;
-import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_REACTING;
+import static muramasa.gregtech.data.RecipeMaps.E_BLAST_FURNACE;
+import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_REACTOR;
 
 public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
 
@@ -75,30 +72,30 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
     }
 
     public static void machineRecipes(){
-        RecipeMaps.PRESSING.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1), of(getAe2Item("calculation_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_calculation_processor"))).add("printed_calculation_processor", 200, 16);
-        RecipeMaps.PRESSING.RB().ii(GEM.getMaterialIngredient(Diamond, 1), of(getAe2Item("engineering_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_engineering_processor"))).add("printed_engineering_processor", 200, 16);
-        RecipeMaps.PRESSING.RB().ii(PLATE.getMaterialIngredient(Gold, 1), of(getAe2Item("logic_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_logic_processor"))).add("printed_logic_processor", 200, 16);
-        RecipeMaps.PRESSING.RB().ii(of(TagUtils.getForgelikeItemTag("silicon")), of(getAe2Item("silicon_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_silicon"))).add("printed_silicon", 200, 16);
-        RecipeMaps.CENTRIFUGING.RB().ii(of(getAe2Item("sky_dust")))
+        RecipeMaps.FORMING_PRESS.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1), of(getAe2Item("calculation_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_calculation_processor"))).add("printed_calculation_processor", 200, 16);
+        RecipeMaps.FORMING_PRESS.RB().ii(GEM.getMaterialIngredient(Diamond, 1), of(getAe2Item("engineering_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_engineering_processor"))).add("printed_engineering_processor", 200, 16);
+        RecipeMaps.FORMING_PRESS.RB().ii(PLATE.getMaterialIngredient(Gold, 1), of(getAe2Item("logic_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_logic_processor"))).add("printed_logic_processor", 200, 16);
+        RecipeMaps.FORMING_PRESS.RB().ii(of(TagUtils.getForgelikeItemTag("silicon")), of(getAe2Item("silicon_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_silicon"))).add("printed_silicon", 200, 16);
+        RecipeMaps.CENTRIFUGE.RB().ii(of(getAe2Item("sky_dust")))
                 .io(/*DUST_SMALL.get(BasalticMineralSand, 1), */DUST_SMALL.get(Olivine, 1), DUST_SMALL.get(Obsidian, 1), DUST_SMALL.get(Basalt, 1), DUST_SMALL.get(Flint, 1),DUST_SMALL.get(RareEarth, 1))
                 .chances(0.2,0.2,0.2,0.2,0.2)
                 .add("sky_dust", 64, 20);
-        RecipeMaps.AUTOCLAVING.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(CertusQuartz, 2)).add("certus_quartz_from_seed", 2000, 24);
-        RecipeMaps.AUTOCLAVING.RB().ii(of(getAe2Item("fluix_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(Fluix, 2)).add("fluix_from_seed", 2000, 24);
-        RecipeMaps.AUTOCLAVING.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(DistilledWater.getLiquid(200)).io(GEM.get(CertusQuartz, 2)).add("certus_quartz_from_seed_2", 1000, 24);
-        RecipeMaps.AUTOCLAVING.RB().ii(of(getAe2Item("fluix_crystal_seed"), 1).setIgnoreNbt()).fi(DistilledWater.getLiquid(200)).io(GEM.get(Fluix, 1)).add("fluix_from_seed_2", 1000, 24);
-        RecipeMaps.MIXING.RB().ii(GEM.getIngredient(ChargedCertusQuartz, 1), DUST.getMaterialIngredient(Redstone, 1), GEM.getMaterialIngredient(Quartz, 1)).fi(Water.getLiquid(500)).io(DUST.get(Fluix, 2)).add("fluix_crystal", 20, 16);
-        RecipeMaps.MIXING.RB().ii(GEM.getIngredient(ChargedCertusQuartz, 1), DUST.getMaterialIngredient(Redstone, 1), GEM.getMaterialIngredient(Quartz, 1)).fi(DistilledWater.getLiquid(500)).io(DUST.get(Fluix, 2)).add("fluix_crystal_2", 20, 16);
-        RecipeMaps.ASSEMBLING.RB().ii(of(getAe2Item("printed_logic_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(AntimatterPlatformUtils.isForge() ? 144L : 9000L)).io(new ItemStack(getAe2Item("logic_processor"))).add("logic_processor", 64, 32);
-        RecipeMaps.ASSEMBLING.RB().ii(of(getAe2Item("printed_engineering_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(AntimatterPlatformUtils.isForge() ? 144L : 9000L)).io(new ItemStack(getAe2Item("engineering_processor"))).add("engineering_processor", 64, 32);
-        RecipeMaps.ASSEMBLING.RB().ii(of(getAe2Item("printed_calculation_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(AntimatterPlatformUtils.isForge() ? 144L : 9000L)).io(new ItemStack(getAe2Item("calculation_processor"))).add("calculation_processor", 64, 32);
-        RecipeMaps.ASSEMBLING.RB().ii(DUST.getMaterialIngredient(CertusQuartz, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("certus_crystal_seed"), 2)).add("certus_crystal_seed", 64, 8);
-        RecipeMaps.ASSEMBLING.RB().ii(DUST.getMaterialIngredient(Fluix, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("fluix_crystal_seed"), 2)).add("fluix_crystal_seed", 64, 8);
-        RecipeMaps.MACERATING.RB().ii(of(getAe2Item("sky_stone_chest"))).io(new ItemStack(getAe2Item("sky_dust"), 8)).add("sky_dust_from_chest", 400, 2);
-        RecipeMaps.MACERATING.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
-        RecipeMaps.ELECTROLYZING.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1)).io(new ItemStack(getAe2Item("charged_certus_quartz_crystal"))).add("charged_certus_quartz", 2000, 30);
-        CHEMICAL_REACTING.RB().fi(Water.getLiquid(1000)).ii(of(DUST.getMaterialTag(CertusQuartz), 3), of(DUST.getMaterialTag(Sodium), 1)).io(GEM.get(CertusQuartz, 3)).add("certus_quartz",500,30);
-        BLASTING.RB().ii(RecipeIngredient.of(TagUtils.getForgelikeItemTag("silicon")), TierMaps.INT_CIRCUITS.get(1)).io(INGOT.get(Silicon)).add("silicon_ingot_from_silicon", 1683, 120, 1683);
+        RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(CertusQuartz, 2)).add("certus_quartz_from_seed", 2000, 24);
+        RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("fluix_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(Fluix, 2)).add("fluix_from_seed", 2000, 24);
+        RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(DistilledWater.getLiquid(200)).io(GEM.get(CertusQuartz, 2)).add("certus_quartz_from_seed_2", 1000, 24);
+        RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("fluix_crystal_seed"), 1).setIgnoreNbt()).fi(DistilledWater.getLiquid(200)).io(GEM.get(Fluix, 1)).add("fluix_from_seed_2", 1000, 24);
+        RecipeMaps.MIXER.RB().ii(GEM.getIngredient(ChargedCertusQuartz, 1), DUST.getMaterialIngredient(Redstone, 1), GEM.getMaterialIngredient(Quartz, 1)).fi(Water.getLiquid(500)).io(DUST.get(Fluix, 2)).add("fluix_crystal", 20, 16);
+        RecipeMaps.MIXER.RB().ii(GEM.getIngredient(ChargedCertusQuartz, 1), DUST.getMaterialIngredient(Redstone, 1), GEM.getMaterialIngredient(Quartz, 1)).fi(DistilledWater.getLiquid(500)).io(DUST.get(Fluix, 2)).add("fluix_crystal_2", 20, 16);
+        RecipeMaps.ASSEMBLER.RB().ii(of(getAe2Item("printed_logic_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(AntimatterPlatformUtils.isForge() ? 144L : 9000L)).io(new ItemStack(getAe2Item("logic_processor"))).add("logic_processor", 64, 32);
+        RecipeMaps.ASSEMBLER.RB().ii(of(getAe2Item("printed_engineering_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(AntimatterPlatformUtils.isForge() ? 144L : 9000L)).io(new ItemStack(getAe2Item("engineering_processor"))).add("engineering_processor", 64, 32);
+        RecipeMaps.ASSEMBLER.RB().ii(of(getAe2Item("printed_calculation_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(AntimatterPlatformUtils.isForge() ? 144L : 9000L)).io(new ItemStack(getAe2Item("calculation_processor"))).add("calculation_processor", 64, 32);
+        RecipeMaps.ASSEMBLER.RB().ii(DUST.getMaterialIngredient(CertusQuartz, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("certus_crystal_seed"), 2)).add("certus_crystal_seed", 64, 8);
+        RecipeMaps.ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Fluix, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("fluix_crystal_seed"), 2)).add("fluix_crystal_seed", 64, 8);
+        RecipeMaps.MACERATOR.RB().ii(of(getAe2Item("sky_stone_chest"))).io(new ItemStack(getAe2Item("sky_dust"), 8)).add("sky_dust_from_chest", 400, 2);
+        RecipeMaps.MACERATOR.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
+        RecipeMaps.ELECTROLYZER.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1)).io(new ItemStack(getAe2Item("charged_certus_quartz_crystal"))).add("charged_certus_quartz", 2000, 30);
+        CHEMICAL_REACTOR.RB().fi(Water.getLiquid(1000)).ii(of(DUST.getMaterialTag(CertusQuartz), 3), of(DUST.getMaterialTag(Sodium), 1)).io(GEM.get(CertusQuartz, 3)).add("certus_quartz",500,30);
+        E_BLAST_FURNACE.RB().ii(RecipeIngredient.of(TagUtils.getForgelikeItemTag("silicon")), TierMaps.INT_CIRCUITS.get(1)).io(INGOT.get(Silicon)).add("silicon_ingot_from_silicon", 1683, 120, 1683);
     }
     
     public static void craftingRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){

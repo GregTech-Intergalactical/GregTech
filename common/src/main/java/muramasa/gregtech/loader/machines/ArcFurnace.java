@@ -3,46 +3,27 @@ package muramasa.gregtech.loader.machines;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.*;
-import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.data.GregTechTags;
-import muramasa.gregtech.data.Machines;
-import muramasa.gregtech.data.Materials;
-import muramasa.gregtech.data.TierMaps;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import tesseract.TesseractGraphWrappers;
 
-import java.util.Arrays;
-import java.util.function.Consumer;
-
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Ref.U;
-import static muramasa.antimatter.data.AntimatterDefaultTools.SCREWDRIVER;
-import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechData.*;
-import static muramasa.gregtech.data.GregTechData.WIRE_OSMIUM;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.Materials.Rubber;
-import static muramasa.gregtech.data.RecipeMaps.*;
 import static muramasa.gregtech.data.TierMaps.*;
 
 public class ArcFurnace {
@@ -50,9 +31,9 @@ public class ArcFurnace {
         DUST.all().forEach(m -> {
             if (!m.has(INGOT) || m.has(MaterialTags.HAS_CUSTOM_SMELTING)) return;
             Material output = m == Iron ? WroughtIron : m == Copper ? AnnealedCopper : m;
-            ARC_SMELTING.RB().ii(DUST.getMaterialIngredient(m, 1)).fi(Oxygen.getGas((int)m.getMass())).io(INGOT.get(output)).add(m.getId() + "_dust_to_" + output.getId() + "_ingot", m.getMass(), 30, 0, 3);
+            RecipeMaps.ARC_FURNACE.RB().ii(DUST.getMaterialIngredient(m, 1)).fi(Oxygen.getGas((int)m.getMass())).io(INGOT.get(output)).add(m.getId() + "_dust_to_" + output.getId() + "_ingot", m.getMass(), 30, 0, 3);
             if (m == Iron || m == Copper){
-                ARC_SMELTING.RB().ii(INGOT.getMaterialIngredient(m, 1)).fi(Oxygen.getGas((int)m.getMass())).io(INGOT.get(output)).add(m.getId() + "_ingot_to_" + output.getId() + "_ingot", m.getMass(), 30, 0, 3);
+                RecipeMaps.ARC_FURNACE.RB().ii(INGOT.getMaterialIngredient(m, 1)).fi(Oxygen.getGas((int)m.getMass())).io(INGOT.get(output)).add(m.getId() + "_ingot_to_" + output.getId() + "_ingot", m.getMass(), 30, 0, 3);
             }
         });
         for (MaterialType<?> t : AntimatterAPI.all(MaterialType.class)) {
@@ -141,9 +122,9 @@ public class ArcFurnace {
     }
 
     private static void addRecyclingRecipe(Ingredient input, ImmutableMap<Material, Float> outputs, int argon, int nitrogen, String id){
-        RecipeBuilder arc = ARC_SMELTING.RB();
-        RecipeBuilder mac = MACERATING.RB();
-        RecipeBuilder plas = PLASMA_ARC_SMELTING.RB();
+        RecipeBuilder arc = RecipeMaps.ARC_FURNACE.RB();
+        RecipeBuilder mac = RecipeMaps.MACERATOR.RB();
+        RecipeBuilder plas = RecipeMaps.PLASMA_ARC_FURNACE.RB();
         arc.ii(input);
         mac.ii(input);
         plas.ii(input);

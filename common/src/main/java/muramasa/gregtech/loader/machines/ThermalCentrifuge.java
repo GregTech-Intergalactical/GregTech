@@ -13,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DEPLETED_FISSILE_FUEL;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_SMALL;
 import static muramasa.antimatter.material.Element.getFromProtons;
-import static muramasa.gregtech.data.RecipeMaps.THERMAL_CENTRIFUGING;
+import static muramasa.gregtech.data.RecipeMaps.THERMAL_CENTRIFUGE;
 import static net.minecraft.world.item.crafting.Ingredient.of;
 
 public class ThermalCentrifuge {
@@ -23,8 +23,8 @@ public class ThermalCentrifuge {
             Material aOreByProduct2 = m.getByProducts().size() >= 2 ? m.getByProducts().get(1) : aOreByProduct1;
             ItemStack stoneDust = AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone, 1);
 
-            THERMAL_CENTRIFUGING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(m),1)).io(AntimatterMaterialTypes.CRUSHED_REFINED.get(m, 1), AntimatterMaterialTypes.DUST_TINY.get(aOreByProduct2, 1)).add("purified_" + m.getId(),500, 48,0,2);
-            THERMAL_CENTRIFUGING.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(m),1)).io(AntimatterMaterialTypes.CRUSHED_REFINED.get(m, 1), AntimatterMaterialTypes.DUST_TINY.get(aOreByProduct2, 1), stoneDust).add("crushed_" + m.getId(),500, 48,0,2);
+            THERMAL_CENTRIFUGE.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(m),1)).io(AntimatterMaterialTypes.CRUSHED_REFINED.get(m, 1), AntimatterMaterialTypes.DUST_TINY.get(aOreByProduct2, 1)).add("purified_" + m.getId(),500, 48,0,2);
+            THERMAL_CENTRIFUGE.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(m),1)).io(AntimatterMaterialTypes.CRUSHED_REFINED.get(m, 1), AntimatterMaterialTypes.DUST_TINY.get(aOreByProduct2, 1), stoneDust).add("crushed_" + m.getId(),500, 48,0,2);
         });
         fuel_reprocessing();
     }
@@ -34,9 +34,9 @@ public class ThermalCentrifuge {
             int protons = f.getElement().getProtons();
             if(protons != 101){
                 String id = getFromProtons(protons + 1, false).getId().split("_")[0];
-                THERMAL_CENTRIFUGING.RB().ii(of(DEPLETED_FISSILE_FUEL.get(f))).io(new ItemStack(AntimatterAPI.get(ItemBasic.class, f.getId().split("_")[0]+"_waste", GTIRef.ID),3),new ItemStack(AntimatterAPI.get(ItemBasic.class, id+"_waste", GTIRef.ID)),DUST_SMALL.get(f,2)).add(f.getId()+"_depleted_fuel_reprocessing",200,1000);
+                THERMAL_CENTRIFUGE.RB().ii(of(DEPLETED_FISSILE_FUEL.get(f))).io(new ItemStack(AntimatterAPI.get(ItemBasic.class, f.getId().split("_")[0]+"_waste", GTIRef.ID),3),new ItemStack(AntimatterAPI.get(ItemBasic.class, id+"_waste", GTIRef.ID)),DUST_SMALL.get(f,2)).add(f.getId()+"_depleted_fuel_reprocessing",200,1000);
             }else{
-                THERMAL_CENTRIFUGING.RB().ii(of(DEPLETED_FISSILE_FUEL.get(f))).io(new ItemStack(AntimatterAPI.get(ItemBasic.class, f.getId().split("_")[0]+"_waste", GTIRef.ID),4),DUST_SMALL.get(f,2)).add(f.getId()+"_depleted_fuel_reprocessing",200,1000);
+                THERMAL_CENTRIFUGE.RB().ii(of(DEPLETED_FISSILE_FUEL.get(f))).io(new ItemStack(AntimatterAPI.get(ItemBasic.class, f.getId().split("_")[0]+"_waste", GTIRef.ID),4),DUST_SMALL.get(f,2)).add(f.getId()+"_depleted_fuel_reprocessing",200,1000);
             }
         });
     }

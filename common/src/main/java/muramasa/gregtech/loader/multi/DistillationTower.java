@@ -1,11 +1,9 @@
 package muramasa.gregtech.loader.multi;
 
 import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.gregtech.GregTechConfig;
-import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.material.FluidProduct;
 import net.minecraft.world.item.ItemStack;
 
@@ -200,7 +198,7 @@ public class DistillationTower {
     private static void addDistillationDistillingRecipe(Material input, int amount, int ticks, int euPerTick, int distilleryPerTick, int distilleryTicks, ItemStack itemStack, FluidProduct... outputs){
         addDistillationRecipe(input, amount, ticks, euPerTick, itemStack, outputs);
         for (int i = 0; i < outputs.length; i++){
-            RecipeBuilder b = DISTILLING.RB()
+            RecipeBuilder b = DISTILLERY.RB()
                     .ii(INT_CIRCUITS.get(i + 1).setNoConsume())
                     .fi(input.has(AntimatterMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount))
                     .fo(outputs[i].convert());
@@ -215,7 +213,7 @@ public class DistillationTower {
 
     private static void addDistillingRecipe(Material input, int amount, int ticks, int euPerTick, ItemStack itemStack, FluidProduct... outputs){
         for (int i = 0; i < outputs.length; i++){
-            RecipeBuilder b = DISTILLING.RB()
+            RecipeBuilder b = DISTILLERY.RB()
                     .ii(INT_CIRCUITS.get(i + 1).setNoConsume())
                     .fi(input.has(AntimatterMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount))
                     .fo(outputs[i].convert());

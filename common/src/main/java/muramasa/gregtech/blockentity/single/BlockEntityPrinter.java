@@ -2,7 +2,6 @@ package muramasa.gregtech.blockentity.single;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
@@ -30,11 +29,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import tesseract.FluidPlatformUtils;
-import tesseract.TesseractGraphWrappers;
 import tesseract.api.item.ExtendedItemContainer;
 
 import static muramasa.antimatter.Ref.L;
-import static muramasa.gregtech.data.Materials.Glue;
 import static muramasa.gregtech.data.Materials.SquidInk;
 
 public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> implements IFilterableHandler {
@@ -103,7 +100,7 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                                 output.setTag(bookData.copy());
                             }
                             if ((prospect != null && prospect.getBoolean("analyzed")) || bookData != null){
-                                return RecipeMaps.SCANNING.RB().recipeMapOnly().ii(RecipeIngredient.of(Items.PAPER, 3)).fi(SquidInk.getLiquid(L)).io(output).add("data_stick_book_printing", 400, 2);
+                                return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(Items.PAPER, 3)).fi(SquidInk.getLiquid(L)).io(output).add("data_stick_book_printing", 400, 2);
                             }
                         }
 

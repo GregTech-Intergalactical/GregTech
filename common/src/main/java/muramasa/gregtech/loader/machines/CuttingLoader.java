@@ -10,7 +10,6 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.Materials;
-import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -22,7 +21,7 @@ import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
-import static muramasa.gregtech.data.RecipeMaps.CUTTING;
+import static muramasa.gregtech.data.RecipeMaps.CUTTER;
 
 public class CuttingLoader {
     public static void init() {
@@ -61,25 +60,25 @@ public class CuttingLoader {
     }
 
     private static void addCutterRecipe(TagKey<Item> input, ItemStack output, String id, int duration, int euPerTick){
-        CUTTING.RB().ii(RecipeIngredient.of(input, 1))
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320)) * TesseractGraphWrappers.dropletMultiplier))
                 .io(output).add(id + "_with_water", duration * 2L, euPerTick);
-        CUTTING.RB().ii(RecipeIngredient.of(input, 1))
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(Materials.Lubricant.getLiquid(Math.max(1, Math.min(250, duration * euPerTick / 1280))))
                 .io(output).add(id + "_with_lubricant", duration, euPerTick);
-        CUTTING.RB().ii(RecipeIngredient.of(input, 1))
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(Materials.DistilledWater.getLiquid(Math.max(3, Math.min(750, duration * euPerTick / 426))))
                 .io(output).add(id + "_with_distilled_water", duration * 2L, euPerTick);
     }
 
     public static void addWoodRecipe(TagKey<Item> input, Item output, int multiplier, String id, int duration, int euPerTick){
-        CUTTING.RB().ii(RecipeIngredient.of(input, 1))
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320)) * TesseractGraphWrappers.dropletMultiplier))
                 .io(new ItemStack(output, 4 * multiplier), DUST.get(Wood, 2)).add(id + "_with_water", duration * 2L, euPerTick);
-        CUTTING.RB().ii(RecipeIngredient.of(input, 1))
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(Materials.Lubricant.getLiquid(Math.max(1, Math.min(250, duration * euPerTick / 1280))))
                 .io(new ItemStack(output, 6 * multiplier), DUST.get(Wood, 1)).add(id + "_with_lubricant", duration, euPerTick);
-        CUTTING.RB().ii(RecipeIngredient.of(input, 1))
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(Materials.DistilledWater.getLiquid(Math.max(3, Math.min(750, duration * euPerTick / 426))))
                 .io(new ItemStack(output, 4 * multiplier), DUST.get(Wood, 2)).add(id + "_with_distilled_water", duration * 2L, euPerTick);
     }

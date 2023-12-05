@@ -1,7 +1,5 @@
 package muramasa.gregtech.blockentity.single;
 
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
@@ -18,10 +16,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
-import tesseract.TesseractGraphWrappers;
 import tesseract.api.item.ExtendedItemContainer;
-
-import static muramasa.gregtech.data.Materials.Glue;
 
 public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> implements IFilterableHandler {
     public BlockEntityScanner(Machine<?> type, BlockPos pos, BlockState state) {
@@ -41,12 +36,12 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
                             if (prospect != null) {
                                 ItemStack output = input0.copy();
                                 output.getTagElement("prospectData").putBoolean("analyzed", true);
-                                return RecipeMaps.SCANNING.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy())).io(output).add("data_stick_prospection", 1000, 32);
+                                return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy())).io(output).add("data_stick_prospection", 1000, 32);
                             }
                         } else if (input0.getItem() == Items.WRITTEN_BOOK && input0.getTag() != null && input1.getItem() == GregTechData.DataStick && input1.getTag() == null){
                             ItemStack output = new ItemStack(GregTechData.DataStick);
                             output.getOrCreateTag().put("bookData", input0.getTag().copy());
-                            return RecipeMaps.SCANNING.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy()), RecipeIngredient.of(input1.copy())).io(output).add("book_copying", 128, 32);
+                            return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy()), RecipeIngredient.of(input1.copy())).io(output).add("book_copying", 128, 32);
                         }
                     }
                 }

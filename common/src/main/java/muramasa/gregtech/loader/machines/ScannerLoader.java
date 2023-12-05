@@ -19,7 +19,7 @@ public class ScannerLoader {
         name = new CompoundTag();
         name.putString("text", "Analyzed Prospection Data");
         display.put("Name", name);
-        RecipeMaps.SCANNING.RB().ii(RecipeIngredient.of(rawDataStick)).io(analyzedDataStick).fake().add("prospection_data_stick", 1000, 32);
+        RecipeMaps.SCANNER.RB().ii(RecipeIngredient.of(rawDataStick)).io(analyzedDataStick).fake().add("prospection_data_stick", 1000, 32);
         ItemStack emptyDataStick = new ItemStack(GregTechData.DataStick);
         display = emptyDataStick.getOrCreateTagElement("display");
         name = new CompoundTag();
@@ -30,6 +30,6 @@ public class ScannerLoader {
         name = new CompoundTag();
         name.putString("text", "Scanned Book Data");
         display.put("Name", name);
-        RecipeMaps.SCANNING.RB().ii(RecipeIngredient.of(Items.WRITTEN_BOOK), RecipeIngredient.of(emptyDataStick)).io(outputDataStick).fake().add("book_data_stick", 128, 32);
+        RecipeMaps.SCANNER.RB().ii(RecipeIngredient.of(Items.WRITTEN_BOOK), RecipeIngredient.of(emptyDataStick)).io(outputDataStick).fake().add("book_data_stick", 128, 32);
     }
 }

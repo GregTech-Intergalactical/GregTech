@@ -2,10 +2,9 @@ package muramasa.gregtech.loader.machines;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.item.ItemBasic;
-import muramasa.gregtech.data.GregTechData;
 import net.minecraft.world.item.ItemStack;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
-import static muramasa.gregtech.data.RecipeMaps.PRESSING;
+import static muramasa.gregtech.data.RecipeMaps.FORMING_PRESS;
 
 public class FormingPress {
     public static void init() {
@@ -34,6 +33,6 @@ public class FormingPress {
         molds(GTCoreItems.ShapePlate);
     }
     private static void molds(ItemBasic mold){
-        PRESSING.RB().ii(of(GTCoreItems.EmptyShape,1),of(mold,1).setNoConsume()).io(new ItemStack(mold,1)).add(mold.getId(),120,20);
+        FORMING_PRESS.RB().ii(of(GTCoreItems.EmptyShape,1),of(mold,1).setNoConsume()).io(new ItemStack(mold,1)).add(mold.getId(),120,20);
     }
 }

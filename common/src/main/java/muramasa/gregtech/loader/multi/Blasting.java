@@ -2,7 +2,6 @@ package muramasa.gregtech.loader.multi;
 
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechMaterialTags;
@@ -16,8 +15,8 @@ import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.RecipeMaps.BASIC_BLASTING;
-import static muramasa.gregtech.data.RecipeMaps.BLASTING;
+import static muramasa.gregtech.data.RecipeMaps.PRIMITIVE_BLAST_FURNACE;
+import static muramasa.gregtech.data.RecipeMaps.E_BLAST_FURNACE;
 
 public class Blasting {
     public static int mixedOreYield = GTIRef.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
@@ -64,18 +63,18 @@ public class Blasting {
         });*/
 
         /* PRIMITIVE */
-        BASIC_BLASTING.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(1.0, 0.5).add("steel_ingot",7200, 0);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).chances(1.0, 0.5).add("steel_ingot",7200, 0);
         DUST.all().forEach(m -> {
             if (m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE) && m.has(GregTechMaterialTags.BLAST_FURNACE_TEMP)){
                 ItemStack ingot = DIRECT_SMELT_INTO.getMapping(m).has(INGOT_HOT) ? INGOT_HOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1);
                 int heat = GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m);
-                BLASTING.RB().temperature(heat).ii(DUST.getMaterialIngredient(m, 1), INT_CIRCUITS.get(1)).io(ingot).add(DIRECT_SMELT_INTO.getMapping(m).getId() + "_ingot_from_" + m.getId() + "_dust", Math.max(m.getMass() / 40L, 1L) * heat, 120);
+                E_BLAST_FURNACE.RB().temperature(heat).ii(DUST.getMaterialIngredient(m, 1), INT_CIRCUITS.get(1)).io(ingot).add(DIRECT_SMELT_INTO.getMapping(m).getId() + "_ingot_from_" + m.getId() + "_dust", Math.max(m.getMass() / 40L, 1L) * heat, 120);
             }
         });
 
-        BASIC_BLASTING.RB().ii(DUST.getMaterialIngredient(BlackSteel, 1)).io(INGOT.get(BlackSteel)).add("black_steel", 10800);
-        BASIC_BLASTING.RB().ii(DUST.getMaterialIngredient(BlueSteel, 1)).io(INGOT.get(BlueSteel)).add("blue_steel", 14400);
-        BASIC_BLASTING.RB().ii(DUST.getMaterialIngredient(RedSteel, 1)).io(INGOT.get(RedSteel)).add("red_steel", 14400);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(BlackSteel, 1)).io(INGOT.get(BlackSteel)).add("black_steel", 10800);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(BlueSteel, 1)).io(INGOT.get(BlueSteel)).add("blue_steel", 14400);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(RedSteel, 1)).io(INGOT.get(RedSteel)).add("red_steel", 14400);
 
         addCalciteRecipe(Hematite, 4, new ItemStack(Items.IRON_INGOT, 1));
         addCalciteRecipe(YellowLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
@@ -91,39 +90,39 @@ public class Blasting {
         addCalciteRecipe(Tetrahedrite, 12, INGOT.get(Copper, 3), INGOT.get(Antimony, 1), INGOT.get(Iron, 1));
         addCalciteRecipe(Malachite, 15, INGOT.get(Copper, 2));
         /* Annealed Copper*/
-        BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Copper, 1))
+        E_BLAST_FURNACE.RB().temperature(1200).ii(DUST.getMaterialIngredient(Copper, 1))
                 .fi(Oxygen.getGas(1000))
                 .io(INGOT.get(AnnealedCopper))
                 .add("annealed_copper_ingot", 25 * 20, 120);
         /* Steel */
-        BLASTING.RB().temperature(1000).ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron, 1))
+        E_BLAST_FURNACE.RB().temperature(1000).ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron, 1))
                 .fi(Oxygen.getGas(1000))
                 .io(INGOT.get(Steel), DUST_SMALL.get(DarkAsh))
                 .add("steel_ingot", 500, 120);
-        BLASTING.RB().temperature(1000).ii(INGOT.getMaterialIngredient(WroughtIron, 1))
+        E_BLAST_FURNACE.RB().temperature(1000).ii(INGOT.getMaterialIngredient(WroughtIron, 1))
                 .fi(Oxygen.getGas(1000))
                 .io(INGOT.get(Steel), DUST_SMALL.get(DarkAsh))
                 .add("steel_ingot_2", 100, 120);
         if (!GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             /* Aluminium*/
-            BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Ruby, 1))
+            E_BLAST_FURNACE.RB().temperature(1200).ii(DUST.getMaterialIngredient(Ruby, 1))
                     .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
                     .add("aluminium_ingot_from_ruby", 400, 100);
-            BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Sapphire, 1))
+            E_BLAST_FURNACE.RB().temperature(1200).ii(DUST.getMaterialIngredient(Sapphire, 1))
                     .io(NUGGET.get(Aluminium, 3))
                     .add("aluminium_ingot_from_blue_sapphire", 400, 100);
-            BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(GreenSapphire, 1))
+            E_BLAST_FURNACE.RB().temperature(1200).ii(DUST.getMaterialIngredient(GreenSapphire, 1))
                     .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
                     .add("aluminium_ingot_from_green_sapphire", 400, 100);
             int heat = GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(Aluminium);
-            BLASTING.RB().temperature(1700).ii(DUST.getMaterialIngredient(Aluminium, 1), INT_CIRCUITS.get(1)).io(INGOT.get(Aluminium)).add( "aluminium_ingot_from_aluminium_dust", Math.max(Aluminium.getMass() / 40L, 1L) * heat, 120);
-            BLASTING.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Calcite, 1)).io(INGOT.get(Aluminium)).add("alumina_calcite", 4 * 100, 120);
-            BLASTING.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Limestone, 1)).io(INGOT.get(Aluminium)).add("alumina_limestone", 4 * 100, 120);
-            BLASTING.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Marble, 1)).io(INGOT.get(Aluminium)).add("alumina_marble", 4 * 100, 120);
+            E_BLAST_FURNACE.RB().temperature(1700).ii(DUST.getMaterialIngredient(Aluminium, 1), INT_CIRCUITS.get(1)).io(INGOT.get(Aluminium)).add( "aluminium_ingot_from_aluminium_dust", Math.max(Aluminium.getMass() / 40L, 1L) * heat, 120);
+            E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Calcite, 1)).io(INGOT.get(Aluminium)).add("alumina_calcite", 4 * 100, 120);
+            E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Limestone, 1)).io(INGOT.get(Aluminium)).add("alumina_limestone", 4 * 100, 120);
+            E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Marble, 1)).io(INGOT.get(Aluminium)).add("alumina_marble", 4 * 100, 120);
         }
 
         /* Stainless Steel*/
-        BLASTING.RB().temperature(1700).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 6), DUST.getMaterialIngredient(Nickel, 1), DUST.getMaterialIngredient(Manganese, 1), DUST.getMaterialIngredient(Chromium, 1))
+        E_BLAST_FURNACE.RB().temperature(1700).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 6), DUST.getMaterialIngredient(Nickel, 1), DUST.getMaterialIngredient(Manganese, 1), DUST.getMaterialIngredient(Chromium, 1))
                 .io(INGOT.get(StainlessSteel, 9))
                 .add("stainless_steel_ingot", 1000, 120);
         /* TITANIUM */
@@ -132,59 +131,59 @@ public class Blasting {
                 .io(INGOT_HOT.get(Titanium,1), DUST.get(MagnesiumChloride,2))
                 .add("titanium_ingot",40*20, 480);*/
         /* Tungsten Steel/Carbide*/
-        BLASTING.RB().temperature(3000).ii(DUST.getMaterialIngredient(Tungsten, 1), DUST.getMaterialIngredient(Steel, 1))
+        E_BLAST_FURNACE.RB().temperature(3000).ii(DUST.getMaterialIngredient(Tungsten, 1), DUST.getMaterialIngredient(Steel, 1))
                 .io(INGOT_HOT.get(TungstenSteel, 2))
                 .add("tungsten_steel_ingot", 150 * 20, 480);
-        BLASTING.RB().temperature(3000).ii(DUST.getMaterialIngredient(Tungsten, 1), DUST.getMaterialIngredient(Carbon, 1))
+        E_BLAST_FURNACE.RB().temperature(3000).ii(DUST.getMaterialIngredient(Tungsten, 1), DUST.getMaterialIngredient(Carbon, 1))
                 .io(INGOT_HOT.get(TungstenCarbide, 1))
                 .add("tungsten_carbide_ingot", 246 * 20, 480);
         /* Niobium Titanium*/
-        BLASTING.RB().temperature(4500).ii(DUST.getMaterialIngredient(Niobium, 1), DUST.getMaterialIngredient(Titanium, 1))
+        E_BLAST_FURNACE.RB().temperature(4500).ii(DUST.getMaterialIngredient(Niobium, 1), DUST.getMaterialIngredient(Titanium, 1))
                 .io(INGOT_HOT.get(NiobiumTitanium, 2))
                 .add("niobium_titanium_ingot",225 * 20, 480);
         /* Vanadium Gallium*/
-        BLASTING.RB().temperature(4500).ii(DUST.getMaterialIngredient(Vanadium, 3), DUST.getMaterialIngredient(Gallium, 1))
+        E_BLAST_FURNACE.RB().temperature(4500).ii(DUST.getMaterialIngredient(Vanadium, 3), DUST.getMaterialIngredient(Gallium, 1))
                 .io(INGOT_HOT.get(VanadiumGallium, 4))
                 .add("vanadium_gallium_ingot", 225 * 20, 480);
         /* Vanadium Steel*/
-        BLASTING.RB().temperature(1453).ii(DUST.getMaterialIngredient(Vanadium, 1), DUST.getMaterialIngredient(Chromium, 1), DUST.getMaterialIngredient(Steel, 7))
+        E_BLAST_FURNACE.RB().temperature(1453).ii(DUST.getMaterialIngredient(Vanadium, 1), DUST.getMaterialIngredient(Chromium, 1), DUST.getMaterialIngredient(Steel, 7))
                 .io(INGOT.get(VanadiumSteel, 9))
                 .add("vanadium_steel_ingot", 225 * 20, 120);
         /* Kanthal*/
-        BLASTING.RB().temperature(1800).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 1), DUST.getMaterialIngredient(Aluminium, 1), DUST.getMaterialIngredient(Chromium, 1))
+        E_BLAST_FURNACE.RB().temperature(1800).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 1), DUST.getMaterialIngredient(Aluminium, 1), DUST.getMaterialIngredient(Chromium, 1))
                 .io(INGOT_HOT.get(Kanthal, 3))
                 .add("kanthal_ingot", 90 * 20, 120);
         /* Nichrome*/
-        BLASTING.RB().temperature(2700).ii(DUST.getMaterialIngredient(Nickel, 4), DUST.getMaterialIngredient(Chromium, 1), INT_CIRCUITS.get(2))
+        E_BLAST_FURNACE.RB().temperature(2700).ii(DUST.getMaterialIngredient(Nickel, 4), DUST.getMaterialIngredient(Chromium, 1), INT_CIRCUITS.get(2))
                 .io(INGOT_HOT.get(Nichrome, 5))
                 .add("nichrome_ingot", 135 * 20, 480);
         /* Osmiridium*/
-        BLASTING.RB().temperature(2900).ii(DUST.getMaterialIngredient(Iridium, 3), DUST.getMaterialIngredient(Osmium, 1))
+        E_BLAST_FURNACE.RB().temperature(2900).ii(DUST.getMaterialIngredient(Iridium, 3), DUST.getMaterialIngredient(Osmium, 1))
                 .fi(Helium.getGas(1000))
                 .io(INGOT_HOT.get(Osmiridium, 4))
                 .add("osmiridium_ingot", 25 * 20, 1920);
         /* Naquadah Alloy*/
-        BLASTING.RB().temperature(7200).ii(DUST.getMaterialIngredient(Naquadah, 1), DUST.getMaterialIngredient(Osmiridium, 1))
+        E_BLAST_FURNACE.RB().temperature(7200).ii(DUST.getMaterialIngredient(Naquadah, 1), DUST.getMaterialIngredient(Osmiridium, 1))
                 .fi(Argon.getGas(1000))
                 .io(INGOT_HOT.get(NaquadahAlloy, 2))
                 .add("naquadah_ingot",25 * 20, 30720);
         /* TFC stuff and hss */
-        BLASTING.RB().temperature(1200).ii(DUST.getMaterialIngredient(Nickel, 1), DUST.getMaterialIngredient(BlackBronze, 1), DUST.getMaterialIngredient(Steel, 3))
+        E_BLAST_FURNACE.RB().temperature(1200).ii(DUST.getMaterialIngredient(Nickel, 1), DUST.getMaterialIngredient(BlackBronze, 1), DUST.getMaterialIngredient(Steel, 3))
                 .io(INGOT.get(BlackSteel, 5))
                 .add("black_steel_ingot", 60 * 20, 120);
-        BLASTING.RB().temperature(1400).ii(DUST.getMaterialIngredient(SterlingSilver, 1), DUST.getMaterialIngredient(BismuthBronze, 1), DUST.getMaterialIngredient(Steel, 2), DUST.getMaterialIngredient(BlackSteel, 4))
+        E_BLAST_FURNACE.RB().temperature(1400).ii(DUST.getMaterialIngredient(SterlingSilver, 1), DUST.getMaterialIngredient(BismuthBronze, 1), DUST.getMaterialIngredient(Steel, 2), DUST.getMaterialIngredient(BlackSteel, 4))
                 .io(INGOT.get(BlueSteel, 8))
                 .add("blue_steel_ingot", 70 * 20, 120);
-        BLASTING.RB().temperature(1300).ii(DUST.getMaterialIngredient(RoseGold, 1), DUST.getMaterialIngredient(Brass, 1), DUST.getMaterialIngredient(Steel, 2), DUST.getMaterialIngredient(BlackSteel, 4))
+        E_BLAST_FURNACE.RB().temperature(1300).ii(DUST.getMaterialIngredient(RoseGold, 1), DUST.getMaterialIngredient(Brass, 1), DUST.getMaterialIngredient(Steel, 2), DUST.getMaterialIngredient(BlackSteel, 4))
                 .io(INGOT.get(RedSteel, 8))
                 .add("red_steel_ingot", 65 * 20, 120);
-        BLASTING.RB().temperature(4500).ii(DUST.getMaterialIngredient(TungstenSteel, 5), DUST.getMaterialIngredient(Chromium, 1), DUST.getMaterialIngredient(Molybdenum, 2), DUST.getMaterialIngredient(Vanadium, 1))
+        E_BLAST_FURNACE.RB().temperature(4500).ii(DUST.getMaterialIngredient(TungstenSteel, 5), DUST.getMaterialIngredient(Chromium, 1), DUST.getMaterialIngredient(Molybdenum, 2), DUST.getMaterialIngredient(Vanadium, 1))
                 .io(INGOT_HOT.get(HSSG, 9))
                 .add("hssg_ingot", 450 * 20, 120);
-        BLASTING.RB().temperature(5400).ii(DUST.getMaterialIngredient(HSSG, 6), DUST.getMaterialIngredient(Cobalt, 1), DUST.getMaterialIngredient(Manganese, 1), DUST.getMaterialIngredient(Silicon, 1))
+        E_BLAST_FURNACE.RB().temperature(5400).ii(DUST.getMaterialIngredient(HSSG, 6), DUST.getMaterialIngredient(Cobalt, 1), DUST.getMaterialIngredient(Manganese, 1), DUST.getMaterialIngredient(Silicon, 1))
                 .io(INGOT_HOT.get(HSSE, 8))
                 .add("hsse_ingot", 540 * 20, 120);
-        BLASTING.RB().temperature(5400).ii(DUST.getMaterialIngredient(HSSG, 6), DUST.getMaterialIngredient(Osmiridium, 2), DUST.getMaterialIngredient(Iridium, 1))
+        E_BLAST_FURNACE.RB().temperature(5400).ii(DUST.getMaterialIngredient(HSSG, 6), DUST.getMaterialIngredient(Osmiridium, 2), DUST.getMaterialIngredient(Iridium, 1))
                 .io(INGOT_HOT.get(HSSS, 9))
                 .add("hsss_ingot", 810 * 20, 120);
         //TODO figure out proper nuclear
@@ -212,21 +211,21 @@ public class Blasting {
     }
 
     private static void addCalciteRecipe(Material ore, int input, ItemStack... outputs){
-        BASIC_BLASTING.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add(ore.getId() + "_calcite", input * 1000);
-        BASIC_BLASTING.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add(ore.getId() + "_limestone", input * 1000);
-        BASIC_BLASTING.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add(ore.getId() + "_marble", input * 1000);
-        BASIC_BLASTING.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("crushed_" + ore.getId() + "_calcite", input * 1000);
-        BASIC_BLASTING.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("crushed_" + ore.getId() + "_limestone", input * 1000);
-        BASIC_BLASTING.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("crushed_" + ore.getId() + "_marble", input * 1000);
-        BASIC_BLASTING.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("impure_" + ore.getId() + "_calcite", input * 1000);
-        BASIC_BLASTING.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("impure_" + ore.getId() + "_limestone", input * 1000);
-        BASIC_BLASTING.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("impure_" + ore.getId() + "_marble", input * 1000);
-        BASIC_BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("dust_" + ore.getId() + "_calcite", input * 1000);
-        BASIC_BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("dust_" + ore.getId() + "_limestone", input * 1000);
-        BASIC_BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("dust_" + ore.getId() + "_marble", input * 1000);
-        BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add(ore.getId() + "_calcite", input * 500, 120);
-        BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add(ore.getId() + "_limestone", input * 500, 120);
-        BLASTING.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add(ore.getId() + "_marble", input * 500, 120);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add(ore.getId() + "_calcite", input * 1000);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add(ore.getId() + "_limestone", input * 1000);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add(ore.getId() + "_marble", input * 1000);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("crushed_" + ore.getId() + "_calcite", input * 1000);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("crushed_" + ore.getId() + "_limestone", input * 1000);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("crushed_" + ore.getId() + "_marble", input * 1000);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("impure_" + ore.getId() + "_calcite", input * 1000);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("impure_" + ore.getId() + "_limestone", input * 1000);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("impure_" + ore.getId() + "_marble", input * 1000);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("dust_" + ore.getId() + "_calcite", input * 1000);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("dust_" + ore.getId() + "_limestone", input * 1000);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("dust_" + ore.getId() + "_marble", input * 1000);
+        E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add(ore.getId() + "_calcite", input * 500, 120);
+        E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add(ore.getId() + "_limestone", input * 500, 120);
+        E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add(ore.getId() + "_marble", input * 500, 120);
 
     }
 }
