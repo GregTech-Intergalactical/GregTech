@@ -522,7 +522,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(CarbonMonoxide).asGas(24);
         event.setMaterial(Chloromethane).asGas();
         event.setMaterial(Dimethylamine).asGas();
-        event.setMaterial(LPG).asGas(256);
+        event.setMaterial(LPG).asFluid(256);
         event.setMaterial(NaturalGas).asGas(15);
         event.setMaterial(RefineryGas).asGas(128);
         event.setMaterial(SulfuricGas).asGas(20);

@@ -54,7 +54,7 @@ public class ChemicalReactorLoader {
         //POLYPHENYLENESULFIDE
         CHEMICAL_REACTOR.RB().fi(Benzene.getLiquid(1000)).ii(of(DUST.getMaterialTag(Sulfur),1)).fo(PolyphenyleneSulfide.getLiquid(2000)).add("polyphenylene_sulfide",320, 30);
         //EPICHLOROHYDRIN
-        CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Carbon),1)).fi(LPG.getGas(432),Chlorine.getGas(1000)).fo(Epichlorohydrin.getLiquid(432)).add("epichlorohydrin",480, 30);
+        CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Carbon),1)).fi(LPG.getLiquid(432),Chlorine.getGas(1000)).fo(Epichlorohydrin.getLiquid(432)).add("epichlorohydrin",480, 30);
         //GELLED TOLUENE
         CHEMICAL_REACTOR.RB().ii(of(Items.SUGAR),of(DUST_TINY.get(Plastic,1))).fi(Toluene.getLiquid(133)).io(DUST.get(GelledToluene,2)).add("gelled_toluene",140, 192);
         //NITROGEN DIOXIDE
@@ -247,7 +247,7 @@ public class ChemicalReactorLoader {
         //EPICHLOROHYDRIN
         CHEMICAL_REACTOR.RB().fi(AllylChloride.getLiquid(3000), HypochlorousAcid.getLiquid(1000)).ii(DUST.getMaterialIngredient(SodiumHydroxide, 1)).fo(Epichlorohydrin.getLiquid(4000),SaltWater.getLiquid(1000)).add("epichlorohydrin", 160, 30);
         CHEMICAL_REACTOR.RB().fi(Glycerol.getLiquid(7000), HydrochloricAcid.getLiquid(1000)).fo(Water.getLiquid(3000), Epichlorohydrin.getLiquid(5000)).add("epichlorohydrin_1", 240, 30);
-        CHEMICAL_REACTOR.RB().fi(LPG.getGas(432), Chlorine.getGas(1000)).ii(DUST.getMaterialIngredient(Carbon, 1)).fo(Epichlorohydrin.getLiquid(432)).add("epichlorohydrin_2", 480, 30);
+        CHEMICAL_REACTOR.RB().fi(LPG.getLiquid(432), Chlorine.getGas(1000)).ii(DUST.getMaterialIngredient(Carbon, 1)).fo(Epichlorohydrin.getLiquid(432)).add("epichlorohydrin_2", 480, 30);
         //PHOSPHORIC ACID
         CHEMICAL_REACTOR.RB().fi(Water.getLiquid(9000)).ii(DUST.getMaterialIngredient(PhosphorousPentoxide, 7)).fo(PhosphoricAcid.getLiquid(16000)).add("phosphoric_acid", 120, 30);
         CHEMICAL_REACTOR.RB().fi(Water.getLiquid(4000), Oxygen.getGas(2500)).ii(DUST.getMaterialIngredient(TricalciumPhosphate, 1)).fo(PhosphoricAcid.getLiquid(8000)).add("phosphoric_acid_1", 320, 30);

@@ -127,9 +127,9 @@ public class MixerLoader {
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Lignite, 1), of(SuperFuelBinder, 6)).fi(HeavyFuel.getLiquid(1500)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_lignite", 120, 96);
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(SuperFuelBinder, 4)).fi(HeavyFuel.getLiquid(1200)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal", 120, 96);
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(SuperFuelBinder, 2)).fi(HeavyFuel.getLiquid(750)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal", 120, 96);
-        MIXER.RB().ii(BLOCK.getMaterialIngredient(Lignite, 1), of(SuperFuelBinder, 6)).fi(LPG.getGas(1500)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_lignite_lpg", 120, 96);
-        MIXER.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(SuperFuelBinder, 4)).fi(LPG.getGas(1200)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal_lpg", 120, 96);
-        MIXER.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(SuperFuelBinder, 2)).fi(LPG.getGas(750)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal_lpg", 120, 96);
+        MIXER.RB().ii(BLOCK.getMaterialIngredient(Lignite, 1), of(SuperFuelBinder, 6)).fi(LPG.getLiquid(1500)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_lignite_lpg", 120, 96);
+        MIXER.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(SuperFuelBinder, 4)).fi(LPG.getLiquid(1200)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal_lpg", 120, 96);
+        MIXER.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(SuperFuelBinder, 2)).fi(LPG.getLiquid(750)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal_lpg", 120, 96);
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Lignite, 1), of(SuperFuelBinder, 6)).fi(CetaneBoostedDiesel.getLiquid(1000)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_lignite_nitro", 120, 96);
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(SuperFuelBinder, 4)).fi(CetaneBoostedDiesel.getLiquid(800)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal_nitro", 120, 96);
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(SuperFuelBinder, 2)).fi(CetaneBoostedDiesel.getLiquid(500)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal_nitro", 120, 96);

@@ -66,7 +66,7 @@ public class CentrifugingLoader {
         CENTRIFUGE.RB().ii(DUST.getMaterialIngredient(RareEarth, 1)).io(DUST_SMALL.get(Neodymium), DUST_SMALL.get(Yttrium), DUST_SMALL.get(Lanthanum), DUST_SMALL.get(Cerium), DUST_SMALL.get(Cadmium), DUST_SMALL.get(Caesium)).chances(0.25, 0.25, 0.25, 0.25, 0.25, 0.25).add("rare_earth", 64, 20);
         CENTRIFUGE.RB().fi(Propane.getGas(320)).fo(Lubricant.getLiquid(290)).add("propane", 20, 5);
         CENTRIFUGE.RB().fi(Butane.getGas(320)).fo(Lubricant.getLiquid(370)).add("butane", 20, 5);
-        CENTRIFUGE.RB().fi(RefineryGas.getGas(800)).fo(LPG.getGas(400)).add("refinery_gas", 20, 5);
+        CENTRIFUGE.RB().fi(RefineryGas.getGas(800)).fo(LPG.getLiquid(400)).add("refinery_gas", 20, 5);
         CENTRIFUGE.RB().ii(DUST.getMaterialIngredient(PlatinumGroupSludge,1)).io(DUST_TINY.get(Platinum), DUST_TINY.get(Palladium), DUST_TINY.get(Iridium), DUST_TINY.get(Osmium)).chances(1, .8, .6, .6).add("platinum_group_sludge", 900, 30);
         CENTRIFUGE.RB().fi(UraniumHexafluoride.getGas(1400)).fo(Uranium238Hexafluoride.getGas(1000), Uranium235Hexafluoride.getGas(400)).add("uranium_hexafluoride", 24, 512);
         //Cake Centrifuging
