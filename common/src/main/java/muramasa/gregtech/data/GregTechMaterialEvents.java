@@ -517,6 +517,7 @@ public class GregTechMaterialEvents {
         //Ketones
         event.setMaterial(Ethenone).asGas();
         //Misc
+        event.setMaterial(HotCarbonDioxide).asGas();
         event.setMaterial(CarbonDioxide).asGas();
         event.setMaterial(CarbonMonoxide).asGas(24);
         event.setMaterial(Chloromethane).asGas();

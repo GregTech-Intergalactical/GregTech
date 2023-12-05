@@ -624,6 +624,7 @@ public class Materials {
     public static Material Butane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "butane", 0xb6371e, NONE));
     public static Material Butadiene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "butadiene", 0xe86900, NONE));
     public static Material Butene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "butene", 0xcf5005, NONE));
+    public static Material HotCarbonDioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hot_carbon_dioxide", 0xa9d0f5, NONE));
     public static Material CarbonDioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "carbon_dioxide", 0xa9d0f5, NONE));
     public static Material CarbonMonoxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "carbon_monoxide", 0x0e4880, NONE));
     public static Material Chloromethane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chloromethane", 0xc82ca0, NONE));
