@@ -1,6 +1,8 @@
 package muramasa.gregtech.loader.machines;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
+import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.material.Material;
@@ -9,6 +11,7 @@ import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -54,6 +57,8 @@ public class CentrifugingLoader {
         //CENTRIFUGING.RB().ii(of(DUST.get(Stone, 32))).io(DUST.get(Quartz, 9), DUST.get(PotassiumFeldspar, 9), DUST.get(Marble, 8), DUST.get(Biotite, 4),
         //        DUST.get(Sodalite, 4)).add("stone_dust",7680, 30);
 
+        CENTRIFUGE.RB().fi(Lava.getLiquid(100)).io(NUGGET.get(Copper), NUGGET.get(Tin), NUGGET.get(Gold), NUGGET.get(Silver), NUGGET.get(Tantalum), DUST_SMALL.get(Tungstate)).chances(.2, .1, .025, .025, .025, .025).add("lava", 80, 80);
+        CENTRIFUGE.RB().fi(FluidHooks.newFluidHolder(GTCoreFluids.PAHOEHOE_LAVA.getFluid(), 100 * TesseractGraphWrappers.dropletMultiplier, null)).io(NUGGET.get(Copper), NUGGET.get(Tin), NUGGET.get(Gold), NUGGET.get(Silver), NUGGET.get(Tantalum), DUST_SMALL.get(Tungstate)).chances(.2, .1, .025, .025, .025, .025).add("pahoehoe_lava", 40, 80);
         CENTRIFUGE.RB().ii(of(GLOWSTONE_DUST, 10)).io(DUST.get(Gold, 5), DUST.get(Redstone, 5)).fo(Helium.getGas(1000)).add("glowstone_to_helium", 2920, 16);
         CENTRIFUGE.RB().ii(of(MAGMA_CREAM, 1)).io(BLAZE_POWDER, SLIME_BALL).add("magma_cream", 500, 5);
         CENTRIFUGE.RB().ii(SOUL_SAND).io(DUST_SMALL.get(Saltpeter), DUST_TINY.get(Coal), SAND).chances(.8, .2, 1).fo(Oil.getLiquid(40)).add("oil_from_soulsand", 200, 80);
