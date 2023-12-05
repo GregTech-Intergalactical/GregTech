@@ -103,6 +103,8 @@ public class Machines {
             add(EXTRUDER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder().put('P', piston).put('I', TIER_PIPES.get(tier).apply(PipeSize.NORMAL)).put('W', WIRE_GETTER.apply(PipeSize.SMALL, tier)).put('C', circuit).put('H', hull).build(), "WWC", "PHI", "WWC"));
 
+            add(ELECTRIC_OVEN, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    of('W', WIRE_GETTER.apply(PipeSize.TINY, tier), 'c', cable, 'C', circuit, 'H', hull), "WCW", "WHW", "cCc"));
             add(LATHE, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder().put('P', piston).put('M', motor).put('C', circuit).put('L', cable).put('H', hull).put('D', diamond).build(), "LCL", "MHD", "CLP"));
 
