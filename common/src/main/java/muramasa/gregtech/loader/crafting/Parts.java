@@ -119,7 +119,7 @@ public class Parts {
           Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
           Object emitterGem = EMITTER_GEMS.get(t);
           provider.addItemRecipe(output, "gtparts", motor,
-                  of('M', ROD.get(magnet), 'C', cable, 'W', WIRE_COPPER.getBlockItem(fromTier(t)), 'R', rod), "CWR", "WMW", "RWC");
+                  of('M', ROD.get(magnet), 'C', cable, 'W', WIRE_GETTER.apply(fromTier(t), LV), 'R', rod), "CWR", "WMW", "RWC");
           provider.addItemRecipe(output, "gtparts", piston,
                   of('M', motor, 'C', cable, 'G', smallGear, 'P', plate, 'R', rod), "PPP", "CRR", "CMG");
           provider.addItemRecipe(output, "gtparts", conveyor,
@@ -203,7 +203,7 @@ public class Parts {
                 of('P', EmptyShape, 'H', WIRE_CUTTER.getTag()), shapes);
     }
 
-  static PipeSize fromTier(Tier tier){
+  public static PipeSize fromTier(Tier tier){
       if (tier == LV) return PipeSize.VTINY;
       if (tier == MV) return PipeSize.TINY;
       if (tier == HV) return PipeSize.SMALL;

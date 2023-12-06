@@ -41,6 +41,7 @@ import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ASSEMBLER;
 import static muramasa.gregtech.data.TierMaps.*;
+import static muramasa.gregtech.loader.crafting.Parts.fromTier;
 
 public class AssemblyLoader {
     public static void init() {
@@ -179,7 +180,7 @@ public class AssemblyLoader {
     private static void motors(){
         Arrays.stream(Tier.getStandard()).forEach(t -> {
             Material magnet = (t == Tier.ULV || t == Tier.LV) ? IronMagnetic : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
-            ASSEMBLER.RB().ii(of(TIER_WIRES.get(t),4), of(ROD.get(TIER_MATERIALS.get(t)),2),
+            ASSEMBLER.RB().ii(ofObject(WIRE_GETTER.apply(fromTier(t), LV),4), of(ROD.get(TIER_MATERIALS.get(t)),2),
                     of(ROD.get(magnet),1)
                     , ofObject(CABLE_GETTER.apply(PipeSize.VTINY, t, false), 2)).io(new ItemStack(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId(), GTCore.ID))).add("motor_"+t.getId(),150,16);
             ASSEMBLER.RB().ii(of(COVER_PUMP.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(new ItemStack(GregTech.get(ItemBasic.class, "fluid_regulator_" + t.getId()))).add("fluid_regulator_" + t.getId(), 800, 8);
