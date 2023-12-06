@@ -1,5 +1,6 @@
 package muramasa.gregtech.blockentity.single;
 
+import it.unimi.dsi.fastutil.longs.LongList;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
@@ -12,6 +13,7 @@ import muramasa.gregtech.worldgen.OilSpoutSavedData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.LongTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -27,11 +29,12 @@ import org.jetbrains.annotations.Nullable;
 import tesseract.FluidPlatformUtils;
 
 import java.util.List;
+import java.util.Map;
 
 public class BlockEntitySeismicProspector extends BlockEntityMachine<BlockEntitySeismicProspector> {
     int progress, maxProgress;
     OilSpoutEntry entry = null;
-    List<Material> ores;
+    Map<Material, LongList> ores;
     public BlockEntitySeismicProspector(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
@@ -56,13 +59,21 @@ public class BlockEntitySeismicProspector extends BlockEntityMachine<BlockEntity
             } else {
                 prospectData.putBoolean("no_fluid", true);
             }
-            if (!ores.isEmpty()){
+            /*if (!ores.isEmpty()){
                 ListTag ores = new ListTag();
+                this.ores.forEach((m, l) -> {
+                    ListTag positions = new ListTag();
+                    l.forEach(p -> positions.add(LongTag.valueOf(p)));
+                    CompoundTag data = new CompoundTag();
+                    data.putString("material", m.getId());
+                    data.put("positions", positions);
+                    listTag.add(data);
+                });
                 this.ores.forEach(m -> {
                     ores.add(StringTag.valueOf(m.getId()));
                 });
                 prospectData.put("ores", ores);
-            }
+            }*/
             return InteractionResult.SUCCESS;
         }
         return super.onInteractServer(state, world, pos, player, hand, hit, type);
