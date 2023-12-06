@@ -29,7 +29,7 @@ public class ExtruderLoader {
                 EXTRUDER.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeRing, 1).setNoConsume()).io(AntimatterMaterialTypes.RING.get(r, 4)).add("ring_" + r.getId(), duration, energyPerTick.applyAsLong(r));
             }
             if (r.has(AntimatterMaterialTypes.DUST) && r.has(RUBBERTOOLS)) {
-                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeRing, 1).setNoConsume()).io(AntimatterMaterialTypes.RING.get(r, 4)).add("ring_" + r.getId(), duration, energyPerTick.applyAsLong(r));
+                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeRing, 1).setNoConsume()).io(AntimatterMaterialTypes.RING.get(r, 4)).add("ring_" + r.getId() + "_from_dust", duration, energyPerTick.applyAsLong(r));
             }
         });
 
@@ -39,7 +39,7 @@ public class ExtruderLoader {
                 EXTRUDER.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(g), 4), of(GTCoreItems.ShapeGear, 1).setNoConsume()).io(AntimatterMaterialTypes.GEAR.get(g, 1)).add("gear_" + g.getId(), duration * 4, energyPerTick.applyAsLong(g));
             }
             if (g.has(AntimatterMaterialTypes.DUST) && g.has(RUBBERTOOLS)) {
-                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(g), 4), of(GTCoreItems.ShapeGear, 1).setNoConsume()).io(AntimatterMaterialTypes.GEAR.get(g, 1)).add("gear_" + g.getId(), duration * 4, energyPerTick.applyAsLong(g));
+                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(g), 4), of(GTCoreItems.ShapeGear, 1).setNoConsume()).io(AntimatterMaterialTypes.GEAR.get(g, 1)).add("gear_" + g.getId() + "_from_dust", duration * 4, energyPerTick.applyAsLong(g));
             }
         });
 
@@ -49,7 +49,7 @@ public class ExtruderLoader {
                 EXTRUDER.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(b), 1), of(GTCoreItems.ShapeBolt, 1).setNoConsume()).io(AntimatterMaterialTypes.BOLT.get(b, 8)).add("bolt_" + b.getId(), duration, energyPerTick.applyAsLong(b));
             }
             if (b.has(AntimatterMaterialTypes.DUST) && b.has(RUBBERTOOLS)) {
-                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(b), 1), of(GTCoreItems.ShapeBolt, 1).setNoConsume()).io(AntimatterMaterialTypes.BOLT.get(b, 8)).add("bolt_" + b.getId(), duration, energyPerTick.applyAsLong(b));
+                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(b), 1), of(GTCoreItems.ShapeBolt, 1).setNoConsume()).io(AntimatterMaterialTypes.BOLT.get(b, 8)).add("bolt_" + b.getId() + "_from_dust", duration, energyPerTick.applyAsLong(b));
             }
         });
 
@@ -59,7 +59,7 @@ public class ExtruderLoader {
                 EXTRUDER.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(g), 1), of(GTCoreItems.ShapeGearSmall, 1).setNoConsume()).io(AntimatterMaterialTypes.GEAR_SMALL.get(g, 1)).add("gear_small_" + g.getId(), duration, energyPerTick.applyAsLong(g));
             }
             if (g.has(AntimatterMaterialTypes.DUST) && g.has(RUBBERTOOLS)) {
-                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(g), 1), of(GTCoreItems.ShapeGearSmall, 1).setNoConsume()).io(AntimatterMaterialTypes.GEAR_SMALL.get(g, 1)).add("gear_small_" + g.getId(), duration, energyPerTick.applyAsLong(g));
+                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(g), 1), of(GTCoreItems.ShapeGearSmall, 1).setNoConsume()).io(AntimatterMaterialTypes.GEAR_SMALL.get(g, 1)).add("gear_small_" + g.getId() + "_from_dust", duration, energyPerTick.applyAsLong(g));
             }
         });
 
@@ -69,7 +69,7 @@ public class ExtruderLoader {
                 EXTRUDER.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(p), 1), of(GTCoreItems.ShapePlate, 1).setNoConsume()).io(AntimatterMaterialTypes.PLATE.get(p, 1)).add("plate_" + p.getId(), duration, energyPerTick.applyAsLong(p));
             }
             if (p.has(AntimatterMaterialTypes.DUST) && p.has(RUBBERTOOLS)) {
-                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(p), 1), of(GTCoreItems.ShapePlate, 1).setNoConsume()).io(AntimatterMaterialTypes.PLATE.get(p, 1)).add("plate_" + p.getId(), duration, energyPerTick.applyAsLong(p));
+                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(p), 1), of(GTCoreItems.ShapePlate, 1).setNoConsume()).io(AntimatterMaterialTypes.PLATE.get(p, 1)).add("plate_" + p.getId() + "_from_dust", duration, energyPerTick.applyAsLong(p));
             }
         });
 
@@ -79,7 +79,7 @@ public class ExtruderLoader {
                 EXTRUDER.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeRod, 1).setNoConsume()).io(AntimatterMaterialTypes.ROD.get(r, 2)).add("rod_" + r.getId(), duration, energyPerTick.applyAsLong(r));
             }
             if (r.has(AntimatterMaterialTypes.DUST) && r.has(RUBBERTOOLS)) {
-                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeRod, 1).setNoConsume()).io(AntimatterMaterialTypes.ROD.get(r, 2)).add("rod_" + r.getId(), duration, energyPerTick.applyAsLong(r));
+                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeRod, 1).setNoConsume()).io(AntimatterMaterialTypes.ROD.get(r, 2)).add("rod_" + r.getId() + "_from_dust", duration, energyPerTick.applyAsLong(r));
             }
         });
 
@@ -91,7 +91,7 @@ public class ExtruderLoader {
                 EXTRUDER.RB().ii(of(AntimatterMaterialTypes.INGOT.getMaterialTag(t.getMaterial()),1),of(GTCoreItems.ShapeWire,1).setNoConsume()).io(stack).add("wire_" + t.getMaterial().getId(),duration,energyPerTick.applyAsLong(t.getMaterial()));
             }
             if (t.getMaterial().has(AntimatterMaterialTypes.DUST) && t.getMaterial().has(RUBBERTOOLS)) {
-                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(t.getMaterial()),1),of(GTCoreItems.ShapeWire,1).setNoConsume()).io(stack).add("wire_" + t.getMaterial().getId(),duration,energyPerTick.applyAsLong(t.getMaterial()));
+                EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(t.getMaterial()),1),of(GTCoreItems.ShapeWire,1).setNoConsume()).io(stack).add("wire_" + t.getMaterial().getId() + "_from_dust", duration, energyPerTick.applyAsLong(t.getMaterial()));
             }
         });
 
