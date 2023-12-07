@@ -24,6 +24,7 @@ public class FluidExtractor {
         }
         add(AntimatterMaterials.Redstone, DUST, DUST.getUnitValue());
         add(Calcite, DUST, DUST.getUnitValue());
+        FLUID_EXTRACTOR.RB().ii(DUST.getMaterialIngredient(Limestone, 1)).fo(Calcite.getLiquid(L)).add("limestone_dust_to_calcite", Limestone.getMass(), 24);
         FLUID_EXTRACTOR.RB().ii(RecipeIngredient.of(TagUtils.getForgelikeItemTag("seeds"))).fo(SeedOil.getLiquid(10)).add("seed_oil", 32, 2);
         FLUID_EXTRACTOR.RB().ii(Items.PUFFERFISH).fo(FishOil.getLiquid(30)).add("fish_oil_pufferfish", 16, 4);
         FLUID_EXTRACTOR.RB().ii(Items.COD).fo(FishOil.getLiquid(40)).add("fish_oil_cod", 16, 4);
