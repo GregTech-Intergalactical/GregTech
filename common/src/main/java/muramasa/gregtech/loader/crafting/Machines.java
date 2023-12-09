@@ -467,7 +467,7 @@ public class Machines {
                             .put('P', piston)
                             .put('H', hull)
                             .put('S', sensor)
-                            .put('B', SWORD_HEAD.getMaterialTag(material))
+                            .put('B', SWORD_BLADE.getMaterialTag(material))
                             .put('c', conveyor)
                             .build(), "RCR", "PHS", "BcB"));
             TagKey<Item> plate = PLATE.getMaterialTag(tier == LV ? Steel : VanadiumSteel);
