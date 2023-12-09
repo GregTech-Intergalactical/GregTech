@@ -79,6 +79,10 @@ dependencies {
     modRuntimeOnly("curse.maven:patchouli-306770:3846086")
     modRuntimeOnly("curse.maven:the-twilight-forest-227639:4337390")
     modRuntimeOnly("curse.maven:beyond-earth-377448:3807783")
+    modRuntimeOnly("curse.maven:farmers-delight-398521:4679315")
+    modRuntimeOnly("curse.maven:sophisticated-backpacks-422301:4882591")
+    modRuntimeOnly("curse.maven:openblocks-elevator-250832:3670034")
+    modRuntimeOnly("curse.maven:sophisticated-core-618298:4913626")
     //modRuntimeOnly("curse.maven:tfcm-819850:4449385")
 }
 
