@@ -76,6 +76,7 @@ public class BlockEntityBuffer extends BlockEntityLimitedOutput<BlockEntityBuffe
         if (getCover(this.getFacing().getOpposite()).isEmpty()){
             processItemOutput();
         }
+        this.itemHandler.ifPresent(h -> Utils.tryCondenseInventory(h.getHandler(SlotType.STORAGE)));
     }
 
     protected boolean processItemOutput() {

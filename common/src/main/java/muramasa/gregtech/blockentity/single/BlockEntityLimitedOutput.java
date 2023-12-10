@@ -31,7 +31,7 @@ public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> ext
         this.itemHandler.set(() -> new LimitedOutputItemHandler<>((T)this));
     }
 
-    public static boolean transferItems(PlatformItemHandler from, PlatformItemHandler to, boolean once) {
+    public boolean transferItems(PlatformItemHandler from, PlatformItemHandler to, boolean once) {
         boolean successful = false;
         for (int i = 0; i < from.getSlots(); i++) {
             ItemStack toInsert = from.extractItem(i, from.getStackInSlot(i).getCount(), true);
@@ -53,7 +53,7 @@ public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> ext
     public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
         ItemStack stack = player.getItemInHand(hand);
         if (stack.is(AntimatterDefaultTools.SCREWDRIVER.getTag())){
-            if (hit.getDirection() == getFacing().getOpposite()){
+            if (Utils.getInteractSide(hit) == getFacing().getOpposite() || hit.getDirection() == getFacing().getOpposite()){
                 if (!observeStackLimit){
                     if (stackLimit > 0 && stackLimit < 65){
                         observeStackLimit = true;
@@ -90,7 +90,8 @@ public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> ext
     public void load(CompoundTag tag) {
         super.load(tag);
         stackLimit = tag.getInt("stackLimit");
-        observeStackLimit = tag.getBoolean("observerStackLimit");
+        observeStackLimit = tag.getBoolean("observeStackLimit");
+        if (stackLimit > 0 && !observeStackLimit) observeStackLimit= true;
     }
 
     public static class LimitedOutputItemHandler<T extends BlockEntityLimitedOutput<T>> extends MachineItemHandler<T> {
