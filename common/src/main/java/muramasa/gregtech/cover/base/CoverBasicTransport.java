@@ -29,6 +29,10 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
         this.exportMode = source.getTile() instanceof BlockEntityPipe<?> ? IMPORT : EXPORT;
         redstoneMode = RedstoneMode.NO_WORK;
         coverModeInt = exportMode.ordinal();
+        addButtons();
+    }
+
+    protected void addButtons(){
         addGuiCallback(t -> {
             t.addCycleButton(70, 34, 16, 16, h -> ((CoverBasicRedstone)h).redstoneMode.ordinal(), true, i -> "tooltip.gti.redstone_mode." + i, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, ButtonOverlay.REDSTONE);
             t.addCycleButton(88, 34, 16, 16, h -> ((CoverBasicTransport)h).exportMode.ordinal(), true, i -> "tooltip.gti.export_mode." + i, ButtonOverlay.EXPORT, ButtonOverlay.IMPORT, ButtonOverlay.EXPORT_IMPORT, ButtonOverlay.IMPORT_EXPORT);
@@ -57,6 +61,7 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 1){
                 exportMode = ev.data[0] == 0 ? exportMode.next() : exportMode.previous();
+                handler.getTile().setChanged();
             }
         }
     }

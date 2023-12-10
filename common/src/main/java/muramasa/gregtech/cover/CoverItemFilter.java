@@ -67,8 +67,10 @@ public class CoverItemFilter extends CoverFilter {
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 0){
                 blacklist = !blacklist;
+                this.handler.getTile().setChanged();
             } else if (ev.data[1] == 1){
                 ignoreNBT = !ignoreNBT;
+                this.handler.getTile().setChanged();
             }
         }
     }

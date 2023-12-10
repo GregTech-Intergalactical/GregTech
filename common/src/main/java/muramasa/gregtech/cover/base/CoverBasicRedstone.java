@@ -28,6 +28,7 @@ public class CoverBasicRedstone extends BaseCover {
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 0){
                 redstoneMode = ev.data[0] == 0 ? redstoneMode.next() : redstoneMode.previous();
+                handler.getTile().setChanged();
             }
         }
     }
@@ -35,14 +36,14 @@ public class CoverBasicRedstone extends BaseCover {
     @Override
     public CompoundTag serialize() {
         CompoundTag nbt =  super.serialize();
-        nbt.putInt("coverMode", redstoneMode.ordinal());
+        nbt.putInt("redstoneMode", redstoneMode.ordinal());
         return nbt;
     }
 
     @Override
     public void deserialize(CompoundTag nbt) {
         super.deserialize(nbt);
-        if (nbt.contains("coverMode")) {
+        if (nbt.contains("redstoneMode")) {
             redstoneMode = RedstoneMode.values()[nbt.getInt("coverMode")];
         }
     }

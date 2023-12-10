@@ -55,6 +55,7 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
         if (type != null && type.getTag() == AntimatterDefaultTools.SCREWDRIVER.getTag()){
             mode = player.isShiftKeyDown() ? mode.cycleBackward() : mode.cycleForward();
+            this.handler.getTile().setChanged();
             switch (mode){
                 case OPEN_NO_REDSTONE -> {
                     if (handler.getTile() instanceof BlockEntityPipe<?> pipe){

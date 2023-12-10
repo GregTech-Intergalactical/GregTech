@@ -98,8 +98,7 @@ public class CoverRedstoneMachineController extends BaseCover {
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 0){
                 inverted = !inverted;
-                if (handler.getTile() instanceof BlockEntityPipe<?> pipe) pipe.onBlockUpdate(pipe.getBlockPos().relative(side));
-                if (handler.getTile() instanceof BlockEntityMachine<?> machine) machine.onBlockUpdate(machine.getBlockPos().relative(side));
+                this.handler.getTile().setChanged();
             }
         }
     }
