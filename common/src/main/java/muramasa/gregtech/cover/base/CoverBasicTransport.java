@@ -54,6 +54,16 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
     }
 
     @Override
+    public <T> boolean blocksInput(Class<T> cap, @Nullable Direction side) {
+        return exportMode == ImportExportMode.EXPORT;
+    }
+
+    @Override
+    public <T> boolean blocksOutput(Class<T> cap, @Nullable Direction side) {
+        return exportMode == ImportExportMode.IMPORT;
+    }
+
+    @Override
     public void onGuiEvent(IGuiEvent event, Player playerEntity) {
         super.onGuiEvent(event, playerEntity);
         if (event.getFactory() == GuiEvents.EXTRA_BUTTON){

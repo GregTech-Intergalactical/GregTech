@@ -66,16 +66,6 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
     }
 
     @Override
-    public <T> boolean blocksInput(Class<T> cap, @Nullable Direction side) {
-        return exportMode == ImportExportMode.EXPORT;
-    }
-
-    @Override
-    public <T> boolean blocksOutput(Class<T> cap, @Nullable Direction side) {
-        return exportMode == ImportExportMode.IMPORT;
-    }
-
-    @Override
     public void onUpdate() {
         //Pump acts on each tick.
         if (handler.getTile().getLevel().isClientSide) return;

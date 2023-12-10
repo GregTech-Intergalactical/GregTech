@@ -70,16 +70,6 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
         return cap != ExtendedItemContainer.class;
     }
 
-    @Override
-    public <T> boolean blocksInput(Class<T> cap, @Nullable Direction side) {
-        return exportMode == ImportExportMode.EXPORT;
-    }
-
-    @Override
-    public <T> boolean blocksOutput(Class<T> cap, @Nullable Direction side) {
-        return exportMode == ImportExportMode.IMPORT;
-    }
-
     //Useful for using the same model for multiple tiers where id is dependent on tier.
 
     @Override
