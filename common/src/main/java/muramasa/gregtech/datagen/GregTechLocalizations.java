@@ -5,6 +5,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
+import muramasa.antimatter.item.ItemCover;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
@@ -77,6 +78,12 @@ public class GregTechLocalizations {
             AntimatterAPI.all(BlockColoredWall.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> override(i.getDescriptionId(), "Integrated Circuit (" + i.circuitId + ")"));
+            AntimatterAPI.all(ItemCover.class, domain).stream().filter(i -> i.getTier() != null).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpaced(i.getId())
+                    .replace("Lv", "(LV)")
+                    .replace("Mv", "(MV)")
+                    .replace("Hv", "(HV)")
+                    .replace("Ev", "(EV)")
+                    .replace("Iv", "(IV)")));
 //            AntimatterAPI.all(ItemPowerUnit.class, domain).stream().filter(i -> i.getId().startsWith("power_unit") || i.getId().startsWith("small_power_unit")).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpaced(i.getId())));
             override("machine.large_turbine.hv", "Large Steam Turbine");
             override("machine.large_turbine.ev", "Large Gas Turbine");
