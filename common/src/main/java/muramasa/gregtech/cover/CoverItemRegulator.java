@@ -93,7 +93,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
                     if (!simulate) {
                         itemHandler.forSide(side).ifPresent(i -> Utils.insertItem(i, toInsert, false));
                     }
-                    stack.setCount(toInsert.getCount() - inserted.getCount());
+                    stack.setCount(stack.getCount() - inserted.getCount());
                 }
                 return true;
             }
