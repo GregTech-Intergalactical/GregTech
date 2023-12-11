@@ -66,6 +66,9 @@ public class GregTechData {
     public static final CoverFactory COVER_PUMP = CoverFactory.builder(CoverPump::new).gui().item((a,b) ->
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/t (as Cover)", CoverPump.speeds.get(b))))
             .addTextures(new Texture(GTIRef.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(GTIRef.ID, "pump");
+    public static final CoverFactory COVER_FLUID_REGULATOR = CoverFactory.builder(CoverFluidRegulator::new).gui().item((a,b) ->
+                    new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("Configurable up to %d L/t (as Cover)", CoverPump.speeds.get(b))))
+            .addTextures(new Texture(GTIRef.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(GTIRef.ID, "fluid_regulator");
     public static final CoverFactory COVER_ROBOT_ARM = CoverFactory.builder(CoverRobotArm::new).gui().item((a,b) ->
                     new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("1 Stack every %ds (as Cover)", CoverConveyor.speeds.get(b))))
             .addTextures(new Texture(GTIRef.ID, "block/cover/conveyor")).setTiers(Tier.getStandard()).build(GTIRef.ID, "robot_arm");
@@ -112,11 +115,6 @@ public class GregTechData {
     public static ItemBasic<?> QuantumStar = new ItemBasic<>(GTIRef.ID, "quantum_star").tip("Improved Nether Star");
     public static ItemBasic<?> GraviStar = new ItemBasic<>(GTIRef.ID, "gravi_star").tip("Ultimate Nether Star");
     public static ItemBasic<?> SuperFuelBinder = new ItemBasic<>(GTIRef.ID, "super_fuel_binder");
-    public static ItemBasic<?> FluidRegulatorLV = new ItemBasic<>(GTIRef.ID, "fluid_regulator_lv").tip("Configurable up to 640 L/s (as Cover)");
-    public static ItemBasic<?> FluidRegulatorMV = new ItemBasic<>(GTIRef.ID, "fluid_regulator_mv").tip("Configurable up to 2,560 L/s (as Cover)");
-    public static ItemBasic<?> FluidRegulatorHV = new ItemBasic<>(GTIRef.ID, "fluid_regulator_hv").tip("Configurable up to 10,240 L/s (as Cover)");
-    public static ItemBasic<?> FluidRegulatorEV = new ItemBasic<>(GTIRef.ID, "fluid_regulator_ev").tip("Configurable up to 40,960 L/s (as Cover)");
-    public static ItemBasic<?> FluidRegulatorIV = new ItemBasic<>(GTIRef.ID, "fluid_regulator_iv").tip("Configurable up to 163,840 L/s (as Cover)");
     public static ItemBasic<?> PistonLV = new ItemBasic<>(GTIRef.ID, "piston_lv");
     public static ItemBasic<?> PistonMV = new ItemBasic<>(GTIRef.ID, "piston_mv");
     public static ItemBasic<?> PistonHV = new ItemBasic<>(GTIRef.ID, "piston_hv");
