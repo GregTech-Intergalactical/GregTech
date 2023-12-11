@@ -13,24 +13,43 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.cover.base.CoverBasicRedstone;
 import muramasa.gregtech.cover.base.CoverBasicTransport;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
+import tesseract.TesseractCapUtils;
+import tesseract.api.item.PlatformItemHandler;
+
+import java.util.function.Predicate;
+
+import static muramasa.gregtech.cover.CoverConveyor.speeds;
 
 public class CoverItemRegulator extends CoverBasicTransport {
     int slotLimit = 0;
     public CoverItemRegulator(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         addGuiCallback(t -> {
-            t.addButton(61,53, ButtonOverlay.MINUS, true);
-            t.addButton(97,53, ButtonOverlay.PLUS, true);
+            t.addButton(52,53, ButtonOverlay.MINUS, true);
+            t.addButton(106,53, ButtonOverlay.PLUS, true);
             t.addWidget(SyncableTextWidget.build(i -> {
                 CoverItemRegulator itemRegulator = (CoverItemRegulator) i;
                 if (itemRegulator.slotLimit == 0) return "N/A";
                 return String.valueOf(itemRegulator.slotLimit);
-            }, 4210752, true).setSize(78, 58, 18, 18));
+            }, 4210752, true).setSize(61, 58, 36, 18));
         });
+    }
+
+    @Override
+    public ResourceLocation getModel(String type, Direction dir) {
+        if (type.equals("pipe")) return PIPE_COVER_MODEL;
+        return getBasicDepthModel();
     }
 
     @Override
@@ -80,5 +99,66 @@ public class CoverItemRegulator extends CoverBasicTransport {
             }
         }
         return false;
+    }
+
+    @Override
+    public void onUpdate() {
+        if (handler.getTile().getLevel().isClientSide || handler.getTile().getLevel().getGameTime() % (speeds.get(tier)) != 0)
+            return;
+        BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
+        //Drop into world.
+        if (state == Blocks.AIR.defaultBlockState() && exportMode.isExport()) {
+            Level world = handler.getTile().getLevel();
+            BlockPos pos = handler.getTile().getBlockPos();
+            ItemStack stack = TesseractCapUtils.getItemHandler(handler.getTile(), side).map(this::extractAny).orElse(ItemStack.EMPTY);
+            if (stack.isEmpty()) return;
+            world.addFreshEntity(new ItemEntity(world, pos.getX() + side.getStepX(), pos.getY() + side.getStepY(), pos.getZ() + side.getStepZ(), stack));
+        }
+        if (!(state.hasBlockEntity())) return;
+        BlockEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
+        if (adjTile == null) {
+            return;
+        }
+        BlockEntity from = handler.getTile();
+        BlockEntity to = adjTile;
+        Direction fromSide = side;
+        boolean isImporting = exportMode == ImportExportMode.IMPORT || exportMode == ImportExportMode.IMPORT_EXPORT;
+        if (isImporting){
+            from = adjTile;
+            to = handler.getTile();
+            fromSide = side.getOpposite();
+        }
+        BlockEntity finalTo = to;
+        if (canMove(side)){
+            Direction finalFromSide = fromSide;
+            TesseractCapUtils.getItemHandler(from, fromSide).ifPresent(ih -> TesseractCapUtils.getItemHandler(finalTo, finalFromSide.getOpposite()).ifPresent(oh -> {
+                Predicate<ItemStack> filter = s -> {
+                    if (isImporting || slotLimit == 0) return true;
+                    if (s.getCount() < slotLimit) return false;
+                    s.setCount(slotLimit);
+                    return true;
+                };
+                Utils.transferItems(ih, oh, true, filter);
+            }));
+        }
+    }
+
+    public ItemStack extractAny(PlatformItemHandler handler) {
+        for (int i = 0; i < handler.getSlots(); i++) {
+            ItemStack stack = handler.extractItem(i, slotLimit > 0 ? slotLimit : 64, true);
+            if (!stack.isEmpty() && (slotLimit == 0 || stack.getCount() == slotLimit)) {
+                handler.extractItem(i, slotLimit > 0 ? slotLimit : 64, false);
+                return stack;
+            }
+        }
+        return ItemStack.EMPTY;
+    }
+
+    protected boolean canMove(Direction side){
+        if (redstoneMode != RedstoneMode.NO_WORK){
+            boolean powered = isPowered(side);
+            return (redstoneMode == RedstoneMode.INVERTED) != powered;
+        }
+        return true;
     }
 }

@@ -11,6 +11,7 @@ import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.gui.widget.SyncableTextWidget;
+import muramasa.antimatter.gui.widget.TextBoxWidget;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.cover.base.CoverBasicRedstone;
@@ -29,6 +30,7 @@ import java.util.function.Predicate;
 public class CoverRobotArm extends CoverBasicTransport {
     int slot = 0;
     int slotLimit = 0;
+    String test = "";
     public CoverRobotArm(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
     }
@@ -46,6 +48,7 @@ public class CoverRobotArm extends CoverBasicTransport {
                 if (robotArm.slotLimit == 0) return "N/A";
                 return String.valueOf(robotArm.slotLimit);
             }, 4210752, true).setSize(78, 38, 18, 18));
+            //t.addWidget(TextBoxWidget.build((g, s) -> test = s, g -> test).setSize(25, 33, 36, 18));
         });
     }
 
