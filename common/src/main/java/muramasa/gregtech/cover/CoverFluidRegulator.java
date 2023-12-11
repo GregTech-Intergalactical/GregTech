@@ -136,15 +136,18 @@ public class CoverFluidRegulator extends CoverBasicTransport {
 
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             int button = ev.data[1];
+            boolean shiftHold = ev.data[0] != 0;
             if (button == 2){
                 if (fluidLimit > 0){
-                    fluidLimit--;
+                    fluidLimit-= shiftHold ? 16 : 1;
+                    if (fluidLimit < 0) fluidLimit = 0;
                     handler.getTile().setChanged();
                 }
             }
             if (button == 3){
                 if (fluidLimit < speeds.get(tier)){
-                    fluidLimit++;
+                    fluidLimit+= shiftHold ? 16 : 1;
+                    if (fluidLimit > speeds.get(tier)) fluidLimit = speeds.get(tier);
                     handler.getTile().setChanged();
                 }
             }
