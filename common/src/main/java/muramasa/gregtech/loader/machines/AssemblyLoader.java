@@ -183,7 +183,8 @@ public class AssemblyLoader {
             ASSEMBLER.RB().ii(ofObject(WIRE_GETTER.apply(fromTier(t), LV),4), of(ROD.get(TIER_MATERIALS.get(t)),2),
                     of(ROD.get(magnet),1)
                     , ofObject(CABLE_GETTER.apply(PipeSize.VTINY, t, false), 2)).io(new ItemStack(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId(), GTCore.ID))).add("motor_"+t.getId(),150,16);
-            ASSEMBLER.RB().ii(of(COVER_PUMP.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(new ItemStack(GregTech.get(ItemBasic.class, "fluid_regulator_" + t.getId()))).add("fluid_regulator_" + t.getId(), 800, 8);
+            ASSEMBLER.RB().ii(of(COVER_PUMP.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(COVER_FLUID_REGULATOR.getItem(t)).add("fluid_regulator_" + t.getId(), 800, 8);
+            ASSEMBLER.RB().ii(of(COVER_CONVEYOR.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(COVER_ITEM_REGULATOR.getItem(t)).add("item_regulator_" + t.getId(), 800, 8);
         });
     }
 
