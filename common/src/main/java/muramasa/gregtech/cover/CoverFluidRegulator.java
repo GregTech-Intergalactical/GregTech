@@ -33,17 +33,11 @@ import tesseract.TesseractGraphWrappers;
 import java.util.Map;
 import java.util.Objects;
 
+import static muramasa.gregtech.cover.CoverPump.speeds;
+
 public class CoverFluidRegulator extends CoverBasicTransport {
 
     public static String ID = "pump";
-
-
-    public static final Map<Tier, Integer> speeds = ImmutableMap.<Tier, Integer>builder().
-            put(Tier.LV, 640 / 20)
-            .put(Tier.MV, 2560 / 20)
-            .put(Tier.HV, 10240 / 20)
-            .put(Tier.EV, 4096010 / 20)
-            .put(Tier.IV, 163840 / 20).build();
 
     int fluidLimit;
     public CoverFluidRegulator(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {

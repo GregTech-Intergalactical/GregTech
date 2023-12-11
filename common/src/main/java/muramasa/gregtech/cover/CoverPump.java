@@ -34,7 +34,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
             put(Tier.LV, 640 / 20)
             .put(Tier.MV, 2560 / 20)
             .put(Tier.HV, 10240 / 20)
-            .put(Tier.EV, 4096010 / 20)
+            .put(Tier.EV, 40960 / 20)
             .put(Tier.IV, 163840 / 20).build();
 
     public CoverPump(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
