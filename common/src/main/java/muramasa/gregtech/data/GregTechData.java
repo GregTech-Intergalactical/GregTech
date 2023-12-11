@@ -57,14 +57,14 @@ public class GregTechData {
     }
 
     public static final CoverFactory COVER_CONVEYOR = CoverFactory.builder(CoverConveyor::new).gui().item((a,b) ->
-            new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("1 Stack every %ds (as Cover)", CoverConveyor.speeds.get(b)))
+            new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("1 Stack every %dt(%fs) (as Cover)", CoverConveyor.speeds.get(b), (float)CoverConveyor.speeds.get(b) / 20))
     ).addTextures(new Texture(GTIRef.ID, "block/cover/conveyor")).setTiers(Tier.getStandard()).build(GTIRef.ID, "conveyor");
 
     public static final CoverFactory COVER_ITEM_REGULATOR = CoverFactory.builder(CoverItemRegulator::new).gui().item((a,b) ->
-            new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("1 Stack every %ds (as Cover)", CoverConveyor.speeds.get(b)))
+            new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("1 Stack every %dt(%fs), with configurable stack size limits (as Cover)", CoverConveyor.speeds.get(b), (float)CoverConveyor.speeds.get(b) / 20))
     ).addTextures(new Texture(GTIRef.ID, "block/cover/conveyor")).setTiers(Tier.getStandard()).build(GTIRef.ID, "item_regulator");
     public static final CoverFactory COVER_PUMP = CoverFactory.builder(CoverPump::new).gui().item((a,b) ->
-            new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/s (as Cover)", CoverPump.speeds.get(b))))
+            new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/t (as Cover)", CoverPump.speeds.get(b))))
             .addTextures(new Texture(GTIRef.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(GTIRef.ID, "pump");
     public static final CoverFactory COVER_ROBOT_ARM = CoverFactory.builder(CoverRobotArm::new).gui().item((a,b) ->
                     new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("1 Stack every %ds (as Cover)", CoverConveyor.speeds.get(b))))
