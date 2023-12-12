@@ -9,6 +9,7 @@ import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.Ref.U;
@@ -30,6 +31,7 @@ public class SmelterLoader {
         add(Calcite, DUST, DUST.getUnitValue());
         SMELTER.RB().ii(DUST.getMaterialIngredient(Limestone, 1)).fo(Calcite.getLiquid(L)).add("limestone_dust_to_calcite", Limestone.getMass(), 24);
         SMELTER.RB().ii(GTCoreBlocks.LIMESTONE.getState().getBlock()).fo(Calcite.getLiquid(L)).add("limestone_to_calcite", Limestone.getMass(), 24);
+        SMELTER.RB().ii(Blocks.CALCITE).fo(Calcite.getLiquid(L)).add("mc_calcite_to_calcite", Limestone.getMass(), 24);
     }
 
     private static void add(Material m, MaterialTypeItem<?> i, long materialAmount) {
