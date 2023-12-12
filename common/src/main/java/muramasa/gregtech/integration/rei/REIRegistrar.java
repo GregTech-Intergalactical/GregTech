@@ -29,7 +29,7 @@ public class REIRegistrar {
             r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.CUTTER.getItem(Tier.LV))));
             r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.ASSEMBLER.getItem(Tier.LV))));
             r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.COMPRESSOR.getItem(Tier.LV))));
-            r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.FLUID_EXTRACTOR.getItem(Tier.LV))));
+            r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(Machines.FLUID_PRESS.getItem(Tier.LV))));
         });
         REIUtils.addExtraDisplay(r -> {
             AntimatterMaterialTypes.ORE.all().forEach(m -> {

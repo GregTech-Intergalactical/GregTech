@@ -27,6 +27,7 @@ public class GTRemapping {
         remap("coke_oven_bronze", "coke_oven");
         remap("primitive_blast_furnace_bronze", "primitive_blast_furnace");
         AntimatterRemapping.remapMachine("pulverizer", MACERATOR);
+        AntimatterRemapping.remapMachine("fluid_extractor", FLUID_PRESS);
         AntimatterRemapping.remapMachine("hatch_item_input", HATCH_ITEM_I);
         AntimatterRemapping.remapMachine("hatch_item_output", HATCH_ITEM_O);
         AntimatterRemapping.remapMachine("hatch_fluid_input", HATCH_FLUID_I);

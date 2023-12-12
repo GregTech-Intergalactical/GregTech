@@ -126,8 +126,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "fermenter", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FLUID_CANNER = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "fluid_canner", new RecipeBuilder()));
-    public static RecipeMap<RecipeBuilder> FLUID_EXTRACTOR = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "fluid_extractor", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> FLUID_PRESS = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "fluid_press", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FLUID_HEATER = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "fluid_heater", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FLUID_SOLIDIFYER = AntimatterAPI.register(RecipeMap.class,
@@ -190,6 +190,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "semi_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SIFTER = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "sifter", new SteamBuilder(STEAM_SIFTER)));
+    public static RecipeMap<RecipeBuilder> SMELTER = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "smelter", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SMALL_BOILERS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "small_boilers", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> THERMAL_CENTRIFUGE = AntimatterAPI.register(RecipeMap.class,

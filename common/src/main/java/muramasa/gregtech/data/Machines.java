@@ -81,7 +81,7 @@ public class Machines {
     public static BasicMachine EXTRUDER = new BasicMachine(GTIRef.ID, "extruder").setMap(RecipeMaps.EXTRUDER).addFlags(GUI, ITEM).custom();
     public static BasicMachine FERMENTER = new BasicMachine(GTIRef.ID, "fermenter").setMap(RecipeMaps.FERMENTER).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids();
     public static BasicMachine FLUID_CANNER = new BasicMachine(GTIRef.ID, "fluid_canner").setMap(RecipeMaps.FLUID_CANNER).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f);
-    public static BasicMachine FLUID_EXTRACTOR = new BasicMachine(GTIRef.ID, "fluid_extractor").setMap(RecipeMaps.FLUID_EXTRACTOR).addFlags(GUI, ITEM, FLUID);
+    public static BasicMachine FLUID_PRESS = new BasicMachine(GTIRef.ID, "fluid_press").setMap(RecipeMaps.FLUID_PRESS).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine FLUID_HEATER = new BasicMachine(GTIRef.ID, "fluid_heater").setMap(RecipeMaps.FLUID_HEATER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine FLUID_SOLIDIFIER = new BasicMachine(GTIRef.ID, "fluid_solidifier").setMap(FLUID_SOLIDIFYER).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static BasicMachine FORGE_HAMMER = new BasicMachine(GTIRef.ID, "forge_hammer").setMap(RecipeMaps.FORGE_HAMMER).addFlags(GUI, ITEM).setSound(SoundEvents.ANVIL_PLACE, 0.6f);
@@ -103,6 +103,7 @@ public class Machines {
     public static BasicMachine SCANNER = new BasicMachine(GTIRef.ID, "scanner").setMap(RecipeMaps.SCANNER).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityScanner::new).setSound(GregTechSounds.MAGNETIZER,  0.6f);
     public static BasicMachine SEISMIC_PROSPECTOR = new BasicMachine(GTIRef.ID, "seismic_prospector").setTiers(LV, EV).setTile(BlockEntitySeismicProspector::new).setOutputCover(ICover.emptyFactory);
     public static BasicMachine SIFTER = new BasicMachine(GTIRef.ID, "sifter").setMap(RecipeMaps.SIFTER).addFlags(GUI, ITEM);
+    public static BasicMachine SMELTER = new BasicMachine(GTIRef.ID, "smelter").setMap(RecipeMaps.SMELTER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine THERMAL_CENTRIFUGE = new BasicMachine(GTIRef.ID, "thermal_centrifuge").setMap(RecipeMaps.THERMAL_CENTRIFUGE).addFlags(GUI,ITEM).amps(2);
     public static BasicMachine WIRE_MILL = new BasicMachine(GTIRef.ID, "wire_mill").setMap(RecipeMaps.WIRE_MILL).addFlags(GUI, ITEM).custom();
     /**

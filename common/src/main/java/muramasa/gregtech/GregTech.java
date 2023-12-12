@@ -119,7 +119,8 @@ public class GregTech extends AntimatterMod {
         //loader.accept("nuclear", NuclearLoader::init);
         loader.accept("fuels", Fuels::init);
         loader.accept("coal_boiler", CoalBoilerHandler::init);
-        loader.accept("fluid_extracting", FluidExtractor::init);
+        loader.accept("fluid_press", FluidPressLoader::init);
+        loader.accept("smelter", SmelterLoader::init);
         loader.accept("fluid_heating", FluidHeaterLoader::init);
         loader.accept("alloy_loading", AlloyLoader::init);
         loader.accept("distillation_tower", DistillationTower::init);

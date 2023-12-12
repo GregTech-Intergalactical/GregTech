@@ -345,7 +345,7 @@ public class Machines {
                             .put('G', glass)
                             .put('H', hull)
                             .put('L', cable).build(), "LPL", "GHG", "LCL"));
-            add(FLUID_EXTRACTOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
+            add(FLUID_PRESS, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('P', pump)
                             .put('C', circuit)
@@ -369,6 +369,11 @@ public class Machines {
                             .put('H', hull)
                             .put('E', ForgeCTags.CHESTS)
                             .put('L', cable).build(), "PGP", "LHL", "CEC"));
+            add(SMELTER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('W', WIRE_GETTER.apply(PipeSize.TINY, tier))
+                            .put('C', circuit)
+                            .put('H', hull).build(), "WWW", "WHW", "WCW"));
             add(DISTILLERY, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('P', pump)

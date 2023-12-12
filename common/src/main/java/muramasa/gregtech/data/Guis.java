@@ -139,7 +139,8 @@ public class Guis {
         AMP_FABRICATOR.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         REPLICATOR.add(FLUID_CANNER);
         FERMENTER.add(FLUID_CANNER);
-        FLUID_EXTRACTOR.add(COMPRESSOR).add(FL_OUT, 107, 63);
+        FLUID_PRESS.add(COMPRESSOR);
+        SMELTER.add(IT_IN, 53, 25).add(ENERGY, 80, 63).add(FL_OUT, 107, 63);
         FLUID_HEATER.add(ENERGY, 80, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
         SCANNER.add(FLUID_SOLIDIFIER).add(IT_IN, 125, 63);
@@ -374,7 +375,8 @@ public class Guis {
         FLUID_CANNER.getGui().getMachineData().setProgressLocation("canner");
         AMP_FABRICATOR.getGui().getMachineData().setProgressLocation("extractor");
         FERMENTER.getGui().getMachineData().setProgressLocation("chemical_reactor");
-        FLUID_EXTRACTOR.getGui().getMachineData().setProgressLocation("extractor");
+        FLUID_PRESS.getGui().getMachineData().setProgressLocation("extractor");
+        SMELTER.getGui().getMachineData().setProgressLocation("smelter");
         DISTILLERY.getGui().getMachineData().setProgressLocation("chemical_reactor");
         BATH.getGui().getMachineData().setProgressLocation("ore_washer");
         POLARIZER.getGui().getMachineData().setProgressLocation("electromagnetic_separator");
