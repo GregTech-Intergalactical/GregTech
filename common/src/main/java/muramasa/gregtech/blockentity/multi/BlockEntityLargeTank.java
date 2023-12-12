@@ -77,7 +77,7 @@ public class BlockEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<B
         @Override
         public void onUpdate() {
             super.onUpdate();
-            if (tile.getLevel().getGameTime() % 20 == 0){
+            if (tile.getLevel().getGameTime() % 10 == 0){
                 Direction dir = tile.getFacing();
                 if (getTank(0).getStoredFluid().getFluidAmount() > 0 && dir != UP){
                     BlockEntity adjacent = tile.getLevel().getBlockEntity(tile.getBlockPos().relative(dir));
