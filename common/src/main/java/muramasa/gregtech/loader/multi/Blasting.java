@@ -1,7 +1,9 @@
 package muramasa.gregtech.loader.multi;
 
+import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechMaterialTags;
@@ -122,70 +124,41 @@ public class Blasting {
         }
 
         /* Stainless Steel*/
-        E_BLAST_FURNACE.RB().temperature(1700).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 6), DUST.getMaterialIngredient(Nickel, 1), DUST.getMaterialIngredient(Manganese, 1), DUST.getMaterialIngredient(Chromium, 1))
-                .io(INGOT.get(StainlessSteel, 9))
-                .add("stainless_steel_ingot", 1000, 120);
-        /* TITANIUM */
-        /*BLASTING.RB().temperature(2140).ii(RecipeIngredient.of(DUST.getMaterialTag(Magnesium), 2))
-                .fi(TitaniumTetrachloride.getLiquid(1000))
-                .io(INGOT_HOT.get(Titanium,1), DUST.get(MagnesiumChloride,2))
-                .add("titanium_ingot",40*20, 480);*/
+        addBlastAlloyRecipes(StainlessSteel, 9, 1000, 120, ImmutableMap.of(Iron, 6, Nickel, 1, Manganese, 1, Chromium, 1));
         /* Tungsten Steel/Carbide*/
-        E_BLAST_FURNACE.RB().temperature(3000).ii(DUST.getMaterialIngredient(Tungsten, 1), DUST.getMaterialIngredient(Steel, 1))
-                .io(INGOT_HOT.get(TungstenSteel, 2))
-                .add("tungsten_steel_ingot", 150 * 20, 480);
-        E_BLAST_FURNACE.RB().temperature(3000).ii(DUST.getMaterialIngredient(Tungsten, 1), DUST.getMaterialIngredient(Carbon, 1))
-                .io(INGOT_HOT.get(TungstenCarbide, 1))
-                .add("tungsten_carbide_ingot", 246 * 20, 480);
+        addBlastAlloyRecipes(TungstenSteel, 2, 3000, 480, ImmutableMap.of(Steel, 1, Tungsten, 1));
+        addBlastAlloyRecipes(TungstenCarbide, 1, 246 * 20, 480, ImmutableMap.of(Carbon, 1, Tungsten, 1));
         /* Niobium Titanium*/
-        E_BLAST_FURNACE.RB().temperature(4500).ii(DUST.getMaterialIngredient(Niobium, 1), DUST.getMaterialIngredient(Titanium, 1))
-                .io(INGOT_HOT.get(NiobiumTitanium, 2))
-                .add("niobium_titanium_ingot",225 * 20, 480);
+        addBlastAlloyRecipes(NiobiumTitanium, 2, 225 * 20, 480, ImmutableMap.of(Niobium, 1, Titanium, 1));
         /* Vanadium Gallium*/
-        E_BLAST_FURNACE.RB().temperature(4500).ii(DUST.getMaterialIngredient(Vanadium, 3), DUST.getMaterialIngredient(Gallium, 1))
-                .io(INGOT_HOT.get(VanadiumGallium, 4))
-                .add("vanadium_gallium_ingot", 225 * 20, 480);
+        addBlastAlloyRecipes(VanadiumGallium, 4, 225 * 20, 480, ImmutableMap.of(Vanadium, 3, Gallium, 1));
         /* Vanadium Steel*/
-        E_BLAST_FURNACE.RB().temperature(1453).ii(DUST.getMaterialIngredient(Vanadium, 1), DUST.getMaterialIngredient(Chromium, 1), DUST.getMaterialIngredient(Steel, 7))
-                .io(INGOT.get(VanadiumSteel, 9))
-                .add("vanadium_steel_ingot", 225 * 20, 120);
+        addBlastAlloyRecipes(VanadiumSteel, 9, 225 * 20, 120, ImmutableMap.of(Vanadium, 1, Chromium, 1, Steel, 7));
+        /* Ultimet */
+        addBlastAlloyRecipes(Ultimet, 9, 2700, 120, ImmutableMap.of(Cobalt, 5, Chromium, 2, Nickel, 1, Molybdenum, 1));
         /* Kanthal*/
-        E_BLAST_FURNACE.RB().temperature(1800).ii(DUST.getMaterialIngredient(AntimatterMaterials.Iron, 1), DUST.getMaterialIngredient(Aluminium, 1), DUST.getMaterialIngredient(Chromium, 1))
-                .io(INGOT_HOT.get(Kanthal, 3))
-                .add("kanthal_ingot", 90 * 20, 120);
+        addBlastAlloyRecipes(Kanthal, 3, 1800, 120, ImmutableMap.of(Iron, 1, Aluminium, 1, Chromium, 1));
         /* Nichrome*/
-        E_BLAST_FURNACE.RB().temperature(2700).ii(DUST.getMaterialIngredient(Nickel, 4), DUST.getMaterialIngredient(Chromium, 1), INT_CIRCUITS.get(2))
+        E_BLAST_FURNACE.RB().temperature(2700).ii(of(4, DUST.getMaterialTag(Nickel), INGOT.getMaterialTag(Nickel)), of(1, DUST.getMaterialTag(Chromium), INGOT.getMaterialTag(Chromium)), INT_CIRCUITS.get(2))
                 .io(INGOT_HOT.get(Nichrome, 5))
                 .add("nichrome_ingot", 135 * 20, 480);
         /* Osmiridium*/
-        E_BLAST_FURNACE.RB().temperature(2900).ii(DUST.getMaterialIngredient(Iridium, 3), DUST.getMaterialIngredient(Osmium, 1))
+        E_BLAST_FURNACE.RB().temperature(2900).ii(of(3, DUST.getMaterialTag(Iridium), INGOT.getMaterialTag(Iridium)), of(1, DUST.getMaterialTag(Osmium), INGOT.getMaterialTag(Osmium)))
                 .fi(Helium.getGas(1000))
                 .io(INGOT_HOT.get(Osmiridium, 4))
                 .add("osmiridium_ingot", 25 * 20, 1920);
         /* Naquadah Alloy*/
-        E_BLAST_FURNACE.RB().temperature(7200).ii(DUST.getMaterialIngredient(Naquadah, 1), DUST.getMaterialIngredient(Osmiridium, 1))
+        E_BLAST_FURNACE.RB().temperature(7200).ii(of(1, DUST.getMaterialTag(Naquadah), INGOT.getMaterialTag(Naquadah)), of(1, INGOT.getMaterialTag(Osmiridium), DUST.getMaterialTag(Osmiridium), INGOT_HOT.getMaterialTag(Osmiridium)))
                 .fi(Argon.getGas(1000))
                 .io(INGOT_HOT.get(NaquadahAlloy, 2))
-                .add("naquadah_ingot",25 * 20, 30720);
+                .add("naquadah_alloy_ingot",25 * 20, 30720);
         /* TFC stuff and hss */
-        E_BLAST_FURNACE.RB().temperature(1200).ii(DUST.getMaterialIngredient(Nickel, 1), DUST.getMaterialIngredient(BlackBronze, 1), DUST.getMaterialIngredient(Steel, 3))
-                .io(INGOT.get(BlackSteel, 5))
-                .add("black_steel_ingot", 60 * 20, 120);
-        E_BLAST_FURNACE.RB().temperature(1400).ii(DUST.getMaterialIngredient(SterlingSilver, 1), DUST.getMaterialIngredient(BismuthBronze, 1), DUST.getMaterialIngredient(Steel, 2), DUST.getMaterialIngredient(BlackSteel, 4))
-                .io(INGOT.get(BlueSteel, 8))
-                .add("blue_steel_ingot", 70 * 20, 120);
-        E_BLAST_FURNACE.RB().temperature(1300).ii(DUST.getMaterialIngredient(RoseGold, 1), DUST.getMaterialIngredient(Brass, 1), DUST.getMaterialIngredient(Steel, 2), DUST.getMaterialIngredient(BlackSteel, 4))
-                .io(INGOT.get(RedSteel, 8))
-                .add("red_steel_ingot", 65 * 20, 120);
-        E_BLAST_FURNACE.RB().temperature(4500).ii(DUST.getMaterialIngredient(TungstenSteel, 5), DUST.getMaterialIngredient(Chromium, 1), DUST.getMaterialIngredient(Molybdenum, 2), DUST.getMaterialIngredient(Vanadium, 1))
-                .io(INGOT_HOT.get(HSSG, 9))
-                .add("hssg_ingot", 450 * 20, 120);
-        E_BLAST_FURNACE.RB().temperature(5400).ii(DUST.getMaterialIngredient(HSSG, 6), DUST.getMaterialIngredient(Cobalt, 1), DUST.getMaterialIngredient(Manganese, 1), DUST.getMaterialIngredient(Silicon, 1))
-                .io(INGOT_HOT.get(HSSE, 8))
-                .add("hsse_ingot", 540 * 20, 120);
-        E_BLAST_FURNACE.RB().temperature(5400).ii(DUST.getMaterialIngredient(HSSG, 6), DUST.getMaterialIngredient(Osmiridium, 2), DUST.getMaterialIngredient(Iridium, 1))
-                .io(INGOT_HOT.get(HSSS, 9))
-                .add("hsss_ingot", 810 * 20, 120);
+        addBlastAlloyRecipes(BlackSteel, 5, 1200, 120, ImmutableMap.of(Nickel, 1, BlackBronze, 1, Steel, 3));
+        addBlastAlloyRecipes(BlueSteel, 8, 1400, 120, ImmutableMap.of(SterlingSilver, 1, BismuthBronze, 1, Steel, 2, BlackSteel, 4));
+        addBlastAlloyRecipes(RedSteel, 8, 1300, 120, ImmutableMap.of(RoseGold, 1, Brass, 1, Steel, 2, BlackSteel, 4));
+        addBlastAlloyRecipes(HSSG, 9, 9000, 120, ImmutableMap.of(TungstenSteel, 5, Chromium, 1, Molybdenum, 2, Vanadium, 1));
+        addBlastAlloyRecipes(HSSE, 9, 10800, 120, ImmutableMap.of(HSSG, 6, Cobalt, 1, Manganese, 1, Silicon, 1));
+        addBlastAlloyRecipes(HSSS, 9, 810 * 20, 120, ImmutableMap.of(HSSG, 6, Cobalt, 2, Iridium, 1));
         //TODO figure out proper nuclear
 
         //Nuclear Processing
@@ -208,6 +181,21 @@ public class Blasting {
         BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium240Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium240,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium240_ingot",40*20, 480);*/
 
 
+    }
+
+    private static void addBlastAlloyRecipes(Material output, int amount, int duration, int power, ImmutableMap<Material, Integer> inputs){
+        RecipeBuilder b = E_BLAST_FURNACE.RB().temperature(GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(output));
+        b.io((output.has(INGOT_HOT) ?  INGOT_HOT : INGOT).get(output, amount));
+        inputs.forEach((m, i) -> {
+            if (m.has(INGOT_HOT)){
+                b.ii(of(i, DUST.getMaterialTag(m), INGOT.getMaterialTag(m), INGOT_HOT.getMaterialTag(m)));
+            } else if (m.has(INGOT)){
+                b.ii(of(i, DUST.getMaterialTag(m), INGOT.getMaterialTag(m)));
+            } else {
+                b.ii(DUST.getMaterialIngredient(m, i));
+            }
+        });
+        b.add(output.getId() + "_ingot", duration,power);
     }
 
     private static void addCalciteRecipe(Material ore, int input, ItemStack... outputs){
