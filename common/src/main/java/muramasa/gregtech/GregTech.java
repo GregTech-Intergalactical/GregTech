@@ -21,6 +21,7 @@ import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.block.BlockAsphalt;
+import muramasa.gregtech.block.BlockAsphaltSlab;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.datagen.*;
@@ -198,7 +199,7 @@ public class GregTech extends AntimatterMod {
                         if (attributeinstance == null) {
                             return;
                         }
-                        if (state.getBlock() instanceof BlockAsphalt){
+                        if (state.getBlock() instanceof BlockAsphalt || state.getBlock() instanceof BlockAsphaltSlab){
                             if (attributeinstance.getModifier(BlockAsphalt.SPEED_MODIFIER) == null){
                                 attributeinstance.addTransientModifier(new AttributeModifier(BlockAsphalt.SPEED_MODIFIER, "Asphalt speed modification", 1.3, AttributeModifier.Operation.MULTIPLY_BASE));
                             }
