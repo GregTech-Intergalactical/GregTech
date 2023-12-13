@@ -11,13 +11,17 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.PipeType;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.data.GregTechData;
+import net.minecraft.data.recipes.SingleItemRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;
@@ -161,11 +165,34 @@ public class BlockParts {
         provider.addItemRecipe(output, "long_distance_pipes", LONG_DIST_FLUID_PIPE,
                 of('E', FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Plastic)), "PEP", "EWE", "PEP");
 
+        addSlabRecipe(output, provider, WHITE_ASPHALT, WHITE_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, ORANGE_ASPHALT, ORANGE_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, MAGENTA_ASPHALT, MAGENTA_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, LIGHT_BLUE_ASPHALT, LIGHT_BLUE_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, YELLOW_ASPHALT, YELLOW_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, LIME_ASPHALT, LIME_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, PINK_ASPHALT, PINK_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GRAY_ASPHALT, GRAY_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, LIGHT_GRAY_ASPHALT, LIGHT_GRAY_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, CYAN_ASPHALT, CYAN_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, PURPLE_ASPHALT, PURPLE_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, BLUE_ASPHALT, BLUE_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, BROWN_ASPHALT, BROWN_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GREEN_ASPHALT, GREEN_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, RED_ASPHALT, RED_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, BLACK_ASPHALT, BLACK_ASPHALT_SLAB);
+
         /*provider.addStackRecipe(output, GTIRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
                 of('C', CASING_FIRE_BRICK,
                 'P', PLATE.get(AntimatterMaterials.Iron),
                         'B', AntimatterAPI.get(Item.class, "liquid_creosote_bucket", Ref.SHARED_ID)
         ), "PCP", "CBC", "PCP");*/
+    }
+
+    private static void addSlabRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Block full, Block slab){
+        provider.addStackRecipe(output, "slabs", new ItemStack(slab, 6), ImmutableMap.of('F', full), "FFF");
+        provider.addItemRecipe(output, "slabs", full, ImmutableMap.of('S', slab), "S", "S");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), slab, 2).group("slabs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GTIRef.ID, "stonecutting/" + AntimatterPlatformUtils.getIdFromItem(slab.asItem()).getPath()));
     }
 
     private static void addCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
