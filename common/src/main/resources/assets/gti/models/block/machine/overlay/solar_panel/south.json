@@ -1,0 +1,19 @@
+{
+	"credit": "Made with Blockbench",
+	"elements": [
+		{
+			"from": [0, 0, 16],
+			"to": [16, 8, 16],
+			"faces": {
+				"south": {"uv": [0, 8, 16, 16], "texture": "#base", "tintindex": 0}
+			}
+		},
+		{
+			"from": [0, 0, 16],
+			"to": [16, 8, 16],
+			"faces": {
+				"south": {"uv": [0, 8, 16, 16], "texture": "#overlay", "tintindex": 1}
+			}
+		}
+	]
+}
