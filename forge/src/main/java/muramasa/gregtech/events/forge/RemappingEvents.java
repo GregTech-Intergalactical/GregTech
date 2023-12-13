@@ -2,6 +2,7 @@ package muramasa.gregtech.events.forge;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
+import io.github.gregtechintergalactical.gtcore.events.GTCommonEvents;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.AntimatterAPI;
@@ -21,9 +22,11 @@ import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.machine.BlockEntityHatchHeat;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Fluid;
@@ -54,23 +57,11 @@ public class RemappingEvents {
         /*if (event.getTarget() instanceof Player targetPlayer){
 
         }*/
-        /*ItemStack handStack = event.getPlayer().getItemInHand(event.getHand());
-        if(handStack.is(AntimatterDefaultTools.WRENCH.getTag())){
+        ItemStack handStack = event.getPlayer().getItemInHand(event.getHand());
+        if(handStack.is(AntimatterDefaultTools.WRENCH.getTag()) && event.getTarget() instanceof Player targetPlayer && targetPlayer.getUUID().equals(GTCommonEvents.BEAR_UUID)){
             Random random = event.getPlayer().getRandom();
-
-            float x = random.nextInt(10 + 10) - 10;
-
-            float y = random.nextInt(90) - 45;
-
-            float yaw = event.getPlayer().getYRot();
-
-            Antimatter.LOGGER.info("yaw: " + yaw);
-            Antimatter.LOGGER.info("pitch: " + event.getPlayer().getXRot());
-            event.getPlayer().moveTo(event.getPlayer().getOnPos().above(), yaw + y, 180);
+            targetPlayer.moveTo(targetPlayer.getX(), targetPlayer.getY(), targetPlayer.getZ(), random.nextInt(180), targetPlayer.getXRot());
         }
-        if (handStack.is(AntimatterDefaultTools.HAMMER.getTag())){
-            event.getPlayer().setSwimming(true);
-        }*/
     }
 
     @SubscribeEvent
