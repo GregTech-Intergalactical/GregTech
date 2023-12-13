@@ -8,6 +8,7 @@ import muramasa.antimatter.blockentity.single.BlockEntityDigitalTransformer;
 import muramasa.antimatter.blockentity.single.BlockEntityTransformer;
 import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.machine.BlockMachine;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.material.Material;
@@ -21,6 +22,8 @@ import muramasa.gregtech.machine.SteamMachine;
 import muramasa.gregtech.nuclear.BlockEntityNuclearReactor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Netherite;
@@ -215,6 +218,7 @@ public class Machines {
 
     public static BasicMachine PUMP = new BasicMachine(GTIRef.ID, "electric_pump").addFlags(FLUID).setVerticalFacingAllowed(true).setTile(BlockEntityPump::new).noCovers();
     public static BasicMachine CROP_HARVESTER = new BasicMachine(GTIRef.ID, "crop_harvester").setTiers(LV).addFlags(GUI, ITEM).setTile(BlockEntityCropHarvester::new);
+    public static BasicMachine MINIATURE_NETHER_PORTAL = new BasicMachine(GTIRef.ID, "miniature_nether_portal").setTiers(NONE).addFlags(UNCULLED).noCovers().allowFrontIO().baseTexture(new Texture("block/obsidian")).overlayTexture(Textures.MINI_NETHER_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).custom(Textures.MINI_PORTAL).setTile(BlockEntityMiniPortal::new);
 
     /**
      ** Creative Machines
