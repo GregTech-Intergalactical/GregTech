@@ -15,6 +15,7 @@ import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.Ref.U;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.material.MaterialTags.MOLTEN;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.FLUID_PRESS;
 import static muramasa.gregtech.data.RecipeMaps.SMELTER;
@@ -27,8 +28,11 @@ public class SmelterLoader {
                 add(m, item, item.getUnitValue());
             });
         }
-        add(AntimatterMaterials.Redstone, DUST, DUST.getUnitValue());
-        add(Calcite, DUST, DUST.getUnitValue());
+        DUST.all().forEach(m -> {
+            if (m.has(LIQUID) && m.has(MOLTEN)){
+                add(m, DUST, DUST.getUnitValue());
+            }
+        });
         SMELTER.RB().ii(DUST.getMaterialIngredient(Limestone, 1)).fo(Calcite.getLiquid(L)).add("limestone_dust_to_calcite", Limestone.getMass(), 24);
         SMELTER.RB().ii(GTCoreBlocks.LIMESTONE.getState().getBlock()).fo(Calcite.getLiquid(L)).add("limestone_to_calcite", Limestone.getMass(), 24);
         SMELTER.RB().ii(Blocks.CALCITE).fo(Calcite.getLiquid(L)).add("mc_calcite_to_calcite", Limestone.getMass(), 24);

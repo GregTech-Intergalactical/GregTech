@@ -58,13 +58,14 @@ public class Structures {
         );
 
         CRACKING_UNIT.setStructure(BlockEntityOilCrackingUnit.class, b -> b.part("main")
-                .of("CBMBC", "CBMBC", "CBMBC").of( "CB~BC", "H---H", "CBMBC").of(0).build()
+                .of("CBMBC", "CBMBC", "CBMBC").of( "CB~BC", "L---R", "CBMBC").of(0).build()
                 .at('C', CASING_STAINLESS_STEEL)
                 //.at("B", "coil", AntimatterAPI.all(BlockCoil.class))
                 .at('B', COIL_CUPRONICKEL)
-                .at('H', HATCH_FLUID_I, HATCH_FLUID_O)
+                .at('L', HATCH_FLUID_O, CASING_STAINLESS_STEEL)
+                .at('R', HATCH_FLUID_I)
                 .at('M', CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_ITEM_O, HATCH_ENERGY)
-                .offset(2, 1, 0).exact(1, HATCH_FLUID_O).min(2, HATCH_FLUID_I).min(1, HATCH_ENERGY).build()
+                .offset(2, 1, 0).max(1, HATCH_FLUID_O).min(2, HATCH_FLUID_I).min(1, HATCH_ENERGY).build()
         );
 
         DISTLLATION_TOWER.setStructure(BlockEntityDistillationTower.class, b -> b.part("bottom")

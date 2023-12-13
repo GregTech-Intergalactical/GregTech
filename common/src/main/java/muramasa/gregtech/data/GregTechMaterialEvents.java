@@ -215,7 +215,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(AmmoniumChloride).asDust();
         event.setMaterial(ArsenicTrioxide).asDust();
         event.setMaterial(Biotite).asDust();
-        event.setMaterial(Bitumen).asDust();
+        event.setMaterial(Bitumen).asDust().asFluid(0, 1000).flags(MOLTEN);
         event.setMaterial(BlackGranite).asDust(ROCK);
         event.setMaterial(BlueSchist).asDust(ROCK);
         event.setMaterial(BorosilicateGlass).asDust();

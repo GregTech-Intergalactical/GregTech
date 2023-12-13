@@ -19,6 +19,7 @@ import muramasa.gregtech.items.ItemDataStick;
 import muramasa.gregtech.items.ItemPrintedPages;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -234,6 +235,23 @@ public class GregTechData {
 
     public static final BlockBasic MINING_PIPE_THIN = new BlockMiningPipe(GTIRef.ID, "mining_pipe_thin", BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.STONE, MaterialColor.COLOR_GRAY));
     public static final BlockBasic MINING_PIPE = new BlockMiningPipe(GTIRef.ID, "mining_pipe", BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.STONE, MaterialColor.COLOR_GRAY));
+
+    public static final BlockAsphalt WHITE_ASPHALT = new BlockAsphalt(GTIRef.ID, "white_asphalt", DyeColor.WHITE.getTextColor());
+    public static final BlockAsphalt ORANGE_ASPHALT = new BlockAsphalt(GTIRef.ID, "orange_asphalt", DyeColor.ORANGE.getTextColor());
+    public static final BlockAsphalt MAGENTA_ASPHALT = new BlockAsphalt(GTIRef.ID, "magenta_asphalt", DyeColor.MAGENTA.getTextColor());
+    public static final BlockAsphalt LIGHT_BLUE_ASPHALT = new BlockAsphalt(GTIRef.ID, "light_blue_asphalt", DyeColor.LIGHT_BLUE.getTextColor());
+    public static final BlockAsphalt YELLOW_ASPHALT = new BlockAsphalt(GTIRef.ID, "yellow_asphalt", DyeColor.YELLOW.getTextColor());
+    public static final BlockAsphalt LIME_ASPHALT = new BlockAsphalt(GTIRef.ID, "lime_asphalt", DyeColor.LIME.getTextColor());
+    public static final BlockAsphalt PINK_ASPHALT = new BlockAsphalt(GTIRef.ID, "pink_asphalt", DyeColor.PINK.getTextColor());
+    public static final BlockAsphalt GRAY_ASPHALT = new BlockAsphalt(GTIRef.ID, "gray_asphalt", DyeColor.GRAY.getTextColor());
+    public static final BlockAsphalt LIGHT_GRAY_ASPHALT = new BlockAsphalt(GTIRef.ID, "light_gray_asphalt", DyeColor.LIGHT_GRAY.getTextColor());
+    public static final BlockAsphalt CYAN_ASPHALT = new BlockAsphalt(GTIRef.ID, "cyan_asphalt", DyeColor.CYAN.getTextColor());
+    public static final BlockAsphalt PURPLE_ASPHALT = new BlockAsphalt(GTIRef.ID, "purple_asphalt", DyeColor.PURPLE.getTextColor());
+    public static final BlockAsphalt BLUE_ASPHALT = new BlockAsphalt(GTIRef.ID, "blue_asphalt", DyeColor.BLUE.getTextColor());
+    public static final BlockAsphalt BROWN_ASPHALT = new BlockAsphalt(GTIRef.ID, "brown_asphalt", DyeColor.BROWN.getTextColor());
+    public static final BlockAsphalt GREEN_ASPHALT = new BlockAsphalt(GTIRef.ID, "green_asphalt", DyeColor.GREEN.getTextColor());
+    public static final BlockAsphalt RED_ASPHALT = new BlockAsphalt(GTIRef.ID, "red_asphalt", DyeColor.RED.getTextColor());
+    public static final BlockAsphalt BLACK_ASPHALT = new BlockAsphalt(GTIRef.ID, "black_asphalt", DyeColor.BLACK.getTextColor());
     public static final BlockCasing CASING_ULV = new BlockCasing(GTIRef.ID, "casing_ulv");
     public static final BlockCasing CASING_LV = new BlockCasing(GTIRef.ID, "casing_lv");
     public static final BlockCasing CASING_MV = new BlockCasing(GTIRef.ID, "casing_mv");

@@ -7,10 +7,7 @@ import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.block.BlockCoil;
-import muramasa.gregtech.block.BlockColoredWall;
-import muramasa.gregtech.block.BlockFakeCasing;
+import muramasa.gregtech.block.*;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.items.ItemIntCircuit;
 
@@ -76,6 +73,7 @@ public class GregTechLocalizations {
             add(GregTechData.SOLID_SUPER_FUEL, "Solid Super Fuel");
             AntimatterAPI.all(BlockFakeCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockColoredWall.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+            AntimatterAPI.all(BlockAsphalt.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> override(i.getDescriptionId(), "Integrated Circuit (" + i.circuitId + ")"));
             AntimatterAPI.all(ItemBasic.class, domain).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpaced(i.getId())

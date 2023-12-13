@@ -8,13 +8,19 @@ import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTechConfig;
+import muramasa.gregtech.block.BlockAsphalt;
+import muramasa.gregtech.data.GregTechData;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.BLOCK;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -23,7 +29,7 @@ import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.*;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.MIXER;
-
+import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 
 public class MixerLoader {
@@ -58,6 +64,33 @@ public class MixerLoader {
         addDust(Cupronickel, 8, 10*20);
         addDust(EnderEye, 8, 5*20);
         recipes();
+        addAsphaltRecipe(Stone, GRAY_ASPHALT);
+        addAsphaltRecipe(Andesite, LIGHT_GRAY_ASPHALT);
+        addAsphaltRecipe(Basalt, BLACK_ASPHALT);
+        addAsphaltRecipe(BlueSchist, LIGHT_BLUE_ASPHALT);
+        addAsphaltRecipe(Calcite, WHITE_ASPHALT);
+        addAsphaltRecipe(Deepslate, BLACK_ASPHALT);
+        addAsphaltRecipe(Diorite, WHITE_ASPHALT);
+        addAsphaltRecipe(Endstone, WHITE_ASPHALT);
+        addAsphaltRecipe(Granite, RED_ASPHALT);
+        addAsphaltRecipe(BlackGranite, BLACK_ASPHALT);
+        addAsphaltRecipe(RedGranite, RED_ASPHALT);
+        addAsphaltRecipe(Kimberlite, BROWN_ASPHALT);
+        addAsphaltRecipe(Komatiite, YELLOW_ASPHALT);
+        addAsphaltRecipe(Limestone, ORANGE_ASPHALT);
+        addAsphaltRecipe(Marble, WHITE_ASPHALT);
+        addAsphaltRecipe(Netherrack, RED_ASPHALT);
+        addAsphaltRecipe(OilShale, GRAY_ASPHALT);
+        addAsphaltRecipe(Prismarine, LIME_ASPHALT);
+        addAsphaltRecipe(DarkPrismarine, GREEN_ASPHALT);
+        addAsphaltRecipe(Quartzite, PINK_ASPHALT);
+        addAsphaltRecipe(Shale, GRAY_ASPHALT);
+        addAsphaltRecipe(Slate, GRAY_ASPHALT);
+        addAsphaltRecipe(Talc, GRAY_ASPHALT);
+    }
+
+    private static void addAsphaltRecipe(Material dust, BlockAsphalt asphalt){
+        MIXER.RB().ii(DUST.getMaterialIngredient(dust, 1)).fi(Bitumen.getLiquid(L)).io(asphalt.asItem()).add(asphalt.getId() + "_from_" + dust.getId(), 16, 16);
     }
 
     private static void addDust(Material mat, int eut, int duration) {

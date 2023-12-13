@@ -4,18 +4,23 @@ import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.common.event.CommonEvents;
+import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.datagen.providers.*;
 import muramasa.antimatter.event.CraftingEvent;
 import muramasa.antimatter.event.ProvidersEvent;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.mixin.LivingEntityAccessor;
+import muramasa.antimatter.pipe.BlockFluidPipe;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.block.BlockAsphalt;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.datagen.*;
@@ -31,6 +36,10 @@ import muramasa.gregtech.loader.machines.generator.LargeBoilerLoader;
 import muramasa.gregtech.loader.multi.*;
 import muramasa.gregtech.proxy.CommonHandler;
 import muramasa.gregtech.proxy.ServerHandler;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.level.block.state.BlockState;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -182,6 +191,24 @@ public class GregTech extends AntimatterMod {
                 if (AntimatterAPI.isModLoaded(Ref.MOD_REI) && side.isClient()){
                     REIRegistrar.init();
                 }
+                CommonEvents.addPlayerTickCallback((end, logicalServer, player) -> {
+                    if (!end && logicalServer && (((LivingEntityAccessor)player).getLastPos() == null || !((LivingEntityAccessor)player).getLastPos().equals(player.blockPosition()))){
+                        BlockState state = player.getLevel().getBlockState(player.getOnPos());
+                        AttributeInstance attributeinstance = player.getAttribute(Attributes.MOVEMENT_SPEED);
+                        if (attributeinstance == null) {
+                            return;
+                        }
+                        if (state.getBlock() instanceof BlockAsphalt){
+                            if (attributeinstance.getModifier(BlockAsphalt.SPEED_MODIFIER) == null){
+                                attributeinstance.addTransientModifier(new AttributeModifier(BlockAsphalt.SPEED_MODIFIER, "Asphalt speed modification", 1.3, AttributeModifier.Operation.MULTIPLY_BASE));
+                            }
+                        } else {
+                            if (attributeinstance.getModifier(BlockAsphalt.SPEED_MODIFIER) != null){
+                                attributeinstance.removeModifier(BlockAsphalt.SPEED_MODIFIER);
+                            }
+                        }
+                    }
+                });
             }
             case DATA_READY -> {
                 Structures.init();
