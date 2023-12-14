@@ -8,6 +8,7 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
+import muramasa.gregtech.data.GregTechMaterialTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
@@ -29,7 +30,7 @@ public class SmelterLoader {
             });
         }
         DUST.all().forEach(m -> {
-            if (m.has(LIQUID) && m.has(MOLTEN)){
+            if (m.has(LIQUID) && m.has(MOLTEN) && !m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)){
                 add(m, DUST, DUST.getUnitValue());
             }
         });
