@@ -87,6 +87,7 @@ public class MixerLoader {
         addAsphaltRecipe(Shale, GRAY_ASPHALT);
         addAsphaltRecipe(Slate, GRAY_ASPHALT);
         addAsphaltRecipe(Talc, GRAY_ASPHALT);
+        addAsphaltRecipe(GreenSchist, GREEN_ASPHALT);
     }
 
     private static void addAsphaltRecipe(Material dust, BlockAsphalt asphalt){
