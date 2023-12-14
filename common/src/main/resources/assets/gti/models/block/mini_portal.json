@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-  "parent": "block/block",e
+  "parent": "block/block",
 	"elements": [
 		{
 			"name": "left",
