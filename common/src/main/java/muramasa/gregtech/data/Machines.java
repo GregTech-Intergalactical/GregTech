@@ -26,6 +26,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.phys.shapes.Shapes;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Netherite;
@@ -171,6 +172,12 @@ public class Machines {
     public static GeneratorMachine STEAM_GENERATOR = new GeneratorMachine(GTIRef.ID, "steam_turbine").setTiers(LV, MV, HV).setMap(STEAM_FUELS).addFlags(GUI, ITEM, FLUID, CELL).setTile(BlockEntitySteamTurbine::new).efficiency(t -> {
         return t.getIntegerId() + 6;
     }).allowFrontIO().custom();
+    public static GeneratorMachine SOLAR_PANEL = new GeneratorMachine(GTIRef.ID, "solar_panel").setTiers(NONE, ULV, LV).addFlags(GUI).removeFlags(COVERABLE).customShape(Shapes.box(0,0,0, 1, 0.5, 1)).itemModelParent(new ResourceLocation(GTIRef.ID, "block/preset/solar_panel")).setVerticalFacingAllowed(false).setTile(BlockEntitySolarPanel::new).custom().addTooltipInfo((machine, stack, world, tooltip, flag) -> {
+        if (machine.getTier() == NONE){
+            tooltip.add(Utils.translatable("machine.voltage.out").append(": ").append(Utils.literal(1 + "")).withStyle(ChatFormatting.GREEN));
+            tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal("" + 80).withStyle(ChatFormatting.BLUE)));
+        }
+    });
     /**
      ** Multiblock Hatch Machines (Electrical Age)
      **/
