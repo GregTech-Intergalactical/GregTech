@@ -512,6 +512,14 @@ public class Machines {
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
         });
 
+        provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(NONE),
+                of('S', Wafer, 'G', Items.GLASS_PANE, 'C', CIRCUITS_BASIC,
+                        'P', PLATE.getMaterialTag(Carbon), 'H', HULL_ULV, 'W', CABLE_LEAD.getBlockItem(PipeSize.VTINY)), "SGS", "CPC", "WHW");
+        provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(ULV),
+                of('S', SOLAR_PANEL.getItem(NONE), 'C', CIRCUITS_ADVANCED), "SSS", "SCS", "SSS");
+        provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(LV),
+                of('S', SOLAR_PANEL.getItem(ULV), 'T', TRANSFORMER.getItem(ULV), 'C', TIER_CIRCUITS.apply(EV)), "CSC", "STS","CSC");
+
         var circuit = GregTechConfig.HARDER_CIRCUITS ? CIRCUITS_ADVANCED : EngravedCrystalChip;
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(Tier.LV),
                 ImmutableMap.<Character, Object>builder()

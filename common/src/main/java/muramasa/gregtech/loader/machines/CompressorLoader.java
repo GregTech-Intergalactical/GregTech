@@ -11,8 +11,7 @@ import net.minecraft.world.item.Items;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.gregtech.data.Materials.Fireclay;
-import static muramasa.gregtech.data.Materials.Lazurite;
+import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.COMPRESSOR;
 
 public class CompressorLoader {
@@ -67,5 +66,6 @@ public class CompressorLoader {
         COMPRESSOR.RB().ii(RecipeIngredient.of(Items.SNOW_BLOCK)).io(Items.ICE).add("ice", 300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(Items.ICE, 1)).io(Items.PACKED_ICE).add("packed_ice", 300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(Items.PACKED_ICE, 2)).io(Items.BLUE_ICE).add("blue_ice", 300, 2);
+        COMPRESSOR.RB().ii(RecipeIngredient.of(CarbonMesh)).io(PLATE.get(Carbon)).add("carbon_plate", 300, 2);
     }
 }
