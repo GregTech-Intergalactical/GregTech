@@ -31,8 +31,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.Stone;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.material.Material.NULL;
 import static muramasa.antimatter.material.MaterialTags.*;
-import static muramasa.gregtech.data.Materials.Calcite;
-import static muramasa.gregtech.data.Materials.Clay;
+import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.*;
 
 public class MaceratorLoader {
@@ -157,5 +156,6 @@ public class MaceratorLoader {
         MACERATOR.RB().ii(RecipeIngredient.of(Biochaff, 1)).io(new ItemStack(Items.DIRT, 1)).add("dirt",32, 2);
         MACERATOR.RB().ii(RecipeIngredient.of(GTCoreTags.RUBBER_LOGS)).io(DUST.get(Wood, 6), new ItemStack(GTCoreItems.StickyResin, 1)).chances(1.0, 0.33).add("rubber_log", 400, 2);
         MACERATOR.RB().ii(RecipeIngredient.of(Blocks.CALCITE)).io(DUST.get(Calcite)).add("calcite_from_mc_calcite", 400, 2);
+        MACERATOR.RB().ii(RecipeIngredient.of(Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN)).io(DUST.get(Obsidian, 9)).add("obsidan_dust", 400, 2);
     }
 }
