@@ -196,13 +196,14 @@ public class GregTech extends AntimatterMod {
                     if (!end && logicalServer && (((LivingEntityAccessor)player).getLastPos() == null || !((LivingEntityAccessor)player).getLastPos().equals(player.blockPosition()))){
                         BlockState state = player.getLevel().getBlockState(player.getOnPos());
                         AttributeInstance attributeinstance = player.getAttribute(Attributes.MOVEMENT_SPEED);
+                        if (state.isAir()) state = player.getLevel().getBlockState(player.getOnPos().below());
                         if (attributeinstance == null) {
                             return;
                         }
                         if (state.getBlock() instanceof BlockAsphalt || state.getBlock() instanceof BlockAsphaltSlab){
                             if (attributeinstance.getModifier(BlockAsphalt.SPEED_MODIFIER) == null){
                                 attributeinstance.addTransientModifier(new AttributeModifier(BlockAsphalt.SPEED_MODIFIER, "Asphalt speed modification", 1.3, AttributeModifier.Operation.MULTIPLY_BASE));
-                            }
+                            } 
                         } else {
                             if (attributeinstance.getModifier(BlockAsphalt.SPEED_MODIFIER) != null){
                                 attributeinstance.removeModifier(BlockAsphalt.SPEED_MODIFIER);
