@@ -208,7 +208,6 @@ public class Guis {
         COMBUSTION_GENERATOR.add(BASIC_TANK.getSlots());
         SEMIFLUID_GENERATOR.add(BASIC_TANK.getSlots());
         NAQUADAH_GENERATOR.add(BASIC_TANK.getSlots());
-        PLASMA_GENERATOR.add(BASIC_TANK.getSlots());
 
         CROP_HARVESTER.add(IT_OUT, 62, 16).add(IT_OUT, 80, 16).add(IT_OUT, 98, 16)
                 .add(IT_OUT, 62, 34).add(IT_OUT, 80, 34).add(IT_OUT, 98, 34)
@@ -333,7 +332,6 @@ public class Guis {
         COMBUSTION_GENERATOR.getGui().setBackgroundTexture("basic_tank");
         SEMIFLUID_GENERATOR.getGui().setBackgroundTexture("basic_tank");
         NAQUADAH_GENERATOR.getGui().setBackgroundTexture("basic_tank");
-        PLASMA_GENERATOR.getGui().setBackgroundTexture("basic_tank");
         INFINITE_STEAM.getGui().setBackgroundTexture("basic_tank");
         QUANTUM_TANK.getGui().setBackgroundTexture("basic_tank");
         ELECTRIC_ITEM_FILTER.getGui().setBackgroundTexture("electric_item_filter");
