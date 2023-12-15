@@ -243,7 +243,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(MagnesiumChloride).asDust();
         event.setMaterial(Marble).asDust(ROCK);
         event.setMaterial(Massicot).asDust();
-        event.setMaterial(Obsidian).asDust();
+        event.setMaterial(Obsidian).asDust(ROD_LONG);
         event.setMaterial(PlatinumGroupSludge).asDust();
         event.setMaterial(PhosphorousPentoxide).asDust();
         event.setMaterial(Potash).asDust();
