@@ -9,6 +9,7 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -19,12 +20,18 @@ import net.minecraft.world.level.material.Fluids;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
+import java.util.function.ToLongFunction;
+
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.gregtech.data.RecipeMaps.CUTTER;
 
 public class CuttingLoader {
     public static void init() {
+        ToLongFunction<Material> baseDuration = m -> {
+            if (m.has(GregTechMaterialTags.RECIPE_MASS)) return GregTechMaterialTags.RECIPE_MASS.get(m);
+            return m.getMass();
+        };
         for (Material mat : AntimatterMaterialTypes.PLATE.all()) {
             if (!mat.has(AntimatterMaterialTypes.BLOCK))
                 continue;
@@ -32,19 +39,19 @@ public class CuttingLoader {
             if (mat == AntimatterMaterials.Diamond || mat == AntimatterMaterials.NetherizedDiamond)
                 multiplier = 5;
             int count = mat.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
-            addCutterRecipe(BLOCK.getMaterialTag(mat), PLATE.get(mat, count), "plate_" + mat.getId(), (int) (mat.getMass() * 10 * multiplier), 30);
+            addCutterRecipe(BLOCK.getMaterialTag(mat), PLATE.get(mat, count), "plate_" + mat.getId(), (int) (baseDuration.applyAsLong(mat) * 10 * multiplier), 30);
             if (mat.has(ITEM_CASING)){
-                addCutterRecipe(PLATE.getMaterialTag(mat), ITEM_CASING.get(mat, 2), "item_casing_" + mat.getId(), (int) (mat.getMass() * 5 * multiplier), 16);
+                addCutterRecipe(PLATE.getMaterialTag(mat), ITEM_CASING.get(mat, 2), "item_casing_" + mat.getId(), (int) (baseDuration.applyAsLong(mat) * 5 * multiplier), 16);
             }
 
         }
         AntimatterMaterialTypes.BOLT.all().forEach(t -> {
             if (t.has(AntimatterMaterialTypes.ROD)) {
-                addCutterRecipe(ROD.getMaterialTag(t), BOLT.get(t, 4), "bolt_" + t.getId(), (int) (t.getMass() * 2), 4);
+                addCutterRecipe(ROD.getMaterialTag(t), BOLT.get(t, 4), "bolt_" + t.getId(), (int) (baseDuration.applyAsLong(t) * 2), 4);
             }
         });
         AntimatterMaterialTypes.ROD_LONG.all().forEach(m -> {
-            addCutterRecipe(ROD_LONG.getMaterialTag(m), ROD.get(m, 2), "rod_" + m.getId(), (int) (m.getMass() * 2), 4);
+            addCutterRecipe(ROD_LONG.getMaterialTag(m), ROD.get(m, 2), "rod_" + m.getId(), (int) (baseDuration.applyAsLong(m) * 2), 4);
         });
         if (!AntimatterAPI.isModLoaded(Ref.MOD_TFC)){
             addWoodRecipe(ItemTags.OAK_LOGS, Items.OAK_PLANKS, 1, "oak_planks", 200, 8);

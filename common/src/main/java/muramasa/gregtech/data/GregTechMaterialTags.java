@@ -42,6 +42,7 @@ public class GregTechMaterialTags {
     public static final MaterialTag DECAYABLE = new MaterialTag("decayable");
 
     public static final MaterialTag NEEDS_BLAST_FURNACE = AntimatterAPI.register(MaterialTag.class, new MaterialTag("needs_blast_furnace", true));
+    public static final NumberMaterialTag RECIPE_MASS = (NumberMaterialTag) AntimatterAPI.register(MaterialTag.class, new NumberMaterialTag("recipe_mass", true));
     public static final NumberMaterialTag BLAST_FURNACE_TEMP = (NumberMaterialTag) AntimatterAPI.register(MaterialTag.class, new NumberMaterialTag("blast_furnace_temp", true));
     public static final DoubleMaterialTag CHEMBATH_MERCURY = new DoubleMaterialTag("chembath_mercury");
     public static final DoubleMaterialTag CHEMBATH_PERSULFATE = new DoubleMaterialTag("chembath_persulfate");

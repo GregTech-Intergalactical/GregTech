@@ -1373,6 +1373,7 @@ public class GregTechMaterialEvents {
         CENT.add(CENT10.all().toArray(new Material[0]));
         CENT.add(CENT15.all().toArray(new Material[0]));
         CENT.add(CENT20.all().toArray(new Material[0]));
+        RECIPE_MASS.add(Lead, 64);
         CHEMBATH_MERCURY.add(Chalcopyrite, Gold);
         CHEMBATH_MERCURY.add(Copper, Gold);
         CHEMBATH_MERCURY.add(Gold,Gold);

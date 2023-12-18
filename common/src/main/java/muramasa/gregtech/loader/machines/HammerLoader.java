@@ -4,6 +4,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.data.ForgeCTags;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.ore.StoneType;
@@ -11,8 +12,11 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.data.GregTechMaterialTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+
+import java.util.function.ToLongFunction;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.material.MaterialTags.MACERATE_INTO;
@@ -38,12 +42,16 @@ public class HammerLoader {
                 FORGE_HAMMER.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca((ORE_MULTI.getInt(m) * multiplier), crushedStack)).add(m.getId() + "_raw_ore",16, 10);
             }
         });
+        ToLongFunction<Material> baseDuration = m -> {
+            if (m.has(GregTechMaterialTags.RECIPE_MASS)) return GregTechMaterialTags.RECIPE_MASS.get(m);
+            return m.getMass();
+        };
         PLATE.all().forEach(plate -> {
             if (!plate.has(INGOT) || plate.has(MaterialTags.NOSMASH)) return;
-            FORGE_HAMMER.RB().ii(INGOT.getMaterialIngredient(plate, 3)).io(PLATE.get(plate, 2)).add("plate_" + plate.getId(),plate.getMass() * 2, 16);
+            FORGE_HAMMER.RB().ii(INGOT.getMaterialIngredient(plate, 3)).io(PLATE.get(plate, 2)).add("plate_" + plate.getId(),baseDuration.applyAsLong(plate) * 2, 16);
         });
         ROD_LONG.all().stream().filter(m -> !m.has(MaterialTags.NOSMASH)).forEach(rod -> {
-            FORGE_HAMMER.RB().ii(ROD.getMaterialIngredient(rod, 2)).io(ROD_LONG.get(rod, 1)).add("rod_long_" + rod.getId(), rod.getMass() * 2, 16);
+            FORGE_HAMMER.RB().ii(ROD.getMaterialIngredient(rod, 2)).io(ROD_LONG.get(rod, 1)).add("rod_long_" + rod.getId(), baseDuration.applyAsLong(rod) * 2, 16);
         });
         GEM_EXQUISITE.all().forEach(m -> {
             FORGE_HAMMER.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(GEM_FLAWLESS.get(m, 2)).add(m.getId() + "_exquisite", 64, 16);
