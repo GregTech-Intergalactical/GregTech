@@ -50,6 +50,8 @@ public class GregTechLocalizations {
             add("tooltip.gti.data_stick.raw_prospection_data", "Raw Prospection Data");
             add("tooltip.gti.data_stick.analyzed_prospection_data", "Analyzed Prospection Data");
             add("tooltip.gti.data_stick.by", "By X: %s Z: %s Dim: %s");
+            add("tooltip.gti.coil.percentage", "Pyrolysis oven processing speed percentage: %s");
+            add("tooltip.gti.coil.maxSimultaneousRecipes", "Max simultaneous recipes in Multismelter: %s");
         }
 
         @Override

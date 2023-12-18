@@ -27,8 +27,6 @@ import java.util.List;
 import static muramasa.antimatter.machine.Tier.*;
 
 public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntityMultiSmelter> {
-
-    private int level = 1, discount = 1;
     private BlockCoil.CoilData coilData;
     int concurrentRecipes = 0;
 
@@ -93,29 +91,7 @@ public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntity
             }
 
             private int maxSimultaneousRecipes(){
-                Tier powerLevel = tile.getPowerLevel();
-                if (powerLevel == LV){
-                    return 6;
-                }
-                if (powerLevel == MV){
-                    return 8;
-                }
-                if (powerLevel == HV){
-                    return 10;
-                }
-                if (powerLevel == EV){
-                    return 12;
-                }
-                if (powerLevel == IV){
-                    return 14;
-                }
-                if (powerLevel == LUV){
-                    return 16;
-                }
-                if (powerLevel == ZPM){
-                    return 18;
-                }
-                return 1;
+                return coilData.maxSimultaneousRecipes();
             }
 
             @Override
@@ -142,46 +118,6 @@ public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntity
 //        EUt = (-4 * (1 << tier - 1) * (1 << tier - 1) * level / discount);
 //        maxProgress = Math.max(1, 512 / (1 << tier - 1));
 //    }
-
-    /*@Override
-    public boolean onStructureFormed() {
-        super.onStructureFormed();
-        List<BlockState> coils = getStates("coil");
-        BlockCoil firstType = ((BlockCoil) coils.get(0).getBlock());
-        if (coils.stream().allMatch(s -> s.getBlock() == firstType)) {
-            setCoilValues(firstType);
-            return true;
-        } else {
-            this.result.withError("all coils do not match");
-            return false;
-        }
-    }*/
-
-    public void setCoilValues(BlockCoil coil) {
-        switch (coil.getId()) {
-            case "kanthal":
-                level = 2;
-                break;
-            case "nichrome":
-                level = 4;
-                break;
-            case "tungstensteel":
-                level = 8;
-                break;
-            case "hssg":
-                level = 16;
-                discount = 2;
-                break;
-            case "naquadah":
-                level = 16;
-                discount = 4;
-                break;
-            case "naquadah_alloy":
-                level = 16;
-                discount = 8;
-                break;
-        }
-    }
 
     public void setCoilData(BlockCoil.CoilData coilData) {
         this.coilData = coilData;
