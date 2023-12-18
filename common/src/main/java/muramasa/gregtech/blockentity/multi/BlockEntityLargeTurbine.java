@@ -27,6 +27,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import tesseract.TesseractGraphWrappers;
 
+import static muramasa.antimatter.data.AntimatterMaterialTypes.ROD;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.ROD_LONG;
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static muramasa.antimatter.machine.Tier.*;
@@ -122,8 +123,12 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                         if (getLevel() != null && getLevel().getGameTime() % 1000 == 0 && getLevel().random.nextInt(2) == 0){
                             itemHandler.ifPresent(i -> {
                                 ItemStack stack = i.getHandler(SlotType.STORAGE).getStackInSlot(0);
+                                ItemStack compare = stack.copy();
                                 if(stack.getItem() instanceof ItemTurbineRotor rotor && stack.hurt(1, getLevel().random, null)){
-                                    i.getHandler(SlotType.STORAGE).setItem(0, ROD_LONG.get(rotor.getRodMaterial(), 1));
+                                    var materialType = rotor.getAntimatterToolType().getMaterialTypeItem();
+                                    var material = rotor.getPrimaryMaterial(compare);
+                                    ItemStack broken = materialType != null && material.has(materialType) ? materialType.get(material, 1) : ROD_LONG.get(rotor.getRodMaterial(), 1);
+                                    i.getHandler(SlotType.STORAGE).setItem(0, broken);
                                 }
                             });
                         }
