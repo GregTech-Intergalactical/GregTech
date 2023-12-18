@@ -5,6 +5,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.Ref.L;
@@ -41,11 +42,16 @@ public class FluidSolidifier {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldNugget, 1).setNoConsume())
                 .fi(mat.getFluidTag(L / 9)).io(NUGGET.get(mat,1)).add(mat.getId() + "_nugget",16, 4);
             }
+            if (mat.has(ROD_LONG)) {
+                FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldLongRod, 1).setNoConsume())
+                        .fi(mat.getFluidTag(L)).io(ROD_LONG.get(mat,1)).add(mat.getId() + "_long_rod",16, 8);
+            }
             if (mat.has(BLOCK)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldBlock, 1).setNoConsume())
                 .fi(mat.getFluidTag(L * 9)).io(BLOCK.get().get(mat).asStack(1)).add(mat.getId() + "_block",288, 8);
             }
         });
+        FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldLongRod, 1).setNoConsume()).fi(Lava.getLiquid(AntimatterPlatformUtils.isFabric() ? L : 111)).io(ROD_LONG.get(Obsidian)).add("long obsidian rod", 16, 8);
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldAnvil, 1).setNoConsume()).fi(Iron.getFluidTag(L * 31)).io(Items.ANVIL).add("anvil", 128, 16);
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldPlate, 1).setNoConsume()).fi(Glass.getFluidTag(L)).io(PLATE.get(Glass)).add("glass_plate",12, 4);
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldBlock, 1).setNoConsume()).fi(Glass.getFluidTag(L)).io(Items.GLASS).add("glass_block",12, 4);
