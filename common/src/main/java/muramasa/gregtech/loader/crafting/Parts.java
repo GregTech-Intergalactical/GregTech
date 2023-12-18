@@ -164,33 +164,38 @@ public class Parts {
       //moldRecipe(output, provider, MoldBaguettes, "P ", "  ", " H");
       moldRecipe(output, provider, MoldAnvil, " P", "  ", "H ");
       moldRecipe(output, provider, MoldGearSmall, "H P");
+      moldRecipe(output, provider, MoldLongRod, "  H", "P  ");
 
-      shapeRecipe(output, provider, ShapePlate, "HP");
-      shapeRecipe(output, provider, ShapeRod, "P ", " H");
-      shapeRecipe(output, provider, ShapeBolt, "H ", " P");
-      shapeRecipe(output, provider, ShapeRing, "PH");
-      shapeRecipe(output, provider, ShapeCell, "H", "P");
-      shapeRecipe(output, provider, ShapeIngot, " H", "P ");
-      shapeRecipe(output, provider, ShapeWire, "P", "H");
-      shapeRecipe(output, provider, ShapeCasing, " P", "H ");
+      shapeRecipe(output, provider, ShapeFoil, ShapePlate, "H ", " P");
+      shapeRecipe(output, provider, ShapeRod, ShapeLongRod, " H", "P ");
+      shapeRecipe(output, provider, ShapeRod, "PH");
+      shapeRecipe(output, provider, ShapeRod, ShapeBolt, "H ", " P");
+      shapeRecipe(output, provider, ShapeRing, "P", "H");
+      shapeRecipe(output, provider, ShapeRing, ShapeCell, "PH");
+      shapeRecipe(output, provider, ShapeIngot, "H ", " P");
+      shapeRecipe(output, provider, ShapeRod, ShapeWire, "H", "P");
+      shapeRecipe(output, provider, ShapeFoil, ShapeCasing, "H", "P");
       shapeRecipe(output, provider, ShapePipeTiny, " H", "  ", "P ");
       shapeRecipe(output, provider, ShapePipeSmall, "P  ", "  H");
       shapeRecipe(output, provider, ShapePipeNormal, "P ", "  ", " H");
       shapeRecipe(output, provider, ShapePipeLarge, "P  ", "   ", "  H");
       shapeRecipe(output, provider, ShapePipeHuge, "  H", "   ", "P  ");
-      shapeRecipe(output, provider, ShapeBlock, "P H");
-      shapeRecipe(output, provider, ShapeHeadSword, "P", " ", "H");
-      shapeRecipe(output, provider, ShapeHeadPickaxe, " P", "  ", "H ");
-      shapeRecipe(output, provider, ShapeHeadShovel, "  P", "   ", "H  ");
-      shapeRecipe(output, provider, ShapeHeadAxe, "  P", "H  ");
-      shapeRecipe(output, provider, ShapeHeadHoe, "H P");
-      shapeRecipe(output, provider, ShapeHeadHammer, "H  ", "  P");
-      shapeRecipe(output, provider, ShapeHeadFile, "H  ", "   ", "  P");
-      shapeRecipe(output, provider, ShapeHeadSaw, "H ", "  ", " P");
+      shapeRecipe(output, provider, ShapeIngot, ShapeBlock, "H ", " P");
+      shapeRecipe(output, provider, ShapeTinyPlate, ShapeBladeSword, "PH");
+      shapeRecipe(output, provider, ShapeIngot, ShapeHeadPickaxe, "H", "P");
+      shapeRecipe(output, provider, ShapeTinyPlate, ShapeHeadShovel, "H", "P");
+      shapeRecipe(output, provider, ShapeTinyPlate, ShapeHeadAxe, "H ", " P");
+      shapeRecipe(output, provider, ShapeIngot, ShapeHeadHoe, "PH");
+      shapeRecipe(output, provider, ShapeIngot, ShapeHeadHammer, " H", "P ");
+      shapeRecipe(output, provider, ShapeTinyPlate, ShapeHeadFile, " H", "P ");
+      shapeRecipe(output, provider, ShapeTinyPlate, ShapeBladeSaw, "P ", " H");
       shapeRecipe(output, provider, ShapeGear, "H", " ", "P");
-      //shapeRecipe(output, provider, ShapeBottle, "  H", "P  ");
-      shapeRecipe(output, provider, ShapeGearSmall, "H", "P");
-
+      shapeRecipe(output, provider, ShapeRing, ShapeGear, "H ", " P");
+      //shapeRecipe(output, provider, ShapeRing, ShapeBottle, " H", "P ");
+      shapeRecipe(output, provider, ShapeRing, ShapeGearSmall, "H", "P");
+      shapeRecipe(output, provider, ShapeFoil, "P ", " H");
+      shapeRecipe(output, provider, ShapeTinyPlate, "H", "P");
+      shapeRecipe(output, provider, ShapeRod, ShapeFineWire, "PH");
   }
 
   private static void moldRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Item mold, String... shapes){
@@ -198,9 +203,13 @@ public class Parts {
               of('P', EmptyShape, 'H', HAMMER.getTag()), shapes);
   }
 
-    private static void shapeRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Item mold, String... shapes){
+    private static void shapeRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Item inputMold, Item mold, String... shapes){
         provider.addItemRecipe(output, GTIRef.ID, "", "gtparts", mold,
-                of('P', EmptyShape, 'H', WIRE_CUTTER.getTag()), shapes);
+                of('P', inputMold, 'H', WIRE_CUTTER.getTag()), shapes);
+    }
+
+    private static void shapeRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Item mold, String... shapes){
+        shapeRecipe(output, provider, EmptyShape, mold, shapes);
     }
 
   public static PipeSize fromTier(Tier tier){
