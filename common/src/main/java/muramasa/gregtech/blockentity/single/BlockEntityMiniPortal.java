@@ -60,6 +60,11 @@ public class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPor
     }
 
     @Override
+    protected boolean allowExplosionsInRain() {
+        return false;
+    }
+
+    @Override
     public InteractionResult onInteractBoth(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
         ItemStack stack = player.getItemInHand(hand);
         if (stack.is(GTCoreTags.FIRESTARTER) && setPortal()){

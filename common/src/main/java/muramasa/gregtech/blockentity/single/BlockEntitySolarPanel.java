@@ -49,6 +49,11 @@ public class BlockEntitySolarPanel extends BlockEntityMachine<BlockEntitySolarPa
     }
 
     @Override
+    protected boolean allowExplosionsInRain() {
+        return false;
+    }
+
+    @Override
     public boolean toggleMachine() {
         return false;
     }
