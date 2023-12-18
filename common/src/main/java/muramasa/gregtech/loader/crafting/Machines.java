@@ -520,6 +520,8 @@ public class Machines {
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(LV),
                 of('S', SOLAR_PANEL.getItem(ULV), 'T', TRANSFORMER.getItem(ULV), 'C', TIER_CIRCUITS.apply(EV)), "CSC", "STS","CSC");
 
+        provider.addItemRecipe(output, "mini_portals", MINIATURE_NETHER_PORTAL.getItem(NONE), of('O', ROD_LONG.get(Obsidian), 'S', SAW.getTag()), "OOO", "OSO", "OOO");
+
         var circuit = GregTechConfig.HARDER_CIRCUITS ? CIRCUITS_ADVANCED : EngravedCrystalChip;
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(Tier.LV),
                 ImmutableMap.<Character, Object>builder()
