@@ -73,22 +73,20 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                                     stringBuilder.append("No oil");
                                 }
                                 if (prospect.contains("ores")){
-                                    ListTag ores = prospect.getList("ores", 10);
+                                    CompoundTag ores = prospect.getCompound("ores");
                                     if (!ores.isEmpty()) {
                                         stringBuilder.append("\n Prospected Ores:\n");
                                         boolean addedFirst = false;
-                                        for (Tag ore : ores) {
-                                            if (ore instanceof StringTag stringTag){
-                                                Material m = Material.get(stringTag.getAsString());
-                                                if (m != Material.NULL){
-                                                    if (addedFirst){
-                                                        stringBuilder.append(", ");
-                                                    }
-                                                    if (!addedFirst){
-                                                        addedFirst = true;
-                                                    }
-                                                    stringBuilder.append(Utils.getLocalizedType(m));
+                                        for (String key : ores.getAllKeys()) {
+                                            Material m = Material.get(key);
+                                            if (m != Material.NULL){
+                                                if (addedFirst){
+                                                    stringBuilder.append(", ");
                                                 }
+                                                if (!addedFirst){
+                                                    addedFirst = true;
+                                                }
+                                                stringBuilder.append(Utils.getLocalizedType(m));
                                             }
                                         }
                                     }

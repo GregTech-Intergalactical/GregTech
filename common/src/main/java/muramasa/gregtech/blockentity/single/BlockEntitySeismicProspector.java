@@ -14,7 +14,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.LongTag;
-import net.minecraft.nbt.StringTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -28,7 +27,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 import tesseract.FluidPlatformUtils;
 
-import java.util.List;
 import java.util.Map;
 
 public class BlockEntitySeismicProspector extends BlockEntityMachine<BlockEntitySeismicProspector> {
@@ -47,17 +45,32 @@ public class BlockEntitySeismicProspector extends BlockEntityMachine<BlockEntity
             if (!player.isCreative()) stack.shrink(4);
             return InteractionResult.SUCCESS;
         }
-        if (stack.getItem() == GregTechData.DataStick && entry != null){
+        if (stack.getItem() == GregTechData.DataStick && (entry != null || ores != null)){
             CompoundTag prospectData = stack.getOrCreateTagElement("prospectData");
             prospectData.putLong("pos", pos.asLong());
             prospectData.putString("dimension", level.dimension().location().toString());
-            if (entry.getFluid() != null){
-                CompoundTag fluid = new CompoundTag();
-                fluid.putString("name", FluidPlatformUtils.getFluidId(entry.getFluid().fluid()).toString());
-                fluid.putLong("maxYield", entry.getFluid().getMaxYield());
-                prospectData.put("fluid", fluid);
-            } else {
-                prospectData.putBoolean("no_fluid", true);
+            if (entry != null) {
+                if (entry.getFluid() != null){
+                    CompoundTag fluid = new CompoundTag();
+                    fluid.putString("name", FluidPlatformUtils.getFluidId(entry.getFluid().fluid()).toString());
+                    fluid.putLong("maxYield", entry.getFluid().getMaxYield());
+                    prospectData.put("fluid", fluid);
+                } else {
+                    prospectData.putBoolean("no_fluid", true);
+                }
+            }
+            if (ores != null && !ores.isEmpty()){
+                CompoundTag ores = new CompoundTag();
+                this.ores.forEach((m, l) -> {
+                    if (!l.isEmpty()){
+                        ListTag positions = new ListTag();
+                        l.forEach(l2 -> positions.add(LongTag.valueOf(l2)));
+                        ores.put(m.getId(), positions);
+                    }
+                });
+                if (!ores.isEmpty()){
+                    prospectData.put("ores", ores);
+                }
             }
             /*if (!ores.isEmpty()){
                 ListTag ores = new ListTag();
