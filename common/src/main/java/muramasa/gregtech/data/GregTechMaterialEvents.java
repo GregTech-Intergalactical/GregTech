@@ -1342,7 +1342,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Tantalite).addByProduct(Manganese, Niobium, Tantalum);
         event.setMaterial(Tanzanite).addByProduct(Opal);
         event.setMaterial(Tetrahedrite).addByProduct(Antimony, Zinc);
-        event.setMaterial(Thorium).addByProduct(Uranium, Lead);
+        event.setMaterial(Thorium).addByProduct(Lead, Thorium, Indium);
         event.setMaterial(Tin).addByProduct(Iron, Zinc);
         event.setMaterial(Titanium).addByProduct(Almandine);
         event.setMaterial(Tungstate).addByProduct(Manganese, Silver, Lithium);
