@@ -75,7 +75,6 @@ public class CentrifugingLoader {
         CENTRIFUGE.RB().ii(of(GTCoreTags.RUBBER_LOGS)).io(new ItemStack(GTCoreItems.StickyResin), new ItemStack(GTCoreItems.Plantball), DUST.get(Carbon, 1), DUST.get(Wood, 1)).fo(Methane.getGas(60)).chances(0.5, 0.375, 0.25, 0.25).add("rubber_logs", 200, 20);
 
         CENTRIFUGE.RB().ii(of(GTCoreItems.StickyResin, 1)).io(DUST.get(RawRubber, 3), new ItemStack(GTCoreItems.Plantball)).fo(Glue.getLiquid(100)).chances(10000, 1000).add("sticky_resin", 300, 5);
-        CENTRIFUGE.RB().ii(CRUSHED_REFINED.getMaterialIngredient(Cobalt, 1)).io(DUST.get(Cobalt, 1), DUST_TINY.get(Cobalt60, 1)).chances(1.0, 0.239).add("refined_cobalt_ore", 512, 32);
         //Methane
         addMethaneRecipe(MELON, 9, 72);
         addMethaneRecipe(BREAD, 9, 72);

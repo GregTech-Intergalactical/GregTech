@@ -1267,7 +1267,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Clay).addByProduct(Clay);
         event.setMaterial(Coal).addByProduct(Lignite, Thorium);
         event.setMaterial(Cobalt).addByProduct(Cobaltite);
-        event.setMaterial(Cobaltite).addByProduct(Cobalt);
+        event.setMaterial(Cobaltite).addByProduct(Cobalt, Cobalt, Cobalt60);
         event.setMaterial(Sheldonite).addByProduct(Palladium, Nickel, Iridium);
         event.setMaterial(Copper).addByProduct(Cobalt, Gold, Nickel);
         event.setMaterial(DarkAsh).addByProduct(Carbon);
