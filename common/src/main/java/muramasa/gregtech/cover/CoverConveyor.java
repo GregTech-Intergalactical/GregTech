@@ -1,6 +1,7 @@
 package muramasa.gregtech.cover;
 
 import com.google.common.collect.ImmutableMap;
+import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.IGuiHandler;
@@ -92,7 +93,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
             world.addFreshEntity(new ItemEntity(world, pos.getX() + side.getStepX(), pos.getY() + side.getStepY(), pos.getZ() + side.getStepZ(), stack));
         }
         if (!(state.hasBlockEntity())) return;
-        BlockEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
+        BlockEntity adjTile = BlockEntityCache.getBlockEntity(handler.getTile().getLevel(), handler.getTile().getBlockPos().relative(side));
         if (adjTile == null) {
             return;
         }

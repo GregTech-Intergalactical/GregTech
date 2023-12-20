@@ -2,6 +2,7 @@ package muramasa.gregtech.blockentity.single;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
+import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
@@ -138,7 +139,7 @@ public class BlockEntityLavaBoiler extends BlockEntityMachine<BlockEntityLavaBoi
 
         public void exportFluidFromMachineToSide(Direction side){
             if (tile.fluidHandler.map(f -> f.getOutputTanks().isEmpty()).orElse(false)) return;
-            Optional<PlatformFluidHandler> cap = TesseractCapUtils.getFluidHandler(tile.getLevel(), tile.getBlockPos().relative(side), side.getOpposite());
+            Optional<PlatformFluidHandler> cap = BlockEntityCache.getFluidHandlerCached(tile.getLevel(), tile.getBlockPos().relative(side), side.getOpposite());
             tile.fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
         }
 

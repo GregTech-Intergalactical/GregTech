@@ -3,6 +3,7 @@ package muramasa.gregtech.cover;
 import com.google.common.collect.ImmutableMap;
 import earth.terrarium.botarium.common.fluid.base.FluidContainer;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
+import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.IGuiHandler;
@@ -70,8 +71,6 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
         //Pump acts on each tick.
         if (handler.getTile().getLevel().isClientSide) return;
         if (handler.getTile() == null) return;
-        BlockEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
-        if (adjTile == null) return;
         BlockPos from = handler.getTile().getBlockPos();
         BlockPos to = handler.getTile().getBlockPos().relative(side);
         Direction fromSide = side;
@@ -83,7 +82,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
         BlockPos finalTo = to;
         if (canMove(side)) {
             Direction finalFromSide = fromSide;
-            TesseractCapUtils.getFluidHandler(handler.getTile().getLevel(), from, fromSide).ifPresent(ih -> TesseractCapUtils.getFluidHandler(handler.getTile().getLevel(), finalTo, finalFromSide.getOpposite()).ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
+            BlockEntityCache.getFluidHandlerCached(handler.getTile().getLevel(), from, fromSide).ifPresent(ih -> BlockEntityCache.getFluidHandlerCached(handler.getTile().getLevel(), finalTo, finalFromSide.getOpposite()).ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
         }
     }
     protected boolean canMove(Direction side){

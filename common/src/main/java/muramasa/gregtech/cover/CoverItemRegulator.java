@@ -1,5 +1,6 @@
 package muramasa.gregtech.cover;
 
+import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
@@ -115,7 +116,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
             world.addFreshEntity(new ItemEntity(world, pos.getX() + side.getStepX(), pos.getY() + side.getStepY(), pos.getZ() + side.getStepZ(), stack));
         }
         if (!(state.hasBlockEntity())) return;
-        BlockEntity adjTile = handler.getTile().getLevel().getBlockEntity(handler.getTile().getBlockPos().relative(side));
+        BlockEntity adjTile = BlockEntityCache.getBlockEntity(handler.getTile().getLevel(), handler.getTile().getBlockPos().relative(side));
         if (adjTile == null) {
             return;
         }

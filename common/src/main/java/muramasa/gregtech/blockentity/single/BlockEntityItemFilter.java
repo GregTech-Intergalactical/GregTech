@@ -2,6 +2,7 @@ package muramasa.gregtech.blockentity.single;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
@@ -134,7 +135,7 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
 
     protected boolean processItemOutput() {
         Direction outputDir = this.getFacing().getOpposite();
-        BlockEntity adjTile = Utils.getTile(this.getLevel(), this.getBlockPos().relative(outputDir));
+        BlockEntity adjTile = BlockEntityCache.getBlockEntity(this.getLevel(), this.getBlockPos().relative(outputDir));
         if (adjTile == null) return false;
         boolean[] booleans = new boolean[1];
         booleans[0] = false;

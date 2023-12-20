@@ -1,5 +1,6 @@
 package muramasa.gregtech.blockentity.single;
 
+import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.item.TrackedItemHandler;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
@@ -81,7 +82,7 @@ public class BlockEntityBuffer extends BlockEntityLimitedOutput<BlockEntityBuffe
 
     protected boolean processItemOutput() {
         Direction outputDir = this.getFacing().getOpposite();
-        BlockEntity adjTile = Utils.getTile(this.getLevel(), this.getBlockPos().relative(outputDir));
+        BlockEntity adjTile = BlockEntityCache.getBlockEntity(this.getLevel(), this.getBlockPos().relative(outputDir));
         if (adjTile == null) return false;
         boolean[] booleans = new boolean[1];
         booleans[0] = false;

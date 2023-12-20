@@ -4,6 +4,7 @@ import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
 import io.github.gregtechintergalactical.gtcore.blockentity.BlockEntityMaterialBasicMultiMachine;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
@@ -77,15 +78,10 @@ public class BlockEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<B
         @Override
         public void onUpdate() {
             super.onUpdate();
-            if (tile.getLevel().getGameTime() % 10 == 0){
-                Direction dir = tile.getFacing();
-                if (getTank(0).getStoredFluid().getFluidAmount() > 0 && dir != UP){
-                    BlockEntity adjacent = tile.getLevel().getBlockEntity(tile.getBlockPos().relative(dir));
-                    if (adjacent != null){
-                        Optional<PlatformFluidHandler> cap = TesseractCapUtils.getFluidHandler(tile.getLevel(), tile.getBlockPos().relative(dir), dir.getOpposite());
-                        cap.ifPresent(other -> Utils.transferFluids(this.getOutputTanks(), other, 1000));
-                    }
-                }
+            Direction dir = tile.getFacing();
+            if (getTank(0).getStoredFluid().getFluidAmount() > 0 && dir != UP){
+                Optional<PlatformFluidHandler> cap = BlockEntityCache.getFluidHandlerCached(tile.getLevel(), tile.getBlockPos().relative(dir), dir.getOpposite());
+                cap.ifPresent(other -> Utils.transferFluids(this.getOutputTanks(), other, 1000));
             }
         }
 
