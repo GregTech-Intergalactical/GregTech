@@ -10,6 +10,7 @@ import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.GregTechTags;
 import muramasa.gregtech.data.Machines;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
@@ -59,6 +60,40 @@ public class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPor
         }
     }
 
+    int invalidatingCaps = 0;
+    @Override
+    public void invalidateCaps() {
+        if (invalidatingCaps > 0) return;
+        invalidatingCaps++;
+        super.invalidateCaps();
+        if (otherSide != null){
+            otherSide.invalidateCaps();
+        }
+        invalidatingCaps--;
+    }
+
+    @Override
+    public void invalidateCap(Class<?> cap) {
+        if (invalidatingCaps > 0) return;
+        invalidatingCaps++;
+        super.invalidateCap(cap);
+        if (otherSide != null){
+            otherSide.invalidateCap(cap);
+        }
+        invalidatingCaps--;
+    }
+
+    @Override
+    public void invalidateCaps(Direction side) {
+        if (invalidatingCaps > 0) return;
+        invalidatingCaps++;
+        super.invalidateCaps(side);
+        if (otherSide != null){
+            otherSide.invalidateCaps(side);
+        }
+        invalidatingCaps--;
+    }
+
     @Override
     protected boolean allowExplosionsInRain() {
         return false;
@@ -89,6 +124,12 @@ public class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPor
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void setMachineState(MachineState newState) {
+        super.setMachineState(newState);
+        invalidateCaps();
     }
 
     public void findTargetPortal() {
@@ -163,5 +204,10 @@ public class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPor
         if (AntimatterPlatformUtils.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, dimension)).getBlockEntity(blockPos) instanceof BlockEntityMiniPortal portal){
             this.otherSide = portal;
         }
+    }
+
+    @Override
+    public boolean toggleMachine() {
+        return false;
     }
 }
