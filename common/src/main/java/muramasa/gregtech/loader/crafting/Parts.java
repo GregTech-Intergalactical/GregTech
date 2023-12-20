@@ -189,7 +189,6 @@ public class Parts {
       shapeRecipe(output, provider, ShapeIngot, ShapeHeadHammer, " H", "P ");
       shapeRecipe(output, provider, ShapeTinyPlate, ShapeHeadFile, " H", "P ");
       shapeRecipe(output, provider, ShapeTinyPlate, ShapeBladeSaw, "P ", " H");
-      shapeRecipe(output, provider, ShapeGear, "H", " ", "P");
       shapeRecipe(output, provider, ShapeRing, ShapeGear, "H ", " P");
       //shapeRecipe(output, provider, ShapeRing, ShapeBottle, " H", "P ");
       shapeRecipe(output, provider, ShapeRing, ShapeGearSmall, "H", "P");
