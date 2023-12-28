@@ -3,8 +3,12 @@ package muramasa.gregtech.loader.machines;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.*;
+import muramasa.antimatter.pipe.PipeSize;
+import muramasa.antimatter.pipe.types.FluidPipe;
+import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
@@ -42,92 +46,124 @@ public class ArcFurnace {
             double amount = (double) t.getUnitValue() / U;
             t.all().forEach(m -> {
                 if (m.has(MaterialTags.RUBBERTOOLS) || m == Bone || m == Carbon) return;
-                addRecyclingRecipe(t.getMaterialIngredient(m, 1), of(m, (float) amount), 1, 1, m.getId() + "_" + t.getId() + "_recycling");
+                addRecyclingRecipe(t.getMaterialIngredient(m, 1), of(m, (float) amount), m.getId() + "_" + t.getId() + "_recycling");
             });
         }
-        addRecyclingRecipe(GTCoreItems.MotorLV, of(Copper, 2f, Tin, 1f, Steel, 1f, Iron, 0.5f), 1, 1);
-        addRecyclingRecipe(GTCoreItems.MotorMV, of(Copper, 5f, Aluminium, 1f, Steel, 0.5f), 1, 1);
-        addRecyclingRecipe(GTCoreItems.MotorHV, of(Copper, 8f, Gold, 1f, StainlessSteel, 1f, Steel, 0.5f), 1, 3);
-        addRecyclingRecipe(GTCoreItems.MotorEV, of(Copper, 16f, Aluminium,1f, Titanium, 1f, Neodymium, 0.5f), 1, 5);
-        addRecyclingRecipe(GTCoreItems.MotorIV, of(Copper, 32f, Tungsten,1f, TungstenSteel, 1f, Neodymium, 0.5f), 3, 10);
-        addRecyclingRecipe(COVER_PUMP.getItem(LV).getItem(), of(Tin, 5.78f, Bronze, 3f, Copper, 2f, Iron, 1.5f), 1, 5);
-        addRecyclingRecipe(COVER_PUMP.getItem(MV).getItem(), of(Copper, 5.5f, Bronze, 4.34f, Steel, 3.5f, Aluminium, 1f), 1, 4);
-        addRecyclingRecipe(COVER_PUMP.getItem(HV).getItem(), of(Copper, 8f, Steel, 4.78f, StainlessSteel, 4f, Gold, 1.5f), 2, 5);
-        addRecyclingRecipe(COVER_PUMP.getItem(EV).getItem(), of(Copper, 16f, StainlessSteel, 4.78f, Titanium, 4f, Aluminium, 1.5f), 2, 6);
-        addRecyclingRecipe(COVER_PUMP.getItem(IV).getItem(), of(Copper, 32f, TungstenSteel, 3.67f, Tungsten, 1.5f, Neodymium, 0.5f), 5, 14);
-        addRecyclingRecipe(COVER_CONVEYOR.getItem(LV).getItem(), of(Rubber, 6f, Copper, 4f, Iron, 3f, Tin, 2.5f), 1, 3);
-        addRecyclingRecipe(COVER_CONVEYOR.getItem(MV).getItem(), of(Rubber, 6f, Copper, 10.5f, Aluminium, 2f, Steel, 1f), 1, 3);
-        addRecyclingRecipe(COVER_CONVEYOR.getItem(HV).getItem(), of(Copper, 16f, Gold, 2.5f, StainlessSteel, 2f, Steel, 1f), 2, 7);
-        addRecyclingRecipe(COVER_CONVEYOR.getItem(EV).getItem(), of(Copper, 32f, Aluminium, 2.5f, Titanium, 2f, Neodymium, 1f), 3, 10);
-        addRecyclingRecipe(COVER_CONVEYOR.getItem(IV).getItem(), of(Copper, 64f, Tungsten, 2.5f, TungstenSteel, 2f, Neodymium, 1f), 7, 21);
-        addRecyclingRecipe(PistonLV, of(Steel, 5f, Tin, 2f, Copper, 2f, Iron, 1.5f), 1, 3);
-        addRecyclingRecipe(PistonMV, of(Aluminium, 6f, Copper, 6f, Steel, 0.5f), 1, 2);
-        addRecyclingRecipe(PistonHV, of(Copper, 8f, StainlessSteel, 6f, Gold, 2f, Steel, 0.5f), 1, 5);
-        addRecyclingRecipe(PistonEV, of(Copper, 16f, Titanium, 6f, Aluminium, 2f, Neodymium, 0.5f), 2, 6);
-        addRecyclingRecipe(PistonIV, of(Copper, 32f, TungstenSteel, 6f, Tungsten, 2f, Neodymium, 0.5f), 4, 14);
-        addRecyclingRecipe(COAL_BOILER.getItem(BRONZE), of(Stone, 8f, Bronze, 5f, Brick, 2f), 1, 1);
-        addRecyclingRecipe(COAL_BOILER.getItem(STEEL), of(Stone, 8f, Steel, 5f, Brick, 2f), 1, 1);
-        addRecyclingRecipe(LAVA_BOILER.getItem(STEEL), of(Steel, 10f, Glass, 3f, Brick, 3f), 1, 2);
-        addRecyclingRecipe(SOLAR_BOILER.getItem(BRONZE), of(Bronze, 7f, Glass, 3f, Silver, 3f, Brick, 3f), 1, 3);
-        addRecyclingRecipe(STEAM_FURNACE.getItem(BRONZE), of(Bronze, 12f, Stone, 8f, Brick, 3f), 1, 4);
-        addRecyclingRecipe(STEAM_FURNACE.getItem(STEEL), of(Steel, 12f, Stone, 8f, Brick, 3f), 1, 3);
-        addRecyclingRecipe(STEAM_COMPRESSOR.getItem(BRONZE), of(Bronze, 14f, Stone, 8f, Wood, 6f), 1, 4);
-        addRecyclingRecipe(STEAM_COMPRESSOR.getItem(STEEL), of(Steel, 14f, Stone, 8f, Wood, 6f), 1, 3);
-        addRecyclingRecipe(STEAM_EXTRACTOR.getItem(BRONZE), of(Bronze, 14f, Stone, 4f, Wood, 3f), 1, 4);
-        addRecyclingRecipe(STEAM_EXTRACTOR.getItem(STEEL), of(Steel, 14f, Stone, 4f, Wood, 3f), 1, 3);
-        addRecyclingRecipe(STEAM_FORGE_HAMMER.getItem(BRONZE), of(Bronze, 14f, Iron, 10f, Stone, 4f, Wood, 3f), 1, 4);
-        addRecyclingRecipe(STEAM_FORGE_HAMMER.getItem(STEEL), of(Steel, 14f, Iron, 10f, Stone, 4f, Wood, 3f), 1, 3);
-        addRecyclingRecipe(STEAM_ALLOY_SMELTER.getItem(BRONZE), of(Bronze, 11f, Stone, 16f, Wood, 3f), 1, 4);
-        addRecyclingRecipe(STEAM_ALLOY_SMELTER.getItem(STEEL), of(Steel, 11f, Stone, 16f, Wood, 3f), 1, 3);
-        addRecyclingRecipe(STEAM_SIFTER.getItem(BRONZE), of(Bronze, 11f, Steel, 3f, Stone, 8f, Wood, 6f), 1, 4);
-        addRecyclingRecipe(STEAM_SIFTER.getItem(STEEL), of(Steel, 14f, Stone, 8f, Wood, 6f), 1, 3);
-        addRecyclingRecipe(STEAM_MACERATOR.getItem(BRONZE), of(Bronze, 12f, Stone, 8f, Wood, 6f, Diamond, 2f), 1, 4);
-        addRecyclingRecipe(STEAM_MACERATOR.getItem(STEEL), of(Steel, 12f, Stone, 8f, Wood, 6f, Diamond, 2f), 1, 3);
+        AntimatterAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != AntimatterMaterials.Wood).forEach(t -> {
+            if (t.getSizes().contains(PipeSize.TINY)){
+                addRecyclingRecipe(t.getBlockItem(PipeSize.TINY), of(t.getMaterial(), 0.5f));
+            }
+            if (t.getSizes().contains(PipeSize.SMALL)){
+                addRecyclingRecipe(t.getBlockItem(PipeSize.SMALL), of(t.getMaterial(), 1f));
+            }
+            if (t.getSizes().contains(PipeSize.NORMAL)){
+                addRecyclingRecipe(t.getBlockItem(PipeSize.NORMAL), of(t.getMaterial(), 3f));
+            }
+            if (t.getSizes().contains(PipeSize.LARGE)){
+                addRecyclingRecipe(t.getBlockItem(PipeSize.LARGE), of(t.getMaterial(), 6f));
+            }
+            if (t.getSizes().contains(PipeSize.HUGE)){
+                addRecyclingRecipe(t.getBlockItem(PipeSize.HUGE), of(t.getMaterial(), 12f));
+            }
+        });
+        AntimatterAPI.all(ItemPipe.class).stream().filter(t -> t.getMaterial() != AntimatterMaterials.Wood).forEach(t -> {
+            if (t.getSizes().contains(PipeSize.TINY)){
+                addRecyclingRecipe(t.getBlockItem(PipeSize.TINY), of(t.getMaterial(), 0.5f));
+            }
+            if (t.getSizes().contains(PipeSize.SMALL)){
+                addRecyclingRecipe(t.getBlockItem(PipeSize.SMALL), of(t.getMaterial(), 1f));
+            }
+            if (t.getSizes().contains(PipeSize.NORMAL)){
+                addRecyclingRecipe(t.getBlockItem(PipeSize.NORMAL), of(t.getMaterial(), 3f));
+            }
+            if (t.getSizes().contains(PipeSize.LARGE)){
+                addRecyclingRecipe(t.getBlockItem(PipeSize.LARGE), of(t.getMaterial(), 6f));
+            }
+            if (t.getSizes().contains(PipeSize.HUGE)){
+                addRecyclingRecipe(t.getBlockItem(PipeSize.HUGE), of(t.getMaterial(), 12f));
+            }
+        });
+        addRecyclingRecipe(GTCoreItems.MotorLV, of(Copper, 2f, Tin, 1f, Steel, 1f, Iron, 0.5f));
+        addRecyclingRecipe(GTCoreItems.MotorMV, of(Copper, 5f, Aluminium, 1f, Steel, 0.5f));
+        addRecyclingRecipe(GTCoreItems.MotorHV, of(Copper, 8f, Gold, 1f, StainlessSteel, 1f, Steel, 0.5f));
+        addRecyclingRecipe(GTCoreItems.MotorEV, of(Copper, 16f, Aluminium,1f, Titanium, 1f, Neodymium, 0.5f));
+        addRecyclingRecipe(GTCoreItems.MotorIV, of(Copper, 32f, Tungsten,1f, TungstenSteel, 1f, Neodymium, 0.5f));
+        addRecyclingRecipe(COVER_PUMP.getItem(LV).getItem(), of(Tin, 5.78f, Bronze, 3f, Copper, 2f, Iron, 1.5f));
+        addRecyclingRecipe(COVER_PUMP.getItem(MV).getItem(), of(Copper, 5.5f, Bronze, 4.34f, Steel, 3.5f, Aluminium, 1f));
+        addRecyclingRecipe(COVER_PUMP.getItem(HV).getItem(), of(Copper, 8f, Steel, 4.78f, StainlessSteel, 4f, Gold, 1.5f));
+        addRecyclingRecipe(COVER_PUMP.getItem(EV).getItem(), of(Copper, 16f, StainlessSteel, 4.78f, Titanium, 4f, Aluminium, 1.5f));
+        addRecyclingRecipe(COVER_PUMP.getItem(IV).getItem(), of(Copper, 32f, TungstenSteel, 3.67f, Tungsten, 1.5f, Neodymium, 0.5f));
+        addRecyclingRecipe(COVER_CONVEYOR.getItem(LV).getItem(), of(Rubber, 6f, Copper, 4f, Iron, 3f, Tin, 2.5f));
+        addRecyclingRecipe(COVER_CONVEYOR.getItem(MV).getItem(), of(Rubber, 6f, Copper, 10.5f, Aluminium, 2f, Steel, 1f));
+        addRecyclingRecipe(COVER_CONVEYOR.getItem(HV).getItem(), of(Copper, 16f, Gold, 2.5f, StainlessSteel, 2f, Steel, 1f));
+        addRecyclingRecipe(COVER_CONVEYOR.getItem(EV).getItem(), of(Copper, 32f, Aluminium, 2.5f, Titanium, 2f, Neodymium, 1f));
+        addRecyclingRecipe(COVER_CONVEYOR.getItem(IV).getItem(), of(Copper, 64f, Tungsten, 2.5f, TungstenSteel, 2f, Neodymium, 1f));
+        addRecyclingRecipe(PistonLV, of(Steel, 5f, Tin, 2f, Copper, 2f, Iron, 1.5f));
+        addRecyclingRecipe(PistonMV, of(Aluminium, 6f, Copper, 6f, Steel, 0.5f));
+        addRecyclingRecipe(PistonHV, of(Copper, 8f, StainlessSteel, 6f, Gold, 2f, Steel, 0.5f));
+        addRecyclingRecipe(PistonEV, of(Copper, 16f, Titanium, 6f, Aluminium, 2f, Neodymium, 0.5f));
+        addRecyclingRecipe(PistonIV, of(Copper, 32f, TungstenSteel, 6f, Tungsten, 2f, Neodymium, 0.5f));
+        addRecyclingRecipe(COAL_BOILER.getItem(BRONZE), of(Stone, 8f, Bronze, 5f, Brick, 2f));
+        addRecyclingRecipe(COAL_BOILER.getItem(STEEL), of(Stone, 8f, Steel, 5f, Brick, 2f));
+        addRecyclingRecipe(LAVA_BOILER.getItem(STEEL), of(Steel, 10f, Glass, 3f, Brick, 3f));
+        addRecyclingRecipe(SOLAR_BOILER.getItem(BRONZE), of(Bronze, 7f, Glass, 3f, Silver, 3f, Brick, 3f));
+        addRecyclingRecipe(STEAM_FURNACE.getItem(BRONZE), of(Bronze, 12f, Stone, 8f, Brick, 3f));
+        addRecyclingRecipe(STEAM_FURNACE.getItem(STEEL), of(Steel, 12f, Stone, 8f, Brick, 3f));
+        addRecyclingRecipe(STEAM_COMPRESSOR.getItem(BRONZE), of(Bronze, 14f, Stone, 8f, Wood, 6f));
+        addRecyclingRecipe(STEAM_COMPRESSOR.getItem(STEEL), of(Steel, 14f, Stone, 8f, Wood, 6f));
+        addRecyclingRecipe(STEAM_EXTRACTOR.getItem(BRONZE), of(Bronze, 14f, Stone, 4f, Wood, 3f));
+        addRecyclingRecipe(STEAM_EXTRACTOR.getItem(STEEL), of(Steel, 14f, Stone, 4f, Wood, 3f));
+        addRecyclingRecipe(STEAM_FORGE_HAMMER.getItem(BRONZE), of(Bronze, 14f, Iron, 10f, Stone, 4f, Wood, 3f));
+        addRecyclingRecipe(STEAM_FORGE_HAMMER.getItem(STEEL), of(Steel, 14f, Iron, 10f, Stone, 4f, Wood, 3f));
+        addRecyclingRecipe(STEAM_ALLOY_SMELTER.getItem(BRONZE), of(Bronze, 11f, Stone, 16f, Wood, 3f));
+        addRecyclingRecipe(STEAM_ALLOY_SMELTER.getItem(STEEL), of(Steel, 11f, Stone, 16f, Wood, 3f));
+        addRecyclingRecipe(STEAM_SIFTER.getItem(BRONZE), of(Bronze, 11f, Steel, 3f, Stone, 8f, Wood, 6f));
+        addRecyclingRecipe(STEAM_SIFTER.getItem(STEEL), of(Steel, 14f, Stone, 8f, Wood, 6f));
+        addRecyclingRecipe(STEAM_MACERATOR.getItem(BRONZE), of(Bronze, 12f, Stone, 8f, Wood, 6f, Diamond, 2f));
+        addRecyclingRecipe(STEAM_MACERATOR.getItem(STEEL), of(Steel, 12f, Stone, 8f, Wood, 6f, Diamond, 2f));
         for (Tier tier : getAllElectric()) {
-            addRecyclingRecipe(GregTech.get(BlockCasing.class,"casing_" + tier.getId()), of(TIER_MATERIALS.get(tier), 8f), 1,2);
+            addRecyclingRecipe(GregTech.get(BlockCasing.class,"casing_" + tier.getId()), of(TIER_MATERIALS.get(tier), 8f));
         }
-        addRecyclingRecipe(CASING_BRONZE, of(Bronze, 8f), 1,2);
-        addRecyclingRecipe(CASING_BRICKED_BRONZE, of(Bronze, 5f, Brick, 3f), 1,1);
-        addRecyclingRecipe(CASING_STEEL, of(Steel, 8f), 1,2);
-        addRecyclingRecipe(CASING_BRICKED_STEEL, of(Steel, 5f, Brick, 3f), 1,1);
-        addRecyclingRecipe(CASING_SOLID_STEEL, of(Steel, 8f), 1,1);
-        addRecyclingRecipe(CASING_STAINLESS_STEEL, of(StainlessSteel, 8f), 1,1);
-        addRecyclingRecipe(CASING_TITANIUM, of(Titanium, 8f), 1,1);
-        addRecyclingRecipe(CASING_TUNGSTENSTEEL, of(TungstenSteel, 8f), 1,1);
-        addRecyclingRecipe(CASING_TUNGSTEN, of(Tungsten, 8f), 1,1);
-        addRecyclingRecipe(CASING_PLATINUM, of(Platinum, 8f), 1,1);
-        addRecyclingRecipe(CASING_HEAT_PROOF, of(Invar, 8f), 1,1);
-        addRecyclingRecipe(CASING_FROST_PROOF, of(Aluminium, 8f), 1,1);
-        addRecyclingRecipe(CASING_RADIATION_PROOF, of(Lead, 8f), 1,1);
-        addRecyclingRecipe(CASING_FIREBOX_BRONZE, of(Bronze, 8f), 1,2);
-        addRecyclingRecipe(CASING_FIREBOX_STEEL, of(Steel, 8f), 1,2);
-        addRecyclingRecipe(CASING_FIREBOX_TITANIUM, of(Titanium, 8f), 1,1);
-        addRecyclingRecipe(CASING_FIREBOX_TUNGSTENSTEEL, of(TungstenSteel, 8f), 1,1);
-        addRecyclingRecipe(CASING_GEARBOX_BRONZE, of(Bronze, 14f), 1,2);
-        addRecyclingRecipe(CASING_GEARBOX_STEEL, of(Steel, 14f), 1,2);
-        addRecyclingRecipe(CASING_GEARBOX_TITANIUM, of(Titanium, 14f), 1,1);
-        addRecyclingRecipe(CASING_GEARBOX_TUNGSTENSTEEL, of(TungstenSteel, 14f), 1,1);
-        addRecyclingRecipe(CASING_PIPE_BRONZE, of(Bronze, 18f), 1,2);
-        addRecyclingRecipe(CASING_PIPE_STEEL, of(Steel, 18f), 1,2);
-        addRecyclingRecipe(CASING_PIPE_TITANIUM, of(Titanium, 18f), 1,1);
-        addRecyclingRecipe(CASING_PIPE_TUNGSTENSTEEL, of(TungstenSteel, 18f), 1,1);
-        addRecyclingRecipe(CASING_TURBINE_STEEL, of(Steel, 9f), 1,1);
-        addRecyclingRecipe(CASING_TURBINE_STAINLESS, of(StainlessSteel, 9f), 1,1);
-        addRecyclingRecipe(CASING_TURBINE_TITANIUM, of(Titanium, 9f), 1,1);
-        addRecyclingRecipe(CASING_TURBINE_TUNGSTENSTEEL, of(TungstenSteel, 9f), 1,1);;
+        addRecyclingRecipe(CASING_BRONZE, of(Bronze, 8f));
+        addRecyclingRecipe(CASING_BRICKED_BRONZE, of(Bronze, 5f, Brick, 3f));
+        addRecyclingRecipe(CASING_STEEL, of(Steel, 8f));
+        addRecyclingRecipe(CASING_BRICKED_STEEL, of(Steel, 5f, Brick, 3f));
+        addRecyclingRecipe(CASING_SOLID_STEEL, of(Steel, 8f));
+        addRecyclingRecipe(CASING_STAINLESS_STEEL, of(StainlessSteel, 8f));
+        addRecyclingRecipe(CASING_TITANIUM, of(Titanium, 8f));
+        addRecyclingRecipe(CASING_TUNGSTENSTEEL, of(TungstenSteel, 8f));
+        addRecyclingRecipe(CASING_TUNGSTEN, of(Tungsten, 8f));
+        addRecyclingRecipe(CASING_PLATINUM, of(Platinum, 8f));
+        addRecyclingRecipe(CASING_HEAT_PROOF, of(Invar, 8f));
+        addRecyclingRecipe(CASING_FROST_PROOF, of(Aluminium, 8f));
+        addRecyclingRecipe(CASING_RADIATION_PROOF, of(Lead, 8f));
+        addRecyclingRecipe(CASING_FIREBOX_BRONZE, of(Bronze, 8f));
+        addRecyclingRecipe(CASING_FIREBOX_STEEL, of(Steel, 8f));
+        addRecyclingRecipe(CASING_FIREBOX_TITANIUM, of(Titanium, 8f));
+        addRecyclingRecipe(CASING_FIREBOX_TUNGSTENSTEEL, of(TungstenSteel, 8f));
+        addRecyclingRecipe(CASING_GEARBOX_BRONZE, of(Bronze, 14f));
+        addRecyclingRecipe(CASING_GEARBOX_STEEL, of(Steel, 14f));
+        addRecyclingRecipe(CASING_GEARBOX_TITANIUM, of(Titanium, 14f));
+        addRecyclingRecipe(CASING_GEARBOX_TUNGSTENSTEEL, of(TungstenSteel, 14f));
+        addRecyclingRecipe(CASING_PIPE_BRONZE, of(Bronze, 18f));
+        addRecyclingRecipe(CASING_PIPE_STEEL, of(Steel, 18f));
+        addRecyclingRecipe(CASING_PIPE_TITANIUM, of(Titanium, 18f));
+        addRecyclingRecipe(CASING_PIPE_TUNGSTENSTEEL, of(TungstenSteel, 18f));
+        addRecyclingRecipe(CASING_TURBINE_STEEL, of(Steel, 9f));
+        addRecyclingRecipe(CASING_TURBINE_STAINLESS, of(StainlessSteel, 9f));
+        addRecyclingRecipe(CASING_TURBINE_TITANIUM, of(Titanium, 9f));
+        addRecyclingRecipe(CASING_TURBINE_TUNGSTENSTEEL, of(TungstenSteel, 9f));;
     }
 
-    private static void addRecyclingRecipe(ItemLike input, ImmutableMap<Material, Float> outputs, int argon, int nitrogen){
-        addRecyclingRecipe(RecipeIngredient.of(input), outputs, argon, nitrogen, AntimatterPlatformUtils.getIdFromItem(input.asItem()).getPath());
+    private static void addRecyclingRecipe(ItemLike input, ImmutableMap<Material, Float> outputs){
+        addRecyclingRecipe(RecipeIngredient.of(input), outputs, AntimatterPlatformUtils.getIdFromItem(input.asItem()).getPath());
     }
 
-    private static void addRecyclingRecipe(Ingredient input, ImmutableMap<Material, Float> outputs, int argon, int nitrogen, String id){
+    private static void addRecyclingRecipe(Ingredient input, ImmutableMap<Material, Float> outputs, String id){
         RecipeBuilder arc = RecipeMaps.ARC_FURNACE.RB();
         RecipeBuilder mac = RecipeMaps.MACERATOR.RB();
-        RecipeBuilder plas = RecipeMaps.PLASMA_ARC_FURNACE.RB();
         arc.ii(input);
         mac.ii(input);
-        plas.ii(input);
         long[] totalMassArc = new long[]{0};
         long[] totalMassMac = new long[]{0};
         outputs.forEach((material, aFloat) -> {
@@ -159,19 +195,15 @@ public class ArcFurnace {
 
                     MaterialTypeItem<?> arcType = arcOutput == Ash ? DUST_TINY : NUGGET;
                     arc.io(arcType.get(arcOutput, (j * 9) + aExtra));
-                    plas.io(arcType.get(arcOutput, (j * 9) + aExtra));
                 } else {
                     MaterialTypeItem<?> arcType = arcOutput == Ash ? DUST : INGOT;
                     arc.io(arcType.get(arcOutput, j));
-                    plas.io(arcType.get(arcOutput, j));
                 }
             }
 
         });
         if (totalMassArc[0] > 0){
             arc.fi(Oxygen.getGas(totalMassArc[0] * TesseractGraphWrappers.dropletMultiplier)).add(id, totalMassArc[0], 32);
-            plas.fi(Argon.getPlasma(argon)).fo(Argon.getGas(argon)).add(id + "_argon", Math.max(1, totalMassArc[0] / 8), 32);
-            plas.clearFluidInputs().clearFluidOutputs().fi(Nitrogen.getPlasma(nitrogen)).fo(Nitrogen.getGas(nitrogen)).add(id + "_nitrogen", Math.max(1, totalMassArc[0] / 8), 32);
         }
         if (totalMassMac[0] > 0) {
             mac.add(id, totalMassMac[0] * 2, 4);
