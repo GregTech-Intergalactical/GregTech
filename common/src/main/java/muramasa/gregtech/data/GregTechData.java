@@ -1,5 +1,7 @@
 package muramasa.gregtech.data;
 
+import earth.terrarium.botarium.common.fluid.base.PlatformFluidItemHandler;
+import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.cover.CoverFactory;
@@ -15,9 +17,13 @@ import muramasa.gregtech.block.*;
 import muramasa.gregtech.block.BlockCoil.CoilData;
 import muramasa.gregtech.cover.*;
 import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
+import muramasa.gregtech.items.ItemCoverCustomTooltip;
 import muramasa.gregtech.items.ItemDataStick;
 import muramasa.gregtech.items.ItemPrintedPages;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
@@ -30,6 +36,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import tesseract.FluidPlatformUtils;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -79,9 +86,44 @@ public class GregTechData {
             new ItemCover(GTIRef.ID, "air_vent").tip("Can be placed on machines/pipes as a cover")).addTextures(new Texture(GTIRef.ID, "block/cover/air_vent")).build(GTIRef.ID, "air_vent");
 
     public static final CoverFactory COVER_ITEM_FILTER = CoverFactory.builder(CoverItemFilter::new).item((a, b) ->
-            new ItemCover(GTIRef.ID, "item_filter").tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/item_filter")).gui().build(GTIRef.ID, "item_filter");
+            new ItemCoverCustomTooltip(GTIRef.ID, "item_filter", (stack, world, tooltip, flag) -> {
+                CompoundTag nbt = stack.getTag();
+                if (nbt != null && nbt.contains("coverInventories")){
+                    CompoundTag coverInventories = nbt.getCompound("coverInventories");
+                    if (coverInventories.contains("display_settable")){
+                        CompoundTag displayManager = coverInventories.getCompound("display_settable");
+                        if (displayManager.contains("Items")){
+                            ListTag items = displayManager.getList("Items", Tag.TAG_COMPOUND);
+                            if (!items.isEmpty()){
+                                ItemStack contained = ItemStack.of(items.getCompound(0));
+                                if (!contained.isEmpty()){
+                                    tooltip.add(contained.getHoverName());
+                                }
+                            }
+                        }
+                    }
+                }
+            }).tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/item_filter")).gui().build(GTIRef.ID, "item_filter");
     public static final CoverFactory COVER_FLUID_FILTER = CoverFactory.builder(CoverFluidFilter::new).item((a, b) ->
-            new ItemCover(GTIRef.ID, "fluid_filter").tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/fluid_filter")).gui().build(GTIRef.ID, "fluid_filter");
+            new ItemCoverCustomTooltip(GTIRef.ID, "fluid_filter", (stack, world, tooltip, flag) -> {
+                CompoundTag nbt = stack.getTag();
+                if (nbt != null && nbt.contains("coverInventories")){
+                    CompoundTag coverInventories = nbt.getCompound("coverInventories");
+                    if (coverInventories.contains("fluid_display_settable")){
+                        CompoundTag displayManager = coverInventories.getCompound("fluid_display_settable");
+                        if (displayManager.contains("Items")){
+                            ListTag items = displayManager.getList("Items", Tag.TAG_COMPOUND);
+                            if (!items.isEmpty()){
+                                ItemStack contained = ItemStack.of(items.getCompound(0));
+                                PlatformFluidItemHandler fluidItemHandler = FluidHooks.safeGetItemFluidManager(contained).orElse(null);
+                                if (fluidItemHandler != null && !fluidItemHandler.getFluidInTank(0).isEmpty()){
+                                    tooltip.add(FluidPlatformUtils.getFluidDisplayName(fluidItemHandler.getFluidInTank(0)));
+                                }
+                            }
+                        }
+                    }
+                }
+            }).tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/fluid_filter")).gui().build(GTIRef.ID, "fluid_filter");
 
     public static CoverFactory COVER_SHUTTER = CoverFactory.builder(CoverShutter::new).item((a, b) ->
             new ItemCover(GTIRef.ID, "shutter").tip("can be placed as a pipe cover")).addTextures(new Texture(GTIRef.ID, "block/cover/shutter")).build(GTIRef.ID, "shutter");
