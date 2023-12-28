@@ -6,6 +6,7 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.MaterialTypeItem;
+import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
@@ -41,6 +42,7 @@ public class SmelterLoader {
         addLava(Obsidian, DUST, DUST.getUnitValue());
         SMELTER.RB().ii(DUST.getMaterialIngredient(Limestone, 1)).fo(Calcite.getLiquid(L)).add("limestone_dust_to_calcite", Limestone.getMass(), 24);
         SMELTER.RB().ii(GTCoreBlocks.LIMESTONE.getState().getBlock()).fo(Calcite.getLiquid(L)).add("limestone_to_calcite", Limestone.getMass(), 24);
+        SMELTER.RB().ii(((CobbleStoneType)GTCoreBlocks.LIMESTONE).getBlock("cobble")).fo(Calcite.getLiquid(L)).add("limestone_cobble_to_calcite", Limestone.getMass(), 24);
         SMELTER.RB().ii(Blocks.CALCITE).fo(Calcite.getLiquid(L)).add("mc_calcite_to_calcite", Limestone.getMass(), 24);
     }
 
