@@ -93,7 +93,8 @@ public class Parts {
       provider.addItemRecipe(output, GTIRef.ID, "", "tapes", DuctTape, of('P', FOIL.getMaterialTag(Plastic), 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
       provider.addItemRecipe(output, GTIRef.ID, "", "tapes", FALDuctTape, of('P', FOIL.getMaterialTag(Tungsten), 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
       provider.shapeless(output, GTIRef.ID, "data_stick_clearing", "data_sticks", new ItemStack(DataStick), DataStick);
-
+      provider.shapeless(output, GTIRef.ID, "fluid_filter_reset", "filters", COVER_FLUID_FILTER.getItem(), COVER_FLUID_FILTER.getItem().getItem());
+      provider.shapeless(output, GTIRef.ID, "item_filter_reset", "filters", COVER_ITEM_FILTER.getItem(), COVER_ITEM_FILTER.getItem().getItem());
   }
 
   private static void tieredItems(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
