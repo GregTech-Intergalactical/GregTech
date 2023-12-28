@@ -257,7 +257,7 @@ public class ElectricToolRecipes {
                         .put('T', SPRING.getMaterialTag(Titanium))
                         .put('s', SCREWDRIVER.getTag()).build(), "SRs", "PTP", "EPb");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(JACKHAMMER.getId() + "-hv"), output, GTIRef.ID, JACKHAMMER.getId() + "_hv_from_pu", "antimatter_jackhammers",
-                jackhammer_lv.resolveStack(Material.NULL, Titanium, 0, 100000), of('R', PropertyIngredient.builder("primary").types(ROD_LONG).tool(JACKHAMMER, true).build(), 'b', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_HV).build(), 'S', SCREWDRIVER.getTag()), "RS", "b ");
+                jackhammer_lv.resolveStack(Material.NULL, Titanium, 0, 100000), of('R', PropertyIngredient.builder("primary").types(ROD_LONG).tool(JACKHAMMER, true).build(), 'b', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_JACKHAMMER).build(), 'S', SCREWDRIVER.getTag()), "RS", "b ");
     }
 
     public static ItemStack resolveStack(IAntimatterTool tool, Material primary, Material secondary, long startingEnergy, long maxEnergy) {
