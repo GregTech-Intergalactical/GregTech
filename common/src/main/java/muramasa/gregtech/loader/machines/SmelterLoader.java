@@ -37,6 +37,7 @@ public class SmelterLoader {
             }
         });
         addLava(Obsidian, ROD_LONG, ROD_LONG.getUnitValue());
+        addLava(Obsidian, PLATE, PLATE.getUnitValue());
         addLava(Obsidian, DUST, DUST.getUnitValue());
         SMELTER.RB().ii(DUST.getMaterialIngredient(Limestone, 1)).fo(Calcite.getLiquid(L)).add("limestone_dust_to_calcite", Limestone.getMass(), 24);
         SMELTER.RB().ii(GTCoreBlocks.LIMESTONE.getState().getBlock()).fo(Calcite.getLiquid(L)).add("limestone_to_calcite", Limestone.getMass(), 24);

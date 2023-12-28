@@ -52,6 +52,7 @@ public class FluidSolidifier {
             }
         });
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldLongRod, 1).setNoConsume()).fi(Lava.getLiquid(AntimatterPlatformUtils.isFabric() ? L : 111)).io(ROD_LONG.get(Obsidian)).add("long_obsidian_rod", 16, 8);
+        FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldPlate, 1).setNoConsume()).fi(Lava.getLiquid(AntimatterPlatformUtils.isFabric() ? L : 111)).io(PLATE.get(Obsidian)).add("obsidian_plate", 16, 8);
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldAnvil, 1).setNoConsume()).fi(Iron.getFluidTag(L * 31)).io(Items.ANVIL).add("anvil", 128, 16);
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldPlate, 1).setNoConsume()).fi(Glass.getFluidTag(L)).io(PLATE.get(Glass)).add("glass_plate",12, 4);
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldBlock, 1).setNoConsume()).fi(Glass.getFluidTag(L)).io(Items.GLASS).add("glass_block",12, 4);
