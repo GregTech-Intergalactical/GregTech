@@ -511,6 +511,8 @@ public class Machines {
                             .put('E', ForgeCTags.CHESTS)
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
         });
+        provider.addItemRecipe(output, "trash_bin", GTCoreBlocks.ENDER_GARBAGE_BIN.getItem(NONE),
+                of('O', PLATE.getMaterialTag(Obsidian), 'I', PLATE.getMaterialTag(Iron), 'E', Items.ENDER_EYE), "OOO", "OEO", "III");
 
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(NONE),
                 of('S', Wafer, 'G', Items.GLASS_PANE, 'C', CIRCUITS_BASIC,
