@@ -1,7 +1,9 @@
 package muramasa.gregtech.loader.machines;
 
+import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
@@ -42,5 +44,9 @@ public class FluidCanningLoader {
                 FLUID_CANNER.RB().ii(RecipeIngredient.of(emptyCell, 1)).fi(FluidPlatformUtils.createFluidStack(fluid, size * TesseractGraphWrappers.dropletMultiplier)).io(filled).add(AntimatterPlatformUtils.getIdFromFluid(fluid).getPath() + "_" + emptyCell.getId(),20, 8);
             });
         });
+        if (AntimatterAPI.isModLoaded(Ref.MOD_TWILIGHT)){
+            FLUID_CANNER.RB().ii(RecipeIngredient.of(AntimatterPlatformUtils.getItemFromID(Ref.MOD_TWILIGHT, "fiery_blood"))).io(Items.GLASS_BOTTLE).fo(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_BLOOD.getFluid(), 250 * TesseractGraphWrappers.dropletMultiplier)).add("fiery_blood_from_fiery_blood_bottle", 20, 8);
+            FLUID_CANNER.RB().ii(RecipeIngredient.of(AntimatterPlatformUtils.getItemFromID(Ref.MOD_TWILIGHT, "fiery_tears"))).io(Items.GLASS_BOTTLE).fo(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_TEARS.getFluid(), 250 * TesseractGraphWrappers.dropletMultiplier)).add("fiery_tears_from_fiery_tears_bottle", 20, 8);
+        }
     }
 }

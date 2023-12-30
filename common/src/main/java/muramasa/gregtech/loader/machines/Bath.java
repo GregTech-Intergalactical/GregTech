@@ -1,20 +1,34 @@
 package muramasa.gregtech.loader.machines;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
+import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialTags;
+import muramasa.antimatter.material.MaterialTypeBlock;
+import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.integration.SpaceModRegistrar;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import tesseract.FluidPlatformUtils;
+import tesseract.TesseractGraphWrappers;
+
 import static muramasa.antimatter.Ref.L;
+import static muramasa.antimatter.Ref.U;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.CHEMBATH_MERCURY;
 import static muramasa.gregtech.data.GregTechMaterialTags.CHEMBATH_PERSULFATE;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.RecipeMaps.BATH;
+import static muramasa.gregtech.data.RecipeMaps.*;
 
 public class Bath {
     public static void init() {
@@ -45,6 +59,17 @@ public class Bath {
             BATH.RB().ii(DUST.getMaterialIngredient(SodiumAluminate, 4)).fi(DistilledWater.getLiquid(6000)).io(DUST.get(AluminiumHydroxide, 7), DUST.get(SodiumHydroxide, 3)).add("aluminium_hydroxide_distilled_water", 102 * 20);
         }
         BATH.RB().ii(DUST.getMaterialIngredient(Magnesium, 2)).fi(TitaniumTetrachloride.getLiquid(5000)).io(DUST.get(Titanium, 1), DUST.get(MagnesiumChloride, 6)).add("titanium", 512);
+        if (AntimatterAPI.isModLoaded(Ref.MOD_TWILIGHT)){
+            GTCoreMaterials.FierySteel.getTypes().forEach(t -> {
+                if (Steel.has(t)){
+                    if (t instanceof MaterialTypeItem<?> typeItem){
+                        addFieryBathing(t.getMaterialTag(Steel), typeItem.get(GTCoreMaterials.FierySteel), t.getUnitValue());
+                    } else if (t.get() instanceof MaterialTypeBlock.IBlockGetter getter){
+                        addFieryBathing(t.getMaterialTag(Steel), getter.get(GTCoreMaterials.FierySteel).asItem(), t.getUnitValue());
+                    }
+                }
+            });
+        }
         mercurybathing();
         persulfatebathing();
         addVitriolRecipe(Chalcopyrite, BlueVitriol);
@@ -105,6 +130,12 @@ public class Bath {
                         .io(new ItemStack(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(AntimatterMaterialTypes.DUST.get(side)),new ItemStack(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone)))
                         .chances(1.0, 0.7, 1.0)
                         .add("persulfate_"+main.getId(),40*20));
+    }
+
+    private static void addFieryBathing(TagKey<Item> in, Item out, long materialAmount) {
+        long amount = (L * materialAmount) / U;
+        BATH.RB().ii(RecipeIngredient.of(in)).io(out).fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_TEARS.getFluid(), amount)).add(in.location().getPath() + "_to_" + AntimatterPlatformUtils.getIdFromItem(out).getPath() + "_tears", amount);
+        BATH.RB().ii(RecipeIngredient.of(in)).io(out).fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_BLOOD.getFluid(), amount)).add(in.location().getPath() + "_to_" + AntimatterPlatformUtils.getIdFromItem(out).getPath() + "_blood", amount);
     }
 
     private static void addVitriolRecipe(Material input, Material vitriol){
