@@ -158,5 +158,6 @@ public class MaceratorLoader {
         MACERATOR.RB().ii(RecipeIngredient.of(Blocks.CALCITE)).io(DUST.get(Calcite)).add("calcite_from_mc_calcite", 400, 2);
         MACERATOR.RB().ii(RecipeIngredient.of(Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN)).io(DUST.get(Obsidian, 9)).add("obsidian_dust", 400, 2);
         MACERATOR.RB().ii(RecipeIngredient.of(Items.BLAZE_ROD)).io(new ItemStack(Items.BLAZE_POWDER, 5)).add("blaze_powder", 400, 2);
+        MACERATOR.RB().ii(RecipeIngredient.of(Items.BONE)).io(new ItemStack(Items.BONE_MEAL, 5)).add("bone_meal", 400, 2);
     }
 }
