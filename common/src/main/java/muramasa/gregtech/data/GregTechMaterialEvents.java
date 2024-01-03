@@ -39,7 +39,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Oxygen).asPlasma();
         event.setMaterial(Fluorine).asGas();
         event.setMaterial(Neon).asPlasma();
-        event.setMaterial(Sodium).asDust(370);
+        event.setMaterial(Sodium).asDust(370, MOLTEN).asFluid();
         event.setMaterial(Magnesium).asMetal(1383, 0/*1383*/);
         event.setMaterial(Aluminium).asMetal(933, 0, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL, HAS_CUSTOM_SMELTING);
         event.setMaterial(Silicon).asMetal(1683, 1683, PLATE, FOIL);
@@ -237,7 +237,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Kimberlite).asDust(ROCK);
         event.setMaterial(Komatiite).asDust(ROCK);
         event.setMaterial(Limestone).asDust(ROCK);
-        event.setMaterial(LithiumChloride).asDust();
+        event.setMaterial(LithiumChloride).asDust(880, MOLTEN).asFluid();
         event.setMaterial(Magnesia).asDust();
         event.setMaterial(MagnesiumCarbonate).asDust();
         event.setMaterial(MagnesiumChloride).asDust();
@@ -469,6 +469,15 @@ public class GregTechMaterialEvents {
         event.setMaterial(DrillingFluid).asFluid(); // TODO: Perhaps for a bedrock drill;
         event.setMaterial(HexafluorosilicicAcid).asFluid().flags(ACID);
         event.setMaterial(HotCoolant).asFluid(0,500);
+        event.setMaterial(HeavyWater).asFluid();
+        event.setMaterial(SemiheavyWater).asFluid();
+        event.setMaterial(TritiatedWater).asFluid();
+        event.setMaterial(HotHeavyWater).asFluid(0, 600);
+        event.setMaterial(HotSemiheavyWater).asFluid(0, 550);
+        event.setMaterial(HotTritiatedWater).asFluid(0, 650);
+        event.setMaterial(HotMoltenSodium).asFluid(0, 1100).flags(MOLTEN);
+        event.setMaterial(HotMoltenTin).asFluid(0, 2800).flags(MOLTEN);
+        event.setMaterial(HotMoltenLithiumChloride).asFluid(0, 1600).flags(MOLTEN);
         event.setMaterial(HydrochloricAcid).asFluid().flags(ACID);
         event.setMaterial(HydrofluoricAcid).asFluid().flags(ACID);
         event.setMaterial(HydrogenFluoride).asGas().flags(ACID);
@@ -876,6 +885,13 @@ public class GregTechMaterialEvents {
         event.setMaterial(DistilledWater).mats(of(Hydrogen,2, Oxygen, 1)).elecTicks(2000);
         event.setMaterial(DilutedHydrochloricAcid).mats(of(Hydrogen, 1, Chlorine, 1));
         event.setMaterial(DilutedSulfuricAcid).mats(of(Hydrogen,2,Sulfur,1,Oxygen,4));
+        event.setMaterial(HeavyWater).mats(of(Deuterium, 2, Oxygen, 1));
+        event.setMaterial(SemiheavyWater).mats(of(Hydrogen, 1, Deuterium, 1, Oxygen, 1));
+        event.setMaterial(TritiatedWater).mats(of(Tritanium, 2, Oxygen, 1));
+        event.setMaterial(HotHeavyWater).mats(of(Deuterium, 2, Oxygen, 1));
+        event.setMaterial(HotSemiheavyWater).mats(of(Hydrogen, 1, Deuterium, 1, Oxygen, 1));
+        event.setMaterial(HotTritiatedWater).mats(of(Tritanium, 2, Oxygen, 1));
+        event.setMaterial(HotMoltenLithiumChloride).mats(of(LithiumChloride, 1));
         event.setMaterial(HydrochloricAcid).mats(of(Hydrogen, 1, Chlorine, 1)).elecTicks(720);
         event.setMaterial(HydrofluoricAcid).mats(of(Hydrogen, 1, Fluorine, 1)).elecTicks(80);
         event.setMaterial(HydrogenFluoride).mats(of(Hydrogen, 1, Fluorine, 1)).elecTicks(80);
@@ -1184,6 +1200,7 @@ public class GregTechMaterialEvents {
         /**
          *** Isotopes (Gases/Plasmas)
          **/
+        event.setMaterial(HotHelium).asGas(0, 1150);
         event.setMaterial(Deuterium).asGas();
         event.setMaterial(Tritium).asGas();
         event.setMaterial(Helium3).asGas();
