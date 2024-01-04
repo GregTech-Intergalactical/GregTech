@@ -885,9 +885,9 @@ public class GregTechMaterialEvents {
         event.setMaterial(DistilledWater).mats(of(Hydrogen,2, Oxygen, 1)).elecTicks(2000);
         event.setMaterial(DilutedHydrochloricAcid).mats(of(Hydrogen, 1, Chlorine, 1));
         event.setMaterial(DilutedSulfuricAcid).mats(of(Hydrogen,2,Sulfur,1,Oxygen,4));
-        event.setMaterial(HeavyWater).mats(of(Deuterium, 2, Oxygen, 1));
-        event.setMaterial(SemiheavyWater).mats(of(Hydrogen, 1, Deuterium, 1, Oxygen, 1));
-        event.setMaterial(TritiatedWater).mats(of(Tritanium, 2, Oxygen, 1));
+        event.setMaterial(HeavyWater).mats(of(Deuterium, 2, Oxygen, 1)).elecTicks(2000);
+        event.setMaterial(SemiheavyWater).mats(of(Hydrogen, 1, Deuterium, 1, Oxygen, 1)).elecTicks(2000);
+        event.setMaterial(TritiatedWater).mats(of(Tritanium, 2, Oxygen, 1)).elecTicks(2000);
         event.setMaterial(HotHeavyWater).mats(of(Deuterium, 2, Oxygen, 1));
         event.setMaterial(HotSemiheavyWater).mats(of(Hydrogen, 1, Deuterium, 1, Oxygen, 1));
         event.setMaterial(HotTritiatedWater).mats(of(Tritanium, 2, Oxygen, 1));
@@ -1466,7 +1466,7 @@ public class GregTechMaterialEvents {
                 Phosphate, Potash, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
                 PhosphorousPentoxide, Hematite, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
                 Salt, SodiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond,
-                NickelSulfate, Water, DistilledWater, MilkyQuartz, FerricChloride);
+                NickelSulfate, Water, DistilledWater, HeavyWater, SemiheavyWater, TritiatedWater, MilkyQuartz, FerricChloride);
         ELEC60.add(CalciumChloride, SodiumHydroxide, Propene, Ethylene, Butene, Benzene, Styrene, Ethane, Ammonia, SodiumSulfide, Methane,
                 Magnesite, HydrofluoricAcid, HydrogenFluoride, Sphalerite, /*NitroCarbon,*/ SodaAsh, Calcite, Saltpeter, Monazite,
                 /*Wollastonite,*/ NitricOxide, Butane, CarbonMonoxide, Pyrite, RedGranite, Ferrosilite, Butadiene, Amethyst,
