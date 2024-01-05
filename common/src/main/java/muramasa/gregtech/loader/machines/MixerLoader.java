@@ -46,6 +46,7 @@ public class MixerLoader {
         addDust(GalliumArsenide, 8, 15*20);
         addDust(VanadiumSteel, 8, 50*20);
         addDust(CobaltBrass, 8, 45*20);
+        addDust(CdInAGAlloy, 8, 40 * 20);
         addDust(BlueSteel, 8, 40*20);
         addDust(RedSteel, 8, 40*20);
         addDust(BlackSteel, 8, 25*20);

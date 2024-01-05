@@ -12,6 +12,7 @@ import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.*;
 import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.items.ItemDepletedRod;
 import muramasa.gregtech.items.ItemIntCircuit;
 import muramasa.gregtech.items.ItemNuclearFuelRod;
 import net.minecraft.Util;
@@ -58,6 +59,18 @@ public class GregTechLocalizations {
             add("tooltip.gti.data_stick.by", "By X: %s Z: %s Dim: %s");
             add("tooltip.gti.coil.percentage", "Pyrolysis oven processing speed percentage: %s");
             add("tooltip.gti.coil.maxSimultaneousRecipes", "Max simultaneous recipes in Multismelter: %s");
+            add("tooltip.gti.depleted_rod.depleted", "Depleted");
+            add("tooltip.gti.depleted_rod.0", "This Rod is %s and will not output or accept any Neutrons");
+            add("tooltip.gti.depleted_rod.1", "Can be centrifuged to get valuable materials");
+            add("tooltip.gti.nuclear_rod.emission_1", "Emission");
+            add("tooltip.gti.nuclear_rod.self_1", "Self");
+            add("tooltip.gti.nuclear_rod.maximum_1", "Maximum");
+            add("tooltip.gti.nuclear_rod.factor_1", "Factor");
+            add("tooltip.gti.nuclear_rod.emission_info", "The %s describes how many Neutrons are emitted to adjacent Rods");
+            add("tooltip.gti.nuclear_rod.self_info", "The %s describes how many Neutrons naturally onto this Rod");
+            add("tooltip.gti.nuclear_rod.maximum_info", "The %s describes how many Neutrons can be on this Rod while lasting the advertised duration");
+            add("tooltip.gti.nuclear_rod.factor_info", "A greater %s means the Rod emits more extra Neutrons for the amount of Neutrons on it");
+            add("tooltip.gti.nuclear_rod.remaining", "Remaining: %s Minutes");
             add("tooltip.gti.nuclear_rod.emission", "Emission: %s %s");
             add("tooltip.gti.nuclear_rod.self", "Self: %s %s");
             add("tooltip.gti.nuclear_rod.maximum", "Maximum: %s %s");
@@ -70,7 +83,12 @@ public class GregTechLocalizations {
             add("tooltip.gti.nuclear_rod.heat", "%s the heat per Neutron");
             add("tooltip.gti.nuclear_rod.when_used.1", "When used with %s:");
             add("tooltip.gti.nuclear_rod.when_used.2", "When used with %s or %s:");
-
+            add("tooltip.gti.empty_nuclear_fuel_rod.0", "Empty Reactor Rod, transparent to Neutrons.");
+            add("tooltip.gti.neutron_absorber_rod.0", "Absorbs Neutrons and emits twice the Heat per Neutron to Coolant");
+            add("tooltip.gti.neutron_reflector_rod.0", "Reflects Neutrons back to their Source, boosting the Reaction");
+            add("tooltip.gti.neutron_moderator_rod.0", "Reflects Neutrons back times the number of fuel rods touching when active");
+            add("tooltip.gti.neutron_moderator_rod.1", "Touching Fuel Rods become moderated and moderate touching Fuel Rods");
+            add("tooltip.gti.neutron_moderator_rod.2", "Moderated Fuel Rods can't be used for Breeding and only last a quarter as long");
         }
 
         @Override
@@ -104,7 +122,8 @@ public class GregTechLocalizations {
                     .replace("Ev", "(EV)")
                     .replace("Iv", "(IV)")));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> override(i.getDescriptionId(), "Integrated Circuit (" + i.circuitId + ")"));
-            AntimatterAPI.all(ItemNuclearFuelRod.class, domain).forEach(i -> override(i.getDescriptionId(), Utils.getLocalizedType(i.getMaterial()) + " Nuclear Rod"));
+            AntimatterAPI.all(ItemNuclearFuelRod.class, domain).forEach(i -> override(i.getDescriptionId(), Utils.getLocalizedType(i.getMaterial()) + " Fuel Rod"));
+            AntimatterAPI.all(ItemDepletedRod.class, domain).forEach(i -> override(i.getDescriptionId(), "Depleted " + Utils.getLocalizedType(i.getMaterial()) + " Fuel Rod"));
             String[] fluids = new String[]{"hot_molten_lithium_chloride", "hot_molten_tin", "hot_molten_sodium"};
             for (String s : fluids) {
                 override("fluid_type.antimatter_shared.liquid_" + s, Utils.lowerUnderscoreToUpperSpaced(s));

@@ -37,5 +37,6 @@ public class BendingLoader {
         BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Tin,2), INT_CIRCUITS.get(4)).io(GregTechData.CellTin.getDefaultInstance()).add("tin_cell",80,24);
         BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Steel,2), INT_CIRCUITS.get(4)).io(GregTechData.CellSteel.getDefaultInstance()).add("steel_cell",80,96);
         BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.TungstenSteel,2), INT_CIRCUITS.get(4)).io(GregTechData.CellTungstensteel.getDefaultInstance()).add("tungstensteel_cell",80,384);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Zirconium,1), INT_CIRCUITS.get(1)).io(GregTechData.EmptyNuclearFuelRod).add("empty_fuel_rod",80,96);
     }
 }

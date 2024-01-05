@@ -9,6 +9,8 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.items.ItemDepletedRod;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import tesseract.TesseractGraphWrappers;
@@ -118,6 +120,24 @@ public class CentrifugingLoader {
         addMethaneRecipe(ENCHANTED_GOLDEN_APPLE, 4608, 9216, new ItemStack(GOLD_INGOT, 64));
         addMethaneRecipe(GOLDEN_CARROT, 576, 9216, new ItemStack(GOLD_NUGGET, 6));
         addMethaneRecipe(GLISTERING_MELON_SLICE, 576, 9216, new ItemStack(GOLD_NUGGET, 6));
+
+        addDepletedRodRecipe(GregTechData.DepletedThorium232Rod, Uranium);
+        addDepletedRodRecipe(GregTechData.DepletedUranium238Rod, Uranium235);
+        addDepletedRodRecipe(GregTechData.DepletedUranium235Rod, Plutonium);
+        addDepletedRodRecipe(GregTechData.DepletedUranium233Rod, Plutonium243);
+        addDepletedRodRecipe(GregTechData.DepletedPlutonium244Rod, Plutonium241);
+        addDepletedRodRecipe(GregTechData.DepletedPlutonium241Rod, Plutonium243);
+        addDepletedRodRecipe(GregTechData.DepletedPlutonium243Rod, Americium);
+        addDepletedRodRecipe(GregTechData.DepletedPlutonium239Rod, Americium241);
+        addDepletedRodRecipe(GregTechData.DepletedAmericium245Rod, Americium241);
+        addDepletedRodRecipe(GregTechData.DepletedAmericium241Rod, EnrichedNaquadah);
+        addDepletedRodRecipe(GregTechData.DepletedCobalt60Rod, Thorium);
+        addDepletedRodRecipe(GregTechData.DepletedEnrichedNaquadahRod, Naquadria);
+        addDepletedRodRecipe(GregTechData.DepletedNaquadriaRod, Cobalt60);
+    }
+
+    private static void addDepletedRodRecipe(ItemDepletedRod rod, Material secondary){
+        CENTRIFUGE.RB().ii(rod).io(DUST.get(Zirconium), DUST_TINY.get(rod.getMaterial()), DUST_TINY.get(secondary)).chances(1.0, 1.0, .75).add(rod.getId(), 256, 64);
     }
 
     private static void addMethaneRecipe(Item input, int methane, int ticks){

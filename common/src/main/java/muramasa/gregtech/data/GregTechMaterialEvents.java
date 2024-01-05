@@ -146,6 +146,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(BlueSteel).asMetal(1400, 1400, FRAME);
         event.setMaterial(Brass).asMetal(1170, FRAME, ROD_LONG, PLATE);
         event.setMaterial(Bronze).asMetal(1125, GEAR, FRAME, ROTOR);
+        event.setMaterial(CdInAGAlloy).asMetal(752, ROD);
         event.setMaterial(CobaltBrass).asMetal(1500, GEAR);
         event.setMaterial(Cupronickel).asMetal(1728, PLATE);
         event.setMaterial(Duranium).asMetal(295);
@@ -287,7 +288,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Galena).asOre().harvestLevel(3);
         event.setMaterial(Garnierite).asOre().harvestLevel(3);
         event.setMaterial(Glauconite).asOre().harvestLevel(2); // TODO: Ore Gen;
-        event.setMaterial(Graphite).asDust().asOre().harvestLevel(2);
+        event.setMaterial(Graphite).asDust(ROD).asOre().harvestLevel(2);
         event.setMaterial(Grossular).asOre().harvestLevel(1);
         event.setMaterial(Ilmenite).asOre().harvestLevel(3);
         event.setMaterial(Lepidolite).asOre().harvestLevel(2); // TODO: Ore Gen;
@@ -608,6 +609,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(BlueSteel).mats(of(RoseGold, 1, Brass, 1, Steel, 2, BlackSteel, 4));
         event.setMaterial(Brass).mats(of(Zinc, 1, Copper, 3));
         event.setMaterial(Bronze).mats(of(Tin, 1, Copper, 3));
+        event.setMaterial(CdInAGAlloy).mats(of(Cadmium, 1, Indium, 1, Silver, 1));
         event.setMaterial(CobaltBrass).mats(of(Brass, 7, Aluminium, 1, Cobalt, 1));
         event.setMaterial(Cupronickel).mats(of(Copper, 1, Nickel, 1));
         event.setMaterial(Electrum).mats(of(Silver, 1, Gold, 1));
@@ -1094,15 +1096,15 @@ public class GregTechMaterialEvents {
         /**
          *** Isotopes (Solids)
          **/
-        event.setMaterial(Cobalt60).asMetal(1768);
-        event.setMaterial(Thorium230).asMetal(2028);
-        event.setMaterial(Uranium233).asMetal(1406);
-        event.setMaterial(Uranium235).asMetal(1406);
-        event.setMaterial(Plutonium239).asMetal(912);
-        event.setMaterial(Plutonium241).asMetal(912);
-        event.setMaterial(Plutonium243).asMetal(912);
-        event.setMaterial(Americium241).asMetal(1449);
-        event.setMaterial(Americium242).asMetal(1449);
+        event.setMaterial(Cobalt60).asMetal(1768, ROD);
+        event.setMaterial(Thorium230).asMetal(2028, ROD);
+        event.setMaterial(Uranium233).asMetal(1406, ROD);
+        event.setMaterial(Uranium235).asMetal(1406, ROD);
+        event.setMaterial(Plutonium239).asMetal(912, ROD);
+        event.setMaterial(Plutonium241).asMetal(912, ROD);
+        event.setMaterial(Plutonium243).asMetal(912, ROD);
+        event.setMaterial(Americium241).asMetal(1449, ROD);
+        event.setMaterial(Americium242).asMetal(1449, ROD);
         /**
          *** Isotopes (Fluids)
          **/
@@ -1273,7 +1275,7 @@ public class GregTechMaterialEvents {
         CENT10.add(Magnalium, VanadiumMagnetite, BrownLimonite, YellowLimonite, BlackGranite, Cupronickel, NiobiumTitanium, BorosilicateGlass,
                 GalliumArsenide, Marble, Limestone, Invar, TinAlloy, TungstenCarbide, EnderEye, Powellite, VanadiumGallium, Blaze,
                 TungstenSteel, Brass, Nichrome, Electrum, Bronze, Stibnite, Wulfenite, RedAlloy, SterlingSilver, RoseGold, BatteryAlloy, SolderingAlloy, TricalciumPhosphate);
-        CENT15.add(Kanthal, IndiumGalliumPhosphide, BlackSteel, RedGarnet, YellowGarnet, BismuthBronze, BlackBronze, VanadiumSteel, CobaltBrass,
+        CENT15.add(Kanthal, IndiumGalliumPhosphide, BlackSteel, RedGarnet, YellowGarnet, BismuthBronze, BlackBronze, VanadiumSteel, CdInAGAlloy, CobaltBrass,
                 Pitchblende, Redstone, HSSS);
         CENT20.add(Lapis, Tetrahedrite, RedSteel, BlueSteel, Basalt, HSSE, Sheldonite, HSSG, Komatiite);
         CENT.add(CENT5.all().toArray(new Material[0]));

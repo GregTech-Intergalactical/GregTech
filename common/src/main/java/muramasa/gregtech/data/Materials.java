@@ -150,6 +150,7 @@ public class Materials {
     public static Material BlueSteel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_steel", 0x64648c, METALLIC));
     public static Material Brass = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "brass", 0xffb400, METALLIC));
     public static Material Bronze = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "bronze", 0xff8000, METALLIC));
+    public static Material CdInAGAlloy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cd_in_ag_alloy", 0x646480, METALLIC)).setDisplayNameString("Cd-In-Ag-Alloy");
     public static Material CobaltBrass = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cobalt_brass", 0xb4b4a0, METALLIC));
     public static Material Cupronickel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cupronickel", 0xe39680, METALLIC));
     public static Material Duranium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "duranium", 0xffffff, METALLIC));

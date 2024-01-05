@@ -44,6 +44,11 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
         super.appendHoverText(stack, level, tooltipComponents, isAdvanced);
+        tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.emission_info", Utils.translatable("tooltip.gti.nuclear_rod.emission_1").withStyle(ChatFormatting.GREEN)).withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.self_info", Utils.translatable("tooltip.gti.nuclear_rod.self_1").withStyle(ChatFormatting.GREEN)).withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.maximum_info", Utils.translatable("tooltip.gti.nuclear_rod.maximum_1").withStyle(ChatFormatting.GREEN)).withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.factor_info", Utils.translatable("tooltip.gti.nuclear_rod.factor_1").withStyle(ChatFormatting.YELLOW)).withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.remaining", Utils.literal(stack.getMaxDamage() / 1200 + "").withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.AQUA));
         if (level != null){
             int timeIndex = (int) ((level.getGameTime() / 100) % 10);
             switch (timeIndex){

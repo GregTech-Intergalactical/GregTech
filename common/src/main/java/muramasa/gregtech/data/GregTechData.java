@@ -17,10 +17,7 @@ import muramasa.gregtech.block.*;
 import muramasa.gregtech.block.BlockCoil.CoilData;
 import muramasa.gregtech.cover.*;
 import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
-import muramasa.gregtech.items.ItemCoverCustomTooltip;
-import muramasa.gregtech.items.ItemDataStick;
-import muramasa.gregtech.items.ItemNuclearFuelRod;
-import muramasa.gregtech.items.ItemPrintedPages;
+import muramasa.gregtech.items.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -229,7 +226,11 @@ public class GregTechData {
     public static ItemBasic<?> SOC = new ItemBasic<>(GTIRef.ID, "soc", "silicon/");
 
     public static ItemBasic<?> BatteryTantalum = new ItemBattery(GTIRef.ID, "tantalum_capacitor", Tier.ULV, 10000, true).tip("Reusable");
-    public static ItemBasic<?> EmptyNuclearFuelRod = new ItemBasic<>(GTIRef.ID, "empty_nuclear_fuel_rod");
+    public static ItemComponentRod EmptyNuclearFuelRod = new ItemComponentRod(GTIRef.ID, "empty_nuclear_fuel_rod", muramasa.antimatter.material.Material.NULL, 1);
+    public static ItemComponentRod NeutronAbsorberRod = new ItemComponentRod(GTIRef.ID, "neutron_absorber_rod", CdInAGAlloy, 1);
+    public static ItemComponentRod NeutronReflectorRod = new ItemComponentRod(GTIRef.ID, "neutron_reflector_rod", Beryllium, 1);
+    public static ItemComponentRod NeutronModeratorRod = new ItemComponentRod(GTIRef.ID, "neutron_moderator_rod", Graphite, 3);
+
     public static ItemNuclearFuelRod Thorium232Rod = new ItemNuclearFuelRod(GTIRef.ID, Thorium, 60_000_000, 2,2,128, 32);
     public static ItemNuclearFuelRod Uranium238Rod = new ItemNuclearFuelRod(GTIRef.ID, Uranium, 30_000_000, 4,4,512, 16);
     public static ItemNuclearFuelRod Uranium235Rod = new ItemNuclearFuelRod(GTIRef.ID, Uranium235, 6_000_000, 32,32,2048, 4);
@@ -243,6 +244,19 @@ public class GregTechData {
     public static ItemNuclearFuelRod Cobalt60Rod = new ItemNuclearFuelRod(GTIRef.ID, Cobalt60, 600_000, 0,8,256, 16);
     public static ItemNuclearFuelRod EnrichedNaquadahRod = new ItemNuclearFuelRod(GTIRef.ID, EnrichedNaquadah, 60_000_000, 128,128,8192, 4);
     public static ItemNuclearFuelRod NaquadriaRod = new ItemNuclearFuelRod(GTIRef.ID, Naquadria, 60_000_000, 512,512,16384, 3);
+    public static ItemDepletedRod DepletedThorium232Rod = new ItemDepletedRod(GTIRef.ID, Thorium);
+    public static ItemDepletedRod DepletedUranium238Rod = new ItemDepletedRod(GTIRef.ID, Uranium);
+    public static ItemDepletedRod DepletedUranium235Rod = new ItemDepletedRod(GTIRef.ID, Uranium235);
+    public static ItemDepletedRod DepletedUranium233Rod = new ItemDepletedRod(GTIRef.ID, Uranium233);
+    public static ItemDepletedRod DepletedPlutonium244Rod = new ItemDepletedRod(GTIRef.ID, Plutonium);
+    public static ItemDepletedRod DepletedPlutonium241Rod = new ItemDepletedRod(GTIRef.ID, Plutonium241);
+    public static ItemDepletedRod DepletedPlutonium243Rod = new ItemDepletedRod(GTIRef.ID, Plutonium243);
+    public static ItemDepletedRod DepletedPlutonium239Rod = new ItemDepletedRod(GTIRef.ID, Plutonium239);
+    public static ItemDepletedRod DepletedAmericium245Rod = new ItemDepletedRod(GTIRef.ID, Americium);
+    public static ItemDepletedRod DepletedAmericium241Rod = new ItemDepletedRod(GTIRef.ID, Americium241);
+    public static ItemDepletedRod DepletedCobalt60Rod = new ItemDepletedRod(GTIRef.ID, Cobalt60);
+    public static ItemDepletedRod DepletedEnrichedNaquadahRod = new ItemDepletedRod(GTIRef.ID, EnrichedNaquadah);
+    public static ItemDepletedRod DepletedNaquadriaRod = new ItemDepletedRod(GTIRef.ID, Naquadria);
 
     public static final LiquidBlock LAVA = AntimatterAPI.register(Block.class, "lava", GTIRef.ID, new LiquidBlock(Fluids.LAVA, BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.LAVA).noCollission().randomTicks().strength(100.0F).lightLevel((blockStatex) -> 15).noDrops()){
         @Override
