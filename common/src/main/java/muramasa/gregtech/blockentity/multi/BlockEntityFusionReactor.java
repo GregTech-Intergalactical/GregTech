@@ -2,6 +2,9 @@ package muramasa.gregtech.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
+import muramasa.antimatter.capability.fluid.FluidTank;
+import muramasa.antimatter.capability.machine.DefaultHeatHandler;
+import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
@@ -14,10 +17,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import tesseract.TesseractGraphWrappers;
 
+import static muramasa.antimatter.data.AntimatterMaterials.Water;
 import static muramasa.antimatter.machine.Tier.*;
+import static muramasa.gregtech.data.Materials.Steam;
 
 public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntityFusionReactor> {
 
@@ -25,6 +32,48 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
 
     public BlockEntityFusionReactor(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+        this.heatHandler.set(() -> new DefaultHeatHandler(this, 32768, 8192, 0));
+        this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
+            @Override
+            protected boolean canRecipeContinue() {
+                return super.canRecipeContinue() && heatHandler.map(h -> h.getHeat() + (activeRecipe.getPower() * activeRecipe.getDuration()) <= h.getHeatCap()).orElse(false);
+            }
+
+            @Override
+            public boolean consumeResourceForRecipe(boolean simulate) {
+                return super.consumeResourceForRecipe(simulate) && heatHandler.map(h -> h.insert(8192, simulate) > 0).orElse(false);
+            }
+        });
+    }
+
+    @Override
+    public void serverTick(Level level, BlockPos pos, BlockState state) {
+        super.serverTick(level, pos, state);
+        fluidHandler.ifPresent(f -> {
+            if (f.getInputTanks() == null) return;
+            heatHandler.ifPresent(h -> {
+                if (h.getHeat() >= 80){
+                    int recipeOffset = recipeHandler.map(r -> r.getLastRecipe().hasOutputFluids() ? r.getLastRecipe().getOutputFluids().length : 0).orElse(0);
+                    int heatMultiplier = h.getHeat() / 80;
+                    FluidTank waterTank = f.getInputTanks().getTank(f.getInputTanks().getFirstAvailableTank(Water.getLiquid(1), true));
+                    if (waterTank != null) {
+                        heatMultiplier = (int) Math.min(heatMultiplier, waterTank.getTankAmount() / TesseractGraphWrappers.dropletMultiplier);
+                        if (waterTank.extractFluid(Water.getLiquid(heatMultiplier), true).getFluidAmount() == heatMultiplier *  TesseractGraphWrappers.dropletMultiplier) {
+                            if (f.getOutputTanks() != null && f.getOutputTanks().getSize() >= recipeOffset + 1) {
+                                long inserted = f.getOutputTanks().getTank(recipeOffset).internalInsert(Steam.getGas(heatMultiplier * 160), true);
+                                if (inserted >= TesseractGraphWrappers.dropletMultiplier){
+                                    heatMultiplier = (int) Math.min(heatMultiplier, inserted / TesseractGraphWrappers.dropletMultiplier);
+                                    f.drainInput(Water.getLiquid(heatMultiplier), false);
+                                    f.getOutputTanks().getTank(recipeOffset).internalInsert(Steam.getGas(heatMultiplier * 160), false);
+                                    h.extract(heatMultiplier * 80, false);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+        });
     }
 
 //    @Override
