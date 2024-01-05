@@ -19,6 +19,7 @@ import muramasa.gregtech.cover.*;
 import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
 import muramasa.gregtech.items.ItemCoverCustomTooltip;
 import muramasa.gregtech.items.ItemDataStick;
+import muramasa.gregtech.items.ItemNuclearFuelRod;
 import muramasa.gregtech.items.ItemPrintedPages;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -228,6 +229,22 @@ public class GregTechData {
     public static ItemBasic<?> SOC = new ItemBasic<>(GTIRef.ID, "soc", "silicon/");
 
     public static ItemBasic<?> BatteryTantalum = new ItemBattery(GTIRef.ID, "tantalum_capacitor", Tier.ULV, 10000, true).tip("Reusable");
+    public static ItemBasic<?> EmptyNuclearFuelRod = new ItemBasic<>(GTIRef.ID, "empty_nuclear_fuel_rod");
+    public static ItemNuclearFuelRod Thorium232Rod = new ItemNuclearFuelRod(GTIRef.ID, Thorium, 60_000_000, 2,2,128, 32);
+    public static ItemNuclearFuelRod Uranium238Rod = new ItemNuclearFuelRod(GTIRef.ID, Uranium, 30_000_000, 4,4,512, 16);
+    public static ItemNuclearFuelRod Uranium235Rod = new ItemNuclearFuelRod(GTIRef.ID, Uranium235, 6_000_000, 32,32,2048, 4);
+    public static ItemNuclearFuelRod Uranium233Rod = new ItemNuclearFuelRod(GTIRef.ID, Uranium233, 30_000_000, 32,32,2048, 4);
+    public static ItemNuclearFuelRod Plutonium244Rod = new ItemNuclearFuelRod(GTIRef.ID, Plutonium, 6_000_000, 64,64,2048, 4);
+    public static ItemNuclearFuelRod Plutonium241Rod = new ItemNuclearFuelRod(GTIRef.ID, Plutonium241, 6_000_000, 128,128,3072, 3);
+    public static ItemNuclearFuelRod Plutonium243Rod = new ItemNuclearFuelRod(GTIRef.ID, Plutonium243, 6_000_000, 128,128,4096, 3);
+    public static ItemNuclearFuelRod Plutonium239Rod = new ItemNuclearFuelRod(GTIRef.ID, Plutonium239, 12_000_000, 128,128,4096, 3);
+    public static ItemNuclearFuelRod Americium245Rod = new ItemNuclearFuelRod(GTIRef.ID, Americium, 6_000_000, 64,64,4096, 4);
+    public static ItemNuclearFuelRod Americium241Rod = new ItemNuclearFuelRod(GTIRef.ID, Americium241, 6_000_000, 128,128,4096, 3);
+    public static ItemNuclearFuelRod Cobalt60Rod = new ItemNuclearFuelRod(GTIRef.ID, Cobalt60, 600_000, 0,8,256, 16);
+    public static ItemNuclearFuelRod EnrichedNaquadahRod = new ItemNuclearFuelRod(GTIRef.ID, EnrichedNaquadah, 60_000_000, 128,128,8192, 4);
+    public static ItemNuclearFuelRod NaquadriaRod = new ItemNuclearFuelRod(GTIRef.ID, Naquadria, 60_000_000, 512,512,16384, 3);
+
+
     public static ItemBasic<?> NuclearWaste = new ItemBasic<>(GTIRef.ID, "nuclear_waste").tip("Common Waste extracted from depleted Fuel");
     public static ItemBasic<?> AlkalineWaste = new ItemBasic<>(GTIRef.ID, "alkaline_waste").tip("Waste containing alkaline metals");
     public static ItemBasic<?> NonmetalWaste = new ItemBasic<>(GTIRef.ID, "nonmetal_waste").tip("Waste containing non-metal substances");
