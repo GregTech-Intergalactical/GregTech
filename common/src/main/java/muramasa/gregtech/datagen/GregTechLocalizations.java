@@ -105,11 +105,11 @@ public class GregTechLocalizations {
                     .replace("Hv", "(HV)")
                     .replace("Ev", "(EV)")
                     .replace("Iv", "(IV)")));
-            /*AntimatterAPI.all(AntimatterFluid.class).forEach((AntimatterFluid s) -> {
-                add(Util.makeDescriptionId("fluid_type", s.getLoc()), tryComponent(locale, s, () -> lowerUnderscoreToUpperSpaced(s.getId())));
-                Item bucket = AntimatterAPI.get(Item.class, s.getId() + "_bucket", Ref.SHARED_ID);
-                if (bucket != null) add(bucket, tryComponent(locale, s, () -> lowerUnderscoreToUpperSpaced(s.getId())) + " Bucket");
-            });*/
+            String[] fluids = new String[]{"hot_molten_lithium_chloride", "hot_molten_tin", "hot_molten_sodium"};
+            for (String s : fluids) {
+                override("fluid_type.antimatter_shared.liquid_" + s, Utils.lowerUnderscoreToUpperSpaced(s));
+                override("item.antimatter_shared.liquid_" + s + "_bucket", Utils.lowerUnderscoreToUpperSpaced(s));
+            }
 //            AntimatterAPI.all(ItemPowerUnit.class, domain).stream().filter(i -> i.getId().startsWith("power_unit") || i.getId().startsWith("small_power_unit")).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpaced(i.getId())));
             override("machine.large_turbine.hv", "Large Steam Turbine");
             override("machine.large_turbine.ev", "Large Gas Turbine");
