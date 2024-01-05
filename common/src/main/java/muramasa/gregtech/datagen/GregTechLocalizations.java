@@ -2,14 +2,20 @@ package muramasa.gregtech.datagen;
 
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
+import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemCover;
+import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.*;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.items.ItemIntCircuit;
+import muramasa.gregtech.items.ItemNuclearFuelRod;
+import net.minecraft.Util;
+import net.minecraft.world.item.Item;
 
 import static muramasa.antimatter.util.Utils.*;
 
@@ -52,6 +58,19 @@ public class GregTechLocalizations {
             add("tooltip.gti.data_stick.by", "By X: %s Z: %s Dim: %s");
             add("tooltip.gti.coil.percentage", "Pyrolysis oven processing speed percentage: %s");
             add("tooltip.gti.coil.maxSimultaneousRecipes", "Max simultaneous recipes in Multismelter: %s");
+            add("tooltip.gti.nuclear_rod.emission", "Emission: %s %s");
+            add("tooltip.gti.nuclear_rod.self", "Self: %s %s");
+            add("tooltip.gti.nuclear_rod.maximum", "Maximum: %s %s");
+            add("tooltip.gti.nuclear_rod.neutrons", "Neutrons/t");
+            add("tooltip.gti.nuclear_rod.factor", "Factor: %s");
+            add("tooltip.gti.nuclear_rod.critical.0", "This fuel is %s");
+            add("tooltip.gti.nuclear_rod.critical.1", "Critical");
+            add("tooltip.gti.nuclear_rod.moderated.0", "Fuel rods will be %s");
+            add("tooltip.gti.nuclear_rod.moderated.1", "Moderated");
+            add("tooltip.gti.nuclear_rod.heat", "%s the heat per Neutron");
+            add("tooltip.gti.nuclear_rod.when_used.1", "When used with %s:");
+            add("tooltip.gti.nuclear_rod.when_used.2", "When used with %s or %s:");
+
         }
 
         @Override
@@ -79,12 +98,18 @@ public class GregTechLocalizations {
             AntimatterAPI.all(BlockAsphaltSlab.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockCoil.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> override(i.getDescriptionId(), "Integrated Circuit (" + i.circuitId + ")"));
+            AntimatterAPI.all(ItemNuclearFuelRod.class, domain).forEach(i -> override(i.getDescriptionId(), Utils.getLocalizedType(i.getMaterial()) + " Nuclear Rod"));
             AntimatterAPI.all(ItemBasic.class, domain).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpaced(i.getId())
                     .replace("Lv", "(LV)")
                     .replace("Mv", "(MV)")
                     .replace("Hv", "(HV)")
                     .replace("Ev", "(EV)")
                     .replace("Iv", "(IV)")));
+            /*AntimatterAPI.all(AntimatterFluid.class).forEach((AntimatterFluid s) -> {
+                add(Util.makeDescriptionId("fluid_type", s.getLoc()), tryComponent(locale, s, () -> lowerUnderscoreToUpperSpaced(s.getId())));
+                Item bucket = AntimatterAPI.get(Item.class, s.getId() + "_bucket", Ref.SHARED_ID);
+                if (bucket != null) add(bucket, tryComponent(locale, s, () -> lowerUnderscoreToUpperSpaced(s.getId())) + " Bucket");
+            });*/
 //            AntimatterAPI.all(ItemPowerUnit.class, domain).stream().filter(i -> i.getId().startsWith("power_unit") || i.getId().startsWith("small_power_unit")).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpaced(i.getId())));
             override("machine.large_turbine.hv", "Large Steam Turbine");
             override("machine.large_turbine.ev", "Large Gas Turbine");
