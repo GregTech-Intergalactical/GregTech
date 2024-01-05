@@ -15,6 +15,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.block.BlockCoil;
+import muramasa.gregtech.machine.caps.ParallelRecipeHandler;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -28,83 +29,13 @@ import static muramasa.antimatter.machine.Tier.*;
 
 public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntityMultiSmelter> {
     private BlockCoil.CoilData coilData;
-    int concurrentRecipes = 0;
 
     public BlockEntityMultiSmelter(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
-
-
+        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this){
             @Override
-            public boolean consumeInputs() {
-                concurrentRecipes = 0;
-                for (int i = 0; i < maxSimultaneousRecipes(); i++) {
-                    boolean consumeInput = super.consumeInputs();
-                    if (!consumeInput) break;
-                    concurrentRecipes++;
-                }
-                return concurrentRecipes > 0;
-            }
-
-            @Override
-            protected void addOutputs() {
-                for (int i = 0; i < concurrentRecipes; i++) {
-                    if (activeRecipe.hasOutputItems()) {
-                        tile.itemHandler.ifPresent(h -> {
-                            //Roll the chances here. If they don't fit add flat (no chances).
-                            ItemStack[] out = activeRecipe.getOutputItems(true);
-                            if (h.canOutputsFit(out)) {
-                                h.addOutputs(out);
-                            } else {
-                                h.addOutputs(activeRecipe.getFlatOutputItems());
-                            }
-                        });
-                    }
-                }
-                tile.onMachineEvent(MachineEvent.ITEMS_OUTPUTTED);
-            }
-
-
-            /*@Override
-            protected MachineState tickRecipe() {
-                if (this.currentProgress >= this.maxProgress) {
-                    if (!canOutputParallel()) {
-                        tickTimer += WAIT_TIME_OUTPUT_FULL;
-                        return OUTPUT_FULL;
-                    }
-                }
-                return super.tickRecipe();
-            }*/
-
-            public boolean canOutput() {
-                if (concurrentRecipes <= 1) return super.canOutput();
-                //ignore chance for canOutput.
-                if (!tile.itemHandler.isPresent() || !activeRecipe.hasOutputItems()) return true;
-                List<ItemStack> outputs = new ArrayList<>();
-                for (int i = 0; i < concurrentRecipes; i++) {
-                    for (ItemStack item : activeRecipe.getFlatOutputItems()) {
-                        outputs.add(item.copy());
-                    }
-                }
-                List<ItemStack> merged = Utils.mergeItems(new ArrayList<>(), outputs);
-                return tile.itemHandler.map(t -> t.canOutputsFit(merged.toArray(ItemStack[]::new))).orElse(false);
-            }
-
-            private int maxSimultaneousRecipes(){
+            protected int maxSimultaneousRecipes(){
                 return coilData.maxSimultaneousRecipes();
-            }
-
-            @Override
-            public CompoundTag serialize() {
-                CompoundTag nbt = super.serialize();
-                nbt.putInt("concurrentRecipes", concurrentRecipes);
-                return nbt;
-            }
-
-            @Override
-            public void deserialize(CompoundTag nbt) {
-                super.deserialize(nbt);
-                concurrentRecipes = nbt.getInt("concurrentRecipes");
             }
         });
     }
@@ -152,7 +83,7 @@ public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntity
         public void init() {
             super.init();
             BlockEntityMultiSmelter m = (BlockEntityMultiSmelter) gui.handler;
-            gui.syncInt(() -> m.concurrentRecipes, i -> concurrentRecipes = i, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
+            gui.syncInt(() -> m.recipeHandler.map(r -> ((ParallelRecipeHandler<?>)r).concurrentRecipes).orElse(0), i -> concurrentRecipes = i, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
         }
 
         public static WidgetSupplier build() {
