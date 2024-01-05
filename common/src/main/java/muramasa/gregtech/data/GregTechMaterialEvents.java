@@ -30,23 +30,23 @@ public class GregTechMaterialEvents {
          *** Periodic Table of Elements (No Isotopes)
          **/
         event.setMaterial(Hydrogen).asGas(20);
-        event.setMaterial(Helium).asPlasma();
+        event.setMaterial(Helium).asGas();
         event.setMaterial(Lithium).asSolid(454, 0).asOre().harvestLevel(2);
         event.setMaterial(Beryllium).asOre(INGOT, NUGGET);
         event.setMaterial(Boron).asDust(2349);
         event.setMaterial(Carbon).asDust(PLATE);
-        event.setMaterial(Nitrogen).asPlasma();
-        event.setMaterial(Oxygen).asPlasma();
+        event.setMaterial(Nitrogen).asGas();
+        event.setMaterial(Oxygen).asGas();
         event.setMaterial(Fluorine).asGas();
-        event.setMaterial(Neon).asPlasma();
+        event.setMaterial(Neon).asGas();
         event.setMaterial(Sodium).asDust(370, MOLTEN).asFluid();
         event.setMaterial(Magnesium).asMetal(1383, 0/*1383*/);
         event.setMaterial(Aluminium).asMetal(933, 0, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL, HAS_CUSTOM_SMELTING);
         event.setMaterial(Silicon).asMetal(1683, 1683, PLATE, FOIL);
         event.setMaterial(Phosphor).asDust(933);
-        event.setMaterial(Sulfur).asDust(388).asOre().harvestLevel(2).asPlasma();
+        event.setMaterial(Sulfur).asDust(388).asOre().harvestLevel(2).asGas();
         event.setMaterial(Chlorine).asGas();
-        event.setMaterial(Argon).asPlasma();
+        event.setMaterial(Argon).asGas();
         event.setMaterial(Potassium).asSolid(336, 0);
         event.setMaterial(Calcium).asDust(1115);
         //Scandium, not added
@@ -56,7 +56,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Manganese).asMetal(1519, FOIL).asOre();
         //Iron, added by vanilla
         event.setMaterial(Cobalt).asMetal(1768, 0);
-        event.setMaterial(Nickel).asMetal(1728, 0, PLATE).asOre().asPlasma();
+        event.setMaterial(Nickel).asMetal(1728, 0, PLATE).asOre();
         //Copper, by vanilla
         event.setMaterial(Zinc).asMetal(692, 0, PLATE, FOIL).asOre();
         event.setMaterial(Gallium).asMetal(302);
@@ -82,7 +82,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Antimony).asMetal(1449);
         event.setMaterial(Tellurium).asMetal(723,0);
         event.setMaterial(Iodine).asSolid(387,0);
-        event.setMaterial(Xenon).asPlasma();
+        event.setMaterial(Xenon).asGas();
         event.setMaterial(Caesium).asMetal(2349, 2349);
         event.setMaterial(Barium).asDust(1000);
         event.setMaterial(Lanthanum).asMetal(1193, 1193);
