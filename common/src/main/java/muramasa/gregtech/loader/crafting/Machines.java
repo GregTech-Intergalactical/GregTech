@@ -126,15 +126,6 @@ public class Machines {
                             'H', PLATE.get(material),
                             'M', hull
                     ), "LWL", "CMC", "HHH"));
-            add(PLASMA_ARC_FURNACE, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
-                    ImmutableMap.of(
-                            'C', circuit,
-                            'W', DUST.get(Materials.Graphite),
-                            'L', CABLE_GETTER.apply(PipeSize.SMALL, tier, true),
-                            'H', PLATE.get(material),
-                            'M', hull,
-                            'P', pump
-                    ), "LWL", "CMC", "PHP"));
 
             add(BATH, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()

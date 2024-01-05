@@ -164,8 +164,6 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "packager", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> POLARIZER = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "polarizer", new RecipeBuilder()));
-    public static RecipeMap<RecipeBuilder> PLASMA_ARC_FURNACE = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "plasma_arc_furnace", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PLASMA_FUELS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "plasma_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FORMING_PRESS = AntimatterAPI.register(RecipeMap.class,

@@ -101,7 +101,6 @@ public class Machines {
     public static BasicMachine PACKAGER = new BasicMachine(GTIRef.ID, "packager").setMap(RecipeMaps.PACKAGER).addFlags(GUI, ITEM);
     public static BasicMachine POLARIZER = new BasicMachine(GTIRef.ID, "polarizer").setMap(RecipeMaps.POLARIZER).addFlags(GUI, ITEM);
     public static BasicMachine PRINTER = new BasicMachine(GTIRef.ID, "printer").setTiers(Tier.LV).setMap(PRINTING).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityPrinter::new);
-    public static BasicMachine PLASMA_ARC_FURNACE = new BasicMachine(GTIRef.ID, "plasma_arc_furnace").setMap(RecipeMaps.PLASMA_ARC_FURNACE).addFlags(GUI, ITEM, FLUID).amps(3);
     public static BasicMachine ROASTER = new BasicMachine(GTIRef.ID, "roaster").setMap(RecipeMaps.ROASTER).addFlags(GUI, ITEM, FLUID).amps(3);
     public static BasicMachine RECYCLER = new BasicMachine(GTIRef.ID, "recycler").setMap(RecipeMaps.RECYCLER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine REPLICATOR = new BasicMachine(GTIRef.ID, "replicator").setMap(RecipeMaps.REPLICATOR).addFlags(GUI, ITEM, FLUID);
