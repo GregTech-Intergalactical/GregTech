@@ -21,8 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static muramasa.antimatter.Ref.L;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.BLOCK;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.*;
 
@@ -169,6 +168,9 @@ public class MixerLoader {
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(SuperFuelBinder, 4)).fi(CetaneBoostedDiesel.getLiquid(800)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal_nitro", 120, 96);
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(SuperFuelBinder, 2)).fi(CetaneBoostedDiesel.getLiquid(500)).io(SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal_nitro", 120, 96);
         MIXER.RB().ii(DUST.getMaterialIngredient(Wood, 1)).fi(Glue.getLiquid(25)).io(WoodPellet).add("wood_pellet", 16, 16);
+        MIXER.RB().ii(DUST_TINY.getMaterialIngredient(Thorium, 1)).fi(LithiumChloride.getLiquid(L * 16)).fo(ThoriumSalt.getLiquid(L * 16)).add("thorium_salt_tiny", 128, 64);
+        MIXER.RB().ii(DUST_SMALL.getMaterialIngredient(Thorium, 1)).fi(LithiumChloride.getLiquid(L * 36)).fo(ThoriumSalt.getLiquid(L * 36)).add("thorium_salt_small", 288, 64);
+        MIXER.RB().ii(DUST.getMaterialIngredient(Thorium, 1)).fi(LithiumChloride.getLiquid(L * 144)).fo(ThoriumSalt.getLiquid(L * 144)).add("thorium_salt_dust", 1152, 64);
     }
 
 }

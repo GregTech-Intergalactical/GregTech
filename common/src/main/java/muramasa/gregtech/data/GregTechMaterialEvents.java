@@ -504,6 +504,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SulfurTrioxide).asGas();
         event.setMaterial(SulfurDioxide).asGas();
         event.setMaterial(Tar).asFluid();
+        event.setMaterial(ThoriumSalt).asFluid(0, 600).flags(MOLTEN);
         event.setMaterial(TitaniumTetrachloride).asFluid().flags(ACID);
         event.setMaterial(UUAmplifier).asFluid();
         event.setMaterial(UUMatter).asFluid();

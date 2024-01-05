@@ -508,6 +508,7 @@ public class Materials {
     public static Material SodiumPersulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_persulfate", 0x006646, NONE));
     public static Material SulfuricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_acid", 0xff8000, NONE));
     public static Material Tar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tar", 0x0a0a0a, NONE));
+    public static Material ThoriumSalt = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_salt", 0x001e00, NONE));
     public static Material TitaniumTetrachloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "titanium_tetrachloride", 0xd40d5c, NONE));
     public static Material UUAmplifier = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uu_amplifier", 0x600080, NONE));
     public static Material UUMatter = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "uu_matter", 0x8000c4, NONE));
