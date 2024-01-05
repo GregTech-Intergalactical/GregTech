@@ -166,8 +166,6 @@ public class Guis {
                 .add(ENERGY, 80, 63);
         PLASMA_ARC_FURNACE.add(ARC_FURNACE).add(FL_OUT, 107, 63);
         ELECTROMAGNETIC_SEPARATOR.add(COMPRESSOR).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25);
-        DECAY_CHAMBER.add(IT_IN, 17, 25).add(IT_IN, 35, 25)
-                .add(IT_OUT, 107, 25).add(FL_IN,53,25).add(FL_OUT,125,25).add(ENERGY,80,63);
         DEHYDRATOR.add(IT_IN, 35, 25).add(IT_IN, 53, 25)
                 .add(FL_IN,35,43).add(FL_IN,53,43)
                 .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)

@@ -244,30 +244,6 @@ public class GregTechData {
     public static ItemNuclearFuelRod EnrichedNaquadahRod = new ItemNuclearFuelRod(GTIRef.ID, EnrichedNaquadah, 60_000_000, 128,128,8192, 4);
     public static ItemNuclearFuelRod NaquadriaRod = new ItemNuclearFuelRod(GTIRef.ID, Naquadria, 60_000_000, 512,512,16384, 3);
 
-
-    public static ItemBasic<?> NuclearWaste = new ItemBasic<>(GTIRef.ID, "nuclear_waste").tip("Common Waste extracted from depleted Fuel");
-    public static ItemBasic<?> AlkalineWaste = new ItemBasic<>(GTIRef.ID, "alkaline_waste").tip("Waste containing alkaline metals");
-    public static ItemBasic<?> NonmetalWaste = new ItemBasic<>(GTIRef.ID, "nonmetal_waste").tip("Waste containing non-metal substances");
-    public static ItemBasic<?> MetaloidWaste = new ItemBasic<>(GTIRef.ID, "metaloid_waste").tip("Waste containing metal substances");
-    public static ItemBasic<?> HeavyMetalWaste = new ItemBasic<>(GTIRef.ID, "heavy_metal_waste").tip("Waste containing heavy metal substances");
-    public static ItemBasic<?> MetalGroupAWaste = new ItemBasic<>(GTIRef.ID, "metal_group_a_waste").tip("Waste containing rare metals");
-    public static ItemBasic<?> MetalGroupBWaste = new ItemBasic<>(GTIRef.ID, "metal_group_b_waste").tip("Waste semi-rare metals");
-    public static ItemBasic<?> MetalGroupCWaste = new ItemBasic<>(GTIRef.ID, "metal_group_c_waste").tip("Waste containing common metals");
-    public static ItemBasic<?> LanthanideGroupAWaste = new ItemBasic<>(GTIRef.ID, "lanthanide_group_a_waste").tip("Waste containing rare Lanthanides");
-    public static ItemBasic<?> LanthanideGroupBWaste = new ItemBasic<>(GTIRef.ID, "lanthanide_group_b_waste").tip("Waste containing semi-rare Lanthanides");
-    public static ItemBasic<?> ThoriumWaste = new ItemBasic<>(GTIRef.ID, "thorium_waste").tip("Waste extracted from depleted Thorium Fuel");
-    public static ItemBasic<?> ProtactiniumWaste = new ItemBasic<>(GTIRef.ID, "protactinium_waste").tip("Waste extracted from depleted Protactinium Fuel");
-    public static ItemBasic<?> UraniumWaste = new ItemBasic<>(GTIRef.ID, "uranium_waste").tip("Waste extracted from depleted Uranium Fuel");
-    public static ItemBasic<?> NeptuniumWaste = new ItemBasic<>(GTIRef.ID, "neptunium_waste").tip("Waste extracted from depleted Neptunium Fuel");
-    public static ItemBasic<?> PlutoniumWaste = new ItemBasic<>(GTIRef.ID, "plutonium_waste").tip("Waste extracted from depleted Plutonium Fuel");
-    public static ItemBasic<?> AmericiumWaste = new ItemBasic<>(GTIRef.ID, "americium_waste").tip("Waste extracted from depleted Americium Fuel");
-    public static ItemBasic<?> CuriumWaste = new ItemBasic<>(GTIRef.ID, "curium_waste").tip("Waste extracted from depleted Curium Fuel");
-    public static ItemBasic<?> BerkeliumWaste = new ItemBasic<>(GTIRef.ID, "berkelium_waste").tip("Waste extracted from depleted Berkelium Fuel");
-    public static ItemBasic<?> CaliforniumWaste = new ItemBasic<>(GTIRef.ID, "californium_waste").tip("Waste extracted from depleted Californium Fuel");
-    public static ItemBasic<?> EinsteiniumWaste = new ItemBasic<>(GTIRef.ID, "einsteinium_waste").tip("Waste extracted from depleted Einsteinium Fuel");
-    public static ItemBasic<?> FermiumWaste = new ItemBasic<>(GTIRef.ID, "fermium_waste").tip("Waste extracted from depleted Fermium Fuel");
-    public static ItemBasic<?> MendeleviumWaste = new ItemBasic<>(GTIRef.ID, "mendelevium_waste").tip("Waste extracted from depleted Mendelevium Fuel");
-
     public static final LiquidBlock LAVA = AntimatterAPI.register(Block.class, "lava", GTIRef.ID, new LiquidBlock(Fluids.LAVA, BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.LAVA).noCollission().randomTicks().strength(100.0F).lightLevel((blockStatex) -> 15).noDrops()){
         @Override
         public ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {

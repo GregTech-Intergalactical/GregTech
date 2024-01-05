@@ -77,7 +77,6 @@ public class Machines {
     public static BasicMachine CIRCUIT_ASSEMBLER = new BasicMachine(GTIRef.ID, "circuit_assembler").setMap(RecipeMaps.CIRCUIT_ASSEMBLER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine COMPRESSOR = new BasicMachine(GTIRef.ID, "compressor").setMap(RecipeMaps.COMPRESSOR).addFlags(GUI, ITEM);
     public static BasicMachine CUTTER = new BasicMachine(GTIRef.ID, "cutter").setMap(RecipeMaps.CUTTER).addFlags(GUI, ITEM, FLUID);
-    public static BasicMachine DECAY_CHAMBER = new BasicMachine(GTIRef.ID, "decay_chamber").setMap(DECAYING).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine DISASSEMBLER = new BasicMachine(GTIRef.ID, "disassembler").setMap(RecipeMaps.DISASSEMBLER).addFlags(GUI, ITEM).custom();
     public static BasicMachine DISTILLERY = new BasicMachine(GTIRef.ID, "distillery").setMap(RecipeMaps.DISTILLERY).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids().setVerticalFacingAllowed(true).setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static BasicMachine ELECTRIC_OVEN = new BasicMachine(GTIRef.ID, "electric_oven").setMap(RecipeMaps.ELECTRIC_OVEN).addFlags(GUI, ITEM).setSound(GregTechSounds.FURNACE, 0.6f);
