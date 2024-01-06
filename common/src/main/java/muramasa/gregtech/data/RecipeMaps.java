@@ -154,8 +154,6 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "mixer", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> NAQUADAH_FUELS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "naquadah_gfuels", new RecipeBuilder()));
-    public static RecipeMap<RecipeBuilder> NUCLEAR = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "nuclear", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
     public static RecipeMap<RecipeBuilder> ORE_BYPRODUCTS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "ore_byproducts", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ORE_WASHER = AntimatterAPI.register(RecipeMap.class,

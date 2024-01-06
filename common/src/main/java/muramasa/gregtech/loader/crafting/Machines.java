@@ -821,13 +821,6 @@ public class Machines {
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .put('H', CASING_HEAT_PROOF)
                         .build(), "FFF", "CHC", "LCL"));
-        add(NUCLEAR_REACTOR, EV, (m, item) -> provider.addItemRecipe(output, "machines", item,
-                ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_EV)
-                        .put('A', COVER_ROBOT_ARM.getItem(EV))
-                        .put('G', GEAR.get(NiobiumTitanium))
-                        .put('P', PLATE.get(Iridium))
-                        .put('T', PLATE_DENSE.get(Thorium)).build(), "GTG", "AHA", "PTP"));
         add(OIL_DRILLING_RIG, MV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('M', MotorMV)

@@ -1,20 +1,13 @@
 package muramasa.gregtech.loader.machines;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.gregtech.GTIRef;
 import net.minecraft.world.item.ItemStack;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DEPLETED_FISSILE_FUEL;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_SMALL;
-import static muramasa.antimatter.material.Element.getFromProtons;
 import static muramasa.gregtech.data.RecipeMaps.THERMAL_CENTRIFUGE;
-import static net.minecraft.world.item.crafting.Ingredient.of;
 
 public class ThermalCentrifuge {
     public static void init() {
@@ -25,19 +18,6 @@ public class ThermalCentrifuge {
 
             THERMAL_CENTRIFUGE.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(m),1)).io(AntimatterMaterialTypes.CRUSHED_REFINED.get(m, 1), AntimatterMaterialTypes.DUST_TINY.get(aOreByProduct2, 1)).add("purified_" + m.getId(),500, 48,0,2);
             THERMAL_CENTRIFUGE.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(m),1)).io(AntimatterMaterialTypes.CRUSHED_REFINED.get(m, 1), AntimatterMaterialTypes.DUST_TINY.get(aOreByProduct2, 1), stoneDust).add("crushed_" + m.getId(),500, 48,0,2);
-        });
-        fuel_reprocessing();
-    }
-
-    private static void fuel_reprocessing() {
-        DEPLETED_FISSILE_FUEL.all().forEach(f -> {
-            int protons = f.getElement().getProtons();
-            if(protons != 101){
-                String id = getFromProtons(protons + 1, false).getId().split("_")[0];
-                THERMAL_CENTRIFUGE.RB().ii(of(DEPLETED_FISSILE_FUEL.get(f))).io(new ItemStack(AntimatterAPI.get(ItemBasic.class, f.getId().split("_")[0]+"_waste", GTIRef.ID),3),new ItemStack(AntimatterAPI.get(ItemBasic.class, id+"_waste", GTIRef.ID)),DUST_SMALL.get(f,2)).add(f.getId()+"_depleted_fuel_reprocessing",200,1000);
-            }else{
-                THERMAL_CENTRIFUGE.RB().ii(of(DEPLETED_FISSILE_FUEL.get(f))).io(new ItemStack(AntimatterAPI.get(ItemBasic.class, f.getId().split("_")[0]+"_waste", GTIRef.ID),4),DUST_SMALL.get(f,2)).add(f.getId()+"_depleted_fuel_reprocessing",200,1000);
-            }
         });
     }
 }

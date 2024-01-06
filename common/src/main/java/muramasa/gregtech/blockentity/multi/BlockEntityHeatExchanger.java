@@ -4,12 +4,14 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
+import muramasa.antimatter.gui.GuiInstance;
+import muramasa.antimatter.gui.ICanSyncData;
+import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
+import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.recipe.IRecipe;
-import muramasa.gregtech.nuclear.BlockEntityNuclearReactor;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
@@ -18,26 +20,21 @@ import net.minecraft.world.level.block.state.BlockState;
 import tesseract.TesseractGraphWrappers;
 import tesseract.api.heat.IHeatHandler;
 
-import java.util.List;
-
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
-import static muramasa.antimatter.machine.MachineFlag.GENERATOR;
 import static muramasa.gregtech.data.Materials.Steam;
 
 public class BlockEntityHeatExchanger extends BlockEntityMultiMachine<BlockEntityHeatExchanger> {
 
-    protected List<IHeatHandler> HEAT_HANDLERS;
-
     @Override
     public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
         int size = super.drawInfo(instance, stack, renderer, left, top);
-        renderer.draw(stack, "Heat: " + ((BlockEntityNuclearReactor.HeatInfoWidget)instance).heat, left, top + size, 16448255);
+        renderer.draw(stack, "Heat: " + ((HeatInfoWidget)instance).heat, left, top + size, 16448255);
         return size + 8;
     }
 
     @Override
     public WidgetSupplier getInfoWidget() {
-        return BlockEntityNuclearReactor.HeatInfoWidget.build().setPos(10, 10);
+        return HeatInfoWidget.build().setPos(10, 10);
     }
 
     public BlockEntityHeatExchanger(Machine type, BlockPos pos, BlockState state) {
@@ -104,5 +101,23 @@ public class BlockEntityHeatExchanger extends BlockEntityMultiMachine<BlockEntit
             });
 
         });
+    }
+
+    public static class HeatInfoWidget extends InfoRenderWidget.MultiRenderWidget {
+
+        public int heat;
+        protected HeatInfoWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
+            super(gui, parent, renderer);
+        }
+
+        public static WidgetSupplier build() {
+            return builder((a, b) -> new HeatInfoWidget(a, b, (IInfoRenderer<MultiRenderWidget>) a.handler));
+        }
+        @Override
+        public void init() {
+            super.init();
+            BlockEntityMultiMachine<?> m = (BlockEntityMultiMachine) gui.handler;
+            gui.syncInt(() -> m.getHeatHandlers().size() == 0 ? 0 : m.getHeatHandlers().stream().mapToInt(IHeatHandler::getTemperature).sum() / m.getHeatHandlers().size(), a -> this.heat = a, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
+        }
     }
 }

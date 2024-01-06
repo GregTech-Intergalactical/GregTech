@@ -5,7 +5,6 @@ import com.gtnewhorizon.structurelib.structure.StructureUtility;
 import muramasa.antimatter.structure.FakeTileElement;
 import muramasa.antimatter.util.int3;
 import muramasa.gregtech.block.BlockCoil;
-import muramasa.gregtech.nuclear.BlockEntityNuclearReactor;
 import muramasa.gregtech.blockentity.multi.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
@@ -20,7 +19,6 @@ import java.util.function.Function;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.BLOCK;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.FRAME;
-import static muramasa.antimatter.machine.Tier.EV;
 import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatch;
 import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Machines.*;
@@ -161,13 +159,6 @@ public class Structures {
                 .at('C', CASING_HEAT_PROOF).at('M', HATCH_MUFFLER)
                 .offset(1, 2, 0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).build()
         );
-
-        NUCLEAR_REACTOR.setStructure(BlockEntityNuclearReactor.class, b -> b.part("main")
-                .of("CCC", "CCC", "CCC").of("CGC", "GLG", "CGC").of(1).of(1).of("C~C", "NCN", "CNC").build()
-                .at('C', CASING_RADIATION_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O)
-                .at('N', CASING_RADIATION_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, ofBlock(NUCLEAR_REACTOR.getBlockState(EV)))
-                .at('G', GLASS_BLOCK).at('L', LITHIUM_BLOCK)
-                .offset(1,4, 0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O).build());
 
         PRIMITIVE_BLAST_FURNACE.setStructure(BlockEntityPrimitiveBlastFurnace.class, b -> b.part("main")
             .of("CCC", "C-C", "CCC").of("CCC", "CBC", "CCC").of("C~C", "CBC", "CCC").of("CCC", "CCC", "CCC").build()

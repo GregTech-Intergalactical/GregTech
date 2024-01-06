@@ -311,7 +311,6 @@ public class Guis {
         DISTLLATION_TOWER.add(MULTIBLOCK.getSlots());
         CRYO_DISTLLATION_TOWER.add(MULTIBLOCK.getSlots());
         CRACKING_UNIT.add(MULTIBLOCK.getSlots());
-        NUCLEAR_REACTOR.add(MULTIBLOCK.getSlots());
     }
 
     public static void backgroundTextures(){
@@ -347,7 +346,6 @@ public class Guis {
         DISTLLATION_TOWER.getGui().setBackgroundTexture("multiblock");
         CRYO_DISTLLATION_TOWER.getGui().setBackgroundTexture("multiblock");
         CRACKING_UNIT.getGui().setBackgroundTexture("multiblock");
-        NUCLEAR_REACTOR.getGui().setBackgroundTexture("multiblock");
         FUSION_REACTOR.setGUI(MenuHandlers.FUSION_MENU_HANDLER);
         FUSION_REACTOR.getGui().setBackgroundTexture("fusion_control_computer");
     }

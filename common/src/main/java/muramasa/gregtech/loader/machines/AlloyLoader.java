@@ -69,16 +69,6 @@ public class AlloyLoader {
         ALLOY_SMELTER.RB().ii(DUST.getMaterialIngredient(Glass, 1), RecipeIngredient.of(GTCoreItems.MoldBall, 1).setNoConsume()).io(GTCoreItems.GlassTube).add("glass_tube", 160, 8);
         ALLOY_SMELTER.RB().ii(DUST.getMaterialIngredient(Glass, 1), RecipeIngredient.of(GTCoreItems.MoldBottle, 1).setNoConsume()).io(Items.GLASS_BOTTLE).add("glass_bottle", 64, 4);
         ALLOY_SMELTER.RB().ii(INGOT.getMaterialIngredient(Iron, 31), RecipeIngredient.of(GTCoreItems.MoldAnvil, 1).setNoConsume()).io(Items.ANVIL).add("anvil", 512, 64);
-
-        //Fissile Fuels
-        FISSILE_FUEL.all().forEach(f -> ALLOY_SMELTER.RB().ii(of(INGOT.get(f), 1), of(INGOT.get(f))).io(FISSILE_FUEL.get(f)).add(f.getId() + "_fissile_fuel_smelting"));
-
-        //Breeder Fuels
-        //BREEDER_FUEL.all().forEach(f -> {
-            //Item fuel = BREEDER_FUEL.get(f);
-            //Material fissilemat = fuel.fissileMaterial, breedermat = fuel.breederMaterial;
-            //ALLOY_SMELTING.RB().ii(of(FISSILE_FUEL.get(fissilemat), 1), of(INGOT.get(breedermat))).io(new ItemStack(fuel)).add(f.getId() + "_breeder_fuel_smelting");
-        //});
     }
 
     private static void addAlloyRecipes(Material input1, int count1, Material input2, int count2, Material output, int countO){
