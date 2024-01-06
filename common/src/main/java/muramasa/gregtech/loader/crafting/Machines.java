@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
 import io.github.gregtechintergalactical.gtcore.machine.*;
 import muramasa.antimatter.AntimatterAPI;
@@ -838,6 +839,13 @@ public class Machines {
                 ImmutableMap.<Character, Object>builder()
                         .put('H', FireBrick)
                         .put('C', PLATE.getMaterialTag(Iron)).build(), "HHH", "HCH", "HHH");
+        add(PROCESSING_ARRAY, EV, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('C', TIER_CIRCUITS.apply(IV))
+                        .put('R', COVER_ROBOT_ARM.getItem(EV))
+                        .put('L', BatteryEnergyOrb)
+                        .put('M', HULL_EV)
+                        .put('S', FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.LARGE)).build(), "CLC", "RMR", "CSC"));
         provider.addItemRecipe(output, "machines", PYROLYSIS_OVEN.getItem(PYROLYSIS_OVEN.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL_MV)

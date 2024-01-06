@@ -172,6 +172,12 @@ public class Structures {
                 .offset(1, 2, 0).build()
         );
 
+        PROCESSING_ARRAY.setStructure(BlockEntityProcessingArray.class, b -> b.part("main")
+                .of("CCC", "CCC", "CCC").of("C~C", "C-C", "CCC").of(0).build()
+                .at('C', CASING_TUNGSTENSTEEL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
+                .offset(1, 1, 0).min(1, HATCH_ENERGY).build()
+        );
+
         PYROLYSIS_OVEN.setStructure(BlockEntityPyrolysisOven.class, b -> b.part("main")
                 .of("UUUUU", "UHHHU", "UHHHU", "UHHHU", "UUUUU").of("UUUUU", "U---U", "U---U", "U---U", "UUUUU").of(1)
                 .of("BB~BB", "BCCCB", "BCCCB", "BCCCB", "BBBBB").build()

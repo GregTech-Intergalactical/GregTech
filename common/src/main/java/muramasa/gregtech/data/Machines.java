@@ -192,10 +192,11 @@ public class Machines {
         tooltip.add(Utils.translatable("machine.gti.large_boiler.production", total, production));
         tooltip.add(Utils.translatable("machine.gti.large_boiler.circuit"));
     });
-    public static MultiMachine LARGE_CHEMICAL_REACTOR = new MultiMachine(GTIRef.ID, "large_chemical_reactor").setTiers(HV).setMap(RecipeMaps.CHEMICAL_REACTOR).setTile(BlockEntityLargeChemicalReactor::new).custom().setTextureBlock(GregTechData.CASING_CHEMICALLY_INERT);
+    public static MultiMachine LARGE_CHEMICAL_REACTOR = new MultiMachine(GTIRef.ID, "large_chemical_reactor").setTiers(HV).setMap(RecipeMaps.CHEMICAL_REACTOR).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityLargeChemicalReactor::new).custom().setTextureBlock(GregTechData.CASING_CHEMICALLY_INERT);
     public static MultiMachine LARGE_TURBINE = new MultiMachine(GTIRef.ID, "large_turbine").setTiers(HV, EV, IV).setMap(STEAM_FUELS, HV).setMap(HP_STEAM_FUELS, IV).setMap(GAS_FUELS, EV).addFlags(GUI, ITEM, FLUID, EU, GENERATOR).setTile(BlockEntityLargeTurbine::new).custom(Textures.TURBINE).setTierSpecificLang();
     public static MultiMachine MULTI_SMELTER = new MultiMachine(GTIRef.ID, "multi_smelter").setTiers(HV).setMap(ELECTRIC_FURNACE).addFlags(GUI, ITEM, EU).setTile(BlockEntityMultiSmelter::new).custom().setTextureBlock(GregTechData.CASING_HEAT_PROOF);
     public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(GTIRef.ID, "oil_drilling_rig").setTiers(MV).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityOilDrillingRig::new).custom().setTextureBlock(GregTechData.CASING_SOLID_STEEL);
+    public static MultiMachine PROCESSING_ARRAY = new MultiMachine(GTIRef.ID, "processing_array").setTiers(EV).addFlags(GUI, ITEM, FLUID, EU, RECIPE).setTile(BlockEntityProcessingArray::new).custom().setTextureBlock(GregTechData.CASING_TUNGSTENSTEEL);
     public static MultiMachine PYROLYSIS_OVEN = new MultiMachine(GTIRef.ID, "pyrolysis_oven").setTiers(MV).setMap(RecipeMaps.PYROLYSIS_OVEN).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityPyrolysisOven::new).custom().setTextureBlock(GregTechData.CASING_ULV);
     public static MultiMachine VACUUM_FREEZER = new MultiMachine(GTIRef.ID, "vacuum_freezer").setTiers(HV).setMap(RecipeMaps.VACUUM_FREEZER).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityVacuumFreezer::new).setTextureBlock(GregTechData.CASING_FROST_PROOF);
     /**
