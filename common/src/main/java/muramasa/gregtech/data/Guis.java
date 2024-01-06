@@ -302,6 +302,7 @@ public class Guis {
         VACUUM_FREEZER.add(MULTIBLOCK.getSlots());
         MULTI_SMELTER.add(MULTIBLOCK.getSlots());
         LARGE_BOILER.add(MULTIBLOCK.getSlots());
+        LARGE_CHEMICAL_REACTOR.add(MULTIBLOCK.getSlots());
         LARGE_TURBINE.add(MULTIBLOCK.getSlots());
         HEAT_EXCHANGER.add(MULTIBLOCK.getSlots());
         OIL_DRILLING_RIG.add(MULTIBLOCK.getSlots());
@@ -337,6 +338,7 @@ public class Guis {
         VACUUM_FREEZER.getGui().setBackgroundTexture("multiblock");
         MULTI_SMELTER.getGui().setBackgroundTexture("multiblock");
         LARGE_BOILER.getGui().setBackgroundTexture("multiblock");
+        LARGE_CHEMICAL_REACTOR.getGui().setBackgroundTexture("multiblock");
         LARGE_TURBINE.getGui().setBackgroundTexture("multiblock");
         HEAT_EXCHANGER.getGui().setBackgroundTexture("multiblock");
         OIL_DRILLING_RIG.getGui().setBackgroundTexture("multiblock");

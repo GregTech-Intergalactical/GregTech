@@ -106,6 +106,7 @@ public class AssemblyLoader {
         addCasing(Invar, CASING_HEAT_PROOF);
         addCasing(Aluminium, CASING_FROST_PROOF);
         addCasing(Lead, CASING_RADIATION_PROOF);
+        ASSEMBLER.RB().ii(of(CASING_SOLID_STEEL), INT_CIRCUITS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(CASING_CHEMICALLY_INERT.asItem()).add("chemically_inert_casing");
     }
 
     private static void cables(){

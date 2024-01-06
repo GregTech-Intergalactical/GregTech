@@ -792,6 +792,13 @@ public class Machines {
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .put('S', CASING_SOLID_STEEL)
                         .build(), "OOO", "CSC", "LCL"));
+        add(LARGE_CHEMICAL_REACTOR, HV, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('C', TIER_CIRCUITS.apply(HV))
+                        .put('M', MotorHV)
+                        .put('R', ROTOR.getMaterialTag(StainlessSteel))
+                        .put('P', FLUID_PIPE_POLY.getBlockItem(PipeSize.LARGE))
+                        .put('H', HULL_HV).build(), "CRC", "PMP", "CHC"));
         Arrays.stream(getStandard()).filter(t -> t !=IV).forEach(tier -> {
             Block firebox = tier == LV ? CASING_FIREBOX_BRONZE : tier == MV ? CASING_FIREBOX_STEEL : tier == HV ? CASING_FIREBOX_TITANIUM : CASING_FIREBOX_TUNGSTENSTEEL;
             TagKey<Item> circuit2 = tier == LV ? TIER_CIRCUITS.apply(tier) : tier == MV ? CIRCUITS_ADVANCED : tier == HV ? CIRCUITS_ELITE : CIRCUITS_MASTER;
