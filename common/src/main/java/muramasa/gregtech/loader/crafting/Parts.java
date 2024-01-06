@@ -13,13 +13,11 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.pipe.types.Cable;
-import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
-import muramasa.gregtech.GregTechConfig;
-import muramasa.gregtech.data.GregTechData;
-import muramasa.gregtech.data.GregTechTags;
+import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GregTechCovers;
+import muramasa.gregtech.data.GregTechItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -36,7 +34,6 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.machine.Tier.*;
-import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
 
@@ -83,8 +80,8 @@ public class Parts {
               'D', DUST_SMALL.get(Diamond)
       ), " D ", "DGD", " D ");
 
-      provider.addItemRecipe(output, "mining_pipes", MINING_PIPE_THIN,
-              of('H', HAMMER.getTag(), 'P', FLUID_PIPE_STEEL.getBlockItem(PipeSize.SMALL), 'F', FILE.getTag()), "HPF");
+      provider.addItemRecipe(output, "mining_pipes", GregTechBlocks.MINING_PIPE_THIN,
+              of('H', HAMMER.getTag(), 'P', GregTechBlocks.FLUID_PIPE_STEEL.getBlockItem(PipeSize.SMALL), 'F', FILE.getTag()), "HPF");
       provider.addStackRecipe(output, GTIRef.ID, "", "matches", new ItemStack(Match, 4), of('P', DUST.getMaterialTag(Phosphor), 'S', ROD.getMaterialTag(Wood)), "P", "S");
       provider.shapeless(output, GTIRef.ID, "tape_from_empty", "tapes", new ItemStack(Tape), TapeEmpty, TapeEmpty, TapeEmpty, TapeEmpty);
       provider.shapeless(output, GTIRef.ID, "duct_tape_from_empty", "tapes", new ItemStack(DuctTape), DuctTapeEmpty, DuctTapeEmpty, DuctTapeEmpty, DuctTapeEmpty);
@@ -92,9 +89,9 @@ public class Parts {
       provider.addItemRecipe(output, GTIRef.ID, "", "tapes", Tape, of('P', Items.PAPER, 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
       provider.addItemRecipe(output, GTIRef.ID, "", "tapes", DuctTape, of('P', FOIL.getMaterialTag(Plastic), 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
       provider.addItemRecipe(output, GTIRef.ID, "", "tapes", FALDuctTape, of('P', FOIL.getMaterialTag(Tungsten), 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
-      provider.shapeless(output, GTIRef.ID, "data_stick_clearing", "data_sticks", new ItemStack(DataStick), DataStick);
-      provider.shapeless(output, GTIRef.ID, "fluid_filter_reset", "filters", COVER_FLUID_FILTER.getItem(), COVER_FLUID_FILTER.getItem().getItem());
-      provider.shapeless(output, GTIRef.ID, "item_filter_reset", "filters", COVER_ITEM_FILTER.getItem(), COVER_ITEM_FILTER.getItem().getItem());
+      provider.shapeless(output, GTIRef.ID, "data_stick_clearing", "data_sticks", new ItemStack(GregTechItems.DataStick), GregTechItems.DataStick);
+      provider.shapeless(output, GTIRef.ID, "fluid_filter_reset", "filters", GregTechCovers.COVER_FLUID_FILTER.getItem(), GregTechCovers.COVER_FLUID_FILTER.getItem().getItem());
+      provider.shapeless(output, GTIRef.ID, "item_filter_reset", "filters", GregTechCovers.COVER_ITEM_FILTER.getItem(), GregTechCovers.COVER_ITEM_FILTER.getItem().getItem());
   }
 
   private static void tieredItems(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
@@ -132,9 +129,9 @@ public class Parts {
           provider.addItemRecipe(output, "gtparts", sensor,
                   of('R', emitterRod, 'G', emitterGem, 'C', circuit, 'P', plate), "P G", "PR ", "CPP");
           PipeSize osmium = t == IV ? PipeSize.HUGE : PipeSize.values()[t.getIntegerId() - 1];
-          Item center = t == LV ? Items.ENDER_PEARL : t == MV ? Items.ENDER_EYE : t == HV ? QuantumEye : t == EV ? Items.NETHER_STAR : QuantumStar;
+          Item center = t == LV ? Items.ENDER_PEARL : t == MV ? Items.ENDER_EYE : t == HV ? GregTechItems.QuantumEye : t == EV ? Items.NETHER_STAR : GregTechItems.QuantumStar;
           provider.addItemRecipe(output, "gtparts", fieldGen,
-                  of('O', WIRE_OSMIUM.getBlockItem(osmium), 'C', circuit, 'G', center), "OCO", "CGC", "OCO");
+                  of('O', GregTechBlocks.WIRE_OSMIUM.getBlockItem(osmium), 'C', circuit, 'G', center), "OCO", "CGC", "OCO");
           Material rotorMat = ((MaterialItem) TIER_ROTORS.get(t)).getMaterial();
           provider.addItemRecipe(output, "gtparts", pump,
                   ImmutableMap.<Character, Object>builder().put('M', motor).put('C', cable).put('W', WRENCH.getTag())

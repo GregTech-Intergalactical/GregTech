@@ -3,11 +3,10 @@ package muramasa.gregtech.loader.machines;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Materials;
 
-import java.util.function.Function;
 import java.util.function.ToLongFunction;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -34,9 +33,9 @@ public class BendingLoader {
         RING.all().stream().filter(m -> !m.has(MaterialTags.RUBBERTOOLS)).forEach(ring -> {
             BENDER.RB().ii(ROD.getMaterialIngredient(ring, 1), INT_CIRCUITS.get(1)).io(RING.get(ring, 2)).add(ring.getId() + "_ring", 200, 16);
         });
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Tin,2), INT_CIRCUITS.get(4)).io(GregTechData.CellTin.getDefaultInstance()).add("tin_cell",80,24);
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Steel,2), INT_CIRCUITS.get(4)).io(GregTechData.CellSteel.getDefaultInstance()).add("steel_cell",80,96);
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.TungstenSteel,2), INT_CIRCUITS.get(4)).io(GregTechData.CellTungstensteel.getDefaultInstance()).add("tungstensteel_cell",80,384);
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Zirconium,1), INT_CIRCUITS.get(1)).io(GregTechData.EmptyNuclearFuelRod).add("empty_fuel_rod",80,96);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Tin,2), INT_CIRCUITS.get(4)).io(GregTechItems.CellTin.getDefaultInstance()).add("tin_cell",80,24);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Steel,2), INT_CIRCUITS.get(4)).io(GregTechItems.CellSteel.getDefaultInstance()).add("steel_cell",80,96);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.TungstenSteel,2), INT_CIRCUITS.get(4)).io(GregTechItems.CellTungstensteel.getDefaultInstance()).add("tungstensteel_cell",80,384);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Zirconium,1), INT_CIRCUITS.get(1)).io(GregTechItems.EmptyNuclearFuelRod).add("empty_fuel_rod",80,96);
     }
 }

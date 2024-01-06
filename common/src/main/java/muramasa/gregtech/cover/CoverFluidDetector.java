@@ -3,7 +3,6 @@ package muramasa.gregtech.cover;
 import earth.terrarium.botarium.common.fluid.base.FluidContainer;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.IGuiHandler;
@@ -15,7 +14,7 @@ import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.event.IMachineEvent;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechCovers;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -33,7 +32,7 @@ public class CoverFluidDetector extends BaseCover implements IFilterableHandler 
     private final CoverFluidFilter filter;
     public CoverFluidDetector(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        this.filter = new CoverFluidFilter(source, null, side, GregTechData.COVER_FLUID_FILTER);
+        this.filter = new CoverFluidFilter(source, null, side, GregTechCovers.COVER_FLUID_FILTER);
         filter.onCreate();
         addGuiCallback(t -> {
             t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, true, b -> "tooltip.gti.redstone_mode." + (b ? "inverted" : "normal"));
@@ -142,6 +141,6 @@ public class CoverFluidDetector extends BaseCover implements IFilterableHandler 
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        return stack.getItem() == GregTechData.COVER_FLUID_FILTER.getItem().getItem();
+        return stack.getItem() == GregTechCovers.COVER_FLUID_FILTER.getItem().getItem();
     }
 }

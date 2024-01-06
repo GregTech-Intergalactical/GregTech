@@ -4,11 +4,11 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechBlocks;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-import static muramasa.gregtech.data.GregTechData.FLUID_PIPE_STEEL;
+import static muramasa.gregtech.data.GregTechBlocks.FLUID_PIPE_STEEL;
 import static muramasa.gregtech.data.RecipeMaps.WIRE_MILL;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 
@@ -23,7 +23,7 @@ public class WiremillLoader {
                 WIRE_MILL.RB().ii(wireItem).io(WIRE_FINE.get(t.getMaterial(),4)).add(t.getMaterial().getId() + "_wire_fine", 200,8);
             }
         });
-        WIRE_MILL.RB().ii(FLUID_PIPE_STEEL.getBlockItem(PipeSize.TINY)).io(GregTechData.MINING_PIPE_THIN.asItem()).add("mining_pipe", 200, 16);
+        WIRE_MILL.RB().ii(FLUID_PIPE_STEEL.getBlockItem(PipeSize.TINY)).io(GregTechBlocks.MINING_PIPE_THIN.asItem()).add("mining_pipe", 200, 16);
 
     }
 }

@@ -1,7 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
@@ -36,6 +36,6 @@ public class Autoclave {
         AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Materials.Carbon, 4)).fi(Materials.Palladium.getLiquid(1)).io(new ItemStack(GTCoreItems.CarbonFibre, 2)).add("carbon_fibre_2", 150, 5);
         AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Energium, 9)).fi(DistilledWater.getLiquid(1000)).io(EnergyCrystal).add("energy_crystal_distilled_water", 250, 256);
         AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Energium, 9)).fi(Water.getLiquid(1000)).io(EnergyCrystal).add("energy_crystal", 500, 256);
-        AUTOCLAVE.RB().ii(of(Items.NETHER_STAR)).fi(Neutronium.getLiquid(L * 2)).io(GregTechData.GraviStar).add("gravistar", 480, 7680);
+        AUTOCLAVE.RB().ii(of(Items.NETHER_STAR)).fi(Neutronium.getLiquid(L * 2)).io(GregTechItems.GraviStar).add("gravistar", 480, 7680);
     }
 }

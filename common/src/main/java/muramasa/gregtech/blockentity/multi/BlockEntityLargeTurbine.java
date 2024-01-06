@@ -17,17 +17,14 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.registration.ITextureProvider;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.items.ItemTurbineRotor;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import tesseract.TesseractGraphWrappers;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.ROD;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.ROD_LONG;
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static muramasa.antimatter.machine.Tier.*;
@@ -194,11 +191,11 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
 
     public BlockBasic getCasing(){
         if (tier == HV) {
-            return GregTechData.CASING_TURBINE_STEEL;
+            return GregTechBlocks.CASING_TURBINE_STEEL;
         } else if (tier == EV) {
-            return GregTechData.CASING_TURBINE_STAINLESS;
+            return GregTechBlocks.CASING_TURBINE_STAINLESS;
         } else {
-            return GregTechData.CASING_TURBINE_TITANIUM;
+            return GregTechBlocks.CASING_TURBINE_TITANIUM;
         }
     }
 

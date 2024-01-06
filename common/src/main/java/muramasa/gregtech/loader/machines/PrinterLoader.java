@@ -1,7 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
@@ -12,7 +12,7 @@ import static muramasa.gregtech.data.Materials.SquidInk;
 
 public class PrinterLoader {
     public static void init(){
-        ItemStack dataStick = new ItemStack(GregTechData.DataStick);
+        ItemStack dataStick = new ItemStack(GregTechItems.DataStick);
         CompoundTag display = dataStick.getOrCreateTagElement("display");
         CompoundTag name = new CompoundTag();
         name.putString("text", "With Scanned Book Data");

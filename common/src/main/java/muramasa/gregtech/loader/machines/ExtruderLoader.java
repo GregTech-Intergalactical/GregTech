@@ -1,7 +1,5 @@
 package muramasa.gregtech.loader.machines;
 
-import com.google.common.collect.ImmutableMap;
-import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
@@ -11,19 +9,16 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.*;
 import muramasa.antimatter.tool.AntimatterToolType;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import java.util.Arrays;
-import java.util.function.LongFunction;
 import java.util.function.ToLongFunction;
 
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
-import static muramasa.antimatter.data.AntimatterDefaultTools.SCREWDRIVER;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
 import static muramasa.antimatter.material.MaterialTags.RUBBERTOOLS;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
@@ -37,7 +32,7 @@ public class ExtruderLoader {
             if (m.has(GregTechMaterialTags.RECIPE_MASS)) return GregTechMaterialTags.RECIPE_MASS.get(m);
             return m.getMass();
         };
-        EXTRUDER.RB().ii(INGOT.getMaterialIngredient(Materials.Zirconium, 1), of(GTCoreItems.ShapeCell, 1).setNoConsume()).io(GregTechData.EmptyNuclearFuelRod).add("empty_nuclear_rod", 216, 96);
+        EXTRUDER.RB().ii(INGOT.getMaterialIngredient(Materials.Zirconium, 1), of(GTCoreItems.ShapeCell, 1).setNoConsume()).io(GregTechItems.EmptyNuclearFuelRod).add("empty_nuclear_rod", 216, 96);
         AntimatterMaterialTypes.RING.all().forEach(r -> {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeRing, 1).setNoConsume()).io(AntimatterMaterialTypes.RING.get(r, 4)).add("ring_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));

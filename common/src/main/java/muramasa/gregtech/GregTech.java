@@ -5,7 +5,6 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.common.event.CommonEvents;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.datagen.providers.*;
 import muramasa.antimatter.event.CraftingEvent;
@@ -13,7 +12,6 @@ import muramasa.antimatter.event.ProvidersEvent;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.mixin.LivingEntityAccessor;
-import muramasa.antimatter.pipe.BlockFluidPipe;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
@@ -46,8 +44,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.function.BiConsumer;
-
-import static muramasa.gregtech.data.GregTechData.*;
 
 public class GregTech extends AntimatterMod {
 
@@ -182,6 +178,9 @@ public class GregTech extends AntimatterMod {
                 Materials.init();
                 TierMaps.init();
                 GregTechData.init(side);
+                GregTechCovers.init();
+                GregTechItems.init();
+                GregTechBlocks.init();
                 Machines.init();
                 MenuHandlers.init();
                 Guis.init(side);
@@ -214,19 +213,19 @@ public class GregTech extends AntimatterMod {
                 Structures.init();
                 GregTechTwilightStalctites.init();
                 GTRemapping.init();
-                AntimatterJEIREIPlugin.addItemsToHide(LAVA);
+                AntimatterJEIREIPlugin.addItemsToHide(GregTechBlocks.LAVA);
                 AntimatterJEIREIPlugin.addItemsToHide(l -> {
                     IAntimatterTool screwdriver_mv = AntimatterAPI.get(IAntimatterTool.class, "electric_screwdriver_mv");
                     IAntimatterTool screwdriver_hv = AntimatterAPI.get(IAntimatterTool.class, "electric_screwdriver_hv");
                     l.addAll(Arrays.asList(screwdriver_mv.getItem(), screwdriver_hv.getItem()));
                     if (!GregTechConfig.HARDER_CIRCUITS){
                         l.addAll(Arrays.asList(GTCoreItems.CircuitBoardPhenolic));
-                        l.addAll(Arrays.asList(CircuitWetware, MicroProcessor, IntegratedProcessor, NanoProcessor, QuantumProcessor));
+                        l.addAll(Arrays.asList(GregTechItems.CircuitWetware, GregTechItems.MicroProcessor, GregTechItems.IntegratedProcessor, GregTechItems.NanoProcessor, GregTechItems.QuantumProcessor));
                     }
                 });
-                AntimatterPlatformUtils.setBurnTime(SOLID_SUPER_FUEL.asItem(), 100000);
-                AntimatterPlatformUtils.setBurnTime(WoodPellet, 200);
-                AntimatterPlatformUtils.setFlammability(WOOD_WALL, 5, 20);
+                AntimatterPlatformUtils.setBurnTime(GregTechBlocks.SOLID_SUPER_FUEL.asItem(), 100000);
+                AntimatterPlatformUtils.setBurnTime(GregTechItems.WoodPellet, 200);
+                AntimatterPlatformUtils.setFlammability(GregTechBlocks.WOOD_WALL, 5, 20);
                 AntimatterPlatformUtils.setFlammability(Machines.WOOD_TANK.getBlockState(Tier.NONE), 5, 20);
                 CommonHandler.setup();
               //  if (side == Dist.CLIENT) StructureInfo.init();

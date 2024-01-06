@@ -8,7 +8,7 @@ import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.block.BlockFakeCasing;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechBlocks;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 
@@ -41,7 +41,7 @@ public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
         AntimatterAPI.all(BlockCoil.class, GTIRef.ID, cas -> {
             this.tag(AntimatterDefaultTools.WRENCH.getToolType()).add(cas);
         });
-        this.tag(AntimatterDefaultTools.AXE.getToolType()).add(GregTechData.BRITTLE_CHARCOAL);
-        this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(GregTechData.MINING_PIPE, GregTechData.MINING_PIPE_THIN, GregTechData.SOLID_SUPER_FUEL);
+        this.tag(AntimatterDefaultTools.AXE.getToolType()).add(GregTechBlocks.BRITTLE_CHARCOAL);
+        this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(GregTechBlocks.MINING_PIPE, GregTechBlocks.MINING_PIPE_THIN, GregTechBlocks.SOLID_SUPER_FUEL);
     }
 }

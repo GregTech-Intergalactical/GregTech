@@ -16,7 +16,7 @@ import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockColoredWall;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechBlocks;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -36,7 +36,6 @@ import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.machine.Tier.LV;
 import static muramasa.antimatter.machine.Tier.MV;
-import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
 
@@ -59,50 +58,50 @@ public class BlockParts {
             }
         });
 
-        addBrickedCasing(output, provider, Bronze, GregTechData.CASING_BRICKED_BRONZE);
+        addBrickedCasing(output, provider, Bronze, GregTechBlocks.CASING_BRICKED_BRONZE);
         provider.addStackRecipe(output, GTIRef.ID, "firebricks", "blocks",
-                new ItemStack(CASING_FIRE_BRICK), of('F', GTCoreItems.FireBrick), "FF", "FF");
-        addBrickedCasing(output, provider, Steel, GregTechData.CASING_BRICKED_STEEL);
+                new ItemStack(GregTechBlocks.CASING_FIRE_BRICK), of('F', GTCoreItems.FireBrick), "FF", "FF");
+        addBrickedCasing(output, provider, Steel, GregTechBlocks.CASING_BRICKED_STEEL);
 
-        addFirebox(output, provider, Bronze, GregTechData.CASING_FIREBOX_BRONZE);
-        addFirebox(output, provider, Steel, GregTechData.CASING_FIREBOX_STEEL);
-        addFirebox(output, provider, Titanium, GregTechData.CASING_FIREBOX_TITANIUM);
-        addFirebox(output, provider, TungstenSteel, GregTechData.CASING_FIREBOX_TUNGSTENSTEEL);
+        addFirebox(output, provider, Bronze, GregTechBlocks.CASING_FIREBOX_BRONZE);
+        addFirebox(output, provider, Steel, GregTechBlocks.CASING_FIREBOX_STEEL);
+        addFirebox(output, provider, Titanium, GregTechBlocks.CASING_FIREBOX_TITANIUM);
+        addFirebox(output, provider, TungstenSteel, GregTechBlocks.CASING_FIREBOX_TUNGSTENSTEEL);
 
-        addGearbox(output, provider, Bronze, GregTechData.CASING_GEARBOX_BRONZE);
-        addGearbox(output, provider, Steel, GregTechData.CASING_GEARBOX_STEEL);
-        addGearbox(output, provider, Titanium, GregTechData.CASING_GEARBOX_TITANIUM);
-        addGearbox(output, provider, TungstenSteel, GregTechData.CASING_GEARBOX_TUNGSTENSTEEL);
+        addGearbox(output, provider, Bronze, GregTechBlocks.CASING_GEARBOX_BRONZE);
+        addGearbox(output, provider, Steel, GregTechBlocks.CASING_GEARBOX_STEEL);
+        addGearbox(output, provider, Titanium, GregTechBlocks.CASING_GEARBOX_TITANIUM);
+        addGearbox(output, provider, TungstenSteel, GregTechBlocks.CASING_GEARBOX_TUNGSTENSTEEL);
 
-        addPipeCasing(output, provider, Bronze, FLUID_PIPE_BRONZE, GregTechData.CASING_PIPE_BRONZE);
-        addPipeCasing(output, provider, Steel, FLUID_PIPE_STEEL, GregTechData.CASING_PIPE_STEEL);
-        addPipeCasing(output, provider, Titanium, FLUID_PIPE_TITANIUM, GregTechData.CASING_PIPE_TITANIUM);
-        addPipeCasing(output, provider, TungstenSteel, FLUID_PIPE_TUNGSTEN_STEEL, GregTechData.CASING_PIPE_TUNGSTENSTEEL);
-        addPipeCasing(output, provider, Polytetrafluoroethylene, FLUID_PIPE_POLY, CASING_PIPE_PTFE);
+        addPipeCasing(output, provider, Bronze, GregTechBlocks.FLUID_PIPE_BRONZE, GregTechBlocks.CASING_PIPE_BRONZE);
+        addPipeCasing(output, provider, Steel, GregTechBlocks.FLUID_PIPE_STEEL, GregTechBlocks.CASING_PIPE_STEEL);
+        addPipeCasing(output, provider, Titanium, GregTechBlocks.FLUID_PIPE_TITANIUM, GregTechBlocks.CASING_PIPE_TITANIUM);
+        addPipeCasing(output, provider, TungstenSteel, GregTechBlocks.FLUID_PIPE_TUNGSTEN_STEEL, GregTechBlocks.CASING_PIPE_TUNGSTENSTEEL);
+        addPipeCasing(output, provider, Polytetrafluoroethylene, GregTechBlocks.FLUID_PIPE_POLY, GregTechBlocks.CASING_PIPE_PTFE);
 
-        addTurbine(output, provider, Steel, GregTechData.CASING_TURBINE_STEEL);
-        addTurbine(output, provider, StainlessSteel, GregTechData.CASING_TURBINE_STAINLESS);
-        addTurbine(output, provider, Titanium, GregTechData.CASING_TURBINE_TITANIUM);
-        addTurbine(output, provider, TungstenSteel, GregTechData.CASING_TURBINE_TUNGSTENSTEEL);
+        addTurbine(output, provider, Steel, GregTechBlocks.CASING_TURBINE_STEEL);
+        addTurbine(output, provider, StainlessSteel, GregTechBlocks.CASING_TURBINE_STAINLESS);
+        addTurbine(output, provider, Titanium, GregTechBlocks.CASING_TURBINE_TITANIUM);
+        addTurbine(output, provider, TungstenSteel, GregTechBlocks.CASING_TURBINE_TUNGSTENSTEEL);
 
-        addCasing(output, provider, Invar, GregTechData.CASING_HEAT_PROOF);
-        addCasing(output, provider, Aluminium, GregTechData.CASING_FROST_PROOF);
-        addCasing(output, provider, Steel, GregTechData.CASING_SOLID_STEEL);
-        addCasing(output, provider, StainlessSteel, GregTechData.CASING_STAINLESS_STEEL);
-        addCasing(output, provider, Titanium, GregTechData.CASING_TITANIUM);
-        addCasing(output, provider, Lead, GregTechData.CASING_RADIATION_PROOF);
-        addCasing(output, provider, TungstenSteel, GregTechData.CASING_TUNGSTENSTEEL);
-        addCasing(output, provider, Tungsten, GregTechData.CASING_TUNGSTEN);
-        addCasing(output, provider, Platinum, CASING_PLATINUM);
+        addCasing(output, provider, Invar, GregTechBlocks.CASING_HEAT_PROOF);
+        addCasing(output, provider, Aluminium, GregTechBlocks.CASING_FROST_PROOF);
+        addCasing(output, provider, Steel, GregTechBlocks.CASING_SOLID_STEEL);
+        addCasing(output, provider, StainlessSteel, GregTechBlocks.CASING_STAINLESS_STEEL);
+        addCasing(output, provider, Titanium, GregTechBlocks.CASING_TITANIUM);
+        addCasing(output, provider, Lead, GregTechBlocks.CASING_RADIATION_PROOF);
+        addCasing(output, provider, TungstenSteel, GregTechBlocks.CASING_TUNGSTENSTEEL);
+        addCasing(output, provider, Tungsten, GregTechBlocks.CASING_TUNGSTEN);
+        addCasing(output, provider, Platinum, GregTechBlocks.CASING_PLATINUM);
 
-        addCoil(output, provider, WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), COIL_CUPRONICKEL);
-        addCoil(output, provider, WIRE_KANTHAL.getBlockItem(PipeSize.TINY), COIL_KANTHAL);
-        addCoil(output, provider, WIRE_NICHROME.getBlockItem(PipeSize.TINY), COIL_NICHROME);
-        addCoil(output, provider, WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY), COIL_TUNGSTENSTEEL);
-        addCoil(output, provider, WIRE_HSSG.getBlockItem(PipeSize.TINY), COIL_HSSG);
-        addCoil(output, provider, WIRE_NAQUADAH.getBlockItem(PipeSize.TINY), COIL_NAQUADAH);
-        addCoil(output, provider, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY), COIL_NAQUADAH_ALLOY);
-        addCoil(output, provider, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY), COIL_SUPERCONDUCTOR);
+        addCoil(output, provider, GregTechBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_CUPRONICKEL);
+        addCoil(output, provider, GregTechBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_KANTHAL);
+        addCoil(output, provider, GregTechBlocks.WIRE_NICHROME.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_NICHROME);
+        addCoil(output, provider, GregTechBlocks.WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_TUNGSTENSTEEL);
+        addCoil(output, provider, GregTechBlocks.WIRE_HSSG.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_HSSG);
+        addCoil(output, provider, GregTechBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_NAQUADAH);
+        addCoil(output, provider, GregTechBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_NAQUADAH_ALLOY);
+        addCoil(output, provider, GregTechBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_SUPERCONDUCTOR);
 
         addTierCasing(output, provider, Tier.ULV);
         addTierCasing(output, provider, LV);
@@ -126,23 +125,23 @@ public class BlockParts {
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UV);
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UHV);
 
-        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", new ItemStack(CASING_ENGINE_INTAKE, 2),
-                of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', CASING_TITANIUM, 'G', FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", new ItemStack(GregTechBlocks.CASING_ENGINE_INTAKE, 2),
+                of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', GregTechBlocks.CASING_TITANIUM, 'G', GregTechBlocks.FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
                 ,
                 "PHP", "GFG", "PWP");
 
-        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", new ItemStack(CASING_BRONZE_PLATED_BRICK, 2),
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", new ItemStack(GregTechBlocks.CASING_BRONZE_PLATED_BRICK, 2),
                 ImmutableMap.<Character, Object>builder()
                         .put('P', PLATE.get(Bronze))
                         .put('B', Blocks.BRICKS)
                         .put('W', WRENCH.getTag()).put('H', HAMMER.getTag()).build(), "PHP", "PBP", "PWP");
 
-        provider.addItemRecipe(output, "gtblockparts", CASING_STEEL,
+        provider.addItemRecipe(output, "gtblockparts", GregTechBlocks.CASING_STEEL,
                 ImmutableMap.<Character, Object>builder()
                         .put('P', PLATE.get(Steel))
                         .put('W', HAMMER.getTag()).build(), "PPP", "PWP", "PPP");
-        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", new ItemStack(CASING_FUSION, 1),
-                of('P', PLATE.getMaterialTag(TungstenSteel), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', CASING_LUV)
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", new ItemStack(GregTechBlocks.CASING_FUSION, 1),
+                of('P', PLATE.getMaterialTag(TungstenSteel), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', GregTechBlocks.CASING_LUV)
                 ,
                 "PHP", "PFP", "PWP");
         /*provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CASING_FUSION_2, 1),
@@ -151,37 +150,37 @@ public class BlockParts {
                 "PHP", "PFP", "PWP");*/
 
         //TODO make these also use annealed copper
-        provider.addItemRecipe(output, "long_distance_cables", LONG_DIST_WIRE_EV,
-                of('C', WIRE_TIN.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
-        provider.addItemRecipe(output, "long_distance_cables", LONG_DIST_WIRE_IV,
+        provider.addItemRecipe(output, "long_distance_cables", GregTechBlocks.LONG_DIST_WIRE_EV,
+                of('C', GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
+        provider.addItemRecipe(output, "long_distance_cables", GregTechBlocks.LONG_DIST_WIRE_IV,
                 of('C', WIRE_GETTER.apply(PipeSize.HUGE, LV), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
-        provider.addItemRecipe(output, "long_distance_cables", LONG_DIST_WIRE_LUV,
-                of('C', WIRE_ELECTRUM.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
-        provider.addItemRecipe(output, "long_distance_cables", LONG_DIST_WIRE_ZPM,
-                of('C', WIRE_ALUMINIUM.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
-        provider.addItemRecipe(output, "long_distance_cables", LONG_DIST_WIRE_UV,
-                of('C', WIRE_PLATINUM.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
-        provider.addItemRecipe(output, "long_distance_pipes", LONG_DIST_ITEM_PIPE,
-                of('E', ITEM_PIPE_ELECTRUM.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Plastic)), "PEP", "EWE", "PEP");
-        provider.addItemRecipe(output, "long_distance_pipes", LONG_DIST_FLUID_PIPE,
-                of('E', FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Plastic)), "PEP", "EWE", "PEP");
+        provider.addItemRecipe(output, "long_distance_cables", GregTechBlocks.LONG_DIST_WIRE_LUV,
+                of('C', GregTechBlocks.WIRE_ELECTRUM.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
+        provider.addItemRecipe(output, "long_distance_cables", GregTechBlocks.LONG_DIST_WIRE_ZPM,
+                of('C', GregTechBlocks.WIRE_ALUMINIUM.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
+        provider.addItemRecipe(output, "long_distance_cables", GregTechBlocks.LONG_DIST_WIRE_UV,
+                of('C', GregTechBlocks.WIRE_PLATINUM.getBlockItem(PipeSize.HUGE), 'c', PLATE.getMaterialTag(Copper), 'A', PLATE.getMaterialTag(Aluminium), 'R', PLATE.getMaterialTag(Rubber)), "RAR", "cCc", "RAR");
+        provider.addItemRecipe(output, "long_distance_pipes", GregTechBlocks.LONG_DIST_ITEM_PIPE,
+                of('E', GregTechBlocks.ITEM_PIPE_ELECTRUM.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Plastic)), "PEP", "EWE", "PEP");
+        provider.addItemRecipe(output, "long_distance_pipes", GregTechBlocks.LONG_DIST_FLUID_PIPE,
+                of('E', GregTechBlocks.FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Plastic)), "PEP", "EWE", "PEP");
 
-        addSlabRecipe(output, provider, WHITE_ASPHALT, WHITE_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, ORANGE_ASPHALT, ORANGE_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, MAGENTA_ASPHALT, MAGENTA_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, LIGHT_BLUE_ASPHALT, LIGHT_BLUE_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, YELLOW_ASPHALT, YELLOW_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, LIME_ASPHALT, LIME_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, PINK_ASPHALT, PINK_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GRAY_ASPHALT, GRAY_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, LIGHT_GRAY_ASPHALT, LIGHT_GRAY_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, CYAN_ASPHALT, CYAN_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, PURPLE_ASPHALT, PURPLE_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, BLUE_ASPHALT, BLUE_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, BROWN_ASPHALT, BROWN_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GREEN_ASPHALT, GREEN_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, RED_ASPHALT, RED_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, BLACK_ASPHALT, BLACK_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.WHITE_ASPHALT, GregTechBlocks.WHITE_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.ORANGE_ASPHALT, GregTechBlocks.ORANGE_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.MAGENTA_ASPHALT, GregTechBlocks.MAGENTA_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.LIGHT_BLUE_ASPHALT, GregTechBlocks.LIGHT_BLUE_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.YELLOW_ASPHALT, GregTechBlocks.YELLOW_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.LIME_ASPHALT, GregTechBlocks.LIME_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.PINK_ASPHALT, GregTechBlocks.PINK_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.GRAY_ASPHALT, GregTechBlocks.GRAY_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.LIGHT_GRAY_ASPHALT, GregTechBlocks.LIGHT_GRAY_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.CYAN_ASPHALT, GregTechBlocks.CYAN_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.PURPLE_ASPHALT, GregTechBlocks.PURPLE_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.BLUE_ASPHALT, GregTechBlocks.BLUE_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.BROWN_ASPHALT, GregTechBlocks.BROWN_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.GREEN_ASPHALT, GregTechBlocks.GREEN_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.RED_ASPHALT, GregTechBlocks.RED_ASPHALT_SLAB);
+        addSlabRecipe(output, provider, GregTechBlocks.BLACK_ASPHALT, GregTechBlocks.BLACK_ASPHALT_SLAB);
 
         /*provider.addStackRecipe(output, GTIRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
                 of('C', CASING_FIRE_BRICK,

@@ -3,12 +3,12 @@ package muramasa.gregtech.datagen;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
+import muramasa.gregtech.data.GregTechItems;
 import net.minecraft.world.item.Items;
 
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 
 public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
@@ -20,8 +20,8 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
     protected void processTags(String domain) {
         super.processTags(domain);
         //this.tag(GregTechTags.CIRCUITS_EXTREME).add(GregTechData.CircuitDataStorage);
-        this.tag(CIRCUITS_ELITE).add(NanoProcessor);
-        this.tag(CIRCUITS_MASTER).add(QuantumProcessor);
+        this.tag(CIRCUITS_ELITE).add(GregTechItems.NanoProcessor);
+        this.tag(CIRCUITS_MASTER).add(GregTechItems.QuantumProcessor);
         this.tag(RESISTORS).add(GTCoreItems.Resistor, GTCoreItems.SMDResistor);
         this.tag(CAPACITORS).add(GTCoreItems.Capacitor, GTCoreItems.SMDCapacitor);
         this.tag(TRANSISTORS).add(GTCoreItems.Transistor, GTCoreItems.SMDTransistor);

@@ -3,7 +3,6 @@ package muramasa.gregtech.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
@@ -12,14 +11,13 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.PropertyIngredient;
 import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.data.GregTechTags;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.ToolTypes;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 
-import java.util.Collections;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -28,7 +26,6 @@ import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTools.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 
 public class ElectricToolRecipes {
@@ -251,7 +248,7 @@ public class ElectricToolRecipes {
                 ImmutableMap.<Character, Object>builder()
                         .put('R', PropertyIngredient.builder("primary").types(ROD_LONG).tool(JACKHAMMER, true).build())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LARGE).build())
-                        .put('E', PistonHV)
+                        .put('E', GregTechItems.PistonHV)
                         .put('S', SCREW.getMaterialTag(Steel))
                         .put('P', PropertyIngredient.builder("secondary").mats(Titanium).types(PLATE).build())
                         .put('T', SPRING.getMaterialTag(Titanium))

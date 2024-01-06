@@ -3,7 +3,6 @@ package muramasa.gregtech.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
 import io.github.gregtechintergalactical.gtcore.machine.*;
 import muramasa.antimatter.AntimatterAPI;
@@ -23,8 +22,7 @@ import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.data.Materials;
-import muramasa.gregtech.data.TierMaps;
+import muramasa.gregtech.data.*;
 import muramasa.gregtech.machine.MultiblockTankMachine;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.ItemTags;
@@ -45,7 +43,6 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.machine.Tier.*;
-import static muramasa.gregtech.data.GregTechData.*;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
@@ -109,7 +106,7 @@ public class Machines {
             add(LATHE, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder().put('P', piston).put('M', motor).put('C', circuit).put('L', cable).put('H', hull).put('D', diamond).build(), "LCL", "MHD", "CLP"));
 
-            Wire<?> electroWire = tier == LV ? WIRE_GOLD : tier == MV ? WIRE_SILVER : tier == HV ? WIRE_ELECTRUM : tier == EV ? WIRE_PLATINUM : WIRE_OSMIUM;
+            Wire<?> electroWire = tier == LV ? GregTechBlocks.WIRE_GOLD : tier == MV ? GregTechBlocks.WIRE_SILVER : tier == HV ? GregTechBlocks.WIRE_ELECTRUM : tier == EV ? GregTechBlocks.WIRE_PLATINUM : GregTechBlocks.WIRE_OSMIUM;
             add(ELECTROLYZER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.of(
                             'C', circuit,
@@ -142,10 +139,10 @@ public class Machines {
                             .put('P', piston)
                             .put('L', cable)
                             .put('H', hull)
-                            .put('F', COVER_ITEM_FILTER.getItem())
+                            .put('F', GregTechCovers.COVER_ITEM_FILTER.getItem())
                             .build(), "LFL", "PHP", "CFC"));
 
-            Item esWire = tier == LV ? WIRE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? WIRE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? WIRE_COPPER.getBlockItem(PipeSize.SMALL) : WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
+            Item esWire = tier == LV ? GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? GregTechBlocks.WIRE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? GregTechBlocks.WIRE_COPPER.getBlockItem(PipeSize.SMALL) : GregTechBlocks.WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
             add(ELECTROMAGNETIC_SEPARATOR, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('c', conveyor)
@@ -396,7 +393,7 @@ public class Machines {
                             .put('H', hull)
                             .put('L', cable)
                             .put('S', ForgeCTags.CHESTS).build(), "SCS", "RHc", "LCL"));
-            Item wire = tier == LV ? WIRE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? WIRE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? WIRE_COPPER.getBlockItem(PipeSize.SMALL) : WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
+            Item wire = tier == LV ? GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? GregTechBlocks.WIRE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? GregTechBlocks.WIRE_COPPER.getBlockItem(PipeSize.SMALL) : GregTechBlocks.WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
             Material rodMaterial = tier == LV ? Iron : tier == MV || tier == HV ? Steel : tier == EV ? Neodymium : VanadiumGallium;
             add(POLARIZER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
@@ -478,7 +475,7 @@ public class Machines {
                             .put('C', conveyor).build(), "DMC"));
             add(SUPER_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, GTIRef.ID, "super_buffer_" + tier.getId() +"_1", "machines", item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('D', DataStick)
+                            .put('D', GregTechItems.DataStick)
                             .put('M', hull)
                             .put('C', conveyor).build(), "DMC", "DDD"));
             add(CHEST_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
@@ -492,14 +489,14 @@ public class Machines {
                     ImmutableMap.<Character, Object>builder()
                             .put('H', hull)
                             .put('C', TIER_CIRCUITS.apply(HV))
-                            .put('F', COVER_ITEM_FILTER.getItem())
+                            .put('F', GregTechCovers.COVER_ITEM_FILTER.getItem())
                             .put('E', ForgeCTags.CHESTS)
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
             add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('H', hull)
                             .put('C', TIER_CIRCUITS.apply(LV))
-                            .put('F', COVER_ITEM_FILTER.getItem())
+                            .put('F', GregTechCovers.COVER_ITEM_FILTER.getItem())
                             .put('E', ForgeCTags.CHESTS)
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
         });
@@ -507,8 +504,8 @@ public class Machines {
                 of('O', PLATE.getMaterialTag(Obsidian), 'I', PLATE.getMaterialTag(Iron), 'E', Items.ENDER_EYE), "OOO", "OEO", "III");
 
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(NONE),
-                of('S', Wafer, 'G', Items.GLASS_PANE, 'C', CIRCUITS_BASIC,
-                        'P', PLATE.getMaterialTag(Carbon), 'H', HULL_ULV, 'W', CABLE_LEAD.getBlockItem(PipeSize.VTINY)), "SGS", "CPC", "WHW");
+                of('S', GregTechItems.Wafer, 'G', Items.GLASS_PANE, 'C', CIRCUITS_BASIC,
+                        'P', PLATE.getMaterialTag(Carbon), 'H', GregTechBlocks.HULL_ULV, 'W', GregTechBlocks.CABLE_LEAD.getBlockItem(PipeSize.VTINY)), "SGS", "CPC", "WHW");
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(ULV),
                 of('S', SOLAR_PANEL.getItem(NONE), 'C', CIRCUITS_ADVANCED), "SSS", "SCS", "SSS");
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(LV),
@@ -519,91 +516,91 @@ public class Machines {
         var circuit = GregTechConfig.HARDER_CIRCUITS ? CIRCUITS_ADVANCED : EngravedCrystalChip;
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(Tier.LV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_LV)
+                        .put('H', GregTechBlocks.HULL_LV)
                         .put('C', circuit)
-                        .put('F', FieldGenLV)
+                        .put('F', GregTechItems.FieldGenLV)
                         .put('P', PLATE.get(Steel)).build(), "CFC", "PHP", "CPC");
 
         circuit = GregTechConfig.HARDER_CIRCUITS ? CIRCUITS_COMPLEX : CIRCUITS_DATA;
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(MV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_MV)
+                        .put('H', GregTechBlocks.HULL_MV)
                         .put('C', circuit)
-                        .put('F', FieldGenMV)
+                        .put('F', GregTechItems.FieldGenMV)
                         .put('P', PLATE.get(Aluminium)).build(), "CFC", "PHP", "CPC");
 
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(Tier.HV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_HV)
+                        .put('H', GregTechBlocks.HULL_HV)
                         .put('C', CIRCUITS_ELITE)
-                        .put('F', FieldGenHV)
+                        .put('F', GregTechItems.FieldGenHV)
                         .put('P', PLATE.get(StainlessSteel)).build(), "CFC", "PHP", "CPC");
 
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(Tier.EV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_EV)
+                        .put('H', GregTechBlocks.HULL_EV)
                         .put('C', CIRCUITS_MASTER)
-                        .put('F', FieldGenEV)
+                        .put('F', GregTechItems.FieldGenEV)
                         .put('P', PLATE.get(Titanium)).build(), "CFC", "PHP", "CPC");
 
         circuit = GregTechConfig.HARDER_CIRCUITS ? CIRCUITS_DATA_ORB : CIRCUITS_DATA_ORB;
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(Tier.IV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_IV)
+                        .put('H', GregTechBlocks.HULL_IV)
                         .put('C', circuit)
-                        .put('F', FieldGenIV)
+                        .put('F', GregTechItems.FieldGenIV)
                         .put('P', PLATE.get(TungstenSteel)).build(), "CFC", "PHP", "CPC");
 
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.ULV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_ULV)
-                        .put('C', CABLE_LEAD.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_TIN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('H', GregTechBlocks.HULL_ULV)
+                        .put('C', GregTechBlocks.CABLE_LEAD.getBlockItem(PipeSize.VTINY))
+                        .put('W', GregTechBlocks.CABLE_TIN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.LV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_LV)
-                        .put('C', CABLE_TIN.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_COPPER.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('H', GregTechBlocks.HULL_LV)
+                        .put('C', GregTechBlocks.CABLE_TIN.getBlockItem(PipeSize.VTINY))
+                        .put('W', GregTechBlocks.CABLE_COPPER.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(MV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_MV)
-                        .put('C', CABLE_COPPER.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_GOLD.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('H', GregTechBlocks.HULL_MV)
+                        .put('C', GregTechBlocks.CABLE_COPPER.getBlockItem(PipeSize.VTINY))
+                        .put('W', GregTechBlocks.CABLE_GOLD.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.HV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_HV)
-                        .put('C', CABLE_GOLD.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('H', GregTechBlocks.HULL_HV)
+                        .put('C', GregTechBlocks.CABLE_GOLD.getBlockItem(PipeSize.VTINY))
+                        .put('W', GregTechBlocks.CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.EV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_EV)
-                        .put('C', CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('H', GregTechBlocks.HULL_EV)
+                        .put('C', GregTechBlocks.CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY))
+                        .put('W', GregTechBlocks.CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.IV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_IV)
-                        .put('C', CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('H', GregTechBlocks.HULL_IV)
+                        .put('C', GregTechBlocks.CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY))
+                        .put('W', GregTechBlocks.CABLE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.LUV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_LUV)
-                        .put('C', CABLE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY))
-                        .put('W', CABLE_NAQUADAH.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('H', GregTechBlocks.HULL_LUV)
+                        .put('C', GregTechBlocks.CABLE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY))
+                        .put('W', GregTechBlocks.CABLE_NAQUADAH.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(ZPM),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_ZPM)
-                        .put('C', CABLE_NAQUADAH.getBlockItem(PipeSize.VTINY))
-                        .put('W', WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL)).build(), " CC", "WH ", " CC");
+                        .put('H', GregTechBlocks.HULL_ZPM)
+                        .put('C', GregTechBlocks.CABLE_NAQUADAH.getBlockItem(PipeSize.VTINY))
+                        .put('W', GregTechBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL)).build(), " CC", "WH ", " CC");
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(UV),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_UV)
-                        .put('C', WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL))
-                        .put('W', WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('H', GregTechBlocks.HULL_UV)
+                        .put('C', GregTechBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL))
+                        .put('W', GregTechBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
         provider.addItemRecipe(output, "machines", LONG_DISTANCE_TRANSFORMER_ENDPOINT.getItem(EV),
                 of('T', TRANSFORMER.getItem(EV), 'C', CABLE_GETTER.apply(PipeSize.SMALL, MV, false), 'W', WIRE_CUTTER.getTag()), "CTC", "TWT", "CTC");
         provider.addItemRecipe(output, "machines", LONG_DISTANCE_TRANSFORMER_ENDPOINT.getItem(IV),
@@ -615,9 +612,9 @@ public class Machines {
         provider.addItemRecipe(output, "machines", LONG_DISTANCE_TRANSFORMER_ENDPOINT.getItem(UV),
                 of('T', TRANSFORMER.getItem(UV), 'C', CABLE_GETTER.apply(PipeSize.SMALL, MV, false), 'W', WIRE_CUTTER.getTag()), "CTC", "TWT", "CTC");
         provider.addItemRecipe(output, "machines", LONG_DISTANCE_FLUID_ENDPOINT.getItem(NONE),
-                of('T', FLUID_PIPE_TUNGSTEN.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', CASING_TUNGSTEN), "CTC", "TWT", "CTC");
+                of('T', GregTechBlocks.FLUID_PIPE_TUNGSTEN.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', GregTechBlocks.CASING_TUNGSTEN), "CTC", "TWT", "CTC");
         provider.addItemRecipe(output, "machines", LONG_DISTANCE_ITEM_ENDPOINT.getItem(NONE),
-                of('T', ITEM_PIPE_PLATINUM.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', CASING_PLATINUM), "CTC", "TWT", "CTC");
+                of('T', GregTechBlocks.ITEM_PIPE_PLATINUM.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', GregTechBlocks.CASING_PLATINUM), "CTC", "TWT", "CTC");
         addHatchRecipes(output, provider);
         addMultiblockRecipes(output, provider);
 
@@ -636,7 +633,7 @@ public class Machines {
             if (material.has(SCREW) && chest != null){
                 if (!m.getId().contains("charging")) {
                     provider.addItemRecipe(output, GTIRef.ID, "", "machines", m.getItem(NONE),
-                            of('s', SCREW.getMaterialTag(m.getMaterial()), 'C', chest.getItem(NONE), 'c', CASING_SOLID_STEEL, 'S', SCREWDRIVER.getTag(), 'R', ROD.getMaterialTag(material), 'L', Items.LEATHER), "RSR", "LCL", "scs");
+                            of('s', SCREW.getMaterialTag(m.getMaterial()), 'C', chest.getItem(NONE), 'c', GregTechBlocks.CASING_SOLID_STEEL, 'S', SCREWDRIVER.getTag(), 'R', ROD.getMaterialTag(material), 'L', Items.LEATHER), "RSR", "LCL", "scs");
                 } else {
                     provider.addItemRecipe(output, Ref.ID, "", "machines", m.getItem(HV),
                             of('W', Machine.get(m.getId().replace("charging_", ""), GTCore.ID).map(mch -> mch.getItem(NONE)).orElse(Items.AIR), 'c', CABLE_GETTER.apply(PipeSize.VTINY, HV, false), 'C', CIRCUITS_ADVANCED), "cCc", "cWc", "cCc");
@@ -663,7 +660,7 @@ public class Machines {
             ChestMachine chest = AntimatterAPI.get(ChestMachine.class, material.getId() + "_chest", GTCore.ID);
             if (material.has(SCREW) && material.has(PLATE) && !material.has(MaterialTags.WOOD) && chest != null){
                 provider.addItemRecipe(output, GTIRef.ID, "", "machines", m.getItem(NONE),
-                        of('C', chest.getItem(NONE), 'S', SCREW.getMaterialTag(material), 'c', CASING_SOLID_STEEL, 's', SCREWDRIVER.getTag(), 'W', WRENCH.getTag()), "SCS", "Wcs", "SCS");
+                        of('C', chest.getItem(NONE), 'S', SCREW.getMaterialTag(material), 'c', GregTechBlocks.CASING_SOLID_STEEL, 's', SCREWDRIVER.getTag(), 'W', WRENCH.getTag()), "SCS", "Wcs", "SCS");
             }
         });
 
@@ -728,7 +725,7 @@ public class Machines {
                             .build(), "HC"));
             add(HATCH_MUFFLER, tier, (m,item) ->  provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', FLUID_PIPE_STEEL.getBlockItem(PipeSize.NORMAL))
+                            .put('C', GregTechBlocks.FLUID_PIPE_STEEL.getBlockItem(PipeSize.NORMAL))
                             .put('H', hull)
                             .build(), "H", "C"));
         });
@@ -738,7 +735,7 @@ public class Machines {
         add(BLAST_FURNACE, LV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, LV, true))
-                        .put('H', CASING_HEAT_PROOF)
+                        .put('H', GregTechBlocks.CASING_HEAT_PROOF)
                         .put('C', TIER_CIRCUITS.apply(LV))
                         .put('F', Items.FURNACE)
                         .build(), "FFF", "CHC", "LCL"));
@@ -752,56 +749,56 @@ public class Machines {
                         .put('H', FireBrick).build(), "HHH", "H H", "HHH");
         add(COMBUSTION_ENGINE, EV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
-                        .put('L', CABLE_TUNGSTEN_STEEL.getBlockItem(PipeSize.VTINY))
-                        .put('H', HULL_EV)
+                        .put('L', GregTechBlocks.CABLE_TUNGSTEN_STEEL.getBlockItem(PipeSize.VTINY))
+                        .put('H', GregTechBlocks.HULL_EV)
                         .put('C', TIER_CIRCUITS.apply(EV))
-                        .put('P', PistonEV)
+                        .put('P', GregTechItems.PistonEV)
                         .put('G', GEAR.getMaterialTag(Titanium))
                         .put('M', MotorEV)
                         .build(), "PCP", "MHM", "GLG"));
         add(CRACKING_UNIT, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
-                        .put('P', COVER_PUMP.getItem(HV).getItem())
-                        .put('O', COIL_CUPRONICKEL)
-                        .put('H', HULL_HV)
+                        .put('P', GregTechCovers.COVER_PUMP.getItem(HV).getItem())
+                        .put('O', GregTechBlocks.COIL_CUPRONICKEL)
+                        .put('H', GregTechBlocks.HULL_HV)
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .build(), "OPO", "CHC", "OPO"));
         add(DISTLLATION_TOWER, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
-                        .put('P', COVER_PUMP.getItem(HV).getItem())
-                        .put('I', FLUID_PIPE_STAINLESS_STEEL.getBlock(PipeSize.LARGE))
-                        .put('H', HULL_HV)
+                        .put('P', GregTechCovers.COVER_PUMP.getItem(HV).getItem())
+                        .put('I', GregTechBlocks.FLUID_PIPE_STAINLESS_STEEL.getBlock(PipeSize.LARGE))
+                        .put('H', GregTechBlocks.HULL_HV)
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .build(), "CIC", "PHP", "CIC"));
         add(CRYO_DISTLLATION_TOWER, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
-                        .put('P', COVER_PUMP.getItem(HV).getItem())
-                        .put('I', FLUID_PIPE_COPPER.getBlock(PipeSize.LARGE))
-                        .put('H', HULL_HV)
+                        .put('P', GregTechCovers.COVER_PUMP.getItem(HV).getItem())
+                        .put('I', GregTechBlocks.FLUID_PIPE_COPPER.getBlock(PipeSize.LARGE))
+                        .put('H', GregTechBlocks.HULL_HV)
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .build(), "CIC", "PHP", "CIC"));
         add(HEAT_EXCHANGER, EV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
-                        .put('P', COVER_PUMP.getItem(EV).getItem())
-                        .put('I', FLUID_PIPE_TITANIUM.getBlock(PipeSize.NORMAL))
-                        .put('H', CASING_PIPE_TITANIUM)
+                        .put('P', GregTechCovers.COVER_PUMP.getItem(EV).getItem())
+                        .put('I', GregTechBlocks.FLUID_PIPE_TITANIUM.getBlock(PipeSize.NORMAL))
+                        .put('H', GregTechBlocks.CASING_PIPE_TITANIUM)
                         .build(), "PIP", "IHI", "PIP"));
         add(IMPLOSION_COMPRESSOR, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, HV, true))
                         .put('O', Items.OBSIDIAN)
                         .put('C', TIER_CIRCUITS.apply(HV))
-                        .put('S', CASING_SOLID_STEEL)
+                        .put('S', GregTechBlocks.CASING_SOLID_STEEL)
                         .build(), "OOO", "CSC", "LCL"));
         add(LARGE_CHEMICAL_REACTOR, HV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .put('M', MotorHV)
                         .put('R', ROTOR.getMaterialTag(StainlessSteel))
-                        .put('P', FLUID_PIPE_POLY.getBlockItem(PipeSize.LARGE))
-                        .put('H', HULL_HV).build(), "CRC", "PMP", "CHC"));
+                        .put('P', GregTechBlocks.FLUID_PIPE_POLY.getBlockItem(PipeSize.LARGE))
+                        .put('H', GregTechBlocks.HULL_HV).build(), "CRC", "PMP", "CHC"));
         Arrays.stream(getStandard()).filter(t -> t !=IV).forEach(tier -> {
-            Block firebox = tier == LV ? CASING_FIREBOX_BRONZE : tier == MV ? CASING_FIREBOX_STEEL : tier == HV ? CASING_FIREBOX_TITANIUM : CASING_FIREBOX_TUNGSTENSTEEL;
+            Block firebox = tier == LV ? GregTechBlocks.CASING_FIREBOX_BRONZE : tier == MV ? GregTechBlocks.CASING_FIREBOX_STEEL : tier == HV ? GregTechBlocks.CASING_FIREBOX_TITANIUM : GregTechBlocks.CASING_FIREBOX_TUNGSTENSTEEL;
             TagKey<Item> circuit2 = tier == LV ? TIER_CIRCUITS.apply(tier) : tier == MV ? CIRCUITS_ADVANCED : tier == HV ? CIRCUITS_ELITE : CIRCUITS_MASTER;
             add(LARGE_BOILER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
@@ -827,13 +824,13 @@ public class Machines {
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, HV, false))
                         .put('F', Items.FURNACE)
                         .put('C', TIER_CIRCUITS.apply(HV))
-                        .put('H', CASING_HEAT_PROOF)
+                        .put('H', GregTechBlocks.CASING_HEAT_PROOF)
                         .build(), "FFF", "CHC", "LCL"));
         add(OIL_DRILLING_RIG, MV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('M', MotorMV)
                         .put('C', TIER_CIRCUITS.apply(MV))
-                        .put('H', HULL_MV)
+                        .put('H', GregTechBlocks.HULL_MV)
                         .put('F', FRAME.getMaterialTag(Steel)).build(), "FFF", "CHC", "MMM"));
         provider.addItemRecipe(output, "machines", PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
@@ -842,23 +839,23 @@ public class Machines {
         add(PROCESSING_ARRAY, EV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', TIER_CIRCUITS.apply(IV))
-                        .put('R', COVER_ROBOT_ARM.getItem(EV))
+                        .put('R', GregTechCovers.COVER_ROBOT_ARM.getItem(EV))
                         .put('L', BatteryEnergyOrb)
-                        .put('M', HULL_EV)
-                        .put('S', FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.LARGE)).build(), "CLC", "RMR", "CSC"));
+                        .put('M', GregTechBlocks.HULL_EV)
+                        .put('S', GregTechBlocks.FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.LARGE)).build(), "CLC", "RMR", "CSC"));
         provider.addItemRecipe(output, "machines", PYROLYSIS_OVEN.getItem(PYROLYSIS_OVEN.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL_MV)
+                        .put('H', GregTechBlocks.HULL_MV)
                         .put('C', CIRCUITS_GOOD)
-                        .put('P', COVER_PUMP.getItem(MV).getItem())
-                        .put('W', WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL))
-                        .put('B', PistonMV).build(), "BCW", "CHC", "BPW");
+                        .put('P', GregTechCovers.COVER_PUMP.getItem(MV).getItem())
+                        .put('W', GregTechBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL))
+                        .put('B', GregTechItems.PistonMV).build(), "BCW", "CHC", "BPW");
         add(VACUUM_FREEZER, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, HV, true))
-                        .put('F', CASING_FROST_PROOF)
+                        .put('F', GregTechBlocks.CASING_FROST_PROOF)
                         .put('C', TIER_CIRCUITS.apply(HV))
-                        .put('P', COVER_PUMP.getItem(HV).getItem())
+                        .put('P', GregTechCovers.COVER_PUMP.getItem(HV).getItem())
                         .build(), "PPP", "CFC", "LCL"));
     }
 

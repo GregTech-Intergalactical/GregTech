@@ -14,7 +14,7 @@ import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.util.int3;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.worldgen.OilSpoutEntry;
 import muramasa.gregtech.worldgen.OilSpoutSavedData;
 import net.minecraft.client.gui.Font;
@@ -37,8 +37,8 @@ import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
-import static muramasa.gregtech.data.GregTechData.MINING_PIPE;
-import static muramasa.gregtech.data.GregTechData.MINING_PIPE_THIN;
+import static muramasa.gregtech.data.GregTechBlocks.MINING_PIPE;
+import static muramasa.gregtech.data.GregTechBlocks.MINING_PIPE_THIN;
 
 public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEntityOilDrillingRig> {
     boolean foundBottom = false;
@@ -59,7 +59,7 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
         super.serverTick(level, pos, state);
         if (!validStructure || stopped || !(level instanceof ServerLevel serverLevel)) return;
         ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
-        if ((stack.getItem() == GregTechData.MINING_PIPE_THIN.asItem() || foundBottom) && energyHandler.map(e -> e.getEnergy() >= euPerTick).orElse(false)){
+        if ((stack.getItem() == GregTechBlocks.MINING_PIPE_THIN.asItem() || foundBottom) && energyHandler.map(e -> e.getEnergy() >= euPerTick).orElse(false)){
             if (!foundBottom){
 
                 if (getMachineState() == MachineState.IDLE) setMachineState(MachineState.ACTIVE);

@@ -14,13 +14,12 @@ import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -46,12 +45,12 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                     ExtendedItemContainer inputHandler = ih.getInputHandler();
                     ItemStack paper = inputHandler.getItem(0);
                     ItemStack stored = inputHandler.getItem(1);
-                    if (paper.getItem() == Items.PAPER && paper.getCount() >= 3 && stored.getItem() == GregTechData.DataStick){
+                    if (paper.getItem() == Items.PAPER && paper.getCount() >= 3 && stored.getItem() == GregTechItems.DataStick){
                         CompoundTag prospect = stored.getTagElement("prospectData");
                         CompoundTag bookData = stored.getTagElement("bookData");
                         FluidHolder ink = fluidHandler.map(f -> f.getFluidInTank(0)).orElse(FluidHooks.emptyFluid());
                         if (!ink.isEmpty() && ink.matches(SquidInk.getLiquid(20)) && ink.getFluidAmount() >= L){
-                            ItemStack output = new ItemStack(GregTechData.PrintedPages);
+                            ItemStack output = new ItemStack(GregTechItems.PrintedPages);
                             if (prospect != null && prospect.getBoolean("analyzed")){
                                 CompoundTag nbt = output.getOrCreateTag();
                                 nbt.putString("filtered_title", "Analyzed Prospection Data");
@@ -109,7 +108,7 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
 
             @Override
             public boolean accepts(ItemStack stack) {
-                return super.accepts(stack) || stack.getItem() == Items.PAPER || stack.getItem() == GregTechData.DataStick;
+                return super.accepts(stack) || stack.getItem() == Items.PAPER || stack.getItem() == GregTechItems.DataStick;
             }
 
             @Override
@@ -125,7 +124,7 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
         if (slotType == SlotType.IT_IN){
-            return (slot == 0) == (stack.getItem() != GregTechData.DataStick);
+            return (slot == 0) == (stack.getItem() != GregTechItems.DataStick);
         }
         return true;
     }

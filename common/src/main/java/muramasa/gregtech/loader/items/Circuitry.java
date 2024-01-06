@@ -14,7 +14,9 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTechConfig;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GregTechCovers;
+import muramasa.gregtech.data.GregTechItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -33,7 +35,6 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.machine.Tier.LV;
 import static muramasa.antimatter.machine.Tier.MV;
-import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.SOLDER;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
@@ -61,7 +62,7 @@ public class Circuitry {
         provider.addItemRecipe(output, "circuit_basic", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('V', VacuumTube).put('B', CircuitBoardCoated)
-                        .put('W', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
+                        .put('W', GregTechBlocks.CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('R',Resistor).put('P', ITEM_CASING.get(Steel))
                         .build(),
                 "RPR", "VBV", "WWW");
@@ -69,7 +70,7 @@ public class Circuitry {
                 ImmutableMap.<Character, Object>builder()
                         .put('S', ITEM_CASING.getMaterialTag(Steel))
                         .put('C', CIRCUITS_BASIC)
-                        .put('c', CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
+                        .put('c', GregTechBlocks.CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('D', Diode).build(), "SCc", "CDC", "cCS");
 
         var wire = TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ PipeSize.VTINY.getId()));
@@ -101,19 +102,19 @@ public class Circuitry {
         provider.addItemRecipe(output, GTIRef.ID, "", "diodes", Diode,
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeCTags.DYES_BLACK)
-                        .put('T', WIRE_TIN.getBlockItem(PipeSize.VTINY))
-                        .put('W', Wafer)
+                        .put('T', GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY))
+                        .put('W', GregTechItems.Wafer)
                         .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
         provider.addItemRecipe(output, GTIRef.ID, "diode_2", "diodes", Diode,
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeCTags.DYES_BLACK)
                         .put('T', WIRE_FINE.getMaterialTag(Tin))
-                        .put('W', Wafer)
+                        .put('W', GregTechItems.Wafer)
                         .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
         provider.addStackRecipe(output, GTIRef.ID, "diode_3", "diodes", new ItemStack(Diode),
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeCTags.DYES_BLACK)
-                        .put('T', WIRE_TIN.getBlockItem(PipeSize.VTINY))
+                        .put('T', GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY))
                         .put('W', DUST_TINY.getMaterialTag(Gallium))
                         .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
         provider.addStackRecipe(output, GTIRef.ID, "diode_4", "diodes", new ItemStack(Diode),
@@ -122,9 +123,9 @@ public class Circuitry {
                         .put('T', WIRE_FINE.getMaterialTag(Tin))
                         .put('W', DUST_TINY.getMaterialTag(Gallium))
                         .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
-        provider.addStackRecipe(output, GTIRef.ID, "", "small_coils", new ItemStack(SmallCoil, 2),
+        provider.addStackRecipe(output, GTIRef.ID, "", "small_coils", new ItemStack(GregTechItems.SmallCoil, 2),
                 ImmutableMap.of('W', WIRE_FINE.getMaterialTag(Copper), 'B', BOLT.getMaterialTag(Steel)), "WWW", "WBW", "WWW");
-        provider.addStackRecipe(output, GTIRef.ID, "small_coil_1", "small_coils", new ItemStack(SmallCoil, 4),
+        provider.addStackRecipe(output, GTIRef.ID, "small_coil_1", "small_coils", new ItemStack(GregTechItems.SmallCoil, 4),
                 ImmutableMap.of('W', WIRE_FINE.getMaterialTag(Copper), 'B', BOLT.getMaterialTag(NickelZincFerrite)), "WWW", "WBW", "WWW");
     }
 
@@ -142,7 +143,7 @@ public class Circuitry {
                         .put('S', CircuitBoardCoated)
                         .build(), "CNC", "CSC", "CNC");
         provider.addItemRecipe(output, GTIRef.ID, "", "circuits", NandChip,
-                ImmutableMap.of('C', ITEM_CASING.getMaterialTag(Steel), 'R', WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', WIRE_TIN.getBlockItem(PipeSize.VTINY)), "CR", "RT");
+                ImmutableMap.of('C', ITEM_CASING.getMaterialTag(Steel), 'R', GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY)), "CR", "RT");
         provider.addItemRecipe(output, GTIRef.ID, "lapotron_crystal_upgrade", "energy_orbs", GTCoreItems.LapotronCrystal,
                 ImmutableMap.of('C', CIRCUITS_ADVANCED, 'L', DUST_LAPIS_LAZURITE, 'E', GTCoreItems.EnergyCrystal), "LCL", "LEL", "LCL");
         provider.addItemRecipe(output, GTIRef.ID, "", "energy_orbs", GTCoreItems.LapotronCrystal,
@@ -169,47 +170,47 @@ public class Circuitry {
     }
 
     private static void silicon(){
-        E_BLAST_FURNACE.RB().temperature(1784).ii(DUST.getMaterialIngredient(Silicon, 16), INT_CIRCUITS.get(16)).fi(Helium.getGas(1000)).io(SiliconBoule).add("silicon_boule", 9000, 120);
-        addCuttingRecipe(SiliconBoule, Wafer, 16, 1600, 384, 1);
-        addCuttingRecipe(Wafer, SiliconChip, 8, 600, 48, 22);
+        E_BLAST_FURNACE.RB().temperature(1784).ii(DUST.getMaterialIngredient(Silicon, 16), INT_CIRCUITS.get(16)).fi(Helium.getGas(1000)).io(GregTechItems.SiliconBoule).add("silicon_boule", 9000, 120);
+        addCuttingRecipe(GregTechItems.SiliconBoule, GregTechItems.Wafer, 16, 1600, 384, 1);
+        addCuttingRecipe(GregTechItems.Wafer, GregTechItems.SiliconChip, 8, 600, 48, 22);
         if (GregTechConfig.HARDER_CIRCUITS){
-            E_BLAST_FURNACE.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Glowstone, 1)).fi(Nitrogen.getGas(1000)).io(GlowstoneDopedSiliconBoule).add("glowstone_doped_silicon_boule", 12000, 480);
-            E_BLAST_FURNACE.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Naquadah, 1)).fi(Argon.getGas(1000)).io(NaquadahDopedSiliconBoule).add("naquadah_doped_silicon_boule", 15000, 1920);
-            addCuttingRecipe(GlowstoneDopedSiliconBoule, GlowstoneDopedWafer, 32, 800, 64, 20);
-            addCuttingRecipe(NaquadahDopedSiliconBoule, NaquadahDopedWafer, 64, 1600, 64, 240);
-            addLensRecipe(NaquadahDopedWafer, ASoCWafer, 1, 200, 1920, Amber, Topaz);
-            addCuttingRecipe(ASoCWafer, ASoC, 8, 600, 48, 22);
-            addLensRecipe(Wafer, CentralProcessingUnitWafer, 1, 900, 120, Diamond, Glass, Dilithium);
-            addLensRecipe(GlowstoneDopedWafer, CentralProcessingUnitWafer, 4, 500, 480, Diamond, Glass, Dilithium);
-            addLensRecipe(NaquadahDopedWafer, CentralProcessingUnitWafer, 8, 200, 1920, Diamond, Glass, Dilithium);
-            addCuttingRecipe(CentralProcessingUnitWafer, CentralProcessingUnit, 8, 600, 48, 22);
-            CHEMICAL_REACTOR.RB().ii(of(PICWafer), DUST.getMaterialIngredient(IndiumGalliumPhosphide, 2)).fi(RedAlloy.getLiquid(L * 2)).io(HPICWafer).add("hpic_wafer", 1200, 1920);
-            addCuttingRecipe(HPICWafer, HighPowerIC, 2, 600, 48, 22);
-            addLensRecipe(Wafer, IntegratedLogicCircuitWafer, 1, 900, 120, Ruby, RedGarnet, Jade);
-            addLensRecipe(GlowstoneDopedWafer, IntegratedLogicCircuitWafer, 4, 500, 480, Ruby, RedGarnet, Jade);
-            addLensRecipe(NaquadahDopedWafer, IntegratedLogicCircuitWafer, 8, 200, 1920, Ruby, RedGarnet, Jade);
-            addCuttingRecipe(IntegratedLogicCircuitWafer, IntegratedLogicCircuit, 8, 600, 48, 22);
-            addLensRecipe(GlowstoneDopedWafer, NANDMemoryChipWafer, 1, 500, 480, EnderPearl);
-            addLensRecipe(NaquadahDopedWafer, NANDMemoryChipWafer, 4, 200, 1920, EnderPearl);
-            addCuttingRecipe(NANDMemoryChipWafer, NANDMemoryChip, 32, 600, 48, 22);
-            CHEMICAL_REACTOR.RB().ii(of(CentralProcessingUnitWafer), of(CarbonFibre, 16)).fi(Glowstone.getLiquid(L * 4)).io(NanoCpuWafer).add("nano_cpu_wafer", 400, 1920);
-            addCuttingRecipe(NanoCpuWafer, NanoCpu, 7, 600, 48, 22);
-            addLensRecipe(GlowstoneDopedWafer, NorMemoryChipWafer, 1, 500, 480, EnderEye);
-            addLensRecipe(NaquadahDopedWafer, NorMemoryChipWafer, 4, 200, 1920, EnderEye);
-            addCuttingRecipe(NorMemoryChipWafer, NorMemoryChip, 16, 600, 48, 22);
-            addLensRecipe(GlowstoneDopedWafer, PICWafer, 1, 500, 480, Opal, Sapphire, BlueTopaz);
-            addLensRecipe(NaquadahDopedWafer, PICWafer, 4, 200, 1920, Opal, Sapphire, BlueTopaz);
-            addCuttingRecipe(PICWafer, PowerIC, 4, 600, 48, 22);
-            CHEMICAL_REACTOR.RB().ii(of(NanoCpuWafer), of(QuantumEye, 2)).fi(GalliumArsenide.getLiquid(L * 2)).io(QBitWafer).add("qbit_wafer", 400, 1920);
-            CHEMICAL_REACTOR.RB().ii(of(NanoCpuWafer), DUST.getMaterialIngredient(IndiumGalliumPhosphide, 1)).fi(Radon.getGas(50)).io(QBitWafer).add("qbit_wafer_2", 600, 1920);
-            addCuttingRecipe(QBitWafer, QBitProcessingUnit, 5, 600, 48, 22);
-            addLensRecipe(Wafer, RandomAccessMemoryChipWafer, 1, 900, 120, GreenSapphire);
-            addLensRecipe(GlowstoneDopedWafer, RandomAccessMemoryChipWafer, 4, 500, 480, GreenSapphire);
-            addLensRecipe(NaquadahDopedWafer, RandomAccessMemoryChipWafer, 8, 200, 1920, GreenSapphire);
-            addCuttingRecipe(RandomAccessMemoryChipWafer, RandomAccessMemoryChip, 32, 600, 48, 22);
-            addLensRecipe(GlowstoneDopedWafer, SOCWafer, 1, 500, 480, YellowGarnet);
-            addLensRecipe(NaquadahDopedWafer, SOCWafer, 4, 200, 1920, YellowGarnet);
-            addCuttingRecipe(SOCWafer, SOC, 10, 600, 48, 22);
+            E_BLAST_FURNACE.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Glowstone, 1)).fi(Nitrogen.getGas(1000)).io(GregTechItems.GlowstoneDopedSiliconBoule).add("glowstone_doped_silicon_boule", 12000, 480);
+            E_BLAST_FURNACE.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Naquadah, 1)).fi(Argon.getGas(1000)).io(GregTechItems.NaquadahDopedSiliconBoule).add("naquadah_doped_silicon_boule", 15000, 1920);
+            addCuttingRecipe(GregTechItems.GlowstoneDopedSiliconBoule, GregTechItems.GlowstoneDopedWafer, 32, 800, 64, 20);
+            addCuttingRecipe(GregTechItems.NaquadahDopedSiliconBoule, GregTechItems.NaquadahDopedWafer, 64, 1600, 64, 240);
+            addLensRecipe(GregTechItems.NaquadahDopedWafer, GregTechItems.ASoCWafer, 1, 200, 1920, Amber, Topaz);
+            addCuttingRecipe(GregTechItems.ASoCWafer, GregTechItems.ASoC, 8, 600, 48, 22);
+            addLensRecipe(GregTechItems.Wafer, GregTechItems.CentralProcessingUnitWafer, 1, 900, 120, Diamond, Glass, Dilithium);
+            addLensRecipe(GregTechItems.GlowstoneDopedWafer, GregTechItems.CentralProcessingUnitWafer, 4, 500, 480, Diamond, Glass, Dilithium);
+            addLensRecipe(GregTechItems.NaquadahDopedWafer, GregTechItems.CentralProcessingUnitWafer, 8, 200, 1920, Diamond, Glass, Dilithium);
+            addCuttingRecipe(GregTechItems.CentralProcessingUnitWafer, GregTechItems.CentralProcessingUnit, 8, 600, 48, 22);
+            CHEMICAL_REACTOR.RB().ii(of(GregTechItems.PICWafer), DUST.getMaterialIngredient(IndiumGalliumPhosphide, 2)).fi(RedAlloy.getLiquid(L * 2)).io(GregTechItems.HPICWafer).add("hpic_wafer", 1200, 1920);
+            addCuttingRecipe(GregTechItems.HPICWafer, GregTechItems.HighPowerIC, 2, 600, 48, 22);
+            addLensRecipe(GregTechItems.Wafer, GregTechItems.IntegratedLogicCircuitWafer, 1, 900, 120, Ruby, RedGarnet, Jade);
+            addLensRecipe(GregTechItems.GlowstoneDopedWafer, GregTechItems.IntegratedLogicCircuitWafer, 4, 500, 480, Ruby, RedGarnet, Jade);
+            addLensRecipe(GregTechItems.NaquadahDopedWafer, GregTechItems.IntegratedLogicCircuitWafer, 8, 200, 1920, Ruby, RedGarnet, Jade);
+            addCuttingRecipe(GregTechItems.IntegratedLogicCircuitWafer, GregTechItems.IntegratedLogicCircuit, 8, 600, 48, 22);
+            addLensRecipe(GregTechItems.GlowstoneDopedWafer, GregTechItems.NANDMemoryChipWafer, 1, 500, 480, EnderPearl);
+            addLensRecipe(GregTechItems.NaquadahDopedWafer, GregTechItems.NANDMemoryChipWafer, 4, 200, 1920, EnderPearl);
+            addCuttingRecipe(GregTechItems.NANDMemoryChipWafer, GregTechItems.NANDMemoryChip, 32, 600, 48, 22);
+            CHEMICAL_REACTOR.RB().ii(of(GregTechItems.CentralProcessingUnitWafer), of(CarbonFibre, 16)).fi(Glowstone.getLiquid(L * 4)).io(GregTechItems.NanoCpuWafer).add("nano_cpu_wafer", 400, 1920);
+            addCuttingRecipe(GregTechItems.NanoCpuWafer, GregTechItems.NanoCpu, 7, 600, 48, 22);
+            addLensRecipe(GregTechItems.GlowstoneDopedWafer, GregTechItems.NorMemoryChipWafer, 1, 500, 480, EnderEye);
+            addLensRecipe(GregTechItems.NaquadahDopedWafer, GregTechItems.NorMemoryChipWafer, 4, 200, 1920, EnderEye);
+            addCuttingRecipe(GregTechItems.NorMemoryChipWafer, GregTechItems.NorMemoryChip, 16, 600, 48, 22);
+            addLensRecipe(GregTechItems.GlowstoneDopedWafer, GregTechItems.PICWafer, 1, 500, 480, Opal, Sapphire, BlueTopaz);
+            addLensRecipe(GregTechItems.NaquadahDopedWafer, GregTechItems.PICWafer, 4, 200, 1920, Opal, Sapphire, BlueTopaz);
+            addCuttingRecipe(GregTechItems.PICWafer, GregTechItems.PowerIC, 4, 600, 48, 22);
+            CHEMICAL_REACTOR.RB().ii(of(GregTechItems.NanoCpuWafer), of(GregTechItems.QuantumEye, 2)).fi(GalliumArsenide.getLiquid(L * 2)).io(GregTechItems.QBitWafer).add("qbit_wafer", 400, 1920);
+            CHEMICAL_REACTOR.RB().ii(of(GregTechItems.NanoCpuWafer), DUST.getMaterialIngredient(IndiumGalliumPhosphide, 1)).fi(Radon.getGas(50)).io(GregTechItems.QBitWafer).add("qbit_wafer_2", 600, 1920);
+            addCuttingRecipe(GregTechItems.QBitWafer, GregTechItems.QBitProcessingUnit, 5, 600, 48, 22);
+            addLensRecipe(GregTechItems.Wafer, GregTechItems.RandomAccessMemoryChipWafer, 1, 900, 120, GreenSapphire);
+            addLensRecipe(GregTechItems.GlowstoneDopedWafer, GregTechItems.RandomAccessMemoryChipWafer, 4, 500, 480, GreenSapphire);
+            addLensRecipe(GregTechItems.NaquadahDopedWafer, GregTechItems.RandomAccessMemoryChipWafer, 8, 200, 1920, GreenSapphire);
+            addCuttingRecipe(GregTechItems.RandomAccessMemoryChipWafer, GregTechItems.RandomAccessMemoryChip, 32, 600, 48, 22);
+            addLensRecipe(GregTechItems.GlowstoneDopedWafer, GregTechItems.SOCWafer, 1, 500, 480, YellowGarnet);
+            addLensRecipe(GregTechItems.NaquadahDopedWafer, GregTechItems.SOCWafer, 4, 200, 1920, YellowGarnet);
+            addCuttingRecipe(GregTechItems.SOCWafer, GregTechItems.SOC, 10, 600, 48, 22);
 
         }
     }
@@ -236,12 +237,12 @@ public class Circuitry {
     private static void circuitParts(){
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Lazurite, 1), DUST.getMaterialIngredient(AntimatterMaterials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts", 32, 64);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Lapis, 1), DUST.getMaterialIngredient(AntimatterMaterials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts_1", 32, 64);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_poly", 32, 16);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_poly", 32, 16);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Lead.getLiquid(L / 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_poly", 32, 16);
-        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_steel", 32, 16);
-        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_steel", 32, 16);
-        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Lead.getLiquid(L / 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_steel", 32, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_poly", 32, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_poly", 32, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Lead.getLiquid(L / 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_poly", 32, 16);
+        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_steel", 32, 16);
+        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_steel", 32, 16);
+        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Lead.getLiquid(L / 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_steel", 32, 16);
     }
 
     private static void boards(){
@@ -249,7 +250,7 @@ public class Circuitry {
         FORMING_PRESS.RB().ii(of(CircuitBoardEmpty), of(EtchedWiringMV, 4)).io(new ItemStack(CircuitBoardBasic)).add("basic_circuit_board", 32, 16);
         FORMING_PRESS.RB().ii(of(CircuitBoardEmpty), of(EtchedWiringHV, 4)).io(new ItemStack(CircuitBoardAdvanced)).add("advanced_circuit_board", 32, 16);
         FORMING_PRESS.RB().ii(of(CircuitBoardProcessorEmpty), of(EtchedWiringEV, 4)).io(new ItemStack(CircuitBoardProcessor)).add("processor_circuit_board", 32, 256);
-        ASSEMBLER.RB().ii(of(Wafer, 2), PLATE.getMaterialIngredient(Polytetrafluoroethylene, 1)).io(new ItemStack(CircuitBoardProcessorEmpty)).add("empty_processor_circuit_board", 32, 256);
+        ASSEMBLER.RB().ii(of(GregTechItems.Wafer, 2), PLATE.getMaterialIngredient(Polytetrafluoroethylene, 1)).io(new ItemStack(CircuitBoardProcessorEmpty)).add("empty_processor_circuit_board", 32, 256);
     }
 
     private static void circuits(){
@@ -273,9 +274,9 @@ public class Circuitry {
         ASSEMBLER.RB().ii(of(CircuitBoardProcessor), of(EngravedLapotronChip, 3)).fi(Lead.getLiquid(L * 4)).io(new ItemStack(CircuitEnergyFlow)).add("energy_flow_circuit_lead", 32, 256);
         ASSEMBLER.RB().ii(of(CIRCUITS_MASTER, 2), of(EngravedLapotronChip, 18)).io(BatteryEnergyOrb).add("lapotronic_energy_orb", 25 * 20, 1024);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Europium, 4), of(BatteryEnergyOrb, 8)).io(BatteryEnergyOrbCluster).add("lapotronic_energy_orb_cluster", 102 * 20, 4096);
-        ASSEMBLER.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(Lead.getLiquid(L * 2)).io(DataStick).add("data_stick_lead", 120, 64);
-        ASSEMBLER.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(Tin.getLiquid(L)).io(DataStick).add("data_stick_tin", 120, 64);
-        ASSEMBLER.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(SolderingAlloy.getLiquid(L/2)).io(DataStick).add("data_stick_soldering_alloy", 120, 64);
+        ASSEMBLER.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(Lead.getLiquid(L * 2)).io(GregTechItems.DataStick).add("data_stick_lead", 120, 64);
+        ASSEMBLER.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(Tin.getLiquid(L)).io(GregTechItems.DataStick).add("data_stick_tin", 120, 64);
+        ASSEMBLER.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(SolderingAlloy.getLiquid(L/2)).io(GregTechItems.DataStick).add("data_stick_soldering_alloy", 120, 64);
     }
 
     private static void bloodyBoards() {
@@ -308,14 +309,14 @@ public class Circuitry {
                 .io(new ItemStack(CircuitBoardMultiFiber,1))
                 .add("multi_fiber_circuit_board",5*20, 480);
         //Wetware
-        ASSEMBLER.RB().ii(of(CircuitBoardMultiFiber,1), of(CIRCUITS_GOOD,1), of(PetriDish), of(SensorLV), of(COVER_PUMP.getItem(LV)))
+        ASSEMBLER.RB().ii(of(CircuitBoardMultiFiber,1), of(CIRCUITS_GOOD,1), of(GregTechItems.PetriDish), of(GregTechItems.SensorLV), of(GregTechCovers.COVER_PUMP.getItem(LV)))
                 .fi(Polystyrene.getLiquid(144))
                 .io(new ItemStack(CircuitBoardWetware,1))
                 .add("wetware_circuit_board",8*20, 32768);
     }
 
     private static void bloodyCircuitParts(){
-        ASSEMBLER.RB().ii(of(SiliconChip, 1), WIRE_FINE.getMaterialIngredient(Tin, 6)).fi(Plastic.getLiquid(L)).io(new ItemStack(Transistor,8)).add("transistor",80, 24);
+        ASSEMBLER.RB().ii(of(GregTechItems.SiliconChip, 1), WIRE_FINE.getMaterialIngredient(Tin, 6)).fi(Plastic.getLiquid(L)).io(new ItemStack(Transistor,8)).add("transistor",80, 24);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), FOIL.getMaterialIngredient(Aluminium, 2)).io(new ItemStack(Capacitor, 2)).add("capacitor", 80, 96);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Gallium, 1), WIRE_FINE.getMaterialIngredient(AnnealedCopper, 6)).fi(Plastic.getLiquid(L * 2)).io(new ItemStack(SMDTransistor,32)).add("smd_transistor",80, 96);
         ASSEMBLER.RB().ii(of(DUST.get(Carbon), 1), of(WIRE_FINE.get(Electrum), 4)).fi(Plastic.getLiquid(L)).io(new ItemStack(SMDResistor,24)).add("smd_resistor",80, 96);
@@ -324,10 +325,10 @@ public class Circuitry {
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(SiliconeRubber, 4), FOIL.getMaterialIngredient(Tantalum, 1)).fi(Plastic.getLiquid(L / 4)).io(new ItemStack(SMDCapacitor,32)).add("smd_capacitor_tantalum_rubber",60, 120);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(SiliconeRubber, 4), FOIL.getMaterialIngredient(Aluminium, 1)).fi(Plastic.getLiquid(L / 4)).io(new ItemStack(SMDCapacitor,16)).add("smd_capacitor_aluminium_rubber",60, 120);
         ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(AnnealedCopper, 4), DUST_SMALL.getMaterialIngredient(Gallium, 1)).fi(Plastic.getLiquid(L * 2)).io(new ItemStack(Diode, 16)).add("diode", 400, 48);
-        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Copper, 8), BOLT.getMaterialIngredient(Steel, 1)).io(new ItemStack(SmallCoil, 2)).add("small_coil_1", 80, 8);
-        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Copper, 8), BOLT.getMaterialIngredient(NickelZincFerrite, 1)).io(new ItemStack(SmallCoil, 4)).add("small_coil_2", 80, 8);
-        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(AnnealedCopper, 8), BOLT.getMaterialIngredient(Steel, 1)).io(new ItemStack(SmallCoil, 2)).add("small_coil_3", 80, 8);
-        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(AnnealedCopper, 8), BOLT.getMaterialIngredient(NickelZincFerrite, 1)).io(new ItemStack(SmallCoil, 4)).add("small_coil_4", 80, 8);
+        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Copper, 8), BOLT.getMaterialIngredient(Steel, 1)).io(new ItemStack(GregTechItems.SmallCoil, 2)).add("small_coil_1", 80, 8);
+        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Copper, 8), BOLT.getMaterialIngredient(NickelZincFerrite, 1)).io(new ItemStack(GregTechItems.SmallCoil, 4)).add("small_coil_2", 80, 8);
+        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(AnnealedCopper, 8), BOLT.getMaterialIngredient(Steel, 1)).io(new ItemStack(GregTechItems.SmallCoil, 2)).add("small_coil_3", 80, 8);
+        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(AnnealedCopper, 8), BOLT.getMaterialIngredient(NickelZincFerrite, 1)).io(new ItemStack(GregTechItems.SmallCoil, 4)).add("small_coil_4", 80, 8);
     }
 
     private static void bloodyCircuits() {
@@ -338,63 +339,63 @@ public class Circuitry {
             base *= hasBad ? (hasGood ? 2 : 4) : 1;
             //Basic
             CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPhenolic, 1), of(RESISTORS, 2),
-                            WIRE_FINE.getMaterialIngredient(Copper, 4), of(IntegratedLogicCircuit, 1))
+                            WIRE_FINE.getMaterialIngredient(Copper, 4), of(GregTechItems.IntegratedLogicCircuit, 1))
                     .io(new ItemStack(CircuitBasic,1))
                     .fi(material.getLiquid(base * 4)).add("basic_circuit_using_" + material.getId(),200, 8);
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(IntegratedLogicCircuit, 4),
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(GregTechItems.IntegratedLogicCircuit, 4),
                             of(RESISTORS, 4), of(CAPACITORS, 4),
                             of(TRANSISTORS, 4), WIRE_FINE.getMaterialIngredient(Copper, 2))
-                    .io(new ItemStack(MicroProcessor, 4))
+                    .io(new ItemStack(GregTechItems.MicroProcessor, 4))
                     .fi(material.getLiquid(base * 4)).add("microprocessor_using_" + material.getId(), 200, 60);
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(SOC, 4), WIRE_FINE.getMaterialIngredient(Copper, 2))
-                    .io(new ItemStack(MicroProcessor, 4))
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(GregTechItems.SOC, 4), WIRE_FINE.getMaterialIngredient(Copper, 2))
+                    .io(new ItemStack(GregTechItems.MicroProcessor, 4))
                     .fi(material.getLiquid(base * 4)).add("microprocessor_soc_using_" + material.getId(), 200, 60);
             //Good
             CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPhenolic, 1), of(RESISTORS, 4),of(CircuitBasic, 3),
                             WIRE_FINE.getMaterialIngredient(Electrum, 8))
                     .io(new ItemStack(CircuitGood,1))
                     .fi(material.getLiquid(base * 4)).add("good_circuit_using_" + material.getId(),20*20, 16);
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(CentralProcessingUnit, 1),
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(GregTechItems.CentralProcessingUnit, 1),
                             of(RESISTORS, 2), of(CAPACITORS, 2),
                             of(TRANSISTORS, 2), WIRE_FINE.getMaterialIngredient(RedAlloy, 2))
-                    .io(new ItemStack(IntegratedProcessor, 4))
+                    .io(new ItemStack(GregTechItems.IntegratedProcessor, 4))
                     .fi(material.getLiquid(base * 4)).add("integrated_processor_using_" + material.getId(), 200, 60);
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(SOC, 1), WIRE_FINE.getMaterialIngredient(RedAlloy, 2))
-                    .io(new ItemStack(IntegratedProcessor, 1))
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(GregTechItems.SOC, 1), WIRE_FINE.getMaterialIngredient(RedAlloy, 2))
+                    .io(new ItemStack(GregTechItems.IntegratedProcessor, 1))
                     .fi(material.getLiquid(base * 4)).add("integrated_processor_soc_using_" + material.getId(), 200, 60);
             //Advanced
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitGood, 2), of(IntegratedLogicCircuit, 3),of(RandomAccessMemoryChip, 1),
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitGood, 2), of(GregTechItems.IntegratedLogicCircuit, 3),of(GregTechItems.RandomAccessMemoryChip, 1),
                             of(TRANSISTORS, 4), WIRE_FINE.getMaterialIngredient(Electrum, 16))
                     .io(new ItemStack(CircuitAdv,1))
                     .fi(material.getLiquid(base * 4)).add("advanced_circuit_using_" + material.getId(),800, 28);
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(IntegratedProcessor, 2), of(SmallCoil, 4),
-                    of(CAPACITORS, 4), of(RandomAccessMemoryChip, 4), WIRE_FINE.getMaterialIngredient(RedAlloy, 12))
-                    .io(ProcessorAssembly)
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(GregTechItems.IntegratedProcessor, 2), of(GregTechItems.SmallCoil, 4),
+                    of(CAPACITORS, 4), of(GregTechItems.RandomAccessMemoryChip, 4), WIRE_FINE.getMaterialIngredient(RedAlloy, 12))
+                    .io(GregTechItems.ProcessorAssembly)
                     .fi(material.getLiquid(base * 4)).add("processor_assembly_using_" + material.getId(), 200, 600);
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardEpoxy), of(NanoCpu, 1),
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardEpoxy), of(GregTechItems.NanoCpu, 1),
                             of(RESISTORS, 2), of(CAPACITORS, 2),
                             of(TRANSISTORS, 2), WIRE_FINE.getMaterialIngredient(Electrum, 2))
-                    .io(new ItemStack(NanoProcessor))
+                    .io(new ItemStack(GregTechItems.NanoProcessor))
                     .fi(material.getLiquid(base * 4)).add("nano_processor_using_" + material.getId(), 200, 600);
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(ASoC, 1), WIRE_FINE.getMaterialIngredient(Electrum, 2))
-                    .io(new ItemStack(NanoProcessor))
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(GregTechItems.ASoC, 1), WIRE_FINE.getMaterialIngredient(Electrum, 2))
+                    .io(new ItemStack(GregTechItems.NanoProcessor))
                     .fi(material.getLiquid(base * 4)).add("nano_processor_asoc_using_" + material.getId(), 300, 8192);
 
             //Extreme
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic, 2), of(ProcessorAssembly, 3), of(DIODES, 4),
-                            of(RandomAccessMemoryChip, 4), WIRE_FINE.getMaterialIngredient(Electrum, 6))
-                    .io(new ItemStack(Workstation))
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic, 2), of(GregTechItems.ProcessorAssembly, 3), of(DIODES, 4),
+                            of(GregTechItems.RandomAccessMemoryChip, 4), WIRE_FINE.getMaterialIngredient(Electrum, 6))
+                    .io(new ItemStack(GregTechItems.Workstation))
                     .fi(material.getLiquid(base * 8)).add("workstation_using_" + material.getId(), 400, 90);
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardEpoxy), of(NanoProcessor, 2), of(SmallCoil, 4), of(SMDCapacitor, 4),
-                            of(RandomAccessMemoryChip, 4), WIRE_FINE.getMaterialIngredient(Electrum, 6))
-                    .io(new ItemStack(NanoprocessorAssembly))
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardEpoxy), of(GregTechItems.NanoProcessor, 2), of(GregTechItems.SmallCoil, 4), of(SMDCapacitor, 4),
+                            of(GregTechItems.RandomAccessMemoryChip, 4), WIRE_FINE.getMaterialIngredient(Electrum, 6))
+                    .io(new ItemStack(GregTechItems.NanoprocessorAssembly))
                     .fi(material.getLiquid(base * 8)).add("nanoprocessor_assembly_using_" + material.getId(), 400, 600);
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardFiber), of(QBitProcessingUnit), of(NanoCpu), of(SMDCapacitor, 2),
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardFiber), of(GregTechItems.QBitProcessingUnit), of(GregTechItems.NanoCpu), of(SMDCapacitor, 2),
                             of(SMDTransistor, 2), WIRE_FINE.getMaterialIngredient(Platinum, 2))
-                    .io(new ItemStack(QuantumProcessor))
+                    .io(new ItemStack(GregTechItems.QuantumProcessor))
                     .fi(material.getLiquid(base * 8)).add("quantum_processor_using_" + material.getId(), 200, 2400);
-            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardEpoxy), of(ASoC, 1), WIRE_FINE.getMaterialIngredient(Platinum, 2))
-                    .io(new ItemStack(QuantumProcessor))
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardEpoxy), of(GregTechItems.ASoC, 1), WIRE_FINE.getMaterialIngredient(Platinum, 2))
+                    .io(new ItemStack(GregTechItems.QuantumProcessor))
                     .fi(material.getLiquid(base * 4)).add("quantum_processor_asoc_using_" + material.getId(), 50, 8192);
             //Energy Flow
             ASSEMBLER.RB().ii(of(CircuitBoardMultiFiber, 1), of(Resistor, 8),of(Transistor, 8),
@@ -404,7 +405,7 @@ public class Circuitry {
             //Wetware
             ASSEMBLER.RB().ii(of(CircuitBoardWetware, 1), of(Resistor, 8),of(Transistor, 8),
                             of(Capacitor, 8),of(AntimatterMaterialTypes.WIRE_FINE.get(YttriumBariumCuprate), 4))
-                    .io(new ItemStack(GregTechData.CircuitWetware,1))
+                    .io(new ItemStack(GregTechItems.CircuitWetware,1))
                     .fi(material.getLiquid(base * 4)).add("wetware_circuit_using_" + material.getId(),20*20, 32768);
         }
     }

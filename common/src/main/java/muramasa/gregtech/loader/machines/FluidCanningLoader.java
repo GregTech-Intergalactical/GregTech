@@ -8,7 +8,7 @@ import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -28,7 +28,7 @@ public class FluidCanningLoader {
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullMedium, 1)).fi(SulfuricAcid.getLiquid(4000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryMediumAcid)).add("battery_medium_acid",64, 1);
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullLarge, 1)).fi(SulfuricAcid.getLiquid(16000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryLargeAcid)).add("battery_large_acid",258, 1);
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.LighterEmpty)).fi(Butane.getGas(100)).io(GTCoreItems.Lighter).add("lighter", 1, 1);
-        FLUID_CANNER.RB().ii(RecipeIngredient.of(GregTechData.TritiumEnrichedRod)).io(GregTechData.EmptyNuclearFuelRod).fo(Tritium.getGas(500)).add("tritium_enriched_rod", 16, 16);
+        FLUID_CANNER.RB().ii(RecipeIngredient.of(GregTechItems.TritiumEnrichedRod)).io(GregTechItems.EmptyNuclearFuelRod).fo(Tritium.getGas(500)).add("tritium_enriched_rod", 16, 16);
         AntimatterPlatformUtils.getAllFluids().forEach(fluid -> {
             Item bucket = fluid.getBucket();
             if (bucket == Items.AIR) return;

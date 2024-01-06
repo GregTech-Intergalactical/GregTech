@@ -9,7 +9,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.items.ItemDepletedRod;
 import muramasa.gregtech.items.ItemEnrichedRod;
 import net.minecraft.world.item.Item;
@@ -122,22 +122,22 @@ public class CentrifugingLoader {
         addMethaneRecipe(GOLDEN_CARROT, 576, 9216, new ItemStack(GOLD_NUGGET, 6));
         addMethaneRecipe(GLISTERING_MELON_SLICE, 576, 9216, new ItemStack(GOLD_NUGGET, 6));
 
-        addDepletedRodRecipe(GregTechData.DepletedThorium232Rod, Uranium);
-        addDepletedRodRecipe(GregTechData.DepletedUranium238Rod, Uranium235);
-        addDepletedRodRecipe(GregTechData.DepletedUranium235Rod, Plutonium);
-        addDepletedRodRecipe(GregTechData.DepletedUranium233Rod, Plutonium243);
-        addDepletedRodRecipe(GregTechData.DepletedPlutonium244Rod, Plutonium241);
-        addDepletedRodRecipe(GregTechData.DepletedPlutonium241Rod, Plutonium243);
-        addDepletedRodRecipe(GregTechData.DepletedPlutonium243Rod, Americium);
-        addDepletedRodRecipe(GregTechData.DepletedPlutonium239Rod, Americium241);
-        addDepletedRodRecipe(GregTechData.DepletedAmericium245Rod, Americium241);
-        addDepletedRodRecipe(GregTechData.DepletedAmericium241Rod, EnrichedNaquadah);
-        addDepletedRodRecipe(GregTechData.DepletedCobalt60Rod, Thorium);
-        addDepletedRodRecipe(GregTechData.DepletedEnrichedNaquadahRod, Naquadria);
-        addDepletedRodRecipe(GregTechData.DepletedNaquadriaRod, Cobalt60);
-        addEnrichedRodRecipe(GregTechData.Uranium233EnrichedRod, Thorium);
-        addEnrichedRodRecipe(GregTechData.Plutonium239EnrichedRod, Uranium);
-        addEnrichedRodRecipe(GregTechData.EnrichedNaquadahEnrichedRod, Naquadah);
+        addDepletedRodRecipe(GregTechItems.DepletedThorium232Rod, Uranium);
+        addDepletedRodRecipe(GregTechItems.DepletedUranium238Rod, Uranium235);
+        addDepletedRodRecipe(GregTechItems.DepletedUranium235Rod, Plutonium);
+        addDepletedRodRecipe(GregTechItems.DepletedUranium233Rod, Plutonium243);
+        addDepletedRodRecipe(GregTechItems.DepletedPlutonium244Rod, Plutonium241);
+        addDepletedRodRecipe(GregTechItems.DepletedPlutonium241Rod, Plutonium243);
+        addDepletedRodRecipe(GregTechItems.DepletedPlutonium243Rod, Americium);
+        addDepletedRodRecipe(GregTechItems.DepletedPlutonium239Rod, Americium241);
+        addDepletedRodRecipe(GregTechItems.DepletedAmericium245Rod, Americium241);
+        addDepletedRodRecipe(GregTechItems.DepletedAmericium241Rod, EnrichedNaquadah);
+        addDepletedRodRecipe(GregTechItems.DepletedCobalt60Rod, Thorium);
+        addDepletedRodRecipe(GregTechItems.DepletedEnrichedNaquadahRod, Naquadria);
+        addDepletedRodRecipe(GregTechItems.DepletedNaquadriaRod, Cobalt60);
+        addEnrichedRodRecipe(GregTechItems.Uranium233EnrichedRod, Thorium);
+        addEnrichedRodRecipe(GregTechItems.Plutonium239EnrichedRod, Uranium);
+        addEnrichedRodRecipe(GregTechItems.EnrichedNaquadahEnrichedRod, Naquadah);
     }
 
     private static void addDepletedRodRecipe(ItemDepletedRod rod, Material secondary){

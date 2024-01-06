@@ -19,8 +19,7 @@ import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockColoredWall;
-import muramasa.gregtech.data.Machines;
-import muramasa.gregtech.data.ToolTypes;
+import muramasa.gregtech.data.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -37,7 +36,6 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.ofObject;
-import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ASSEMBLER;
 import static muramasa.gregtech.data.TierMaps.*;
@@ -62,7 +60,7 @@ public class AssemblyLoader {
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,1), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, LV, false) ,1)).fi(Plastic.getLiquid(L)).io(GTCoreItems.BatteryHullSmall.getDefaultInstance()).add("battery_hull_small",800, 1);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,3), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, MV, false) ,2)).fi(Plastic.getLiquid(L * 3)).io(GTCoreItems.BatteryHullMedium.getDefaultInstance()).add("battery_hull_medium",1600, 2);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,9), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, HV, false) ,4)).fi(Plastic.getLiquid(L * 9)).io(GTCoreItems.BatteryHullLarge.getDefaultInstance()).add("battery_hull_large",3200, 4);
-        ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Tantalum, 1), FOIL.getMaterialIngredient(Manganese, 1)).fi(Plastic.getLiquid(L)).io(new ItemStack(BatteryTantalum, 8)).add("tantalum_capacitor", 100, 4);
+        ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Tantalum, 1), FOIL.getMaterialIngredient(Manganese, 1)).fi(Plastic.getLiquid(L)).io(new ItemStack(GregTechItems.BatteryTantalum, 8)).add("tantalum_capacitor", 100, 4);
 
     }
 
@@ -90,23 +88,23 @@ public class AssemblyLoader {
         addTierHull(Tier.UV);
         addTierHull(Tier.UHV);
 
-        addWall(Steel, STEEL_WALL);
-        addWall(Invar, INVAR_WALL);
-        addWall(StainlessSteel, STAINLESS_STEEL_WALL);
-        addWall(Tungsten, TUNGSTEN_WALL);
-        addWall(Titanium, TITANIUM_WALL);
-        addWall(TungstenSteel, TUNGSTENSTEEL_WALL);
-        addWall(Netherite, NETHERITE_WALL);
+        addWall(Steel, GregTechBlocks.STEEL_WALL);
+        addWall(Invar, GregTechBlocks.INVAR_WALL);
+        addWall(StainlessSteel, GregTechBlocks.STAINLESS_STEEL_WALL);
+        addWall(Tungsten, GregTechBlocks.TUNGSTEN_WALL);
+        addWall(Titanium, GregTechBlocks.TITANIUM_WALL);
+        addWall(TungstenSteel, GregTechBlocks.TUNGSTENSTEEL_WALL);
+        addWall(Netherite, GregTechBlocks.NETHERITE_WALL);
 
-        addCasing(Bronze, CASING_BRONZE);
-        addCasing(Steel, CASING_SOLID_STEEL);
-        addCasing(StainlessSteel, CASING_STAINLESS_STEEL);
-        addCasing(Titanium, CASING_TITANIUM);
-        addCasing(TungstenSteel, CASING_TUNGSTENSTEEL);
-        addCasing(Invar, CASING_HEAT_PROOF);
-        addCasing(Aluminium, CASING_FROST_PROOF);
-        addCasing(Lead, CASING_RADIATION_PROOF);
-        ASSEMBLER.RB().ii(of(CASING_SOLID_STEEL), INT_CIRCUITS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(CASING_CHEMICALLY_INERT.asItem()).add("chemically_inert_casing");
+        addCasing(Bronze, GregTechBlocks.CASING_BRONZE);
+        addCasing(Steel, GregTechBlocks.CASING_SOLID_STEEL);
+        addCasing(StainlessSteel, GregTechBlocks.CASING_STAINLESS_STEEL);
+        addCasing(Titanium, GregTechBlocks.CASING_TITANIUM);
+        addCasing(TungstenSteel, GregTechBlocks.CASING_TUNGSTENSTEEL);
+        addCasing(Invar, GregTechBlocks.CASING_HEAT_PROOF);
+        addCasing(Aluminium, GregTechBlocks.CASING_FROST_PROOF);
+        addCasing(Lead, GregTechBlocks.CASING_RADIATION_PROOF);
+        ASSEMBLER.RB().ii(of(GregTechBlocks.CASING_SOLID_STEEL), INT_CIRCUITS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GregTechBlocks.CASING_CHEMICALLY_INERT.asItem()).add("chemically_inert_casing");
     }
 
     private static void cables(){
@@ -133,14 +131,14 @@ public class AssemblyLoader {
 
 
     private static void coils(){
-        addCoil(COIL_CUPRONICKEL, WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY));
-        addCoil(COIL_KANTHAL, WIRE_KANTHAL.getBlockItem(PipeSize.TINY));
-        addCoil(COIL_NICHROME, WIRE_NICHROME.getBlockItem(PipeSize.TINY));
-        addCoil(COIL_TUNGSTENSTEEL, WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY));
-        addCoil(COIL_HSSG, WIRE_HSSG.getBlockItem(PipeSize.TINY));
-        addCoil(COIL_NAQUADAH, WIRE_NAQUADAH.getBlockItem(PipeSize.TINY));
-        addCoil(COIL_NAQUADAH_ALLOY, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY));
-        addCoil(COIL_SUPERCONDUCTOR, WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY));
+        addCoil(GregTechBlocks.COIL_CUPRONICKEL, GregTechBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY));
+        addCoil(GregTechBlocks.COIL_KANTHAL, GregTechBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY));
+        addCoil(GregTechBlocks.COIL_NICHROME, GregTechBlocks.WIRE_NICHROME.getBlockItem(PipeSize.TINY));
+        addCoil(GregTechBlocks.COIL_TUNGSTENSTEEL, GregTechBlocks.WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY));
+        addCoil(GregTechBlocks.COIL_HSSG, GregTechBlocks.WIRE_HSSG.getBlockItem(PipeSize.TINY));
+        addCoil(GregTechBlocks.COIL_NAQUADAH, GregTechBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.TINY));
+        addCoil(GregTechBlocks.COIL_NAQUADAH_ALLOY, GregTechBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY));
+        addCoil(GregTechBlocks.COIL_SUPERCONDUCTOR, GregTechBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY));
     }
 
     private static void frames(){
@@ -151,23 +149,23 @@ public class AssemblyLoader {
     }
 
     private static void misc(){
-        ASSEMBLER.RB().ii(PrintedPages, Items.LEATHER).fi(Glue.getLiquid(20)).io(Items.WRITTEN_BOOK).fake().add("written_book", 32, 8);
+        ASSEMBLER.RB().ii(GregTechItems.PrintedPages, Items.LEATHER).fi(Glue.getLiquid(20)).io(Items.WRITTEN_BOOK).fake().add("written_book", 32, 8);
         ASSEMBLER.RB().ii(of(Machines.TRANSFORMER.getItem(ULV), 8), of(Machines.TRANSFORMER.getItem(LV), 4), of(Machines.TRANSFORMER.getItem(MV), 2),
-                of(Machines.TRANSFORMER.getItem(HV), 1), of(ComputerMonitor), of(TIER_CIRCUITS.apply(EV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV)).add("ev_adjustable_transformer", 50, 1920);
-        ASSEMBLER.RB().ii(of(Machines.TRANSFORMER.getItem(EV), 1), of(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV), 2), of(ComputerMonitor), of(TIER_CIRCUITS.apply(IV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(IV)).add("iv_adjustable_transformer", 50, 1920);
+                of(Machines.TRANSFORMER.getItem(HV), 1), of(GregTechItems.ComputerMonitor), of(TIER_CIRCUITS.apply(EV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV)).add("ev_adjustable_transformer", 50, 1920);
+        ASSEMBLER.RB().ii(of(Machines.TRANSFORMER.getItem(EV), 1), of(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV), 2), of(GregTechItems.ComputerMonitor), of(TIER_CIRCUITS.apply(IV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(IV)).add("iv_adjustable_transformer", 50, 1920);
         ASSEMBLER.RB().ii(of(ItemTags.PLANKS,8), INT_CIRCUITS.get(8)).io(new ItemStack(Items.CHEST,1)).add("chest",100,4);
 
-        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(COVER_DRAIN.getItem()).add("drain",800, 16);
-        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(COVER_PUMP.getItem(LV))).io(COVER_AIR_VENT .getItem()).add("air_vent",800, 16);
-        addCoverRecipe(COVER_REDSTONE_MACHINE_CONTROLLER.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1));
-        addCoverRecipe(COVER_ENERGY_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1));
-        addCoverRecipe(COVER_FLUID_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.HEAVY_WEIGHTED_PRESSURE_PLATE, 1));
-        addCoverRecipe(COVER_ITEM_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LIGHT_WEIGHTED_PRESSURE_PLATE, 1));
+        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(GregTechCovers.COVER_DRAIN.getItem()).add("drain",800, 16);
+        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(GregTechCovers.COVER_PUMP.getItem(LV))).io(GregTechCovers.COVER_AIR_VENT .getItem()).add("air_vent",800, 16);
+        addCoverRecipe(GregTechCovers.COVER_REDSTONE_MACHINE_CONTROLLER.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1));
+        addCoverRecipe(GregTechCovers.COVER_ENERGY_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1));
+        addCoverRecipe(GregTechCovers.COVER_FLUID_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.HEAVY_WEIGHTED_PRESSURE_PLATE, 1));
+        addCoverRecipe(GregTechCovers.COVER_ITEM_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LIGHT_WEIGHTED_PRESSURE_PLATE, 1));
         ASSEMBLER.RB().ii(of(CarbonFibre, 2), INT_CIRCUITS.get(2)).io(CarbonMesh).add("carbon_mesh", 800, 2);
-        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
-        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16)).io(COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
-        ASSEMBLER.RB().ii(of(COVER_SHUTTER.getItem()), of(CIRCUITS_GOOD, 2)).io(COVER_FLUID_FILTER.getItem()).add("fluid_filter", 800, 4);
-        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_TRAPDOOR)).io(new ItemStack(COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
+        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
+        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
+        ASSEMBLER.RB().ii(of(GregTechCovers.COVER_SHUTTER.getItem()), of(CIRCUITS_GOOD, 2)).io(GregTechCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter", 800, 4);
+        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_TRAPDOOR)).io(new ItemStack(GregTechCovers.COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Invar, 2), of(Items.FLINT, 1)).io(GTCoreItems.LighterEmpty).add("empty_lighter", 256, 16);
         ASSEMBLER.RB().ii(of(Match, 64), of(Items.PAPER, 2)).fi(Glue.getLiquid(10)).io(MatchBook).add("matchbook", 100, 16);
     }
@@ -184,8 +182,8 @@ public class AssemblyLoader {
             ASSEMBLER.RB().ii(ofObject(WIRE_GETTER.apply(fromTier(t), LV),4), of(ROD.get(TIER_MATERIALS.get(t)),2),
                     of(ROD.get(magnet),1)
                     , ofObject(CABLE_GETTER.apply(PipeSize.VTINY, t, false), 2)).io(new ItemStack(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId(), GTCore.ID))).add("motor_"+t.getId(),150,16);
-            ASSEMBLER.RB().ii(of(COVER_PUMP.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(COVER_FLUID_REGULATOR.getItem(t)).add("fluid_regulator_" + t.getId(), 800, 8);
-            ASSEMBLER.RB().ii(of(COVER_CONVEYOR.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(COVER_ITEM_REGULATOR.getItem(t)).add("item_regulator_" + t.getId(), 800, 8);
+            ASSEMBLER.RB().ii(of(GregTechCovers.COVER_PUMP.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(GregTechCovers.COVER_FLUID_REGULATOR.getItem(t)).add("fluid_regulator_" + t.getId(), 800, 8);
+            ASSEMBLER.RB().ii(of(GregTechCovers.COVER_CONVEYOR.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(GregTechCovers.COVER_ITEM_REGULATOR.getItem(t)).add("item_regulator_" + t.getId(), 800, 8);
         });
     }
 

@@ -6,20 +6,18 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.MaterialTypeBlock;
 import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTechConfig;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.integration.SpaceModRegistrar;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import tesseract.FluidPlatformUtils;
-import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.Ref.U;
@@ -45,7 +43,7 @@ public class Bath {
         BATH.RB()
                 .ii(RecipeIngredient.of(Items.NETHER_STAR,1))
                 .fi(Radon.getGas(1250))
-                .io(new ItemStack(GregTechData.QuantumStar))
+                .io(new ItemStack(GregTechItems.QuantumStar))
                 .add("quantum_star",96*20);
         BATH.RB()
                 .ii(GEM.getMaterialIngredient(Diamond, 1))

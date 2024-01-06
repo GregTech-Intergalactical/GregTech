@@ -7,7 +7,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.worldgen.vein.VeinSavedData;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.worldgen.OilSpoutEntry;
 import muramasa.gregtech.worldgen.OilSpoutSavedData;
 import net.minecraft.core.BlockPos;
@@ -45,7 +45,7 @@ public class BlockEntitySeismicProspector extends BlockEntityMachine<BlockEntity
             if (!player.isCreative()) stack.shrink(4);
             return InteractionResult.SUCCESS;
         }
-        if (stack.getItem() == GregTechData.DataStick && (entry != null || ores != null)){
+        if (stack.getItem() == GregTechItems.DataStick && (entry != null || ores != null)){
             CompoundTag prospectData = stack.getOrCreateTagElement("prospectData");
             prospectData.putLong("pos", pos.asLong());
             prospectData.putString("dimension", level.dimension().location().toString());

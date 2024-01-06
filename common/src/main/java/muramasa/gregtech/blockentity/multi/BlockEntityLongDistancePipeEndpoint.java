@@ -18,7 +18,7 @@ import muramasa.antimatter.structure.StructureCache;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.Machines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -164,8 +164,8 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
     }
 
     protected Block getPipeline(){
-        if (type == Machines.LONG_DISTANCE_FLUID_ENDPOINT) return GregTechData.LONG_DIST_FLUID_PIPE;
-        if (type == Machines.LONG_DISTANCE_ITEM_ENDPOINT) return GregTechData.LONG_DIST_ITEM_PIPE;
+        if (type == Machines.LONG_DISTANCE_FLUID_ENDPOINT) return GregTechBlocks.LONG_DIST_FLUID_PIPE;
+        if (type == Machines.LONG_DISTANCE_ITEM_ENDPOINT) return GregTechBlocks.LONG_DIST_ITEM_PIPE;
         if (type == Machines.LONG_DISTANCE_TRANSFORMER_ENDPOINT){
             Block block = GregTech.get(BlockCasing.class, "long_distance_cable_" + this.tier.getId());
             if (block != null) return block;

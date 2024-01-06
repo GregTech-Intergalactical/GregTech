@@ -8,8 +8,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
 import muramasa.antimatter.util.int3;
-import muramasa.gregtech.data.GregTechData;
-import muramasa.gregtech.data.GregTechTags;
+import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.Machines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -21,7 +20,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -50,7 +48,7 @@ public class BlockEntityCharcoalPit extends BlockEntityMachine<BlockEntityCharco
             if (this.getMachineState() == MachineState.IDLE) setMachineState(MachineState.ACTIVE);
             if (++progress >= maxProgress){
                 blockLists.forEach(b -> {
-                    this.getLevel().setBlock(b, GregTechData.BRITTLE_CHARCOAL.defaultBlockState(), 3);
+                    this.getLevel().setBlock(b, GregTechBlocks.BRITTLE_CHARCOAL.defaultBlockState(), 3);
                 });
                 setMachineState(MachineState.IDLE);
                 maxProgress = 0;

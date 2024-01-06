@@ -27,7 +27,6 @@ import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.ROTOR;
 import static muramasa.antimatter.machine.Tier.*;
-import static muramasa.gregtech.data.GregTechData.*;
 import static muramasa.gregtech.data.Materials.*;
 
 public class TierMaps {
@@ -89,32 +88,32 @@ public class TierMaps {
                 return TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ size.getId()));
             }
             if (tier == MV) {
-                return WIRE_CUPRONICKEL.getBlockItem(size);
+                return GregTechBlocks.WIRE_CUPRONICKEL.getBlockItem(size);
             }
             if (tier == HV) {
-                return WIRE_KANTHAL.getBlockItem(size);
+                return GregTechBlocks.WIRE_KANTHAL.getBlockItem(size);
             }
             if (tier == EV) {
-                return WIRE_NICHROME.getBlockItem(size);
+                return GregTechBlocks.WIRE_NICHROME.getBlockItem(size);
             }
             if (tier == IV) {
-                return WIRE_TUNGSTEN_STEEL.getBlockItem(size);
+                return GregTechBlocks.WIRE_TUNGSTEN_STEEL.getBlockItem(size);
             }
             throw new IllegalArgumentException("Too high tier in WIRE_GETTER");
         };
         CABLE_GETTER = (size, tier, machine) -> {
-            if (tier == ULV) return CABLE_RED_ALLOY.getBlockItem(size);
-            if (tier == LV) return CABLE_TIN.getBlockItem(size);
+            if (tier == ULV) return GregTechBlocks.CABLE_RED_ALLOY.getBlockItem(size);
+            if (tier == LV) return GregTechBlocks.CABLE_TIN.getBlockItem(size);
             if (tier == MV){
                 return TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_CABLE.getId()+"_"+ size.getId()));
             }
-            if (tier == HV) return CABLE_GOLD.getBlockItem(size);
-            if (tier == EV) return CABLE_ALUMINIUM.getBlockItem(size);
-            if (tier == IV) return machine ? CABLE_PLATINUM.getBlockItem(size) : CABLE_TUNGSTEN.getBlockItem(size);
-            if(tier == LUV) return CABLE_VANADIUM_GALLIUM.getBlockItem(size);
-            if(tier == ZPM) return CABLE_NAQUADAH.getBlockItem(size);
-            if(tier == UV) return CABLE_NAQUADAH_ALLOY.getBlockItem(size);
-            if(tier == UHV) return WIRE_SUPERCONDUCTOR.getBlockItem(size);
+            if (tier == HV) return GregTechBlocks.CABLE_GOLD.getBlockItem(size);
+            if (tier == EV) return GregTechBlocks.CABLE_ALUMINIUM.getBlockItem(size);
+            if (tier == IV) return machine ? GregTechBlocks.CABLE_PLATINUM.getBlockItem(size) : GregTechBlocks.CABLE_TUNGSTEN.getBlockItem(size);
+            if(tier == LUV) return GregTechBlocks.CABLE_VANADIUM_GALLIUM.getBlockItem(size);
+            if(tier == ZPM) return GregTechBlocks.CABLE_NAQUADAH.getBlockItem(size);
+            if(tier == UV) return GregTechBlocks.CABLE_NAQUADAH_ALLOY.getBlockItem(size);
+            if(tier == UHV) return GregTechBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(size);
             throw new IllegalArgumentException("Invalid tier in CABLE_GETTER");
         };
     }
@@ -129,15 +128,15 @@ public class TierMaps {
         doneMaps = true;
         {
             ImmutableMap.Builder<Tier, PipeItemBlock> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.LV, WIRE_TIN.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.MV, WIRE_COPPER.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.HV, WIRE_GOLD.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.EV, WIRE_ALUMINIUM.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.IV, WIRE_TUNGSTEN.getBlockItem(PipeSize.VTINY));
-            builder.put(LUV, WIRE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY));
-            builder.put(ZPM, WIRE_NAQUADAH.getBlockItem(PipeSize.VTINY));
-            builder.put(UV, WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL));
+            builder.put(Tier.ULV, GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.LV, GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.MV, GregTechBlocks.WIRE_COPPER.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.HV, GregTechBlocks.WIRE_GOLD.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.EV, GregTechBlocks.WIRE_ALUMINIUM.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.IV, GregTechBlocks.WIRE_TUNGSTEN.getBlockItem(PipeSize.VTINY));
+            builder.put(LUV, GregTechBlocks.WIRE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY));
+            builder.put(ZPM, GregTechBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.VTINY));
+            builder.put(UV, GregTechBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL));
             TIER_WIRES = builder.build();
         }
         /*{
@@ -184,12 +183,12 @@ public class TierMaps {
         }
         {
             ImmutableMap.Builder<Tier, Function<PipeSize, Item>> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, FLUID_PIPE_COPPER::getBlockItem);
-            builder.put(Tier.LV, FLUID_PIPE_BRONZE::getBlockItem);
-            builder.put(Tier.MV, FLUID_PIPE_STEEL::getBlockItem);
-            builder.put(Tier.HV, FLUID_PIPE_STAINLESS_STEEL::getBlockItem);
-            builder.put(Tier.EV, FLUID_PIPE_TITANIUM::getBlockItem);
-            builder.put(Tier.IV, FLUID_PIPE_TUNGSTEN_STEEL::getBlockItem);
+            builder.put(Tier.ULV, GregTechBlocks.FLUID_PIPE_COPPER::getBlockItem);
+            builder.put(Tier.LV, GregTechBlocks.FLUID_PIPE_BRONZE::getBlockItem);
+            builder.put(Tier.MV, GregTechBlocks.FLUID_PIPE_STEEL::getBlockItem);
+            builder.put(Tier.HV, GregTechBlocks.FLUID_PIPE_STAINLESS_STEEL::getBlockItem);
+            builder.put(Tier.EV, GregTechBlocks.FLUID_PIPE_TITANIUM::getBlockItem);
+            builder.put(Tier.IV, GregTechBlocks.FLUID_PIPE_TUNGSTEN_STEEL::getBlockItem);
             TIER_PIPES = builder.build();
         }
         {

@@ -6,7 +6,7 @@ import muramasa.antimatter.registration.IColorHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -37,7 +37,7 @@ public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements ICo
 
     @Override
     public Texture[] getTextures() {
-        if (this == GregTechData.EmptyNuclearFuelRod){
+        if (this == GregTechItems.EmptyNuclearFuelRod){
             return new Texture[]{new Texture(GTIRef.ID, "item/basic/empty_nuclear_fuel_rod")};
         }
         return new Texture[]{new Texture(GTIRef.ID, "item/basic/nuclear_fuel_rod"), new Texture(GTIRef.ID, "item/basic/empty_nuclear_fuel_rod")};

@@ -17,7 +17,7 @@ import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.items.ItemIntCircuit;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
@@ -164,13 +164,13 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
 
     public BlockBasic getCasing(){
         if (tier == LV){
-            return GregTechData.CASING_BRONZE_PLATED_BRICK;
+            return GregTechBlocks.CASING_BRONZE_PLATED_BRICK;
         } else if (tier == MV){
-            return GregTechData.CASING_SOLID_STEEL;
+            return GregTechBlocks.CASING_SOLID_STEEL;
         } else if (tier == HV){
-            return GregTechData.CASING_TITANIUM;
+            return GregTechBlocks.CASING_TITANIUM;
         }
-        return GregTechData.CASING_TUNGSTENSTEEL;
+        return GregTechBlocks.CASING_TUNGSTENSTEEL;
     }
 
     public int getEUt(){
@@ -203,24 +203,24 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
 
     public Block getFireboxCasing(){
         if (tier == LV){
-            return GregTechData.CASING_FIREBOX_BRONZE;
+            return GregTechBlocks.CASING_FIREBOX_BRONZE;
         } else if (tier == MV){
-            return GregTechData.CASING_FIREBOX_STEEL;
+            return GregTechBlocks.CASING_FIREBOX_STEEL;
         } else if (tier == HV){
-            return GregTechData.CASING_FIREBOX_TITANIUM;
+            return GregTechBlocks.CASING_FIREBOX_TITANIUM;
         }
-        return GregTechData.CASING_FIREBOX_TUNGSTENSTEEL;
+        return GregTechBlocks.CASING_FIREBOX_TUNGSTENSTEEL;
     }
 
     public Block getPipeCasing(){
         if (tier == LV){
-            return GregTechData.CASING_PIPE_BRONZE;
+            return GregTechBlocks.CASING_PIPE_BRONZE;
         } else if (tier == MV){
-            return GregTechData.CASING_PIPE_STEEL;
+            return GregTechBlocks.CASING_PIPE_STEEL;
         } else if (tier == HV){
-            return GregTechData.CASING_PIPE_TITANIUM;
+            return GregTechBlocks.CASING_PIPE_TITANIUM;
         }
-        return GregTechData.CASING_PIPE_TUNGSTENSTEEL;
+        return GregTechBlocks.CASING_PIPE_TUNGSTENSTEEL;
     }
 
     public Texture getTextureForHatches(Direction dir, BlockPos hatchPos){

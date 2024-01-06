@@ -2,21 +2,15 @@ package muramasa.gregtech.datagen;
 
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
-import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.item.ItemBattery;
-import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.*;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.items.ItemDepletedRod;
 import muramasa.gregtech.items.ItemIntCircuit;
 import muramasa.gregtech.items.ItemNuclearFuelRod;
-import net.minecraft.Util;
-import net.minecraft.world.item.Item;
 
 import static muramasa.antimatter.util.Utils.*;
 
@@ -120,10 +114,10 @@ public class GregTechLocalizations {
                 add(i, lowerUnderscoreToUpperSpaced(i.getId()));
             });
 
-            add(GregTechData.MINING_PIPE, "Mining Pipe");
-            add(GregTechData.MINING_PIPE_THIN, "Mining Pipe");
-            add(GregTechData.BRITTLE_CHARCOAL, "Brittle Charcoal");
-            add(GregTechData.SOLID_SUPER_FUEL, "Solid Super Fuel");
+            add(GregTechBlocks.MINING_PIPE, "Mining Pipe");
+            add(GregTechBlocks.MINING_PIPE_THIN, "Mining Pipe");
+            add(GregTechBlocks.BRITTLE_CHARCOAL, "Brittle Charcoal");
+            add(GregTechBlocks.SOLID_SUPER_FUEL, "Solid Super Fuel");
             AntimatterAPI.all(BlockFakeCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockColoredWall.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockAsphalt.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
