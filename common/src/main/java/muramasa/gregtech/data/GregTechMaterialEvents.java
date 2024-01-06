@@ -31,7 +31,7 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Hydrogen).asGas(20);
         event.setMaterial(Helium).asGas();
-        event.setMaterial(Lithium).asSolid(454, 0).asOre().harvestLevel(2);
+        event.setMaterial(Lithium).asSolid(454, 0, BOLT).asOre().harvestLevel(2);
         event.setMaterial(Beryllium).asOre(INGOT, NUGGET);
         event.setMaterial(Boron).asDust(2349);
         event.setMaterial(Carbon).asDust(PLATE);

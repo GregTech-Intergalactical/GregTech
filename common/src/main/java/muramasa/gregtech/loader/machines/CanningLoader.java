@@ -4,10 +4,10 @@ import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.items.ItemBreederRod;
 import muramasa.gregtech.items.ItemNuclearFuelRod;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.ROD;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.RecipeMaps.CANNER;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.*;
@@ -36,6 +36,11 @@ public class CanningLoader {
         AntimatterAPI.all(ItemNuclearFuelRod.class, GTIRef.ID).forEach(r -> {
             if (r.getMaterial().has(ROD)){
                 CANNER.RB().ii(ROD.getMaterialIngredient(r.getMaterial(), 1), of(GregTechData.EmptyNuclearFuelRod)).io(r).add(r.getId(), 16, 16);
+            }
+        });
+        AntimatterAPI.all(ItemBreederRod.class, GTIRef.ID).forEach(r -> {
+            if (r.getMaterial().has(BOLT)){
+                CANNER.RB().ii(BOLT.getMaterialIngredient(r.getMaterial(), 4), of(GregTechData.EmptyNuclearFuelRod)).io(r).add(r.getId(), 16, 16);
             }
         });
     }

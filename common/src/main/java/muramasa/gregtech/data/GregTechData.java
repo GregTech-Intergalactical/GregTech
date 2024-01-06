@@ -13,6 +13,7 @@ import muramasa.antimatter.pipe.types.*;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.*;
 import muramasa.gregtech.block.BlockCoil.CoilData;
 import muramasa.gregtech.cover.*;
@@ -24,6 +25,7 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -257,6 +259,15 @@ public class GregTechData {
     public static ItemDepletedRod DepletedCobalt60Rod = new ItemDepletedRod(GTIRef.ID, Cobalt60);
     public static ItemDepletedRod DepletedEnrichedNaquadahRod = new ItemDepletedRod(GTIRef.ID, EnrichedNaquadah);
     public static ItemDepletedRod DepletedNaquadriaRod = new ItemDepletedRod(GTIRef.ID, Naquadria);
+
+    public static ItemBreederRod Thorium232BreederRod = new ItemBreederRod(GTIRef.ID, Thorium, () -> GregTech.get(Item.class, "uranium_233_enriched_rod"), 1000, 64_000_000);
+    public static ItemBreederRod Uranium238BreederRod = new ItemBreederRod(GTIRef.ID, Uranium, () -> GregTech.get(Item.class, "plutonium_239_enriched_rod"), 2500, 256_000_000);
+    public static ItemBreederRod LithiumBreederRod = new ItemBreederRod(GTIRef.ID, Lithium, () -> GregTech.get(Item.class, "tritium_enriched_rod"), 250, 640_000);
+    public static ItemBreederRod NaquadahBreederRod = new ItemBreederRod(GTIRef.ID, Naquadah, () -> GregTech.get(Item.class, "enriched_naquadah_enriched_rod"), 10000, 4_096_000_000L);
+    public static ItemEnrichedRod Uranium233EnrichedRod = new ItemEnrichedRod(GTIRef.ID, Uranium233, () -> Thorium232BreederRod);
+    public static ItemEnrichedRod Plutonium239EnrichedRod = new ItemEnrichedRod(GTIRef.ID, Plutonium239, () -> Uranium238BreederRod);
+    public static ItemEnrichedRod TritiumEnrichedRod = new ItemEnrichedRod(GTIRef.ID, Tritium, () -> LithiumBreederRod);
+    public static ItemEnrichedRod EnrichedNaquadahEnrichedRod = new ItemEnrichedRod(GTIRef.ID, EnrichedNaquadah, () -> NaquadahBreederRod);
 
     public static final LiquidBlock LAVA = AntimatterAPI.register(Block.class, "lava", GTIRef.ID, new LiquidBlock(Fluids.LAVA, BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.LAVA).noCollission().randomTicks().strength(100.0F).lightLevel((blockStatex) -> 15).noDrops()){
         @Override

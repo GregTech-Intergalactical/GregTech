@@ -11,6 +11,7 @@ import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.data.GregTechData;
 import muramasa.gregtech.items.ItemDepletedRod;
+import muramasa.gregtech.items.ItemEnrichedRod;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import tesseract.TesseractGraphWrappers;
@@ -134,10 +135,17 @@ public class CentrifugingLoader {
         addDepletedRodRecipe(GregTechData.DepletedCobalt60Rod, Thorium);
         addDepletedRodRecipe(GregTechData.DepletedEnrichedNaquadahRod, Naquadria);
         addDepletedRodRecipe(GregTechData.DepletedNaquadriaRod, Cobalt60);
+        addEnrichedRodRecipe(GregTechData.Uranium233EnrichedRod, Thorium);
+        addEnrichedRodRecipe(GregTechData.Plutonium239EnrichedRod, Uranium);
+        addEnrichedRodRecipe(GregTechData.EnrichedNaquadahEnrichedRod, Naquadah);
     }
 
     private static void addDepletedRodRecipe(ItemDepletedRod rod, Material secondary){
         CENTRIFUGE.RB().ii(rod).io(DUST.get(Zirconium), DUST_TINY.get(rod.getMaterial()), DUST_TINY.get(secondary)).chances(1.0, 1.0, .75).add(rod.getId(), 256, 64);
+    }
+
+    private static void addEnrichedRodRecipe(ItemEnrichedRod rod, Material secondary){
+        CENTRIFUGE.RB().ii(rod).io(DUST.get(Zirconium, 1), DUST_TINY.get(rod.getMaterial(), 4), DUST_TINY.get(secondary, 1)).chances(1.0, 1.0, .5).add(rod.getId(), 256, 64);
     }
 
     private static void addMethaneRecipe(Item input, int methane, int ticks){
