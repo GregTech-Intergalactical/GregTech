@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
 import io.github.gregtechintergalactical.gtcore.machine.*;
 import muramasa.antimatter.AntimatterAPI;
@@ -790,6 +791,12 @@ public class Machines {
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .put('S', GregTechBlocks.CASING_SOLID_STEEL)
                         .build(), "OOO", "CSC", "LCL"));
+        add(LARGE_CENTRIFUGE, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('M', MotorEV)
+                        .put('H', GregTechBlocks.HULL_IV)
+                        .put('C', TIER_CIRCUITS.apply(HV))
+                        .build(), "CMC", "MHM", "CMC"));
         add(LARGE_CHEMICAL_REACTOR, HV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', TIER_CIRCUITS.apply(HV))
@@ -797,6 +804,22 @@ public class Machines {
                         .put('R', ROTOR.getMaterialTag(StainlessSteel))
                         .put('P', GregTechBlocks.FLUID_PIPE_POLY.getBlockItem(PipeSize.LARGE))
                         .put('H', GregTechBlocks.HULL_HV).build(), "CRC", "PMP", "CHC"));
+        add(LARGE_ELECTROLYZER, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('P', GregTechBlocks.WIRE_PLATINUM.getBlockItem(PipeSize.SMALL))
+                        .put('O', GregTechBlocks.COIL_NICHROME)
+                        .put('H', GregTechBlocks.HULL_HV)
+                        .put('C', TIER_CIRCUITS.apply(EV))
+                        .build(), "OPO", "CHC", "OPO"));
+        add(LARGE_MACERATOR, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('P', GregTechItems.PistonIV)
+                        .put('M', MotorIV)
+                        .put('T', PLATE.getMaterialTag(TungstenCarbide))
+                        .put('G', GregTechTags.GRIND_HEADS)
+                        .put('H', GregTechBlocks.HULL_IV)
+                        .put('C', TIER_CIRCUITS.apply(IV))
+                        .build(), "TGT", "PHP", "MCM"));
         Arrays.stream(getStandard()).filter(t -> t !=IV).forEach(tier -> {
             Block firebox = tier == LV ? GregTechBlocks.CASING_FIREBOX_BRONZE : tier == MV ? GregTechBlocks.CASING_FIREBOX_STEEL : tier == HV ? GregTechBlocks.CASING_FIREBOX_TITANIUM : GregTechBlocks.CASING_FIREBOX_TUNGSTENSTEEL;
             TagKey<Item> circuit2 = tier == LV ? TIER_CIRCUITS.apply(tier) : tier == MV ? CIRCUITS_ADVANCED : tier == HV ? CIRCUITS_ELITE : CIRCUITS_MASTER;
