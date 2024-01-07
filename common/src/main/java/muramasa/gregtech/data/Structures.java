@@ -140,11 +140,24 @@ public class Structures {
                         ofHatch(HATCH_FLUID_O)))
                 .atElement('P', lazy(t -> ofBlock(t.getPipeCasing())))
                 .max(1, HATCH_ITEM_I).minMax(1, 2, HATCH_FLUID_I).exact(1, HATCH_MUFFLER).offset(1, 4, 0).build());
+        LARGE_CENTRIFUGE.setStructure(BlockEntityLargeCentrifuge.class, b -> b.part("main")
+                .of("CCC", "CcC", "CCC").of("C~C", "CCC", "CCC").build()
+                .at('C', GregTechBlocks.CASING_TUNGSTENSTEEL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
+                .at('c', GregTechBlocks.CASING_TUNGSTENSTEEL)
+                .offset(1, 1, 0).min(1, HATCH_ENERGY).build()
+        );
         LARGE_CHEMICAL_REACTOR.setStructure(BlockEntityLargeChemicalReactor.class, b -> b.part("main")
                 .of("CCC", "CCC", "CCC").of("C~C", "CPC", "CCC").of("CCC", "CcC", "CCC").build()
                 .at('C', GregTechBlocks.CASING_CHEMICALLY_INERT, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
                 .at('P', GregTechBlocks.CASING_PIPE_PTFE).at('c', ofCoil(BlockEntityLargeChemicalReactor::setCoilData, BlockEntityLargeChemicalReactor::getCoilData))
                 .offset(1, 1, 0).min(1, HATCH_ENERGY).build()
+        );
+
+        LARGE_ELECTROLYZER.setStructure(BlockEntityLargeElectrolyzer.class, b -> b.part("main")
+                .of("CCCCC", "c---c", "c---c", "c---c", "CCCCC").of("CC~CC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").build()
+                .at('C', GregTechBlocks.CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
+                .at('c', GregTechBlocks.COIL_CUPRONICKEL)
+                .offset(2, 1, 0).min(1, HATCH_ENERGY).build()
         );
 
         LARGE_TURBINE.setStructure(BlockEntityLargeTurbine.class, b -> b.part("main")

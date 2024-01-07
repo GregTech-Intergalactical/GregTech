@@ -122,13 +122,6 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
                 if (activeRecipe.getPower() > 0 && tier.getVoltage() > activeRecipe.getPower()) {
                     long voltage = this.activeRecipe.getPower();
                     int tier = Utils.getVoltageTier(voltage);
-            /*//Dont use utils, because we allow overclocking from ulv. (If we don't just change this).
-            for (int i = 0; i < Ref.V.length; i++) {
-                if (voltage <= Ref.V[i]) {
-                    tier = i;
-                    break;
-                }
-            }*/
                     long tempoverclock = (this.tile.getPowerLevel().getVoltage() / Ref.V[tier]);
                     while (tempoverclock > 1) {
                         tempoverclock >>= 2;

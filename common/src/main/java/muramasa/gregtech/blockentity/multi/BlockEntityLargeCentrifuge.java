@@ -8,7 +8,6 @@ import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
-import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.gregtech.block.BlockCoil;
@@ -17,10 +16,9 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BlockEntityLargeChemicalReactor extends BlockEntityMultiMachine<BlockEntityLargeChemicalReactor> {
-    private BlockCoil.CoilData coilData;
+public class BlockEntityLargeCentrifuge extends BlockEntityMultiMachine<BlockEntityLargeCentrifuge> {
 
-    public BlockEntityLargeChemicalReactor(Machine<?> type, BlockPos pos, BlockState state) {
+    public BlockEntityLargeCentrifuge(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this){
             @Override
@@ -47,14 +45,6 @@ public class BlockEntityLargeChemicalReactor extends BlockEntityMultiMachine<Blo
 //        maxProgress = Math.max(1, 512 / (1 << tier - 1));
 //    }
 
-    public void setCoilData(BlockCoil.CoilData coilData) {
-        this.coilData = coilData;
-    }
-
-    public BlockCoil.CoilData getCoilData() {
-        return coilData;
-    }
-
     @Override
     public WidgetSupplier getInfoWidget() {
         return MultiSmelterInfoWidget.build().setPos(10, 10);
@@ -79,7 +69,7 @@ public class BlockEntityLargeChemicalReactor extends BlockEntityMultiMachine<Blo
         @Override
         public void init() {
             super.init();
-            BlockEntityLargeChemicalReactor m = (BlockEntityLargeChemicalReactor) gui.handler;
+            BlockEntityLargeCentrifuge m = (BlockEntityLargeCentrifuge) gui.handler;
             gui.syncInt(() -> m.recipeHandler.map(r -> ((ParallelRecipeHandler<?>)r).concurrentRecipes).orElse(0), i -> concurrentRecipes = i, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
         }
 

@@ -192,7 +192,9 @@ public class Machines {
         tooltip.add(Utils.translatable("machine.gti.large_boiler.production", total, production));
         tooltip.add(Utils.translatable("machine.gti.large_boiler.circuit"));
     });
+    public static MultiMachine LARGE_CENTRIFUGE = new MultiMachine(GTIRef.ID, "large_centrifuge").setTiers(HV).setMap(RecipeMaps.CENTRIFUGE).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityLargeCentrifuge::new).setTextureBlock(GregTechBlocks.CASING_TUNGSTENSTEEL);
     public static MultiMachine LARGE_CHEMICAL_REACTOR = new MultiMachine(GTIRef.ID, "large_chemical_reactor").setTiers(HV).setMap(RecipeMaps.CHEMICAL_REACTOR).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityLargeChemicalReactor::new).custom().setTextureBlock(GregTechBlocks.CASING_CHEMICALLY_INERT);
+    public static MultiMachine LARGE_ELECTROLYZER = new MultiMachine(GTIRef.ID, "large_electrolyzer").setTiers(HV).setMap(RecipeMaps.ELECTROLYZER).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityLargeElectrolyzer::new).setTextureBlock(GregTechBlocks.CASING_STAINLESS_STEEL);
     public static MultiMachine LARGE_TURBINE = new MultiMachine(GTIRef.ID, "large_turbine").setTiers(HV, EV, IV).setMap(STEAM_FUELS, HV).setMap(HP_STEAM_FUELS, IV).setMap(GAS_FUELS, EV).addFlags(GUI, ITEM, FLUID, EU, GENERATOR).setTile(BlockEntityLargeTurbine::new).custom(Textures.TURBINE).setTierSpecificLang();
     public static MultiMachine MULTI_SMELTER = new MultiMachine(GTIRef.ID, "multi_smelter").setTiers(HV).setMap(ELECTRIC_FURNACE).addFlags(GUI, ITEM, EU).setTile(BlockEntityMultiSmelter::new).custom().setTextureBlock(GregTechBlocks.CASING_HEAT_PROOF);
     public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(GTIRef.ID, "oil_drilling_rig").setTiers(MV).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityOilDrillingRig::new).custom().setTextureBlock(GregTechBlocks.CASING_SOLID_STEEL);

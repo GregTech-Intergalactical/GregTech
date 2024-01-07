@@ -8,7 +8,6 @@ import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
-import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.gregtech.block.BlockCoil;
@@ -17,15 +16,15 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BlockEntityLargeChemicalReactor extends BlockEntityMultiMachine<BlockEntityLargeChemicalReactor> {
+public class BlockEntityLargeElectrolyzer extends BlockEntityMultiMachine<BlockEntityLargeElectrolyzer> {
     private BlockCoil.CoilData coilData;
 
-    public BlockEntityLargeChemicalReactor(Machine<?> type, BlockPos pos, BlockState state) {
+    public BlockEntityLargeElectrolyzer(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this){
             @Override
             protected int maxSimultaneousRecipes(){
-                return 16;
+                return coilData.maxSimultaneousRecipes();
             }
 
             @Override
@@ -79,7 +78,7 @@ public class BlockEntityLargeChemicalReactor extends BlockEntityMultiMachine<Blo
         @Override
         public void init() {
             super.init();
-            BlockEntityLargeChemicalReactor m = (BlockEntityLargeChemicalReactor) gui.handler;
+            BlockEntityLargeElectrolyzer m = (BlockEntityLargeElectrolyzer) gui.handler;
             gui.syncInt(() -> m.recipeHandler.map(r -> ((ParallelRecipeHandler<?>)r).concurrentRecipes).orElse(0), i -> concurrentRecipes = i, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
         }
 
