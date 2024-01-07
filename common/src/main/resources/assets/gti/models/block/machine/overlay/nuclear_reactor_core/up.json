@@ -1,0 +1,44 @@
+{
+	"credit": "Made with Blockbench",
+	"elements": [
+		{
+			"from": [0, 16, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#base", "tintindex": 0}
+			}
+		},
+		{
+			"name": "north-west",
+			"from": [2, 16.01, 2],
+			"to": [6, 16.01, 6],
+			"faces": {
+				"up": {"uv": [2, 2, 6, 6], "texture": "#overlay", "tintindex": 1}
+			}
+		},
+		{
+			"name": "north-east",
+			"from": [10, 16.01, 2],
+			"to": [14, 16.01, 6],
+			"faces": {
+				"up": {"uv": [10, 2, 14, 6], "texture": "#overlay", "tintindex": 2}
+			}
+		},
+		{
+			"name": "south-west",
+			"from": [2, 16.01, 10],
+			"to": [6, 16.01, 14],
+			"faces": {
+				"up": {"uv": [2, 10, 6, 14], "texture": "#overlay", "tintindex": 3}
+			}
+		},
+		{
+			"name": "south-east",
+			"from": [10, 16.01, 10],
+			"to": [14, 16.01, 14],
+			"faces": {
+				"up": {"uv": [10, 10, 14, 14], "texture": "#overlay", "tintindex": 4}
+			}
+		}
+	]
+}

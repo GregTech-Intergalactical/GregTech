@@ -6,6 +6,7 @@ import muramasa.antimatter.registration.IColorHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
 import muramasa.gregtech.data.GregTechItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -17,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements IColorHandler {
+public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements IItemReactorRod {
     private final Material material;
     private final int tooltips;
 
@@ -48,6 +49,41 @@ public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements ICo
         if (i == 0 && material != Material.NULL){
             return material.getRGB();
         }
-        return IColorHandler.super.getItemColor(stack, block, i);
+        return IItemReactorRod.super.getItemColor(stack, block, i);
+    }
+
+    @Override
+    public boolean isReactorRod(ItemStack aStack) {
+        return true;
+    }
+
+    @Override
+    public boolean isModerated(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack) {
+        return false;
+    }
+
+    @Override
+    public void updateModeration(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack) {
+
+    }
+
+    @Override
+    public int getReactorRodNeutronEmission(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack) {
+        return 0;
+    }
+
+    @Override
+    public boolean getReactorRodNeutronReaction(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack) {
+        return false;
+    }
+
+    @Override
+    public int getReactorRodNeutronReflection(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
+        return 0;
+    }
+
+    @Override
+    public int getReactorRodNeutronMaximum(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack) {
+        return 0;
     }
 }

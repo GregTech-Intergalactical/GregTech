@@ -2,11 +2,13 @@ package muramasa.gregtech.proxy;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.client.ModelUtils;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockColoredWall;
+import muramasa.gregtech.data.Machines;
 import net.minecraft.client.renderer.RenderType;
 
 import java.io.File;
@@ -19,6 +21,7 @@ public class ClientHandler {
     public static void setup() {
         AntimatterAPI.all(BlockCasing.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
         AntimatterAPI.all(BlockColoredWall.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
+        ModelUtils.setRenderLayer(Machines.NUCLEAR_REACTOR_CORE.getBlockState(Tier.NONE), RenderType.cutout());
         copyProgrammerArtIfMissing();
     }
 

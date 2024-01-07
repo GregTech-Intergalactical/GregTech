@@ -81,6 +81,17 @@ public class Textures {
         };
     };
 
+    public static final IOverlayTexturer REACTOR_CORE_OVERLAY_HANDLER = (type, state, tier, i) -> {
+        return new Texture[] {
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "top"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
+        };
+    };
+
     public static IOverlayModeler TURBINE = (type, state, side) -> {
         String suffix = "";
         if (side == Direction.SOUTH && state != MachineState.INVALID_STRUCTURE){

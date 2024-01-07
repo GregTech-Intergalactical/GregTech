@@ -15,6 +15,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.block.BlockNuclearReactorCore;
 import muramasa.gregtech.blockentity.multi.*;
 import muramasa.gregtech.blockentity.single.*;
 import muramasa.gregtech.machine.MiniPortalMachine;
@@ -174,6 +175,7 @@ public class Machines {
             tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal("" + 80).withStyle(ChatFormatting.BLUE)));
         }
     });
+    public static BasicMachine NUCLEAR_REACTOR_CORE = new BasicMachine(GTIRef.ID, "nuclear_reactor_core").setTiers(NONE).addFlags(GUI, ITEM, FLUID).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(new Texture(GTIRef.ID, "block/machine/base/nuclear_reactor_core")).setTile(BlockEntityNuclearReactorCore::new).setBlock(BlockNuclearReactorCore::new).setItemBlockClass(() -> BlockNuclearReactorCore.class).setNoFacing(true);
     /**
      ** Multiblock Hatch Machines (Electrical Age)
      **/
@@ -248,5 +250,6 @@ public class Machines {
 
     public static void init() {
         BATH.removeFlags(EU);
+        NUCLEAR_REACTOR_CORE.removeFlags(EU);
     }
 }

@@ -1,9 +1,10 @@
 package muramasa.gregtech.items;
 
+import muramasa.antimatter.registration.IColorHandler;
 import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
 import net.minecraft.world.item.ItemStack;
 
-public interface IItemReactorRod {
+public interface IItemReactorRod extends IColorHandler {
     /** @return if a Reactor would accept this Item as a Part of it. */
     boolean isReactorRod(ItemStack aStack);
     /** @return is a Reactor Rod is moderated and thus isn't usable for breeding */
