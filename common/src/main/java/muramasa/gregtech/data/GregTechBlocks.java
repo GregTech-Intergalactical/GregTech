@@ -151,6 +151,9 @@ public class GregTechBlocks {
     public static final BlockCasing CASING_TURBINE_STAINLESS = new BlockCasing(GTIRef.ID, "stainless_steel_turbine_casing");
     public static final BlockCasing CASING_TURBINE_TITANIUM = new BlockCasing(GTIRef.ID, "titanium_turbine_casing");
     public static final BlockCasing CASING_TURBINE_TUNGSTENSTEEL = new BlockCasing(GTIRef.ID, "tungstensteel_turbine_casing");
+    //todo make these active
+    public static final BlockSidedCasing GRINDING_WHEELS = new BlockSidedCasing(GTIRef.ID, "grinding_wheels", "tungstensteel", "grinding_wheels_top");
+    public static final BlockCasing ELECTROLYTIC_CELL = new BlockCasing(GTIRef.ID, "electrolytic_cell");
     public static final BlockCoil COIL_CUPRONICKEL = new BlockCoil(GTIRef.ID, "cupronickel_coil", new BlockCoil.CoilData(1800, 0.5f, 8));
     public static final BlockCoil COIL_KANTHAL = new BlockCoil(GTIRef.ID, "kanthal_coil", new BlockCoil.CoilData(2700, 1.0f, 16));
     public static final BlockCoil COIL_NICHROME = new BlockCoil(GTIRef.ID, "nichrome_coil", new BlockCoil.CoilData(3600, 1.5f, 32));

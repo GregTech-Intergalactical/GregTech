@@ -154,9 +154,9 @@ public class Structures {
         );
 
         LARGE_ELECTROLYZER.setStructure(BlockEntityLargeElectrolyzer.class, b -> b.part("main")
-                .of("CCCCC", "c---c", "c---c", "c---c", "CCCCC").of("CC~CC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").build()
+                .of("CCCCC", "cEEEc", "cEEEc", "cEEEc", "CCCCC").of("CC~CC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").build()
                 .at('C', GregTechBlocks.CASING_STAINLESS_STEEL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)
-                .at('c', GregTechBlocks.COIL_CUPRONICKEL)
+                .at('c', GregTechBlocks.COIL_NICHROME).at('E', GregTechBlocks.ELECTROLYTIC_CELL)
                 .offset(2, 1, 0).min(1, HATCH_ENERGY).build()
         );
 

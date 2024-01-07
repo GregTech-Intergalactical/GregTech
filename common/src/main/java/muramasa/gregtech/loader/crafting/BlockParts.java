@@ -17,6 +17,7 @@ import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -34,8 +35,7 @@ import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
-import static muramasa.antimatter.machine.Tier.LV;
-import static muramasa.antimatter.machine.Tier.MV;
+import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
 
@@ -93,6 +93,12 @@ public class BlockParts {
         addCasing(output, provider, TungstenSteel, GregTechBlocks.CASING_TUNGSTENSTEEL);
         addCasing(output, provider, Tungsten, GregTechBlocks.CASING_TUNGSTEN);
         addCasing(output, provider, Platinum, GregTechBlocks.CASING_PLATINUM);
+
+        provider.addItemRecipe(output, "casings", GregTechBlocks.ELECTROLYTIC_CELL,
+                of('W', GregTechBlocks.WIRE_PLATINUM.getBlockItem(PipeSize.VTINY), 'M', GregTechBlocks.CASING_STAINLESS_STEEL, 'C', TIER_CIRCUITS.apply(EV)), "WWW", "WMW", "CCC");
+        provider.addItemRecipe(output, "casings", GregTechBlocks.GRINDING_WHEELS,
+                of('G', GEAR.getMaterialTag(TungstenSteel), 'M', GregTechBlocks.CASING_TUNGSTENSTEEL, 'D', GregTechTags.GRIND_HEADS), "GDG", "GMG");
+
 
         addCoil(output, provider, GregTechBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_CUPRONICKEL);
         addCoil(output, provider, GregTechBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_KANTHAL);
