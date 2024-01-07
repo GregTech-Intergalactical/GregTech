@@ -40,8 +40,7 @@ import static com.google.common.collect.ImmutableMap.of;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Iron;
-import static muramasa.antimatter.data.AntimatterMaterials.Wood;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
 import static muramasa.gregtech.data.Machines.*;
@@ -80,8 +79,9 @@ public class Machines {
             Material material = TIER_MATERIALS.getOrDefault(tier, Material.NULL);
 
 
+            TagKey<Item> grindHead = tier == LV || tier == MV ? GEM.getMaterialTag(Diamond) : GregTechTags.GRIND_HEADS;
             add(MACERATOR, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
-                    ImmutableMap.<Character, Object>builder().put('P', piston).put('M', motor).put('C', circuit).put('L', cable).put('H', hull).put('D', Items.DIAMOND).build(), "PMD", "LLH", "CCL"));
+                    ImmutableMap.<Character, Object>builder().put('P', piston).put('M', motor).put('C', circuit).put('L', cable).put('H', hull).put('D', grindHead).build(), "PMD", "LLH", "CCL"));
 
             add(ALLOY_SMELTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder().put('L', TierMaps.WIRE_GETTER.apply(PipeSize.SMALL, tier)).put('H', hull).put('C', circuit).put('G', cable).build(), "CLC", "LHL", "GLG"));

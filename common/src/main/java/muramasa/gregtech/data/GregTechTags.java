@@ -11,7 +11,7 @@ import net.minecraft.world.level.material.Fluid;
 
 public class GregTechTags {
     public static final TagKey<Fluid> STEAM =  TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation((AntimatterPlatformUtils.isForge() ? "forge" : "c"), "steam"));
-
+    public static final TagKey<Item> GRIND_HEADS = getTag("grind_heads");
     public static TagKey<Item> getTag(String id){
         return TagUtils.getForgelikeItemTag(id);
     }

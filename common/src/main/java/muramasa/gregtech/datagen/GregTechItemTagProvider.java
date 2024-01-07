@@ -4,6 +4,7 @@ import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.world.item.Items;
 
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
@@ -32,6 +33,7 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         this.tag(BLOCK.getMaterialTag(Amethyst)).remove(Items.AMETHYST_BLOCK);
         this.tag(PLATES_IRON_ALUMINIUM).addTag(PLATE.getMaterialTag(Iron)).addTag(PLATE.getMaterialTag(WroughtIron)).addTag(PLATE.getMaterialTag(Aluminium));
         this.tag(DUST_LAPIS_LAZURITE).addTag(DUST.getMaterialTag(Lapis)).addTag(DUST.getMaterialTag(Lazurite));
+        this.tag(GregTechTags.GRIND_HEADS).add(GTCoreItems.DiamondGrindHead, GTCoreItems.TungstenGrindHead);
         this.tag(DUST_COALS).addTag(DUST.getMaterialTag(Coal)).addTag(DUST.getMaterialTag(Charcoal)).addTag(DUST.getMaterialTag(Carbon));
     }
 }
