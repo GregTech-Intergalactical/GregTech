@@ -27,15 +27,15 @@ public class BlockNuclearReactorCore extends BlockMachine implements IColorHandl
 
     @Override
     public int getBlockColor(BlockState state, @Nullable BlockGetter world, @Nullable BlockPos pos, int i) {
-        if (i > 1 && i < 9 && world != null && pos != null){
+        if (i > 0 && i < 9 && world != null && pos != null){
             BlockEntity entity = world.getBlockEntity(pos);
             int slot = i > 4 ? i - 5 : i - 1;
             if (entity instanceof BlockEntityNuclearReactorCore core){
                 if (i < 5){
                     boolean on = core.getMachineState() == MachineState.ACTIVE && (core.mode & Ref.B[slot]) == 0;
-                    return on ? -1 : Lead.getRGB();
+                    return on ? Lead.getRGB() : -1;
                 } else {
-                    ItemStack rod = core.getRod(i - 1);
+                    ItemStack rod = core.getRod(slot);
                     if (!rod.isEmpty() && rod.getItem() instanceof IItemReactorRod reactorRod){
                         return reactorRod.getItemColor(rod, state.getBlock(), 0);
                     }
