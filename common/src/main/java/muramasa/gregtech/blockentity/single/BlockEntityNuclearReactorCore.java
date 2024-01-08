@@ -2,6 +2,9 @@ package muramasa.gregtech.blockentity.single;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
+import io.github.gregtechintergalactical.gtcore.blockentity.IInventorySyncTile;
+import io.github.gregtechintergalactical.gtcore.network.MessageInventorySync;
+import io.github.gregtechintergalactical.gtcore.network.MessageTriggerInventorySync;
 import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.IPostTickTile;
@@ -13,14 +16,20 @@ import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.MachineState;
+import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.network.AntimatterNetwork;
 import muramasa.antimatter.pipe.TileTicker;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.items.IItemReactorRod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.IntTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -40,7 +49,7 @@ import static muramasa.antimatter.Ref.B;
 import static muramasa.gregtech.data.Materials.*;
 import static net.minecraft.core.Direction.*;
 
-public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntityNuclearReactorCore> implements IFilterableHandler, IPostTickTile {
+public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntityNuclearReactorCore> implements IFilterableHandler, IPostTickTile, IInventorySyncTile {
     public int[] mNeutronCounts = new int[]{0, 0, 0, 0};
     public int[] oNeutronCounts = new int[]{0, 0, 0, 0};
     public long oldHeat = 0;
@@ -77,6 +86,42 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
 
     public void setRod(int slot, ItemStack stack){
         itemHandler.ifPresent(i -> i.getHandler(SlotType.STORAGE).setItem(slot, stack));
+    }
+
+    @Override
+    public void onFirstTick() {
+        super.onFirstTick();
+        if (level != null && isClientSide()){
+            AntimatterNetwork.NETWORK.sendToServer(new MessageTriggerInventorySync(this.getBlockPos()));
+        }
+    }
+    boolean syncSlots;
+
+    @Override
+    public void serverTick(Level level, BlockPos pos, BlockState state) {
+        super.serverTick(level, pos, state);
+
+        if (syncSlots){
+            syncSlots();
+            syncSlots = false;
+        }
+    }
+
+    public void syncSlots(){
+        if (getLevel() != null && isServerSide()){
+            itemHandler.ifPresent(i -> {
+                i.getAll().keySet().forEach(s -> {
+                    var handler = i.getHandler(s);
+                    for (int i1 = 0; i1 < handler.getSlots(); i1++) {
+                        AntimatterNetwork.NETWORK.sendToAllLoaded(new MessageInventorySync(this.getBlockPos(), s, i1, i.getHandler(s).getItem(i1)), this.getLevel(), this.getBlockPos());
+                    }
+                });
+            });
+        }
+    }
+
+    public void setSyncSlots(boolean syncSlots) {
+        this.syncSlots = syncSlots;
     }
 
     @Override
@@ -335,4 +380,18 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
 
         }
     }
+
+    @Override
+    public void onMachineEvent(IMachineEvent event, Object... data) {
+        if (event == SlotType.STORAGE){
+            if (data.length > 0 && data[0] instanceof Integer integer){
+                if (isServerSide() && getLevel() != null){
+                    AntimatterNetwork.NETWORK.sendToAllLoaded(new MessageInventorySync(this.getBlockPos(), SlotType.STORAGE, integer, getRod(integer)), this.getLevel(), this.getBlockPos());
+                }
+            }
+            sidedSync(true);
+        }
+        super.onMachineEvent(event, data);
+    }
+
 }
