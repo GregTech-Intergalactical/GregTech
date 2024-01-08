@@ -11,8 +11,10 @@ import muramasa.antimatter.blockentity.IPostTickTile;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.item.TrackedItemHandler;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
+import muramasa.antimatter.capability.machine.MachineCoverHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
+import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.MachineState;
@@ -23,6 +25,7 @@ import muramasa.antimatter.network.AntimatterNetwork;
 import muramasa.antimatter.pipe.TileTicker;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
+import muramasa.gregtech.data.GregTechCovers;
 import muramasa.gregtech.items.IItemReactorRod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -78,6 +81,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
             }
         });
         this.heatHandler.set(() -> new DefaultHeatHandler(this, Integer.MAX_VALUE, 0, 0));
+        this.coverHandler.set(() -> new ReactorCoverHandler(this));
     }
 
     public ItemStack getRod(int slot){
@@ -131,6 +135,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
         TileTicker.SERVER_TICK_PO2T.remove(this);
         Direction.Plane.HORIZONTAL.forEach(d -> {
             BlockPos offset = this.getBlockPos().relative(d);
+            if (!level.isLoaded(offset)) return;
             BlockEntity entity = level.getBlockEntity(offset);
             if (entity instanceof BlockEntityNuclearReactorCore reactorCore){
                 reactorCore.adjacentReactors[d.getOpposite().get2DDataValue()] = null;
@@ -304,6 +309,11 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
             if (getReactorRodNeutronReaction(1)) running = true;
             if (getReactorRodNeutronReaction(2)) running = true;
             if (getReactorRodNeutronReaction(3)) running = true;
+            if (running && getMachineState() != MachineState.ACTIVE){
+                setMachineState(MachineState.ACTIVE);
+            } else if (!running && getMachineState() == MachineState.ACTIVE){
+                setMachineState(MachineState.IDLE);
+            }
             FluidHolder coldCoolant = fluidHandler1.getInputTanks().getFluidInTank(0);
             int tDivider = 1;
             if (coldCoolant.getFluid().is(Sodium.getFluidTag())) tDivider = 6;
@@ -394,4 +404,74 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
         super.onMachineEvent(event, data);
     }
 
+    @Override
+    public void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        tag.putByte("mode", mode);
+        tag.putLong("oldHeat", oldHeat);
+        ListTag currentNeutronCountTag = new ListTag();
+        ListTag oldNeutronCountTag = new ListTag();
+        for (int i = 0; i < 4; i++) {
+            currentNeutronCountTag.add(IntTag.valueOf(mNeutronCounts[i]));
+            oldNeutronCountTag.add(IntTag.valueOf(oNeutronCounts[i]));
+        }
+        tag.put("currentNeutronCounts", currentNeutronCountTag);
+        tag.put("oldNeutronCounts", oldNeutronCountTag);
+    }
+
+    @Override
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        mode = tag.getByte("mode");
+        oldHeat = tag.getLong("oldHeat");
+        ListTag currentNeutronCountTag = tag.getList("currentNeutronCounts", Tag.TAG_INT);
+        ListTag oldNeutronCountTag = tag.getList("oldNeutronCounts", Tag.TAG_INT);
+        for (int i = 0; i < 4; i++) {
+            mNeutronCounts[i] = currentNeutronCountTag.getInt(i);
+            oNeutronCounts[i] = oldNeutronCountTag.getInt(i);
+        }
+    }
+
+    public static class ReactorCoverHandler extends MachineCoverHandler<BlockEntityNuclearReactorCore> {
+        public ReactorCoverHandler(BlockEntityNuclearReactorCore tile) {
+            super(tile);
+        }
+
+        public Direction getSecondaryOutputFacing() {
+            return lookupSingle(GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY);
+        }
+
+        public ICover getSecondaryOutputCover() {
+            return get(lookupSingle(GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY));
+        }
+
+        public boolean setSecondaryOutputFacing(Player entity, Direction side) {
+            Direction dir = getSecondaryOutputFacing();
+            if (dir == null) return false;
+            if (side == dir || side == getOutputFacing()) return false;
+            boolean ok = moveCover(entity, dir, side);
+            if (ok) {
+                getTile().invalidateCaps();
+            }
+            return ok;
+        }
+
+        @Override
+        public boolean setOutputFacing(Player entity, Direction side) {
+            if (side == getSecondaryOutputFacing()) return false;
+            return super.setOutputFacing(entity, side);
+        }
+
+        @Override
+        protected boolean canRemoveCover(ICover cover) {
+            return super.canRemoveCover(cover) && cover.getFactory() != GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY;
+        }
+
+        @Override
+        public boolean isValid(@NotNull Direction side, @NotNull ICover replacement) {
+            if (!validCovers.contains(replacement.getLoc())) return false;
+            if (side == getOutputFacing()) return false;
+            return (get(side).isEmpty() && !replacement.isEmpty()) || super.isValid(side, replacement);
+        }
+    }
 }

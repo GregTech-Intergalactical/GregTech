@@ -89,6 +89,10 @@ public class GregTechCovers {
     }).addTextures(new Texture(GTIRef.ID, "block/cover/item_detector")).build(GTIRef.ID, "item_detector");
     public static final CoverFactory COVER_STEAM_VENT = CoverFactory.builder(CoverSteamVent::new)
             .addTextures(new Texture(GTIRef.ID, "block/cover/output")).build(GTIRef.ID, "steam_vent");
+    public static final CoverFactory COVER_REACTOR_OUTPUT = CoverFactory.builder(CoverReactorOutput::new)
+            .addTextures(new Texture(GTIRef.ID, "block/cover/reactor_output")).build(GTIRef.ID, "reactor_output");
+    public static final CoverFactory COVER_REACTOR_OUTPUT_SECONDARY = CoverFactory.builder(CoverReactorOutputSecondary::new)
+            .addTextures(new Texture(GTIRef.ID, "block/cover/reactor_output_secondary")).build(GTIRef.ID, "reactor_output_secondary");
     public static CoverFactory COVER_SHUTTER = CoverFactory.builder(CoverShutter::new).item((a, b) ->
             new ItemCover(GTIRef.ID, "shutter").tip("can be placed as a pipe cover")).addTextures(new Texture(GTIRef.ID, "block/cover/shutter")).build(GTIRef.ID, "shutter");
 
