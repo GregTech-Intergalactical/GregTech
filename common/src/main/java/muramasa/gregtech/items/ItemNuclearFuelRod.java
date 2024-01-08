@@ -1,13 +1,17 @@
 package muramasa.gregtech.items;
 
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
+import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.registration.IColorHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
 import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -20,17 +24,19 @@ import java.util.List;
 
 import static muramasa.gregtech.data.Materials.*;
 
-public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements IColorHandler {
+public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements IItemReactorRod {
     private final Material material;
     private final int emission, self, maximum, div;
+    private final long durability;
 
-    public ItemNuclearFuelRod(String domain, Material material, int durability, int emission, int self, int maximum, int div) {
-        super(domain, material.getId() + "_nuclear_rod", new Properties().durability(durability).tab(Ref.TAB_ITEMS));
+    public ItemNuclearFuelRod(String domain, Material material, long durability, int emission, int self, int maximum, int div) {
+        super(domain, material.getId() + "_nuclear_rod", new Properties().stacksTo(16).tab(Ref.TAB_ITEMS));
         this.material = material;
         this.emission = emission;
         this.self = self;
         this.maximum = maximum;
         this.div = div;
+        this.durability = durability;
     }
 
     @Override
@@ -38,7 +44,7 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
         if (i == 0){
             return material.getRGB();
         }
-        return IColorHandler.super.getItemColor(stack, block, i);
+        return IItemReactorRod.super.getItemColor(stack, block, i);
     }
 
     @Override
@@ -48,7 +54,8 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
         tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.self_info", Utils.translatable("tooltip.gti.nuclear_rod.self_1").withStyle(ChatFormatting.GREEN)).withStyle(ChatFormatting.AQUA));
         tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.maximum_info", Utils.translatable("tooltip.gti.nuclear_rod.maximum_1").withStyle(ChatFormatting.GREEN)).withStyle(ChatFormatting.AQUA));
         tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.factor_info", Utils.translatable("tooltip.gti.nuclear_rod.factor_1").withStyle(ChatFormatting.YELLOW)).withStyle(ChatFormatting.AQUA));
-        tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.remaining", Utils.literal(stack.getMaxDamage() / 1200 + "").withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.AQUA));
+        long durability = stack.getTag() != null && stack.getTag().contains("rodDurability") ? stack.getTag().getLong("rodDurability") : this.durability;
+        tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.remaining", Utils.literal(durability / 120000 + "").withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.AQUA));
         if (level != null){
             int timeIndex = (int) ((level.getGameTime() / 100) % 10);
             switch (timeIndex){
@@ -146,23 +153,109 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
         return new Texture[]{new Texture(GTIRef.ID, "item/basic/nuclear_fuel_rod"), new Texture(GTIRef.ID, "item/basic/empty_nuclear_fuel_rod")};
     }
 
-    public int getEmission() {
-        return emission;
-    }
-
-    public int getSelf() {
-        return self;
-    }
-
-    public int getMaximum() {
-        return maximum;
-    }
-
-    public int getDiv() {
-        return div;
-    }
-
     public Material getMaterial() {
         return material;
+    }
+
+    @Override
+    public boolean isReactorRod(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public boolean isModerated(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+        return stack.getTag() != null && stack.getTag().getBoolean("oldModerated");
+    }
+
+    @Override
+    public void updateModeration(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+        CompoundTag nbt = stack.getOrCreateTag();
+        nbt.putBoolean("oldModerated", nbt.getBoolean("moderated"));
+        nbt.putBoolean("moderated", false);
+    }
+
+    @Override
+    public int getReactorRodNeutronEmission(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+        int tNeutronOther = emission;
+        int tNeutronSelf = self;
+        int tNeutronDiv = div;
+        FluidHolder coldCoolant = reactor.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0)).orElse(FluidHooks.emptyFluid());
+        if (coldCoolant.getFluid().is(Coolant.getFluidTag())) {
+            tNeutronOther *= 4;
+            tNeutronSelf *= 4;
+            tNeutronDiv *= 2;
+        } else if (coldCoolant.getFluid().is(CarbonDioxide.getFluidTag())) {
+            tNeutronSelf *= 3;
+        } else if (coldCoolant.getFluid().is(Helium.getFluidTag())) {
+            tNeutronOther -= Utils.divup(emission, 2);
+        } else if (coldCoolant.getFluid().is(LithiumChloride.getFluidTag())) {
+            tNeutronOther -= Utils.divup(emission, 2);
+            tNeutronSelf *= 5;
+        } else if (coldCoolant.getFluid().is(ThoriumSalt.getFluidTag())) {
+            tNeutronOther -= Utils.divup(emission, 2);
+            tNeutronSelf = 0;
+            tNeutronDiv -= 1;
+        } else if (coldCoolant.getFluid().is(Sodium.getFluidTag()) || coldCoolant.getFluid().is(Tin.getFluidTag())) {
+            tNeutronDiv -= 1;
+        }
+        reactor.mNeutronCounts[slot] += tNeutronSelf;
+        long tEmission = tNeutronOther + Utils.divup(Math.max(reactor.oNeutronCounts[slot]-tNeutronSelf, 0), tNeutronDiv);
+        return bindInt(tEmission);
+    }
+
+    private static int bindInt (long aBoundValue) {
+        return (int)  Math.max(Integer.MIN_VALUE, Math.min(Integer.MAX_VALUE, aBoundValue));
+    }
+
+    @Override
+    public boolean getReactorRodNeutronReaction(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+        reactor.heatHandler.ifPresent(h -> h.insertInternal(reactor.oNeutronCounts[slot], false));
+        FluidHolder coldCoolant = reactor.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0)).orElse(FluidHooks.emptyFluid());
+        int tNeutronMax = getReactorRodNeutronMaximum(reactor, slot, stack);
+        if (coldCoolant.getFluid().is(DistilledWater.getFluidTag()) || coldCoolant.getFluid().is(SemiheavyWater.getFluidTag())
+                || coldCoolant.getFluid().is(HeavyWater.getFluidTag()) || coldCoolant.getFluid().is(TritiatedWater.getFluidTag())){
+            stack.getOrCreateTag().putBoolean("moderated", true);
+            stack.getOrCreateTag().putBoolean("oldModerated", true);
+        }
+        long durabilityLoss = reactor.oNeutronCounts[slot] < tNeutronMax ? 100 : Utils.divup(400 * reactor.oNeutronCounts[slot], tNeutronMax);
+        boolean oModerated = stack.getTag() != null && stack.getTag().getBoolean("oldModerated");
+        if (oModerated) durabilityLoss *= 4;
+        long durability = stack.getTag() != null && stack.getTag().contains("rodDurability") ? stack.getTag().getLong("rodDurability") : this.durability;
+        durability = durabilityLoss > durability ? -1 : durability - durabilityLoss;
+        stack.getOrCreateTag().putLong("rodDurability", durability);
+        if (durability <= 0){
+            ItemDepletedRod depletedRod = AntimatterAPI.get(ItemDepletedRod.class, material.getId() + "_depleted_rod", this.getDomain());
+            if (depletedRod != null) {
+                reactor.setRod(slot, new ItemStack(depletedRod));
+            } else {
+                stack.setCount(0);
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int getReactorRodNeutronReflection(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack, int neutrons, boolean moderated) {
+        if (moderated){
+            stack.getOrCreateTag().putBoolean("moderated", true);
+        }
+        reactor.mNeutronCounts[slot] += neutrons;
+        return 0;
+    }
+
+    @Override
+    public int getReactorRodNeutronMaximum(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+        FluidHolder coldCoolant = reactor.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0)).orElse(FluidHooks.emptyFluid());
+        if (coldCoolant.getFluid().is(LithiumChloride.getFluidTag())) {
+            return (int) (maximum * Utils.divup(maximum, 4));
+        } else if (coldCoolant.getFluid().is(ThoriumSalt.getFluidTag())) {
+            return maximum * 4;
+        } else if (coldCoolant.getFluid().is(HeavyWater.getFluidTag())) {
+            return (int) Utils.divup(maximum, 8);
+        } else if (coldCoolant.getFluid().is(TritiatedWater.getFluidTag())) {
+            return (int) Utils.divup(maximum, 16);
+        } else {
+            return maximum;
+        }
     }
 }

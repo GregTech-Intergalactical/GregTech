@@ -1,8 +1,8 @@
 package muramasa.gregtech.items;
 
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.registration.IColorHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
@@ -23,7 +23,7 @@ public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements IIt
     private final int tooltips;
 
     public ItemComponentRod(String domain, String id, Material material, int tooltips) {
-        super(domain, id);
+        super(domain, id, new Properties().stacksTo(16).tab(Ref.TAB_ITEMS));
         this.material = material;
         this.tooltips = tooltips;
     }
@@ -53,37 +53,59 @@ public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements IIt
     }
 
     @Override
-    public boolean isReactorRod(ItemStack aStack) {
+    public boolean isReactorRod(ItemStack stack) {
         return true;
     }
 
     @Override
-    public boolean isModerated(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack) {
-        return false;
+    public boolean isModerated(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+        return this == GregTechItems.NeutronModeratorRod;
     }
 
     @Override
-    public void updateModeration(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack) {
+    public void updateModeration(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
 
     }
 
     @Override
-    public int getReactorRodNeutronEmission(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack) {
+    public int getReactorRodNeutronEmission(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
         return 0;
     }
 
     @Override
-    public boolean getReactorRodNeutronReaction(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack) {
+    public boolean getReactorRodNeutronReaction(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+        if (this == GregTechItems.NeutronAbsorberRod){
+            reactor.heatHandler.ifPresent(h -> h.insertInternal(reactor.oNeutronCounts[slot] * 2, false));
+            return true;
+        }
+        if (this == GregTechItems.NeutronModeratorRod && reactor.getLevel().getGameTime() % 20 == 19){
+            short moderation = stack.getTag() == null || !stack.getTag().contains("moderation") ? 0 : stack.getTag().getShort("moderation");
+            stack.getOrCreateTag().putShort("oldModeration", moderation);
+            stack.getOrCreateTag().putShort("moderation", (short) 0);
+        }
         return false;
     }
 
     @Override
-    public int getReactorRodNeutronReflection(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
+    public int getReactorRodNeutronReflection(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack, int neutrons, boolean moderated) {
+        if (this == GregTechItems.NeutronAbsorberRod){
+            reactor.mNeutronCounts[slot] += neutrons;
+        }
+        if (this == GregTechItems.NeutronModeratorRod){
+            short oldModeration = stack.getTag() == null || !stack.getTag().contains("oldModeration") ? 0 : stack.getTag().getShort("oldModeration");
+            if (neutrons > 0){
+                short moderation = stack.getTag() == null || !stack.getTag().contains("moderation") ? 0 : stack.getTag().getShort("moderation");
+                moderation++;
+                stack.getOrCreateTag().putShort("moderation", moderation);
+            }
+            return oldModeration * neutrons;
+        }
+        if (this == GregTechItems.NeutronReflectorRod) return neutrons;
         return 0;
     }
 
     @Override
-    public int getReactorRodNeutronMaximum(BlockEntityNuclearReactorCore aReactor, int aSlot, ItemStack aStack) {
+    public int getReactorRodNeutronMaximum(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
         return 0;
     }
 }

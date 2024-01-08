@@ -1,5 +1,6 @@
 package muramasa.gregtech.items;
 
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.registration.IAntimatterObject;
@@ -7,6 +8,7 @@ import muramasa.antimatter.registration.IColorHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
 import muramasa.gregtech.data.GregTechData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -18,11 +20,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ItemDepletedRod extends ItemBasic<ItemDepletedRod> implements IColorHandler {
+public class ItemDepletedRod extends ItemBasic<ItemDepletedRod> implements IItemReactorRod {
     private final Material material;
 
     public ItemDepletedRod(String domain, Material material) {
-        super(domain, material.getId() + "_depleted_rod");
+        super(domain, material.getId() + "_depleted_rod", new Properties().stacksTo(16).tab(Ref.TAB_ITEMS));
         this.material = material;
     }
 
@@ -43,10 +45,45 @@ public class ItemDepletedRod extends ItemBasic<ItemDepletedRod> implements IColo
         if (i == 0 && material != Material.NULL){
             return material.getRGB();
         }
-        return IColorHandler.super.getItemColor(stack, block, i);
+        return IItemReactorRod.super.getItemColor(stack, block, i);
     }
 
     public Material getMaterial() {
         return material;
+    }
+
+    @Override
+    public boolean isReactorRod(ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public boolean isModerated(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public void updateModeration(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+
+    }
+
+    @Override
+    public int getReactorRodNeutronEmission(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+        return 0;
+    }
+
+    @Override
+    public boolean getReactorRodNeutronReaction(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public int getReactorRodNeutronReflection(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack, int neutrons, boolean moderated) {
+        return 0;
+    }
+
+    @Override
+    public int getReactorRodNeutronMaximum(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
+        return 0;
     }
 }

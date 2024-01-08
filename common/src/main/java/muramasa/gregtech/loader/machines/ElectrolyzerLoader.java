@@ -46,7 +46,7 @@ public class ElectrolyzerLoader {
                 b.ii(DUST.getMaterialIngredient(t, inputAmount));
             } else {
                 prefix = "fluid";
-                b.fi(t.getFluidTag(inputAmount * 1000));
+                b.fi(t.getFluidIngredient(inputAmount * 1000));
             }
             if (t == Water || t == DistilledWater){
                 b.ii(TierMaps.INT_CIRCUITS.get(1));
