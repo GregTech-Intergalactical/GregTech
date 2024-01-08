@@ -81,6 +81,17 @@ public class Textures {
         };
     };
 
+    public static final IOverlayTexturer HATCH_OVERLAY_HANDLER = (type, state, tier, i) -> {
+        return new Texture[] {
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + tier.getId() + "/" + "front"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
+        };
+    };
+
     public static final IOverlayTexturer REACTOR_CORE_OVERLAY_HANDLER = (type, state, tier, i) -> {
         return new Texture[] {
                 new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),

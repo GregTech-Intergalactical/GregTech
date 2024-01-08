@@ -33,7 +33,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.Netherite;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.machine.MachineFlag.*;
 import static muramasa.antimatter.machine.Tier.*;
-import static muramasa.gregtech.data.GregTechCovers.COVER_STEAM_VENT;
+import static muramasa.gregtech.data.GregTechCovers.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.*;
 
@@ -214,8 +214,8 @@ public class Machines {
     /**
      ** Hatches
      **/
-    public static HatchMachine HATCH_DYNAMO = new HatchMachine(GTIRef.ID, "dynamo_hatch", COVERDYNAMO).addFlags(EU);
-    public static HatchMachine HATCH_ENERGY = new HatchMachine(GTIRef.ID, "energy_hatch", COVERENERGY).addFlags(EU);
+    public static HatchMachine HATCH_DYNAMO = new HatchMachine(GTIRef.ID, "dynamo_hatch", COVER_DYNAMO_COLORED).addFlags(EU).overlayTexture(Textures.HATCH_OVERLAY_HANDLER);
+    public static HatchMachine HATCH_ENERGY = new HatchMachine(GTIRef.ID, "energy_hatch", COVER_ENERGY_COLORED).addFlags(EU).overlayTexture(Textures.HATCH_OVERLAY_HANDLER);
     public static HatchMachine HATCH_FLUID_I = new HatchMachine(GTIRef.ID, "fluid_input_hatch", COVERINPUT).addFlags(GUI, FLUID, CELL);
     public static HatchMachine HATCH_FLUID_O = new HatchMachine(GTIRef.ID, "fluid_output_hatch", COVEROUTPUT).addFlags(GUI, FLUID, CELL);
     //public static final HeatHatch HATCH_HEAT_COPPER = new HeatHatch(GTIRef.ID, "copper_heat", Copper, 386);

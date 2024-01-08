@@ -128,7 +128,7 @@ public class TierMaps {
         doneMaps = true;
         {
             ImmutableMap.Builder<Tier, PipeItemBlock> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.ULV, GregTechBlocks.WIRE_LEAD.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.LV, GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.MV, GregTechBlocks.WIRE_COPPER.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.HV, GregTechBlocks.WIRE_GOLD.getBlockItem(PipeSize.VTINY));
@@ -137,6 +137,7 @@ public class TierMaps {
             builder.put(LUV, GregTechBlocks.WIRE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY));
             builder.put(ZPM, GregTechBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.VTINY));
             builder.put(UV, GregTechBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL));
+            builder.put(UHV, GregTechBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY));
             TIER_WIRES = builder.build();
         }
         /*{
