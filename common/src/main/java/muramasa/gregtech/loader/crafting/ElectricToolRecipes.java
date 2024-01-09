@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
@@ -15,6 +16,8 @@ import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.ToolTypes;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 
@@ -26,11 +29,25 @@ import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTools.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.Wood;
+import static muramasa.antimatter.material.MaterialTags.TOOLS;
 import static muramasa.gregtech.data.Materials.*;
 
 public class ElectricToolRecipes {
 
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+        TOOLS.getAll().forEach((m, d) -> {
+            if (d.toolTypes().contains(ToolTypes.PINCERS) && (m.has(GEM) || m.has(PLATE))){
+                TagKey<Item> plateGem = m.has(GEM) ? GEM.getMaterialTag(m) : m.has(PLATE) ? PLATE.getMaterialTag(m) : INGOT.getMaterialTag(m);
+                TagKey<Item> rod = d.handleMaterial().has(ROD) ? ROD.getMaterialTag(d.handleMaterial()) : ROD.getMaterialTag(Wood);
+                ImmutableMap.Builder<Character, Object> builder = ImmutableMap.builder();
+                builder.put('R', rod).put('P', plateGem).put('H', AntimatterDefaultTools.HAMMER.getTag()).put('S', SCREWDRIVER.getTag());
+                if (m.has(SCREW)) builder.put('W', SCREW.getMaterialTag(m));
+                String last = m.has(SCREW) ? " W " : " R ";
+                provider.addStackRecipe(output, GTCore.ID, "", "", ToolTypes.PINCERS.getToolStack(m),
+                        builder.build(), "PHP", last, "RSR");
+            }
+        });
         PLATE.all().forEach(m -> {
             if (m.has(DRILLBIT)){
                 provider.addItemRecipe(output, "bits", DRILLBIT.get(m),
@@ -260,8 +277,8 @@ public class ElectricToolRecipes {
     public static ItemStack resolveStack(IAntimatterTool tool, Material primary, Material secondary, long startingEnergy, long maxEnergy) {
         ItemStack stack = new ItemStack(tool.getItem());
         tool.validateTag(stack, primary, secondary, startingEnergy, maxEnergy);
-        if (!primary.has(MaterialTags.TOOLS)) return stack;
-        Map<Enchantment, Integer> mainEnchants = MaterialTags.TOOLS.get(primary).toolEnchantment();
+        if (!primary.has(TOOLS)) return stack;
+        Map<Enchantment, Integer> mainEnchants = TOOLS.get(primary).toolEnchantment();
         if (!mainEnchants.isEmpty()) {
             mainEnchants.entrySet().stream().filter(e -> e.getKey().canEnchant(stack)).forEach(e -> stack.enchant(e.getKey(), e.getValue()));
         }

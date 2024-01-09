@@ -56,6 +56,7 @@ public class ToolTypes {
     public static final AntimatterToolType TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "turbine_rotor", 1, 1, 1, 1.5F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(BROKEN_TURBINE_ROTOR).setDurabilityMultiplier(2).setToolSupplier(ItemTurbineRotor::new);
     public static final AntimatterToolType LARGE_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "large_turbine_rotor", 1, 1, 1, 4.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(LARGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(3).setToolSupplier(ItemTurbineRotor::new);
     public static final AntimatterToolType HUGE_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "huge_turbine_rotor", 1, 1, 1, 2.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(HUGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(4).setToolSupplier(ItemTurbineRotor::new);
+    public static final AntimatterToolType PINCERS = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "pincers", 1, 2, 10, 5.0f, 0.0f, false)).setRepairable(false);
     public static final MaterialRecipe.Provider POWERED_TOOL_BUILDER = MaterialRecipe.registerProvider("powered-tool", GTIRef.ID, id -> new MaterialRecipe.ItemBuilder() {
 
         @Override

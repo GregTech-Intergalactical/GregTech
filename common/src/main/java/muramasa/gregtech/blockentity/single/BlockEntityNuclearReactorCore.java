@@ -15,6 +15,7 @@ import muramasa.antimatter.capability.machine.MachineCoverHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.cover.ICover;
+import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.MachineState;
@@ -26,6 +27,7 @@ import muramasa.antimatter.pipe.TileTicker;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.GregTechCovers;
+import muramasa.gregtech.data.ToolTypes;
 import muramasa.gregtech.items.IItemReactorRod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -215,15 +217,15 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
 
     @Override
     public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
-        if (hit.getDirection() == Direction.UP){
+        if (hit.getDirection() == Direction.UP && getCover(UP).isEmpty()){
             ItemStack held = player.getItemInHand(hand);
-            if (held.getItem() instanceof IItemReactorRod reactorRod && reactorRod.isReactorRod(held)) {
+            if ((held.getItem() instanceof IItemReactorRod reactorRod && reactorRod.isReactorRod(held)) || type == ToolTypes.PINCERS) {
                 Vec3 vec = hit.getLocation();
                 double x = vec.x - pos.getX();
                 double z = vec.z - pos.getZ();
                 int tSlot = x < 0.5 ? z < 0.5 ? 0 : 1 : z < 0.5 ? 2 : 3;
                 ItemStack stack = getRod(tSlot);
-                if (stack.isEmpty()){
+                if (stack.isEmpty() && type != ToolTypes.PINCERS){
                     setRod(tSlot, Utils.ca(1, held));
                     held.shrink(1);
                     if (getMachineState() != MachineState.DISABLED) {
@@ -231,6 +233,12 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
                     }
                     level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundSource.BLOCKS, 10.f, 1.0f);
                     return InteractionResult.SUCCESS;
+                } else if (!stack.isEmpty() && type == ToolTypes.PINCERS){
+                    if (!player.addItem(stack)){
+                        player.drop(stack, true);
+                    }
+                    setRod(tSlot, ItemStack.EMPTY);
+                    Utils.damageStack(held, player);
                 }
             }
         }
