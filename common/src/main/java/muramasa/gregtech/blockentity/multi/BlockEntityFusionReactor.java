@@ -8,7 +8,9 @@ import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
+import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.GregTechData;
@@ -24,6 +26,7 @@ import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
 import static muramasa.antimatter.machine.Tier.*;
+import static muramasa.gregtech.data.Materials.DistilledWater;
 import static muramasa.gregtech.data.Materials.Steam;
 
 public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntityFusionReactor> {
@@ -34,14 +37,48 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
         super(type, pos, state);
         this.heatHandler.set(() -> new DefaultHeatHandler(this, 32768, 8192, 0));
         this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
+            boolean consumedStartEu = false;
             @Override
             protected boolean canRecipeContinue() {
-                return super.canRecipeContinue() && heatHandler.map(h -> h.getHeat() + (activeRecipe.getPower() * activeRecipe.getDuration()) <= h.getHeatCap()).orElse(false);
+                return super.canRecipeContinue() && (consumedStartEu || energyHandler.map(e -> e.getEnergy() >= activeRecipe.getSpecialValue()).orElse(false)) && heatHandler.map(h -> h.getHeat() + (activeRecipe.getPower()) <= h.getHeatCap()).orElse(false);
             }
 
             @Override
             public boolean consumeResourceForRecipe(boolean simulate) {
-                return super.consumeResourceForRecipe(simulate) && heatHandler.map(h -> h.insert(8192, simulate) > 0).orElse(false);
+                if (!consumedStartEu){
+                    boolean tConsumedStartEu = energyHandler.map(e -> e.extractEu(activeRecipe.getSpecialValue(), true) == activeRecipe.getSpecialValue()).orElse(false);
+                    if (tConsumedStartEu){
+                        if (!simulate) {
+                            energyHandler.ifPresent(e -> e.extractEu(activeRecipe.getSpecialValue(), false));
+                        }
+                        consumedStartEu = true;
+                    }
+                }
+                return super.consumeResourceForRecipe(simulate) && consumedStartEu && heatHandler.map(h -> h.insert(8192, simulate) > 0).orElse(false);
+            }
+
+            @Override
+            protected MachineState tickRecipe() {
+                IRecipe oldActive = activeRecipe;
+                MachineState oldState = tile.getMachineState();
+                MachineState superState =  super.tickRecipe();
+                if (consumedStartEu && oldActive != null && ((oldActive != activeRecipe) || (oldState == MachineState.ACTIVE && superState != MachineState.ACTIVE))){
+                    consumedStartEu = false;
+                }
+                return superState;
+            }
+
+            @Override
+            public CompoundTag serialize() {
+                CompoundTag nbt = super.serialize();
+                nbt.putBoolean("consumedStartEu", consumedStartEu);
+                return nbt;
+            }
+
+            @Override
+            public void deserialize(CompoundTag nbt) {
+                super.deserialize(nbt);
+                consumedStartEu = nbt.getBoolean("consumedStartEu");
             }
         });
     }
@@ -55,15 +92,15 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
                 if (h.getHeat() >= 80){
                     int recipeOffset = recipeHandler.map(r -> r.getLastRecipe().hasOutputFluids() ? r.getLastRecipe().getOutputFluids().length : 0).orElse(0);
                     int heatMultiplier = h.getHeat() / 80;
-                    FluidTank waterTank = f.getInputTanks().getTank(f.getInputTanks().getFirstAvailableTank(Water.getLiquid(1), true));
+                    FluidTank waterTank = f.getInputTanks().getTank(f.getInputTanks().getFirstAvailableTank(DistilledWater.getLiquid(1), true));
                     if (waterTank != null) {
                         heatMultiplier = (int) Math.min(heatMultiplier, waterTank.getTankAmount() / TesseractGraphWrappers.dropletMultiplier);
-                        if (waterTank.extractFluid(Water.getLiquid(heatMultiplier), true).getFluidAmount() == heatMultiplier *  TesseractGraphWrappers.dropletMultiplier) {
+                        if (waterTank.extractFluid(DistilledWater.getLiquid(heatMultiplier), true).getFluidAmount() == heatMultiplier *  TesseractGraphWrappers.dropletMultiplier) {
                             if (f.getOutputTanks() != null && f.getOutputTanks().getSize() >= recipeOffset + 1) {
                                 long inserted = f.getOutputTanks().getTank(recipeOffset).internalInsert(Steam.getGas(heatMultiplier * 160), true);
                                 if (inserted >= TesseractGraphWrappers.dropletMultiplier){
-                                    heatMultiplier = (int) Math.min(heatMultiplier, inserted / TesseractGraphWrappers.dropletMultiplier);
-                                    f.drainInput(Water.getLiquid(heatMultiplier), false);
+                                    heatMultiplier = (int) Math.min(heatMultiplier, (inserted / TesseractGraphWrappers.dropletMultiplier) / 160);
+                                    f.drainInput(DistilledWater.getLiquid(heatMultiplier), false);
                                     f.getOutputTanks().getTank(recipeOffset).internalInsert(Steam.getGas(heatMultiplier * 160), false);
                                     h.extract(heatMultiplier * 80, false);
                                 }
