@@ -459,6 +459,11 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
         }
     }
 
+    @Override
+    public boolean canPlayerOpenGui(Player playerEntity) {
+        return playerEntity.isCreative();
+    }
+
     public static class ReactorCoverHandler extends MachineCoverHandler<BlockEntityNuclearReactorCore> {
         public ReactorCoverHandler(BlockEntityNuclearReactorCore tile) {
             super(tile);
