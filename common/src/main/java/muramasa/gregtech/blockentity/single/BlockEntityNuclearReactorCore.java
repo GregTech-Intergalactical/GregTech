@@ -111,6 +111,19 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
         }
     }
 
+    @Override
+    public boolean wrenchMachine(Player player, BlockHitResult res, boolean crouch) {
+        return setOutputFacing(player, Utils.getInteractSide(res)) || setFacing(Utils.getInteractSide(res));
+    }
+
+    public Direction getSecondaryOutputFacing() {
+        return coverHandler.map(c -> ((ReactorCoverHandler)c).getSecondaryOutputFacing()).orElse(this.getFacing().getOpposite());
+    }
+
+    public boolean setSecondaryOutput(Player player, BlockHitResult result){
+        return coverHandler.map(c -> ((ReactorCoverHandler)c).setSecondaryOutputFacing(player, Utils.getInteractSide(result))).orElse(false);
+    }
+
     public void syncSlots(){
         if (getLevel() != null && isServerSide()){
             itemHandler.ifPresent(i -> {
@@ -219,6 +232,12 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
                     level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundSource.BLOCKS, 10.f, 1.0f);
                     return InteractionResult.SUCCESS;
                 }
+            }
+        }
+        if (type == AntimatterDefaultTools.WRENCH_ALT) {
+            if (setSecondaryOutput(player, hit)) {
+                Utils.damageStack(player.getItemInHand(hand), hand, player);
+                return InteractionResult.SUCCESS;
             }
         }
         return super.onInteractServer(state, world, pos, player, hand, hit, type);

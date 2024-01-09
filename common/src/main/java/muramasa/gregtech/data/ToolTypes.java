@@ -6,6 +6,8 @@ import io.github.gregtechintergalactical.gtcore.data.GTCoreTools;
 import io.github.gregtechintergalactical.gtcore.item.ItemPowerUnit;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.material.Material;
@@ -14,21 +16,30 @@ import muramasa.antimatter.recipe.ingredient.PropertyIngredient;
 import muramasa.antimatter.recipe.material.MaterialRecipe;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.tool.IAntimatterTool;
+import muramasa.antimatter.tool.behaviour.BehaviourExtendedHighlight;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.block.BlockNuclearReactorCore;
+import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
 import muramasa.gregtech.items.ItemTurbineRotor;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
 import tesseract.TesseractCapUtils;
 import tesseract.api.gt.IEnergyHandlerItem;
 import tesseract.api.gt.IGTNode;
 
 import java.util.Map;
+import java.util.function.BiFunction;
 
+import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
+import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH_ALT;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.SCREW;
 import static muramasa.antimatter.material.Material.NULL;
@@ -102,6 +113,19 @@ public class ToolTypes {
         LARGE_BROKEN_TURBINE_ROTOR.dependents(TURBINE_BLADE);
         HUGE_BROKEN_TURBINE_ROTOR.dependents(TURBINE_BLADE);
         TURBINE_BLADE.dependents(SCREW, PLATE);
+        if (AntimatterAPI.getSIDE().isClient()){
+            BiFunction<Direction, BlockEntity, Boolean> REACTOR_FUNCTION = (dir, tile) -> {
+                if (tile instanceof BlockEntityNuclearReactorCore machine) {
+                    Direction direction = machine.getSecondaryOutputFacing();
+                    return direction != null && direction == dir;
+                }
+                return false;
+            };
+            BehaviourExtendedHighlight.EXTRA_PIPE_FUNCTIONS.add(REACTOR_FUNCTION);
+            WRENCH_ALT.addBehaviour(new BehaviourExtendedHighlight(b -> b instanceof BlockNuclearReactorCore, BehaviourExtendedHighlight.PIPE_FUNCTION));
+            GTCoreTools.ELECTRIC_WRENCH_ALT.addBehaviour(new BehaviourExtendedHighlight(b -> b instanceof BlockNuclearReactorCore, BehaviourExtendedHighlight.PIPE_FUNCTION));
+        }
+
     }
 
     public static Tuple<Long, Long> getEnergy(ItemStack stack){
