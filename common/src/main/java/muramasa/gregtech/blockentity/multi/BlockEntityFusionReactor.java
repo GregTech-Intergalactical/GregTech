@@ -35,12 +35,12 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
 
     public BlockEntityFusionReactor(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        this.heatHandler.set(() -> new DefaultHeatHandler(this, 32768, 8192, 0));
+        this.heatHandler.set(() -> new DefaultHeatHandler(this, 32768 * 8, 8192, 0));
         this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
             boolean consumedStartEu = false;
             @Override
             protected boolean canRecipeContinue() {
-                return super.canRecipeContinue() && (consumedStartEu || energyHandler.map(e -> e.getEnergy() >= activeRecipe.getSpecialValue()).orElse(false)) && heatHandler.map(h -> h.getHeat() + (activeRecipe.getPower()) <= h.getHeatCap()).orElse(false);
+                return super.canRecipeContinue() && (consumedStartEu || energyHandler.map(e -> e.getEnergy() >= activeRecipe.getSpecialValue()).orElse(false)) && heatHandler.map(h -> h.getHeat() + 8192 <= h.getHeatCap()).orElse(false);
             }
 
             @Override
