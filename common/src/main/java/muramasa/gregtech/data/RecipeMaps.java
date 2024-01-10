@@ -253,6 +253,29 @@ public class RecipeMaps {
         }
     };
 
+    public static final IRecipeInfoRenderer FUSION_RENDERER = new IRecipeInfoRenderer() {
+        public void render(PoseStack stack, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
+            if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
+            String power = "Duration: " + recipe.getDuration() + " ticks (" + (recipe.getDuration() / 20.0f) + " s)";
+            String output = recipe.getPower() < 0 ? "Output: " : "Input: ";
+            String euT = output + Math.abs(recipe.getPower()) + " " + (recipe.getPower() < 0 ? "H" : "E") + "U/t";
+            String total = "Total: " + Math.abs(recipe.getPower()) * recipe.getDuration() + " EU";
+            String start = "Start: " + recipe.getSpecialValue() + " EU";
+            Tier tier = Tier.getTier((Math.abs(recipe.getPower()) / recipe.getAmps()));
+            String formattedText = " (" + tier.getId().toUpperCase() + ")";
+            renderString(stack, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
+            renderString(stack, euT, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
+            renderString(stack, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
+            renderString(stack, total, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
+            renderString(stack, start, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
+        }
+
+        @Override
+        public int getRows() {
+            return 4;
+        }
+    };
+
     static {
         COMBUSTION_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         GAS_FUELS.setGuiData(Guis.MULTI_DISPLAY);
@@ -289,5 +312,6 @@ public class RecipeMaps {
         STEAM_SIFTER.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         LARGE_BOILERS.setInfoRenderer(LARGE_BOILER_RENDERER);
         HEAT_EXCHANGER.setInfoRenderer(HEAT_EXCHANGER_RENDERER);
+        FUSION.setInfoRenderer(FUSION_RENDERER);
     }
 }
