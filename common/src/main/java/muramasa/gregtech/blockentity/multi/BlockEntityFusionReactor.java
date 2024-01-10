@@ -38,10 +38,6 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
         this.heatHandler.set(() -> new DefaultHeatHandler(this, 32768 * 8, 8192, 0));
         this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
             boolean consumedStartEu = false;
-            @Override
-            protected boolean canRecipeContinue() {
-                return super.canRecipeContinue() && (consumedStartEu || energyHandler.map(e -> e.getEnergy() >= activeRecipe.getSpecialValue()).orElse(false)) && heatHandler.map(h -> h.getHeat() + 8192 <= h.getHeatCap()).orElse(false);
-            }
 
             @Override
             public boolean consumeResourceForRecipe(boolean simulate) {
@@ -52,9 +48,11 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
                             energyHandler.ifPresent(e -> e.extractEu(activeRecipe.getSpecialValue(), false));
                         }
                         consumedStartEu = true;
+                    } else {
+                        return false;
                     }
                 }
-                return super.consumeResourceForRecipe(simulate) && consumedStartEu && heatHandler.map(h -> h.insert(8192, simulate) > 0).orElse(false);
+                return super.consumeResourceForRecipe(simulate) && consumedStartEu && (activeRecipe.getPower() >= 0 || heatHandler.map(h -> h.insert((int) Math.abs(activeRecipe.getPower()), simulate) > 0).orElse(false));
             }
 
             @Override
