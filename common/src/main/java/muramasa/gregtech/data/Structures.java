@@ -259,7 +259,7 @@ public class Structures {
                         ofHatch(HATCH_FLUID_O),
                         ofHatch(HATCH_ITEM_O)))
                 .atElement('E', StructureUtility.<BlockEntityFusionReactor>ofChain(ofBlock(GregTechBlocks.CASING_FUSION), ofHatch(HATCH_ENERGY)))
-            .offset(7, 1, 12).min(2, HATCH_FLUID_I).min(1, HATCH_FLUID_O).min(4, HATCH_ENERGY).build());
+            .offset(7, 1, 12).min(1, HATCH_FLUID_I).min(1, HATCH_FLUID_O).min(4, HATCH_ENERGY).build());
     }
 
     /**
