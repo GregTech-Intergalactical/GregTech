@@ -1,11 +1,9 @@
 package muramasa.gregtech.blockentity.single;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import io.github.gregtechintergalactical.gtcore.blockentity.IInventorySyncTile;
 import io.github.gregtechintergalactical.gtcore.network.MessageInventorySync;
 import io.github.gregtechintergalactical.gtcore.network.MessageTriggerInventorySync;
-import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.IPostTickTile;
 import muramasa.antimatter.capability.IFilterableHandler;
@@ -25,6 +23,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.network.AntimatterNetwork;
 import muramasa.antimatter.pipe.TileTicker;
 import muramasa.antimatter.tool.AntimatterToolType;
+import muramasa.antimatter.util.CodeUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.GregTechCovers;
 import muramasa.gregtech.data.ToolTypes;
@@ -318,7 +317,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
                 updateReactorRodModeration(2);
                 updateReactorRodModeration(3);
             }
-            long tCalc = Utils.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
+            long tCalc = CodeUtils.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
             // TODO Raycasting through Lead, Water and similar Blocks.
             /*if (tCalc > 0 && level.getGameTime() % 20 == 10) {
                 for (Object tEntity : worldObj.loadedEntityList) if (tEntity instanceof EntityLivingBase) {
@@ -345,7 +344,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
             int tDivider = 1;
             if (coldCoolant.getFluid().is(Sodium.getFluidTag())) tDivider = 6;
             if (coldCoolant.getFluid().is(Tin.getFluidTag())) tDivider = 3;
-            handler.setCurrentHeat((int) (Utils.divup(handler.getHeat() - tEnergy, tDivider) + tEnergy));
+            handler.setCurrentHeat((int) (CodeUtils.divup(handler.getHeat() - tEnergy, tDivider) + tEnergy));
             oldHeat = handler.getHeat() - tEnergy;
             if (handler.getHeat() > 0){
                 boolean isExploding = false;

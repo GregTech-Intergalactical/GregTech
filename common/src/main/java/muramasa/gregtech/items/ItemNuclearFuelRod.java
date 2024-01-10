@@ -7,6 +7,7 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
+import muramasa.antimatter.util.CodeUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
@@ -72,7 +73,7 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.when_used.1", FluidPlatformUtils.getFluidDisplayName(HeavyWater.getLiquid(1))).withStyle(ChatFormatting.AQUA));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.emission", Utils.literal(emission + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.self", Utils.literal(self + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
-                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.maximum", Utils.literal(Utils.divup(maximum, 8) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
+                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.maximum", Utils.literal(CodeUtils.divup(maximum, 8) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.factor", Utils.literal("1/" + div).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.YELLOW));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.moderated.0", Utils.translatable("tooltip.gti.nuclear_rod.moderated.1").withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GREEN));
                     if (div <= 4) tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.critical.0", Utils.translatable("tooltip.gti.nuclear_rod.critical.1").withStyle(level.getGameTime() % 20 <= 9 ? ChatFormatting.RED : ChatFormatting.WHITE)).withStyle(ChatFormatting.RED));
@@ -81,7 +82,7 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.when_used.1", FluidPlatformUtils.getFluidDisplayName(TritiatedWater.getLiquid(1))).withStyle(ChatFormatting.AQUA));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.emission", Utils.literal(emission + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.self", Utils.literal(self + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
-                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.maximum", Utils.literal(Utils.divup(maximum, 16) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
+                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.maximum", Utils.literal(CodeUtils.divup(maximum, 16) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.factor", Utils.literal("1/" + div).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.YELLOW));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.moderated.0", Utils.translatable("tooltip.gti.nuclear_rod.moderated.1").withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GREEN));
                     if (div <= 4) tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.critical.0", Utils.translatable("tooltip.gti.nuclear_rod.critical.1").withStyle(level.getGameTime() % 20 <= 9 ? ChatFormatting.RED : ChatFormatting.WHITE)).withStyle(ChatFormatting.RED));
@@ -114,15 +115,15 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
                 }
                 case 6 -> {
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.when_used.1", FluidPlatformUtils.getFluidDisplayName(LithiumChloride.getLiquid(1))).withStyle(ChatFormatting.AQUA));
-                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.emission", Utils.literal(((emission - Utils.divup(emission, 2))) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
+                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.emission", Utils.literal(((emission - CodeUtils.divup(emission, 2))) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.self", Utils.literal((self * 5) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
-                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.maximum", Utils.literal((maximum + Utils.divup(maximum, 4)) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
+                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.maximum", Utils.literal((maximum + CodeUtils.divup(maximum, 4)) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.factor", Utils.literal("1/" + div).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.YELLOW));
                     if (div <= 4) tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.critical.0", Utils.translatable("tooltip.gti.nuclear_rod.critical.1").withStyle(level.getGameTime() % 20 <= 9 ? ChatFormatting.RED : ChatFormatting.WHITE)).withStyle(ChatFormatting.RED));
                 }
                 case 7 -> {
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.when_used.1", FluidPlatformUtils.getFluidDisplayName(ThoriumSalt.getLiquid(1))).withStyle(ChatFormatting.AQUA));
-                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.emission", Utils.literal((emission - Utils.divup(emission, 2)) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
+                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.emission", Utils.literal((emission - CodeUtils.divup(emission, 2)) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.self", Utils.literal( "0").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.maximum", Utils.literal((maximum * 4) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.factor", Utils.literal("1/" + (div - 1)).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.YELLOW));
@@ -138,7 +139,7 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
                 }
                 case 9 -> {
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.when_used.1", FluidPlatformUtils.getFluidDisplayName(Helium.getGas(1))).withStyle(ChatFormatting.AQUA));
-                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.emission", Utils.literal((emission - Utils.divup(emission, 2)) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
+                    tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.emission", Utils.literal((emission - CodeUtils.divup(emission, 2)) + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.self", Utils.literal(self + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.maximum", Utils.literal(maximum + "").withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.nuclear_rod.neutrons").withStyle(ChatFormatting.DARK_PURPLE)).withStyle(ChatFormatting.GREEN));
                     tooltipComponents.add(Utils.translatable("tooltip.gti.nuclear_rod.factor", Utils.literal("1/" + div).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.YELLOW));
@@ -187,19 +188,19 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
         } else if (coldCoolant.getFluid().is(CarbonDioxide.getFluidTag())) {
             tNeutronSelf *= 3;
         } else if (coldCoolant.getFluid().is(Helium.getFluidTag())) {
-            tNeutronOther -= Utils.divup(emission, 2);
+            tNeutronOther -= CodeUtils.divup(emission, 2);
         } else if (coldCoolant.getFluid().is(LithiumChloride.getFluidTag())) {
-            tNeutronOther -= Utils.divup(emission, 2);
+            tNeutronOther -= CodeUtils.divup(emission, 2);
             tNeutronSelf *= 5;
         } else if (coldCoolant.getFluid().is(ThoriumSalt.getFluidTag())) {
-            tNeutronOther -= Utils.divup(emission, 2);
+            tNeutronOther -= CodeUtils.divup(emission, 2);
             tNeutronSelf = 0;
             tNeutronDiv -= 1;
         } else if (coldCoolant.getFluid().is(Sodium.getFluidTag()) || coldCoolant.getFluid().is(Tin.getFluidTag())) {
             tNeutronDiv -= 1;
         }
         reactor.mNeutronCounts[slot] += tNeutronSelf;
-        long tEmission = tNeutronOther + Utils.divup(Math.max(reactor.oNeutronCounts[slot]-tNeutronSelf, 0), tNeutronDiv);
+        long tEmission = tNeutronOther + CodeUtils.divup(Math.max(reactor.oNeutronCounts[slot]-tNeutronSelf, 0), tNeutronDiv);
         return bindInt(tEmission);
     }
 
@@ -217,7 +218,7 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
             stack.getOrCreateTag().putBoolean("moderated", true);
             stack.getOrCreateTag().putBoolean("oldModerated", true);
         }
-        long durabilityLoss = reactor.oNeutronCounts[slot] < tNeutronMax ? 100 : Utils.divup(400 * reactor.oNeutronCounts[slot], tNeutronMax);
+        long durabilityLoss = reactor.oNeutronCounts[slot] < tNeutronMax ? 100 : CodeUtils.divup(400 * reactor.oNeutronCounts[slot], tNeutronMax);
         boolean oModerated = stack.getTag() != null && stack.getTag().getBoolean("oldModerated");
         if (oModerated) durabilityLoss *= 4;
         long durability = stack.getTag() != null && stack.getTag().contains("rodDurability") ? stack.getTag().getLong("rodDurability") : this.durability;
@@ -247,13 +248,13 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
     public int getReactorRodNeutronMaximum(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
         FluidHolder coldCoolant = reactor.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0)).orElse(FluidHooks.emptyFluid());
         if (coldCoolant.getFluid().is(LithiumChloride.getFluidTag())) {
-            return (int) (maximum * Utils.divup(maximum, 4));
+            return (int) (maximum * CodeUtils.divup(maximum, 4));
         } else if (coldCoolant.getFluid().is(ThoriumSalt.getFluidTag())) {
             return maximum * 4;
         } else if (coldCoolant.getFluid().is(HeavyWater.getFluidTag())) {
-            return (int) Utils.divup(maximum, 8);
+            return (int) CodeUtils.divup(maximum, 8);
         } else if (coldCoolant.getFluid().is(TritiatedWater.getFluidTag())) {
-            return (int) Utils.divup(maximum, 16);
+            return (int) CodeUtils.divup(maximum, 16);
         } else {
             return maximum;
         }
