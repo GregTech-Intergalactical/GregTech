@@ -151,7 +151,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Cupronickel).asMetal(1728, PLATE);
         event.setMaterial(Duranium).asMetal(295, MOLTEN);
         event.setMaterial(Electrum).asMetal(1330, PLATE, FOIL, ROD_LONG, WIRE_FINE);
-        event.setMaterial(EnrichedNaquadah).asMetal(4500, 4500);
+        event.setMaterial(EnrichedNaquadah).asMetal(4500, 4500, POSITIVE_CHANGING_RGB);
         event.setMaterial(HSSE).asMetal(5400, 5400, GEAR, FRAME);
         event.setMaterial(HSSG).asMetal(4500, 4500, GEAR, FRAME);
         event.setMaterial(HSSS).asMetal(5400, 5400);
@@ -163,7 +163,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Neutronium).asMetal(10000, 10000, SCREW, BOLT, RING, GEAR, FRAME);
         event.setMaterial(Naquadah).asMetal(5400, 5400).asOre();
         event.setMaterial(NaquadahAlloy).asMetal(7200, 7200);
-        event.setMaterial(Naquadria).asMetal(9000, 9000);
+        event.setMaterial(Naquadria).asMetal(9000, 9000, POSITIVE_CHANGING_RGB);
         event.setMaterial(Nichrome).asMetal(2700, 2700);
         event.setMaterial(NickelZincFerrite).asMetal(1500, 1500);
         event.setMaterial(NiobiumTitanium).asMetal(4500, 4500, PLATE, FOIL, ROD_LONG, WIRE_FINE, GEAR);
@@ -1342,6 +1342,15 @@ public class GregTechMaterialEvents {
         FURNACE_FUELS.add(Charcoal, BLOCK, 16000);
         FURNACE_FUELS.add(OilShale, DUST, 400);
         FURNACE_FUELS.add(OilShale, RAW_ORE, 400);
+        RADIOACTIVE.add(Cobalt60, 2);
+        RADIOACTIVE.add(Astatine, 4);
+        RADIOACTIVE.add(Uranium235, 2);
+        RADIOACTIVE.add(Plutonium, 1);
+        RADIOACTIVE.add(Plutonium241, 3);
+        RADIOACTIVE.add(Plutonium243, 3);
+        RADIOACTIVE.add(Americium241, 4);
+        RADIOACTIVE.add(EnrichedNaquadah, 4);
+        RADIOACTIVE.add(Naquadria, 5);
         CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene, LightFuel, HeavyFuel);
         CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Dilithium, Monazite, Coal, CoalCoke, Charcoal, Lignite, LigniteCoke);
         ELEC30.add(Charcoal, Opal, Coal, Lignite, Magnesia, SteelMagnetic, IronMagnetic, Quicklime, Quartzite,
