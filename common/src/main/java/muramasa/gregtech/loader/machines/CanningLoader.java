@@ -33,6 +33,7 @@ public class CanningLoader {
         CANNER.RB().ii(ROD.getMaterialIngredient(CdInAGAlloy, 1), of(GregTechItems.EmptyNuclearFuelRod)).io(GregTechItems.NeutronAbsorberRod).add("neutron_absorber_rod", 16, 16);
         CANNER.RB().ii(ROD.getMaterialIngredient(Beryllium, 1), of(GregTechItems.EmptyNuclearFuelRod)).io(GregTechItems.NeutronReflectorRod).add("neutron_reflector_rod", 16, 16);
         CANNER.RB().ii(ROD.getMaterialIngredient(Graphite, 1), of(GregTechItems.EmptyNuclearFuelRod)).io(GregTechItems.NeutronModeratorRod).add("neutron_moderator_rod", 16, 16);
+        CANNER.RB().ii(DUST.getMaterialIngredient(Iodine, 1), of(GTCoreItems.EmptyWaxPill)).io(GTCoreItems.Radaway).add("radaway", 16, 16);
         AntimatterAPI.all(ItemNuclearFuelRod.class, GTIRef.ID).forEach(r -> {
             if (r.getMaterial().has(ROD)){
                 CANNER.RB().ii(ROD.getMaterialIngredient(r.getMaterial(), 1), of(GregTechItems.EmptyNuclearFuelRod)).io(r).add(r.getId(), 16, 16);
