@@ -38,11 +38,13 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -319,14 +321,12 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
             }
             long tCalc = CodeUtils.divup((oNeutronCounts[0] = mNeutronCounts[0]) + (oNeutronCounts[1] = mNeutronCounts[1]) + (oNeutronCounts[2] = mNeutronCounts[2]) + (oNeutronCounts[3] = mNeutronCounts[3]), 256);
             // TODO Raycasting through Lead, Water and similar Blocks.
-            /*if (tCalc > 0 && level.getGameTime() % 20 == 10) {
-                for (Object tEntity : worldObj.loadedEntityList) if (tEntity instanceof EntityLivingBase) {
-                    if (Math.abs(xCoord - ((EntityLivingBase)tEntity).posX) > 200) continue;
-                    if (Math.abs(zCoord - ((EntityLivingBase)tEntity).posZ) > 200) continue;
-                    int tStrength = UT.Code.bindInt((long)(tCalc - ((EntityLivingBase)tEntity).getDistance(xCoord, yCoord, zCoord)));
-                    if (tStrength > 0) UT.Entities.applyRadioactivity((EntityLivingBase)tEntity, (int)UT.Code.divup(tStrength, 10), tStrength);
+            if (tCalc > 0 && level.getGameTime() % 20 == 10) {
+                for (LivingEntity tEntity : level.getEntitiesOfClass(LivingEntity.class, new AABB(pos.offset(-200, 0, -200).atY(level.getMinBuildHeight()), pos.offset(200, 0, 200).atY(level.getMaxBuildHeight())))){
+                    int tStrength = CodeUtils.bindInt((long)(tCalc - tEntity.distanceToSqr(pos.getX(), pos.getY(), pos.getZ())));
+                    if (tStrength > 0) Utils.applyRadioactivity(tEntity, (int)CodeUtils.divup(tStrength, 10), tStrength);
                 }
-            }*/
+            }
             boolean running = tCalc != 0;
             DefaultHeatHandler handler = heatHandler.orElse(null);
             MachineFluidHandler<?> fluidHandler1 = fluidHandler.orElse(null);
@@ -404,12 +404,10 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
                     setRod(1, ItemStack.EMPTY);
                     setRod(2, ItemStack.EMPTY);
                     setRod(3, ItemStack.EMPTY);
-                    /*for (Object tEntity : worldObj.loadedEntityList) if (tEntity instanceof EntityLivingBase) {
-                        if (Math.abs(xCoord - ((EntityLivingBase)tEntity).posX) > 500) continue;
-                        if (Math.abs(zCoord - ((EntityLivingBase)tEntity).posZ) > 500) continue;
-                        int tStrength = UT.Code.bindInt((long)(tCalc - ((EntityLivingBase)tEntity).getDistance(xCoord, yCoord, zCoord)));
-                        if (tStrength > 0) UT.Entities.applyRadioactivity((EntityLivingBase)tEntity, (int)UT.Code.divup(tStrength, 10), tStrength);
-                    }*/
+                    for (LivingEntity tEntity : level.getEntitiesOfClass(LivingEntity.class, new AABB(pos.offset(-500, 0, -500).atY(level.getMinBuildHeight()), pos.offset(500, 0, 500).atY(level.getMaxBuildHeight())))){
+                        int tStrength = CodeUtils.bindInt((long)(tCalc - tEntity.distanceToSqr(pos.getX(), pos.getY(), pos.getZ())));
+                        if (tStrength > 0) Utils.applyRadioactivity(tEntity, (int)CodeUtils.divup(tStrength, 10), tStrength);
+                    }
                 }
 
             }
