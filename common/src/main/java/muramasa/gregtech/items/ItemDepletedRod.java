@@ -2,6 +2,7 @@ package muramasa.gregtech.items;
 
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.material.IMaterialObject;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.registration.IAntimatterObject;
 import muramasa.antimatter.registration.IColorHandler;
@@ -20,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ItemDepletedRod extends ItemBasic<ItemDepletedRod> implements IItemReactorRod {
+public class ItemDepletedRod extends ItemBasic<ItemDepletedRod> implements IItemReactorRod, IMaterialObject {
     private final Material material;
 
     public ItemDepletedRod(String domain, Material material) {

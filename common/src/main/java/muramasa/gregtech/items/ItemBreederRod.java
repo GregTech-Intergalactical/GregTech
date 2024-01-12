@@ -2,6 +2,7 @@ package muramasa.gregtech.items;
 
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.material.IMaterialObject;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
@@ -19,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class ItemBreederRod extends ItemBasic<ItemBreederRod> implements IItemReactorRod {
+public class ItemBreederRod extends ItemBasic<ItemBreederRod> implements IItemReactorRod, IMaterialObject {
     private final Material material;
     private final Supplier<Item> enrichedRod;
     private final int loss;

@@ -5,6 +5,7 @@ import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.material.IMaterialObject;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.CodeUtils;
@@ -25,7 +26,7 @@ import java.util.List;
 
 import static muramasa.gregtech.data.Materials.*;
 
-public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements IItemReactorRod {
+public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements IItemReactorRod, IMaterialObject {
     private final Material material;
     private final int emission, self, maximum, div;
     private final long durability;
