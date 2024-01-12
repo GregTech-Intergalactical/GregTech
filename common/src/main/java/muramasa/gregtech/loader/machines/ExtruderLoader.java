@@ -19,10 +19,12 @@ import net.minecraft.world.item.Items;
 import java.util.function.ToLongFunction;
 
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
 import static muramasa.antimatter.material.MaterialTags.RUBBERTOOLS;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 
+import static muramasa.gregtech.data.Materials.Glass;
 import static muramasa.gregtech.data.RecipeMaps.EXTRUDER;
 
 public class ExtruderLoader {
@@ -33,7 +35,8 @@ public class ExtruderLoader {
             return m.getMass();
         };
         EXTRUDER.RB().ii(INGOT.getMaterialIngredient(Materials.Zirconium, 1), of(GTCoreItems.ShapeCell, 1).setNoConsume()).io(GregTechItems.EmptyNuclearFuelRod).add("empty_nuclear_rod", 216, 96);
-        EXTRUDER.RB().ii(of(Items.HONEYCOMB), of(GTCoreItems.MoldBottle, 1).setNoConsume()).io(GTCoreItems.EmptyWaxPill).add("empty_wax_pill", 64, 16);
+        EXTRUDER.RB().ii(of(Items.HONEYCOMB), of(GTCoreItems.ShapeBottle, 1).setNoConsume()).io(GTCoreItems.EmptyWaxPill).add("empty_wax_pill", 64, 16);
+        EXTRUDER.RB().ii(DUST.getMaterialIngredient(Glass, 1), of(GTCoreItems.ShapeBottle, 1).setNoConsume()).io(Items.GLASS_BOTTLE).add("glass_bottle", 64, 16);
         AntimatterMaterialTypes.RING.all().forEach(r -> {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeRing, 1).setNoConsume()).io(AntimatterMaterialTypes.RING.get(r, 4)).add("ring_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
