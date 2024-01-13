@@ -23,6 +23,8 @@ public class GregTechItems {
     public static ItemBasic<?> QuantumEye = new ItemBasic<>(GTIRef.ID, "quantum_eye").tip("Improved Ender Eye");
     public static ItemBasic<?> QuantumStar = new ItemBasic<>(GTIRef.ID, "quantum_star").tip("Improved Nether Star");
     public static ItemBasic<?> GraviStar = new ItemBasic<>(GTIRef.ID, "gravi_star").tip("Ultimate Nether Star");
+    public static ItemBasic<?> EmptyGeigerCounter = new ItemBasic<>(GTIRef.ID, "empty_geiger_counter").tip("Fill with proper inert Gas");
+    public static ItemBasic<?> GeigerCounter = new ItemBasic<>(GTIRef.ID, "geiger_counter").tip("Measures Neutron Count");
     public static ItemBasic<?> SuperFuelBinder = new ItemBasic<>(GTIRef.ID, "super_fuel_binder");
     public static ItemBasic<?> PistonLV = new ItemBasic<>(GTIRef.ID, "piston_lv");
     public static ItemBasic<?> PistonMV = new ItemBasic<>(GTIRef.ID, "piston_mv");

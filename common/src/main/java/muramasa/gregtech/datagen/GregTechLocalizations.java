@@ -8,6 +8,7 @@ import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.*;
 import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.items.ItemDepletedRod;
 import muramasa.gregtech.items.ItemIntCircuit;
 import muramasa.gregtech.items.ItemNuclearFuelRod;
@@ -145,6 +146,7 @@ public class GregTechLocalizations {
             override("machine.large_boiler.mv", "Large Steel Boiler");
             override("machine.large_boiler.hv", "Large HP Titanium Boiler");
             override("machine.large_boiler.ev", "Large HP Tungstensteel Boiler");
+            override(GregTechItems.EmptyGeigerCounter.getDescriptionId(), "Geiger Counter (Empty)");
         }
     }
 

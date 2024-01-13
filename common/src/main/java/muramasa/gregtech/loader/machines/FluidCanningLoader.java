@@ -29,6 +29,9 @@ public class FluidCanningLoader {
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullLarge, 1)).fi(SulfuricAcid.getLiquid(16000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryLargeAcid)).add("battery_large_acid",258, 1);
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.LighterEmpty)).fi(Butane.getGas(100)).io(GTCoreItems.Lighter).add("lighter", 1, 1);
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GregTechItems.TritiumEnrichedRod)).io(GregTechItems.EmptyNuclearFuelRod).fo(Tritium.getGas(500)).add("tritium_enriched_rod", 16, 16);
+        FLUID_CANNER.RB().ii(GregTechItems.EmptyGeigerCounter).fi(Argon.getGas(1000)).io(GregTechItems.GeigerCounter).add("geiger_counter_argon", 64, 16);
+        FLUID_CANNER.RB().ii(GregTechItems.EmptyGeigerCounter).fi(Helium.getGas(1000)).io(GregTechItems.GeigerCounter).add("geiger_counter_helium", 64, 16);
+        FLUID_CANNER.RB().ii(GregTechItems.EmptyGeigerCounter).fi(Neon.getGas(1000)).io(GregTechItems.GeigerCounter).add("geiger_counter_neon", 64, 16);
         AntimatterPlatformUtils.getAllFluids().forEach(fluid -> {
             Item bucket = fluid.getBucket();
             if (bucket == Items.AIR) return;
