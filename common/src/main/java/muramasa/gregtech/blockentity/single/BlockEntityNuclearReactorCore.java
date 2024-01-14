@@ -26,6 +26,7 @@ import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.CodeUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.GregTechCovers;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.ToolTypes;
 import muramasa.gregtech.items.IItemReactorRod;
 import net.minecraft.core.BlockPos;
@@ -218,8 +219,8 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
 
     @Override
     public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
+        ItemStack held = player.getItemInHand(hand);
         if (hit.getDirection() == Direction.UP && getCover(UP).isEmpty()){
-            ItemStack held = player.getItemInHand(hand);
             if ((held.getItem() instanceof IItemReactorRod reactorRod && reactorRod.isReactorRod(held)) || type == ToolTypes.PINCERS) {
                 Vec3 vec = hit.getLocation();
                 double x = vec.x - pos.getX();
@@ -245,9 +246,14 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
         }
         if (type == AntimatterDefaultTools.WRENCH_ALT) {
             if (setSecondaryOutput(player, hit)) {
-                Utils.damageStack(player.getItemInHand(hand), hand, player);
+                Utils.damageStack(held, hand, player);
                 return InteractionResult.SUCCESS;
             }
+        }
+        if (held.getItem() == GregTechItems.GeigerCounter){
+            player.sendMessage(Utils.translatable("message.gti.nuclear_reactor.neutron_levels", oNeutronCounts[0], oNeutronCounts[1], oNeutronCounts[2], oNeutronCounts[3]), player.getUUID());
+            player.sendMessage(Utils.translatable("message.gti.nuclear_reactor." + (getMachineState() == MachineState.DISABLED ? "off": "on")), player.getUUID());
+            return InteractionResult.SUCCESS;
         }
         return super.onInteractServer(state, world, pos, player, hand, hit, type);
     }
