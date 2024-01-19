@@ -126,12 +126,14 @@ public class GregTechBlocks {
     public static final BlockCasing CASING_STAINLESS_STEEL = new BlockCasing(GTIRef.ID, "stainless_steel_casing");
     public static final BlockCasing CASING_TITANIUM = new BlockCasing(GTIRef.ID, "titanium_casing");
     public static final BlockCasing CASING_TUNGSTENSTEEL = new BlockCasing(GTIRef.ID, "tungstensteel_casing");
+    public static final BlockCasing CASING_BLACK_BRONZE = new BlockCasing(GTIRef.ID, "black_bronze_casing");
     public static final BlockCasing CASING_TUNGSTEN = new BlockCasing(GTIRef.ID, "tungsten_casing");
     public static final BlockCasing CASING_PLATINUM = new BlockCasing(GTIRef.ID, "platinum_casing");
     public static final BlockCasing CASING_HEAT_PROOF = new BlockCasing(GTIRef.ID, "heat_proof_casing");
     public static final BlockCasing CASING_FROST_PROOF = new BlockCasing(GTIRef.ID, "frost_proof_casing");
     public static final BlockCasing CASING_RADIATION_PROOF = new BlockCasing(GTIRef.ID, "radiation_proof_casing");
     public static final BlockCasing CASING_CHEMICALLY_INERT = new BlockCasing(GTIRef.ID, "chemically_inert_casing");
+    public static final BlockCasing CASING_DENSE_LEAD = new BlockCasing(GTIRef.ID, "dense_lead_casing");
     public static final BlockCasing CASING_FIREBOX_BRONZE = new BlockCasing(GTIRef.ID, "bronze_firebox_casing");
     public static final BlockCasing CASING_FIREBOX_STEEL = new BlockCasing(GTIRef.ID, "steel_firebox_casing");
     public static final BlockCasing CASING_FIREBOX_TITANIUM = new BlockCasing(GTIRef.ID, "titanium_firebox_casing");

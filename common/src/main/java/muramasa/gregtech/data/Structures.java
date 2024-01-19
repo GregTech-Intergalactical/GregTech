@@ -7,6 +7,7 @@ import muramasa.antimatter.util.int3;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.blockentity.multi.*;
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -210,6 +211,14 @@ public class Structures {
                 .at('F', FRAME.get().get(Steel).asBlock()).at('C', GregTechBlocks.CASING_SOLID_STEEL)
                 .at('H', GregTechBlocks.CASING_SOLID_STEEL, HATCH_ENERGY, HATCH_FLUID_O)
                 .offset(1, 6, 0).min(1, HATCH_FLUID_O, HATCH_ENERGY).build());
+
+        TREE_GROWTH_SIMULATOR.setStructure(BlockEntityTreeGrowthSimulator.class, b -> b.part("main")
+                .of("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").of("CCCCC", "C---C", "C---C", "C---C", "CCCCC").of(1).of(1).of(1).of(1).of(1)
+                .of("CC~CC", "CDDDC", "CDDDC", "CDDDC", "CCCCC").of("BBBBB", "BBBBB", "BBBBB", "BBBBB", "BBBBB").build()
+                .at('C', GregTechBlocks.CASING_BLACK_BRONZE, HATCH_ITEM_O, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_ENERGY)
+                .at('B', GregTechBlocks.CASING_BLACK_BRONZE).at('D', BlockTags.DIRT)
+                .offset(2, 7, 0).min(1, HATCH_ITEM_I, HATCH_ENERGY, HATCH_ITEM_O).build()
+        );
 
         VACUUM_FREEZER.setStructure(BlockEntityVacuumFreezer.class, b -> b.part("main")
             .of("CCC", "CCC", "CCC").of("C~C", "C-C", "CCC").of(0).build()
