@@ -93,6 +93,9 @@ public class BlockParts {
         addCasing(output, provider, TungstenSteel, GregTechBlocks.CASING_TUNGSTENSTEEL);
         addCasing(output, provider, Tungsten, GregTechBlocks.CASING_TUNGSTEN);
         addCasing(output, provider, Platinum, GregTechBlocks.CASING_PLATINUM);
+        addCasing(output, provider, BlackBronze, GregTechBlocks.CASING_BLACK_BRONZE);
+        provider.addItemRecipe(output, "casings", GregTechBlocks.CASING_DENSE_LEAD,
+                of('L', PLATE_DENSE.getMaterialTag(Lead), 'R', ROD_LONG.getMaterialTag(Lead), 'W', WRENCH.getTag()), "RLL", "LWL", "LLR");
 
         provider.addItemRecipe(output, "casings", GregTechBlocks.ELECTROLYTIC_CELL,
                 of('W', GregTechBlocks.WIRE_PLATINUM.getBlockItem(PipeSize.VTINY), 'M', GregTechBlocks.CASING_STAINLESS_STEEL, 'C', TIER_CIRCUITS.apply(EV)), "WWW", "WMW", "CCC");

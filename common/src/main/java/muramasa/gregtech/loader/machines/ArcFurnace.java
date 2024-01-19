@@ -136,9 +136,11 @@ public class ArcFurnace {
         addRecyclingRecipe(GregTechBlocks.CASING_TUNGSTENSTEEL, of(TungstenSteel, 8f));
         addRecyclingRecipe(GregTechBlocks.CASING_TUNGSTEN, of(Tungsten, 8f));
         addRecyclingRecipe(GregTechBlocks.CASING_PLATINUM, of(Platinum, 8f));
+        addRecyclingRecipe(GregTechBlocks.CASING_BLACK_BRONZE, of(BlackBronze, 8f));
         addRecyclingRecipe(GregTechBlocks.CASING_HEAT_PROOF, of(Invar, 8f));
         addRecyclingRecipe(GregTechBlocks.CASING_FROST_PROOF, of(Aluminium, 8f));
         addRecyclingRecipe(GregTechBlocks.CASING_RADIATION_PROOF, of(Lead, 8f));
+        addRecyclingRecipe(GregTechBlocks.CASING_DENSE_LEAD, of(Lead, 56f));
         addRecyclingRecipe(GregTechBlocks.CASING_FIREBOX_BRONZE, of(Bronze, 8f));
         addRecyclingRecipe(GregTechBlocks.CASING_FIREBOX_STEEL, of(Steel, 8f));
         addRecyclingRecipe(GregTechBlocks.CASING_FIREBOX_TITANIUM, of(Titanium, 8f));

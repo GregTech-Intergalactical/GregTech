@@ -141,7 +141,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(AnnealedCopper).asMetal(1357, PLATE, FOIL, ROD_LONG, WIRE_FINE, SCREW);
         event.setMaterial(BatteryAlloy).asMetal(295, PLATE);
         event.setMaterial(BismuthBronze).asMetal(1100, 900, PLATE);
-        event.setMaterial(BlackBronze).asMetal(2000);
+        event.setMaterial(BlackBronze).asMetal(2000, FRAME);
         event.setMaterial(BlackSteel).asMetal(1200, 1200, FRAME, PLATE);
         event.setMaterial(BlueSteel).asMetal(1400, 1400, FRAME);
         event.setMaterial(Brass).asMetal(1170, FRAME, ROD_LONG, PLATE);
