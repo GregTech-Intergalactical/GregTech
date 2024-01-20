@@ -873,6 +873,14 @@ public class Machines {
                         .put('P', GregTechCovers.COVER_PUMP.getItem(MV).getItem())
                         .put('W', GregTechBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.SMALL))
                         .put('B', GregTechItems.PistonMV).build(), "BCW", "CHC", "BPW");
+        provider.addItemRecipe(output, "machines", TREE_GROWTH_SIMULATOR.getItem(LV),
+                ImmutableMap.<Character, Object>builder()
+                        .put('E', GregTechItems.EmitterLV)
+                        .put('S', GregTechItems.SensorLV)
+                        .put('H',GregTechBlocks.CASING_BLACK_BRONZE)
+                        .put('R', DiamondSawBlade)
+                        .put('P', GregTechBlocks.FLUID_PIPE_PLASTIC.getBlockItem(PipeSize.SMALL))
+                        .put('N', PLATE.getMaterialTag(Nickel)).build(), "ERE", "NHN", "SPS");
         add(VACUUM_FREEZER, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, HV, true))

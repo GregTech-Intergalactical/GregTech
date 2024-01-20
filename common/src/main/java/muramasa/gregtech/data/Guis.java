@@ -337,6 +337,7 @@ public class Guis {
         ELECTRIC_TYPE_FILTER.getGui().setBackgroundTexture("electric_type_filter");
         BLAST_FURNACE.getGui().setBackgroundTexture("multiblock");
         IMPLOSION_COMPRESSOR.getGui().setBackgroundTexture("multiblock");
+        TREE_GROWTH_SIMULATOR.getGui().setBackgroundTexture("multiblock");
         VACUUM_FREEZER.getGui().setBackgroundTexture("multiblock");
         MULTI_SMELTER.getGui().setBackgroundTexture("multiblock");
         LARGE_BOILER.getGui().setBackgroundTexture("multiblock");
