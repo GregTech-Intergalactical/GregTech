@@ -21,6 +21,10 @@ dependencies{
         exclude(group: "net.fabricmc.fabric-api")
         exclude(group: "com.github.LlamaLad7")
     }
+    modImplementation("net.feltmc:felt-player-item-api:1.1.0"){
+        transitive = false
+    }
+    modImplementation("net.feltmc:felt-enchanting-api:1.1.0") { transitive false }
     modImplementation("earth.terrarium:botarium-common-1.18.2:${project.botarium_version}")
     modImplementation "maven.modrinth:carbon-config:${project.carbon_config_fabric_version}"
     modCompileOnly("com.github.Trinsdar:ARRP:0.6.7-hotfix")
