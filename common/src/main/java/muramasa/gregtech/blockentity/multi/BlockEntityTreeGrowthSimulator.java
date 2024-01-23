@@ -9,6 +9,7 @@ import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
@@ -42,28 +43,23 @@ public class BlockEntityTreeGrowthSimulator extends BlockEntityMultiMachine<Bloc
         this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
             @Override
             public IRecipe findRecipe() {
-                if (lastRecipe != null) {
-                    activeRecipe = lastRecipe;
-                    if (canRecipeContinue()) {
-                        activeRecipe = null;
-                        return lastRecipe;
-                    }
-                    activeRecipe = null;
-                }
-                ExtendedItemContainer container = itemHandler.map(i -> i.getInputHandler()).orElse(null);
-                if (container != null && container.getContainerSize() > 0){
-                    for (int i = 0; i < container.getContainerSize(); i++) {
-                        ItemStack stack = container.getItem(i);
-                        if (stack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof SaplingBlock){
-                            ResourceLocation id = AntimatterPlatformUtils.getIdFromBlock(blockItem.getBlock());
-                            ResourceLocation logId = new ResourceLocation(id.getNamespace(), id.getPath().replace("_sapling", "_log"));
-                            if (AntimatterPlatformUtils.blockExists(logId)){
-                                return new RecipeBuilder().recipeMapOnly().ii(RecipeIngredient.of(stack.getItem(), 1).setNoConsume()).io(new ItemStack(AntimatterPlatformUtils.getItemFromID(logId), 10)).add(id.getPath(), 10, 16);
+                IRecipe recipe = super.findRecipe();
+                if (recipe == null) {
+                    ExtendedItemContainer container = itemHandler.map(i -> i.getInputHandler()).orElse(null);
+                    if (container != null && container.getContainerSize() > 0){
+                        for (int i = 0; i < container.getContainerSize(); i++) {
+                            ItemStack stack = container.getItem(i);
+                            if (stack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof SaplingBlock){
+                                ResourceLocation id = AntimatterPlatformUtils.getIdFromBlock(blockItem.getBlock());
+                                ResourceLocation logId = new ResourceLocation(id.getNamespace(), id.getPath().replace("_sapling", "_log"));
+                                if (AntimatterPlatformUtils.blockExists(logId)){
+                                    return RecipeMaps.TREE_GROWTH_SIMULATOR.RB().recipeMapOnly().ii(RecipeIngredient.of(stack.getItem(), 1).setNoConsume()).io(new ItemStack(AntimatterPlatformUtils.getItemFromID(logId), 10)).add(id.getPath(), 10, 16);
+                                }
                             }
                         }
                     }
                 }
-                return null;
+                return recipe;
             }
 
             @Override

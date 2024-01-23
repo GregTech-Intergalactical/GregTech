@@ -190,6 +190,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "small_boilers", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> THERMAL_CENTRIFUGE = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "thermal_centrifuge", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> TREE_GROWTH_SIMULATOR = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "tree_growth_simulator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> VACUUM_FREEZER = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "vacuum_freezer", new RecipeBuilder()).setGuiData(MULTI_DISPLAY));
     public static RecipeMap<RecipeBuilder> WIRE_MILL = AntimatterAPI.register(RecipeMap.class,
@@ -286,6 +288,7 @@ public class RecipeMaps {
         // SMELTING.setGuiData(Guis.MULTI_DISPLAY_COMPACT);
         STEAM_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         HP_STEAM_FUELS.setGuiData(MULTI_DISPLAY);
+        TREE_GROWTH_SIMULATOR.setGuiData(MULTI_DISPLAY);
         DISTILLATION.setGuiData(MULTI_DISPLAY_DISTILLATION);
         CRYO_DISTILLATION.setGuiData(MULTI_DISPLAY_DISTILLATION);
     }
