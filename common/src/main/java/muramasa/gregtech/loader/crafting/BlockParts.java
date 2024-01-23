@@ -196,6 +196,9 @@ public class BlockParts {
                 'P', PLATE.get(AntimatterMaterials.Iron),
                         'B', AntimatterAPI.get(Item.class, "liquid_creosote_bucket", Ref.SHARED_ID)
         ), "PCP", "CBC", "PCP");*/
+        provider.removeRecipe(new ResourceLocation("tnt"));
+        provider.addItemRecipe(output, "misc", GregTechBlocks.POWDER_BARREL,
+                of('W', ItemTags.PLANKS, 'G', Items.GUNPOWDER, 'S', Items.STRING), "WSW" ,"GGG", "WGW");
     }
 
     private static void addSlabRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Block full, Block slab){

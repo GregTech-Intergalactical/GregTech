@@ -150,6 +150,7 @@ public class GregTechLocalizations {
             override("machine.large_boiler.hv", "Large HP Titanium Boiler");
             override("machine.large_boiler.ev", "Large HP Tungstensteel Boiler");
             override(GregTechItems.EmptyGeigerCounter.getDescriptionId(), "Geiger Counter (Empty)");
+            add(GregTechBlocks.POWDER_BARREL, "Powder Barrel");
         }
     }
 

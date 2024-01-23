@@ -47,6 +47,8 @@ public class GregTechBlocks {
             return new Texture[]{new Texture("minecraft:block/coal_block")};
         }
     };
+
+    public static final BlockBasic POWDER_BARREL = new BlockPowderBarrel();
     public static final BlockBasic MINING_PIPE_THIN = new BlockMiningPipe(GTIRef.ID, "mining_pipe_thin", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY));
     public static final BlockBasic MINING_PIPE = new BlockMiningPipe(GTIRef.ID, "mining_pipe", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY));
     public static final BlockAsphalt WHITE_ASPHALT = new BlockAsphalt(GTIRef.ID, "white_asphalt", DyeColor.WHITE.getTextColor());

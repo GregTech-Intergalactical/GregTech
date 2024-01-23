@@ -41,7 +41,7 @@ public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
         AntimatterAPI.all(BlockCoil.class, GTIRef.ID, cas -> {
             this.tag(AntimatterDefaultTools.WRENCH.getToolType()).add(cas);
         });
-        this.tag(AntimatterDefaultTools.AXE.getToolType()).add(GregTechBlocks.BRITTLE_CHARCOAL);
+        this.tag(AntimatterDefaultTools.AXE.getToolType()).add(GregTechBlocks.BRITTLE_CHARCOAL, GregTechBlocks.POWDER_BARREL);
         this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(GregTechBlocks.MINING_PIPE, GregTechBlocks.MINING_PIPE_THIN, GregTechBlocks.SOLID_SUPER_FUEL);
     }
 }
