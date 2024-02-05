@@ -1,6 +1,7 @@
 package muramasa.gregtech.cover;
 
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.blockentity.pipe.BlockEntityItemPipe;
 import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
@@ -35,6 +36,22 @@ public class CoverItemFilter extends CoverFilter {
     public void clearFilter(){
         super.clearFilter();
         getInventory(SlotType.DISPLAY_SETTABLE).clearContent();
+    }
+
+    @Override
+    public boolean canPlace() {
+        if (this.handler.getTile() instanceof BlockEntityItemPipe<?> itemPipe && itemPipe.getCachedBlockEntity(this.side) instanceof BlockEntityItemPipe<?>){
+            return false;
+        }
+        return super.canPlace();
+    }
+
+    @Override
+    public boolean blockConnection(Direction side) {
+        if (this.handler.getTile() instanceof BlockEntityItemPipe<?> itemPipe && itemPipe.getCachedBlockEntity(side) instanceof BlockEntityItemPipe<?>){
+            return true;
+        }
+        return super.blockConnection(side);
     }
 
     @Override
