@@ -36,6 +36,8 @@ public class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPor
             sListNetherSide = new ArrayList<>(),
             sListWorldSide  = new ArrayList<>();
     BlockEntityMiniPortal otherSide;
+    BlockPos otherSidePos = null;
+    ResourceLocation otherSideDimension;
     public BlockEntityMiniPortal(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
@@ -56,6 +58,18 @@ public class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPor
                 if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
             } else if (level.dimension() == Level.NETHER) {
                 if (!sListNetherSide.contains(this)) sListNetherSide.add(this);
+            }
+        }
+    }
+
+    @Override
+    public void onFirstTick() {
+        super.onFirstTick();
+        if (otherSidePos != null && otherSideDimension != null){
+            if (AntimatterPlatformUtils.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension)).getBlockEntity(otherSidePos) instanceof BlockEntityMiniPortal portal){
+                this.otherSide = portal;
+                otherSideDimension = null;
+                otherSidePos = null;
             }
         }
     }
@@ -129,7 +143,9 @@ public class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPor
     @Override
     public void setMachineState(MachineState newState) {
         super.setMachineState(newState);
-        invalidateCaps();
+        if (level != null){
+            invalidateCaps();
+        }
     }
 
     public void findTargetPortal() {
@@ -199,11 +215,8 @@ public class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPor
         if (!tag.contains("otherSide")) return;
         CompoundTag otherSide = tag.getCompound("otherSide");
         CompoundTag pos = otherSide.getCompound("pos");
-        BlockPos blockPos = new BlockPos(pos.getInt("X"), pos.getInt("Y"), pos.getInt("Z"));
-        ResourceLocation dimension = new ResourceLocation(otherSide.getString("dimension"));
-        if (AntimatterPlatformUtils.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, dimension)).getBlockEntity(blockPos) instanceof BlockEntityMiniPortal portal){
-            this.otherSide = portal;
-        }
+        otherSidePos = new BlockPos(pos.getInt("X"), pos.getInt("Y"), pos.getInt("Z"));
+        otherSideDimension = new ResourceLocation(otherSide.getString("dimension"));
     }
 
     @Override

@@ -72,7 +72,7 @@ public class RemappingEvents {
                 @Override
                 public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction arg) {
                     if (arg == null || miniPortal.getOtherSide() == null) return LazyOptional.empty();
-                    BlockEntity offset = miniPortal.getOtherSide().getLevel().getBlockEntity(miniPortal.getOtherSide().getBlockPos().relative(arg.getOpposite()));
+                    BlockEntity offset = miniPortal.getOtherSide().getCachedBlockEntity(arg.getOpposite());
                     if (offset != null){
                         return offset.getCapability(capability, arg);
                     }
