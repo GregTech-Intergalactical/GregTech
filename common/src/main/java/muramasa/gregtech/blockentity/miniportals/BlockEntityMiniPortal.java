@@ -1,4 +1,4 @@
-package muramasa.gregtech.blockentity.single;
+package muramasa.gregtech.blockentity.miniportals;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
@@ -7,8 +7,6 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.data.GregTechTags;
-import muramasa.gregtech.data.Machines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
@@ -21,7 +19,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -30,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPortal> {
+public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPortal> {
 
     public static List<BlockEntityMiniPortal>
             sListNetherSide = new ArrayList<>(),
@@ -116,19 +113,23 @@ public class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPor
     @Override
     public InteractionResult onInteractBoth(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
         ItemStack stack = player.getItemInHand(hand);
-        if (stack.is(GTCoreTags.FIRESTARTER) && setPortal()){
+        if (isPortalSetter(stack) && setPortal()){
             if (stack.isDamageableItem()) {
                 Utils.damageStack(stack, hand, player);
             } else {
                 stack.shrink(1);
             }
-            if (level.isClientSide) {
-                level.playSound(player, this.getBlockPos(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+            if (level.isClientSide()) {
+                playActivationSound(player);
             }
             return InteractionResult.SUCCESS;
         }
         return super.onInteractBoth(state, world, pos, player, hand, hit, type);
     }
+
+    protected abstract boolean isPortalSetter(ItemStack stack);
+
+    protected abstract void playActivationSound(Player player);
 
     private boolean setPortal(){
         if (level == null) return false;
@@ -148,42 +149,7 @@ public class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPor
         }
     }
 
-    public void findTargetPortal() {
-        otherSide = null;
-        if (level != null && isServerSide()) {
-            if (level.dimension() == Level.OVERWORLD) {
-                long tShortestDistance = 128*128;
-                for (BlockEntityMiniPortal tTarget : sListNetherSide) if (tTarget != this && !tTarget.isRemoved()) {
-                    long tXDifference = getBlockPos().getX()-tTarget.getBlockPos().getX()*8, tZDifference = getBlockPos().getZ()-tTarget.getBlockPos().getZ()*8;
-                    long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
-                    if (tTempDist < tShortestDistance) {
-                        tShortestDistance = tTempDist;
-                        otherSide = tTarget;
-                    } else if (tTempDist == tShortestDistance && (otherSide == null || Math.abs(tTarget.getBlockPos().getY()-getBlockPos().getY()) < Math.abs(otherSide.getBlockPos().getY()-getBlockPos().getY()))) {
-                        otherSide = tTarget;
-                    }
-                }
-            } else if (level.dimension() == Level.NETHER) {
-                long tShortestDistance = 128*128;
-                for (BlockEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isRemoved()) {
-                    long tXDifference = tTarget.getBlockPos().getX()-getBlockPos().getX()*8, tZDifference = tTarget.getBlockPos().getZ()-getBlockPos().getZ()*8;
-                    long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
-                    if (tTempDist < tShortestDistance) {
-                        tShortestDistance = tTempDist;
-                        otherSide = tTarget;
-                    } else if (tTempDist == tShortestDistance && (otherSide == null || Math.abs(tTarget.getBlockPos().getY()-getBlockPos().getY()) < Math.abs(otherSide.getBlockPos().getY()-getBlockPos().getY()))) {
-                        otherSide = tTarget;
-                    }
-                }
-            }
-            if (otherSide != null){
-                otherSide.setOtherSide(this);
-                if (otherSide.getMachineState() != MachineState.ACTIVE){
-                    otherSide.setMachineState(MachineState.ACTIVE);
-                }
-            }
-        }
-    }
+    protected abstract void findTargetPortal();
 
     @Override
     public void onRemove() {

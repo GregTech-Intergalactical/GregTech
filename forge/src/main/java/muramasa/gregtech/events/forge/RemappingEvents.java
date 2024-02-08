@@ -1,34 +1,24 @@
 package muramasa.gregtech.events.forge;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.events.GTCommonEvents;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterRemapping;
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.common.event.forge.ForgeCommonEvents;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.fluid.AntimatterFluid;
-import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.ore.BlockOre;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.GTRemapping;
-import muramasa.gregtech.blockentity.single.BlockEntityMiniPortal;
+import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniPortal;
 import muramasa.gregtech.data.Materials;
-import muramasa.gregtech.machine.BlockEntityHatchHeat;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.capabilities.Capability;
@@ -40,14 +30,11 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tesseract.api.forge.TesseractCaps;
 
-import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
 import static muramasa.antimatter.material.Material.NULL;
-import static muramasa.gregtech.data.Machines.*;
 
 public class RemappingEvents {
     UUID bearUUID = UUID.fromString("1964e3d1-6500-40e7-9ff2-e6161d41a8c2");

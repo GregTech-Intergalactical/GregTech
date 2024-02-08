@@ -5,7 +5,7 @@ import muramasa.antimatter.event.fabric.LoaderEvents;
 import muramasa.antimatter.event.fabric.ProviderEvents;
 import muramasa.antimatter.event.fabric.WorldGenEvents;
 import muramasa.gregtech.GregTech;
-import muramasa.gregtech.blockentity.single.BlockEntityMiniPortal;
+import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniPortal;
 import muramasa.gregtech.loader.WorldGenLoader;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
