@@ -13,6 +13,7 @@ import static muramasa.gregtech.data.Materials.*;
 
 public class GregTechItems {
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(GTIRef.ID, "computer_monitor").tip("Can be placed on machines as a cover");
+    public static ItemPortableScanner PortableScanner = new ItemPortableScanner();
     public static ItemFluidCell CellTin = new ItemFluidCell(GTIRef.ID, Tin, 1000);
     public static ItemFluidCell CellSteel = new ItemFluidCell(GTIRef.ID, Steel, 16000);
     public static ItemFluidCell CellTungstensteel = new ItemFluidCell(GTIRef.ID, TungstenSteel, 64000);

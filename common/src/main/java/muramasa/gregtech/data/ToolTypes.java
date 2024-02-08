@@ -1,6 +1,7 @@
 package muramasa.gregtech.data;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTools;
 import io.github.gregtechintergalactical.gtcore.item.ItemPowerUnit;
@@ -22,6 +23,7 @@ import muramasa.antimatter.tool.behaviour.BehaviourExtendedHighlight;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockNuclearReactorCore;
 import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
+import muramasa.gregtech.items.ItemPortableScanner;
 import muramasa.gregtech.items.ItemTurbineRotor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
@@ -60,6 +62,23 @@ public class ToolTypes {
     public static final AntimatterToolType LARGE_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "large_turbine_rotor", 1, 1, 1, 4.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(LARGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(3).setToolSupplier(ItemTurbineRotor::new);
     public static final AntimatterToolType HUGE_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "huge_turbine_rotor", 1, 1, 1, 2.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(HUGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(4).setToolSupplier(ItemTurbineRotor::new);
     public static final AntimatterToolType PINCERS = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "pincers", 1, 2, 10, 5.0f, 0.0f, false)).setRepairable(false);
+
+    public static final MaterialRecipe.Provider SCANNER_BUILDER = MaterialRecipe.registerProvider("portable-scanner", GTIRef.ID, id -> new MaterialRecipe.ItemBuilder() {
+
+        @Override
+        public ItemStack build(CraftingContainer inv, MaterialRecipe.Result mats) {
+            Tuple<Long, Long> battery = (Tuple<Long, Long>) mats.mats.get("battery");
+            ItemStack scanner = new ItemStack(GregTechItems.PortableScanner);
+            TesseractCapUtils.getEnergyHandlerItem(scanner).ifPresent(i -> i.setEnergy(battery.getA()));
+            return scanner;
+        }
+
+        @Override
+        public Map<String, Object> getFromResult(@NotNull ItemStack stack) {
+            CompoundTag nbt = stack.getOrCreateTagElement(Ref.TAG_ITEM_ENERGY_DATA);
+            return ImmutableMap.of("energy", getEnergy(stack).getA(), "maxEnergy", getEnergy(stack).getB());
+        }
+    });
     public static final MaterialRecipe.Provider POWERED_TOOL_BUILDER = MaterialRecipe.registerProvider("powered-tool", GTIRef.ID, id -> new MaterialRecipe.ItemBuilder() {
 
         @Override
@@ -100,6 +119,7 @@ public class ToolTypes {
         PropertyIngredient.addGetter(GTCoreTags.BATTERIES_SMALL.location(), ToolTypes::getEnergy);
         PropertyIngredient.addGetter(GTCoreTags.BATTERIES_MEDIUM.location(), ToolTypes::getEnergy);
         PropertyIngredient.addGetter(GTCoreTags.BATTERIES_LARGE.location(), ToolTypes::getEnergy);
+        PropertyIngredient.addGetter(GTCoreItems.BatteryMediumLithium.getLoc(), ToolTypes::getEnergy);
         PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_LV.location(), ToolTypes::getEnergyAndMat);
         PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_MV.location(), ToolTypes::getEnergyAndMat);
         PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_HV.location(), ToolTypes::getEnergyAndMat);
@@ -135,6 +155,11 @@ public class ToolTypes {
         if (stack.getItem() instanceof ItemBattery battery){
             long energy = TesseractCapUtils.getEnergyHandlerItem(stack).map(IGTNode::getEnergy).orElse((long)0);
             long maxEnergy = TesseractCapUtils.getEnergyHandlerItem(stack).map(IGTNode::getCapacity).orElse(battery.getCapacity());
+            return new Tuple<>(energy, maxEnergy);
+        }
+        if (stack.getItem() instanceof ItemPortableScanner){
+            long energy = TesseractCapUtils.getEnergyHandlerItem(stack).map(IGTNode::getEnergy).orElse((long)0);
+            long maxEnergy = TesseractCapUtils.getEnergyHandlerItem(stack).map(IGTNode::getCapacity).orElse(400000L);
             return new Tuple<>(energy, maxEnergy);
         }
         if (stack.getItem() instanceof IAntimatterTool tool){

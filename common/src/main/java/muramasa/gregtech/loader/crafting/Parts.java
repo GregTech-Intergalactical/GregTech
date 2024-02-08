@@ -6,6 +6,7 @@ import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
+import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
@@ -13,11 +14,13 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialItem;
 import muramasa.antimatter.pipe.PipeSize;
+import muramasa.antimatter.recipe.ingredient.PropertyIngredient;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.GregTechCovers;
 import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.data.ToolTypes;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -29,13 +32,13 @@ import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.CIRCUITS_ADVANCED;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.PLATES_IRON_ALUMINIUM;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.machine.Tier.*;
-import static muramasa.gregtech.data.GregTechItems.CellTin;
-import static muramasa.gregtech.data.GregTechItems.EmptyGeigerCounter;
+import static muramasa.gregtech.data.GregTechItems.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
 
@@ -102,6 +105,10 @@ public class Parts {
       provider.addItemRecipe(output, "hazmat", UniversalHazardSuitBoots, of('L', PLATE.getMaterialTag(Lead), 'A', PLATE.getMaterialTag(Aluminium), 'C', Items.CHAINMAIL_BOOTS), "ALA", "LCL", "ALA");
       provider.addItemRecipe(output, "misc", EmptyGeigerCounter,
               of('S', SCREW.getMaterialTag(Aluminium), 'P', PLATE.getMaterialTag(Aluminium), 'C', CellTin, 'c', TIER_CIRCUITS.apply(LV), 's', SCREWDRIVER.getTag()), "SCS", "PcP", "SsS");
+      provider.addStackRecipe(/*ToolTypes.SCANNER_BUILDER.get("portable-scanner"), */output, GTIRef.ID, "scanner", "misc", new ItemStack(GregTechItems.PortableScanner),
+              of('E', EmitterHV, 'A', PLATE.getMaterialTag(Aluminium), 'S', SensorHV, 'C', CIRCUITS_ADVANCED, 'c', ComputerMonitor, 'B',  BatteryMediumLithium/*PropertyIngredient.builder("battery").itemStacks(BatteryMediumLithium).build()*/), "EAS", "CcC", "ABA");
+      provider.addItemRecipe(output, "misc", ComputerMonitor,
+              of('A', PLATE.getMaterialTag(Aluminium), 'P', PLATE.getMaterialTag(Glass), 'g', ForgeCTags.DYES_GREEN, 'b', ForgeCTags.DYES_BLUE, 'r', ForgeCTags.DYES_RED, 'G', DUST.getMaterialTag(Glowstone)), "AgA", "rPb", "AGA");
   }
 
   private static void tieredItems(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
