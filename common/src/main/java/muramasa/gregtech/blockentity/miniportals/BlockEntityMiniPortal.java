@@ -31,7 +31,8 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
 
     public static List<BlockEntityMiniPortal>
             sListNetherSide = new ArrayList<>(),
-            sListWorldSide  = new ArrayList<>();
+            sListWorldSide  = new ArrayList<>(),
+            sListEndSide = new ArrayList<>();
     BlockEntityMiniPortal otherSide;
     BlockPos otherSidePos = null;
     ResourceLocation otherSideDimension;
@@ -55,6 +56,8 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
                 if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
             } else if (level.dimension() == Level.NETHER) {
                 if (!sListNetherSide.contains(this)) sListNetherSide.add(this);
+            } else if (level.dimension() == Level.END) {
+                if (!sListEndSide.contains(this)) sListEndSide.add(this);
             }
         }
     }
@@ -159,6 +162,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
         }
         sListWorldSide.remove(this);
         sListNetherSide.remove(this);
+        sListEndSide.remove(this);
     }
 
     @Override
