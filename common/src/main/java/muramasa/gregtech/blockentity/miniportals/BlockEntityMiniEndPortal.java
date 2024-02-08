@@ -31,7 +31,7 @@ public class BlockEntityMiniEndPortal extends BlockEntityMiniPortal{
         otherSide = null;
         if (level != null && isServerSide()) {
             if (level.dimension() == Level.OVERWORLD) {
-                long tShortestDistance = 128*128;
+                long tShortestDistance = 512*512;
                 for (BlockEntityMiniPortal tTarget : sListEndSide) if (tTarget != this && !tTarget.isRemoved()) {
                     long tXDifference = getBlockPos().getX()-tTarget.getBlockPos().getX(), tZDifference = getBlockPos().getZ()-tTarget.getBlockPos().getZ();
                     long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
@@ -43,7 +43,7 @@ public class BlockEntityMiniEndPortal extends BlockEntityMiniPortal{
                     }
                 }
             } else if (level.dimension() == Level.END) {
-                long tShortestDistance = 128*128;
+                long tShortestDistance = 512*512;
                 for (BlockEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isRemoved()) {
                     long tXDifference = tTarget.getBlockPos().getX()-getBlockPos().getX(), tZDifference = tTarget.getBlockPos().getZ()-getBlockPos().getZ();
                     long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
