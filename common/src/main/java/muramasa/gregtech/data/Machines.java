@@ -16,6 +16,7 @@ import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.BlockNuclearReactorCore;
+import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniEndPortal;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniNetherPortal;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniPortal;
 import muramasa.gregtech.blockentity.multi.*;
@@ -233,6 +234,7 @@ public class Machines {
     public static BasicMachine PUMP = new BasicMachine(GTIRef.ID, "electric_pump").addFlags(FLUID).setVerticalFacingAllowed(true).setTile(BlockEntityPump::new).noCovers();
     public static BasicMachine CROP_HARVESTER = new BasicMachine(GTIRef.ID, "crop_harvester").setTiers(LV).addFlags(GUI, ITEM).setTile(BlockEntityCropHarvester::new);
     public static BasicMachine MINIATURE_NETHER_PORTAL = new MiniPortalMachine(GTIRef.ID, "miniature_nether_portal").baseTexture(new Texture("block/obsidian")).overlayTexture(Textures.MINI_NETHER_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniNetherPortal::new);
+    public static BasicMachine MINIATURE_END_PORTAL = new MiniPortalMachine(GTIRef.ID, "miniature_end_portal").baseTexture(new Texture("block/end_portal_frame_top")).overlayTexture(Textures.MINI_END_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniEndPortal::new);
 
     /**
      ** Creative Machines

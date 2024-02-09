@@ -11,7 +11,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BlockEntityMiniNetherPortal extends BlockEntityMiniPortal{
+    public static List<BlockEntityMiniPortal>
+            sListNetherSide = new ArrayList<>();
     public BlockEntityMiniNetherPortal(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
@@ -24,6 +29,25 @@ public class BlockEntityMiniNetherPortal extends BlockEntityMiniPortal{
     @Override
     protected void playActivationSound(Player player){
         level.playSound(player, this.getBlockPos(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+    }
+
+    @Override
+    public List<BlockEntityMiniPortal> getPortalListA() {
+        return sListWorldSide;
+    }
+
+    @Override
+    public List<BlockEntityMiniPortal> getPortalListB() {
+        return sListNetherSide;
+    }
+
+    @Override
+    public void addThisPortalToLists() {
+        if (level.dimension() == Level.OVERWORLD) {
+            if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
+        } else if (level.dimension() == Level.NETHER) {
+            if (!sListNetherSide.contains(this)) sListNetherSide.add(this);
+        }
     }
 
     @Override

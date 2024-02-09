@@ -30,9 +30,7 @@ import java.util.List;
 public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPortal> {
 
     public static List<BlockEntityMiniPortal>
-            sListNetherSide = new ArrayList<>(),
-            sListWorldSide  = new ArrayList<>(),
-            sListEndSide = new ArrayList<>();
+            sListWorldSide  = new ArrayList<>();
     BlockEntityMiniPortal otherSide;
     BlockPos otherSidePos = null;
     ResourceLocation otherSideDimension;
@@ -52,13 +50,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     public void onLoad() {
         super.onLoad();
         if (level != null && isServerSide()) {
-            if (level.dimension() == Level.OVERWORLD) {
-                if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
-            } else if (level.dimension() == Level.NETHER) {
-                if (!sListNetherSide.contains(this)) sListNetherSide.add(this);
-            } else if (level.dimension() == Level.END) {
-                if (!sListEndSide.contains(this)) sListEndSide.add(this);
-            }
+            addThisPortalToLists();
         }
     }
 
@@ -125,7 +117,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
             if (level.isClientSide()) {
                 playActivationSound(player);
             }
-            return InteractionResult.SUCCESS;
+            return InteractionResult.sidedSuccess(level.isClientSide());
         }
         return super.onInteractBoth(state, world, pos, player, hand, hit, type);
     }
@@ -133,6 +125,13 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     protected abstract boolean isPortalSetter(ItemStack stack);
 
     protected abstract void playActivationSound(Player player);
+
+    public abstract List<BlockEntityMiniPortal> getPortalListA();
+    public abstract List<BlockEntityMiniPortal> getPortalListB();
+
+    protected abstract void findTargetPortal();
+
+    public abstract void addThisPortalToLists();
 
     private boolean setPortal(){
         if (level == null) return false;
@@ -152,17 +151,14 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
         }
     }
 
-    protected abstract void findTargetPortal();
-
     @Override
     public void onRemove() {
         super.onRemove();
         if (otherSide != null){
             otherSide.setOtherSide(null);
         }
-        sListWorldSide.remove(this);
-        sListNetherSide.remove(this);
-        sListEndSide.remove(this);
+        getPortalListA().remove(this);
+        getPortalListB().remove(this);
     }
 
     @Override
