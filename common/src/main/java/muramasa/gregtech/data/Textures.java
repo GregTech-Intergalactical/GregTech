@@ -56,6 +56,28 @@ public class Textures {
         };
     };
 
+    public static final IOverlayTexturer MINI_TWILIGHT_PORTAL = (type, state, tier, i) -> {
+        if (state != MachineState.ACTIVE) state = MachineState.IDLE;
+        if (state == MachineState.ACTIVE){
+            return new Texture[] {
+                    new Texture("block/nether_portal"),
+                    new Texture("block/nether_portal"),
+                    new Texture("block/nether_portal"),
+                    new Texture("block/nether_portal"),
+                    new Texture("block/nether_portal"),
+                    new Texture("block/nether_portal"),
+            };
+        }
+        return new Texture[] {
+                new Texture("block/water_still"),
+                new Texture("block/water_still"),
+                new Texture("block/water_still"),
+                new Texture("block/water_still"),
+                new Texture("block/water_still"),
+                new Texture("block/water_still"),
+        };
+    };
+
     public static final IOverlayTexturer MINI_END_PORTAL = (type, state, tier, i) -> {
         if (state != MachineState.ACTIVE) state = MachineState.IDLE;
         if (state == MachineState.ACTIVE){
