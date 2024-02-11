@@ -9,6 +9,7 @@ import muramasa.antimatter.blockentity.single.BlockEntityTransformer;
 import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.BlockMachine;
+import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.*;
 import muramasa.antimatter.material.Material;
@@ -19,6 +20,7 @@ import muramasa.gregtech.block.BlockNuclearReactorCore;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniEndPortal;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniNetherPortal;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniPortal;
+import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniTwilightPortal;
 import muramasa.gregtech.blockentity.multi.*;
 import muramasa.gregtech.blockentity.single.*;
 import muramasa.gregtech.machine.MiniPortalMachine;
@@ -32,8 +34,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.phys.shapes.Shapes;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Netherite;
-import static muramasa.antimatter.data.AntimatterMaterials.Wood;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.machine.MachineFlag.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GregTechCovers.*;
@@ -234,7 +235,15 @@ public class Machines {
     public static BasicMachine PUMP = new BasicMachine(GTIRef.ID, "electric_pump").addFlags(FLUID).setVerticalFacingAllowed(true).setTile(BlockEntityPump::new).noCovers();
     public static BasicMachine CROP_HARVESTER = new BasicMachine(GTIRef.ID, "crop_harvester").setTiers(LV).addFlags(GUI, ITEM).setTile(BlockEntityCropHarvester::new);
     public static BasicMachine MINIATURE_NETHER_PORTAL = new MiniPortalMachine(GTIRef.ID, "miniature_nether_portal").baseTexture(new Texture("block/obsidian")).overlayTexture(Textures.MINI_NETHER_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniNetherPortal::new);
-    public static BasicMachine MINIATURE_END_PORTAL = new MiniPortalMachine(GTIRef.ID, "miniature_end_portal").baseTexture(new Texture("block/end_portal_frame_top")).overlayTexture(Textures.MINI_END_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniEndPortal::new);
+    public static BasicMachine MINIATURE_END_PORTAL = new MiniPortalMachine(GTIRef.ID, "miniature_end_portal").baseTexture(new Texture("block/end_portal_frame_top")).overlayTexture(Textures.MINI_END_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(3.0f, 9.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniEndPortal::new);
+    public static BasicMachine MINIATURE_TWILIGHT_PORTAL = new MiniPortalMachine(GTIRef.ID, "miniature_twilight_portal").baseTexture(new Texture("block/grass_block_top")).overlayTexture(Textures.MINI_TWILIGHT_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniTwilightPortal::new).blockColorHandler((state, world, pos, machine, i) -> {
+        if (machine != null && i == 1){
+            if (machine.getMachineState() != MachineState.ACTIVE){
+                return Water.getRGB();
+            }
+        }
+        return i == 0 ? 0x00FF00 : -1;
+    }).itemColorHandler((stack, block, i) -> i == 0 ? 0x00FF00 : -1);
 
     /**
      ** Creative Machines
