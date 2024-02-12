@@ -42,6 +42,6 @@ public class BlockNuclearReactorCore extends BlockMachine implements IColorHandl
                 }
             }
         }
-        return IColorHandler.super.getBlockColor(state, world, pos, i);
+        return super.getBlockColor(state, world, pos, i);
     }
 }

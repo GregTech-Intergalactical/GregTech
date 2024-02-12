@@ -109,15 +109,17 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     public InteractionResult onInteractBoth(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
         ItemStack stack = player.getItemInHand(hand);
         if (isPortalSetter(stack) && setPortal()){
-            if (stack.isDamageableItem()) {
-                Utils.damageStack(stack, hand, player);
-            } else {
-                stack.shrink(1);
+            if (!player.isCreative()) {
+                if (stack.isDamageableItem()) {
+                    Utils.damageStack(stack, hand, player);
+                } else {
+                    stack.shrink(1);
+                }
             }
             if (level.isClientSide()) {
                 playActivationSound(player);
             }
-            return InteractionResult.sidedSuccess(level.isClientSide());
+            return InteractionResult.SUCCESS;
         }
         return super.onInteractBoth(state, world, pos, player, hand, hit, type);
     }

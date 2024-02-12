@@ -29,6 +29,8 @@ import muramasa.gregtech.machine.SteamMachine;
 import net.minecraft.ChatFormatting;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -239,7 +241,8 @@ public class Machines {
     public static BasicMachine MINIATURE_TWILIGHT_PORTAL = new MiniPortalMachine(GTIRef.ID, "miniature_twilight_portal").baseTexture(new Texture("block/grass_block_top")).overlayTexture(Textures.MINI_TWILIGHT_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniTwilightPortal::new).blockColorHandler((state, world, pos, machine, i) -> {
         if (machine != null && i == 1){
             if (machine.getMachineState() != MachineState.ACTIVE){
-                return Water.getRGB();
+                Biome biome = machine.getLevel().getBiome(pos).value();
+                return biome.getWaterColor();//0x3f76e4;
             }
         }
         return i == 0 ? 0x00FF00 : -1;
