@@ -37,6 +37,13 @@ public class AlloyLoader {
             if (secondIngot) ALLOY_SMELTER.RB().ii(of(DUST.getMaterialTag(first.m),first.s),of(INGOT.getMaterialTag(second.m),second.s)).io(new ItemStack(INGOT.get(t),cumulative)).add(t.getId() +"_ingot_4",100, 12);
         });
         addAlloyRecipes(Copper, 3,Electrum, 2, BlackBronze, 5);
+        addAlloyRecipes(AnnealedCopper, 3,Electrum, 2, BlackBronze, 5);
+        addAlloyRecipes(AnnealedCopper, 3, Tin, 1, Bronze, 4);
+        addAlloyRecipes(AnnealedCopper, 3, Zinc, 1, Brass, 4);
+        addAlloyRecipes(AnnealedCopper, 1, Silver, 4, SterlingSilver, 5);
+        addAlloyRecipes(AnnealedCopper, 1, Gold, 4, RoseGold, 5);
+        addAlloyRecipes(AnnealedCopper, 1, Nickel, 1, Cupronickel, 2);
+        addAlloyRecipes(AnnealedCopper, 1, Redstone, 4, RedAlloy, 1);
         addAlloyRecipes(Bismuth, 1, Brass, 4, BismuthBronze, 5);
         //pre Chemical Reactor Rubber
         ALLOY_SMELTER.RB().ii(of(DUST.get(RawRubber), 3), of(DUST.getMaterialTag(Sulfur), 1))
@@ -72,15 +79,16 @@ public class AlloyLoader {
     }
 
     private static void addAlloyRecipes(Material input1, int count1, Material input2, int count2, Material output, int countO){
+        String suffix = input1 == AnnealedCopper ? "_annealed" : "";
         if (input1.has(INGOT) && input2.has(INGOT)) {
-            ALLOY_SMELTER.RB().ii(INGOT.getMaterialIngredient(input1, count1), INGOT.getMaterialIngredient(input2, count2)).io(INGOT.get(output, countO)).add(output.getId() + "_ingot", 100, 12);
+            ALLOY_SMELTER.RB().ii(INGOT.getMaterialIngredient(input1, count1), INGOT.getMaterialIngredient(input2, count2)).io(INGOT.get(output, countO)).add(output.getId() + "_ingot" + suffix, 100, 12);
         }
         if (input2.has(INGOT)) {
-            ALLOY_SMELTER.RB().ii(DUST.getMaterialIngredient(input1, count1), INGOT.getMaterialIngredient(input2, count2)).io(INGOT.get(output, countO)).add(output.getId() + "_ingot_1", 100, 12);
+            ALLOY_SMELTER.RB().ii(DUST.getMaterialIngredient(input1, count1), INGOT.getMaterialIngredient(input2, count2)).io(INGOT.get(output, countO)).add(output.getId() + "_ingot_1" + suffix, 100, 12);
         }
         if (input1.has(INGOT)) {
-            ALLOY_SMELTER.RB().ii(INGOT.getMaterialIngredient(input1, count1), DUST.getMaterialIngredient(input2, count2)).io(INGOT.get(output, countO)).add(output.getId() + "_ingot_2", 100, 12);
+            ALLOY_SMELTER.RB().ii(INGOT.getMaterialIngredient(input1, count1), DUST.getMaterialIngredient(input2, count2)).io(INGOT.get(output, countO)).add(output.getId() + "_ingot_2" + suffix, 100, 12);
         }
-        ALLOY_SMELTER.RB().ii(DUST.getMaterialIngredient(input1, count1), DUST.getMaterialIngredient(input2, count2)).io(INGOT.get(output, countO)).add(output.getId() + "_ingot_3", 100, 12);
+        ALLOY_SMELTER.RB().ii(DUST.getMaterialIngredient(input1, count1), DUST.getMaterialIngredient(input2, count2)).io(INGOT.get(output, countO)).add(output.getId() + "_ingot_3" + suffix, 100, 12);
     }
 }
