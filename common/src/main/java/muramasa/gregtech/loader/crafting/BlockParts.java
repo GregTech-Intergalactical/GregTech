@@ -94,6 +94,7 @@ public class BlockParts {
         addCasing(output, provider, Tungsten, GregTechBlocks.CASING_TUNGSTEN);
         addCasing(output, provider, Platinum, GregTechBlocks.CASING_PLATINUM);
         addCasing(output, provider, BlackBronze, GregTechBlocks.CASING_BLACK_BRONZE);
+        addCasing(output, provider, Plastic, GregTechBlocks.CASING_PLASTIC);
         provider.addItemRecipe(output, "casings", GregTechBlocks.CASING_DENSE_LEAD,
                 of('L', PLATE_DENSE.getMaterialTag(Lead), 'R', ROD_LONG.getMaterialTag(Lead), 'W', WRENCH.getTag()), "RLL", "LWL", "LLR");
 

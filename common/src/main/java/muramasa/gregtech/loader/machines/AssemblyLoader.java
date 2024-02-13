@@ -104,7 +104,8 @@ public class AssemblyLoader {
         addCasing(Invar, GregTechBlocks.CASING_HEAT_PROOF);
         addCasing(Aluminium, GregTechBlocks.CASING_FROST_PROOF);
         addCasing(Lead, GregTechBlocks.CASING_RADIATION_PROOF);
-        ASSEMBLER.RB().ii(of(GregTechBlocks.CASING_SOLID_STEEL), INT_CIRCUITS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GregTechBlocks.CASING_CHEMICALLY_INERT.asItem()).add("chemically_inert_casing");
+        addCasing(Plastic, GregTechBlocks.CASING_PLASTIC);
+        ASSEMBLER.RB().ii(of(GregTechBlocks.CASING_SOLID_STEEL), INT_CIRCUITS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GregTechBlocks.CASING_CHEMICALLY_INERT.asItem()).add("chemically_inert_casing", 50, 16);
     }
 
     private static void cables(){

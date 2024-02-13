@@ -135,6 +135,7 @@ public class GregTechBlocks {
     public static final BlockCasing CASING_FROST_PROOF = new BlockCasing(GTIRef.ID, "frost_proof_casing");
     public static final BlockCasing CASING_RADIATION_PROOF = new BlockCasing(GTIRef.ID, "radiation_proof_casing");
     public static final BlockCasing CASING_CHEMICALLY_INERT = new BlockCasing(GTIRef.ID, "chemically_inert_casing");
+    public static final BlockCasing CASING_PLASTIC = new BlockCasing(GTIRef.ID, "plastic_casing");
     public static final BlockCasing CASING_DENSE_LEAD = new BlockCasing(GTIRef.ID, "dense_lead_casing");
     public static final BlockCasing CASING_FIREBOX_BRONZE = new BlockCasing(GTIRef.ID, "bronze_firebox_casing");
     public static final BlockCasing CASING_FIREBOX_STEEL = new BlockCasing(GTIRef.ID, "steel_firebox_casing");

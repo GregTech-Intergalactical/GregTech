@@ -215,7 +215,7 @@ public class Structures {
         TREE_GROWTH_SIMULATOR.setStructure(BlockEntityTreeGrowthSimulator.class, b -> b.part("main")
                 .of("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").of("CCCCC", "C---C", "C---C", "C---C", "CCCCC").of(1).of(1).of(1).of(1).of(1)
                 .of("CC~CC", "CDDDC", "CDDDC", "CDDDC", "CCCCC").of("BBBBB", "BBBBB", "BBBBB", "BBBBB", "BBBBB").build()
-                .at('C', GregTechBlocks.CASING_BLACK_BRONZE, HATCH_ITEM_O, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_ENERGY)
+                .at('C', GregTechBlocks.CASING_PLASTIC, HATCH_ITEM_O, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_ENERGY)
                 .at('B', GregTechBlocks.CASING_BLACK_BRONZE).at('D', BlockTags.DIRT)
                 .offset(2, 7, 0).min(1, HATCH_ITEM_I, HATCH_ENERGY, HATCH_ITEM_O).build()
         );
