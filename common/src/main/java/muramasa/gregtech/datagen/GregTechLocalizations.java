@@ -98,6 +98,8 @@ public class GregTechLocalizations {
             add("tooltip.gti.neutron_moderator_rod.0", "Reflects Neutrons back times the number of fuel rods touching when active");
             add("tooltip.gti.neutron_moderator_rod.1", "Touching Fuel Rods become moderated and moderate touching Fuel Rods");
             add("tooltip.gti.neutron_moderator_rod.2", "Moderated Fuel Rods can't be used for Breeding and only last a quarter as long");
+            add("tooltip.gti.int_circuit.0", "Right click to cycle mode forward");
+            add("tooltip.gti.int_circuit.1", "Shift right click to cycle mode backward");
             add("message.gti.nuclear_reactor.off", "Reactor Block is OFF");
             add("message.gti.nuclear_reactor.on", "Reactor Block is ON");
             add("message.gti.nuclear_reactor.neutron_levels", "Neutron Levels: %sn; %sn; %sn; %sn");

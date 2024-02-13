@@ -53,7 +53,7 @@ public class TierMaps {
         {
             ImmutableMap.Builder<Integer, RecipeIngredient> builder = ImmutableMap.builder();
             for (int i = 0; i <= 24; i++) {
-                builder.put(i, RecipeIngredient.of(new ItemIntCircuit(GTIRef.ID, "int_circuit_"+i,i).tip("ID: " + i),1).setNoConsume());
+                builder.put(i, RecipeIngredient.of(new ItemIntCircuit(GTIRef.ID, "int_circuit_"+i,i),1).setNoConsume());
             }
             INT_CIRCUITS = builder.build();
         }
