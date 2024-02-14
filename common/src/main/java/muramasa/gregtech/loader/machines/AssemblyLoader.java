@@ -105,6 +105,7 @@ public class AssemblyLoader {
         addCasing(Aluminium, GregTechBlocks.CASING_FROST_PROOF);
         addCasing(Lead, GregTechBlocks.CASING_RADIATION_PROOF);
         addCasing(Plastic, GregTechBlocks.CASING_PLASTIC);
+        addCasing(BlackBronze, GregTechBlocks.CASING_BLACK_BRONZE);
         ASSEMBLER.RB().ii(of(GregTechBlocks.CASING_SOLID_STEEL), INT_CIRCUITS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GregTechBlocks.CASING_CHEMICALLY_INERT.asItem()).add("chemically_inert_casing", 50, 16);
     }
 
