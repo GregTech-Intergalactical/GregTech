@@ -124,6 +124,7 @@ public class ToolTypes {
         PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_MV.location(), ToolTypes::getEnergyAndMat);
         PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_HV.location(), ToolTypes::getEnergyAndMat);
         PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_SMALL.location(), ToolTypes::getEnergyAndMat);
+        PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_JACKHAMMER.location(), ToolTypes::getEnergyAndMat);
     }
 
     public static void init(){
