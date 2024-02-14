@@ -1533,5 +1533,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Water).mats(of(Hydrogen, 2, Oxygen, 1)).elecTicks(2000);
         event.setMaterial(Sugar).mats(of(Water, 11, Carbon, 12)).elecTicks(184);
         event.setMaterial(Glowstone).asFluid(0, 1000).flags(MOLTEN);
+        event.setMaterial(Endstone).flags(ROD_LONG);
     }
 }

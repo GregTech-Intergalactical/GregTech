@@ -21,10 +21,12 @@ import java.util.function.ToLongFunction;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
+import static muramasa.antimatter.data.AntimatterMaterials.Endstone;
 import static muramasa.antimatter.material.MaterialTags.RUBBERTOOLS;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 
 import static muramasa.gregtech.data.Materials.Glass;
+import static muramasa.gregtech.data.Materials.Obsidian;
 import static muramasa.gregtech.data.RecipeMaps.EXTRUDER;
 
 public class ExtruderLoader {
@@ -119,7 +121,7 @@ public class ExtruderLoader {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeRod, 1).setNoConsume()).io(AntimatterMaterialTypes.ROD.get(r, 2)).add("rod_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
-            if (r.has(AntimatterMaterialTypes.DUST) && (r.has(RUBBERTOOLS) || !r.has(INGOT))) {
+            if (r.has(AntimatterMaterialTypes.DUST) && (r.has(RUBBERTOOLS) || (!r.has(INGOT) && r != Obsidian))) {
                 EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeRod, 1).setNoConsume()).io(AntimatterMaterialTypes.ROD.get(r, 2)).add("rod_" + r.getId() + "_from_dust", baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
         });
@@ -128,7 +130,7 @@ public class ExtruderLoader {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeLongRod, 1).setNoConsume()).io(AntimatterMaterialTypes.ROD_LONG.get(r, 1)).add("long_rod_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
-            if (r.has(AntimatterMaterialTypes.DUST) && r.has(RUBBERTOOLS)) {
+            if (r.has(AntimatterMaterialTypes.DUST) && (r.has(RUBBERTOOLS) || r == Endstone)) {
                 EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeLongRod, 1).setNoConsume()).io(AntimatterMaterialTypes.ROD_LONG.get(r, 1)).add("long_rod_" + r.getId() + "_from_dust", baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
         });

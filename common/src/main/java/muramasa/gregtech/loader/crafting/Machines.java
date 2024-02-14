@@ -513,6 +513,10 @@ public class Machines {
                 of('S', SOLAR_PANEL.getItem(ULV), 'T', TRANSFORMER.getItem(ULV), 'C', TIER_CIRCUITS.apply(EV)), "CSC", "STS","CSC");
 
         provider.addItemRecipe(output, "mini_portals", MINIATURE_NETHER_PORTAL.getItem(NONE), of('O', ROD_LONG.get(Obsidian), 'S', SAW.getTag()), "OOO", "OSO", "OOO");
+        provider.addItemRecipe(output, "mini_portals", MINIATURE_END_PORTAL.getItem(NONE), of('R', ROD_LONG.get(Endstone), 'G', Items.GHAST_TEAR, 'E', Items.ENDER_EYE), "ERE", "RGR", "ERE");
+        if (AntimatterAPI.isModLoaded(Ref.MOD_TWILIGHT)){
+            provider.addItemRecipe(output, "mini_portals", MINIATURE_TWILIGHT_PORTAL.getItem(NONE), of('R', Items.GRASS_BLOCK, 'G', Items.WATER_BUCKET, 'E', ItemTags.SMALL_FLOWERS), "ERE", "RGR", "ERE");
+        }
 
         var circuit = GregTechConfig.HARDER_CIRCUITS ? CIRCUITS_ADVANCED : EngravedCrystalChip;
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(Tier.LV),
