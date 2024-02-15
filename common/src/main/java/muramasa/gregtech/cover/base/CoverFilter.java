@@ -40,6 +40,21 @@ public class CoverFilter extends BaseCover {
     }
 
     @Override
+    public CompoundTag serialize() {
+        CompoundTag tag = super.serialize();
+        tag.putBoolean("blacklist", blacklist);
+        tag.putBoolean("ignoreNBT", ignoreNBT);
+        return tag;
+    }
+
+    @Override
+    public void deserialize(CompoundTag nbt) {
+        super.deserialize(nbt);
+        this.blacklist = nbt.getBoolean("blacklist");
+        this.ignoreNBT = nbt.getBoolean("ignoreNBT");
+    }
+
+    @Override
     public void onUpdate() {
         super.onUpdate();
     }
