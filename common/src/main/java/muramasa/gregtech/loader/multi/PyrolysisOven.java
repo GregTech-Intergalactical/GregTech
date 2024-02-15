@@ -17,8 +17,8 @@ import static muramasa.gregtech.data.RecipeMaps.PYROLYSIS_OVEN;
 
 public class PyrolysisOven {
     public static void init(){
-        PYROLYSIS_OVEN.RB().ii(DUST.getMaterialIngredient(Materials.OilShale, 1)).fo(Materials.Oil.getLiquid(25)).add("oilshale", 200, 120);
-        PYROLYSIS_OVEN.RB().ii(RAW_ORE.getMaterialIngredient(Materials.OilShale, 1)).fo(Materials.Oil.getLiquid(25)).add("oilshale_raw", 200, 120);
+        PYROLYSIS_OVEN.RB().ii(DUST.getMaterialIngredient(Materials.OilShale, 16)).fo(Materials.Oil.getLiquid(400)).add("oilshale", 200, 120);
+        PYROLYSIS_OVEN.RB().ii(RAW_ORE.getMaterialIngredient(Materials.OilShale, 16)).fo(Materials.Oil.getLiquid(400)).add("oilshale_raw", 200, 120);
         PYROLYSIS_OVEN.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff, 1), TierMaps.INT_CIRCUITS.get(1)).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(Materials.Biomass.getLiquid(1500)).add("biomass", 100, 10);
         PYROLYSIS_OVEN.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff, 1), TierMaps.INT_CIRCUITS.get(2)).fi(AntimatterMaterials.Water.getLiquid(1500)).fo(Materials.Biomass.getLiquid(1500)).add("fermented_biomass", 200, 10);
         PYROLYSIS_OVEN.RB().ii(DUST.getMaterialIngredient(Sugar, 23), TierMaps.INT_CIRCUITS.get(1)).io(DUST.get(Charcoal, 12)).fo(Water.getLiquid(11000)).add("sugar_to_charcoal", 320, 64);
