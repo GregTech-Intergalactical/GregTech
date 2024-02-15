@@ -29,8 +29,8 @@ public class GregTechMaterialEvents {
         /**
          *** Periodic Table of Elements (No Isotopes)
          **/
-        event.setMaterial(Hydrogen).asGas(20);
-        event.setMaterial(Helium).asGas();
+        event.setMaterial(Hydrogen).asGas(20).fluidDensity(-1112);
+        event.setMaterial(Helium).asGas().fluidDensity(-560);
         event.setMaterial(Lithium).asSolid(454, 0, BOLT, MOLTEN).asOre().harvestLevel(2);
         event.setMaterial(Beryllium).asSolid(1560).asOre();
         event.setMaterial(Boron).asDust(2349);
@@ -38,14 +38,14 @@ public class GregTechMaterialEvents {
         event.setMaterial(Nitrogen).asGas();
         event.setMaterial(Oxygen).asGas();
         event.setMaterial(Fluorine).asGas();
-        event.setMaterial(Neon).asGas();
+        event.setMaterial(Neon).asGas().fluidDensity(-111);
         event.setMaterial(Sodium).asDust(370, MOLTEN).asFluid();
         event.setMaterial(Magnesium).asMetal(1383, 0/*1383*/);
         event.setMaterial(Aluminium).asMetal(933, 0, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL, HAS_CUSTOM_SMELTING);
         event.setMaterial(Silicon).asMetal(1683, 1683, PLATE, FOIL);
         event.setMaterial(Phosphor).asDust(933);
         event.setMaterial(Sulfur).asDust(388, MOLTEN).asOre().harvestLevel(2).asFluid();
-        event.setMaterial(Chlorine).asGas();
+        event.setMaterial(Chlorine).asGas().fluidDensity(3);
         event.setMaterial(Argon).asGas();
         event.setMaterial(Potassium).asSolid(337, 0, MOLTEN);
         event.setMaterial(Calcium).asDust(1115);
@@ -64,7 +64,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Arsenic).asMetal(1090, 1090);
         event.setMaterial(Selenium).asMetal(494, 0);
         //Bromine, not added
-        event.setMaterial(Krypton).asGas();
+        event.setMaterial(Krypton).asGas().fluidDensity(3);
         event.setMaterial(Rubidium).asMetal(312,0);
         event.setMaterial(Strontium).asMetal(1050, 1050);
         event.setMaterial(Yttrium).asMetal(1799, 1799);
@@ -82,7 +82,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Antimony).asMetal(1449);
         event.setMaterial(Tellurium).asMetal(723,0);
         event.setMaterial(Iodine).asSolid(387,0);
-        event.setMaterial(Xenon).asGas();
+        event.setMaterial(Xenon).asGas().fluidDensity(5);
         event.setMaterial(Caesium).asMetal(2349, 2349);
         event.setMaterial(Barium).asDust(1000);
         event.setMaterial(Lanthanum).asMetal(1193, 1193);
@@ -114,7 +114,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Bismuth).asOre();
         event.setMaterial(Polonium).asMetal(527, 0);
         event.setMaterial(Astatine).asMetal(575, 0);
-        event.setMaterial(Radon).asGas();
+        event.setMaterial(Radon).asGas().fluidDensity(9);
         event.setMaterial(Francium).asMetal(298, 0);
         event.setMaterial(Radium).asMetal(973, 0);
         event.setMaterial(Actinium).asMetal(1323, 0);
@@ -481,7 +481,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(HotMoltenLithiumChloride).asFluid(0, 1600).flags(MOLTEN);
         event.setMaterial(HydrochloricAcid).asFluid().flags(ACID);
         event.setMaterial(HydrofluoricAcid).asFluid().flags(ACID);
-        event.setMaterial(HydrogenFluoride).asGas().flags(ACID);
+        event.setMaterial(HydrogenFluoride).asGas().flags(ACID).fluidDensity(-111);
         event.setMaterial(HydrogenPeroxide).asFluid();
         event.setMaterial(HypochlorousAcid).asFluid().flags(ACID);
         event.setMaterial(IndiumConcentrate).asFluid();
@@ -498,8 +498,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(SodiumPersulfate).asFluid();
         event.setMaterial(SodiumBicarbonateSolution).asFluid();
         event.setMaterial(SodiumCarbonateSolution).asFluid();
-        event.setMaterial(Steam).asGas(1, 395);
-        event.setMaterial(SuperheatedSteam).asGas(2, 600);
+        event.setMaterial(Steam).asGas(1, 395).fluidDensity(-800);
+        event.setMaterial(SuperheatedSteam).asGas(2, 600).fluidDensity(-3000);
         event.setMaterial(SulfuricAcid).asFluid().flags(ACID);
         event.setMaterial(SulfurTrioxide).asGas();
         event.setMaterial(SulfurDioxide).asGas();
@@ -518,23 +518,23 @@ public class GregTechMaterialEvents {
         //Alkanes
         event.setMaterial(Methane).asGas(104);
         event.setMaterial(Ethane).asGas(168);
-        event.setMaterial(Propane).asGas(232);
-        event.setMaterial(Butane).asGas(296);
+        event.setMaterial(Propane).asGas(232).fluidDensity(-1000);
+        event.setMaterial(Butane).asGas(296).fluidDensity(-1000);
         //Alkenes
-        event.setMaterial(Ethylene).asGas(128);
+        event.setMaterial(Ethylene).asGas(128).fluidDensity(1000);
         event.setMaterial(Propene).asGas(192);
         event.setMaterial(Butene).asGas(256);
         event.setMaterial(Butadiene).asGas(206);
         //Ketones
         event.setMaterial(Ethenone).asGas();
         //Misc
-        event.setMaterial(HotCarbonDioxide).asGas();
-        event.setMaterial(CarbonDioxide).asGas();
-        event.setMaterial(CarbonMonoxide).asGas(24);
+        event.setMaterial(HotCarbonDioxide).asGas().fluidDensity(1000);
+        event.setMaterial(CarbonDioxide).asGas().fluidDensity(756);
+        event.setMaterial(CarbonMonoxide).asGas(24).fluidDensity(1134);
         event.setMaterial(Chloromethane).asGas();
         event.setMaterial(Dimethylamine).asGas();
         event.setMaterial(LPG).asFluid(256);
-        event.setMaterial(NaturalGas).asGas(15);
+        event.setMaterial(NaturalGas).asGas(15).fluidDensity(-500);
         event.setMaterial(RefineryGas).asGas(128);
         event.setMaterial(SulfuricGas).asGas(20);
         event.setMaterial(Tetrafluoroethylene).asGas();
@@ -543,16 +543,16 @@ public class GregTechMaterialEvents {
         /**
          *  Inorganic
          **/
-        event.setMaterial(Air).asGas();
-        event.setMaterial(Ammonia).asGas().flags(ACID);
+        event.setMaterial(Air).asGas().fluidDensity(0);
+        event.setMaterial(Ammonia).asGas().flags(ACID).fluidDensity(-263);
         event.setMaterial(DinitrogenTetroxide).asGas();
         event.setMaterial(HydrogenSulfide).asGas();
         event.setMaterial(NitricOxide).asGas();
         event.setMaterial(NitrousOxide).asGas();
         event.setMaterial(NitrogenDioxide).asGas();
         event.setMaterial(NobleGases).asGas(0,790);
-        event.setMaterial(SulfurDioxide).asGas();
-        event.setMaterial(SulfurTrioxide).asGas(0,344);
+        event.setMaterial(SulfurDioxide).asGas().fluidDensity(689);
+        event.setMaterial(SulfurTrioxide).asGas(0,344).fluidDensity(517);
         /**
          ** Fuels
          **/
@@ -1112,10 +1112,10 @@ public class GregTechMaterialEvents {
         /**
          *** Isotopes (Gases/Plasmas)
          **/
-        event.setMaterial(HotHelium).asGas(0, 1150);
-        event.setMaterial(Deuterium).asGas();
-        event.setMaterial(Tritium).asGas();
-        event.setMaterial(Helium3).asGas();
+        event.setMaterial(HotHelium).asGas(0, 1150).fluidDensity(1000);
+        event.setMaterial(Deuterium).asGas().fluidDensity(-1112);
+        event.setMaterial(Tritium).asGas().fluidDensity(-1112);
+        event.setMaterial(Helium3).asGas().fluidDensity(-560);
         /**
          * Tetrafluorides
          */
@@ -1125,9 +1125,9 @@ public class GregTechMaterialEvents {
         /**
          * Hexafluorides
          */
-        event.setMaterial(UraniumHexafluoride).asGas();
-        event.setMaterial(Uranium238Hexafluoride).asGas().mats(of(Uranium,1,Fluorine,6));
-        event.setMaterial(Uranium235Hexafluoride).asGas().mats(of(Uranium235,1,Fluorine,6));
+        event.setMaterial(UraniumHexafluoride).asGas().fluidDensity(2708);
+        event.setMaterial(Uranium238Hexafluoride).asGas().mats(of(Uranium,1,Fluorine,6)).fluidDensity(2708);
+        event.setMaterial(Uranium235Hexafluoride).asGas().mats(of(Uranium235,1,Fluorine,6)).fluidDensity(2708);
     }
 
 
