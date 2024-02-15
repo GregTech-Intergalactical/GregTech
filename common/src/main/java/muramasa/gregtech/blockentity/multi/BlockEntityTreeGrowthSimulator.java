@@ -8,7 +8,9 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
+import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -67,5 +69,11 @@ public class BlockEntityTreeGrowthSimulator extends BlockEntityMultiMachine<Bloc
                 return stack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof SaplingBlock;
             }
         });
+    }
+
+    @Override
+    public ITextureProvider getHatchBlock(BlockPos pos) {
+        if (pos.getY() == this.getBlockPos().getY()) return GregTechBlocks.CASING_BLACK_BRONZE;
+        return super.getHatchBlock(pos);
     }
 }
