@@ -21,6 +21,6 @@ public class CrackingUnit {
         CRACKING.RB().fi(Steam.getGas(1000), Butane.getGas(1000)).fo(SteamCrackedButane.getGas(2000)).add("butane_steam", 20, 120);
         CRACKING.RB().fi(Hydrogen.getGas(1000), Ethane.getGas(1000)).fo(HydroCrackedEthane.getGas(2000)).add("ethane_hydrogen", 20, 120);
         CRACKING.RB().fi(Steam.getGas(1000), Ethane.getGas(1000)).fo(SteamCrackedEthane.getGas(2000)).add("ethane_steam", 20, 120);
-        CRACKING.RB().fi(Steam.getGas(1000), Tar.getLiquid(1000)).io(DUST.get(Sulfur), DUST_TINY.get(PetroleumCoke), DUST_TINY.get(Bitumen)).chances(1, 0.8, 1).add("tar", 20, 120);
+        CRACKING.RB().fi(Steam.getGas(100), Tar.getLiquid(100)).io(DUST.get(Sulfur), DUST_TINY.get(PetroleumCoke), DUST.get(Bitumen)).chances(1, 0.8, 0.3).add("tar", 20, 120);
     }
 }
