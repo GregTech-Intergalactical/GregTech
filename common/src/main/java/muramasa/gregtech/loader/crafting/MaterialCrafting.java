@@ -9,12 +9,15 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.ToolTypes;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -25,8 +28,7 @@ import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.data.AntimatterMaterials.Gold;
-import static muramasa.antimatter.material.MaterialTags.NOSMASH;
-import static muramasa.antimatter.material.MaterialTags.RUBBERTOOLS;
+import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.gregtech.data.Materials.*;
 
 public class MaterialCrafting {
@@ -72,6 +74,22 @@ public class MaterialCrafting {
             }
             if (i.getSizes().contains(PipeSize.HUGE)) {
                 provider.addStackRecipe(consumer, GTIRef.ID, "", "antimatter_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.HUGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.HUGE)), " H ", "RPR", "RRR");
+            }
+        });
+        //todo move to gt core
+        BLOCK.all().forEach(m -> {
+            if (m.has(INGOT) || m.has(GEM)){
+                MaterialTypeItem<?> input = m.has(GEM) ? GEM : INGOT;
+                int output = m.has(QUARTZ_LIKE_BLOCKS) ? 4 : 9;
+                String[] strings = m.has(QUARTZ_LIKE_BLOCKS) ? new String[]{"II", "II"} : new String[]{"III", "III", "III"};
+                provider.addItemRecipe(consumer, "blocks", BLOCK.get().get(m).asItem(), of('I', input.getMaterialTag(m)), strings);
+                provider.shapeless(consumer, "", "blocks", input.get(m, output), BLOCK.getMaterialTag(m));
+            }
+        });
+        RAW_ORE_BLOCK.all().forEach(m -> {
+            if (m.has(RAW_ORE)){
+                provider.addItemRecipe(consumer, "blocks", RAW_ORE_BLOCK.get().get(m).asItem(), of('I', RAW_ORE.getMaterialTag(m)), "III", "III", "III");
+                provider.shapeless(consumer, "", "blocks", RAW_ORE.get(m, 9), RAW_ORE_BLOCK.getMaterialTag(m));
             }
         });
     }
