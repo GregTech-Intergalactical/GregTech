@@ -13,7 +13,7 @@ import org.apache.commons.lang3.tuple.Pair;
 public class GregTechConfig {
 
     //TODO needed?
-    public static boolean MORE_COMPLICATED_CHEMICAL_RECIPES = false;
+    public static boolean MORE_COMPLICATED_CHEMICAL_RECIPES = true;
     //TODO change to gt core's config for this
     public static boolean HARDER_CIRCUITS = false;
     public static ConfigEntry.BoolValue HARDER_ALUMINIUM_PROCESSING;
