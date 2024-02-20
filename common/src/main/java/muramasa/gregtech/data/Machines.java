@@ -181,7 +181,7 @@ public class Machines {
             tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal("" + 80).withStyle(ChatFormatting.BLUE)));
         }
     });
-    public static BasicMachine NUCLEAR_REACTOR_CORE = new BasicMachine(GTIRef.ID, "nuclear_reactor_core").setTiers(NONE).addFlags(GUI, ITEM, FLUID).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(new Texture(GTIRef.ID, "block/machine/base/nuclear_reactor_core")).setTile(BlockEntityNuclearReactorCore::new).setBlock(BlockNuclearReactorCore::new).setItemBlockClass(() -> BlockNuclearReactorCore.class).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GregTechCovers.COVER_REACTOR_OUTPUT).covers(ICover.emptyFactory, ICover.emptyFactory, GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY, GregTechCovers.COVER_REACTOR_OUTPUT, ICover.emptyFactory, ICover.emptyFactory);
+    public static BasicMachine NUCLEAR_REACTOR_CORE = new BasicMachine(GTIRef.ID, "nuclear_reactor_core").setTiers(NONE).addFlags(GUI, ITEM, FLUID).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(new Texture(GTIRef.ID, "block/machine/base/nuclear_reactor_core")).setTile(BlockEntityNuclearReactorCore::new).setBlock(BlockNuclearReactorCore::new).setItemBlockClass(() -> BlockNuclearReactorCore.class).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GregTechCovers.COVER_REACTOR_OUTPUT).covers(ICover.emptyFactory, ICover.emptyFactory, GregTechCovers.COVER_REACTOR_OUTPUT, GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY, ICover.emptyFactory, ICover.emptyFactory);
     /**
      ** Multiblock Hatch Machines (Electrical Age)
      **/
