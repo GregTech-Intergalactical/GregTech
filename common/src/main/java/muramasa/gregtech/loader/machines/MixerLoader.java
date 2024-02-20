@@ -120,6 +120,7 @@ public class MixerLoader {
             MIXER.RB().fi(PolyvinylAcetate.getLiquid(1000),Acetone.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue",25 * 2, 8);
             MIXER.RB().fi(PolyvinylAcetate.getLiquid(1000),MethylAcetate.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue_1",25 * 2, 8);
         }
+        MIXER.RB().ii(DUST.getMaterialIngredient(Apatite, 1), DUST.getMaterialIngredient(Ash, 1)).io(new ItemStack(GTCoreItems.Fertilizer, 2)).add("fertilizer", 200, 16);
         MIXER.RB().fi(NitricAcid.getLiquid(1000),SulfuricAcid.getLiquid(1000)).fo(NitrationMixture.getLiquid(2000)).add("nitration_mixture",25 * 20, 2);
         MIXER.RB().fi(BioDiesel.getLiquid(1000),Tetranitromethane.getLiquid(40)).fo(CetaneBoostedDiesel.getLiquid(750)).add("nitro_fuel", 20, 480);
         MIXER.RB().fi(Diesel.getLiquid(1000),Tetranitromethane.getLiquid(20)).fo(CetaneBoostedDiesel.getLiquid(1000)).add("nitro_fuel_1", 20, 480);
