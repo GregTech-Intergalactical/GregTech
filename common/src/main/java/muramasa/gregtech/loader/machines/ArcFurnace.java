@@ -1,14 +1,17 @@
 package muramasa.gregtech.loader.machines;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.*;
 import muramasa.antimatter.pipe.PipeSize;
+import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.pipe.types.ItemPipe;
+import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
@@ -18,11 +21,14 @@ import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.GregTechCovers;
 import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.RecipeMaps;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import tesseract.TesseractGraphWrappers;
 
 import static com.google.common.collect.ImmutableMap.of;
+import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.Ref.U;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -30,6 +36,7 @@ import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.Materials.Rubber;
+import static muramasa.gregtech.data.RecipeMaps.ASSEMBLER;
 import static muramasa.gregtech.data.TierMaps.*;
 
 public class ArcFurnace {
@@ -84,6 +91,25 @@ public class ArcFurnace {
             if (t.getSizes().contains(PipeSize.HUGE)){
                 addRecyclingRecipe(t.getBlockItem(PipeSize.HUGE), of(t.getMaterial(), 12f));
             }
+        });
+        AntimatterAPI.all(Wire.class, w -> {
+            ImmutableSet<PipeSize> sizes = w.getSizes();
+            sizes.forEach(size -> {
+                Item cableItem = w.getBlockItem(size);
+                int ct = size.getCableThickness();
+                float amount = ct == 1 ? 0.5f : ct == 2 ? 1 : ct == 4 ? 2 : ct == 8 ? 4 : ct == 12 ? 8 : 16;
+                addRecyclingRecipe(cableItem, of(w.getMaterial(), amount));
+            });
+        });
+        AntimatterAPI.all(Cable.class, c -> {
+            ImmutableSet<PipeSize> sizes = c.getSizes();
+            sizes.forEach(size -> {
+                Item cableItem = c.getBlockItem(size);
+                int ct = size.getCableThickness();
+                float multiplier = ct == 16 ?  5 : ct == 12 ? 4 : ct == 8 ? 3 : ct == 4 ? 2 : 1;
+                float amount = ct == 1 ? 0.5f : ct == 2 ? 1 : ct == 4 ? 2 : ct == 8 ? 4 : ct == 12 ? 8 : 16;
+                addRecyclingRecipe(cableItem, of(c.getMaterial(), amount, Rubber, multiplier));
+            });
         });
         addRecyclingRecipe(GTCoreItems.MotorLV, of(Copper, 2f, Tin, 1f, Steel, 1f, Iron, 0.5f));
         addRecyclingRecipe(GTCoreItems.MotorMV, of(Copper, 5f, Aluminium, 1f, Steel, 0.5f));
@@ -157,6 +183,13 @@ public class ArcFurnace {
         addRecyclingRecipe(GregTechBlocks.CASING_TURBINE_STAINLESS, of(StainlessSteel, 9f));
         addRecyclingRecipe(GregTechBlocks.CASING_TURBINE_TITANIUM, of(Titanium, 9f));
         addRecyclingRecipe(GregTechBlocks.CASING_TURBINE_TUNGSTENSTEEL, of(TungstenSteel, 9f));;
+        addRecyclingRecipe(GregTechBlocks.COIL_CUPRONICKEL, of(Cupronickel, 8f));
+        addRecyclingRecipe(GregTechBlocks.COIL_KANTHAL, of(Kanthal, 8f));
+        addRecyclingRecipe(GregTechBlocks.COIL_NICHROME, of(Nichrome, 8f));
+        addRecyclingRecipe(GregTechBlocks.COIL_TUNGSTENSTEEL, of(TungstenSteel, 8f));
+        addRecyclingRecipe(GregTechBlocks.COIL_HSSG, of(HSSG, 8f));
+        addRecyclingRecipe(GregTechBlocks.COIL_NAQUADAH, of(Naquadah, 8f));
+        addRecyclingRecipe(GregTechBlocks.COIL_NAQUADAH_ALLOY, of(NaquadahAlloy, 8f));
     }
 
     private static void addRecyclingRecipe(ItemLike input, ImmutableMap<Material, Float> outputs){
