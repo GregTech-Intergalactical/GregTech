@@ -46,7 +46,7 @@ public class BlockEntityTreeGrowthSimulator extends BlockEntityMultiMachine<Bloc
             @Override
             public IRecipe findRecipe() {
                 IRecipe recipe = super.findRecipe();
-                if (recipe == null) {
+                /*if (recipe == null) {
                     ExtendedItemContainer container = itemHandler.map(i -> i.getInputHandler()).orElse(null);
                     if (container != null && container.getContainerSize() > 0){
                         for (int i = 0; i < container.getContainerSize(); i++) {
@@ -60,13 +60,8 @@ public class BlockEntityTreeGrowthSimulator extends BlockEntityMultiMachine<Bloc
                             }
                         }
                     }
-                }
+                }*/
                 return recipe;
-            }
-
-            @Override
-            public boolean accepts(ItemStack stack) {
-                return stack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof SaplingBlock;
             }
         });
     }
