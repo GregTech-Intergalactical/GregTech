@@ -78,6 +78,7 @@ public class Bath {
         addVitriolRecipe(Andradite, GreenVitriol);
         addVitriolRecipe(Chromite, GreenVitriol);
         addVitriolRecipe(Hematite, GreenVitriol);
+        addVitriolRecipe(Iron, GreenVitriol);
         addVitriolRecipe(Ilmenite, GreenVitriol);
         BATH.RB().ii(DUST.getMaterialIngredient(Ilmenite, 5)).fi(SulfuricAcid.getLiquid(7000)).io(DUST.get(Rutile)).fo(GreenVitriol.getLiquid(6000), Water.getLiquid(3000)).add("ilmenite_to_rutile", 512);
         addVitriolRecipe(Magnetite, GreenVitriol);
