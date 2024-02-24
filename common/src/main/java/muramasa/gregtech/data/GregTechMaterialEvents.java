@@ -319,7 +319,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(VanadiumMagnetite).asOre().harvestLevel(2);
         event.setMaterial(Wulfenite).asOre().harvestLevel(3);
         event.setMaterial(YellowLimonite).asOre().harvestLevel(2);
-        event.setMaterial(Zircon).asDust();
+        event.setMaterial(Zircon).asOre();
         /**
          **  Ore Stones
          **/
@@ -1231,6 +1231,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Pyrolusite).addByProduct(Manganese);
         event.setMaterial(Pyrope).addByProduct(RedGarnet, Magnesium);
         event.setMaterial(Rutile).addByProduct(Hematite, Zircon);
+        event.setMaterial(Zircon).addByProduct(Rutile, Hafnium, Uraninite);
         event.setMaterial(Quartz).addByProduct(Netherrack);
         event.setMaterial(MilkyQuartz).addByProduct(Barite);
         event.setMaterial(RedGarnet).addByProduct(Spessartine, Pyrope, Almandine);
