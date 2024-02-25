@@ -23,7 +23,7 @@ public class OreByproducts {
 
                 List<Ingredient> ores = new ObjectArrayList<>();
                 if (m.has(AntimatterMaterialTypes.ORE)) ores.add(ore);
-                if (m.has(AntimatterMaterialTypes.ROCK)) ores.add(AntimatterMaterialTypes.ROCK.getIngredient(m, 1));
+                if (m.has(AntimatterMaterialTypes.BEARING_ROCK)) ores.add(AntimatterMaterialTypes.BEARING_ROCK.getIngredient(m, 1));
                 if (m.has(AntimatterMaterialTypes.CRUSHED)) ores.add(crushed);
                 if (m.has(AntimatterMaterialTypes.CRUSHED_PURIFIED)) ores.add(AntimatterMaterialTypes.CRUSHED_PURIFIED.getIngredient(m, 1));
                 if (m.has(AntimatterMaterialTypes.CRUSHED_REFINED)) ores.add(AntimatterMaterialTypes.CRUSHED_REFINED.getIngredient(m, 1));

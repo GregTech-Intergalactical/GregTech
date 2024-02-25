@@ -217,8 +217,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(ArsenicTrioxide).asDust();
         event.setMaterial(Biotite).asDust();
         event.setMaterial(Bitumen).asDust().asFluid(0, 1000).flags(MOLTEN);
-        event.setMaterial(BlackGranite).asDust(ROCK);
-        event.setMaterial(BlueSchist).asDust(ROCK);
+        event.setMaterial(BlackGranite).asDust(BEARING_ROCK);
+        event.setMaterial(BlueSchist).asDust(BEARING_ROCK);
         event.setMaterial(BorosilicateGlass).asDust();
         event.setMaterial(Brick).asDust();
         event.setMaterial(CalciumChloride).asDust();
@@ -232,17 +232,17 @@ public class GregTechMaterialEvents {
         event.setMaterial(Ferrosilite).asDust();
         event.setMaterial(Fireclay).asDust();
         event.setMaterial(Fluorite).asDust();
-        event.setMaterial(GreenSchist).asDust(ROCK);
+        event.setMaterial(GreenSchist).asDust(BEARING_ROCK);
         event.setMaterial(IndiumGalliumPhosphide).asDust();
         event.setMaterial(IridiumSodiumOxide).asDust();
-        event.setMaterial(Kimberlite).asDust(ROCK);
-        event.setMaterial(Komatiite).asDust(ROCK);
-        event.setMaterial(Limestone).asDust(ROCK);
+        event.setMaterial(Kimberlite).asDust(BEARING_ROCK);
+        event.setMaterial(Komatiite).asDust(BEARING_ROCK);
+        event.setMaterial(Limestone).asDust(BEARING_ROCK);
         event.setMaterial(LithiumChloride).asDust(880, MOLTEN).asFluid();
         event.setMaterial(Magnesia).asDust();
         event.setMaterial(MagnesiumCarbonate).asDust();
         event.setMaterial(MagnesiumChloride).asDust();
-        event.setMaterial(Marble).asDust(ROCK);
+        event.setMaterial(Marble).asDust(BEARING_ROCK);
         event.setMaterial(Massicot).asDust();
         event.setMaterial(Obsidian).asDust(ROD_LONG, PLATE);
         event.setMaterial(PlatinumGroupSludge).asDust();
@@ -251,13 +251,13 @@ public class GregTechMaterialEvents {
         event.setMaterial(PotassiumFeldspar).asDust();
         event.setMaterial(Powellite).asOre(1, 5, true).harvestLevel(2);
         //event.setMaterial(Pyrochlore).asDust(ORE).addComposition(of(Calcium, 2, Niobium, 2, Oxygen, 7));
-        event.setMaterial(Quartzite).asDust(ROCK);
+        event.setMaterial(Quartzite).asDust(BEARING_ROCK);
         event.setMaterial(Quicklime).asDust();
         event.setMaterial(ReactionCatalyst).asDust();
-        event.setMaterial(RedGranite).asDust(ROCK);
+        event.setMaterial(RedGranite).asDust(BEARING_ROCK);
         event.setMaterial(SiliconDioxide).asDust();
-        event.setMaterial(Shale).asDust(ROCK);
-        event.setMaterial(Slate).asDust(ROCK);
+        event.setMaterial(Shale).asDust(BEARING_ROCK);
+        event.setMaterial(Slate).asDust(BEARING_ROCK);
         event.setMaterial(SodiumAluminate).asDust();
         event.setMaterial(SodiumBisulfate).asDust();
         event.setMaterial(SodiumHydroxide).asDust();
@@ -325,7 +325,7 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Bauxite).asOreStone(ORE_SMALL).harvestLevel(1);
         event.setMaterial(Lignite).asGemBasic(false).asOreStone(0, 2, ORE_SMALL);
-        event.setMaterial(OilShale).asDust(ORE, ORE_STONE, ORE_SMALL, RAW_ORE, RAW_ORE_BLOCK, ROCK).setExpRange(1,5).harvestLevel(1);
+        event.setMaterial(OilShale).asDust(ORE, ORE_STONE, ORE_SMALL, RAW_ORE, RAW_ORE_BLOCK, BEARING_ROCK).setExpRange(1,5).harvestLevel(1);
         event.setMaterial(RockSalt).asOreStone(ORE_SMALL).harvestLevel(1);
         event.setMaterial(Salt).asOreStone(ORE_SMALL).harvestLevel(1);
         /**
@@ -347,7 +347,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Olivine).asGem(false, PLATE).asOre(3, 7, true);
         event.setMaterial(Opal).asGem(true).asOre(3, 7, true);
         event.setMaterial(TricalciumPhosphate).asGemBasic(false).asOre(3, 7, true).harvestLevel(2);
-        event.setMaterial(MilkyQuartz).asGemBasic(false, ROCK, ROD_LONG, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1);
+        event.setMaterial(MilkyQuartz).asGemBasic(false, BEARING_ROCK, ROD_LONG, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(RedGarnet).asGem(true).asOre(3, 7, true);
         event.setMaterial(Ruby).asGem(true).asOre(3, 7, true);
         event.setMaterial(Sodalite).asGemBasic(false).asOre(2, 5, true).harvestLevel(1);
@@ -1523,7 +1523,7 @@ public class GregTechMaterialEvents {
                 //.tool().toolDamage(3).toolSpeed(9).toolDurability(590).toolQuality(3).toolEnchantments(of(Data.IMPLOSION, 5)).build();
         event.setMaterial(EnderEye).asGemBasic(false, ROD_LONG, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
         event.setMaterial(EnderPearl).mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5, Chlorine, 6)).elecTicks(220);
-        event.setMaterial(Flint).flags(ROCK);
+        event.setMaterial(Flint).flags(BEARING_ROCK);
         event.setMaterial(Gold).flags(FOIL, ROD_LONG, WIRE_FINE, GEAR);
         event.setMaterial(Iron).flags(RING, ROD_LONG, GEAR, FRAME);
         event.setMaterial(Wood).flags(FRAME);

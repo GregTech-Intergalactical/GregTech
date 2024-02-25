@@ -128,9 +128,9 @@ public class MaceratorLoader {
                 MACERATOR.RB().ii(RecipeIngredient.of(NUGGET.getMaterialTag(t),1)).io(DUST_TINY.get(t,1)).add("dust_tiny_" + t.getId(),10,2);
             }
         });
-        ROCK.all().forEach(r -> {
+        BEARING_ROCK.all().forEach(r -> {
             if (r.has(DUST)){
-                MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(r,1)).add("dust_small_" + r.getId(),20,2);
+                MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.BEARING_ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(r,1)).add("dust_small_" + r.getId(),20,2);
             }
         });
         AntimatterAPI.all(StoneType.class, s -> {
