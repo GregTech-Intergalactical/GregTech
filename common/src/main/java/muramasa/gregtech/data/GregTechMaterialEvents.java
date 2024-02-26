@@ -1518,7 +1518,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Blaze).mats(of(Sulfur, 1, DarkAsh, 1));
         event.setMaterial(Coal).asGemBasic(false).flags(ORE_STONE, ROCK).mats(of(Carbon, 2));
         event.setMaterial(Copper).flags(PLATE, ROD_LONG, FOIL, WIRE_FINE, GEAR, BOLT);
-        event.setMaterial(Diamond).asGem(true).mats(of(Carbon, 64), 1).elecTicks(768);
+        event.setMaterial(Diamond).asGem(true).mats(of(Carbon, 64), 1).elecTicks(768).harvestLevel(3);
         event.setMaterial(Emerald).asGem(true).mats(of(Alumina, 5, Beryllium, 3, SiliconDioxide, 18, Oxygen, 3)).elecTicks(540);
                 //.tool().toolDamage(3).toolSpeed(9).toolDurability(590).toolQuality(3).toolEnchantments(of(Data.IMPLOSION, 5)).build();
         event.setMaterial(EnderEye).asGemBasic(false, ROD_LONG, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
