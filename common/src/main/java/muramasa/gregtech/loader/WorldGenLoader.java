@@ -180,8 +180,9 @@ public class WorldGenLoader {
                     new StoneLayerOre(VanadiumMagnetite, U64, -16, 16)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite_ores").withStone(BLACK_GRANITE).withWeight(1).addOres(
-                    new StoneLayerOre(Sheldonite, U32, -64, -32),
-                    new StoneLayerOre(Iridium, U64, -64, -46)
+                    new StoneLayerOre(Sheldonite, U32, -64, -48),
+                    new StoneLayerOre(Iridium, U64, -64, -56),
+                    new StoneLayerOre(Emerald, U64, -40, -16)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("red_granite_ores").withStone(RED_GRANITE).withWeight(1).addOres(
                     new StoneLayerOre(Pitchblende, U32, -32, 0),
@@ -221,13 +222,14 @@ public class WorldGenLoader {
                     new StoneLayerOre(Lead, U16, 50, 70)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone_ores_2").withStone(LIMESTONE).withWeight(1).addOres(
-                    new StoneLayerOre(Pyrite, U16, 0, 30),
+                    new StoneLayerOre(Pyrite, U16, 0, 45),
                     new StoneLayerOre(Galena, U8, 5, 25),
                     new StoneLayerOre(Galena, U8, 80, 120),
-                    new StoneLayerOre(Powellite, U32, 35, 50),
-                    new StoneLayerOre(Molybdenite, U128, 30, 50),
-                    new StoneLayerOre(Tetrahedrite, U8, 40, 80),
-                    new StoneLayerOre(Copper, U16, 40, 80)
+                    new StoneLayerOre(Wulfenite, U32, -34, -19),
+                    new StoneLayerOre(Powellite, U32, -39, -14),
+                    new StoneLayerOre(Molybdenite, U128, -34, -14),
+                    new StoneLayerOre(Tetrahedrite, U8, 40, 100),
+                    new StoneLayerOre(Copper, U16, 40, 100)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone_ores_3").withStone(LIMESTONE).withWeight(1).addOres(
                     new StoneLayerOre(Scheelite, U64, -64, -48),
