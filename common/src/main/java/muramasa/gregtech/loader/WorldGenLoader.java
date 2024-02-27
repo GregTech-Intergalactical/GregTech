@@ -130,28 +130,8 @@ public class WorldGenLoader {
     }
 
     private static void initStoneVeins(WorldGenEvent ev) {
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("stone").withStone(STONE).withWeight(4).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite").withStone(BLACK_GRANITE).withWeight(2).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("red_granite").withStone(RED_GRANITE).withWeight(2).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("komatiite").withStone(KOMATIITE).withWeight(4).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("basalt").withStone(BASALT).withWeight(3).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("marble").withStone(MARBLE).withWeight(4).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone").withStone(LIMESTONE).withWeight(3).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("green_schist").withStone(GREEN_SCHIST).withWeight(1).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("blue_schist").withStone(BLUE_SCHIST).withWeight(1).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("kimberlite").withStone(KIMBERLITE).withWeight(3).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("quartzite").withStone(QUARTZITE).withWeight(4).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("shale").withStone(SHALE).withWeight(3).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("slate").withStone(SLATE).withWeight(3).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("granite").withStone(GRANITE).withWeight(3).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("diorite").withStone(DIORITE).withWeight(3).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("andesite").withStone(ANDESITE).withWeight(4).buildVein());
-        ev.stoneLayer(new WorldGenStoneLayerBuilder("tuff").withStone(TUFF).withWeight(3).buildVein());
-
-
-
         if (GregTechConfig.GT6_ORE_GEN.get()){
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("stone_ores").withStone(STONE).withWeight(4).addOres(
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("stone_ores").withStone(STONE).withWeight(1).addOres(
                     new StoneLayerOre(Emerald, U48, 16, 60).addFilteredBiome(BiomeTags.IS_MOUNTAIN),
                     new StoneLayerOre(Diamond, U128, -56, -40),
                     new StoneLayerOre(Lapis, U48, 16, 48),
@@ -161,7 +141,7 @@ public class WorldGenLoader {
                     new StoneLayerOre(Copper, U16, 20, 50),
                     new StoneLayerOre(Iron, U16, 40, 80)
             ).buildVein()); //Ores
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("deepslate_ores").withStone(STONE).withWeight(4).addOres(
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("deepslate_ores").withStone(STONE).withWeight(1).addOres(
                     new StoneLayerOre(Emerald, U64, 0, 32).addFilteredBiome(BiomeTags.IS_MOUNTAIN),
                     new StoneLayerOre(Diamond, U64, -64, -52).addFilteredBiome(BiomeTags.IS_JUNGLE),
                     new StoneLayerOre(Lapis, U12, 16, 24).addFilteredBiome(BiomeTags.IS_TAIGA).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES),
@@ -169,9 +149,10 @@ public class WorldGenLoader {
                     new StoneLayerOre(Redstone, U16, 0, 20),
                     new StoneLayerOre(Cinnabar, U64, 0, 20).addFilteredBiome(BiomeTags.IS_TAIGA).addFilteredBiome(Biomes.BADLANDS).addFilteredBiome(Biomes.ERODED_BADLANDS),
                     new StoneLayerOre(Uraninite, U64, 0, 12).addFilteredBiome(BiomeTags.IS_JUNGLE),
-                    new StoneLayerOre(Thorium, U64, 0, 12).addFilteredBiome(BiomeTags.IS_JUNGLE)).buildVein());
+                    new StoneLayerOre(Thorium, U64, 0, 12).addFilteredBiome(BiomeTags.IS_JUNGLE),
+                    new StoneLayerOre(Scheelite, U64, 0, 12).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES)).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("granite_ores").withStone(GRANITE).withWeight(1).addOres(
-                    new StoneLayerOre(BlueTopaz, U64, 8, 32).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
+                    new StoneLayerOre(BlueTopaz, U64, -24, 0).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Topaz, U64, 24, 48).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("granite_ores_2").withStone(GRANITE).withWeight(1).addOres(
@@ -180,9 +161,9 @@ public class WorldGenLoader {
                     new StoneLayerOre(TricalciumPhosphate, U24, 40, 56)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("diorite_ores").withStone(DIORITE).withWeight(1).addOres(
-                    new StoneLayerOre(Sapphire, U64, 8, 32).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
-                    new StoneLayerOre(GreenSapphire, U64, 24, 48).addFilteredBiome(BiomeTags.IS_JUNGLE),
-                    new StoneLayerOre(Ruby, U64, 24, 48).addFilteredBiome(TagUtils.getBiomeTag(new ResourceLocation("is_desert"))).addFilteredBiome(Biomes.DESERT)
+                    new StoneLayerOre(Sapphire, U64, -24, 0).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
+                    new StoneLayerOre(GreenSapphire, U64, -8, 16).addFilteredBiome(BiomeTags.IS_JUNGLE),
+                    new StoneLayerOre(Ruby, U64, -8, 16).addFilteredBiome(TagUtils.getBiomeTag(new ResourceLocation("is_desert"))).addFilteredBiome(Biomes.DESERT)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("diorite_ores_2").withStone(DIORITE).withWeight(1).addOres(
                     new StoneLayerOre(Garnierite, U8, 16, 48),
@@ -191,10 +172,13 @@ public class WorldGenLoader {
                     new StoneLayerOre(Amethyst, U64, 24, 48).addFilteredBiome(BiomeTags.IS_TAIGA)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("andesite_ores").withStone(ANDESITE).withWeight(1).addOres(
-                    new StoneLayerOre(Gold, U12, 0, 32),
-                    new StoneLayerOre(Gold, U8, 33, 64).addFilteredBiome(Biomes.BADLANDS).addFilteredBiome(Biomes.ERODED_BADLANDS)
+                    new StoneLayerOre(Gold, U12, -64, -32),
+                    new StoneLayerOre(Gold, U8, 32, 64).addFilteredBiome(Biomes.BADLANDS).addFilteredBiome(Biomes.ERODED_BADLANDS)
             ).buildVein());
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("tuff_ores").withStone(TUFF).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("tuff_ores").withStone(TUFF).withWeight(1).addOres(
+                    new StoneLayerOre(Magnetite, U8, -16, 84),
+                    new StoneLayerOre(VanadiumMagnetite, U64, -16, 16)
+            ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite_ores").withStone(BLACK_GRANITE).withWeight(1).addOres(
                     new StoneLayerOre(Sheldonite, U32, -64, -32),
                     new StoneLayerOre(Iridium, U64, -64, -46)
@@ -214,10 +198,10 @@ public class WorldGenLoader {
                     new StoneLayerOre(Diamond, U48, -64, -52)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("basalt_ores").withStone(BASALT).withWeight(1).addOres(
-                    new StoneLayerOre(Olivine, U32, 0, 32),
-                    new StoneLayerOre(Uvarovite, U32, 8, 40),
-                    new StoneLayerOre(Grossular, U32, 16, 48),
-                    new StoneLayerOre(Chromite, U8, 32, 64)
+                    new StoneLayerOre(Olivine, U32, -48, -16),
+                    new StoneLayerOre(Uvarovite, U32, -40, -8),
+                    new StoneLayerOre(Grossular, U32, -32, 0),
+                    new StoneLayerOre(Chromite, U8, -16, 16)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("basalt_ores_2").withStone(BASALT).withWeight(1).addOres(
                     new StoneLayerOre(Bastnasite, U24, 24, 32),
@@ -225,11 +209,11 @@ public class WorldGenLoader {
                     new StoneLayerOre(Manganese, U8, 16, 48)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("marble_ores").withStone(MARBLE).withWeight(1).addOres(
-                    new StoneLayerOre(Cassiterite, U16, 20, 80),
-                    new StoneLayerOre(Tin, U16, 38, 82),
-                    new StoneLayerOre(Sphalerite, U8 , 10, 30),
-                    new StoneLayerOre(Chalcopyrite, U8 ,  0, 20),
-                    new StoneLayerOre(Pyrite, U12,  0, 30)
+                    new StoneLayerOre(Cassiterite, U16, 20, 120),
+                    new StoneLayerOre(Tin, U16, 10, 100),
+                    new StoneLayerOre(Sphalerite, U8 , 10, 50),
+                    new StoneLayerOre(Chalcopyrite, U8 ,  0, 40),
+                    new StoneLayerOre(Pyrite, U12,  0, 50)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone_ores").withStone(LIMESTONE).withWeight(1).addOres(
                     new StoneLayerOre(Stibnite, U24, 10, 30),
@@ -246,19 +230,19 @@ public class WorldGenLoader {
                     new StoneLayerOre(Copper, U16, 40, 80)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone_ores_3").withStone(LIMESTONE).withWeight(1).addOres(
-                    new StoneLayerOre(Scheelite, U64, 0, 16),
-                    new StoneLayerOre(Tungstate, U64, 0, 16),
-                    new StoneLayerOre(YellowLimonite, U8, 16, 48),
-                    new StoneLayerOre(BrownLimonite, U8, 32, 64),
-                    new StoneLayerOre(Malachite, U12, 16, 64)
+                    new StoneLayerOre(Scheelite, U64, -64, -48),
+                    new StoneLayerOre(Tungstate, U64, -64, -48),
+                    new StoneLayerOre(YellowLimonite, U8, -48, -16),
+                    new StoneLayerOre(BrownLimonite, U8, -32, 0),
+                    new StoneLayerOre(Malachite, U12, -48, 0)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("green_schist_ores").withStone(GREEN_SCHIST).withWeight(1).addOres(
-                    new StoneLayerOre(Andradite, U32, 8, 40),
-                    new StoneLayerOre(Almandine, U32, 16, 48)
+                    new StoneLayerOre(Andradite, U32, -40, 8),
+                    new StoneLayerOre(Almandine, U32, -32, 0)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("blue_schist_ores").withStone(BLUE_SCHIST).withWeight(1).addOres(
-                    new StoneLayerOre(Spessartine, U32, 8, 40),
-                    new StoneLayerOre(Pyrope, U32, 16, 48)
+                    new StoneLayerOre(Spessartine, U32, -40, 8),
+                    new StoneLayerOre(Pyrope, U32, -32, 0)
             ).buildVein());
             if (AntimatterAPI.isModLoaded(MOD_AE)){
                 ev.stoneLayer(new WorldGenStoneLayerBuilder("quartzite_ores").withStone(QUARTZITE).withWeight(1).addOres(
@@ -272,6 +256,10 @@ public class WorldGenLoader {
                         new StoneLayerOre(Barite, U32, 0, 32)
                 ).buildVein());
             }
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("kimberlite").withStone(KIMBERLITE).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("diorite").withStone(DIORITE).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("shale").withStone(SHALE).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("slate").withStone(SLATE).withWeight(1).buildVein());
 
             ev.addCollisionBothSides(ORE_STONE.get().get(Coal).asState(), STONE.getState(),
                     new StoneLayerOre(Amber, U4, 30, 70).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
@@ -296,6 +284,24 @@ public class WorldGenLoader {
                     new StoneLayerOre(Zircon, U24, 0, 32));
 
 
+        } else {
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("stone").withStone(STONE).withWeight(4).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite").withStone(BLACK_GRANITE).withWeight(2).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("red_granite").withStone(RED_GRANITE).withWeight(2).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("komatiite").withStone(KOMATIITE).withWeight(4).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("basalt").withStone(BASALT).withWeight(3).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("marble").withStone(MARBLE).withWeight(4).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("limestone").withStone(LIMESTONE).withWeight(3).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("green_schist").withStone(GREEN_SCHIST).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("blue_schist").withStone(BLUE_SCHIST).withWeight(1).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("kimberlite").withStone(KIMBERLITE).withWeight(3).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("quartzite").withStone(QUARTZITE).withWeight(4).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("shale").withStone(SHALE).withWeight(3).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("slate").withStone(SLATE).withWeight(3).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("granite").withStone(GRANITE).withWeight(3).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("diorite").withStone(DIORITE).withWeight(3).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("andesite").withStone(ANDESITE).withWeight(4).buildVein());
+            ev.stoneLayer(new WorldGenStoneLayerBuilder("tuff").withStone(TUFF).withWeight(3).buildVein());
         }
         ev.stoneLayer(new WorldGenStoneLayerBuilder("coal").withStone(ORE_STONE.get().get(Coal).asState()).withWeight(1).buildVein());
         ev.stoneLayer(new WorldGenStoneLayerBuilder("lignite").withStone(ORE_STONE.get().get(Lignite).asState()).withWeight(1).buildVein());
