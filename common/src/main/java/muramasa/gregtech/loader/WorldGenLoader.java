@@ -226,7 +226,7 @@ public class WorldGenLoader {
                     new StoneLayerOre(Galena, U8, 5, 25),
                     new StoneLayerOre(Galena, U8, 80, 120),
                     new StoneLayerOre(Wulfenite, U32, -34, -19),
-                    new StoneLayerOre(Powellite, U32, -39, -14),
+                    new StoneLayerOre(Powellite, U32, -29, -14),
                     new StoneLayerOre(Molybdenite, U128, -34, -14),
                     new StoneLayerOre(Tetrahedrite, U8, 40, 100),
                     new StoneLayerOre(Copper, U16, 40, 100)
