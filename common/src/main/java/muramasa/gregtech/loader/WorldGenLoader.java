@@ -153,7 +153,7 @@ public class WorldGenLoader {
                     new StoneLayerOre(Scheelite, U64, 0, 12).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES)).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("granite_ores").withStone(GRANITE).withWeight(1).addOres(
                     new StoneLayerOre(BlueTopaz, U64, -24, 0).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
-                    new StoneLayerOre(Topaz, U64, 24, 48).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES)
+                    new StoneLayerOre(Topaz, U64, -8, 16).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("granite_ores_2").withStone(GRANITE).withWeight(1).addOres(
                     new StoneLayerOre(Apatite, U8, 32, 64),
