@@ -195,7 +195,8 @@ public class WorldGenLoader {
                     new StoneLayerOre(Gold, U8, 32, 64).addFilteredBiome(Biomes.BADLANDS).addFilteredBiome(Biomes.ERODED_BADLANDS)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("tuff_ores").withStone(TUFF).withWeight(1).addOres(
-                    new StoneLayerOre(Magnetite, U8, -16, 84),
+                    new StoneLayerOre(Magnetite, U4, -16, 84),
+                    new StoneLayerOre(Hematite, U6, -16, 64),
                     new StoneLayerOre(VanadiumMagnetite, U64, -16, 16)
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite_ores").withStone(BLACK_GRANITE).withWeight(1).addOres(
