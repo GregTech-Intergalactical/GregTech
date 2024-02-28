@@ -110,27 +110,32 @@ public class MaceratorLoader {
         });
         GEM_EXQUISITE.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.DUST)) return;
-            MACERATOR.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(DUST.get(m, 4)).add(m.getId() + "_exquisite", m.getMass(), 4);
-            MACERATOR.RB().ii(GEM_FLAWLESS.getMaterialIngredient(m, 1)).io(DUST.get(m, 2)).add(m.getId() + "_flawless", m.getMass(), 4);
-            MACERATOR.RB().ii(GEM_FLAWED.getMaterialIngredient(m, 1)).io(DUST_SMALL.get(m, 2)).add(m.getId() + "_flawed", m.getMass(), 4);
-            MACERATOR.RB().ii(GEM_CHIPPED.getMaterialIngredient(m, 1)).io(DUST_SMALL.get(m, 1)).add(m.getId() + "_chipped", m.getMass(), 4);
+            MACERATOR.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(DUST.get(MaterialTags.MACERATE_INTO.get(m), 4)).add(m.getId() + "_exquisite", m.getMass(), 4);
+            MACERATOR.RB().ii(GEM_FLAWLESS.getMaterialIngredient(m, 1)).io(DUST.get(MaterialTags.MACERATE_INTO.get(m), 2)).add(m.getId() + "_flawless", m.getMass(), 4);
+            MACERATOR.RB().ii(GEM_FLAWED.getMaterialIngredient(m, 1)).io(DUST_SMALL.get(MaterialTags.MACERATE_INTO.get(m), 2)).add(m.getId() + "_flawed", m.getMass(), 4);
+            MACERATOR.RB().ii(GEM_CHIPPED.getMaterialIngredient(m, 1)).io(DUST_SMALL.get(MaterialTags.MACERATE_INTO.get(m), 1)).add(m.getId() + "_chipped", m.getMass(), 4);
         });
         AntimatterMaterialTypes.GEM.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.DUST)) return;
-            MACERATOR.RB().ii(GEM.getMaterialIngredient(m, 1)).io(AntimatterMaterialTypes.DUST.get(m,1)).add("gem_" + m.getId(),m.getMass(),4);
+            MACERATOR.RB().ii(GEM.getMaterialIngredient(m, 1)).io(AntimatterMaterialTypes.DUST.get(MaterialTags.MACERATE_INTO.get(m),1)).add("gem_" + m.getId(),m.getMass(),4);
         });
 
         //INGOT -> DUST
         AntimatterMaterialTypes.INGOT.all().forEach(t -> {
             if (!t.has(AntimatterMaterialTypes.DUST)) return;
-            MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.INGOT.getMaterialTag(t),1)).io(AntimatterMaterialTypes.DUST.get(t,1)).add("dust_" + t.getId(),40,2);
+            MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.INGOT.getMaterialTag(t),1)).io(AntimatterMaterialTypes.DUST.get(MACERATE_INTO.get(t),1)).add("dust_" + t.getId(),40,2);
             if (t.has(NUGGET)){
-                MACERATOR.RB().ii(RecipeIngredient.of(NUGGET.getMaterialTag(t),1)).io(DUST_TINY.get(t,1)).add("dust_tiny_" + t.getId(),10,2);
+                MACERATOR.RB().ii(RecipeIngredient.of(NUGGET.getMaterialTag(t),1)).io(DUST_TINY.get(MACERATE_INTO.get(t),1)).add("dust_tiny_" + t.getId(),10,2);
             }
         });
         BEARING_ROCK.all().forEach(r -> {
             if (r.has(DUST)){
-                MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.BEARING_ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(r,1)).add("dust_small_" + r.getId(),20,2);
+                MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.BEARING_ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(MACERATE_INTO.get(r),1)).add("dust_small_" + r.getId(),20,2);
+            }
+        });
+        ROCK.all().forEach(r -> {
+            if (r.has(DUST)){
+                MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(MACERATE_INTO.get(r),1)).add("dust_small_" + r.getId(),20,2);
             }
         });
         AntimatterAPI.all(StoneType.class, s -> {

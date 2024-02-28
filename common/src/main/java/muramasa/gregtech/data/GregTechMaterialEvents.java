@@ -1406,13 +1406,13 @@ public class GregTechMaterialEvents {
         CABLE.subTag(SubTag.COPPER_CABLE, AnnealedCopper);
         CABLE.subTag(SubTag.COPPER_CABLE, Copper);
 
-        event.setMaterial(AnnealedCopper).setDirectSmeltInto(Copper).setMacerateInto(Copper).setArcSmeltInto(AnnealedCopper);
+        event.setMaterial(AnnealedCopper).setDirectSmeltInto(Copper).setMacerateInto(Copper);
         event.setMaterial(Copper).setArcSmeltInto(AnnealedCopper);
         event.setMaterial(Iron).setArcSmeltInto(WroughtIron);
         event.setMaterial(IronMagnetic).setDirectSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
         event.setMaterial(NeodymiumMagnetic).setDirectSmeltInto(Neodymium).setMacerateInto(Neodymium).setArcSmeltInto(Neodymium);
         event.setMaterial(SteelMagnetic).setDirectSmeltInto(Steel).setMacerateInto(Steel).setArcSmeltInto(Steel);
-        event.setMaterial(WroughtIron).setDirectSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(WroughtIron);
+        event.setMaterial(WroughtIron).setDirectSmeltInto(Iron).setMacerateInto(Iron);
 
         /*event.setMaterial(BandedIron).setDirectSmeltInto(Iron);
         event.setMaterial(BrownLimonite).setDirectSmeltInto(Iron);

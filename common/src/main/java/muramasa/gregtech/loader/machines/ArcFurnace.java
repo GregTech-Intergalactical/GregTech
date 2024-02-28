@@ -204,7 +204,8 @@ public class ArcFurnace {
         long[] totalMassArc = new long[]{0};
         long[] totalMassMac = new long[]{0};
         outputs.forEach((material, aFloat) -> {
-            Material arcOutput = material == Iron ? WroughtIron : material == Copper ? AnnealedCopper : material.has(MaterialTags.RUBBERTOOLS) || material == Wood ? Ash : material;
+            Material arcOutput = material.has(MaterialTags.RUBBERTOOLS) || material == Wood ? Ash : MaterialTags.ARC_SMELT_INTO.get(material);
+            Material macOutput = MaterialTags.MACERATE_INTO.get(material);
             int i = aFloat.intValue();
             float arcFloat = aFloat;
             if (material.has(MaterialTags.RUBBERTOOLS) || material == Wood) arcFloat = aFloat / 9;
@@ -218,12 +219,12 @@ public class ArcFurnace {
                 float mLeftover = mExtraF - mExtra;
                 int aExtra = (int) (leftover * 9);
                 if (mLeftover > 0){
-                    mac.io(DUST_TINY.get(material, (i * 9) + aExtra));
+                    mac.io(DUST_TINY.get(macOutput, (i * 9) + aExtra));
                 } else {
-                    mac.io(DUST_SMALL.get(material, (i * 4) + mExtra));
+                    mac.io(DUST_SMALL.get(macOutput, (i * 4) + mExtra));
                 }
             } else {
-                mac.io(DUST.get(material, i));
+                mac.io(DUST.get(macOutput, i));
             }
             if (arcOutput == Ash || arcOutput.has(INGOT)){
                 totalMassArc[0] += (long) (arcOutput.getMass() * arcFloat);
