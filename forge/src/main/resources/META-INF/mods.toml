@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/GregTech-Intergalactical/GregTech/issues"
 [[mods]]
 modId="gti"
 version="${version}"
-displayName="GregTech Intergalactical"
+displayName="GTI"
 #updateJSONURL="http://myurl.me/"
 displayURL="https://github.com/GregTech-Intergalactical/GregTech"
 #logoFile="gregtech.png"

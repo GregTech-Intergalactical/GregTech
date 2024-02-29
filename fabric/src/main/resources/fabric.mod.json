@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "gti",
   "version": "${version}",
-  "name": "GregTech Intergalactical",
+  "name": "GTI",
   "description": "The Approved Continuation. Rewrite. And Re-envisioning of GregTech 5",
   "authors": [
     "Muramasa",
@@ -15,7 +15,7 @@
     "issues": "https://github.com/GregTech-Intergalactical/GregTech/issues",
     "discord": "https://discord.gg/9kM4bRj"
   },
-  "mixins": ["gregtech.mixins.json"],
+  "mixins": ["gti.mixins.json"],
   "license": "LGPL-3.0",
   "icon": "assets/gti/icon.png",
   "depends": {

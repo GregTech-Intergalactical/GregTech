@@ -23,7 +23,7 @@ architectury {
 loom{
     accessWidenerPath = project(":antimatter-common").file("src/main/resources/antimatter.accesswidener")
     forge {
-        mixinConfigs("gregtech.mixins.json")
+        mixinConfigs("gti.mixins.json")
     }
 }
 
