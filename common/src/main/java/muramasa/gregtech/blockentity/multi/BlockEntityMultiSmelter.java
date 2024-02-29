@@ -37,6 +37,18 @@ public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntity
             protected int maxSimultaneousRecipes(){
                 return coilData.maxSimultaneousRecipes();
             }
+
+            @Override
+            public void getInfo(List<String> builder) {
+                super.getInfo(builder);
+                builder.add("Tick timer: " + tickTimer);
+                if (activeRecipe != null){
+                    builder.add(activeRecipe.toJson().toString());
+                }
+                if (lastRecipe != null){
+                    builder.add(lastRecipe.toJson().toString());
+                }
+            }
         });
     }
 
@@ -71,6 +83,11 @@ public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntity
             return superDraw + 8;
         }
         return superDraw;
+    }
+
+    @Override
+    public List<String> getInfo(boolean simple) {
+        return super.getInfo(simple);
     }
 
     public static class MultiSmelterInfoWidget extends InfoRenderWidget.MultiRenderWidget{
