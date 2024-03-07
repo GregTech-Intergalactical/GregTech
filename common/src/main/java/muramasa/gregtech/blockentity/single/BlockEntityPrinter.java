@@ -67,7 +67,7 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                                 if (prospect.contains("fluid")){
                                     CompoundTag fluid = prospect.getCompound("fluid");
                                     Fluid fluid1 = AntimatterPlatformUtils.getFluidFromID(new ResourceLocation(fluid.getString("name")));
-                                    stringBuilder.append(fluid.getLong("maxYield")).append("L ").append(FluidPlatformUtils.getFluidDisplayName(FluidHolder.of(fluid1)).getString());
+                                    stringBuilder.append(fluid.getLong("maxYield")).append("L ").append(FluidPlatformUtils.INSTANCE.getFluidDisplayName(FluidHolder.of(fluid1)).getString());
                                 } else {
                                     stringBuilder.append("No oil");
                                 }

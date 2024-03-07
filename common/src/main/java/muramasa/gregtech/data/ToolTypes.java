@@ -69,7 +69,7 @@ public class ToolTypes {
         public ItemStack build(CraftingContainer inv, MaterialRecipe.Result mats) {
             Tuple<Long, Long> battery = (Tuple<Long, Long>) mats.mats.get("battery");
             ItemStack scanner = new ItemStack(GregTechItems.PortableScanner);
-            TesseractCapUtils.getEnergyHandlerItem(scanner).ifPresent(i -> i.setEnergy(battery.getA()));
+            TesseractCapUtils.INSTANCE.getEnergyHandlerItem(scanner).ifPresent(i -> i.setEnergy(battery.getA()));
             return scanner;
         }
 
@@ -154,13 +154,13 @@ public class ToolTypes {
 
     public static Tuple<Long, Long> getEnergy(ItemStack stack){
         if (stack.getItem() instanceof ItemBattery battery){
-            long energy = TesseractCapUtils.getEnergyHandlerItem(stack).map(IGTNode::getEnergy).orElse((long)0);
-            long maxEnergy = TesseractCapUtils.getEnergyHandlerItem(stack).map(IGTNode::getCapacity).orElse(battery.getCapacity());
+            long energy = TesseractCapUtils.INSTANCE.getEnergyHandlerItem(stack).map(IGTNode::getEnergy).orElse((long)0);
+            long maxEnergy = TesseractCapUtils.INSTANCE.getEnergyHandlerItem(stack).map(IGTNode::getCapacity).orElse(battery.getCapacity());
             return new Tuple<>(energy, maxEnergy);
         }
         if (stack.getItem() instanceof ItemPortableScanner){
-            long energy = TesseractCapUtils.getEnergyHandlerItem(stack).map(IGTNode::getEnergy).orElse((long)0);
-            long maxEnergy = TesseractCapUtils.getEnergyHandlerItem(stack).map(IGTNode::getCapacity).orElse(400000L);
+            long energy = TesseractCapUtils.INSTANCE.getEnergyHandlerItem(stack).map(IGTNode::getEnergy).orElse((long)0);
+            long maxEnergy = TesseractCapUtils.INSTANCE.getEnergyHandlerItem(stack).map(IGTNode::getCapacity).orElse(400000L);
             return new Tuple<>(energy, maxEnergy);
         }
         if (stack.getItem() instanceof IAntimatterTool tool){

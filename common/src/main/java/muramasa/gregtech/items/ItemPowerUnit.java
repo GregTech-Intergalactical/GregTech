@@ -93,7 +93,7 @@ public class ItemPowerUnit extends ItemBasic<ItemPowerUnit> implements IColorHan
 
     public CompoundTag validateTag(ItemStack stack, long startingEnergy, long maxEnergy) {
         CompoundTag dataTag = stack.getOrCreateTagElement(Ref.TAG_ITEM_ENERGY_DATA);
-        IEnergyHandlerItem handler = TesseractCapUtils.getEnergyHandlerItem(stack).orElse(null);
+        IEnergyHandlerItem handler = TesseractCapUtils.INSTANCE.getEnergyHandlerItem(stack).orElse(null);
         if (handler != null){
             handler.setEnergy(startingEnergy);
             handler.setCapacity(maxEnergy);

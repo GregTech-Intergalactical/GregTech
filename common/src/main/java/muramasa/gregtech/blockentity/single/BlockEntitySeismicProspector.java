@@ -52,7 +52,7 @@ public class BlockEntitySeismicProspector extends BlockEntityMachine<BlockEntity
             if (entry != null) {
                 if (entry.getFluid() != null){
                     CompoundTag fluid = new CompoundTag();
-                    fluid.putString("name", FluidPlatformUtils.getFluidId(entry.getFluid().fluid()).toString());
+                    fluid.putString("name", FluidPlatformUtils.INSTANCE.getFluidId(entry.getFluid().fluid()).toString());
                     fluid.putLong("maxYield", entry.getFluid().getMaxYield());
                     prospectData.put("fluid", fluid);
                 } else {

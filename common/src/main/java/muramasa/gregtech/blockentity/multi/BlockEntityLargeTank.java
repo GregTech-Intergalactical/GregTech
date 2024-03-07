@@ -93,7 +93,7 @@ public class BlockEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<B
         @Override
         public long insertFluid(FluidHolder fluid, boolean simulate) {
             if (tile.getMaterial() == Wood){
-                if (FluidPlatformUtils.isFluidGaseous(fluid.getFluid())) {
+                if (FluidPlatformUtils.INSTANCE.isFluidGaseous(fluid.getFluid())) {
                     long inserted = super.insertFluid(fluid, true);
                     if (inserted > 0) {
                         if (!simulate) tile.getLevel().playSound(null, tile.getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -101,7 +101,7 @@ public class BlockEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<B
                     }
                     return 0;
                 }
-                if (FluidPlatformUtils.getFluidTemperature(fluid.getFluid()) > 350){
+                if (FluidPlatformUtils.INSTANCE.getFluidTemperature(fluid.getFluid()) > 350){
                     long inserted = super.insertFluid(fluid, simulate);
                     if (inserted > 0 && !simulate){
                         meltdown();

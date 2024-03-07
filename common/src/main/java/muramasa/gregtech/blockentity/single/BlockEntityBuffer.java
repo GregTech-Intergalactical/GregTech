@@ -86,7 +86,7 @@ public class BlockEntityBuffer extends BlockEntityLimitedOutput<BlockEntityBuffe
         if (adjTile == null) return false;
         boolean[] booleans = new boolean[1];
         booleans[0] = false;
-        TesseractCapUtils.getItemHandler(adjTile, outputDir.getOpposite()).ifPresent(adjHandler -> {
+        TesseractCapUtils.INSTANCE.getItemHandler(adjTile, outputDir.getOpposite()).ifPresent(adjHandler -> {
             booleans[0] = this.itemHandler.map(h -> transferItems(h.getHandler(SlotType.STORAGE), adjHandler,true)).orElse(false);
         });
         return booleans[0];

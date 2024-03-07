@@ -169,7 +169,7 @@ public class BlockEntityPump extends BlockEntityMachine<BlockEntityPump> {
         if (!aBlock.isEmpty() && aBlock.getType() instanceof FlowingFluid fluid) {
             mPumpedFluids.add(fluid.getSource());
             mPumpedFluids.add(fluid.getFlowing());
-            mDir = (byte)(FluidPlatformUtils.isFluidGaseous(aBlock.getType()) ? -1 : +1);
+            mDir = (byte)(FluidPlatformUtils.INSTANCE.isFluidGaseous(aBlock.getType()) ? -1 : +1);
         } else {
             energyHandler.ifPresent(e -> {
                 e.extractEu(2, false);

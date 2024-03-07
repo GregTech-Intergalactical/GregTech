@@ -33,7 +33,7 @@ public class ItemPortableScanner extends ScannerItem implements IEnergyItem {
         if (energy < 2200) return InteractionResult.PASS;
         InteractionResult result = super.useOn(context);
         if (result == InteractionResult.SUCCESS){
-            TesseractCapUtils.getEnergyHandlerItem(context.getItemInHand()).ifPresent(i -> i.extractEu(2200, false));
+            TesseractCapUtils.INSTANCE.getEnergyHandlerItem(context.getItemInHand()).ifPresent(i -> i.extractEu(2200, false));
         }
         return super.useOn(context);
     }
@@ -43,7 +43,7 @@ public class ItemPortableScanner extends ScannerItem implements IEnergyItem {
         long energy = stack.getOrCreateTagElement(Ref.TAG_ITEM_ENERGY_DATA).getLong(Ref.KEY_ITEM_ENERGY);
         if (energy <= 0) return super.getBarColor(stack);
         return 0x00BFFF;
-        //return TesseractCapUtils.getEnergyHandlerItem(stack).map(IEnergyHandler::getEnergy).filter(l -> l <= 0).map(l -> super.getBarColor(stack)).orElse(0x00BFFF);
+        //return TesseractCapUtils.INSTANCE.getEnergyHandlerItem(stack).map(IEnergyHandler::getEnergy).filter(l -> l <= 0).map(l -> super.getBarColor(stack)).orElse(0x00BFFF);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class ItemPortableScanner extends ScannerItem implements IEnergyItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        long energy = TesseractCapUtils.getEnergyHandlerItem(stack).map(IGTNode::getEnergy).orElse(0L);
+        long energy = TesseractCapUtils.INSTANCE.getEnergyHandlerItem(stack).map(IGTNode::getEnergy).orElse(0L);
         tooltip.add(Utils.translatable("item.charge").append(": ").append(Utils.literal(energy + "/" + 400000).withStyle(energy == 0 ? ChatFormatting.RED : ChatFormatting.GREEN)).append(" (MV)"));
         super.appendHoverText(stack, worldIn, tooltip, flag);
     }

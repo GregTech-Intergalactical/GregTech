@@ -69,7 +69,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                         @Override
                         public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
                             if (tile.target == null) return stack;
-                            PlatformItemHandler itemHandler1 = TesseractCapUtils.getItemHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
+                            PlatformItemHandler itemHandler1 = TesseractCapUtils.INSTANCE.getItemHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
                             if (itemHandler1 == null) return stack;
                             return itemHandler1.insertItem(slot, stack, simulate);
                         }
@@ -82,7 +82,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                         @Override
                         public int getSlotLimit(int slot) {
                             if (tile.target == null) return 0;
-                            PlatformItemHandler itemHandler1 = TesseractCapUtils.getItemHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
+                            PlatformItemHandler itemHandler1 = TesseractCapUtils.INSTANCE.getItemHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
                             if (itemHandler1 == null) return 0;
                             return itemHandler1.getSlotLimit(slot);
                         }
@@ -100,7 +100,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                         @Override
                         public int getContainerSize() {
                             if (tile.target == null) return 0;
-                            PlatformItemHandler itemHandler1 = TesseractCapUtils.getItemHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
+                            PlatformItemHandler itemHandler1 = TesseractCapUtils.INSTANCE.getItemHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
                             if (itemHandler1 == null) return 0;
                             return itemHandler1.getSlots();
                         }
@@ -108,7 +108,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                         @Override
                         public ItemStack getItem(int index) {
                             if (tile.target == null) return ItemStack.EMPTY;
-                            PlatformItemHandler itemHandler1 = TesseractCapUtils.getItemHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
+                            PlatformItemHandler itemHandler1 = TesseractCapUtils.INSTANCE.getItemHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
                             if (itemHandler1 == null) return ItemStack.EMPTY;
                             return itemHandler1.getStackInSlot(index);
                         }
@@ -116,7 +116,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                         @Override
                         public void setItem(int index, ItemStack stack) {
                             if (tile.target == null) return;
-                            PlatformItemHandler itemHandler1 = TesseractCapUtils.getItemHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
+                            PlatformItemHandler itemHandler1 = TesseractCapUtils.INSTANCE.getItemHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
                             if (itemHandler1 == null) return;
                             itemHandler1.setStackInSlot(index, stack);
                         }
@@ -132,7 +132,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                     if (tile.target == null) return 0;
                     if (!checkVoltage(voltage)) return 0;
                     if (tile.target.getNeighbor() == null) return 0;
-                    IEnergyHandler handler = TesseractCapUtils.getEnergyHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
+                    IEnergyHandler handler = TesseractCapUtils.INSTANCE.getEnergyHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
                     if (handler == null) return 0;
                     int loss = Math.round(tile.successfulPositions.size() * 0.125f);
                     if (loss >= voltage) return 0;
@@ -143,7 +143,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                 public long availableAmpsInput(long voltage) {
                     if (tile.target == null) return 0;
                     if (tile.target.getNeighbor() == null) return 0;
-                    IEnergyHandler handler = TesseractCapUtils.getEnergyHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
+                    IEnergyHandler handler = TesseractCapUtils.INSTANCE.getEnergyHandler(tile.target.getNeighbor(), tile.target.getFacing()).orElse(null);
                     if (handler == null) return 0;
                     int loss = Math.round(tile.successfulPositions.size() * 0.125f);
                     return handler.availableAmpsInput(Math.max(0, voltage - loss));

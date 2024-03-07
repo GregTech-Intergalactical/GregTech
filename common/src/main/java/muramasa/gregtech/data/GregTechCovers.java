@@ -71,7 +71,7 @@ public class GregTechCovers {
                                 ItemStack contained = ItemStack.of(items.getCompound(0));
                                 PlatformFluidItemHandler fluidItemHandler = FluidHooks.safeGetItemFluidManager(contained).orElse(null);
                                 if (fluidItemHandler != null && !fluidItemHandler.getFluidInTank(0).isEmpty()){
-                                    tooltip.add(FluidPlatformUtils.getFluidDisplayName(fluidItemHandler.getFluidInTank(0)));
+                                    tooltip.add(FluidPlatformUtils.INSTANCE.getFluidDisplayName(fluidItemHandler.getFluidInTank(0)));
                                 }
                             }
                         }

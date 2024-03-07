@@ -88,7 +88,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
         if (state == Blocks.AIR.defaultBlockState() && exportMode.isExport()) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
-            ItemStack stack = TesseractCapUtils.getItemHandler(handler.getTile(), side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
+            ItemStack stack = TesseractCapUtils.INSTANCE.getItemHandler(handler.getTile(), side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
             world.addFreshEntity(new ItemEntity(world, pos.getX() + side.getStepX(), pos.getY() + side.getStepY(), pos.getZ() + side.getStepZ(), stack));
         }
@@ -108,7 +108,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
         BlockEntity finalTo = to;
         if (canMove(side)){
             Direction finalFromSide = fromSide;
-            TesseractCapUtils.getItemHandler(from, fromSide).ifPresent(ih -> TesseractCapUtils.getItemHandler(finalTo, finalFromSide.getOpposite()).ifPresent(oh -> {
+            TesseractCapUtils.INSTANCE.getItemHandler(from, fromSide).ifPresent(ih -> TesseractCapUtils.INSTANCE.getItemHandler(finalTo, finalFromSide.getOpposite()).ifPresent(oh -> {
                 Utils.transferItems(ih, oh, true);
             }));
         }
