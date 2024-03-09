@@ -201,7 +201,7 @@ public class GregTech extends AntimatterMod {
                         }
                         if (state.getBlock() instanceof BlockAsphalt || state.getBlock() instanceof BlockAsphaltSlab){
                             if (attributeinstance.getModifier(BlockAsphalt.SPEED_MODIFIER) == null){
-                                attributeinstance.addTransientModifier(new AttributeModifier(BlockAsphalt.SPEED_MODIFIER, "Asphalt speed modification", 1.1, AttributeModifier.Operation.MULTIPLY_BASE));
+                                attributeinstance.addTransientModifier(new AttributeModifier(BlockAsphalt.SPEED_MODIFIER, "Asphalt speed modification", GregTechConfig.ASPHALT_MULTIPLIER.get(), AttributeModifier.Operation.MULTIPLY_BASE));
                             } 
                         } else {
                             if (attributeinstance.getModifier(BlockAsphalt.SPEED_MODIFIER) != null){
