@@ -3,6 +3,7 @@ package muramasa.gregtech.blockentity.multi;
 import com.mojang.blaze3d.vertex.PoseStack;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
+import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.machine.MultiMachineEnergyHandler;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.IGuiElement;
@@ -40,7 +41,7 @@ import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIEN
 import static muramasa.gregtech.data.GregTechBlocks.MINING_PIPE;
 import static muramasa.gregtech.data.GregTechBlocks.MINING_PIPE_THIN;
 
-public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEntityOilDrillingRig> {
+public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEntityOilDrillingRig> implements IFilterableHandler {
     boolean foundBottom = false;
     boolean stopped = false;
     int euPerTick;
@@ -182,6 +183,11 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
             }
         }
         return 8;
+    }
+
+    @Override
+    public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
+        return slotType != SlotType.STORAGE || stack.getItem() == MINING_PIPE_THIN.asItem();
     }
 
     public static class OilInfoWidget extends InfoRenderWidget.MultiRenderWidget {
