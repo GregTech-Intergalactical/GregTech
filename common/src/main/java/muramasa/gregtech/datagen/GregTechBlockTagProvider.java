@@ -44,6 +44,10 @@ public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
             this.tag(GregTechTags.ASPHALT).add(cas);
             this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(cas);
         });
+        AntimatterAPI.all(BlockAsphaltStair.class, GTIRef.ID, cas -> {
+            this.tag(GregTechTags.ASPHALT).add(cas);
+            this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(cas);
+        });
         AntimatterAPI.all(BlockCoil.class, GTIRef.ID, cas -> {
             this.tag(AntimatterDefaultTools.WRENCH.getToolType()).add(cas);
         });

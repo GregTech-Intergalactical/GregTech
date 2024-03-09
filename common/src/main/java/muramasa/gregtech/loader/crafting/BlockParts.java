@@ -13,9 +13,7 @@ import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.PipeType;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.block.BlockCoil;
-import muramasa.gregtech.block.BlockColoredWall;
+import muramasa.gregtech.block.*;
 import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
@@ -175,22 +173,16 @@ public class BlockParts {
         provider.addItemRecipe(output, "long_distance_pipes", GregTechBlocks.LONG_DIST_FLUID_PIPE,
                 of('E', GregTechBlocks.FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Plastic)), "PEP", "EWE", "PEP");
 
-        addSlabRecipe(output, provider, GregTechBlocks.WHITE_ASPHALT, GregTechBlocks.WHITE_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.ORANGE_ASPHALT, GregTechBlocks.ORANGE_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.MAGENTA_ASPHALT, GregTechBlocks.MAGENTA_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.LIGHT_BLUE_ASPHALT, GregTechBlocks.LIGHT_BLUE_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.YELLOW_ASPHALT, GregTechBlocks.YELLOW_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.LIME_ASPHALT, GregTechBlocks.LIME_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.PINK_ASPHALT, GregTechBlocks.PINK_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.GRAY_ASPHALT, GregTechBlocks.GRAY_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.LIGHT_GRAY_ASPHALT, GregTechBlocks.LIGHT_GRAY_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.CYAN_ASPHALT, GregTechBlocks.CYAN_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.PURPLE_ASPHALT, GregTechBlocks.PURPLE_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.BLUE_ASPHALT, GregTechBlocks.BLUE_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.BROWN_ASPHALT, GregTechBlocks.BROWN_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.GREEN_ASPHALT, GregTechBlocks.GREEN_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.RED_ASPHALT, GregTechBlocks.RED_ASPHALT_SLAB);
-        addSlabRecipe(output, provider, GregTechBlocks.BLACK_ASPHALT, GregTechBlocks.BLACK_ASPHALT_SLAB);
+        AntimatterAPI.all(BlockAsphalt.class, GTIRef.ID).forEach(b -> {
+            Block slab = AntimatterAPI.get(BlockAsphaltSlab.class, b.getId() + "_slab", GTIRef.ID);
+            Block stairs = AntimatterAPI.get(BlockAsphaltStair.class, b.getId() + "_stairs", GTIRef.ID);
+            if (slab != null){
+                addSlabRecipe(output, provider, b, slab);
+            }
+            if (stairs != null){
+                addStairRecipe(output, provider, b, stairs);
+            }
+        });
 
         /*provider.addStackRecipe(output, GTIRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
                 of('C', CASING_FIRE_BRICK,
@@ -206,6 +198,12 @@ public class BlockParts {
         provider.addStackRecipe(output, "slabs", new ItemStack(slab, 6), ImmutableMap.of('F', full), "FFF");
         provider.addItemRecipe(output, "slabs", full, ImmutableMap.of('S', slab), "S", "S");
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), slab, 2).group("slabs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GTIRef.ID, "stonecutting/" + AntimatterPlatformUtils.getIdFromItem(slab.asItem()).getPath()));
+    }
+
+    private static void addStairRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Block full, Block stair){
+        provider.addStackRecipe(output, "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "F  ", "FF ", "FFF");
+        provider.addStackRecipe(output, GTIRef.ID, AntimatterPlatformUtils.getIdFromItem(stair.asItem()).getPath() + "_mirrored", "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "  F", " FF", "FFF");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), stair, 1).group("stairs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GTIRef.ID, "stonecutting/" + AntimatterPlatformUtils.getIdFromItem(stair.asItem()).getPath()));
     }
 
     private static void addCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {

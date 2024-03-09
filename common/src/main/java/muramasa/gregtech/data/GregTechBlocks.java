@@ -83,6 +83,23 @@ public class GregTechBlocks {
     public static final BlockAsphaltSlab GREEN_ASPHALT_SLAB = new BlockAsphaltSlab(GTIRef.ID, "green_asphalt_slab", DyeColor.GREEN.getTextColor());
     public static final BlockAsphaltSlab RED_ASPHALT_SLAB = new BlockAsphaltSlab(GTIRef.ID, "red_asphalt_slab", DyeColor.RED.getTextColor());
     public static final BlockAsphaltSlab BLACK_ASPHALT_SLAB = new BlockAsphaltSlab(GTIRef.ID, "black_asphalt_slab", DyeColor.BLACK.getTextColor());
+
+    public static final BlockAsphaltStair WHITE_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "white_asphalt_stairs", WHITE_ASPHALT, DyeColor.WHITE.getTextColor());
+    public static final BlockAsphaltStair ORANGE_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "orange_asphalt_stairs", ORANGE_ASPHALT, DyeColor.ORANGE.getTextColor());
+    public static final BlockAsphaltStair MAGENTA_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "magenta_asphalt_stairs", MAGENTA_ASPHALT, DyeColor.MAGENTA.getTextColor());
+    public static final BlockAsphaltStair LIGHT_BLUE_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "light_blue_asphalt_stairs", LIGHT_BLUE_ASPHALT, DyeColor.LIGHT_BLUE.getTextColor());
+    public static final BlockAsphaltStair YELLOW_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "yellow_asphalt_stairs", YELLOW_ASPHALT, DyeColor.YELLOW.getTextColor());
+    public static final BlockAsphaltStair LIME_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "lime_asphalt_stairs", LIME_ASPHALT, DyeColor.LIME.getTextColor());
+    public static final BlockAsphaltStair PINK_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "pink_asphalt_stairs", PINK_ASPHALT, DyeColor.PINK.getTextColor());
+    public static final BlockAsphaltStair GRAY_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "gray_asphalt_stairs", GRAY_ASPHALT, DyeColor.GRAY.getTextColor());
+    public static final BlockAsphaltStair LIGHT_GRAY_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "light_gray_asphalt_stairs", LIGHT_GRAY_ASPHALT, DyeColor.LIGHT_GRAY.getTextColor());
+    public static final BlockAsphaltStair CYAN_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "cyan_asphalt_stairs", CYAN_ASPHALT, DyeColor.CYAN.getTextColor());
+    public static final BlockAsphaltStair PURPLE_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "purple_asphalt_stairs", PURPLE_ASPHALT, DyeColor.PURPLE.getTextColor());
+    public static final BlockAsphaltStair BLUE_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "blue_asphalt_stairs", BLUE_ASPHALT, DyeColor.BLUE.getTextColor());
+    public static final BlockAsphaltStair BROWN_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "brown_asphalt_stairs", BROWN_ASPHALT, DyeColor.BROWN.getTextColor());
+    public static final BlockAsphaltStair GREEN_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "green_asphalt_stairs", GREEN_ASPHALT, DyeColor.GREEN.getTextColor());
+    public static final BlockAsphaltStair RED_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "red_asphalt_stairs", RED_ASPHALT, DyeColor.RED.getTextColor());
+    public static final BlockAsphaltStair BLACK_ASPHALT_STAIR = new BlockAsphaltStair(GTIRef.ID, "black_asphalt_stairs", BLACK_ASPHALT, DyeColor.BLACK.getTextColor());
     public static final BlockCasing CASING_ULV = new BlockCasing(GTIRef.ID, "casing_ulv");
     public static final BlockCasing CASING_LV = new BlockCasing(GTIRef.ID, "casing_lv");
     public static final BlockCasing CASING_MV = new BlockCasing(GTIRef.ID, "casing_mv");

@@ -10,6 +10,7 @@ import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.integration.AppliedEnergisticsRegistrar;
 import muramasa.gregtech.integration.SpaceModRegistrar;
+import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
@@ -30,7 +31,8 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
         AntimatterAPI.all(BlockCoil.class,providerDomain, this::add);
         AntimatterAPI.all(BlockFakeCasing.class, providerDomain, this::add);
         AntimatterAPI.all(BlockAsphalt.class, providerDomain, this::add);
-        AntimatterAPI.all(BlockAsphaltSlab.class, providerDomain, this::add);
+        AntimatterAPI.all(BlockAsphaltSlab.class, providerDomain, b -> tables.put(b, BlockLoot::createSlabItemTable));
+        AntimatterAPI.all(BlockAsphaltStair.class, providerDomain, this::add);
         this.add(GregTechBlocks.MINING_PIPE_THIN);
         this.add(GregTechBlocks.SOLID_SUPER_FUEL);
         this.add(GregTechBlocks.POWDER_BARREL);

@@ -1,6 +1,7 @@
 package muramasa.gregtech.block;
 
 import muramasa.antimatter.block.BlockBasicSlab;
+import muramasa.antimatter.block.BlockBasicStair;
 import muramasa.antimatter.registration.IColorHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
@@ -13,10 +14,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import org.jetbrains.annotations.Nullable;
 
-public class BlockAsphaltSlab extends BlockBasicSlab implements IColorHandler {
+public class BlockAsphaltStair extends BlockBasicStair implements IColorHandler {
     final int color;
-    public BlockAsphaltSlab(String domain, String id, int color) {
-        super(domain, id, Properties.of(Material.STONE).strength(1.0f, 1.0f).sound(SoundType.STONE));
+    public BlockAsphaltStair(String domain, String id, Block base, int color) {
+        super(domain, id, base, Properties.of(Material.STONE).strength(1.0f, 1.0f).sound(SoundType.STONE));
         this.color = color;
     }
 
