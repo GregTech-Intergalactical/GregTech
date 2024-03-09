@@ -6,6 +6,7 @@ import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.*;
 import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GregTechTags;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 
@@ -36,9 +37,11 @@ public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
             this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(cas);
         });
         AntimatterAPI.all(BlockAsphalt.class, GTIRef.ID, cas -> {
+            this.tag(GregTechTags.ASPHALT).add(cas);
             this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(cas);
         });
         AntimatterAPI.all(BlockAsphaltSlab.class, GTIRef.ID, cas -> {
+            this.tag(GregTechTags.ASPHALT).add(cas);
             this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(cas);
         });
         AntimatterAPI.all(BlockCoil.class, GTIRef.ID, cas -> {
