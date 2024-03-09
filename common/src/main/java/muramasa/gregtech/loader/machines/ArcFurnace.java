@@ -17,6 +17,7 @@ import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
+import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.GregTechCovers;
 import muramasa.gregtech.data.GregTechItems;
@@ -58,6 +59,13 @@ public class ArcFurnace {
                 addRecyclingRecipe(t.getMaterialIngredient(m, 1), of(m, (float) amount), m.getId() + "_" + t.getId() + "_recycling");
             });
         }
+        AntimatterAPI.all(BlockColoredWall.class).forEach(b -> {
+            if (b.getMaterial() == Wood){
+                addRecyclingRecipe(b.asItem(), of(Lead, 1f, Wood, 4f));
+            } else {
+                addRecyclingRecipe(b.asItem(), of(b.getMaterial(), 4f));
+            }
+        });
         AntimatterAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != AntimatterMaterials.Wood).forEach(t -> {
             if (t.getSizes().contains(PipeSize.TINY)){
                 addRecyclingRecipe(t.getBlockItem(PipeSize.TINY), of(t.getMaterial(), 0.5f));
