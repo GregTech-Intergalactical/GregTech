@@ -34,7 +34,7 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
         this.add(GregTechBlocks.MINING_PIPE_THIN);
         this.add(GregTechBlocks.SOLID_SUPER_FUEL);
         this.add(GregTechBlocks.POWDER_BARREL);
-        this.add(GregTechBlocks.MINING_PIPE, b -> this.build(GregTechBlocks.MINING_PIPE_THIN));
+        tables.put(GregTechBlocks.MINING_PIPE, b -> this.build(GregTechBlocks.MINING_PIPE_THIN));
         tables.put(Blocks.LAPIS_ORE, b -> createOreDrop(b, RAW_ORE.get(Lapis)));
         tables.put(Blocks.DEEPSLATE_LAPIS_ORE, b -> createOreDrop(b, RAW_ORE.get(Lapis)));
         tables.put(Blocks.REDSTONE_ORE, b -> createOreDrop(b, RAW_ORE.get(Redstone)));
