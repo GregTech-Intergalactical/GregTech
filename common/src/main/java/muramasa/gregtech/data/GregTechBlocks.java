@@ -239,7 +239,7 @@ public class GregTechBlocks {
     //public static final FluidPipe<?> FLUID_PIPE_BISMUTH_BRONZE = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GTIRef.ID, BismuthBronze, 950, true).caps(1).pressures(800));
     //public static final FluidPipe<?> FLUID_PIPE_BLACK_STEEL = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GTIRef.ID, BlackSteel, 1200, true).caps(1).pressures(900));
     public static final FluidPipe<?> FLUID_PIPE_GOLD = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GTIRef.ID, AntimatterMaterials.Gold, 1671, true).acidProof(true).pressures(getPressures(300)));
-    public static final FluidPipe<?> FLUID_PIPE_INVAR = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GTIRef.ID, Invar, 2395, true).caps(1).pressures(getPressures(600)));
+    public static final FluidPipe<?> FLUID_PIPE_INVAR = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GTIRef.ID, Invar, 2395, true).caps(1).pressures(getPressures(600)).heatProof(true));
     public static final FluidPipe<?> FLUID_PIPE_STEEL = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GTIRef.ID, Steel, 2557, true).caps(1).pressures(getPressures(600)));
     public static final FluidPipe<?> FLUID_PIPE_CHROMIUM = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GTIRef.ID, Chromium, 2725, true).acidProof(true).pressures(getPressures(600)));
     public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GTIRef.ID, StainlessSteel, 2428, true).acidProof(true).caps(1).pressures(getPressures(750)));
