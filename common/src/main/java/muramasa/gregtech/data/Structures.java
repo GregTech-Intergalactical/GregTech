@@ -50,9 +50,10 @@ public class Structures {
         );
 
         COMBUSTION_ENGINE.setStructure(BlockEntityCombustionEngine.class, b -> b.part("main")
-                .of("VVV", "CCC", "CCC", "CCC").of("V~V", "H-H", "H-H", "CEC").of(0).build()
-                .at('C', GregTechBlocks.CASING_TITANIUM).at('V', GregTechBlocks.CASING_ENGINE_INTAKE).at('H', GregTechBlocks.CASING_TITANIUM, HATCH_FLUID_I, HATCH_FLUID_O).at('E', HATCH_DYNAMO)
-                .offset(1, 1, 0).min(1, HATCH_FLUID_I, HATCH_FLUID_O).build()
+                .of("VVV", "CMC", "CMC", "CCC").of("V~V", "HGH", "HGH", "CEC").of("VVV", "CCC", "CCC", "CCC").build()
+                .at('C', GregTechBlocks.CASING_TITANIUM).at('V', GregTechBlocks.CASING_ENGINE_INTAKE).at('M', GregTechBlocks.CASING_TITANIUM, HATCH_MUFFLER)
+                .at('H', GregTechBlocks.CASING_TITANIUM, HATCH_FLUID_I, HATCH_FLUID_O).at('E', HATCH_DYNAMO).at('G', GregTechBlocks.CASING_GEARBOX_TITANIUM)
+                .offset(1, 1, 0).min(1, HATCH_FLUID_I, HATCH_FLUID_O).exact(1, HATCH_MUFFLER).build()
         );
 
         CRACKING_UNIT.setStructure(BlockEntityOilCrackingUnit.class, b -> b.part("main")
