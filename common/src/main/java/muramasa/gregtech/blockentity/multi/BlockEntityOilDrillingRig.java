@@ -47,12 +47,12 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
     int euPerTick;
     int cycle = 160;
     int progress = 0;
-    BlockPos.MutableBlockPos miningPos;
+    BlockPos miningPos;
     OilSpoutEntry oilEntry = null;
 
     public BlockEntityOilDrillingRig(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        miningPos = new int3(pos, this.getFacing(state)).back(1);
+        miningPos = new int3(pos, this.getFacing(state)).back(1).immutable();
     }
 
     @Override
@@ -67,7 +67,7 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
                 energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
 
                 if (level.getGameTime() % 40 != 0) return;
-                miningPos.below();
+                miningPos = miningPos.below();
 
                 BlockState block = level.getBlockState(miningPos);
 
@@ -76,7 +76,7 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
                     return;
                 }
 
-                if (!destroyBlock(level, miningPos.immutable(), true, null, Items.NETHERITE_PICKAXE.getDefaultInstance())){
+                if (!destroyBlock(level, miningPos, true, null, Items.NETHERITE_PICKAXE.getDefaultInstance())){
                     stopped = true;
                     return;
                 }
@@ -157,7 +157,7 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
     public void load(CompoundTag nbt) {
         super.load(nbt);
         this.foundBottom = nbt.getBoolean("foundBottom");
-        this.miningPos = BlockPos.of(nbt.getLong("miningPos")).mutable();
+        this.miningPos = BlockPos.of(nbt.getLong("miningPos"));
         this.progress = nbt.getInt("progress");
     }
 
