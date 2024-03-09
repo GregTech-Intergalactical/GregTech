@@ -24,9 +24,10 @@ import org.jetbrains.annotations.Nullable;
 public class CoverFluidFilter extends CoverFilter {
     public CoverFluidFilter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        getGui().getSlots().add(SlotType.FLUID_DISPLAY_SETTABLE, 88, 34);
+        getGui().getSlots().add(SlotType.FLUID_DISPLAY_SETTABLE, 79, 53);
         addGuiCallback(t -> {
             t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.WHITELIST, ButtonOverlay.BLACKLIST,h -> blacklist, true, b -> "tooltip.gti." + (b ? "blacklist" : "whitelist"));
+            t.addCycleButton(88, 34, 16, 15, h -> ((CoverFluidFilter)h).filterMode, true, i -> "tooltip.gti.filter_mode." + i, ButtonOverlay.EXPORT_IMPORT, ButtonOverlay.IMPORT, ButtonOverlay.EXPORT);
         });
     }
     @Override
@@ -47,6 +48,15 @@ public class CoverFluidFilter extends CoverFilter {
             if (ev.data[1] == 0){
                 blacklist = !blacklist;
                 this.handler.getTile().setChanged();
+            } else if (ev.data[1] == 1){
+                if (filterMode == 0){
+                    filterMode = 1;
+                } else if (filterMode == 1){
+                    filterMode = 2;
+                } else {
+                    filterMode = 0;
+                }
+                this.handler.getTile().setChanged();
             }
         }
     }
@@ -55,6 +65,7 @@ public class CoverFluidFilter extends CoverFilter {
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         super.onTransfer(object, inputSide, simulate);
         if (object instanceof FluidHolder fluidHolder) {
+            if ((filterMode == 1 && !inputSide) || (filterMode == 2 && inputSide)) return false;
             ItemStack filter = getInventory(SlotType.FLUID_DISPLAY_SETTABLE).getItem(0);
             boolean empty = filter.isEmpty() || FluidHooks.safeGetItemFluidManager(filter).map(f -> {
                 for (int i = 0; i < f.getTankAmount(); i++){
