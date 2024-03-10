@@ -25,7 +25,6 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
     public boolean consumeInputs() {
         concurrentRecipes = 0;
         for (int i = 0; i < maxSimultaneousRecipes(); i++) {
-            if (!canOutput()) break;
             boolean consumeInput = super.consumeInputs();
             if (!consumeInput) break;
             concurrentRecipes++;
@@ -61,7 +60,7 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
     private void addPartialOutputs(){
         int successfulRecipes = 0;
         for (int i = 0; i < concurrentRecipes; i++) {
-            AtomicBoolean successful = new AtomicBoolean(true);
+            AtomicBoolean successful = new AtomicBoolean(false);
             if (activeRecipe.hasOutputItems()) {
                 tile.itemHandler.ifPresent(h -> {
                     //Roll the chances here. If they don't fit add flat (no chances).
@@ -87,7 +86,7 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
                 successfulRecipes++;
             }
         }
-        concurrentRecipes-= successfulRecipes;
+        concurrentRecipes -= successfulRecipes;
         if (activeRecipe.hasOutputItems()) tile.onMachineEvent(MachineEvent.ITEMS_OUTPUTTED);
         if (activeRecipe.hasOutputFluids()) tile.onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
     }
@@ -143,5 +142,11 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
     public void deserialize(CompoundTag nbt) {
         super.deserialize(nbt);
         concurrentRecipes = nbt.getInt("concurrentRecipes");
+    }
+
+    @Override
+    public void getInfo(List<String> builder) {
+        super.getInfo(builder);
+        builder.add("Concurrent Recipes: " + concurrentRecipes);
     }
 }
