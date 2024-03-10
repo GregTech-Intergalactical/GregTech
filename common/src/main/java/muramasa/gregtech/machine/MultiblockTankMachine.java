@@ -28,7 +28,7 @@ public class MultiblockTankMachine extends MaterialBasicMultiMachine {
                     .build());
         } else {
             this.setStructure(BlockEntityLargeTank.class, b -> b.part("main")
-                    .of("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").of("CC~CC", "C---C", "C---C", "C---C", "CCCCC").of(0).build()
+                    .of("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").of("CCCCC", "C---C", "C---C", "C---C", "CCCCC").of("CC~CC", "C---C", "C---C", "C---C", "CCCCC").of(1).of(0).build()
                     .atElement('C', StructureUtility.lazy(t -> new FakeTileElement<>(t.getCasing()))).offset(2, 2, 0)
                     .build());
         }
