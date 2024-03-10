@@ -96,7 +96,7 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
     public void onServerUpdate() {
         if (tile.getMachineState() == OUTPUT_FULL) {
             if (!canOutput() && super.canOutput()) {
-                tile.setMachineState(recipeFinish());
+                addPartialOutputs();
                 return;
             }
         }
