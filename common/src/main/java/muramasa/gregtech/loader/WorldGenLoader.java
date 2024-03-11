@@ -74,21 +74,21 @@ public class WorldGenLoader {
         event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(OilShale).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
         event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(MilkyQuartz).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
 
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Sulfur).withSize(16).withWeight(100).setRare(true).atHeight(-32, -24).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Apatite).withSize(16).withWeight(50).setRare(true).atHeight(-8, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Ruby).withSize(12).withWeight(100).setRare(true).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Amber).withSize(12).withWeight(100).setRare(true).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Amethyst).withSize(12).withWeight(100).setRare(true).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Galena).withSize(24).withWeight(25).setRare(true).atHeight(-24, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Tetrahedrite).withSize(24).withWeight(25).setRare(true).atHeight(-24, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Cassiterite).withSize(24).withWeight(25).setRare(true).atHeight(-24, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Sheldonite).withSize(6).withWeight(100).setRare(true).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Pentlandite).withSize(16).withWeight(25).setRare(true).atHeight(-24, -8).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Scheelite).withSize(12).withWeight(25).setRare(true).atHeight(-24, -8).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Rutile).withSize(6).withWeight(25).setRare(true).atHeight(-24, -8).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Bastnasite).withSize(16).withWeight(100).setRare(true).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Graphite).withSize(6).withWeight(50).setRare(true).atHeight(-32, -24).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
-        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Pitchblende).withSize(16).withWeight(100).setRare(true).atHeight(-24, -16).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Sulfur).withSize(16).withProbability(100).atHeight(-32, -24).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Apatite).withSize(16).withProbability(50).atHeight(-8, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Ruby).withSize(12).withProbability(100).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Amber).withSize(12).withProbability(100).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Amethyst).withSize(12).withProbability(100).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Galena).withSize(24).withProbability(25).atHeight(-24, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Tetrahedrite).withSize(24).withProbability(25).atHeight(-24, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Cassiterite).withSize(24).withProbability(25).atHeight(-24, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Sheldonite).withSize(6).withProbability(100).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Pentlandite).withSize(16).withProbability(25).atHeight(-24, -8).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Scheelite).withSize(12).withProbability(25).atHeight(-24, -8).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Rutile).withSize(6).withProbability(25).atHeight(-24, -8).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Bastnasite).withSize(16).withProbability(100).atHeight(8, 22).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Graphite).withSize(6).withProbability(50).atHeight(-32, -24).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
+        event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Pitchblende).withSize(16).withProbability(100).atHeight(-24, -16).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
     }
 
     private static void initSmallOres(WorldGenEvent event){
