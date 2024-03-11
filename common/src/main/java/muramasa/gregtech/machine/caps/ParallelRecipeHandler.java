@@ -1,6 +1,7 @@
 package muramasa.gregtech.machine.caps;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
+import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.event.MachineEvent;
@@ -91,6 +92,10 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
         if (activeRecipe.hasOutputFluids()) tile.onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
     }
 
+
+    protected void logString(String message){
+        Antimatter.LOGGER.info(message);
+    }
     @Override
     public void onServerUpdate() {
         if (tile.getMachineState() == OUTPUT_FULL) {
@@ -148,5 +153,6 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
     public void getInfo(List<String> builder) {
         super.getInfo(builder);
         builder.add("Concurrent Recipes: " + concurrentRecipes);
+        builder.add("Tick timer: " + tickTimer);
     }
 }
