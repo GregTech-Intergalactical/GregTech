@@ -278,6 +278,31 @@ public class RecipeMaps {
         }
     };
 
+    public static final IRecipeInfoRenderer CHEM_RENDERER = new IRecipeInfoRenderer() {
+        @Override
+        public void render(PoseStack stack, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
+            if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
+            String power = "Duration: " + recipe.getDuration() + " ticks (" + (recipe.getDuration() / 20.0f) + " s)";
+            String euT = "EU/t: " + recipe.getPower();
+            String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
+            String complicated = recipe.getSpecialValue() == -1 ? "Complicated Recipe" : recipe.getSpecialValue() == 1 ? "Simple Recipe" : recipe.getSpecialValue() == 0 ? "Shared Recipe" : null;
+            Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
+            String formattedText = " (" + tier.getId().toUpperCase() + ")";
+            renderString(stack, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
+            renderString(stack, euT, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
+            renderString(stack, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
+            renderString(stack, total, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
+            if (complicated != null){
+                renderString(stack, complicated, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
+            }
+        }
+
+        @Override
+        public int getRows() {
+            return 4;
+        }
+    };
+
     static {
         COMBUSTION_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         GAS_FUELS.setGuiData(Guis.MULTI_DISPLAY);
@@ -316,5 +341,6 @@ public class RecipeMaps {
         LARGE_BOILERS.setInfoRenderer(LARGE_BOILER_RENDERER);
         HEAT_EXCHANGER.setInfoRenderer(HEAT_EXCHANGER_RENDERER);
         FUSION.setInfoRenderer(FUSION_RENDERER);
+        CHEMICAL_REACTOR.setInfoRenderer(CHEM_RENDERER);
     }
 }
