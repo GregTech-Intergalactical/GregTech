@@ -80,10 +80,11 @@ public class MaterialCrafting {
         BLOCK.all().forEach(m -> {
             if (m.has(INGOT) || m.has(GEM)){
                 MaterialTypeItem<?> input = m.has(GEM) ? GEM : INGOT;
+                String typeID = m.has(GEM) ? "gem" : "ingot";
                 int output = m.has(QUARTZ_LIKE_BLOCKS) ? 4 : 9;
                 String[] strings = m.has(QUARTZ_LIKE_BLOCKS) ? new String[]{"II", "II"} : new String[]{"III", "III", "III"};
-                provider.addItemRecipe(consumer, "blocks", BLOCK.get().get(m).asItem(), of('I', input.getMaterialTag(m)), strings);
-                provider.shapeless(consumer, "", "blocks", input.get(m, output), BLOCK.getMaterialTag(m));
+                provider.addItemRecipe(consumer, GTIRef.ID, m.getId() + "_block", "blocks", BLOCK.get().get(m).asItem(), of('I', input.getMaterialTag(m)), strings);
+                provider.shapeless(consumer, GTIRef.ID, m.getId() + "_" + typeID, "blocks", input.get(m, output), BLOCK.getMaterialTag(m));
             }
         });
         RAW_ORE_BLOCK.all().forEach(m -> {
