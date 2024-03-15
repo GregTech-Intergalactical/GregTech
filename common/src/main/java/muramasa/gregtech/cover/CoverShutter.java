@@ -20,6 +20,8 @@ import org.jetbrains.annotations.Nullable;
 public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     Mode mode = Mode.OPEN_REDSTONE;
     boolean isPowered = false;
+
+    boolean checkConnection = false;
     public CoverShutter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
     }
@@ -32,7 +34,7 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     @Override
     public void onPlace() {
         super.onPlace();
-        checkPipeConnection();
+        checkConnection = true;cf
     }
 
     @Override
@@ -98,7 +100,16 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
 
     @Override
     public void onBlockUpdate() {
-        checkPipeConnection();
+        checkConnection = true;
+    }
+
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
+        if (checkConnection){
+            checkPipeConnection();
+            checkConnection = false;
+        }
     }
 
     private void checkPipeConnection(){
