@@ -1,6 +1,5 @@
 package muramasa.gregtech.blockentity.miniportals;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
@@ -13,8 +12,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -39,6 +36,9 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     }
 
     public BlockEntityMiniPortal getOtherSide() {
+        if (otherSide != null && otherSide.isRemoved()){
+            return null;
+        }
         return otherSide;
     }
 
@@ -58,7 +58,8 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     public void onFirstTick() {
         super.onFirstTick();
         if (otherSidePos != null && otherSideDimension != null){
-            if (AntimatterPlatformUtils.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension)).getBlockEntity(otherSidePos) instanceof BlockEntityMiniPortal portal){
+            Level dimension = AntimatterPlatformUtils.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
+            if (dimension != null && dimension.isLoaded(otherSidePos) && dimension.getBlockEntity(otherSidePos) instanceof BlockEntityMiniPortal portal){
                 this.otherSide = portal;
                 otherSideDimension = null;
                 otherSidePos = null;
@@ -150,6 +151,29 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     }
 
     @Override
+    public void serverTick(Level level, BlockPos pos, BlockState state) {
+        super.serverTick(level, pos, state);
+        if (this.getMachineState() == MachineState.ACTIVE) {
+            if (otherSide != null && otherSide.isRemoved()){
+                otherSide = null;
+            } else if (otherSide == null){
+                if (level.getGameTime() % 100 == 5){
+                    if (otherSidePos != null && otherSideDimension != null){
+                        Level dimension = AntimatterPlatformUtils.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
+                        if (dimension != null && level.isLoaded(otherSidePos) && dimension.getBlockEntity(otherSidePos) instanceof BlockEntityMiniPortal portal){
+                            this.otherSide = portal;
+                            otherSideDimension = null;
+                            otherSidePos = null;
+                        }
+                    } else {
+                        findTargetPortal();
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
     public void setMachineState(MachineState newState) {
         super.setMachineState(newState);
         if (level != null){
@@ -160,9 +184,6 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     @Override
     public void onRemove() {
         super.onRemove();
-        if (otherSide != null){
-            otherSide.setOtherSide(null);
-        }
         getPortalListA().remove(this);
         getPortalListB().remove(this);
     }
@@ -199,7 +220,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     @Override
     public List<String> getInfo(boolean simple) {
         List<String> info = super.getInfo(simple);
-        if (otherSide != null){
+        if (otherSide != null && otherSide.isRemoved()){
             info.add("Target at: x: " + otherSide.getBlockPos().getX() + " y: " + otherSide.getBlockPos().getY() + " z: " + otherSide.getBlockPos().getZ() + " in " + otherSide.getLevel().dimension().location());
         } else {
             info.add("No target");
