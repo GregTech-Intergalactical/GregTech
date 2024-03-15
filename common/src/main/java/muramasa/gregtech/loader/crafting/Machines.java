@@ -506,7 +506,7 @@ public class Machines {
 
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(NONE),
                 of('S', GregTechItems.Wafer, 'G', Items.GLASS_PANE, 'C', CIRCUITS_BASIC,
-                        'P', PLATE.getMaterialTag(Carbon), 'H', GregTechBlocks.HULL_ULV, 'W', GregTechBlocks.CABLE_LEAD.getBlockItem(PipeSize.VTINY)), "SGS", "CPC", "WHW");
+                        'P', PLATE.getMaterialTag(Carbon), 'H', GregTechBlocks.HULL_ULV, 'W', GregTechBlocks.CABLE_SOLDERING_ALLOY.getBlockItem(PipeSize.VTINY)), "SGS", "CPC", "WHW");
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(ULV),
                 of('S', SOLAR_PANEL.getItem(NONE), 'C', CIRCUITS_ADVANCED), "SSS", "SCS", "SSS");
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(LV),
@@ -559,7 +559,7 @@ public class Machines {
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.ULV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', GregTechBlocks.HULL_ULV)
-                        .put('C', GregTechBlocks.CABLE_LEAD.getBlockItem(PipeSize.VTINY))
+                        .put('C', GregTechBlocks.CABLE_SOLDERING_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('W', GregTechBlocks.CABLE_TIN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
 
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.LV),

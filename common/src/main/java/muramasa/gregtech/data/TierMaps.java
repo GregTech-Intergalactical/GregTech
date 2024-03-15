@@ -102,7 +102,7 @@ public class TierMaps {
             throw new IllegalArgumentException("Too high tier in WIRE_GETTER");
         };
         CABLE_GETTER = (size, tier, machine) -> {
-            if (tier == ULV) return GregTechBlocks.CABLE_RED_ALLOY.getBlockItem(size);
+            if (tier == ULV) return GregTechBlocks.CABLE_SOLDERING_ALLOY.getBlockItem(size);
             if (tier == LV) return GregTechBlocks.CABLE_TIN.getBlockItem(size);
             if (tier == MV){
                 return TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_CABLE.getId()+"_"+ size.getId()));
@@ -128,7 +128,7 @@ public class TierMaps {
         doneMaps = true;
         {
             ImmutableMap.Builder<Tier, PipeItemBlock> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, GregTechBlocks.WIRE_LEAD.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.ULV, GregTechBlocks.WIRE_SOLDERING_ALLOY.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.LV, GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.MV, GregTechBlocks.WIRE_COPPER.getBlockItem(PipeSize.VTINY));
             builder.put(Tier.HV, GregTechBlocks.WIRE_GOLD.getBlockItem(PipeSize.VTINY));

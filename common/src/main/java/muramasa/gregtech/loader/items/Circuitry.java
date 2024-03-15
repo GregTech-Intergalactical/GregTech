@@ -62,7 +62,7 @@ public class Circuitry {
         provider.addItemRecipe(output, "circuit_basic", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('V', VacuumTube).put('B', CircuitBoardCoated)
-                        .put('W', GregTechBlocks.CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
+                        .put('W', GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('R',Resistor).put('P', ITEM_CASING.get(Steel))
                         .build(),
                 "RPR", "VBV", "WWW");
@@ -70,7 +70,7 @@ public class Circuitry {
                 ImmutableMap.<Character, Object>builder()
                         .put('S', ITEM_CASING.getMaterialTag(Steel))
                         .put('C', CIRCUITS_BASIC)
-                        .put('c', GregTechBlocks.CABLE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
+                        .put('c', GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('D', Diode).build(), "SCc", "CDC", "cCS");
 
         var wire = TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ PipeSize.VTINY.getId()));
