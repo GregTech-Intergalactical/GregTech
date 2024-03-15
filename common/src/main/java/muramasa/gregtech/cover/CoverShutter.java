@@ -34,7 +34,7 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     @Override
     public void onPlace() {
         super.onPlace();
-        checkConnection = true;cf
+        checkConnection = true;
     }
 
     @Override
