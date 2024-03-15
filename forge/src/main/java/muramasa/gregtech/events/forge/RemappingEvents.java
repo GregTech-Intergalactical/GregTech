@@ -115,6 +115,13 @@ public class RemappingEvents {
                     return;
                 }
             }
+            if (id.contains("nitric_oxide")){
+                Block block = AntimatterAPI.get(Block.class, id.replace("nitric_oxide", "nitrogen_monoxide"), Ref.SHARED_ID);
+                if (block != null){
+                    map.remap(block);
+                    return;
+                }
+            }
             if (id.contains("banded_iron")){
                 Block block = AntimatterAPI.get(Block.class, id.replace("banded_iron", "hematite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
@@ -244,6 +251,13 @@ public class RemappingEvents {
                     return;
                 }
             }
+            if (id.contains("nitric_oxide")){
+                Item block = AntimatterAPI.get(Item.class, id.replace("nitric_oxide", "nitrogen_monoxide"), Ref.SHARED_ID);
+                if (block != null){
+                    map.remap(block);
+                    return;
+                }
+            }
             if (id.contains("banded_iron")){
                 Item block = AntimatterAPI.get(Item.class, id.replace("banded_iron", "hematite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
@@ -319,6 +333,9 @@ public class RemappingEvents {
             String liquid = id.startsWith("flowing_") ? id.replace("flowing_", "") : id;
             if (id.contains("polethylene")){
                 liquid = liquid.replace("polethylene", "plastic");
+            }
+            if (id.contains("nitric_oxide")){
+                liquid = liquid.replace("nitric_oxide", "nitrogen_monoxide");
             }
             AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, liquid);
             if (fluid != null){

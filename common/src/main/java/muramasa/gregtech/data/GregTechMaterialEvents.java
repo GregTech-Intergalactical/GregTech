@@ -547,7 +547,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Ammonia).asGas().flags(ACID).fluidDensity(-263);
         event.setMaterial(DinitrogenTetroxide).asGas();
         event.setMaterial(HydrogenSulfide).asGas();
-        event.setMaterial(NitricOxide).asGas();
+        event.setMaterial(NitrogenMonoxide).asGas();
         event.setMaterial(NitrousOxide).asGas();
         event.setMaterial(NitrogenDioxide).asGas();
         event.setMaterial(NobleGases).asGas(0,790);
@@ -953,7 +953,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Ammonia).mats(of(Nitrogen, 1, Hydrogen, 3)).elecTicks(64);
         event.setMaterial(DinitrogenTetroxide).mats(of(Nitrogen, 2, Oxygen, 4)).elecTicks(168);
         event.setMaterial(HydrogenSulfide).mats(of(Hydrogen, 2, Sulfur, 1));
-        event.setMaterial(NitricOxide).mats(of(Nitrogen, 1, Oxygen, 1)).elecTicks(112);
+        event.setMaterial(NitrogenMonoxide).mats(of(Nitrogen, 1, Oxygen, 1)).elecTicks(112);
         event.setMaterial(NitrousOxide).mats(of(Nitrogen, 2, Oxygen, 1)).elecTicks(168);
         event.setMaterial(NitrogenDioxide).mats(of(Nitrogen, 1, Oxygen, 2)).elecTicks(168);
         event.setMaterial(NobleGases).mats(of(Helium, 10, Neon, 10, Argon, 10, Xenon, 10));
@@ -1362,7 +1362,7 @@ public class GregTechMaterialEvents {
                 NickelSulfate, Water, DistilledWater, HeavyWater, SemiheavyWater, TritiatedWater, MilkyQuartz, FerricChloride);
         ELEC60.add(CalciumChloride, SodiumHydroxide, Propene, Ethylene, Butene, Benzene, Styrene, Ethane, Ammonia, SodiumSulfide, Methane,
                 Magnesite, HydrofluoricAcid, HydrogenFluoride, Sphalerite, /*NitroCarbon,*/ SodaAsh, Calcite, Saltpeter, Monazite,
-                /*Wollastonite,*/ NitricOxide, Butane, CarbonMonoxide, Pyrite, RedGranite, Ferrosilite, Butadiene, Amethyst,
+                /*Wollastonite,*/ NitrogenMonoxide, Butane, CarbonMonoxide, Pyrite, RedGranite, Ferrosilite, Butadiene, Amethyst,
                 Molybdenite, Ruby, /*Kyanite,*/ NitrogenDioxide, NitrousOxide, DinitrogenTetroxide, Propane, Barite, Isoprene,
                 Chromite, EnderPearl, SiliconDioxide, Apatite, SulfurTrioxide, /*Pyrochlore, */ Toluene, Phosphate,
                 Tantalite, PhosphorousPentoxide, Osmiridium, Pentlandite, Steel, Graphite, MagnesiumChloride);

@@ -289,9 +289,9 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(NitrogenDioxide.getGas(1000)).ii(INT_CIRCUITS.get(2)).fo(DinitrogenTetroxide.getGas(1000)).add("dinitrogen_tetroxide", 640, 30, -1);
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(7000), Ammonia.getGas(8000)).fo(DinitrogenTetroxide.getGas(6000), Water.getLiquid(9000)).add("dinitrogen_tetroxide_1", 480, 30, -1);
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(7000), Hydrogen.getGas(6000), Nitrogen.getGas(2000)).fo(DinitrogenTetroxide.getGas(6000), Water.getLiquid(9000)).add("dinitrogen_tetroxide_2", 1100, 480, -1);
-        CHEMICAL_REACTOR.RB().fi(Ammonia.getGas(8000), Oxygen.getGas(5000)).fo(NitricOxide.getGas(4000), Water.getLiquid(9000)).add("nitric_oxide", 160, 30, -1);
-        CHEMICAL_REACTOR.RB().fi(NitricOxide.getGas(2000), Oxygen.getGas(1000)).fo(NitrogenDioxide.getGas(3000)).add("complicated_nitrogen_dioxide", 160, 30, -1);
-        CHEMICAL_REACTOR.RB().fi(NitrogenDioxide.getGas(9000), Water.getLiquid(3000)).fo(NitricAcid.getLiquid(10000), NitricOxide.getGas(2000)).add("complicated_nitric_acid", 240, 30, -1);
+        CHEMICAL_REACTOR.RB().fi(Ammonia.getGas(8000), Oxygen.getGas(5000)).fo(NitrogenMonoxide.getGas(4000), Water.getLiquid(9000)).add("nitric_oxide", 160, 30, -1);
+        CHEMICAL_REACTOR.RB().fi(NitrogenMonoxide.getGas(2000), Oxygen.getGas(1000)).fo(NitrogenDioxide.getGas(3000)).add("complicated_nitrogen_dioxide", 160, 30, -1);
+        CHEMICAL_REACTOR.RB().fi(NitrogenDioxide.getGas(9000), Water.getLiquid(3000)).fo(NitricAcid.getLiquid(10000), NitrogenMonoxide.getGas(2000)).add("complicated_nitric_acid", 240, 30, -1);
         CHEMICAL_REACTOR.RB().fi(NitrogenDioxide.getGas(6000), Water.getLiquid(3000), Oxygen.getGas(1000)).fo(NitricAcid.getLiquid(10000)).add("complicated_nitric_acid_2", 240, 30, -1);
         CHEMICAL_REACTOR.RB().fi(Ethylene.getGas(3000), Chlorine.getGas(1000)).fo(VinylChloride.getGas(3000), HydrochloricAcid.getLiquid(1000)).add("vinyl_chloride", 80, 30, -1);
         CHEMICAL_REACTOR.RB().fi(Ethylene.getGas(6000), Oxygen.getGas(1000), HydrochloricAcid.getLiquid(4000)).fo(VinylChloride.getGas(6000)).add("vinyl_chloride_1", 80, 30, -1);
