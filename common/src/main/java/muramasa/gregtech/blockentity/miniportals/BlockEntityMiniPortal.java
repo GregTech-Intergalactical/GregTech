@@ -145,6 +145,10 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
         return false;
     }
 
+    protected boolean isSame(BlockEntityMiniPortal otherSide){
+        return otherSide.getBlockState().getBlock() == this.getBlockState().getBlock();
+    }
+
     @Override
     public void setMachineState(MachineState newState) {
         super.setMachineState(newState);

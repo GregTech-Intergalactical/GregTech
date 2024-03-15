@@ -56,7 +56,7 @@ public class BlockEntityMiniNetherPortal extends BlockEntityMiniPortal{
         if (level != null && isServerSide()) {
             if (level.dimension() == Level.OVERWORLD) {
                 long tShortestDistance = 128*128;
-                for (BlockEntityMiniPortal tTarget : sListNetherSide) if (tTarget != this && !tTarget.isRemoved()) {
+                for (BlockEntityMiniPortal tTarget : sListNetherSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
                     long tXDifference = getBlockPos().getX()-tTarget.getBlockPos().getX()*8, tZDifference = getBlockPos().getZ()-tTarget.getBlockPos().getZ()*8;
                     long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
                     if (tTempDist < tShortestDistance) {
@@ -68,7 +68,7 @@ public class BlockEntityMiniNetherPortal extends BlockEntityMiniPortal{
                 }
             } else if (level.dimension() == Level.NETHER) {
                 long tShortestDistance = 128*128;
-                for (BlockEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isRemoved()) {
+                for (BlockEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
                     long tXDifference = tTarget.getBlockPos().getX()-getBlockPos().getX()*8, tZDifference = tTarget.getBlockPos().getZ()-getBlockPos().getZ()*8;
                     long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
                     if (tTempDist < tShortestDistance) {

@@ -77,7 +77,7 @@ public class BlockEntityMiniTwilightPortal extends BlockEntityMiniPortal{
         if (level != null && isServerSide()) {
             if (level.dimension() == Level.OVERWORLD) {
                 long tShortestDistance = 512*512;
-                for (BlockEntityMiniPortal tTarget : sListTwilightSide) if (tTarget != this && !tTarget.isRemoved()) {
+                for (BlockEntityMiniPortal tTarget : sListTwilightSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
                     long tXDifference = getBlockPos().getX()-tTarget.getBlockPos().getX(), tZDifference = getBlockPos().getZ()-tTarget.getBlockPos().getZ();
                     long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
                     if (tTempDist < tShortestDistance) {
@@ -89,7 +89,7 @@ public class BlockEntityMiniTwilightPortal extends BlockEntityMiniPortal{
                 }
             } else if (level.dimension() == WorldGenLoader.TWILIGHT_FOREST) {
                 long tShortestDistance = 512*512;
-                for (BlockEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isRemoved()) {
+                for (BlockEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
                     long tXDifference = tTarget.getBlockPos().getX()-getBlockPos().getX(), tZDifference = tTarget.getBlockPos().getZ()-getBlockPos().getZ();
                     long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
                     if (tTempDist < tShortestDistance) {
