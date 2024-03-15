@@ -149,10 +149,10 @@ public class Parts {
           Item center = t == LV ? Items.ENDER_PEARL : t == MV ? Items.ENDER_EYE : t == HV ? GregTechItems.QuantumEye : t == EV ? Items.NETHER_STAR : GregTechItems.QuantumStar;
           provider.addItemRecipe(output, "gtparts", fieldGen,
                   of('O', GregTechBlocks.WIRE_OSMIUM.getBlockItem(osmium), 'C', circuit, 'G', center), "OCO", "CGC", "OCO");
-          Material rotorMat = ((MaterialItem) TIER_ROTORS.get(t)).getMaterial();
+          Material rotorMat = TIER_ROTORS.get(t);
           provider.addItemRecipe(output, "gtparts", pump,
                   ImmutableMap.<Character, Object>builder().put('M', motor).put('C', cable).put('W', WRENCH.getTag())
-                          .put('S', SCREWDRIVER.getTag()).put('R', SCREW.get(rotorMat)).put('T', TIER_ROTORS.get(t))
+                          .put('S', SCREWDRIVER.getTag()).put('R', SCREW.getMaterialTag(rotorMat)).put('T', ROTOR.getMaterialTag(rotorMat))
                           .put('O', RING.get(Rubber)).put('P', TIER_PIPES.get(t).apply(PipeSize.NORMAL))
                           .build(),
                   "RTO", "SPW", "OMC");

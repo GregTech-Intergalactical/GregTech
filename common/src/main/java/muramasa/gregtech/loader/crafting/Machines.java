@@ -73,7 +73,7 @@ public class Machines {
             if (circuit == null) return;
             Object cable = CABLE_GETTER.apply(PipeSize.VTINY, tier, true);
             if (cable == null) return;
-            Item rotor = TierMaps.TIER_ROTORS.get(tier);
+            TagKey<Item> rotor = TierMaps.TIER_ROTORS.get(tier) == null ? null : ROTOR.getMaterialTag(TIER_ROTORS.get(tier));
             if (rotor == null) return;
             Item glass = Items.GLASS;
             Object diamond = Items.DIAMOND;

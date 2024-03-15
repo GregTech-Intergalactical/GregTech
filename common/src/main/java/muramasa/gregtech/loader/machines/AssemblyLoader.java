@@ -51,6 +51,7 @@ public class AssemblyLoader {
         misc();
         motors();
         pistons();
+        pumps();
         rotors();
         turbines();
     }
@@ -198,6 +199,19 @@ public class AssemblyLoader {
                             of(GEAR.get(TIER_MATERIALS.get(t)),1))
                     .io(new ItemStack(GregTech.get(ItemBasic.class,"piston_"+t.getId())))
                     .add("piston_"+t.getId(),150,16);
+        });
+    }
+    private static void pumps(){
+        Arrays.stream(Tier.getStandard()).forEach(t -> {
+            ASSEMBLER.RB().ii(ofObject(CABLE_GETTER.apply(PipeSize.VTINY, t, false),1),
+                            SCREW.getMaterialIngredient(TIER_ROTORS.get(t), 1),
+                            ROTOR.getMaterialIngredient(TIER_ROTORS.get(t), 1),
+                            RING.getMaterialIngredient(Rubber, 2),
+                            of(TIER_PIPES.get(t).apply(PipeSize.NORMAL), 1),
+                            of(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId(), GTCore.ID),1)
+                            )
+                    .io(GregTechCovers.COVER_PUMP.getItem(t))
+                    .add("pump_"+t.getId(),150,16);
         });
     }
 

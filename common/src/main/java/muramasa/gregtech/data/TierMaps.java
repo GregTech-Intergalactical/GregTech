@@ -42,7 +42,7 @@ public class TierMaps {
     public static ImmutableMap<Tier, Material> EMITTER_RODS;
     public static ImmutableMap<Tier, Object> EMITTER_GEMS;
 
-    public static ImmutableMap<Tier, Item> TIER_ROTORS;
+    public static ImmutableMap<Tier, Material> TIER_ROTORS;
     public static ImmutableMap<Tier, Function<PipeSize, Item>> TIER_PIPES;
 
     public static final BiFunction<PipeSize, Tier, Object> WIRE_GETTER;
@@ -155,13 +155,13 @@ public class TierMaps {
             TIER_CABLES = builder.build();
         }*/
         {
-            ImmutableMap.Builder<Tier, Item> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, ROTOR.get(Bronze));
-            builder.put(Tier.LV, ROTOR.get(Tin));
-            builder.put(Tier.MV, ROTOR.get(Bronze));
-            builder.put(Tier.HV, ROTOR.get(Steel));
-            builder.put(Tier.EV, ROTOR.get(StainlessSteel));
-            builder.put(Tier.IV, ROTOR.get(TungstenSteel));
+            ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
+            builder.put(Tier.ULV, Bronze);
+            builder.put(Tier.LV, Tin);
+            builder.put(Tier.MV, Bronze);
+            builder.put(Tier.HV, Steel);
+            builder.put(Tier.EV, StainlessSteel);
+            builder.put(Tier.IV, TungstenSteel);
             TIER_ROTORS = builder.build();
         }
         {
