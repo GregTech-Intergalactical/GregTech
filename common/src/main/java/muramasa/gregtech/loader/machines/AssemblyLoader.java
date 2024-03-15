@@ -243,7 +243,7 @@ public class AssemblyLoader {
     }
 
     private static void addWall(Material mat, BlockColoredWall casing) {
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(mat, 4), INT_CIRCUITS.get(4)).io(new ItemStack(casing,1)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(mat, 4), INT_CIRCUITS.get(24)).io(new ItemStack(casing,1)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
     }
 
     private static void addCoil (BlockCoil coil, PipeItemBlock wire) {
