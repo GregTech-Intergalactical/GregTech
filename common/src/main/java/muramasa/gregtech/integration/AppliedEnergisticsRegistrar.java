@@ -94,7 +94,6 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         RecipeMaps.MACERATOR.RB().ii(of(getAe2Item("sky_stone_chest"))).io(new ItemStack(getAe2Item("sky_dust"), 8)).add("sky_dust_from_chest", 400, 2);
         RecipeMaps.MACERATOR.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
         RecipeMaps.ELECTROLYZER.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1)).io(new ItemStack(getAe2Item("charged_certus_quartz_crystal"))).add("charged_certus_quartz", 2000, 30);
-        CHEMICAL_REACTOR.RB().fi(Water.getLiquid(1000)).ii(of(DUST.getMaterialTag(CertusQuartz), 3), of(DUST.getMaterialTag(Sodium), 1)).io(GEM.get(CertusQuartz, 3)).add("certus_quartz",500,30);
         E_BLAST_FURNACE.RB().ii(RecipeIngredient.of(TagUtils.getForgelikeItemTag("silicon")), TierMaps.INT_CIRCUITS.get(1)).io(INGOT.get(Silicon)).add("silicon_ingot_from_silicon", 1683, 120, 1683);
     }
     
