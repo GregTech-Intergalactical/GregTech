@@ -14,48 +14,41 @@ import static muramasa.gregtech.data.RecipeMaps.*;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 public class DistillationTower {
+
     public static void init() {
-        if (GregTechConfig.GT5U_OIL.get()){
+        /*if (GregTechConfig.GT5U_OIL.get()){
             init5U();
         } else {
-            init6U();
+            initBasic();
+        }*/
+        if (GregTechConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
+            initComplicated();
         }
-
+        initBasic();
+        initCracked();
         addDistillingRecipe(Creosote, 24, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(FishOil, 24, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(SeedOil, 32, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
-        addDistillationRecipe(Water, 576, 16, 120, new FluidProduct(DistilledWater,520));
-        addDistillationDistillingRecipe(DilutedSulfuricAcid, 2000, 600, 120,
+        addDistillingRecipe(Water, 576, 16, 120, ItemStack.EMPTY, new FluidProduct(DistilledWater,520));
+        addDistillingRecipe(DilutedSulfuricAcid, 2000, 600, 120, ItemStack.EMPTY,
                 new FluidProduct(SulfuricAcid, 1000),
                 new FluidProduct(Water, 1000));
-
-        addDistillationDistillingRecipe(FermentedBiomass, 1000, 75, 180, 8, 1500, ItemStack.EMPTY,
-                new FluidProduct(AceticAcid, 25),
-                new FluidProduct(Water, 375),
-                new FluidProduct(Ethanol, 150),
-                new FluidProduct(Methanol, 150),
-                new FluidProduct(Ammonia, 100),
-                new FluidProduct(CarbonDioxide, 400),
-                new FluidProduct(Methane, 600));
-        addDistillationDistillingRecipe(CharcoalByproducts, 1000, 40, 256, 64, 80, DUST_SMALL.get(Charcoal,1),
-                new FluidProduct(WoodTar, 250),
-                new FluidProduct(WoodVinegar, 500),
-                new FluidProduct(WoodGas, 250));
-        addDistillationDistillingRecipe(WoodGas, 1000, 40, 256, 64, 16, ItemStack.EMPTY,
-                new FluidProduct(CarbonDioxide, 490),
-                new FluidProduct(Ethylene, 20),
-                new FluidProduct(Methane, 130),
-                new FluidProduct(CarbonMonoxide, 340),
-                new FluidProduct(Hydrogen, 20));
-        addDistillationDistillingRecipe(Biomass, 600, 16, 400, 24, 16, DUST_SMALL.get(Wood, 1),
-                new FluidProduct(Ethanol, 240),
-                new FluidProduct(Water,240));
+        addDistillationDistillingRecipe(Biomass, 80, 16, 64, 24, 16, DUST_SMALL.get(Wood, 1),
+                new FluidProduct(Ethanol, 20),
+                new FluidProduct(Glycerol, 20),
+                new FluidProduct(Methane, 4),
+                new FluidProduct(DistilledWater,50));
+        Material ethane = GregTechConfig.COMPLICATED_CHEMICAL_PROCESSING.get() ? Ethane : Ethylene;
         addDistillationDistillingRecipe(RefineryGas, 1000, 240, 120,
                 new FluidProduct(Butane, 60),
                 new FluidProduct(Propane, 70),
-                new FluidProduct(Ethane, 100),
+                new FluidProduct(ethane, 100),
                 new FluidProduct(Methane, 750),
                 new FluidProduct(Helium, 20));
+        CRYO_DISTILLATION.RB().fi(Air.getGas(200)).fo(Helium.getGas(1), Neon.getGas(1), Argon.getGas(1), Nitrogen.getGas(143), Oxygen.getGas(50), CarbonDioxide.getGas(10)).add("air_distillation", 64, 64);
+    }
+
+    private static void initCracked(){
         addDistillationRecipe(SteamCrackedButane, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
                 new FluidProduct(Butadiene,500), new FluidProduct(Propene,1000),
                 new FluidProduct(Ethylene,1000),new FluidProduct(Methane,500));
@@ -80,20 +73,12 @@ public class DistillationTower {
         addDistillationRecipe(HydroCrackedButane, 1000, 120, 120,
                 new FluidProduct(Propane, 1000), new FluidProduct(Ethane, 1000),
                 new FluidProduct(Methane, 1000));
-
         addDistillationRecipe(HydroCrackedNaphtha, 1000, 120, 120,
                 new FluidProduct(Butane, 750), new FluidProduct(Propane, 750),
                 new FluidProduct(Ethane, 750), new FluidProduct(Methane, 750));
-
-        if (GregTechConfig.MORE_COMPLICATED_CHEMICAL_RECIPES){
-            initComplicated();
-        } else {
-            initSimple();
-        }
-        CRYO_DISTILLATION.RB().fi(Air.getGas(200)).fo(Helium.getGas(1), Neon.getGas(1), Argon.getGas(1), Nitrogen.getGas(143), Oxygen.getGas(50), CarbonDioxide.getGas(10)).add("air_distillation", 64, 64);
     }
 
-    private static void init6U(){
+    private static void initBasic(){
         addDistillationDistillingRecipe(OilLight, 25, 64, 64,
                 new FluidProduct(FuelOil,15),
                 new FluidProduct(Diesel,10),
@@ -121,6 +106,45 @@ public class DistillationTower {
                 new FluidProduct(RefineryGas, 10),
                 new FluidProduct(Lubricant, 40),
                 new FluidProduct(Tar, 15));
+    }
+
+    private static void initComplicated(){
+        addDistillingRecipe(DilutedHydrochloricAcid, 2000, 300, 64, ItemStack.EMPTY,
+                new FluidProduct(HydrochloricAcid, 1000),
+                new FluidProduct(Water, 1000));
+        addDistillationDistillingRecipe(CharcoalByproducts, 1000, 40, 256, 64, 80, DUST_SMALL.get(Charcoal,1),
+                new FluidProduct(WoodTar, 250),
+                new FluidProduct(WoodVinegar, 500),
+                new FluidProduct(WoodGas, 250));
+        addDistillationDistillingRecipe(WoodGas, 1000, 40, 256, 64, 16, ItemStack.EMPTY,
+                new FluidProduct(CarbonDioxide, 490),
+                new FluidProduct(Ethylene, 20),
+                new FluidProduct(Methane, 130),
+                new FluidProduct(CarbonMonoxide, 340),
+                new FluidProduct(Hydrogen, 20));
+        addDistillationDistillingRecipe(FermentedBiomass, 1000, 75, 180, 8, 1500, ItemStack.EMPTY,
+                new FluidProduct(AceticAcid, 25),
+                new FluidProduct(Water, 375),
+                new FluidProduct(Ethanol, 150),
+                new FluidProduct(Methanol, 150),
+                new FluidProduct(Ammonia, 100),
+                new FluidProduct(CarbonDioxide, 400),
+                new FluidProduct(Methane, 600));
+        addDistillationDistillingRecipe(WoodVinegar, 1000, 40, 256,
+                new FluidProduct(AceticAcid, 100),
+                new FluidProduct(Water, 500),
+                new FluidProduct(Ethanol, 10),
+                new FluidProduct(Methanol, 300),
+                new FluidProduct(Acetone, 50),
+                new FluidProduct(MethylAcetate, 10));
+        addDistillationDistillingRecipe(WoodTar, 1000, 40, 256,
+                new FluidProduct(Creosote, 500),
+                new FluidProduct(Phenol, 75),
+                new FluidProduct(Benzene, 350),
+                new FluidProduct(Toluene, 75));
+        /*addDistillationDistillingRecipe(Acetone, 1000, 50, 640,
+                new FluidProduct(Ethenone, 500),
+                new FluidProduct(Methane, 500));*/
     }
 
     private static void init5U(){
@@ -157,42 +181,6 @@ public class DistillationTower {
                 new FluidProduct(LightFuel,800), new FluidProduct(Naphtha,400),
                 new FluidProduct(Butane,100),new FluidProduct(Propane,100),
                 new FluidProduct(Ethane,75),new FluidProduct(Methane,75));
-    }
-
-    private static void initSimple(){
-        addDistillationDistillingRecipe(WoodVinegar, 1000, 40, 256,
-                new FluidProduct(AceticAcid, 150),
-                new FluidProduct(Water, 500),
-                new FluidProduct(Ethanol, 20),
-                new FluidProduct(Methanol, 300));
-        addDistillationDistillingRecipe(WoodTar, 1000, 40, 256,
-                new FluidProduct(Creosote, 500),
-                new FluidProduct(Benzene, 425),
-                new FluidProduct(Toluene, 75));
-    }
-    private static void initComplicated(){
-        addDistillationDistillingRecipe(DilutedHydrochloricAcid, 2000, 300, 64,
-                new FluidProduct(HydrochloricAcid, 1000),
-                new FluidProduct(Water, 1000));
-        addDistillationDistillingRecipe(WoodVinegar, 1000, 40, 256,
-                new FluidProduct(AceticAcid, 100),
-                new FluidProduct(Water, 500),
-                new FluidProduct(Ethanol, 10),
-                new FluidProduct(Methanol, 300),
-                new FluidProduct(Acetone, 50),
-                new FluidProduct(MethylAcetate, 10));
-        addDistillationDistillingRecipe(WoodTar, 1000, 40, 256,
-                new FluidProduct(Creosote, 500),
-                new FluidProduct(Phenol, 75),
-                new FluidProduct(Benzene, 350),
-                new FluidProduct(Toluene, 75));
-        addDistillationDistillingRecipe(Acetone, 1000, 50, 640,
-                new FluidProduct(Ethenone, 500),
-                new FluidProduct(Methane, 500));
-        addDistillationDistillingRecipe(CalciumAcetateSolution, 4500, 100, 240, 60, 20, DUST_SMALL.get(Quicklime, 1),
-                new FluidProduct(Acetone, 2500),
-                new FluidProduct(Water, 750),
-                new FluidProduct(CarbonDioxide, 750));
     }
 
     private static void addDistillationDistillingRecipe(Material input, int amount, int ticks, int euPerTick, int distilleryPerTick, int distilleryTicks, ItemStack itemStack, FluidProduct... outputs){

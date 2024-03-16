@@ -4,11 +4,7 @@ import carbonconfiglib.config.Config;
 import carbonconfiglib.config.ConfigEntry;
 import carbonconfiglib.config.ConfigHandler;
 import carbonconfiglib.config.ConfigSection;
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.config.ModConfig;
-import org.apache.commons.lang3.tuple.Pair;
 
 public class GregTechConfig {
 
@@ -18,6 +14,7 @@ public class GregTechConfig {
     public static boolean HARDER_CIRCUITS = false;
     public static ConfigEntry.BoolValue HARDER_ALUMINIUM_PROCESSING;
     public static ConfigEntry.BoolValue GT5U_OIL;
+    public static ConfigEntry.BoolValue COMPLICATED_CHEMICAL_PROCESSING;
     public static ConfigEntry.BoolValue GT6_ORE_GEN;
     public static ConfigEntry.DoubleValue ASPHALT_MULTIPLIER;
     static ConfigHandler CONFIG;
@@ -31,6 +28,7 @@ public class GregTechConfig {
         HARDER_ALUMINIUM_PROCESSING = section.addBool("harder_aluminium_processing", true, "Enables gt6's alumina processing, if disabled alumina reverts back to just being in the blast furnace - Default: true");
         GT6_ORE_GEN = section.addBool("gt6_ore_gen", false, "Enables gt6 style veins insteadof gt5 style veins. - Default: false");
         ASPHALT_MULTIPLIER = section.addDouble("asphalt_multiplier", 1.1, "Default speed multiplier applied by concrete.");
+        COMPLICATED_CHEMICAL_PROCESSING = section.addBool("complicated_chemical_processing", false, "Enables complicated chemical recipes");
         CONFIG = AntimatterPlatformUtils.createConfig(GTIRef.ID, config);
         CONFIG.register();
     }
