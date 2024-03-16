@@ -239,6 +239,7 @@ public class Materials {
     public static Material PlatinumGroupSludge = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "platinum_group_sludge", 0x001e00, NONE));
     public static Material Polydimethylsiloxane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polydimethylsiloxane", 0xf5f5f5, NONE));
     public static Material Potash = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "potash", 0x784237, DULL));
+    public static Material PotassiumBisulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "potassium_bisulfate", 0xf0f0ff, NONE));
     public static Material PotassiumFeldspar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "potassium_feldspar", 0x782828, FINE));
     public static Material Quicklime = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "quicklime", 0xf0f0f0, DULL));
     public static Material RareEarth = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "rare_earth", 0x808064, FINE));

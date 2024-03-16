@@ -248,6 +248,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(PlatinumGroupSludge).asDust();
         event.setMaterial(PhosphorousPentoxide).asDust();
         event.setMaterial(Potash).asDust();
+        event.setMaterial(PotassiumBisulfate).asDust();
         event.setMaterial(PotassiumFeldspar).asDust();
         event.setMaterial(Powellite).asOre(1, 5, true).harvestLevel(2);
         //event.setMaterial(Pyrochlore).asDust(ORE).addComposition(of(Calcium, 2, Niobium, 2, Oxygen, 7));
@@ -694,6 +695,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Obsidian).mats(of(Magnesium, 1, Iron, 1, Silicon, 2, Oxygen, 8)).elecTicks(240);
         event.setMaterial(PhosphorousPentoxide).mats(of(Phosphor, 4, Oxygen, 10)).elecTicks(560);
         event.setMaterial(Potash).mats(of(Potassium, 2, Oxygen, 1)).elecTicks(90);
+        event.setMaterial(SodiumBisulfate).mats(of(Potassium, 1, Hydrogen, 1, Sulfur, 1, Oxygen, 4)).elecTicks(600);
         event.setMaterial(PotassiumFeldspar).mats(of(Potassium, 2, Alumina, 5, SiliconDioxide, 18, Oxygen, 1)).elecTicks(260);
         event.setMaterial(Powellite).mats(of(Calcium, 1, Molybdenum, 1, Oxygen, 4));
         //event.setMaterial(Pyrochlore).asDust(ORE).addComposition(of(Calcium, 2, Niobium, 2, Oxygen, 7));
@@ -1358,7 +1360,7 @@ public class GregTechMaterialEvents {
                 SiliconDioxide, CalciumSulfate, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/
                 Phosphate, Potash, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
                 PhosphorousPentoxide, Hematite, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
-                Salt, SodiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond,
+                Salt, SodiumBisulfate, PotassiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond,
                 NickelSulfate, Water, DistilledWater, HeavyWater, SemiheavyWater, TritiatedWater, MilkyQuartz, FerricChloride);
         ELEC60.add(CalciumChloride, SodiumHydroxide, Propene, Ethylene, Butene, Benzene, Styrene, Ethane, Ammonia, SodiumSulfide, Methane,
                 Magnesite, HydrofluoricAcid, HydrogenFluoride, Sphalerite, /*NitroCarbon,*/ SodaAsh, Calcite, Saltpeter, Monazite,
