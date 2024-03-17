@@ -493,8 +493,6 @@ public class Materials {
     public static Material HydrogenFluoride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydrogen_fluoride", 0x00f0f0, NONE));
     public static Material HydrogenPeroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hydrogen_peroxide", 0xf8efb4, NONE));
     public static Material HypochlorousAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "hypochlorous_acid", 0x6f8a91, NONE));
-    public static Material IndiumConcentrate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "indium_concentrate", 0xffffff, NONE));
-    public static Material LeadZincSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lead_zinc_solution", 0xffffff, NONE));
     public static Material LiquidAir = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "liquid_air", 0xa9d0f5, NONE));
     public static Material Lubricant = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lubricant", 0xffc400, NONE));
     public static Material NickelSulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nickel_sulfate", 0xffffff, NONE));

@@ -483,9 +483,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(HydrogenFluoride).asGas().flags(ACID).fluidDensity(-111);
         event.setMaterial(HydrogenPeroxide).asFluid();
         event.setMaterial(HypochlorousAcid).asFluid().flags(ACID);
-        event.setMaterial(IndiumConcentrate).asFluid();
 
-        event.setMaterial(LeadZincSolution).asFluid();
         event.setMaterial(LiquidAir).asFluid(0, 79);
         event.setMaterial(Lubricant).asFluid();
         event.setMaterial(NickelSulfate).asFluid();
@@ -868,7 +866,6 @@ public class GregTechMaterialEvents {
         /**
          *  Inorganic
          **/
-        event.setMaterial(LeadZincSolution).mats(of(Water, 2, Lead, 1, Silver, 1, Zinc, 1, Sulfur, 3)).elecTicks(300);//TODO 192 eu/tick
         event.setMaterial(BlueVitriol).mats(of(Copper,1,Sulfur,1,Oxygen,4));
         event.setMaterial(GreenVitriol).mats(of(Iron,1,Sulfur,1,Oxygen,4));
         event.setMaterial(RedVitriol).mats(of(Cobalt,1,Sulfur,1,Oxygen,4));
@@ -1234,7 +1231,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Silicon).addByProduct(SiliconDioxide);
         event.setMaterial(Silver).addByProduct(Lead, Sulfur);
         event.setMaterial(Spessartine).addByProduct(RedGarnet, Manganese);
-        event.setMaterial(Sphalerite).addByProduct(YellowGarnet, Cadmium, Gallium, Zinc);
+        event.setMaterial(Sphalerite).addByProduct(YellowGarnet, Cadmium, Indium, Zinc);
         event.setMaterial(Spodumene).addByProduct(Alumina, Lithium);
         event.setMaterial(Steel).addByProduct(Iron);
         event.setMaterial(Stibnite).addByProduct(Antimony);
@@ -1362,8 +1359,7 @@ public class GregTechMaterialEvents {
                 Chlorobenzene, SulfuricAcid, Pyrope, SodiumPersulfate, Chloroform, Grossular, Spessartine, Almandine, Uvarovite, Andradite,
                 Emerald, Galena, Zircon);
         ELEC120.add(Clay, /*Trona,*/ BlueTopaz, Topaz, /*Pollucite,*/ CarbonDioxide, SulfurDioxide, Epichlorohydrin, Lepidolite, /*FullersEarth, Alunite,*/ Glauconite,
-                /*Mica,*/ Lazurite, Tanzanite, Biotite, StainlessSteel, Bentonite, Ultimet, CalciumAcetateSolution, Dimethyldichlorosilane, /*Vermiculate, Zeolite,*/ GlycerylTrinitrate,
-                LeadZincSolution);
+                /*Mica,*/ Lazurite, Tanzanite, Biotite, StainlessSteel, Bentonite, Ultimet, CalciumAcetateSolution, Dimethyldichlorosilane, /*Vermiculate, Zeolite,*/ GlycerylTrinitrate);
         ELEC.add(ELEC30.all().toArray(new Material[0]));
         ELEC.add(ELEC60.all().toArray(new Material[0]));
         ELEC.add(ELEC90.all().toArray(new Material[0]));

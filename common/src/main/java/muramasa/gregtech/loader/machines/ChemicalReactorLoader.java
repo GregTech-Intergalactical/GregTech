@@ -84,12 +84,8 @@ public class ChemicalReactorLoader {
         //PROPENE
         CHEMICAL_REACTOR.RB().ii(INT_CIRCUITS.get(3).setNoConsume()).fi(Ethylene.getGas(25)).fo(Propene.getGas(25)).add("ethylene_to_propene",18,120, 1);
         CHEMICAL_REACTOR.RB().ii(INT_CIRCUITS.get(8).setNoConsume()).fi(Propane.getGas(5500)).fo(Propene.getGas(4500), Hydrogen.getGas(500)).add("propane_to_propene",320,120, 1);
-        //INDIUM CONCENTRATE
-        CHEMICAL_REACTOR.RB().ii(of(CRUSHED_PURIFIED.getMaterialTag(Galena), 3), of(CRUSHED_PURIFIED.getMaterialTag(Sphalerite), 1)).fi(SulfuricAcid.getLiquid(4000)).fo(IndiumConcentrate.getLiquid(8000)).add("indiumconcentrate",60,150, 1);
         //HYDROGEN
         CHEMICAL_REACTOR.RB().ii(INT_CIRCUITS.get(12).setNoConsume()).fi(Methane.getGas(5000), Water.getLiquid(6000)).fo(Hydrogen.getGas(8000)).add("hydrogen",40,240, 1);
-        //TINY PILE OF INDIUM DUST
-        CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Aluminium), 4)).fi(IndiumConcentrate.getLiquid(8000)).fo(LeadZincSolution.getLiquid(8000)).io(DUST_TINY.get(Indium, 1)).add("tiny_pile_of_indium_dust",50,600, 1);
         //ETHYL TERT-BUTYL ETHER
         CHEMICAL_REACTOR.RB().fi(Ethanol.getLiquid(1000), Butene.getGas(1000)).fo(EthylTertButylEther.getLiquid(2000)).add("ethyltertbutylether",400, 480, 1);
     }
