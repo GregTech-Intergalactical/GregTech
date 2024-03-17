@@ -136,7 +136,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().ii(of(GEM.getMaterialTag(Charcoal), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide_2",40, 8);
         CHEMICAL_REACTOR.RB().ii(of(GEM.getMaterialTag(Coal), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide_3",40, 8);
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Coal), 1), INT_CIRCUITS.get(2).setNoConsume()).fi(Oxygen.getGas(2000)).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide_4",40, 8);
-        CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Calcite), 5), INT_CIRCUITS.get(1).setNoConsume()).fo(CarbonDioxide.getGas(3000)).io(DUST.get(Quicklime, 2)).add("carbon_dioxide_5",240, 30);
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Magnesite), 5), INT_CIRCUITS.get(1).setNoConsume()).fo(CarbonDioxide.getGas(3000)).io(DUST.get(Magnesia, 2)).add("carbon_dioxide_6",240, 30);
         CHEMICAL_REACTOR.RB().fi(Water.getLiquid(3000), Methane.getGas(2000)).fo(CarbonDioxide.getGas(1500), Hydrogen.getGas(4000)).add("carbon_dioxide_7",20, 240);
         //GLYCERYL TRINITRATE

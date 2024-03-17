@@ -5,6 +5,7 @@ import muramasa.gregtech.data.RecipeMaps;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
+import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 
 public class RoastingLoader {
@@ -19,6 +20,7 @@ public class RoastingLoader {
         RecipeMaps.ROASTER.RB().fi(Oxygen.getGas(4000)).ii(DUST.getMaterialIngredient(Sphalerite, 1)).io(DUST_SMALL.get(Zinc, 2)).fo(SulfurDioxide.getGas(1000)).add("sphalerite", 512, 5, 0, 3);
         RecipeMaps.ROASTER.RB().fi(Oxygen.getGas(3000)).ii(DUST.getMaterialIngredient(Cobaltite, 1)).io(DUST_SMALL.get(Cobalt), DUST_SMALL.get(Arsenic)).fo(SulfurDioxide.getGas(1000)).add("cobaltite", 512, 5, 0, 3);
         RecipeMaps.ROASTER.RB().fi(Oxygen.getGas(8000)).ii(DUST.getMaterialIngredient(Sulfur, 1)).io(DUST_TINY.get(Sulfur)).fo(SulfurDioxide.getGas(3000)).add("sulfur", 512, 5, 0, 3);
+        RecipeMaps.ROASTER.RB().ii(of(DUST.getMaterialTag(Calcite), 5)).fo(CarbonDioxide.getGas(3000)).io(DUST.get(Quicklime, 2)).add("quicklime",240, 30);
 
 
 
