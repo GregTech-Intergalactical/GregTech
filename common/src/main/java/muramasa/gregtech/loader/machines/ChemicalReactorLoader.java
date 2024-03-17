@@ -74,8 +74,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().ii(INT_CIRCUITS.get(5).setNoConsume()).fi(Butane.getGas(3500)).fo(Hydrogen.getGas(500), Butene.getGas(3000)).add("butane_to_butene_1",160,120, 1);
         //POLYDIMETHYLSILOXANE pulp
         CHEMICAL_REACTOR.RB().fi(Methane.getGas(2000), Chlorine.getGas(1000)).io(DUST.get(Polydimethylsiloxane, 3)).add("polydimethylsiloxane_pulp",240,120, 1);
-        //DILUTED SULFURIC ACID
-        CHEMICAL_REACTOR.RB().ii(INT_CIRCUITS.get(1).setNoConsume()).fi(Ethanol.getLiquid(3000), SulfuricAcid.getLiquid(2000)).fo(DilutedSulfuricAcid.getLiquid(3000)).add("diluted_sulfuric_acid",400,120, 1);
         //PROPENE
         CHEMICAL_REACTOR.RB().ii(INT_CIRCUITS.get(3).setNoConsume()).fi(Ethylene.getGas(25)).fo(Propene.getGas(25)).add("ethylene_to_propene",18,120, 1);
         CHEMICAL_REACTOR.RB().ii(INT_CIRCUITS.get(8).setNoConsume()).fi(Propane.getGas(5500)).fo(Propene.getGas(4500), Hydrogen.getGas(500)).add("propane_to_propene",320,120, 1);
