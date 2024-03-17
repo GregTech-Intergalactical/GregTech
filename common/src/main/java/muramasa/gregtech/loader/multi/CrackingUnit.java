@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.multi;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_TINY;
+import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_REACTOR;
 import static muramasa.gregtech.data.RecipeMaps.CRACKING;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
@@ -22,5 +23,11 @@ public class CrackingUnit {
         CRACKING.RB().fi(Hydrogen.getGas(1000), Ethane.getGas(1000)).fo(HydroCrackedEthane.getGas(2000)).add("ethane_hydrogen", 20, 120);
         CRACKING.RB().fi(Steam.getGas(1000), Ethane.getGas(1000)).fo(SteamCrackedEthane.getGas(2000)).add("ethane_steam", 20, 120);
         CRACKING.RB().fi(Steam.getGas(100), Tar.getLiquid(100)).io(DUST.get(Sulfur), DUST_TINY.get(PetroleumCoke), DUST.get(Bitumen)).chances(1, 0.8, 0.3).add("tar", 20, 120);
+
+        //moved from chemical reactor
+        //CRACKING.RB().fi(Butene.getGas(1000)).ii(INT_CIRCUITS.get(12).setNoConsume()).fo(Ethylene.getGas(1000)).add("ethylene",720, 120);
+        //CRACKING.RB().fi(Propene.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Ethylene.getGas(1000)).add("ethylene_1",720, 120);
+        //CRACKING.RB().fi(Ethane.getGas(4000)).ii(INT_CIRCUITS.get(8).setNoConsume()).fo(Ethylene.getGas(3000), Hydrogen.getGas(1000)).add("ethylene_4",320, 120);
+
     }
 }
