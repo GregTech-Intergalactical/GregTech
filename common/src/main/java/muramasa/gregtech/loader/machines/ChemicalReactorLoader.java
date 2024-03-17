@@ -68,9 +68,9 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Quicklime),2)).fi(CarbonDioxide.getGas(3000)).io(DUST.get(Calcite,5)).add("calcite_1",80, 30, 1);
         //SODIUM PERSULFATE
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Sodium),1), of(DUST.get(Sulfur, 1))).fi(Oxygen.getGas(4000)).fo(SodiumPersulfate.getLiquid(6000)).add("sodium_persulfate",8000, 30, 1);
-        //CETANE-BOOSTED DIESEL
-        CHEMICAL_REACTOR.RB().fi(Diesel.getLiquid(1000),NitricAcid.getLiquid(125)).fo(NitroDiesel.getLiquid(500)).add("nitro_diesel",40,8, 1);
-        CHEMICAL_REACTOR.RB().fi(BioDiesel.getLiquid(1000),NitricAcid.getLiquid(250)).fo(NitroDiesel.getLiquid(750)).add("nitro_diesel_1",80,8, 1);
+        //NITRO DIESEL
+        CHEMICAL_REACTOR.RB().fi(Diesel.getLiquid(4000),NitricAcid.getLiquid(1000)).fo(NitroDiesel.getLiquid(4000)).add("nitro_diesel",40,8, 1);
+        CHEMICAL_REACTOR.RB().fi(Diesel.getLiquid(4000),GlycerylTrinitrate.getLiquid(1000)).fo(NitroDiesel.getLiquid(5000)).add("nitro_diesel_1",80,8, 1);
         //CHEMICAL_REACTOR.RB().fi(LightFuel.getLiquid(1000),NitricAcid.getLiquid(250)).fo(NitroDiesel.getLiquid(1000)).add("nitro_diesel_2",80,8, 1);
         //CHEMICAL_REACTOR.RB().fi(LightFuel.getLiquid(1000),GlycerylTrinitrate.getLiquid(250)).fo(NitroDiesel.getLiquid(1250)).add("nitro_diesel_3",250,30, 1);
         //TNT
