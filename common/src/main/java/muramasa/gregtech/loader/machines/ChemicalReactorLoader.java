@@ -138,13 +138,12 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(RawStyreneButadieneRubber), 9), of(DUST.get(Sulfur), 1)).fo(StyreneButadieneRubber.getLiquid(L * 9)).add("styrenebutadiene_rubber",600,30);
         //ISOPROPENE
         CHEMICAL_REACTOR.RB().fi(Propene.getGas(3000),Ethylene.getGas(2000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Isoprene.getLiquid(5000)).add("isopropene",120, 30);
-        //HYDROGEN SULFIDE
-        CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Sulfur),1)).fi(Hydrogen.getGas(2000)).fo(HydrogenSulfide.getGas(3000)).add("hydrogen_sulfide",60, 8);
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), NaturalGas.getGas(2000)).fo(HydrogenSulfide.getGas(125), RefineryGas.getGas(2000)).add("hydrogen_sulfide_2",20, 30);
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), SulfuricHeavyFuel.getLiquid(1000)).fo(HydrogenSulfide.getGas(125), HeavyFuel.getLiquid(1000)).add("hydrogen_sulfide_3",20, 30);
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), SulfuricGas.getGas(1000)).fo(HydrogenSulfide.getGas(125), RefineryGas.getGas(1000)).add("hydrogen_sulfide_4",20, 30);
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricLightFuel.getLiquid(3000)).fo(HydrogenSulfide.getGas(250), LightFuel.getLiquid(3000)).add("hydrogen_sulfide_5",40, 30);
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricNaphtha.getLiquid(3000)).fo(HydrogenSulfide.getGas(250), Naphtha.getLiquid(3000)).add("hydrogen_sulfide_6",40, 30);
+        //DESULFURIZATION
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), NaturalGas.getGas(2000)).fo(RefineryGas.getGas(2000), HydrogenSulfide.getGas(125)).add("refinery_gas",20, 30);
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), SulfuricHeavyFuel.getLiquid(1000)).fo(HeavyFuel.getLiquid(1000), HydrogenSulfide.getGas(125)).add("heavy_fuel",20, 30);
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), SulfuricGas.getGas(1000)).fo(RefineryGas.getGas(1000), HydrogenSulfide.getGas(125)).add("refinery_gas_1",20, 30);
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricLightFuel.getLiquid(3000)).fo(LightFuel.getLiquid(3000), HydrogenSulfide.getGas(250)).add("light_fuel",40, 30);
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricNaphtha.getLiquid(3000)).fo(Naphtha.getLiquid(3000), HydrogenSulfide.getGas(250)).add("naphtha",40, 30);
         //AMMONIA
         CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(3000),Nitrogen.getGas(1000)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Ammonia.getGas(1000)).add("ammonia",320, 384);
         //ETHYLENE
