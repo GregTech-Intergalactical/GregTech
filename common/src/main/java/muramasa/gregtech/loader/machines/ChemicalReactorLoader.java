@@ -254,81 +254,12 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(in.getLiquid(144), Oxygen.getGas(1000)).fo(out.getLiquid(216)).add(in.getId() + "_polymer_to_" + out.getId(), 160, 30);
     }
     private static void nuclearProcessing() {
-
         CHEMICAL_REACTOR.RB().ii(DUST.getMaterialIngredient(Uraninite, 1)).fi(HydrogenFluoride.getGas(8000)).io(DUST.get(UraniumTetrafluoride, 5)).fo(Water.getLiquid(6000)).add("uranium_tetrafluoride", 186, 16);
         CHEMICAL_REACTOR.RB().ii(DUST.getMaterialIngredient(UraniumTetrafluoride, 1)).fi(Fluorine.getGas(400)).fo(UraniumHexafluoride.getGas(1400)).add("uranium_hexafluoride", 22, 16);
         CHEMICAL_REACTOR.RB().fi(Uranium238Hexafluoride.getGas(1400), Hydrogen.getGas(400)).io(DUST.get(Uranium238Tetrafluoride)).fo(HydrogenFluoride.getGas(800)).add("uranium_238_tetrafluoride", 28, 16);
         CHEMICAL_REACTOR.RB().fi(Uranium235Hexafluoride.getGas(1400), Hydrogen.getGas(400)).io(DUST.get(Uranium235Tetrafluoride)).fo(HydrogenFluoride.getGas(800)).add("uranium_235_tetrafluoride", 28, 16);
         CHEMICAL_REACTOR.RB().ii(DUST.getMaterialIngredient(Uranium235Tetrafluoride, 5), DUST.getMaterialIngredient(Calcium, 2)).io(DUST.get(Uranium235, 1), DUST.get(Fluorite, 6)).add("uranium_235_tetrafluoride_to_uranium_235", 108, 16);
         CHEMICAL_REACTOR.RB().ii(DUST.getMaterialIngredient(Uranium238Tetrafluoride, 5), DUST.getMaterialIngredient(Calcium, 2)).io(DUST.get(Uranium, 1), DUST.get(Fluorite, 6)).add("uranium_238_tetrafluoride_to_uranium_238", 108, 16);
-
     }
-
-/*
-    private static void alkaloidsToAlkanols(){
-        alkaneToAlkanol(Methane,Methanol,1,1);
-        alkaneToAlkanol(Ethane,Ethanol,1,1,INT_CIRCUITS.get(1).setNoConsume());
-        alkaneToAlkanol(Ethane,Ethanediol,1,2,INT_CIRCUITS.get(2).setNoConsume());
-        alkaneToAlkanol(Propane,Propanol,1,1,INT_CIRCUITS.get(1).setNoConsume());
-        alkaneToAlkanol(Propane,Propanediol,1,2,INT_CIRCUITS.get(2).setNoConsume());
-        alkaneToAlkanol(Propene,Propenol,1,1);
-        alkaneToAlkanol(Butane,Butanol,1,1,INT_CIRCUITS.get(1).setNoConsume());
-        alkaneToAlkanol(Butane,Butanediol,1,2,INT_CIRCUITS.get(2).setNoConsume());
-        alkaneToAlkanol(Butene,Butenol,1,1);
-    }
-*/
-    /*
-    private static void alkanolsToAlkenes(){
-        alkanolToAlkene(Ethanol,Ethylene,1,1);
-        alkanolToAlkene(Propanol,Propene,1,1);
-        alkanolToAlkene(Butane,Butene,1,1);
-        alkanolToAlkene(Butanediol,Butadiene,1,2);
-    }
-*/
-    /*
-    private static void alkaneToAlkanol(Material alkane, Material alkanol, int mol_alk, int mol_ox, RecipeIngredient... circuit){
-        FluidStack fi = alkane.has(LIQUID) ? alkane.getLiquid(mol_alk * 1000) : alkane.has(GAS) ? alkane.getGas(mol_alk * 1000) : FluidStack.EMPTY;
-        FluidStack fo = alkanol.has(LIQUID) ? alkanol.getLiquid(mol_alk * 1000) : alkanol.has(GAS) ? alkanol.getGas(mol_alk * 1000) : FluidStack.EMPTY;
-        if (fi.isEmpty() || fo.isEmpty()) return;
-        RecipeBuilder rb = CHEMICAL_REACTING.RB();
-        if (circuit != null){
-            rb.ii(circuit);
-        }
-        rb.fi(fi,Oxygen.getGas(mol_ox*1000)).fo(fo).add(alkane.getId() + "_to_" + alkanol.getId(),200,50);
-    }
-*/
-    /*
-    private static void alkanolToAlkene(Material alkanol, Material alkene, int mol_alk, int mol_sulf){
-        FluidStack fi = alkanol.has(LIQUID) ? alkanol.getLiquid(mol_alk * 1000) : alkanol.has(GAS) ? alkanol.getGas(mol_alk * 1000) : FluidStack.EMPTY;
-        FluidStack fo = alkene.has(LIQUID) ? alkene.getLiquid(mol_alk * 1000) : alkene.has(GAS) ? alkene.getGas(mol_alk * 1000) : FluidStack.EMPTY;
-        if (fi.isEmpty() || fo.isEmpty()) return;
-        CHEMICAL_REACTING.RB().fi(fi,SulfuricAcid.getLiquid(mol_sulf*1000)).fo(fo,DilutedSulfuricAcid.getLiquid(mol_sulf*1000)).add(alkanol.getId() + "_to_" + alkene.getId(),200,50);
-    }
-*/
-    /*
-    private static void plasticPolymerization(Material monomer, Material polymer, int volt, int dur) {
-        FluidStack fi = monomer.has(LIQUID) ? monomer.getLiquid(2000) : monomer.has(GAS) ? monomer.getGas(2000) : FluidStack.EMPTY;
-        FluidStack fo = polymer.has(LIQUID) ? polymer.getLiquid(1000) : polymer.has(GAS) ? polymer.getGas(1000) : FluidStack.EMPTY;
-        if (fi.isEmpty()) return;
-        RecipeBuilder rb = CHEMICAL_REACTING.RB().ii(of(DUST.get(DibenzoylPeroxide,1))).fi(fi).io(DUST.get(Dibenzene,1)).fo(CarbonDioxide.getGas(2000));
-        if (fo.isEmpty()){
-            if (!polymer.has(DUST)) return;
-            rb.io(DUST.get(polymer, 1));
-        } else {
-            rb.fo(fo);
-        }
-        rb.add(monomer.getId() +"_to_" + polymer.getId(),dur,volt);
-   }
-   */
-/*
- private static void addChemicalRecipesComplicated() {
-     CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000)).ii(of(DUST.get(Carbon, 1)), INT_CIRCUITS.get(2).setNoConsume()).fo(CarbonDioxide.getGas(3000)).add("carbon_dioxide",40, 8);
-     CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000)).ii(of(DUST.get(Charcoal, 1)), INT_CIRCUITS.get(2).setNoConsume()).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide_1",40, 8);
-     CHEMICAL_REACTING.RB().fi(Oxygen.getGas(2000)).ii(of(DUST.get(Coal, 1)), INT_CIRCUITS.get(2).setNoConsume()).fo(CarbonDioxide.getGas(3000)).io(DUST_TINY.get(Ash, 1)).add("carbon_dioxide_2",40, 8);
-
-
-
- }
-*/
 }
 
