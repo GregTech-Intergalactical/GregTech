@@ -79,8 +79,6 @@ public class ChemicalReactorLoader {
         //PROPENE
         CHEMICAL_REACTOR.RB().ii(INT_CIRCUITS.get(3).setNoConsume()).fi(Ethylene.getGas(25)).fo(Propene.getGas(25)).add("ethylene_to_propene",18,120, 1);
         CHEMICAL_REACTOR.RB().ii(INT_CIRCUITS.get(8).setNoConsume()).fi(Propane.getGas(5500)).fo(Propene.getGas(4500), Hydrogen.getGas(500)).add("propane_to_propene",320,120, 1);
-        //HYDROGEN
-        CHEMICAL_REACTOR.RB().ii(INT_CIRCUITS.get(12).setNoConsume()).fi(Methane.getGas(5000), Water.getLiquid(6000)).fo(Hydrogen.getGas(8000)).add("hydrogen",40,240, 1);
         //ETHYL TERT-BUTYL ETHER
         CHEMICAL_REACTOR.RB().fi(Ethanol.getLiquid(1000), Butene.getGas(1000)).fo(EthylTertButylEther.getLiquid(2000)).add("ethyltertbutylether",400, 480, 1);
     }
