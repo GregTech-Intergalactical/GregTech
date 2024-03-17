@@ -131,12 +131,12 @@ public class MaceratorLoader {
         });
         BEARING_ROCK.all().forEach(r -> {
             if (r.has(DUST)){
-                MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.BEARING_ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(MACERATE_INTO.get(r),1)).add("dust_small_" + r.getId(),20,2);
+                MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.BEARING_ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(MACERATE_INTO.get(r),1)).add("dust_small_" + r.getId() + "_from_bearing_rock",20,2);
             }
         });
         ROCK.all().forEach(r -> {
             if (r.has(DUST)){
-                MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(MACERATE_INTO.get(r),1)).add("dust_small_" + r.getId(),20,2);
+                MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(MACERATE_INTO.get(r),1)).add("dust_small_" + r.getId() + "_from_rock",20,2);
             }
         });
         AntimatterAPI.all(StoneType.class, s -> {
