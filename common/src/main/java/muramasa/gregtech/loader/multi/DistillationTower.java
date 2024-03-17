@@ -144,42 +144,6 @@ public class DistillationTower {
                 new FluidProduct(Methane, 500));*/
     }
 
-    private static void init5U(){
-        addDistillationDistillingRecipe(OilLight, 150, 20, 96,
-                new FluidProduct(SulfuricHeavyFuel,10),
-                new FluidProduct(SulfuricLightFuel,20),
-                new FluidProduct(SulfuricNaphtha,30),
-                new FluidProduct(SulfuricGas,240));
-        addDistillationDistillingRecipe(Oil, 100, 20, 96,
-                new FluidProduct(SulfuricHeavyFuel,15),
-                new FluidProduct(SulfuricLightFuel,50),
-                new FluidProduct(SulfuricNaphtha,20),
-                new FluidProduct(SulfuricGas,60));
-        addDistillationDistillingRecipe(OilHeavy, 100, 20, 96,
-                new FluidProduct(SulfuricHeavyFuel,250),
-                new FluidProduct(SulfuricLightFuel,45),
-                new FluidProduct(SulfuricNaphtha,15),
-                new FluidProduct(SulfuricGas,60));
-        addDistillationRecipe(SteamCrackedLightFuel, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
-                new FluidProduct(LightFuel,100), new FluidProduct(Naphtha,100),
-                new FluidProduct(Toluene,100),new FluidProduct(Benzene,200),
-                new FluidProduct(Butadiene,200),new FluidProduct(Propene,300),
-                new FluidProduct(Ethylene,300), new FluidProduct(Methane,300));
-        addDistillationRecipe(SteamCrackedHeavyFuel, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
-                new FluidProduct(HeavyFuel,100), new FluidProduct(Naphtha,100),
-                new FluidProduct(Toluene,150),new FluidProduct(Benzene,300),
-                new FluidProduct(Butadiene,300),new FluidProduct(Propene,450),
-                new FluidProduct(Ethylene,450), new FluidProduct(Methane,450));
-        addDistillationRecipe(HydroCrackedLightFuel, 1000, 120, 120,
-                new FluidProduct(Naphtha,800), new FluidProduct(Butane,400),
-                new FluidProduct(Propane,400),new FluidProduct(Ethane,200),
-                new FluidProduct(Methane, 200));
-        addDistillationRecipe(HydroCrackedHeavyFuel, 1000, 120, 120,
-                new FluidProduct(LightFuel,800), new FluidProduct(Naphtha,400),
-                new FluidProduct(Butane,100),new FluidProduct(Propane,100),
-                new FluidProduct(Ethane,75),new FluidProduct(Methane,75));
-    }
-
     private static void addDistillationDistillingRecipe(Material input, int amount, int ticks, int euPerTick, int distilleryPerTick, int distilleryTicks, ItemStack itemStack, FluidProduct... outputs){
         addDistillationRecipe(input, amount, ticks, euPerTick, itemStack, outputs);
         for (int i = 0; i < outputs.length; i++){

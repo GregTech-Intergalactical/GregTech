@@ -105,9 +105,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(Propene.getGas(3000),Ethylene.getGas(2000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Isoprene.getLiquid(5000)).add("isopropene",120, 30);
         //DESULFURIZATION
         CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), NaturalGas.getGas(2000)).fo(RefineryGas.getGas(2000), HydrogenSulfide.getGas(125)).add("refinery_gas",20, 30);
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), SulfuricHeavyFuel.getLiquid(1000)).fo(HeavyFuel.getLiquid(1000), HydrogenSulfide.getGas(125)).add("heavy_fuel",20, 30);
         CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), SulfuricGas.getGas(1000)).fo(RefineryGas.getGas(1000), HydrogenSulfide.getGas(125)).add("refinery_gas_1",20, 30);
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricLightFuel.getLiquid(3000)).fo(LightFuel.getLiquid(3000), HydrogenSulfide.getGas(250)).add("light_fuel",40, 30);
         CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricNaphtha.getLiquid(3000)).fo(Naphtha.getLiquid(3000), HydrogenSulfide.getGas(250)).add("naphtha",40, 30);
         //AMMONIA
         CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(3000),Nitrogen.getGas(1000)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Ammonia.getGas(1000)).add("ammonia",320, 384);

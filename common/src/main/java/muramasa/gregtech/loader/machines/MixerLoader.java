@@ -121,7 +121,6 @@ public class MixerLoader {
             MIXER.RB().fi(PolyvinylAcetate.getLiquid(1000),MethylAcetate.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue_1",25 * 2, 8);
         }
         MIXER.RB().ii(DUST.getMaterialIngredient(Apatite, 1), DUST.getMaterialIngredient(Ash, 1)).io(new ItemStack(GTCoreItems.Fertilizer, 2)).add("fertilizer", 200, 16);
-        MIXER.RB().fi(LightFuel.getLiquid(5000),HeavyFuel.getLiquid(1000)).fo(Diesel.getLiquid(6000)).add("diesel",8 * 2, 120);
         MIXER.RB().ii(of(DUST.get(Wood,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid",60*20, 2);
         MIXER.RB().ii(of(DUST.get(AntimatterMaterials.Sugar,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid_1",60*20, 2);
         MIXER.RB().ii(of(DUST.get(Salt,2))).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(SaltWater.getLiquid(1000)).add("salt_water",2*20, 8);
@@ -152,9 +151,6 @@ public class MixerLoader {
         MIXER.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Lithium, 1)).fi(Creosote.getLiquid(1000)).io(new ItemStack(GregTechItems.SuperFuelBinder, 8)).add("super_fuel_binder_6", 80 * 20, 16);
         MIXER.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Sodium, 1)).fi(Creosote.getLiquid(1000)).io(new ItemStack(GregTechItems.SuperFuelBinder, 8)).add("super_fuel_binder_7", 80 * 20, 16);
         MIXER.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Caesium, 1)).fi(Creosote.getLiquid(1000)).io(new ItemStack(GregTechItems.SuperFuelBinder, 12)).add("super_fuel_binder_8", 80 * 20, 16);
-        MIXER.RB().ii(BLOCK.getMaterialIngredient(Lignite, 1), of(GregTechItems.SuperFuelBinder, 6)).fi(HeavyFuel.getLiquid(1500)).io(GregTechBlocks.SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_lignite", 120, 96);
-        MIXER.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(GregTechItems.SuperFuelBinder, 4)).fi(HeavyFuel.getLiquid(1200)).io(GregTechBlocks.SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal", 120, 96);
-        MIXER.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(GregTechItems.SuperFuelBinder, 2)).fi(HeavyFuel.getLiquid(750)).io(GregTechBlocks.SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal", 120, 96);
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Lignite, 1), of(GregTechItems.SuperFuelBinder, 6)).fi(LPG.getLiquid(1500)).io(GregTechBlocks.SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_lignite_lpg", 120, 96);
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(GregTechItems.SuperFuelBinder, 4)).fi(LPG.getLiquid(1200)).io(GregTechBlocks.SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal_lpg", 120, 96);
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(GregTechItems.SuperFuelBinder, 2)).fi(LPG.getLiquid(750)).io(GregTechBlocks.SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal_lpg", 120, 96);

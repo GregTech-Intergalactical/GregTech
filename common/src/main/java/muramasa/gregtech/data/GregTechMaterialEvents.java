@@ -555,8 +555,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(BioDiesel).asFluid(192);
         event.setMaterial(Diesel).asFluid(128);
         event.setMaterial(FishOil).asFluid(2).flags(SEMIFUELS);
-        event.setMaterial(HeavyFuel).asFluid(48);
-        event.setMaterial(LightFuel).asFluid(48);
         event.setMaterial(NitroDiesel).asFluid(512);
         event.setMaterial(FuelOil).asFluid(448);
         event.setMaterial(Gasoline).asFluid(384);
@@ -945,25 +943,16 @@ public class GregTechMaterialEvents {
         event.setMaterial(SulfurDioxide).mats(of(Sulfur, 1, Oxygen, 2));
         event.setMaterial(SulfurTrioxide).mats(of(Sulfur, 1, Oxygen, 3));
         /**
-         ** Fuels
-         **/
-        event.setMaterial(SulfuricLightFuel).mats(of(LightFuel,1,HydrogenSulfide,1));
-        event.setMaterial(SulfuricHeavyFuel).mats(of(HeavyFuel,1,HydrogenSulfide,1));
-        /**
          ** Cracked Stuff
          */
         event.setMaterial(SteamCrackedEthane).mats(of(Ethane,1,Steam,1));
         event.setMaterial(SteamCrackedPropane).mats(of(Propane,1,Steam,1));
         event.setMaterial(SteamCrackedButane).mats(of(Butane,1,Steam,1));
-        event.setMaterial(SteamCrackedLightFuel).mats(of(LightFuel,1,Steam,1));
-        event.setMaterial(SteamCrackedHeavyFuel).mats(of(HeavyFuel,1,Steam,1));
         event.setMaterial(SteamCrackedNaphtha).mats(of(Naphtha,1,Steam,1));
         event.setMaterial(SteamCrackedRefineryGas).mats(of(RefineryGas,1,Steam,1));
         event.setMaterial(HydroCrackedEthane).mats(of(Ethane,1,Hydrogen,1));
         event.setMaterial(HydroCrackedPropane).mats(of(Propane,1,Hydrogen,1));
         event.setMaterial(HydroCrackedButane).mats(of(Butane,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedLightFuel).mats(of(LightFuel,1,Hydrogen,2));
-        event.setMaterial(HydroCrackedHeavyFuel).mats(of(HeavyFuel,1,Hydrogen,2));
         event.setMaterial(HydroCrackedNaphtha).mats(of(Naphtha,1,Hydrogen,2));
         event.setMaterial(HydroCrackedRefineryGas).mats(of(RefineryGas,1,Hydrogen,2));
     }
@@ -1337,7 +1326,7 @@ public class GregTechMaterialEvents {
         RADIOACTIVE.add(Americium241, 4);
         RADIOACTIVE.add(EnrichedNaquadah, 4);
         RADIOACTIVE.add(Naquadria, 5);
-        CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene, LightFuel, HeavyFuel);
+        CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene);
         CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Dilithium, Monazite, Coal, CoalCoke, Charcoal, Lignite, LigniteCoke, PetroleumCoke);
         ELEC30.add(Charcoal, Opal, Coal, Lignite, SteelMagnetic, IronMagnetic, Quicklime, Quartzite,
                 SiliconDioxide, CalciumSulfate, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/

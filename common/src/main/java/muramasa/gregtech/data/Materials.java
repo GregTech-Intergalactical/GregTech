@@ -516,10 +516,8 @@ public class Materials {
     public static Material Creosote = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "creosote", 0x804000, NONE));
     public static Material Diesel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "diesel", 0xffff00, NONE));
     public static Material FishOil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fish_oil", 0xffc400, NONE));
-    public static Material HeavyFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heavy_fuel", 0xffff00, NONE));
     public static Material NitroDiesel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitro_diesel", 0xc8ff00, NONE));
     public static Material Kerosene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "kerosene", 0x0000FF, NONE));
-    public static Material LightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_fuel", 0xffff00, NONE));
     public static Material FuelOil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fuel", 0xffff00, NONE)).setDisplayNameString("Fuel Oil");
     public static Material Gasoline = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "gasoline", 0xFFA500, NONE));
     public static Material Oil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "oil", 0x0a0a0a, NONE));
