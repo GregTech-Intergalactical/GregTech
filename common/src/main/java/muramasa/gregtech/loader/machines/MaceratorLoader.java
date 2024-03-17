@@ -141,9 +141,9 @@ public class MaceratorLoader {
         });
         AntimatterAPI.all(StoneType.class, s -> {
             if (s.getMaterial() == NULL || !s.getMaterial().has(DUST) || s.isSandLike() || s.getState().getBlock() instanceof BlockOreStone) return;
-            MACERATOR.RB().ii(RecipeIngredient.of(s.getState().getBlock().asItem(), 1)).io(DUST.get(s.getMaterial(), 1)).add(s.getId() + "_stone_to_" + s.getMaterial().getId() + "_dust",400, 2);
+            MACERATOR.RB().ii(RecipeIngredient.of(s.getState().getBlock().asItem(), 1)).io(DUST.get(s.getMaterial(), 9)).add(s.getId() + "_stone_to_" + s.getMaterial().getId() + "_dust",400, 2);
             if (s instanceof CobbleStoneType){
-                MACERATOR.RB().ii(RecipeIngredient.of(((CobbleStoneType)s).getBlock("cobble").asItem(), 1)).io(DUST.get(s.getMaterial(), 1)).add("cobbled_" + s.getId() + "_to_" + s.getMaterial().getId() + "_dust",400, 2);
+                MACERATOR.RB().ii(RecipeIngredient.of(((CobbleStoneType)s).getBlock("cobble").asItem(), 1)).io(DUST.get(s.getMaterial(), 9)).add("cobbled_" + s.getId() + "_to_" + s.getMaterial().getId() + "_dust",400, 2);
             }
         });
     }
