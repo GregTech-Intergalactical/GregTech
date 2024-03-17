@@ -87,7 +87,6 @@ public class DistillationTower {
                 new FluidProduct(Diesel,10),
                 new FluidProduct(Naphtha, 10),
                 new FluidProduct(Kerosene, 10),
-                new FluidProduct(Gasoline, 10),
                 new FluidProduct(RefineryGas, 25),
                 new FluidProduct(Lubricant, 15),
                 new FluidProduct(Tar, 15));
@@ -96,7 +95,6 @@ public class DistillationTower {
                 new FluidProduct(Diesel,15),
                 new FluidProduct(Naphtha, 15),
                 new FluidProduct(Kerosene, 15),
-                new FluidProduct(Gasoline, 15),
                 new FluidProduct(RefineryGas, 15),
                 new FluidProduct(Lubricant, 25),
                 new FluidProduct(Tar, 15));
@@ -105,7 +103,6 @@ public class DistillationTower {
                 new FluidProduct(Diesel,20),
                 new FluidProduct(Naphtha, 20),
                 new FluidProduct(Kerosene, 20),
-                new FluidProduct(Gasoline, 15),
                 new FluidProduct(RefineryGas, 10),
                 new FluidProduct(Lubricant, 40),
                 new FluidProduct(Tar, 15));
