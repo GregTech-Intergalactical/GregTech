@@ -75,11 +75,6 @@ public class ChemicalReactorLoader {
         //CHEMICAL_REACTOR.RB().fi(LightFuel.getLiquid(1000),GlycerylTrinitrate.getLiquid(250)).fo(NitroDiesel.getLiquid(1250)).add("nitro_diesel_3",250,30, 1);
         //TNT
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(GelledToluene), 4)).fi(SulfuricAcid.getLiquid(250)).io(Items.TNT).add("tnt",200,24, 1);
-        //WATER
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(2000), Oxygen.getGas(1000)).fo(Water.getLiquid(3000)).add("water",10,30, 1);
-        CHEMICAL_REACTOR.RB().fi(Deuterium.getGas(2000), Oxygen.getGas(1000)).fo(HeavyWater.getLiquid(3000)).add("heavy_water",10,30, 1);
-        CHEMICAL_REACTOR.RB().fi(Deuterium.getGas(1000), Hydrogen.getGas(1000), Oxygen.getGas(1000)).fo(SemiheavyWater.getLiquid(3000)).add("semiheavy_water",10,30, 1);
-        CHEMICAL_REACTOR.RB().fi(Tritium.getGas(2000), Oxygen.getGas(1000)).fo(TritiatedWater.getLiquid(3000)).add("tritiated_water",10,30, 1);
         //GLISTERING MELON SLICE
         CHEMICAL_REACTOR.RB().ii(of(NUGGET.getMaterialTag(Gold), 8), RecipeIngredient.of(Items.MELON_SLICE)).io(Items.GLISTERING_MELON_SLICE).add("glistering_melon_slice",50,30, 1);
         //GOLDEN APPLE
