@@ -442,7 +442,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(SquidInk).asFluid();
         event.setMaterial(Styrene).asFluid();
         event.setMaterial(SulfuricNaphtha).asFluid(32);
-        event.setMaterial(Tetranitromethane).asFluid();
         event.setMaterial(Toluene).asFluid(328);
         event.setMaterial(VinylAcetate).asFluid();
         /**
@@ -866,7 +865,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(PolyvinylAcetate).mats(of(Carbon, 4, Hydrogen, 6, Oxygen, 2));
         event.setMaterial(Styrene).mats(of(Carbon, 8, Hydrogen, 8)).elecTicks(48);
         event.setMaterial(SulfuricNaphtha).mats(of(Naphtha, 1, HydrogenSulfide,1));
-        event.setMaterial(Tetranitromethane).mats(of(Carbon, 1, Nitrogen, 4, Oxygen, 8)).elecTicks(728);
         event.setMaterial(Toluene).mats(of(Carbon, 7, Hydrogen, 8)).elecTicks(360);
         event.setMaterial(VinylAcetate).mats(of(Carbon, 4, Hydrogen, 6, Oxygen, 2)).elecTicks(144);
         /**
@@ -1366,7 +1364,7 @@ public class GregTechMaterialEvents {
                 Chloromethane, Malachite, /*Borax, */ /*Kaolinite,*/ Obsidian, NitricAcid, VinylChloride, Acetone, /*Asbestos,*/ PotassiumFeldspar,
                 MethylAcetate, Sodalite, AllylChloride, Dichlorobenzene, Phenol, Glycerol, Talc, Soapstone, PhosphoricAcid,
                 Chlorobenzene, SulfuricAcid, Pyrope, SodiumPersulfate, Chloroform, Grossular, Spessartine, Almandine, Uvarovite, Andradite,
-                Emerald, Tetranitromethane, Galena, Zircon);
+                Emerald, Galena, Zircon);
         ELEC120.add(Clay, /*Trona,*/ BlueTopaz, Topaz, /*Pollucite,*/ CarbonDioxide, SulfurDioxide, Epichlorohydrin, Lepidolite, /*FullersEarth, Alunite,*/ Glauconite,
                 /*Mica,*/ Lazurite, Tanzanite, Biotite, StainlessSteel, Bentonite, Ultimet, CalciumAcetateSolution, Dimethyldichlorosilane, /*Vermiculate, Zeolite,*/ GlycerylTrinitrate,
                 LeadZincSolution);

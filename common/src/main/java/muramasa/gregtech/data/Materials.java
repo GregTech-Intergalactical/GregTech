@@ -446,7 +446,6 @@ public class Materials {
     public static Material SquidInk = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "squid_ink", 0x000000, NONE));
     public static Material Styrene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "styrene", 0xd2c8be, NONE));
     public static Material SulfuricNaphtha = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_naphtha", 0xffff00, NONE));
-    public static Material Tetranitromethane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tetranitromethane", 0x0f2828, NONE));
     public static Material Toluene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "toluene", 0x501d05, NONE));
     public static Material VinylAcetate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "vinyl_acetate", 0xffb380, NONE));
     public static Material WoodTar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "wood_tar", 0x28170b, NONE));
