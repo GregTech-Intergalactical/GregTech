@@ -30,6 +30,9 @@ public class DistillationTower {
         addDistillingRecipe(FishOil, 24, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(SeedOil, 32, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(Water, 576, 16, 120, ItemStack.EMPTY, new FluidProduct(DistilledWater,520));
+        addDistillingRecipe(DilutedHydrochloricAcid, 2000, 300, 64, ItemStack.EMPTY,
+                new FluidProduct(HydrochloricAcid, 1000),
+                new FluidProduct(Water, 1000));
         addDistillingRecipe(DilutedSulfuricAcid, 2000, 600, 120, ItemStack.EMPTY,
                 new FluidProduct(SulfuricAcid, 1000),
                 new FluidProduct(Water, 1000));
@@ -109,9 +112,6 @@ public class DistillationTower {
     }
 
     private static void initComplicated(){
-        addDistillingRecipe(DilutedHydrochloricAcid, 2000, 300, 64, ItemStack.EMPTY,
-                new FluidProduct(HydrochloricAcid, 1000),
-                new FluidProduct(Water, 1000));
         addDistillationDistillingRecipe(CharcoalByproducts, 1000, 40, 256, 64, 80, DUST_SMALL.get(Charcoal,1),
                 new FluidProduct(WoodTar, 250),
                 new FluidProduct(WoodVinegar, 500),
