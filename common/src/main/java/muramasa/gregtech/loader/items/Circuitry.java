@@ -274,9 +274,9 @@ public class Circuitry {
         ASSEMBLER.RB().ii(of(CircuitBoardProcessor), of(EngravedLapotronChip, 3)).fi(Lead.getLiquid(L * 4)).io(new ItemStack(CircuitEnergyFlow)).add("energy_flow_circuit_lead", 32, 256);
         ASSEMBLER.RB().ii(of(CIRCUITS_MASTER, 2), of(EngravedLapotronChip, 18)).io(BatteryEnergyOrb).add("lapotronic_energy_orb", 25 * 20, 1024);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Europium, 4), of(BatteryEnergyOrb, 8)).io(BatteryEnergyOrbCluster).add("lapotronic_energy_orb_cluster", 102 * 20, 4096);
-        ASSEMBLER.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(Lead.getLiquid(L * 2)).io(GregTechItems.DataStick).add("data_stick_lead", 120, 64);
-        ASSEMBLER.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(Tin.getLiquid(L)).io(GregTechItems.DataStick).add("data_stick_tin", 120, 64);
-        ASSEMBLER.RB().ii(of(CIRCUITS_DATA), PLATE.getMaterialIngredient(Plastic, 2)).fi(SolderingAlloy.getLiquid(L/2)).io(GregTechItems.DataStick).add("data_stick_soldering_alloy", 120, 64);
+        ASSEMBLER.RB().ii(of(CIRCUITS_ADVANCED), of(NandChip, 2), of(AdvCircuitParts, 2)).fi(Lead.getLiquid(L * 2)).io(GregTechItems.DataStick).add("data_stick_lead", 120, 64);
+        ASSEMBLER.RB().ii(of(CIRCUITS_ADVANCED), of(NandChip, 2), of(AdvCircuitParts, 2)).fi(Tin.getLiquid(L)).io(GregTechItems.DataStick).add("data_stick_tin", 120, 64);
+        ASSEMBLER.RB().ii(of(CIRCUITS_ADVANCED), of(NandChip, 2), of(AdvCircuitParts, 2)).fi(SolderingAlloy.getLiquid(L/2)).io(GregTechItems.DataStick).add("data_stick_soldering_alloy", 120, 64);
         CHEMICAL_REACTOR.RB().ii(FOIL.getMaterialIngredient(Copper, 4)).fi(EpoxyResin.getLiquid(L)).io(CircuitBoardEpoxy).add("epoxy_circuit_board", 500, 10);
     }
 
