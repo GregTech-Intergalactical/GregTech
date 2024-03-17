@@ -8,14 +8,18 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
+import muramasa.antimatter.ore.CobbleStoneType;
+import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Materials;
+import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluids;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
@@ -45,6 +49,16 @@ public class CuttingLoader {
             }
 
         }
+        AntimatterAPI.all(StoneType.class, s -> {
+            if (s instanceof CobbleStoneType c){
+                for (String type : CobbleStoneType.SUFFIXES){
+                    String id = (type.isEmpty() ? c.getId() : c.getId() + "_" + type) + "_cover";
+                    Item cover = AntimatterAPI.get(Item.class, id, Ref.SHARED_ID);
+                    if (cover == null) continue;
+                    addCutterRecipe(c.getBlock(type).asItem(), new ItemStack(cover, 8), DUST.get(c.getMaterial(), 1), id, 20, 2);
+                }
+            }
+        });
         AntimatterMaterialTypes.BOLT.all().forEach(t -> {
             if (t.has(AntimatterMaterialTypes.ROD)) {
                 addCutterRecipe(ROD.getMaterialTag(t), BOLT.get(t, 4), "bolt_" + t.getId(), (int) (baseDuration.applyAsLong(t) * 2), 4);
@@ -76,6 +90,18 @@ public class CuttingLoader {
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(Materials.DistilledWater.getLiquid(Math.max(3, Math.min(750, duration * euPerTick / 426))))
                 .io(output).add(id + "_with_distilled_water", duration * 2L, euPerTick);
+    }
+
+    private static void addCutterRecipe(Item input, ItemStack output, ItemStack dust, String id, int duration, int euPerTick){
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
+                .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320)) * TesseractGraphWrappers.dropletMultiplier))
+                .io(output, dust).add(id + "_with_water", duration * 2L, euPerTick);
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
+                .fi(Materials.Lubricant.getLiquid(Math.max(1, Math.min(250, duration * euPerTick / 1280))))
+                .io(output, dust).add(id + "_with_lubricant", duration, euPerTick);
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
+                .fi(Materials.DistilledWater.getLiquid(Math.max(3, Math.min(750, duration * euPerTick / 426))))
+                .io(output, dust).add(id + "_with_distilled_water", duration * 2L, euPerTick);
     }
 
     public static void addWoodRecipe(TagKey<Item> input, Item output, int multiplier, String id, int duration, int euPerTick){
