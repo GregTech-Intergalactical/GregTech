@@ -565,15 +565,11 @@ public class GregTechMaterialEvents {
         event.setMaterial(SteamCrackedEthane).asGas();
         event.setMaterial(SteamCrackedPropane).asGas();
         event.setMaterial(SteamCrackedButane).asGas();
-        event.setMaterial(SteamCrackedLightFuel).asFluid();
-        event.setMaterial(SteamCrackedHeavyFuel).asFluid();
         event.setMaterial(SteamCrackedNaphtha).asFluid();
         event.setMaterial(SteamCrackedRefineryGas).asGas();
         event.setMaterial(HydroCrackedEthane).asGas();
         event.setMaterial(HydroCrackedPropane).asGas();
         event.setMaterial(HydroCrackedButane).asGas();
-        event.setMaterial(HydroCrackedLightFuel).asFluid();
-        event.setMaterial(HydroCrackedHeavyFuel).asFluid();
         event.setMaterial(HydroCrackedNaphtha).asFluid();
         event.setMaterial(HydroCrackedRefineryGas).asGas();
         processInto(event);
