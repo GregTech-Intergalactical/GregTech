@@ -392,7 +392,6 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Acetone).asFluid();
         event.setMaterial(CharcoalByproducts).asGas();
-        event.setMaterial(EthylTertButylEther).asFluid();
         event.setMaterial(FermentedBiomass).asFluid(16);
         event.setMaterial(SeedOil).asFluid(2).flags(SEMIFUELS);
         event.setMaterial(WoodTar).asFluid();

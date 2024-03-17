@@ -428,7 +428,6 @@ public class Materials {
     public static Material Ethanediol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethanediol", 0xff8000, NONE));
     public static Material Ethanol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethanol", 0xff8000, NONE));
     public static Material Ethenol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethenol", 0xff8000, NONE));
-    public static Material EthylTertButylEther = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethyl_tert_butyl_ether", 0xffffff, NONE));
     public static Material FermentedBiomass = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fermented_biomass", 0x09964a, NONE));
     public static Material Glue = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glue", 0xc8c400, NONE));
     public static Material Heptanol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heptanol", 0xff8000, NONE));
