@@ -528,7 +528,6 @@ public class Materials {
     public static Material LightFuel = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_fuel", 0xffff00, NONE));
     public static Material FuelOil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fuel", 0xffff00, NONE)).setDisplayNameString("Fuel Oil");
     public static Material Gasoline = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "gasoline", 0xFFA500, NONE));
-    public static Material HighOctaneGasoline = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "high_octane_gasoline", 0xFFA500, NONE));
     public static Material Oil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "oil", 0x0a0a0a, NONE));
     public static Material OilHeavy = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "heavy_oil", 0x0a0a0a, NONE));
     public static Material OilLight = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_oil", 0x0a0a0a, NONE));
