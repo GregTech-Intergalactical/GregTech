@@ -566,7 +566,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(FishOil).asFluid(2).flags(SEMIFUELS);
         event.setMaterial(HeavyFuel).asFluid(48);
         event.setMaterial(LightFuel).asFluid(48);
-        event.setMaterial(CetaneBoostedDiesel).asFluid(512);
+        event.setMaterial(NitroDiesel).asFluid(512);
         event.setMaterial(FuelOil).asFluid(448);
         event.setMaterial(Gasoline).asFluid(384);
         event.setMaterial(Kerosene).asFluid(384);
@@ -1389,13 +1389,13 @@ public class GregTechMaterialEvents {
                 Brass, WroughtIron, Electrum, Clay, Blaze);
         NOBBF.add(Tetrahedrite, Chalcopyrite, Sheldonite, Pyrolusite, Magnesite, Molybdenite, Galena);
         NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, PetroleumCoke, Rubber,
-                StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone, CetaneBoostedDiesel,
+                StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone, NitroDiesel,
                 Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
                 RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
                 /* Amber, */ Sapphire, Ruby, Opal, Olivine, Lapis, MilkyQuartz, Quartz, TricalciumPhosphate, Phosphate,
                 NetherStar, EnderPearl, EnderEye, Silicon);
         NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite,
-                CetaneBoostedDiesel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ Sapphire, Ruby, Opal, Olivine,
+                NitroDiesel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ Sapphire, Ruby, Opal, Olivine,
                 Lapis, Sodalite, Lazurite, Monazite , MilkyQuartz, Quartz, TricalciumPhosphate, Phosphate, NetherStar,
                 EnderPearl, EnderEye, Blaze);
         RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone, EpoxyResin, FiberReinforcedEpoxyResin);
