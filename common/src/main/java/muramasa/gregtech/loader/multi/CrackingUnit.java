@@ -28,6 +28,13 @@ public class CrackingUnit {
         //CRACKING.RB().fi(Butene.getGas(1000)).ii(INT_CIRCUITS.get(12).setNoConsume()).fo(Ethylene.getGas(1000)).add("ethylene",720, 120);
         //CRACKING.RB().fi(Propene.getGas(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Ethylene.getGas(1000)).add("ethylene_1",720, 120);
         //CRACKING.RB().fi(Ethane.getGas(4000)).ii(INT_CIRCUITS.get(8).setNoConsume()).fo(Ethylene.getGas(3000), Hydrogen.getGas(1000)).add("ethylene_4",320, 120);
-
+        //BUTADIENE
+        //CRACKING.RB().ii(INT_CIRCUITS.get(4).setNoConsume()).fi(Butene.getGas(1200)).fo(Hydrogen.getGas(500), Butadiene.getGas(1000)).add("butadiene",64,120, 1);
+        //BUTENE
+        //CRACKING.RB().ii(INT_CIRCUITS.get(4).setNoConsume()).fi(Ethylene.getGas(25)).fo(Butene.getGas(25)).add("butane_to_butene",18,120, 1);
+        //CRACKING.RB().ii(INT_CIRCUITS.get(5).setNoConsume()).fi(Butane.getGas(3500)).fo(Hydrogen.getGas(500), Butene.getGas(3000)).add("butane_to_butene_1",160,120, 1);
+        //PROPENE
+        //CRACKING.RB().ii(INT_CIRCUITS.get(3).setNoConsume()).fi(Ethylene.getGas(25)).fo(Propene.getGas(25)).add("ethylene_to_propene",18,120, 1);
+        //CRACKING.RB().ii(INT_CIRCUITS.get(8).setNoConsume()).fi(Propane.getGas(5500)).fo(Propene.getGas(4500), Hydrogen.getGas(500)).add("propane_to_propene",320,120, 1);
     }
 }
