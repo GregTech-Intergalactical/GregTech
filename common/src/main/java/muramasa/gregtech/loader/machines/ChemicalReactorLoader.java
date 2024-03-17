@@ -92,9 +92,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().ii(RecipeIngredient.of(Items.ENDER_PEARL), RecipeIngredient.of(Items.BLAZE_POWDER)).io(Items.ENDER_EYE).add("ender_eye",50,30, 1);
         //Golden CARROT
         CHEMICAL_REACTOR.RB().ii(of(NUGGET.getMaterialTag(Gold), 8), RecipeIngredient.of(Items.CARROT)).io(Items.GOLDEN_CARROT).add("golden_carrot",50,30, 1);
-        //NITROUS OXIDE
-        CHEMICAL_REACTOR.RB().fi(Nitrogen.getGas(1000),Oxygen.getGas(500)).ii(INT_CIRCUITS.get(3).setNoConsume()).fo(NitrousOxide.getGas(1500)).add("nitrous_oxide",100, 30, 1);
-        //MOLTEN EPOXY RESIN
+        //MOLTEN EPOXY RESINe
         CHEMICAL_REACTOR.RB().fi(Naphtha.getLiquid(3000), NitrogenDioxide.getGas(1000), Epichlorohydrin.getLiquid(L)).fo(EpoxyResin.getLiquid(L *2)).add("epoxy_resin",240,30, 1);
         CHEMICAL_REACTOR.RB().fi(Propene.getGas(1000), Benzene.getLiquid(1000), Chlorine.getGas(500)).fo(EpoxyResin.getLiquid(L *2)).add("epoxy_resin_1",120,240, 1);
         //GLUE
