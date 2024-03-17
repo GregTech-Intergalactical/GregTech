@@ -239,7 +239,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Komatiite).asDust(ROCK);
         event.setMaterial(Limestone).asDust(ROCK);
         event.setMaterial(LithiumChloride).asDust(880, MOLTEN).asFluid();
-        event.setMaterial(Magnesia).asDust();
         event.setMaterial(MagnesiumCarbonate).asDust();
         event.setMaterial(MagnesiumChloride).asDust();
         event.setMaterial(Marble).asDust(ROCK);
@@ -686,7 +685,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Komatiite).mats(of(Olivine, 1, MagnesiumCarbonate, 2, Flint, 6, DarkAsh, 3));
         event.setMaterial(Limestone).mats(of(Calcite, 1));
         event.setMaterial(LithiumChloride).mats(of(Lithium, 1, Chlorine, 1)).elecTicks(64);
-        event.setMaterial(Magnesia).mats(of(Magnesium, 1, Oxygen, 1)).elecTicks(40);
         event.setMaterial(MagnesiumChloride).mats(of(Magnesium, 1, Chlorine, 2)).elecTicks(1024);
         event.setMaterial(Marble).mats(of(Magnesium, 1, Calcite, 7));
         event.setMaterial(Massicot).mats(of(Lead, 1, Oxygen, 1)).elecTicks(180);
@@ -1353,7 +1351,7 @@ public class GregTechMaterialEvents {
         RADIOACTIVE.add(Naquadria, 5);
         CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene, LightFuel, HeavyFuel);
         CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Dilithium, Monazite, Coal, CoalCoke, Charcoal, Lignite, LigniteCoke, PetroleumCoke);
-        ELEC30.add(Charcoal, Opal, Coal, Lignite, Magnesia, SteelMagnetic, IronMagnetic, Quicklime, Quartzite,
+        ELEC30.add(Charcoal, Opal, Coal, Lignite, SteelMagnetic, IronMagnetic, Quicklime, Quartzite,
                 SiliconDioxide, CalciumSulfate, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/
                 Phosphate, Potash, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
                 PhosphorousPentoxide, Hematite, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,

@@ -230,7 +230,6 @@ public class Materials {
     public static Material IndiumGalliumPhosphide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "indium_gallium_phosphide", 0x570b79, NONE));
     public static Material IridiumSodiumOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "iridium_sodium_oxide", 0xffffff, NONE));
     public static Material LithiumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lithium_chloride", 0xdedefa, DULL));
-    public static Material Magnesia = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesia", 0xffffff, DULL));
     public static Material MagnesiumCarbonate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesium_carbonate", 0xF0E6E6, DULL));
     public static Material MagnesiumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesium_chloride", 0xd40d5c, DULL));
     public static Material Massicot = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "massicot", 0xffdd55, DULL));
