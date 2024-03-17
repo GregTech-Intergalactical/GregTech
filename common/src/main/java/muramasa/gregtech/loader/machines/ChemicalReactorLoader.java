@@ -23,17 +23,8 @@ public class ChemicalReactorLoader {
         addShared();
         if (GregTechConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
             addComplicated();
-        } else {
-            addSimple();
         }
         nuclearProcessing();
-    }
-
-
-
-    private static void addSimple() {
-        //POLYCAPROLACTAM
-        CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Saltpeter), 1)).fi(Naphtha.getLiquid(576)).fo(Polycaprolactam.getLiquid(L * 9)).add("polycaprolactam",640,30, 1);
     }
 
     private static void addShared(){
@@ -51,6 +42,8 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(Naphtha.getLiquid(3000),Fluorine.getGas(1000),Epichlorohydrin.getLiquid(432)).fo(Polytetrafluoroethylene.getLiquid(432)).add("tetrafluoroethylene_to_polytetrafluoroethylene_2",240, 256);
         //POLYSTYRENE
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1000),Styrene.getLiquid(144)).ii(INT_CIRCUITS.get(1).setNoConsume()).fo(Polystyrene.getLiquid(216)).add("styrene_to_polystyrene",160, 30);
+        //POLYCAPROLACTAM
+        //CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Saltpeter), 1)).fi(Naphtha.getLiquid(576)).fo(Polycaprolactam.getLiquid(L * 9)).add("polycaprolactam",640,30);
         //CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(7000),Styrene.getLiquid(1000)).ii(INT_CIRCUITS.get(2).setNoConsume()).fo(Polystyrene.getLiquid(1500)).add("styrene_to_polystyrene_1",1120, 30);
         //TETRAFLUOROETHYLENE
         CHEMICAL_REACTOR.RB().fi(Fluorine.getGas(2000),Ethylene.getGas(1000)).fo(Tetrafluoroethylene.getGas(3000)).add("ethylene_to_tetrafluoroethylene",180, 180);
