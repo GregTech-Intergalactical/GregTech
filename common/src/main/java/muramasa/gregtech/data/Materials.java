@@ -551,7 +551,6 @@ public class Materials {
     public static Material Chloromethane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chloromethane", 0xc82ca0, NONE));
     public static Material Dimethylamine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dimethylamine", 0x554469, NONE));
     public static Material Ethane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethane", 0xc8c8ff, NONE));
-    public static Material Ethenone = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethenone", 0x141446, NONE));
     public static Material Ethylene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ethylene", 0xe1e1e1, NONE));
     public static Material LPG = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lpg", 0xffff00, NONE)).setDisplayNameString("LPG");
     public static Material Methane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "methane", 0xffffff, NONE));

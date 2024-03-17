@@ -523,8 +523,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Propene).asGas(192);
         event.setMaterial(Butene).asGas(256);
         event.setMaterial(Butadiene).asGas(206);
-        //Ketones
-        event.setMaterial(Ethenone).asGas();
         //Misc
         event.setMaterial(HotCarbonDioxide).asGas().fluidDensity(1000);
         event.setMaterial(CarbonDioxide).asGas().fluidDensity(756);
@@ -927,8 +925,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Propene).mats(of(Carbon, 3, Hydrogen, 6)).elecTicks(48);
         event.setMaterial(Butene).mats(of(Carbon, 4, Hydrogen, 8)).elecTicks(48);
         event.setMaterial(Butadiene).mats(of(Carbon, 4, Hydrogen, 6)).elecTicks(120);
-        //Ketones
-        event.setMaterial(Ethenone).mats(of(Carbon, 2, Hydrogen, 2, Oxygen, 1)).elecTicks(160);
         //Misc
         event.setMaterial(CarbonDioxide).mats(of(Carbon, 1, Oxygen, 2)).elecTicks(300);
         event.setMaterial(CarbonMonoxide).mats(of(Carbon, 1, Oxygen, 1)).elecTicks(112);
@@ -1359,7 +1355,7 @@ public class GregTechMaterialEvents {
                 Molybdenite, Ruby, /*Kyanite,*/ NitrogenDioxide, DinitrogenTetroxide, Propane, Barite, Isoprene,
                 Chromite, EnderPearl, SiliconDioxide, Apatite, SulfurTrioxide, /*Pyrochlore, */ Toluene, Phosphate,
                 Tantalite, PhosphorousPentoxide, Osmiridium, Pentlandite, Steel, Graphite, MagnesiumChloride);
-        ELEC90.add(Polydimethylsiloxane, AceticAcid, Olivine, Ethanol, Methanol, VinylAcetate, /*Gypsum,*/ Cobaltite, Ethenone,
+        ELEC90.add(Polydimethylsiloxane, AceticAcid, Olivine, Ethanol, Methanol, VinylAcetate, /*Gypsum,*/ Cobaltite,
                 /*Dymethylamine,*/ Chalcopyrite, /*Mirabilite,*/ Spodumene, /*Dolomite,*/ HypochlorousAcid, Chloramine, Bastnasite,
                 Chloromethane, Malachite, /*Borax, */ /*Kaolinite,*/ Obsidian, NitricAcid, VinylChloride, Acetone, /*Asbestos,*/ PotassiumFeldspar,
                 MethylAcetate, Sodalite, AllylChloride, Dichlorobenzene, Phenol, Glycerol, Talc, Soapstone, PhosphoricAcid,
