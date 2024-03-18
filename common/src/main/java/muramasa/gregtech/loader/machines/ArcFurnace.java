@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.machines;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import io.github.gregtechintergalactical.gtcore.block.RedstoneWire;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -101,6 +102,15 @@ public class ArcFurnace {
             }
         });
         AntimatterAPI.all(Wire.class, w -> {
+            ImmutableSet<PipeSize> sizes = w.getSizes();
+            sizes.forEach(size -> {
+                Item cableItem = w.getBlockItem(size);
+                int ct = size.getCableThickness();
+                float amount = ct == 1 ? 0.5f : ct == 2 ? 1 : ct == 4 ? 2 : ct == 8 ? 4 : ct == 12 ? 8 : 16;
+                addRecyclingRecipe(cableItem, of(w.getMaterial(), amount));
+            });
+        });
+        AntimatterAPI.all(RedstoneWire.class, w -> {
             ImmutableSet<PipeSize> sizes = w.getSizes();
             sizes.forEach(size -> {
                 Item cableItem = w.getBlockItem(size);

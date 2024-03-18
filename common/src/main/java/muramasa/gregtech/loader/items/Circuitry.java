@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.items;
 
 import com.google.common.collect.ImmutableMap;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreCables;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -62,7 +63,7 @@ public class Circuitry {
         provider.addItemRecipe(output, "circuit_basic", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('V', VacuumTube).put('B', CircuitBoardCoated)
-                        .put('W', GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
+                        .put('W', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('R',Resistor).put('P', ITEM_CASING.get(Steel))
                         .build(),
                 "RPR", "VBV", "WWW");
@@ -70,7 +71,7 @@ public class Circuitry {
                 ImmutableMap.<Character, Object>builder()
                         .put('S', ITEM_CASING.getMaterialTag(Steel))
                         .put('C', CIRCUITS_BASIC)
-                        .put('c', GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
+                        .put('c', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('D', Diode).build(), "SCc", "CDC", "cCS");
 
         var wire = TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ PipeSize.VTINY.getId()));
@@ -143,7 +144,7 @@ public class Circuitry {
                         .put('S', CircuitBoardCoated)
                         .build(), "CNC", "CSC", "CNC");
         provider.addItemRecipe(output, GTIRef.ID, "", "circuits", NandChip,
-                ImmutableMap.of('C', ITEM_CASING.getMaterialTag(Steel), 'R', GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY)), "CR", "RT");
+                ImmutableMap.of('C', ITEM_CASING.getMaterialTag(Steel), 'R', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY)), "CR", "RT");
         provider.addItemRecipe(output, GTIRef.ID, "lapotron_crystal_upgrade", "energy_orbs", GTCoreItems.LapotronCrystal,
                 ImmutableMap.of('C', CIRCUITS_ADVANCED, 'L', DUST_LAPIS_LAZURITE, 'E', GTCoreItems.EnergyCrystal), "LCL", "LEL", "LCL");
         provider.addItemRecipe(output, GTIRef.ID, "", "energy_orbs", GTCoreItems.LapotronCrystal,
@@ -237,12 +238,12 @@ public class Circuitry {
     private static void circuitParts(){
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Lazurite, 1), DUST.getMaterialIngredient(AntimatterMaterials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts", 32, 64);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Lapis, 1), DUST.getMaterialIngredient(AntimatterMaterials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts_1", 32, 64);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_poly", 32, 16);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_poly", 32, 16);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Lead.getLiquid(L / 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_poly", 32, 16);
-        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_steel", 32, 16);
-        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_steel", 32, 16);
-        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(GregTechBlocks.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Lead.getLiquid(L / 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_steel", 32, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_poly", 32, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_poly", 32, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Lead.getLiquid(L / 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_poly", 32, 16);
+        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_steel", 32, 16);
+        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_steel", 32, 16);
+        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(Lead.getLiquid(L / 2)).io(new ItemStack(NandChip)).add("nand_chip_lead_steel", 32, 16);
     }
 
     private static void boards(){
