@@ -222,13 +222,13 @@ public class TierMaps {
                     return hardMode ? GTCoreTags.CIRCUITS_MASTER : GTCoreTags.CIRCUITS_DATA_ORB;
                 }
                 if (t == ZPM){
-                    return hardMode ? GTCoreTags.CIRCUITS_DATA_ORB : GTCoreTags.CIRCUITS_DATA_ORB;
+                    return hardMode ? GTCoreTags.CIRCUITS_FUTURISTIC : GTCoreTags.CIRCUITS_DATA_ORB;
                 }
                 if (t == UV){
-                    return hardMode ? GTCoreTags.CIRCUITS_DATA_ORB : GTCoreTags.CIRCUITS_DATA_ORB;
+                    return hardMode ? GTCoreTags.CIRCUITS_3D : GTCoreTags.CIRCUITS_DATA_ORB;
                 }
                 if (t == UHV){
-                    return hardMode ? GTCoreTags.CIRCUITS_DATA_ORB : GTCoreTags.CIRCUITS_DATA_ORB;
+                    return hardMode ? GTCoreTags.CIRCUITS_INFINITE : GTCoreTags.CIRCUITS_DATA_ORB;
                 }
                 return GTCoreTags.CIRCUITS_BASIC;
             };
