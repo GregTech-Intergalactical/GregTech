@@ -420,7 +420,7 @@ public class Materials {
     public static Material Chloramine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chloramine", 0x3f9f80, NONE));
     public static Material Chloroform = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chloroform", 0x892ca0, NONE));
     public static Material Cumene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cumene", 0x552200, NONE));
-    public static Material Chlorobenzene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dhlorobenzene", 0x004455, NONE));
+    public static Material Chlorobenzene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chlorobenzene", 0x004455, NONE));
     public static Material Dichlorobenzene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dichlorobenzene", 0x004455, NONE));
     public static Material Dimethyldichlorosilane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dimethyldichlorosilane", 0x441650, NONE));
     public static Material Dimethylhydrazine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dimethylhydrazine", 0x000055, NONE));
