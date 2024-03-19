@@ -3,10 +3,13 @@ package muramasa.gregtech.datagen;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
+import muramasa.antimatter.machine.Tier;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.*;
 import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.GregTechTags;
+import muramasa.gregtech.data.Machines;
+import net.minecraft.tags.BlockTags;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 
@@ -53,5 +56,6 @@ public class GregTechBlockTagProvider extends AntimatterBlockTagProvider {
         });
         this.tag(AntimatterDefaultTools.AXE.getToolType()).add(GregTechBlocks.BRITTLE_CHARCOAL, GregTechBlocks.POWDER_BARREL);
         this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(GregTechBlocks.MINING_PIPE, GregTechBlocks.MINING_PIPE_THIN, GregTechBlocks.SOLID_SUPER_FUEL);
+        this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(Machines.MINIATURE_NETHER_PORTAL.getBlockState(Tier.NONE));
     }
 }

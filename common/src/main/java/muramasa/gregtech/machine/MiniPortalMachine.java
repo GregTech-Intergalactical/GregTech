@@ -1,5 +1,6 @@
 package muramasa.gregtech.machine;
 
+import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.types.BasicMachine;
 import muramasa.gregtech.GTIRef;
@@ -18,5 +19,6 @@ public class MiniPortalMachine extends BasicMachine {
         this.itemModelParent(new ResourceLocation(GTIRef.ID, "block/mini_portal"));
         this.custom(Textures.MINI_PORTAL);
         this.removeFlags(MachineFlag.COVERABLE);
+        this.setToolTag(AntimatterDefaultTools.PICKAXE.getToolType());
     }
 }
