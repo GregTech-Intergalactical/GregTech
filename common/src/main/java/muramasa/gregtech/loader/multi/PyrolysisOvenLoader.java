@@ -16,7 +16,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.PYROLYSIS_OVEN;
 
-public class PyrolysisOven {
+public class PyrolysisOvenLoader {
     public static void init(){
         PYROLYSIS_OVEN.RB().ii(DUST.getMaterialIngredient(Materials.OilShale, 16)).fo(Materials.Oil.getLiquid(400)).add("oilshale", 200, 120);
         PYROLYSIS_OVEN.RB().ii(RAW_ORE.getMaterialIngredient(Materials.OilShale, 16)).fo(Materials.Oil.getLiquid(400)).add("oilshale_raw", 200, 120);

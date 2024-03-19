@@ -11,7 +11,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.COAL_BOILERS;
 
-public class CoalBoilerHandler {
+public class CoalBoilerLoader {
     public static void init(){
         COAL_BOILERS.RB().ii(RecipeIngredient.of(GEM.getMaterialTag(Coal), 1)).io(DUST.get(DarkAsh, 1)).add("coal",160);
         COAL_BOILERS.RB().ii(RecipeIngredient.of(GEM.getMaterialTag(Lignite), 1)).io(DUST.get(DarkAsh, 1)).add("lignite",80);

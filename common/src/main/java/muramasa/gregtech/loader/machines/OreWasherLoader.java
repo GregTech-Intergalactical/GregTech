@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 
 import static muramasa.gregtech.data.RecipeMaps.ORE_WASHER;
 
-public class WasherLoader {
+public class OreWasherLoader {
     public static void init() {
         AntimatterMaterialTypes.CRUSHED.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.CRUSHED_PURIFIED)) return;

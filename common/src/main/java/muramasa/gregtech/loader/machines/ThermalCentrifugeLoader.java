@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 
 import static muramasa.gregtech.data.RecipeMaps.THERMAL_CENTRIFUGE;
 
-public class ThermalCentrifuge {
+public class ThermalCentrifugeLoader {
     public static void init() {
         AntimatterMaterialTypes.CRUSHED_PURIFIED.all().forEach(m -> {
             Material aOreByProduct1 = m.getByProducts().size() >= 1 ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);

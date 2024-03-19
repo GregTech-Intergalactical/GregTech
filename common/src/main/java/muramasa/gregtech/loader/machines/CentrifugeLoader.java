@@ -25,7 +25,7 @@ import static muramasa.gregtech.data.RecipeMaps.CENTRIFUGE;
 import static net.minecraft.world.item.Items.*;
 import static net.minecraft.world.item.Items.GOLD_NUGGET;
 
-public class CentrifugingLoader {
+public class CentrifugeLoader {
     public static void init() {
         DUST_IMPURE.all().forEach(dust -> {
             Material aOreByProduct = !dust.getByProducts().isEmpty() ? dust.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(dust);

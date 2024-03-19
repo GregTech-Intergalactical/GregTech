@@ -8,7 +8,7 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT_HOT;
 import static muramasa.gregtech.data.RecipeMaps.VACUUM_FREEZER;
 
-public class VacFreezer {
+public class VacuumFreezerLoader {
     public static void init() {
         INGOT_HOT.all().forEach(hi -> {
             Item ingot = INGOT.get(hi);

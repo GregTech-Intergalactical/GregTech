@@ -20,7 +20,7 @@ import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.PRIMITIVE_BLAST_FURNACE;
 import static muramasa.gregtech.data.RecipeMaps.E_BLAST_FURNACE;
 
-public class Blasting {
+public class BlastFurnaceLoader {
     public static int mixedOreYield = GTIRef.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
 
     public static void init() {

@@ -6,7 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.RecipeMaps.FORMING_PRESS;
 
-public class FormingPress {
+public class FormingPressLoader {
     public static void init() {
         molds(GTCoreItems.MoldAnvil);
         molds(GTCoreItems.MoldBall);

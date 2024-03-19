@@ -28,7 +28,7 @@ import static muramasa.gregtech.data.GregTechMaterialTags.CHEMBATH_PERSULFATE;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.*;
 
-public class Bath {
+public class BathLoader {
     public static void init() {
         BATH.RB()
                 .ii(RecipeIngredient.of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Wood),1))

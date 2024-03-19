@@ -12,7 +12,7 @@ import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.data.RecipeMaps;
-import muramasa.gregtech.loader.machines.CuttingLoader;
+import muramasa.gregtech.loader.machines.CutterLoader;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.util.Helpers;
@@ -69,10 +69,10 @@ public class MachineRecipes {
             addMaceratorRecipe(material);
         }*/
         Helpers.mapOfKeys(net.dries007.tfc.common.blocks.wood.Wood.class, w -> {
-            CuttingLoader.addWoodRecipe(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, w.name().toLowerCase() + "_logs")), AntimatterPlatformUtils.getItemFromID(Ref.MOD_TFC, "wood/lumber/" + w.name().toLowerCase()), 2, w.name().toLowerCase() + "_lumber", 200, 8);
+            CutterLoader.addWoodRecipe(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, w.name().toLowerCase() + "_logs")), AntimatterPlatformUtils.getItemFromID(Ref.MOD_TFC, "wood/lumber/" + w.name().toLowerCase()), 2, w.name().toLowerCase() + "_lumber", 200, 8);
             return true;
         });
-        CuttingLoader.addWoodRecipe(GTCoreTags.RUBBER_LOGS, TFCRubberData.RUBBER_LUMBER, 2, "rubber_lumber", 200, 8);
+        CutterLoader.addWoodRecipe(GTCoreTags.RUBBER_LOGS, TFCRubberData.RUBBER_LUMBER, 2, "rubber_lumber", 200, 8);
         FLUID_PRESS.RB().ii(RecipeIngredient.of(TagUtils.getItemTag(new ResourceLocation("tfc:seeds")))).fo(SeedOil.getLiquid(10)).add("seed_oil_tfc", 32, 2);
         FLUID_PRESS.RB().ii(AntimatterPlatformUtils.getItemFromID(Ref.MOD_TFC, "food/cod")).fo(FishOil.getLiquid(40)).add("fish_oil_cod_tfc", 16, 4);
         FLUID_PRESS.RB().ii(AntimatterPlatformUtils.getItemFromID(Ref.MOD_TFC, "food/salmon")).fo(FishOil.getLiquid(60)).add("fish_oil_salmon_tfc", 16, 4);

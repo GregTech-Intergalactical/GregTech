@@ -2,21 +2,14 @@ package muramasa.gregtech.loader.multi;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
-import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Coal;
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
-import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.RecipeMaps.COKE_OVEN;
 import static muramasa.gregtech.data.RecipeMaps.TREE_GROWTH_SIMULATOR;
 
-public class TreeGrowthSimulator {
+public class TreeGrowthSimulatorLoader {
     public static void init() {
         TREE_GROWTH_SIMULATOR.RB().ii(RecipeIngredient.of(Items.OAK_SAPLING, 1), RecipeIngredient.of(GTCoreItems.Fertilizer)).fi(Water.getLiquid(1000)).io(new ItemStack(Items.OAK_LOG, 6), new ItemStack(Items.OAK_SAPLING, 3), new ItemStack(Items.STICK, 2), new ItemStack(Items.APPLE)).chances(1.0, 1.0, 1.0, 0.25).add("oak_log", 400, 4);
         TREE_GROWTH_SIMULATOR.RB().ii(RecipeIngredient.of(Items.BIRCH_SAPLING, 1), RecipeIngredient.of(GTCoreItems.Fertilizer)).fi(Water.getLiquid(1000)).io(new ItemStack(Items.BIRCH_LOG, 6), new ItemStack(Items.BIRCH_SAPLING, 3), new ItemStack(Items.STICK, 2)).add("birch_log", 400, 4);

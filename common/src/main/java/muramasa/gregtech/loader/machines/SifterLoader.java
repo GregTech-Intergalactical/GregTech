@@ -8,7 +8,7 @@ import net.minecraft.world.item.Items;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.RecipeMaps.SIFTER;
 
-public class SiftingLoader {
+public class SifterLoader {
     public static void init() {
         CRUSHED_PURIFIED.all().forEach(m -> {
             if (!m.has(GEM)) return;

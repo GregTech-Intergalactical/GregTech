@@ -1,17 +1,13 @@
 package muramasa.gregtech.loader.multi;
 
-import muramasa.gregtech.data.RecipeMaps;
-
 import static muramasa.antimatter.Ref.L;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_TINY;
 import static muramasa.antimatter.data.AntimatterMaterials.Gold;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.FUSION;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
-public class FusionReactor {
+public class FusionReactorLoader {
     public static void init(){
         FUSION.RB().fi(Deuterium.getGas(2000)).ii(INT_CIRCUITS.get(1)).fo(Helium3.getGas(500), Tritium.getGas(500)).add("helium3", 730, -8192, 191365120);
         FUSION.RB().fi(Helium3.getGas(2000)).ii(INT_CIRCUITS.get(1)).fo(Helium.getGas(1000)).add("helium", 1280, -8192, 338165760);

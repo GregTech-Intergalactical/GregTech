@@ -13,7 +13,7 @@ import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.*;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
-public class DistillationTower {
+public class DistillationTowerLoader {
 
     public static void init() {
         /*if (GregTechConfig.GT5U_OIL.get()){

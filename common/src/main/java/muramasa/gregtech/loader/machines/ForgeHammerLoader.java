@@ -24,7 +24,7 @@ import static muramasa.antimatter.material.MaterialTags.ORE_MULTI;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.FORGE_HAMMER;
 
-public class HammerLoader {
+public class ForgeHammerLoader {
     public static void init() {
         AntimatterMaterialTypes.CRUSHED.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.ORE) && m != AntimatterMaterials.Gold && m != AntimatterMaterials.Iron && m != AntimatterMaterials.Diamond && m != AntimatterMaterials.Emerald && m != AntimatterMaterials.Lapis && m != AntimatterMaterials.Redstone) return;

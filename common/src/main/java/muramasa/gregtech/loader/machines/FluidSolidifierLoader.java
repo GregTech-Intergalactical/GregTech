@@ -14,7 +14,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.FLUID_SOLIDIFYER;
 
-public class FluidSolidifier {
+public class FluidSolidifierLoader {
     public static void init() {
         AntimatterAPI.all(Material.class, mat -> {
             if (!mat.has(AntimatterMaterialTypes.LIQUID) || mat == Glass) return;

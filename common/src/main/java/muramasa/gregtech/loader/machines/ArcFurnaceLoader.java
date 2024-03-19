@@ -24,13 +24,11 @@ import muramasa.gregtech.data.GregTechCovers;
 import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import tesseract.TesseractGraphWrappers;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.Ref.U;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -38,10 +36,9 @@ import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.Materials.Rubber;
-import static muramasa.gregtech.data.RecipeMaps.ASSEMBLER;
 import static muramasa.gregtech.data.TierMaps.*;
 
-public class ArcFurnace {
+public class ArcFurnaceLoader {
     public static void init() {
         DUST.all().forEach(m -> {
             if (!m.has(INGOT) || m.has(MaterialTags.HAS_CUSTOM_SMELTING)) return;

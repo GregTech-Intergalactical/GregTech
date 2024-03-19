@@ -12,7 +12,7 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.Materials.UUAmplifier;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
-public class UUMatter {
+public class UUMatterLoader {
     public static void init(){
         RecipeMaps.MASS_FABRICATOR.RB().fi(UUAmplifier.getLiquid(1)).fo(Materials.UUMatter.getLiquid(1)).add("uu_matter", 803, 256);
         RecipeMaps.MASS_FABRICATOR.RB().ii(INT_CIRCUITS.get(0)).fo(Materials.UUMatter.getLiquid(1)).add("uu_matter_expensive", 3215, 256);

@@ -8,7 +8,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 
-public class RoastingLoader {
+public class RoasterLoader {
     public static void init(){
         RecipeMaps.ROASTER.RB().fi(Oxygen.getGas(2000)).ii(DUST.getMaterialIngredient(Galena, 1)).io(DUST_SMALL.get(Silver), DUST_SMALL.get(Lead)).fo(SulfurDioxide.getGas(500)).add("galena", 512, 5, 0, 3);
         RecipeMaps.ROASTER.RB().fi(Oxygen.getGas(4000)).ii(DUST.getMaterialIngredient(Chalcopyrite, 1)).io(DUST_SMALL.get(Copper), DUST_SMALL.get(Iron)).fo(SulfurDioxide.getGas(1000)).add("chalcopyrite", 512, 5, 0, 3);

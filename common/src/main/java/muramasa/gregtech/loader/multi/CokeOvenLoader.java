@@ -11,7 +11,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.Coal;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.COKE_OVEN;
 
-public class Coking {
+public class CokeOvenLoader {
     public static void init() {
         COKE_OVEN.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(GEM.get(AntimatterMaterials.Charcoal, 1)).fo(Creosote.getLiquid(100)).add("charcoal",600, 0);
         COKE_OVEN.RB().ii(RecipeIngredient.of(Items.COAL, 1)).io(GEM.get(CoalCoke, 1)).fo(Creosote.getLiquid(200)).add("coal_coke",600, 0);

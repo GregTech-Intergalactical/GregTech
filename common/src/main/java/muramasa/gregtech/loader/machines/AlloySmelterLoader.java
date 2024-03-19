@@ -18,7 +18,7 @@ import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ALLOY_SMELTER;
 
-public class AlloyLoader {
+public class AlloySmelterLoader {
 
     public static void init() {
         INGOT.all().forEach(t -> {

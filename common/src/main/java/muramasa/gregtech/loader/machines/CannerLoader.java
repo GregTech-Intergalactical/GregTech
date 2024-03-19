@@ -12,7 +12,7 @@ import static muramasa.gregtech.data.RecipeMaps.CANNER;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.*;
 
-public class CanningLoader {
+public class CannerLoader {
 
     static int MULTIPLE_SMALL = 2;
     static int MULTIPLE_MEDIUM = 8;

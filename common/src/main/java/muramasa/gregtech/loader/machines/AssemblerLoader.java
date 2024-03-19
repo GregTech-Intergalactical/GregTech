@@ -41,7 +41,7 @@ import static muramasa.gregtech.data.RecipeMaps.ASSEMBLER;
 import static muramasa.gregtech.data.TierMaps.*;
 import static muramasa.gregtech.loader.crafting.Parts.fromTier;
 
-public class AssemblyLoader {
+public class AssemblerLoader {
     public static void init() {
         batteries();
         casings();

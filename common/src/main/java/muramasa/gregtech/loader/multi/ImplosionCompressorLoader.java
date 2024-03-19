@@ -10,7 +10,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.Diamond;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.IMPLOSION_COMPRESSOR;
 
-public class ImplosionCompressing {
+public class ImplosionCompressorLoader {
     public static void init(){
         GEM.all().stream().filter(m -> !m.has(GregTechMaterialTags.CRYSTALLIZE)).forEach(m -> {
             int tnt = m == Materials.Monazite || m == RedGarnet || m == YellowGarnet || m == Amber | m == Ruby ? 4 : m == Diamond ? 8: 6;

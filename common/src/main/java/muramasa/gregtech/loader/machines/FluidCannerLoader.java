@@ -19,7 +19,7 @@ import tesseract.TesseractGraphWrappers;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.FLUID_CANNER;
 
-public class FluidCanningLoader {
+public class FluidCannerLoader {
     public static void init() {
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullSmall, 1)).fi(Mercury.getLiquid(1000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatterySmallMercury)).add("battery_small_mercury",16, 1);
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullMedium, 1)).fi(Mercury.getLiquid(4000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryMediumMercury)).add("battery_medium_mercury",64, 1);

@@ -13,7 +13,7 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 import static muramasa.gregtech.data.RecipeMaps.BENDER;
 
-public class BendingLoader {
+public class BenderLoader {
     public static void init() {
         ToLongFunction<Material> baseDuration = m -> {
             if (m.has(GregTechMaterialTags.RECIPE_MASS)) return GregTechMaterialTags.RECIPE_MASS.get(m);

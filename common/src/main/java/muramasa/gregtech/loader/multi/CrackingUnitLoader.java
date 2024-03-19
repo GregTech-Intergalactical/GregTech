@@ -1,12 +1,10 @@
 package muramasa.gregtech.loader.multi;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_TINY;
-import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_REACTOR;
 import static muramasa.gregtech.data.RecipeMaps.CRACKING;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
-public class CrackingUnit {
+public class CrackingUnitLoader {
     public static void init() {
         CRACKING.RB().fi(Hydrogen.getGas(1000), Naphtha.getLiquid(1000)).fo(HydroCrackedNaphtha.getLiquid(2000)).add("naphtha_hydrogen", 20, 120);
         CRACKING.RB().fi(Steam.getGas(1000), Naphtha.getLiquid(1000)).fo(SteamCrackedNaphtha.getLiquid(2000)).add("naphtha_steam", 20, 120);
