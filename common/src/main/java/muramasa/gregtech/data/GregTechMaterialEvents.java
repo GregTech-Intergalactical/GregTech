@@ -346,7 +346,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(PetroleumCoke).asGemBasic(false);
         event.setMaterial(Olivine).asGem(false, PLATE).asOre(3, 7, true);
         event.setMaterial(Opal).asGem(true).asOre(3, 7, true);
-        event.setMaterial(TricalciumPhosphate).asGemBasic(false).asOre(3, 7, true).harvestLevel(2);
+        event.setMaterial(TricalciumPhosphate).asOre(3, 7, true).harvestLevel(2);
         event.setMaterial(MilkyQuartz).asGemBasic(false, BEARING_ROCK, ROD_LONG, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(RedGarnet).asGem(true).asOre(3, 7, true);
         event.setMaterial(Ruby).asGem(true).asOre(3, 7, true);
@@ -1358,7 +1358,7 @@ public class GregTechMaterialEvents {
                 StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone, NitroDiesel,
                 Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
                 RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
-                /* Amber, */ Sapphire, Ruby, Opal, Olivine, Lapis, MilkyQuartz, Quartz, TricalciumPhosphate, Phosphate,
+                /* Amber, */ Sapphire, Ruby, Opal, Olivine, Lapis, MilkyQuartz, Quartz, Phosphate,
                 NetherStar, EnderPearl, EnderEye, Silicon);
         NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite,
                 NitroDiesel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ Sapphire, Ruby, Opal, Olivine,
@@ -1502,6 +1502,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Sugar).mats(of(Water, 11, Carbon, 12)).elecTicks(184);
         event.setMaterial(Glowstone).asFluid(0, 1000).flags(MOLTEN);
         event.setMaterial(Endstone).flags(ROD_LONG);
-        event.setMaterial(Flint).mats(of(SiliconDioxide, 1));
+        event.setMaterial(Flint).mats(of(SiliconDioxide, 1)).elecTicks(80);
     }
 }

@@ -253,6 +253,7 @@ public class Materials {
     public static Material SodiumHydroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_hydroxide", 0x003380, DULL));
     public static Material SodiumSulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_sulfate", 0x004455, NONE));
     public static Material SodiumSulfide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_sulfide", 0xffe680, NONE));
+    public static Material TricalciumPhosphate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tricalcium_phosphate", 0xffff00, DULL));
     public static Material TungsticAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tungstic_acid", 0xb4c800, SHINY));
     public static Material TungstenTrioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tungsten_trioxide", 0xc7d300, DULL));
 
@@ -345,7 +346,6 @@ public class Materials {
     public static Material NetherStar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nether_star", 0xffffff, NONE));
     public static Material Olivine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "olivine", 0x96ff96, RUBY));
     public static Material Opal = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "opal", 0x0000ff, RUBY));
-    public static Material TricalciumPhosphate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tricalcium_phosphate", 0xffff00, TextureSet.FLINT));
     public static Material RedGarnet = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_garnet", 0xc85050, GARNET));
     public static Material Ruby = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "ruby", 0xff6464, RUBY));
     public static Material Sodalite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodalite", 0x1414ff, LAPIS));
