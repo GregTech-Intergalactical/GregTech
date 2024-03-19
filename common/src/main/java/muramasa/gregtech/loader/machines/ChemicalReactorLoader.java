@@ -216,17 +216,6 @@ public class ChemicalReactorLoader {
         //POLYDIMETHYLSILOXANE
         CHEMICAL_REACTOR.RB().fi(Dimethyldichlorosilane.getLiquid(11000), Water.getLiquid(3000)).fo(DilutedHydrochloricAcid.getLiquid(4000)).io(DUST.get(Polydimethylsiloxane, 10)).add("polydimethylsiloxane", 240, 96, -1);
         CHEMICAL_REACTOR.RB().fi(HydrochloricAcid.getLiquid(4000), Methanol.getLiquid(12000)).ii(DUST.getMaterialIngredient(Silicon, 1)).io(DUST.get(Polydimethylsiloxane, 10)).fo(DilutedHydrochloricAcid.getLiquid(4000)).add("polydimethylsiloxane_2", 480, 96, -1);
-        //DIMETHYLAMINE
-        CHEMICAL_REACTOR.RB().fi(Ammonia.getGas(2000), Methanol.getLiquid(6000)).fo(Dimethylamine.getGas(5000), Water.getLiquid(3000)).add("dimethylamine", 240, 120, -1);
-        //CHLORAMINE
-        CHEMICAL_REACTOR.RB().fi(Ammonia.getGas(4000), HypochlorousAcid.getLiquid(3000)).fo(Chloramine.getLiquid(4000), Water.getLiquid(3000)).add("chloramine", 160, 30, -1);
-        //DIMETHYLHYDRAZINE
-        CHEMICAL_REACTOR.RB().fi(Dimethylamine.getGas(5000), Chloramine.getLiquid(2000)).fo(Dimethylhydrazine.getLiquid(6000), DilutedHydrochloricAcid.getLiquid(1000)).add("dimethylhydrazine", 960, 480, -1);
-        CHEMICAL_REACTOR.RB().fi(Methanol.getLiquid(12000), Ammonia.getGas(8000), HypochlorousAcid.getLiquid(3000)).fo(Dimethylhydrazine.getLiquid(12000), DilutedHydrochloricAcid.getLiquid(2000), Water.getLiquid(9000)).add("dimethylhydrazine_2", 1040, 480, -1);
-        //DINITROGEN TETROXIDE
-        CHEMICAL_REACTOR.RB().fi(NitrogenDioxide.getGas(1000)).ii(INT_CIRCUITS.get(2)).fo(DinitrogenTetroxide.getGas(1000)).add("dinitrogen_tetroxide", 640, 30, -1);
-        CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(7000), Ammonia.getGas(8000)).fo(DinitrogenTetroxide.getGas(6000), Water.getLiquid(9000)).add("dinitrogen_tetroxide_1", 480, 30, -1);
-        CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(7000), Hydrogen.getGas(6000), Nitrogen.getGas(2000)).fo(DinitrogenTetroxide.getGas(6000), Water.getLiquid(9000)).add("dinitrogen_tetroxide_2", 1100, 480, -1);
         //NITROGEN MONOXIDE
         CHEMICAL_REACTOR.RB().fi(Ammonia.getGas(8000), Oxygen.getGas(5000)).fo(NitrogenMonoxide.getGas(4000), Water.getLiquid(9000)).add("nitrogen_monoxide", 160, 30, -1);
         //VINYL CHLORIDE
