@@ -677,6 +677,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(PhosphorousPentoxide).mats(of(Phosphor, 4, Oxygen, 10)).elecTicks(560);
         event.setMaterial(Potash).mats(of(Potassium, 2, Oxygen, 1)).elecTicks(90);
         event.setMaterial(SodiumBisulfate).mats(of(Potassium, 1, Hydrogen, 1, Sulfur, 1, Oxygen, 4)).elecTicks(600);
+        event.setMaterial(PotassiumBisulfate).mats(of(Potassium, 1, Hydrogen, 1, Sulfur, 1, Oxygen, 4)).elecTicks(300);
         event.setMaterial(PotassiumFeldspar).mats(of(Potassium, 2, Alumina, 5, SiliconDioxide, 18, Oxygen, 1)).elecTicks(260);
         event.setMaterial(Powellite).mats(of(Calcium, 1, Molybdenum, 1, Oxygen, 4));
         //event.setMaterial(Pyrochlore).asDust(ORE).addComposition(of(Calcium, 2, Niobium, 2, Oxygen, 7));
