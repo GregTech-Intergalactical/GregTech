@@ -120,7 +120,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("coal_boiler", CoalBoilerLoader::init);
         loader.accept("compressor", CompressorLoader::init);
         loader.accept("cutter", CutterLoader::init);
-        loader.accept("dehydrator", Dehydrator::init);
+        loader.accept("dehydrator", DehydratorLoader::init);
         loader.accept("distillery", DistilleryLoader::init);
         loader.accept("electrolyzer", ElectrolyzerLoader::init);
         loader.accept("electromagnetic_separator", ElectromagneticSeparatorLoader::init);
