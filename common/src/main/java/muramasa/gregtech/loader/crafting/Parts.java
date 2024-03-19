@@ -61,7 +61,6 @@ public class Parts {
         CircuitBasic.getDefaultInstance(), ing);
     // });
 
-      provider.shapeless(output, GTIRef.ID, "", "carbon", DUST.get(FiberReinforcedEpoxyResin, 1), CarbonFibre, DUST.getMaterialTag(EpoxyResin));
       provider.shapeless(output, GTIRef.ID, "", "carbon", new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
       provider.addItemRecipe(output, GTIRef.ID, "", "carbon", CoalBall,
               of('F', Items.FLINT, 'C', DUST.getMaterialTag(Coal)), "CCC", "CFC", "CCC");

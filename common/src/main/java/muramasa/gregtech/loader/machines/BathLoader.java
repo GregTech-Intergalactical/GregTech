@@ -1,5 +1,6 @@
 package muramasa.gregtech.loader.machines;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
@@ -52,6 +53,7 @@ public class BathLoader {
                 .add("netherized_diamond_recipe",144);
         BATH.RB().ii(DUST.getMaterialIngredient(Tungstate, 7)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(LithiumChloride, 4), DUST.get(TungsticAcid, 7)).add("tungstate", 512);
         BATH.RB().ii(DUST.getMaterialIngredient(Scheelite, 6)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(CalciumChloride, 3), DUST.get(TungsticAcid, 7)).add("scheelite", 512);
+        BATH.RB().ii(GTCoreItems.CarbonFibre).fi(EpoxyResin.getLiquid(L)).io(PLATE.get(FiberReinforcedEpoxyResin)).add("fiber_reinforced_epoxy_resin", 240);
         if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             BATH.RB().ii(DUST.getMaterialIngredient(SodiumAluminate, 4)).fi(Water.getLiquid(6000)).io(DUST.get(AluminiumHydroxide, 7), DUST.get(SodiumHydroxide, 3)).add("aluminium_hydroxide", 102 * 20);
             BATH.RB().ii(DUST.getMaterialIngredient(SodiumAluminate, 4)).fi(DistilledWater.getLiquid(6000)).io(DUST.get(AluminiumHydroxide, 7), DUST.get(SodiumHydroxide, 3)).add("aluminium_hydroxide_distilled_water", 102 * 20);
