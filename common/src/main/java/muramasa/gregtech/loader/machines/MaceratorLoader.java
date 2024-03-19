@@ -28,8 +28,7 @@ import java.util.List;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.Biochaff;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.data.AntimatterMaterials.Stone;
-import static muramasa.antimatter.data.AntimatterMaterials.Wood;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.material.Material.NULL;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.gregtech.data.Materials.*;
@@ -165,5 +164,6 @@ public class MaceratorLoader {
         MACERATOR.RB().ii(RecipeIngredient.of(Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN)).io(DUST.get(Obsidian, 9)).add("obsidian_dust", 400, 2);
         MACERATOR.RB().ii(RecipeIngredient.of(Items.BLAZE_ROD)).io(new ItemStack(Items.BLAZE_POWDER, 5)).add("blaze_powder", 400, 2);
         MACERATOR.RB().ii(RecipeIngredient.of(Items.BONE)).io(new ItemStack(Items.BONE_MEAL, 5)).add("bone_meal", 400, 2);
+        MACERATOR.RB().ii(RecipeIngredient.of(Items.QUARTZ_BLOCK)).io(DUST.get(Quartz, 4)).add("quartz_dust_from_block", Quartz.getMass(), 2);
     }
 }
