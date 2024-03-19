@@ -226,6 +226,9 @@ public class GregTech extends AntimatterMod {
                         l.addAll(Arrays.asList(GregTechItems.CircuitWetware, GregTechItems.MicroProcessor, GregTechItems.IntegratedProcessor, GregTechItems.NanoProcessor, GregTechItems.QuantumProcessor));
                     }
                 });
+                AntimatterJEIREIPlugin.addFluidsToHide(l -> {
+                    l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getLiquid(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getLiquid()));
+                });
                 AntimatterPlatformUtils.setBurnTime(GregTechBlocks.SOLID_SUPER_FUEL.asItem(), 100000);
                 AntimatterPlatformUtils.setBurnTime(GregTechItems.WoodPellet, 200);
                 AntimatterPlatformUtils.setFlammability(GregTechBlocks.WOOD_WALL, 5, 20);
