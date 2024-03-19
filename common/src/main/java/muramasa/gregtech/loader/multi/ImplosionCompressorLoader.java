@@ -12,7 +12,7 @@ import static muramasa.gregtech.data.RecipeMaps.IMPLOSION_COMPRESSOR;
 
 public class ImplosionCompressorLoader {
     public static void init(){
-        GEM.all().stream().filter(m -> !m.has(GregTechMaterialTags.CRYSTALLIZE)).forEach(m -> {
+        GEM.all().stream().filter(m -> !m.has(GregTechMaterialTags.CRYSTALLIZE) && m.has(DUST)).forEach(m -> {
             int tnt = m == Materials.Monazite || m == RedGarnet || m == YellowGarnet || m == Amber | m == Ruby ? 4 : m == Diamond ? 8: 6;
             IMPLOSION_COMPRESSOR.RB().ii(DUST.getMaterialIngredient(m, 4), RecipeIngredient.of(Items.TNT, tnt * 2)).io(GEM.get(m, 3), DUST_TINY.get(DarkAsh, tnt * 2)).add(m.getId() + "_from_tnt", 20, 30);
         });
