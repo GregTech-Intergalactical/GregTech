@@ -110,7 +110,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("alloy_smelter", AlloySmelterLoader::init);
         loader.accept("arc_furnace", ArcFurnaceLoader::init);
         loader.accept("assembler", AssemblerLoader::init);
-        loader.accept("autoclave", Autoclave::init);
+        loader.accept("autoclave", AutoclaveLoader::init);
         loader.accept("bath", BathLoader::init);
         loader.accept("bender", BenderLoader::init);
         loader.accept("canner", CannerLoader::init);

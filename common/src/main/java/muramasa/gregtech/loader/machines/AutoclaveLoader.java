@@ -16,7 +16,7 @@ import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.AUTOCLAVE;
 
-public class Autoclave {
+public class AutoclaveLoader {
     public static void init() {
         GregTechMaterialTags.CRYSTALLIZE.all().stream().filter(m -> m.has(GEM) && m.has(DUST)).forEach(m -> {
             int dur;
