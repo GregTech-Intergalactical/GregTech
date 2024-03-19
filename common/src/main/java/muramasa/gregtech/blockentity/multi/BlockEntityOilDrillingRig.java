@@ -83,7 +83,7 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
                 stack.shrink(1);
             } else {
                 if (oilEntry == null){
-                    oilEntry = OilSpoutSavedData.getOrCreate(serverLevel).getFluidVeinWorldEntry(SectionPos.blockToSectionCoord(this.getBlockPos().getX()), SectionPos.blockToSectionCoord(this.getBlockPos().getZ()));
+                    oilEntry = OilSpoutSavedData.getOrCreate(serverLevel).getFluidVeinWorldEntry(SectionPos.blockToSectionCoord(this.miningPos.getX()), SectionPos.blockToSectionCoord(this.miningPos.getZ()));
                 }
                 if (oilEntry.getFluid() == null) return;
                 energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
