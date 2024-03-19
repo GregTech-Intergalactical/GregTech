@@ -220,7 +220,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     @Override
     public List<String> getInfo(boolean simple) {
         List<String> info = super.getInfo(simple);
-        if (otherSide != null && otherSide.isRemoved()){
+        if (otherSide != null && !otherSide.isRemoved()){
             info.add("Target at: x: " + otherSide.getBlockPos().getX() + " y: " + otherSide.getBlockPos().getY() + " z: " + otherSide.getBlockPos().getZ() + " in " + otherSide.getLevel().dimension().location());
         } else {
             info.add("No target");
