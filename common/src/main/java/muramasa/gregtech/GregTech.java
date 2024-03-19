@@ -119,6 +119,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("circuitry", Circuitry::init);
         loader.accept("laser_engraver", LaserEngraverLoader::init);
         loader.accept("packaging", PackagerLoader::init);
+        loader.accept("unpackaging", UnpackagerLoader::init);
         loader.accept("chem_reacting", ChemicalReactorLoader::init);
         loader.accept("canning", CanningLoader::init);
         loader.accept("fuels", Fuels::init);

@@ -394,6 +394,14 @@ public class Machines {
                             .put('H', hull)
                             .put('L', cable)
                             .put('S', ForgeCTags.CHESTS).build(), "SCS", "RHc", "LCL"));
+            add(UNPACKAGER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('c', conveyor)
+                            .put('R', arm)
+                            .put('C', circuit)
+                            .put('H', hull)
+                            .put('L', cable)
+                            .put('S', ForgeCTags.CHESTS).build(), "SCS", "cHR", "LCL"));
             Item wire = tier == LV ? GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? GregTechBlocks.WIRE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? GregTechBlocks.WIRE_COPPER.getBlockItem(PipeSize.SMALL) : GregTechBlocks.WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
             Material rodMaterial = tier == LV ? Iron : tier == MV || tier == HV ? Steel : tier == EV ? Neodymium : VanadiumGallium;
             add(POLARIZER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,

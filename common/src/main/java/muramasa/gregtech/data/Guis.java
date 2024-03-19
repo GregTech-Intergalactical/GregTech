@@ -155,6 +155,7 @@ public class Guis {
         LASER_ENGRAVER.add(ALLOY_SMELTER);
         FORMING_PRESS.add(ALLOY_SMELTER);
         FORGE_HAMMER.add(FURNACE);
+        UNPACKAGER.add(ALLOY_SMELTER);
         for (int y = 0; y < 3; y++){
             for (int x = 0; x < 9; x++){
                 CHEST_BUFFER.add(STORAGE, 8 + (x * 18), 5 + (y * 18));

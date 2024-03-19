@@ -115,6 +115,7 @@ public class Machines {
     public static BasicMachine SIFTER = new BasicMachine(GTIRef.ID, "sifter").setMap(RecipeMaps.SIFTER).addFlags(GUI, ITEM);
     public static BasicMachine SMELTER = new BasicMachine(GTIRef.ID, "smelter").setMap(RecipeMaps.SMELTER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine THERMAL_CENTRIFUGE = new BasicMachine(GTIRef.ID, "thermal_centrifuge").setMap(RecipeMaps.THERMAL_CENTRIFUGE).addFlags(GUI,ITEM).amps(2);
+    public static BasicMachine UNPACKAGER = new BasicMachine(GTIRef.ID, "unpackager").setMap(RecipeMaps.UNPACKAGER).addFlags(GUI, ITEM);
     public static BasicMachine WIRE_MILL = new BasicMachine(GTIRef.ID, "wire_mill").setMap(RecipeMaps.WIRE_MILL).addFlags(GUI, ITEM).custom();
     /**
      * Battery Buffers
