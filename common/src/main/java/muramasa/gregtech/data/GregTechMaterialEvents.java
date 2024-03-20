@@ -371,7 +371,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(EpoxyResin).asSolid(400, 0, PLATE, MOLTEN);
         event.setMaterial(FiberReinforcedEpoxyResin).flags(PLATE);
         event.setMaterial(Plastic).asSolid(295, 0, PLATE, FOIL, FRAME).asFluid();
-        event.setMaterial(PolyphenyleneSulfide).asSolid(295, 0, PLATE, FOIL);
         event.setMaterial(Polystyrene).asSolid(295, 0);
         event.setMaterial(Polytetrafluoroethylene).asSolid(1400, 0, PLATE, FRAME, ROD_LONG);
         event.setMaterial(PolyvinylChloride).asSolid(295, 0, PLATE, FOIL);
@@ -423,7 +422,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Chloroform).asFluid();
         event.setMaterial(Cumene).asFluid();
         event.setMaterial(Chlorobenzene).asFluid();
-        event.setMaterial(Dichlorobenzene).asFluid();
         event.setMaterial(Dichloroethane).asFluid();
         event.setMaterial(Dimethyldichlorosilane).asFluid();
         event.setMaterial(Dimethylhydrazine).asFluid();
@@ -789,7 +787,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(EpoxyResin).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
         event.setMaterial(FiberReinforcedEpoxyResin).mats(of(EpoxyResin, 1));
         event.setMaterial(Plastic).mats(of(Carbon, 1, Hydrogen, 2));
-        event.setMaterial(PolyphenyleneSulfide).mats(of(Carbon, 6, Hydrogen, 4, Sulfur, 1));
         event.setMaterial(Polystyrene).mats(of(Carbon, 8, Hydrogen, 8));
         event.setMaterial(Polytetrafluoroethylene).mats(of(Carbon, 2, Fluorine, 4));
         event.setMaterial(PolyvinylChloride).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
@@ -836,7 +833,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Chloroform).mats(of(Carbon, 1, Hydrogen, 1, Chlorine, 3)).elecTicks(440);
         event.setMaterial(Cumene).mats(of(Carbon, 9, Hydrogen, 12));
         event.setMaterial(Chlorobenzene).mats(of(Carbon, 6, Hydrogen, 5, Chlorine, 1)).elecTicks(384);
-        event.setMaterial(Dichlorobenzene).mats(of(Carbon, 6, Hydrogen, 4, Chlorine, 2)).elecTicks(288);
         event.setMaterial(Dichloroethane).mats(of(Carbon,2,Hydrogen,4,Chlorine,2));
         event.setMaterial(Dimethyldichlorosilane).mats(of(Carbon, 2, Hydrogen, 6, Chlorine, 2, Silicon, 1)).elecTicks(528);
         event.setMaterial(Dimethylhydrazine).mats(of(Carbon, 2, Hydrogen, 8, Nitrogen, 2));
@@ -1334,7 +1330,7 @@ public class GregTechMaterialEvents {
         ELEC90.add(Polydimethylsiloxane, AceticAcid, Olivine, Ethanol, Methanol, VinylAcetate, /*Gypsum,*/ Cobaltite,
                 /*Dymethylamine,*/ Chalcopyrite, /*Mirabilite,*/ Spodumene, /*Dolomite,*/ HypochlorousAcid, Chloramine, Bastnasite,
                 Chloromethane, Malachite, /*Borax, */ /*Kaolinite,*/ Obsidian, NitricAcid, VinylChloride, Acetone, /*Asbestos,*/ PotassiumFeldspar,
-                MethylAcetate, Sodalite, AllylChloride, Dichlorobenzene, Phenol, Glycerol, Talc, Soapstone, PhosphoricAcid,
+                MethylAcetate, Sodalite, AllylChloride, Phenol, Glycerol, Talc, Soapstone, PhosphoricAcid,
                 Chlorobenzene, SulfuricAcid, Pyrope, SodiumPersulfate, Chloroform, Grossular, Spessartine, Almandine, Uvarovite, Andradite,
                 Emerald, Galena, Zircon);
         ELEC120.add(Clay, /*Trona,*/ BlueTopaz, Topaz, /*Pollucite,*/ CarbonDioxide, SulfurDioxide, Epichlorohydrin, Lepidolite, /*FullersEarth, Alunite,*/ Glauconite,

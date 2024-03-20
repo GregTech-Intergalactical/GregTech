@@ -362,7 +362,6 @@ public class Materials {
     public static Material EpoxyResin = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "epoxy_resin", 0xc88c14, DULL));
     public static Material FiberReinforcedEpoxyResin = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fiber_reinforced_epoxy_resin", 0xa07010, DULL));
     public static Material Plastic = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "plastic", 0xc8c8c8, DULL)).setDisplayNameString("Plastic (Polyethylene)");
-    public static Material PolyphenyleneSulfide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polyphenylene_sulfide", 0xaa8800, DULL)).setDisplayNameString("Plastic (Polyphenylene Sulfide)");
     public static Material Polystyrene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polystyrene", 0xbeb4aa, DULL)).setDisplayNameString("Styrofoam (Polystyrene)");
     public static Material Polytetrafluoroethylene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polytetrafluoroethylene", 0x646464, DULL)).setDisplayNameString("Teflon (Polytetrafluoroethylene)");
     public static Material PolyvinylChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polyvinyl_chloride", 0xd7e6e6, NONE)).setDisplayNameString("Plastic (Polyvinyl Chloride)");
@@ -420,7 +419,6 @@ public class Materials {
     public static Material Chloroform = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chloroform", 0x892ca0, NONE));
     public static Material Cumene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cumene", 0x552200, NONE));
     public static Material Chlorobenzene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "chlorobenzene", 0x004455, NONE));
-    public static Material Dichlorobenzene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dichlorobenzene", 0x004455, NONE));
     public static Material Dimethyldichlorosilane = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dimethyldichlorosilane", 0x441650, NONE));
     public static Material Dimethylhydrazine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dimethylhydrazine", 0x000055, NONE));
     public static Material Epichlorohydrin = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "epichlorohydrin", 0x501d05, NONE));

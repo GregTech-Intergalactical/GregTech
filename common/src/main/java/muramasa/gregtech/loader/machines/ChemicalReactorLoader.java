@@ -216,10 +216,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(HydrochloricAcid.getLiquid(4000), Methanol.getLiquid(12000)).ii(DUST.getMaterialIngredient(Silicon, 1)).io(DUST.get(Polydimethylsiloxane, 10)).fo(DilutedHydrochloricAcid.getLiquid(4000)).add("polydimethylsiloxane_2", 480, 96, -1);
         //NITROGEN MONOXIDE
         CHEMICAL_REACTOR.RB().fi(Ammonia.getGas(8000), Oxygen.getGas(5000)).fo(NitrogenMonoxide.getGas(4000), Water.getLiquid(9000)).add("nitrogen_monoxide", 160, 30, -1);
-        //DICHLOROBENZENE
-        CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Benzene.getLiquid(3000)).fo(Dichlorobenzene.getLiquid(3000), HydrochloricAcid.getLiquid(1000)).add("dichlorobenzene", 240, 30, -1);
-        //POLYPHENYLENE SULFIDE
-        CHEMICAL_REACTOR.RB().fi(Dichlorobenzene.getLiquid(1000), Oxygen.getGas(8000)).ii(DUST.getMaterialIngredient(SodiumSulfide, 1)).fo(PolyphenyleneSulfide.getLiquid(1000)).io(DUST.get(Salt)).add("polyphenol_sulfide", 240, 360, -1);
         //CHLOROBENZENE
         CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Benzene.getLiquid(6000)).fo(HydrochloricAcid.getLiquid(1000), Chlorobenzene.getLiquid(6000)).add("chlorobenzene_1", 240, 30, -1);
     }
