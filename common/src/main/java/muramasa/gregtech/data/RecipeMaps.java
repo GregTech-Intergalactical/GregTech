@@ -1,6 +1,7 @@
 package muramasa.gregtech.data;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import io.github.gregtechintergalactical.gtcore.data.RecipeBuilders;
 import io.github.gregtechintergalactical.gtcore.data.RecipeBuilders.SteamBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -23,6 +24,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
+import tesseract.Tesseract;
+import tesseract.TesseractGraphWrappers;
 
 import java.util.List;
 import java.util.function.BiFunction;
@@ -287,7 +290,14 @@ public class RecipeMaps {
             String power = "Duration: " + recipe.getDuration() + " ticks (" + (recipe.getDuration() / 20.0f) + " s)";
             String euT = "EU/t: " + recipe.getPower();
             String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
-            String complicated = recipe.getSpecialValue() == -1 ? "Complicated Recipe" : recipe.getSpecialValue() == 1 ? "Simple Recipe" : recipe.getSpecialValue() == 0 ? "Shared Recipe" : null;
+            String complicated = recipe.getSpecialValue() == -1 ? "Complicated Recipe" : null;
+            boolean toLarge = false;
+            for (FluidHolder outputFluid : recipe.getOutputFluids()) {
+                if (outputFluid.getFluidAmount() > 32000 * TesseractGraphWrappers.dropletMultiplier){
+                    toLarge = true;
+                    break;
+                }
+            }
             Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
             String formattedText = " (" + tier.getId().toUpperCase() + ")";
             renderString(stack, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
@@ -297,11 +307,14 @@ public class RecipeMaps {
             if (complicated != null){
                 renderString(stack, complicated, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
             }
+            if (toLarge){
+                renderString(stack, "Large chem reactor only", fontRenderer, 5, complicated != null ? 40 : 30, guiOffsetX, guiOffsetY);
+            }
         }
 
         @Override
         public int getRows() {
-            return 4;
+            return 5;
         }
     };
 
