@@ -33,6 +33,8 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1),Ethylene.getGas(L)).fo(Plastic.getLiquid((long) (L * 1.5))).add("ethylene_to_polyethylene",160, 30);
         CHEMICAL_REACTOR.RB().fi(Air.getGas(2),Ethylene.getGas(L * 2)).fo(Plastic.getLiquid(L * 2)).add("ethylene_to_polyethylene_2",320, 30);
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(16),Naphtha.getLiquid(L * 9)).ii(DUST_TINY.getMaterialIngredient(Titanium, 1).setNoConsume()).fo(Plastic.getLiquid(L * 9)).add("naphtha_to_polyethylene_2",640, 30);
+        //VINYL CHLORIDE
+        CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Ethylene.getGas(3000)).fo(VinylChloride.getGas(3000), HydrochloricAcid.getLiquid(1000)).add("vinyl_chloride", 80, 30);
         //POLYVINYLCHLORIDE
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1000),VinylChloride.getGas(144)).fo(PolyvinylChloride.getLiquid(216)).add("vinylchloride_to_polyvinylchloride",160, 30);
         //CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(7000),VinylChloride.getGas(1000)).fo(PolyvinylChloride.getLiquid(1500)).add("vinylchloride_to_polyvinylchloride_1",1120, 30);
@@ -175,8 +177,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(Methane.getGas(6000), Chlorine.getGas(5000)).ii(INT_CIRCUITS.get(13)).fo(HydrochloricAcid.getLiquid(6000), Chloroform.getLiquid(5000)).add("hydrochloric_acid_1", 16, 30, -1);
         //SODIUM BISULFATE
         CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(7000)).ii(DUST.getMaterialIngredient(Salt, 2)).io(DUST.get(SodiumBisulfate, 7)).fo(HydrochloricAcid.getLiquid(2000)).add("sodium_bisulfate", 60, 30, -1);
-        //VINYL CHLORIDE
-        CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Ethylene.getGas(3000)).fo(HydrochloricAcid.getLiquid(1000), VinylChloride.getGas(3000)).add("vinyl_chloride3", 80, 30, -1);
         //CHLOROBENZENE
         CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(2000), Benzene.getLiquid(6000)).ii(INT_CIRCUITS.get(4)).fo(HydrochloricAcid.getLiquid(1000), Chlorobenzene.getLiquid(6000)).add("chlorobenzene", 120, 30, -1);
         //HYPOCHLOROUS ACID
@@ -218,9 +218,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(HydrochloricAcid.getLiquid(4000), Methanol.getLiquid(12000)).ii(DUST.getMaterialIngredient(Silicon, 1)).io(DUST.get(Polydimethylsiloxane, 10)).fo(DilutedHydrochloricAcid.getLiquid(4000)).add("polydimethylsiloxane_2", 480, 96, -1);
         //NITROGEN MONOXIDE
         CHEMICAL_REACTOR.RB().fi(Ammonia.getGas(8000), Oxygen.getGas(5000)).fo(NitrogenMonoxide.getGas(4000), Water.getLiquid(9000)).add("nitrogen_monoxide", 160, 30, -1);
-        //VINYL CHLORIDE
-        CHEMICAL_REACTOR.RB().fi(Ethylene.getGas(3000), Chlorine.getGas(1000)).fo(VinylChloride.getGas(3000), HydrochloricAcid.getLiquid(1000)).add("vinyl_chloride", 80, 30, -1);
-        CHEMICAL_REACTOR.RB().fi(Ethylene.getGas(6000), Oxygen.getGas(1000), HydrochloricAcid.getLiquid(4000)).fo(VinylChloride.getGas(6000)).add("vinyl_chloride_1", 80, 30, -1);
         //DICHLOROBENZENE
         CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Benzene.getLiquid(3000)).fo(Dichlorobenzene.getLiquid(3000), HydrochloricAcid.getLiquid(1000)).add("dichlorobenzene", 240, 30, -1);
         //POLYPHENYLENE SULFIDE
