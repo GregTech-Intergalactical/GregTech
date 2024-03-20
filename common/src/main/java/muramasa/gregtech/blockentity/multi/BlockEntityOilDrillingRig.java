@@ -116,7 +116,7 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
                 }
             } else {
                 if (oilEntry == null){
-                    oilEntry = OilSpoutSavedData.getOrCreate(serverLevel).getFluidVeinWorldEntry(SectionPos.blockToSectionCoord(this.miningPos.getX()), SectionPos.blockToSectionCoord(this.miningPos.getZ()));
+                    oilEntry = OilSpoutSavedData.getOrCreate((ServerLevel) level).getFluidVeinWorldEntry(SectionPos.blockToSectionCoord(this.miningPos.getX()), SectionPos.blockToSectionCoord(this.miningPos.getZ()));
                 }
                 if (oilEntry.getFluid() == null) return;
                 energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
