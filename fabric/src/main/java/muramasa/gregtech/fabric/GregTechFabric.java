@@ -4,10 +4,13 @@ import muramasa.antimatter.event.fabric.CraftingEvents;
 import muramasa.antimatter.event.fabric.LoaderEvents;
 import muramasa.antimatter.event.fabric.ProviderEvents;
 import muramasa.antimatter.event.fabric.WorldGenEvents;
+import muramasa.antimatter.structure.StructureCache;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniPortal;
+import muramasa.gregtech.blockentity.multi.MiningPipeStructureCache;
 import muramasa.gregtech.loader.WorldGenLoader;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -21,6 +24,7 @@ public class GregTechFabric implements ModInitializer {
         LoaderEvents.LOADER.register(GregTech::registerRecipeLoaders);
         CraftingEvents.CRAFTING.register(GregTech::registerCraftingLoaders);
         ProviderEvents.PROVIDERS.register(GregTech::onProviders);
+        ServerWorldEvents.UNLOAD.register((server, world) -> MiningPipeStructureCache.onWorldUnload(world));
         EnergyStorage.SIDED.registerFallback(((world, pos, state, blockEntity, context) -> {
             if (blockEntity instanceof BlockEntityMiniPortal miniPortal && context != null){
                 if (miniPortal.getOtherSide() != null){

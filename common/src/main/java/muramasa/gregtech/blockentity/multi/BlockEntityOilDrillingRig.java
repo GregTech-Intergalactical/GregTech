@@ -62,6 +62,18 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
     }
 
     @Override
+    public void onFirstTick() {
+        super.onFirstTick();
+        if (foundBottom){
+            LongList positions = new LongArrayList();
+            for (int y = miningPos.getY(); y < this.getBlockPos().getY(); y++) {
+                positions.add(BlockPos.asLong(miningPos.getX(), y, miningPos.getZ()));
+            }
+            MiningPipeStructureCache.add(this.level, this.getBlockPos(), positions);
+        }
+    }
+
+    @Override
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
         if (!validStructure || stopped || !(level instanceof ServerLevel serverLevel)) return;
@@ -167,6 +179,12 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
             this.euPerTick = 3 * (1 << (tier << 1));
             this.cycle = (int) (160 * (tier == 0 ? 2 : Math.pow(0.5, tier - 1)));
         });
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        MiningPipeStructureCache.remove(this.level, this.getBlockPos());
     }
 
     @Override

@@ -10,8 +10,10 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.ore.BlockOre;
+import muramasa.antimatter.structure.StructureCache;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniPortal;
+import muramasa.gregtech.blockentity.multi.MiningPipeStructureCache;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -27,6 +29,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -356,5 +359,10 @@ public class RemappingEvents {
                 }
             });
         }*/
+    }
+
+    @SubscribeEvent
+    public static void onWorldUnload(WorldEvent.Unload event){
+        MiningPipeStructureCache.onWorldUnload(event.getWorld());
     }
 }
