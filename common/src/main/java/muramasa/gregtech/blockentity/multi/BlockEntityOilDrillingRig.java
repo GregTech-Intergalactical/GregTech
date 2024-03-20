@@ -37,6 +37,8 @@ import org.jetbrains.annotations.Nullable;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
+import java.util.List;
+
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static muramasa.gregtech.data.GregTechBlocks.MINING_PIPE;
 import static muramasa.gregtech.data.GregTechBlocks.MINING_PIPE_THIN;
@@ -66,21 +68,24 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
                 if (getMachineState() == MachineState.IDLE) setMachineState(MachineState.ACTIVE);
                 energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
 
-                if (level.getGameTime() % 40 != 0) return;
+                if (level.getGameTime() % 20 != 0) return;
                 miningPos = miningPos.below();
 
                 BlockState block = level.getBlockState(miningPos);
+                MineResult breakResult = destroyBlock(level, miningPos, true, null, Items.NETHERITE_PICKAXE.getDefaultInstance());
 
-                if (block.getBlock() == Blocks.BEDROCK || block.getBlock() == Blocks.VOID_AIR){
+                if (breakResult == MineResult.FOUND_BOTTOM){
                     foundBottom = true;
                     return;
                 }
 
-                if (!destroyBlock(level, miningPos, true, null, Items.NETHERITE_PICKAXE.getDefaultInstance())){
+                if (breakResult == MineResult.FOUND_OBSTRUCTION){
                     stopped = true;
                     return;
                 }
-                stack.shrink(1);
+                if (breakResult == MineResult.FOUND_MINEABLE) {
+                    stack.shrink(1);
+                }
             } else {
                 if (oilEntry == null){
                     oilEntry = OilSpoutSavedData.getOrCreate(serverLevel).getFluidVeinWorldEntry(SectionPos.blockToSectionCoord(this.miningPos.getX()), SectionPos.blockToSectionCoord(this.miningPos.getZ()));
@@ -102,15 +107,19 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
         }
     }
 
-    public boolean destroyBlock(Level level, BlockPos pos, boolean dropBlock, @Nullable Entity entity, ItemStack item) {
+    public MineResult destroyBlock(Level level, BlockPos pos, boolean dropBlock, @Nullable Entity entity, ItemStack item) {
         BlockState blockstate = level.getBlockState(pos);
+        if (blockstate.getBlock() == Blocks.BEDROCK || blockstate.getBlock() == Blocks.VOID_AIR){
+            return MineResult.FOUND_BOTTOM;
+        }
         if (blockstate.getDestroySpeed(level, pos) < 0) {
-            return false;
+            return MineResult.FOUND_OBSTRUCTION;
         } else {
             FluidState fluidstate = level.getFluidState(pos);
             if (!(blockstate.getBlock() instanceof BaseFireBlock)) {
                 level.levelEvent(2001, pos, Block.getId(blockstate));
             }
+            boolean miningPipe = blockstate.getBlock() == MINING_PIPE || blockstate.getBlock() == MINING_PIPE_THIN;
 
             CompoundTag tag = item.getTag();
             BlockEntity blockentity = blockstate.hasBlockEntity() ? level.getBlockEntity(pos) : null;
@@ -119,19 +128,25 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
             /*if (event.isCanceled()){
                 return false;
             }*/
-            if (dropBlock) {
-                if (level instanceof ServerLevel) {
-                    Block.dropResources(blockstate, level, pos);
+            if (dropBlock && !miningPipe) {
+                if (level instanceof ServerLevel serverLevel) {
+                    List<ItemStack> drops = Block.getDrops(blockstate, serverLevel, pos, blockentity, null, item);
+                    if (itemHandler.map(i -> i.canOutputsFit(drops.toArray(ItemStack[]::new))).orElse(false)){
+                        itemHandler.ifPresent(i -> i.addOutputs(drops.toArray(ItemStack[]::new)));
+                    } else {
+                        drops.forEach(i -> Block.popResource(level, pos, i));
+                    }
+                    blockstate.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY);
                 }
             }
 
-            boolean flag = level.setBlock(pos, MINING_PIPE.defaultBlockState(), 3, 512) || blockstate.getBlock() == MINING_PIPE;
+            boolean flag = blockstate.getBlock() == MINING_PIPE || level.setBlock(pos, MINING_PIPE.defaultBlockState(), 3, 512);
             if (flag && pos.getY() + 1 < this.getBlockPos().getY()) {
                 level.setBlock(pos.above(), MINING_PIPE_THIN.defaultBlockState(), 11);
                 //level.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(entity, blockstate));
             }
 
-            return flag;
+            return miningPipe ? MineResult.FOUND_MINING_PIPE : MineResult.FOUND_MINEABLE;
         }
     }
 
@@ -188,6 +203,10 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
         return slotType != SlotType.STORAGE || stack.getItem() == MINING_PIPE_THIN.asItem();
+    }
+
+    enum MineResult {
+        FOUND_BOTTOM, FOUND_OBSTRUCTION, FOUND_MINING_PIPE, FOUND_MINEABLE
     }
 
     public static class OilInfoWidget extends InfoRenderWidget.MultiRenderWidget {
