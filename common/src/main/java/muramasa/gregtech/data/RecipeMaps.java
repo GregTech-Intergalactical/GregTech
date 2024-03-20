@@ -12,6 +12,7 @@ import muramasa.antimatter.machine.BlockMachine;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.RecipeProxies;
+import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.Proxy;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
@@ -292,8 +293,8 @@ public class RecipeMaps {
             String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
             String complicated = recipe.getSpecialValue() == -1 ? "Complicated Recipe" : null;
             boolean toLarge = false;
-            for (FluidHolder outputFluid : recipe.getOutputFluids()) {
-                if (outputFluid.getFluidAmount() > 32000 * TesseractGraphWrappers.dropletMultiplier){
+            for (FluidIngredient outputFluid : recipe.getInputFluids()) {
+                if (outputFluid.getAmount() > 32000 * TesseractGraphWrappers.dropletMultiplier){
                     toLarge = true;
                     break;
                 }
