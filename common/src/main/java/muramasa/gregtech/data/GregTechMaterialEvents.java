@@ -370,7 +370,6 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(EpoxyResin).asSolid(400, 0, PLATE, MOLTEN);
         event.setMaterial(FiberReinforcedEpoxyResin).flags(PLATE);
-        event.setMaterial(Polycaprolactam).asSolid(500, 0);
         event.setMaterial(Plastic).asSolid(295, 0, PLATE, FOIL, FRAME).asFluid();
         event.setMaterial(PolyphenyleneSulfide).asSolid(295, 0, PLATE, FOIL);
         event.setMaterial(Polystyrene).asSolid(295, 0);
@@ -789,7 +788,6 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(EpoxyResin).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
         event.setMaterial(FiberReinforcedEpoxyResin).mats(of(EpoxyResin, 1));
-        event.setMaterial(Polycaprolactam).mats(of(Carbon, 6, Hydrogen, 11, Nitrogen, 1, Oxygen, 1));
         event.setMaterial(Plastic).mats(of(Carbon, 1, Hydrogen, 2));
         event.setMaterial(PolyphenyleneSulfide).mats(of(Carbon, 6, Hydrogen, 4, Sulfur, 1));
         event.setMaterial(Polystyrene).mats(of(Carbon, 8, Hydrogen, 8));
