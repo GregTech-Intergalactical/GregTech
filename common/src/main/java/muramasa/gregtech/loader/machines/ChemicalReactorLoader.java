@@ -176,7 +176,7 @@ public class ChemicalReactorLoader {
         //SODIUM BISULFATE
         CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(7000)).ii(DUST.getMaterialIngredient(Salt, 2)).io(DUST.get(SodiumBisulfate, 7)).fo(HydrochloricAcid.getLiquid(2000)).add("sodium_bisulfate", 60, 30, -1);
         //CHLOROBENZENE
-        CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(2000), Benzene.getLiquid(6000)).ii(INT_CIRCUITS.get(4)).fo(HydrochloricAcid.getLiquid(1000), Chlorobenzene.getLiquid(6000)).add("chlorobenzene", 120, 30, -1);
+        CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Benzene.getLiquid(6000)).ii(INT_CIRCUITS.get(4)).fo(Chlorobenzene.getLiquid(6000), HydrochloricAcid.getLiquid(1000)).add("chlorobenzene", 120, 30, -1);
         //HYPOCHLOROUS ACID
         CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Water.getLiquid(1000)).fo(HydrochloricAcid.getLiquid(1000), HypochlorousAcid.getLiquid(1000)).add("hypochlorous_acid", 60, 30, -1);
         //EPICHLOROHYDRIN
@@ -216,8 +216,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(HydrochloricAcid.getLiquid(4000), Methanol.getLiquid(12000)).ii(DUST.getMaterialIngredient(Silicon, 1)).io(DUST.get(Polydimethylsiloxane, 10)).fo(DilutedHydrochloricAcid.getLiquid(4000)).add("polydimethylsiloxane_2", 480, 96, -1);
         //NITROGEN MONOXIDE
         CHEMICAL_REACTOR.RB().fi(Ammonia.getGas(8000), Oxygen.getGas(5000)).fo(NitrogenMonoxide.getGas(4000), Water.getLiquid(9000)).add("nitrogen_monoxide", 160, 30, -1);
-        //CHLOROBENZENE
-        CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Benzene.getLiquid(6000)).fo(HydrochloricAcid.getLiquid(1000), Chlorobenzene.getLiquid(6000)).add("chlorobenzene_1", 240, 30, -1);
     }
 
     private static void addPolymerRecipe(Material in, Material out){
