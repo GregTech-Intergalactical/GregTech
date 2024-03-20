@@ -76,7 +76,12 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
     @Override
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
-        if (!validStructure || stopped || !(level instanceof ServerLevel serverLevel)) return;
+        boolean wasStopped = false;
+        if (stopped && level.getGameTime() % 200 == 0){
+            wasStopped = true;
+            stopped = false;
+        }
+        if (!validStructure || stopped) return;
         ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
         if ((stack.getItem() == GregTechBlocks.MINING_PIPE_THIN.asItem() || foundBottom) && energyHandler.map(e -> e.getEnergy() >= euPerTick).orElse(false)){
             if (!foundBottom){
@@ -85,7 +90,9 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
                 energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
 
                 if (level.getGameTime() % 20 != 0) return;
-                miningPos = miningPos.below();
+                if (!wasStopped) {
+                    miningPos = miningPos.below();
+                }
 
                 BlockState block = level.getBlockState(miningPos);
                 MineResult breakResult = destroyBlock(level, miningPos, true, null, Items.NETHERITE_PICKAXE.getDefaultInstance());
