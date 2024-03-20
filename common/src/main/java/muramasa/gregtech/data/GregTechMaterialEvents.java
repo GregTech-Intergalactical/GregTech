@@ -371,7 +371,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(EpoxyResin).asSolid(400, 0, PLATE, MOLTEN);
         event.setMaterial(FiberReinforcedEpoxyResin).flags(PLATE);
         event.setMaterial(Plastic).asSolid(295, 0, PLATE, FOIL, FRAME).asFluid();
-        event.setMaterial(Polystyrene).asSolid(295, 0);
+        //event.setMaterial(Polystyrene).asSolid(295, 0);
         event.setMaterial(Polytetrafluoroethylene).asSolid(1400, 0, PLATE, FRAME, ROD_LONG);
         event.setMaterial(PolyvinylChloride).asSolid(295, 0, PLATE, FOIL);
         event.setMaterial(Rubber).asSolid(295, 0, PLATE, RING, MOLTEN);
@@ -787,7 +787,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(EpoxyResin).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 1));
         event.setMaterial(FiberReinforcedEpoxyResin).mats(of(EpoxyResin, 1));
         event.setMaterial(Plastic).mats(of(Carbon, 1, Hydrogen, 2));
-        event.setMaterial(Polystyrene).mats(of(Carbon, 8, Hydrogen, 8));
+        //event.setMaterial(Polystyrene).mats(of(Carbon, 8, Hydrogen, 8));
         event.setMaterial(Polytetrafluoroethylene).mats(of(Carbon, 2, Fluorine, 4));
         event.setMaterial(PolyvinylChloride).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
         event.setMaterial(Rubber).mats(of(Carbon, 5, Hydrogen, 8));
@@ -1047,7 +1047,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Rubber).tool().toolDamage(-1).toolSpeed(0.15f).toolDurability(256).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
         event.setMaterial(EpoxyResin).tool().toolSpeed(2.25f).toolDurability(32).toolQuality(1).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
         event.setMaterial(Plastic).tool().toolSpeed(0.3f).toolDurability(256).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
-        event.setMaterial(Polystyrene).tool().toolSpeed(0.3f).toolDurability(256).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
         event.setMaterial(PolyvinylChloride).tool().toolSpeed(0.3f).toolDurability(256).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
         event.setMaterial(Silicone).tool().toolSpeed(0.3f).toolDurability(1024).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
         event.setMaterial(StyreneButadieneRubber).tool().toolSpeed(0.3f).toolDurability(1024).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
@@ -1356,7 +1355,7 @@ public class GregTechMaterialEvents {
                 NitroDiesel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ Sapphire, Ruby, Opal, Olivine,
                 Lapis, Sodalite, Lazurite, Monazite , MilkyQuartz, Quartz, TricalciumPhosphate, Phosphate, NetherStar,
                 EnderPearl, EnderEye, Blaze);
-        RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone, EpoxyResin);
+        RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Plastic, PolyvinylChloride, Silicone, EpoxyResin);
         SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);
         SOLDER.add(Lead, Tin, SolderingAlloy);
         SOLDER.subTag(SubTag.BAD_SOLDER, Lead, Tin);
