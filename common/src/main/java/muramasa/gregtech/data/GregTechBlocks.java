@@ -266,7 +266,7 @@ public class GregTechBlocks {
     public static final FluidPipe<?> FLUID_PIPE_VANADIUM_STEEL = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GTIRef.ID, VanadiumSteel, 2591, true).acidProof(true).pressures(getPressures(1200)));
     public static final FluidPipe<?> FLUID_PIPE_RUBBER = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GTIRef.ID, Rubber, 350, true).caps(1).pressures(getPressures(300)));
     public static final FluidPipe<?> FLUID_PIPE_PLASTIC = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GTIRef.ID, Plastic, 370, true).caps(1).pressures(getPressures(300)));
-    public static final FluidPipe<?> FLUID_PIPE_POLY = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GTIRef.ID, Polytetrafluoroethylene, 327, true).caps(1).pressures(getPressures(150)));
+    public static final FluidPipe<?> FLUID_PIPE_PVC = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GTIRef.ID, PolyvinylChloride, 333, true).caps(1).pressures(getPressures(450)));
     public static final FluidPipe<?> FLUID_PIPE_HP = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GTIRef.ID, HighPressure, 3422, true).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(1).pressures(10000));
     public static final FluidPipe<?> FLUID_PIPE_PLASMA = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GTIRef.ID, PlasmaContainment, 100000, true).sizes(PipeSize.NORMAL).caps(1).pressures(100000));
     public static final ItemPipe<?> ITEM_PIPE_BRASS = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GTIRef.ID, Brass).stepsize(32768).caps(0, 0, 0, 1, 2, 4));

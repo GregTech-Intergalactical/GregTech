@@ -3,7 +3,6 @@ package muramasa.gregtech.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
 import io.github.gregtechintergalactical.gtcore.machine.*;
 import muramasa.antimatter.AntimatterAPI;
@@ -814,7 +813,7 @@ public class Machines {
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .put('M', MotorHV)
                         .put('R', ROTOR.getMaterialTag(StainlessSteel))
-                        .put('P', GregTechBlocks.FLUID_PIPE_POLY.getBlockItem(PipeSize.LARGE))
+                        .put('P', GregTechBlocks.FLUID_PIPE_PVC.getBlockItem(PipeSize.LARGE))
                         .put('H', GregTechBlocks.HULL_HV).build(), "CRC", "PMP", "CHC"));
         add(LARGE_ELECTROLYZER, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
