@@ -2,6 +2,8 @@ package muramasa.gregtech.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.machine.MultiMachineEnergyHandler;
@@ -33,6 +35,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
@@ -43,18 +46,19 @@ import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIEN
 import static muramasa.gregtech.data.GregTechBlocks.MINING_PIPE;
 import static muramasa.gregtech.data.GregTechBlocks.MINING_PIPE_THIN;
 
-public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEntityOilDrillingRig> implements IFilterableHandler {
+public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEntityOilDrillingRig> implements IFilterableHandler, IMiningPipeTile {
     boolean foundBottom = false;
     boolean stopped = false;
     int euPerTick;
     int cycle = 160;
     int progress = 0;
-    BlockPos miningPos;
+    BlockPos miningPos, centerPos;
     OilSpoutEntry oilEntry = null;
 
     public BlockEntityOilDrillingRig(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         miningPos = new int3(pos, this.getFacing(state)).back(1).immutable();
+        centerPos = miningPos.below();
     }
 
     @Override
@@ -76,6 +80,11 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
 
                 if (breakResult == MineResult.FOUND_BOTTOM){
                     foundBottom = true;
+                    LongList positions = new LongArrayList();
+                    for (int y = miningPos.getY(); y < this.getBlockPos().getY(); y++) {
+                        positions.add(BlockPos.asLong(miningPos.getX(), y, miningPos.getZ()));
+                    }
+                    MiningPipeStructureCache.add(this.level, this.getBlockPos(), positions);
                     return;
                 }
 
@@ -203,6 +212,25 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
         return slotType != SlotType.STORAGE || stack.getItem() == MINING_PIPE_THIN.asItem();
+    }
+
+    @Override
+    public void onMiningPipeUpdate(BlockPos miningPipePos) {
+        BlockState pipe = level.getBlockState(miningPipePos);
+        if (pipe.getBlock() != MINING_PIPE && pipe.getBlock() != MINING_PIPE_THIN){
+            foundBottom = false;
+            BlockPos centerPos = miningPos.atY(this.getBlockPos().getY() - 1);
+            while (true){
+                BlockState state = level.getBlockState(centerPos);
+                if (state.getBlock() == MINING_PIPE || state.getBlock() == MINING_PIPE_THIN){
+                    centerPos = centerPos.below();
+                    continue;
+                }
+                break;
+            }
+            miningPos = centerPos;
+            MiningPipeStructureCache.remove(level, this.getBlockPos());
+        }
     }
 
     enum MineResult {
