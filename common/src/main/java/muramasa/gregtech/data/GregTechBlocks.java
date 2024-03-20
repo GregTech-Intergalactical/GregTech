@@ -49,8 +49,8 @@ public class GregTechBlocks {
     };
 
     public static final BlockBasic POWDER_BARREL = new BlockPowderBarrel();
-    public static final BlockBasic MINING_PIPE_THIN = new BlockMiningPipe(GTIRef.ID, "mining_pipe_thin", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY));
-    public static final BlockBasic MINING_PIPE = new BlockMiningPipe(GTIRef.ID, "mining_pipe", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY));
+    public static final BlockBasic MINING_PIPE_THIN = new BlockMiningPipe(GTIRef.ID, "mining_pipe_thin", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).strength(1.0f, 3.0f));
+    public static final BlockBasic MINING_PIPE = new BlockMiningPipe(GTIRef.ID, "mining_pipe", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).strength(1.0f, 3.0f));
     public static final BlockAsphalt WHITE_ASPHALT = new BlockAsphalt(GTIRef.ID, "white_asphalt", DyeColor.WHITE.getTextColor());
     public static final BlockAsphalt ORANGE_ASPHALT = new BlockAsphalt(GTIRef.ID, "orange_asphalt", DyeColor.ORANGE.getTextColor());
     public static final BlockAsphalt MAGENTA_ASPHALT = new BlockAsphalt(GTIRef.ID, "magenta_asphalt", DyeColor.MAGENTA.getTextColor());
