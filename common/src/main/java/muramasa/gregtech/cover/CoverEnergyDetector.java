@@ -12,12 +12,14 @@ import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.api.gt.IEnergyHandler;
@@ -59,6 +61,9 @@ public class CoverEnergyDetector extends BaseCover {
             }
             if (outputRedstone != oldRedstone){
                 markAndNotifySource();
+                BlockPos neighbor = this.source().getTile().getBlockPos().relative(this.side);
+                BlockState neighborState = this.source().getTile().getLevel().getBlockState(neighbor);
+                this.source().getTile().getLevel().updateNeighbourForOutputSignal(neighbor, neighborState.getBlock());
             }
         }
     }
@@ -75,6 +80,11 @@ public class CoverEnergyDetector extends BaseCover {
 
     @Override
     public int getWeakPower() {
+        return outputRedstone;
+    }
+
+    @Override
+    public int getStrongPower() {
         return outputRedstone;
     }
 

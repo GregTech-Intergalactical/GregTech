@@ -73,6 +73,9 @@ public class CoverFluidDetector extends BaseCover {
             }
             if (outputRedstone != oldRedstone){
                 markAndNotifySource();
+                BlockPos neighbor = this.source().getTile().getBlockPos().relative(this.side);
+                BlockState neighborState = this.source().getTile().getLevel().getBlockState(neighbor);
+                this.source().getTile().getLevel().updateNeighbourForOutputSignal(neighbor, neighborState.getBlock());
             }
         }
     }
@@ -89,6 +92,11 @@ public class CoverFluidDetector extends BaseCover {
 
     @Override
     public int getWeakPower() {
+        return outputRedstone;
+    }
+
+    @Override
+    public int getStrongPower() {
         return outputRedstone;
     }
 
