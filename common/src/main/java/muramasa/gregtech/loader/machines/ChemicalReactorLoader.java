@@ -65,8 +65,7 @@ public class ChemicalReactorLoader {
         //GLUE
         CHEMICAL_REACTOR.RB().fi(Ethylene.getGas(1000), AceticAcid.getLiquid(2000), Methanol.getLiquid(1000)).fo(Glue.getLiquid(4000)).add("glue",240,30);
         //GLYCERYL TRINITRATE
-        CHEMICAL_REACTOR.RB().fi(Glycerol.getLiquid(1000),NitricAcid.getLiquid(1500), SulfuricAcid.getLiquid(1500)).fo(GlycerylTrinitrate.getLiquid(1000),DilutedSulfuricAcid.getLiquid(3000)).add("glyceryl_trinitrate",180,30);
-        CHEMICAL_REACTOR.RB().fi(Nitrogen.getGas(1000),Water.getLiquid(2000)).ii(of(DUST.getMaterialTag(Carbon), 1)).fo(GlycerylTrinitrate.getLiquid(4000)).add("glyceryl_trinitrate_1",2700,30);
+        CHEMICAL_REACTOR.RB().fi(Glycerol.getLiquid(2800),NitricAcid.getLiquid(3000), SulfuricAcid.getLiquid(4200)).fo(GlycerylTrinitrate.getLiquid(4000),SulfurDioxide.getGas(1200)).add("glyceryl_trinitrate",180,30);
         //NITRO DIESEL
         CHEMICAL_REACTOR.RB().fi(Diesel.getLiquid(4000),NitricAcid.getLiquid(1000)).fo(NitroDiesel.getLiquid(4000)).add("nitro_diesel",40,8);
         CHEMICAL_REACTOR.RB().fi(Diesel.getLiquid(4000),GlycerylTrinitrate.getLiquid(1000)).fo(NitroDiesel.getLiquid(5000)).add("nitro_diesel_1",80,8);
