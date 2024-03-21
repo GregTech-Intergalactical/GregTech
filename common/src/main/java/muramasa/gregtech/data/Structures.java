@@ -210,7 +210,7 @@ public class Structures {
         OIL_DRILLING_RIG.setStructure(BlockEntityOilDrillingRig.class, b -> b.part("main")
                 .of("   ", " F ", "   ").of(0).of(0).of(" F ", "FCF", " F ").of(3).of(3).of("H~H", "HCH", "HHH").build()
                 .at('F', FRAME.get().get(Steel).asBlock()).at('C', GregTechBlocks.CASING_SOLID_STEEL)
-                .at('H', GregTechBlocks.CASING_SOLID_STEEL, HATCH_ENERGY, HATCH_FLUID_O)
+                .at('H', GregTechBlocks.CASING_SOLID_STEEL, HATCH_ENERGY, HATCH_FLUID_O, HATCH_ITEM_O)
                 .offset(1, 6, 0).min(1, HATCH_FLUID_O, HATCH_ENERGY).build());
 
         TREE_GROWTH_SIMULATOR.setStructure(BlockEntityTreeGrowthSimulator.class, b -> b.part("main")
