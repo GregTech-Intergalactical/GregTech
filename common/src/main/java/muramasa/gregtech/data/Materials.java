@@ -522,7 +522,7 @@ public class Materials {
     public static Material OilLight = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_oil", 0x0a0a0a, NONE));
     public static Material SeedOil = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "seed_oil", 0xc4ff00, NONE));
     public static Material Glycerol = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glycerol", 0x87de87, NONE));
-    public static Material GlycerylTrinitrate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glyceryl_trinitrate", 0x87de87, NONE));
+    public static Material GlycerylTrinitrate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glyceryl_trinitrate", 0x87de87, NONE)).setDisplayNameString("Nitroglycerin (Glyceryl Trinitrate");
 
     /**
      *** Gases/Plasmas
