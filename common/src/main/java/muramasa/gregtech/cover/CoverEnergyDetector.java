@@ -5,13 +5,18 @@ import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
+import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.gui.ButtonOverlay;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.tool.AntimatterToolType;
+import muramasa.antimatter.util.Utils;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -22,9 +27,6 @@ public class CoverEnergyDetector extends BaseCover {
     int outputRedstone = 0;
     public CoverEnergyDetector(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        addGuiCallback(t -> {
-            t.addSwitchButton(79, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, true, b -> "tooltip.gti.redstone_mode." + (b ? "inverted" : "normal"));
-        });
     }
 
     @Override
@@ -44,11 +46,6 @@ public class CoverEnergyDetector extends BaseCover {
     }
 
     @Override
-    public boolean hasGui() {
-        return true;
-    }
-
-    @Override
     public void onUpdate() {
         if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
         if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.energyHandler.isPresent()){
@@ -64,6 +61,16 @@ public class CoverEnergyDetector extends BaseCover {
                 markAndNotifySource();
             }
         }
+    }
+
+    @Override
+    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
+        if (type != null && type.getTag() == AntimatterDefaultTools.SCREWDRIVER.getTag()){
+            inverted = !inverted;
+            player.sendMessage(Utils.translatable("message.gti.redstone_mode." + (inverted ? "inverted" : "normal")), player.getUUID());
+            return InteractionResult.SUCCESS;
+        }
+        return super.onInteract(player, hand, side, type);
     }
 
     @Override

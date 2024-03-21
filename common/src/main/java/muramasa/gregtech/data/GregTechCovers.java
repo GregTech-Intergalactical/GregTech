@@ -81,10 +81,10 @@ public class GregTechCovers {
     public static final CoverFactory COVER_REDSTONE_MACHINE_CONTROLLER = CoverFactory.builder(CoverRedstoneMachineController::new).gui().item((a, b) -> {
         return new ItemCover(GTIRef.ID, "redstone_machine_controller");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/redstone_machine_controller")).build(GTIRef.ID, "redstone_machine_controller");
-    public static final CoverFactory COVER_ENERGY_DETECTOR = CoverFactory.builder(CoverEnergyDetector::new).gui().item((a, b) -> {
+    public static final CoverFactory COVER_ENERGY_DETECTOR = CoverFactory.builder(CoverEnergyDetector::new).item((a, b) -> {
         return new ItemCover(GTIRef.ID, "energy_detector");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/energy_detector")).build(GTIRef.ID, "energy_detector");
-    public static final CoverFactory COVER_FLUID_DETECTOR = CoverFactory.builder(CoverFluidDetector::new).gui().item((a, b) -> {
+    public static final CoverFactory COVER_FLUID_DETECTOR = CoverFactory.builder(CoverFluidDetector::new).item((a, b) -> {
         return new ItemCover(GTIRef.ID, "fluid_detector");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/fluid_detector")).build(GTIRef.ID, "fluid_detector");
     public static final CoverFactory COVER_ITEM_DETECTOR = CoverFactory.builder(CoverItemDetector::new).gui().item((a, b) -> {

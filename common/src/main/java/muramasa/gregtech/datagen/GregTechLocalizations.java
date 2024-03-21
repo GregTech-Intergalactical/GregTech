@@ -107,6 +107,8 @@ public class GregTechLocalizations {
             add("message.gti.nuclear_reactor.on", "Reactor Block is ON");
             add("message.gti.nuclear_reactor.neutron_levels", "Neutron Levels: %sn; %sn; %sn; %sn");
             add("message.gti.mini_portal.connect", "Target at: x: %s y: %s z: %s in %s");
+            add("message.gti.redstone_mode.normal", "Redstone Mode: Normal");
+            add("message.gti.redstone_mode.inverted", "Redstone Mode: Inverted");
         }
 
         @Override
