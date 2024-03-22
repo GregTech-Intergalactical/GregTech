@@ -227,7 +227,7 @@ public class GregTech extends AntimatterMod {
                     }
                 });
                 AntimatterJEIREIPlugin.addFluidsToHide(l -> {
-                    l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getLiquid(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getLiquid()));
+                    l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getGas(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getGas()));
                 });
                 AntimatterPlatformUtils.setBurnTime(GregTechBlocks.SOLID_SUPER_FUEL.asItem(), 100000);
                 AntimatterPlatformUtils.setBurnTime(GregTechItems.WoodPellet, 200);
