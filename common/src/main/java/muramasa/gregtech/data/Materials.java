@@ -365,8 +365,7 @@ public class Materials {
     public static Material Polystyrene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polystyrene", 0xbeb4aa, DULL)).setDisplayNameString("Plastic (Polystyrene)");
     public static Material Polytetrafluoroethylene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polytetrafluoroethylene", 0x646464, DULL)).setDisplayNameString("Teflon (Polytetrafluoroethylene)");
     public static Material PolyvinylChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "polyvinyl_chloride", 0xd7e6e6, NONE)).setDisplayNameString("Plastic (Polyvinyl Chloride)");
-    public static Material Silicone = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "silicone", 0xdcdcdc, DULL));
-    public static Material SiliconeRubber = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "siliconerubber", 0x9fadbb, NONE));
+    public static Material SiliconeRubber = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "silicone_rubber", 0x9fadbb, NONE));
     public static Material StyreneButadieneRubber = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "styrene_butadiene_rubber", 0x211a18, SHINY));
 
     /**

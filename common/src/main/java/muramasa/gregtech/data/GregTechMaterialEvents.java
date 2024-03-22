@@ -375,7 +375,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Polytetrafluoroethylene).asSolid(1400, 0, PLATE, FRAME, ROD_LONG);
         event.setMaterial(PolyvinylChloride).asSolid(295, 0, PLATE, FOIL);
         event.setMaterial(Rubber).asSolid(295, 0, PLATE, RING, MOLTEN);
-        event.setMaterial(Silicone).asSolid(900, 0, PLATE, FOIL);
+        event.setMaterial(SiliconeRubber).asSolid(900, 0, PLATE, FOIL, MOLTEN);
         event.setMaterial(StyreneButadieneRubber).asSolid(295, 0, PLATE, RING);
         /**
          **  Misc
@@ -791,7 +791,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Polytetrafluoroethylene).mats(of(Carbon, 2, Fluorine, 4));
         event.setMaterial(PolyvinylChloride).mats(of(Carbon, 2, Hydrogen, 3, Chlorine, 1));
         event.setMaterial(Rubber).mats(of(Carbon, 5, Hydrogen, 8));
-        event.setMaterial(Silicone).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
+        event.setMaterial(SiliconeRubber).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 1, Silicon, 1));
         event.setMaterial(StyreneButadieneRubber).mats(of(Styrene, 1, Butadiene, 3));
         /**
          **  Misc
@@ -820,8 +820,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Ethanediol).mats(of(Carbon, 2, Hydrogen, 6, Oxygen, 2));
         event.setMaterial(Propanediol).mats(of(Carbon, 3, Hydrogen, 8, Oxygen, 2));
         event.setMaterial(Butanediol).mats(of(Carbon, 4, Hydrogen, 10, Oxygen, 2));
-        //Plastic Related
-        event.setMaterial(SiliconeRubber).mats(of(Sulfur, 1, Polydimethylsiloxane, 9));
         //Misc
         event.setMaterial(AceticAcid).mats(of(Carbon, 2, Hydrogen, 4, Oxygen, 2)).elecTicks(128);
         event.setMaterial(AllylChloride).mats(of(Carbon, 3, Hydrogen, 5, Chlorine, 1)).elecTicks(288);
@@ -1048,7 +1046,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(EpoxyResin).tool().toolSpeed(2.25f).toolDurability(32).toolQuality(1).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
         event.setMaterial(Plastic).tool().toolSpeed(0.3f).toolDurability(256).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
         event.setMaterial(PolyvinylChloride).tool().toolSpeed(0.3f).toolDurability(256).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
-        event.setMaterial(Silicone).tool().toolSpeed(0.3f).toolDurability(1024).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
+        event.setMaterial(SiliconeRubber).tool().toolSpeed(0.3f).toolDurability(1024).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
         event.setMaterial(StyreneButadieneRubber).tool().toolSpeed(0.3f).toolDurability(1024).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
     }
 
@@ -1346,7 +1344,7 @@ public class GregTechMaterialEvents {
                 Brass, WroughtIron, Electrum, Clay, Blaze);
         NOBBF.add(Tetrahedrite, Chalcopyrite, Sheldonite, Pyrolusite, Magnesite, Molybdenite, Galena);
         NOSMASH.add(Wood/* WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite, PetroleumCoke, Rubber,
-                StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, Silicone, NitroDiesel,
+                StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, SiliconeRubber, NitroDiesel,
                 Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
                 RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
                 /* Amber, */ Sapphire, Ruby, Opal, Olivine, Lapis, MilkyQuartz, Quartz, Phosphate,
@@ -1355,7 +1353,7 @@ public class GregTechMaterialEvents {
                 NitroDiesel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ Sapphire, Ruby, Opal, Olivine,
                 Lapis, Sodalite, Lazurite, Monazite , MilkyQuartz, Quartz, TricalciumPhosphate, Phosphate, NetherStar,
                 EnderPearl, EnderEye, Blaze);
-        RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Plastic, PolyvinylChloride, Silicone, EpoxyResin);
+        RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Plastic, PolyvinylChloride, SiliconeRubber, EpoxyResin);
         SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);
         SOLDER.add(Lead, Tin, SolderingAlloy);
         SOLDER.subTag(SubTag.BAD_SOLDER, Lead, Tin);
