@@ -53,7 +53,7 @@ public class ArcFurnaceLoader {
                     t == INGOT_HOT || t == GEM || t == GEM_CHIPPED || t == GEM_FLAWED || t == GEM_FLAWLESS || t == GEM_EXQUISITE) continue;
             double amount = (double) t.getUnitValue() / U;
             t.all().forEach(m -> {
-                if (m.has(MaterialTags.RUBBERTOOLS) || m == Bone || m == Carbon || m == Blaze) return;
+                if (!m.has(DUST) || m.has(MaterialTags.RUBBERTOOLS) || m == Bone || m == Carbon || m == Blaze) return;
                 addRecyclingRecipe(t.getMaterialIngredient(m, 1), of(m, (float) amount), m.getId() + "_" + t.getId() + "_recycling");
             });
         }
@@ -64,7 +64,7 @@ public class ArcFurnaceLoader {
                 addRecyclingRecipe(b.asItem(), of(b.getMaterial(), 4f));
             }
         });
-        AntimatterAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != AntimatterMaterials.Wood).forEach(t -> {
+        AntimatterAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != AntimatterMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
             if (t.getSizes().contains(PipeSize.TINY)){
                 addRecyclingRecipe(t.getBlockItem(PipeSize.TINY), of(t.getMaterial(), 0.5f));
             }
@@ -81,7 +81,7 @@ public class ArcFurnaceLoader {
                 addRecyclingRecipe(t.getBlockItem(PipeSize.HUGE), of(t.getMaterial(), 12f));
             }
         });
-        AntimatterAPI.all(ItemPipe.class).stream().filter(t -> t.getMaterial() != AntimatterMaterials.Wood).forEach(t -> {
+        AntimatterAPI.all(ItemPipe.class).stream().filter(t -> t.getMaterial() != AntimatterMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
             if (t.getSizes().contains(PipeSize.TINY)){
                 addRecyclingRecipe(t.getBlockItem(PipeSize.TINY), of(t.getMaterial(), 0.5f));
             }
@@ -100,6 +100,7 @@ public class ArcFurnaceLoader {
         });
         AntimatterAPI.all(Wire.class, w -> {
             ImmutableSet<PipeSize> sizes = w.getSizes();
+            if (!w.getMaterial().has(DUST)) return;
             sizes.forEach(size -> {
                 Item cableItem = w.getBlockItem(size);
                 int ct = size.getCableThickness();
@@ -109,6 +110,7 @@ public class ArcFurnaceLoader {
         });
         AntimatterAPI.all(RedstoneWire.class, w -> {
             ImmutableSet<PipeSize> sizes = w.getSizes();
+            if (!w.getMaterial().has(DUST)) return;
             sizes.forEach(size -> {
                 Item cableItem = w.getBlockItem(size);
                 int ct = size.getCableThickness();
@@ -118,6 +120,7 @@ public class ArcFurnaceLoader {
         });
         AntimatterAPI.all(Cable.class, c -> {
             ImmutableSet<PipeSize> sizes = c.getSizes();
+            if (!c.getMaterial().has(DUST)) return;
             sizes.forEach(size -> {
                 Item cableItem = c.getBlockItem(size);
                 int ct = size.getCableThickness();
@@ -242,13 +245,16 @@ public class ArcFurnaceLoader {
                 mac.io(DUST.get(macOutput, i));
             }
             if (arcOutput == Ash || arcOutput.has(INGOT)){
-                totalMassArc[0] += (long) (arcOutput.getMass() * arcFloat);
+
                 if (arcLeftover > 0){
                     int aExtra = (int) (arcLeftover * 9);
-
-                    MaterialTypeItem<?> arcType = arcOutput == Ash ? DUST_TINY : NUGGET;
-                    arc.io(arcType.get(arcOutput, (j * 9) + aExtra));
+                    if (aExtra > 0){
+                        totalMassArc[0] += (long) (arcOutput.getMass() * arcFloat);
+                        MaterialTypeItem<?> arcType = arcOutput == Ash ? DUST_TINY : NUGGET;
+                        arc.io(arcType.get(arcOutput, (j * 9) + aExtra));
+                    }
                 } else {
+                    totalMassArc[0] += (long) (arcOutput.getMass() * arcFloat);
                     MaterialTypeItem<?> arcType = arcOutput == Ash ? DUST : INGOT;
                     arc.io(arcType.get(arcOutput, j));
                 }
