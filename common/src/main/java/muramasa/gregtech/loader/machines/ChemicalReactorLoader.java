@@ -76,8 +76,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(FishOil.getLiquid(100000),Ethanol.getLiquid(10000)).ii(of(DUST.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(100000), Glycerol.getLiquid(10000)).add("biodiesel_from_ethanol_2",1200, 30);
         CHEMICAL_REACTOR.RB().fi(SeedOil.getLiquid(100000),Methanol.getLiquid(10000)).ii(of(DUST.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(105000), Glycerol.getLiquid(5000)).add("biodiesel_from_methanol",1200, 30);
         CHEMICAL_REACTOR.RB().fi(FishOil.getLiquid(100000),Methanol.getLiquid(10000)).ii(of(DUST.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(105000), Glycerol.getLiquid(5000)).add("biodiesel_from_methanol_2",1200, 30);
-        //STYRENE
-        CHEMICAL_REACTOR.RB().fi(Benzene.getLiquid(2000),Ethylene.getGas(1000)).fo(Styrene.getLiquid(3000)).add("ethylene_to_styrene",120, 30);
         //RUBBER
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Sulfur), 1), of(DUST.get(RawRubber), 9)).fo(Rubber.getLiquid(L * 9)).add("rubber",200, 8);
         CHEMICAL_REACTOR.RB().fi(Air.getGas(14000),Isoprene.getLiquid(2000)).io(new ItemStack(DUST.get(RawRubber),21)).add("raw_rubber_dust",2240, 30);
@@ -150,6 +148,8 @@ public class ChemicalReactorLoader {
     }
 
     private static void addComplicated(){
+        //STYRENE
+        CHEMICAL_REACTOR.RB().fi(Benzene.getLiquid(2000),Ethylene.getGas(1000)).fo(Styrene.getLiquid(3000)).add("ethylene_to_styrene",120, 30);
         //RAW STYRENE-BUDADIENE RUBBER PULP
         CHEMICAL_REACTOR.RB().fi(Butadiene.getGas(3000), Oxygen.getGas(4000), Styrene.getLiquid(1000)).io(DUST.get(RawStyreneButadieneRubber, 6)).add("raw_styrene_butadiene_rubber_pulp",160,240);
         //STYRENE-BUTADIENE RUBBER
