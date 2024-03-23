@@ -252,9 +252,14 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
             if (oilInfoWidget.foundBottom){
                 renderer.draw(stack, "Progress: " + instance.currentProgress + "/" + instance.maxProgress, left, top + 8, 16448255);
                 return 16;
-            } else if (oilInfoWidget.stopped){
-                renderer.draw(stack, "Can't mine at: " + oilInfoWidget.currentPos.toString(), left, top + 8, 16448255);
-                return 16;
+            } else if (oilInfoWidget.stopped && oilInfoWidget.currentPos != null){
+                renderer.draw(stack, "Can't mine at: " + oilInfoWidget.currentPos, left, top + 8, 16448255);
+                renderer.draw(stack, oilInfoWidget.currentPos.toString(), left, top + 16, 16448255);
+                return 24;
+            } else if (oilInfoWidget.currentPos != null){
+                renderer.draw(stack, "Mining Position at: ", left, top + 8, 16448255);
+                renderer.draw(stack, oilInfoWidget.currentPos.toString(), left, top + 16, 16448255);
+                return 24;
             }
         }
         return 8;
