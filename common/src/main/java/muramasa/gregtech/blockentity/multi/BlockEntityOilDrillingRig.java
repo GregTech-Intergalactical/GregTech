@@ -73,6 +73,8 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
         }
     }
 
+    int outputTicker = 0;
+
     @Override
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
@@ -123,10 +125,25 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
                     oilEntry = OilSpoutSavedData.getOrCreate((ServerLevel) level).getFluidVeinWorldEntry(SectionPos.blockToSectionCoord(this.miningPos.getX()), SectionPos.blockToSectionCoord(this.miningPos.getZ()));
                 }
                 if (oilEntry.getFluid() == null) return;
+                FluidHolder fluidHolder = FluidPlatformUtils.createFluidStack(oilEntry.getFluid().fluid(), oilEntry.getCurrentYield() * TesseractGraphWrappers.dropletMultiplier);
+                if (outputTicker > 0){
+                    outputTicker--;
+                    return;
+                }
+                if (progress == 0){
+                    if (!fluidHandler.map(f -> f.fillOutput(fluidHolder, true) == oilEntry.getCurrentYield() * TesseractGraphWrappers.dropletMultiplier).orElse(false)){
+                        outputTicker = 40;
+                        this.setMachineState(MachineState.IDLE);
+                        return;
+                    }
+                }
+
+                if (getMachineState() != MachineState.ACTIVE){
+                    setMachineState(MachineState.ACTIVE);
+                }
                 energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
                 if (++progress == cycle){
                     progress = 0;
-                    FluidHolder fluidHolder = FluidPlatformUtils.createFluidStack(oilEntry.getFluid().fluid(), oilEntry.getCurrentYield() * TesseractGraphWrappers.dropletMultiplier);
                     if (fluidHandler.map(f -> f.fillOutput(fluidHolder, true) == oilEntry.getCurrentYield() * TesseractGraphWrappers.dropletMultiplier).orElse(false)){
                         fluidHandler.ifPresent(f -> f.fillOutput(fluidHolder, false));
                         onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
