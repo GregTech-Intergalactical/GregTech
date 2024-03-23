@@ -97,6 +97,10 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
                 BlockState block = level.getBlockState(miningPos);
                 MineResult breakResult = destroyBlock(level, miningPos, true, null, Items.NETHERITE_PICKAXE.getDefaultInstance());
 
+                if (breakResult == MineResult.PIPE_BROKEN){
+                    return;
+                }
+
                 if (breakResult == MineResult.FOUND_BOTTOM){
                     foundBottom = true;
                     LongList positions = new LongArrayList();
@@ -137,6 +141,11 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
 
     public MineResult destroyBlock(Level level, BlockPos pos, boolean dropBlock, @Nullable Entity entity, ItemStack item) {
         BlockState blockstate = level.getBlockState(pos);
+        BlockState aboveBlockState = level.getBlockState(pos.above());
+        if (aboveBlockState.getBlock() != MINING_PIPE && pos.getY() + 1 != this.getBlockPos().getY()){
+            resetMiningPos();
+            return MineResult.PIPE_BROKEN;
+        }
         if (blockstate.getBlock() == Blocks.BEDROCK || blockstate.getBlock() == Blocks.VOID_AIR){
             return MineResult.FOUND_BOTTOM;
         }
@@ -243,23 +252,27 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
     public void onMiningPipeUpdate(BlockPos miningPipePos) {
         BlockState pipe = level.getBlockState(miningPipePos);
         if (pipe.getBlock() != MINING_PIPE && pipe.getBlock() != MINING_PIPE_THIN){
-            foundBottom = false;
-            BlockPos centerPos = miningPos.atY(this.getBlockPos().getY() - 1);
-            while (true){
-                BlockState state = level.getBlockState(centerPos);
-                if (state.getBlock() == MINING_PIPE || state.getBlock() == MINING_PIPE_THIN){
-                    centerPos = centerPos.below();
-                    continue;
-                }
-                break;
-            }
-            miningPos = centerPos;
-            MiningPipeStructureCache.remove(level, this.getBlockPos());
+            resetMiningPos();
         }
     }
 
+    private void resetMiningPos(){
+        foundBottom = false;
+        BlockPos centerPos = miningPos.atY(this.getBlockPos().getY());
+        while (true){
+            BlockState state = level.getBlockState(centerPos);
+            if (state.getBlock() == MINING_PIPE || state.getBlock() == MINING_PIPE_THIN){
+                centerPos = centerPos.below();
+                continue;
+            }
+            break;
+        }
+        miningPos = centerPos;
+        MiningPipeStructureCache.remove(level, this.getBlockPos());
+    }
+
     enum MineResult {
-        FOUND_BOTTOM, FOUND_OBSTRUCTION, FOUND_MINING_PIPE, FOUND_MINEABLE
+        FOUND_BOTTOM, FOUND_OBSTRUCTION, FOUND_MINING_PIPE, FOUND_MINEABLE, PIPE_BROKEN
     }
 
     public static class OilInfoWidget extends InfoRenderWidget.MultiRenderWidget {
