@@ -1,7 +1,6 @@
 package muramasa.gregtech.data;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import io.github.gregtechintergalactical.gtcore.data.RecipeBuilders;
 import io.github.gregtechintergalactical.gtcore.data.RecipeBuilders.SteamBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -25,7 +24,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
-import tesseract.Tesseract;
 import tesseract.TesseractGraphWrappers;
 
 import java.util.List;
@@ -84,8 +82,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "chemical_reactor", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CIRCUIT_ASSEMBLER = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "circuit_assembler", new RecipeBuilder()));
-    public static RecipeMap<RecipeBuilder> COAL_BOILERS = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "coal_boilers", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> SOLID_FUEL_BOILERS = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "solid_fuel_boilers", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> COKE_OVEN = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "coke_oven", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> COMBUSTION_FUELS = AntimatterAPI.register(RecipeMap.class,
@@ -320,7 +318,7 @@ public class RecipeMaps {
     };
 
     static {
-        COAL_BOILERS.setGuiData(SIMPLE_DISPLAY);
+        SOLID_FUEL_BOILERS.setGuiData(SIMPLE_DISPLAY);
         COMBUSTION_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         GAS_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         SEMI_FUELS.setGuiData(MULTI_DISPLAY);
@@ -339,7 +337,7 @@ public class RecipeMaps {
         E_BLAST_FURNACE.setInfoRenderer(InfoRenderers.BLASTING_RENDERER);
         PRIMITIVE_BLAST_FURNACE.setInfoRenderer(InfoRenderers.BASIC_RENDERER);
         COKE_OVEN.setInfoRenderer(InfoRenderers.BASIC_RENDERER);
-        COAL_BOILERS.setInfoRenderer(InfoRenderers.BASIC_RENDERER);
+        SOLID_FUEL_BOILERS.setInfoRenderer(InfoRenderers.BASIC_RENDERER);
         BATH.setInfoRenderer(InfoRenderers.BASIC_RENDERER);
         COMBUSTION_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
         GAS_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);

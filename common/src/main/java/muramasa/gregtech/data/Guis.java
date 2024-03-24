@@ -191,8 +191,8 @@ public class Guis {
                 .add(ENERGY,53,45, bat).add(ENERGY,71,45, bat).add(ENERGY,89,45, bat).add(ENERGY,107,45, bat)
                 .add(ENERGY,53,63, bat).add(ENERGY,71,63, bat).add(ENERGY,89,63, bat).add(ENERGY,107,63, bat);
 
-        COAL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(IT_IN, 116, 62);
-        COAL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(STEEL,
+        SOLID_FUEL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(IT_IN, 116, 62);
+        SOLID_FUEL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(STEEL,
                 IT_IN, 116, 62);
         LAVA_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
         SOLAR_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
@@ -402,7 +402,7 @@ public class Guis {
         FORGE_HAMMER.addGuiCallback(t -> {
             t.addWidget(IconWidget.build(new ResourceLocation(GTIRef.ID, "textures/gui/button/forge_hammer_overlay.png"), 78, 42, 20, 6));
         });
-        COAL_BOILER.addGuiCallback(t -> {
+        SOLID_FUEL_BOILER.addGuiCallback(t -> {
             t.addWidget(CoalBoilerWidget.build().setSize(70, 25, 36, 54))
                     .addWidget(CoalBoilerFuelWidget.build().setSize(115, 43, 18, 18));
         });

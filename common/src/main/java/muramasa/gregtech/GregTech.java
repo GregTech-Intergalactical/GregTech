@@ -28,7 +28,7 @@ import muramasa.gregtech.integration.rei.REIRegistrar;
 import muramasa.gregtech.loader.crafting.*;
 import muramasa.gregtech.loader.items.Circuitry;
 import muramasa.gregtech.loader.machines.*;
-import muramasa.gregtech.loader.machines.generator.CoalBoilerLoader;
+import muramasa.gregtech.loader.machines.generator.SolidFuelBoilerLoader;
 import muramasa.gregtech.loader.machines.generator.Fuels;
 import muramasa.gregtech.loader.machines.generator.LargeBoilerLoader;
 import muramasa.gregtech.loader.multi.*;
@@ -117,7 +117,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("centrifuge", CentrifugeLoader::init);
         loader.accept("chemical_reactor", ChemicalReactorLoader::init);
         loader.accept("circuitry", Circuitry::init);
-        loader.accept("coal_boiler", CoalBoilerLoader::init);
+        loader.accept("solid_fuel_boiler", SolidFuelBoilerLoader::init);
         loader.accept("compressor", CompressorLoader::init);
         loader.accept("cutter", CutterLoader::init);
         loader.accept("dehydrator", DehydratorLoader::init);

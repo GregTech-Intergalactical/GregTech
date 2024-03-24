@@ -35,7 +35,7 @@ public class SteamMachines {
         Object hullSteel = GregTechBlocks.CASING_STEEL;
         Object brickedBronzeHull = GregTechBlocks.CASING_BRICKED_BRONZE;
         Object brickedSteelHull = GregTechBlocks.CASING_BRICKED_STEEL;
-        provider.addItemRecipe(output, "steam_machines", Machines.COAL_BOILER.getItem(Tier.BRONZE),
+        provider.addItemRecipe(output, "steam_machines", Machines.SOLID_FUEL_BOILER.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'P', bronzePlate,
                         'W', wrench,
@@ -47,7 +47,7 @@ public class SteamMachines {
                         'P', bronzePlate,
                         'W', HAMMER.getTag()
                 ), "PPP", "PWP", "PPP");
-        provider.addItemRecipe(output, "steam_machines", Machines.COAL_BOILER.getItem(Tier.STEEL),
+        provider.addItemRecipe(output, "steam_machines", Machines.SOLID_FUEL_BOILER.getItem(Tier.STEEL),
                 ImmutableMap.of(
                         'P', steelPlate,
                         'W', wrench,
