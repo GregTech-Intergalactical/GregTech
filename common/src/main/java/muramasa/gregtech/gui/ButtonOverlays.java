@@ -15,4 +15,6 @@ public class ButtonOverlays {
     public static ButtonOverlay NBT_ON = new ButtonOverlay(GTIRef.ID, "nbt_on", 16, 16);
     public static ButtonOverlay REDSTONE_CONTROL_OFF = new ButtonOverlay(GTIRef.ID, "redstone_control_off", 16, 16);
     public static ButtonOverlay REDSTONE_CONTROL_ON = new ButtonOverlay(GTIRef.ID, "redstone_control_on", 16, 16);
+    public static ButtonOverlay PULL_UP_OFF = new ButtonOverlay(GTIRef.ID, "pull_up_off", 18, 18);
+    public static ButtonOverlay PULL_UP_ON = new ButtonOverlay(GTIRef.ID, "pull_up_on", 18, 18);
 }

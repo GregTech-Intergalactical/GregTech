@@ -10,14 +10,20 @@ import muramasa.antimatter.capability.machine.MultiMachineEnergyHandler;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.IGuiElement;
 import muramasa.antimatter.gui.SlotType;
+import muramasa.antimatter.gui.event.GuiEvents;
+import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.Utils;
 import muramasa.antimatter.util.int3;
+import muramasa.gregtech.blockentity.single.BlockEntityBuffer;
 import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.gui.ButtonOverlays;
 import muramasa.gregtech.worldgen.OilSpoutEntry;
 import muramasa.gregtech.worldgen.OilSpoutSavedData;
 import net.minecraft.client.gui.Font;
@@ -26,6 +32,7 @@ import net.minecraft.core.SectionPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -49,16 +56,16 @@ import static muramasa.gregtech.data.GregTechBlocks.MINING_PIPE_THIN;
 public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEntityOilDrillingRig> implements IFilterableHandler, IMiningPipeTile {
     boolean foundBottom = false;
     boolean stopped = false;
+    boolean pullingUp;
     int euPerTick;
     int cycle = 160;
     int progress = 0;
-    BlockPos miningPos, centerPos;
+    BlockPos miningPos;
     OilSpoutEntry oilEntry = null;
 
     public BlockEntityOilDrillingRig(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        miningPos = new int3(pos, this.getFacing(state)).back(1).immutable();
-        centerPos = miningPos.below();
+        miningPos = new int3(pos, this.getFacing(state)).back(1).immutable().below();
     }
 
     @Override
@@ -85,23 +92,48 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
         }
         if (!validStructure || stopped) return;
         ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
-        if ((stack.getItem() == GregTechBlocks.MINING_PIPE_THIN.asItem() || foundBottom) && energyHandler.map(e -> e.getEnergy() >= euPerTick).orElse(false)){
-            if (!foundBottom){
-
-                if (getMachineState() == MachineState.IDLE) setMachineState(MachineState.ACTIVE);
-                energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
-
-                if (level.getGameTime() % 20 != 0) return;
-                if (!wasStopped) {
-                    miningPos = miningPos.below();
+        if ((stack.getItem() == GregTechBlocks.MINING_PIPE_THIN.asItem() || foundBottom || pullingUp) && energyHandler.map(e -> e.getEnergy() >= euPerTick).orElse(false)){
+            if (pullingUp){
+                if (level.getGameTime() % 5 != 0) return;
+                BlockState block = level.getBlockState(miningPos.above());
+                if (block.getBlock() == MINING_PIPE){
+                    boolean success = false;
+                    if (itemHandler.map(i -> i.canOutputsFit(new ItemStack[]{new ItemStack(MINING_PIPE_THIN)})).orElse(false)){
+                        itemHandler.ifPresent(i -> i.addOutputs(new ItemStack(MINING_PIPE_THIN)));
+                        success = true;
+                    } else if (itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getItem(0).getCount() + 1 < i.getHandler(SlotType.STORAGE).getSlotLimit(0)).orElse(false)){
+                        itemHandler.ifPresent(i -> i.getHandler(SlotType.STORAGE).insertItem(0, new ItemStack(MINING_PIPE_THIN), false));
+                        success = true;
+                    }
+                    if (success){
+                        if (foundBottom){
+                            foundBottom = false;
+                            MiningPipeStructureCache.remove(level, this.getBlockPos());
+                        }
+                        miningPos = miningPos.above();
+                        level.setBlock(miningPos, Blocks.AIR.defaultBlockState(), 3);
+                        if (miningPos.getY() + 1 < this.getBlockPos().getY()){
+                            level.setBlock(miningPos.above(), MINING_PIPE.defaultBlockState(), 3);
+                        }
+                        if (getMachineState() == MachineState.IDLE) setMachineState(MachineState.ACTIVE);
+                        energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
+                    } else if (getMachineState() == MachineState.ACTIVE){
+                        setMachineState(MachineState.IDLE);
+                    }
+                } else if (getMachineState() == MachineState.ACTIVE){
+                    setMachineState(MachineState.IDLE);
                 }
-
-                BlockState block = level.getBlockState(miningPos);
+            } else if (!foundBottom){
+                if (level.getGameTime() % 20 != 0) return;
                 MineResult breakResult = destroyBlock(level, miningPos, true, null, Items.NETHERITE_PICKAXE.getDefaultInstance());
 
                 if (breakResult == MineResult.PIPE_BROKEN){
                     return;
                 }
+
+
+                if (getMachineState() == MachineState.IDLE) setMachineState(MachineState.ACTIVE);
+                energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
 
                 if (breakResult == MineResult.FOUND_BOTTOM){
                     foundBottom = true;
@@ -112,6 +144,10 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
                     MiningPipeStructureCache.add(this.level, this.getBlockPos(), positions);
                     return;
                 }
+                if (!wasStopped) {
+                    miningPos = miningPos.below();
+                }
+
 
                 if (breakResult == MineResult.FOUND_OBSTRUCTION){
                     stopped = true;
@@ -224,6 +260,7 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
     public void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         tag.putBoolean("foundBottom", foundBottom);
+        tag.putBoolean("pullingUp", pullingUp);
         tag.putLong("miningPos", miningPos.asLong());
         tag.putInt("progress", progress);
     }
@@ -232,8 +269,26 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
     public void load(CompoundTag nbt) {
         super.load(nbt);
         this.foundBottom = nbt.getBoolean("foundBottom");
+        this.pullingUp = nbt.getBoolean("pullingUp");
         this.miningPos = BlockPos.of(nbt.getLong("miningPos"));
         this.progress = nbt.getInt("progress");
+    }
+
+    @Override
+    public void onGuiEvent(IGuiEvent event, Player playerEntity) {
+        if (event.getFactory() == GuiEvents.EXTRA_BUTTON) {
+            int[] data = ((GuiEvents.GuiEvent)event).data;
+            if (data[1] == 0) {
+                pullingUp = !pullingUp;
+                playerEntity.sendMessage(Utils.literal((pullingUp ? "Currently pulling up mining pipes" : "No longer pulling up mining pipes")), playerEntity.getUUID());
+            }
+        }
+    }
+
+    @Override
+    public void addWidgets(GuiInstance instance, IGuiElement parent) {
+        super.addWidgets(instance, parent);
+        instance.addSwitchButton(152, 23, 18, 18, ButtonOverlays.PULL_UP_OFF, ButtonOverlays.PULL_UP_ON, h -> ((BlockEntityOilDrillingRig)h).pullingUp, false);
     }
 
     @Override
@@ -254,11 +309,11 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
                 return 16;
             } else if (oilInfoWidget.stopped && oilInfoWidget.currentPos != null){
                 renderer.draw(stack, "Can't mine at: " + oilInfoWidget.currentPos, left, top + 8, 16448255);
-                renderer.draw(stack, oilInfoWidget.currentPos.toString(), left, top + 16, 16448255);
+                renderer.draw(stack, "Y: " + oilInfoWidget.currentPos.getY(), left, top + 16, 16448255);
                 return 24;
             } else if (oilInfoWidget.currentPos != null){
                 renderer.draw(stack, "Mining Position at: ", left, top + 8, 16448255);
-                renderer.draw(stack, oilInfoWidget.currentPos.toString(), left, top + 16, 16448255);
+                renderer.draw(stack, "Y: " + oilInfoWidget.currentPos.getY(), left, top + 16, 16448255);
                 return 24;
             }
         }
@@ -273,14 +328,14 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
     @Override
     public void onMiningPipeUpdate(BlockPos miningPipePos) {
         BlockState pipe = level.getBlockState(miningPipePos);
-        if (pipe.getBlock() != MINING_PIPE && pipe.getBlock() != MINING_PIPE_THIN){
+        if (pipe.getBlock() != MINING_PIPE && pipe.getBlock() != MINING_PIPE_THIN && !pullingUp){
             resetMiningPos();
         }
     }
 
     private void resetMiningPos(){
         foundBottom = false;
-        BlockPos centerPos = miningPos.atY(this.getBlockPos().getY());
+        BlockPos centerPos = miningPos.atY(this.getBlockPos().getY()).below();
         while (true){
             BlockState state = level.getBlockState(centerPos);
             if (state.getBlock() == MINING_PIPE || state.getBlock() == MINING_PIPE_THIN){
