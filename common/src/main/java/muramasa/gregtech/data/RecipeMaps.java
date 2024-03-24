@@ -320,6 +320,7 @@ public class RecipeMaps {
     };
 
     static {
+        COAL_BOILERS.setGuiData(SIMPLE_DISPLAY);
         COMBUSTION_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         GAS_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         SEMI_FUELS.setGuiData(MULTI_DISPLAY);
@@ -338,6 +339,7 @@ public class RecipeMaps {
         E_BLAST_FURNACE.setInfoRenderer(InfoRenderers.BLASTING_RENDERER);
         PRIMITIVE_BLAST_FURNACE.setInfoRenderer(InfoRenderers.BASIC_RENDERER);
         COKE_OVEN.setInfoRenderer(InfoRenderers.BASIC_RENDERER);
+        COAL_BOILERS.setInfoRenderer(InfoRenderers.BASIC_RENDERER);
         BATH.setInfoRenderer(InfoRenderers.BASIC_RENDERER);
         COMBUSTION_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
         GAS_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);

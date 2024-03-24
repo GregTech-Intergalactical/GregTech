@@ -30,6 +30,9 @@ public class Guis {
             .add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
             .add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63));
 
+    public static GuiData SIMPLE_DISPLAY = new GuiData(GTIRef.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
+            .add(IT_IN, 53, 25).add(IT_OUT, 107, 25));
+
     public static GuiData MULTI_DISPLAY_FLUID = new GuiData(GTIRef.ID, "multi_display_fluid").setSlots(ISlotProvider.DEFAULT()
             .add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
             .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7)
