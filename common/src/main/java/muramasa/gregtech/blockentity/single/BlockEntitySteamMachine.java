@@ -4,6 +4,7 @@ import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.SlotType;
+import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
@@ -73,6 +74,12 @@ public class BlockEntitySteamMachine extends BlockEntityMachine<BlockEntitySteam
         @Override
         public int getOverclock() {
             return tile.getMachineTier() == BRONZE ? 0 : 1;
+        }
+
+        public long getPower() {
+            if (activeRecipe == null) return 0;
+            if (overclock == 0 || tile.has(MachineFlag.RF)) return activeRecipe.getPower();
+            return (activeRecipe.getPower() * (1L << overclock));
         }
 
         @Override
