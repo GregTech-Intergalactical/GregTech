@@ -131,7 +131,6 @@ public class Parts {
           Item conveyor = GregTech.get(ItemCover.class, "conveyor_" + t.getId());
           Item fieldGen = GregTech.get(ItemBasic.class, "field_gen_" + t.getId());
           Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
-          Object emitterGem = EMITTER_GEMS.get(t);
           provider.addItemRecipe(output, "gtparts", motor,
                   of('M', ROD.get(magnet), 'C', cable, 'W', WIRE_GETTER.apply(fromTier(t), LV), 'R', rod), "CWR", "WMW", "RWC");
           provider.addItemRecipe(output, "gtparts", piston,
@@ -145,9 +144,8 @@ public class Parts {
           provider.addItemRecipe(output, "gtparts", sensor,
                   of('R', emitterRod, 'G', ForgeCTags.GEMS_QUARTZ_ALL, 'C', circuit, 'P', plate), "P G", "PR ", "CPP");
           PipeSize osmium = t == IV ? PipeSize.HUGE : PipeSize.values()[t.getIntegerId() - 1];
-          Item center = t == LV ? Items.ENDER_PEARL : t == MV ? Items.ENDER_EYE : t == HV ? GregTechItems.QuantumEye : t == EV ? Items.NETHER_STAR : GregTechItems.QuantumStar;
           provider.addItemRecipe(output, "gtparts", fieldGen,
-                  of('O', GregTechBlocks.WIRE_OSMIUM.getBlockItem(osmium), 'C', circuit, 'G', center), "OCO", "CGC", "OCO");
+                  of('O', GregTechBlocks.WIRE_OSMIUM.getBlockItem(osmium), 'C', circuit, 'G', ROD_LONG.getMaterialTag(NeodymiumMagnetic)), "OCO", "CGC", "OCO");
           Material rotorMat = TIER_ROTORS.get(t);
           provider.addItemRecipe(output, "gtparts", pump,
                   ImmutableMap.<Character, Object>builder().put('M', motor).put('C', cable).put('W', WRENCH.getTag())
