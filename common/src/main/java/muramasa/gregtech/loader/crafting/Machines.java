@@ -627,6 +627,8 @@ public class Machines {
                 of('T', GregTechBlocks.FLUID_PIPE_TUNGSTEN.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', GregTechBlocks.CASING_TUNGSTEN), "CTC", "TWT", "CTC");
         provider.addItemRecipe(output, "machines", LONG_DISTANCE_ITEM_ENDPOINT.getItem(NONE),
                 of('T', GregTechBlocks.ITEM_PIPE_PLATINUM.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', GregTechBlocks.CASING_PLATINUM), "CTC", "TWT", "CTC");
+        provider.addItemRecipe(output, "machines", NUCLEAR_REACTOR_CORE.getItem(NONE),
+                of('C', TIER_CIRCUITS.apply(Tier.IV), 'P', GregTechItems.PistonEV, 'L', GregTechBlocks.CASING_DENSE_LEAD), "PCP", "CLC", "PCP");
         addHatchRecipes(output, provider);
         addMultiblockRecipes(output, provider);
 
