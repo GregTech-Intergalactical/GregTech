@@ -141,9 +141,9 @@ public class Parts {
           provider.addItemRecipe(output, "gtparts", robotArm,
                   of('M', motor, 'C', cable, 'P', piston, 'I', circuit, 'R', rod), "CCC", "MRM", "PIR");
           provider.addItemRecipe(output, "gtparts", emitter,
-                  of('R', emitterRod, 'G', emitterGem, 'L', cable, 'C', circuit), "RRC", "LGR", "CLR");
+                  of('R', emitterRod, 'G', ForgeCTags.GEMS_QUARTZ_ALL, 'L', cable, 'C', circuit), "RRC", "LGR", "CLR");
           provider.addItemRecipe(output, "gtparts", sensor,
-                  of('R', emitterRod, 'G', emitterGem, 'C', circuit, 'P', plate), "P G", "PR ", "CPP");
+                  of('R', emitterRod, 'G', ForgeCTags.GEMS_QUARTZ_ALL, 'C', circuit, 'P', plate), "P G", "PR ", "CPP");
           PipeSize osmium = t == IV ? PipeSize.HUGE : PipeSize.values()[t.getIntegerId() - 1];
           Item center = t == LV ? Items.ENDER_PEARL : t == MV ? Items.ENDER_EYE : t == HV ? GregTechItems.QuantumEye : t == EV ? Items.NETHER_STAR : GregTechItems.QuantumStar;
           provider.addItemRecipe(output, "gtparts", fieldGen,
