@@ -29,6 +29,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.E_BLAST_FURNACE;
+import static muramasa.gregtech.data.RecipeMaps.LASER_ENGRAVER;
 
 public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
 
@@ -95,6 +96,14 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         RecipeMaps.MACERATOR.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
         RecipeMaps.ELECTROLYZER.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1)).io(new ItemStack(getAe2Item("charged_certus_quartz_crystal"))).add("charged_certus_quartz", 2000, 30);
         E_BLAST_FURNACE.RB().ii(RecipeIngredient.of(TagUtils.getForgelikeItemTag("silicon")), TierMaps.INT_CIRCUITS.get(1)).io(INGOT.get(Silicon)).add("silicon_ingot_from_silicon", 1683, 120, 1683);
+        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(GreenSapphire, 1).setNoConsume()).io(new ItemStack(getAe2Item("logic_processor_press"))).add("inscriber_logic_press", 2000, 1920);
+        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Opal, 1).setNoConsume()).io(new ItemStack(getAe2Item("calculation_processor_press"))).add("inscriber_calculation_press", 2000, 1920);
+        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(BlueTopaz, 1).setNoConsume()).io(new ItemStack(getAe2Item("calculation_processor_press"))).add("inscriber_calculation_press_2", 2000, 1920);
+        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Sapphire, 1).setNoConsume()).io(new ItemStack(getAe2Item("calculation_processor_press"))).add("inscriber_calculation_press_3", 2000, 1920);
+        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(YellowGarnet, 1).setNoConsume()).io(new ItemStack(getAe2Item("engineering_processor_press"))).add("inscriber_engineering_press", 2000, 1920);
+        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Dilithium, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press", 2000, 1920);
+        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Diamond, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press_2", 2000, 1920);
+        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Glass, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press_3", 2000, 1920);
     }
     
     public static void craftingRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
