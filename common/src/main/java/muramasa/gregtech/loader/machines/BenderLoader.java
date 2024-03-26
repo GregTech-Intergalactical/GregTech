@@ -1,11 +1,14 @@
 package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.data.AntimatterMaterialTypes;
+import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import muramasa.gregtech.data.Materials;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import java.util.function.ToLongFunction;
 
@@ -46,5 +49,6 @@ public class BenderLoader {
         BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Steel,2), INT_CIRCUITS.get(4)).io(GregTechItems.CellSteel.getDefaultInstance()).add("steel_cell",80,96);
         BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.TungstenSteel,2), INT_CIRCUITS.get(4)).io(GregTechItems.CellTungstensteel.getDefaultInstance()).add("tungstensteel_cell",80,384);
         BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Zirconium,1), INT_CIRCUITS.get(1)).io(GregTechItems.EmptyNuclearFuelRod).add("empty_fuel_rod",80,96);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(AntimatterMaterials.Iron, 3), INT_CIRCUITS.get(3)).io(new ItemStack(Items.BUCKET)).add("bucket", 200, 16);
     }
 }
