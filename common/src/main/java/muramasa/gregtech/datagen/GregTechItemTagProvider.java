@@ -37,5 +37,6 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         this.tag(GregTechTags.GRIND_HEADS).add(GTCoreItems.DiamondGrindHead, GTCoreItems.TungstenGrindHead);
         this.tag(DUST_COALS).addTag(DUST.getMaterialTag(Coal)).addTag(DUST.getMaterialTag(Charcoal)).addTag(DUST.getMaterialTag(Carbon));
         this.tag(ForgeCTags.GEMS_QUARTZ_ALL).addTag(GEM.getMaterialTag(MilkyQuartz));
+        this.tag(GregTechTags.GEM_SAPPHIRES).addTag(GEM.getMaterialTag(Sapphire)).addTag(GEM.getMaterialTag(GreenSapphire));
     }
 }

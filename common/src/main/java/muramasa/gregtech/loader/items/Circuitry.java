@@ -18,6 +18,7 @@ import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.GregTechCovers;
 import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -148,7 +149,7 @@ public class Circuitry {
         provider.addItemRecipe(output, GTIRef.ID, "lapotron_crystal_upgrade", "energy_orbs", GTCoreItems.LapotronCrystal,
                 ImmutableMap.of('C', CIRCUITS_ADVANCED, 'L', DUST_LAPIS_LAZURITE, 'E', GTCoreItems.EnergyCrystal), "LCL", "LEL", "LCL");
         provider.addItemRecipe(output, GTIRef.ID, "", "energy_orbs", GTCoreItems.LapotronCrystal,
-                ImmutableMap.of('C', CIRCUITS_DATA, 'L', DUST_LAPIS_LAZURITE, 'S', GEM.getMaterialTag(Sapphire)), "LCL", "LSL", "LCL");
+                ImmutableMap.of('C', CIRCUITS_DATA, 'L', DUST_LAPIS_LAZURITE, 'S', GregTechTags.GEM_SAPPHIRES), "LCL", "LSL", "LCL");
     }
 
     public static void init() {
