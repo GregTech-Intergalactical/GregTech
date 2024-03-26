@@ -75,7 +75,7 @@ public class BlockParts {
         addPipeCasing(output, provider, Steel, GregTechBlocks.FLUID_PIPE_STEEL, GregTechBlocks.CASING_PIPE_STEEL);
         addPipeCasing(output, provider, Titanium, GregTechBlocks.FLUID_PIPE_TITANIUM, GregTechBlocks.CASING_PIPE_TITANIUM);
         addPipeCasing(output, provider, TungstenSteel, GregTechBlocks.FLUID_PIPE_TUNGSTEN_STEEL, GregTechBlocks.CASING_PIPE_TUNGSTENSTEEL);
-        addPipeCasing(output, provider, Polytetrafluoroethylene, GregTechBlocks.FLUID_PIPE_PVC, GregTechBlocks.CASING_PIPE_PTFE);
+        addPipeCasing(output, provider, Polytetrafluoroethylene, GregTechBlocks.FLUID_PIPE_STAINLESS_STEEL, GregTechBlocks.CASING_PIPE_PTFE);
 
         addTurbine(output, provider, Steel, GregTechBlocks.CASING_TURBINE_STEEL);
         addTurbine(output, provider, StainlessSteel, GregTechBlocks.CASING_TURBINE_STAINLESS);
